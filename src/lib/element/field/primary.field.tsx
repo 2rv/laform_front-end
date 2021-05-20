@@ -8,8 +8,18 @@ import { TextSecondary } from '../text';
 import { FieldPropsType } from './field.type';
 
 export function FieldPrimary(props: FieldPropsType) {
-  const { titleTid, placeholderTid, onChange, onBlur, value, name, error } =
-    props;
+  const {
+    titleTid,
+    placeholderTid,
+
+    name,
+    type,
+    value,
+    error,
+
+    onChange,
+    onBlur,
+  } = props;
 
   return (
     <Container>
@@ -20,8 +30,9 @@ export function FieldPrimary(props: FieldPropsType) {
         value={value}
         name={name}
         placeholder={text(placeholderTid)}
+        type={type || 'text'}
       />
-      {/* {error && <ErrorMessage>{error}</ErrorMessage>} */}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 }
@@ -43,7 +54,7 @@ const Input = styled.input`
   }
 `;
 
-// const ErrorMessage = styled.span`
-//   color: ${THEME_COLOR.TEXT_DANGER};
-//   font-size: ${THEME_SIZE.FONT.SMALL};
-// `;
+const ErrorMessage = styled.span`
+  color: red;
+  font-size: ${THEME_SIZE.FONT.SMALL};
+`;

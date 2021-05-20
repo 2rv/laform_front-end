@@ -2,8 +2,9 @@ export interface FieldPropsType {
   titleTid: string;
   placeholderTid: string;
   name: string;
-  onChange: any;
-  onBlur: any;
+  type?: string;
   value: string;
   error: string;
+  onChange: any;
+  onBlur: any;
 }
