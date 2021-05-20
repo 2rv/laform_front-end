@@ -5,13 +5,13 @@ import { THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../theme';
 
 import { TextPropsType } from './text.type';
 
-export function TextPrimary(props: TextPropsType) {
+export function TextDanger(props: TextPropsType) {
   const { tid, tvalue, fontSize } = props;
 
   const Text = styled.span`
     font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
     font-size: ${fontSize || THEME_SIZE.FONT.DEFAULT};
-    color: ${THEME_COLOR.TEXT_PRIMARY};
+    color: ${THEME_COLOR.TEXT_DANGER};
   `;
 
   return <Text>{text(tid, tvalue)}</Text>;

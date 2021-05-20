@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { spacing, THEME_COLOR } from '../../../../lib/theme';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
+import { ErrorRequest } from '../../../../lib/element/error';
 
 export function SignupFormComponent(props) {
   const {
@@ -20,8 +21,8 @@ export function SignupFormComponent(props) {
 
     isPending,
     isSuccess,
-    // isError,
-    // errorMessage,
+    isError,
+    errorMessage,
   } = props;
 
   const getFieldError = (name) => {
@@ -75,14 +76,13 @@ export function SignupFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {isError && <ErrorRequest tid={errorMessage} />}
         </FieldLayout>
         <Button
           tid="SIGNUP.SIGNUP_FORM.BUTTON.SUBMIT"
           type="submit"
           disabled={isSubmitDisabled()}
         />
-        {/* {isPending && <LoaderForm tid="SIGNUP.SIGNUP_FORM.LOADING" />}
-        {isError && <ErrorForm errorTid={errorMessage} />} */}
       </Container>
     </form>
   );
@@ -95,7 +95,7 @@ const FieldLayout = styled.div`
 
 const Container = styled.div`
   display: grid;
-  gap: ${spacing(6)};
+  gap: ${spacing(3)};
 `;
 
 const Button = styled(ButtonPrimary)`

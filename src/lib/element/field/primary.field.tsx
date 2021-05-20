@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { text } from '../../common/text';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
+import { ErrorField } from '../error';
 import { TextSecondary } from '../text';
 
 import { FieldPropsType } from './field.type';
@@ -23,21 +24,28 @@ export function FieldPrimary(props: FieldPropsType) {
 
   return (
     <Container>
-      <TextSecondary tid={titleTid} fontSize={THEME_SIZE.FONT.SMALL} />
-      <Input
-        onChange={onChange}
-        onBlur={onBlur}
-        value={value}
-        name={name}
-        placeholder={text(placeholderTid)}
-        type={type || 'text'}
-      />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      <InputContainer>
+        <TextSecondary tid={titleTid} fontSize={THEME_SIZE.FONT.SMALL} />
+        <Input
+          onChange={onChange}
+          onBlur={onBlur}
+          value={value}
+          name={name}
+          placeholder={text(placeholderTid)}
+          type={type || 'text'}
+        />
+      </InputContainer>
+      {error && <ErrorField errorTid={error} />}
     </Container>
   );
 }
 
 const Container = styled.div`
+  display: grid;
+  gap: ${spacing(2)};
+`;
+
+const InputContainer = styled.div`
   display: grid;
   gap: ${spacing(1)};
 `;
@@ -52,9 +60,4 @@ const Input = styled.input`
   :focus {
     border: 1px solid ${THEME_COLOR.FIELD_STROKE_PRIMARY};
   }
-`;
-
-const ErrorMessage = styled.span`
-  color: red;
-  font-size: ${THEME_SIZE.FONT.SMALL};
 `;
