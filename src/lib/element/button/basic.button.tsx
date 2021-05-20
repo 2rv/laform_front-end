@@ -6,11 +6,15 @@ import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { ButtonPropsType } from './button.type';
 
 export function ButtonBasic(props: ButtonPropsType) {
-  const { tid, tvalue, iconSrc, ...rest } = props;
+  const { tid, tvalue, icon: Icon, ...rest } = props;
 
   return (
     <Button {...rest}>
-      {iconSrc && <Icon src={iconSrc} />}
+      {Icon && (
+        <IconContainer>
+          <Icon />
+        </IconContainer>
+      )}
       {tid ? text(tid, tvalue) : props.children}
     </Button>
   );
@@ -29,6 +33,6 @@ const Button = styled.button`
   font-weight: 500;
 `;
 
-const Icon = styled.img`
+const IconContainer = styled.span`
   margin-right: ${spacing(2)};
 `;
