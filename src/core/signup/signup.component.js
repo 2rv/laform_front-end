@@ -14,7 +14,7 @@ export function SignupComponent(props) {
     <Container>
       <SignupHeaderComponent />
       <InnerContainer>
-        <SignupFormContainer />
+        <SignupFormContainer {...props} />
         <SignupFormSocialComponent />
         <SignupFooterComponent />
       </InnerContainer>

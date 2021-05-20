@@ -5,7 +5,32 @@ import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
 
 export function SignupFormComponent(props) {
-  const handleSubmit = () => {}; // mock
+  const {
+    fieldLogin,
+    fieldEmail,
+    fieldPassword,
+    fieldPasswordRepeat,
+
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+
+    isPending,
+    isSuccess,
+    // isError,
+    // errorMessage,
+  } = props;
+
+  const getFieldError = (name) => {
+    return errors[name] && touched[name] && errors[name];
+  };
+
+  const isSubmitDisabled = () => {
+    return isPending || isSuccess;
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -14,44 +39,47 @@ export function SignupFormComponent(props) {
           <FieldPrimary
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.LOGIN.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.LOGIN.PLACEHOLDER"
-            // name={fieldLogin}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-            // value={values[fieldLogin]}
-            // error={getFieldError(fieldLogin)}
+            name={fieldLogin}
+            value={values[fieldLogin]}
+            error={getFieldError(fieldLogin)}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
           <FieldPrimary
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.EMAIL.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.EMAIL.PLACEHOLDER"
-            // name={fieldLogin}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-            // value={values[fieldLogin]}
-            // error={getFieldError(fieldLogin)}
+            name={fieldEmail}
+            type="email"
+            value={values[fieldEmail]}
+            error={getFieldError(fieldEmail)}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
           <FieldPrimary
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD.PLACEHOLDER"
-            // name={fieldLogin}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-            // value={values[fieldLogin]}
-            // error={getFieldError(fieldLogin)}
+            name={fieldPassword}
+            type="password"
+            value={values[fieldPassword]}
+            error={getFieldError(fieldPassword)}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
           <FieldPrimary
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD_REPEAT.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD_REPEAT.PLACEHOLDER"
-            // name={fieldLogin}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-            // value={values[fieldLogin]}
-            // error={getFieldError(fieldLogin)}
+            name={fieldPasswordRepeat}
+            type="password"
+            value={values[fieldPasswordRepeat]}
+            error={getFieldError(fieldPasswordRepeat)}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
         </FieldLayout>
         <Button
           tid="SIGNUP.SIGNUP_FORM.BUTTON.SUBMIT"
           type="submit"
-          // disabled={isSubmitDisabled()}
+          disabled={isSubmitDisabled()}
         />
         {/* {isPending && <LoaderForm tid="SIGNUP.SIGNUP_FORM.LOADING" />}
         {isError && <ErrorForm errorTid={errorMessage} />} */}
