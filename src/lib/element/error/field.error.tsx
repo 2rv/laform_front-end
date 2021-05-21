@@ -11,7 +11,7 @@ export function ErrorField(props: ErrorFieldPropsType) {
 
   return (
     <Container>
-      <Icon />
+      <ErrorIcon />
       <TextContainer>
         <TextPrimary tid={errorTid} tvalue={errorTvalue} />
         {helperTid && <TextSecondary tid={helperTid} tvalue={helperTvalue} />}
@@ -23,10 +23,7 @@ export function ErrorField(props: ErrorFieldPropsType) {
 const Container = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const Icon = styled(ErrorIcon)`
-  margin-right: ${spacing(2)};
+  gap: ${spacing(2)};
 `;
 
 const TextContainer = styled.div`

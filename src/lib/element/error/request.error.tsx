@@ -23,6 +23,7 @@ export function ErrorRequest(props: ErrorRequestPropsType) {
 const Container = styled.div`
   display: flex;
   align-items: center;
+  gap: ${spacing(1)};
   padding: ${spacing(2)} ${spacing(3)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   background-color: ${THEME_COLOR.BACKGROUND.DANGER};
