@@ -22,7 +22,6 @@ export function SignupContainer() {
     const data = convertSignupFormData(values);
 
     dispatch(signupFormUploadData(data));
-    console.log(data);
   };
 
   const signupFormGetInitialValue = () => ({

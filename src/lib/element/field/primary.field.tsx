@@ -25,7 +25,7 @@ export function FieldPrimary(props: FieldPropsType) {
   return (
     <Container>
       <InputContainer>
-        <TextSecondary tid={titleTid} fontSize={THEME_SIZE.FONT.SMALL} />
+        <Title tid={titleTid} />
         <Input
           onChange={onChange}
           onBlur={onBlur}
@@ -50,14 +50,18 @@ const InputContainer = styled.div`
   gap: ${spacing(1)};
 `;
 
+const Title = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
+`;
+
 const Input = styled.input`
   padding: ${spacing(3)};
-  color: ${THEME_COLOR.FIELD_PRIMARY};
-  background: ${THEME_COLOR.BACKGROUND_GRAY};
+  color: ${THEME_COLOR.FIELD.PRIMARY};
+  background: ${THEME_COLOR.BACKGROUND.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
 
   :focus {
-    border: 1px solid ${THEME_COLOR.FIELD_STROKE_PRIMARY};
+    border: 1px solid ${THEME_COLOR.FIELD_STROKE.PRIMARY};
   }
 `;

@@ -1,16 +1,14 @@
-import Link from 'next/link';
+import { setLinkRedirect } from '../../../main/navigation';
 import { TextPrimary } from '../text';
 
 import { LinkPropsType } from './link.type';
 
 export function LinkPrimary(props: LinkPropsType) {
-  const { tid, tvalue, href } = props;
+  const { tid, tvalue, path, pathConfig } = props;
 
   return (
-    <Link href={href}>
-      <a>
-        <TextPrimary tid={tid} tvalue={tvalue} />
-      </a>
-    </Link>
+    <a href={path} onClick={setLinkRedirect(path, pathConfig)}>
+      <TextPrimary tid={tid} tvalue={tvalue} />
+    </a>
   );
 }

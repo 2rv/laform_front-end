@@ -10,7 +10,7 @@ export function SignupFooterComponent() {
       &nbsp;
       <LinkPrimary
         tid="SIGNUP.FOOTER.LOGIN"
-        href={SIGNUP_FORM_ALREADY_REGISTERED_PATH}
+        path={SIGNUP_FORM_ALREADY_REGISTERED_PATH}
       />
     </div>
   );

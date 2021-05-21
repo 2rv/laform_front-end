@@ -7,12 +7,13 @@ import { ReactComponent as GoogleText } from '../../../../asset/svg/google-text.
 import { ReactComponent as FbIcon } from '../../../../asset/svg/fb-icon.svg';
 import { ReactComponent as FbText } from '../../../../asset/svg/fb-text.svg';
 import { spacing } from '../../../../lib/theme';
+import { IndentLayout } from '../../../../lib/element/layout';
 import { TextPrimary } from '../../../../lib/element/text';
 import { ButtonBasic } from '../../../../lib/element/button';
 
 export function SignupFormSocialComponent() {
   return (
-    <Container>
+    <IndentLayout type="text">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />
       <ButtonContainer>
         <ButtonBasic icon={AppleIcon}>
@@ -25,14 +26,9 @@ export function SignupFormSocialComponent() {
           <FbText />
         </ButtonBasic>
       </ButtonContainer>
-    </Container>
+    </IndentLayout>
   );
 }
-
-const Container = styled.div`
-  display: grid;
-  gap: ${spacing(2)};
-`;
 
 const ButtonContainer = styled.div`
   display: grid;

@@ -1,5 +1,6 @@
 export interface LinkPropsType {
   tid: string;
   tvalue?: string;
-  href: string;
+  path: string;
+  pathConfig?: any;
 }

@@ -25,8 +25,8 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   padding: ${spacing(3)};
-  background-color: ${THEME_COLOR.BACKGROUND_GRAY};
-  color: ${THEME_COLOR.TEXT_PRIMARY};
+  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  color: ${THEME_COLOR.TEXT.PRIMARY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-size: ${THEME_SIZE.FONT.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { spacing } from '../../../../lib/theme';
+import { FieldLayout } from '../../../../lib/element/layout';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { ErrorRequest } from '../../../../lib/element/error';
@@ -87,11 +88,6 @@ export function SignupFormComponent(props) {
     </form>
   );
 }
-
-const FieldLayout = styled.div`
-  display: grid;
-  gap: ${spacing(2)};
-`;
 
 const Container = styled.div`
   display: grid;
