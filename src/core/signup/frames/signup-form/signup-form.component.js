@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { spacing, THEME_COLOR } from '../../../../lib/theme';
+import { spacing } from '../../../../lib/theme';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { ErrorRequest } from '../../../../lib/element/error';

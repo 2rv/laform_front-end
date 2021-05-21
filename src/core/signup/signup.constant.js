@@ -10,5 +10,7 @@ export const SIGNUP_API = {
   },
 };
 
+export const SIGNUP_FORM_ALREADY_REGISTERED_PATH = '/login';
 export const SIGNUP_FORM_REDIRECT_ON_UPLOAD_PATH = '/';
+
 export const SIGNUP_REDIRECT_ON_LOGGED = '/logout';
