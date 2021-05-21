@@ -22,7 +22,6 @@ export function LoginContainer() {
     const data = convertLoginFormData(values);
 
     dispatch(loginFormUploadData(data));
-    console.log(data);
   };
 
   const loginFormGetInitialValue = () => ({

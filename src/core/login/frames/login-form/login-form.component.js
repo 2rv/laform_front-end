@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-import { spacing } from '../../../../lib/theme';
+import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { ErrorRequest } from '../../../../lib/element/error';
@@ -33,7 +31,7 @@ export function LoginFormComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Container>
+      <IndentLayout type="small">
         <FieldLayout>
           <FieldPrimary
             titleTid="LOGIN.LOGIN_FORM.FIELD.LOGIN.TITLE"
@@ -61,17 +59,7 @@ export function LoginFormComponent(props) {
           type="submit"
           disabled={isSubmitDisabled()}
         />
-      </Container>
+      </IndentLayout>
     </form>
   );
 }
-
-const FieldLayout = styled.div`
-  display: grid;
-  gap: ${spacing(2)};
-`;
-
-const Container = styled.div`
-  display: grid;
-  gap: ${spacing(3)};
-`;

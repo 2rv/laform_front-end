@@ -1,16 +1,13 @@
-import styled from 'styled-components';
+import { ContentLayout, PageLayout } from '../../lib/element/layout';
 
 import { LoginContainer } from './login.container';
 
 export function LoginPage() {
   return (
-    <Container>
-      <LoginContainer />
-    </Container>
+    <PageLayout horizontal="center">
+      <ContentLayout type="small">
+        <LoginContainer />
+      </ContentLayout>
+    </PageLayout>
   );
 }
-
-const Container = styled.div`
-  width: 360px;
-  margin: 0 auto;
-`;

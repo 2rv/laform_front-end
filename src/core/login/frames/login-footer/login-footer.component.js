@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-import { spacing } from '../../../../lib/theme';
+import { IndentLayout } from '../../../../lib/element/layout';
 import { TextSecondary } from '../../../../lib/element/text';
 import { LinkPrimary } from '../../../../lib/element/link';
 
@@ -11,13 +9,13 @@ import {
 
 export function LoginFooterComponent() {
   return (
-    <Container>
+    <IndentLayout type="text">
       <div>
         <TextSecondary tid="LOGIN.FOOTER.HAVENT_ACCOUNT_YET" />
         &nbsp;
         <LinkPrimary
           tid="LOGIN.FOOTER.REGISTER"
-          href={LOGIN_FORM_REGISTER_PATH}
+          path={LOGIN_FORM_REGISTER_PATH}
         />
       </div>
       <div>
@@ -25,14 +23,9 @@ export function LoginFooterComponent() {
         &nbsp;
         <LinkPrimary
           tid="LOGIN.FOOTER.FORGOT_PASSWORD_LINK"
-          href={LOGIN_FORM_FORGOT_PASSWORD_PATH}
+          path={LOGIN_FORM_FORGOT_PASSWORD_PATH}
         />
       </div>
-    </Container>
+    </IndentLayout>
   );
 }
-
-const Container = styled.div`
-  display: grid;
-  gap: ${spacing(2)};
-`;

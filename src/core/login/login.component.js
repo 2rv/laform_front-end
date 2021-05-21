@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-import { spacing } from '../../lib/theme';
+import { IndentLayout } from '../../lib/element/layout';
 
 import {
   LoginHeaderComponent,
@@ -11,23 +9,13 @@ import {
 
 export function LoginComponent(props) {
   return (
-    <Container>
+    <IndentLayout type="small">
       <LoginHeaderComponent />
-      <InnerContainer>
+      <IndentLayout>
         <LoginFormContainer {...props} />
         <LoginFormSocialComponent />
         <LoginFooterComponent />
-      </InnerContainer>
-    </Container>
+      </IndentLayout>
+    </IndentLayout>
   );
 }
-
-const Container = styled.div`
-  display: grid;
-  gap: ${spacing(3)};
-`;
-
-const InnerContainer = styled.div`
-  display: grid;
-  gap: ${spacing(6)};
-`;

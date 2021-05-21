@@ -1,17 +1,11 @@
-import { text } from '../../lib/common/text';
+import { validate } from '../../main/validate/validate.core';
+import { required } from '../../main/validate/validate.service';
 
 import { LOGIN_FIELD_NAME } from './login.type';
 
-export function loginFormValidation(values) {
-  const errors = {};
+const config = {
+  [LOGIN_FIELD_NAME.LOGIN]: [required],
+  [LOGIN_FIELD_NAME.PASSWORD]: [required],
+};
 
-  if (!values[LOGIN_FIELD_NAME.LOGIN]) {
-    errors[LOGIN_FIELD_NAME.LOGIN] = text('VALIDATION.REQUIRED');
-  }
-
-  if (!values[LOGIN_FIELD_NAME.PASSWORD]) {
-    errors[LOGIN_FIELD_NAME.PASSWORD] = text('VALIDATION.REQUIRED');
-  }
-
-  return errors;
-}
+export const loginFormValidation = (values) => validate(values, config);
