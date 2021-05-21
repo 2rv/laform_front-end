@@ -1,3 +1,49 @@
+@font-face {
+  font-family: 'Golos Text';
+  src: local('Golos Text Regular'), local('GolosText-Regular'),
+    url('/static/font/Golostextregular.woff2') format('woff2'),
+    url('/static/font/Golostextregular.woff') format('woff'),
+    url('/static/font/Golostextregular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Golos Text';
+  src: local('Golos Text Medium'), local('GolosText-Medium'),
+    url('/static/font/Golostextmedium.woff2') format('woff2'),
+    url('/static/font/Golostextmedium.woff') format('woff'),
+    url('/static/font/Golostextmedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Golos Text';
+  src: local('Golos Text DemiBold'), local('GolosText-DemiBold'),
+    url('/static/font/Golostextdemibold.woff2') format('woff2'),
+    url('/static/font/Golostextdemibold.woff') format('woff'),
+    url('/static/font/Golostextdemibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Golos Text';
+  src: local('Golos Text Bold'), local('GolosText-Bold'),
+    url('/static/font/Golostextbold.woff2') format('woff2'),
+    url('/static/font/Golostextbold.woff') format('woff'),
+    url('/static/font/Golostextbold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Golos Text';
+  src: local('Golos Text Black'), local('GolosText-Black'),
+    url('/static/font/Golostextblack.woff2') format('woff2'),
+    url('/static/font/Golostextblack.woff') format('woff'),
+    url('/static/font/Golostextblack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
 a,
 abbr,
 acronym,
