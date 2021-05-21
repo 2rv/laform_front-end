@@ -7,16 +7,14 @@ import { ErrorRequest } from '../../../../lib/element/error';
 
 export function LoginFormComponent(props) {
   const {
-    // fieldLogin,
-    // fieldEmail,
-    // fieldPassword,
-    // fieldPasswordRepeat,
+    fieldLogin,
+    fieldPassword,
 
-    // values,
-    // errors,
-    // touched,
-    // handleChange,
-    // handleBlur,
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
     handleSubmit,
 
     isPending,
@@ -25,9 +23,9 @@ export function LoginFormComponent(props) {
     errorMessage,
   } = props;
 
-  // const getFieldError = (name) => {
-  //   return errors[name] && touched[name] && errors[name];
-  // };
+  const getFieldError = (name) => {
+    return errors[name] && touched[name] && errors[name];
+  };
 
   const isSubmitDisabled = () => {
     return isPending || isSuccess;
@@ -40,21 +38,21 @@ export function LoginFormComponent(props) {
           <FieldPrimary
             titleTid="LOGIN.LOGIN_FORM.FIELD.LOGIN.TITLE"
             placeholderTid="LOGIN.LOGIN_FORM.FIELD.LOGIN.PLACEHOLDER"
-            // name={fieldLogin}
-            // value={values[fieldLogin]}
-            // error={getFieldError(fieldLogin)}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
+            name={fieldLogin}
+            value={values[fieldLogin]}
+            error={getFieldError(fieldLogin)}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
           <FieldPrimary
             titleTid="LOGIN.LOGIN_FORM.FIELD.PASSWORD.TITLE"
             placeholderTid="LOGIN.LOGIN_FORM.FIELD.PASSWORD.PLACEHOLDER"
-            // name={fieldPassword}
+            name={fieldPassword}
             type="password"
-            // value={values[fieldPassword]}
-            // error={getFieldError(fieldPassword)}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
+            value={values[fieldPassword]}
+            error={getFieldError(fieldPassword)}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
           {isError && <ErrorRequest tid={errorMessage} />}
         </FieldLayout>
