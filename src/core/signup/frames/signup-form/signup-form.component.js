@@ -78,7 +78,7 @@ export function SignupFormComponent(props) {
           />
           {isError && <ErrorRequest tid={errorMessage} />}
         </FieldLayout>
-        <Button
+        <ButtonPrimary
           tid="SIGNUP.SIGNUP_FORM.BUTTON.SUBMIT"
           type="submit"
           disabled={isSubmitDisabled()}
@@ -96,10 +96,4 @@ const FieldLayout = styled.div`
 const Container = styled.div`
   display: grid;
   gap: ${spacing(3)};
-`;
-
-const Button = styled(ButtonPrimary)`
-  &&& {
-    background-color: ${THEME_COLOR.PINK_LIGHT_2};
-  }
 `;

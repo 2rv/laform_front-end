@@ -11,7 +11,11 @@ export function ErrorRequest(props: ErrorRequestPropsType) {
 
   return (
     <Container>
-      <TextDanger tid={tid} tvalue={tvalue} fontSize={THEME_SIZE.FONT.SMALL} />
+      <TextDanger
+        tid={`ERROR.${tid}`}
+        tvalue={tvalue}
+        fontSize={THEME_SIZE.FONT.SMALL}
+      />
       <IconContainer>
         <ErrorIcon />
       </IconContainer>
