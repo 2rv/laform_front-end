@@ -1,9 +1,11 @@
 export enum AUTH_USER_DATA {
   ID = 'id',
+  LOGIN = 'login',
 }
 
 export interface AuthUserDto {
   id: number;
+  login: string;
 }
 
 export interface AuthStoreState {
