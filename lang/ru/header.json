@@ -10,5 +10,11 @@
     "LOGIN": "Вход",
     "OR": "или",
     "SIGNUP": "регистрация"
+  },
+  "USER_MENU": {
+    "FAVORITE": "Список избранного",
+    "PURCHASED_PATTERNS": "Купленные выкройки",
+    "PURCHASE_HISTORY": "История покупок",
+    "SETTINGS": "Настройки"
   }
 }

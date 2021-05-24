@@ -14,4 +14,4 @@ export const LOGIN_FORM_REGISTER_PATH = '/signup';
 export const LOGIN_FORM_FORGOT_PASSWORD_PATH = '/forgot-password';
 export const LOGIN_FORM_REDIRECT_ON_UPLOAD_PATH = '/';
 
-// export const LOGIN_REDIRECT_ON_LOGGED = '/logout';
+export const LOGIN_REDIRECT_ON_LOGGED = '/logout';
