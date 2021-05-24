@@ -24,4 +24,7 @@ export const THEME_COLOR = {
   FIELD_STROKE: {
     PRIMARY: '#bfbfbf',
   },
+  MODAL: {
+    PRIMARY: '#fff',
+  },
 };

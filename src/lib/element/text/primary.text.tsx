@@ -6,9 +6,13 @@ import { THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../theme';
 import { TextPropsType } from './text.type';
 
 export function TextPrimary(props: TextPropsType) {
-  const { tid, tvalue, className, children } = props;
+  const { tid, tvalue, className, onClick, children } = props;
 
-  return <Text className={className}>{children || text(tid, tvalue)}</Text>;
+  return (
+    <Text className={className} onClick={onClick}>
+      {children || text(tid, tvalue)}
+    </Text>
+  );
 }
 
 const Text = styled.span`
