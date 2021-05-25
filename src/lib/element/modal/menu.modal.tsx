@@ -27,7 +27,7 @@ export function ModalMenu(props: ModalMenuPropsType) {
   return (
     <Container ref={modalRef} {...rest}>
       {items.map((x) => (
-        <Item tid={x.tid} onClick={x.action} />
+        <Item key={x.tid} tid={x.tid} onClick={x.action} />
       ))}
     </Container>
   );
