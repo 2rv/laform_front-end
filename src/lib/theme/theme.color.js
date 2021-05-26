@@ -5,6 +5,7 @@ export const THEME_COLOR = {
   BACKGROUND: {
     GRAY: '#f0f0f0',
     DANGER: '#ffeaea',
+    WHITE: '#fff',
   },
   TEXT: {
     PRIMARY: '#2f2a2c',
@@ -14,6 +15,7 @@ export const THEME_COLOR = {
   },
   BUTTON: {
     PRIMARY: '#ff005a',
+    SECONDARY: '#2f2a2c',
   },
   BUTTON_TEXT: {
     PRIMARY: '#fff',

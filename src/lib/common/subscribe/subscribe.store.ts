@@ -33,7 +33,6 @@ export function subscribeStore(
       };
 
     case SUBSCRIBE_ACTION_TYPE.UPLOAD_ERROR:
-      debugger;
       return {
         ...state,
         subscribeForm: setRequestError(

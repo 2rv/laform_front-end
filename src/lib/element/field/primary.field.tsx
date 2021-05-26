@@ -20,12 +20,13 @@ export function FieldPrimary(props: FieldPropsType) {
 
     onChange,
     onBlur,
+    ...rest
   } = props;
 
   return (
     <Container>
       <InputContainer>
-        <Title tid={titleTid} />
+        {titleTid && <Title tid={titleTid} />}
         <Input
           onChange={onChange}
           onBlur={onBlur}
@@ -33,6 +34,7 @@ export function FieldPrimary(props: FieldPropsType) {
           name={name}
           placeholder={text(placeholderTid)}
           type={type || 'text'}
+          {...rest}
         />
       </InputContainer>
       {error && <ErrorField errorTid={error} />}
