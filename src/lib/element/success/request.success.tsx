@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ReactComponent as ErrorIcon } from '../../../asset/svg/error-outline.svg';
+import { ReactComponent as SuccessIcon } from '../../../asset/svg/success.svg';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
 import { TextPrimary } from '../text';
 
@@ -25,13 +25,13 @@ const Container = styled.div`
   gap: ${spacing(1)};
   padding: ${spacing(2)} ${spacing(3)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  background-color: lightgreen;
+  background-color: ${THEME_COLOR.BACKGROUND.SUCCESS};
   line-height: 1.25em;
   white-space: nowrap;
 `;
 
 const Text = styled(TextPrimary)`
-  color: darkgreen;
+  color: ${THEME_COLOR.TEXT.SUCCESS};
   font-size: ${THEME_SIZE.FONT.SMALL};
 `;
 
@@ -39,10 +39,4 @@ const IconContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-`;
-
-const SuccessIcon = styled(ErrorIcon)`
-  & > path {
-    fill: darkgreen;
-  }
 `;
