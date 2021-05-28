@@ -4,6 +4,7 @@ import ERROR from './error.json';
 import STATIC from './static.json';
 import HEADER from './header.json';
 import FOOTER from './footer.json';
+import HOME from './home.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
 
@@ -15,6 +16,7 @@ export const RU = {
     STATIC,
     HEADER,
     FOOTER,
+    HOME,
     SIGNUP,
     LOGIN,
   },

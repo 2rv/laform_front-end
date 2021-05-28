@@ -3,17 +3,22 @@ export const THEME_COLOR = {
   PRIMARY_DARK: '#7c1c3e',
   SECONDARY: '#5f5b5d',
   BACKGROUND: {
+    PRIMARY: '#2f2a2c',
     GRAY: '#f0f0f0',
     DANGER: '#ffeaea',
     WHITE: '#fff',
-    SUCCESS: '#D0FFE4',
+    SUCCESS: '#d0ffe4',
+  },
+  BACKGROUND_TRANSPARENT: {
+    PRIMARY_75: 'rgba(47, 42, 44, 0.75)',
   },
   TEXT: {
     PRIMARY: '#2f2a2c',
     SECONDARY: '#5f5b5d',
     DANGER: '#eb5757',
-    WHITE: '#fff',
     SUCCESS: '#219653',
+    WHITE: '#fff',
+    WHITE_75: '#bfbfbf',
   },
   BUTTON: {
     PRIMARY: '#ff005a',
