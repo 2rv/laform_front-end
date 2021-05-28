@@ -10,7 +10,7 @@ export function CatalogItemComponent(props) {
   return (
     <LinkPrimary path={path}>
       <Container>
-        <img src={backgroundImage} />
+        <BackgroundImage src={backgroundImage} />
         <ContentContainer>
           <TitleText tid={title} />
           <DescriptionText tid={description} />
@@ -24,15 +24,21 @@ const Container = styled.div`
   position: relative;
 `;
 
+const BackgroundImage = styled.img`
+  width: 100%;
+`;
+
 const ContentContainer = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: ${spacing(3)};
   padding: ${spacing(9)} ${spacing(6)};
+  justify-content: center;
   background-color: ${THEME_COLOR.BACKGROUND_TRANSPARENT.PRIMARY_75};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
