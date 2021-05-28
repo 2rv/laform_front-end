@@ -23,7 +23,7 @@ export function HeaderMenuComponent(props) {
 const Container = styled.div`
   display: flex;
   height: 100%;
-  gap: ${spacing(4.8)};
+  gap: ${spacing(5)};
   align-items: center;
 `;
 

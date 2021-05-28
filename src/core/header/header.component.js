@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { spacing, THEME_COLOR } from '../../lib/theme';
+import { ContentLayout } from '../../lib/element/layout';
 
 import { HeaderActionContainer, HeaderMenuComponent } from './frames';
 
@@ -9,19 +10,23 @@ export function HeaderComponent(props) {
 
   return (
     <Container>
-      <HeaderMenuComponent items={items} activePath={activePath} />
-      <HeaderAction logged={logged} user={user} />
+      <Content>
+        <HeaderMenuComponent items={items} activePath={activePath} />
+        <HeaderActionContainer logged={logged} user={user} />
+      </Content>
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  height: ${spacing(16)};
-  padding: 0 ${spacing(30)};
+  height: 80px;
+  justify-content: center;
   background-color: ${THEME_COLOR.BACKGROUND.GRAY};
 `;
 
-const HeaderAction = styled(HeaderActionContainer)`
-  margin-left: auto;
+const Content = styled(ContentLayout)`
+  display: flex;
+  padding: 0 ${spacing(6)};
+  justify-content: space-between;
 `;

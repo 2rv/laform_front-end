@@ -36,15 +36,15 @@ export function ModalMenu(props: ModalMenuPropsType) {
 const Container = styled.div`
   position: absolute;
   display: grid;
-  padding: ${spacing(2.4)} 0;
+  padding: ${spacing(2)} 0;
   background-color: ${THEME_COLOR.MODAL.PRIMARY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+  box-shadow: ${THEME_COLOR.SHADOW.MODAL};
   white-space: nowrap;
 `;
 
 const Item = styled(TextPrimary)`
-  padding: ${spacing(1.2)} ${spacing(4)};
+  padding: ${spacing(1)} ${spacing(4)};
   cursor: pointer;
 
   &:hover {

@@ -27,4 +27,7 @@ export const THEME_COLOR = {
   MODAL: {
     PRIMARY: '#fff',
   },
+  SHADOW: {
+    MODAL: '0 0 50px rgba(0, 0, 0, 0.25)',
+  },
 };

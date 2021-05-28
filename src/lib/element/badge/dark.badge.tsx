@@ -31,8 +31,8 @@ const Badge = styled.span`
   flex-wrap: wrap;
   top: 0;
   right: 0;
-  height: ${spacing(4.8)};
-  min-width: ${spacing(4.8)};
+  height: 24px;
+  min-width: 24px;
   padding: 0 ${spacing(1)};
   transform: translate(75%, -25%);
   align-content: center;
