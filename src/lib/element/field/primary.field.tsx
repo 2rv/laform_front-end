@@ -10,6 +10,8 @@ import { FieldPropsType } from './field.type';
 
 export function FieldPrimary(props: FieldPropsType) {
   const {
+    className,
+
     titleTid,
     placeholderTid,
 
@@ -20,7 +22,6 @@ export function FieldPrimary(props: FieldPropsType) {
 
     onChange,
     onBlur,
-    ...rest
   } = props;
 
   return (
@@ -28,13 +29,13 @@ export function FieldPrimary(props: FieldPropsType) {
       <InputContainer>
         {titleTid && <Title tid={titleTid} />}
         <Input
+          className={className}
           onChange={onChange}
           onBlur={onBlur}
           value={value}
           name={name}
           placeholder={text(placeholderTid)}
           type={type || 'text'}
-          {...rest}
         />
       </InputContainer>
       {error && <ErrorField errorTid={error} />}
