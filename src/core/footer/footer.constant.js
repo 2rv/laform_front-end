@@ -1,23 +1,41 @@
 import { ReactComponent as InstagramIcon } from '../../asset/svg/instagram.svg';
 import { ReactComponent as VkIcon } from '../../asset/svg/vk.svg';
 
+export const FOOTER_STORE_NAME = 'FOOTER';
+
+export const FOOTER_API = {
+  SUBSCRIBE_FORM_UPLOAD: {
+    ENDPOINT: '/notification/subscribe',
+    METHOD: 'POST',
+  },
+};
+
 export const FOOTER_MENU_ITEMS = [
-  [
-    { tid: 'FOOTER.MENU.SECTION1.MY_ACCOUNT', path: '/' },
-    { tid: 'FOOTER.MENU.SECTION1.MY_PURCHASES', path: '/' },
-    { tid: 'FOOTER.MENU.SECTION1.WISH_LIST', path: '/' },
-    { tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS', path: '/' },
-    { tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO', path: '/' },
-  ],
-  [
-    { tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE', path: '/' },
-    { tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT', path: '/' },
-    { tid: 'FOOTER.MENU.SECTION2.QNA', path: '/' },
-  ],
-  [
-    { tid: 'FOOTER.MENU.SECTION3.LEGAL_INFO', path: '/' },
-    { tid: 'FOOTER.MENU.SECTION3.PRIVACY_POLICY', path: '/' },
-  ],
+  {
+    sectionTid: 'FOOTER.MENU.SECTION1.TITLE',
+    items: [
+      { tid: 'FOOTER.MENU.SECTION1.MY_ACCOUNT', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION1.MY_PURCHASES', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION1.WISH_LIST', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO', path: '/' },
+    ],
+  },
+  {
+    sectionTid: 'FOOTER.MENU.SECTION2.TITLE',
+    items: [
+      { tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION2.QNA', path: '/' },
+    ],
+  },
+  {
+    sectionTid: 'FOOTER.MENU.SECTION3.TITLE',
+    items: [
+      { tid: 'FOOTER.MENU.SECTION3.LEGAL_INFO', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION3.PRIVACY_POLICY', path: '/' },
+    ],
+  },
 ];
 
 export const FOOTER_SOCIAL_LINKS = [

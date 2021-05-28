@@ -29,8 +29,8 @@ const Button = styled.button`
   color: ${THEME_COLOR.TEXT.PRIMARY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-size: ${THEME_SIZE.FONT.DEFAULT};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
-  font-weight: 500;
 `;
 
 const IconContainer = styled.span`

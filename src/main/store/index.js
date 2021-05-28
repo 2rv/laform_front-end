@@ -6,11 +6,8 @@ import {
   navigationStore,
   NAVIGATION_STORE_NAME,
 } from '../../lib/common/navigation';
-import {
-  subscribeStore,
-  SUBSCRIBE_STORE_NAME,
-} from '../../lib/common/subscribe';
 
+import { footerStore, FOOTER_STORE_NAME } from '../../core/footer';
 import { signupStore, SIGNUP_STORE_NAME } from '../../core/signup';
 import { loginStore, LOGIN_STORE_NAME } from '../../core/login';
 
@@ -18,7 +15,7 @@ export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
   [LANG_STORE_NAME]: langStore,
   [NAVIGATION_STORE_NAME]: navigationStore,
-  [SUBSCRIBE_STORE_NAME]: subscribeStore,
+  [FOOTER_STORE_NAME]: footerStore,
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
 });

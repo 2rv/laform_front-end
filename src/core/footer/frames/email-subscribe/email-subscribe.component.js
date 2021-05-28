@@ -78,12 +78,12 @@ const CTAContainer = styled.div`
 
 const PreCTAText = styled(TextPrimary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: 500;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
 
 const CTAText = styled(TextPrimary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: 600;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
 `;
 
 const EmailField = styled(FieldPrimary)`
@@ -92,5 +92,5 @@ const EmailField = styled(FieldPrimary)`
 
 const SubscribeButton = styled(ButtonSecondary)`
   height: ${spacing(9.2)};
-  font-weight: 400;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
 `;

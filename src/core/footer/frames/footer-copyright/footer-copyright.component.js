@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { TextSecondary } from '../../../../lib/element/text';
+import { THEME_SIZE } from '../../../../lib/theme';
 
 export function FooterCopyrightComponent(props) {
   return (
@@ -13,5 +14,5 @@ export function FooterCopyrightComponent(props) {
 }
 
 const BolderText = styled(TextSecondary)`
-  font-weight: 500;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;

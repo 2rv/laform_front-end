@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ContentLayout } from '../../lib/element/layout';
 
 import { spacing, THEME_COLOR } from '../../lib/theme';
 
@@ -14,21 +15,30 @@ import {
 export function FooterComponent(props) {
   return (
     <Container>
-      <FooterMenu items={FOOTER_MENU_ITEMS} />
-      <EmailSubscribe {...props} />
-      <FooterCopyright />
-      <FooterSocialList items={FOOTER_SOCIAL_LINKS} />
+      <ContentLayout>
+        <Content>
+          <FooterMenu items={FOOTER_MENU_ITEMS} />
+          <EmailSubscribe {...props} />
+          <FooterCopyright />
+          <FooterSocialList items={FOOTER_SOCIAL_LINKS} />
+        </Content>
+      </ContentLayout>
     </Container>
   );
 }
 
 const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+`;
+
+const Content = styled(ContentLayout)`
   display: grid;
   grid-gap: 60px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, [row] auto);
-  padding: ${spacing(12)} ${spacing(30)};
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  padding: ${spacing(12)} ${spacing(6)};
 `;
 
 const FooterMenu = styled(FooterMenuComponent)`

@@ -6,20 +6,22 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import {
-  SUBSCRIBE_STORE_NAME,
-  subscribeFormUploadData,
-} from '../../lib/common/subscribe';
 
-import { FooterComponent } from './footer.component';
+import { FOOTER_STORE_NAME } from './footer.constant';
 import { SUBSCRIBE_FIELD_NAME, SUBSCRIBE_FORM_FIELD_NAME } from './footer.type';
+import { FooterComponent } from './footer.component';
+import { subscribeFormUploadData } from './footer.action';
+import { parseSubscribeData } from './footer.convert';
+import { subscribeFormValidation } from './footer.validation';
 
 export function FooterContainer() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state[SUBSCRIBE_STORE_NAME]);
+  const state = useSelector((state) => state[FOOTER_STORE_NAME]);
 
   const subscribeFormSubmit = (values) => {
-    dispatch(subscribeFormUploadData(values));
+    const data = parseSubscribeData(values);
+
+    dispatch(subscribeFormUploadData(data));
   };
 
   const subscribeFormGetInitialValue = () => ({
@@ -33,7 +35,7 @@ export function FooterContainer() {
       isSuccess={isRequestSuccess(state.subscribeForm)}
       isError={isRequestError(state.subscribeForm)}
       initialValue={subscribeFormGetInitialValue()}
-      // validation={loginFormValidation}
+      validation={subscribeFormValidation}
       onSubmitForm={subscribeFormSubmit}
       fieldName={SUBSCRIBE_FORM_FIELD_NAME}
     />

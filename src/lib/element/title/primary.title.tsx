@@ -14,6 +14,6 @@ export function TitlePrimary(props: TitlePropsType) {
 const Title = styled.span`
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
   font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: 500;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   color: ${THEME_COLOR.TEXT.PRIMARY};
 `;

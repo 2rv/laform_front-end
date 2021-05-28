@@ -4,10 +4,10 @@ import { spacing } from '../../../../lib/theme';
 import { LinkSecondary } from '../../../../lib/element/link';
 
 export function FooterSocialListComponent(props) {
-  const { items, ...rest } = props;
+  const { items, className } = props;
 
   return (
-    <Container {...props}>
+    <Container className={className}>
       {items.map(({ icon: Icon, path, pathConfig }, idx) => (
         <LinkSecondary key={idx} path={path} pathConfig={pathConfig}>
           <Icon />

@@ -22,6 +22,11 @@ export const THEME_SIZE = {
     LARGE: '24px',
     SMALL: '14px',
   },
+  FONT_WEIGHT: {
+    DEFAULT: 400,
+    BOLD: 600,
+    MEDIUM: 500,
+  },
   RADIUS: {
     DEFAULT: '5px',
     CIRCLE: '100%',

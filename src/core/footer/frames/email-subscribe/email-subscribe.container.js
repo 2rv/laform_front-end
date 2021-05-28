@@ -5,6 +5,8 @@ import { EmailSubscribeComponent } from './email-subscribe.component';
 
 export function EmailSubscribeContainer(props) {
   const {
+    className,
+
     fieldName,
     initialValue,
     validation,
@@ -13,7 +15,6 @@ export function EmailSubscribeContainer(props) {
     isSuccess,
     isError,
     errorMessage,
-    ...rest
   } = props;
 
   const EMAIL_NAME = fieldName[SUBSCRIBE_FORM_FIELD_KEY.EMAIL];
@@ -26,13 +27,13 @@ export function EmailSubscribeContainer(props) {
     >
       {(formProps) => (
         <EmailSubscribeComponent
+          className={className}
           fieldEmail={EMAIL_NAME}
           isPending={isPending}
           isSuccess={isSuccess}
           isError={isError}
           errorMessage={errorMessage}
           {...formProps}
-          {...rest}
         />
       )}
     </Formik>
