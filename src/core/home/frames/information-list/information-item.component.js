@@ -31,4 +31,5 @@ const Container = styled.div`
 
 const TitleText = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
+  line-height: 1.5em;
 `;

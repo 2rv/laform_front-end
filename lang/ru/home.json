@@ -25,5 +25,19 @@
       "DOWNLOAD_AND_PRINT_PATTERN_INFO": "Как скачать и распечатать выкройку",
       "GLUE_PATTERN_INFO": "Как склеить выкройку формата А4"
     }
+  },
+  "ADVANTAGE_LIST": {
+    "PATTERNS": {
+      "TITLE": "Выкроек изготовлено за всё время",
+      "COUNT": "1520"
+    },
+    "YEARS": {
+      "TITLE": "Лет активной работы на рынке",
+      "COUNT": "5+"
+    },
+    "CLIENTS": {
+      "TITLE": "Довольных клиентов",
+      "COUNT": "5000"
+    }
   }
 }
