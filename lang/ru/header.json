@@ -1,0 +1,20 @@
+{
+  "MENU_ITEMS": {
+    "PATTERNS": "Выкройки",
+    "SEWING_GOODS": "Товары для шитья",
+    "MASTER_CLASSES": "Мастер-классы",
+    "ARTICLES": "Полезные статьи",
+    "ABOUT": "О нас"
+  },
+  "MENU_ACTION": {
+    "LOGIN": "Вход",
+    "OR": "или",
+    "SIGNUP": "регистрация"
+  },
+  "USER_MENU": {
+    "FAVORITE": "Список избранного",
+    "PURCHASED_PATTERNS": "Купленные выкройки",
+    "PURCHASE_HISTORY": "История покупок",
+    "SETTINGS": "Настройки"
+  }
+}

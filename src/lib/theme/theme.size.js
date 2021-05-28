@@ -24,5 +24,6 @@ export const THEME_SIZE = {
   },
   RADIUS: {
     DEFAULT: '5px',
+    CIRCLE: '100%',
   },
 };
