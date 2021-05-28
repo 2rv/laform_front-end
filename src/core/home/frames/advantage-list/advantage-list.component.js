@@ -5,10 +5,10 @@ import { spacing } from '../../../../lib/theme';
 import { AdvantageItemComponent } from './advantage-item.component';
 
 export function AdvantageListComponent(props) {
-  const { items, ...rest } = props;
+  const { className, items } = props;
 
   return (
-    <Container {...rest}>
+    <Container className={className}>
       {items.map((x) => (
         <AdvantageItemComponent key={x.title} {...x} />
       ))}

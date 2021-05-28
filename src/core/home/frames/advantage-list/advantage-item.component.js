@@ -27,10 +27,10 @@ const Container = styled.div`
 const CountText = styled(TextPrimary)`
   color: ${THEME_COLOR.PRIMARY};
   font-size: ${THEME_SIZE.FONT.EXTRA_LARGE};
-  font-weight: 700;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.EXTRA_BOLD};
 `;
 
 const TitleText = styled(TextPrimary)`
-  font-weight: 500;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   line-height: 1.5em;
 `;

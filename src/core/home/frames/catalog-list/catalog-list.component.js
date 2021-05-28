@@ -5,10 +5,10 @@ import { spacing } from '../../../../lib/theme';
 import { CatalogItemComponent } from './catalog-item.component';
 
 export function CatalogListComponent(props) {
-  const { items, ...rest } = props;
+  const { className, items } = props;
 
   return (
-    <Container {...rest}>
+    <Container className={className}>
       {items.map((x) => (
         <CatalogItemComponent key={x.title} {...x} />
       ))}

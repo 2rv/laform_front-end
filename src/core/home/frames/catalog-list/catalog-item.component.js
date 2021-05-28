@@ -46,7 +46,7 @@ const ContentContainer = styled.div`
 const TitleText = styled(TextPrimary)`
   color: ${THEME_COLOR.TEXT.WHITE};
   font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: 600;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
   line-height: 1.25em;
 `;
 

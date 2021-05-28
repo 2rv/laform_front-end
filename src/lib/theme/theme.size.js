@@ -25,6 +25,7 @@ export const THEME_SIZE = {
   },
   FONT_WEIGHT: {
     DEFAULT: 400,
+    EXTRA_BOLD: 700,
     BOLD: 600,
     MEDIUM: 500,
   },

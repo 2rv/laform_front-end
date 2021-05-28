@@ -9,10 +9,10 @@ import { INFORMATION_LIST_VIEW_ALL_PATH } from './information-list.constant';
 import { InformationItemComponent } from './information-item.component';
 
 export function InformationListComponent(props) {
-  const { items, ...rest } = props;
+  const { className, items } = props;
 
   return (
-    <IndentLayout {...rest}>
+    <IndentLayout className={className}>
       <TitleContainer>
         <TitleText tid="HOME.INFORMATION_LIST.TITLE" />
         <ViewAllLink
@@ -35,7 +35,7 @@ const TitleContainer = styled.div`
 
 const TitleText = styled(TextPrimary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: 500;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
 
 const ViewAllLink = styled(LinkSecondary)`
