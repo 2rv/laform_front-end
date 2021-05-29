@@ -39,7 +39,7 @@ const ContentContainer = styled.div`
   gap: ${spacing(3)};
   padding: ${spacing(9)} ${spacing(6)};
   justify-content: center;
-  background-color: ${THEME_COLOR.BACKGROUND_TRANSPARENT.PRIMARY_75};
+  background-color: ${THEME_COLOR.BACKGROUND_TRANSPARENT.SECONDARY_DARK_75};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 
@@ -51,6 +51,6 @@ const TitleText = styled(TextPrimary)`
 `;
 
 const DescriptionText = styled(TextSecondary)`
-  color: ${THEME_COLOR.TEXT.WHITE_75};
+  color: ${THEME_COLOR.LIGHT_GRAY};
   line-height: 1.5em;
 `;

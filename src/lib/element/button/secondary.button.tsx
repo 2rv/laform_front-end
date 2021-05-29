@@ -10,6 +10,6 @@ export function ButtonSecondary(props: ButtonPropsType) {
 }
 
 const Button = styled(ButtonBasic)`
-  background-color: ${THEME_COLOR.BUTTON.SECONDARY};
-  color: ${THEME_COLOR.BUTTON_TEXT.PRIMARY};
+  background-color: ${THEME_COLOR.SECONDARY_DARK};
+  color: ${THEME_COLOR.TEXT.WHITE};
 `;

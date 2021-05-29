@@ -65,6 +65,6 @@ const Input = styled.input`
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
 
   :focus {
-    border: 1px solid ${THEME_COLOR.FIELD_STROKE.PRIMARY};
+    border: 1px solid ${THEME_COLOR.LIGHT_GRAY};
   }
 `;
