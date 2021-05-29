@@ -5,15 +5,19 @@ export const THEME_COLOR = {
   BACKGROUND: {
     GRAY: '#f0f0f0',
     DANGER: '#ffeaea',
+    WHITE: '#fff',
+    SUCCESS: '#D0FFE4',
   },
   TEXT: {
     PRIMARY: '#2f2a2c',
     SECONDARY: '#5f5b5d',
     DANGER: '#eb5757',
     WHITE: '#fff',
+    SUCCESS: '#219653',
   },
   BUTTON: {
     PRIMARY: '#ff005a',
+    SECONDARY: '#2f2a2c',
   },
   BUTTON_TEXT: {
     PRIMARY: '#fff',

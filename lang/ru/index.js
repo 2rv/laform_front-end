@@ -3,6 +3,7 @@ import VALIDATION from './validation.json';
 import ERROR from './error.json';
 import STATIC from './static.json';
 import HEADER from './header.json';
+import FOOTER from './footer.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
 
@@ -13,6 +14,7 @@ export const RU = {
     ERROR,
     STATIC,
     HEADER,
+    FOOTER,
     SIGNUP,
     LOGIN,
   },

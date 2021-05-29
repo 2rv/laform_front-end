@@ -1,4 +1,5 @@
 export interface FieldPropsType {
+  className?: string;
   titleTid: string;
   placeholderTid: string;
   name: string;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { ReactComponent as CartIcon } from '../../../../asset/svg/cart.svg';
 import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 
-import { spacing } from '../../../../lib/theme';
+import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { LinkPrimary } from '../../../../lib/element/link';
 import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
 import { BadgeDark } from '../../../../lib/element/badge';
@@ -15,7 +15,7 @@ import { SIGNUP_ROUTE_PATH } from '../../../signup';
 import { USER_MODAL_ITEMS } from './header-action.constant';
 
 export function HeaderActionComponent(props) {
-  const { logged, user, ...rest } = props;
+  const { className, logged, user } = props;
   const [isUserModalActive, setUserModalActive] = useState(false);
 
   const handleUserClick = () => {
@@ -26,7 +26,7 @@ export function HeaderActionComponent(props) {
   };
 
   return (
-    <Container logged={logged} {...rest}>
+    <Container className={className} logged={logged}>
       {logged ? (
         <LoggedContainer>
           <UserContainer onClick={handleUserClick}>
@@ -67,7 +67,7 @@ const Container = styled.div`
 `;
 
 const BolderLink = styled(LinkPrimary)`
-  font-weight: 500;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
 
 const LoggedContainer = styled.div`
@@ -87,5 +87,5 @@ const UserMenu = styled(ModalMenu)`
 `;
 
 const BolderText = styled(TextPrimary)`
-  font-weight: 500;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;

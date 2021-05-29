@@ -4,4 +4,5 @@ export interface LinkPropsType {
   tvalue?: string;
   path: string;
   pathConfig?: any;
+  children?: any;
 }
