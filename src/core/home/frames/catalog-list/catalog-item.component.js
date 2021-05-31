@@ -39,7 +39,7 @@ const ContentContainer = styled.div`
   gap: ${spacing(3)};
   padding: ${spacing(9)} ${spacing(6)};
   justify-content: center;
-  background-color: ${THEME_COLOR.BACKGROUND_TRANSPARENT.SECONDARY_DARK_75};
+  background-color: rgba(47, 42, 44, 0.75);
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 
