@@ -15,7 +15,7 @@ export function LangSelectorComponent(props) {
   const [isLangModalActive, setLangModalActive] = useState(false);
 
   const LANG_MODAL_ITEMS = supportedLang.map((lang) => ({
-    tid: `FOOTER_LOGO.LANG.${lang}.FULL`,
+    tid: `HEADER_LOGO.LANG.${lang}.FULL`,
     action: () => dispatch(langUpdateLanguage(lang)),
   }));
 
@@ -29,7 +29,7 @@ export function LangSelectorComponent(props) {
   return (
     <Container>
       <LangContainer onClick={handleLangClick}>
-        <Text tid={`FOOTER_LOGO.LANG.${currentLang}.SHORT`} />
+        <Text tid={`HEADER_LOGO.LANG.${currentLang}.SHORT`} />
         <ArrowDownIcon />
       </LangContainer>
       {isLangModalActive && (

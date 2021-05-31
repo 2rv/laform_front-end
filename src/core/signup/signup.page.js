@@ -4,7 +4,7 @@ import {
   PageLayout,
 } from '../../lib/element/layout';
 
-import { FooterLogoContainer } from '../footer-logo';
+import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
 import { SignupContainer } from './signup.container';
@@ -13,7 +13,7 @@ export function SignupPage() {
   return (
     <IndentLayout type="medium">
       <IndentLayout type="small">
-        <FooterLogoContainer />
+        <HeaderLogoContainer />
         <HeaderContainer />
       </IndentLayout>
       <PageLayout horizontal="center">
