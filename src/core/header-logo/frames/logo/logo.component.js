@@ -10,9 +10,9 @@ export function LogoComponent() {
     <Container>
       <Logo />
       <div>
-        <Text tid="FOOTER_LOGO.HEADING_TEXT" />
+        <Text tid="HEADER_LOGO.HEADING_TEXT" />
         &nbsp;
-        <BrandText tid="FOOTER_LOGO.BRAND_TEXT" />
+        <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
       </div>
     </Container>
   );

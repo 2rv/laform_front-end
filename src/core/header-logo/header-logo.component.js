@@ -5,7 +5,7 @@ import { ContentLayout } from '../../lib/element/layout';
 
 import { LogoComponent, LangSelectorComponent } from './frames';
 
-export function FooterLogoComponent(props) {
+export function HeaderLogoComponent(props) {
   const { currentLang, supportedLang } = props;
 
   return (

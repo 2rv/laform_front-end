@@ -5,7 +5,7 @@ import {
 } from '../../lib/element/layout';
 
 import { FooterContainer } from '../footer';
-import { FooterLogoContainer } from '../footer-logo';
+import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
 import { LoginContainer } from './login.container';
@@ -15,7 +15,7 @@ export function LoginPage() {
     <IndentLayout type="large">
       <IndentLayout type="medium">
         <IndentLayout type="small">
-          <FooterLogoContainer />
+          <HeaderLogoContainer />
           <HeaderContainer />
         </IndentLayout>
         <PageLayout horizontal="center">

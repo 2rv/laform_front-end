@@ -2,7 +2,7 @@ import META from './meta.json';
 import VALIDATION from './validation.json';
 import ERROR from './error.json';
 import STATIC from './static.json';
-import FOOTER_LOGO from './footerLogo.json';
+import HEADER_LOGO from './header-logo.json';
 import HEADER from './header.json';
 import FOOTER from './footer.json';
 import SIGNUP from './signup.json';
@@ -14,7 +14,7 @@ export const RU = {
     VALIDATION,
     ERROR,
     STATIC,
-    FOOTER_LOGO,
+    HEADER_LOGO,
     HEADER,
     FOOTER,
     SIGNUP,
