@@ -1,0 +1,20 @@
+{
+  "MENU_ITEMS": {
+    "PATTERNS": "Patterns",
+    "SEWING_GOODS": "Sewing supplies",
+    "MASTER_CLASSES": "Master classes",
+    "ARTICLES": "Useful articles",
+    "ABOUT": "About us"
+  },
+  "MENU_ACTION": {
+    "LOGIN": "Login",
+    "OR": "or",
+    "SIGNUP": "signup"
+  },
+  "USER_MENU": {
+    "FAVORITE": "Список избранного",
+    "PURCHASED_PATTERNS": "Купленные выкройки",
+    "PURCHASE_HISTORY": "История покупок",
+    "SETTINGS": "Настройки"
+  }
+}

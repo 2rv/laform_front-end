@@ -8,7 +8,7 @@ import FOOTER from './footer.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
 
-export const RU = {
+export const EN = {
   translation: {
     META,
     VALIDATION,

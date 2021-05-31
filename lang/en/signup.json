@@ -1,0 +1,33 @@
+{
+  "SECTION_TITLE": "Регистрация",
+  "SIGNUP_FORM": {
+    "FIELD": {
+      "LOGIN": {
+        "TITLE": "Логин",
+        "PLACEHOLDER": "La Forme"
+      },
+      "EMAIL": {
+        "TITLE": "Почта",
+        "PLACEHOLDER": "email.com"
+      },
+      "PASSWORD": {
+        "TITLE": "Пароль",
+        "PLACEHOLDER": "Password"
+      },
+      "PASSWORD_REPEAT": {
+        "TITLE": "Повторите пароль",
+        "PLACEHOLDER": "Password"
+      }
+    },
+    "BUTTON": {
+      "SUBMIT": "Создать аккаунт"
+    }
+  },
+  "SOCIAL": {
+    "HELPER_TEXT": "Или войдите с помощью"
+  },
+  "FOOTER": {
+    "HAVE_ACCOUNT": "Уже есть аккаунт?",
+    "LOGIN": "Войти"
+  }
+}
