@@ -37,7 +37,7 @@ const Container = styled.div`
   position: absolute;
   display: grid;
   padding: ${spacing(2)} 0;
-  background-color: ${THEME_COLOR.MODAL.PRIMARY};
+  background-color: ${THEME_COLOR.BACKGROUND.WHITE};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   box-shadow: ${THEME_COLOR.SHADOW.MODAL};
   white-space: nowrap;

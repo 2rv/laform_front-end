@@ -2,34 +2,24 @@ export const THEME_COLOR = {
   PRIMARY: '#ff005a',
   PRIMARY_DARK: '#7c1c3e',
   SECONDARY: '#5f5b5d',
+  SECONDARY_DARK: '#2f2a2c',
+  LIGHT_GRAY: '#bfbfbf',
   BACKGROUND: {
-    GRAY: '#f0f0f0',
     DANGER: '#ffeaea',
+    SUCCESS: '#d0ffe4',
+    GRAY: '#f0f0f0',
     WHITE: '#fff',
-    SUCCESS: '#D0FFE4',
+  },
+  BACKGROUND_TRANSPARENT: {
+    SECONDARY_DARK_75: 'rgba(47, 42, 44, 0.75)',
   },
   TEXT: {
-    PRIMARY: '#2f2a2c',
-    SECONDARY: '#5f5b5d',
     DANGER: '#eb5757',
-    WHITE: '#fff',
     SUCCESS: '#219653',
-  },
-  BUTTON: {
-    PRIMARY: '#ff005a',
-    SECONDARY: '#2f2a2c',
-  },
-  BUTTON_TEXT: {
-    PRIMARY: '#fff',
+    WHITE: '#fff',
   },
   FIELD: {
     PRIMARY: '#8f8d8e',
-  },
-  FIELD_STROKE: {
-    PRIMARY: '#bfbfbf',
-  },
-  MODAL: {
-    PRIMARY: '#fff',
   },
   SHADOW: {
     MODAL: '0 0 50px rgba(0, 0, 0, 0.25)',
