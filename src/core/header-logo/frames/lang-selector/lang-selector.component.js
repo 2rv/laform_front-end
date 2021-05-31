@@ -16,7 +16,11 @@ export function LangSelectorComponent(props) {
 
   const LANG_MODAL_ITEMS = supportedLang.map((lang) => ({
     tid: `HEADER_LOGO.LANG.${lang}.FULL`,
-    action: () => dispatch(langUpdateLanguage(lang)),
+    action: () => {
+      dispatch(langUpdateLanguage(lang));
+
+      setLangModalActive(false);
+    },
   }));
 
   const handleLangClick = () => {
