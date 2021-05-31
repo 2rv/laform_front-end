@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
+import { setLinkRedirect } from '../../../../main/navigation';
 import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { IndentLayout } from '../../../../lib/element/layout';
 import { TextPrimary } from '../../../../lib/element/text';
 import { LinkSecondary } from '../../../../lib/element/link';
+import { InformationDirectoryComponent } from '../../../../lib/common/information-directory';
 
 import { INFORMATION_LIST_VIEW_ALL_PATH } from './information-list.constant';
-import { InformationItemComponent } from './information-item.component';
 
 export function InformationListComponent(props) {
   const { className, items } = props;
@@ -21,8 +22,13 @@ export function InformationListComponent(props) {
         />
       </TitleContainer>
       <ListContainer>
-        {items.map((x) => (
-          <InformationItemComponent key={x.title} {...x} />
+        {items.map(({ icon, tid, path }) => (
+          <InformationDirectoryComponent
+            key={tid}
+            icon={icon}
+            tid={tid}
+            onClick={setLinkRedirect(path)}
+          />
         ))}
       </ListContainer>
     </IndentLayout>
