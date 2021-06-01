@@ -1,6 +1,8 @@
 import { ReactComponent as InstagramIcon } from '../../asset/svg/instagram.svg';
 import { ReactComponent as VkIcon } from '../../asset/svg/vk.svg';
 
+import { INFO_ROUTE_PATH } from '../info';
+
 export const FOOTER_STORE_NAME = 'FOOTER';
 
 export const FOOTER_API = {
@@ -24,9 +26,12 @@ export const FOOTER_MENU_ITEMS = [
   {
     sectionTid: 'FOOTER.MENU.SECTION2.TITLE',
     items: [
-      { tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE', path: '/' },
-      { tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT', path: '/' },
-      { tid: 'FOOTER.MENU.SECTION2.QNA', path: '/' },
+      { tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE', path: INFO_ROUTE_PATH },
+      {
+        tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
+        path: INFO_ROUTE_PATH,
+      },
+      { tid: 'FOOTER.MENU.SECTION2.QNA', path: INFO_ROUTE_PATH },
     ],
   },
   {

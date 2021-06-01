@@ -7,6 +7,7 @@ import HEADER from './header.json';
 import FOOTER from './footer.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
+import INFO from './info.json';
 
 export const EN = {
   translation: {
@@ -19,5 +20,6 @@ export const EN = {
     FOOTER,
     SIGNUP,
     LOGIN,
+    INFO,
   },
 };
