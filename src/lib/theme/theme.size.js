@@ -6,12 +6,31 @@ export const THEME_SIZE = {
     DEFAULT: '0.7',
   },
   INDENT: {
-    DEFAULT: '24px',
+    DEFAULT: '30px',
+    LARGE: '120px',
+    MEDIUM: '60px',
+    SMALL: '15px',
+    TEXT: '10px',
+    TEXT_SMALL: '5px',
   },
   LAYOUT: {
     DEFAULT: '1200px',
+    SMALL: '360px',
   },
   FONT: {
     DEFAULT: '16px',
+    EXTRA_LARGE: '36px',
+    LARGE: '24px',
+    SMALL: '14px',
+  },
+  FONT_WEIGHT: {
+    DEFAULT: 400,
+    EXTRA_BOLD: 700,
+    BOLD: 600,
+    MEDIUM: 500,
+  },
+  RADIUS: {
+    DEFAULT: '5px',
+    CIRCLE: '100%',
   },
 };
