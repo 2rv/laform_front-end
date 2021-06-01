@@ -4,7 +4,7 @@ import { TextPrimary } from '../text';
 import { LinkPropsType } from './link.type';
 
 export function LinkPrimary(props: LinkPropsType) {
-  const { tid, tvalue, path, pathConfig, className } = props;
+  const { tid, tvalue, path, pathConfig, className, children } = props;
 
   return (
     <a
@@ -12,7 +12,7 @@ export function LinkPrimary(props: LinkPropsType) {
       href={path}
       onClick={setLinkRedirect(path, pathConfig)}
     >
-      <TextPrimary tid={tid} tvalue={tvalue} />
+      {children || <TextPrimary tid={tid} tvalue={tvalue} />}
     </a>
   );
 }

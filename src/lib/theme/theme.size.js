@@ -19,8 +19,15 @@ export const THEME_SIZE = {
   },
   FONT: {
     DEFAULT: '16px',
+    EXTRA_LARGE: '36px',
     LARGE: '24px',
     SMALL: '14px',
+  },
+  FONT_WEIGHT: {
+    DEFAULT: 400,
+    EXTRA_BOLD: 700,
+    BOLD: 600,
+    MEDIUM: 500,
   },
   RADIUS: {
     DEFAULT: '5px',

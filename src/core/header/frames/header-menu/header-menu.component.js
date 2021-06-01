@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { spacing, THEME_COLOR } from '../../../../lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { LinkSecondary } from '../../../../lib/element/link';
 
 export function HeaderMenuComponent(props) {
@@ -34,6 +34,6 @@ const Item = styled(LinkSecondary)`
     p.active &&
     css`
       border-bottom: ${spacing(1)} solid ${THEME_COLOR.PRIMARY};
-      font-weight: 500;
+      font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
     `}
 `;

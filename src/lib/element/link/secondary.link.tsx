@@ -4,7 +4,7 @@ import { TextSecondary } from '../text';
 import { LinkPropsType } from './link.type';
 
 export function LinkSecondary(props: LinkPropsType) {
-  const { tid, tvalue, path, pathConfig, className } = props;
+  const { tid, tvalue, path, pathConfig, className, children } = props;
 
   return (
     <a
@@ -12,7 +12,7 @@ export function LinkSecondary(props: LinkPropsType) {
       href={path}
       onClick={setLinkRedirect(path, pathConfig)}
     >
-      <TextSecondary tid={tid} tvalue={tvalue} />
+      {children || <TextSecondary tid={tid} tvalue={tvalue} />}
     </a>
   );
 }

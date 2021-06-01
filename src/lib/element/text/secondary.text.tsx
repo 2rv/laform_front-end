@@ -18,5 +18,5 @@ export function TextSecondary(props: TextPropsType) {
 const Text = styled.span`
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
   font-size: ${THEME_SIZE.FONT.DEFAULT};
-  color: ${THEME_COLOR.TEXT.SECONDARY};
+  color: ${THEME_COLOR.SECONDARY};
 `;

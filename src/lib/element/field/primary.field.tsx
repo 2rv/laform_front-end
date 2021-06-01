@@ -10,6 +10,8 @@ import { FieldPropsType } from './field.type';
 
 export function FieldPrimary(props: FieldPropsType) {
   const {
+    className,
+
     titleTid,
     placeholderTid,
 
@@ -25,8 +27,9 @@ export function FieldPrimary(props: FieldPropsType) {
   return (
     <Container>
       <InputContainer>
-        <Title tid={titleTid} />
+        {titleTid && <Title tid={titleTid} />}
         <Input
+          className={className}
           onChange={onChange}
           onBlur={onBlur}
           value={value}
@@ -62,6 +65,6 @@ const Input = styled.input`
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
 
   :focus {
-    border: 1px solid ${THEME_COLOR.FIELD_STROKE.PRIMARY};
+    border: 1px solid ${THEME_COLOR.LIGHT_GRAY};
   }
 `;

@@ -1,0 +1,34 @@
+{
+  "MENU": {
+    "SECTION1": {
+      "TITLE": "LaForme",
+      "MY_ACCOUNT": "Мой аккаунт",
+      "MY_PURCHASES": "Мои покупки",
+      "WISH_LIST": "Желаемое",
+      "LA_FORME_PATTERNS": "LaForme PATTERNS",
+      "LA_FORME_STUDIO": "LaForme STUDIO"
+    },
+    "SECTION2": {
+      "TITLE": "Полезные ссылки",
+      "HOW_TO_CHOOSE_SIZE": "Как выбрать размер",
+      "DELIVERY_AND_PAYMENT": "Доставка и оплата",
+      "QNA": "Вопросы и ответы"
+    },
+    "SECTION3": {
+      "TITLE": "Связаться",
+      "LEGAL_INFO": "Юридическая информация",
+      "PRIVACY_POLICY": "Политика конфиденциальности"
+    }
+  },
+  "EMAIL_SUBSCRIBE": {
+    "PRE_CTA": "Не пропустите,",
+    "CTA": "оформите подписку!",
+    "FIELD_PLACEHOLDER": "Введите свой Email",
+    "BUTTON_TEXT": "Подписаться",
+    "SUCCESS": "Подписка успешно оформлена!"
+  },
+  "COPYRIGHT": {
+    "BRAND": "2021. LAFORME.RU.",
+    "ALL_RIGHTS_RESERVED": "Все права защищены."
+  }
+}

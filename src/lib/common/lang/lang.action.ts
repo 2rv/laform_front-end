@@ -21,7 +21,7 @@ export const langBrowserDetection = () => {
   if (typeof window !== 'undefined') {
     const language = getBrowserCookie(COOKIE_LANG);
     if (language) {
-      i18n.changeLanguage(language.toLowerCase());
+      i18n.changeLanguage(language);
     }
   }
 };
