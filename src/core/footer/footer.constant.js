@@ -25,7 +25,10 @@ export const FOOTER_MENU_ITEMS = [
     sectionTid: 'FOOTER.MENU.SECTION2.TITLE',
     items: [
       { tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE', path: '/' },
-      { tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT', path: '/' },
+      {
+        tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
+        path: '/',
+      },
       { tid: 'FOOTER.MENU.SECTION2.QNA', path: '/' },
     ],
   },
