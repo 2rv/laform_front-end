@@ -1,0 +1,1 @@
+export { FaqListComponent } from './frames';
