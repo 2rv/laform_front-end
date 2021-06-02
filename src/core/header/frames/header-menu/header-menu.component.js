@@ -13,7 +13,7 @@ export function HeaderMenuComponent(props) {
           key={x.name}
           tid={x.name}
           path={x.path}
-          active={activePath.startsWith(x.path)}
+          active={activePath?.startsWith(x.path)}
         />
       ))}
     </Container>
