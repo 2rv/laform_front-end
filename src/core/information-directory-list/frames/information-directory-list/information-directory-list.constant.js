@@ -5,17 +5,17 @@ import { ReactComponent as PaperIcon } from '../../../../asset/svg/paper.svg';
 export const INFORMATION_DIRECTORY_LIST_ITEMS = [
   {
     icon: SizeIcon,
-    tid: 'INFO.INFORMATION_DIRECTORY.ITEMS.SIZING_INFO',
-    path: '/info',
+    tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.SIZING_INFO',
+    path: '/',
   },
   {
     icon: DownloadIcon,
-    tid: 'INFO.INFORMATION_DIRECTORY.ITEMS.DOWNLOAD_AND_PRINT_PATTERN_INFO',
-    path: '/info',
+    tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.DOWNLOAD_AND_PRINT_PATTERN_INFO',
+    path: '/',
   },
   {
     icon: PaperIcon,
-    tid: 'INFO.INFORMATION_DIRECTORY.ITEMS.GLUE_PATTERN_INFO',
-    path: '/info',
+    tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.GLUE_PATTERN_INFO',
+    path: '/',
   },
 ];

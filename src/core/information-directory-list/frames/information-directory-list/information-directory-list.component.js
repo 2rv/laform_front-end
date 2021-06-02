@@ -11,7 +11,7 @@ export function InformationDirectoryListComponent(props) {
 
   return (
     <IndentLayout>
-      <TitleText tid="INFO.INFORMATION_DIRECTORY.TITLE" />
+      <TitleText tid="INFORMATION_DIRECTORY_LIST.TITLE" />
       <ListContainer>
         {items.map(({ icon, tid, path }) => (
           <InformationDirectoryComponent

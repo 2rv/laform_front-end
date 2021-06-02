@@ -1,6 +1,6 @@
 import { httpRequest } from '../../main/http';
 
-import { FOOTER_API } from './footer.constant';
+import { SUBSCRIBE_API } from './footer.constant';
 import { SUBSCRIBE_ACTION_TYPE } from './footer.type';
 import { parseSubscribeData } from './footer.convert';
 
@@ -12,8 +12,8 @@ export function subscribeFormUploadData(data) {
 
     try {
       await httpRequest({
-        method: FOOTER_API.SUBSCRIBE_FORM_UPLOAD.METHOD,
-        url: FOOTER_API.SUBSCRIBE_FORM_UPLOAD.ENDPOINT,
+        method: SUBSCRIBE_API.SUBSCRIBE_FORM_UPLOAD.METHOD,
+        url: SUBSCRIBE_API.SUBSCRIBE_FORM_UPLOAD.ENDPOINT,
         data: parseSubscribeData(data),
       });
 

@@ -7,7 +7,7 @@ import HEADER from './header.json';
 import FOOTER from './footer.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
-import INFO from './info.json';
+import INFORMATION_DIRECTORY_LIST from './information-directory-list.json';
 
 export const EN = {
   translation: {
@@ -20,6 +20,6 @@ export const EN = {
     FOOTER,
     SIGNUP,
     LOGIN,
-    INFO,
+    INFORMATION_DIRECTORY_LIST,
   },
 };

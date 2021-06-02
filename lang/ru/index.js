@@ -8,7 +8,7 @@ import FOOTER from './footer.json';
 import HOME from './home.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
-import INFO from './info.json';
+import INFORMATION_DIRECTORY_LIST from './information-directory-list.json';
 
 export const RU = {
   translation: {
@@ -22,6 +22,6 @@ export const RU = {
     HOME,
     SIGNUP,
     LOGIN,
-    INFO,
+    INFORMATION_DIRECTORY_LIST,
   },
 };
