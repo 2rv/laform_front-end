@@ -3,7 +3,7 @@ import { ReactComponent as VkIcon } from '../../asset/svg/vk.svg';
 
 export const FOOTER_STORE_NAME = 'FOOTER';
 
-export const SUBSCRIBE_API = {
+export const FOOTER_API = {
   SUBSCRIBE_FORM_UPLOAD: {
     ENDPOINT: '/notification/subscribe',
     METHOD: 'POST',
