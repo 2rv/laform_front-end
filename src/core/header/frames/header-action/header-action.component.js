@@ -47,7 +47,7 @@ export function HeaderActionComponent(props) {
           &nbsp;
           <TextSecondary tid="HEADER.MENU_ACTION.OR" />
           &nbsp;
-          <LinkPrimary
+          <BolderLink
             tid="HEADER.MENU_ACTION.SIGNUP"
             path={SIGNUP_ROUTE_PATH}
           />
@@ -84,6 +84,7 @@ const UserContainer = styled.div`
 
 const UserMenu = styled(ModalMenu)`
   margin-top: ${spacing(1)};
+  z-index: 1;
 `;
 
 const BolderText = styled(TextPrimary)`

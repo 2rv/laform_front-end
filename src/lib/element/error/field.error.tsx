@@ -29,4 +29,5 @@ const Container = styled.div`
 const TextContainer = styled.div`
   display: grid;
   gap: ${spacing(1)};
+  line-height: 1.5em;
 `;
