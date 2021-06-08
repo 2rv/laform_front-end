@@ -64,6 +64,7 @@ const Input = styled.input<InputProps>`
   background: ${THEME_COLOR.BACKGROUND.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
+  transition: ${THEME_VALUE.TRANSITION.HOVER};
 
   ${(p) =>
     p.error &&
