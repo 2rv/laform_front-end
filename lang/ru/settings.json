@@ -1,0 +1,34 @@
+{
+  "CHANGE_PASSWORD": {
+    "TITLE": "Сменить пароль",
+    "OLD_PASSWORD": {
+      "TITLE": "Старый пароль",
+      "PLACEHOLDER": "Пароль"
+    },
+    "NEW_PASSWORD": {
+      "TITLE": "Новый пароль",
+      "PLACEHOLDER": "Новый пароль"
+    },
+    "REPEAT_NEW_PASSWORD": {
+      "TITLE": "Повторите новый пароль",
+      "PLACEHOLDER": "Новый пароль"
+    },
+    "SUBMIT": "Сменить"
+  },
+  "CHANGE_EMAIL": {
+    "TITLE": "Сменить Email",
+    "OLD_EMAIL": {
+      "TITLE": "Старый Email",
+      "PLACEHOLDER": "Email.com"
+    },
+    "NEW_EMAIL": {
+      "TITLE": "Новый Email",
+      "PLACEHOLDER": "Newemail.com"
+    },
+    "PASSWORD": {
+      "TITLE": "Пароль",
+      "PLACEHOLDER": "Пароль"
+    },
+    "SUBMIT": "Сменить"
+  }
+}
