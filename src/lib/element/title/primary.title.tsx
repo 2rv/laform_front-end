@@ -6,9 +6,9 @@ import { THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../theme';
 import { TitlePropsType } from './title.type';
 
 export function TitlePrimary(props: TitlePropsType) {
-  const { tid, tvalue } = props;
+  const { className, tid, tvalue } = props;
 
-  return <Title>{text(tid, tvalue)}</Title>;
+  return <Title className={className}>{text(tid, tvalue)}</Title>;
 }
 
 const Title = styled.span`
