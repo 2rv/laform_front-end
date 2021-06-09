@@ -11,6 +11,8 @@ import LOGIN from './login.json';
 import INFORMATION_DIRECTORY_LIST from './information-directory-list.json';
 import FAQ_LIST from './faq-list.json';
 import AUTH from './auth.json';
+import SETTINGS from './settings.json';
+import AUTH_FORM_CHANGE_PASSWORD from './auth-form-change-password.json';
 
 export const RU = {
   translation: {
@@ -27,5 +29,7 @@ export const RU = {
     INFORMATION_DIRECTORY_LIST,
     FAQ_LIST,
     AUTH,
+    SETTINGS,
+    AUTH_FORM_CHANGE_PASSWORD,
   },
 };
