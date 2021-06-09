@@ -17,6 +17,7 @@ export const THEME_COLOR = {
   TEXT: {
     DANGER: '#eb5757',
     SUCCESS: '#219653',
+    GRAY: '#f0f0f0',
     WHITE: '#fff',
   },
   FIELD: {

@@ -1,0 +1,18 @@
+{
+  "CHANGE_PASSWORD": {
+    "TITLE": "Сменить пароль",
+    "OLD_PASSWORD": {
+      "TITLE": "Старый пароль",
+      "PLACEHOLDER": "Пароль"
+    },
+    "NEW_PASSWORD": {
+      "TITLE": "Новый пароль",
+      "PLACEHOLDER": "Новый пароль"
+    },
+    "REPEAT_NEW_PASSWORD": {
+      "TITLE": "Повторите новый пароль",
+      "PLACEHOLDER": "Новый пароль"
+    },
+    "SUBMIT": "Сменить"
+  }
+}
