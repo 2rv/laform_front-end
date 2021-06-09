@@ -9,3 +9,7 @@ export interface FieldPropsType {
   onChange: any;
   onBlur: any;
 }
+
+export interface InputProps {
+  readonly error: boolean;
+}
