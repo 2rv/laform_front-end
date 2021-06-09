@@ -2,19 +2,24 @@ import styled from 'styled-components';
 
 import { ReactComponent as Logo } from '../../../../asset/svg/logo.svg';
 
+import { setLinkRedirect } from '../../../../main/navigation';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextPrimary } from '../../../../lib/element/text';
 
+import { HOME_ROUTE_PATH } from '../../../home';
+
 export function LogoComponent() {
   return (
-    <Container>
-      <Logo />
-      <div>
-        <Text tid="HEADER_LOGO.HEADING_TEXT" />
-        &nbsp;
-        <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
-      </div>
-    </Container>
+    <a href={HOME_ROUTE_PATH} onClick={setLinkRedirect(HOME_ROUTE_PATH)}>
+      <Container>
+        <Logo />
+        <div>
+          <Text tid="HEADER_LOGO.HEADING_TEXT" />
+          &nbsp;
+          <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
+        </div>
+      </Container>
+    </a>
   );
 }
 
