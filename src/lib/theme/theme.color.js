@@ -22,7 +22,6 @@ export const THEME_COLOR = {
   },
   FIELD: {
     PRIMARY: '#8f8d8e',
-    CHECKBOX: '#f5f5f5',
   },
   SHADOW: {
     MODAL: '0 0 50px rgba(0, 0, 0, 0.25)',
