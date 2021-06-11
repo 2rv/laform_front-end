@@ -20,5 +20,4 @@ const Title = styled(TitlePrimary)`
 
 const Button = styled(ButtonSecondary)`
   width: 50%;
-  color: ${THEME_COLOR.TEXT.GRAY};
 `;
