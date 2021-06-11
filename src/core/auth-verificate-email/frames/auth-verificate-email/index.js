@@ -1,1 +1,1 @@
-export { AuthVerificateEmailComponent } from './auth-verificate-email.components';
+export { AuthVerificateEmailComponent } from './auth-verificate-email.component';
