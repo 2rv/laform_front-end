@@ -4,5 +4,6 @@ export const THEME_VALUE = {
   },
   TRANSITION: {
     HOVER: 'all 0.25s ease-out',
+    CHECK: 'all 0.10s ease-out',
   },
 };

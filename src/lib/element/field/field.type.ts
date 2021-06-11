@@ -10,6 +10,15 @@ export interface FieldPropsType {
   onBlur: any;
 }
 
+export interface CheckboxPropsType {
+  titleTid?: string;
+  labelTid: string;
+  name: string;
+  checked: boolean;
+  onChange: any;
+  onBlur: any;
+}
+
 export interface InputProps {
   readonly error: boolean;
 }
