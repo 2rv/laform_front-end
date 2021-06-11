@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { THEME_COLOR } from '../../../../lib/theme';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
@@ -31,5 +30,4 @@ export function SettingsFormChangeEmailComponent(props) {
 
 const Submit = styled(ButtonSecondary)`
   width: 50%;
-  color: ${THEME_COLOR.TEXT.GRAY};
 `;
