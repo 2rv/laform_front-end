@@ -7,6 +7,7 @@ import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { SuccessRequest } from '../../../../lib/element/success';
 import { ErrorRequest } from '../../../../lib/element/error';
+import { LoaderPrimary } from '../../../../lib/element/loader';
 
 export function EmailSubscribeComponent(props) {
   const {
@@ -63,6 +64,7 @@ export function EmailSubscribeComponent(props) {
                 disabled={isSubmitDisabled()}
               />
             )}
+            {isPending && <LoaderPrimary />}
           </IndentLayout>
         </form>
       </IndentLayout>
