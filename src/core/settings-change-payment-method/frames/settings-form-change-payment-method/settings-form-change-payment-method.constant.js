@@ -1,0 +1,14 @@
+export const PAYMENT_METHODS = [
+  {
+    id: 1,
+    tid: 'SETTINGS.CHANGE_PAYMENT_METHOD.PAYMENT_METHOD.ONLINE',
+  },
+  {
+    id: 2,
+    tid: 'SETTINGS.CHANGE_PAYMENT_METHOD.PAYMENT_METHOD.TEST',
+  },
+  {
+    id: 3,
+    tid: 'SETTINGS.CHANGE_PAYMENT_METHOD.PAYMENT_METHOD.TEST2',
+  },
+];

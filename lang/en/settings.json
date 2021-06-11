@@ -14,5 +14,13 @@
       "PLACEHOLDER": "Новый пароль"
     },
     "SUBMIT": "Сменить"
+  },
+  "CHANGE_PAYMENT_METHOD": {
+    "TITLE": "Удобная оплата",
+    "PAYMENT_METHOD": {
+      "TITLE": "Способ оплаты",
+      "ONLINE": "Онлайн"
+    },
+    "SUBMIT": "Сохранить"
   }
 }
