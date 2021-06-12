@@ -8,7 +8,7 @@ import { FooterContainer } from '../footer';
 import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
-import { AuthFormRecoveryAccountContainer } from './frames/auth-form-recovery-account';
+import { AuthRecoveryAccountContainer } from './auth-recovery-account.container';
 
 export function AuthRecoveryAccountPage() {
   return (
@@ -20,7 +20,7 @@ export function AuthRecoveryAccountPage() {
         </IndentLayout>
         <PageLayout horizontal="center">
           <ContentLayout type="small">
-            <AuthFormRecoveryAccountContainer />
+            <AuthRecoveryAccountContainer />
           </ContentLayout>
         </PageLayout>
       </IndentLayout>
