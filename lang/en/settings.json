@@ -22,5 +22,29 @@
       "LABEL": "Я согласен(а) на получение рассылки"
     },
     "SUBMIT": "Сохранить"
+  },
+  "CHANGE_PAYMENT_METHOD": {
+    "TITLE": "Удобная оплата",
+    "PAYMENT_METHOD": {
+      "TITLE": "Способ оплаты",
+      "ONLINE": "Онлайн"
+    },
+    "SUBMIT": "Сохранить"
+  },
+  "CHANGE_EMAIL": {
+    "TITLE": "Сменить Email",
+    "OLD_EMAIL": {
+      "TITLE": "Старый Email",
+      "PLACEHOLDER": "Email.com"
+    },
+    "NEW_EMAIL": {
+      "TITLE": "Новый Email",
+      "PLACEHOLDER": "Newemail.com"
+    },
+    "PASSWORD": {
+      "TITLE": "Пароль",
+      "PLACEHOLDER": "Пароль"
+    },
+    "SUBMIT": "Сменить"
   }
 }
