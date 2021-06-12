@@ -15,6 +15,13 @@
     },
     "SUBMIT": "Сменить"
   },
+  "CHANGE_PAYMENT_METHOD": {
+    "TITLE": "Удобная оплата",
+    "PAYMENT_METHOD": {
+      "TITLE": "Способ оплаты",
+      "ONLINE": "Онлайн"
+    },
+    "SUBMIT": "Сохранить"
   "CHANGE_EMAIL": {
     "TITLE": "Сменить Email",
     "OLD_EMAIL": {
