@@ -2,6 +2,7 @@ import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { ErrorRequest } from '../../../../lib/element/error';
+import { LoaderPrimary } from '../../../../lib/element/loader';
 
 export function SignupFormComponent(props) {
   const {
@@ -81,6 +82,7 @@ export function SignupFormComponent(props) {
           type="submit"
           disabled={isSubmitDisabled()}
         />
+        {isPending && <LoaderPrimary />}
       </IndentLayout>
     </form>
   );
