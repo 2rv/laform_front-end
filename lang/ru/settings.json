@@ -15,6 +15,14 @@
     },
     "SUBMIT": "Сменить"
   },
+  "CHANGE_NOTIFICATION": {
+    "TITLE": "Подписка на рассылку",
+    "NEWSLETTER": {
+      "TITLE": "Рассылка новостей",
+      "LABEL": "Я согласен(а) на получение рассылки"
+    },
+    "SUBMIT": "Сохранить"
+  },
   "CHANGE_PAYMENT_METHOD": {
     "TITLE": "Удобная оплата",
     "PAYMENT_METHOD": {
@@ -22,6 +30,7 @@
       "ONLINE": "Онлайн"
     },
     "SUBMIT": "Сохранить"
+  },
   "CHANGE_EMAIL": {
     "TITLE": "Сменить Email",
     "OLD_EMAIL": {

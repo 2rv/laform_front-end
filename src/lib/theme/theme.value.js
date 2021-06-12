@@ -3,6 +3,7 @@ export const THEME_VALUE = {
     PRIMARY: 'Golos Text',
   },
   TRANSITION: {
-    HOVER: 'all 0.25s ease-out',
+    HOVER: '0.25s',
+    FAST: '0.10s',
   },
 };
