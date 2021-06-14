@@ -23,10 +23,10 @@ export function AuthChangePasswordContainer() {
   const state = useSelector((state) => state[AUTH_CHANGE_PASSWORD_STORE_NAME]);
 
   const authChangePasswordFormSendData = (values) => {
+    const data = convertAuthChangePasswordFormData(values);
     const code = getQuery('code');
-    const data = convertAuthChangePasswordFormData({ ...values, code });
 
-    dispatch(authChangePasswordFormUploadData(data));
+    dispatch(authChangePasswordFormUploadData(data, code));
   };
 
   const authChangePasswordFormGetInitialValue = () => ({

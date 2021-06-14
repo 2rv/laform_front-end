@@ -7,18 +7,19 @@ import {
 } from './auth-change-password.constant';
 import { AUTH_CHANGE_PASSWORD_ACTION_TYPE } from './auth-change-password.type';
 
-export function authChangePasswordFormUploadData(data) {
+export function authChangePasswordFormUploadData(data, code) {
   return async (dispatch) => {
     dispatch({
       type: AUTH_CHANGE_PASSWORD_ACTION_TYPE.AUTH_CHANGE_PASSWORD_FORM_UPLOAD_PENDING,
     });
 
     try {
-      // const res = await httpRequest({
-      //   method: AUTH_CHANGE_PASSWORD_API.METHOD,
-      //   url: AUTH_CHANGE_PASSWORD_API.ENDPOINT,
-      //   data,
-      // });
+      const res = await httpRequest({
+        method: AUTH_CHANGE_PASSWORD_API.METHOD,
+        url: AUTH_CHANGE_PASSWORD_API.ENDPOINT,
+        params: { code },
+        data,
+      });
 
       dispatch({
         type: AUTH_CHANGE_PASSWORD_ACTION_TYPE.AUTH_CHANGE_PASSWORD_FORM_UPLOAD_SUCCESS,

@@ -13,7 +13,6 @@ export const AUTH_CHANGE_PASSWORD_FORM_FIELD_NAME = {
 };
 
 export const AUTH_CHANGE_PASSWORD_DATA_NAME = {
-  CODE: 'code',
   PASSWORD: 'password',
 };
 

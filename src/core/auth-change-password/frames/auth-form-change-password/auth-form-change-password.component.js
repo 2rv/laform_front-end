@@ -3,6 +3,7 @@ import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { LoaderPrimary } from '../../../../lib/element/loader';
+import { ErrorRequest } from '../../../../lib/element/error';
 
 export function AuthFormChangePasswordComponent(props) {
   const {
