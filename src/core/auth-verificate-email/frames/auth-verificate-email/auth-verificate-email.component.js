@@ -8,6 +8,8 @@ import { LinkPrimary } from '../../../../lib/element/link';
 import { THEME_SIZE } from '../../../../lib/theme';
 
 export function AuthVerificateEmailComponent(props) {
+  const { onResend, isPending } = props;
+
   return (
     <Container type="small">
       <IndentLayout type="text">
@@ -19,7 +21,11 @@ export function AuthVerificateEmailComponent(props) {
       </IndentLayout>
       <ContentLayout type="small">
         <IndentLayout type="small">
-          <ButtonSecondary tid="AUTH.VERIFICATE_EMAIL.RESEND" />
+          <ButtonSecondary
+            tid="AUTH.VERIFICATE_EMAIL.RESEND"
+            onClick={onResend}
+            disabled={isPending}
+          />
           <div>
             <TextSecondary tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
             &nbsp;

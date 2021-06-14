@@ -11,9 +11,13 @@ import { footerStore, FOOTER_STORE_NAME } from '../../core/footer';
 import { signupStore, SIGNUP_STORE_NAME } from '../../core/signup';
 import { loginStore, LOGIN_STORE_NAME } from '../../core/login';
 import {
-  AUTH_RECOVERY_ACCOUNT_STORE_NAME,
   authRecoveryAccountStore,
+  AUTH_RECOVERY_ACCOUNT_STORE_NAME,
 } from '../../core/auth-recovery-account';
+import {
+  authVerificateEmailStore,
+  AUTH_VERIFICATE_EMAIL_STORE_NAME,
+} from '../../core/auth-verificate-email';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -23,6 +27,7 @@ export const reducers = combineReducers({
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [AUTH_RECOVERY_ACCOUNT_STORE_NAME]: authRecoveryAccountStore,
+  [AUTH_VERIFICATE_EMAIL_STORE_NAME]: authVerificateEmailStore,
 });
 
 export { initStore } from './store.core';

@@ -1,9 +1,9 @@
 import * as jwtDecode from 'jwt-decode';
 
-import { AUTH_HEADER, AUTH_COOKIE } from './auth.constant';
-import { setCookie } from '../cookie/cookie.core';
+import { getBrowserCookie, setCookie } from '../cookie/cookie.core';
+import { httpRequest } from '../http';
 
-import { httpRequest } from '../http/index';
+import { AUTH_HEADER, AUTH_COOKIE } from './auth.constant';
 
 export function authDecode(raw) {
   return jwtDecode(raw);
@@ -21,6 +21,7 @@ export function setAutorization(token = null) {
 
 export function setCurrentAuthCookie() {
   const authToken = getBrowserCookie(AUTH_COOKIE);
+  console.log(authToken);
 
   if (authToken) {
     setAutorizationHeader(authToken);

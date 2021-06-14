@@ -8,7 +8,7 @@ import { FooterContainer } from '../footer';
 import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
-import { AuthVerificateEmailComponent } from './frames/auth-verificate-email';
+import { AuthVerificateEmailContainer } from './auth-verificate-email.container';
 
 export function AuthVerificateEmailPage() {
   return (
@@ -20,7 +20,7 @@ export function AuthVerificateEmailPage() {
         </IndentLayout>
         <PageLayout horizontal="center">
           <ContentLayout type="medium">
-            <AuthVerificateEmailComponent />
+            <AuthVerificateEmailContainer />
           </ContentLayout>
         </PageLayout>
       </IndentLayout>

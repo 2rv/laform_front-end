@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-import { BASE_URL, ROUTES } from './http.constant';
 import { redirect } from '../navigation/navigation.core';
+
+import { BASE_URL } from './http.constant';
 import { HTTP_ERROR_ROUTER } from './index';
 
 export const httpRequest = axios.create({
