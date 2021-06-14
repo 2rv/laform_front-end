@@ -7,17 +7,16 @@ import { TextSecondary } from '../../../../lib/element/text';
 import { LinkPrimary } from '../../../../lib/element/link';
 import { THEME_SIZE } from '../../../../lib/theme';
 
+import { AUTH_VERIFICATE_EMAIL_HELP_ROUTE } from '../../auth-verificate-email.constant';
+
 export function AuthVerificateEmailComponent(props) {
-  const { onResend, isPending } = props;
+  const { email, onResend, isPending } = props;
 
   return (
     <Container type="small">
       <IndentLayout type="text">
         <Title tid="AUTH.VERIFICATE_EMAIL.TITLE" />
-        <Content
-          tid="AUTH.VERIFICATE_EMAIL.CONTENT"
-          tvalue={{ email: 'example@email.com' }}
-        />
+        <Content tid="AUTH.VERIFICATE_EMAIL.CONTENT" tvalue={{ email }} />
       </IndentLayout>
       <ContentLayout type="small">
         <IndentLayout type="small">
@@ -29,7 +28,10 @@ export function AuthVerificateEmailComponent(props) {
           <div>
             <TextSecondary tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
             &nbsp;
-            <LinkPrimary tid="AUTH.VERIFICATE_EMAIL.HELP" />
+            <LinkPrimary
+              path={AUTH_VERIFICATE_EMAIL_HELP_ROUTE}
+              tid="AUTH.VERIFICATE_EMAIL.HELP"
+            />
           </div>
         </IndentLayout>
       </ContentLayout>

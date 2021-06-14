@@ -1,11 +1,13 @@
 export enum AUTH_USER_DATA {
   ID = 'id',
   LOGIN = 'login',
+  EMAIL = 'email',
 }
 
 export interface AuthUserDto {
   id: number;
   login: string;
+  email: string;
 }
 
 export interface AuthStoreState {

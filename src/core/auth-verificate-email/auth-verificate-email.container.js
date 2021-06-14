@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { AUTH_STORE_NAME } from '../../lib/common/auth';
 import { isRequestPending } from '../../main/store/store.service';
 
 import { AuthVerificateEmailComponent } from './frames/auth-verificate-email';
@@ -9,7 +10,10 @@ import { AUTH_VERIFICATE_EMAIL_STORE_NAME } from './auth-verificate-email.consta
 
 export function AuthVerificateEmailContainer() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state[AUTH_VERIFICATE_EMAIL_STORE_NAME]);
+  const { authRecoveryAccountForm, user } = useSelector((state) => ({
+    authRecoveryAccountForm: state[AUTH_VERIFICATE_EMAIL_STORE_NAME],
+    user: state[AUTH_STORE_NAME].user,
+  }));
 
   const sendVerificationRequest = () => {
     dispatch(authVerificateEmailUploadData());
@@ -19,7 +23,8 @@ export function AuthVerificateEmailContainer() {
 
   return (
     <AuthVerificateEmailComponent
-      isPending={isRequestPending(state.authRecoveryAccountForm)}
+      email={user.email}
+      isPending={isRequestPending(authRecoveryAccountForm)}
       onResend={sendVerificationRequest}
     />
   );

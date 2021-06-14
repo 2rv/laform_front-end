@@ -7,3 +7,5 @@ export const AUTH_VERIFICATE_EMAIL_API = {
   ENDPOINT: '/user/verification/email',
   METHOD: 'POST',
 };
+
+export const AUTH_VERIFICATE_EMAIL_HELP_ROUTE = '#';
