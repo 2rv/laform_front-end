@@ -8,7 +8,7 @@ import { FooterContainer } from '../footer';
 import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
-import { AuthFormChangePasswordComponent } from './frames/auth-form-change-password';
+import { AuthChangePasswordContainer } from './auth-change-password.container';
 
 export function AuthChangePasswordPage() {
   return (
@@ -20,7 +20,7 @@ export function AuthChangePasswordPage() {
         </IndentLayout>
         <PageLayout horizontal="center">
           <ContentLayout type="small">
-            <AuthFormChangePasswordComponent />
+            <AuthChangePasswordContainer />
           </ContentLayout>
         </PageLayout>
       </IndentLayout>
