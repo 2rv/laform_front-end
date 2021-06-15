@@ -21,7 +21,6 @@ export function setAutorization(token = null) {
 
 export function setCurrentAuthCookie() {
   const authToken = getBrowserCookie(AUTH_COOKIE);
-  console.log(authToken);
 
   if (authToken) {
     setAutorizationHeader(authToken);
