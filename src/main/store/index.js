@@ -22,6 +22,10 @@ import {
   authChangePasswordStore,
   AUTH_CHANGE_PASSWORD_STORE_NAME,
 } from '../../core/auth-change-password';
+import {
+  settingsChangePasswordStore,
+  SETTINGS_CHANGE_PASSWORD_STORE_NAME,
+} from '../../core/settings-change-password';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -33,6 +37,7 @@ export const reducers = combineReducers({
   [AUTH_RECOVERY_ACCOUNT_STORE_NAME]: authRecoveryAccountStore,
   [AUTH_VERIFICATE_EMAIL_STORE_NAME]: authVerificateEmailStore,
   [AUTH_CHANGE_PASSWORD_STORE_NAME]: authChangePasswordStore,
+  [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
 });
 
 export { initStore } from './store.core';

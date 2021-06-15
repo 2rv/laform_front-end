@@ -13,6 +13,10 @@ import {
   authVerificateEmailRouter,
   AUTH_VERIFICATE_EMAIL_ROUTE_PATH,
 } from '../../core/auth-verificate-email';
+import {
+  settingsChangePasswordRouter,
+  SETTINGS_CHANGE_PASSWORD_ROUTE_PATH,
+} from '../../core/settings-change-password';
 
 import { routesInit } from './router.core';
 
@@ -23,6 +27,7 @@ export const routes = {
   [AUTH_RECOVERY_ACCOUNT_ROUTE_PATH]: authRecoveryAccountRouter,
   [AUTH_CHANGE_PASSWORD_ROUTE_PATH]: authChangePasswordRouter,
   [AUTH_VERIFICATE_EMAIL_ROUTE_PATH]: authVerificateEmailRouter,
+  [SETTINGS_CHANGE_PASSWORD_ROUTE_PATH]: settingsChangePasswordRouter,
 };
 
 export const Router = routesInit(routes);

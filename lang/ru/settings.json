@@ -13,6 +13,7 @@
       "TITLE": "Повторите новый пароль",
       "PLACEHOLDER": "Новый пароль"
     },
+    "SUCCESS": "Пароль успешно изменен!",
     "SUBMIT": "Сменить"
   },
   "CHANGE_NOTIFICATION": {
