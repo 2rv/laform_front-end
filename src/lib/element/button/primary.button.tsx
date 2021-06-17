@@ -12,11 +12,11 @@ export function ButtonPrimary(props: ButtonPropsType) {
 const Button = styled(ButtonBasic)`
   background-color: ${THEME_COLOR.PRIMARY};
   color: ${THEME_COLOR.TEXT.WHITE};
-  transition: color ${THEME_VALUE.TRANSITION.FAST};
+  transition: opacity ${THEME_VALUE.TRANSITION.FAST};
 
   ${(p) =>
     p.disabled &&
     css`
-      background-color: ${THEME_COLOR.BUTTON.DISABLED_PRIMARY};
+      opacity: ${THEME_VALUE.OPACITY.DISABLED};
     `}
 `;
