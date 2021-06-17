@@ -60,7 +60,7 @@ const Title = styled(TextSecondary)`
 
 const Input = styled.input<InputProps>`
   padding: ${spacing(3)};
-  color: ${THEME_COLOR.FIELD.PRIMARY};
+  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
   background: ${THEME_COLOR.BACKGROUND.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};

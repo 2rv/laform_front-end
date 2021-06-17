@@ -21,7 +21,7 @@ export const THEME_COLOR = {
     WHITE: '#fff',
   },
   FIELD: {
-    PRIMARY: '#8f8d8e',
+    TEXT_PRIMARY: '#8f8d8e',
   },
   SHADOW: {
     MODAL: '0 0 50px rgba(0, 0, 0, 0.25)',

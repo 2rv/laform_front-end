@@ -1,3 +1,4 @@
 {
-  "SUBSCRIBE_SUBSCRIPTION_ALREADY_EXISTS": "Подписка уже оформлена."
+  "SUBSCRIBE_SUBSCRIPTION_ALREADY_EXISTS": "Подписка уже оформлена.",
+  "USER_VERIFICATION_EMAIL_CODE_DOESNT_EXISTS": "Код подтверждения не существует."
 }
