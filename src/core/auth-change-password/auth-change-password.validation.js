@@ -11,7 +11,7 @@ import { AUTH_CHANGE_PASSWORD_FIELD_NAME } from './auth-change-password.type';
 const config = {
   [AUTH_CHANGE_PASSWORD_FIELD_NAME.PASSWORD]: [
     required,
-    minLength(6),
+    minLength(8),
     maxLength(100),
   ],
   [AUTH_CHANGE_PASSWORD_FIELD_NAME.PASSWORD_REPEAT]: [

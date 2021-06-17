@@ -8,7 +8,7 @@ import { FooterContainer } from '../footer';
 import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
-import { SettingsFormChangePasswordComponent } from './frames/settings-form-change-password';
+import { SettingsChangePasswordContainer } from './settings-change-password.container';
 
 export function SettingsChangePasswordPage() {
   return (
@@ -20,7 +20,7 @@ export function SettingsChangePasswordPage() {
         </IndentLayout>
         <PageLayout horizontal="center">
           <ContentLayout type="medium">
-            <SettingsFormChangePasswordComponent />
+            <SettingsChangePasswordContainer />
           </ContentLayout>
         </PageLayout>
       </IndentLayout>
