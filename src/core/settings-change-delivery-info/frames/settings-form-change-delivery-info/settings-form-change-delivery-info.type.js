@@ -1,0 +1,3 @@
+export const SETTINGS_FORM_CHANGE_DELIVERY_INFO_FIELD_KEY = {
+  // EMAIL: 'EMAIL',
+};
