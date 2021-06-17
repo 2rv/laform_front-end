@@ -6,4 +6,7 @@ export const THEME_VALUE = {
     HOVER: '0.25s',
     FAST: '0.10s',
   },
+  OPACITY: {
+    DISABLED: '0.5',
+  },
 };

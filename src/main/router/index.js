@@ -17,6 +17,9 @@ import {
   settingsChangePasswordRouter,
   SETTINGS_CHANGE_PASSWORD_ROUTE_PATH,
 } from '../../core/settings-change-password';
+  authVerificateEmailConfirmRouter,
+  AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH,
+} from '../../core/auth-verificate-email-confirm';
 
 import { routesInit } from './router.core';
 
@@ -28,6 +31,7 @@ export const routes = {
   [AUTH_CHANGE_PASSWORD_ROUTE_PATH]: authChangePasswordRouter,
   [AUTH_VERIFICATE_EMAIL_ROUTE_PATH]: authVerificateEmailRouter,
   [SETTINGS_CHANGE_PASSWORD_ROUTE_PATH]: settingsChangePasswordRouter,
+  [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
 };
 
 export const Router = routesInit(routes);

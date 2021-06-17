@@ -4,4 +4,5 @@ export interface ButtonPropsType extends HTMLAttributes<HTMLButtonElement> {
   tid?: string;
   tvalue?: string;
   icon?: any;
+  disabled?: boolean;
 }

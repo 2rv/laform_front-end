@@ -19,6 +19,10 @@ import {
   AUTH_VERIFICATE_EMAIL_STORE_NAME,
 } from '../../core/auth-verificate-email';
 import {
+  authVerificateEmailConfirmStore,
+  AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME,
+} from '../../core/auth-verificate-email-confirm';
+import {
   authChangePasswordStore,
   AUTH_CHANGE_PASSWORD_STORE_NAME,
 } from '../../core/auth-change-password';
@@ -38,6 +42,7 @@ export const reducers = combineReducers({
   [AUTH_VERIFICATE_EMAIL_STORE_NAME]: authVerificateEmailStore,
   [AUTH_CHANGE_PASSWORD_STORE_NAME]: authChangePasswordStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
+  [AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME]: authVerificateEmailConfirmStore,
 });
 
 export { initStore } from './store.core';
