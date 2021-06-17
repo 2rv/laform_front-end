@@ -1,22 +1,24 @@
 {
   "CHANGE_DELIVERY_INFO": {
     "TITLE": "Удобная доставка",
-    "FULL_NAME": {
+    "FULLNAME": {
       "TITLE": "Ваше ФИО",
       "PLACEHOLDER": "Фамилия, имя и отчество"
     },
-    "PHONE_NUMBER": {
+    "PHONE": {
       "TITLE": "Контактный номер телефона",
       "PLACEHOLDER": "+7 (000) 000 00 00"
     },
-    "ADDRESS": {
+    "LOCATION": {
       "TITLE": "Город и точный адрес доставки",
       "PLACEHOLDER": "Улица, дом"
     },
     "DELIVERY_TYPE": {
       "TITLE": "Удобный способ доставки",
-      "ON_THE_POINT": "На точке выдачи"
+      "ON_THE_POINT": "На точке выдачи",
+      "COURIER": "Курьером"
     },
+    "SUCCESS": "Данные успешно обновлены!",
     "SUBMIT": "Сохранить"
   },
   "CHANGE_PASSWORD": {

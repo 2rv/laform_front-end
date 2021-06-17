@@ -4,3 +4,4 @@ export {
 } from './settings-change-delivery-info.constant';
 export { SettingsChangeDeliveryInfoPage } from './settings-change-delivery-info.page';
 export { settingsChangeDeliveryInfoRouter } from './settings-change-delivery-info.router';
+export { settingsChangeDeliveryInfoStore } from './settings-change-delivery-info.store';
