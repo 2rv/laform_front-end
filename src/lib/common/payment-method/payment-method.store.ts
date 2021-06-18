@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   method: PAYMENT_METHOD.ONLINE,
+  isSaved: false,
 };
 
 export const paymentMethodStore = (
@@ -17,6 +18,7 @@ export const paymentMethodStore = (
       return {
         ...state,
         method: action.method,
+        isSaved: true,
       };
     default:
       return state;

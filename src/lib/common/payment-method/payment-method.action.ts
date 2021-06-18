@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-import { getLocalStorage, setLocalStorage } from '../../../main/localStorage';
+import { getLocalData, setLocalData } from 'src/main/store/store.service';
 
 import {
   PAYMENT_METHOD_ACTION_TYPE,
@@ -10,7 +10,7 @@ import { PAYMENT_METHOD } from './payment-method.type';
 
 export const setPaymentMethod = (method: PAYMENT_METHOD) => {
   return (dispatch: Dispatch) => {
-    setLocalStorage(PAYMENT_METHOD_LOCAL_STORAGE_KEY, method);
+    setLocalData(PAYMENT_METHOD_LOCAL_STORAGE_KEY, method);
 
     dispatch({
       type: PAYMENT_METHOD_ACTION_TYPE.SET_METHOD,
@@ -20,5 +20,5 @@ export const setPaymentMethod = (method: PAYMENT_METHOD) => {
 };
 
 export const getPaymentMethod = () => {
-  return getLocalStorage(PAYMENT_METHOD_LOCAL_STORAGE_KEY);
+  return getLocalData(PAYMENT_METHOD_LOCAL_STORAGE_KEY);
 };

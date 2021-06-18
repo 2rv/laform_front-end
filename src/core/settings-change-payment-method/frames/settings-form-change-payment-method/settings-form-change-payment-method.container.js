@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 
 import {
+  PAYMENT_METHOD_STORE_NAME,
   getPaymentMethod,
   setPaymentMethod,
 } from '../../../../lib/common/payment-method';
@@ -16,11 +17,10 @@ import { SettingsFormChangePaymentMethodComponent } from './settings-form-change
 
 export function SettingsFormChangePaymentMethodContainer() {
   const dispatch = useDispatch();
-  const [isSaved, setIsSaved] = useState(false);
+  const { isSaved } = useSelector((state) => state[PAYMENT_METHOD_STORE_NAME]);
 
   const savePaymentMethod = ({ paymentMethod }) => {
     dispatch(setPaymentMethod(paymentMethod));
-    setIsSaved(true);
   };
 
   const getInitialValues = () => ({

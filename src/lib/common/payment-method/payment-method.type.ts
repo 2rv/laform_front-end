@@ -1,7 +1,7 @@
 import { PAYMENT_METHOD_ACTION_TYPE } from './payment-method.constant';
 
 export enum PAYMENT_METHOD {
-  ONLINE = 'online',
+  ONLINE = 1,
 }
 
 export interface PaymentMethodStoreState {
