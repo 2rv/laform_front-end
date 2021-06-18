@@ -41,7 +41,6 @@ export function SettingsChangeDeliveryInfoContainer() {
 
   const settingsChangeDeliveryInfoFormSendData = (values) => {
     const data = convertSettingsChangeDeliveryInfoFormData(values);
-    console.log(data);
 
     dispatch(settingsChangeDeliveryInfoFormUploadData(data));
   };
