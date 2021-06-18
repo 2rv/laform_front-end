@@ -17,6 +17,7 @@ import {
   settingsChangePasswordRouter,
   SETTINGS_CHANGE_PASSWORD_ROUTE_PATH,
 } from '../../core/settings-change-password';
+import {
   authVerificateEmailConfirmRouter,
   AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH,
 } from '../../core/auth-verificate-email-confirm';
