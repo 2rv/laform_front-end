@@ -34,11 +34,7 @@
   },
   "CHANGE_EMAIL": {
     "TITLE": "Сменить Email",
-    "OLD_EMAIL": {
-      "TITLE": "Старый Email",
-      "PLACEHOLDER": "Email.com"
-    },
-    "NEW_EMAIL": {
+    "EMAIL": {
       "TITLE": "Новый Email",
       "PLACEHOLDER": "Newemail.com"
     },
@@ -46,6 +42,7 @@
       "TITLE": "Пароль",
       "PLACEHOLDER": "Пароль"
     },
+    "SUCCESS":"Email успешно изменен!",
     "SUBMIT": "Сменить"
   }
 }

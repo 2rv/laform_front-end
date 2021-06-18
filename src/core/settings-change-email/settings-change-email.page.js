@@ -8,7 +8,7 @@ import { FooterContainer } from '../footer';
 import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
-import { SettingsFormChangeEmailComponent } from './frames/settings-form-change-email';
+import { SettingsChangeEmailContainer } from './settings-change-email.container';
 
 export function SettingsChangeEmailPage() {
   return (
@@ -20,7 +20,7 @@ export function SettingsChangeEmailPage() {
         </IndentLayout>
         <PageLayout horizontal="center">
           <ContentLayout type="medium">
-            <SettingsFormChangeEmailComponent />
+            <SettingsChangeEmailContainer />
           </ContentLayout>
         </PageLayout>
       </IndentLayout>
