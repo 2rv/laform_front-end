@@ -25,6 +25,9 @@ const Container = styled.div`
   height: 100%;
   gap: ${spacing(5)};
   align-items: center;
+  @media screen and (max-width: 1259px) {
+    gap: ${spacing(3)};
+  }
 `;
 
 const Item = styled(LinkSecondary)`

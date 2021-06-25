@@ -22,16 +22,17 @@ export function CatalogItemComponent(props) {
 
 const Container = styled.div`
   position: relative;
-  @media only screen and (min-width: 721px) and (max-width: 1259px) {
-    width: 70%;
-  }
   @media only screen and (max-width: 720px) {
-    width: 50%;
+    height: 300px;
   }
 `;
 
 const BackgroundImage = styled.img`
   width: 100%;
+  @media only screen and (max-width: 720px) {
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const ContentContainer = styled.div`
