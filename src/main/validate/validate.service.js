@@ -96,6 +96,11 @@ export const requiredArray = (value = []) => {
 const URL_EXP = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 export const url = (value) => (!URL_EXP.test(value) ? getError('VALIDATION.NOT_URL') : null);
 
+const PHONE_EXP =
+  /\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})?/;
+export const phone = (value) =>
+  (value && !PHONE_EXP.test(value)) ? getError('VALIDATION.NOT_PHONE') : null;
+
 export const passwordRepeat = (field) => (value, values) => {
   if (value !== values[field]) {
     return getError('VALIDATION.PASSWORD_REPEAT');
