@@ -13,6 +13,7 @@ import { LOGIN_ROUTE_PATH } from '../../../login';
 import { SIGNUP_ROUTE_PATH } from '../../../signup';
 
 import { USER_MODAL_ITEMS } from './header-action.constant';
+import { HeaderActionSignComponent } from './header-action-sign.component';
 
 export function HeaderActionComponent(props) {
   const { className, logged, user } = props;
@@ -42,16 +43,17 @@ export function HeaderActionComponent(props) {
           )}
         </LoggedContainer>
       ) : (
-        <div>
-          <BolderLink tid="HEADER.MENU_ACTION.LOGIN" path={LOGIN_ROUTE_PATH} />
-          &nbsp;
-          <TextSecondary tid="HEADER.MENU_ACTION.OR" />
-          &nbsp;
-          <BolderLink
-            tid="HEADER.MENU_ACTION.SIGNUP"
-            path={SIGNUP_ROUTE_PATH}
-          />
-        </div>
+        // <div>
+        //   <BolderLink tid="HEADER.MENU_ACTION.LOGIN" path={LOGIN_ROUTE_PATH} />
+        //   &nbsp;
+        //   <TextSecondary tid="HEADER.MENU_ACTION.OR" />
+        //   &nbsp;
+        //   <BolderLink
+        //     tid="HEADER.MENU_ACTION.SIGNUP"
+        //     path={SIGNUP_ROUTE_PATH}
+        //   />
+        // </div>
+        <HeaderActionSignComponent />
       )}
       <BadgeDark badgeContent={0}>
         <CartIcon />
@@ -64,6 +66,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: ${(p) => (p.logged ? spacing(12) : spacing(8))};
+  @media screen and (max-width: 1259px) {
+    gap: ${spacing(6)};
+  }
 `;
 
 const BolderLink = styled(LinkPrimary)`
