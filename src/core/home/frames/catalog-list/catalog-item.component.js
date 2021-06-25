@@ -22,6 +22,12 @@ export function CatalogItemComponent(props) {
 
 const Container = styled.div`
   position: relative;
+  @media only screen and (min-width: 721px) and (max-width: 1259px) {
+    width: 70%;
+  }
+  @media only screen and (max-width: 720px) {
+    width: 50%;
+  }
 `;
 
 const BackgroundImage = styled.img`
