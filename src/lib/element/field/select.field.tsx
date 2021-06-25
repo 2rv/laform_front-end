@@ -10,13 +10,13 @@ import { IndentLayout } from '../layout';
 import { SelectPropsType } from './field.type';
 
 export function FieldSelect(props: SelectPropsType) {
-  const { titleTid, name, value, options, onChange } = props;
+  const { titleTid, name, value, options, onChange, onBlur } = props;
 
   return (
     <IndentLayout type="text_small">
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
-        <Select name={name} value={value} onChange={onChange}>
+        <Select name={name} value={value} onChange={onChange} onBlur={onBlur}>
           {options.map(({ id, tid, tvalue }) => (
             <option key={id} value={id}>
               {text(tid, tvalue)}

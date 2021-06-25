@@ -6,6 +6,10 @@ import {
   navigationStore,
   NAVIGATION_STORE_NAME,
 } from '../../lib/common/navigation';
+import {
+  paymentMethodStore,
+  PAYMENT_METHOD_STORE_NAME,
+} from '../../lib/common/payment-method';
 
 import { footerStore, FOOTER_STORE_NAME } from '../../core/footer';
 import { signupStore, SIGNUP_STORE_NAME } from '../../core/signup';
@@ -30,19 +34,25 @@ import {
   settingsChangePasswordStore,
   SETTINGS_CHANGE_PASSWORD_STORE_NAME,
 } from '../../core/settings-change-password';
+import {
+  settingsChangeDeliveryInfoStore,
+  SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME,
+} from '../../core/settings-change-delivery-info';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
   [LANG_STORE_NAME]: langStore,
   [NAVIGATION_STORE_NAME]: navigationStore,
+  [PAYMENT_METHOD_STORE_NAME]: paymentMethodStore,
   [FOOTER_STORE_NAME]: footerStore,
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [AUTH_RECOVERY_ACCOUNT_STORE_NAME]: authRecoveryAccountStore,
   [AUTH_VERIFICATE_EMAIL_STORE_NAME]: authVerificateEmailStore,
   [AUTH_CHANGE_PASSWORD_STORE_NAME]: authChangePasswordStore,
-  [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME]: authVerificateEmailConfirmStore,
+  [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
+  [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
 });
 
 export { initStore } from './store.core';

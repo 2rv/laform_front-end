@@ -10,7 +10,6 @@ export interface FieldPropsType {
   onBlur: any;
 }
 
-
 export interface CheckboxPropsType {
   titleTid?: string;
   labelTid: string;
@@ -26,7 +25,7 @@ export interface SelectPropsType {
   value?: any;
   options: { id: number; tid: string; tvalue: any }[];
   onChange: any;
-
+  onBlur: any;
 }
 
 export interface InputProps {
