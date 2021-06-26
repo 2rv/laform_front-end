@@ -1,0 +1,67 @@
+export const TEST_ITEMS_POPULAR_PUBLICATION = [
+  {
+    id: 1,
+    name: 'Мастер-класс по пошиву мужских брюк 1003',
+    Purchased: true,
+    price: {
+      min: 999,
+      max: null,
+    },
+    favorite: true,
+    hit: false,
+    discount: 699,
+    backgroundImage: '/static/image/popular-gods-1.png',
+  },
+  {
+    id: 2,
+    name: 'Инструкция по пошиву Комбинезон 0717',
+    Purchased: false,
+    price: {
+      min: 200,
+      max: 4150,
+    },
+    favorite: false,
+    hit: false,
+    discount: null,
+    backgroundImage: '/static/image/popular-gods-2.png',
+  },
+  {
+    id: 3,
+    name: 'Мастер-класс по пошиву Жакета 0305',
+    Purchased: false,
+    price: {
+      min: 200,
+      max: 900,
+    },
+    favorite: false,
+    hit: true,
+    discount: null,
+    backgroundImage: '/static/image/popular-gods-3.png',
+  },
+  {
+    id: 4,
+    name: 'Хрень 1',
+    Purchased: false,
+    price: {
+      min: 500,
+      max: null,
+    },
+    favorite: true,
+    hit: false,
+    discount: null,
+    backgroundImage: '/static/image/popular-gods-1.png',
+  },
+  {
+    id: 5,
+    name: 'Хрень 2 Мастер-класс',
+    Purchased: false,
+    price: {
+      min: 1005,
+      max: 2000,
+    },
+    favorite: false,
+    hit: true,
+    discount: 900,
+    backgroundImage: '/static/image/popular-gods-2.png',
+  },
+];

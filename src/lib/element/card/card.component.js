@@ -1,120 +1,55 @@
-import { ButtonPrimary, ButtonBasic } from 'src/lib/element/button';
+import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import styled from 'styled-components';
 import { Price } from '../price';
-import { ReactComponent as FavoriteIcon } from '../../../asset/svg/favorite-icon.svg';
+import { CardAction } from './card-action.component';
+import { CardDescription } from './card-description.component';
+import { CardImage } from './card-image.component';
+
 export function BasicCard(props) {
   const {
     id,
     name = null,
     complexity = false,
     selected = false,
-    price,
-    favorite,
-    hit,
-    discount,
+    Purchased = false,
+    price = { max: 0, min: 0 },
+    favorite = false,
+    hit = false,
+    discount = 0,
     backgroundImage,
-    actions = ['OTHER.SELECTED', 'OTHER.SELECT'],
+    actions = [null, null],
   } = props;
-
+  const isActived = Purchased || selected;
   return (
     <Container>
-      <ImageContainer>
-        <BackgroundImage src={backgroundImage} />
-        <ModifierContainer>
-          {hit && <Modifier hit={hit} tid={'Хит'} />}
-          {discount && <Modifier tid={'Акция'} />}
-        </ModifierContainer>
-      </ImageContainer>
+      <CardImage
+        backgroundImage={backgroundImage}
+        hit={hit}
+        discount={discount}
+      />
       <ProductName>{name}</ProductName>
-      <FlexContainer>
-        <Price
-          min={price?.min}
-          max={price?.max}
-          discount={discount}
-          valute="OTHER.VALUTE"
-        />
-        {complexity && (
-          <ComplexityContainer>
-            {[1, 2, 3, 4, 5].map((i) => (
-              <ComplexityDot x={i <= complexity} />
-            ))}
-          </ComplexityContainer>
-        )}
-      </FlexContainer>
-      <FlexContainer>
-        <Button sel={selected} tid={selected ? actions[0] : actions[1]} />
-        <FavoriteButton sel={selected} icon={FavoriteIcon} />
-      </FlexContainer>
+      <CardDescription
+        price={price}
+        discount={discount}
+        difficulty={complexity}
+      />
+      <CardAction isActived={isActived} actions={actions} />
     </Container>
   );
 }
-const FlexContainer = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
-  min-height: max-content;
-  min-width: 260px;
-  @media screen and (min-width: 721px) and (max-width: 1259px) {
-    min-width: max-content;
-  }
-  @media screen and (max-width: 720px) {
-    flex-direction: column;
-  }
-`;
-const ModifierContainer = styled(FlexContainer)`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  gap: ${spacing(1)};
-`;
-const Container = styled(FlexContainer)`
-  flex-direction: column;
-  width: 360px;
-`;
-const ComplexityContainer = styled(FlexContainer)`
-  gap: ${spacing(2)};
-  @media screen and (max-width: 720px) {
-    flex-direction: row;
-  }
-`;
-const ComplexityDot = styled.div`
-  width: 16px;
-  height: 16px;
-  border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  background-color: ${({ x }) =>
-    x ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
-`;
-const FavoriteButton = styled(ButtonBasic)`
-  background-color: ${({ sel }) =>
-    sel ? THEME_COLOR.SECONDARY : THEME_COLOR.GRAY};
-`;
-const Button = styled(ButtonPrimary)`
-  width: 100%;
-  padding: ${spacing(3)};
-  ${({ sel }) => sel && `background-color: ${THEME_COLOR.SECONDARY}`}
-`;
-const ImageContainer = styled.div`
-  position: relative;
-  height: 260px;
-  width: 100%;
-`;
-const Modifier = styled(TextSecondary)`
-  background-color: ${({ hit }) =>
-    hit ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
-  color: ${THEME_COLOR.TEXT.WHITE};
-  width: 97px;
-  padding: ${spacing(1.6)} 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const BackgroundImage = styled.img`
-  height: 100%;
-  width: 100%;
-`;
 const ProductName = styled(TextSecondary)`
+  display: flex;
+  flex-grow: 1;
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  height: 100%;
+  width: 100%;
+  word-break: break-word;
+`;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  gap: ${spacing(3)};
+  min-height: max-content;
 `;

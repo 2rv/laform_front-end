@@ -9,6 +9,8 @@ import {
   InformationListContainer,
   BannerContainer,
   PopularGodsContainer,
+  PopularMasterContainer,
+  PopularPublicationContainer,
 } from './frames';
 
 export function HomeComponent(props) {
@@ -19,6 +21,8 @@ export function HomeComponent(props) {
           <BannerContainer />
           <CatalogListContainer />
           <PopularGodsContainer />
+          <PopularMasterContainer />
+          <PopularPublicationContainer />
           <InformationListContainer />
           <AdvantageListContainer />
         </IndentLayout>
