@@ -22,9 +22,10 @@ export function BasicCard(props) {
     <Container>
       <ImageContainer>
         <BackgroundImage src={backgroundImage} />
-        {(hit || favorite) && (
-          <Modifier hit={hit} tid={hit ? 'Хит' : 'Акция'} />
-        )}
+        <ModifierContainer>
+          {hit && <Modifier hit={hit} tid={'Хит'} />}
+          {discount && <Modifier tid={'Акция'} />}
+        </ModifierContainer>
       </ImageContainer>
       <ProductName>{name}</ProductName>
       <FlexContainer>
@@ -52,6 +53,30 @@ export function BasicCard(props) {
 const FlexContainer = styled.div`
   display: flex;
   gap: ${spacing(3)};
+  min-height: max-content;
+  min-width: 260px;
+  @media screen and (min-width: 721px) and (max-width: 1259px) {
+    min-width: max-content;
+  }
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+  }
+`;
+const ModifierContainer = styled(FlexContainer)`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  gap: ${spacing(1)};
+`;
+const Container = styled(FlexContainer)`
+  flex-direction: column;
+  width: 360px;
+`;
+const ComplexityContainer = styled(FlexContainer)`
+  gap: ${spacing(2)};
+  @media screen and (max-width: 720px) {
+    flex-direction: row;
+  }
 `;
 const ComplexityDot = styled.div`
   width: 16px;
@@ -60,25 +85,14 @@ const ComplexityDot = styled.div`
   background-color: ${({ x }) =>
     x ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;
-const ComplexityContainer = styled(FlexContainer)`
-  height: 100%;
-  width: max-content;
-  gap: ${spacing(2)};
-`;
 const FavoriteButton = styled(ButtonBasic)`
-  margin: 0;
   background-color: ${({ sel }) =>
     sel ? THEME_COLOR.SECONDARY : THEME_COLOR.GRAY};
 `;
 const Button = styled(ButtonPrimary)`
-  width: 165px;
+  width: 100%;
   padding: ${spacing(3)};
   ${({ sel }) => sel && `background-color: ${THEME_COLOR.SECONDARY}`}
-`;
-const Container = styled(FlexContainer)`
-  flex-direction: column;
-  height: 391px;
-  width: 360px;
 `;
 const ImageContainer = styled.div`
   position: relative;
@@ -86,9 +100,6 @@ const ImageContainer = styled.div`
   width: 100%;
 `;
 const Modifier = styled(TextSecondary)`
-  position: absolute;
-  right: 0;
-  bottom: 0;
   background-color: ${({ hit }) =>
     hit ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
   color: ${THEME_COLOR.TEXT.WHITE};
@@ -105,4 +116,5 @@ const BackgroundImage = styled.img`
 const ProductName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  height: 100%;
 `;

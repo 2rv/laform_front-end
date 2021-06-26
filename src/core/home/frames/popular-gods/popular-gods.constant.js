@@ -61,8 +61,8 @@ export const TEST_ITEMS_POPULAR_GODS = [
     complexity: 5,
     selected: false,
     price: {
-      min: 100500,
-      max: 200000,
+      min: 1005,
+      max: 2000,
     },
     favorite: false,
     hit: true,

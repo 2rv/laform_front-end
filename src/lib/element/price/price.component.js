@@ -11,7 +11,7 @@ export function Price({
   return (
     <Container>
       <Text>{discount && discount}&nbsp;</Text>
-      {discount && <Discount tid={min} />}
+      {discount && !max && <ThroughText tid={min} />}
       <Text>
         {!discount && min}
         {max && ` - ${max}`}
@@ -26,7 +26,7 @@ const Text = styled(TextPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
   font-size: ${THEME_SIZE.FONT.LARGE};
 `;
-const Discount = styled(TextSecondary)`
+const ThroughText = styled(TextSecondary)`
   text-decoration: line-through;
   color: black;
 `;
