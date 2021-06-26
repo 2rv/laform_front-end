@@ -34,5 +34,6 @@ const Button = styled.button`
 `;
 
 const IconContainer = styled.span`
-  margin-right: ${spacing(2)};
+  width: 100%;
+  height: 100%;
 `;
