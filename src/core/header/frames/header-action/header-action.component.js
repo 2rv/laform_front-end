@@ -13,7 +13,6 @@ import { LOGIN_ROUTE_PATH } from '../../../login';
 import { SIGNUP_ROUTE_PATH } from '../../../signup';
 
 import { USER_MODAL_ITEMS } from './header-action.constant';
-import { HeaderActionSignComponent } from './header-action-sign.component';
 
 export function HeaderActionComponent(props) {
   const { className, logged, user } = props;
@@ -43,17 +42,16 @@ export function HeaderActionComponent(props) {
           )}
         </LoggedContainer>
       ) : (
-        // <div>
-        //   <BolderLink tid="HEADER.MENU_ACTION.LOGIN" path={LOGIN_ROUTE_PATH} />
-        //   &nbsp;
-        //   <TextSecondary tid="HEADER.MENU_ACTION.OR" />
-        //   &nbsp;
-        //   <BolderLink
-        //     tid="HEADER.MENU_ACTION.SIGNUP"
-        //     path={SIGNUP_ROUTE_PATH}
-        //   />
-        // </div>
-        <HeaderActionSignComponent />
+        <div>
+          <BolderLink tid="HEADER.MENU_ACTION.LOGIN" path={LOGIN_ROUTE_PATH} />
+          &nbsp;
+          <TextSecondary tid="HEADER.MENU_ACTION.OR" />
+          &nbsp;
+          <BolderLink
+            tid="HEADER.MENU_ACTION.SIGNUP"
+            path={SIGNUP_ROUTE_PATH}
+          />
+        </div>
       )}
       <BadgeDark badgeContent={0}>
         <CartIcon />

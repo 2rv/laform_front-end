@@ -1,15 +1,14 @@
 import styled, { css } from 'styled-components';
-
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { LinkSecondary } from '../../../../lib/element/link';
 
-export function HeaderMenuComponent(props) {
+export function PatternsSubMenuComponent(props) {
   const { items, activePath } = props;
 
   return (
     <Container>
       {items.map((x) => (
-        <Item
+        <Tab
           key={x.name}
           tid={x.name}
           path={x.path}
@@ -26,14 +25,12 @@ const Container = styled.div`
   gap: ${spacing(5)};
   align-items: center;
 `;
-
-const Item = styled(LinkSecondary)`
+const Tab = styled(LinkSecondary)`
   padding: ${spacing(5)} 0;
-
   ${(p) =>
     p.active &&
     css`
-      border-bottom: ${spacing(1)} solid ${THEME_COLOR.PRIMARY};
+      border-bottom: 2px solid ${THEME_COLOR.SECONDARY_DARK};
       font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
     `}
 `;

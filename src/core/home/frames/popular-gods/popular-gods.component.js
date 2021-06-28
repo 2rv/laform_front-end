@@ -43,11 +43,10 @@ const List = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(6)};
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 1259px) {
     display: flex;
-    gap: ${spacing(2)};
-    overflow-x: scroll;
+    overflow-x: auto;
     height: max-content;
-    padding: ${spacing(1)};
+    box-shadow: 26px 0px 15px -10px rgba(131, 131, 131, 0.5);
   }
 `;

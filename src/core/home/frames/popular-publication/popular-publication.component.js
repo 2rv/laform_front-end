@@ -29,7 +29,9 @@ export function PopularPublicationComponent({ items }) {
                 <PubName>{name}</PubName>
                 <FavoriteButton isFavorite={isFavorite} icon={FavoriteIcon} />
               </CardContainer>
-              <DataText>{data}</DataText>
+              <FlexContainer>
+                <DataText>{data}</DataText>
+              </FlexContainer>
             </Container>
           ),
         )}
@@ -45,23 +47,23 @@ const FavoriteButton = styled(ButtonBasic)`
 const PubName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  flex-grow: 1;
+  height: max-content;
   word-break: break-word;
 `;
 const CardContainer = styled.div`
   display: flex;
-  gap: ${spacing(6)};
+  gap: ${spacing(3)};
+  height: 100%;
 `;
 const FlexContainer = styled.div`
   display: flex;
 `;
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 360px;
   min-width: 260px;
   gap: ${spacing(3)};
-  min-height: max-content;
+  height: max-content;
 `;
 const TitleText = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
@@ -76,11 +78,11 @@ const List = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(6)};
-  @media screen and (max-width: 720px) {
+  height: max-content;
+  @media screen and (max-width: 1259px) {
+    padding: ${spacing(0.5)};
     display: flex;
-    gap: ${spacing(2)};
     overflow-x: scroll;
-    height: max-content;
-    padding: ${spacing(1)};
+    box-shadow: 26px 0px 15px -10px rgba(131, 131, 131, 0.5);
   }
 `;

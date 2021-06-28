@@ -38,30 +38,4 @@ export const TEST_ITEMS_POPULAR_MASTER = [
     discount: null,
     backgroundImage: '/static/image/popular-gods-3.png',
   },
-  {
-    id: 4,
-    name: 'Хрень 1',
-    Purchased: false,
-    price: {
-      min: 500,
-      max: null,
-    },
-    favorite: true,
-    hit: false,
-    discount: null,
-    backgroundImage: '/static/image/popular-gods-1.png',
-  },
-  {
-    id: 5,
-    name: 'Хрень 2 Мастер-класс',
-    Purchased: false,
-    price: {
-      min: 1005,
-      max: 2000,
-    },
-    favorite: false,
-    hit: true,
-    discount: 900,
-    backgroundImage: '/static/image/popular-gods-2.png',
-  },
 ];

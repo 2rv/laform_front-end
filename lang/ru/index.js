@@ -13,6 +13,7 @@ import FAQ_LIST from './faq-list.json';
 import AUTH from './auth.json';
 import SETTINGS from './settings.json';
 import OTHER from './other.json';
+import PATTERNS from './patterns.json';
 export const RU = {
   translation: {
     META,
@@ -30,5 +31,6 @@ export const RU = {
     AUTH,
     SETTINGS,
     OTHER,
+    PATTERNS,
   },
 };

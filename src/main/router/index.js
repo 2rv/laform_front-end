@@ -1,6 +1,7 @@
 import { homeRouter, HOME_ROUTE_PATH } from '../../core/home';
 import { signupRouter, SIGNUP_ROUTE_PATH } from '../../core/signup';
 import { loginRouter, LOGIN_ROUTE_PATH } from '../../core/login';
+import { patternsRouter, PATTERNS_ROUTE_PATH } from '../../core/patterns';
 import {
   authRecoveryAccountRouter,
   AUTH_RECOVERY_ACCOUNT_ROUTE_PATH,
@@ -30,6 +31,7 @@ import { routesInit } from './router.core';
 
 export const routes = {
   [HOME_ROUTE_PATH]: homeRouter,
+  [PATTERNS_ROUTE_PATH]: patternsRouter,
   [SIGNUP_ROUTE_PATH]: signupRouter,
   [LOGIN_ROUTE_PATH]: loginRouter,
   [AUTH_RECOVERY_ACCOUNT_ROUTE_PATH]: authRecoveryAccountRouter,
