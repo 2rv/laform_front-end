@@ -10,7 +10,7 @@ export const TEST_ITEMS_POPULAR_MASTER = [
     favorite: true,
     hit: false,
     discount: 699,
-    backgroundImage: '/static/image/popular-gods-1.png',
+    backgroundImage: '/static/test/popular-gods-1.png',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const TEST_ITEMS_POPULAR_MASTER = [
     favorite: false,
     hit: false,
     discount: null,
-    backgroundImage: '/static/image/popular-gods-2.png',
+    backgroundImage: '/static/test/popular-gods-2.png',
   },
   {
     id: 3,
@@ -36,6 +36,6 @@ export const TEST_ITEMS_POPULAR_MASTER = [
     favorite: false,
     hit: true,
     discount: null,
-    backgroundImage: '/static/image/popular-gods-3.png',
+    backgroundImage: '/static/test/popular-gods-3.png',
   },
 ];

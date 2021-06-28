@@ -13,7 +13,7 @@ export function BasicCard(props) {
     selected = false,
     Purchased = false,
     price = { max: 0, min: 0 },
-    favorite = false,
+    isLiked = false,
     hit = false,
     discount = 0,
     backgroundImage,
@@ -34,7 +34,7 @@ export function BasicCard(props) {
         discount={discount}
         difficulty={complexity}
       />
-      <CardAction isActived={isActived} actions={actions} />
+      <CardAction isLiked={isLiked} isActived={isActived} actions={actions} />
     </Container>
   );
 }
