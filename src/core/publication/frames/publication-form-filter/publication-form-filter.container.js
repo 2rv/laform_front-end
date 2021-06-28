@@ -1,7 +1,5 @@
-import { Formik } from 'formik';
-
 import { PUBLICATION_FORM_FILTER_FIELD_KEY } from './publication-form-filter.type';
-import { PublicationFormFilterComponent } from './publication-form-filter.component';
+import { FormFilterContainer } from '../../../../lib/element/form-filter';
 
 export function PublicationFormFilterContainer(props) {
   const {
@@ -24,26 +22,19 @@ export function PublicationFormFilterContainer(props) {
   const FIND_PUBLICATION_NAME =
     fieldName[PUBLICATION_FORM_FILTER_FIELD_KEY.FIND_PUBLICATION];
   return (
-    <Formik
-      initialValues={initialValue}
-      validate={validation}
-      onSubmit={onSubmitForm}
-    >
-      {(formProps) => (
-        <PublicationFormFilterComponent
-          categoryOptions={categoryOptions}
-          fieldCategory={CATEGORY_NAME}
-          tagsOptions={tagsOptions}
-          fieldTags={TAGS_NAME}
-          fieldFindPublication={FIND_PUBLICATION_NAME}
-          dataPending={dataPending}
-          formPending={formPending}
-          formSuccess={formSuccess}
-          formError={formError}
-          errorMessage={errorMessage}
-          {...formProps}
-        />
-      )}
-    </Formik>
+    <FormFilterContainer
+      initialValue={initialValue}
+      placeholderTid={'PUBLICATION.PUBLICATION.FIELD.FIND_PUBLICATION'}
+      categoryOptions={categoryOptions}
+      tagsOptions={tagsOptions}
+      fieldCategory={CATEGORY_NAME}
+      fieldTags={TAGS_NAME}
+      fieldFind={FIND_PUBLICATION_NAME}
+      dataPending={dataPending}
+      formPending={formPending}
+      formSuccess={formSuccess}
+      formError={formError}
+      errorMessage={errorMessage}
+    />
   );
 }

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { Price } from '../price';
-import { CardAction } from './card-action.component';
-import { CardDescription } from './card-description.component';
-import { CardImage } from './card-image.component';
+import { CardButton } from './card.button';
+import { CardDescription } from './card.description';
+import { CardImage } from './card.image';
 
 export function BasicCard(props) {
   const {
@@ -12,29 +12,30 @@ export function BasicCard(props) {
     complexity = false,
     selected = false,
     Purchased = false,
-    price = { max: 0, min: 0 },
+    price = { max: null, min: null },
     isLiked = false,
-    hit = false,
-    discount = 0,
-    backgroundImage,
+    bestseller = false,
+    discount = false,
+    backgroundImage = null,
     actions = [null, null],
   } = props;
 
-  const isActived = Purchased || selected;
+  const actived = Purchased || selected;
+
   return (
     <Container>
       <CardImage
         backgroundImage={backgroundImage}
-        hit={hit}
+        bestseller={bestseller}
         discount={discount}
       />
       <CardDescription
         name={name}
         price={price}
+        complexity={complexity}
         discount={discount}
-        difficulty={complexity}
       />
-      <CardAction isLiked={isLiked} isActived={isActived} actions={actions} />
+      <CardButton liked={isLiked} actived={actived} actions={actions} />
     </Container>
   );
 }
@@ -42,7 +43,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 260px;
-  width: 100%;
-  min-height: max-content;
+  max-width: 360px;
   gap: ${spacing(3)};
 `;

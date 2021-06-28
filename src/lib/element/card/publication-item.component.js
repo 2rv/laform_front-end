@@ -1,14 +1,11 @@
 import styled from 'styled-components';
-import { setLinkRedirect } from '../../../../main/navigation';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { IndentLayout } from '../../../../lib/element/layout';
-import { TextSecondary } from '../../../../lib/element/text';
-import { LinkSecondary } from '../../../../lib/element/link';
-import { CardImage } from 'src/lib/element/card';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
+import { TextSecondary } from '../text';
+import { CardImage } from '.';
 import { ReactComponent as FavoriteIcon } from 'src/asset/svg/favorite-icon.svg';
 import { ButtonBasic } from 'src/lib/element/button';
 
-export function PopularPublicationItemComponent(props) {
+export function PublicationItemComponent(props) {
   const {
     backgroundImage,
     id,
@@ -16,6 +13,7 @@ export function PopularPublicationItemComponent(props) {
     isFavorite = false,
     data = '1 неделю назад',
   } = props;
+
   return (
     <Container key={id}>
       <CardImage backgroundImage={backgroundImage} />

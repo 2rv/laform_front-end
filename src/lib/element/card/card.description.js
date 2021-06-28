@@ -1,45 +1,47 @@
+import styled from 'styled-components';
+import { Price } from '../price';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import { Price } from '../price';
-import styled from 'styled-components';
 
-export function CardDescription({ name, price, difficulty, discount }) {
+export function CardDescription({ name, price = null, complexity, discount }) {
   return (
-    <FlexContainer>
-      <ProductName>{name}</ProductName>
-      <Container>
-        <Price
-          min={price?.min}
-          max={price?.max}
-          discount={discount}
-          valute="OTHER.VALUTE"
-        />
-        {difficulty && (
+    <Container>
+      <CardName tid={name} />
+      <FlexContainer>
+        {price && (
+          <Price
+            min={price?.min}
+            max={price?.max}
+            discount={discount}
+            valute="OTHER.VALUTE"
+          />
+        )}
+        {complexity && (
           <ComplexityContainer>
             {[1, 2, 3, 4, 5].map((i) => (
-              <ComplexityDot x={i <= difficulty} />
+              <ComplexityDot x={i <= complexity} />
             ))}
           </ComplexityContainer>
         )}
-      </Container>
-    </FlexContainer>
+      </FlexContainer>
+    </Container>
   );
 }
-const Container = styled.div`
+const FlexContainer = styled.div`
   display: flex;
   gap: ${spacing(3)};
   @media screen and (max-width: 1295px) {
     flex-direction: column;
   }
 `;
-const ProductName = styled(TextSecondary)`
+const CardName = styled(TextSecondary)`
   display: flex;
   flex-grow: 1;
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   word-break: break-word;
 `;
-const FlexContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-grow: 1;
   gap: ${spacing(3)};
