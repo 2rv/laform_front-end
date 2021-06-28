@@ -16,7 +16,7 @@ const FavoriteButton = styled(ButtonBasic)`
     sel ? THEME_COLOR.SECONDARY : THEME_COLOR.GRAY};
 `;
 const Button = styled(ButtonPrimary)`
-  width: 100%;
+  width: 165px;
   padding: ${spacing(3)};
   ${({ sel }) => sel && `background-color: ${THEME_COLOR.SECONDARY}`}
 `;
