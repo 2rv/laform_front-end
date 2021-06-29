@@ -3,6 +3,10 @@ import { signupRouter, SIGNUP_ROUTE_PATH } from 'src/core/signup';
 import { loginRouter, LOGIN_ROUTE_PATH } from 'src/core/login';
 import { patternsRouter, PATTERNS_ROUTE_PATH } from 'src/core/patterns';
 import {
+  masterClassesRouter,
+  MASTER_CLASSES_ROUTE_PATH,
+} from 'src/core/master-classes';
+import {
   sewingGoodsRouter,
   SEWING_GOODS_ROUTE_PATH,
 } from 'src/core/sewing-goods';
@@ -37,6 +41,7 @@ import { routesInit } from './router.core';
 export const routes = {
   [HOME_ROUTE_PATH]: homeRouter,
   [PATTERNS_ROUTE_PATH]: patternsRouter,
+  [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
   [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,
   [ARTICLES_ROUTE_PATH]: articlesRouter,
   [SIGNUP_ROUTE_PATH]: signupRouter,

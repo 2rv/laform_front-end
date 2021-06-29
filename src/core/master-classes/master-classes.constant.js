@@ -1,5 +1,5 @@
-export const ARTICLES_ROUTE_PATH = '/articles';
-export const ARTICLES_FILTER_CATEGORY_OPTIONS = [
+export const MASTER_CLASSES_ROUTE_PATH = '/master-classes';
+export const MASTER_CLASSES_FILTER_CATEGORY_OPTIONS = [
   {
     id: 1,
     tid: 'Категория 1',
@@ -9,7 +9,7 @@ export const ARTICLES_FILTER_CATEGORY_OPTIONS = [
     tid: 'Категория 2',
   },
 ];
-export const ARTICLES_FILTER_TAGS_OPTIONS = [
+export const MASTER_CLASSES_FILTER_TAGS_OPTIONS = [
   {
     id: 1,
     tid: 'Популярные',
@@ -23,7 +23,7 @@ export const ARTICLES_FILTER_TAGS_OPTIONS = [
     tid: 'Самые дешевые',
   },
 ];
-export const TEST_ARTICLES_ITEMS = [
+export const TEST_MASTER_CLASSES_ITEMS = [
   {
     id: 1,
     name: 'Мастер-класс по пошиву мужских брюк 1003',

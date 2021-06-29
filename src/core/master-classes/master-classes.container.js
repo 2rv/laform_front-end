@@ -1,17 +1,18 @@
 import { useSelector } from 'react-redux';
-import { SewingGoodsComponent } from './sewing-goods.component';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { TEST_SEWING_GOODS_ITEMS } from './sewing-goods.constant';
 
-export function SewingGoodsContainer() {
+import { MasterClassesComponent } from './master-classes.component';
+import { TEST_MASTER_CLASSES_ITEMS } from './master-classes.constant';
+
+export function MasterClassesContainer() {
   const { activePath } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
   }));
 
   return (
-    <SewingGoodsComponent
+    <MasterClassesComponent
       activePath={activePath}
-      items={TEST_SEWING_GOODS_ITEMS}
+      items={TEST_MASTER_CLASSES_ITEMS}
     />
   );
 }
