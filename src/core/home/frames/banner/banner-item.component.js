@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
-import { LinkPrimary } from '../../../../lib/element/link';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TextPrimary, TextSecondary } from 'src/lib/element/text';
+import { LinkPrimary } from 'src/lib/element/link';
 import { text } from 'src/lib/common/text';
 import { ButtonPrimary } from 'src/lib/element/button';
 

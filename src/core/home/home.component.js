@@ -1,16 +1,14 @@
 import styled from 'styled-components';
-
-import { spacing } from '../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../lib/element/layout';
-
+import { spacing } from 'src/lib/theme';
+import { ContentLayout, IndentLayout } from 'src/lib/element/layout';
 import {
   AdvantageListContainer,
   CatalogListContainer,
   InformationListContainer,
   BannerContainer,
-  PopularGodsContainer,
-  PopularMasterContainer,
-  PopularPublicationContainer,
+  PopularGoodsContainer,
+  PopularMasterClassesContainer,
+  PopularArticlesContainer,
 } from './frames';
 
 export function HomeComponent(props) {
@@ -20,9 +18,9 @@ export function HomeComponent(props) {
         <IndentLayout type="medium">
           <BannerContainer />
           <CatalogListContainer />
-          <PopularGodsContainer />
-          <PopularMasterContainer />
-          <PopularPublicationContainer />
+          <PopularGoodsContainer />
+          <PopularMasterClassesContainer />
+          <PopularArticlesContainer />
           <InformationListContainer />
           <AdvantageListContainer />
         </IndentLayout>

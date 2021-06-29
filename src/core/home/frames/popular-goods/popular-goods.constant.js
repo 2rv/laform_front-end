@@ -1,4 +1,4 @@
-export const TEST_ITEMS_POPULAR_GODS = [
+export const TEST_ITEMS_POPULAR_GOODS = [
   {
     id: 1,
     name: 'Сарафан 0445',

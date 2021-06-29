@@ -30,20 +30,15 @@
 	},
 	"INFORMATION_LIST": {
 		"TITLE": "Полезные ссылки",
-		"VIEW_ALL": "Смотреть всё",
 		"ITEMS": {
 			"SIZING_INFO": "Как определить свой размер",
 			"DOWNLOAD_AND_PRINT_PATTERN_INFO": "Как скачать и распечатать выкройку",
 			"GLUE_PATTERN_INFO": "Как склеить выкройку формата А4"
 		}
 	},
-	"POPULAR_GODS": {
-		"TITLE": "Популярные товары",
-		"VIEW_ALL": "Смотреть всё"
-	},
-	"POPULAR_MASTER": {
-		"TITLE": "Популярные мастер-классы"
-	},
+	"POPULAR_GOODS_TITLE": "Популярные товары",
+	"POPULAR_ARTICLES_TITLE": "Популярные публикации",
+	"POPULAR_MASTER_CLASSES_TITLE": "Популярные мастер-классы",
 	"ADVANTAGE_LIST": {
 		"PATTERNS": {
 			"TITLE": "Выкроек изготовлено за всё время",
@@ -57,5 +52,6 @@
 			"TITLE": "Довольных клиентов",
 			"COUNT": "5000"
 		}
-	}
+	},
+	"VIEW_ALL": "Смотреть всё"
 }

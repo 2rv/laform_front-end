@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE } from '../../../../lib/theme';
-import { IndentLayout } from '../../../../lib/element/layout';
-import { TextSecondary } from '../../../../lib/element/text';
-import { LinkSecondary } from '../../../../lib/element/link';
+import { spacing, THEME_SIZE } from 'src/lib/theme';
+import { IndentLayout } from 'src/lib/element/layout';
+import { TextSecondary } from 'src/lib/element/text';
+import { LinkSecondary } from 'src/lib/element/link';
 import { BasicCardList } from 'src/lib/element/card-list';
 
-export function PopularMasterComponent({ items }) {
+export function PopularMasterClassesComponent({ items }) {
   return (
     <IndentLayout>
       <FlexContainer>
-        <TitleText tid="HOME.POPULAR_MASTER.TITLE" />
-        <ViewAllLink tid="HOME.POPULAR_GODS.VIEW_ALL" path={'/'} />
+        <TitleText tid="HOME.POPULAR_MASTER_CLASSES_TITLE" />
+        <ViewAllLink tid="HOME.VIEW_ALL" path={'/'} />
       </FlexContainer>
       <BasicCardList items={items} actions={['OTHER.PURCHASED', 'OTHER.BUY']} />
     </IndentLayout>

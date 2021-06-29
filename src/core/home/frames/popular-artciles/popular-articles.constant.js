@@ -1,4 +1,4 @@
-export const TEST_ITEMS_POPULAR_PUBLICATION = [
+export const TEST_ITEMS_POPULAR_ARTICLES = [
   {
     id: 1,
     name: 'Мастер-класс по пошиву мужских брюк 1003',
