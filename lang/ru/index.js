@@ -14,7 +14,8 @@ import AUTH from './auth.json';
 import SETTINGS from './settings.json';
 import OTHER from './other.json';
 import PATTERNS from './patterns.json';
-import PUBLICATION from './publication.json';
+import ARTICLES from './articles.json';
+import SEWING_GOODS from './sewing-gods.json';
 export const RU = {
   translation: {
     META,
@@ -33,6 +34,7 @@ export const RU = {
     SETTINGS,
     OTHER,
     PATTERNS,
-    PUBLICATION,
+    ARTICLES,
+    SEWING_GOODS,
   },
 };

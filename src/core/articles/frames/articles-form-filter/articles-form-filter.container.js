@@ -1,7 +1,7 @@
-import { PUBLICATION_FORM_FILTER_FIELD_KEY } from './publication-form-filter.type';
-import { FormFilterContainer } from '../../../../lib/element/form-filter';
+import { ARTICLES_FORM_FILTER_FIELD_KEY } from './articles-form-filter.type';
+import { FormFilterContainer } from 'src/lib/element/form-filter';
 
-export function PublicationFormFilterContainer(props) {
+export function ArticlesFormFilterContainer(props) {
   const {
     categoryOptions,
     tagsOptions,
@@ -17,19 +17,19 @@ export function PublicationFormFilterContainer(props) {
     formError,
     errorMessage,
   } = props;
-  const CATEGORY_NAME = fieldName[PUBLICATION_FORM_FILTER_FIELD_KEY.CATEGORY];
-  const TAGS_NAME = fieldName[PUBLICATION_FORM_FILTER_FIELD_KEY.TAGS];
-  const FIND_PUBLICATION_NAME =
-    fieldName[PUBLICATION_FORM_FILTER_FIELD_KEY.FIND_PUBLICATION];
+  const CATEGORY_NAME = fieldName[ARTICLES_FORM_FILTER_FIELD_KEY.CATEGORY];
+  const TAGS_NAME = fieldName[ARTICLES_FORM_FILTER_FIELD_KEY.TAGS];
+  const FIND_ARTICLES_NAME =
+    fieldName[ARTICLES_FORM_FILTER_FIELD_KEY.FIND_ARTICLES];
   return (
     <FormFilterContainer
       initialValue={initialValue}
-      placeholderTid={'PUBLICATION.PUBLICATION.FIELD.FIND_PUBLICATION'}
+      placeholderTid={'ARTICLES.ARTICLES.FIELD.FIND_ARTICLES'}
       categoryOptions={categoryOptions}
       tagsOptions={tagsOptions}
       fieldCategory={CATEGORY_NAME}
       fieldTags={TAGS_NAME}
-      fieldFind={FIND_PUBLICATION_NAME}
+      fieldFind={FIND_ARTICLES_NAME}
       dataPending={dataPending}
       formPending={formPending}
       formSuccess={formSuccess}

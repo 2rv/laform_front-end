@@ -1,5 +1,5 @@
-export const PUBLICATION_ROUTE_PATH = '/publication';
-export const PUBLICATION_FILTER_CATEGORY_OPTIONS = [
+export const ARTICLES_ROUTE_PATH = '/articles';
+export const ARTICLES_FILTER_CATEGORY_OPTIONS = [
   {
     id: 1,
     tid: 'Категория 1',
@@ -9,7 +9,7 @@ export const PUBLICATION_FILTER_CATEGORY_OPTIONS = [
     tid: 'Категория 2',
   },
 ];
-export const PUBLICATION_FILTER_TAGS_OPTIONS = [
+export const ARTICLES_FILTER_TAGS_OPTIONS = [
   {
     id: 1,
     tid: 'Популярные',
@@ -23,7 +23,7 @@ export const PUBLICATION_FILTER_TAGS_OPTIONS = [
     tid: 'Самые дешевые',
   },
 ];
-export const TEST_PUBLICATION_ITEMS = [
+export const TEST_ARTICLES_ITEMS = [
   {
     id: 1,
     name: 'Мастер-класс по пошиву мужских брюк 1003',
@@ -43,8 +43,8 @@ export const TEST_PUBLICATION_ITEMS = [
     backgroundImage: '/static/test/popular-gods-3.png',
   },
 ];
-export const PUBLICATION_SUB_MENU_ITEMS = [
-  { name: 'PATTERNS.PATTERNS.MENU.ALL', path: '/patterns' },
-  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', path: '/patterns' },
-  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', path: '/patterns' },
+export const ARTICLES_SUB_MENU_ITEMS = [
+  { name: 'ARTICLES.ARTICLES.MENU.ALL', path: '/articles' },
+  { name: 'ARTICLES.ARTICLES.MENU.PRINTED', path: '/articles' },
+  { name: 'ARTICLES.ARTICLES.MENU.ELECTRONIC', path: '/articles' },
 ];

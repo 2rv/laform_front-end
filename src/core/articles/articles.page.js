@@ -4,9 +4,9 @@ import { FooterContainer } from '../footer';
 import { HeaderContainer } from '../header';
 import { HeaderLogoContainer } from '../header-logo';
 
-import { PublicationContainer } from './publication.container';
+import { ArticlesContainer } from './articles.container';
 
-export function PublicationPage() {
+export function ArticlesPage() {
   return (
     <IndentLayout type="large">
       <IndentLayout type="medium">
@@ -14,7 +14,7 @@ export function PublicationPage() {
           <HeaderLogoContainer />
           <HeaderContainer />
         </IndentLayout>
-        <PublicationContainer />
+        <ArticlesContainer />
       </IndentLayout>
       <FooterContainer />
     </IndentLayout>
