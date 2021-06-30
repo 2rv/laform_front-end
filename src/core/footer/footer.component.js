@@ -35,10 +35,14 @@ const Container = styled.div`
 
 const Content = styled(ContentLayout)`
   display: grid;
-  grid-gap: 60px;
+  grid-gap: ${spacing(12)};
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, [row] auto);
   padding: ${spacing(12)} ${spacing(6)};
+  @media screen and (max-width: 1259px) {
+    padding: ${spacing(6)} ${spacing(6)};
+    grid-gap: ${spacing(6)};
+  }
 `;
 
 const FooterMenu = styled(FooterMenuComponent)`

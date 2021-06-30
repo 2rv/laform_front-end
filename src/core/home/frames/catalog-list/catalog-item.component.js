@@ -22,10 +22,17 @@ export function CatalogItemComponent(props) {
 
 const Container = styled.div`
   position: relative;
+  @media only screen and (max-width: 720px) {
+    height: 300px;
+  }
 `;
 
 const BackgroundImage = styled.img`
   width: 100%;
+  @media only screen and (max-width: 720px) {
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const ContentContainer = styled.div`

@@ -64,6 +64,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: ${(p) => (p.logged ? spacing(12) : spacing(8))};
+  @media screen and (max-width: 1259px) {
+    gap: ${spacing(6)};
+  }
 `;
 
 const BolderLink = styled(LinkPrimary)`

@@ -20,4 +20,8 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(6)};
+  @media screen and (max-width: 1259px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: ${spacing(3)};
+  }
 `;
