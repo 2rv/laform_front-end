@@ -1,9 +1,9 @@
 export const HTTP_ERROR_ROUTER = {
-  ACCESS_DENIED: '/error',
-  SERVER_ERROR: '/error',
-  NOT_FOUND: '/error',
-  UNAUTHORIZED_ERROR: '/error',
-  INTERNAL_SERVER_ERROR: '/error',
+  ACCESS_DENIED: '/error-401',
+  SERVER_ERROR: '/error-500',
+  NOT_FOUND: '/error-404',
+  UNAUTHORIZED_ERROR: '/error-401',
+  INTERNAL_SERVER_ERROR: '/error-500',
 };
 
 export { httpRequest } from './http.core';
