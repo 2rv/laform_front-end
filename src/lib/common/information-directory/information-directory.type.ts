@@ -1,6 +1,6 @@
 export interface InformationDirectoryPropsType {
   tid: string;
-  tvalue?: string;
+  tvalue?: object;
   icon: any;
   onClick?: any;
 }

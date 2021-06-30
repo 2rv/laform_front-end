@@ -5,7 +5,6 @@ import { ReactComponent as ArrowDown } from '../../../asset/svg/arrow-down-solid
 import { text } from '../../common/text';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
-import { IndentLayout } from '../layout';
 
 import { SelectPropsType } from './field.type';
 
@@ -13,7 +12,7 @@ export function FieldSelect(props: SelectPropsType) {
   const { titleTid, name, value, options, onChange, onBlur } = props;
 
   return (
-    <IndentLayout type="text_small">
+    <Indent>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
         <Select name={name} value={value} onChange={onChange} onBlur={onBlur}>
@@ -25,9 +24,13 @@ export function FieldSelect(props: SelectPropsType) {
         </Select>
         <ArrowDownIcon />
       </InputContainer>
-    </IndentLayout>
+    </Indent>
   );
 }
+
+const Indent = styled.div`
+  padding: ${spacing(1)};
+`;
 
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
