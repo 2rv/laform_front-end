@@ -53,5 +53,3 @@ export const routes = {
   [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
   [SETTINGS_CHANGE_DELIVERY_INFO_ROUTE_PATH]: settingsChangeDeliveryInfoRouter,
 };
-
-export const Router = routesInit(routes);

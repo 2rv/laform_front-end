@@ -74,6 +74,7 @@ const CheckmarkContainer = styled.div<{ checked: boolean }>`
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   transition-property: background-color, color;
   transition-duration: ${THEME_VALUE.TRANSITION.FAST};
+
   ${(p) =>
     p.checked &&
     css`
