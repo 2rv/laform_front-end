@@ -67,11 +67,3 @@ export const TEST_SEWING_GOODS_ITEMS = [
     backgroundImage: '/static/test/popular-gods-3.png',
   },
 ];
-export const SEWING_GOODS_SUB_MENU_ITEMS = [
-  { name: 'SEWING_GOODDS.SEWING_GOODDS.MENU.ALL', path: '/sewing-goods' },
-  { name: 'SEWING_GOODDS.SEWING_GOODDS.MENU.PRINTED', path: '/sewing-goods' },
-  {
-    name: 'SEWING_GOODDS.SEWING_GOODDS.MENU.ELECTRONIC',
-    path: '/sewing-goods',
-  },
-];
