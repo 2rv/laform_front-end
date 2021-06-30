@@ -35,7 +35,6 @@ import {
   settingsChangeDeliveryInfoRouter,
   SETTINGS_CHANGE_DELIVERY_INFO_ROUTE_PATH,
 } from 'src/core/settings-change-delivery-info';
-
 import { routesInit } from './router.core';
 
 export const routes = {

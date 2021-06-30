@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { FieldSelect, FieldPrimary } from '../../../../lib/element/field';
-import { IndentLayout } from '../../../../lib/element/layout';
-import { spacing, THEME_SIZE } from '../../../../lib/theme';
-import { LoaderPrimary } from '../../../../lib/element/loader';
-import { ErrorRequest } from '../../../../lib/element/error';
-import { SuccessRequest } from '../../../../lib/element/success';
+import { FieldSelect, FieldPrimary } from '../field';
+import { IndentLayout } from '../layout';
+import { spacing, THEME_SIZE } from '../../theme';
+import { LoaderPrimary } from '../loader';
+import { ErrorRequest } from '../error';
+import { SuccessRequest } from '../success';
 import { ReactComponent as FindIcon } from 'src/asset/svg/find-icon.svg';
 
 export function PatternsFormFilterComponent(props) {

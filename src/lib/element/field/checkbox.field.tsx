@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { ReactComponent as CheckmarkIcon } from '../../../asset/svg/check-mark.svg';
 
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
-import { IndentLayout } from '../layout';
 import { TextSecondary } from '../text';
 
 import { CheckboxPropsType } from './field.type';
@@ -21,7 +20,7 @@ export function FieldCheckbox(props: CheckboxPropsType) {
   };
 
   return (
-    <IndentLayout type="text_small">
+    <Indent>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer htmlFor={name}>
         <Input
@@ -35,9 +34,13 @@ export function FieldCheckbox(props: CheckboxPropsType) {
         </CheckmarkContainer>
         <Title tid={labelTid} />
       </InputContainer>
-    </IndentLayout>
+    </Indent>
   );
 }
+
+const Indent = styled.div`
+  padding: ${spacing(1)};
+`;
 
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
@@ -71,7 +74,6 @@ const CheckmarkContainer = styled.div<{ checked: boolean }>`
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   transition-property: background-color, color;
   transition-duration: ${THEME_VALUE.TRANSITION.FAST};
-
   ${(p) =>
     p.checked &&
     css`
