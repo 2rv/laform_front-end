@@ -7,6 +7,7 @@ import {
   AdvantageListContainer,
   CatalogListContainer,
   InformationListContainer,
+  BannerContainer,
 } from './frames';
 
 export function HomeComponent(props) {
@@ -14,6 +15,7 @@ export function HomeComponent(props) {
     <Container>
       <Content>
         <IndentLayout type="medium">
+          <BannerContainer />
           <CatalogListContainer />
           <InformationListContainer />
           <AdvantageListContainer />
