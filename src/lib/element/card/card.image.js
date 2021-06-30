@@ -1,42 +1,41 @@
-import { TextSecondary } from 'src/lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import styled from 'styled-components';
+import { TextSecondary } from 'src/lib/element/text';
+import { spacing, THEME_COLOR } from 'src/lib/theme';
 
-export function CardImage({ backgroundImage, hit, discount }) {
+export function CardImage({ backgroundImage, bestseller, discount }) {
   return (
-    <ImageContainer>
-      <BackgroundImage src={backgroundImage} />
+    <Container>
+      <Image src={backgroundImage} />
       <ModifierContainer>
-        {hit && <Modifier hit={hit} tid={'Хит'} />}
         {discount && <Modifier tid={'Акция'} />}
+        {bestseller && <Modifier alt={true} tid={'Хит'} />}
       </ModifierContainer>
-    </ImageContainer>
+    </Container>
   );
 }
-const BackgroundImage = styled.img`
+const Image = styled.img`
   width: 100%;
-  max-height: 260px;
-  object-fit: cover;
   height: 100%;
+  object-fit: cover;
 `;
-const ImageContainer = styled.div`
+const Container = styled.div`
   position: relative;
   width: 100%;
-  max-height: 260px;
   height: 100%;
+  max-height: 260px;
+  max-width: 360px;
 `;
 const ModifierContainer = styled.div`
   display: flex;
   position: absolute;
   right: 0;
   bottom: 0;
-  width: max-content;
   flex-direction: column;
   gap: ${spacing(0.5)};
 `;
 const Modifier = styled(TextSecondary)`
-  background-color: ${({ hit }) =>
-    hit ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
+  background-color: ${({ alt }) =>
+    alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
   color: ${THEME_COLOR.TEXT.WHITE};
   width: 97px;
   padding: ${spacing(1.6)} 0;
