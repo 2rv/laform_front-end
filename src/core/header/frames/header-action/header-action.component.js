@@ -47,7 +47,7 @@ export function HeaderActionComponent(props) {
           &nbsp;
           <TextSecondary tid="HEADER.MENU_ACTION.OR" />
           &nbsp;
-          <LinkPrimary
+          <BolderLink
             tid="HEADER.MENU_ACTION.SIGNUP"
             path={SIGNUP_ROUTE_PATH}
           />
@@ -64,6 +64,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: ${(p) => (p.logged ? spacing(12) : spacing(8))};
+  @media screen and (max-width: 1259px) {
+    gap: ${spacing(6)};
+  }
 `;
 
 const BolderLink = styled(LinkPrimary)`
@@ -84,6 +87,7 @@ const UserContainer = styled.div`
 
 const UserMenu = styled(ModalMenu)`
   margin-top: ${spacing(1)};
+  z-index: 1;
 `;
 
 const BolderText = styled(TextPrimary)`

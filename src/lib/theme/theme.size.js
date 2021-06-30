@@ -15,12 +15,14 @@ export const THEME_SIZE = {
   },
   LAYOUT: {
     DEFAULT: '1200px',
+    MEDIUM: '680px',
     SMALL: '360px',
   },
   FONT: {
     DEFAULT: '16px',
     EXTRA_LARGE: '36px',
     LARGE: '24px',
+    MEDIUM: '18px',
     SMALL: '14px',
   },
   FONT_WEIGHT: {

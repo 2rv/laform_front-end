@@ -1,0 +1,74 @@
+{
+  "CHANGE_DELIVERY_INFO": {
+    "TITLE": "Удобная доставка",
+    "FULLNAME": {
+      "TITLE": "Ваше ФИО",
+      "PLACEHOLDER": "Фамилия, имя и отчество"
+    },
+    "PHONE": {
+      "TITLE": "Контактный номер телефона",
+      "PLACEHOLDER": "+7 (000) 000 00 00"
+    },
+    "LOCATION": {
+      "TITLE": "Город и точный адрес доставки",
+      "PLACEHOLDER": "Улица, дом"
+    },
+    "DELIVERY_TYPE": {
+      "TITLE": "Удобный способ доставки",
+      "ON_THE_POINT": "На точке выдачи",
+      "COURIER": "Курьером"
+    },
+    "SUCCESS": "Данные успешно обновлены!",
+    "SUBMIT": "Сохранить"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Сменить пароль",
+    "OLD_PASSWORD": {
+      "TITLE": "Старый пароль",
+      "PLACEHOLDER": "Пароль"
+    },
+    "NEW_PASSWORD": {
+      "TITLE": "Новый пароль",
+      "PLACEHOLDER": "Новый пароль"
+    },
+    "REPEAT_NEW_PASSWORD": {
+      "TITLE": "Повторите новый пароль",
+      "PLACEHOLDER": "Новый пароль"
+    },
+    "SUCCESS": "Пароль успешно изменен!",
+    "SUBMIT": "Сменить"
+  },
+  "CHANGE_NOTIFICATION": {
+    "TITLE": "Подписка на рассылку",
+    "NEWSLETTER": {
+      "TITLE": "Рассылка новостей",
+      "LABEL": "Я согласен(а) на получение рассылки"
+    },
+    "SUBMIT": "Сохранить"
+  },
+  "CHANGE_PAYMENT_METHOD": {
+    "TITLE": "Удобная оплата",
+    "PAYMENT_METHOD": {
+      "TITLE": "Способ оплаты",
+      "ONLINE": "Онлайн"
+    },
+    "SUCCESS": "Способ оплаты успешно изменен!",
+    "SUBMIT": "Сохранить"
+  },
+  "CHANGE_EMAIL": {
+    "TITLE": "Сменить Email",
+    "OLD_EMAIL": {
+      "TITLE": "Старый Email",
+      "PLACEHOLDER": "Email.com"
+    },
+    "NEW_EMAIL": {
+      "TITLE": "Новый Email",
+      "PLACEHOLDER": "Newemail.com"
+    },
+    "PASSWORD": {
+      "TITLE": "Пароль",
+      "PLACEHOLDER": "Пароль"
+    },
+    "SUBMIT": "Сменить"
+  }
+}

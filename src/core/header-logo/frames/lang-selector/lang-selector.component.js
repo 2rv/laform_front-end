@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { ReactComponent as ArrowDownIcon } from '../../../../asset/svg/arrow-solid-down.svg';
+import { ReactComponent as ArrowDownIcon } from '../../../../asset/svg/arrow-down-lang.svg';
 
 import { langUpdateLanguage } from '../../../../lib/common/lang/lang.action';
 import { spacing, THEME_SIZE } from '../../../../lib/theme';

@@ -8,6 +8,15 @@ import FOOTER from './footer.json';
 import HOME from './home.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
+import INFORMATION_DIRECTORY_LIST from './information-directory-list.json';
+import FAQ_LIST from './faq-list.json';
+import AUTH from './auth.json';
+import SETTINGS from './settings.json';
+import OTHER from './other.json';
+import PATTERNS from './patterns.json';
+import ARTICLES from './articles.json';
+import SEWING_GOODS from './sewing-gods.json';
+import MASTER_CLASSES from './master-classes.json';
 import ERROR_PAGE from './error-page.json';
 
 export const RU = {
@@ -22,6 +31,15 @@ export const RU = {
     HOME,
     SIGNUP,
     LOGIN,
+    INFORMATION_DIRECTORY_LIST,
+    FAQ_LIST,
+    AUTH,
+    SETTINGS,
+    OTHER,
+    PATTERNS,
+    ARTICLES,
+    SEWING_GOODS,
+    MASTER_CLASSES,
     ERROR_PAGE,
   },
 };

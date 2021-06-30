@@ -4,6 +4,7 @@ export const THEME_COLOR = {
   SECONDARY: '#5f5b5d',
   SECONDARY_DARK: '#2f2a2c',
   LIGHT_GRAY: '#bfbfbf',
+  DANGER: '#eb5757',
   BACKGROUND: {
     DANGER: '#ffeaea',
     SUCCESS: '#d0ffe4',
@@ -16,10 +17,11 @@ export const THEME_COLOR = {
   TEXT: {
     DANGER: '#eb5757',
     SUCCESS: '#219653',
+    GRAY: '#f0f0f0',
     WHITE: '#fff',
   },
   FIELD: {
-    PRIMARY: '#8f8d8e',
+    TEXT_PRIMARY: '#8f8d8e',
   },
   SHADOW: {
     MODAL: '0 0 50px rgba(0, 0, 0, 0.25)',
