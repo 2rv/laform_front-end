@@ -7,6 +7,8 @@ import { LinkSecondary } from '../../../../lib/element/link';
 import { CardImage } from 'src/lib/element/card';
 import { ReactComponent as FavoriteIcon } from 'src/asset/svg/favorite-icon.svg';
 import { ButtonBasic } from 'src/lib/element/button';
+import { PopularPublicationItemComponent } from './popular-publication-item.component';
+
 export function PopularPublicationComponent({ items }) {
   return (
     <IndentLayout>
@@ -15,46 +17,13 @@ export function PopularPublicationComponent({ items }) {
         <ViewAllLink tid="HOME.POPULAR_GODS.VIEW_ALL" path={'/'} />
       </FlexContainer>
       <List>
-        {items.map(
-          ({
-            backgroundImage,
-            id,
-            name,
-            isFavorite = false,
-            data = '1 неделю назад',
-          }) => (
-            <Container key={id}>
-              <CardImage backgroundImage={backgroundImage} />
-              <CardContainer>
-                <PubName>{name}</PubName>
-                <FavoriteButton isFavorite={isFavorite} icon={FavoriteIcon} />
-              </CardContainer>
-              <FlexContainer>
-                <DataText>{data}</DataText>
-              </FlexContainer>
-            </Container>
-          ),
-        )}
+        {items.map((item) => (
+          <PopularPublicationItemComponent {...item} />
+        ))}
       </List>
     </IndentLayout>
   );
 }
-const DataText = styled(TextSecondary)``;
-const FavoriteButton = styled(ButtonBasic)`
-  background-color: ${({ isFavorite }) =>
-    isFavorite ? THEME_COLOR.SECONDARY : THEME_COLOR.GRAY};
-`;
-const PubName = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  height: max-content;
-  word-break: break-word;
-`;
-const CardContainer = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
-  height: 100%;
-`;
 const FlexContainer = styled.div`
   display: flex;
 `;

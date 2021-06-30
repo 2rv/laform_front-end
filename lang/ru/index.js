@@ -14,6 +14,7 @@ import AUTH from './auth.json';
 import SETTINGS from './settings.json';
 import OTHER from './other.json';
 import PATTERNS from './patterns.json';
+import PUBLICATION from './publication.json';
 export const RU = {
   translation: {
     META,
@@ -32,5 +33,6 @@ export const RU = {
     SETTINGS,
     OTHER,
     PATTERNS,
+    PUBLICATION,
   },
 };
