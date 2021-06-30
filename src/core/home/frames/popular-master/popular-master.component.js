@@ -6,18 +6,18 @@ import { TextSecondary } from '../../../../lib/element/text';
 import { LinkSecondary } from '../../../../lib/element/link';
 import { BasicCard as ItemCard } from 'src/lib/element/card';
 
-export function PopularGodsComponent({ items }) {
+export function PopularMasterComponent({ items }) {
   return (
     <IndentLayout>
       <FlexContainer>
-        <TitleText tid="HOME.POPULAR_GODS.TITLE" />
+        <TitleText tid="HOME.POPULAR_MASTER.TITLE" />
         <ViewAllLink tid="HOME.POPULAR_GODS.VIEW_ALL" path={'/'} />
       </FlexContainer>
       <List>
         {items.map((item) => (
           <ItemCard
             key={item.id}
-            actions={['OTHER.SELECTED', 'OTHER.SELECT']}
+            actions={['OTHER.PURCHASED', 'OTHER.BUY']}
             {...item}
           />
         ))}
