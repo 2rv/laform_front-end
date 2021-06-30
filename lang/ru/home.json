@@ -37,6 +37,10 @@
 			"GLUE_PATTERN_INFO": "Как склеить выкройку формата А4"
 		}
 	},
+	"POPULAR_GODS": {
+		"TITLE": "Популярные товары",
+		"VIEW_ALL": "Смотреть всё"
+	},
 	"ADVANTAGE_LIST": {
 		"PATTERNS": {
 			"TITLE": "Выкроек изготовлено за всё время",
