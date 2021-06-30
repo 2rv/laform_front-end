@@ -1,0 +1,13 @@
+{
+	"PATTERNS": {
+		"TITLE": "Выкройки",
+		"MENU": {
+			"ALL": "Все",
+			"PRINTED": "Печатные",
+			"ELECTRONIC": "Электронные"
+		},
+		"FIELD": {
+			"FIND_PATTERNS": "Найти выкройки"
+		}
+	}
+}

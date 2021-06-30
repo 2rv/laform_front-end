@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { Price } from '../price';
 import { CardAction } from './card-action.component';
@@ -20,6 +19,7 @@ export function BasicCard(props) {
     backgroundImage,
     actions = [null, null],
   } = props;
+
   const isActived = Purchased || selected;
   return (
     <Container>
@@ -28,8 +28,8 @@ export function BasicCard(props) {
         hit={hit}
         discount={discount}
       />
-      <ProductName>{name}</ProductName>
       <CardDescription
+        name={name}
         price={price}
         discount={discount}
         difficulty={complexity}
@@ -38,18 +38,11 @@ export function BasicCard(props) {
     </Container>
   );
 }
-const ProductName = styled(TextSecondary)`
-  display: flex;
-  flex-grow: 1;
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  width: 100%;
-  word-break: break-word;
-`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 360px;
-  gap: ${spacing(3)};
+  min-width: 260px;
+  width: 100%;
   min-height: max-content;
+  gap: ${spacing(3)};
 `;

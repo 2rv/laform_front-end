@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export function CardImage({ backgroundImage, hit, discount }) {
   return (
     <ImageContainer>
-      <img src={backgroundImage} />
+      <BackgroundImage src={backgroundImage} />
       <ModifierContainer>
         {hit && <Modifier hit={hit} tid={'Хит'} />}
         {discount && <Modifier tid={'Акция'} />}
@@ -13,11 +13,17 @@ export function CardImage({ backgroundImage, hit, discount }) {
     </ImageContainer>
   );
 }
-
+const BackgroundImage = styled.img`
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  height: 100%;
+`;
 const ImageContainer = styled.div`
   position: relative;
-  max-height: 260px;
   width: 100%;
+  max-height: 260px;
+  height: 100%;
 `;
 const ModifierContainer = styled.div`
   display: flex;
