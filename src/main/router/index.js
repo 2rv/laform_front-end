@@ -1,40 +1,41 @@
-import { homeRouter, HOME_ROUTE_PATH } from 'src/core/home';
-import { signupRouter, SIGNUP_ROUTE_PATH } from 'src/core/signup';
-import { loginRouter, LOGIN_ROUTE_PATH } from 'src/core/login';
-import { patternsRouter, PATTERNS_ROUTE_PATH } from 'src/core/patterns';
+import { homeRouter, HOME_ROUTE_PATH } from '../../core/home';
+import { signupRouter, SIGNUP_ROUTE_PATH } from '../../core/signup';
+import { loginRouter, LOGIN_ROUTE_PATH } from '../../core/login';
+import { patternsRouter, PATTERNS_ROUTE_PATH } from '../../core/patterns';
 import {
   masterClassesRouter,
   MASTER_CLASSES_ROUTE_PATH,
-} from 'src/core/master-classes';
+} from '../../core/master-classes';
 import {
   sewingGoodsRouter,
   SEWING_GOODS_ROUTE_PATH,
-} from 'src/core/sewing-goods';
-import { articlesRouter, ARTICLES_ROUTE_PATH } from 'src/core/articles';
+} from '../../core/sewing-goods';
+import { articlesRouter, ARTICLES_ROUTE_PATH } from '../../core/articles';
 import {
   authRecoveryAccountRouter,
   AUTH_RECOVERY_ACCOUNT_ROUTE_PATH,
-} from 'src/core/auth-recovery-account';
+} from '../../core/auth-recovery-account';
 import {
   authChangePasswordRouter,
   AUTH_CHANGE_PASSWORD_ROUTE_PATH,
-} from 'src/core/auth-change-password';
+} from '../../core/auth-change-password';
 import {
   authVerificateEmailRouter,
   AUTH_VERIFICATE_EMAIL_ROUTE_PATH,
-} from 'src/core/auth-verificate-email';
+} from '../../core/auth-verificate-email';
 import {
   authVerificateEmailConfirmRouter,
   AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH,
-} from 'src/core/auth-verificate-email-confirm';
+} from '../../core/auth-verificate-email-confirm';
 import {
   settingsChangePasswordRouter,
   SETTINGS_CHANGE_PASSWORD_ROUTE_PATH,
-} from 'src/core/settings-change-password';
+} from '../../core/settings-change-password';
 import {
   settingsChangeDeliveryInfoRouter,
   SETTINGS_CHANGE_DELIVERY_INFO_ROUTE_PATH,
-} from 'src/core/settings-change-delivery-info';
+} from '../../core/settings-change-delivery-info';
+
 import { routesInit } from './router.core';
 
 export const routes = {

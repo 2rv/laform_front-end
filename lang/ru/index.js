@@ -17,6 +17,8 @@ import PATTERNS from './patterns.json';
 import ARTICLES from './articles.json';
 import SEWING_GOODS from './sewing-gods.json';
 import MASTER_CLASSES from './master-classes.json';
+import ERROR_PAGE from './error-page.json';
+
 export const RU = {
   translation: {
     META,
@@ -38,5 +40,6 @@ export const RU = {
     ARTICLES,
     SEWING_GOODS,
     MASTER_CLASSES,
+    ERROR_PAGE,
   },
 };
