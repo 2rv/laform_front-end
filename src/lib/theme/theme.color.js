@@ -19,6 +19,7 @@ export const THEME_COLOR = {
     SUCCESS: '#219653',
     GRAY: '#f0f0f0',
     WHITE: '#fff',
+    BLUE: '#2D9CDB',
   },
   FIELD: {
     TEXT_PRIMARY: '#8f8d8e',
