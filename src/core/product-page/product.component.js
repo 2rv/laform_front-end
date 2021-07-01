@@ -30,6 +30,7 @@ export function ProductComponent(props) {
     actions = ['OTHER.PURCHASED', 'OTHER.BUY'],
     options,
     itemsRecomend,
+    comments,
   } = props;
   const productGetInitialValue = () => {
     return {
@@ -100,7 +101,7 @@ export function ProductComponent(props) {
             />
           </IndentLayout>
           <IndentLayout>
-            <ProductCommentComponent />
+            <ProductCommentComponent items={comments} />
           </IndentLayout>
         </IndentLayout>
       </PaddingLayout>
@@ -109,14 +110,14 @@ export function ProductComponent(props) {
 }
 // ProductImageComponent Там переключалки кнопки не те что в дизайне но они норм
 // Divider Удобнее чем гемароится с border
-// ProductPriceComponent Никак иначе TextField не позволяют тыкать двоеточие и делать много строчность
+// ProductPriceComponent Никак иначе TextField не позволяют тыкать двоеточие
 // ProductSelectContainer определяет сколько полей параметров нужно создать
 // ProductSelectContainer текст 14px нужно 16 и цвет #8F8D8E переделыввать select компоненту?
 // ActionsContainer Добавить кнопку +/- 1 для количества товаров хз зачем
-// Доделать читать дальше кнопки и как они отображаться должны
+// Доделать читать дальше кнопки и как они должны выводить данные модалкой или вниз опускаться по высоте
 // Сделано 2 модификатора можно удалить если надо но они норм
-// Добавить витрину с рекомендациями товаров (но там 3 разных карточки неудобно)
-// Сделать чат с отзывами
+// В витрине с рекомендациями должны быть 3 разных типа товаров?
+// Добавить в комментарии Formik что бы обрабатывать вводимые сообщения
 // Хлебные крошки параметры size 16px weigth default если активная medium цвет #8F8D8E но там их  2 разных возможно
 // Вынести слова в lang
 

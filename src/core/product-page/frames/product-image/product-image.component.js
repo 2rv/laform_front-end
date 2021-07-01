@@ -20,6 +20,7 @@ export function ProductImageComponent(props) {
       <ImageList>
         {images.map((src, index) => (
           <Image
+            key={index}
             onClick={() => setSlide(index)}
             active={slide === index}
             src={src}

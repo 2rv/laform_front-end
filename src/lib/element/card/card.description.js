@@ -19,7 +19,10 @@ export function CardDescription({ name, price = null, complexity, discount }) {
         {complexity && (
           <ComplexityContainer>
             {[1, 2, 3, 4, 5].map((i) => (
-              <ComplexityDot x={i <= complexity} />
+              <ComplexityDot
+                key={i}
+                complexity={i <= complexity || i == complexity}
+              />
             ))}
           </ComplexityContainer>
         )}
@@ -60,6 +63,7 @@ const ComplexityDot = styled.div`
   width: 16px;
   height: 16px;
   border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  background-color: ${({ x }) =>
-    x ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
+  background-color: ${({ complexity }) => {
+    return complexity ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY;
+  }};
 `;

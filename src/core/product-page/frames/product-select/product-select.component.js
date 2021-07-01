@@ -27,14 +27,13 @@ export function ProductSelectComponent(props) {
     <Form onSubmit={handleSubmit}>
       {optionsKeys.map((item, index) => {
         return (
-          <Container>
+          <Container key={index}>
             <Pair>
               <TextSecondary tid={optionsTitles[item]} />
               {item === 'size' && <CircleQuestion tid="?" />}
             </Pair>
             <FieldContainer>
               <FieldSelect
-                key={index}
                 options={options[item]}
                 name={item}
                 value={values[item]}

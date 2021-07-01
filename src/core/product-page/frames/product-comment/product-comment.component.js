@@ -1,49 +1,31 @@
 import { TitlePrimary } from 'src/lib/element/title';
 import { TextSecondary } from 'src/lib/element/text';
-import { FieldPrimary } from 'src/lib/element/field';
+import { FieldSecondary } from 'src/lib/element/field';
 import { ButtonBasic } from 'src/lib/element/button';
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
 import { ReactComponent as CommentIcon } from 'src/asset/svg/arrow-for-comment.svg';
-const items = [
-  {
-    me: false,
-    id: 1,
-    username: 'Людмила Азонова',
-    date: '25.05.2021',
-    message: `Подходит для пальтово-костюмной группы тканей.
-	Очень удгобная и хорошая вещь, спасибо! Хотелось бы сказать что вещь правда хороашая и дошла очень быстро, буду заказывать ещё. Из минусов – дороговато, всё таки.`,
-  },
-  {
-    me: false,
-    id: 1,
-    username: 'Людмила Азонова',
-    date: '25.05.2021',
-    message: `Подходит для пальтово-костюмной группы тканей. Очень удгобная и хорошая вещь, спасибо!`,
-  },
-  {
-    me: true,
-    id: 1,
-    username: 'Людмила Азонова',
-    date: '25.05.2021',
-    message: `Подходит для пальтово-костюмной группы тканей. Очень удгобная и хорошая вещь, спасибо!`,
-  },
-];
+import { ReactComponent as SendIcon } from 'src/asset/svg/message-send-icon.svg';
 
-export function ProductCommentComponent() {
+export function ProductCommentComponent({ items }) {
   return (
     <Container>
       <TitlePrimary tid="Отзывы" />
       <ListComment>
         {items.map((item, index) => {
-          return <ProductCommentItem key={item?.id || index} {...item} />;
+          return <ProductCommentItem key={index} {...item} />;
         })}
         <SecondTitle tid="Написать отзыв" />
       </ListComment>
-      <FieldPrimary />
+      <FieldSecondary
+        icon={SendIcon}
+        onClick={() => console.log('click')}
+        placeholderTid="Введите свой отзыв"
+      />
     </Container>
   );
 }
+// Короче нужно сделать филд на всю ширину и ок будет
 const SecondTitle = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
@@ -76,6 +58,7 @@ export function ProductCommentItem(props) {
     </CommentItemContainer>
   );
 }
+// Сделать отправку по Enter
 // Formik!!!!!!
 // Сделать на длинный текст проверку
 // Background color есть но его вообще еле видно оставить????

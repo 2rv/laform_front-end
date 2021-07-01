@@ -1,6 +1,6 @@
-import { ReactComponent as Icon } from 'src/asset/svg/find-icon.svg';
+import { ReactComponent as FindIcon } from 'src/asset/svg/find-icon.svg';
 import styled from 'styled-components';
-import { FieldSelect, FieldPrimary } from '../field';
+import { FieldSelect, FieldPrimary, FieldSecondary } from '../field';
 import { IndentLayout } from '../layout';
 import { LoaderPrimary } from '../loader';
 import { ErrorRequest } from '../error';
@@ -58,15 +58,16 @@ export function FormFilterComponent(props) {
           />
         </SelectContainer>
         <FindContainer>
-          <FieldPrimary
+          <FieldSecondary
             placeholderTid={placeholderTid}
             name={fieldFind}
             value={values[fieldFind]}
             error={getFieldError(fieldFind)}
             onChange={handleChange}
             onBlur={handleBlur}
+            icon={FindIcon}
+            onClick={() => console.log('FIND')}
           />
-          <FindIcon />
         </FindContainer>
       </Container>
     </form>
@@ -82,11 +83,6 @@ const FindContainer = styled.div`
   align-items: center;
   margin-left: auto;
 `;
-const FindIcon = styled(Icon)`
-  position: absolute;
-  right: ${spacing(3)};
-`;
-
 const SelectContainer = styled.div`
   width: 172px;
 `;
