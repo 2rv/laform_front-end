@@ -10,6 +10,7 @@ import {
 import { TitlePrimary } from '../../lib/element/title';
 import { TEST_ARTICLES_ITEMS } from './article-page.constant';
 import { CardArticles } from '../../lib/element/card';
+import { LinkSecondary } from 'src/lib/element/link';
 
 export function ArticlePageComponent(props) {
   const { name, date, tables, description, comments } = props;
@@ -28,7 +29,10 @@ export function ArticlePageComponent(props) {
           </IndentLayout>
           <ArticlePageCommentComponent items={comments} />
           <IndentLayout>
-            <TitlePrimary tid={'Лучшие публикации'} />
+            <FlexContainer>
+              <TitlePrimary tid={'Лучшие публикации'} />
+              <ViewAllLink tid="HOME.VIEW_ALL" path={'/'} />
+            </FlexContainer>
             <BasicCardList
               items={TEST_ARTICLES_ITEMS}
               ItemComponent={CardArticles}
@@ -39,6 +43,13 @@ export function ArticlePageComponent(props) {
     </Container>
   );
 }
+const ViewAllLink = styled(LinkSecondary)`
+  margin-left: auto;
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+`;
 const Description = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   line-height: 28px;
