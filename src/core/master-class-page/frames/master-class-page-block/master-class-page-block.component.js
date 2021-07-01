@@ -8,27 +8,30 @@ export function MasterClassPageBlockComponent(props) {
     altType = false,
   } = props;
   return (
-    <Container type={altType}>
+    <Container altType={altType}>
       {title && <BlockTitle tid={title} />}
       <BlockContent>
         <Content tid={content} />
       </BlockContent>
-      {description && <Description type={altType}>{description}</Description>}
+      {description && (
+        <Description altType={altType}>{description}</Description>
+      )}
     </Container>
   );
 }
 
 const Description = styled(TextSecondary)`
-  color: ${({ type }) =>
-    type ? THEME_COLOR.SECONDARY : THEME_COLOR.FIELD.TEXT_PRIMARY};
-  ${({ type }) => type && `font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};`}
+  color: ${({ altType }) =>
+    altType ? THEME_COLOR.SECONDARY : THEME_COLOR.FIELD.TEXT_PRIMARY};
+  ${({ altType }) =>
+    altType && `font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};`}
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   line-height: 28px;
 `;
 const Container = styled.div`
   display: grid;
   gap: 15px;
-  width: ${({ type }) => (type ? `555px` : `100%`)};
+  width: ${({ altType }) => (altType ? `555px` : `100%`)};
 `;
 const BlockTitle = styled(TextSecondary)`
   color: ${THEME_COLOR.SECONDARY};
