@@ -11,14 +11,11 @@ import {
   PopularArticlesContainer,
 } from './frames';
 
-import { MyMasterClassesContainer } from '../my-master-classes';
-
 export function HomeComponent(props) {
   return (
     <Container>
       <Content>
         <IndentLayout type="medium">
-          <MyMasterClassesContainer />
           <BannerContainer />
           <CatalogListContainer />
           <PopularGoodsContainer />
