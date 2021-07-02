@@ -27,7 +27,7 @@ export function TableComponent({ purchasesList }) {
 
       <tbody>
         {purchasesList.map((purchase) => (
-          <TableRowComponent {...purchase} />
+          <TableRowComponent key={purchase.id} {...purchase} />
         ))}
       </tbody>
     </Table>

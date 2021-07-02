@@ -18,7 +18,7 @@ export function TableRowComponent(props) {
     } else if (condition === 'paid') {
       return <Text tid="PURCHASE.SEЕWING_GOODS.CONDITION.PAID" color={THEME_COLOR.TEXT.BLUE} />;
     } else {
-      return <></>;
+      return null;
     }
   };
 
