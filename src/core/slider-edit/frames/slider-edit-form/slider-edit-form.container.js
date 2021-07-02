@@ -3,17 +3,8 @@ import { Formik } from 'formik';
 
 export function SliderEditFormContainer(props) {
   const {
-    buttonColorOptions,
-    buttonTextColorOptions,
-    textColorOptions,
+    slideFieldsData,
 
-    fieldTextName,
-    fieldTextColorName,
-    fieldButtonTextName,
-    fieldButtonColorName,
-    fieldButtonTextColorName,
-
-    initialValue,
     validation,
     onSubmitForm,
 
@@ -23,22 +14,21 @@ export function SliderEditFormContainer(props) {
     formError,
     errorMessage,
   } = props;
+
+  const initialValues = slideFieldsData.reduce((acc, { name, value }) => {
+    acc[name] = value;
+    return acc;
+  }, {});
+
   return (
     <Formik
-      initialValues={initialValue}
+      initialValues={initialValues}
       validate={validation}
       onSubmit={onSubmitForm}
     >
       {(formProps) => (
         <SliderEditFormComponent
-          buttonColorOptions={buttonColorOptions}
-          buttonTextColorOptions={buttonTextColorOptions}
-          textColorOptions={textColorOptions}
-          fieldTextName={fieldTextName}
-          fieldTextColorName={fieldTextColorName}
-          fieldButtonTextName={fieldButtonTextName}
-          fieldButtonColorName={fieldButtonColorName}
-          fieldButtonTextColorName={fieldButtonTextColorName}
+          slideFieldsData={slideFieldsData}
           dataPending={dataPending}
           formPending={formPending}
           formSuccess={formSuccess}

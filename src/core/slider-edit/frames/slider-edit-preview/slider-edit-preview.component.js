@@ -12,9 +12,8 @@ export function SliderEditPreviewComponent(props) {
   const { slideText, backgroundImage } = props;
   const fileRef = createRef(); // млэнл использовать в родителе
   return (
-    <>
-      <TitlePrimary tid="Редактирование слайдера" />
-      <TextSecondary tid="Превью" />
+    <IndentLayout type="small">
+      <PreviewTitle tid="Превью" />
       <PreviewContainer>
         <Blur />
         <SlideImage src={backgroundImage} />
@@ -34,9 +33,12 @@ export function SliderEditPreviewComponent(props) {
           </LinkPrimary>
         </Content>
       </PreviewContainer>
-    </>
+    </IndentLayout>
   );
 }
+const PreviewTitle = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.DEFAULT};
+`;
 const SlideText = styled.div`
   text-align: center;
 `;
@@ -62,9 +64,8 @@ const Content = styled.div`
 const Button = styled(ButtonPrimary)`
   padding: ${spacing(3)} ${spacing(11)};
 `;
-const Placeholder = styled(TextSecondary)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  color: ${THEME_COLOR.SECONDARY_DARK};
+const Placeholder = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.DEFAULT};
 `;
 const Field = styled.label`
   position: absolute;
