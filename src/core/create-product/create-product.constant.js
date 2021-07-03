@@ -54,6 +54,7 @@ export const TEST_CREATE_PRODUCT_FIELDS__DATA = {
     },
     {
       type: 'input',
+      title: 'Описание товара',
       fullWidth: true,
       value: 'Вот вам очень полное описание товара в девяти словах',
       name: 'fieldFullDescriptionProduct',
