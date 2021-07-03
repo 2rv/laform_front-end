@@ -58,8 +58,8 @@ export const BASKET_PATTERS_LIST = [
     seewingGoods: {
       title: 'Юбка-шорты 0718',
       image: {
-        url: '/static/test/Popular-gods-4.png',
-        alt: 'Popular gods 4',
+        url: '/static/test/Popular-gods-3.png',
+        alt: 'Popular gods 3',
       },
     },
     parameters: {
@@ -73,15 +73,14 @@ export const BASKET_PATTERS_LIST = [
     seewingGoods: {
       title: 'Сарафан 0445',
       image: {
-        url: '/static/test/Popular-gods-5.png',
-        alt: 'Popular gods 5',
+        url: '/static/test/Popular-gods-2.png',
+        alt: 'Popular gods 2',
       },
     },
     parameters: {
       size: '15/170 250',
       format: 'Электронная',
     },
-    count: 1,
     totalPrice: '2,210',
   },
 ];

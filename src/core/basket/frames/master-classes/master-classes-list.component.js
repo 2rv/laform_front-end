@@ -11,7 +11,7 @@ export function MasterClassesListComponent({ masterClassesList }) {
       <thead>
         <TableRow>
           <TableTH>
-            <TextSecondary tid="Мастер классы" />
+            <TextSecondary tid="Мастер-классы" />
           </TableTH>
           <TableTH>
             <TextSecondary tid="Параметры" />
@@ -26,8 +26,8 @@ export function MasterClassesListComponent({ masterClassesList }) {
       </thead>
 
       <tbody>
-        {masterClassesList.map((seewingGoods) => (
-          <MasterClassesListItemComponent key={seewingGoods.id} {...seewingGoods} />
+        {masterClassesList.map((masterClass) => (
+          <MasterClassesListItemComponent key={masterClass.id} {...masterClass} />
         ))}
       </tbody>
     </Table>
