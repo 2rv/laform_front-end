@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { ReactComponent as Edit } from 'src/asset/svg/edit.svg';
 import { ReactComponent as Remove } from 'src/asset/svg/remove.svg';
 
-import { FieldPrimary } from 'src/lib/element/field';
 import { ButtonBasic } from 'src/lib/element/button';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
@@ -42,7 +41,7 @@ export function SeewingGoodsListItemComponent(props) {
       <TableTD>
         <Button width="68px" height="40px">
           <Text color={THEME_COLOR.FIELD.TEXT_PRIMARY}>-</Text>
-          <Text margin={spacing(2)} color={THEME_COLOR.SECONDARY_DARK}>1</Text>
+          <Text margin={spacing(2)} color={THEME_COLOR.SECONDARY_DARK}>{count}</Text>
           <Text color={THEME_COLOR.FIELD.TEXT_PRIMARY}>+</Text>
         </Button>
       </TableTD>
@@ -53,14 +52,14 @@ export function SeewingGoodsListItemComponent(props) {
       <TableTD>
         <ButtonsContent>
           <Button width="45px" height="45px">
-            <div>
+            <Div>
               <Edit />
-            </div>
+            </Div>
           </Button>
           <Button width="45px" height="45px" marginLeft={spacing(3)}>
-            <div>
+            <Div>
               <Remove />
-            </div>
+            </Div>
           </Button>
         </ButtonsContent>
       </TableTD>
@@ -77,7 +76,6 @@ const Text = styled(TextSecondary)`
 const Div = styled.div`
   display: flex;
   align-items: center;
-  width: 280px;
 `;
 
 const SeewingGoodsImg = styled.img`
@@ -95,10 +93,6 @@ const TableTD = styled.td`
   padding: ${spacing(2)} 0;
   vertical-align: middle;
   line-height: 24px;
-
-  &:last-child {
-    text-align: end;
-  }
 `;
 
 const ButtonsContent = styled.div`

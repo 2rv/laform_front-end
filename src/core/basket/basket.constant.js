@@ -30,7 +30,7 @@ export const BASKET_SEEWING_GOODS_LIST = [
       size: '25/180 210',
       category: 'Верхняя одежда',
     },
-    count: 1,
+    count: 2,
     totalPrice: '1,400',
   },
 ];

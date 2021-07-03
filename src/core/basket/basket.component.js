@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { SeewingGoodsListComponent } from './frame';
+import { SeewingGoodsListComponent, MasterClassesListComponent } from './frames';
 
-import { BASKET_SEEWING_GOODS_LIST } from './basket.constant';
+import { BASKET_SEEWING_GOODS_LIST, BASKET_MASTER_CLASSES_LIST } from './basket.constant';
 
 import { TitlePrimary } from 'src/lib/element/title';
 import { ContentLayout } from 'src/lib/element/layout';
@@ -15,6 +15,7 @@ export function BasketComponent() {
       <Content>
         <Title tid="Корзина" />
         <SeewingGoodsListComponent seewingGoodsList={BASKET_SEEWING_GOODS_LIST} />
+        <MasterClassesListComponent masterClassesList={BASKET_MASTER_CLASSES_LIST} />
       </Content>
     </Container>
   );
