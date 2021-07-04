@@ -5,18 +5,19 @@ import {
   AdvantageListContainer,
   CatalogListContainer,
   InformationListContainer,
-  BannerContainer,
+  SliderContainer,
   PopularGoodsContainer,
   PopularMasterClassesContainer,
   PopularArticlesContainer,
 } from './frames';
 
 export function HomeComponent(props) {
+  const { sliderData } = props;
   return (
     <Container>
       <Content>
         <IndentLayout type="medium">
-          <BannerContainer />
+          <SliderContainer sliderData={sliderData} />
           <CatalogListContainer />
           <PopularGoodsContainer />
           <PopularMasterClassesContainer />

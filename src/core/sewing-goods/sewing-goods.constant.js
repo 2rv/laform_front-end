@@ -23,7 +23,7 @@ export const SEWING_GOODS_FILTER_TAGS_OPTIONS = [
     tid: 'Самые дешевые',
   },
 ];
-export const TEST_SEWING_GOODS_ITEMS = [
+export const SEWING_GOODS_TEST_ITEMS = [
   {
     id: 1,
     name: 'Сарафан 0445',

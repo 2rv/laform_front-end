@@ -23,7 +23,7 @@ export const MASTER_CLASSES_FILTER_TAGS_OPTIONS = [
     tid: 'Самые дешевые',
   },
 ];
-export const TEST_MASTER_CLASSES_ITEMS = [
+export const MASTER_CLASSES_TEST_ITEMS = [
   {
     id: 1,
     name: 'Мастер-класс по пошиву мужских брюк 1003',

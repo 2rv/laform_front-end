@@ -22,15 +22,16 @@ export function PatternsSubMenuComponent(props) {
 const Container = styled.div`
   display: flex;
   height: 100%;
-  gap: ${spacing(5)};
+  gap: ${spacing(6)};
   align-items: center;
 `;
 const Tab = styled(LinkSecondary)`
-  padding: ${spacing(5)} 0;
+  padding-bottom: ${spacing(1)};
+  color: ${THEME_COLOR.SECONDARY};
   ${(p) =>
     p.active &&
     css`
       border-bottom: 2px solid ${THEME_COLOR.SECONDARY_DARK};
-      font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+      font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
     `}
 `;

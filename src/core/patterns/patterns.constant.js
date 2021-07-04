@@ -23,7 +23,7 @@ export const PATTERNS_FILTER_TAGS_OPTIONS = [
     tid: 'Самые дешевые',
   },
 ];
-export const TEST_PATTERNS_ITEMS = [
+export const PATTERNS_TEST_ITEMS = [
   {
     id: 1,
     name: 'Сарафан 0445',
@@ -109,7 +109,7 @@ export const TEST_PATTERNS_ITEMS = [
     backgroundImage: '/static/test/popular-gods-3.png',
   },
 ];
-export const PATTERNS_SUB_MENU_ITEMS = [
+export const PATTERNS_SUB_MENU_TEST_ITEMS = [
   { name: 'PATTERNS.PATTERNS.MENU.ALL', path: '/patterns' },
   { name: 'PATTERNS.PATTERNS.MENU.PRINTED', path: '/patterns' },
   { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', path: '/patterns' },

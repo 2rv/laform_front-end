@@ -1,5 +1,5 @@
 export const PRODUCT_ROUTE_PATH = '/product';
-export const TEST_PRODUCT_DATA = {
+export const PRODUCT_TEST_DATA = {
   name: 'Комбинезон 0717',
   bestSeller: true,
   description: {
