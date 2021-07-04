@@ -3,7 +3,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary as SecondaryText } from '../../../../lib/element/text';
 import { ButtonBasic } from '../../../../lib/element/button';
 import { TitlePrimary } from '../../../../lib/element/title';
-export function MyGoodsItem(props) {
+export function AboutAccountActivityItemComponent(props) {
   const {
     id,
     name,
@@ -14,6 +14,7 @@ export function MyGoodsItem(props) {
     numberOfItems,
     price,
     status,
+    commentText,
   } = props;
   const { statusColor, statusTid } = StatusConvert(status);
   return (
@@ -22,20 +23,47 @@ export function MyGoodsItem(props) {
         <Image src={backgroundImage} />
         <PrimaryText tid={name} />
         <TextContainer>
-          <SecondaryText>Цвет:</SecondaryText>
-          <PrimaryText>{color},</PrimaryText>
-          <SecondaryText>Размер:</SecondaryText>
-          <PrimaryText>{size},</PrimaryText>
-          <SecondaryText>Категория:</SecondaryText>
-          <PrimaryText>{category},</PrimaryText>
-          <SecondaryText>Количество:</SecondaryText>
-          <PrimaryText>{numberOfItems}</PrimaryText>
+          {commentText ? (
+            <>
+              <SecondaryText tid={commentText} />
+              <ReadFull tid="Читать полностью" />
+            </>
+          ) : (
+            <>
+              {color && (
+                <>
+                  <SecondaryText>Цвет:</SecondaryText>
+                  <PrimaryText>{color},</PrimaryText>
+                </>
+              )}
+              {size && (
+                <>
+                  <SecondaryText>Размер:</SecondaryText>
+                  <PrimaryText>{size},</PrimaryText>
+                </>
+              )}
+              {category && (
+                <>
+                  <SecondaryText>Категория:</SecondaryText>
+                  <PrimaryText>{category},</PrimaryText>
+                </>
+              )}
+              {numberOfItems && (
+                <>
+                  <SecondaryText>Количество:</SecondaryText>
+                  <PrimaryText>{numberOfItems}</PrimaryText>
+                </>
+              )}
+            </>
+          )}
         </TextContainer>
-        <PriceContainer>
-          <TitlePrimary tid={price} />
-          <SecondaryText tid="руб." />
-        </PriceContainer>
-        <Status tid={statusTid} color={statusColor} />
+        {price && (
+          <PriceContainer>
+            <TitlePrimary tid={price} />
+            <SecondaryText tid="руб." />
+          </PriceContainer>
+        )}
+        {status && <Status tid={statusTid} color={statusColor} />}
       </GridContainer>
       <Divider />
     </>
@@ -75,10 +103,13 @@ const Image = styled.img`
 const PrimaryText = styled(SecondaryText)`
   color: ${THEME_COLOR.SECONDARY_DARK};
 `;
+const ReadFull = styled(PrimaryText)`
+  text-decoration: underline;
+`;
 const GridContainer = styled.div`
   display: grid;
   gap: ${spacing(3)};
   align-items: center;
-  grid-template-columns: 75px 160px 540px 1fr auto;
+  grid-template-columns: 75px 175px 530px 1fr auto;
   grid-template-rows: 75px;
 `;
