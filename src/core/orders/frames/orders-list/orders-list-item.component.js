@@ -125,12 +125,12 @@ const NameColumn = styled.div`
 `;
 const DetailsColumn = styled.div`
   display: grid;
-  gap: ${spacing(1)};
+  gap: ${spacing(1.5)};
   grid-column: 2;
 `;
 const DeliveryColumn = styled.div`
   display: grid;
-  gap: ${spacing(1)};
+  gap: ${spacing(1.5)};
   grid-column: 3;
 `;
 const PriceColumn = styled.div`
