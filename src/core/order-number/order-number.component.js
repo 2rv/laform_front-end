@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { OrderNumberTableComponent, AboutOrderContainer } from './frames';
 
-import { BASKET_PATTERS_LIST } from './order-number.constant';
+import { ORDER_NUMBER_LIST } from './order-number.constant';
 
 import { TextSecondary } from 'src/lib/element/text';
 import { TitlePrimary } from 'src/lib/element/title';
@@ -17,7 +17,7 @@ export function OrderNumberComponent() {
           <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />&nbsp;
           <OrderNumber>555105</OrderNumber>
         </HeadLine>
-        <OrderNumberTableComponent patternsList={BASKET_PATTERS_LIST} />
+        <OrderNumberTableComponent orderNumberList={ORDER_NUMBER_LIST} />
         <AboutOrderContainer />
       </Content>
     </Container>

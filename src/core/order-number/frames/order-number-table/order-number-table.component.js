@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import { OrderNumberTableItemComponent } from './order-number-table-item.component';
 
 import { ORDER_NUMBER_TABLE_COLUMNS } from '../../order-number.constant';
@@ -7,7 +5,7 @@ import { ORDER_NUMBER_TABLE_COLUMNS } from '../../order-number.constant';
 import { TextSecondary } from 'src/lib/element/text';
 import { Table, TableRow, TableHeader } from 'src/lib/element/table';
 
-export function OrderNumberTableComponent({ patternsList }) {
+export function OrderNumberTableComponent({ orderNumberList }) {
   return (
     <Table>
       <thead>
@@ -25,8 +23,8 @@ export function OrderNumberTableComponent({ patternsList }) {
       </thead>
 
       <tbody>
-        {patternsList.map((patterns) => (
-          <OrderNumberTableItemComponent key={patterns.id} {...patterns} />
+        {orderNumberList.map((orderNumber) => (
+          <OrderNumberTableItemComponent key={orderNumber.id} {...orderNumber} />
         ))}
       </tbody>
     </Table>

@@ -35,7 +35,6 @@ export function AboutOrderFormComponent(props) {
 }
 
 const AboutOrderText = styled(TitlePrimary)`
-  display: block;
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
 

@@ -1,6 +1,6 @@
 export const ORDER_NUMBER_TABLE_COLUMNS = '1fr 2.1fr 1fr';
 
-export const BASKET_PATTERS_LIST = [
+export const ORDER_NUMBER_LIST = [
   {
     id: 1,
     title: 'Выкройка пальто 1250 с руквавом',
