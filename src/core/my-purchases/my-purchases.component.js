@@ -5,9 +5,8 @@ import { TabsComponent, TableComponent } from './frames';
 import { PURCHASES_LIST } from './my-purchases.constant';
 
 import { ContentLayout } from 'src/lib/element/layout';
-import { TextSecondary } from 'src/lib/element/text';
 import { TitlePrimary } from 'src/lib/element/title';
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { spacing } from 'src/lib/theme';
 
 export function MyPurchasesComponent() {
   return (
