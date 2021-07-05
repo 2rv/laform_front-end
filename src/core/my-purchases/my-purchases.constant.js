@@ -1,7 +1,9 @@
+export const MY_PURCHASES_TABLE_COLUMNS = '1fr 2fr 0.4fr 0.4fr';
+
 export const PURCHASES_LIST = [
   {
     id: 1,
-    title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
+    title: 'Товары для шитья',
     image: {
       url: '/static/test/Popular-gods-2.png',
       alt: 'Popular Gods 2',
@@ -17,7 +19,7 @@ export const PURCHASES_LIST = [
   },
   {
     id: 2,
-    title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
+    title: 'Товары для шитья',
     image: {
       url: '/static/test/Popular-gods-1.png',
       alt: 'Popular Gods 1',

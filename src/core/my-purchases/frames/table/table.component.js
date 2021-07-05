@@ -1,60 +1,37 @@
 import styled from 'styled-components';
 
-import { TableRowComponent } from './table-row.component';
+import { TableItemComponent } from './table-item.component';
+
+import { MY_PURCHASES_TABLE_COLUMNS } from '../../my-purchases.constant';
 
 import { TextSecondary } from 'src/lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { Table, TableRow, TableHeader } from 'src/lib/element/table';
 
 export function TableComponent({ purchasesList }) {
   return (
     <Table>
       <thead>
-        <TableRow>
-          <TableTH>
+        <TableRow columns={MY_PURCHASES_TABLE_COLUMNS}>
+          <TableHeader>
             <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DESIGNATION" />
-          </TableTH>
-          <TableTH>
+          </TableHeader>
+          <TableHeader>
             <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.TITLE" />
-          </TableTH>
-          <TableTH>
+          </TableHeader>
+          <TableHeader>
             <TextSecondary tid="PURCHASE.SEЕWING_GOODS.PRODUCT_PRICE" />
-          </TableTH>
-          <TableTH>
+          </TableHeader>
+          <TableHeader>
             <TextSecondary tid="PURCHASE.SEЕWING_GOODS.CONDITION.TITLE" />
-          </TableTH>
+          </TableHeader>
         </TableRow>
       </thead>
 
       <tbody>
         {purchasesList.map((purchase) => (
-          <TableRowComponent key={purchase.id} {...purchase} />
+          <TableItemComponent key={purchase.id} {...purchase} />
         ))}
       </tbody>
     </Table>
   );
 }
-
-const Table = styled.table`
-  width: 100%;
-`;
-
-const TableRow = styled.tr`
-  border-bottom: 3px solid ${THEME_COLOR.BACKGROUND.GRAY};
-`;
-
-const TableTH = styled.th`
-  padding-bottom: ${spacing(2)};
-
-  span {
-    font-size: ${THEME_SIZE.FONT.DEFAULT};
-    color: ${THEME_COLOR.SECONDARY_DARK};
-  }
-
-  &:not(:last-child) {
-    text-align: start;
-  }
-
-  &:last-child {
-    text-align: end;
-  }
-`;
