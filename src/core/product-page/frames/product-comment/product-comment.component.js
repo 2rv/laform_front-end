@@ -25,7 +25,6 @@ export function ProductCommentComponent({ items }) {
     </Container>
   );
 }
-// Короче нужно сделать филд на всю ширину и ок будет
 const SecondTitle = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
@@ -61,7 +60,6 @@ export function ProductCommentItem(props) {
 // Сделать отправку по Enter
 // Formik!!!!!!
 // Сделать на длинный текст проверку
-// Background color есть но его вообще еле видно оставить????
 const IconButton = styled(ButtonBasic)`
   padding: 0;
   margin: 0 ${spacing(3)};

@@ -16,10 +16,10 @@ export function ProductImageComponent(props) {
     setSlide(slide === images.length - 1 ? 0 : slide + 1);
   };
   return (
-    <ImageContainer>
+    <Container>
       <ImageList>
         {images.map((src, index) => (
-          <Image
+          <ImageItem
             key={index}
             onClick={() => setSlide(index)}
             active={slide === index}
@@ -27,43 +27,41 @@ export function ProductImageComponent(props) {
           />
         ))}
       </ImageList>
-      <Container>
+      <Content>
         <MainImage src={images[slide]} />
         <Action onClick={prev} icon={ArrowLeft} />
-        <Action onClick={next} direction="right" icon={ArrowRight} />
-      </Container>
-    </ImageContainer>
+        <Action onClick={next} rigth icon={ArrowRight} />
+      </Content>
+    </Container>
   );
 }
-const ImageContainer = styled.div`
+const Container = styled.div`
   gap: ${spacing(3)};
-  display: flex;
+  display: grid;
+  grid-template-columns: 68px auto;
 `;
 const ImageList = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
 `;
-const MainImage = styled.img`
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-`;
-const Image = styled.img`
+const ImageItem = styled.img`
   ${({ active }) => active && `border: 3px solid ${THEME_COLOR.PRIMARY};`}
   cursor: pointer;
-  width: 71px;
-  height: 71px;
+  object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
-const Container = styled.div`
-  width: 469px;
-  height: 555px;
+const MainImage = styled.img`
+  object-fit: cover;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+`;
+const Content = styled.div`
   display: flex;
   position: relative;
   align-items: center;
 `;
 const Action = styled(ButtonBasic)`
-  z-index: 1;
-  background: none;
   position: absolute;
-  ${({ direction = 'left' }) => `${direction}: ${spacing(3)}`}
+  background: none;
+  ${({ rigth }) => `${rigth ? 'right' : 'left'}: ${spacing(6)}`}
 `;

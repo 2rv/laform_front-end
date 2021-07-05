@@ -3,11 +3,8 @@ import { ProductSelectComponent } from './product-select.component';
 
 export function ProductSelectContainer(props) {
   const {
-    options,
-    optionsKeys,
-    optionsTitles,
+    optionItem,
 
-    initialValue,
     validation,
     onSubmitForm,
 
@@ -18,6 +15,10 @@ export function ProductSelectContainer(props) {
     errorMessage,
   } = props;
 
+  const initialValue = optionItem.reduce((object, item) => {
+    object[item.fieldName] = item.initial;
+    return object;
+  }, {});
   return (
     <Formik
       initialValues={initialValue}
@@ -26,9 +27,7 @@ export function ProductSelectContainer(props) {
     >
       {(formProps) => (
         <ProductSelectComponent
-          options={options}
-          optionsTitles={optionsTitles}
-          optionsKeys={optionsKeys}
+          optionItem={optionItem}
           dataPending={dataPending}
           formPending={formPending}
           formSuccess={formSuccess}

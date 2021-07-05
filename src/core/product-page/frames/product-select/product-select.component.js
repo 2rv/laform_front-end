@@ -5,11 +5,9 @@ import { TextSecondary } from '../../../../lib/element/text';
 
 export function ProductSelectComponent(props) {
   const {
-    options,
-    optionsKeys,
-    optionsTitles,
-    values,
+    optionItem,
 
+    values,
     errors,
     touched,
     handleChange,
@@ -25,25 +23,23 @@ export function ProductSelectComponent(props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      {optionsKeys.map((item, index) => {
-        return (
-          <Container key={index}>
-            <Pair>
-              <TextSecondary tid={optionsTitles[item]} />
-              {item === 'size' && <CircleQuestion tid="?" />}
-            </Pair>
-            <FieldContainer>
-              <FieldSelect
-                options={options[item]}
-                name={item}
-                value={values[item]}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </FieldContainer>
-          </Container>
-        );
-      })}
+      {optionItem.map(({ id, title, type, items, fieldName }, index) => (
+        <Container key={id || index}>
+          <Pair>
+            <TextSecondary tid={title} />
+            {type === 'size' && <CircleQuestion tid="?" />}
+          </Pair>
+          <FieldContainer>
+            <FieldSelect
+              options={items}
+              name={fieldName}
+              value={values[fieldName]}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </FieldContainer>
+        </Container>
+      ))}
     </Form>
   );
 }
@@ -51,20 +47,18 @@ const Pair = styled.div`
   display: flex;
   gap: ${spacing(1.2)};
 `;
-const FieldContainer = styled.div`
-  width: 448px;
-  margin-left: auto;
-`;
 const Form = styled.form`
-  width: 100%;
   display: grid;
   gap: ${spacing(2)};
 `;
 const Container = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
+  display: grid;
   align-items: center;
-  width: 100%;
+  grid-template-columns: repeat(2, auto);
+`;
+const FieldContainer = styled.div`
+  width: 448px;
+  margin-left: auto;
 `;
 const CircleQuestion = styled(TextSecondary)`
   font-size: 12px;
