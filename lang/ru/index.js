@@ -18,6 +18,7 @@ import ARTICLES from './articles.json';
 import SEWING_GOODS from './sewing-gods.json';
 import MASTER_CLASSES from './master-classes.json';
 import ERROR_PAGE from './error-page.json';
+import BASKET from './basket.json';
 
 export const RU = {
   translation: {
@@ -41,5 +42,6 @@ export const RU = {
     SEWING_GOODS,
     MASTER_CLASSES,
     ERROR_PAGE,
+    BASKET,
   },
 };

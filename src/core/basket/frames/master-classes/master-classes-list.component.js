@@ -2,26 +2,31 @@ import styled from 'styled-components';
 
 import { MasterClassesListItemComponent } from './master-classes-list-item.component';
 
+import { MASTER_CLASSES_TABLE_COLUMNS } from '../../basket.constant';
+
 import { TextSecondary } from 'src/lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { Table, TableRow, TableHeader } from 'src/lib/element/table';
 
 export function MasterClassesListComponent({ masterClassesList }) {
   return (
     <Table>
       <thead>
-        <TableRow>
-          <TableTH>
-            <TextSecondary tid="Мастер-классы" />
-          </TableTH>
-          <TableTH>
-            <TextSecondary tid="Параметры" />
-          </TableTH>
-          <TableTH>
-            <TextSecondary tid="Итоговая цена" />
-          </TableTH>
-          <TableTH>
-            <></>
-          </TableTH>
+        <TableRow columns={MASTER_CLASSES_TABLE_COLUMNS}>
+          <TableHeader>
+            <TextSecondary tid="BASKET.TABLE.HEADER.MASTER_CLASSES" />
+          </TableHeader>
+          <TableHeader>
+            <TextSecondary tid="BASKET.TABLE.HEADER.PARAMETERS" />
+          </TableHeader>
+          <TableHeader>
+            <TextSecondary tid="BASKET.TABLE.HEADER.TOTAL_PRICE" />
+          </TableHeader>
+          <TableHeader>
+            {/* Edit Button */}
+          </TableHeader>
+          <TableHeader>
+            {/* Remove Button */}
+          </TableHeader>
         </TableRow>
       </thead>
 
@@ -33,29 +38,3 @@ export function MasterClassesListComponent({ masterClassesList }) {
     </Table>
   );
 }
-
-const Table = styled.table`
-  width: 100%;
-  margin: ${spacing(6)} 0;
-`;
-
-const TableRow = styled.tr`
-  border-bottom: 3px solid ${THEME_COLOR.BACKGROUND.GRAY};
-`;
-
-const TableTH = styled.th`
-  padding-bottom: ${spacing(2)};
-
-  span {
-    font-size: ${THEME_SIZE.FONT.DEFAULT};
-    color: ${THEME_COLOR.SECONDARY_DARK};
-  }
-
-  &:not(:last-child) {
-    text-align: start;
-  }
-
-  &:last-child {
-    text-align: end;
-  }
-`;

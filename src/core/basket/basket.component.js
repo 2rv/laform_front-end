@@ -4,6 +4,7 @@ import {
   SeewingGoodsListComponent,
   MasterClassesListComponent,
   PatternsListComponent,
+  FormalizationOrderingContainer,
 } from './frames';
 
 import {
@@ -14,18 +15,18 @@ import {
 
 import { TitlePrimary } from 'src/lib/element/title';
 import { ContentLayout } from 'src/lib/element/layout';
-import { spacing } from 'src/lib/theme';
-import { THEME_SIZE } from 'src/lib/theme'
+import { spacing, THEME_SIZE } from 'src/lib/theme';
 
 export function BasketComponent() {
   return (
     <Container>
-      <Content>
-        <Title tid="Корзина" />
+      <ContentLayout>
+        <Title tid="BASKET.TITLE" />
         <SeewingGoodsListComponent seewingGoodsList={BASKET_SEEWING_GOODS_LIST} />
         <MasterClassesListComponent masterClassesList={BASKET_MASTER_CLASSES_LIST} />
         <PatternsListComponent patternsList={BASKET_PATTERS_LIST} />
-      </Content>
+        <FormalizationOrderingContainer />
+      </ContentLayout>
     </Container>
   );
 }
@@ -41,6 +42,8 @@ const Content = styled(ContentLayout)`
 `;
 
 const Title = styled(TitlePrimary)`
+  display: block;
   font-size: 28px;
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
+  margin-bottom: ${spacing(5)};
 `;
