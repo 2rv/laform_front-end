@@ -63,12 +63,12 @@ export function ProductComponent(props) {
           </Main>
           {materials && (
             <MaterialsContainer>
-              <TitlePrimary tid={'Материалы'} />
+              <TitlePrimary tid="Материалы" />
               <ProductDescriptionComponent lines={3} text={materials} />
             </MaterialsContainer>
           )}
           <IndentLayout>
-            <TitlePrimary tid={'Рекомендации'} />
+            <TitlePrimary tid="Рекомендации" />
             <BasicCardList items={recomendItem} actions={actions} />
           </IndentLayout>
           <IndentLayout>

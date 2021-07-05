@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
 import { ButtonPrimary } from '../../../../lib/element/button';
-import { TitlePrimary } from '../../../../lib/element/title';
 
 export function ProductPurchasedActionsComponent(props) {
   return (

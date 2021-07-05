@@ -5,10 +5,10 @@ import { TextSecondary } from '../../../../lib/element/text';
 export function ProductDeliveredOptionComponent(props) {
   const { deliveredItem } = props;
 
-  return deliveredItem.map(({ title, value, status }) => {
+  return deliveredItem.map(({ title, value, status }, index) => {
     const { statusColor, statusText } = ConvertStatus(status);
     return (
-      <Container>
+      <Container key={index}>
         <Line>
           <TextSecondary>{title}:</TextSecondary>
           <TextPrimary tid={value} />

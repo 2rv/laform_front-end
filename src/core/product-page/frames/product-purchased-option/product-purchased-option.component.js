@@ -4,8 +4,8 @@ import { TextSecondary } from '../../../../lib/element/text';
 
 export function ProductPurchasedOptionComponent(props) {
   const { optionItem } = props;
-  return optionItem.map(({ title, value }) => (
-    <Container>
+  return optionItem.map(({ title, value }, index) => (
+    <Container key={index}>
       <Line>
         <TextSecondary>{title}:</TextSecondary>
         <TextPrimary tid={value} />
