@@ -8,6 +8,8 @@ export interface FieldPropsType {
   error: string;
   onChange: any;
   onBlur: any;
+  icon: any;
+  onClick: any;
 }
 
 export interface CheckboxPropsType {

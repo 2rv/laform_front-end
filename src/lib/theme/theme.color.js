@@ -17,8 +17,10 @@ export const THEME_COLOR = {
   TEXT: {
     DANGER: '#eb5757',
     SUCCESS: '#219653',
+    BLUE: '#2D9CDB',
     GRAY: '#f0f0f0',
     WHITE: '#fff',
+    BLUE: '#2D9CDB',
   },
   FIELD: {
     TEXT_PRIMARY: '#8f8d8e',
