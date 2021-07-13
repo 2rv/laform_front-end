@@ -8,5 +8,5 @@ import {
 
 export function settingsChangeDeliveryInfoRouter(ctx) {
   ctx.store.dispatch(setActivePath(SETTINGS_CHANGE_DELIVERY_INFO_ROUTE_PATH));
-  authRedirectPrivated(ctx, SETTINGS_CHANGE_DELIVERY_INFO_REDIRECT_GUEST);
+  // authRedirectPrivated(ctx, SETTINGS_CHANGE_DELIVERY_INFO_REDIRECT_GUEST);
 }

@@ -11,8 +11,8 @@ import {
 export function authVerificateEmailConfirmRouter(ctx) {
   ctx.store.dispatch(setActivePath(AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH));
   authRedirectPrivated(ctx, AUTH_VERIFICATE_EMAIL_CONFIRM_GUEST_REDIRECT);
-  codeVerificationRedirect(
-    ctx,
-    AUTH_VERIFICATE_EMAIL_CONFIRM_REDIRECT_ON_NO_CODE,
-  );
+  // codeVerificationRedirect(
+  //   ctx,
+  //   AUTH_VERIFICATE_EMAIL_CONFIRM_REDIRECT_ON_NO_CODE,
+  // );
 }

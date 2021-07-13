@@ -1,1 +1,1 @@
-export { MyPatternsContainer } from './my-patterns.container';
+export { MyPatternsPage } from './my-patterns.page';

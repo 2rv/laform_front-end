@@ -1,1 +1,1 @@
-export { MyPurchasesContainer } from './my-purchases.container';
+export { MyPurchasesPage } from './my-purchases.page';

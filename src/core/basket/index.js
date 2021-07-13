@@ -1,1 +1,1 @@
-export { BasketContainer } from './basket.container';
+export { BasketPage } from './basket.page';

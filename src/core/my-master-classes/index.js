@@ -1,1 +1,1 @@
-export { MyMasterClassesContainer } from './my-master-classes.container';
+export { MyMasterClassesPage } from './my-master-classes.page';
