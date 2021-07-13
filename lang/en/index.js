@@ -12,6 +12,7 @@ import INFORMATION_DIRECTORY_LIST from './information-directory-list.json';
 import FAQ_LIST from './faq-list.json';
 import AUTH from './auth.json';
 import SETTINGS from './settings.json';
+import ERROR_PAGE from './error-page.json';
 
 export const EN = {
   translation: {
@@ -29,5 +30,6 @@ export const EN = {
     FAQ_LIST,
     AUTH,
     SETTINGS,
+    ERROR_PAGE,
   },
 };
