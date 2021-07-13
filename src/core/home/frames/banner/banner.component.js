@@ -18,10 +18,10 @@ export function BannerComponent(props) {
     <Container>
       <Action onClick={prev} icon={ArrowLeft} />
       <Action onClick={next} direction="right" icon={ArrowRight} />
-      <BannerItemComponent key={slide} {...items[slide]} />
+      <BannerItemComponent {...items[slide]} />
       <BannerDot>
         {items.map((x, i) => (
-          <DotItem active={slide === i} />
+          <DotItem key={i} active={slide === i} />
         ))}
       </BannerDot>
     </Container>

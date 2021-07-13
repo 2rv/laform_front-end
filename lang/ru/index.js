@@ -19,6 +19,7 @@ import SEWING_GOODS from './sewing-gods.json';
 import MASTER_CLASSES from './master-classes.json';
 import ERROR_PAGE from './error-page.json';
 import PURCHASE from './purchase.json';
+import COMPILATION from './compilation.json';
 
 export const RU = {
   translation: {
@@ -43,5 +44,6 @@ export const RU = {
     MASTER_CLASSES,
     ERROR_PAGE,
     PURCHASE,
+    COMPILATION,
   },
 };
