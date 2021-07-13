@@ -1,0 +1,26 @@
+{
+  "SEЕWING_GOODS": {
+    "MY_PURCHASES": "Мои покупки",
+    "DESIGNATION": "Название",
+    "PRODUCT_PRICE": "Цена товара",
+    "DETAILS": {
+      "TITLE": "Подробности",
+      "SIZE": "Размер",
+      "CATEGORY": {
+        "TITLE": "Категория",
+        "OUTERWEAR": "Верхняя одежда"
+      },
+      "COUNT": "Количество",
+      "COLOR": {
+        "TITLE": "Цвет",
+        "WHITE": "Белый",
+        "GREEN": "Зелёный"
+      }
+    },
+    "CONDITION": {
+      "TITLE": "Состояние",
+      "DELIVERED": "Доставлено",
+      "PAID": "Оплачено"
+    }
+  }
+}
