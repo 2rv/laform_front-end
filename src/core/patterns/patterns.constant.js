@@ -67,7 +67,7 @@ export const TEST_PATTERNS_ITEMS = [
     backgroundImage: '/static/test/popular-gods-3.png',
   },
   {
-    id: 1,
+    id: 4,
     name: 'Сарафан 0445',
     complexity: 1,
     selected: true,
@@ -81,7 +81,7 @@ export const TEST_PATTERNS_ITEMS = [
     backgroundImage: '/static/test/popular-gods-1.png',
   },
   {
-    id: 2,
+    id: 5,
     name: ' Батист Макс Мара Горохи',
     complexity: 3,
     selected: false,
@@ -95,7 +95,7 @@ export const TEST_PATTERNS_ITEMS = [
     backgroundImage: '/static/test/popular-gods-2.png',
   },
   {
-    id: 3,
+    id: 6,
     name: 'Батист',
     complexity: 3,
     selected: false,

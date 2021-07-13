@@ -9,8 +9,8 @@ import { LinkPrimary } from '../../../../lib/element/link';
 import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
 import { BadgeDark } from '../../../../lib/element/badge';
 import { ModalMenu } from '../../../../lib/element/modal';
-import { LOGIN_ROUTE_PATH } from '../../../login';
-import { SIGNUP_ROUTE_PATH } from '../../../signup';
+
+import { LOGIN_ROUTE_PATH, SIGNUP_ROUTE_PATH } from '../../header.constants';
 
 import { USER_MODAL_ITEMS } from './header-action.constant';
 
