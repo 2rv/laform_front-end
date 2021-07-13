@@ -11,7 +11,7 @@ export const Table = styled.table`
 
 export const TableRow = styled.tr`
   display: grid;
-  grid-template-columns: ${({ columns }) => (columns ?? 'none')};
+  grid-template-columns: ${({ columns }) => columns ?? 'none'};
   align-items: center;
   grid-gap: ${spacing(2)};
   border-bottom: 3px solid ${THEME_COLOR.BACKGROUND.GRAY};
@@ -24,9 +24,11 @@ export const TableHeader = styled.th`
     font-size: ${THEME_SIZE.FONT.DEFAULT};
     color: ${THEME_COLOR.SECONDARY_DARK};
   }
+
   &:not(:last-child) {
     text-align: start;
   }
+
   &:last-child {
     text-align: end;
   }
@@ -36,10 +38,14 @@ export const TableData = styled.td`
   padding: ${spacing(2)} 0;
   vertical-align: middle;
   line-height: 24px;
+
   &:last-child {
     text-align: end;
   }
-  ${(props) => props.verticalMiddle && `
+
+  ${(props) =>
+    props.verticalMiddle &&
+    `
     display: flex;
     align-items: center;
   `}
