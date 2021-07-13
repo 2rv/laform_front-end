@@ -35,6 +35,10 @@ import {
   SETTINGS_CHANGE_PASSWORD_STORE_NAME,
 } from '../../core/settings-change-password';
 import {
+  settingsChangeEmailStore,
+  SETTINGS_CHANGE_EMAIL_STORE_NAME,
+} from '../../core/settings-change-email';
+import {
   settingsChangeDeliveryInfoStore,
   SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME,
 } from '../../core/settings-change-delivery-info';
@@ -51,6 +55,7 @@ export const reducers = combineReducers({
   [AUTH_VERIFICATE_EMAIL_STORE_NAME]: authVerificateEmailStore,
   [AUTH_CHANGE_PASSWORD_STORE_NAME]: authChangePasswordStore,
   [AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME]: authVerificateEmailConfirmStore,
+  [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
 });
