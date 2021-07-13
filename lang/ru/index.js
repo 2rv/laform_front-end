@@ -21,6 +21,7 @@ import ERROR_PAGE from './error-page.json';
 import BASKET from './basket.json';
 import PURCHASE from './purchase.json';
 import COMPILATION from './compilation.json';
+import ORDER_NUMBER from './order-number.json';
 
 export const RU = {
   translation: {
@@ -47,5 +48,6 @@ export const RU = {
     BASKET,
     PURCHASE,
     COMPILATION,
+    ORDER_NUMBER,
   },
 };
