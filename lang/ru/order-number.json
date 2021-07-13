@@ -1,0 +1,57 @@
+{
+  "TABLE": {
+    "TITLE": "Заказ номер",
+    "HEADER": {
+      "ORDER_ITEMS": "Товары заказа",
+      "PARAMETERS": "Параметры",
+      "TOTAL_PRICE": "Итоговая цена"
+    },
+    "DATA": {
+      "PARAMETERS": {
+        "FORMAT": "Формат",
+        "SIZE": "Размер",
+        "COLOR": "Цвет",
+        "COUNT": "Количество",
+        "WHITE": "Белый",
+        "PRINTED": "Печатная"
+      }
+    }
+  },
+  "FORM": {
+    "TITLE": "О заказе",
+    "FIELDS": {
+      "TITLE": {
+        "FULL_NAME": "ФИО",
+        "CURRENT_CITY": "Город проживания",
+        "DELIVERY_METHOD": "Способ доставки",
+        "CONTACT_NUMBER": "Контактный телефон",
+        "ORDER_NOTE": "Примечание к заказу",
+        "PAYMENT_METHOD": "Способ оплаты",
+        "PROMO_CODE": "Промокод"
+      },
+      "PLACEHOLDER": {
+        "MOSKVA": "Москва",
+        "CONTACT_NUMBER": "+7 000 000 00 00",
+        "YOUR_PROMO": "Ваше промо"
+      },
+      "SELECT_OPTIONS": {
+        "DELIVERY_METHOD": {
+          "SENDING_BY_EMAIL": "Отправка по почте",
+          "SENDING_BY_PLANE": "Отправка по самолету"
+        },
+        "PAYMENT_METHOD": {
+          "ONLINE": "Онлайн",
+          "CASH": "Наличными"
+        }
+      }
+    },
+    "FOOTER": {
+      "DISCOUNT_PRICE": "Цена со скидкой",
+      "SHIPPING_PRICE": "Цена за доставку",
+      "TOTAL_ORDER_PRICE": "Итоговая цена заказа",
+      "ORDER_STATUS": "Состояние заказа",
+      "DELIVERED": "Доставлен",
+      "SAVE_DATA": "Сохранить данные"
+    }
+  }
+}
