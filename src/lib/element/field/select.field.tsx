@@ -12,7 +12,7 @@ export function FieldSelect(props: SelectPropsType) {
   const { titleTid, name, value, options, onChange, onBlur } = props;
 
   return (
-    <Indent>
+    <Container>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
         <Select name={name} value={value} onChange={onChange} onBlur={onBlur}>
@@ -24,12 +24,13 @@ export function FieldSelect(props: SelectPropsType) {
         </Select>
         <ArrowDownIcon />
       </InputContainer>
-    </Indent>
+    </Container>
   );
 }
 
-const Indent = styled.div`
-  padding: ${spacing(1)};
+const Container = styled.div`
+  display: grid;
+  gap: ${spacing(1)};
 `;
 
 const Title = styled(TextSecondary)`
