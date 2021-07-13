@@ -1,11 +1,11 @@
 export interface ErrorFieldPropsType {
   errorTid: string;
-  errorTvalue?: string;
+  errorTvalue?: object;
   helperTid?: string;
-  helperTvalue?: string;
+  helperTvalue?: object;
 }
 
 export interface ErrorRequestPropsType {
   tid: string;
-  tvalue?: string;
+  tvalue?: object;
 }
