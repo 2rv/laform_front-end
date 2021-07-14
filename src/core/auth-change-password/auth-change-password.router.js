@@ -11,6 +11,6 @@ import {
 export function authChangePasswordRouter(ctx) {
   ctx.store.dispatch(setActivePath(AUTH_CHANGE_PASSWORD_ROUTE_PATH));
 
-  authRedirectLogged(ctx, AUTH_CHANGE_PASSWORD_REDIRECT_ON_LOGGED);
-  codeVerificationRedirect(ctx, AUTH_CHANGE_PASSWORD_REDIRECT_ON_NO_CODE);
+  // authRedirectLogged(ctx, AUTH_CHANGE_PASSWORD_REDIRECT_ON_LOGGED);
+  // codeVerificationRedirect(ctx, AUTH_CHANGE_PASSWORD_REDIRECT_ON_NO_CODE);
 }
