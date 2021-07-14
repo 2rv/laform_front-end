@@ -9,5 +9,5 @@ import {
 export function settingsChangePasswordRouter(ctx) {
   ctx.store.dispatch(setActivePath(SETTINGS_CHANGE_PASSWORD_ROUTE_PATH));
 
-  authRedirectPrivated(ctx, SETTINGS_CHANGE_PASSWORD_REDIRECT_GUEST);
+  // authRedirectPrivated(ctx, SETTINGS_CHANGE_PASSWORD_REDIRECT_GUEST);
 }
