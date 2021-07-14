@@ -1,6 +1,6 @@
 export interface TextPropsType {
   tid: string;
-  tvalue?: object;
+  tvalue?: object | undefined;
   className?: string;
   onClick?: any;
   children?: any;
