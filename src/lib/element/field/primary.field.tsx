@@ -25,31 +25,24 @@ export function FieldPrimary(props: FieldPropsType) {
   } = props;
 
   return (
-    <Container>
-      <InputContainer>
-        {titleTid && <Title tid={titleTid} />}
-        <Input
-          className={className}
-          onChange={onChange}
-          onBlur={onBlur}
-          value={value}
-          name={name}
-          placeholder={text(placeholderTid)}
-          type={type || 'text'}
-          error={!!error}
-        />
-      </InputContainer>
+    <FieldContainer>
+      {titleTid && <Title tid={titleTid} />}
+      <Input
+        className={className}
+        onChange={onChange}
+        onBlur={onBlur}
+        value={value}
+        name={name}
+        placeholder={text(placeholderTid)}
+        type={type || 'text'}
+        error={!!error}
+      />
       {error && <ErrorField errorTid={error} />}
-    </Container>
+    </FieldContainer>
   );
 }
 
-const Container = styled.div`
-  display: grid;
-  gap: ${spacing(2)};
-`;
-
-const InputContainer = styled.div`
+const FieldContainer = styled.div`
   display: grid;
   gap: ${spacing(1)};
 `;
@@ -60,20 +53,39 @@ const Title = styled(TextSecondary)`
 
 const Input = styled.input<InputProps>`
   padding: ${spacing(3)};
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.DEFAULT};
   background: ${THEME_COLOR.BACKGROUND.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
   transition-property: border;
   transition-duration: ${THEME_VALUE.TRANSITION.HOVER};
 
-  ${(p) =>
-    p.error &&
-    css`
-      border: 1px solid ${THEME_COLOR.DANGER};
-    `}
+  border: ${(props) =>
+    props.error ? `1px solid ${THEME_COLOR.DANGER}` : '1px solid transparent'};
 
-  :focus {
+  &:focus {
     border: 1px solid ${THEME_COLOR.LIGHT_GRAY};
+    opacity: 1;
+  }
+  &:hover {
+    opacity: ${THEME_VALUE.OPACITY.HOVER};
+  }
+
+  &:-webkit-autofill {
+    border: ${(props) =>
+      props.error
+        ? `1px solid ${THEME_COLOR.DANGER}`
+        : '1px solid transparent'};
+  }
+  &:-webkit-autofill:hover {
+    border: ${(props) =>
+      props.error
+        ? `1px solid ${THEME_COLOR.DANGER}`
+        : '1px solid transparent'};
+    opacity: ${THEME_VALUE.OPACITY.HOVER};
+  }
+  &:-webkit-autofill:focus {
+    border: 1px solid #b5b5b5;
+    opacity: 1;
   }
 `;

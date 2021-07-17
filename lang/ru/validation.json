@@ -1,9 +1,9 @@
 {
-  "REQUIRED": "Это поле обязательно.",
-  "MIN_LENGTH": "Значение слишком короткое.",
-  "MAX_LENGTH": "Значение слишком длинное.",
-  "LOGIN": "Логин содержит недопустимые символы.",
-  "EMAIL": "Некорректный e-mail адрес.",
-  "PASSWORD_REPEAT": "Пароли не совпадают.",
-  "NOT_PHONE": "Некорректный номер телефона."
+  "REQUIRED": "REQUIRED VALIDATION",
+  "MIN_LENGTH": "MIN_LENGTH VALIDATION",
+  "MAX_LENGTH": "MAX_LENGHT VALIDATION",
+  "LOGIN": "LOGIN VALIDATION",
+  "EMAIL": "EMAIL VALIDATION",
+  "PASSWORD_REPEAT": "PASSWORD VALIDATION",
+  "NOT_PHONE": "PHONE VALIDATION"
 }

@@ -2,9 +2,6 @@ export const THEME_SIZE = {
   TRANSACTION: {
     DEFAULT: '0.5s',
   },
-  OPACITY: {
-    DEFAULT: '0.7',
-  },
   INDENT: {
     DEFAULT: '30px',
     LARGE: '120px',
