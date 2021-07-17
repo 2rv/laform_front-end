@@ -1,16 +1,17 @@
 import {
   SETTINGS_CHANGE_EMAIL_DATA_NAME,
   SETTINGS_CHANGE_EMAIL_FIELD_NAME,
+  SETTINGS_CHANGE_EMAIL_DATA_KEY,
 } from './settings-change-email.type';
 
 export const convertSettingsChangeEmailFormData = (data) => ({
   [SETTINGS_CHANGE_EMAIL_DATA_NAME.EMAIL]:
-    data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.EMAIL],
+    data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.NEW_EMAIL],
   [SETTINGS_CHANGE_EMAIL_DATA_NAME.PASSWORD]:
     data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.PASSWORD],
 });
 
-export const performSettingsChangeEmailFormData = (data) => ({
-  [SETTINGS_CHANGE_EMAIL_FIELD_NAME.EMAIL]:
+export const performSettingsChangeEmailLoadEmailData = (data) => ({
+  [SETTINGS_CHANGE_EMAIL_DATA_KEY.EMAIL]:
     data[SETTINGS_CHANGE_EMAIL_DATA_NAME.EMAIL],
 });

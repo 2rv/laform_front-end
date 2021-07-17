@@ -9,15 +9,18 @@ export function SettingsFormChangeEmailContainer(props) {
     initialValue,
     validation,
     onSubmitForm,
-
-    dataPending,
-    formPending,
-    formSuccess,
-    formError,
-    errorMessage,
+    isFormUploadPending,
+    isFormUploadSuccess,
+    isFormUploadError,
+    formUploadErrorMessage,
+    isEmailLoadPending,
+    pageLoading,
   } = props;
 
-  const EMAIL_NAME = fieldName[SETTINGS_FORM_CHANGE_EMAIL_FIELD_KEY.EMAIL];
+  const OLD_EMAIL_NAME =
+    fieldName[SETTINGS_FORM_CHANGE_EMAIL_FIELD_KEY.OLD_EMAIL];
+  const NEW_EMAIL_NAME =
+    fieldName[SETTINGS_FORM_CHANGE_EMAIL_FIELD_KEY.NEW_EMAIL];
   const PASSWORD_NAME =
     fieldName[SETTINGS_FORM_CHANGE_EMAIL_FIELD_KEY.PASSWORD];
 
@@ -30,13 +33,15 @@ export function SettingsFormChangeEmailContainer(props) {
     >
       {(formProps) => (
         <SettingsFormChangeEmailComponent
-          fieldEmail={EMAIL_NAME}
+          fieldOldEmail={OLD_EMAIL_NAME}
+          fieldNewEmail={NEW_EMAIL_NAME}
           fieldPassword={PASSWORD_NAME}
-          dataPending={dataPending}
-          formPending={formPending}
-          formSuccess={formSuccess}
-          formError={formError}
-          errorMessage={errorMessage}
+          isFormUploadPending={isFormUploadPending}
+          isFormUploadSuccess={isFormUploadSuccess}
+          isFormUploadError={isFormUploadError}
+          formUploadErrorMessage={formUploadErrorMessage}
+          isEmailLoadPending={isEmailLoadPending}
+          pageLoading={pageLoading}
           {...formProps}
         />
       )}

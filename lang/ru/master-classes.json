@@ -4,5 +4,12 @@
 		"FIELD": {
 			"FIND_MASTER_CLASSES": "Найти мастер-классы"
 		}
+	},
+	"MY_MASTER_CLASSES": {
+		"TITLE": "Мои мастер-классы",
+		"LIST": {
+			"PROGRAM": "Программа",
+			"REMOTE": "Удалённая"
+		}
 	}
 }

@@ -58,6 +58,7 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
+  [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
 });
 
 export { initStore } from './store.core';

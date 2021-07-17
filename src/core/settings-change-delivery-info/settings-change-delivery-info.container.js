@@ -60,7 +60,7 @@ export function SettingsChangeDeliveryInfoContainer() {
     return performSettingsChangeDeliveryInfoFormData(rawData);
   };
 
-  useEffect(() => dispatch(settingsChangeDeliveryInfoLoadData()), []);
+  // useEffect(() => dispatch(settingsChangeDeliveryInfoLoadData()), []);
 
   return (
     <SettingsFormChangeDeliveryInfoContainer

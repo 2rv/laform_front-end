@@ -5,9 +5,10 @@ export const THEME_COLOR = {
   SECONDARY_DARK: '#2f2a2c',
   LIGHT_GRAY: '#bfbfbf',
   DANGER: '#eb5757',
+  BUTTON: { INACTIVE: '#808080' },
   BACKGROUND: {
-    DANGER: '#ffeaea',
-    SUCCESS: '#d0ffe4',
+    DANGER: '#FFE6E6',
+    SUCCESS: '#D1FFE4',
     GRAY: '#f0f0f0',
     WHITE: '#fff',
   },
@@ -15,10 +16,13 @@ export const THEME_COLOR = {
     SECONDARY_DARK_75: 'rgba(47, 42, 44, 0.75)',
   },
   TEXT: {
+    DEFAULT: '',
     DANGER: '#eb5757',
     SUCCESS: '#219653',
+    BLUE: '#2D9CDB',
     GRAY: '#f0f0f0',
     WHITE: '#fff',
+    BLUE: '#2D9CDB',
   },
   FIELD: {
     TEXT_PRIMARY: '#8f8d8e',

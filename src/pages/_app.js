@@ -14,6 +14,9 @@ import { NavigationObserver } from '../lib/common/navigation';
 
 import '../asset/css/main.css';
 
+import '../core/signup'
+import '../core/login'
+
 class MyApp extends App {
   componentDidMount() {
     langBrowserDetection();
