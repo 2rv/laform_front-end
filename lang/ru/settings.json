@@ -69,6 +69,7 @@
       "TITLE": "Пароль",
       "PLACEHOLDER": "Пароль"
     },
+    "SUCCESS": "CHANGE_EMAIL SUCCESS MESSAGE",
     "SUBMIT": "Сменить"
   }
 }
