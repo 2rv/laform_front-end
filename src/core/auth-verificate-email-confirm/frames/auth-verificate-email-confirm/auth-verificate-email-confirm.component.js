@@ -1,16 +1,14 @@
 import styled from 'styled-components';
-
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { ContentLayout, IndentLayout } from '../../../../lib/element/layout';
 import { LoaderPrimary } from '../../../../lib/element/loader';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert } from '../../../../lib/element/alert';
 import { TextSecondary } from '../../../../lib/element/text';
 import { THEME_SIZE } from '../../../../lib/theme';
 
 export function AuthVerificateEmailConfirmComponent(props) {
   const { onButtonClick, isPending, isSuccess, isError, errorMessage } = props;
-  const buttonDisabled = true;
   return (
     <Container type="small">
       <IndentLayout type="text">
@@ -24,7 +22,7 @@ export function AuthVerificateEmailConfirmComponent(props) {
             onClick={onButtonClick}
             disabled={!isSuccess}
           />
-          {isError && <ErrorRequest tid={errorMessage} />}
+          {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
           {isPending && <LoaderPrimary />}
         </IndentLayout>
       </ContentLayout>

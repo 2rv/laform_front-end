@@ -21,7 +21,8 @@
     },
     "BUTTON": {
       "SUBMIT": "Создать аккаунт"
-    }
+    },
+    "SUCCESS": "SUCCESS MESSAGE"
   },
   "SOCIAL": {
     "HELPER_TEXT": "Или войдите с помощью"

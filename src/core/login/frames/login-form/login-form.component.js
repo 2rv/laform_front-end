@@ -1,7 +1,7 @@
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
 
 export function LoginFormComponent(props) {
@@ -53,7 +53,7 @@ export function LoginFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {isError && <ErrorRequest tid={errorMessage} />}
+          {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
         </FieldLayout>
         <ButtonPrimary
           tid="LOGIN.LOGIN_FORM.BUTTON.SUBMIT"

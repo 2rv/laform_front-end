@@ -3,7 +3,7 @@ import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { LoaderPrimary } from '../../../../lib/element/loader';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 
 export function AuthFormChangePasswordComponent(props) {
   const {
@@ -56,7 +56,8 @@ export function AuthFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {isError && <ErrorRequest tid={errorMessage} />}
+          {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+          {isSuccess && <SuccessAlert tid="AUTH.CHANGE_PASSWORD.SUCCESS" />}
         </FieldLayout>
         <ButtonPrimary
           tid="AUTH.CHANGE_PASSWORD.SUBMIT"

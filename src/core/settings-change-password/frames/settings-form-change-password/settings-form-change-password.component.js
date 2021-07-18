@@ -4,9 +4,8 @@ import { FieldPrimary } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
-import { SuccessRequest } from '../../../../lib/element/success';
 
 export function SettingsFormChangePasswordComponent(props) {
   const {
@@ -66,10 +65,8 @@ export function SettingsFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {isSuccess && (
-            <SuccessRequest tid="SETTINGS.CHANGE_PASSWORD.SUCCESS" />
-          )}
-          {isError && <ErrorRequest tid={errorMessage} />}
+          {isSuccess && <SuccessAlert tid="SETTINGS.CHANGE_PASSWORD.SUCCESS" />}
+          {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
         </FieldLayout>
         <Submit
           tid="SETTINGS.CHANGE_PASSWORD.SUBMIT"

@@ -1,7 +1,7 @@
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
 
 export function SignupFormComponent(props) {
@@ -75,7 +75,8 @@ export function SignupFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {isError && <ErrorRequest tid={errorMessage} />}
+          {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+          {isSuccess && <SuccessAlert tid="SIGNUP.SIGNUP_FORM.SUCCESS" />}
         </FieldLayout>
         <ButtonPrimary
           tid="SIGNUP.SIGNUP_FORM.BUTTON.SUBMIT"
