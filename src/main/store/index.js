@@ -42,6 +42,7 @@ import {
   settingsChangeDeliveryInfoStore,
   SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME,
 } from '../../core/settings-change-delivery-info';
+import { sliderStore, SLIDER_STORE_NAME } from '../../core/slider';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -59,6 +60,7 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
+  [SLIDER_STORE_NAME]: sliderStore,
 });
 
 export { initStore } from './store.core';

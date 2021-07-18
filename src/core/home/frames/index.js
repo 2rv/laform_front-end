@@ -1,4 +1,3 @@
-export { BannerContainer } from './banner';
 export { CatalogListContainer } from './catalog-list';
 export { PopularGoodsContainer } from './popular-goods';
 export { PopularMasterClassesContainer } from './popular-master-classes';
