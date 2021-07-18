@@ -41,6 +41,7 @@ const Button = styled.button`
             opacity: ${THEME_VALUE.OPACITY.HOVER};
           }
         `}
+  transition: opacity ${THEME_SIZE.TRANSACTION.DEFAULT};
 `;
 
 const IconContainer = styled.span`

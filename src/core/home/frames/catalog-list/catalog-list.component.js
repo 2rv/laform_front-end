@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 
-import { spacing } from '../../../../lib/theme';
+import { spacing, THEME_SIZE } from '../../../../lib/theme';
 
 import { CatalogItemComponent } from './catalog-item.component';
 
