@@ -60,16 +60,21 @@ export function SliderItemComponent(props) {
   );
 }
 
-const ContentContainer = styled.div`
-  position: absolute;
+const SliderContainer = styled.div`
+  height: 350px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  position: relative;
   align-items: center;
-  gap: ${spacing(6.3)};
+  justify-content: center;
+  overflow: hidden;
 `;
 
-const Button = styled(ButtonPrimary)`
-  padding: ${spacing(3)} ${spacing(11)};
+const Action = styled(ButtonBasic)`
+  z-index: 1;
+  background: none;
+  position: absolute;
+  ${({ direction = 'left' }) => `${direction}: 3%`}
 `;
 
 const Container = styled.div`
@@ -89,6 +94,14 @@ const Container = styled.div`
   }
 `;
 
+const ContentContainer = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${spacing(6.3)};
+`;
+
 const TitleText = styled(TextPrimary)`
   text-align: center;
   width: 550px;
@@ -100,6 +113,10 @@ const TitleText = styled(TextPrimary)`
     width: 350px;
     font-size: ${THEME_SIZE.FONT.LARGE};
   }
+`;
+
+const Button = styled(ButtonPrimary)`
+  padding: ${spacing(3)} ${spacing(11)};
 `;
 
 const BackgroundImage = styled.img`
@@ -119,21 +136,4 @@ const DotItem = styled.div`
   border-radius: 50%;
   background-color: #fff;
   opacity: ${({ active }) => (active ? 1 : 0.5)};
-`;
-
-const Action = styled(ButtonBasic)`
-  z-index: 1;
-  background: none;
-  position: absolute;
-  ${({ direction = 'left' }) => `${direction}: 3%`}
-`;
-
-const SliderContainer = styled.div`
-  height: 350px;
-  width: 100%;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
 `;

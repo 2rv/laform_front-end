@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { THEME_COLOR, THEME_VALUE } from '../../theme';
 
@@ -13,10 +13,4 @@ const Button = styled(ButtonBasic)`
   background-color: ${THEME_COLOR.PRIMARY};
   color: ${THEME_COLOR.TEXT.WHITE};
   transition: opacity ${THEME_VALUE.TRANSITION.FAST};
-
-  ${(p) =>
-    p.disabled &&
-    css`
-      opacity: ${THEME_VALUE.OPACITY.DISABLED};
-    `}
 `;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { text } from '../../common/text';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
@@ -31,6 +31,16 @@ const Button = styled.button`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
+  ${(props) =>
+    props.disabled
+      ? css`
+          opacity: ${THEME_VALUE.OPACITY.DISABLED};
+        `
+      : css`
+          &:hover {
+            opacity: ${THEME_VALUE.OPACITY.HOVER};
+          }
+        `}
 `;
 
 const IconContainer = styled.span`
