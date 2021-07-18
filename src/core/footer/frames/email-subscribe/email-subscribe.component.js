@@ -5,8 +5,7 @@ import { IndentLayout } from '../../../../lib/element/layout';
 import { TextPrimary } from '../../../../lib/element/text';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { ButtonSecondary } from '../../../../lib/element/button';
-import { SuccessRequest } from '../../../../lib/element/success';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
 
 export function EmailSubscribeComponent(props) {
@@ -53,10 +52,8 @@ export function EmailSubscribeComponent(props) {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {isError && <ErrorRequest tid={errorMessage} />}
-            {isSuccess && (
-              <SuccessRequest tid="FOOTER.EMAIL_SUBSCRIBE.SUCCESS" />
-            )}
+            {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+            {isSuccess && <SuccessAlert tid="FOOTER.EMAIL_SUBSCRIBE.SUCCESS" />}
             {!isSuccess && (
               <SubscribeButton
                 tid="FOOTER.EMAIL_SUBSCRIBE.BUTTON_TEXT"

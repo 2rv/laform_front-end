@@ -4,7 +4,7 @@ import { FieldSelect } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { IndentLayout } from '../../../../lib/element/layout';
-import { SuccessRequest } from '../../../../lib/element/success';
+import { SuccessAlert } from '../../../../lib/element/alert';
 
 export function SettingsFormChangePaymentMethodComponent(props) {
   const {
@@ -32,7 +32,7 @@ export function SettingsFormChangePaymentMethodComponent(props) {
           onBlur={handleBlur}
         />
         {isSuccess && (
-          <SuccessRequest tid="SETTINGS.CHANGE_PAYMENT_METHOD.SUCCESS" />
+          <SuccessAlert tid="SETTINGS.CHANGE_PAYMENT_METHOD.SUCCESS" />
         )}
         <Submit tid="SETTINGS.CHANGE_PAYMENT_METHOD.SUBMIT" type="submit" />
       </IndentLayout>
