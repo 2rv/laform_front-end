@@ -8,19 +8,21 @@ export function CatalogItemComponent(props) {
   const { title, description, backgroundImage, path } = props;
 
   return (
-    <LinkPrimary path={path}>
-      <Container>
+    <Container>
+      <LinkPrimary path={path}>
         <BackgroundImage src={backgroundImage} />
         <ContentContainer>
           <TitleText tid={title} />
           <DescriptionText tid={description} />
         </ContentContainer>
-      </Container>
-    </LinkPrimary>
+      </LinkPrimary>
+    </Container>
   );
 }
 
 const Container = styled.div`
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  overflow: hidden;
   position: relative;
   @media only screen and (max-width: 720px) {
     height: 300px;
