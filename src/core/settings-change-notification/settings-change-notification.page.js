@@ -8,7 +8,7 @@ import { FooterContainer } from '../footer';
 import { HeaderLogoContainer } from '../header-logo';
 import { HeaderContainer } from '../header';
 
-import { SettingsFormChangeNotificationContainer } from './frames/settings-form-change-notification';
+import { SettingsChangeNotificationContainer } from './settings-change-notification.container';
 
 export function SettingsChangeNotificationPage() {
   return (
@@ -20,7 +20,7 @@ export function SettingsChangeNotificationPage() {
         </IndentLayout>
         <PageLayout horizontal="center">
           <ContentLayout type="medium">
-            <SettingsFormChangeNotificationContainer />
+            <SettingsChangeNotificationContainer />
           </ContentLayout>
         </PageLayout>
       </IndentLayout>
