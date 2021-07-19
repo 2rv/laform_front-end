@@ -16,19 +16,27 @@ export function SignupFormSocialComponent() {
     <IndentLayout type="text">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />
       <ButtonContainer>
-        <ButtonBasic icon={AppleIcon}>
+        <SMButton icon={AppleIcon}>
           <AppleText />
-        </ButtonBasic>
-        <ButtonBasic icon={GoogleIcon}>
+        </SMButton>
+        <SMButton icon={GoogleIcon}>
           <GoogleText />
-        </ButtonBasic>
-        <ButtonBasic icon={FbIcon}>
+        </SMButton>
+        <SMButton icon={FbIcon}>
           <FbText />
-        </ButtonBasic>
+        </SMButton>
       </ButtonContainer>
     </IndentLayout>
   );
 }
+
+const SMButton = styled(ButtonBasic)`
+  align-items: center;
+  grid-column-gap: ${spacing(2)};
+  span {
+    width: auto;
+  }
+`;
 
 const ButtonContainer = styled.div`
   display: grid;
