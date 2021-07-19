@@ -11,7 +11,6 @@ import {
   PAYMENT_METHOD_STORE_NAME,
 } from '../../lib/common/payment-method';
 
-import { footerStore, FOOTER_STORE_NAME } from '../../core/footer';
 import { signupStore, SIGNUP_STORE_NAME } from '../../core/signup';
 import { loginStore, LOGIN_STORE_NAME } from '../../core/login';
 import {
@@ -43,13 +42,16 @@ import {
   SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME,
 } from '../../core/settings-change-delivery-info';
 import { sliderStore, SLIDER_STORE_NAME } from '../../core/slider';
+import {
+  notificationStore,
+  NOTIFICATION_STORE_NAME,
+} from '../../core/notification';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
   [LANG_STORE_NAME]: langStore,
   [NAVIGATION_STORE_NAME]: navigationStore,
   [PAYMENT_METHOD_STORE_NAME]: paymentMethodStore,
-  [FOOTER_STORE_NAME]: footerStore,
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [AUTH_RECOVERY_ACCOUNT_STORE_NAME]: authRecoveryAccountStore,
@@ -61,6 +63,7 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
+  [NOTIFICATION_STORE_NAME]: notificationStore,
 });
 
 export { initStore } from './store.core';

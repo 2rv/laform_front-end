@@ -20,13 +20,6 @@
       "PRIVACY_POLICY": "Политика конфиденциальности"
     }
   },
-  "EMAIL_SUBSCRIBE": {
-    "PRE_CTA": "Не пропустите,",
-    "CTA": "оформите подписку!",
-    "FIELD_PLACEHOLDER": "Введите свой Email",
-    "BUTTON_TEXT": "Подписаться",
-    "SUCCESS": "Подписка успешно оформлена!"
-  },
   "COPYRIGHT": {
     "BRAND": "2021. LAFORME.RU.",
     "ALL_RIGHTS_RESERVED": "Все права защищены."

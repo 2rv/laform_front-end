@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import { ContentLayout } from '../../lib/element/layout';
-
 import { spacing, THEME_COLOR } from '../../lib/theme';
-
 import { FOOTER_MENU_ITEMS, FOOTER_SOCIAL_LINKS } from './footer.constant';
-
 import {
-  EmailSubscribeContainer,
   FooterCopyrightComponent,
   FooterMenuComponent,
   FooterSocialListComponent,
 } from './frames';
+import { NotificationContainer } from '../notification';
 
 export function FooterComponent(props) {
   return (
@@ -18,7 +15,7 @@ export function FooterComponent(props) {
       <ContentLayout>
         <Content>
           <FooterMenu items={FOOTER_MENU_ITEMS} />
-          <EmailSubscribe {...props} />
+          <NotificationForm />
           <FooterCopyright />
           <FooterSocialList items={FOOTER_SOCIAL_LINKS} />
         </Content>
@@ -53,7 +50,7 @@ const FooterMenu = styled(FooterMenuComponent)`
   justify-content: space-between;
 `;
 
-const EmailSubscribe = styled(EmailSubscribeContainer)`
+const NotificationForm = styled(NotificationContainer)`
   grid-column: 4;
   grid-row: 1;
 
