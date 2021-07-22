@@ -17,13 +17,16 @@ export function PopularArticlesComponent({ items }) {
     </IndentLayout>
   );
 }
+
 const FlexContainer = styled.div`
   display: flex;
 `;
+
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
+
 const ViewAllLink = styled(LinkSecondary)`
   margin-left: auto;
 `;

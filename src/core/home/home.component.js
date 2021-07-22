@@ -7,9 +7,9 @@ import {
   InformationListContainer,
   PopularGoodsContainer,
   PopularMasterClassesContainer,
-  PopularArticlesContainer,
 } from './frames';
 import { SliderContainer } from '../../core/slider';
+import { HomeArticlesContainer } from '../../core/home-articles';
 
 export function HomeComponent(props) {
   return (
@@ -20,7 +20,7 @@ export function HomeComponent(props) {
           <CatalogListContainer />
           <PopularGoodsContainer />
           <PopularMasterClassesContainer />
-          <PopularArticlesContainer />
+          <HomeArticlesContainer />
           <InformationListContainer />
           <AdvantageListContainer />
         </IndentLayout>
