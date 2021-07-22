@@ -41,9 +41,9 @@ export function NotificationContainer() {
     [NOTIFICATION_FIELD_NAME.EMAIL]: email ? email : '',
   });
 
-  useEffect(() => {
-    dispatch(notificationLoadEmail());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(notificationLoadEmail());
+  // }, []);
 
   return (
     <NotificationComponent

@@ -50,6 +50,10 @@ import {
   settingsChangeNotificationStore,
   SETTINGS_CHANGE_NOTIFICATION_STORE_NAME,
 } from '../../core/settings-change-notification';
+import {
+  homeArticleStore,
+  HOME_ARTICLE_STORE_NAME,
+} from '../../core/home-articles';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -68,7 +72,6 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
   [NOTIFICATION_STORE_NAME]: notificationStore,
-  [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
 });
 
 export { initStore } from './store.core';
