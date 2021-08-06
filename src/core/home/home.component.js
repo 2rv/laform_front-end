@@ -15,15 +15,15 @@ export function HomeComponent(props) {
   return (
     <Container>
       <Content>
-        <IndentLayout type="medium">
+        <ContentSectionLayout type="medium">
           <SliderContainer />
           <CatalogListContainer />
-          <PopularGoodsContainer />
-          <PopularMasterClassesContainer />
+          {/* <PopularGoodsContainer /> */}
+          {/* <PopularMasterClassesContainer /> */}
           <HomeArticlesContainer />
           <InformationListContainer />
           <AdvantageListContainer />
-        </IndentLayout>
+        </ContentSectionLayout>
       </Content>
     </Container>
   );
@@ -36,4 +36,13 @@ const Container = styled.div`
 
 const Content = styled(ContentLayout)`
   padding: 0 ${spacing(6)};
+  @media screen and (max-width: 600px) {
+    padding: 0 ${spacing(3)};
+  }
+`;
+
+const ContentSectionLayout = styled(IndentLayout)`
+  @media screen and (max-width: 600px) {
+    grid-row-gap: ${spacing(6)};
+  }
 `;

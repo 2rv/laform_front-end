@@ -25,6 +25,7 @@ const Container = styled.div`
   height: 100%;
   gap: ${spacing(5)};
   align-items: center;
+  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
 `;
 
 const Item = styled(LinkSecondary)`

@@ -1,18 +1,26 @@
-import styled from 'styled-components';
-
+import styled, { css } from 'styled-components';
+import React from 'react';
 import { spacing, THEME_COLOR } from '../../lib/theme';
 import { ContentLayout } from '../../lib/element/layout';
 
-import { HeaderActionContainer, HeaderMenuComponent } from './frames';
+import {
+  HeaderActionContainer,
+  HeaderMenuComponent,
+  HeaderMenuMobileComponent,
+} from './frames';
 
 export function HeaderComponent(props) {
-  const { items, activePath, logged, user } = props;
+  const { items, activePath, logged, user, isMobile } = props;
 
   return (
-    <Container>
+    <Container isMobile={isMobile}>
       <Content>
-        <HeaderMenuComponent items={items} activePath={activePath} />
-        <HeaderActionContainer logged={logged} user={user} />
+        {isMobile ? null : ( // <HeaderMenuMobileComponent />
+          <React.Fragment>
+            <HeaderMenuComponent items={items} activePath={activePath} />
+            <HeaderActionContainer logged={logged} user={user} />
+          </React.Fragment>
+        )}
       </Content>
     </Container>
   );
@@ -20,13 +28,17 @@ export function HeaderComponent(props) {
 
 const Container = styled.div`
   display: flex;
-  height: 80px;
   justify-content: center;
   background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  ${(p) =>
+    p.isMobile &&
+    css`
+      align-items: center;
+    `}
 `;
 
 const Content = styled(ContentLayout)`
   display: flex;
-  padding: 0 ${spacing(6)};
   justify-content: space-between;
+  padding: ${spacing(5)};
 `;

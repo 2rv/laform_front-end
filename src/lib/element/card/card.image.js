@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
-import { spacing, THEME_COLOR } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
 export function CardImage({ backgroundImage, bestseller, discount }) {
   return (
@@ -17,6 +17,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Container = styled.div`
   position: relative;

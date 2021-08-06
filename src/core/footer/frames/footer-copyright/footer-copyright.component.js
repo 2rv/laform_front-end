@@ -6,16 +6,21 @@ import { THEME_SIZE } from '../../../../lib/theme';
 export function FooterCopyrightComponent() {
   return (
     <Container>
-      <BolderText tid="FOOTER.COPYRIGHT.BRAND" />
+      <Copyright tid="FOOTER.COPYRIGHT.BRAND" />
       &nbsp;
-      <TextSecondary tid="FOOTER.COPYRIGHT.ALL_RIGHTS_RESERVED" />
+      <CopyrightMessage tid="FOOTER.COPYRIGHT.ALL_RIGHTS_RESERVED" />
     </Container>
   );
 }
 
-const BolderText = styled(TextSecondary)`
+const CopyrightMessage = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+
+const Copyright = styled(CopyrightMessage)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
+
 const Container = styled.div`
   width: max-content;
 `;
