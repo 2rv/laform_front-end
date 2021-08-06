@@ -6,6 +6,7 @@ import { CardImage } from './card.image';
 import { ButtonBasic } from '../button';
 import { CardDescription } from './card.description';
 import { IndentLayout } from '../layout';
+import { ReactComponent as ArrowRight } from '../../../asset/svg/arrow-home-right.svg';
 
 export function CardArticles(props) {
   const {
@@ -14,11 +15,21 @@ export function CardArticles(props) {
     LIKED = false,
     IMAGE = null,
     DATE = 'вчера',
+    showSlideLeft,
+    showSlideRight,
+    prev,
+    next,
   } = props;
 
   return (
     <Container>
-      <CardImage backgroundImage={IMAGE} />
+      <ImageContainer>
+        <CardImage backgroundImage={IMAGE} />
+        {showSlideLeft ? <Action onClick={prev} icon={ArrowRight} /> : null}
+        {showSlideRight ? (
+          <Action onClick={next} direction="right" icon={ArrowRight} />
+        ) : null}
+      </ImageContainer>
       <IndentLayout type="TEXT_SMALL">
         <Content>
           <CardName>{TITLE}</CardName>
@@ -30,14 +41,24 @@ export function CardArticles(props) {
   );
 }
 
+const ImageContainer = styled.div`
+  position: relative;
+`;
+
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   line-height: 1.5;
+  @media screen and (max-width: 600px) {
+    font-size: ${THEME_SIZE.FONT.DEFAULT};
+  }
 `;
 
 const Date = styled(TextSecondary)`
   color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  @media screen and (max-width: 600px) {
+    font-size: ${THEME_SIZE.FONT.MEDIUM};
+  }
 `;
 
 const LikeButton = styled(ButtonBasic)`
@@ -59,4 +80,15 @@ const Container = styled.div`
   max-width: 360px;
   min-width: 260px;
   gap: ${spacing(3)};
+`;
+
+const Action = styled(ButtonBasic)`
+  padding: 0;
+  z-index: 1;
+  background: none;
+  position: absolute;
+  top: 45%;
+  ${({ direction = 'left' }) => `${direction}: -15px`};
+  ${({ direction = 'left' }) =>
+    direction === 'left' ? `transform: rotate(180deg);` : ''};
 `;

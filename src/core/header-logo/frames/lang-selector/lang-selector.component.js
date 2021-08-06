@@ -53,7 +53,6 @@ const Container = styled.div`
 `;
 
 const LangContainer = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   gap: ${spacing(1)};
@@ -68,4 +67,7 @@ const LangModal = styled(ModalMenu)`
   margin-top: ${spacing(10)};
   z-index: 1;
   transform: translateX(-50%);
+  @media screen and (max-width: 600px) {
+    margin-top: ${spacing(5)};
+  }
 `;

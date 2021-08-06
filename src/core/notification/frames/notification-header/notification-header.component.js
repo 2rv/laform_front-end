@@ -6,15 +6,14 @@ export function NotificationHeaderComponent() {
   return (
     <CTAContainer>
       <PreCTAText tid="NOTIFICATION.PRE_CTA" />
+      <br />
       <CTAText tid="NOTIFICATION.CTA" />
     </CTAContainer>
   );
 }
 
 const CTAContainer = styled.div`
-  display: grid;
-  gap: ${spacing(4)};
-  white-space: nowrap;
+  line-height: 1.5;
 `;
 
 const PreCTAText = styled(TextPrimary)`

@@ -40,6 +40,12 @@ const Content = styled(ContentLayout)`
     padding: ${spacing(6)} ${spacing(6)};
     grid-gap: ${spacing(6)};
   }
+  @media screen and (max-width: 600px) {
+    padding: ${spacing(12)} ${spacing(3)};
+    grid-gap: ${spacing(6)};
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const FooterMenu = styled(FooterMenuComponent)`
@@ -48,6 +54,13 @@ const FooterMenu = styled(FooterMenuComponent)`
 
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 600px) {
+    grid-gap: ${spacing(6)};
+    display: flex;
+    flex-direction: column;
+    padding-bottom: ${spacing(6)};
+  }
 `;
 
 const NotificationForm = styled(NotificationContainer)`
@@ -67,4 +80,9 @@ const FooterSocialList = styled(FooterSocialListComponent)`
   grid-row: 2;
 
   margin-left: auto;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+  }
 `;

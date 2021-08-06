@@ -72,6 +72,8 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
   [NOTIFICATION_STORE_NAME]: notificationStore,
+  [HOME_ARTICLE_STORE_NAME]: homeArticleStore,
+  [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
 });
 
 export { initStore } from './store.core';
