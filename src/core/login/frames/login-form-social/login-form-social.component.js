@@ -16,19 +16,26 @@ export function LoginFormSocialComponent() {
     <IndentLayout type="text">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />
       <ButtonContainer>
-        <ButtonBasic icon={AppleIcon}>
+        <SocialsButton icon={AppleIcon}>
           <AppleText />
-        </ButtonBasic>
-        <ButtonBasic icon={GoogleIcon}>
+        </SocialsButton>
+        <SocialsButton icon={GoogleIcon}>
           <GoogleText />
-        </ButtonBasic>
-        <ButtonBasic icon={FbIcon}>
+        </SocialsButton>
+        <SocialsButton icon={FbIcon}>
           <FbText />
-        </ButtonBasic>
+        </SocialsButton>
       </ButtonContainer>
     </IndentLayout>
   );
 }
+
+const SocialsButton = styled(ButtonBasic)`
+  grid-column-gap: ${spacing(2)};
+  span {
+    width: auto;
+  }
+`;
 
 const ButtonContainer = styled.div`
   display: grid;
