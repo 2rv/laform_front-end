@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import { FieldSelect } from '../../../../lib/element/field';
-import { TitlePrimary } from '../../../../lib/element/title';
-import { ButtonSecondary } from '../../../../lib/element/button';
-import { IndentLayout } from '../../../../lib/element/layout';
-import { SuccessAlert } from '../../../../lib/element/alert';
+import { FieldSelect } from '../../lib/element/field';
+import { TitlePrimary } from '../../lib/element/title';
+import { ButtonSecondary } from '../../lib/element/button';
+import { IndentLayout } from '../../lib/element/layout';
+import { SuccessAlert } from '../../lib/element/alert';
 
-export function SettingsFormChangePaymentMethodComponent(props) {
+export function SettingsChangePaymentMethodComponent(props) {
   const {
     fieldPaymentMethod,
 
