@@ -43,9 +43,9 @@ export function SettingsChangeEmailContainer() {
     [SETTINGS_CHANGE_EMAIL_FIELD_NAME.PASSWORD]: '',
   });
 
-  useEffect(() => {
-    dispatch(settingsChangeEmailLoadEmail());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(settingsChangeEmailLoadEmail());
+  // }, []);
 
   return (
     <SettingsFormChangeEmailContainer

@@ -23,6 +23,7 @@ export function FieldSecondary(props: FieldPropsType) {
 
     onChange,
     onBlur,
+    searchInput,
   } = props;
 
   return (
@@ -38,6 +39,7 @@ export function FieldSecondary(props: FieldPropsType) {
           placeholder={text(placeholderTid)}
           type={type || 'text'}
           error={!!error}
+          searchInput={searchInput}
         />
         <IconButton onClick={onClick} icon={icon} />
       </InputContainer>
@@ -45,14 +47,19 @@ export function FieldSecondary(props: FieldPropsType) {
     </Container>
   );
 }
+
 const IconButton = styled(ButtonBasic)`
   position: absolute;
   right: ${spacing(1)};
-  padding: ${spacing(2.9)}; // иначе будет border перекрываться
+  padding: ${spacing(2)};
 `;
+
 const Container = styled.div`
   display: grid;
   gap: ${spacing(2)};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  overflow: hidden;
+  min-width: 250px;
 `;
 
 const InputContainer = styled.div`
@@ -69,16 +76,26 @@ const Title = styled(TextSecondary)`
 const Input = styled.input<InputProps>`
   padding: ${spacing(3)};
   color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT} 0 0 0;
+  border: 1px solid transparent;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
   transition-property: border;
   transition-duration: ${THEME_VALUE.TRANSITION.HOVER};
+  transition: opacity ${THEME_VALUE.TRANSITION.HOVER};
   ${(p) =>
     p.error &&
     css`
       border: 1px solid ${THEME_COLOR.DANGER};
     `}
+  :hover {
+    opacity: ${THEME_VALUE.OPACITY.HOVER};
+  }
   :focus {
     border: 1px solid ${THEME_COLOR.LIGHT_GRAY};
   }
+  ${(p) =>
+    p.searchInput &&
+    css`
+      font-size: ${THEME_SIZE.FONT.SMALL};
+    `}
 `;

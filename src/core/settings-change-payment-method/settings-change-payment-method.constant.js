@@ -1,4 +1,4 @@
-import { PAYMENT_METHOD } from '../../../../lib/common/payment-method';
+import { PAYMENT_METHOD } from '../../lib/common/payment-method';
 
 export const DEFAULT_PAYMENT_METHOD = PAYMENT_METHOD.ONLINE;
 

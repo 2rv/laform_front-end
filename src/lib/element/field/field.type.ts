@@ -10,6 +10,7 @@ export interface FieldPropsType {
   onBlur: any;
   icon: any;
   onClick: any;
+  searchInput: boolean;
 }
 
 export interface CheckboxPropsType {
@@ -32,4 +33,5 @@ export interface SelectPropsType {
 
 export interface InputProps {
   readonly error: boolean;
+  searchInput: boolean;
 }
