@@ -14,7 +14,7 @@ const Button = styled(ButtonBasic)`
   color: ${THEME_COLOR.TEXT.WHITE};
   ${(props) =>
     props.disabled
-      ? `background-color:${THEME_COLOR.BUTTON.INACTIVE}`
+      ? `background-color:${THEME_COLOR.DARK_GRAY}`
       : `&:hover {
           opacity: ${THEME_VALUE.OPACITY.HOVER};
         }`};

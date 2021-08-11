@@ -1,8 +1,7 @@
 import { ReactComponent as FindIcon } from 'src/asset/svg/find-icon.svg';
 import styled from 'styled-components';
 import { FieldSelect, FieldPrimary, FieldSecondary } from '../field';
-import { IndentLayout } from '../layout';
-import { LoaderPrimary } from '../loader';
+import { SectionLayout } from '../layout';
 import { spacing } from '../../theme';
 
 export function FormFilterComponent(props) {
@@ -72,7 +71,7 @@ export function FormFilterComponent(props) {
   );
 }
 
-const Container = styled(IndentLayout)`
+const Container = styled(SectionLayout)`
   display: flex;
 `;
 const FindContainer = styled.div`

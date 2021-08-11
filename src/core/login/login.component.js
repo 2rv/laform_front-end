@@ -1,4 +1,4 @@
-import { IndentLayout } from '../../lib/element/layout';
+import { SectionLayout } from '../../lib/element/layout';
 
 import {
   LoginHeaderComponent,
@@ -9,13 +9,13 @@ import {
 
 export function LoginComponent(props) {
   return (
-    <IndentLayout type="small">
+    <SectionLayout type="SMALL">
       <LoginHeaderComponent />
-      <IndentLayout>
+      <SectionLayout>
         <LoginFormContainer {...props} />
         <LoginFormSocialComponent />
         <LoginFooterComponent />
-      </IndentLayout>
-    </IndentLayout>
+      </SectionLayout>
+    </SectionLayout>
   );
 }

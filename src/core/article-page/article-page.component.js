@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../lib/element/layout';
+import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
+import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { BasicCardList } from '../../lib/element/card-list';
 import {
@@ -16,60 +16,43 @@ export function ArticlePageComponent(props) {
   const { name, date, tables, description, comments } = props;
 
   return (
-    <Container>
-      <PaddingLayout>
-        <IndentLayout type="MEDIUM">
-          <IndentLayout>
-            <TitleContainer>
-              <Title tid={name} />
-              <Date tid={date} />
-            </TitleContainer>
-            <ArticlesPageTablesComponent items={tables} />
-            <Description>{description}</Description>
-          </IndentLayout>
-          <ArticlePageCommentComponent items={comments} />
-          <IndentLayout>
-            <FlexContainer>
-              <TitlePrimary tid={'Лучшие публикации'} />
-              <ViewAllLink tid="HOME.VIEW_ALL" path={'/'} />
-            </FlexContainer>
-            <BasicCardList
-              items={TEST_ARTICLES_ITEMS}
-              ItemComponent={CardArticles}
-            />
-          </IndentLayout>
-        </IndentLayout>
-      </PaddingLayout>
-    </Container>
+    <SectionLayout>
+      <TitleCase>
+        <Title tid={name} />
+        <Date tid={date} />
+      </TitleCase>
+      <SectionLayout type="SMALL">
+        <ArticlesPageTablesComponent items={tables} />
+        <Description>{description}</Description>
+      </SectionLayout>
+
+      <ArticlePageCommentComponent items={comments} />
+
+      <SectionLayout type="SMALL">
+        <TitleCase>
+          <TitlePrimary tid={'Лучшие публикации'} />
+          <LinkSecondary tid="HOME.VIEW_ALL" path={'/'} />
+        </TitleCase>
+        <BasicCardList
+          items={TEST_ARTICLES_ITEMS}
+          ItemComponent={CardArticles}
+        />
+      </SectionLayout>
+    </SectionLayout>
   );
 }
-const ViewAllLink = styled(LinkSecondary)`
-  margin-left: auto;
-`;
-
-const FlexContainer = styled.div`
+const TitleCase = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 `;
 const Description = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
-  line-height: 28px;
+  line-height: 1.5;
 `;
 const Date = styled(TextSecondary)`
   color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
 `;
 const Title = styled(TitlePrimary)`
   font-size: 28px;
-`;
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: ${spacing(12)} ${spacing(6)};
-`;
-const PaddingLayout = styled(ContentLayout)`
-  padding: 0 ${spacing(6)};
-`;
-const TitleContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
 `;

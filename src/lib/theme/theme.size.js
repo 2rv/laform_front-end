@@ -3,6 +3,13 @@ export const THEME_SIZE = {
     DEFAULT: '0.5s',
   },
   INDENT: {
+    HUGE: '120px',
+    LARGE: '60px',
+    DEFAULT: '30px',
+    MEDIUM: '15px',
+    SMALL: '10px',
+  },
+  SECTION: {
     DEFAULT: '30px',
     LARGE: '120px',
     MEDIUM: '60px',
@@ -10,8 +17,8 @@ export const THEME_SIZE = {
     TEXT: '10px',
     TEXT_SMALL: '5px',
   },
-  LAYOUT: {
-    DEFAULT: '1200px',
+  PAGE: {
+    DEFAULT: '1140px',
     MEDIUM: '680px',
     SMALL: '360px',
   },

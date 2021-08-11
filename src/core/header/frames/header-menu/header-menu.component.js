@@ -22,15 +22,12 @@ export function HeaderMenuComponent(props) {
 
 const Container = styled.div`
   display: flex;
-  height: 100%;
   gap: ${spacing(5)};
   align-items: center;
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
 `;
-
 const Item = styled(LinkSecondary)`
   padding: ${spacing(5)} 0;
-
+  text-align: center;
   ${(p) =>
     p.active &&
     css`
