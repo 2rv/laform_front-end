@@ -14,7 +14,8 @@ import {
 } from './master-classes.type';
 
 export function MasterClassesComponent(props) {
-  const { items } = props;
+  const { items, isPending } = props;
+
   const masterClassesFormFilterGetInitialValue = () => {
     const rawData = false; //getRequestData(changeDeliveryInfo, null);
     if (!rawData) {
@@ -26,6 +27,7 @@ export function MasterClassesComponent(props) {
       };
     }
   };
+
   return (
     <Container>
       <Content>
@@ -38,6 +40,7 @@ export function MasterClassesComponent(props) {
             fieldName={MASTER_CLASSES_FORM_FILTER_FIELD_NAME}
           />
           <BasicCardList
+            isPending={isPending}
             items={items}
             actions={['OTHER.PURCHASED', 'OTHER.BUY']}
           />

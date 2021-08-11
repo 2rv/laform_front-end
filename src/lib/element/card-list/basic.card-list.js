@@ -1,12 +1,30 @@
 import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { BasicCard } from '../card';
+import { TextSecondary } from '../text';
+import { Spinner } from '../spinner';
 
-export function BasicCardList({ items, actions, ItemComponent }) {
+export function BasicCardList(props) {
+  const {
+    items,
+    isPending = false,
+    actions,
+    ItemComponent,
+  } = props;
+
   const Item = ItemComponent || BasicCard;
+
+  if (isPending) {
+    return <Spinner />;
+  }
+
+  if (items.length === 0) {
+    return <TextSecondary tid="Список Мастер-классов пуст" />;
+  }
+
   return (
     <Container>
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <Item key={item?.id || index} actions={actions} {...item} />
       ))}
     </Container>

@@ -42,6 +42,10 @@ import {
   settingsChangeEmailStore,
   SETTINGS_CHANGE_EMAIL_STORE_NAME,
 } from '../../core/settings-change-email';
+import {
+  masterClassesStore,
+  MASTER_CLASSES_STORE_NAME,
+} from '../../core/master-classes';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -58,6 +62,7 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
+  [MASTER_CLASSES_STORE_NAME]: masterClassesStore,
 });
 
 export { initStore } from './store.core';
