@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { FieldSelect, FieldPrimary, FieldSecondary } from '../field';
 import { IndentLayout } from '../layout';
 import { LoaderPrimary } from '../loader';
-import { ErrorRequest } from '../error';
-import { SuccessRequest } from '../success';
 import { spacing } from '../../theme';
 
 export function FormFilterComponent(props) {

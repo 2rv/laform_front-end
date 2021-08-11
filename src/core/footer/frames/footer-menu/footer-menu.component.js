@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { spacing } from '../../../../lib/theme';
+import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { TextPrimary } from '../../../../lib/element/text';
 import { LinkSecondary } from '../../../../lib/element/link';
 
@@ -11,7 +10,7 @@ export function FooterMenuComponent(props) {
     <div className={className}>
       {items.map(({ sectionTid, items: sectionItems }) => (
         <MenuContainer key={sectionTid}>
-          <TextPrimary tid={sectionTid} />
+          <MenuHeader tid={sectionTid} />
           {sectionItems.map(({ tid, tvalue, path }) => (
             <LinkSecondary key={tid} tid={tid} tvalue={tvalue} path={path} />
           ))}
@@ -20,6 +19,10 @@ export function FooterMenuComponent(props) {
     </div>
   );
 }
+
+const MenuHeader = styled(TextPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
 
 const MenuContainer = styled.div`
   display: flex;

@@ -7,7 +7,7 @@ export function LoaderPrimary() {
 }
 
 const Loader = styled.progress`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

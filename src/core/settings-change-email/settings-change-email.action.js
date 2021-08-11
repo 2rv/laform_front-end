@@ -5,7 +5,7 @@ import { SETTINGS_CHANGE_EMAIL_ACTION_TYPE } from './settings-change-email.type'
 
 import { performSettingsChangeEmailLoadEmailData } from './settings-change-email.convert';
 
-export function settingsChangePasswordFormUploadData(data) {
+export function settingsChangeEmailFormUploadData(data) {
   return async (dispatch) => {
     dispatch({
       type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_PENDING,
@@ -32,7 +32,7 @@ export function settingsChangePasswordFormUploadData(data) {
   };
 }
 
-export function settingsChangePasswordLoadEmail() {
+export function settingsChangeEmailLoadEmail() {
   return async (dispatch) => {
     dispatch({
       type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_PENDING,

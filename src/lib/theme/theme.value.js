@@ -8,6 +8,6 @@ export const THEME_VALUE = {
   },
   OPACITY: {
     DISABLED: '0.5',
-    HOVER: '0.9',
+    HOVER: '0.8',
   },
 };

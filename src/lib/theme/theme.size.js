@@ -21,6 +21,7 @@ export const THEME_SIZE = {
     LARGE: '24px',
     MEDIUM: '18px',
     SMALL: '14px',
+    TINY: '12px',
   },
   FONT_WEIGHT: {
     DEFAULT: 400,

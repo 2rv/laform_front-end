@@ -16,8 +16,8 @@ import {
   SETTINGS_CHANGE_EMAIL_DATA_KEY,
 } from './settings-change-email.type';
 import {
-  settingsChangePasswordFormUploadData,
-  settingsChangePasswordLoadEmail,
+  settingsChangeEmailFormUploadData,
+  settingsChangeEmailLoadEmail,
 } from './settings-change-email.action';
 import { settingsChangeEmailFormValidation } from './settings-change-email.validation';
 import { convertSettingsChangeEmailFormData } from './settings-change-email.convert';
@@ -34,7 +34,7 @@ export function SettingsChangeEmailContainer() {
 
   const settingsChangeEmailFormSendData = (values) => {
     const data = convertSettingsChangeEmailFormData(values);
-    dispatch(settingsChangePasswordFormUploadData(data));
+    dispatch(settingsChangeEmailFormUploadData(data));
   };
 
   const settingsChangeEmailFormGetInitialValue = () => ({
@@ -43,9 +43,9 @@ export function SettingsChangeEmailContainer() {
     [SETTINGS_CHANGE_EMAIL_FIELD_NAME.PASSWORD]: '',
   });
 
-  useEffect(() => {
-    dispatch(settingsChangePasswordLoadEmail());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(settingsChangeEmailLoadEmail());
+  // }, []);
 
   return (
     <SettingsFormChangeEmailContainer

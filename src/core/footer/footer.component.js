@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import { ContentLayout } from '../../lib/element/layout';
-
 import { spacing, THEME_COLOR } from '../../lib/theme';
-
 import { FOOTER_MENU_ITEMS, FOOTER_SOCIAL_LINKS } from './footer.constant';
-
 import {
-  EmailSubscribeContainer,
   FooterCopyrightComponent,
   FooterMenuComponent,
   FooterSocialListComponent,
 } from './frames';
+import { NotificationContainer } from '../notification';
 
 export function FooterComponent(props) {
   return (
@@ -18,7 +15,7 @@ export function FooterComponent(props) {
       <ContentLayout>
         <Content>
           <FooterMenu items={FOOTER_MENU_ITEMS} />
-          <EmailSubscribe {...props} />
+          <NotificationForm />
           <FooterCopyright />
           <FooterSocialList items={FOOTER_SOCIAL_LINKS} />
         </Content>
@@ -43,6 +40,12 @@ const Content = styled(ContentLayout)`
     padding: ${spacing(6)} ${spacing(6)};
     grid-gap: ${spacing(6)};
   }
+  @media screen and (max-width: 600px) {
+    padding: ${spacing(12)} ${spacing(3)};
+    grid-gap: ${spacing(6)};
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const FooterMenu = styled(FooterMenuComponent)`
@@ -51,9 +54,16 @@ const FooterMenu = styled(FooterMenuComponent)`
 
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 600px) {
+    grid-gap: ${spacing(6)};
+    display: flex;
+    flex-direction: column;
+    padding-bottom: ${spacing(6)};
+  }
 `;
 
-const EmailSubscribe = styled(EmailSubscribeContainer)`
+const NotificationForm = styled(NotificationContainer)`
   grid-column: 4;
   grid-row: 1;
 
@@ -70,4 +80,9 @@ const FooterSocialList = styled(FooterSocialListComponent)`
   grid-row: 2;
 
   margin-left: auto;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+  }
 `;

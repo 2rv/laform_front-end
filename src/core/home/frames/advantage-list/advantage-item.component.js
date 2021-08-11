@@ -22,6 +22,10 @@ const Container = styled.div`
   align-items: center;
   background-color: ${THEME_COLOR.BACKGROUND.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  @media screen and (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const CountText = styled(TextPrimary)`

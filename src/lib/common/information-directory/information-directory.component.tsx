@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 
 import { InformationDirectoryPropsType } from './information-directory.type';
@@ -28,6 +28,10 @@ const Container = styled.div`
   background-color: ${THEME_COLOR.BACKGROUND.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   cursor: pointer;
+  &:hover {
+    opacity: ${THEME_VALUE.OPACITY.HOVER};
+  }
+  transition: opacity ${THEME_VALUE.TRANSITION.HOVER};
 `;
 
 const TitleText = styled(TextSecondary)`

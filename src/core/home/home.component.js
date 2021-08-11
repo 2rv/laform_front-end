@@ -5,25 +5,25 @@ import {
   AdvantageListContainer,
   CatalogListContainer,
   InformationListContainer,
-  BannerContainer,
   PopularGoodsContainer,
   PopularMasterClassesContainer,
-  PopularArticlesContainer,
 } from './frames';
+import { SliderContainer } from '../../core/slider';
+import { HomeArticlesContainer } from '../../core/home-articles';
 
 export function HomeComponent(props) {
   return (
     <Container>
       <Content>
-        <IndentLayout type="medium">
-          <BannerContainer />
+        <ContentSectionLayout type="medium">
+          <SliderContainer />
           <CatalogListContainer />
-          <PopularGoodsContainer />
-          <PopularMasterClassesContainer />
-          <PopularArticlesContainer />
+          {/* <PopularGoodsContainer /> */}
+          {/* <PopularMasterClassesContainer /> */}
+          <HomeArticlesContainer />
           <InformationListContainer />
           <AdvantageListContainer />
-        </IndentLayout>
+        </ContentSectionLayout>
       </Content>
     </Container>
   );
@@ -36,4 +36,13 @@ const Container = styled.div`
 
 const Content = styled(ContentLayout)`
   padding: 0 ${spacing(6)};
+  @media screen and (max-width: 600px) {
+    padding: 0 ${spacing(3)};
+  }
+`;
+
+const ContentSectionLayout = styled(IndentLayout)`
+  @media screen and (max-width: 600px) {
+    grid-row-gap: ${spacing(6)};
+  }
 `;

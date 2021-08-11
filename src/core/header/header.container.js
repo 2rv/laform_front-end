@@ -6,7 +6,7 @@ import { AUTH_STORE_NAME } from '../../lib/common/auth';
 import { HEADER_MENU_ITEMS } from './header.constants';
 import { HeaderComponent } from './header.component';
 
-export function HeaderContainer() {
+export function HeaderContainer(props) {
   const { activePath, auth } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
     auth: state[AUTH_STORE_NAME],
@@ -18,6 +18,7 @@ export function HeaderContainer() {
       activePath={activePath}
       logged={auth.logged}
       user={auth.user?.login}
+      isMobile={props.isMobile}
     />
   );
 }

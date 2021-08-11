@@ -16,7 +16,11 @@ export function AuthVerificateEmailComponent(props) {
     <Container type="small">
       <IndentLayout type="text">
         <Title tid="AUTH.VERIFICATE_EMAIL.TITLE" />
-        <Content tid="AUTH.VERIFICATE_EMAIL.CONTENT" tvalue={{ email }} />
+        <ContentContainer>
+          <Content tid="AUTH.VERIFICATE_EMAIL.CONTENT_BEFORE" />
+          <Email tid={email} />
+          <Content tid="AUTH.VERIFICATE_EMAIL.CONTENT_AFTER" />
+        </ContentContainer>
       </IndentLayout>
       <ContentLayout type="small">
         <IndentLayout type="small">
@@ -39,6 +43,10 @@ export function AuthVerificateEmailComponent(props) {
   );
 }
 
+const ContentContainer = styled.div`
+  line-height: 1.5;
+`;
+
 const Container = styled(IndentLayout)`
   justify-items: center;
   text-align: center;
@@ -50,6 +58,10 @@ const Title = styled(TitlePrimary)`
 
 const Content = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
+`;
+
+const Email = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  line-height: 1.5em;
 `;

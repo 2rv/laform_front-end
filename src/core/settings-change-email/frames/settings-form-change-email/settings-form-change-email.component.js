@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { THEME_SIZE } from '../../../../lib/theme';
 import { FieldPrimary } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
@@ -101,6 +102,10 @@ export function SettingsFormChangeEmailComponent(props) {
     </form>
   );
 }
+
+const Title = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
 
 const Submit = styled(ButtonSecondary)`
   width: 50%;

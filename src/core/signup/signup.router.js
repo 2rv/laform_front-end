@@ -8,5 +8,5 @@ import {
 
 export function signupRouter(ctx) {
   ctx.store.dispatch(setActivePath(SIGNUP_ROUTE_PATH));
-  authRedirectLogged(ctx, SIGNUP_REDIRECT_ON_LOGGED);
+  // authRedirectLogged(ctx, SIGNUP_REDIRECT_ON_LOGGED);
 }

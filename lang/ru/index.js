@@ -22,6 +22,7 @@ import BASKET from './basket.json';
 import PURCHASE from './purchase.json';
 import COMPILATION from './compilation.json';
 import ORDER_NUMBER from './order-number.json';
+import NOTIFICATION from './notification.json';
 
 export const RU = {
   translation: {
@@ -49,5 +50,6 @@ export const RU = {
     PURCHASE,
     COMPILATION,
     ORDER_NUMBER,
+    NOTIFICATION,
   },
 };

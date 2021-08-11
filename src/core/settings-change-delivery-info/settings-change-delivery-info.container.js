@@ -67,9 +67,9 @@ export function SettingsChangeDeliveryInfoContainer() {
       deliveryTypeOptions={SETTINGS_CHANGE_DELIVERY_INFO_DELIVERY_TYPE_OPTIONS}
       dataPending={isRequestPending(changeDeliveryInfo)}
       formPending={isRequestPending(formChangeDeliveryInfo)}
-      formSuccess={isRequestSuccess(formChangeDeliveryInfo)}
-      formError={isRequestError(formChangeDeliveryInfo)}
-      errorMessage={getRequestErrorMessage(formChangeDeliveryInfo)}
+      formSuccess={isRequestSuccess(formChangeDeliveryInfo) || true}
+      formError={isRequestError(formChangeDeliveryInfo) || true}
+      errorMessage={getRequestErrorMessage(formChangeDeliveryInfo) || true}
       initialValue={settingsChangeDeliveryInfoFormGetInitialValue()}
       validation={settingsChangeDeliveryInfoFormValidation}
       onSubmitForm={settingsChangeDeliveryInfoFormSendData}

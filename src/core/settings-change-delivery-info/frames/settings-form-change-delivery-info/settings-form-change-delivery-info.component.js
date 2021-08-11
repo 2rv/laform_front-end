@@ -6,8 +6,7 @@ import { ButtonSecondary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { THEME_SIZE } from '../../../../lib/theme';
 import { LoaderPrimary } from '../../../../lib/element/loader';
-import { ErrorRequest } from '../../../../lib/element/error';
-import { SuccessRequest } from '../../../../lib/element/success';
+import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 
 export function SettingsFormChangeDeliveryInfoComponent(props) {
   const {
@@ -75,9 +74,9 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {formError && <ErrorRequest tid={errorMessage} />}
+          {(formError || errorMessage) && <ErrorAlert tid={errorMessage} />}
           {formSuccess && (
-            <SuccessRequest tid="SETTINGS.CHANGE_DELIVERY_INFO.SUCCESS" />
+            <SuccessAlert tid="SETTINGS.CHANGE_DELIVERY_INFO.SUCCESS" />
           )}
         </FieldLayout>
         <Submit

@@ -1,15 +1,6 @@
 import { ReactComponent as InstagramIcon } from '../../asset/svg/instagram.svg';
 import { ReactComponent as VkIcon } from '../../asset/svg/vk.svg';
 
-export const FOOTER_STORE_NAME = 'FOOTER';
-
-export const FOOTER_API = {
-  SUBSCRIBE_FORM_UPLOAD: {
-    ENDPOINT: '/notification/subscribe',
-    METHOD: 'POST',
-  },
-};
-
 export const FOOTER_MENU_ITEMS = [
   {
     sectionTid: 'FOOTER.MENU.SECTION1.TITLE',
