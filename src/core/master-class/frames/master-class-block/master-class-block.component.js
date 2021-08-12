@@ -2,7 +2,7 @@ import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
 import styled from 'styled-components';
 import { TextSecondary } from '../../../../lib/element/text';
 
-export function MasterClassPageBlockComponent(props) {
+export function MasterClassBlockComponent(props) {
   const {
     block: { title, content, description },
     altType = false,

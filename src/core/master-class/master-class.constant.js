@@ -1,5 +1,15 @@
-export const MASTER_CLASS_PAGE_ROUTE_PATH = '/master-class-page';
-export const TEST_MASTER_CLASS_PAGE_DATA = {
+export const MASTER_CLASS_ROUTE_PATH = '/master-class';
+
+export const MASTER_CLASS_STORE_NAME = 'MASTER_CLASS';
+
+export const MASTER_CLASS_API = {
+  MASTER_CLASS_UPLOAD: {
+    ENDPOINT: '/master-class/get/18b9e4b1-2b8d-493d-b94a-f9cba6148802/?lang=ru',
+    TYPE: 'GET',
+  }
+};
+
+export const TEST_MASTER_CLASS_DATA = {
   name: 'Мастер-класс по пошиву женских брюк с люксовой обработкой',
   date: '19.03.2021',
   image: {

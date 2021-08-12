@@ -54,6 +54,10 @@ import {
   homeArticleStore,
   HOME_ARTICLE_STORE_NAME,
 } from '../../core/home-articles';
+import {
+  masterClassStore,
+  MASTER_CLASS_STORE_NAME,
+} from '../../core/master-class';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -74,6 +78,7 @@ export const reducers = combineReducers({
   [NOTIFICATION_STORE_NAME]: notificationStore,
   [HOME_ARTICLE_STORE_NAME]: homeArticleStore,
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
+  [MASTER_CLASS_STORE_NAME]: masterClassStore,
 });
 
 export { initStore } from './store.core';
