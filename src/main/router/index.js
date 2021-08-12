@@ -52,6 +52,10 @@ import {
   myLikesRouter,
   MY_LIKES_ROUTE_PATH,
 } from '../../core/my-likes';
+import {
+  faqPageRouter,
+  FAQ_PAGE_ROUTE_PATH,
+} from '../../core/faq-page';
 
 import { routesInit } from './router.core';
 
@@ -74,6 +78,7 @@ export const routes = {
   [MY_PATTERNS_ROUTE_PATH]: myPatternsRouter,
   [MY_MASTER_CLASSES_ROUTE_PATH]: myMasterClassesRouter,
   [MY_LIKES_ROUTE_PATH]: myLikesRouter,
+  [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
 };
 
 export const Router = routesInit(routes);

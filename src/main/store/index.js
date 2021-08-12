@@ -86,6 +86,10 @@ import {
   myLikesStore,
   MY_LIKES_STORE_NAME,
 } from '../../core/my-likes';
+import {
+  faqPageStore,
+  FAQ_PAGE_STORE_NAME,
+} from '../../core/faq-page';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -114,6 +118,7 @@ export const reducers = combineReducers({
   [MY_PATTERNS_STORE_NAME]: myPatternsStore,
   [MY_MASTER_CLASSES_STORE_NAME]: myMasterClassesStore,
   [MY_LIKES_STORE_NAME]: myLikesStore,
+  [FAQ_PAGE_STORE_NAME]: faqPageStore,
 });
 
 export { initStore } from './store.core';
