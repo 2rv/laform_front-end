@@ -1,5 +1,14 @@
 export const MY_LIKES_ROUTE_PATH = '/my-likes';
 
+export const MY_LIKES_STORE_NAME = 'MY_LIKES';
+
+export const MY_LIKES_API = {
+  MY_LIKES_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const TEST_MY_LIKES_ITEMS = [
   {
     id: 1,

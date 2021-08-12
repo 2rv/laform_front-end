@@ -44,6 +44,14 @@ import {
   myPatternsRouter,
   MY_PATTERNS_ROUTE_PATH,
 } from '../../core/my-patterns';
+import {
+  myMasterClassesRouter,
+  MY_MASTER_CLASSES_ROUTE_PATH,
+} from '../../core/my-master-classes';
+import {
+  myLikesRouter,
+  MY_LIKES_ROUTE_PATH,
+} from '../../core/my-likes';
 
 import { routesInit } from './router.core';
 
@@ -64,6 +72,8 @@ export const routes = {
   [ORDERS_ROUTE_PATH]: ordersRouter,
   [MY_PURCHASES_ROUTE_PATH]: myPurchasesRouter,
   [MY_PATTERNS_ROUTE_PATH]: myPatternsRouter,
+  [MY_MASTER_CLASSES_ROUTE_PATH]: myMasterClassesRouter,
+  [MY_LIKES_ROUTE_PATH]: myLikesRouter,
 };
 
 export const Router = routesInit(routes);

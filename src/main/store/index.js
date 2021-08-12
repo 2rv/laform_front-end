@@ -78,6 +78,14 @@ import {
   myPatternsStore,
   MY_PATTERNS_STORE_NAME,
 } from '../../core/my-patterns';
+import {
+  myMasterClassesStore,
+  MY_MASTER_CLASSES_STORE_NAME,
+} from '../../core/my-master-classes';
+import {
+  myLikesStore,
+  MY_LIKES_STORE_NAME,
+} from '../../core/my-likes';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -104,6 +112,8 @@ export const reducers = combineReducers({
   [ORDERS_STORE_NAME]: ordersStore,
   [MY_PURCHASES_STORE_NAME]: myPurchasesStore,
   [MY_PATTERNS_STORE_NAME]: myPatternsStore,
+  [MY_MASTER_CLASSES_STORE_NAME]: myMasterClassesStore,
+  [MY_LIKES_STORE_NAME]: myLikesStore,
 });
 
 export { initStore } from './store.core';

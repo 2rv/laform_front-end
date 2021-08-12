@@ -1,3 +1,14 @@
+export const MY_MASTER_CLASSES_ROUTE_PATH = '/my-master-classes';
+
+export const MY_MASTER_CLASSES_STORE_NAME = 'MY_MASTER_CLASSES';
+
+export const MY_MASTER_CLASSES_API = {
+  MY_MASTER_CLASSES_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const MY_MASTER_CLASSES_LIST = [
   {
     id: 1,
