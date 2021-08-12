@@ -22,7 +22,7 @@ export function MasterClassPageBlockComponent(props) {
 
 const Description = styled(TextSecondary)`
   color: ${({ altType }) =>
-    altType ? THEME_COLOR.SECONDARY : THEME_COLOR.FIELD.TEXT_PRIMARY};
+    altType ? THEME_COLOR.SECONDARY : THEME_COLOR.TEXT.LIGHT};
   ${({ altType }) =>
     altType && `font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};`}
   font-size: ${THEME_SIZE.FONT.MEDIUM};
@@ -38,7 +38,7 @@ const BlockTitle = styled(TextSecondary)`
 `;
 const Content = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.EXTRA_LARGE};
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
 const BlockContent = styled.div`

@@ -39,7 +39,7 @@ const Description = styled(TextSecondary)`
   line-height: 1.5;
 `;
 const Date = styled(TextSecondary)`
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
   font-size: ${THEME_SIZE.FONT.SMALL};
 `;
 const Title = styled(TitlePrimary)`

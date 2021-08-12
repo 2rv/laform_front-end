@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { FieldPrimary, FieldSelect } from '../../../../lib/element/field';
+import { BasicField, FieldSelect } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
@@ -39,7 +39,7 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
       <IndentLayout type="small">
         <Title tid="SETTINGS.CHANGE_DELIVERY_INFO.TITLE" />
         <FieldLayout>
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_DELIVERY_INFO.FULLNAME.TITLE"
             placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.FULLNAME.PLACEHOLDER"
             name={fieldFullname}
@@ -48,7 +48,7 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.TITLE"
             placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.PLACEHOLDER"
             name={fieldPhone}
@@ -57,7 +57,7 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_DELIVERY_INFO.LOCATION.TITLE"
             placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.LOCATION.PLACEHOLDER"
             name={fieldLocation}

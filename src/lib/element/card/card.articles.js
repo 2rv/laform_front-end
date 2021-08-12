@@ -55,7 +55,7 @@ const CardName = styled(TextSecondary)`
 `;
 
 const Date = styled(TextSecondary)`
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
   @media screen and (max-width: 600px) {
     font-size: ${THEME_SIZE.FONT.MEDIUM};
   }

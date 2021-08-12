@@ -67,7 +67,7 @@ const Wrapper = (props: PageWrapperPropsType) => {
 };
 
 const Background = styled.div`
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  background-color: ${THEME_COLOR.GRAY};
   display: grid;
   width: 100%;
 `;

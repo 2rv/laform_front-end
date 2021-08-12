@@ -1,17 +1,104 @@
 import { useSelector } from 'react-redux';
 import { SewingGoodsComponent } from './sewing-goods.component';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { TEST_SEWING_GOODS_ITEMS } from './sewing-goods.constant';
+import { SEWING_GOODS_FIELD_NAME } from './sewing-goods.type';
 
 export function SewingGoodsContainer() {
   const { activePath } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
   }));
 
+  const initialValue = () => {
+    return {
+      [SEWING_GOODS_FIELD_NAME.CATEGORY]: 1,
+      [SEWING_GOODS_FIELD_NAME.TAGS]: 1,
+      [SEWING_GOODS_FIELD_NAME.FIND_INPUT]: '',
+    };
+  };
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+
   return (
     <SewingGoodsComponent
+      initialValue={initialValue()}
       activePath={activePath}
-      items={TEST_SEWING_GOODS_ITEMS}
+      categoryOptions={categorySelectOptions}
+      tagsOptions={tagsSelectOptions}
+      listItems={testListItems}
+      fieldName={SEWING_GOODS_FIELD_NAME}
+      onSubmit={onSubmit}
     />
   );
 }
+
+export const categorySelectOptions = [
+  {
+    id: 1,
+    tid: 'Категория 1',
+  },
+  {
+    id: 2,
+    tid: 'Категория 2',
+  },
+];
+
+export const tagsSelectOptions = [
+  {
+    id: 1,
+    tid: 'Популярные',
+  },
+  {
+    id: 2,
+    tid: 'Самые дорогие',
+  },
+  {
+    id: 3,
+    tid: 'Самые дешевые',
+  },
+];
+
+export const testListItems = [
+  {
+    id: 1,
+    name: 'Сарафан 0445',
+    complexity: 1,
+    selected: true,
+    price: {
+      min: 500,
+      max: null,
+    },
+    isLiked: true,
+    hit: false,
+    discount: 230,
+    backgroundImage: '/static/test/popular-gods-1.png',
+  },
+  {
+    id: 2,
+    name: ' Батист Макс Мара Горохи',
+    complexity: 3,
+    selected: false,
+    price: {
+      min: 200,
+      max: 4150,
+    },
+    isLiked: false,
+    hit: false,
+    discount: null,
+    backgroundImage: '/static/test/popular-gods-2.png',
+  },
+  {
+    id: 3,
+    name: 'Батист',
+    complexity: 3,
+    selected: false,
+    price: {
+      min: 200,
+      max: 900,
+    },
+    isLiked: false,
+    hit: true,
+    discount: null,
+    backgroundImage: '/static/test/popular-gods-3.png',
+  },
+];

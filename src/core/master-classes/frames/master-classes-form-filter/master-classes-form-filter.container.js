@@ -1,5 +1,5 @@
 import { MASTER_CLASSES_FORM_FILTER_FIELD_KEY } from './master-classes-form-filter.type';
-import { FormFilterContainer } from 'src/lib/element/form-filter';
+import { FormFilter } from 'src/lib/element/form-filter';
 
 export function MasterClassesFormFilterContainer(props) {
   const {
@@ -25,7 +25,7 @@ export function MasterClassesFormFilterContainer(props) {
     fieldName[MASTER_CLASSES_FORM_FILTER_FIELD_KEY.FIND_MASTER_CLASSES];
 
   return (
-    <FormFilterContainer
+    <FormFilter
       initialValue={initialValue}
       placeholderTid={'MASTER_CLASSES.MASTER_CLASSES.FIELD.FIND_MASTER_CLASSES'}
       categoryOptions={categoryOptions}

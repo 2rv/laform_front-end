@@ -9,10 +9,19 @@ import { TextSecondary } from '../text';
 import { SelectPropsType } from './field.type';
 
 export function FieldSelect(props: SelectPropsType) {
-  const { titleTid, name, value, options, onChange, onBlur } = props;
+  const {
+    titleTid,
+    name,
+    value,
+    options,
+    onChange,
+    onBlur,
+    width = 180,
+    auto = false,
+  } = props;
 
   return (
-    <Container>
+    <Container width={width} auto={auto}>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
         <Select name={name} value={value} onChange={onChange} onBlur={onBlur}>
@@ -30,6 +39,10 @@ export function FieldSelect(props: SelectPropsType) {
 
 const Container = styled.div`
   display: grid;
+  width: ${(p: { width: number; auto: boolean }) => {
+    if (p.auto) return 'auto';
+    return p.width + 'px';
+  }};
   gap: ${spacing(1)};
 `;
 
@@ -41,12 +54,18 @@ const InputContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  width: inherit;
+  height: 46px;
 `;
 
 const Select = styled.select`
-  width: 100%;
-  padding: ${spacing(3)};
-  background: ${THEME_COLOR.BACKGROUND.GRAY};
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 ${spacing(3)};
+  background: ${THEME_COLOR.GRAY};
   border: 0;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};

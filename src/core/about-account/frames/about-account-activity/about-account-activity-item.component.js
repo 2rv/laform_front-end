@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary as SecondaryText } from '../../../../lib/element/text';
-import { ButtonBasic } from '../../../../lib/element/button';
 import { TitlePrimary } from '../../../../lib/element/title';
+
 export function AboutAccountActivityItemComponent(props) {
   const {
     id,

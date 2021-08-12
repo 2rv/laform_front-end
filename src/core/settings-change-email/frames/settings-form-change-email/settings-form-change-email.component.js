@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { THEME_SIZE } from '../../../../lib/theme';
-import { FieldPrimary } from '../../../../lib/element/field';
+import { BasicField } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
@@ -51,7 +51,7 @@ export function SettingsFormChangeEmailComponent(props) {
       <IndentLayout type="small">
         <TitlePrimary tid="SETTINGS.CHANGE_EMAIL.TITLE" />
         <FieldLayout>
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.OLD_EMAIL.TITLE"
             placeholderTid="SETTINGS.CHANGE_EMAIL.OLD_EMAIL.PLACEHOLDER"
             name={fieldOldEmail}
@@ -60,7 +60,7 @@ export function SettingsFormChangeEmailComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.NEW_EMAIL.TITLE"
             placeholderTid="SETTINGS.CHANGE_EMAIL.NEW_EMAIL.PLACEHOLDER"
             name={fieldNewEmail}
@@ -69,7 +69,7 @@ export function SettingsFormChangeEmailComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.PASSWORD.TITLE"
             placeholderTid="SETTINGS.CHANGE_EMAIL.PASSWORD.PLACEHOLDER"
             name={fieldPassword}

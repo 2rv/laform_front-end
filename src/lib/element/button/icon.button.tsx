@@ -1,24 +1,25 @@
 import styled, { css } from 'styled-components';
-
-import { text } from '../../common/text';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
+import { IconButtonPropsType } from './button.type';
 
-import { ButtonPropsType } from './button.type';
-
-export function ButtonBasic(props: ButtonPropsType) {
-  const { tid, tvalue, width = false, children, ...rest } = props;
+export function IconButton(props: IconButtonPropsType) {
+  const { children, width = 46, auto = false, ...rest } = props;
 
   return (
-    <Button width={width} {...rest}>
-      {tid ? text(tid, tvalue) : children}
+    <Button width={width} auto={auto} {...rest}>
+      {children}
     </Button>
   );
 }
 
 const Button = styled.button`
-  width: ${(p: { width: false | number }) => p.width + 'px' || '100%'};
+  width: ${(p: { width: number; auto: boolean }) => {
+    if (p.auto) return 'auto';
+    return p.width + 'px';
+  }};
   display: flex;
   align-items: center;
+  gap: ${spacing(3)};
   justify-content: center;
   height: 46px;
   padding: 0 ${spacing(3)};

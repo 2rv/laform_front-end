@@ -65,7 +65,7 @@ const TitlePrimary = styled(Title)`
 const InfoTitle = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
 `;
 const InfoText = styled(Title)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};

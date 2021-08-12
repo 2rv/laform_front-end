@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-import { TextSecondary } from 'src/lib/element/text';
-import { ButtonPrimary, ButtonSecondary, ButtonBasic } from 'src/lib/element/button';
+import { TextSecondary } from '../../../../../../lib/element/text';
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonBasic,
+} from '../../../../../../lib/element/button';
 
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../../../lib/theme';
 
 export function FormalizationOrderingFooterComponent() {
   return (
@@ -14,7 +18,8 @@ export function FormalizationOrderingFooterComponent() {
             <TextPrimary tid="BASKET.FORM.FOOTER.DISCOUNT_PRICE" />
             <div>
               <TextDark>299</TextDark>&nbsp;
-              <TextPrimary tid="OTHER.VALUTE" />.&nbsp;
+              <TextPrimary tid="OTHER.VALUTE" />
+              .&nbsp;
               <TextDiscount>-15%</TextDiscount>
             </div>
           </FooterInfoContent>
@@ -51,7 +56,7 @@ export function FormalizationOrderingFooterComponent() {
 
 const TextPrimary = styled(TextSecondary)`
   line-height: 24px;
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
 `;
 
 const TextDark = styled(TextSecondary)`

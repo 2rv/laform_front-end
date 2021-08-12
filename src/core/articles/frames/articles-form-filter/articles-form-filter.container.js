@@ -1,5 +1,5 @@
 import { ARTICLES_FORM_FILTER_FIELD_KEY } from './articles-form-filter.type';
-import { FormFilterContainer } from 'src/lib/element/form-filter';
+import { FormFilter } from 'src/lib/element/form-filter';
 
 export function ArticlesFormFilterContainer(props) {
   const {
@@ -22,7 +22,7 @@ export function ArticlesFormFilterContainer(props) {
   const FIND_ARTICLES_NAME =
     fieldName[ARTICLES_FORM_FILTER_FIELD_KEY.FIND_ARTICLES];
   return (
-    <FormFilterContainer
+    <FormFilter
       initialValue={initialValue}
       placeholderTid={'ARTICLES.ARTICLES.FIELD.FIND_ARTICLES'}
       categoryOptions={categoryOptions}

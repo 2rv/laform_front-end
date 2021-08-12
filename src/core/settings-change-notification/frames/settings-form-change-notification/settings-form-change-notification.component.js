@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FieldCheckbox } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { THEME_SIZE } from '../../../../lib/theme';
-import { FieldPrimary } from '../../../../lib/element/field';
+import { BasicField } from '../../../../lib/element/field';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
 import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
