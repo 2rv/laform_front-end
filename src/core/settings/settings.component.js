@@ -1,7 +1,9 @@
-import styled from 'styled-components';
-import { IndentLayout } from '../../lib/element/layout';
-import { PrimaryHeader } from '../../lib/element/text';
-
+import {
+  SectionLayout,
+  PageLayout,
+  ContentLayout,
+} from '../../lib/element/layout';
+import { TitlePrimary } from '../../lib/element/title';
 import { SettingsChangeDeliveryInfoContainer } from '../settings-change-delivery-info';
 import { SettingsChangePaymentMethodContainer } from '../settings-change-payment-method';
 import { SettingsChangePasswordContainer } from '../settings-change-password';
@@ -10,15 +12,19 @@ import { SettingsChangeNotificationContainer } from '../settings-change-notifica
 
 export function SettingsComponent() {
   return (
-    <IndentLayout>
-      <PrimaryHeader tid="SETTINGS.HEADER" />
-      <IndentLayout>
-        <SettingsChangeDeliveryInfoContainer />
-        <SettingsChangePaymentMethodContainer />
-        <SettingsChangePasswordContainer />
-        <SettingsChangeEmailContainer />
-        <SettingsChangeNotificationContainer />
-      </IndentLayout>
-    </IndentLayout>
+    <ContentLayout horizontal="center">
+      <PageLayout type="MEDIUM">
+        <SectionLayout>
+          <TitlePrimary tid="SETTINGS.HEADER" />
+          <SectionLayout>
+            <SettingsChangeDeliveryInfoContainer />
+            <SettingsChangePaymentMethodContainer />
+            <SettingsChangePasswordContainer />
+            <SettingsChangeEmailContainer />
+            <SettingsChangeNotificationContainer />
+          </SectionLayout>
+        </SectionLayout>
+      </PageLayout>
+    </ContentLayout>
   );
 }

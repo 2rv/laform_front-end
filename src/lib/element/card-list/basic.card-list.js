@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import { CardPattern } from '../card';
+import {
+  CardPattern,
+  CardSewingGoods,
+  CardMasterClasses,
+  CardArticles,
+} from '../card';
 
 export function BasicCardList({ items, type }) {
   const CardItem = cardType(type);
@@ -24,6 +29,12 @@ function cardType(type) {
   switch (type) {
     case 'pattern':
       return CardPattern;
+    case 'sewing-goods':
+      return CardSewingGoods;
+    case 'master-classes':
+      return CardMasterClasses;
+    case 'articles':
+      return CardArticles;
     default:
       return () => null;
   }

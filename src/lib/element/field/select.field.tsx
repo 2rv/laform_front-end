@@ -17,11 +17,12 @@ export function FieldSelect(props: SelectPropsType) {
     onChange,
     onBlur,
     width = 180,
-    auto = false,
+    auto,
+    full,
   } = props;
 
   return (
-    <Container width={width} auto={auto}>
+    <Container width={width} auto={auto} full={full}>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
         <Select name={name} value={value} onChange={onChange} onBlur={onBlur}>
@@ -41,6 +42,7 @@ const Container = styled.div`
   display: grid;
   width: ${(p: { width: number; auto: boolean }) => {
     if (p.auto) return 'auto';
+    if (p.full) return '100%';
     return p.width + 'px';
   }};
   gap: ${spacing(1)};

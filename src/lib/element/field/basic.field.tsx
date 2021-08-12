@@ -11,6 +11,7 @@ export function BasicField(props: FieldPropsType) {
   const {
     className,
     width = 360,
+    full,
 
     titleTid,
     placeholderTid,
@@ -25,7 +26,7 @@ export function BasicField(props: FieldPropsType) {
   } = props;
 
   return (
-    <Container width={width}>
+    <Container width={width} full={full}>
       {titleTid && <Title tid={titleTid} />}
       <Content>
         <Input
@@ -48,7 +49,10 @@ export function BasicField(props: FieldPropsType) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${(p: { width: number }) => p.width + 'px'};
+  width: ${(p: { width: number; full: boolean }) => {
+    if (p.full) return '100%';
+    return p.width + 'px';
+  }};
   gap: ${spacing(1)};
 `;
 const Content = styled.div`

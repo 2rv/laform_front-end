@@ -1,6 +1,6 @@
 import { FormFilter } from '../../../lib/element/form-filter';
 
-export function SewingGoodsFilter(props) {
+export function ArticlesFilter(props) {
   const {
     findPlaceholderTid,
     categoryOptions,

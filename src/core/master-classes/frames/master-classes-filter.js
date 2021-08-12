@@ -1,6 +1,6 @@
 import { FormFilter } from '../../../lib/element/form-filter';
 
-export function SewingGoodsFilter(props) {
+export function MasterClassesFormFilter(props) {
   const {
     findPlaceholderTid,
     categoryOptions,
@@ -11,10 +11,9 @@ export function SewingGoodsFilter(props) {
     onSubmit,
     validation,
 
-    dataPending,
-    formPending,
-    formSuccess,
-    formError,
+    pending,
+    success,
+    error,
     errorMessage,
   } = props;
 
@@ -29,9 +28,9 @@ export function SewingGoodsFilter(props) {
       initialValue={initialValue}
       validation={validation}
       onSubmit={onSubmit}
-      pending={dataPending || formPending}
-      success={formSuccess}
-      error={formError}
+      pending={pending}
+      success={success}
+      error={error}
       errorMessage={errorMessage}
     />
   );

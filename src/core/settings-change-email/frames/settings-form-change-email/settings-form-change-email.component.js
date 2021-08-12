@@ -4,7 +4,7 @@ import { THEME_SIZE } from '../../../../lib/theme';
 import { BasicField } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
-import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
+import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
 import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
 
@@ -48,9 +48,9 @@ export function SettingsFormChangeEmailComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <IndentLayout type="small">
-        <TitlePrimary tid="SETTINGS.CHANGE_EMAIL.TITLE" />
-        <FieldLayout>
+      <SectionLayout type="SMALL">
+        <Title tid="SETTINGS.CHANGE_EMAIL.TITLE" />
+        <SectionLayout type="TEXT">
           <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.OLD_EMAIL.TITLE"
             placeholderTid="SETTINGS.CHANGE_EMAIL.OLD_EMAIL.PLACEHOLDER"
@@ -59,6 +59,7 @@ export function SettingsFormChangeEmailComponent(props) {
             error={getFieldError(fieldOldEmail)}
             onChange={handleChange}
             onBlur={handleBlur}
+            full
           />
           <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.NEW_EMAIL.TITLE"
@@ -68,6 +69,7 @@ export function SettingsFormChangeEmailComponent(props) {
             error={getFieldError(fieldNewEmail)}
             onChange={handleChange}
             onBlur={handleBlur}
+            full
           />
           <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.PASSWORD.TITLE"
@@ -78,35 +80,30 @@ export function SettingsFormChangeEmailComponent(props) {
             error={getFieldError(fieldPassword)}
             onChange={handleChange}
             onBlur={handleBlur}
+            full
           />
-
           {isFormUploadSuccess && (
             <SuccessAlert tid="SETTINGS.CHANGE_EMAIL.SUCCESS" />
           )}
-
           {(isFormUploadError || formUploadErrorMessage) && (
             <ErrorAlert tid={formUploadErrorMessage} />
           )}
-        </FieldLayout>
-
-        <Submit
-          tid="SETTINGS.CHANGE_EMAIL.SUBMIT"
-          type="submit"
-          disabled={isSubmitDisabled()}
-        />
-
+          <FieldLayout type="double">
+            <ButtonSecondary
+              tid="SETTINGS.CHANGE_EMAIL.SUBMIT"
+              type="submit"
+              disabled={isSubmitDisabled()}
+            />
+          </FieldLayout>
+        </SectionLayout>
         {(isFormUploadPending || isEmailLoadPending || pageLoading) && (
           <LoaderPrimary />
         )}
-      </IndentLayout>
+      </SectionLayout>
     </form>
   );
 }
 
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
-`;
-
-const Submit = styled(ButtonSecondary)`
-  width: 50%;
 `;

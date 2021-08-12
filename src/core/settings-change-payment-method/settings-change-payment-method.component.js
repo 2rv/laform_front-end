@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-
 import { FieldSelect } from '../../lib/element/field';
 import { TitlePrimary } from '../../lib/element/title';
 import { ButtonSecondary } from '../../lib/element/button';
-import { IndentLayout } from '../../lib/element/layout';
 import { SuccessAlert } from '../../lib/element/alert';
+import { SectionLayout, FieldLayout } from '../../lib/element/layout';
+import { THEME_SIZE } from '../../lib/theme';
+import styled from 'styled-components';
 
 export function SettingsChangePaymentMethodComponent(props) {
   const {
@@ -22,24 +22,32 @@ export function SettingsChangePaymentMethodComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <IndentLayout type="small">
-        <TitlePrimary tid="SETTINGS.CHANGE_PAYMENT_METHOD.TITLE" />
-        <FieldSelect
-          name={fieldPaymentMethod}
-          options={options}
-          value={values[fieldPaymentMethod]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {isSuccess && (
-          <SuccessAlert tid="SETTINGS.CHANGE_PAYMENT_METHOD.SUCCESS" />
-        )}
-        <Submit tid="SETTINGS.CHANGE_PAYMENT_METHOD.SUBMIT" type="submit" />
-      </IndentLayout>
+      <SectionLayout type="SMALL">
+        <Title tid="SETTINGS.CHANGE_PAYMENT_METHOD.TITLE" />
+        <SectionLayout type="TEXT">
+          <FieldSelect
+            titleTid="Способ оплаты"
+            name={fieldPaymentMethod}
+            options={options}
+            value={values[fieldPaymentMethod]}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            full
+          />
+          <FieldLayout type="double">
+            <ButtonSecondary
+              tid="SETTINGS.CHANGE_PAYMENT_METHOD.SUBMIT"
+              type="submit"
+            />
+          </FieldLayout>
+          {isSuccess && (
+            <SuccessAlert tid="SETTINGS.CHANGE_PAYMENT_METHOD.SUCCESS" />
+          )}
+        </SectionLayout>
+      </SectionLayout>
     </form>
   );
 }
-
-const Submit = styled(ButtonSecondary)`
-  width: 50%;
+const Title = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;

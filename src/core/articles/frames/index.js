@@ -1,1 +1,1 @@
-export { ArticlesFormFilterContainer } from './articles-form-filter';
+export { ArticlesFilter } from './articles-filter';

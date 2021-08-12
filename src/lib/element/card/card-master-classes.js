@@ -7,32 +7,59 @@ import { CardImage } from './card.image';
 import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
 import { useState } from 'react';
 
-export function CardArticles(props) {
-  const { id, image = null, name = null, date, like = false } = props.data;
+export function CardMasterClasses(props) {
+  const {
+    id,
+    image = null,
+    name = null,
+    select = false,
+    like = false,
+    bestseller = false,
+    price = { min: null, discount: null, max: null },
+  } = props.data;
+
   const [isLiked, setLike] = useState(like);
+  const [isSelected, setSelect] = useState(select);
+
   const onLike = () => {
     setLike(!isLiked);
   };
+
+  const onSelect = () => {
+    setSelect(!isSelected);
+  };
+
   return (
     <Container>
-      <CardImage image={image} />
+      <CardImage
+        image={image}
+        bestseller={bestseller}
+        action={price?.discount}
+      />
       <Content>
-        <Column>
-          <CardName tid={name} />
-          <Date tid={date} />
-        </Column>
+        <CardName tid={name} />
+        <Price
+          min={price?.min}
+          max={price?.max}
+          discount={price?.discount}
+          valute="OTHER.VALUTE"
+        />
+      </Content>
+      <LineCase>
+        <Button
+          width={165}
+          onClick={onSelect}
+          select={isSelected}
+          tid={isSelected ? 'OTHER.PURCHASED' : 'OTHER.BUY'}
+        />
         <LikeButton onClick={onLike} like={isLiked}>
           <LikeIcon />
         </LikeButton>
-      </Content>
+      </LineCase>
     </Container>
   );
 }
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing(1)};
-`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,8 +68,15 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: ${spacing(3)};
+`;
+const LineCase = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+`;
+const Button = styled(ButtonPrimary)`
+  ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}
 `;
 const LikeButton = styled(IconButton)`
   fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
@@ -52,10 +86,5 @@ const LikeButton = styled(IconButton)`
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  line-height: 1.5;
-`;
-const Date = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  color: ${THEME_COLOR.TEXT.LIGHT};
   line-height: 1.5;
 `;

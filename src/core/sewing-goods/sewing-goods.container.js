@@ -1,10 +1,9 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { sewingGoodsUploadData } from './sewing-goods.action';
 import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
 import { SewingGoodsComponent } from './sewing-goods.component';
-
 import {
   getRequestErrorMessage,
   isRequestError,
@@ -15,15 +14,14 @@ import { SEWING_GOODS_FIELD_NAME } from './sewing-goods.type';
 
 export function SewingGoodsContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, activePath } = useSelector((state) => ({
+  const { state, pageLoading } = useSelector((state) => ({
     state: state[SEWING_GOODS_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    activePath: state[NAVIGATION_STORE_NAME].activePath,
   }));
 
-  // React.useEffect(() => {
-  //   dispatch(sewingGoodsUploadData());
-  // }, []);
+  useEffect(() => {
+    // dispatch(sewingGoodsUploadData());
+  }, []);
 
   const initialValue = () => {
     return {
@@ -32,19 +30,18 @@ export function SewingGoodsContainer() {
       [SEWING_GOODS_FIELD_NAME.FIND_INPUT]: '',
     };
   };
-  
+
   const onSubmit = (values) => {
     console.log(values); // вроде должно приходить сюда изменения из формы
   };
   return (
     <SewingGoodsComponent
-	isPending={isRequestPending(state.sewingGoods)}
+      isPending={isRequestPending(state.sewingGoods)}
       isError={isRequestError(state.sewingGoods)}
       isSuccess={isRequestSuccess(state.sewingGoods)}
       errorMessage={getRequestErrorMessage(state.sewingGoods)}
       pageLoading={pageLoading}
       initialValue={initialValue()}
-      activePath={activePath}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
       listItems={testListItems}
@@ -84,43 +81,56 @@ export const testListItems = [
   {
     id: 1,
     name: 'Сарафан 0445',
-    complexity: 1,
-    selected: true,
+    image: '/static/test/popular-gods-1.png',
+    select: true,
+    like: true,
+    patternType: 1,
     price: {
       min: 500,
+      discount: 230,
       max: null,
     },
-    isLiked: true,
-    hit: false,
-    discount: 230,
-    backgroundImage: '/static/test/popular-gods-1.png',
   },
   {
     id: 2,
     name: ' Батист Макс Мара Горохи',
-    complexity: 3,
-    selected: false,
+    image: '/static/test/popular-gods-2.png',
+    select: false,
+    like: false,
+    bestseller: true,
+    patternType: 2,
     price: {
       min: 200,
+      discount: null,
       max: 4150,
     },
-    isLiked: false,
-    hit: false,
-    discount: null,
-    backgroundImage: '/static/test/popular-gods-2.png',
   },
   {
     id: 3,
     name: 'Батист',
-    complexity: 3,
-    selected: false,
+    image: '/static/test/popular-gods-3.png',
+    select: false,
+    like: false,
+    bestseller: true,
+    patternType: 1,
     price: {
       min: 200,
+      discount: 100,
       max: 900,
     },
-    isLiked: false,
-    hit: true,
-    discount: null,
-    backgroundImage: '/static/test/popular-gods-3.png',
+  },
+  {
+    id: 3,
+    name: 'Батист',
+    image: '/static/test/popular-gods-3.png',
+    select: false,
+    like: false,
+    bestseller: true,
+    patternType: 2,
+    price: {
+      min: 200,
+      discount: 100,
+      max: 900,
+    },
   },
 ];

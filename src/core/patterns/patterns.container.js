@@ -1,10 +1,9 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { patternsUploadData } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
 import { PatternsComponent } from './patterns.component';
-import { useState } from 'react';
 import { PATTERNS_FIELD_NAME } from './patterns.type';
 import {
   getRequestErrorMessage,
@@ -15,12 +14,13 @@ import {
 
 export function PatternsContainer() {
   const [activeTab, setActiveTab] = useState(0);
+
   const dispatch = useDispatch();
-  const { state, pageLoading, activePath } = useSelector((state) => ({
+  const { state, pageLoading } = useSelector((state) => ({
     state: state[PATTERNS_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    activePath: state[NAVIGATION_STORE_NAME].activePath,
   }));
+
   const initialValue = () => {
     return {
       [PATTERNS_FIELD_NAME.CATEGORY]: 1,
@@ -34,9 +34,9 @@ export function PatternsContainer() {
   };
   console.log(activeTab); // сюда приходит с tabs значение которое пользователь поставил
 
-  // React.useEffect(() => {
-  //   dispatch(patternsUploadData());
-  // }, []);
+  useEffect(() => {
+    // dispatch(patternsUploadData());
+  }, []);
 
   return (
     <PatternsComponent
@@ -45,7 +45,6 @@ export function PatternsContainer() {
       isSuccess={isRequestSuccess(state.patterns)}
       errorMessage={getRequestErrorMessage(state.patterns)}
       pageLoading={pageLoading}
-      activePath={activePath}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       tabItems={tabItems}

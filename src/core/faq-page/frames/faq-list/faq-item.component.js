@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-
 import { ReactComponent as ArrowRightIcon } from '../../../../asset/svg/arrow-right.svg';
-
 import { text } from '../../../../lib/common/text';
-import { spacing, THEME_SIZE } from '../../../../lib/theme';
+import {
+  spacing,
+  THEME_COLOR,
+  THEME_SIZE,
+  THEME_VALUE,
+} from '../../../../lib/theme';
 import { TextPrimary } from '../../../../lib/element/text';
 
 export function FaqItemComponent(props) {
@@ -20,10 +23,16 @@ export function FaqItemComponent(props) {
         <Icon active={isOpen} />
         <Title tid={titleTid} />
       </TitleContainer>
-      {isOpen && <ReactMarkdown>{text(contentTid)}</ReactMarkdown>}
+      {isOpen && <Markdown>{text(contentTid)}</Markdown>}
     </Container>
   );
 }
+const Markdown = styled(ReactMarkdown)`
+  line-height: 1.5;
+  font-size: ${THEME_SIZE.FONT.DEFAULT};
+  color: ${THEME_COLOR.TEXT.LIGHT};
+  transition: ${THEME_VALUE.TRANSITION.FAST};
+`;
 
 const Container = styled.div`
   display: grid;

@@ -1,5 +1,5 @@
-import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
+import { SectionLayout } from '../../lib/element/layout';
 import { PatternsFormFilter } from './frames';
 import { BasicCardList } from '../../lib/element/card-list';
 import { FilterTabs } from '../../lib/element/filter-tabs';
@@ -15,6 +15,11 @@ export function PatternsComponent(props) {
     listItems,
     fieldName,
     onSubmit,
+    validation,
+    pending,
+    success,
+    error,
+    errorMessage,
   } = props;
 
   return (
@@ -26,17 +31,17 @@ export function PatternsComponent(props) {
         tabItems={tabItems}
       />
       <PatternsFormFilter
+        findPlaceholderTid={'PATTERNS.PATTERNS.FIELD.FIND_PATTERNS'}
         categoryOptions={categoryOptions}
         tagsOptions={tagsOptions}
         initialValue={initialValue}
         fieldName={fieldName}
-        onSubmitForm={onSubmit}
-        validation={null}
-        dataPending={null}
-        formPending={null}
-        formSuccess={null}
-        formError={null}
-        errorMessage={null}
+        onSubmit={onSubmit}
+        validation={validation}
+        pending={pending}
+        success={success}
+        error={error}
+        errorMessage={errorMessage}
       />
       <BasicCardList type="pattern" items={listItems} />
     </SectionLayout>
