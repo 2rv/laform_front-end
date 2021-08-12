@@ -94,6 +94,10 @@ import {
   editCompilationStore,
   EDIT_COMPILATION_STORE_NAME,
 } from '../../core/edit-compilation';
+import {
+  createProductStore,
+  CREATE_PRODUCT_STORE_NAME,
+} from '../../core/create-product';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -124,6 +128,7 @@ export const reducers = combineReducers({
   [MY_LIKES_STORE_NAME]: myLikesStore,
   [FAQ_PAGE_STORE_NAME]: faqPageStore,
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
+  [CREATE_PRODUCT_STORE_NAME]: createProductStore,
 });
 
 export { initStore } from './store.core';

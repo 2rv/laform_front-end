@@ -60,6 +60,10 @@ import {
   editCompilationRouter,
   EDIT_COMPILATION_ROUTE_PATH,
 } from '../../core/edit-compilation';
+import {
+  createProductRouter,
+  CREATE_PRODUCT_ROUTE_PATH,
+} from '../../core/create-product';
 
 import { routesInit } from './router.core';
 
@@ -84,6 +88,7 @@ export const routes = {
   [MY_LIKES_ROUTE_PATH]: myLikesRouter,
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
+  [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,
 };
 
 export const Router = routesInit(routes);
