@@ -56,6 +56,10 @@ import {
   faqPageRouter,
   FAQ_PAGE_ROUTE_PATH,
 } from '../../core/faq-page';
+import {
+  editCompilationRouter,
+  EDIT_COMPILATION_ROUTE_PATH,
+} from '../../core/edit-compilation';
 
 import { routesInit } from './router.core';
 
@@ -79,6 +83,7 @@ export const routes = {
   [MY_MASTER_CLASSES_ROUTE_PATH]: myMasterClassesRouter,
   [MY_LIKES_ROUTE_PATH]: myLikesRouter,
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
+  [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
 };
 
 export const Router = routesInit(routes);
