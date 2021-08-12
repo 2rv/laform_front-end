@@ -4,7 +4,6 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { patternsUploadData } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
 import { PatternsComponent } from './patterns.component';
-import { PatternsComponent } from './patterns.component';
 import { useState } from 'react';
 import { PATTERNS_FIELD_NAME } from './patterns.type';
 import {
