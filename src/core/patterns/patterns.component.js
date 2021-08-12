@@ -9,8 +9,12 @@ import {
 
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../lib/element/layout';
-import { TextSecondary } from 'src/lib/element/text';
+import {
+  ContentLayout,
+  IndentLayout,
+  SectionLayout,
+} from '../../lib/element/layout';
+import { TextSecondary } from '../../lib/element/text';
 import { PatternsSubMenuComponent } from './frames';
 import { PatternsFormFilterContainer } from './frames';
 import { BasicCardList } from '../../lib/element/card-list';
@@ -28,33 +32,19 @@ export function PatternsComponent(props) {
     }
   };
   return (
-    <Container>
-      <Content>
-        <IndentLayout>
-          <Title tid="PATTERNS.PATTERNS.TITLE" />
-          <PatternsSubMenuComponent items={menuItems} activePath={activePath} />
-          <PatternsFormFilterContainer
-            categoryOptions={PATTERNS_FILTER_CATEGORY_OPTIONS}
-            tagsOptions={PATTERNS_FILTER_TAGS_OPTIONS}
-            initialValue={patternsFormFilterGetInitialValue()}
-            fieldName={PATTERNS_FORM_FILTER_FIELD_NAME}
-          />
-          <BasicCardList
-            items={items}
-            actions={['OTHER.SELECTED', 'OTHER.SELECT']}
-          />
-        </IndentLayout>
-      </Content>
-    </Container>
+    <SectionLayout>
+      <Title tid="PATTERNS.PATTERNS.TITLE" />
+      <PatternsSubMenuComponent items={menuItems} activePath={activePath} />
+      <PatternsFormFilterContainer
+        categoryOptions={PATTERNS_FILTER_CATEGORY_OPTIONS}
+        tagsOptions={PATTERNS_FILTER_TAGS_OPTIONS}
+        initialValue={patternsFormFilterGetInitialValue()}
+        fieldName={PATTERNS_FORM_FILTER_FIELD_NAME}
+      />
+      <BasicCardList type="pattern" items={items} />
+    </SectionLayout>
   );
 }
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Content = styled(ContentLayout)`
-  padding: 0 ${spacing(6)};
-`;
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};

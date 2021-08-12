@@ -3,57 +3,59 @@ import { ReactComponent as UserIcon } from '../../../../asset/svg/user-icon.svg'
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary as Title } from '../../../../lib/element/title';
-import { IndentLayout } from '../../../../lib/element/layout';
+import { SectionLayout } from '../../../../lib/element/layout';
 
 export function AboutAccountInfoComponent() {
   return (
-    <IndentLayout>
-      <UserNameContainer>
+    <SectionLayout>
+      <LineCase>
         <UserIcon />
         <UserTitle tid="Илья Зинченко" />
-      </UserNameContainer>
-      <InfoContainer>
+      </LineCase>
+      <SectionLayout type="SMALL">
         <TitlePrimary tid="Об аккаунте" />
-        <SectionContent>
-          <Pair>
+        <LineSection>
+          <SectionLayout type="TEXT">
             <InfoTitle tid="Дата регистрации" />
             <InfoText tid="Январь 25, 2021" />
-          </Pair>
-          <Pair>
+          </SectionLayout>
+          <SectionLayout type="TEXT">
             <InfoTitle tid="Город" />
             <InfoText tid="Москва" />
-          </Pair>
-          <Pair>
+          </SectionLayout>
+          <SectionLayout type="TEXT">
             <InfoTitle tid="Статус" />
             <StatusInfo status={false} tid="Верефицирован" />
-          </Pair>
-        </SectionContent>
-      </InfoContainer>
-      <InfoContainer>
+          </SectionLayout>
+        </LineSection>
+      </SectionLayout>
+      <SectionLayout type="SMALL">
         <TitlePrimary tid="Доставка и оплата" />
-        <SectionContent>
-          <Pair>
+        <LineSection>
+          <SectionLayout type="TEXT">
             <InfoTitle tid="Адрес доставки" />
             <InfoText tid="Москва, Ул. Ленина 205А" />
-          </Pair>
-          <Pair>
+          </SectionLayout>
+          <SectionLayout type="TEXT">
             <InfoTitle tid="Способ оплаты" />
             <InfoText tid="Наличными при получении" />
-          </Pair>
-        </SectionContent>
-      </InfoContainer>
-    </IndentLayout>
+          </SectionLayout>
+        </LineSection>
+      </SectionLayout>
+    </SectionLayout>
   );
 }
-const Pair = styled.div`
-  gap: ${spacing(2)};
-  display: flex;
-  flex-direction: column;
-`;
-const SectionContent = styled.div`
+
+const LineSection = styled.div`
   gap: ${spacing(6)};
   display: flex;
 `;
+const LineCase = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing(2)};
+`;
+
 const UserTitle = styled(Title)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
 `;
@@ -72,14 +74,4 @@ const InfoText = styled(Title)`
 const StatusInfo = styled(InfoText)`
   color: ${({ status }) =>
     status ? THEME_COLOR.TEXT.SUCCESS : THEME_COLOR.TEXT.DANGER};
-`;
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing(3)};
-`;
-const UserNameContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing(2)};
 `;

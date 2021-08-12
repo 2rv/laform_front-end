@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { ContentLayout } from '../../lib/element/layout';
-import { spacing, THEME_COLOR } from '../../lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { FOOTER_MENU_ITEMS, FOOTER_SOCIAL_LINKS } from './footer.constant';
 import {
   FooterCopyrightComponent,
@@ -12,30 +11,20 @@ import { NotificationContainer } from '../notification';
 export function FooterComponent(props) {
   return (
     <Container>
-      <ContentLayout>
-        <Content>
-          <FooterMenu items={FOOTER_MENU_ITEMS} />
-          <NotificationForm />
-          <FooterCopyright />
-          <FooterSocialList items={FOOTER_SOCIAL_LINKS} />
-        </Content>
-      </ContentLayout>
+      <FooterMenu items={FOOTER_MENU_ITEMS} />
+      <NotificationForm />
+      <FooterCopyright />
+      <FooterSocialList items={FOOTER_SOCIAL_LINKS} />
     </Container>
   );
 }
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
-`;
-
-const Content = styled(ContentLayout)`
   display: grid;
   grid-gap: ${spacing(12)};
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, [row] auto);
-  padding: ${spacing(12)} ${spacing(6)};
+  padding: ${THEME_SIZE.INDENT.LARGE} 0;
   @media screen and (max-width: 1259px) {
     padding: ${spacing(6)} ${spacing(6)};
     grid-gap: ${spacing(6)};

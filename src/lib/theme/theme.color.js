@@ -3,9 +3,12 @@ export const THEME_COLOR = {
   PRIMARY_DARK: '#7c1c3e',
   SECONDARY: '#5f5b5d',
   SECONDARY_DARK: '#2f2a2c',
-  LIGHT_GRAY: '#bfbfbf',
   DANGER: '#eb5757',
-  BUTTON: { INACTIVE: '#808080' },
+  WHITE: '#fff',
+  GRAY: '#f0f0f0',
+  LIGHT_GRAY: '#bfbfbf',
+  DARK_GRAY: '#808080',
+
   BACKGROUND: {
     DANGER: '#FFE6E6',
     SUCCESS: '#D1FFE4',

@@ -1,5 +1,4 @@
-import { IndentLayout } from '../../lib/element/layout';
-
+import { SectionLayout } from '../../lib/element/layout';
 import {
   SignupHeaderComponent,
   SignupFormContainer,
@@ -9,13 +8,13 @@ import {
 
 export function SignupComponent(props) {
   return (
-    <IndentLayout type="small">
+    <SectionLayout type="SMALL">
       <SignupHeaderComponent />
-      <IndentLayout>
+      <SectionLayout>
         <SignupFormContainer {...props} />
         <SignupFormSocialComponent />
         <SignupFooterComponent />
-      </IndentLayout>
-    </IndentLayout>
+      </SectionLayout>
+    </SectionLayout>
   );
 }

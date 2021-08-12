@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../lib/element/layout';
+import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { ButtonBasic, ButtonPrimary } from '../../lib/element/button';
 import { BasicCardList } from '../../lib/element/card-list';
@@ -17,6 +17,7 @@ import {
   TEST_PRODUCT_TITLE_BY_KEY,
 } from './product.constant';
 import { TitlePrimary } from '../../lib/element/title';
+
 export function ProductComponent(props) {
   const {
     name,
@@ -32,6 +33,7 @@ export function ProductComponent(props) {
     itemsRecomend,
     comments,
   } = props;
+
   const productGetInitialValue = () => {
     return {
       [TEST_PRODUCT_OPTIONS_KEY.SIZE]:
@@ -42,103 +44,82 @@ export function ProductComponent(props) {
   };
 
   return (
-    <Container>
-      <PaddingLayout>
-        <IndentLayout type="MEDIUM">
-          <Main>
-            <TextSecondary>
-              Главная / Выкройки / Пальто 0105 ЦК-рукав
-            </TextSecondary>
-            <MainContent>
-              <ProductImageComponent images={images} />
-              <MainInfo>
-                <TitleContainer>
-                  <ProductTitle tid={name} />
-                  {bestSeller && <Modifier alt={true} tid={'Хит!'} />}
-                  {discount && <Modifier tid={'Скидка!'} />}
-                </TitleContainer>
-                <TextSecondary tid={short} />
-                <Divider />
-                <ProductDescriptionComponent text={full} />
-                <Divider />
-                <ProductSelectContainer
-                  initialValue={productGetInitialValue()}
-                  options={options}
-                  optionsKeys={Object.values(TEST_PRODUCT_OPTIONS_KEY)}
-                  optionsTitles={TEST_PRODUCT_TITLE_BY_KEY}
-                />
-                <Divider />
-                <FlexContainer>
-                  <ProductPriceComponent
-                    priceWord={'Цена'}
-                    symbol={':'}
-                    price={price}
-                    valute={'руб'}
-                    discount={discount}
-                  />
-                  <ActionsContainer>
-                    <Button
-                      act={inBacket}
-                      tid={inBacket ? actions[0] : actions[1]}
-                    />
-                    <LikeButton like={liked} icon={LikeIcon} />
-                  </ActionsContainer>
-                </FlexContainer>
-              </MainInfo>
-            </MainContent>
-          </Main>
-          {materials && (
-            <MaterialsContainer>
-              <TitlePrimary tid={'Материалы'} />
-              <ProductDescriptionComponent lines={3} text={materials} />
-            </MaterialsContainer>
-          )}
-          <IndentLayout>
-            <TitlePrimary tid={'Рекомендации'} />
-            <BasicCardList
-              items={itemsRecomend}
-              actions={['OTHER.SELECTED', 'OTHER.SELECT']}
+    <SectionLayout type="MEDIUM">
+      <Main>
+        <TextSecondary>Главная / Выкройки / Пальто 0105 ЦК-рукав</TextSecondary>
+        <MainContent>
+          <ProductImageComponent images={images} />
+          <MainInfo>
+            <TitleCase>
+              <Title tid={name} />
+              {bestSeller && <Modifier alt={true} tid={'Хит!'} />}
+              {discount && <Modifier tid={'Скидка!'} />}
+            </TitleCase>
+            <TextSecondary tid={short} />
+            <Divider />
+            <ProductDescriptionComponent text={full} />
+            <Divider />
+            <ProductSelectContainer
+              initialValue={productGetInitialValue()}
+              options={options}
+              optionsKeys={Object.values(TEST_PRODUCT_OPTIONS_KEY)}
+              optionsTitles={TEST_PRODUCT_TITLE_BY_KEY}
             />
-          </IndentLayout>
-          <IndentLayout>
-            <ProductCommentComponent items={comments} />
-          </IndentLayout>
-        </IndentLayout>
-      </PaddingLayout>
-    </Container>
+            <Divider />
+            <FooterCase>
+              <ProductPriceComponent
+                priceWord={'Цена'}
+                symbol={':'}
+                price={price}
+                valute={'руб'}
+                discount={discount}
+              />
+              <ActionCase>
+                <Button
+                  act={inBacket}
+                  tid={inBacket ? actions[0] : actions[1]}
+                />
+                <LikeButton like={liked} icon={LikeIcon} />
+              </ActionCase>
+            </FooterCase>
+          </MainInfo>
+        </MainContent>
+      </Main>
+      {materials && (
+        <SectionLayout type="TEXT">
+          <TitlePrimary tid={'Материалы'} />
+          <ProductDescriptionComponent lines={3} text={materials} />
+        </SectionLayout>
+      )}
+      <SectionLayout>
+        <TitlePrimary tid={'Рекомендации'} />
+        <BasicCardList
+          items={itemsRecomend}
+          actions={['OTHER.SELECTED', 'OTHER.SELECT']}
+        />
+      </SectionLayout>
+      <SectionLayout>
+        <ProductCommentComponent items={comments} />
+      </SectionLayout>
+    </SectionLayout>
   );
 }
-// ProductImageComponent Там переключалки кнопки не те что в дизайне но они норм
-// Divider Удобнее чем гемароится с border
-// ProductPriceComponent Никак иначе TextField не позволяют тыкать двоеточие
-// ProductSelectContainer определяет сколько полей параметров нужно создать
-// ProductSelectContainer текст 14px нужно 16 и цвет #8F8D8E переделыввать select компоненту?
-// ActionsContainer Добавить кнопку +/- 1 для количества товаров хз зачем
-// Доделать читать дальше кнопки и как они должны выводить данные модалкой или вниз опускаться по высоте
-// Сделано 2 модификатора можно удалить если надо но они норм
-// В витрине с рекомендациями должны быть 3 разных типа товаров?
-// Добавить в комментарии Formik что бы обрабатывать вводимые сообщения
-// Хлебные крошки параметры size 16px weigth default если активная medium цвет #8F8D8E но там их  2 разных возможно
-// Вынести слова в lang
 
-const FlexContainer = styled.div`
+const FooterCase = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
-const TitleContainer = styled.div`
+const TitleCase = styled.div`
   display: flex;
   align-items: baseline;
   gap: ${spacing(3)};
 `;
-const ActionsContainer = styled.div`
+const ActionCase = styled.div`
   gap: ${spacing(2)};
   display: flex;
-  margin-left: auto;
 `;
-const MaterialsContainer = styled.div`
-  display: grid;
-  gap: ${spacing(2)};
-`;
+
 const LikeButton = styled(ButtonBasic)`
   fill: ${({ like }) => (like ? '#ffffff' : THEME_COLOR.SECONDARY_DARK)};
   background-color: ${({ like }) =>
@@ -153,7 +134,7 @@ const Modifier = styled(TextSecondary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
   color: ${({ alt }) => (alt ? THEME_COLOR.PRIMARY_DARK : THEME_COLOR.PRIMARY)};
 `;
-const ProductTitle = styled(TitlePrimary)`
+const Title = styled(TitlePrimary)`
   font-size: 28px;
 `;
 const MainInfo = styled.div`
@@ -169,14 +150,6 @@ const MainContent = styled.div`
 const Main = styled.div`
   display: grid;
   gap: ${spacing(6)};
-`;
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: ${spacing(12)} ${spacing(6)};
-`;
-const PaddingLayout = styled(ContentLayout)`
-  padding: 0 ${spacing(6)};
 `;
 const Divider = styled.div`
   border: 1px solid ${THEME_COLOR.BACKGROUND.GRAY};
