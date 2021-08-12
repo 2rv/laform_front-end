@@ -45,7 +45,6 @@ const Container = styled(SectionLayout)`
   height: 100vh;
   overflow: auto;
   flex-flow: column;
-  background-color: #181818;
 `;
 const Content = styled(ContentLayout)`
   flex: 1;
@@ -69,7 +68,6 @@ const Wrapper = (props: PageWrapperPropsType) => {
 
 const Background = styled.div`
   background-color: ${THEME_COLOR.BACKGROUND.GRAY};
-  background-color: #f49900;
   display: grid;
   width: 100%;
 `;
