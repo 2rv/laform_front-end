@@ -32,6 +32,10 @@ import {
   productRouter,
   PRODUCT_ROUTE_PATH,
 } from '../../core/product';
+import {
+  ordersRouter,
+  ORDERS_ROUTE_PATH,
+} from '../../core/orders';
 
 import { routesInit } from './router.core';
 
@@ -49,6 +53,7 @@ export const routes = {
   [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [PRODUCT_ROUTE_PATH]: productRouter,
+  [ORDERS_ROUTE_PATH]: ordersRouter,
 };
 
 export const Router = routesInit(routes);
