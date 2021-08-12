@@ -1,3 +1,14 @@
+export const MY_PATTERNS_ROUTE_PATH = '/my-patterns';
+
+export const MY_PATTERNS_STORE_NAME = 'MY_PATTERNS';
+
+export const MY_PATTERNS_API = {
+  MY_PATTERNS_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const MY_PATTERNS_LIST = [
   {
     id: 1,

@@ -40,6 +40,10 @@ import {
   myPurchasesRouter,
   MY_PURCHASES_ROUTE_PATH,
 } from '../../core/my-purchases';
+import {
+  myPatternsRouter,
+  MY_PATTERNS_ROUTE_PATH,
+} from '../../core/my-patterns';
 
 import { routesInit } from './router.core';
 
@@ -59,6 +63,7 @@ export const routes = {
   [PRODUCT_ROUTE_PATH]: productRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
   [MY_PURCHASES_ROUTE_PATH]: myPurchasesRouter,
+  [MY_PATTERNS_ROUTE_PATH]: myPatternsRouter,
 };
 
 export const Router = routesInit(routes);
