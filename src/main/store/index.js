@@ -54,6 +54,10 @@ import {
   homeArticleStore,
   HOME_ARTICLE_STORE_NAME,
 } from '../../core/home-articles';
+import {
+  productStore,
+  PRODUCT_STORE_NAME,
+} from '../../core/product';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -74,6 +78,7 @@ export const reducers = combineReducers({
   [NOTIFICATION_STORE_NAME]: notificationStore,
   [HOME_ARTICLE_STORE_NAME]: homeArticleStore,
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
+  [PRODUCT_STORE_NAME]: productStore,
 });
 
 export { initStore } from './store.core';

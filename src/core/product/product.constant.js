@@ -1,4 +1,14 @@
 export const PRODUCT_ROUTE_PATH = '/product';
+
+export const PRODUCT_STORE_NAME = 'PRODUCT';
+
+export const PRODUCT_API = {
+  PRODUCT_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const TEST_PRODUCT_DATA = {
   name: 'Комбинезон 0717',
   bestSeller: true,
