@@ -10,6 +10,8 @@ export interface FieldPropsType {
   onBlur: any;
   isFindInput?: boolean;
   width?: number;
+  auto?: boolean;
+  full?: boolean;
 }
 export interface InputPropsType {
   className?: string;
@@ -40,4 +42,5 @@ export interface SelectPropsType {
   onBlur: any;
   width?: number;
   auto?: boolean;
+  full?: boolean;
 }

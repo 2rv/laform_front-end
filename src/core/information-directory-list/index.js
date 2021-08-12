@@ -1,1 +1,0 @@
-export { InformationDirectoryListContainer } from './frames';

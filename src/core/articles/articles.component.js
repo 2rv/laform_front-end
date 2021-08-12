@@ -1,46 +1,40 @@
-import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import { SectionLayout } from 'src/lib/element/layout';
-import { TextSecondary } from 'src/lib/element/text';
-import { CardArticles } from 'src/lib/element/card';
-import { BasicCardList } from 'src/lib/element/card-list';
-import { ArticlesFormFilterContainer } from './frames';
-import {
-  ARTICLES_FILTER_CATEGORY_OPTIONS,
-  ARTICLES_FILTER_TAGS_OPTIONS,
-} from './articles.constant';
-import {
-  ARTICLES_FORM_FILTER_FIELD_NAME,
-  ARTICLES_FILTER_FIELD_NAME,
-} from './articles.type';
+import { SectionLayout } from '../../lib/element/layout';
+import { BasicCardList } from '../../lib/element/card-list';
+import { TitlePrimary } from '../../lib/element/title';
+import { ArticlesFilter } from './frames';
 
 export function ArticlesComponent(props) {
-  const { items } = props;
-  const articlesFormFilterGetInitialValue = () => {
-    const rawData = false; //getRequestData(changeDeliveryInfo, null);
-    if (!rawData) {
-      return {
-        [ARTICLES_FILTER_FIELD_NAME.CATEGORY]:
-          ARTICLES_FILTER_CATEGORY_OPTIONS[0].id,
-        [ARTICLES_FILTER_FIELD_NAME.TAGS]: ARTICLES_FILTER_TAGS_OPTIONS[0].id,
-      };
-    }
-  };
+  const {
+    initialValue,
+    categoryOptions,
+    tagsOptions,
+    listItems,
+    fieldName,
+    onSubmit,
+    validation,
+    pending,
+    success,
+    error,
+    errorMessage,
+  } = props;
+
   return (
     <SectionLayout>
-      <Title tid="ARTICLES.ARTICLES.TITLE" />
-      <ArticlesFormFilterContainer
-        categoryOptions={ARTICLES_FILTER_CATEGORY_OPTIONS}
-        tagsOptions={ARTICLES_FILTER_TAGS_OPTIONS}
-        initialValue={articlesFormFilterGetInitialValue()}
-        fieldName={ARTICLES_FORM_FILTER_FIELD_NAME}
+      <TitlePrimary tid="ARTICLES.ARTICLES.TITLE" />
+      <ArticlesFilter
+        findPlaceholderTid={'ARTICLES.ARTICLES.FIELD.FIND_ARTICLES'}
+        categoryOptions={categoryOptions}
+        tagsOptions={tagsOptions}
+        initialValue={initialValue}
+        fieldName={fieldName}
+        onSubmit={onSubmit}
+        validation={validation}
+        pending={pending}
+        success={success}
+        error={error}
+        errorMessage={errorMessage}
       />
-      <BasicCardList items={items} ItemComponent={CardArticles} />
+      <BasicCardList items={listItems} type="articles" />
     </SectionLayout>
   );
 }
-const Title = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  color: ${THEME_COLOR.SECONDARY_DARK};
-`;

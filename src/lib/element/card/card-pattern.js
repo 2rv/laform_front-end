@@ -110,4 +110,5 @@ const LikeButton = styled(IconButton)`
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  line-height: 1.5;
 `;

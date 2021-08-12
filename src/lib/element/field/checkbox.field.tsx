@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-
 import { ReactComponent as CheckmarkIcon } from '../../../asset/svg/check-mark.svg';
-
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
 
@@ -52,7 +50,7 @@ const InputContainer = styled.label`
   gap: ${spacing(2)};
   padding: ${spacing(2)} ${spacing(3)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  background-color: ${THEME_COLOR.GRAY};
   cursor: pointer;
 `;
 
@@ -78,7 +76,7 @@ const CheckmarkContainer = styled.div<{ checked: boolean }>`
   ${(p) =>
     p.checked &&
     css`
-      color: ${THEME_COLOR.BACKGROUND.GRAY};
+      color: ${THEME_COLOR.GRAY};
       background-color: ${THEME_COLOR.SECONDARY_DARK};
     `}
 `;

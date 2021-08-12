@@ -22,3 +22,8 @@ export interface SectionLayoutPropsType {
   children: React.ReactElement<any> | React.ReactElement<any>[] | null;
   className?: string;
 }
+
+export interface GridLayoutPropsType {
+  type?: 'double' | undefined;
+  children: React.ReactElement<any> | null;
+}

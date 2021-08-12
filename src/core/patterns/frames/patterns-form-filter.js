@@ -2,24 +2,24 @@ import { FormFilter } from '../../../lib/element/form-filter';
 
 export function PatternsFormFilter(props) {
   const {
+    findPlaceholderTid,
     categoryOptions,
     tagsOptions,
     initialValue,
     fieldName,
 
-    onSubmitForm,
+    onSubmit,
     validation,
 
-    dataPending,
-    formPending,
-    formSuccess,
-    formError,
+    pending,
+    success,
+    error,
     errorMessage,
   } = props;
 
   return (
     <FormFilter
-      findPlaceholderTid={'PATTERNS.PATTERNS.FIELD.FIND_PATTERNS'}
+      findPlaceholderTid={findPlaceholderTid}
       categoryOptions={categoryOptions}
       tagsOptions={tagsOptions}
       fieldNameFind={fieldName.FIND_INPUT}
@@ -27,10 +27,10 @@ export function PatternsFormFilter(props) {
       selectNameTags={fieldName.TAGS}
       initialValue={initialValue}
       validation={validation}
-      onSubmit={onSubmitForm}
-      pending={dataPending || formPending}
-      success={formSuccess}
-      error={formError}
+      onSubmit={onSubmit}
+      pending={pending}
+      success={success}
+      error={error}
       errorMessage={errorMessage}
     />
   );
