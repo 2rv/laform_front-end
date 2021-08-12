@@ -58,6 +58,10 @@ import {
   productStore,
   PRODUCT_STORE_NAME,
 } from '../../core/product';
+import {
+  sewingGoodsStore,
+  SEWING_GOODS_STORE_NAME,
+} from '../../core/sewing-goods';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -79,6 +83,7 @@ export const reducers = combineReducers({
   [HOME_ARTICLE_STORE_NAME]: homeArticleStore,
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
   [PRODUCT_STORE_NAME]: productStore,
+  [SEWING_GOODS_STORE_NAME]: sewingGoodsStore,
 });
 
 export { initStore } from './store.core';

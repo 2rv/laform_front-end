@@ -25,10 +25,10 @@ export function ProductContainer() {
 
   return (
     <ProductComponent
-      isPending={isRequestPending(state.masterClass)}
-      isError={isRequestError(state.masterClass)}
-      isSuccess={isRequestSuccess(state.masterClass)}
-      errorMessage={getRequestErrorMessage(state.masterClass)}
+      isPending={isRequestPending(state.product)}
+      isError={isRequestError(state.product)}
+      isSuccess={isRequestSuccess(state.product)}
+      errorMessage={getRequestErrorMessage(state.product)}
       pageLoading={pageLoading}
       {...TEST_PRODUCT_DATA}
     />
