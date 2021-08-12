@@ -1,6 +1,6 @@
 import { TitlePrimary } from 'src/lib/element/title';
 import { TextSecondary } from 'src/lib/element/text';
-import { FieldSecondary } from 'src/lib/element/field';
+import { BasicField } from 'src/lib/element/field';
 import { ButtonBasic } from 'src/lib/element/button';
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
@@ -17,11 +17,7 @@ export function ArticlePageCommentComponent({ items }) {
         })}
         <SecondTitle tid="Написать отзыв" />
       </ListComment>
-      <FieldSecondary
-        icon={SendIcon}
-        onClick={() => console.log('click')}
-        placeholderTid="Введите свой отзыв"
-      />
+      <BasicField placeholderTid="Введите свой отзыв" />
     </Container>
   );
 }
@@ -58,10 +54,7 @@ export function ProductCommentItem(props) {
     </CommentItemContainer>
   );
 }
-// Сделать отправку по Enter
-// Formik!!!!!!
-// Сделать на длинный текст проверку
-// Background color есть но его вообще еле видно оставить????
+
 const IconButton = styled(ButtonBasic)`
   padding: 0;
   margin: 0 ${spacing(3)};

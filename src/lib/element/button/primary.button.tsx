@@ -9,5 +9,5 @@ export function ButtonPrimary(props: ButtonPropsType) {
 
 const Button = styled(ButtonBasic)`
   background-color: ${THEME_COLOR.PRIMARY};
-  color: ${THEME_COLOR.TEXT.WHITE};
+  color: ${THEME_COLOR.WHITE};
 `;

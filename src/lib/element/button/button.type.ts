@@ -6,4 +6,12 @@ export interface ButtonPropsType extends HTMLAttributes<HTMLButtonElement> {
   icon?: any;
   disabled?: boolean;
   children?: any;
+  width?: number | false;
+}
+
+export interface IconButtonPropsType extends HTMLAttributes<HTMLButtonElement> {
+  disabled?: boolean;
+  children: any;
+  width?: number;
+  auto?: boolean;
 }

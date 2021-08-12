@@ -3,11 +3,19 @@ import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
 import { TitlePrimary } from 'src/lib/element/title';
 import { FieldSelect } from 'src/lib/element/field';
-import { ButtonPrimary, ButtonSecondary, ButtonBasic } from 'src/lib/element/button';
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonBasic,
+} from 'src/lib/element/button';
 
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
-export function AboutOrderFooterComponent({ values, handleChange, fieldOrderStatus }) {
+export function AboutOrderFooterComponent({
+  values,
+  handleChange,
+  fieldOrderStatus,
+}) {
   return (
     <FooterContainer>
       <div>
@@ -16,7 +24,8 @@ export function AboutOrderFooterComponent({ values, handleChange, fieldOrderStat
             <TextPrimary tid="ORDER_NUMBER.FORM.FOOTER.DISCOUNT_PRICE" />
             <div>
               <TextDark>299</TextDark>&nbsp;
-              <TextPrimary tid="OTHER.VALUTE" />.&nbsp;
+              <TextPrimary tid="OTHER.VALUTE" />
+              .&nbsp;
               <TextDiscount>-15%</TextDiscount>
             </div>
           </FooterInfoContent>
@@ -58,7 +67,7 @@ export function AboutOrderFooterComponent({ values, handleChange, fieldOrderStat
 
 const TextPrimary = styled(TextSecondary)`
   line-height: 24px;
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
 `;
 
 const TextDark = styled(TextSecondary)`

@@ -1,4 +1,4 @@
-import { FieldPrimary } from '../../../../lib/element/field';
+import { BasicField } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
@@ -36,7 +36,7 @@ export function AuthFormChangePasswordComponent(props) {
       <IndentLayout type="small">
         <TitlePrimary tid="AUTH.CHANGE_PASSWORD.TITLE" />
         <FieldLayout>
-          <FieldPrimary
+          <BasicField
             titleTid="AUTH.CHANGE_PASSWORD.NEW_PASSWORD.TITLE"
             placeholderTid="AUTH.CHANGE_PASSWORD.NEW_PASSWORD.PLACEHOLDER"
             name={fieldPassword}
@@ -46,7 +46,7 @@ export function AuthFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="AUTH.CHANGE_PASSWORD.REPEAT_NEW_PASSWORD.TITLE"
             placeholderTid="AUTH.CHANGE_PASSWORD.REPEAT_NEW_PASSWORD.PLACEHOLDER"
             name={fieldPasswordRepeat}

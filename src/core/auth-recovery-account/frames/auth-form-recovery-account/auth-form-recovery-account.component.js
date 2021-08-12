@@ -1,4 +1,4 @@
-import { FieldPrimary } from '../../../../lib/element/field';
+import { BasicField } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { IndentLayout } from '../../../../lib/element/layout';
@@ -34,7 +34,7 @@ export function AuthFormRecoveryAccountComponent(props) {
     <form onSubmit={handleSubmit}>
       <IndentLayout type="small">
         <TitlePrimary tid="AUTH.RECOVERY_ACCOUNT.TITLE" />
-        <FieldPrimary
+        <BasicField
           titleTid="AUTH.RECOVERY_ACCOUNT.EMAIL.TITLE"
           placeholderTid="AUTH.RECOVERY_ACCOUNT.EMAIL.PLACEHOLDER"
           type="email"

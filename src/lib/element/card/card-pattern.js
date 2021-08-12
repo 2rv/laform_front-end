@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { Price } from '../price';
-import { ButtonPrimary, ButtonBasic } from '../button';
+import { ButtonPrimary, ButtonBasic, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
@@ -56,11 +56,14 @@ export function CardPattern(props) {
       </Content>
       <LineCase>
         <Button
+          width={165}
           onClick={onSelect}
           select={isSelected}
           tid={isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT'}
         />
-        <LikeButton onClick={onLike} like={isLiked} icon={LikeIcon} />
+        <LikeButton onClick={onLike} like={isLiked}>
+          <LikeIcon />
+        </LikeButton>
       </LineCase>
     </Container>
   );
@@ -96,11 +99,9 @@ const ComplexityDot = styled.div`
 `;
 
 const Button = styled(ButtonPrimary)`
-  width: 165px;
-  padding: ${spacing(3)};
   ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}
 `;
-const LikeButton = styled(ButtonBasic)`
+const LikeButton = styled(IconButton)`
   fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
   background-color: ${(p) =>
     p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};

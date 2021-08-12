@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { FieldPrimary } from '../../../../lib/element/field';
+import { BasicField } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
@@ -35,7 +35,7 @@ export function SettingsFormChangePasswordComponent(props) {
       <IndentLayout type="small">
         <TitlePrimary tid="SETTINGS.CHANGE_PASSWORD.TITLE" />
         <FieldLayout>
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.OLD_PASSWORD.TITLE"
             placeholderTid="SETTINGS.CHANGE_PASSWORD.OLD_PASSWORD.PLACEHOLDER"
             name={fieldOldPassword}
@@ -45,7 +45,7 @@ export function SettingsFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.NEW_PASSWORD.TITLE"
             placeholderTid="SETTINGS.CHANGE_PASSWORD.NEW_PASSWORD.PLACEHOLDER"
             name={fieldPassword}
@@ -55,7 +55,7 @@ export function SettingsFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.REPEAT_NEW_PASSWORD.TITLE"
             placeholderTid="SETTINGS.CHANGE_PASSWORD.REPEAT_NEW_PASSWORD.PLACEHOLDER"
             name={fieldPasswordRepeat}
