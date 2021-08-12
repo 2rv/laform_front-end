@@ -1,14 +1,36 @@
-import { useSelector } from 'react-redux';
-import { PatternsComponent } from './patterns.component';
-import { PATTERNS_SUB_MENU_ITEMS } from './patterns.constant';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { patternsUploadData } from './patterns.action';
+import { PATTERNS_SUB_MENU_ITEMS, PATTERNS_STORE_NAME } from './patterns.constant';
+import { PatternsComponent } from './patterns.component';
+
+import {
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from '../../main/store/store.service';
+
 export function PatternsContainer() {
-  const { activePath } = useSelector((state) => ({
+  const dispatch = useDispatch();
+  const { state, pageLoading, activePath } = useSelector((state) => ({
+    state: state[PATTERNS_STORE_NAME],
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     activePath: state[NAVIGATION_STORE_NAME].activePath,
   }));
 
+  // React.useEffect(() => {
+  //   dispatch(patternsUploadData());
+  // }, []);
+
   return (
     <PatternsComponent
+      isPending={isRequestPending(state.patterns)}
+      isError={isRequestError(state.patterns)}
+      isSuccess={isRequestSuccess(state.patterns)}
+      errorMessage={getRequestErrorMessage(state.patterns)}
+      pageLoading={pageLoading}
       activePath={activePath}
       items={testPatternItems}
       menuItems={PATTERNS_SUB_MENU_ITEMS}
