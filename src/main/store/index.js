@@ -102,6 +102,10 @@ import {
   createArticleStore,
   CREATE_ARTICLE_STORE_NAME,
 } from '../../core/create-article';
+import {
+  compilationStore,
+  COMPILATION_STORE_NAME,
+} from '../../core/compilation';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -134,6 +138,7 @@ export const reducers = combineReducers({
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
   [CREATE_PRODUCT_STORE_NAME]: createProductStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
+  [COMPILATION_STORE_NAME]: compilationStore,
 });
 
 export { initStore } from './store.core';

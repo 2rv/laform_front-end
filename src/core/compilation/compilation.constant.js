@@ -1,4 +1,14 @@
-export const COMPILATION_ROUTE_PATH = '/';
+export const COMPILATION_ROUTE_PATH = '/compilation';
+
+export const COMPILATION_STORE_NAME = 'COMPILATION';
+
+export const COMPILATION_API = {
+  COMPILATION_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const COMPILATION_SUB_MENU_ITEMS = [
   { name: 'COMPILATION.SUB_MENU.POPULAR_GOODS', path: '/compilation' },
   { name: 'COMPILATION.SUB_MENU.BEST_MASTER_CLASSES', path: '/compilation' },

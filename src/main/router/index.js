@@ -68,6 +68,10 @@ import {
   createArticleRouter,
   CREATE_ARTICLE_ROUTE_PATH,
 } from '../../core/create-article';
+import {
+  compilationRouter,
+  COMPILATION_ROUTE_PATH,
+} from '../../core/compilation';
 
 import { routesInit } from './router.core';
 
@@ -94,6 +98,7 @@ export const routes = {
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
+  [COMPILATION_ROUTE_PATH]: compilationRouter,
 };
 
 export const Router = routesInit(routes);
