@@ -4,6 +4,7 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { sewingGoodsUploadData } from './sewing-goods.action';
 import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
 import { SewingGoodsComponent } from './sewing-goods.component';
+
 import {
   getRequestErrorMessage,
   isRequestError,
@@ -31,7 +32,7 @@ export function SewingGoodsContainer() {
       [SEWING_GOODS_FIELD_NAME.FIND_INPUT]: '',
     };
   };
-
+  
   const onSubmit = (values) => {
     console.log(values); // вроде должно приходить сюда изменения из формы
   };
