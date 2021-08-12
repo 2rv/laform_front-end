@@ -70,6 +70,10 @@ import {
   ordersStore,
   ORDERS_STORE_NAME,
 } from '../../core/orders';
+import {
+  myPurchasesStore,
+  MY_PURCHASES_STORE_NAME,
+} from '../../core/my-purchases';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -94,6 +98,7 @@ export const reducers = combineReducers({
   [SEWING_GOODS_STORE_NAME]: sewingGoodsStore,
   [PATTERNS_STORE_NAME]: patternsStore,
   [ORDERS_STORE_NAME]: ordersStore,
+  [MY_PURCHASES_STORE_NAME]: myPurchasesStore,
 });
 
 export { initStore } from './store.core';
