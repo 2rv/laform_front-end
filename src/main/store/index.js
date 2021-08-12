@@ -98,6 +98,10 @@ import {
   createProductStore,
   CREATE_PRODUCT_STORE_NAME,
 } from '../../core/create-product';
+import {
+  createArticleStore,
+  CREATE_ARTICLE_STORE_NAME,
+} from '../../core/create-article';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -129,6 +133,7 @@ export const reducers = combineReducers({
   [FAQ_PAGE_STORE_NAME]: faqPageStore,
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
   [CREATE_PRODUCT_STORE_NAME]: createProductStore,
+  [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
 });
 
 export { initStore } from './store.core';

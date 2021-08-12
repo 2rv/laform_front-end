@@ -64,6 +64,10 @@ import {
   createProductRouter,
   CREATE_PRODUCT_ROUTE_PATH,
 } from '../../core/create-product';
+import {
+  createArticleRouter,
+  CREATE_ARTICLE_ROUTE_PATH,
+} from '../../core/create-article';
 
 import { routesInit } from './router.core';
 
@@ -89,6 +93,7 @@ export const routes = {
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,
+  [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
 };
 
 export const Router = routesInit(routes);

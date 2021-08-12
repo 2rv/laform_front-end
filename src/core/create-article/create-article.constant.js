@@ -1,4 +1,13 @@
-export const CREATE_ARTICLE_ROUTE_PATH = '/';
+export const CREATE_ARTICLE_ROUTE_PATH = '/create-article';
+
+export const CREATE_ARTICLE_STORE_NAME = 'CREATE_ARTICLE';
+
+export const CREATE_ARTICLE_API = {
+  CREATE_ARTICLE_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
 
 export const TEST_CREATE_ARTICLE_FIELDS__DATA = {
   description: [
