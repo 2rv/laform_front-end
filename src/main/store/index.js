@@ -122,6 +122,10 @@ import {
   aboutAccountStore,
   ABOUT_ACCOUNT_STORE_NAME,
 } from '../../core/about-account';
+import {
+  homeStore,
+  HOME_STORE_NAME,
+} from '../../core/home';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -159,6 +163,7 @@ export const reducers = combineReducers({
   [ARTICLES_STORE_NAME]: articlesStore,
   [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
+  [HOME_STORE_NAME]: homeStore,
 });
 
 export { initStore } from './store.core';
