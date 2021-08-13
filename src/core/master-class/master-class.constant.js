@@ -4,7 +4,7 @@ export const MASTER_CLASS_STORE_NAME = 'MASTER_CLASS';
 
 export const MASTER_CLASS_API = {
   MASTER_CLASS_UPLOAD: {
-    ENDPOINT: '/master-class/get/18b9e4b1-2b8d-493d-b94a-f9cba6148802/?lang=ru',
+    ENDPOINT: (currentLang) => `/master-class/get/18b9e4b1-2b8d-493d-b94a-f9cba6148802/?lang=${currentLang}`,
     TYPE: 'GET',
   }
 };
