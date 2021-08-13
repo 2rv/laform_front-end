@@ -1,27 +1,28 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-// import { sewingGoodsUploadData } from './sewing-goods.action'; // когда будет редакс
-// import { ARTICLES_STORE_NAME } from './articles.constant';
+import { articlesUploadData } from './articles.action';
+import { ARTICLES_STORE_NAME } from './articles.constant';
+import { ARTICLES_FIELD_NAME } from './articles.type';
 import { ArticlesComponent } from './articles.component';
+
 import {
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { ARTICLES_FIELD_NAME } from './articles.type';
 
 export function ArticlesContainer() {
   const dispatch = useDispatch();
   const { state, pageLoading } = useSelector((state) => ({
-    // state: state[ARTICLES_STORE_NAME],
+    state: state[ARTICLES_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
 
-  useEffect(() => {
-    //   dispatch(sewingGoodsUploadData()); // изменить название тип
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(articlesUploadData());
+  // }, []);
 
   const initialValue = () => {
     return {
@@ -37,11 +38,11 @@ export function ArticlesContainer() {
 
   return (
     <ArticlesComponent
-      //   isPending={isRequestPending(state.sewingGoods)}
-      //   isError={isRequestError(state.sewingGoods)}
-      //   isSuccess={isRequestSuccess(state.sewingGoods)}
-      //   errorMessage={getRequestErrorMessage(state.sewingGoods)}
-      //   pageLoading={pageLoading}
+      isPending={isRequestPending(state.sewingGoods)}
+      isError={isRequestError(state.sewingGoods)}
+      isSuccess={isRequestSuccess(state.sewingGoods)}
+      errorMessage={getRequestErrorMessage(state.sewingGoods)}
+      pageLoading={pageLoading}
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}

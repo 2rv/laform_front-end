@@ -72,6 +72,14 @@ import {
   compilationRouter,
   COMPILATION_ROUTE_PATH,
 } from '../../core/compilation';
+import {
+  basketRouter,
+  BASKET_ROUTE_PATH,
+} from '../../core/basket';
+import {
+  aboutAccountRouter,
+  ABOUT_ACCOUNT_ROUTE_PATH,
+} from '../../core/about-account';
 
 import { routesInit } from './router.core';
 
@@ -99,6 +107,8 @@ export const routes = {
   [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [COMPILATION_ROUTE_PATH]: compilationRouter,
+  [BASKET_ROUTE_PATH]: basketRouter,
+  [ABOUT_ACCOUNT_ROUTE_PATH]: aboutAccountRouter,
 };
 
 export const Router = routesInit(routes);

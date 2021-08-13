@@ -106,6 +106,22 @@ import {
   compilationStore,
   COMPILATION_STORE_NAME,
 } from '../../core/compilation';
+import {
+  basketStore,
+  BASKET_STORE_NAME,
+} from '../../core/basket';
+import {
+  articlesStore,
+  ARTICLES_STORE_NAME,
+} from '../../core/articles';
+import {
+  articlePageStore,
+  ARTICLE_PAGE_STORE_NAME,
+} from '../../core/article-page';
+import {
+  aboutAccountStore,
+  ABOUT_ACCOUNT_STORE_NAME,
+} from '../../core/about-account';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -139,6 +155,10 @@ export const reducers = combineReducers({
   [CREATE_PRODUCT_STORE_NAME]: createProductStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
   [COMPILATION_STORE_NAME]: compilationStore,
+  [BASKET_STORE_NAME]: basketStore,
+  [ARTICLES_STORE_NAME]: articlesStore,
+  [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
+  [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
 });
 
 export { initStore } from './store.core';
