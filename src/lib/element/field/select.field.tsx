@@ -9,20 +9,10 @@ import { TextSecondary } from '../text';
 import { SelectPropsType } from './field.type';
 
 export function FieldSelect(props: SelectPropsType) {
-  const {
-    titleTid,
-    name,
-    value,
-    options,
-    onChange,
-    onBlur,
-    width = 180,
-    auto,
-    full,
-  } = props;
+  const { titleTid, name, value, options, onChange, onBlur, width } = props;
 
   return (
-    <Container width={width} auto={auto} full={full}>
+    <Container width={width}>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
         <Select name={name} value={value} onChange={onChange} onBlur={onBlur}>
@@ -40,10 +30,9 @@ export function FieldSelect(props: SelectPropsType) {
 
 const Container = styled.div`
   display: grid;
-  width: ${(p: { width: number; auto: boolean }) => {
-    if (p.auto) return 'auto';
-    if (p.full) return '100%';
-    return p.width + 'px';
+  width: ${(p: { width?: number }) => {
+    if (p.width) return p.width + 'px';
+    return '100%';
   }};
   gap: ${spacing(1)};
 `;

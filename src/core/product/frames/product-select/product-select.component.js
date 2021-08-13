@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { FieldSelect } from '../../../../lib/element/field';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
-import { TextSecondary } from '../../../../lib/element/text';
+import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
+import { FieldLayout } from '../../../../lib/element/layout';
 
 export function ProductSelectComponent(props) {
   const {
@@ -24,15 +25,15 @@ export function ProductSelectComponent(props) {
   } = props;
 
   return (
-    <Form onSubmit={handleSubmit}>
-      {optionsKeys.map((item, index) => {
-        return (
-          <Container key={index}>
-            <Pair>
-              <TextSecondary tid={optionsTitles[item]} />
-              {item === 'size' && <CircleQuestion tid="?" />}
-            </Pair>
-            <FieldContainer>
+    <form onSubmit={handleSubmit}>
+      <FieldLayout>
+        {optionsKeys.map((item, index) => {
+          return (
+            <Container key={index}>
+              <Pair>
+                <TextSecondary tid={optionsTitles[item]} />
+                {item === 'size' && <CircleQuestion tid="?" />}
+              </Pair>
               <FieldSelect
                 options={options[item]}
                 name={item}
@@ -40,41 +41,32 @@ export function ProductSelectComponent(props) {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-            </FieldContainer>
-          </Container>
-        );
-      })}
-    </Form>
+            </Container>
+          );
+        })}
+      </FieldLayout>
+    </form>
   );
 }
 const Pair = styled.div`
   display: flex;
   gap: ${spacing(1.2)};
 `;
-const FieldContainer = styled.div`
-  width: 448px;
-  margin-left: auto;
-`;
-const Form = styled.form`
-  width: 100%;
-  display: grid;
-  gap: ${spacing(2)};
-`;
 const Container = styled.div`
-  display: flex;
+  display: grid;
   gap: ${spacing(3)};
   align-items: center;
+  grid-template-columns: 100px 1fr;
   width: 100%;
 `;
-const CircleQuestion = styled(TextSecondary)`
-  font-size: 12px;
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  color: ${THEME_COLOR.SECONDARY_DARK};
+const CircleQuestion = styled(TextPrimary)`
   width: 18px;
   height: 18px;
   display: flex;
+  font-size: 12px;
   align-items: center;
   justify-content: center;
+  background-color: ${THEME_COLOR.GRAY};
+  border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
 `;

@@ -59,7 +59,6 @@ export function SettingsFormChangeEmailComponent(props) {
             error={getFieldError(fieldOldEmail)}
             onChange={handleChange}
             onBlur={handleBlur}
-            full
           />
           <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.NEW_EMAIL.TITLE"
@@ -69,7 +68,6 @@ export function SettingsFormChangeEmailComponent(props) {
             error={getFieldError(fieldNewEmail)}
             onChange={handleChange}
             onBlur={handleBlur}
-            full
           />
           <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.PASSWORD.TITLE"
@@ -80,7 +78,6 @@ export function SettingsFormChangeEmailComponent(props) {
             error={getFieldError(fieldPassword)}
             onChange={handleChange}
             onBlur={handleBlur}
-            full
           />
           {isFormUploadSuccess && (
             <SuccessAlert tid="SETTINGS.CHANGE_EMAIL.SUCCESS" />

@@ -10,8 +10,7 @@ import { FieldPropsType, InputPropsType } from './field.type';
 export function BasicField(props: FieldPropsType) {
   const {
     className,
-    width = 360,
-    full,
+    width,
 
     titleTid,
     placeholderTid,
@@ -26,7 +25,7 @@ export function BasicField(props: FieldPropsType) {
   } = props;
 
   return (
-    <Container width={width} full={full}>
+    <Container width={width}>
       {titleTid && <Title tid={titleTid} />}
       <Content>
         <Input
@@ -49,9 +48,9 @@ export function BasicField(props: FieldPropsType) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${(p: { width: number; full: boolean }) => {
-    if (p.full) return '100%';
-    return p.width + 'px';
+  width: ${(p: { width?: number }) => {
+    if (p.width) return p.width + 'px';
+    return '100%';
   }};
   gap: ${spacing(1)};
 `;

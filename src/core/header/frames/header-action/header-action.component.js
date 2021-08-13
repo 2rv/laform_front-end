@@ -64,7 +64,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: ${(p) => (p.logged ? spacing(12) : spacing(8))};
-  padding-right: ${spacing(5)};
+  padding-right: ${spacing(4)};
 `;
 const LoggedContainer = styled.div`
   position: relative;

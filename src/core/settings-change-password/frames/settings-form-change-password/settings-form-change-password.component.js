@@ -45,7 +45,6 @@ export function SettingsFormChangePasswordComponent(props) {
             error={getFieldError(fieldOldPassword)}
             onChange={handleChange}
             onBlur={handleBlur}
-            full
           />
           <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.NEW_PASSWORD.TITLE"
@@ -56,7 +55,6 @@ export function SettingsFormChangePasswordComponent(props) {
             error={getFieldError(fieldPassword)}
             onChange={handleChange}
             onBlur={handleBlur}
-            full
           />
           <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.REPEAT_NEW_PASSWORD.TITLE"
@@ -67,7 +65,6 @@ export function SettingsFormChangePasswordComponent(props) {
             error={getFieldError(fieldPasswordRepeat)}
             onChange={handleChange}
             onBlur={handleBlur}
-            full
           />
           <FieldLayout type="double">
             <ButtonSecondary
