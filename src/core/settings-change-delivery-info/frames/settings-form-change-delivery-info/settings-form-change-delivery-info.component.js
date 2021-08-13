@@ -47,7 +47,6 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               error={getFieldError(fieldFullname)}
               onChange={handleChange}
               onBlur={handleBlur}
-              full
             />
             <FieldSelect
               titleTid="SETTINGS.CHANGE_DELIVERY_INFO.DELIVERY_TYPE.TITLE"
@@ -56,7 +55,6 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               value={values[fieldDeliveryType]}
               onChange={handleChange}
               onBlur={handleBlur}
-              full
             />
           </FieldLayout>
           <FieldLayout type="double">
@@ -68,7 +66,6 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               error={getFieldError(fieldLocation)}
               onChange={handleChange}
               onBlur={handleBlur}
-              full
             />
           </FieldLayout>
           <BasicField

@@ -10,7 +10,7 @@ export function CardListBlock(props) {
     <SectionLayout>
       <Header>
         <TitlePrimary tid={title} />
-        <LinkSecondary tid="HOME.VIEW_ALL" path={path} />
+        {path && <LinkSecondary tid="HOME.VIEW_ALL" path={path} />}
       </Header>
       <BasicCardList items={items} type={cardType} />
     </SectionLayout>
@@ -19,5 +19,6 @@ export function CardListBlock(props) {
 
 const Header = styled.div`
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
 `;

@@ -4,8 +4,7 @@ import { Price } from '../price';
 import { ButtonPrimary, ButtonBasic, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
-import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
-import { useState } from 'react';
+import { CardActions } from './card-actions';
 
 export function CardPattern(props) {
   const {
@@ -19,17 +18,6 @@ export function CardPattern(props) {
     patternType = null,
     price = { min: null, discount: null, max: null },
   } = props.data;
-
-  const [isLiked, setLike] = useState(like);
-  const [isSelected, setSelect] = useState(select);
-
-  const onLike = () => {
-    setLike(!isLiked);
-  };
-
-  const onSelect = () => {
-    setSelect(!isSelected);
-  };
 
   return (
     <Container>
@@ -54,17 +42,7 @@ export function CardPattern(props) {
           </ItemCase>
         </LineCase>
       </Content>
-      <LineCase>
-        <Button
-          width={165}
-          onClick={onSelect}
-          select={isSelected}
-          tid={isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT'}
-        />
-        <LikeButton onClick={onLike} like={isLiked}>
-          <LikeIcon />
-        </LikeButton>
-      </LineCase>
+      <CardActions select={select} like={like} />
     </Container>
   );
 }
@@ -88,7 +66,6 @@ const ItemCase = styled.div`
   display: flex;
   gap: ${spacing(2)};
 `;
-
 const ComplexityDot = styled.div`
   width: 16px;
   min-width: 16px;
@@ -97,16 +74,6 @@ const ComplexityDot = styled.div`
   background-color: ${(p) =>
     p.act ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;
-
-const Button = styled(ButtonPrimary)`
-  ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}
-`;
-const LikeButton = styled(IconButton)`
-  fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${(p) =>
-    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
-`;
-
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
