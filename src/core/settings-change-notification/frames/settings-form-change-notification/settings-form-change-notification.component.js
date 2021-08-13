@@ -27,8 +27,6 @@ export function SettingsFormChangeNotificationComponent(props) {
     pageLoading,
   } = props;
 
-  console.log(values);
-
   const isSubmitDisabled = () => {
     return JSON.stringify(touched) === '{}'
       ? true
@@ -47,6 +45,7 @@ export function SettingsFormChangeNotificationComponent(props) {
         <FieldCheckbox
           titleTid="SETTINGS.CHANGE_NOTIFICATION.NEWSLETTER.TITLE"
           labelTid="SETTINGS.CHANGE_NOTIFICATION.NEWSLETTER.LABEL"
+          checked={false}
           name={fieldNotification}
           value={values[fieldNotification]}
           onChange={handleChange}

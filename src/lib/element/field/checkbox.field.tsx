@@ -7,26 +7,14 @@ import { TextSecondary } from '../text';
 import { CheckboxPropsType } from './field.type';
 
 export function FieldCheckbox(props: CheckboxPropsType) {
-  const { titleTid, labelTid, name, checked, onChange, onBlur } = props;
-  const [isChecked, setChecked] = useState(!!checked);
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(!isChecked);
-
-    onChange?.(e);
-    onBlur?.(e);
-  };
+  const { titleTid, labelTid, name, checked } = props;
+  const [isChecked, setIsChecked] = useState(checked);
 
   return (
     <Indent>
       {titleTid && <Title tid={titleTid} />}
-      <InputContainer htmlFor={name}>
-        <Input
-          type="checkbox"
-          name={name}
-          checked={isChecked}
-          onChange={onInputChange}
-        />
+      <InputContainer htmlFor={name} onClick={() => setIsChecked(!isChecked)}>
+        <Input type="checkbox" name={name} checked={isChecked} />
         <CheckmarkContainer checked={isChecked}>
           <Checkmark />
         </CheckmarkContainer>
