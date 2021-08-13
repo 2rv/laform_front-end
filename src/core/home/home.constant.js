@@ -4,7 +4,7 @@ export const HOME_STORE_NAME = 'HOME';
 
 export const HOME_API = {
   PINNED_MASTER_CLASSES_UPLOAD: {
-    ENDPOINT: '/master-class/pinned/get?lang=ru',
+    ENDPOINT: (currentLang) => `/master-class/pinned/get?lang=${currentLang}`,
     TYPE: 'GET',
   },
 };
