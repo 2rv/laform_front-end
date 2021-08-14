@@ -24,6 +24,7 @@ const Container = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+  max-height: 260px;
   flex: 1 0;
 `;
 

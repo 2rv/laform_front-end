@@ -11,9 +11,10 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
+import { filterByType } from '../../lib/common/filter-list-card';
 
 export function PatternsContainer() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(9);
 
   const dispatch = useDispatch();
   const { state, pageLoading } = useSelector((state) => ({
@@ -32,7 +33,6 @@ export function PatternsContainer() {
   const onSubmit = (values) => {
     console.log(values); // это ответ с формы если пользователь что то изменяет селект/инпут
   };
-  console.log(activeTab); // сюда приходит с tabs значение которое пользователь поставил
 
   useEffect(() => {
     // dispatch(patternsUploadData());
@@ -51,7 +51,7 @@ export function PatternsContainer() {
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
-      listItems={testListItems}
+      listItems={filterByType(testListItems, activeTab)}
       fieldName={PATTERNS_FIELD_NAME}
       onSubmit={onSubmit}
     />
@@ -59,9 +59,9 @@ export function PatternsContainer() {
 }
 
 export const tabItems = [
-  { name: 'PATTERNS.PATTERNS.MENU.ALL' },
-  { name: 'PATTERNS.PATTERNS.MENU.PRINTED' },
-  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC' },
+  { name: 'PATTERNS.PATTERNS.MENU.ALL', type: 9 },
+  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 4 },
+  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 5 },
 ];
 
 export const testListItems = [
@@ -72,7 +72,7 @@ export const testListItems = [
     complexity: 1,
     select: true,
     like: true,
-    patternType: 1,
+    type: 4,
     price: {
       min: 500,
       discount: 230,
@@ -87,7 +87,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 4,
     price: {
       min: 200,
       discount: null,
@@ -102,7 +102,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 1,
+    type: 5,
     price: {
       min: 200,
       discount: 100,
@@ -117,7 +117,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 5,
     price: {
       min: 200,
       discount: 100,
