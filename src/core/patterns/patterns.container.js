@@ -1,22 +1,70 @@
-import { useSelector } from 'react-redux';
-import { PatternsComponent } from './patterns.component';
-import { PATTERNS_SUB_MENU_ITEMS } from './patterns.constant';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { patternsUploadData } from './patterns.action';
+import { PATTERNS_STORE_NAME } from './patterns.constant';
+import { PatternsComponent } from './patterns.component';
+import { PATTERNS_FIELD_NAME } from './patterns.type';
+import {
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from '../../main/store/store.service';
+import { filterByType } from '../../lib/common/filter-list-card';
+
 export function PatternsContainer() {
-  const { activePath } = useSelector((state) => ({
-    activePath: state[NAVIGATION_STORE_NAME].activePath,
+  const [activeTab, setActiveTab] = useState(9);
+
+  const dispatch = useDispatch();
+  const { state, pageLoading } = useSelector((state) => ({
+    state: state[PATTERNS_STORE_NAME],
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+
+  const initialValue = () => {
+    return {
+      [PATTERNS_FIELD_NAME.CATEGORY]: 1,
+      [PATTERNS_FIELD_NAME.TAGS]: 1,
+      [PATTERNS_FIELD_NAME.FIND_INPUT]: '',
+    };
+  };
+
+  const onSubmit = (values) => {
+    console.log(values); // это ответ с формы если пользователь что то изменяет селект/инпут
+  };
+
+  useEffect(() => {
+    // dispatch(patternsUploadData());
+  }, []);
 
   return (
     <PatternsComponent
-      activePath={activePath}
-      items={testPatternItems}
-      menuItems={PATTERNS_SUB_MENU_ITEMS}
+      isPending={isRequestPending(state.patterns)}
+      isError={isRequestError(state.patterns)}
+      isSuccess={isRequestSuccess(state.patterns)}
+      errorMessage={getRequestErrorMessage(state.patterns)}
+      pageLoading={pageLoading}
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      tabItems={tabItems}
+      initialValue={initialValue()}
+      categoryOptions={categorySelectOptions}
+      tagsOptions={tagsSelectOptions}
+      listItems={filterByType(testListItems, activeTab)}
+      fieldName={PATTERNS_FIELD_NAME}
+      onSubmit={onSubmit}
     />
   );
 }
 
-export const testPatternItems = [
+export const tabItems = [
+  { name: 'PATTERNS.PATTERNS.MENU.ALL', type: 9 },
+  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 4 },
+  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 5 },
+];
+
+export const testListItems = [
   {
     id: 1,
     name: 'Сарафан 0445',
@@ -24,7 +72,7 @@ export const testPatternItems = [
     complexity: 1,
     select: true,
     like: true,
-    patternType: 1,
+    type: 4,
     price: {
       min: 500,
       discount: 230,
@@ -39,7 +87,7 @@ export const testPatternItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 4,
     price: {
       min: 200,
       discount: null,
@@ -54,7 +102,7 @@ export const testPatternItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 1,
+    type: 5,
     price: {
       min: 200,
       discount: 100,
@@ -69,11 +117,37 @@ export const testPatternItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 5,
     price: {
       min: 200,
       discount: 100,
       max: 900,
     },
+  },
+];
+
+export const categorySelectOptions = [
+  {
+    id: 1,
+    tid: 'Категория 1',
+  },
+  {
+    id: 2,
+    tid: 'Категория 2',
+  },
+];
+
+export const tagsSelectOptions = [
+  {
+    id: 1,
+    tid: 'Популярные',
+  },
+  {
+    id: 2,
+    tid: 'Самые дорогие',
+  },
+  {
+    id: 3,
+    tid: 'Самые дешевые',
   },
 ];

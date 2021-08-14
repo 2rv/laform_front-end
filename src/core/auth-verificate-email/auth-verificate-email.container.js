@@ -19,11 +19,11 @@ export function AuthVerificateEmailContainer() {
     dispatch(authVerificateEmailUploadData());
   };
 
-  useEffect(sendVerificationRequest, []);
+  //   useEffect(sendVerificationRequest, []);
 
   return (
     <AuthVerificateEmailComponent
-      email={user.email}
+      email={user?.email}
       isPending={isRequestPending(authRecoveryAccountForm)}
       onResend={sendVerificationRequest}
     />

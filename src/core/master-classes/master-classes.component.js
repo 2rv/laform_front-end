@@ -1,20 +1,11 @@
-import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
-import { TextSecondary } from '../../lib/element/text';
 import { BasicCardList } from '../../lib/element/card-list';
-import { MasterClassesFormFilterContainer } from './frames';
-import {
-  MASTER_CLASSES_FILTER_CATEGORY_OPTIONS,
-  MASTER_CLASSES_FILTER_TAGS_OPTIONS,
-} from './master-classes.constant';
-import {
-  MASTER_CLASSES_FORM_FILTER_FIELD_NAME,
-  MASTER_CLASSES_FILTER_FIELD_NAME,
-} from './master-classes.type';
+import { MasterClassesFormFilter } from './frames';
 
 export function MasterClassesComponent(props) {
-  const { items } = props;
+  const { items, isPending } = props;
+
   const masterClassesFormFilterGetInitialValue = () => {
     const rawData = false; //getRequestData(changeDeliveryInfo, null);
     if (!rawData) {
@@ -26,21 +17,25 @@ export function MasterClassesComponent(props) {
       };
     }
   };
+
   return (
-    <SectionLayout>
-      <Title tid="MASTER_CLASSES.MASTER_CLASSES.TITLE" />
-      <MasterClassesFormFilterContainer
-        categoryOptions={MASTER_CLASSES_FILTER_CATEGORY_OPTIONS}
-        tagsOptions={MASTER_CLASSES_FILTER_TAGS_OPTIONS}
-        initialValue={masterClassesFormFilterGetInitialValue()}
-        fieldName={MASTER_CLASSES_FORM_FILTER_FIELD_NAME}
-      />
-      <BasicCardList items={items} actions={['OTHER.PURCHASED', 'OTHER.BUY']} />
-    </SectionLayout>
+    <Container>
+      <Content>
+        <IndentLayout>
+          <Title tid="MASTER_CLASSES.MASTER_CLASSES.TITLE" />
+          <MasterClassesFormFilterContainer
+            categoryOptions={MASTER_CLASSES_FILTER_CATEGORY_OPTIONS}
+            tagsOptions={MASTER_CLASSES_FILTER_TAGS_OPTIONS}
+            initialValue={masterClassesFormFilterGetInitialValue()}
+            fieldName={MASTER_CLASSES_FORM_FILTER_FIELD_NAME}
+          />
+          <BasicCardList
+            isPending={isPending}
+            items={items}
+            actions={['OTHER.PURCHASED', 'OTHER.BUY']}
+          />
+        </IndentLayout>
+      </Content>
+    </Container>
   );
 }
-const Title = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  color: ${THEME_COLOR.SECONDARY_DARK};
-`;

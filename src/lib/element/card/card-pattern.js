@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { Price } from '../price';
-import { ButtonPrimary, ButtonBasic } from '../button';
+import { ButtonPrimary, ButtonBasic, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
-import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
-import { useState } from 'react';
+import { CardActions } from './card-actions';
 
 export function CardPattern(props) {
   const {
@@ -19,17 +18,6 @@ export function CardPattern(props) {
     patternType = null,
     price = { min: null, discount: null, max: null },
   } = props.data;
-
-  const [isLiked, setLike] = useState(like);
-  const [isSelected, setSelect] = useState(select);
-
-  const onLike = () => {
-    setLike(!isLiked);
-  };
-
-  const onSelect = () => {
-    setSelect(!isSelected);
-  };
 
   return (
     <Container>
@@ -54,14 +42,7 @@ export function CardPattern(props) {
           </ItemCase>
         </LineCase>
       </Content>
-      <LineCase>
-        <Button
-          onClick={onSelect}
-          select={isSelected}
-          tid={isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT'}
-        />
-        <LikeButton onClick={onLike} like={isLiked} icon={LikeIcon} />
-      </LineCase>
+      <CardActions select={select} like={like} />
     </Container>
   );
 }
@@ -75,6 +56,8 @@ const Container = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
   gap: ${spacing(3)};
 `;
 const LineCase = styled.div`
@@ -85,7 +68,6 @@ const ItemCase = styled.div`
   display: flex;
   gap: ${spacing(2)};
 `;
-
 const ComplexityDot = styled.div`
   width: 16px;
   min-width: 16px;
@@ -94,19 +76,13 @@ const ComplexityDot = styled.div`
   background-color: ${(p) =>
     p.act ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;
-
-const Button = styled(ButtonPrimary)`
-  width: 165px;
-  padding: ${spacing(3)};
-  ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}
-`;
-const LikeButton = styled(ButtonBasic)`
-  fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${(p) =>
-    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
-`;
-
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 `;

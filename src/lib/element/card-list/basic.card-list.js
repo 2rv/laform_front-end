@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import { CardPattern } from '../card';
+import {
+  CardPattern,
+  CardSewingGoods,
+  CardMasterClasses,
+  CardArticles,
+} from '../card';
 
-export function BasicCardList({ items, type }) {
-  const CardItem = cardType(type);
+export function BasicCardList(props) {
+  const { items } = props;
+  if (!items) return null;
   return (
     <Container>
-      {items.map((data, index) => (
-        <CardItem key={index} data={data} />
-      ))}
+      {items.map((data, index) => {
+        const CardItem = cardType(data?.type);
+        return <CardItem key={index} data={data} />;
+      })}
     </Container>
   );
 }
@@ -16,13 +23,23 @@ export function BasicCardList({ items, type }) {
 const Container = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: ${spacing(5)};
 `;
 
 function cardType(type) {
   switch (type) {
-    case 'pattern':
+    case 0:
+      return CardSewingGoods;
+    case 1:
+      return CardMasterClasses;
+    case 2:
+      return CardArticles;
+    case 3:
+      return CardPattern;
+    case 4:
+      return CardPattern;
+    case 5:
       return CardPattern;
     default:
       return () => null;

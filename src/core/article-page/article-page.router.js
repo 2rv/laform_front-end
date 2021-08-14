@@ -1,7 +1,7 @@
 import { setActivePath } from 'src/lib/common/navigation';
 
-import { TEST_ARTICLE_PAGE_DATA } from './article-page.constant';
+import { ARTICLE_PAGE_ROUTE_PATH } from './article-page.constant';
 
 export function articlePageRouter(ctx) {
-  ctx.store.dispatch(setActivePath(TEST_ARTICLE_PAGE_DATA));
+  ctx.store.dispatch(setActivePath(ARTICLE_PAGE_ROUTE_PATH));
 }

@@ -38,7 +38,7 @@ const Badge = styled.span`
   align-content: center;
   justify-content: center;
   border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  color: ${THEME_COLOR.TEXT.WHITE};
+  color: ${THEME_COLOR.WHITE};
   background-color: ${THEME_COLOR.PRIMARY_DARK};
   font-size: ${THEME_SIZE.FONT.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};

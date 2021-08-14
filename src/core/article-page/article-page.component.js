@@ -2,46 +2,37 @@ import styled from 'styled-components';
 import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
-import { BasicCardList } from '../../lib/element/card-list';
-import {
-  ArticlePageCommentComponent,
-  ArticlesPageTablesComponent,
-} from './frames';
+import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
-import { TEST_ARTICLES_ITEMS } from './article-page.constant';
-import { CardArticles } from '../../lib/element/card';
-import { LinkSecondary } from 'src/lib/element/link';
+import { BlockComments } from '../block-comments';
+import { MediaBlock } from '../block-media';
 
 export function ArticlePageComponent(props) {
-  const { name, date, tables, description, comments } = props;
-
+  const { data, listItems, comments } = props;
+  const { name, date, content, descriptions } = data;
   return (
     <SectionLayout>
-      <TitleCase>
+      <HeaderCase>
         <Title tid={name} />
         <Date tid={date} />
-      </TitleCase>
-      <SectionLayout type="SMALL">
-        <ArticlesPageTablesComponent items={tables} />
-        <Description>{description}</Description>
-      </SectionLayout>
-
-      <ArticlePageCommentComponent items={comments} />
-
-      <SectionLayout type="SMALL">
-        <TitleCase>
-          <TitlePrimary tid={'Лучшие публикации'} />
-          <LinkSecondary tid="HOME.VIEW_ALL" path={'/'} />
-        </TitleCase>
-        <BasicCardList
-          items={TEST_ARTICLES_ITEMS}
-          ItemComponent={CardArticles}
-        />
-      </SectionLayout>
+      </HeaderCase>
+      <MediaBlock content={content[0]} />
+      <MediaBlock content={content[1]} />
+      {descriptions.map((text, index) => (
+        <Description key={index} tid={text} />
+      ))}
+      <BlockComments items={comments} />
+      <CardListBlock
+        title="отзывы"
+        path="/articles"
+        items={listItems}
+        cardType="articles"
+      />
     </SectionLayout>
   );
 }
-const TitleCase = styled.div`
+
+const HeaderCase = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -51,8 +42,9 @@ const Description = styled(TextSecondary)`
   line-height: 1.5;
 `;
 const Date = styled(TextSecondary)`
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
 `;
 const Title = styled(TitlePrimary)`
-  font-size: 28px;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
+  line-height: 1.5;
 `;

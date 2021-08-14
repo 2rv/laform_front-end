@@ -1,34 +1,20 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-
 import { ReactComponent as CheckmarkIcon } from '../../../asset/svg/check-mark.svg';
-
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
 
 import { CheckboxPropsType } from './field.type';
 
 export function FieldCheckbox(props: CheckboxPropsType) {
-  const { titleTid, labelTid, name, checked, onChange, onBlur } = props;
-  const [isChecked, setChecked] = useState(!!checked);
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(!isChecked);
-
-    onChange?.(e);
-    onBlur?.(e);
-  };
+  const { titleTid, labelTid, name, checked } = props;
+  const [isChecked, setIsChecked] = useState(checked);
 
   return (
     <Indent>
       {titleTid && <Title tid={titleTid} />}
-      <InputContainer htmlFor={name}>
-        <Input
-          type="checkbox"
-          name={name}
-          checked={isChecked}
-          onChange={onInputChange}
-        />
+      <InputContainer htmlFor={name} onClick={() => setIsChecked(!isChecked)}>
+        <Input type="checkbox" name={name} checked={isChecked} />
         <CheckmarkContainer checked={isChecked}>
           <Checkmark />
         </CheckmarkContainer>
@@ -52,7 +38,7 @@ const InputContainer = styled.label`
   gap: ${spacing(2)};
   padding: ${spacing(2)} ${spacing(3)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  background-color: ${THEME_COLOR.GRAY};
   cursor: pointer;
 `;
 
@@ -78,7 +64,7 @@ const CheckmarkContainer = styled.div<{ checked: boolean }>`
   ${(p) =>
     p.checked &&
     css`
-      color: ${THEME_COLOR.BACKGROUND.GRAY};
+      color: ${THEME_COLOR.GRAY};
       background-color: ${THEME_COLOR.SECONDARY_DARK};
     `}
 `;

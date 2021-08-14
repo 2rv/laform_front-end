@@ -24,6 +24,7 @@ const Container = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+  max-height: 260px;
   flex: 1 0;
 `;
 
@@ -38,7 +39,7 @@ const ModifierContainer = styled.div`
 const Modifier = styled(TextSecondary)`
   background-color: ${({ alt }) =>
     alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
-  color: ${THEME_COLOR.TEXT.WHITE};
+  color: ${THEME_COLOR.WHITE};
   width: 97px;
   padding: ${spacing(1.6)} 0;
   display: flex;

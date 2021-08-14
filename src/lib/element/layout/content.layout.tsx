@@ -16,6 +16,7 @@ export function ContentLayout(props: ContentLayoutPropsType) {
 
 const Container = styled.div`
   display: flex;
+  height: 100%;
   justify-content: ${(p: ContentLayoutPropsType) => p.horizontal || 'normal'};
-  align-content: ${(p: ContentLayoutPropsType) => p.vertical || 'normal'};
+  align-items: ${(p: ContentLayoutPropsType) => p.vertical || 'normal'};
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
-import { FieldPrimary } from '../../../../lib/element/field';
+import { BasicField } from '../../../../lib/element/field';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
@@ -67,7 +67,7 @@ export function NotificationFormComponent(props) {
   );
 }
 
-const NotificationField = styled(FieldPrimary)`
+const NotificationField = styled(BasicField)`
   background-color: ${THEME_COLOR.BACKGROUND.WHITE};
 `;
 

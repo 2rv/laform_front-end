@@ -1,4 +1,13 @@
-export const EDIT_COMPILATION_ROUTE_PATH = '/';
+export const EDIT_COMPILATION_ROUTE_PATH = '/edit-compilation';
+
+export const EDIT_COMPILATION_STORE_NAME = 'EDIT_COMPILATION';
+
+export const EDIT_COMPILATION_API = {
+  EDIT_COMPILATION_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
 
 export const TEST_EDIT_COMPILATION_ITEMS = {
   bestGoodsItems: [

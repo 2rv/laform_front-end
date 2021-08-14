@@ -7,20 +7,19 @@ import { SEEWING_GOODS_TABLE_COLUMNS } from '../../basket.constant';
 import { ReactComponent as EditIcon } from 'src/asset/svg/edit.svg';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 
-import { TableRow, TableData, TableImage, TableActionButton } from 'src/lib/element/table';
+import {
+  TableRow,
+  TableData,
+  TableImage,
+  TableActionButton,
+} from 'src/lib/element/table';
 import { TextSecondary, TextPrimary } from 'src/lib/element/text';
 import { Popup } from 'src/lib/element/popup';
 import { ButtonBasic } from 'src/lib/element/button';
 import { THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
 
 export function SeewingGoodsListItemComponent(props) {
-  const {
-    title,
-    image,
-    parameters,
-    count,
-    totalPrice,
-  } = props;
+  const { title, image, parameters, count, totalPrice } = props;
 
   return (
     <TableRow columns={SEEWING_GOODS_TABLE_COLUMNS}>
@@ -30,16 +29,20 @@ export function SeewingGoodsListItemComponent(props) {
       </TableData>
       <TableData>
         <span>
-          <TextSecondary tid="BASKET.TABLE.PARAMETERS.COLORS.TITLE" />:&nbsp;
+          <TextSecondary tid="BASKET.TABLE.PARAMETERS.COLORS.TITLE" />
+          :&nbsp;
           <TextPrimary tid={parameters.color} />,
-        </span>&nbsp;
+        </span>
+        &nbsp;
         <span>
-          <TextSecondary tid="BASKET.TABLE.PARAMETERS.SIZE" />:&nbsp;
+          <TextSecondary tid="BASKET.TABLE.PARAMETERS.SIZE" />
+          :&nbsp;
           <TextPrimary>{parameters.size}</TextPrimary>,
         </span>
         <br />
         <span>
-          <TextSecondary tid="BASKET.TABLE.PARAMETERS.CATEGORY" />:&nbsp;
+          <TextSecondary tid="BASKET.TABLE.PARAMETERS.CATEGORY" />
+          :&nbsp;
           <TextPrimary tid={parameters.category} />
         </span>
       </TableData>
@@ -85,5 +88,5 @@ const CounterButton = styled(ButtonBasic)`
   width: 100%;
   height: 100%;
   padding: 0;
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
 `;

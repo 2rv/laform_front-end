@@ -1,3 +1,14 @@
+export const MY_PURCHASES_ROUTE_PATH = '/my-purchases';
+
+export const MY_PURCHASES_STORE_NAME = 'MY_PURCHASES';
+
+export const MY_PURCHASES_API = {
+  MY_PURCHASES_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const MY_PURCHASES_TABLE_COLUMNS = '1fr 2fr 0.4fr 0.4fr';
 
 export const PURCHASES_LIST = [

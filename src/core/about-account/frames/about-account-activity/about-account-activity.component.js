@@ -3,7 +3,7 @@ import { SectionLayout } from '../../../../lib/element/layout';
 import { AboutAccountActivityListComponent } from './about-account-activity-list.component';
 
 export function AboutAccountActivityComponent(props) {
-  const { myGoods, myLikes, myComments } = props;
+  const { myGoods, aboutAccount, myComments } = props;
   return (
     <SectionLayout>
       <AboutAccountActivityListComponent dataItems={myGoods}>
@@ -11,7 +11,7 @@ export function AboutAccountActivityComponent(props) {
           <AboutAccountActivityItemComponent {...item} key={key} />
         )}
       </AboutAccountActivityListComponent>
-      <AboutAccountActivityListComponent dataItems={myLikes}>
+      <AboutAccountActivityListComponent dataItems={aboutAccount}>
         {({ item, key }) => (
           <AboutAccountActivityItemComponent {...item} key={key} />
         )}

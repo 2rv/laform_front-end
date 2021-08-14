@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { FieldPrimary, FieldSelect } from 'src/lib/element/field';
+import { BasicField, FieldSelect } from 'src/lib/element/field';
 import { ButtonBasic } from 'src/lib/element/button';
 
 import { spacing, THEME_COLOR } from 'src/lib/theme';
@@ -22,14 +22,14 @@ export function AboutOrderFormFieldsComponent(props) {
   return (
     <>
       <FieldContainer>
-        <FieldPrimary
+        <BasicField
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.FULL_NAME"
           placeholderTid="Илья Зинченко"
           name={fieldFullName}
           value={values[fieldFullName]}
           onChange={handleChange}
         />
-        <FieldPrimary
+        <BasicField
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CURRENT_CITY"
           placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.MOSKVA"
           name={fieldCurrentCity}
@@ -41,14 +41,20 @@ export function AboutOrderFormFieldsComponent(props) {
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.DELIVERY_METHOD"
           options={[
-            { id: 1, tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.DELIVERY_METHOD.SENDING_BY_EMAIL' },
-            { id: 2, tid: "ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.DELIVERY_METHOD.SENDING_BY_PLANE" },
+            {
+              id: 1,
+              tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.DELIVERY_METHOD.SENDING_BY_EMAIL',
+            },
+            {
+              id: 2,
+              tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.DELIVERY_METHOD.SENDING_BY_PLANE',
+            },
           ]}
           name={fieldConvenientPaymentMethod}
           value={values[fieldConvenientPaymentMethod]}
           onChange={handleChange}
         />
-        <FieldPrimary
+        <BasicField
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CONTACT_NUMBER"
           placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.CONTACT_NUMBER"
           name={fieldContactPhoneNumber}
@@ -56,7 +62,7 @@ export function AboutOrderFormFieldsComponent(props) {
           onChange={handleChange}
         />
       </FieldContainer>
-      <FieldPrimary
+      <BasicField
         titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.ORDER_NOTE"
         placeholderTid="Товар упаковать надёжно"
         name={fieldOrderNote}
@@ -67,8 +73,14 @@ export function AboutOrderFormFieldsComponent(props) {
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PAYMENT_METHOD"
           options={[
-            { id: 1, tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.PAYMENT_METHOD.ONLINE' },
-            { id: 2, tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.PAYMENT_METHOD.CASH' },
+            {
+              id: 1,
+              tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.PAYMENT_METHOD.ONLINE',
+            },
+            {
+              id: 2,
+              tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.PAYMENT_METHOD.CASH',
+            },
           ]}
           name={fieldConvenientPaymentMethod}
           value={values[fieldConvenientPaymentMethod]}
@@ -93,7 +105,7 @@ const FieldContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
 `;
 
-const PromoCodeField = styled(FieldPrimary)`
+const PromoCodeField = styled(BasicField)`
   border: 2px solid ${THEME_COLOR.LIGHT_GRAY};
   background: ${THEME_COLOR.BACKGROUND.WHITE};
   height: 47px;

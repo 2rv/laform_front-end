@@ -1,20 +1,28 @@
-import { SectionLayout } from '../../lib/element/layout';
 import {
-  SignupHeaderComponent,
+  SectionLayout,
+  PageLayout,
+  ContentLayout,
+} from '../../lib/element/layout';
+import {
   SignupFormContainer,
   SignupFormSocialComponent,
   SignupFooterComponent,
 } from './frames';
+import { TitlePrimary } from '../../lib/element/title';
 
 export function SignupComponent(props) {
   return (
-    <SectionLayout type="SMALL">
-      <SignupHeaderComponent />
-      <SectionLayout>
-        <SignupFormContainer {...props} />
-        <SignupFormSocialComponent />
-        <SignupFooterComponent />
-      </SectionLayout>
-    </SectionLayout>
+    <ContentLayout horizontal="center" vertical="center">
+      <PageLayout type="SMALL">
+        <SectionLayout type="SMALL">
+          <TitlePrimary tid="SIGNUP.SECTION_TITLE" />
+          <SectionLayout>
+            <SignupFormContainer {...props} />
+            <SignupFormSocialComponent />
+            <SignupFooterComponent />
+          </SectionLayout>
+        </SectionLayout>
+      </PageLayout>
+    </ContentLayout>
   );
 }
