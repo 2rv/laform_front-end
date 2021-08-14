@@ -32,7 +32,6 @@ export function SettingsChangePaymentMethodComponent(props) {
             value={values[fieldPaymentMethod]}
             onChange={handleChange}
             onBlur={handleBlur}
-            full
           />
           <FieldLayout type="double">
             <ButtonSecondary

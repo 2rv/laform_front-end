@@ -12,7 +12,7 @@ import {
   MASTER_CLASSES_ROUTE_PATH,
   SEWING_GOODS_ROUTE_PATH,
 } from './home.constant';
-import { HelpInfoBlock } from '../help-info-block';
+import { HelpInfoBlock } from '../block-help-info';
 
 export function HomeComponent(props) {
   const {

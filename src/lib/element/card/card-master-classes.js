@@ -4,8 +4,8 @@ import { Price } from '../price';
 import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
-import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
-import { useState } from 'react';
+import { CardActions } from './card-actions';
+import { SectionLayout } from '../layout';
 
 export function CardMasterClasses(props) {
   const {
@@ -17,18 +17,6 @@ export function CardMasterClasses(props) {
     bestseller = false,
     price = { min: null, discount: null, max: null },
   } = props.data;
-
-  const [isLiked, setLike] = useState(like);
-  const [isSelected, setSelect] = useState(select);
-
-  const onLike = () => {
-    setLike(!isLiked);
-  };
-
-  const onSelect = () => {
-    setSelect(!isSelected);
-  };
-
   return (
     <Container>
       <CardImage
@@ -45,17 +33,7 @@ export function CardMasterClasses(props) {
           valute="OTHER.VALUTE"
         />
       </Content>
-      <LineCase>
-        <Button
-          width={165}
-          onClick={onSelect}
-          select={isSelected}
-          tid={isSelected ? 'OTHER.PURCHASED' : 'OTHER.BUY'}
-        />
-        <LikeButton onClick={onLike} like={isLiked}>
-          <LikeIcon />
-        </LikeButton>
-      </LineCase>
+      <CardActions type={1} select={select} like={like} />
     </Container>
   );
 }
@@ -68,23 +46,18 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   display: flex;
+  flex: 1;
+  justify-content: space-between;
   flex-direction: column;
   gap: ${spacing(3)};
-`;
-const LineCase = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
-`;
-const Button = styled(ButtonPrimary)`
-  ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}
-`;
-const LikeButton = styled(IconButton)`
-  fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${(p) =>
-    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
 `;
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 `;

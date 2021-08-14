@@ -4,39 +4,38 @@ import { BasicCardList } from '../../lib/element/card-list';
 import { MasterClassesFormFilter } from './frames';
 
 export function MasterClassesComponent(props) {
-  const {
-    initialValue,
-    categoryOptions,
-    tagsOptions,
-    listItems,
-    fieldName,
-    onSubmit,
-    validation,
-    pending,
-    success,
-    error,
-    errorMessage,
-  } = props;
+  const { items, isPending } = props;
+
+  const masterClassesFormFilterGetInitialValue = () => {
+    const rawData = false; //getRequestData(changeDeliveryInfo, null);
+    if (!rawData) {
+      return {
+        [MASTER_CLASSES_FILTER_FIELD_NAME.CATEGORY]:
+          MASTER_CLASSES_FILTER_CATEGORY_OPTIONS[0].id,
+        [MASTER_CLASSES_FILTER_FIELD_NAME.TAGS]:
+          MASTER_CLASSES_FILTER_TAGS_OPTIONS[0].id,
+      };
+    }
+  };
 
   return (
-    <SectionLayout>
-      <TitlePrimary tid="MASTER_CLASSES.MASTER_CLASSES.TITLE" />
-      <MasterClassesFormFilter
-        findPlaceholderTid={
-          'MASTER_CLASSES.MASTER_CLASSES.FIELD.FIND_MASTER_CLASSES'
-        }
-        categoryOptions={categoryOptions}
-        tagsOptions={tagsOptions}
-        initialValue={initialValue}
-        fieldName={fieldName}
-        onSubmit={onSubmit}
-        validation={validation}
-        pending={pending}
-        success={success}
-        error={error}
-        errorMessage={errorMessage}
-      />
-      <BasicCardList type="master-classes" items={listItems} />
-    </SectionLayout>
+    <Container>
+      <Content>
+        <IndentLayout>
+          <Title tid="MASTER_CLASSES.MASTER_CLASSES.TITLE" />
+          <MasterClassesFormFilterContainer
+            categoryOptions={MASTER_CLASSES_FILTER_CATEGORY_OPTIONS}
+            tagsOptions={MASTER_CLASSES_FILTER_TAGS_OPTIONS}
+            initialValue={masterClassesFormFilterGetInitialValue()}
+            fieldName={MASTER_CLASSES_FORM_FILTER_FIELD_NAME}
+          />
+          <BasicCardList
+            isPending={isPending}
+            items={items}
+            actions={['OTHER.PURCHASED', 'OTHER.BUY']}
+          />
+        </IndentLayout>
+      </Content>
+    </Container>
   );
 }

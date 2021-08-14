@@ -43,7 +43,7 @@ export function PatternsComponent(props) {
         error={error}
         errorMessage={errorMessage}
       />
-      <BasicCardList type="pattern" items={listItems} />
+      <BasicCardList items={listItems} />
     </SectionLayout>
   );
 }
