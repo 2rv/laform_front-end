@@ -3,7 +3,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { SliderListItemComponent } from './slider-list-item.component';
 import { TitlePrimary } from '../../../../lib/element/title';
 
-export function SliderListComponent(props) {
+export function SliderListItemsComponent(props) {
   const { items } = props;
   return (
     <Container>

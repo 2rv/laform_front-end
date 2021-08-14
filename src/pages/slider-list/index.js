@@ -1,2 +1,3 @@
-import { SliderEditListPage } from '../../core/slider-edit-list';
-export default SliderEditListPage;
+import { SliderListPage } from '../../core/slider-list';
+
+export default SliderListPage;

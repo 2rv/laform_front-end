@@ -1,4 +1,4 @@
-export const SLIDER_EDIT_LIST_ROUTE_PATH = '/';
+export const SLIDER_LIST_ROUTE_PATH = '/slider-list';
 
 export const TEST_SLIDER_LIST_ITEMS = {
   items: [

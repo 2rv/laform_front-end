@@ -2,12 +2,20 @@ export enum AUTH_USER_DATA {
   ID = 'id',
   LOGIN = 'login',
   EMAIL = 'email',
+  ROLE = 'role',
+}
+
+export enum USER_ROLE {
+  BLOCKED = 0,
+  USER = 1,
+  ADMIN = 2,
 }
 
 export interface AuthUserDto {
   id: number;
   login: string;
   email: string;
+  role: USER_ROLE;
 }
 
 export interface AuthStoreState {
