@@ -79,7 +79,7 @@ export const testListItems = [
     bestseller: true,
     select: false,
     like: true,
-    patternType: 1,
+    type: 1,
     price: {
       min: 500,
       discount: 230,
@@ -93,7 +93,7 @@ export const testListItems = [
     bestseller: true,
     select: true,
     like: false,
-    patternType: 1,
+    type: 1,
     price: {
       min: 500,
       discount: null,
@@ -107,7 +107,7 @@ export const testListItems = [
     bestseller: false,
     select: true,
     like: true,
-    patternType: 1,
+    type: 1,
     price: {
       min: 500,
       discount: 230,

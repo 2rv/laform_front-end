@@ -48,9 +48,16 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
+  flex: 1;
+  justify-content: space-between;
 `;
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 `;

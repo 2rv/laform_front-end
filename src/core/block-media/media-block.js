@@ -28,6 +28,7 @@ export function MediaBlock(props) {
             allowfullscreen
           />
         )}
+        {type === 3 && <Content tid={media} />}
       </MediaContent>
       {description && <Description bold={bold}>{description}</Description>}
     </SectionLayout>
@@ -38,6 +39,7 @@ const MediaContent = styled.div`
   width: 100%;
   height: 360px;
   background-color: ${THEME_COLOR.GRAY};
+  justify-content: center;
 `;
 const Description = styled(TextSecondary)`
   ${(p) => {
@@ -60,11 +62,9 @@ const Title = styled(TextSecondary)`
 const ImageContent = styled.img`
   object-fit: cover;
 `;
-const VideoConent = styled.video`
-  background-color: red;
-`;
 const Content = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.EXTRA_LARGE};
   color: ${THEME_COLOR.TEXT.LIGHT};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  align-self: center;
 `;
