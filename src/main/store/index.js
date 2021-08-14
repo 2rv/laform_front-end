@@ -105,6 +105,10 @@ import {
   ABOUT_ACCOUNT_STORE_NAME,
 } from '../../core/about-account';
 import {
+  homeStore,
+  HOME_STORE_NAME,
+} from '../../core/home';
+  import {
   masterClassProductStore,
   MASTER_CLASS_PRODUCT_STORE_NAME,
 } from '../../core/master-class-product';
@@ -165,6 +169,7 @@ export const reducers = combineReducers({
   [COMPILATION_STORE_NAME]: compilationStore,
   [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
+  [HOME_STORE_NAME]: homeStore,
 });
 
 export { initStore } from './store.core';

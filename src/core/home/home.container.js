@@ -1,10 +1,41 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { pinnedMasterClassesUploadData } from './home.action';
+import { HOME_STORE_NAME } from './home.constant';
 import { HomeComponent } from './home.component';
 
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from '../../main/store/store.service';
+
 export function HomeContainer() {
+  const dispatch = useDispatch();
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
+    state: state[HOME_STORE_NAME],
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active,
+  }));
+
+  React.useEffect(() => {
+    dispatch(pinnedMasterClassesUploadData(currentLang.toLowerCase()));
+  }, []);
+
   return (
     <HomeComponent
+      // isPending={isRequestPending(state.home)}
+      // isError={isRequestError(state.home)}
+      // isSuccess={isRequestSuccess(state.home)}
+      // errorMessage={getRequestErrorMessage(state.home)}
+      // pageLoading={pageLoading}
       articlesListItems={testArticlesListItems}
       masterClassesListItems={testMasterClassesListItems}
+      // masterClassesListItems={getRequestData(state.pinnedMasterClasses, [])} // будут приходить данные можно и исправить
       sewingGoodsListItems={testSewingGoodsListItems}
     />
   );
