@@ -8,6 +8,10 @@ import {
   MASTER_CLASSES_ROUTE_PATH,
 } from '../../core/master-classes';
 import {
+  masterClassRouter,
+  MASTER_CLASS_ROUTE_PATH,
+} from '../../core/master-class';
+import {
   sewingGoodsRouter,
   SEWING_GOODS_ROUTE_PATH,
 } from '../../core/sewing-goods';
@@ -87,6 +91,10 @@ import {
 } from '../../core/patterns-page';
 
 export const routes = {
+  [HOME_ROUTE_PATH]: homeRouter,
+  [PATTERNS_ROUTE_PATH]: patternsRouter,
+  [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
+  [MASTER_CLASS_ROUTE_PATH]: masterClassRouter,
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
   [SEWING_GOODS_PRODUCT_ROUTE_PATH]: sewingGoodsProductRouter,
   [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,

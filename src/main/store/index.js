@@ -59,6 +59,10 @@ import {
   HOME_ARTICLE_STORE_NAME,
 } from '../../core/home-articles';
 import {
+  masterClassStore,
+  MASTER_CLASS_STORE_NAME,
+} from '../../core/master-class';
+import {
   sewingGoodsStore,
   SEWING_GOODS_STORE_NAME,
 } from '../../core/sewing-goods';
@@ -161,6 +165,7 @@ export const reducers = combineReducers({
   [NOTIFICATION_STORE_NAME]: notificationStore,
   [HOME_ARTICLE_STORE_NAME]: homeArticleStore,
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
+  [MASTER_CLASS_STORE_NAME]: masterClassStore,
   [ORDERS_STORE_NAME]: ordersStore,
   [MY_PURCHASES_STORE_NAME]: myPurchasesStore,
   [MY_LIKES_STORE_NAME]: myLikesStore,
