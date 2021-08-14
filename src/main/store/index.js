@@ -43,6 +43,10 @@ import {
 } from '../../core/settings-change-delivery-info';
 import { sliderStore, SLIDER_STORE_NAME } from '../../core/slider';
 import {
+  masterClassesStore,
+  MASTER_CLASSES_STORE_NAME,
+} from '../../core/master-classes';
+import {
   notificationStore,
   NOTIFICATION_STORE_NAME,
 } from '../../core/notification';
@@ -145,10 +149,10 @@ export const reducers = combineReducers({
   [AUTH_VERIFICATE_EMAIL_STORE_NAME]: authVerificateEmailStore,
   [AUTH_CHANGE_PASSWORD_STORE_NAME]: authChangePasswordStore,
   [AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME]: authVerificateEmailConfirmStore,
-  [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
+  [MASTER_CLASSES_STORE_NAME]: masterClassesStore,
   [SLIDER_STORE_NAME]: sliderStore,
   [NOTIFICATION_STORE_NAME]: notificationStore,
   [HOME_ARTICLE_STORE_NAME]: homeArticleStore,

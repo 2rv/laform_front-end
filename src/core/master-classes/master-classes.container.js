@@ -1,48 +1,41 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { masterClassesUploadData } from './master-classes.action';
+import { MasterClassesComponent } from './master-classes.component';
+import { TEST_MASTER_CLASSES_ITEMS, MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 import {
   getRequestErrorMessage,
+  getRequestData,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-// import { PATTERNS_STORE_NAME } from './patterns.constant';  // заменить на мастер классы
-import { MASTER_CLASSES_FIELD_NAME } from './master-classes.type';
-import { MasterClassesComponent } from './master-classes.component';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
-    // state: state[PATTERNS_STORE_NAME],
+  const { state, pageLoading, activePath, currentLang } = useSelector((state) => ({
+    state: state[MASTER_CLASSES_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    activePath: state[NAVIGATION_STORE_NAME].activePath,
+    currentLang: state[LANG_STORE_NAME].active,
   }));
 
-  const initialValue = () => {
-    return {
-      [MASTER_CLASSES_FIELD_NAME.CATEGORY]: 1,
-      [MASTER_CLASSES_FIELD_NAME.TAGS]: 1,
-      [MASTER_CLASSES_FIELD_NAME.FIND_INPUT]: '',
-    };
-  };
-
-  const onSubmit = (values) => {
-    console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
-  };
+  React.useEffect(() => {
+    dispatch(masterClassesUploadData(currentLang.toLowerCase()));
+    console.log(currentLang.toLowerCase());
+  }, []);
 
   return (
     <MasterClassesComponent
-      //   isPending={isRequestPending(state.sewingGoods)}
-      //   isError={isRequestError(state.sewingGoods)}
-      //   isSuccess={isRequestSuccess(state.sewingGoods)}
-      //   errorMessage={getRequestErrorMessage(state.sewingGoods)}
-      //   pageLoading={pageLoading}
-      initialValue={initialValue()}
-      categoryOptions={categorySelectOptions}
-      tagsOptions={tagsSelectOptions}
-      listItems={testListItems}
-      fieldName={MASTER_CLASSES_FIELD_NAME}
-      onSubmit={onSubmit}
+      isPending={isRequestPending(state.masterClasses)}
+      isError={isRequestError(state.masterClasses)}
+      isSuccess={isRequestSuccess(state.masterClasses)}
+      errorMessage={getRequestErrorMessage(state.masterClasses)}
+      items={getRequestData(state.masterClasses, [])}
+      pageLoading={pageLoading}
+      activePath={activePath}
     />
   );
 }
