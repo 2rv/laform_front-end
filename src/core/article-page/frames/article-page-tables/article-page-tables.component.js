@@ -17,7 +17,7 @@ export function ArticlesPageTablesComponent({ items }) {
 }
 //Title второй карточки должен быть с жирным laforme
 const Description = styled(TextSecondary)`
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   line-height: 28px;
 `;
@@ -30,7 +30,7 @@ const TableTitle = styled(TextSecondary)`
 `;
 const BackgroundText = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.EXTRA_LARGE};
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
+  color: ${THEME_COLOR.TEXT.LIGHT};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
 const Background = styled.div`

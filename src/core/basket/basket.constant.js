@@ -2,6 +2,17 @@ export const SEEWING_GOODS_TABLE_COLUMNS = '2fr 3.5fr 1fr 1fr 0.4fr 0.4fr';
 export const PATTERN_TABLE_COLUMNS = '2fr 4.5fr 1fr 0.4fr 0.4fr';
 export const MASTER_CLASSES_TABLE_COLUMNS = '2fr 4.5fr 1fr 0.4fr 0.4fr';
 
+export const BASKET_ROUTE_PATH = '/basket';
+
+export const BASKET_STORE_NAME = 'BASKET';
+
+export const BASKET_API = {
+  BASKET_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const BASKET_SEEWING_GOODS_LIST = [
   {
     id: 1,

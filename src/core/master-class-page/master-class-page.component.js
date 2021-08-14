@@ -1,75 +1,54 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../lib/element/layout';
+import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
-import { MasterClassPageBlockComponent } from './frames';
+import { MediaBlock } from '../block-media';
 import { TitlePrimary } from '../../lib/element/title';
 
 export function MasterClassPageComponent(props) {
-  const { name, descriptions, date, image, video, images } = props;
+  const { name, descriptions, date, content } = props.data;
 
   return (
-    <Container>
-      <PaddingLayout>
-        <IndentLayout type="MEDIUM">
-          <IndentLayout>
-            <TitleContainer>
-              <Title tid={name} />
-              <Date tid={date} />
-            </TitleContainer>
-            <MasterClassPageBlockComponent block={image} />
-            <DescriptionContainer>
-              <Description tid={descriptions[0]} />
-              <Description tid={descriptions[1]} />
-              <Description tid={descriptions[2]} />
-              <Description tid={descriptions[3]} />
-              <Description tid={descriptions[4]} />
-              <Description tid={descriptions[5]} />
-              <Description tid={descriptions[6]} />
-              <Description tid={descriptions[7]} />
-              <Description tid={descriptions[9]} />
-            </DescriptionContainer>
-            <MasterClassPageBlockComponent block={video} />
-            <FlexContainer>
-              <MasterClassPageBlockComponent block={images[0]} altType={true} />
-              <MasterClassPageBlockComponent block={images[1]} altType={true} />
-            </FlexContainer>
-          </IndentLayout>
-        </IndentLayout>
-      </PaddingLayout>
-    </Container>
+    <SectionLayout>
+      <HeaderCase>
+        <Title tid={name} />
+        <Date tid={date} />
+      </HeaderCase>
+      <MediaBlock content={content[0]} />
+      <SectionLayout type="SMALL">
+        {descriptions.map((text, index) => (
+          <Description key={index} tid={text} />
+        ))}
+      </SectionLayout>
+      <MediaBlock content={content[1]} />
+      <ImageLayout>
+        <MediaBlock content={content[2]} />
+        <MediaBlock content={content[3]} />
+      </ImageLayout>
+    </SectionLayout>
   );
 }
-const Description = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  line-height: 28px;
-`;
-const Date = styled(TextSecondary)`
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
-  font-size: ${THEME_SIZE.FONT.SMALL};
-`;
-const Title = styled(TitlePrimary)`
-  font-size: 28px;
-`;
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: ${spacing(12)} ${spacing(6)};
-`;
-const PaddingLayout = styled(ContentLayout)`
-  padding: 0 ${spacing(6)};
-`;
-const TitleContainer = styled.div`
+const HeaderCase = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+`;
+const Date = styled(TextSecondary)`
+  color: ${THEME_COLOR.TEXT.LIGHT};
+  font-size: ${THEME_SIZE.FONT.SMALL};
+  line-height: 1.5;
+`;
+const Title = styled(TitlePrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
+  line-height: 1.5;
 `;
-const FlexContainer = styled.div`
-  display: flex;
-  gap: ${spacing(6)};
+const Description = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  line-height: 1.5;
 `;
-const DescriptionContainer = styled.div`
+const ImageLayout = styled.div`
   display: grid;
-  gap: ${spacing(3)};
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: ${spacing(6)};
 `;

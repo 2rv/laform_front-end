@@ -1,7 +1,6 @@
-import { IndentLayout } from '../../../../lib/element/layout';
+import { SectionLayout } from '../../../../lib/element/layout';
 import { TextSecondary } from '../../../../lib/element/text';
 import { LinkPrimary } from '../../../../lib/element/link';
-
 import {
   LOGIN_FORM_FORGOT_PASSWORD_PATH,
   LOGIN_FORM_REGISTER_PATH,
@@ -9,7 +8,7 @@ import {
 
 export function LoginFooterComponent() {
   return (
-    <IndentLayout type="text">
+    <SectionLayout type="TEXT">
       <div>
         <TextSecondary tid="LOGIN.FOOTER.HAVENT_ACCOUNT_YET" />
         &nbsp;
@@ -26,6 +25,6 @@ export function LoginFooterComponent() {
           path={LOGIN_FORM_FORGOT_PASSWORD_PATH}
         />
       </div>
-    </IndentLayout>
+    </SectionLayout>
   );
 }

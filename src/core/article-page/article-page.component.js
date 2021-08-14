@@ -1,75 +1,50 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../lib/element/layout';
+import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
+import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
-import { BasicCardList } from '../../lib/element/card-list';
-import {
-  ArticlePageCommentComponent,
-  ArticlesPageTablesComponent,
-} from './frames';
+import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
-import { TEST_ARTICLES_ITEMS } from './article-page.constant';
-import { CardArticles } from '../../lib/element/card';
-import { LinkSecondary } from 'src/lib/element/link';
+import { BlockComments } from '../block-comments';
+import { MediaBlock } from '../block-media';
 
 export function ArticlePageComponent(props) {
-  const { name, date, tables, description, comments } = props;
-
+  const { data, listItems, comments } = props;
+  const { name, date, content, descriptions } = data;
   return (
-    <Container>
-      <PaddingLayout>
-        <IndentLayout type="MEDIUM">
-          <IndentLayout>
-            <TitleContainer>
-              <Title tid={name} />
-              <Date tid={date} />
-            </TitleContainer>
-            <ArticlesPageTablesComponent items={tables} />
-            <Description>{description}</Description>
-          </IndentLayout>
-          <ArticlePageCommentComponent items={comments} />
-          <IndentLayout>
-            <FlexContainer>
-              <TitlePrimary tid={'Лучшие публикации'} />
-              <ViewAllLink tid="HOME.VIEW_ALL" path={'/'} />
-            </FlexContainer>
-            <BasicCardList
-              items={TEST_ARTICLES_ITEMS}
-              ItemComponent={CardArticles}
-            />
-          </IndentLayout>
-        </IndentLayout>
-      </PaddingLayout>
-    </Container>
+    <SectionLayout>
+      <HeaderCase>
+        <Title tid={name} />
+        <Date tid={date} />
+      </HeaderCase>
+      <MediaBlock content={content[0]} />
+      <MediaBlock content={content[1]} />
+      {descriptions.map((text, index) => (
+        <Description key={index} tid={text} />
+      ))}
+      <BlockComments items={comments} />
+      <CardListBlock
+        title="отзывы"
+        path="/articles"
+        items={listItems}
+        cardType="articles"
+      />
+    </SectionLayout>
   );
 }
-const ViewAllLink = styled(LinkSecondary)`
-  margin-left: auto;
-`;
 
-const FlexContainer = styled.div`
-  display: flex;
-`;
-const Description = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  line-height: 28px;
-`;
-const Date = styled(TextSecondary)`
-  color: ${THEME_COLOR.FIELD.TEXT_PRIMARY};
-`;
-const Title = styled(TitlePrimary)`
-  font-size: 28px;
-`;
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: ${spacing(12)} ${spacing(6)};
-`;
-const PaddingLayout = styled(ContentLayout)`
-  padding: 0 ${spacing(6)};
-`;
-const TitleContainer = styled.div`
+const HeaderCase = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+`;
+const Description = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  line-height: 1.5;
+`;
+const Date = styled(TextSecondary)`
+  color: ${THEME_COLOR.TEXT.LIGHT};
+`;
+const Title = styled(TitlePrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
+  line-height: 1.5;
 `;

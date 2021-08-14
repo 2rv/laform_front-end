@@ -1,36 +1,27 @@
-import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../lib/element/layout';
-import { TextSecondary } from 'src/lib/element/text';
-import { MyLikesSubMenuComponent } from './frames';
+import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
+import { FilterTabs } from '../../lib/element/filter-tabs';
+import { TitlePrimary } from '../../lib/element/title';
+import { TextSecondary } from '../../lib/element/text';
 
 export function MyLikesComponent(props) {
-  const { items, menuItems, activePath } = props;
+  const { listItems, activeTab, setActiveTab, tabItems } = props;
+
   return (
-    <Container>
-      <Content>
-        <IndentLayout>
-          <Title tid="MY_LIKES.MY_LIKES.TITLE" />
-          <MyLikesSubMenuComponent items={menuItems} activePath={activePath} />
-          <BasicCardList
-            items={items}
-            actions={['OTHER.SELECTED', 'OTHER.SELECT']}
+    <SectionLayout>
+      <TitlePrimary tid="Мои лайки" />
+      {listItems ? (
+        <>
+          <FilterTabs
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            tabItems={tabItems}
           />
-        </IndentLayout>
-      </Content>
-    </Container>
+          <BasicCardList items={listItems} type="mixed" />
+        </>
+      ) : (
+        <TextSecondary tid="В вашем списке лайков ещё ничего нет" />
+      )}
+    </SectionLayout>
   );
 }
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const Content = styled(ContentLayout)`
-  padding: 0 ${spacing(6)};
-`;
-const Title = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  color: ${THEME_COLOR.SECONDARY_DARK};
-`;

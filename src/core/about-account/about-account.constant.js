@@ -1,5 +1,14 @@
 export const ABOUT_ACCOUNT_ROUTE_PATH = '/';
 
+export const ABOUT_ACCOUNT_STORE_NAME = 'ABOUT_ACCOUNT';
+
+export const ABOUT_ACCOUNT_API = {
+  ABOUT_ACCOUNT_UPLOAD: {
+    ENDPOINT: '/',
+    TYPE: 'POST',
+  },
+};
+
 export const ABOUT_ACCOUNT_TEST_ITEMS = {
   myGoods: {
     title: 'Мои покупки',
@@ -28,7 +37,7 @@ export const ABOUT_ACCOUNT_TEST_ITEMS = {
       },
     ],
   },
-  myLikes: {
+  aboutAccount: {
     title: 'Мои лайки',
     items: [
       {

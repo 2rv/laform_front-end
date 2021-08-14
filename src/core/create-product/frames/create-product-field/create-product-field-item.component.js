@@ -3,7 +3,7 @@ import { THEME_COLOR, THEME_SIZE, spacing } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 import { TitlePrimary } from 'src/lib/element/title';
 import { LinkPrimary } from 'src/lib/element/link';
-import { FieldPrimary, FieldSelect } from 'src/lib/element/field';
+import { BasicField, FieldSelect } from 'src/lib/element/field';
 
 export function CreateProductFieldItemComponent(props) {
   const {
@@ -38,7 +38,7 @@ export function CreateProductFieldItemComponent(props) {
   if (type === 'input') {
     return (
       <Container fw={fullWidth}>
-        <FieldPrimary
+        <BasicField
           titleTid={title}
           name={name}
           value={value}

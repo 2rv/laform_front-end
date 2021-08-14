@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
-export function CardImage({ backgroundImage, bestseller, discount }) {
+export function CardImage({ image, bestseller, action }) {
   return (
     <Container>
-      <Image src={backgroundImage} />
+      <Image src={image} />
       <ModifierContainer>
-        {discount && <Modifier tid={'Акция'} />}
-        {bestseller && <Modifier alt={true} tid={'Хит'} />}
+        {action && <Modifier tid={'Акция'} />}
+        {bestseller && <Modifier alt tid={'Хит'} />}
       </ModifierContainer>
     </Container>
   );
@@ -21,11 +21,13 @@ const Image = styled.img`
 `;
 const Container = styled.div`
   position: relative;
-  width: 100%;
+  display: flex;
   height: 100%;
+  width: 100%;
   max-height: 260px;
-  max-width: 360px;
+  flex: 1 0;
 `;
+
 const ModifierContainer = styled.div`
   display: flex;
   position: absolute;
@@ -37,7 +39,7 @@ const ModifierContainer = styled.div`
 const Modifier = styled(TextSecondary)`
   background-color: ${({ alt }) =>
     alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
-  color: ${THEME_COLOR.TEXT.WHITE};
+  color: ${THEME_COLOR.WHITE};
   width: 97px;
   padding: ${spacing(1.6)} 0;
   display: flex;

@@ -1,48 +1,46 @@
 import styled from 'styled-components';
-import { spacing } from 'src/lib/theme';
-import { ContentLayout, IndentLayout } from 'src/lib/element/layout';
+import { SectionLayout } from 'src/lib/element/layout';
 import {
   AdvantageListContainer,
   CatalogListContainer,
   InformationListContainer,
-  PopularGoodsContainer,
-  PopularMasterClassesContainer,
+  CardListBlock,
 } from './frames';
 import { SliderContainer } from '../../core/slider';
-import { HomeArticlesContainer } from '../../core/home-articles';
+import {
+  ARTICLES_ROUTE_PATH,
+  MASTER_CLASSES_ROUTE_PATH,
+  SEWING_GOODS_ROUTE_PATH,
+} from './home.constant';
+import { HelpInfoBlock } from '../block-help-info';
 
 export function HomeComponent(props) {
+  const { articlesListItems, masterClassesListItems, sewingGoodsListItems } =
+    props;
   return (
-    <Container>
-      <Content>
-        <ContentSectionLayout type="medium">
-          <SliderContainer />
-          <CatalogListContainer />
-          {/* <PopularGoodsContainer /> */}
-          {/* <PopularMasterClassesContainer /> */}
-          <HomeArticlesContainer />
-          <InformationListContainer />
-          <AdvantageListContainer />
-        </ContentSectionLayout>
-      </Content>
-    </Container>
+    <SectionLayout type="MEDIUM">
+      <SliderContainer />
+      <CatalogListContainer />
+      <CardListBlock
+        title={'HOME.POPULAR_GOODS_TITLE'}
+        path={SEWING_GOODS_ROUTE_PATH}
+        cardType={'sewing-goods'}
+        items={sewingGoodsListItems}
+      />
+      <CardListBlock
+        title={'HOME.POPULAR_MASTER_CLASSES_TITLE'}
+        path={MASTER_CLASSES_ROUTE_PATH}
+        cardType={'master-classes'}
+        items={masterClassesListItems}
+      />
+      <CardListBlock
+        title={'HOME.POPULAR_ARTICLES_TITLE'}
+        path={ARTICLES_ROUTE_PATH}
+        cardType={'articles'}
+        items={articlesListItems}
+      />
+      <HelpInfoBlock viewAll />
+      <AdvantageListContainer />
+    </SectionLayout>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const Content = styled(ContentLayout)`
-  padding: 0 ${spacing(6)};
-  @media screen and (max-width: 600px) {
-    padding: 0 ${spacing(3)};
-  }
-`;
-
-const ContentSectionLayout = styled(IndentLayout)`
-  @media screen and (max-width: 600px) {
-    grid-row-gap: ${spacing(6)};
-  }
-`;

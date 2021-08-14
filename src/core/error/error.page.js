@@ -1,33 +1,16 @@
-import {
-  ContentLayout,
-  IndentLayout,
-  PageLayout,
-} from '../../lib/element/layout';
-
-import { FooterContainer } from '../footer';
-import { HeaderLogoContainer } from '../header-logo';
-import { HeaderContainer } from '../header';
-
+import { PageWrapper } from '../../lib/common/page-wrapper';
+import { ContentLayout } from '../../lib/element/layout';
 import { ErrorContainer } from './error.container';
 
 export function ErrorPage(props) {
   const { errorStatus } = props;
 
   return (
-    <IndentLayout type="large">
-      <IndentLayout type="medium">
-        <IndentLayout type="small">
-          <HeaderLogoContainer />
-          <HeaderContainer />
-        </IndentLayout>
-        <PageLayout horizontal="center">
-          <ContentLayout type="small">
-            <ErrorContainer errorStatus={errorStatus} />
-          </ContentLayout>
-        </PageLayout>
-      </IndentLayout>
-      <FooterContainer />
-    </IndentLayout>
+    <PageWrapper>
+      <ContentLayout horizontal="center">
+        <ErrorContainer errorStatus={errorStatus} />
+      </ContentLayout>
+    </PageWrapper>
   );
 }
 

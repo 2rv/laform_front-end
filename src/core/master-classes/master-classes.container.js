@@ -39,3 +39,72 @@ export function MasterClassesContainer() {
     />
   );
 }
+
+export const categorySelectOptions = [
+  {
+    id: 1,
+    tid: 'Категория 1',
+  },
+  {
+    id: 2,
+    tid: 'Категория 2',
+  },
+];
+export const tagsSelectOptions = [
+  {
+    id: 1,
+    tid: 'Популярные',
+  },
+  {
+    id: 2,
+    tid: 'Самые дорогие',
+  },
+  {
+    id: 3,
+    tid: 'Самые дешевые',
+  },
+];
+export const testListItems = [
+  {
+    id: 1,
+    name: 'Мастер-класс по пошиву мужских брюк 1003',
+    image: '/static/test/popular-gods-1.png',
+    bestseller: true,
+    select: false,
+    like: true,
+    type: 1,
+    price: {
+      min: 500,
+      discount: 230,
+      max: null,
+    },
+  },
+  {
+    id: 2,
+    name: 'Инструкция по пошиву Комбинезон 0717',
+    image: '/static/test/popular-gods-2.png',
+    bestseller: true,
+    select: true,
+    like: false,
+    type: 1,
+    price: {
+      min: 500,
+      discount: null,
+      max: 1000,
+    },
+  },
+  {
+    id: 3,
+    name: 'Мастер-класс по пошиву Жакета 0305',
+    image: '/static/test/popular-gods-3.png',
+    bestseller: false,
+    select: true,
+    like: true,
+    type: 1,
+    price: {
+      min: 500,
+      discount: 230,
+      max: 1000,
+    },
+  },
+];

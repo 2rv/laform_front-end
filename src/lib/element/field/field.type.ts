@@ -8,9 +8,18 @@ export interface FieldPropsType {
   error: string;
   onChange: any;
   onBlur: any;
-  icon: any;
-  onClick: any;
-  searchInput: boolean;
+  isFindInput?: boolean;
+  width?: number;
+}
+export interface InputPropsType {
+  className?: string;
+  placeholder: string;
+  name: string;
+  type?: string;
+  value: string;
+  error: string | boolean;
+  onChange: any;
+  onBlur: any;
 }
 
 export interface CheckboxPropsType {
@@ -29,9 +38,5 @@ export interface SelectPropsType {
   options: { id: number; tid: string; tvalue: any }[];
   onChange: any;
   onBlur: any;
-}
-
-export interface InputProps {
-  readonly error: boolean;
-  searchInput: boolean;
+  width?: number;
 }

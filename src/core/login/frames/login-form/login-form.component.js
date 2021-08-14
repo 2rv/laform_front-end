@@ -1,5 +1,5 @@
-import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
-import { FieldPrimary } from '../../../../lib/element/field';
+import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
+import { BasicField } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
 import { ErrorAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
@@ -32,9 +32,9 @@ export function LoginFormComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <IndentLayout type="small">
+      <SectionLayout type="TEXT">
         <FieldLayout>
-          <FieldPrimary
+          <BasicField
             titleTid="LOGIN.LOGIN_FORM.FIELD.LOGIN.TITLE"
             placeholderTid="LOGIN.LOGIN_FORM.FIELD.LOGIN.PLACEHOLDER"
             name={fieldLogin}
@@ -43,7 +43,7 @@ export function LoginFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="LOGIN.LOGIN_FORM.FIELD.PASSWORD.TITLE"
             placeholderTid="LOGIN.LOGIN_FORM.FIELD.PASSWORD.PLACEHOLDER"
             name={fieldPassword}
@@ -61,7 +61,7 @@ export function LoginFormComponent(props) {
           disabled={isSubmitDisabled()}
         />
         {isPending && <LoaderPrimary />}
-      </IndentLayout>
+      </SectionLayout>
     </form>
   );
 }
