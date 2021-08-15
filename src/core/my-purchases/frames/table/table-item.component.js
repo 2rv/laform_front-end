@@ -1,19 +1,10 @@
 import styled from 'styled-components';
-
-import { MY_PURCHASES_TABLE_COLUMNS } from '../../my-purchases.constant';
-
 import { TextSecondary, TextPrimary } from 'src/lib/element/text';
 import { TableRow, TableData, TableImage } from 'src/lib/element/table';
 import { THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
 export function TableItemComponent(props) {
-  const {
-    title,
-    image,
-    details,
-    price,
-    condition,
-  } = props;
+  const { title, image, details, price, condition } = props;
 
   const renderCondition = (condition) => {
     if (condition === 'delivered') {
@@ -26,7 +17,7 @@ export function TableItemComponent(props) {
   };
 
   return (
-    <TableRow columns={MY_PURCHASES_TABLE_COLUMNS}>
+    <TableRow columns={'1fr 2fr 0.4fr 0.4fr'}>
       <TableData>
         <TableImage src={image.url} alt={image.alt} />
         <TextSecondary tid={title} />
@@ -34,20 +25,26 @@ export function TableItemComponent(props) {
 
       <TableData>
         <span>
-          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.COLOR.TITLE" />:&nbsp;
-          <TextPrimary tid={details.color} />,&nbsp;
+          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.COLOR.TITLE" />
+          :&nbsp;
+          <TextPrimary tid={details.color} />
+          ,&nbsp;
         </span>
         <span>
-          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.SIZE"  />:&nbsp;
+          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.SIZE" />
+          :&nbsp;
           <TextPrimary>{details.size}</TextPrimary>.&nbsp;
         </span>
         <span>
-          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.CATEGORY.TITLE" />:&nbsp;
-          <TextPrimary tid={details.category} />,&nbsp;
+          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.CATEGORY.TITLE" />
+          :&nbsp;
+          <TextPrimary tid={details.category} />
+          ,&nbsp;
         </span>
         <br />
         <span>
-          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.COUNT" />:&nbsp;
+          <TextSecondary tid="PURCHASE.SEЕWING_GOODS.DETAILS.COUNT" />
+          :&nbsp;
           <TextPrimary>{details.count}</TextPrimary>
         </span>
       </TableData>
@@ -57,9 +54,7 @@ export function TableItemComponent(props) {
         <TextSecondary tid="OTHER.VALUTE" />.
       </TableData>
 
-      <TableData>
-        {renderCondition(condition)}
-      </TableData>
+      <TableData>{renderCondition(condition)}</TableData>
     </TableRow>
   );
 }

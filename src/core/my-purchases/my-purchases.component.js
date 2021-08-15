@@ -1,31 +1,55 @@
-import styled from 'styled-components';
-
-import { TabsComponent, TableComponent } from './frames';
-
-import { PURCHASES_LIST } from './my-purchases.constant';
-
-import { ContentLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
-import { spacing } from 'src/lib/theme';
+import { FilterTabs } from '../../lib/element/filter-tabs';
+import { SectionLayout } from '../../lib/element/layout';
+import { TableComponent } from './frames';
 
 export function MyPurchasesComponent() {
   return (
-    <Container>
-      <Content>
-        <TitlePrimary tid="PURCHASE.SEЕWING_GOODS.MY_PURCHASES" />
-        <TabsComponent />
-        <TableComponent purchasesList={PURCHASES_LIST} />
-      </Content>
-    </Container>
+    <SectionLayout>
+      <TitlePrimary tid="PURCHASE.SEЕWING_GOODS.MY_PURCHASES" />
+      <FilterTabs tabItems={tabItems} />
+      <TableComponent listItems={testPurchaseList} />
+    </SectionLayout>
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+const tabItems = [
+  { name: 'Популярные товары', type: 9 },
+  { name: 'Лучшие мастер-классы', type: 0 },
+  { name: 'Лучшие полезные статьи', type: 1 },
+];
 
-const Content = styled(ContentLayout)`
-  padding: 0 ${spacing(2)};
-`;
+export const testPurchaseList = [
+  {
+    id: 1,
+    title: 'Товары для шитья',
+    image: {
+      url: '/static/test/Popular-gods-2.png',
+      alt: 'Popular Gods 2',
+    },
+    details: {
+      color: 'PURCHASE.SEЕWING_GOODS.DETAILS.COLOR.GREEN',
+      size: '15/170 250',
+      category: 'PURCHASE.SEЕWING_GOODS.DETAILS.CATEGORY.OUTERWEAR',
+      count: 1,
+    },
+    price: '3,200',
+    condition: 'delivered',
+  },
+  {
+    id: 2,
+    title: 'Товары для шитья',
+    image: {
+      url: '/static/test/Popular-gods-1.png',
+      alt: 'Popular Gods 1',
+    },
+    details: {
+      color: 'PURCHASE.SEЕWING_GOODS.DETAILS.COLOR.WHITE',
+      size: '25/180 250',
+      category: 'PURCHASE.SEЕWING_GOODS.DETAILS.CATEGORY.OUTERWEAR',
+      count: 3,
+    },
+    price: '699',
+    condition: 'paid',
+  },
+];

@@ -40,6 +40,12 @@ export function TableComponent(props) {
             <TextPrimary tid="Состояние" />
           </Case>
         </Td>
+        <Td>
+          <ActionBlock>
+            <ActionPlug />
+            <ActionPlug />
+          </ActionBlock>
+        </Td>
       </tr>
       <Td colSpan="6">
         <DividerTable />
