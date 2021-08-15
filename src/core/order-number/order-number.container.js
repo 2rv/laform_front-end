@@ -11,6 +11,13 @@ import { orderNumberUploadData } from './order-number.action';
 import { ORDER_NUMBER_STORE_NAME } from './order-number.constant';
 import { OrderNumberComponent } from './order-number.component';
 
+import {
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from '../../main/store/store.service';
+
 export function OrderNumberContainer() {
   const dispatch = useDispatch();
   const { state, pageLoading } = useSelector((state) => ({
