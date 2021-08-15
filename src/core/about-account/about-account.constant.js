@@ -1,4 +1,4 @@
-export const ABOUT_ACCOUNT_ROUTE_PATH = '/';
+export const ABOUT_ACCOUNT_ROUTE_PATH = '/about-account';
 
 export const ABOUT_ACCOUNT_STORE_NAME = 'ABOUT_ACCOUNT';
 

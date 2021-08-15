@@ -85,6 +85,18 @@ import {
   patternsPageRouter,
   PATTERNS_PAGE_ROUTE_PATH,
 } from '../../core/patterns-page';
+import {
+  orderNumberRouter,
+  ORDER_NUMBER_ROUTE_PATH,
+} from '../../core/order-number';
+import {
+  sliderEditRouter,
+  SLIDER_EDIT_ROUTE_PATH,
+} from '../../core/slider-edit';
+import {
+  sliderListRouter,
+  SLIDER_LIST_ROUTE_PATH,
+} from '../../core/slider-list';
 
 export const routes = {
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
@@ -116,6 +128,9 @@ export const routes = {
   [COMPILATION_ROUTE_PATH]: compilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
   [ABOUT_ACCOUNT_ROUTE_PATH]: aboutAccountRouter,
+  [ORDER_NUMBER_ROUTE_PATH]: orderNumberRouter,
+  [SLIDER_EDIT_ROUTE_PATH]: sliderEditRouter,
+  [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
 };
 
 export const Router = routesInit(routes);

@@ -125,6 +125,10 @@ import {
   MASTER_CLASSES_STORE_NAME,
 } from '../../core/master-classes';
 import { homeStore, HOME_STORE_NAME } from '../../core/home';
+import {
+  orderNumberStore,
+  ORDER_NUMBER_STORE_NAME,
+} from '../../core/order-number';
 
 export const reducers = combineReducers({
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
@@ -168,6 +172,7 @@ export const reducers = combineReducers({
   [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
+  [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
 });
 
 export { initStore } from './store.core';
