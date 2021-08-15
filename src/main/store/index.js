@@ -120,6 +120,11 @@ import {
   patternsPageStore,
   PATTERNS_PAGE_STORE_NAME,
 } from '../../core/patterns-page';
+import {
+  masterClassesStore,
+  MASTER_CLASSES_STORE_NAME,
+} from '../../core/master-classes';
+import { homeStore, HOME_STORE_NAME } from '../../core/home';
 
 export const reducers = combineReducers({
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
@@ -127,6 +132,7 @@ export const reducers = combineReducers({
   [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,
   [SEWING_GOODS_STORE_NAME]: sewingGoodsStore,
   [MASTER_CLASS_PRODUCT_STORE_NAME]: masterClassProductStore,
+  [MASTER_CLASSES_STORE_NAME]: masterClassesStore,
   [MY_MASTER_CLASSES_STORE_NAME]: myMasterClassesStore,
   [PATTERNS_STORE_NAME]: patternsStore,
   [PATTERNS_PRODUCT_STORE_NAME]: patternsProductStore,
@@ -161,6 +167,7 @@ export const reducers = combineReducers({
   [COMPILATION_STORE_NAME]: compilationStore,
   [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
+  [HOME_STORE_NAME]: homeStore,
 });
 
 export { initStore } from './store.core';

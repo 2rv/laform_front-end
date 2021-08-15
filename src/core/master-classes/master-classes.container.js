@@ -3,18 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   getRequestErrorMessage,
+  getRequestData,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-// import { PATTERNS_STORE_NAME } from './patterns.constant';  // заменить на мастер классы
-import { MASTER_CLASSES_FIELD_NAME } from './master-classes.type';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { masterClassesUploadData } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
+import { MASTER_CLASSES_FIELD_NAME } from './master-classes.type';
+import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
-    // state: state[PATTERNS_STORE_NAME],
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
+    // state: state[MASTER_CLASSES_STORE_NAME].masterClasses,
+    // currentLang: state[LANG_STORE_NAME].active,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
 
@@ -26,16 +30,32 @@ export function MasterClassesContainer() {
     };
   };
 
+  const masterClassesFormFilterGetInitialValue = () => {
+    //   const rawData = getRequestData(changeDeliveryInfo, null);
+    //   if (!rawData) {
+    //     return {
+    //       [MASTER_CLASSES_FILTER_FIELD_NAME.CATEGORY]:
+    //         MASTER_CLASSES_FILTER_CATEGORY_OPTIONS[0].id,
+    //       [MASTER_CLASSES_FILTER_FIELD_NAME.TAGS]:
+    //         MASTER_CLASSES_FILTER_TAGS_OPTIONS[0].id,
+    //     };
+  };
+
+  useEffect(() => {
+    // dispatch(masterClassesUploadData(currentLang.toLowerCase()));
+    // console.log(currentLang.toLowerCase());
+  }, []);
+
   const onSubmit = (values) => {
     console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
   };
 
   return (
     <MasterClassesComponent
-      //   isPending={isRequestPending(state.sewingGoods)}
-      //   isError={isRequestError(state.sewingGoods)}
-      //   isSuccess={isRequestSuccess(state.sewingGoods)}
-      //   errorMessage={getRequestErrorMessage(state.sewingGoods)}
+      // isPending={isRequestPending(state)}
+      // isError={isRequestError(state)}
+      // isSuccess={isRequestSuccess(state)}
+      // errorMessage={getRequestErrorMessage(state)}
       //   pageLoading={pageLoading}
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
