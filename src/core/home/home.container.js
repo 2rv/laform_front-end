@@ -22,7 +22,7 @@ export function HomeContainer() {
   }));
 
   React.useEffect(() => {
-    dispatch(pinnedMasterClassesUploadData(currentLang.toLowerCase()));
+    // dispatch(pinnedMasterClassesUploadData(currentLang.toLowerCase()));
   }, []);
   return (
     <HomeComponent
