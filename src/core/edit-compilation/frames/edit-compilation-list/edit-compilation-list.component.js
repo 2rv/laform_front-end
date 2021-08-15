@@ -1,23 +1,42 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
+import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { EditCompilationListItemComponent } from './edit-compilation-list-item.component';
 import { TitlePrimary } from '../../../../lib/element/title';
+import { Spinner } from '../../../../lib/element/spinner';
 
 export function EditCompilationListComponent(props) {
-  const { title, items } = props;
+  const {
+    title,
+    items,
+    compilationName,
+    updateItem,
+    removeItem,
+    currentLang,
+
+    isPendingBestProducts,
+    isPendingBestMasterClasses,
+    isPendingBestArticles,
+  } = props;
+
   return (
     <Container>
       <Title tid={title} />
-      <Content>
-        {items.map((item, index) => {
-          return (
+      {isPendingBestProducts || isPendingBestMasterClasses || isPendingBestArticles ? (
+        <Spinner />
+      ) : (
+        <Content>
+          {items?.map((item) => (
             <EditCompilationListItemComponent
-              key={item?.key || index}
               {...item}
+              key={item?.id}
+              compilationNamе={compilationName}
+              updateItem={updateItem}
+              removeItem={removeItem}
+              currentLang={currentLang}
             />
-          );
-        })}
-      </Content>
+          ))}
+        </Content>
+      )}
     </Container>
   );
 }

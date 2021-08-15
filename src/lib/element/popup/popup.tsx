@@ -46,7 +46,7 @@ const PopupContent = styled.div`
   transform: translateX(-85%);
   top: 45px;
   width: 300px;
-  background: ${THEME_COLOR.BACKGROUND.WHITE};
+  background: ${THEME_COLOR.WHITE};
   box-shadow: ${THEME_COLOR.SHADOW.MODAL};
   border-radius: 5px;
   padding: ${spacing(3)};
