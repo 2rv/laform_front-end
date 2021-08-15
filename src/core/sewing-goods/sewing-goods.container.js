@@ -84,7 +84,7 @@ export const testListItems = [
     image: '/static/test/popular-gods-1.png',
     select: true,
     like: true,
-    patternType: 1,
+    type: 0,
     price: {
       min: 500,
       discount: 230,
@@ -98,7 +98,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 0,
     price: {
       min: 200,
       discount: null,
@@ -112,7 +112,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 1,
+    type: 0,
     price: {
       min: 200,
       discount: 100,
@@ -126,7 +126,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 0,
     price: {
       min: 200,
       discount: 100,

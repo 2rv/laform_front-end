@@ -10,10 +10,10 @@ export function FilterTabs(props: FilterTabsPropsType) {
     <Container>
       {tabItems.map((x, i) => (
         <Tab
-          onClick={() => setActiveTab(i)}
+          onClick={() => setActiveTab(x.type)}
           key={i}
           tid={x.name}
-          actived={i === activeTab}
+          actived={x.type === activeTab}
         />
       ))}
     </Container>

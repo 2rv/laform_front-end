@@ -15,8 +15,12 @@ import {
 import { HelpInfoBlock } from '../block-help-info';
 
 export function HomeComponent(props) {
-  const { articlesListItems, masterClassesListItems, sewingGoodsListItems } =
-    props;
+  const {
+    articlesListItems,
+    masterClassesListItems,
+    sewingGoodsListItems,
+  } = props;
+
   return (
     <SectionLayout type="MEDIUM">
       <SliderContainer />

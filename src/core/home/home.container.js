@@ -1,10 +1,41 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { pinnedMasterClassesUploadData } from './home.action';
+import { HOME_STORE_NAME } from './home.constant';
 import { HomeComponent } from './home.component';
 
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from '../../main/store/store.service';
+
 export function HomeContainer() {
+  const dispatch = useDispatch();
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
+    state: state[HOME_STORE_NAME],
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active,
+  }));
+
+  React.useEffect(() => {
+    dispatch(pinnedMasterClassesUploadData(currentLang.toLowerCase()));
+  }, []);
+
   return (
     <HomeComponent
+      // isPending={isRequestPending(state.home)}
+      // isError={isRequestError(state.home)}
+      // isSuccess={isRequestSuccess(state.home)}
+      // errorMessage={getRequestErrorMessage(state.home)}
+      // pageLoading={pageLoading}
       articlesListItems={testArticlesListItems}
       masterClassesListItems={testMasterClassesListItems}
+      // masterClassesListItems={getRequestData(state.pinnedMasterClasses, [])} // будут приходить данные можно и исправить
       sewingGoodsListItems={testSewingGoodsListItems}
     />
   );
@@ -17,6 +48,7 @@ export const testArticlesListItems = [
     image: '/static/test/popular-gods-1.png',
     like: true,
     date: '1 неделю назад',
+    type: 2,
   },
 
   {
@@ -25,14 +57,15 @@ export const testArticlesListItems = [
     image: '/static/test/popular-gods-2.png',
     like: false,
     date: '1 неделю назад',
+    type: 2,
   },
   {
     id: 3,
     name: 'Батист',
     image: '/static/test/popular-gods-3.png',
-
     like: false,
     date: '2 недели назад',
+    type: 2,
   },
 ];
 export const testMasterClassesListItems = [
@@ -43,7 +76,7 @@ export const testMasterClassesListItems = [
     bestseller: true,
     select: false,
     like: true,
-    patternType: 1,
+    type: 1,
     price: {
       min: 500,
       discount: 230,
@@ -57,7 +90,7 @@ export const testMasterClassesListItems = [
     bestseller: true,
     select: true,
     like: false,
-    patternType: 1,
+    type: 1,
     price: {
       min: 500,
       discount: null,
@@ -71,7 +104,7 @@ export const testMasterClassesListItems = [
     bestseller: false,
     select: true,
     like: true,
-    patternType: 1,
+    type: 1,
     price: {
       min: 500,
       discount: 230,
@@ -87,7 +120,7 @@ export const testPatternsListItems = [
     complexity: 1,
     select: true,
     like: true,
-    patternType: 1,
+    type: 3,
     price: {
       min: 500,
       discount: 230,
@@ -102,7 +135,7 @@ export const testPatternsListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 4,
     price: {
       min: 200,
       discount: null,
@@ -117,7 +150,7 @@ export const testPatternsListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 1,
+    type: 5,
     price: {
       min: 200,
       discount: 100,
@@ -132,7 +165,7 @@ export const testSewingGoodsListItems = [
     image: '/static/test/popular-gods-1.png',
     select: true,
     like: true,
-    patternType: 1,
+    type: 0,
     price: {
       min: 500,
       discount: 230,
@@ -146,7 +179,7 @@ export const testSewingGoodsListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 2,
+    type: 0,
     price: {
       min: 200,
       discount: null,
@@ -160,7 +193,7 @@ export const testSewingGoodsListItems = [
     select: false,
     like: false,
     bestseller: true,
-    patternType: 1,
+    type: 0,
     price: {
       min: 200,
       discount: 100,

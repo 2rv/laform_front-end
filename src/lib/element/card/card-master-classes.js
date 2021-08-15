@@ -5,6 +5,7 @@ import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { CardActions } from './card-actions';
+import { SectionLayout } from '../layout';
 
 export function CardMasterClasses(props) {
   const {
@@ -45,6 +46,8 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   display: flex;
+  flex: 1;
+  justify-content: space-between;
   flex-direction: column;
   gap: ${spacing(3)};
 `;
@@ -52,4 +55,9 @@ const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 `;
