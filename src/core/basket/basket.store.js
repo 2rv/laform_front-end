@@ -9,6 +9,7 @@ import { BASKET_ACTION_TYPE } from './basket.type';
 
 const initialState = {
   basket: initRequestState(),
+  basketLoadData: initRequestState(),
 };
 
 export function basketStore(state = initialState, action) {
@@ -28,6 +29,26 @@ export function basketStore(state = initialState, action) {
         ...state,
         basket: setRequestError(state.basket, action.errorMessage),
       };
+
+    case BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_PENDING:
+      return {
+        ...state,
+        basketLoadData: setRequestPending(state.basketLoadData),
+      };
+    case BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_SUCCESS:
+      return {
+        ...state,
+        basketLoadData: setRequestSuccess(state.basketLoadData, action.payload),
+      };
+    case BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_ERROR:
+      return {
+        ...state,
+        basketLoadData: setRequestError(
+          state.basketLoadData,
+          action.errorMessage,
+        ),
+      };
+
     default:
       return state;
   }

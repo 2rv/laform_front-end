@@ -7,7 +7,7 @@ import { ButtonPropsType } from './button.type';
 
 export function ButtonBasic(props: ButtonPropsType) {
   const { tid, tvalue, width = false, children, ...rest } = props;
-
+  console.log(tid === 'SETTINGS.CHANGE_EMAIL.SUBMIT' ? props.disabled : '');
   return (
     <Button width={width} {...rest}>
       {tid ? text(tid, tvalue) : children}

@@ -14,7 +14,19 @@ import { TitlePrimary } from 'src/lib/element/title';
 import { SectionLayout } from 'src/lib/element/layout';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 
-export function BasketComponent() {
+export function BasketComponent(props) {
+  const {
+    isPending,
+    isError,
+    isSuccess,
+    errorMessage,
+    isUserInfoLoadPending,
+    pageLoading,
+    initialValue,
+    validation,
+    onSubmitForm,
+    fieldName,
+  } = props;
   return (
     <SectionLayout>
       <Title tid="BASKET.TITLE" />
@@ -23,7 +35,18 @@ export function BasketComponent() {
         masterClassesList={BASKET_MASTER_CLASSES_LIST}
       />
       <PatternsListComponent patternsList={BASKET_PATTERS_LIST} />
-      <FormalizationOrderingContainer />
+      <FormalizationOrderingContainer
+        isPending={isPending}
+        isError={isError}
+        isSuccess={isSuccess}
+        errorMessage={errorMessage}
+        isUserInfoLoadPending={isUserInfoLoadPending}
+        pageLoading={pageLoading}
+        initialValue={initialValue}
+        validation={validation}
+        onSubmitForm={onSubmitForm}
+        fieldName={fieldName}
+      />
     </SectionLayout>
   );
 }

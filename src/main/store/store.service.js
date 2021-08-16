@@ -40,10 +40,7 @@ const defaultRequestState = {
   updated: null,
 };
 
-export const initRequestState = (
-  data = null,
-  additional = null,
-) => ({
+export const initRequestState = (data = null, additional = null) => ({
   ...defaultRequestState,
   data: null,
   ...(data ? { data: data } : null),
@@ -109,7 +106,11 @@ export const resetRequestErrorStatus = (state) => {
 
   return state;
 };
-export const updateRequestPaginationData = (state, data, fieldName = 'pagination') => {
+export const updateRequestPaginationData = (
+  state,
+  data,
+  fieldName = 'pagination',
+) => {
   state.data[fieldName] = data[fieldName];
 
   if (data.pagination.skip === 0) {
