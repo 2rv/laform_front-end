@@ -129,6 +129,10 @@ import {
   orderNumberStore,
   ORDER_NUMBER_STORE_NAME,
 } from '../../core/order-number';
+import {
+  sliderListStore,
+  SLIDER_LIST_STORE_NAME,
+} from '../../core/slider-list';
 
 export const reducers = combineReducers({
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
@@ -173,6 +177,7 @@ export const reducers = combineReducers({
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
+  [SLIDER_LIST_STORE_NAME]: sliderListStore,
 });
 
 export { initStore } from './store.core';

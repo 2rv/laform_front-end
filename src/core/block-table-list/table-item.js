@@ -4,7 +4,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function TableItem(props) {
   const { children, data, isLast } = props;
-  const { name, price, image, params, otherParams, status } = data;
+  const { name, price, image, params, otherParams, status, id } = data;
   return (
     <tr>
       <Td>
@@ -46,7 +46,7 @@ export function TableItem(props) {
         </Td>
       )}
       <Td>
-        <ActionBlock>{children}</ActionBlock>
+        <ActionBlock>{children(id)}</ActionBlock>
       </Td>
     </tr>
   );
