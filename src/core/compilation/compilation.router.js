@@ -5,5 +5,5 @@ import { COMPILATION_ROUTE_PATH } from './compilation.constant';
 
 export function compilationRouter(ctx) {
   ctx.store.dispatch(setActivePath(COMPILATION_ROUTE_PATH));
-  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  // authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }

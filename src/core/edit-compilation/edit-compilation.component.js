@@ -3,21 +3,29 @@ import { EditCompilationListComponent } from './frames';
 import { TitlePrimary } from '../../lib/element/title';
 
 export function EditCompilationComponent(props) {
-  const { bestGoodsItems, bestMasterClassesItems, bestArticlesItems } = props;
+  const {
+    bestProducts,
+    bestMasterClasses,
+    bestArticles,
+  } = props;
+
   return (
     <SectionLayout>
       <TitlePrimary tid="ПОДБОРКИ" />
       <EditCompilationListComponent
         title="Лучшие товары"
-        items={bestGoodsItems}
+        compilationName="post" // Изменить когда BE будет готов
+        items={bestProducts}
       />
       <EditCompilationListComponent
         title="Лучшие мастер-классы"
-        items={bestMasterClassesItems}
+        compilationName="master-class"
+        items={bestMasterClasses}
       />
       <EditCompilationListComponent
         title="Лучшие полезные статьи"
-        items={bestArticlesItems}
+        compilationName="post"
+        items={bestArticles}
       />
     </SectionLayout>
   );

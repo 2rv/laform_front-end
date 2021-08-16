@@ -1,22 +1,28 @@
+import React from 'react';
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
+import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { EditCompilationListItemComponent } from './edit-compilation-list-item.component';
 import { TitlePrimary } from '../../../../lib/element/title';
+import { Spinner } from '../../../../lib/element/spinner';
 
 export function EditCompilationListComponent(props) {
-  const { title, items } = props;
+  const {
+    title,
+    items,
+    compilationName,
+  } = props;
+
   return (
     <Container>
       <Title tid={title} />
       <Content>
-        {items.map((item, index) => {
-          return (
-            <EditCompilationListItemComponent
-              key={item?.key || index}
-              {...item}
-            />
-          );
-        })}
+        {items?.map((item) => (
+          <EditCompilationListItemComponent
+            {...item}
+            key={item?.id}
+            compilationNamе={compilationName}
+          />
+        ))}
       </Content>
     </Container>
   );
