@@ -18,12 +18,16 @@ export function CompilationComponent(props) {
         tabItems={tabItems}
       />
       <TableList items={itemsTable}>
-        <Button>
-          <EditIcon />
-        </Button>
-        <Button>
-          <DeleteIcon />
-        </Button>
+        {(props) => {
+          <>
+            <Button>
+              <EditIcon />
+            </Button>
+            <Button>
+              <DeleteIcon />
+            </Button>
+          </>;
+        }}
       </TableList>
     </SectionLayout>
   );

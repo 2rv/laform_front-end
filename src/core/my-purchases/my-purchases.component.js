@@ -27,11 +27,15 @@ export function MyPurchasesComponent(props) {
         tabItems={tabItems}
       />
       <TableList headers={headersTable} items={itemsTable}>
-        {activeTab === 2 && (
-          <IconButton>
-            <UploadIcon />
-          </IconButton>
-        )}
+        {(props) => {
+          if (activeTab === 2) {
+            return (
+              <IconButton>
+                <UploadIcon />
+              </IconButton>
+            );
+          }
+        }}
       </TableList>
     </SectionLayout>
   );
