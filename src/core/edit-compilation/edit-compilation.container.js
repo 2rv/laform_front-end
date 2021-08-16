@@ -33,6 +33,7 @@ export function EditCompilationContainer() {
       bestMasterClasses={getRequestData(state.bestMasterClasses, [])}
       bestArticles={getRequestData(state.bestArticles, [])}
       pageLoading={pageLoading}
+      currentLang={currentLang}
       // {...TEST_EDIT_COMPILATION_ITEMS}
     />
   );

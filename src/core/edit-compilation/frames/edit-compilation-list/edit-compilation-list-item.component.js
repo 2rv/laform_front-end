@@ -16,6 +16,7 @@ export function EditCompilationListItemComponent(props) {
     descriptionRu,
     imageUrls,
     compilationNamе,
+    currentLang,
   } = props;
 
   const dispatch = useDispatch();
@@ -27,8 +28,7 @@ export function EditCompilationListItemComponent(props) {
   };
 
   const removeCompilationItem = (compilationNamе, id) => {
-    dispatch(bestCompilationsRemoveItem(compilationNamе, id));
-    window.location.reload();
+    dispatch(bestCompilationsRemoveItem(compilationNamе, id, currentLang));
   };
 
   return (

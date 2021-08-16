@@ -65,7 +65,7 @@ const uploadArticle = (imageIds, description) => {
         descriptionEn: "test",
         price: 0,
         descriptionRu: description,
-        images: imageIds,
+        imageUrls: imageIds,
       },
     });
   } catch (err) {

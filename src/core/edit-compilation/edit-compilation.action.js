@@ -83,7 +83,7 @@ export function bestArticlesLoadData(currentLang) {
   };
 }
 
-export function bestCompilationsRemoveItem(compilationName, id) {
+export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
   return async (dispatch) => {
     dispatch({
       type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_PENDING,
@@ -98,6 +98,14 @@ export function bestCompilationsRemoveItem(compilationName, id) {
       dispatch({
         type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
       });
+
+      if (compilationName === 'post') {
+        dispatch(bestProductsLoadData(currentLang.toLowerCase()));
+      } else if (compilationName === 'master-class') {
+        dispatch(bestMasterClassesLoadData(currentLang.toLowerCase()));
+      } else if (compilationName === 'post') {
+        dispatch(bestArticlesLoadData(currentLang.toLowerCase()));
+      }
     } catch (err) {
       if (err.response) {
         dispatch({

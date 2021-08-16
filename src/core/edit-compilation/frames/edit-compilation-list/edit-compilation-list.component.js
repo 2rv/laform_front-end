@@ -10,6 +10,7 @@ export function EditCompilationListComponent(props) {
     title,
     items,
     compilationName,
+    currentLang,
   } = props;
 
   return (
@@ -21,6 +22,7 @@ export function EditCompilationListComponent(props) {
             {...item}
             key={item?.id}
             compilationNamе={compilationName}
+            currentLang={currentLang}
           />
         ))}
       </Content>
