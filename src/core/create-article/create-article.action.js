@@ -5,7 +5,7 @@ import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';;
 import { CREATE_ARTICLE_API } from './create-article.constant';
 import { CREATE_ARTICLE_ACTION_TYPE } from './create-article.type';
 
-export function createArticleUploadData(images = [], description) {
+export function createArticleUploadData(images, description) {
   return async (dispatch) => {
     dispatch({
       type: CREATE_ARTICLE_ACTION_TYPE.CREATE_ARTICLE_UPLOAD_PENDING,
@@ -27,13 +27,13 @@ export function createArticleUploadData(images = [], description) {
   };
 }
 
-const fileUpload = async (images) => {
+const fileUpload = (images) => {
   try {
-    const promise = images.map(async (image) => {
+    const promise = images.map((image) => {
       const formData = new FormData();
       formData.append('file', image);
 
-      return await httpRequest({
+      return httpRequest({
         method: CREATE_ARTICLE_API.IMAGE_UPLOAD.TYPE,
         url: CREATE_ARTICLE_API.IMAGE_UPLOAD.ENDPOINT,
         data: formData,
@@ -54,9 +54,9 @@ const fileUpload = async (images) => {
   }
 }
 
-const uploadArticle = async (imageIds, description) => {
+const uploadArticle = (imageIds, description) => {
   try {
-    await httpRequest({
+    return httpRequest({
       method: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.TYPE,
       url: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.ENDPOINT,
       data: {
@@ -65,7 +65,7 @@ const uploadArticle = async (imageIds, description) => {
         descriptionEn: "test",
         price: 0,
         descriptionRu: description,
-        imageUrls: imageIds,
+        images: imageIds,
       },
     });
   } catch (err) {

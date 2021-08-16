@@ -53,6 +53,6 @@ export interface TextAreaPropsType {
   isFile?: any;
   isSend?: any;
   minHeight?: number;
-  imageUrls: any;
-  setImageUrls: any;
+  images: any;
+  setImages: any;
 }

@@ -8,7 +8,7 @@ import { ButtonSecondary } from '../../../../lib/element/button';
 import { TextareaField } from '../../../../lib/element/field';
 import { MASTER_CLASSES_ROUTE_PATH } from '../../../master-classes';;
 
-export function CreateArticleFieldComponent({ imageUrls, setImageUrls }) {
+export function CreateArticleFieldComponent({ images, setImages }) {
   const dispatch = useDispatch();
   const [ textareaValue, setTextareaValue ] = React.useState('');
 
@@ -22,11 +22,11 @@ export function CreateArticleFieldComponent({ imageUrls, setImageUrls }) {
         onChange={({ target: { value } }) => setTextareaValue(value)}
         rows={8}
         isFile={true}
-        imageUrls={imageUrls}
-        setImageUrls={setImageUrls}
+        images={images}
+        setImages={setImages}
       />
       <FieldContainer>
-        <Button tid="Создать" onClick={() => dispatch(createArticleUploadData(imageUrls, textareaValue))} />
+        <Button tid="Создать" onClick={() => dispatch(createArticleUploadData(images, textareaValue))} />
         <Button tid="Отменить создание" altType={true} onClick={setLinkRedirect(MASTER_CLASSES_ROUTE_PATH)}  />
       </FieldContainer>
     </Layout>
