@@ -8,8 +8,12 @@ export const BASKET_STORE_NAME = 'BASKET';
 
 export const BASKET_API = {
   BASKET_UPLOAD: {
-    ENDPOINT: '/',
+    ENDPOINT: () => 'purchase/user/get',
     TYPE: 'POST',
+  },
+  BASKET_LOAD_USER_INFO: {
+    ENDPOINT: 'user/delivery/info',
+    TYPE: 'GET',
   },
 };
 
