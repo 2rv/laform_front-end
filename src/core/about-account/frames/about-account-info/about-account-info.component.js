@@ -25,7 +25,7 @@ export function AboutAccountInfoComponent() {
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="Статус" />
-            <StatusInfo status={false} tid="Верефицирован" />
+            <StatusInfo status={true} tid="Верефицирован" />
           </SectionLayout>
         </LineSection>
       </SectionLayout>
@@ -72,6 +72,6 @@ const InfoText = styled(Title)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
 `;
 const StatusInfo = styled(InfoText)`
-  color: ${({ status }) =>
-    status ? THEME_COLOR.TEXT.SUCCESS : THEME_COLOR.TEXT.DANGER};
+  color: ${(p) =>
+    p.status ? THEME_COLOR.TEXT.SUCCESS : THEME_COLOR.TEXT.DANGER};
 `;

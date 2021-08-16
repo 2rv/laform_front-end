@@ -5,5 +5,5 @@ import { CREATE_PRODUCT_ROUTE_PATH } from './create-product.constant';
 
 export function createProductRouter(ctx) {
   ctx.store.dispatch(setActivePath(CREATE_PRODUCT_ROUTE_PATH));
-  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  //   authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }
