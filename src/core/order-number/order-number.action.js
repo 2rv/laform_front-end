@@ -9,13 +9,16 @@ export function orderNumberUploadData() {
     });
 
     try {
-      await httpRequest({
+      const response = await httpRequest({
         method: ORDER_NUMBER_API.ORDER_NUMBER_UPLOAD.TYPE,
         url: ORDER_NUMBER_API.ORDER_NUMBER_UPLOAD.ENDPOINT,
       });
 
+      console.log('res:', response);
+
       dispatch({
         type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_SUCCESS,
+        orderNumberDetails: response.data,
       });
     } catch (err) {
       if (err.response) {

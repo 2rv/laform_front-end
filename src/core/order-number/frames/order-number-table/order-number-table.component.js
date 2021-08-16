@@ -5,7 +5,7 @@ import { ORDER_NUMBER_TABLE_COLUMNS } from '../../order-number.constant';
 import { TextSecondary } from 'src/lib/element/text';
 import { Table, TableRow, TableHeader } from 'src/lib/element/table';
 
-export function OrderNumberTableComponent({ orderNumberList }) {
+export function OrderNumberTableComponent({ orderNumberList, orderNumberDetails }) {
   return (
     <Table>
       <thead>
@@ -24,7 +24,7 @@ export function OrderNumberTableComponent({ orderNumberList }) {
 
       <tbody>
         {orderNumberList.map((orderNumber) => (
-          <OrderNumberTableItemComponent key={orderNumber.id} {...orderNumber} />
+          <OrderNumberTableItemComponent key={orderNumber.id} {...orderNumber} orderNumberDetails={orderNumberDetails} />
         ))}
       </tbody>
     </Table>

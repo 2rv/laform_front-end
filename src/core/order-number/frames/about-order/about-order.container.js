@@ -7,7 +7,7 @@ import { ABOUT_ORDER_FIELD_NAME } from '../../order-number.type';
 import { ContentLayout } from 'src/lib/element/layout';
 import { spacing } from 'src/lib/theme';
 
-export function AboutOrderContainer() {
+export function AboutOrderContainer({ orderNumberDetails }) {
   const aboutOrderFormSendData = (values) => {
     console.log('Values: ', values);
   };
@@ -28,6 +28,7 @@ export function AboutOrderContainer() {
         onSubmitForm={aboutOrderFormSendData}
         initialValue={aboutOrderFormGetInitialValue()}
         fieldName={ABOUT_ORDER_FIELD_NAME}
+        orderNumberDetails={orderNumberDetails}
       />
     </Content>
   );

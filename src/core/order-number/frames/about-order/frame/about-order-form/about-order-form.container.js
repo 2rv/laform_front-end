@@ -9,6 +9,7 @@ export function AboutOrderFormContainer(props) {
     fieldName,
     onSubmitForm,
     initialValue,
+    orderNumberDetails,
   } = props;
 
   const FULL_NAME = fieldName[ABOUT_ORDER_FIELD_KEY.FULL_NAME];
@@ -37,6 +38,7 @@ export function AboutOrderFormContainer(props) {
           fieldPromoCode={PROMO_CODE}
           fieldOrderNote={ORDER_NOTE}
           fieldOrderStatus={ORDER_STATUS}
+          orderNumberDetails={orderNumberDetails}
         />
       )}
     </Formik>
