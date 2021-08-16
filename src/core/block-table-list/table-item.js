@@ -3,7 +3,7 @@ import { TextSecondary, TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function TableItem(props) {
-  const { children, data, isLast } = props;
+  const { children, data } = props;
   const { name, price, image, params, otherParams, status, id } = data;
   return (
     <tr>
@@ -29,7 +29,7 @@ export function TableItem(props) {
       )}
       {price && (
         <Td>
-          <Line isLast={isLast}>
+          <Line isLast={status}>
             <div>
               <Price tid={price} />
               &nbsp;
@@ -40,13 +40,13 @@ export function TableItem(props) {
       )}
       {status && (
         <Td>
-          <Case isLast={isLast}>
+          <Case>
             <ColoredText tid={status} />
           </Case>
         </Td>
       )}
       <Td>
-        <ActionBlock>{children(id)}</ActionBlock>
+        <ActionBlock>{children && children(id)}</ActionBlock>
       </Td>
     </tr>
   );
@@ -71,12 +71,12 @@ const Line = styled.div`
   align-items: center;
   gap: ${spacing(3)};
   line-height: 1.5;
-  ${(p) => !p.isLast && `margin: 0 30px;`}
+  margin: 0 30px;
 `;
 const Case = styled.div`
   display: flex;
   align-items: center;
-  ${(p) => !p.isLast && `margin: 0 30px;`}
+  margin: 0 30px;
 `;
 const Image = styled.img`
   width: 75px;

@@ -14,16 +14,11 @@ export function TableList(props) {
   return (
     <table>
       <col width="0" />
-      <col />
-      <col />
-      <col />
-      <col />
-      <col />
       {headers && (
         <>
           <tr>
             {headers.map((item, index) => {
-              if (index === 0 || index === headers.length - 1) {
+              if (index === 0) {
                 return (
                   <Td>
                     <Case>
@@ -50,9 +45,7 @@ export function TableList(props) {
 
       {items.map((data, i) => (
         <React.Fragment key={i}>
-          <TableItem isLast={i === items.length - 1} data={data}>
-            {children}
-          </TableItem>
+          <TableItem data={data}>{children}</TableItem>
           <Td colSpan="6">
             <DividerTable />
           </Td>
@@ -68,9 +61,11 @@ const DividerTable = styled(Divider)`
 const Td = styled.td`
   vertical-align: middle;
 `;
-const GapTextPrimary = styled(TextPrimary)`
+const GapTextPrimary = styled.div`
   margin: 0 30px;
+  min-width: max-content;
 `;
 const Case = styled.div`
+  display: flex;
   min-width: fit-content;
 `;
