@@ -21,7 +21,7 @@ export function orderNumberStore(state = initialState, action) {
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_SUCCESS:
       return {
         ...state,
-        orderNumber: setRequestSuccess(state.orderNumber),
+        orderNumber: setRequestSuccess(state.orderNumber, action.orderNumberDetails),
       };
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_ERROR:
       return {

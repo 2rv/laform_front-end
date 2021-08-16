@@ -1,31 +1,38 @@
-import styled from 'styled-components';
-
-import { TabsComponent, TableComponent } from './frames';
-
-import { PURCHASES_LIST } from './my-purchases.constant';
-
-import { ContentLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
-import { spacing } from 'src/lib/theme';
+import { FilterTabs } from '../../lib/element/filter-tabs';
+import { SectionLayout } from '../../lib/element/layout';
+import { TableList } from '../block-table-list';
+import { IconButton } from '../../lib/element/button';
+import { ReactComponent as UploadIcon } from '../../asset/svg/upload.svg';
 
-export function MyPurchasesComponent() {
+export function MyPurchasesComponent(props) {
+  const {
+    isPending,
+    isError,
+    isSuccess,
+    errorMessage,
+    pageLoading,
+    activeTab,
+    setActiveTab,
+    tabItems,
+    headersTable,
+    itemsTable,
+  } = props;
   return (
-    <Container>
-      <Content>
-        <TitlePrimary tid="PURCHASE.SEЕWING_GOODS.MY_PURCHASES" />
-        <TabsComponent />
-        <TableComponent purchasesList={PURCHASES_LIST} />
-      </Content>
-    </Container>
+    <SectionLayout>
+      <TitlePrimary tid="PURCHASE.SEЕWING_GOODS.MY_PURCHASES" />
+      <FilterTabs
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        tabItems={tabItems}
+      />
+      <TableList headers={headersTable} items={itemsTable}>
+        {activeTab === 2 && (
+          <IconButton>
+            <UploadIcon />
+          </IconButton>
+        )}
+      </TableList>
+    </SectionLayout>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Content = styled(ContentLayout)`
-  padding: 0 ${spacing(2)};
-`;
