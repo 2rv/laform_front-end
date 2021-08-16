@@ -1,11 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SectionLayout } from '../../lib/element/layout';
-import {
-  CreateArticleImageComponent,
-  CreateArticleFormContainer,
-  CreateArticleFieldComponent,
-} from './frames';
+import { CreateArticleImageComponent, CreateArticleFieldComponent } from './frames';
 import { TitlePrimary } from '../../lib/element/title';
 
 export function CreateArticleComponent(props) {
@@ -29,16 +25,6 @@ export function CreateArticleComponent(props) {
         imageUrls={imageUrls}
         setImageUrls={setImageUrls}
       />
-      {/* <CreateArticleFormContainer fieldsData={fieldsData}>
-        {(formProps) => (
-          <CreateArticleFieldComponent
-            {...formProps}
-            fieldsData={fieldsData}
-            imageUrls={imageUrls}
-            setImageUrls={setImageUrls}
-          />
-        )}
-      </CreateArticleFormContainer> */}
     </SectionLayout>
   );
 }
