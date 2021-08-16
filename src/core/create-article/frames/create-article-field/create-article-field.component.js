@@ -127,11 +127,10 @@ const FieldContainer = styled.div`
 `;
 
 const Button = styled(ButtonSecondary)`
-  ${({ altType }) =>
-    altType &&
-    `background-color: ${THEME_COLOR.GRAY}
-	color: ${THEME_COLOR.SECONDARY_DARK}
-	`}
+  ${({ altType }) => altType && `
+    background-color: ${THEME_COLOR.GRAY}
+    color: ${THEME_COLOR.SECONDARY_DARK}
+  `};
 `;
 
 // const Title = styled(TitlePrimary)`

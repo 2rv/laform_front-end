@@ -25,7 +25,6 @@ export function CreateArticleComponent(props) {
         ))}
       </Images>
       <CreateArticleFieldComponent
-        // {...formProps}
         fieldsData={fieldsData}
         imageUrls={imageUrls}
         setImageUrls={setImageUrls}

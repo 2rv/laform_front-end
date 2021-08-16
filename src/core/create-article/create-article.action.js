@@ -28,21 +28,30 @@ export function createArticleUploadData(images = [], description) {
 }
 
 const fileUpload = async (images) => {
-  const promise = images.map(async (image) => {
-    const formData = new FormData();
-    formData.append('file', image);
+  try {
+    const promise = images.map(async (image) => {
+      const formData = new FormData();
+      formData.append('file', image);
 
-    return await httpRequest({
-      method: CREATE_ARTICLE_API.IMAGE_UPLOAD.TYPE,
-      url: CREATE_ARTICLE_API.IMAGE_UPLOAD.ENDPOINT,
-      data: formData,
-      headers: { 'Content-Type': 'multipart/form-data' },
+      return await httpRequest({
+        method: CREATE_ARTICLE_API.IMAGE_UPLOAD.TYPE,
+        url: CREATE_ARTICLE_API.IMAGE_UPLOAD.ENDPOINT,
+        data: formData,
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
     });
-  });
 
-  return Promise
-    .all(promise)
-    .then((responses) => responses.map((response) => response.data.id));
+    return Promise
+      .all(promise)
+      .then((responses) => responses.map((response) => response.data.id));
+  } catch (err) {
+    if (err.response) {
+      dispatch({
+        type: CREATE_ARTICLE_ACTION_TYPE.CREATE_ARTICLE_UPLOAD_ERROR,
+        errorMessage: err.response.data.message,
+      });
+    }
+  }
 }
 
 const uploadArticle = async (imageIds, description) => {
