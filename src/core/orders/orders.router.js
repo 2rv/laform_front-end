@@ -5,5 +5,5 @@ import { ORDERS_ROUTE_PATH } from './orders.constant';
 
 export function ordersRouter(ctx) {
   ctx.store.dispatch(setActivePath(ORDERS_ROUTE_PATH));
-  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  //   authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }
