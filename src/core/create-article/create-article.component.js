@@ -6,24 +6,24 @@ import { TitlePrimary } from '../../lib/element/title';
 
 export function CreateArticleComponent(props) {
   const { fieldsData } = props;
-  const [ imageUrls, setImageUrls ] = React.useState([]);
+  const [ images, setImages ] = React.useState([]);
 
-  const removeImageHandler = (clickedImageUrl) => {
-    setImageUrls(imageUrls.filter((imageUrl) => imageUrl !== clickedImageUrl));
+  const removeImageHandler = (clickedImage) => {
+    setImages(images.filter((image) => image !== clickedImage));
   }
 
   return (
     <SectionLayout>
       <TitlePrimary tid="Создание мастер-класса" />
       <Images>
-        {imageUrls?.map((image, index) => (
+        {images?.map((image, index) => (
           <CreateArticleImageComponent key={index} image={image} removeImageHandler={removeImageHandler} />
         ))}
       </Images>
       <CreateArticleFieldComponent
         fieldsData={fieldsData}
-        imageUrls={imageUrls}
-        setImageUrls={setImageUrls}
+        images={images}
+        setImages={setImages}
       />
     </SectionLayout>
   );

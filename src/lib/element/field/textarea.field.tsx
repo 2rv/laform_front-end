@@ -19,8 +19,8 @@ export function TextareaField(props: TextAreaPropsType) {
     children,
     isFile,
     minHeight = 56,
-    imageUrls = null,
-    setImageUrls = null,
+    images = null,
+    setImages = null,
   } = props;
 
   const fileInputRef = React.createRef<any>();
@@ -48,7 +48,7 @@ export function TextareaField(props: TextAreaPropsType) {
     }
 
     const newImages = await Promise.all(newImagesPromises);
-    setImageUrls([ ...imageUrls, ...newImages ]);
+    setImages([ ...images, ...newImages ]);
   };
 
   return (
