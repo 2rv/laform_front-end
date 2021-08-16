@@ -9,28 +9,23 @@ import { TitlePrimary } from 'src/lib/element/title';
 import { ContentLayout } from 'src/lib/element/layout';
 import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
 
-export function OrderNumberComponent() {
+export function OrderNumberComponent({ orderNumberDetails }) {
   return (
-    <Container>
-      <Content>
-        <HeadLine>
-          <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />&nbsp;
-          <OrderNumber>555105</OrderNumber>
-        </HeadLine>
-        <OrderNumberTableComponent orderNumberList={ORDER_NUMBER_LIST} />
-        <AboutOrderContainer />
-      </Content>
-    </Container>
+    <Content>
+      <HeadLine>
+        <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />&nbsp;
+        <OrderNumber>555105</OrderNumber>
+      </HeadLine>
+      <OrderNumberTableComponent orderNumberList={ORDER_NUMBER_LIST} orderNumberDetails={orderNumberDetails} />
+      <AboutOrderContainer orderNumberDetails={orderNumberDetails} />
+    </Content>
   );
 }
 
-const Container = styled.div`
+const Content = styled(ContentLayout)`
   display: flex;
   justify-content: center;
-  align-items: center;
-`;
-
-const Content = styled(ContentLayout)`
+  flex-direction: column;
   padding: 0 ${spacing(2)};
 `;
 

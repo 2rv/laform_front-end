@@ -11,11 +11,16 @@ import {
 
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
-export function AboutOrderFooterComponent({
-  values,
-  handleChange,
-  fieldOrderStatus,
-}) {
+export function AboutOrderFooterComponent(props) {
+  const {
+    values,
+    handleChange,
+    fieldOrderStatus,
+    orderNumberDetails,
+  } = props;
+
+  // TODO: поправить когда в BE будут данные
+
   return (
     <FooterContainer>
       <div>
@@ -24,6 +29,7 @@ export function AboutOrderFooterComponent({
             <TextPrimary tid="ORDER_NUMBER.FORM.FOOTER.DISCOUNT_PRICE" />
             <div>
               <TextDark>299</TextDark>&nbsp;
+              {/* <TextDark>{orderNumberDetails.discount}</TextDark>&nbsp; */}
               <TextPrimary tid="OTHER.VALUTE" />
               .&nbsp;
               <TextDiscount>-15%</TextDiscount>
@@ -33,6 +39,7 @@ export function AboutOrderFooterComponent({
             <TextPrimary tid="ORDER_NUMBER.FORM.FOOTER.SHIPPING_PRICE" />
             <div>
               <TextDark>299</TextDark>&nbsp;
+              {/* <TextDark>{orderNumberDetails.discount}</TextDark>&nbsp; */} {/* Тут не ясно точных данных */}
               <TextPrimary tid="OTHER.VALUTE" />.
             </div>
           </FooterInfoContent>
@@ -41,6 +48,7 @@ export function AboutOrderFooterComponent({
             <TextPrimary tid="ORDER_NUMBER.FORM.FOOTER.TOTAL_ORDER_PRICE" />
             <div>
               <TextDark fontSize={THEME_SIZE.FONT.LARGE}>3,200</TextDark>&nbsp;
+              <TextDark fontSize={THEME_SIZE.FONT.LARGE}>{orderNumberDetails.total}</TextDark>&nbsp;
               <TextPrimary tid="OTHER.VALUTE" />.
             </div>
           </FooterInfoContent>
@@ -51,7 +59,10 @@ export function AboutOrderFooterComponent({
         <FieldContainer>
           <FieldSelect
             titleTid="ORDER_NUMBER.FORM.FOOTER.ORDER_STATUS"
-            options={[{ id: 1, tid: 'ORDER_NUMBER.FORM.FOOTER.DELIVERED' }]}
+            options={[{
+              id: 1,
+              tid: 'ORDER_NUMBER.FORM.FOOTER.DELIVERED', // Тут не ясно точных данных
+            }]}
             name={fieldOrderStatus}
             value={values[fieldOrderStatus]}
             onChange={handleChange}

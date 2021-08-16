@@ -15,6 +15,7 @@ export function AboutOrderFormComponent(props) {
     handleSubmit,
     handleChange,
 
+    orderNumberDetails,
     fieldOrderStatus,
   } = props;
 
@@ -28,6 +29,7 @@ export function AboutOrderFormComponent(props) {
           values={values}
           handleChange={handleChange}
           fieldOrderStatus={fieldOrderStatus}
+          orderNumberDetails={orderNumberDetails}
         />
       </IndentLayout>
     </form>
