@@ -5,5 +5,5 @@ import { CREATE_ARTICLE_ROUTE_PATH } from './create-article.constant';
 
 export function createArticleRouter(ctx) {
   ctx.store.dispatch(setActivePath(CREATE_ARTICLE_ROUTE_PATH));
-  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  // authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }
