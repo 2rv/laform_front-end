@@ -40,3 +40,19 @@ export interface SelectPropsType {
   onBlur: any;
   width?: number;
 }
+
+export interface TextAreaPropsType {
+  titleTid?: string;
+  placeholderTid?: string;
+  onChange?: any;
+  onBlur?: any;
+  name?: string;
+  rows?: number;
+  error?: string;
+  children?: any;
+  isFile?: any;
+  isSend?: any;
+  minHeight?: number;
+  imageUrls: any;
+  setImageUrls: any;
+}

@@ -3,8 +3,12 @@ export const CREATE_ARTICLE_ROUTE_PATH = '/create-article';
 export const CREATE_ARTICLE_STORE_NAME = 'CREATE_ARTICLE';
 
 export const CREATE_ARTICLE_API = {
+  IMAGE_UPLOAD: {
+    ENDPOINT: 'file/create',
+    TYPE: 'POST',
+  },
   CREATE_ARTICLE_UPLOAD: {
-    ENDPOINT: '/',
+    ENDPOINT: 'master-class/create',
     TYPE: 'POST',
   },
 };

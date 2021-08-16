@@ -1,6 +1,6 @@
 import { createRef } from 'react';
 import styled from 'styled-components';
-import { ReactComponent as ChangeIcon } from '../../../../asset/svg/change-icon.svg';
+import { ReactComponent as Change } from '../../../../asset/svg/change-icon.svg';
 import { ReactComponent as Cancel } from '../../../../asset/svg/cancel-delete-icon.svg';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../../../lib/theme';
 import { ContentLayout, IndentLayout } from '../../../../lib/element/layout';
@@ -8,28 +8,26 @@ import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { LinkPrimary } from '../../../../lib/element/link';
 import { ButtonBasic } from '../../../../lib/element/button';
-export function CreateArticleImageComponent(props) {
-  const { backgroundImage } = props;
+export function CreateArticleImageComponent({ image, removeImageHandler }) {
   const fileRef = createRef(); // млэнл использовать в родителе
+
   return (
-    <IndentLayout type="small">
-      <Title tid="Фото" />
-      <ImageContainer>
-        <SlideImage src={backgroundImage} />
-        <FieldContainer>
-          <Field>
-            <File type="file" ref={fileRef} />
-            <ChangeIcon />
-          </Field>
-          <IconButton icon={Cancel} />
-        </FieldContainer>
-      </ImageContainer>
-    </IndentLayout>
+    <ImageContainer>
+      <SlideImage src={image} />
+      <FieldContainer>
+        <Field>
+          <File type="file" ref={fileRef} />
+          <IconButton>
+            <Change />
+          </IconButton>
+        </Field>
+        <IconButton onClick={() => removeImageHandler(image)}>
+          <Cancel />
+        </IconButton>
+      </FieldContainer>
+    </ImageContainer>
   );
 }
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.DEFAULT};
-`;
 const ImageContainer = styled.div`
   position: relative;
   display: flex;
