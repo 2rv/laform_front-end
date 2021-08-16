@@ -13,7 +13,7 @@ export function TableList(props) {
   // элементы сами задают ширину колонки
   return (
     <table>
-      <col />
+      <col width="0" />
       <col />
       <col />
       <col />

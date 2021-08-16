@@ -1,20 +1,31 @@
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from 'src/lib/element/layout';
-import { SliderListItemsComponent } from './frames';
 import { TitlePrimary } from '../../lib/element/title';
-import { ButtonBasic } from '../../lib/element/button';
+import { IconButton } from '../../lib/element/button';
 import { ReactComponent as PlusIcon } from '../../asset/svg/plus-icon.svg';
+import { ReactComponent as EditIcon } from '../../asset/svg/change-icon.svg';
+import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon.svg';
 import { TextSecondary } from '../../lib/element/text';
+import { TableList } from '../block-table-list';
 
 export function SliderListComponent(props) {
-  const { items } = props;
+  const { itemsTable } = props;
   return (
     <SectionLayout>
       <TitlePrimary tid="Слайдер" />
-      <SliderListItemsComponent items={items} />
+      <TableList items={itemsTable}>
+        <Button>
+          <EditIcon />
+        </Button>
+        <Button>
+          <DeleteIcon />
+        </Button>
+      </TableList>
       <AddSlide>
-        <IconButton icon={PlusIcon} />
+        <Button>
+          <PlusIcon />
+        </Button>
         <TextSecondary tid="Дополнить сборку" />
       </AddSlide>
     </SectionLayout>
@@ -25,9 +36,6 @@ const AddSlide = styled.div`
   display: flex;
   align-items: center;
 `;
-
-const IconButton = styled(ButtonBasic)`
-  padding: ${spacing(2)};
-  width: 40px;
-  height: 40px;
+const Button = styled(IconButton)`
+  padding: 0;
 `;

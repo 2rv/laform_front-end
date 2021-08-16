@@ -56,6 +56,7 @@ const Td = styled.td`
 `;
 const ActionBlock = styled.div`
   display: flex;
+  justify-content: flex-end;
   gap: ${spacing(3)};
 `;
 const NameBlock = styled.div`
@@ -63,7 +64,7 @@ const NameBlock = styled.div`
   align-items: center;
   gap: ${spacing(3)};
   line-height: 1.5;
-  min-width: max-content;
+  width: max-content;
 `;
 const Line = styled.div`
   display: flex;
