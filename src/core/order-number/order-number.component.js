@@ -1,40 +1,49 @@
 import styled from 'styled-components';
+import { TitlePrimary } from '../../lib/element/title';
+import { SectionLayout } from '../../lib/element/layout';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
+import { AboutOrderFormContainer } from './frames';
+import { TableList } from '../block-table-list';
 
-import { OrderNumberTableComponent, AboutOrderContainer } from './frames';
+export function OrderNumberComponent(props) {
+  const {
+    infoData,
+    headersTable,
+    itemsTable,
+    paymentOptions,
+    dileveryOptions,
+    statusOptions,
+    onSubmit,
+    initialValue,
+    validate,
+  } = props;
 
-import { ORDER_NUMBER_LIST } from './order-number.constant';
+  const { orderId, discountPrice, discount, diliveryPrice, price } = infoData;
 
-import { TextSecondary } from 'src/lib/element/text';
-import { TitlePrimary } from 'src/lib/element/title';
-import { ContentLayout } from 'src/lib/element/layout';
-import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
-
-export function OrderNumberComponent({ orderNumberDetails }) {
   return (
-    <Content>
-      <HeadLine>
-        <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />&nbsp;
-        <OrderNumber>555105</OrderNumber>
-      </HeadLine>
-      <OrderNumberTableComponent orderNumberList={ORDER_NUMBER_LIST} orderNumberDetails={orderNumberDetails} />
-      <AboutOrderContainer orderNumberDetails={orderNumberDetails} />
-    </Content>
+    <SectionLayout>
+      <div>
+        <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />
+        &nbsp;
+        <BoldTitle tid={orderId} />
+      </div>
+      <TableList items={itemsTable} headers={headersTable} />
+      <AboutOrderFormContainer
+        discountPrice={discountPrice}
+        discount={discount}
+        diliveryPrice={diliveryPrice}
+        price={price}
+        paymentOptions={paymentOptions}
+        dileveryOptions={dileveryOptions}
+        statusOptions={statusOptions}
+        onSubmit={onSubmit}
+        initialValue={initialValue}
+        validate={validate}
+      />
+    </SectionLayout>
   );
 }
 
-const Content = styled(ContentLayout)`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 ${spacing(2)};
-`;
-
-const HeadLine = styled.div`
-  margin-bottom: ${spacing(5)};
-`;
-
-const OrderNumber = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
+const BoldTitle = styled(TitlePrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  color: ${THEME_COLOR.SECONDARY_DARK}
 `;

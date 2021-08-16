@@ -1,2 +1,1 @@
-export { OrderNumberTableComponent } from './order-number-table';
-export { AboutOrderContainer } from './about-order';
+export { AboutOrderFormContainer } from './about-order-form.container';

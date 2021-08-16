@@ -5,10 +5,9 @@ import { TextButton } from '../button';
 
 export function FilterTabs(props: FilterTabsPropsType) {
   const { activeTab, setActiveTab, tabItems } = props;
-
   return (
     <Container>
-      {tabItems.map((x, i) => (
+      {tabItems?.map((x, i) => (
         <Tab
           onClick={() => setActiveTab(x.type)}
           key={i}

@@ -6,7 +6,7 @@ import { TableItem } from './table-item';
 import React from 'react';
 
 export function TableList(props) {
-  const { headers, items, children } = props;
+  const { headers, items = [], children } = props;
   //headers [name, name, name, name]
   // items { name, price, image, params, otherParams, status }
   // children передаёт любые блоки элементы кнопки в конец таблицы
@@ -23,10 +23,12 @@ export function TableList(props) {
         <>
           <tr>
             {headers.map((item, index) => {
-              if (index === 0 || index === headers.lenght - 1) {
+              if (index === 0 || index === headers.length - 1) {
                 return (
                   <Td>
-                    <TextPrimary tid={item} />
+                    <Case>
+                      <TextPrimary tid={item} />
+                    </Case>
                   </Td>
                 );
               } else {
@@ -48,7 +50,9 @@ export function TableList(props) {
 
       {items.map((data, i) => (
         <React.Fragment key={i}>
-          <TableItem data={data}>{children}</TableItem>
+          <TableItem isLast={i === items.length - 1} data={data}>
+            {children}
+          </TableItem>
           <Td colSpan="6">
             <DividerTable />
           </Td>
@@ -66,4 +70,7 @@ const Td = styled.td`
 `;
 const GapTextPrimary = styled(TextPrimary)`
   margin: 0 30px;
+`;
+const Case = styled.div`
+  min-width: fit-content;
 `;

@@ -10,6 +10,7 @@ export interface FieldPropsType {
   onBlur: any;
   isFindInput?: boolean;
   width?: number;
+  disabled?: boolean;
 }
 export interface InputPropsType {
   className?: string;
@@ -20,6 +21,7 @@ export interface InputPropsType {
   error: string | boolean;
   onChange: any;
   onBlur: any;
+  disabled?: boolean;
 }
 
 export interface CheckboxPropsType {
@@ -39,6 +41,7 @@ export interface SelectPropsType {
   onChange: any;
   onBlur: any;
   width?: number;
+  disabled?: boolean;
 }
 
 export interface TextAreaPropsType {

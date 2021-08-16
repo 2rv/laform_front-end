@@ -9,13 +9,20 @@ import { TextSecondary } from '../text';
 import { SelectPropsType } from './field.type';
 
 export function FieldSelect(props: SelectPropsType) {
-  const { titleTid, name, value, options, onChange, onBlur, width } = props;
+  const { titleTid, name, value, options, onChange, onBlur, width, disabled } =
+    props;
 
   return (
     <Container width={width}>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
-        <Select name={name} value={value} onChange={onChange} onBlur={onBlur}>
+        <Select
+          disabled={disabled}
+          name={name}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+        >
           {options.map(({ id, tid, tvalue }) => (
             <option key={id} value={id}>
               {text(tid, tvalue)}
