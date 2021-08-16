@@ -3,10 +3,17 @@ import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { Divider } from '../../lib/element/divider';
 import { TableItem } from './table-item';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export function TableList(props) {
-  const { headers, items = [], children } = props;
+  const {
+    headers,
+    items = [],
+    children,
+    count,
+    incrementCount,
+    dicrementCoun,
+  } = props;
   //headers [name, name, name, name]
   // items { name, price, image, params, otherParams, status }
   // children передаёт любые блоки элементы кнопки в конец таблицы
@@ -45,7 +52,14 @@ export function TableList(props) {
 
       {items.map((data, i) => (
         <React.Fragment key={i}>
-          <TableItem data={data}>{children}</TableItem>
+          <TableItem
+            count={count}
+            incrementCount={incrementCount}
+            dicrementCoun={dicrementCoun}
+            data={data}
+          >
+            {children}
+          </TableItem>
           <Td colSpan="6">
             <DividerTable />
           </Td>

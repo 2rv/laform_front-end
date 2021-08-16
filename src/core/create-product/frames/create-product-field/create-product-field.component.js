@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../../../lib/theme';
-import { IndentLayout } from '../../../../lib/element/layout';
+import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
 import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary } from '../../../../lib/element/title';
-import { ButtonSecondary } from '../../../../lib/element/button';
-import { CreateProductFieldItemComponent } from './create-product-field-item.component';
+import { ButtonBasic, ButtonSecondary } from '../../../../lib/element/button';
+import {
+  BasicField,
+  FieldSelect,
+  TextareaField,
+} from '../../../../lib/element/field';
 
 export function CreateProductFieldComponent({
   handleChange,
@@ -12,99 +16,73 @@ export function CreateProductFieldComponent({
   errors,
   values,
   handleSubmit,
-  fieldsData,
 }) {
   return (
-    <IndentLayout>
-      <IndentLayout type="small">
-        <Title tid="Описание" />
-        <FieldContainer>
-          {fieldsData.description.map(
-            ({ type, title, fullWidth, name, options }, index) => {
-              return (
-                <CreateProductFieldItemComponent
-                  key={name || index}
-                  type={type}
-                  title={title}
-                  options={options}
-                  fullWidth={fullWidth}
-                  name={name}
-                  value={values[name]}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  errors={errors}
-                />
-              );
-            },
-          )}
-        </FieldContainer>
-      </IndentLayout>
-      <IndentLayout type="small">
+    <SectionLayout>
+      <SectionLayout type="SMALL">
+        <FieldLayout type="double">
+          <BasicField
+            titleTid="Название товара"
+            placeholderTid="Введите название товара"
+          />
+          <BasicField
+            titleTid="Плашка товара"
+            placeholderTid="Введите плашку товара"
+          />
+        </FieldLayout>
+        <SectionLayout type="TEXT_SMALL">
+          <SmallText tid="Категории товара" />
+          <FieldLayout type="double">
+            <BasicField placeholderTid="Введите название категории" />
+            <BasicField placeholderTid="Введите название категории" />
+            <BasicField placeholderTid="Введите название категории" />
+            <ButtonBasic tid="Добавить категорию" />
+          </FieldLayout>
+        </SectionLayout>
+
+        <TextareaField
+          titleTid="Описание товара"
+          placeholderTid="Полное описание товара"
+        />
+      </SectionLayout>
+
+      <SectionLayout type="SMALL">
         <Title tid="Опции товара" />
-        <FieldContainer>
-          {fieldsData.productOptions.map(
-            ({ type, title, name, fullWidth, options }, index) => {
-              return (
-                <CreateProductFieldItemComponent
-                  key={name || index}
-                  type={type}
-                  title={title}
-                  options={options}
-                  fullWidth={fullWidth}
-                  name={name}
-                  value={values[name]}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  errors={errors}
-                />
-              );
-            },
-          )}
-        </FieldContainer>
-      </IndentLayout>
-      <IndentLayout type="small">
+        <FieldSelect
+          titleTid="Опция (категория позиции)"
+          options={[{ id: 0, tid: 'Цвет' }]}
+        />
+        <FieldLayout type="double">
+          <BasicField
+            titleTid="Название позиции"
+            placeholderTid="Введите название позиции"
+          />
+          <BasicField titleTid="Цена" placeholderTid="Введите цену позиции" />
+          <ButtonBasic tid="Добавить позицию" />
+        </FieldLayout>
+        <FieldLayout type="double">
+          <ButtonSecondary tid="Добавить опцию" />
+        </FieldLayout>
+      </SectionLayout>
+
+      <SectionLayout type="SMALL">
         <Title tid="Цена" />
-        <FieldContainer>
-          {fieldsData.price.map(
-            ({ type, title, fullWidth, name, options }, index) => {
-              return (
-                <CreateProductFieldItemComponent
-                  key={name || index}
-                  type={type}
-                  title={title}
-                  options={options}
-                  name={name}
-                  fullWidth={fullWidth}
-                  value={values[name]}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                  errors={errors}
-                />
-              );
-            },
-          )}
-        </FieldContainer>
-      </IndentLayout>
-      <FieldContainer>
-        <Button tid="Создать товар" type="submit" />
-        <Button altType={true} tid="Отменить" />
-      </FieldContainer>
-    </IndentLayout>
+        <FieldLayout type="double">
+          <BasicField
+            placeholderTid="Полное описание"
+            titleTid="Цена товара (минимальная)"
+          />
+          <BasicField placeholderTid="0 (-0%)" titleTid="Скидка" />
+          <ButtonSecondary tid="Создать товар" /> <ButtonBasic tid="Отменить" />
+        </FieldLayout>
+      </SectionLayout>
+    </SectionLayout>
   );
 }
-const Button = styled(ButtonSecondary)`
-  ${({ altType }) =>
-    altType &&
-    `background-color: ${THEME_COLOR.BACKGROUND.GRAY}
-	color: ${THEME_COLOR.SECONDARY_DARK}
-	`}
-`;
-const FieldContainer = styled.div`
-  display: grid;
-  gap: ${spacing(3)};
-  align-items: flex-end;
-  grid-template-columns: repeat(2, 1fr);
-`;
+
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+const SmallText = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
 `;

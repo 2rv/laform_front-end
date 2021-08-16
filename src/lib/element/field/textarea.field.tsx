@@ -33,14 +33,14 @@ export function TextareaField(props: TextAreaPropsType) {
       });
       reader.readAsDataURL(image);
     });
-  }
+  };
 
   const pickImage = async ({ target: { files } }: any) => {
     const newImagesPromises = [];
 
     for (let i = 0; i < files.length; i++) {
       if (files[i].type.split('/')[0] === 'image') {
-        newImagesPromises.push(fileToDataUri(files[i]))
+        newImagesPromises.push(fileToDataUri(files[i]));
       } else {
         alert('Please select only images');
         return;
@@ -48,7 +48,7 @@ export function TextareaField(props: TextAreaPropsType) {
     }
 
     const newImages = await Promise.all(newImagesPromises);
-    setImages([ ...images, ...newImages ]);
+    setImages([...images, ...newImages]);
   };
 
   return (
@@ -67,7 +67,13 @@ export function TextareaField(props: TextAreaPropsType) {
         {isFile && (
           <ActionCase>
             <File onClick={() => fileInputRef.current.click()} />
-            <input type="file" ref={fileInputRef} onChange={pickImage} multiple hidden />
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={pickImage}
+              multiple
+              hidden
+            />
           </ActionCase>
         )}
         {children}
@@ -82,7 +88,7 @@ const Container = styled.div`
   flex-direction: column;
   min-height: 56px;
   flex: 1;
-  gap: ${spacing(2)};
+  gap: ${spacing(1)};
 `;
 
 const RelativeCase = styled.div`
@@ -121,8 +127,7 @@ const Textarea = styled.textarea<any>`
     p.isError
       ? `1px solid ${THEME_COLOR.TEXT.DANGER}`
       : '1px solid transparent'};
-  background: ${(p) =>
-    p.isError ? THEME_COLOR.WHITE : THEME_COLOR.GRAY};
+  background: ${(p) => (p.isError ? THEME_COLOR.WHITE : THEME_COLOR.GRAY)};
   &:focus {
     border: 1px solid #b5b5b5;
     opacity: 1;

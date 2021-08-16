@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+import { ButtonBasic } from '../../lib/element/button';
+import { LinkSecondary } from '../../lib/element/link';
 import { TextSecondary, TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function TableItem(props) {
-  const { children, data } = props;
-  const { name, price, image, params, otherParams, status, id } = data;
+  const { children, data, incrementCount, dicrementCoun, count } = props;
+  const { name, price, image, params, otherParams, status, comment, id } = data;
+  let countedPrice = price || null;
+  if (count) countedPrice = count[id] * price;
+
   return (
     <tr>
       <Td>
@@ -13,6 +18,17 @@ export function TableItem(props) {
           <TextPrimary tid={name} />
         </NameBlock>
       </Td>
+      {comment && (
+        <Td>
+          <Case>
+            <div>
+              <TextSecondary tid={comment?.text} />
+              &nbsp;
+              <Link tid="Читать полность" />
+            </div>
+          </Case>
+        </Td>
+      )}
       {params && (
         <Td>
           <Case>
@@ -27,11 +43,20 @@ export function TableItem(props) {
           </Case>
         </Td>
       )}
-      {price && (
+      {count && (
+        <Td>
+          <CountCase>
+            <CountButton onClick={() => dicrementCoun(id)}>-</CountButton>
+            <TextPrimary>{count[id]}</TextPrimary>
+            <CountButton onClick={() => incrementCount(id)}>+</CountButton>
+          </CountCase>
+        </Td>
+      )}
+      {countedPrice && (
         <Td>
           <Line isLast={status}>
             <div>
-              <Price tid={price} />
+              <Price tid={countedPrice} />
               &nbsp;
               <Valute tid="руб." />
             </div>
@@ -51,6 +76,24 @@ export function TableItem(props) {
     </tr>
   );
 }
+const CountCase = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80px;
+  margin: 0 30px;
+  background-color: ${THEME_COLOR.GRAY};
+`;
+
+const CountButton = styled(ButtonBasic)`
+  width: 100%;
+  padding: 0;
+  color: ${THEME_COLOR.TEXT.LIGHT};
+`;
+
+const Link = styled(LinkSecondary)`
+  color: ${THEME_COLOR.SECONDARY_DARK};
+`;
 const Td = styled.td`
   vertical-align: middle;
 `;
@@ -65,6 +108,7 @@ const NameBlock = styled.div`
   gap: ${spacing(3)};
   line-height: 1.5;
   width: max-content;
+  max-width: 230px;
 `;
 const Line = styled.div`
   display: flex;
@@ -75,6 +119,7 @@ const Line = styled.div`
 `;
 const Case = styled.div`
   display: flex;
+  line-height: 1.5;
   align-items: center;
   margin: 0 30px;
 `;
