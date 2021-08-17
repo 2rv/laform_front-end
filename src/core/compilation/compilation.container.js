@@ -28,7 +28,7 @@ export function CompilationContainer() {
     currentLang: state[LANG_STORE_NAME].active,
   }));
 
-  const convertedData = [
+  const data = [
     ...getRequestData(state.products, []),
     ...getRequestData(state.masterClasses, []),
     ...getRequestData(state.articles, [])
@@ -47,7 +47,7 @@ export function CompilationContainer() {
       isSuccess={isRequestSuccess(state.articles)}
       errorMessage={getRequestErrorMessage(state.articles)}
       pageLoading={pageLoading}
-      itemsTable={filterByType(convertedData, activeTab)}
+      data={filterByType(data, activeTab)}
       tabItems={tabItems}
       currentLang={currentLang}
       activeTab={activeTab}

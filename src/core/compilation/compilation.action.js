@@ -1,6 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { COMPILATION_API } from './compilation.constant';
 import { COMPILATION_ACTION_TYPE } from './compilation.type';
+import { convertCompilationData } from './compilation.convert';
 
 export function productsLoadData(currentLang) {
   return async (dispatch) => {
@@ -14,16 +15,11 @@ export function productsLoadData(currentLang) {
         url: COMPILATION_API.COMPILATION_PRODUCTS_LOAD_DATA.ENDPOINT(currentLang),
       });
 
-      const convertedData = response.data.map((data) => ({
-        id: data?.id,
-        name: data?.titleRu,
-        image: data?.imageUrls[0]?.fileUrl,
-        type: 0,
-      }));
+      const data = response.data.map((data) => convertCompilationData(data, 0));
 
       dispatch({
         type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_SUCCESS,
-        products: convertedData,
+        products: data,
       });
     } catch (err) {
       if (err.response) {
@@ -48,16 +44,11 @@ export function masterClassesLoadData(currentLang) {
         url: COMPILATION_API.COMPILATION_MASTER_CLASSES_LOAD_DATA.ENDPOINT(currentLang),
       });
 
-      const convertedData = response.data.map((data) => ({
-        id: data?.id,
-        name: data?.titleRu,
-        image: data?.imageUrls[0]?.fileUrl,
-        type: 1,
-      }));
+      const data = response.data.map((data) => convertCompilationData(data, 1));
 
       dispatch({
         type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_SUCCESS,
-        masterClasses: convertedData,
+        masterClasses: data,
       });
     } catch (err) {
       if (err.response) {
@@ -82,16 +73,11 @@ export function articlesLoadData(currentLang) {
         url: COMPILATION_API.COMPILATION_ARTICLES_LOAD_DATA.ENDPOINT(currentLang),
       });
 
-      const convertedData = response.data.map((data) => ({
-        id: data?.id,
-        name: data?.titleRu,
-        image: data?.imageUrls[0]?.fileUrl,
-        type: 2,
-      }));
+      const data = response.data.map((data) => convertCompilationData(data, 2));
 
       dispatch({
         type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_SUCCESS,
-        articles: convertedData,
+        articles: data,
       });
     } catch (err) {
       if (err.response) {

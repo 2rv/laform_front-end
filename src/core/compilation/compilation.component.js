@@ -12,7 +12,7 @@ import { removeCompilation } from './compilation.action';
 
 export function CompilationComponent(props) {
   const {
-    itemsTable,
+    data,
     tabItems,
     currentLang,
     setActiveTab,
@@ -43,7 +43,7 @@ export function CompilationComponent(props) {
       {isPending ? (
         <Spinner />
       ) : (
-        <TableList items={itemsTable}>
+        <TableList items={data}>
           {(id) => {
             return (
               <>
