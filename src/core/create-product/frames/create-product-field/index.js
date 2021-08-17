@@ -1,1 +1,1 @@
-export { CreateProductFieldComponent } from './create-product-field.component';
+export { CreateProductFormContainer } from './create-product-form.container';

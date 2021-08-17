@@ -3,26 +3,29 @@ import styled from 'styled-components';
 import { ReactComponent as ChangeIcon } from '../../../../asset/svg/change-icon.svg';
 import { ReactComponent as Cancel } from '../../../../asset/svg/cancel-delete-icon.svg';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../../../lib/theme';
-import { ContentLayout, IndentLayout } from '../../../../lib/element/layout';
+import { SectionLayout } from '../../../../lib/element/layout';
 import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary } from '../../../../lib/element/title';
-import { LinkPrimary } from '../../../../lib/element/link';
-import { ButtonBasic } from '../../../../lib/element/button';
+import { IconButton } from '../../../../lib/element/button';
 
 export function CreateProductImageComponent(props) {
   const { items } = props;
   const fileRef = createRef();
   return (
-    <IndentLayout type="small">
+    <SectionLayout type="SMALL">
       <Title tid="Фото" />
-      <Container type="small">
-        {items.map(({ backgroundImage }) => {
+      <Container type="SMALL">
+        {items.map(({ backgroundImage }, index) => {
           return (
-            <ImageContainer>
+            <ImageContainer key={index}>
               <Image src={backgroundImage} />
               <PositionContainer>
-                <IconButton2 icon={ChangeIcon} />
-                <IconButton icon={Cancel} />
+                <Button>
+                  <ChangeIcon />
+                </Button>
+                <Button>
+                  <Cancel />
+                </Button>
               </PositionContainer>
             </ImageContainer>
           );
@@ -35,9 +38,10 @@ export function CreateProductImageComponent(props) {
           </AddImage>
         </ImageContainer>
       </Container>
-    </IndentLayout>
+    </SectionLayout>
   );
 }
+
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.SECONDARY_DARK};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
@@ -56,9 +60,9 @@ const AddImage = styled.label`
 const File = styled.input`
   display: none;
 `;
-const Container = styled(IndentLayout)`
+const Container = styled(SectionLayout)`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
@@ -71,15 +75,8 @@ const ImageContainer = styled.div`
   height: 274px;
   background-color: ${THEME_COLOR.BACKGROUND.GRAY};
 `;
-const IconButton2 = styled(ButtonBasic)`
-  padding: 9.5px;
-  width: 40px;
-  height: 40px;
-`;
-const IconButton = styled(ButtonBasic)`
+const Button = styled(IconButton)`
   padding: 0;
-  width: 40px;
-  height: 40px;
 `;
 const PositionContainer = styled.div`
   display: flex;
