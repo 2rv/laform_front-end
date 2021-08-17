@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
@@ -7,16 +8,29 @@ import { ReactComponent as EditIcon } from '../../asset/svg/change-icon.svg';
 import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon.svg';
 import { FilterTabs } from '../../lib/element/filter-tabs';
 import { TableList } from '../block-table-list';
-import { } from './compilation.action';
+import { removeCompilation } from './compilation.action';
 
 export function CompilationComponent(props) {
   const {
     itemsTable,
     tabItems,
+    currentLang,
     setActiveTab,
     activeTab,
     isPending,
   } = props;
+
+  const dispatch = useDispatch();
+
+  const removeCompilationHandler = (id) => {
+    const compilationName = activeTab === 0 ? 'post' : activeTab === 1 ? 'master-class' : 'post';
+
+    dispatch(removeCompilation(
+      currentLang.toLowerCase(),
+      compilationName,
+      id,
+    ));
+  };
 
   return (
     <SectionLayout>
@@ -36,7 +50,7 @@ export function CompilationComponent(props) {
                 <Button>
                   <EditIcon />
                 </Button>
-                <Button>
+                <Button onClick={() => removeCompilationHandler(id)}>
                   <DeleteIcon />
                 </Button>
               </>

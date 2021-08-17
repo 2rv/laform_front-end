@@ -49,6 +49,7 @@ export function CompilationContainer() {
       pageLoading={pageLoading}
       itemsTable={filterByType(convertedData, activeTab)}
       tabItems={tabItems}
+      currentLang={currentLang}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
     />
@@ -59,61 +60,4 @@ const tabItems = [
   { name: 'COMPILATION.SUB_MENU.POPULAR_GOODS', type: 0 },
   { name: 'COMPILATION.SUB_MENU.BEST_MASTER_CLASSES', type: 1 },
   { name: 'COMPILATION.SUB_MENU.BEST_ARCTICLES', type: 2 },
-];
-
-const itemsTable = [
-  {
-    name: 'Товары для шитья',
-    type: 0,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Товары для шитья',
-    type: 0,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Инструкция по пошиву Комбинезон 0717',
-    type: 0,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Товары для шитья',
-    type: 1,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Товары для шитья',
-    type: 1,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Инструкция по пошиву Комбинезон 0717',
-    type: 0,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Товары для шитья',
-    type: 2,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Товары для шитья',
-    type: 2,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    name: 'Инструкция по пошиву Комбинезон 0717',
-    type: 2,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
 ];

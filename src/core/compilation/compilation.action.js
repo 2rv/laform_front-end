@@ -2,43 +2,6 @@ import { httpRequest } from '../../main/http';
 import { COMPILATION_API } from './compilation.constant';
 import { COMPILATION_ACTION_TYPE } from './compilation.type';
 
-// export function compilationUploadData(currentLang, compilationName) {
-//   return async (dispatch) => {
-//     dispatch({
-//       type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_PENDING,
-//     });
-
-//     try {
-//       const response = await httpRequest({
-//         method: COMPILATION_API.COMPILATION_UPLOAD.TYPE,
-//         url: COMPILATION_API.COMPILATION_UPLOAD.ENDPOINT(currentLang, compilationName),
-//       });
-
-//       const convertedResponseData = [...(response.data || [])].map((data) => ({
-//         id: data?.id,
-//         name: data?.titleRu,
-//         image: data?.imageUrls[0]?.fileUrl,
-//         type: compilationName === 'post' ? 0 : compilationName === 'master-class' ? 1 : 0,
-//       }));
-
-//       console.log(response.data);
-//       console.log('response', convertedResponseData);
-
-//       dispatch({
-//         type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_SUCCESS,
-//         compilationsData: convertedResponseData,
-//       });
-//     } catch (err) {
-//       if (err.response) {
-//         dispatch({
-//           type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_ERROR,
-//           errorMessage: err.response.data.message,
-//         });
-//       }
-//     }
-//   };
-// }
-
 export function productsLoadData(currentLang) {
   return async (dispatch) => {
     dispatch({
@@ -130,6 +93,38 @@ export function articlesLoadData(currentLang) {
         type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_SUCCESS,
         articles: convertedData,
       });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function removeCompilation(currentLang, compilationName, id) {
+  return async (dispatch) => {
+    dispatch({
+      type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: COMPILATION_API.REMOVE_COMPILATION.TYPE,
+        url: COMPILATION_API.REMOVE_COMPILATION.ENDPOINT(compilationName, id),
+      });
+
+      dispatch({ type: COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_SUCCESS });
+
+      if (compilationName === 'post') {
+        dispatch(productsLoadData(currentLang));
+      } else if (compilationName === 'master-class') {
+        dispatch(masterClassesLoadData(currentLang));
+      } else if (compilationName === 'post') {
+        dispatch(articlesLoadData(currentLang));
+      }
     } catch (err) {
       if (err.response) {
         dispatch({

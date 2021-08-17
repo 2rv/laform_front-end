@@ -15,4 +15,8 @@ export const COMPILATION_API = {
     ENDPOINT: (currentLang) => `post/get?lang=${currentLang}`,
     TYPE: 'GET',
   },
+  REMOVE_COMPILATION: {
+    ENDPOINT: (compilationName, id) => `${compilationName}/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };
