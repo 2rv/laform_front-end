@@ -60,11 +60,11 @@ const uploadArticle = (imageIds, description) => {
       method: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.TYPE,
       url: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.ENDPOINT,
       data: {
-        titleEn: "test",
-        titleRu: "test",
         descriptionEn: "test",
+        descriptionRu: "test",
+        titleEn: "test",
         price: 0,
-        descriptionRu: description,
+        titleRu: description,
         imageUrls: imageIds,
       },
     });

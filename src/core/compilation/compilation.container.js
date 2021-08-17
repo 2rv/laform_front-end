@@ -1,37 +1,53 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { filterByType } from '../../lib/common/filter-list-card';
+import { COMPILATION_STORE_NAME } from './compilation.constant';
+import { CompilationComponent } from './compilation.component';
 import {
+  productsLoadData,
+  masterClassesLoadData,
+  articlesLoadData,
+} from './compilation.action';
+
+import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { filterByType } from '../../lib/common/filter-list-card';
-import { compilationUploadData } from './compilation.action';
-import { CompilationComponent } from './compilation.component';
-import { COMPILATION_STORE_NAME } from './compilation.constant';
 
 export function CompilationContainer() {
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState(0);
-  const { state, pageLoading } = useSelector((state) => ({
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
     state: state[COMPILATION_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active,
   }));
 
+  const convertedData = [
+    ...getRequestData(state.products, []),
+    ...getRequestData(state.masterClasses, []),
+    ...getRequestData(state.articles, [])
+  ];
+
   useEffect(() => {
-    //   dispatch(compilationUploadData());
+    dispatch(productsLoadData(currentLang.toLowerCase()));
+    dispatch(masterClassesLoadData(currentLang.toLowerCase()));
+    dispatch(articlesLoadData(currentLang.toLowerCase()));
   }, []);
 
   return (
     <CompilationComponent
-      isPending={isRequestPending(state.compilation)}
-      isError={isRequestError(state.compilation)}
-      isSuccess={isRequestSuccess(state.compilation)}
-      errorMessage={getRequestErrorMessage(state.compilation)}
+      isPending={isRequestPending(state.articles)}
+      isError={isRequestError(state.articles)}
+      isSuccess={isRequestSuccess(state.articles)}
+      errorMessage={getRequestErrorMessage(state.articles)}
       pageLoading={pageLoading}
-      itemsTable={filterByType(itemsTable, activeTab)}
+      itemsTable={filterByType(convertedData, activeTab)}
       tabItems={tabItems}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
