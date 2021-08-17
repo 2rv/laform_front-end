@@ -133,6 +133,10 @@ import {
   sliderListStore,
   SLIDER_LIST_STORE_NAME,
 } from '../../core/slider-list';
+import {
+  sliderEditStore,
+  SLIDER_EDIT_STORE_NAME,
+} from '../../core/slider-edit';
 
 export const reducers = combineReducers({
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
@@ -178,6 +182,7 @@ export const reducers = combineReducers({
   [HOME_STORE_NAME]: homeStore,
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
   [SLIDER_LIST_STORE_NAME]: sliderListStore,
+  [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
 });
 
 export { initStore } from './store.core';

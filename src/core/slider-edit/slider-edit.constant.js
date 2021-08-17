@@ -1,13 +1,27 @@
-export const SLIDER_EDIT_ROUTE_PATH = '/slider-edit';
-export const TEST_SLIDE_PREVIEW_DATA = {
-  slideText: 'Готовые выкройки в интернет-магазине',
-  backgroundImage: '/static/test/slider-item-1.png',
+export const SLIDER_EDIT_ROUTE_PATH = (sliderEditId) => `/slider-list/edit-slider/${sliderEditId}`;
+
+export const SLIDER_EDIT_STORE_NAME = 'SLIDER_EDIT';
+
+export const SLIDER_EDIT_API = {
+  SLIDER_EDIT_LOAD_DATA: {
+    ENDPOINT: (currentLang, id) => `slider/get/${id}/?lang=${currentLang}`,
+    TYPE: 'GET',
+  },
+  SLIDER_EDIT_UPLOAD_DATA: {
+    ENDPOINT: (id) => `slider/update/${id}`,
+    TYPE: 'PUT',
+  },
+  IMAGE_LOAD: {
+    ENDPOINT: 'file/create',
+    TYPE: 'POST',
+  },
 };
-export const TEST_SLIDER_FIELDS_DATA = [
+
+export const SLIDER_FIELDS_DATA = [
   {
     type: 'input',
     title: 'Основной текст баннера',
-    value: 'Готовые выкройки в интернет магазине LaForme',
+    value: '',
     name: 'fieldTextName',
     options: null,
   },
@@ -27,7 +41,7 @@ export const TEST_SLIDER_FIELDS_DATA = [
   {
     type: 'input',
     title: 'Текст на кнопке',
-    value: 'Купить',
+    value: '',
     name: 'fieldButtonTextName',
     options: null,
   },
