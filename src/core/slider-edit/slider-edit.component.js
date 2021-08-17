@@ -3,13 +3,21 @@ import { TitlePrimary } from '../../lib/element/title';
 import { SliderEditPreviewComponent, SliderEditFormContainer } from './frames';
 
 export function SliderEditComponent(props) {
-  const { slideFieldsData, previewSlideData } = props;
+  const {
+    slideFieldsData,
+    onSubmitForm,
+    sliderData,
+    pickImage,
+    sliderImage,
+    validation,
+  } = props;
+
   return (
     <SectionLayout type="SMALL">
       <TitlePrimary tid="Редактирование слайдера" />
       <SectionLayout type="MEDIUM">
-        <SliderEditPreviewComponent {...previewSlideData} />
-        <SliderEditFormContainer slideFieldsData={slideFieldsData} />
+        <SliderEditPreviewComponent sliderData={sliderData} pickImage={pickImage} sliderImage={sliderImage} />
+        <SliderEditFormContainer slideFieldsData={slideFieldsData} onSubmitForm={onSubmitForm} validation={validation} />
       </SectionLayout>
     </SectionLayout>
   );

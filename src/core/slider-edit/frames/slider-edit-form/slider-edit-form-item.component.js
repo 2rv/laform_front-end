@@ -37,6 +37,7 @@ export function SliderEditFormItemComponent(props) {
     return (
       <BasicField
         titleTid={title}
+        placeholderTid={title}
         name={name}
         value={value}
         onChange={handleChange}

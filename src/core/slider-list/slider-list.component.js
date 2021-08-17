@@ -11,14 +11,16 @@ import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon
 import { TextSecondary } from '../../lib/element/text';
 import { TableList } from '../block-table-list';
 import { sliderListUploadData, sliderItemRemove } from './slider-list.action';
+import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
+import { setLinkRedirect } from '../../main/navigation/navigation.core';
 
 export function SliderListComponent({ isPending, sliders, currentLang }) {
   const dispatch = useDispatch();
 
-  const convertSlidersData = sliders.map((slider) => ({
+  const convertSliderData = sliders.map((slider) => ({
     id: slider.id,
     name: slider.headingTextRu,
-    image: slider.imageUrl || 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+    image: slider.imageUrl?.fileUrl,
   }));
 
   return (
@@ -27,10 +29,10 @@ export function SliderListComponent({ isPending, sliders, currentLang }) {
       {isPending ? (
         <Spinner />
       ) : (
-        <TableList items={convertSlidersData}>
+        <TableList items={convertSliderData}>
           {(id) => (
             <>
-              <Button>
+              <Button onClick={setLinkRedirect(SLIDER_EDIT_ROUTE_PATH(id))}>
                 <EditIcon />
               </Button>
               <Button onClick={() => dispatch(sliderItemRemove(currentLang.toLowerCase(), id))}>

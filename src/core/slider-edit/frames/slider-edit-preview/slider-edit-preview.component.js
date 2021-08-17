@@ -8,28 +8,27 @@ import { TitlePrimary } from 'src/lib/element/title';
 import { LinkPrimary } from 'src/lib/element/link';
 import { ButtonPrimary } from 'src/lib/element/button';
 
-export function SliderEditPreviewComponent(props) {
-  const { slideText, backgroundImage } = props;
-  const fileRef = createRef(); // млэнл использовать в родителе
+export function SliderEditPreviewComponent({ sliderData, pickImage, sliderImage }) {
+  const fileRef = createRef();
+
   return (
     <IndentLayout type="small">
       <PreviewTitle tid="Превью" />
       <PreviewContainer>
         <Blur />
-        <SlideImage src={backgroundImage} />
+        <SlideImage src={sliderImage || sliderData.imageUrl?.fileUrl} />
         <Field>
-          <File type="file" ref={fileRef} />
+          <File type="file" ref={fileRef} onChange={pickImage} />
           <Placeholder tid="Выбрать фото" />
           <UploadIcon />
         </Field>
         <Content>
           <SlideText>
-            <Text tid={slideText} />
-            &nbsp;
+            <Text tid={sliderData.headingTextRu} />&nbsp;
             <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
           </SlideText>
           <LinkPrimary>
-            <Button tid="Купить" />
+            <Button tid={sliderData.buttonTextRu} />
           </LinkPrimary>
         </Content>
       </PreviewContainer>

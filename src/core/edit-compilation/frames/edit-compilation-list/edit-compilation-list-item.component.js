@@ -28,7 +28,7 @@ export function EditCompilationListItemComponent(props) {
   };
 
   const removeCompilationItem = (compilationNamе, id) => {
-    dispatch(bestCompilationsRemoveItem(compilationNamе, id, currentLang));
+    dispatch(bestCompilationsRemoveItem(compilationNamе, id, currentLang.toLowerCase()));
   };
 
   return (

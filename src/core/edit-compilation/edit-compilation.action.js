@@ -9,14 +9,14 @@ export function bestProductsLoadData(currentLang) {
     });
 
     try {
-      const bestProductsResponse = await httpRequest({
+      const response = await httpRequest({
         method: EDIT_COMPILATION_API.BEST_PRODUCTS_LOAD_DATA.TYPE,
         url: EDIT_COMPILATION_API.BEST_PRODUCTS_LOAD_DATA.ENDPOINT(currentLang),
       });
 
       dispatch({
         type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
-        bestProducts: bestProductsResponse.data,
+        bestProducts: response.data,
       });
     } catch (err) {
       if (err.response) {
@@ -36,14 +36,14 @@ export function bestMasterClassesLoadData(currentLang) {
     });
 
     try {
-      const bestMasterClassesResponse = await httpRequest({
+      const response = await httpRequest({
         method: EDIT_COMPILATION_API.BEST_MASTER_CLASSES_LOAD_DATA.TYPE,
         url: EDIT_COMPILATION_API.BEST_MASTER_CLASSES_LOAD_DATA.ENDPOINT(currentLang),
       });
 
       dispatch({
         type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
-        bestMasterClasses: bestMasterClassesResponse.data,
+        bestMasterClasses: response.data,
       });
     } catch (err) {
       if (err.response) {
@@ -63,14 +63,14 @@ export function bestArticlesLoadData(currentLang) {
     });
 
     try {
-      const bestArticlesResponse = await httpRequest({
+      const response = await httpRequest({
         method: EDIT_COMPILATION_API.BEST_ARTICLES_LOAD_DATA.TYPE,
         url: EDIT_COMPILATION_API.BEST_ARTICLES_LOAD_DATA.ENDPOINT(currentLang),
       });
 
       dispatch({
         type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
-        bestArticles: bestArticlesResponse.data,
+        bestArticles: response.data,
       });
     } catch (err) {
       if (err.response) {
@@ -100,11 +100,11 @@ export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
       });
 
       if (compilationName === 'post') {
-        dispatch(bestProductsLoadData(currentLang.toLowerCase()));
+        dispatch(bestProductsLoadData(currentLang));
       } else if (compilationName === 'master-class') {
-        dispatch(bestMasterClassesLoadData(currentLang.toLowerCase()));
+        dispatch(bestMasterClassesLoadData(currentLang));
       } else if (compilationName === 'post') {
-        dispatch(bestArticlesLoadData(currentLang.toLowerCase()));
+        dispatch(bestArticlesLoadData(currentLang));
       }
     } catch (err) {
       if (err.response) {
