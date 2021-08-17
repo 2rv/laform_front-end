@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
@@ -8,9 +9,30 @@ import { FilterTabs } from '../../lib/element/filter-tabs';
 import { TableList } from '../block-table-list';
 import { CREATE_PRODUCT_ROUTE_PATH } from '../create-product';
 import { setLinkRedirect } from '../../main/navigation';
+import { removeCompilation } from './compilation.action';
 
 export function CompilationComponent(props) {
-  const { itemsTable, tabItems, setActiveTab, activeTab } = props;
+  const {
+    data,
+    tabItems,
+    currentLang,
+    setActiveTab,
+    activeTab,
+    isPending,
+  } = props;
+
+  const dispatch = useDispatch();
+
+  const removeCompilationHandler = (id) => {
+    const compilationName = activeTab === 0 ? 'post' : activeTab === 1 ? 'master-class' : 'post';
+
+    dispatch(removeCompilation(
+      currentLang.toLowerCase(),
+      compilationName,
+      id,
+    ));
+  };
+
   return (
     <SectionLayout>
       <TitlePrimary tid="COMPILATION.TITLE" />
