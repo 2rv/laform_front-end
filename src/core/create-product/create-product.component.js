@@ -1,28 +1,30 @@
-import { Formik } from 'formik';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import {
   CreateProductImageComponent,
-  CreateProductFieldComponent,
+  CreateProductFormContainer,
 } from './frames';
 
 export function CreateProductComponent(props) {
-  const { imagesData, initialValues, validation, onSubmitForm } = props;
+  const {
+    imagesData,
+    initialCategoriesItem,
+    initialPositionsItem,
+    initialOptionsItem,
+    initialValues,
+    onSubmitForm,
+  } = props;
   return (
     <SectionLayout>
       <TitlePrimary tid="Создание мастер-класса" />
       <CreateProductImageComponent items={imagesData} />
-      <Formik
+      <CreateProductFormContainer
+        initialCategoriesItem={initialCategoriesItem}
+        initialPositionsItem={initialPositionsItem}
+        initialOptionsItem={initialOptionsItem}
         initialValues={initialValues}
-        validate={validation}
-        onSubmit={onSubmitForm}
-      >
-        {(formProps) => (
-          <form onSubmit={formProps.handlesubmit}>
-            <CreateProductFieldComponent {...formProps} />
-          </form>
-        )}
-      </Formik>
+        onSubmitForm={onSubmitForm}
+      />
     </SectionLayout>
   );
 }
