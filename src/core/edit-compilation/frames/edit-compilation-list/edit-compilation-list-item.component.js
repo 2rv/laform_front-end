@@ -13,14 +13,14 @@ import { bestCompilationsRemoveItem, bestMasterClassesUpdateItem } from '../../e
 export function EditCompilationListItemComponent(props) {
   const {
     id,
-    descriptionRu,
+    titleRu,
     imageUrls,
     compilationNamе,
     currentLang,
   } = props;
 
   const dispatch = useDispatch();
-  const [ productName, setProductName ] = React.useState(descriptionRu);
+  const [ productName, setProductName ] = React.useState(titleRu);
 
   const changeProductNameHandler = (newProductname) => {
     setProductName(newProductname);

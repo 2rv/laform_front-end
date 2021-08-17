@@ -8,7 +8,9 @@ import {
 import { COMPILATION_ACTION_TYPE } from './compilation.type';
 
 const initialState = {
-  compilation: initRequestState(),
+  products: initRequestState(),
+  masterClasses: initRequestState(),
+  articles: initRequestState(),
 };
 
 export function compilationStore(state = initialState, action) {
@@ -16,17 +18,23 @@ export function compilationStore(state = initialState, action) {
     case COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_PENDING:
       return {
         ...state,
-        compilation: setRequestPending(state.compilation),
+        products: setRequestPending(state.products),
+        masterClasses: setRequestPending(state.masterClasses),
+        articles: setRequestPending(state.articles),
       };
     case COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_SUCCESS:
       return {
         ...state,
-        compilation: setRequestSuccess(state.compilation),
+        products: setRequestSuccess(state.products, action.products),
+        masterClasses: setRequestSuccess(state.masterClasses, action.masterClasses),
+        articles: setRequestSuccess(state.articles, action.articles),
       };
     case COMPILATION_ACTION_TYPE.COMPILATION_UPLOAD_ERROR:
       return {
         ...state,
-        compilation: setRequestError(state.compilation, action.errorMessage),
+        products: setRequestError(state.products, action.errorMessage),
+        masterClasses: setRequestError(state.masterClasses, action.errorMessage),
+        articles: setRequestError(state.articles, action.errorMessage),
       };
     default:
       return state;
