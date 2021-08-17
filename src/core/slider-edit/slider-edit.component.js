@@ -9,6 +9,7 @@ export function SliderEditComponent(props) {
     sliderData,
     pickImage,
     sliderImage,
+    validation,
   } = props;
 
   return (
@@ -16,7 +17,7 @@ export function SliderEditComponent(props) {
       <TitlePrimary tid="Редактирование слайдера" />
       <SectionLayout type="MEDIUM">
         <SliderEditPreviewComponent sliderData={sliderData} pickImage={pickImage} sliderImage={sliderImage} />
-        <SliderEditFormContainer slideFieldsData={slideFieldsData} onSubmitForm={onSubmitForm} />
+        <SliderEditFormContainer slideFieldsData={slideFieldsData} onSubmitForm={onSubmitForm} validation={validation} />
       </SectionLayout>
     </SectionLayout>
   );

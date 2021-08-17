@@ -17,8 +17,8 @@ import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
   const { state, pageLoading, currentLang } = useSelector((state) => ({
-    // state: state[MASTER_CLASSES_STORE_NAME].masterClasses,
-    // currentLang: state[LANG_STORE_NAME].active,
+    state: state[MASTER_CLASSES_STORE_NAME].masterClasses,
+    currentLang: state[LANG_STORE_NAME].active,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
 
@@ -42,8 +42,7 @@ export function MasterClassesContainer() {
   };
 
   useEffect(() => {
-    // dispatch(masterClassesUploadData(currentLang.toLowerCase()));
-    // console.log(currentLang.toLowerCase());
+    dispatch(masterClassesUploadData(currentLang.toLowerCase()));
   }, []);
 
   const onSubmit = (values) => {

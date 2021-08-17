@@ -17,11 +17,11 @@ export const SLIDER_EDIT_API = {
   },
 };
 
-export const SLIDER_FIELDS_DATA = [
+export const SLIDER_FIELDS_DATA = (sliderData) => [
   {
     type: 'input',
     title: 'Основной текст баннера',
-    value: '',
+    value: sliderData.headingTextRu,
     name: 'fieldTextName',
     options: null,
   },
@@ -41,7 +41,7 @@ export const SLIDER_FIELDS_DATA = [
   {
     type: 'input',
     title: 'Текст на кнопке',
-    value: '',
+    value: sliderData.buttonTextRu,
     name: 'fieldButtonTextName',
     options: null,
   },

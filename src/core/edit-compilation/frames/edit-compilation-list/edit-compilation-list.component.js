@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { EditCompilationListItemComponent } from './edit-compilation-list-item.component';
 import { TitlePrimary } from '../../../../lib/element/title';
-import { Spinner } from '../../../../lib/element/spinner';
 
 export function EditCompilationListComponent(props) {
   const {

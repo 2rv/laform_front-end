@@ -4,14 +4,13 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { EditCompilationComponent } from './edit-compilation.component';
 import { EDIT_COMPILATION_STORE_NAME } from './edit-compilation.constant';
+import { getRequestData } from '../../main/store/store.service';
 
 import {
   bestMasterClassesLoadData,
   bestArticlesLoadData,
   bestProductsLoadData,
 } from './edit-compilation.action';
-
-import { getRequestData } from '../../main/store/store.service';
 
 export function EditCompilationContainer() {
   const dispatch = useDispatch();
@@ -34,7 +33,6 @@ export function EditCompilationContainer() {
       bestArticles={getRequestData(state.bestArticles, [])}
       pageLoading={pageLoading}
       currentLang={currentLang}
-      // {...TEST_EDIT_COMPILATION_ITEMS}
     />
   );
 }

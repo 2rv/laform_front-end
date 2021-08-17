@@ -1,12 +1,13 @@
 
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { sliderEditLoadData, sliderEditUploadData } from './slider-edit.action';
-import { SliderEditComponent } from './slider-edit.component';
 import { SLIDER_FIELDS_DATA, SLIDER_EDIT_STORE_NAME } from './slider-edit.constant';
+import { SliderEditComponent } from './slider-edit.component';
+import { sliderEditFormValidation } from './slider-edit.validation';
 
 import {
   getRequestData,
@@ -24,9 +25,9 @@ export function SliderEditContainer() {
   }));
   const dispatch = useDispatch();
   const { query } = useRouter();
-  const [ sliderImage, setSliderImage ] = React.useState(getRequestData(state.sliderEdit, []));
+  const [ sliderImage, setSliderImage ] = useState(getRequestData(state.sliderEdit).imageUrl?.fileUrl);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId));
   }, []);
 
@@ -58,13 +59,14 @@ export function SliderEditContainer() {
       isError={isRequestError(state.sliderEdit)}
       isSuccess={isRequestSuccess(state.sliderEdit)}
       errorMessage={getRequestErrorMessage(state.sliderEdit)}
-      sliderData={getRequestData(state.sliderEdit, [])}
+      sliderData={getRequestData(state.sliderEdit)}
+      validation={sliderEditFormValidation}
       pageLoading={pageLoading}
       currentLang={currentLang}
       onSubmitForm={onSubmitForm}
       pickImage={pickImage}
       sliderImage={sliderImage}
-      slideFieldsData={SLIDER_FIELDS_DATA}
+      slideFieldsData={SLIDER_FIELDS_DATA(getRequestData(state.sliderEdit))}
     />
   );
 }
