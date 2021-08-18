@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { TextPrimary } from '../text';
+import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
+import { LinkSecondary } from '../link';
 
 import { ModalMenuPropsType } from './modal.type';
 
@@ -26,8 +26,8 @@ export function ModalMenu(props: ModalMenuPropsType) {
 
   return (
     <Container ref={modalRef} {...rest}>
-      {items.map((x) => (
-        <Item key={x.tid} tid={x.tid} onClick={x.action} />
+      {items.map((item) => (
+        <Item key={item.id} tid={item.tid} path={item.path} />
       ))}
     </Container>
   );
@@ -37,17 +37,20 @@ const Container = styled.div`
   position: absolute;
   display: grid;
   padding: ${spacing(2)} 0;
-  background-color: ${THEME_COLOR.BACKGROUND.WHITE};
+  background-color: ${THEME_COLOR.WHITE};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   box-shadow: ${THEME_COLOR.SHADOW.MODAL};
   white-space: nowrap;
 `;
 
-const Item = styled(TextPrimary)`
+const Item = styled(LinkSecondary)`
   padding: ${spacing(1)} ${spacing(4)};
+  font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
+  font-size: ${THEME_SIZE.FONT.DEFAULT};
+  color: ${THEME_COLOR.SECONDARY_DARK};
   cursor: pointer;
 
   &:hover {
-    background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+    background-color: ${THEME_COLOR.GRAY};
   }
 `;

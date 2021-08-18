@@ -18,6 +18,7 @@ export function HeaderContainer(props) {
       activePath={activePath}
       logged={auth.logged}
       user={auth.user?.login}
+      role={auth.user?.role}
       isMobile={props.isMobile}
     />
   );
