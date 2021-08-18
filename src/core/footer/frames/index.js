@@ -1,3 +1,2 @@
-export { FooterMenuComponent } from './footer-menu';
-export { FooterCopyrightComponent } from './footer-copyright';
-export { FooterSocialListComponent } from './footer-social-list';
+export { FooterLinkList } from './footer-link-list';
+export { FooterSocialLink } from './footer-social-link';

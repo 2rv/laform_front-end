@@ -4,7 +4,7 @@ import {
   AdvantageListContainer,
   CatalogListContainer,
   InformationListContainer,
-  CardListBlock,
+  AdvantageInfoComponent,
 } from './frames';
 import { SliderContainer } from '../../core/slider';
 import {
@@ -13,6 +13,7 @@ import {
   SEWING_GOODS_ROUTE_PATH,
 } from './home.constant';
 import { HelpInfoBlock } from '../block-help-info';
+import { CardListBlock } from 'src/lib/element/card-list';
 
 export function HomeComponent(props) {
   const { articlesListItems, masterClassesListItems, sewingGoodsListItems } =
@@ -40,7 +41,7 @@ export function HomeComponent(props) {
         items={articlesListItems}
       />
       <HelpInfoBlock viewAll />
-      <AdvantageListContainer />
+      <AdvantageInfoComponent />
     </SectionLayout>
   );
 }

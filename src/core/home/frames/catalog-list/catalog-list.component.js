@@ -6,26 +6,30 @@ import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { CatalogItemComponent } from './catalog-item.component';
 
 export function CatalogListComponent(props) {
-  const { className, items } = props;
+  const { items } = props;
   return (
-    <Container className={className}>
-      {items.map((x) => (
-        <CatalogItemComponent key={x.title} {...x} />
+    <Container>
+      {items.map((data, index) => (
+        <CatalogItemComponent key={index} data={data} />
       ))}
     </Container>
   );
 }
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: ${spacing(6)};
   width: 100%;
-  @media only screen and (min-width: 721px) and (max-width: 1259px) {
-    grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  gap: ${spacing(6)};
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 262.5px);
+  @media only screen and (max-width: 1180px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 170px);
     gap: ${spacing(3)};
   }
-  @media only screen and (max-width: 720px) {
+  @media only screen and (max-width: 820px) {
     grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, minmax(160px, fit-content));
+    gap: ${spacing(2)};
   }
 `;

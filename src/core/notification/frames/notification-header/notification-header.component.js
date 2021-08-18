@@ -1,27 +1,18 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE } from '../../../../lib/theme';
 import { TextPrimary } from '../../../../lib/element/text';
+import { TitlePrimary } from 'src/lib/element/title';
 
 export function NotificationHeaderComponent() {
   return (
-    <CTAContainer>
-      <PreCTAText tid="NOTIFICATION.PRE_CTA" />
-      <br />
-      <CTAText tid="NOTIFICATION.CTA" />
-    </CTAContainer>
+    <div>
+      <TitlePrimary tid="NOTIFICATION.PRE_CTA" />
+      &nbsp;
+      <BoldTitle tid="NOTIFICATION.CTA" />
+    </div>
   );
 }
-
-const CTAContainer = styled.div`
-  line-height: 1.5;
-`;
-
-const PreCTAText = styled(TextPrimary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-`;
-
-const CTAText = styled(TextPrimary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
+const BoldTitle = styled(TitlePrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
+  line-height: 1.5;
 `;
