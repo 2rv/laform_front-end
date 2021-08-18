@@ -3,63 +3,54 @@ import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
 import { LinkPrimary } from '../../../../lib/element/link';
+import { PageLayout } from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
 
 export function CatalogItemComponent(props) {
-  const { title, description, backgroundImage, path } = props;
+  const { title, description, backgroundImage, path } = props.data;
 
   return (
-    <Container>
-      <LinkPrimary path={path}>
-        <BackgroundImage src={backgroundImage} />
-        <ContentContainer>
-          <TitleText tid={title} />
-          <DescriptionText tid={description} />
-        </ContentContainer>
-      </LinkPrimary>
+    <Container path={path}>
+      <BackgroundImage src={backgroundImage} />
+      <Content>
+        <TitleText tid={title} />
+        <DescriptionText tid={description} />
+      </Content>
     </Container>
   );
 }
 
-const Container = styled.div`
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  overflow: hidden;
+const Container = styled(LinkPrimary)`
+  display: grid;
   position: relative;
-  @media only screen and (max-width: 720px) {
-    height: 300px;
-  }
 `;
-
 const BackgroundImage = styled.img`
   width: 100%;
-  @media only screen and (max-width: 720px) {
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const ContentContainer = styled.div`
+  height: 100%;
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
+  object-fit: cover;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+`;
+const Content = styled.div`
+  padding: ${spacing(6)};
   display: flex;
+  flex: 1;
+  z-index: 1;
   flex-direction: column;
-  gap: ${spacing(3)};
-  padding: ${spacing(9)} ${spacing(6)};
+  align-items: center;
   justify-content: center;
+  gap: ${spacing(3)};
   background-color: rgba(47, 42, 44, 0.75);
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
-
-const TitleText = styled(TextPrimary)`
-  color: ${THEME_COLOR.TEXT.WHITE};
-  font-size: ${THEME_SIZE.FONT.LARGE};
+const TitleText = styled(TitlePrimary)`
+  color: ${THEME_COLOR.WHITE};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  line-height: 1.25em;
+  line-height: 1.5;
 `;
-
 const DescriptionText = styled(TextSecondary)`
   color: ${THEME_COLOR.LIGHT_GRAY};
-  line-height: 1.5em;
+  line-height: 1.5;
 `;

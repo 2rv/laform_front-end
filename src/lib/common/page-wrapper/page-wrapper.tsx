@@ -19,18 +19,22 @@ export function PageWrapper(props: PageWrapperPropsType) {
     <Container type="LARGE">
       <Main type="MEDIUM">
         <SectionLayout type="SMALL">
-          <ContentLayout horizontal="center">
-            <PageLayout>
-              <HeaderLogoContainer />
-            </PageLayout>
-          </ContentLayout>
+          <Paddings>
+            <Content horizontal="center">
+              <PageLayout>
+                <HeaderLogoContainer />
+              </PageLayout>
+            </Content>
+          </Paddings>
           <Wrapper>
             <HeaderContainer />
           </Wrapper>
         </SectionLayout>
-        <Content horizontal="center">
-          <PageLayout>{children}</PageLayout>
-        </Content>
+        <Paddings>
+          <Content horizontal="center">
+            <PageLayout>{children}</PageLayout>
+          </Content>
+        </Paddings>
       </Main>
       <Wrapper>
         <FooterContainer />
@@ -38,7 +42,18 @@ export function PageWrapper(props: PageWrapperPropsType) {
     </Container>
   );
 }
-
+const Wrapper = (props: PageWrapperPropsType) => {
+  const { children } = props;
+  return (
+    <Background>
+      <Paddings>
+        <Content horizontal="center">
+          <PageLayout>{children}</PageLayout>
+        </Content>
+      </Paddings>
+    </Background>
+  );
+};
 const Container = styled(SectionLayout)`
   padding-top: ${THEME_SIZE.INDENT.MEDIUM};
   display: flex;
@@ -49,27 +64,19 @@ const Container = styled(SectionLayout)`
 const Content = styled(ContentLayout)`
   flex: 1;
 `;
-
 const Main = styled(SectionLayout)`
   flex: 1;
   display: flex;
   flex-direction: column;
 `;
-const Wrapper = (props: PageWrapperPropsType) => {
-  const { children } = props;
-  return (
-    <Background>
-      <ContentLayout horizontal="center">
-        <PageLayout>{children}</PageLayout>
-      </ContentLayout>
-    </Background>
-  );
-};
-
 const Background = styled.div`
   background-color: ${THEME_COLOR.GRAY};
   display: grid;
   width: 100%;
+`;
+const Paddings = styled.div`
+  width: 100%;
+  padding: 0 15px;
 `;
 
 // здесь будут штуки может для адаптива хз я
