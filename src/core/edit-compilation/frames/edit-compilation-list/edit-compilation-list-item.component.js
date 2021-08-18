@@ -24,7 +24,7 @@ export function EditCompilationListItemComponent(props) {
 
   const changeProductNameHandler = (newProductname) => {
     setProductName(newProductname);
-    // dispatch(bestMasterClassesUpdateItem(id, newProductname));
+    // dispatch(bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang.toLowerCase()));
   };
 
   const removeCompilationItem = (compilationNamе, id) => {
