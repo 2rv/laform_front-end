@@ -69,11 +69,11 @@ export const tagsSelectOptions = [
   },
   {
     id: 2,
-    tid: 'Самые дорогие',
+    tid: 'Самые новые',
   },
   {
     id: 3,
-    tid: 'Самые дешевые',
+    tid: 'Самые старые',
   },
 ];
 

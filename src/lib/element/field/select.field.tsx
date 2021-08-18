@@ -42,6 +42,7 @@ const Container = styled.div`
     return '100%';
   }};
   gap: ${spacing(1)};
+  width: 172px;
 `;
 
 const Title = styled(TextSecondary)`
