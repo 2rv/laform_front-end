@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { LinkSecondary } from '../link';
-import { USER_ROLE } from '../../common/auth';
 
 import { ModalMenuPropsType } from './modal.type';
 
 export function ModalMenu(props: ModalMenuPropsType) {
-  const { active, userItems, adminUserItems, onClose, role, ...rest } = props;
+  const { active, items, onClose, ...rest } = props;
   if (!active) return null;
 
   const modalRef = useRef<HTMLDivElement>(null);
@@ -27,7 +26,7 @@ export function ModalMenu(props: ModalMenuPropsType) {
 
   return (
     <Container ref={modalRef} {...rest}>
-      {(role === USER_ROLE.ADMIN ? adminUserItems : userItems).map((item) => (
+      {items.map((item) => (
         <Item key={item.id} tid={item.tid} path={item.path} />
       ))}
     </Container>

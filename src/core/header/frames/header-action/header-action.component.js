@@ -9,6 +9,7 @@ import { ReactComponent as CartIcon } from '../../../../asset/svg/cart.svg';
 import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { LOGIN_ROUTE_PATH, SIGNUP_ROUTE_PATH } from '../../header.constants';
 import { USER_MODAL_ITEMS, ADMIN_USER_MODAL_ITEMS } from './header-action.constant';
+import { USER_ROLE } from '../../../../lib/common/auth';
 
 export function HeaderActionComponent(props) {
   const { className, logged, user, role } = props;
@@ -31,9 +32,7 @@ export function HeaderActionComponent(props) {
           </UserContainer>
           {isUserModalActive && (
             <UserMenu
-              userItems={USER_MODAL_ITEMS}
-              adminUserItems={ADMIN_USER_MODAL_ITEMS}
-              role={role}
+              items={role === USER_ROLE.ADMIN ? ADMIN_USER_MODAL_ITEMS : USER_MODAL_ITEMS}
               active={isUserModalActive}
               onClose={onUserModalClose}
             />
