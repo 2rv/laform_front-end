@@ -1,6 +1,9 @@
 import { Field } from 'formik';
 import { BasicField, FieldSelect } from '../../../../lib/element/field';
-import { ButtonPrimary } from '../../../../lib/element/button';
+import { IconButton } from '../../../../lib/element/button';
+import { ReactComponent as RemoveIcon } from '../../../../asset/svg/remove.svg';
+import { spacing } from '../../../../lib/theme';
+import styled from 'styled-components';
 
 export function ProuctCategoriesItem(props) {
   const {
@@ -13,7 +16,7 @@ export function ProuctCategoriesItem(props) {
     productCategoryFieldName,
   } = props;
   return (
-    <>
+    <Line>
       <Field
         name={`${categoriesFieldArray}.${index}.${productCategoryFieldName}`}
       >
@@ -29,14 +32,15 @@ export function ProuctCategoriesItem(props) {
           />
         )}
       </Field>
-    </>
+      {fieldCount !== 1 && (
+        <IconButton type="button" onClick={() => removeCategoryField(index)}>
+          <RemoveIcon />
+        </IconButton>
+      )}
+    </Line>
   );
 }
-//кнопка удаления нужного поля
-//  {fieldCount !== 1 && (
-//         <ButtonPrimary
-//           tid="удалить что то"
-//           type="button"
-//           onClick={() => removeCategoryField(index)}
-//         />
-//       )}
+const Line = styled.div`
+  display: flex;
+  gap: ${spacing(2)};
+`;
