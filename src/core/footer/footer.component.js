@@ -35,6 +35,9 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
+  input {
+    background: ${THEME_COLOR.WHITE};
+  }
 `;
 
 const FooterMenu = styled(FooterMenuComponent)`

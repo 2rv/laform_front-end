@@ -35,7 +35,7 @@ export function NotificationFormComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <IndentLayout type="small">
+      <Layout type="small">
         <FieldLayout>
           <NotificationField
             placeholderTid="NOTIFICATION.FIELD_PLACEHOLDER"
@@ -62,10 +62,15 @@ export function NotificationFormComponent(props) {
         {(pageLoading || isFormPending || loadEmailPending) && (
           <LoaderPrimary />
         )}
-      </IndentLayout>
+      </Layout>
     </form>
   );
 }
+
+const Layout = styled(IndentLayout)`
+  display: grid;
+  gap: ${spacing(3)};
+`;
 
 const NotificationField = styled(BasicField)`
   background-color: ${THEME_COLOR.BACKGROUND.WHITE};
