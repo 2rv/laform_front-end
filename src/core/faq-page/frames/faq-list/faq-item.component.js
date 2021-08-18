@@ -48,7 +48,7 @@ const TitleContainer = styled.div`
 
 const Icon = styled(ArrowRightIcon)`
   transition: transform 0.25s linear;
-
+  min-width: fit-content;
   ${(p) =>
     p.active &&
     css`

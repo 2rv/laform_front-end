@@ -11,6 +11,7 @@ export interface FieldPropsType {
   isFindInput?: boolean;
   width?: number;
   disabled?: boolean;
+  adaptive?: boolean;
 }
 export interface InputPropsType {
   className?: string;

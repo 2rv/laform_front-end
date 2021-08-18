@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { FieldSelect, BasicField } from '../field';
 import { FormFilterComponentPropsType } from './form-filter.type';
+import { FieldLayout } from '../layout';
 
 export function FormFilterComponent(props: FormFilterComponentPropsType) {
   const {
@@ -34,7 +35,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
   return (
     <form onSubmit={handleSubmit}>
       <Container>
-        <Container>
+        <FieldLayout type="double" adaptive>
           <FieldSelect
             options={categoryOptions}
             name={selectNameCategory}
@@ -56,7 +57,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
             }}
             onBlur={handleBlur}
           />
-        </Container>
+        </FieldLayout>
         <BasicField
           placeholderTid={findPlaceholderTid}
           name={fieldNameFind}
@@ -69,6 +70,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
           onBlur={handleBlur}
           isFindInput
           width={195}
+          adaptive
         />
       </Container>
     </form>
@@ -79,4 +81,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   gap: ${spacing(3)};
+  @media screen and (max-width: 700px) {
+    flex-flow: column;
+  }
 `;

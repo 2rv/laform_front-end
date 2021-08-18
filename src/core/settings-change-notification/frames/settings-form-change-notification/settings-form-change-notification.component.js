@@ -57,7 +57,7 @@ export function SettingsFormChangeNotificationComponent(props) {
         {(isFormUploadError || formUploadErrorMessage) && (
           <ErrorAlert tid={formUploadErrorMessage} />
         )}
-        <FieldLayout type="double">
+        <FieldLayout type="double" adaptive>
           <ButtonSecondary
             tid="SETTINGS.CHANGE_NOTIFICATION.SUBMIT"
             type="submit"

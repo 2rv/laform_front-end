@@ -22,12 +22,7 @@ export function ArticlePageComponent(props) {
         <Description key={index} tid={text} />
       ))}
       <BlockComments items={comments} />
-      <CardListBlock
-        title="отзывы"
-        path="/articles"
-        items={listItems}
-        cardType="articles"
-      />
+      <CardListBlock title="Рекомендации" path="/articles" items={listItems} />
     </SectionLayout>
   );
 }

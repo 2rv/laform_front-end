@@ -38,7 +38,7 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
       <SectionLayout type="SMALL">
         <Title tid="SETTINGS.CHANGE_DELIVERY_INFO.TITLE" />
         <SectionLayout type="TEXT">
-          <FieldLayout type="double">
+          <FieldLayout type="double" adaptive>
             <BasicField
               titleTid="SETTINGS.CHANGE_DELIVERY_INFO.FULLNAME.TITLE"
               placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.FULLNAME.PLACEHOLDER"
@@ -56,8 +56,6 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-          </FieldLayout>
-          <FieldLayout type="double">
             <BasicField
               titleTid="SETTINGS.CHANGE_DELIVERY_INFO.LOCATION.TITLE"
               placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.LOCATION.PLACEHOLDER"
@@ -78,7 +76,7 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
             onBlur={handleBlur}
             full
           />
-          <FieldLayout type="double">
+          <FieldLayout type="double" adaptive>
             <ButtonSecondary
               tid="SETTINGS.CHANGE_DELIVERY_INFO.SUBMIT"
               type="submit"

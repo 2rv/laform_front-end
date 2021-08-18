@@ -26,5 +26,5 @@ export interface SectionLayoutPropsType {
 export interface GridLayoutPropsType {
   type?: 'double' | undefined;
   adaptive: boolean;
-  children: React.ReactElement<any> | null;
+  children: React.ReactElement<any>[] | null;
 }

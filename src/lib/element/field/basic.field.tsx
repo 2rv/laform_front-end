@@ -11,6 +11,7 @@ export function BasicField(props: FieldPropsType) {
   const {
     className,
     width,
+    adaptive,
 
     titleTid,
     placeholderTid,
@@ -26,7 +27,7 @@ export function BasicField(props: FieldPropsType) {
   } = props;
 
   return (
-    <Container width={width}>
+    <Container width={width} adaptive={adaptive}>
       {titleTid && <Title tid={titleTid} />}
       <Content>
         <Input
@@ -47,13 +48,26 @@ export function BasicField(props: FieldPropsType) {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{
+  adaptive?: boolean;
+  width?: number;
+}>`
   display: flex;
   flex-direction: column;
-  width: ${(p: { width?: number }) => {
+  width: ${(p) => {
     if (p.width) return p.width + 'px';
     return '100%';
   }};
+  ${(p) => {
+    return (
+      p.adaptive &&
+      css`
+        @media screen and (max-width: 700px) {
+          width: 100%;
+        }
+      `
+    );
+  }}
   gap: ${spacing(1)};
 `;
 const Content = styled.div`

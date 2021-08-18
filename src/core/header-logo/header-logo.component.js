@@ -3,7 +3,6 @@ import { spacing, THEME_SIZE } from '../../lib/theme';
 import { LogoComponent, LangSelectorComponent } from './frames';
 import { LinkPrimary } from '../../lib/element/link';
 import { TextSecondary } from '../../lib/element/text';
-import { IndentLayout } from 'src/lib/element/layout';
 
 export function HeaderLogoComponent(props) {
   const { currentLang, supportedLang, isMobile } = props;

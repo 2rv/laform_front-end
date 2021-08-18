@@ -66,7 +66,7 @@ export function SettingsFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldLayout type="double">
+          <FieldLayout type="double" adaptive>
             <ButtonSecondary
               tid="SETTINGS.CHANGE_PASSWORD.SUBMIT"
               type="submit"
