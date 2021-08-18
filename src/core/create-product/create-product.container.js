@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   getRequestErrorMessage,
   isRequestError,
@@ -11,9 +11,11 @@ import { createProductUploadData } from './create-product.action';
 import { CreateProductComponent } from './create-product.component';
 import { CREATE_PRODUCT_STORE_NAME } from './create-product.constant';
 import { PRODUCT_FIELD_NAME } from './create-product.type';
+import { createProuctValidation } from './create-product.validation';
 
 export function CreateProductContainer() {
   const dispatch = useDispatch();
+  const [imagesData, setImages] = useState([]);
   const { state, pageLoading } = useSelector((state) => ({
     state: state[CREATE_PRODUCT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
@@ -39,9 +41,37 @@ export function CreateProductContainer() {
   const initialValues = () => ({
     [PRODUCT_FIELD_NAME.CATEGORIES]: [initialCategoriesItem],
     [PRODUCT_FIELD_NAME.OPTIONS]: [initialOptionsItem],
+    [PRODUCT_FIELD_NAME.NAME]: '',
+    [PRODUCT_FIELD_NAME.MODIFIER]: '',
+    [PRODUCT_FIELD_NAME.DESCRIPTION]: '',
+    [PRODUCT_FIELD_NAME.PRICE]: '',
+    [PRODUCT_FIELD_NAME.DISCOUNT]: '',
   });
   const onSubmitForm = (values) => {
-    console.log(values);
+    console.log(values); // значения формы
+    console.log(imagesData); // фотки товара
+  };
+
+  const pickImage = ({ target: { files } }) => {
+    if (files[0].type.split('/')[0] !== 'image') {
+      alert('Please upload only image');
+      return;
+    }
+
+    if (files && files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const copyImages = [...imagesData];
+        copyImages.push(reader?.result);
+        setImages(copyImages);
+      };
+      reader.readAsDataURL(files[0]);
+    }
+  };
+  const deleteImage = (index) => {
+    const copyImages = [...imagesData];
+    copyImages.splice(index, 1);
+    setImages(copyImages);
   };
   return (
     <CreateProductComponent
@@ -50,18 +80,15 @@ export function CreateProductContainer() {
       isSuccess={isRequestSuccess(state.createProduct)}
       errorMessage={getRequestErrorMessage(state.createProduct)}
       pageLoading={pageLoading}
-      imagesData={testImagesData}
       initialCategoriesItem={initialCategoriesItem}
       initialPositionsItem={initialPositionsItem}
       initialOptionsItem={initialOptionsItem}
       initialValues={initialValues()}
       onSubmitForm={onSubmitForm}
+      validation={createProuctValidation}
+      pickImage={pickImage}
+      imagesData={imagesData}
+      deleteImage={deleteImage}
     />
   );
 }
-
-export const testImagesData = [
-  { backgroundImage: '/static/test/product-image-3.png' },
-  { backgroundImage: '/static/test/product-image-2.png' },
-  { backgroundImage: '/static/test/product-image-1.png' },
-];

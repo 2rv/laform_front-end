@@ -1,8 +1,7 @@
 import { Field, FieldArray } from 'formik';
-import { BasicField, FieldSelect } from '../../../../lib/element/field';
+import { FieldSelect } from '../../../../lib/element/field';
 import { ButtonBasic } from '../../../../lib/element/button';
 import { FieldLayout } from '../../../../lib/element/layout';
-import React from 'react';
 import { ProductPositionsItem } from './product-positions-item';
 
 export function ProductOptionsItem(props) {
@@ -13,6 +12,8 @@ export function ProductOptionsItem(props) {
     optionsFieldArray,
     positionsFieldArray,
     initialPositionsItem,
+    fieldCount,
+    removeOptionItem,
     //----------------------------  fieldNames
     categoriesForOptionSelect, // опции для селекта
     optionCategorySelect,
@@ -30,7 +31,7 @@ export function ProductOptionsItem(props) {
           />
         )}
       </Field>
-      <FieldLayout type="double">
+      <FieldLayout type="double" adaptive>
         <FieldArray
           name={`${optionsFieldArray}.${index}.${positionsFieldArray}`}
         >
@@ -45,6 +46,8 @@ export function ProductOptionsItem(props) {
                   positionsFieldArray={positionsFieldArray}
                   positionNameFieldName={positionNameFieldName}
                   positionPriceFieldName={positionPriceFieldName}
+                  fieldCount={values[positionsFieldArray].length}
+                  removePositionItem={remove}
                 />
               ))}
               <ButtonBasic
@@ -52,6 +55,13 @@ export function ProductOptionsItem(props) {
                 type="button"
                 onClick={() => push(initialPositionsItem)}
               />
+              {fieldCount !== 1 && (
+                <ButtonBasic
+                  tid="Удалить опцию"
+                  type="button"
+                  onClick={() => removeOptionItem(index)}
+                />
+              )}
             </>
           )}
         </FieldArray>

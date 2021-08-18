@@ -7,23 +7,31 @@ import {
 
 export function CreateProductComponent(props) {
   const {
-    imagesData,
     initialCategoriesItem,
     initialPositionsItem,
     initialOptionsItem,
     initialValues,
     onSubmitForm,
+    validation,
+    pickImage,
+    imagesData,
+    deleteImage,
   } = props;
   return (
     <SectionLayout>
       <TitlePrimary tid="Создание мастер-класса" />
-      <CreateProductImageComponent items={imagesData} />
+      <CreateProductImageComponent
+        pickImage={pickImage}
+        imagesData={imagesData}
+        deleteImage={deleteImage}
+      />
       <CreateProductFormContainer
         initialCategoriesItem={initialCategoriesItem}
         initialPositionsItem={initialPositionsItem}
         initialOptionsItem={initialOptionsItem}
         initialValues={initialValues}
         onSubmitForm={onSubmitForm}
+        validation={validation}
       />
     </SectionLayout>
   );
