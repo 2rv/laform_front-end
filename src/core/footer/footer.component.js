@@ -1,77 +1,66 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { FOOTER_MENU_ITEMS, FOOTER_SOCIAL_LINKS } from './footer.constant';
-import {
-  FooterCopyrightComponent,
-  FooterMenuComponent,
-  FooterSocialListComponent,
-} from './frames';
+import { FooterLinkList, FooterSocialLink } from './frames';
 import { NotificationContainer } from '../notification';
+import { TextSecondary } from 'src/lib/element/text';
 
 export function FooterComponent(props) {
+  const { laFormeLinkItems, faqLinkItems, contactLinkItems } = props;
   return (
     <Container>
-      <FooterMenu items={FOOTER_MENU_ITEMS} />
-      <NotificationForm />
-      <FooterCopyright />
-      <FooterSocialList items={FOOTER_SOCIAL_LINKS} />
+      <Content>
+        <LinkCase>
+          <FooterLinkList data={laFormeLinkItems} />
+          <FooterLinkList data={faqLinkItems} />
+          <FooterLinkList data={contactLinkItems} />
+        </LinkCase>
+        <NotificationContainer />
+      </Content>
+      <Case>
+        <div>
+          <Copyright tid="FOOTER.COPYRIGHT.BRAND" />
+          &nbsp;
+          <CopyrightMessage tid="FOOTER.COPYRIGHT.ALL_RIGHTS_RESERVED" />
+        </div>
+        <FooterSocialLink />
+      </Case>
     </Container>
   );
 }
 
-const Container = styled.div`
+const CopyrightMessage = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  line-height: 1.5;
+`;
+const Copyright = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  line-height: 1.5;
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
+const Content = styled.div`
   display: grid;
-  grid-gap: ${spacing(12)};
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, [row] auto);
-  padding: ${THEME_SIZE.INDENT.LARGE} 0;
-  @media screen and (max-width: 1259px) {
-    padding: ${spacing(6)} ${spacing(6)};
-    grid-gap: ${spacing(6)};
-  }
-  @media screen and (max-width: 600px) {
-    padding: ${spacing(12)} ${spacing(3)};
-    grid-gap: ${spacing(6)};
-    display: flex;
-    flex-direction: column;
+  gap: ${spacing(6)};
+  grid-template-columns: 1fr auto;
+  @media screen and (max-width: 800px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
-
-const FooterMenu = styled(FooterMenuComponent)`
-  grid-column: 1 / 4;
-  grid-row: 1;
-
+const LinkCase = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+  justify-content: space-around;
+  @media screen and (max-width: 800px) {
+    grid-row: 2;
+  }
+`;
+const Case = styled.div`
   display: flex;
   justify-content: space-between;
-
-  @media screen and (max-width: 600px) {
-    grid-gap: ${spacing(6)};
-    display: flex;
-    flex-direction: column;
-    padding-bottom: ${spacing(6)};
-  }
+  align-items: center;
 `;
-
-const NotificationForm = styled(NotificationContainer)`
-  grid-column: 4;
-  grid-row: 1;
-
-  margin-left: auto;
-`;
-
-const FooterCopyright = styled(FooterCopyrightComponent)`
-  grid-column: 1 / 3;
-  grid-row: 2;
-`;
-
-const FooterSocialList = styled(FooterSocialListComponent)`
-  grid-column: 4;
-  grid-row: 2;
-
-  margin-left: auto;
-  @media screen and (max-width: 600px) {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0;
-  }
+const Container = styled.div`
+  display: flex;
+  flex-flow: column;
+  padding: ${spacing(12)} 0;
+  gap: ${spacing(6)};
 `;
