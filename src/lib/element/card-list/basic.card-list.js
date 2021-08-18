@@ -28,6 +28,9 @@ const Container = styled.div`
   @media screen and (max-width: 1170px) {
     gap: ${spacing(3)};
   }
+  @media (max-width: 500px) {
+    justify-content: center;
+  }
 `;
 
 function cardType(type) {

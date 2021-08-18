@@ -29,7 +29,7 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 820px) {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(4, 150px);
+    grid-template-rows: repeat(4, minmax(160px, fit-content));
     gap: ${spacing(2)};
   }
 `;
