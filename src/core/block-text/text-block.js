@@ -6,10 +6,14 @@ import { useState } from 'react';
 
 export function TextBlock(props) {
   const [more, setMore] = useState(true);
-  const { height, text } = props;
+  const { height, text, limit = 200 } = props;
+  const firstText = text.slice(0, limit);
+  const secondText = text.slice(limit);
   return (
     <Container height={height}>
-      <Text more={more}>{text}</Text>
+      <TextSecondary>{firstText}</TextSecondary>
+      <Text more={more}>{secondText}</Text>
+      <Text more={!more} tid="..." />
       <Button
         onClick={() => setMore(!more)}
         tid={more ? 'Читать дальше' : 'Закрыть'}
@@ -17,25 +21,22 @@ export function TextBlock(props) {
     </Container>
   );
 }
+
 const Button = styled(TextButton)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   width: fit-content;
+  display: inline;
 `;
 const Container = styled.div`
-  display: grid;
-  gap: ${spacing(2)};
-  width: 100%;
-  transition: 0.7s;
+  display: inline;
   line-height: 1.5;
 `;
 
 const Text = styled(TextSecondary)`
-  display: -webkit-box;
+  display: inline;
   ${(p) =>
     p.more &&
     css`
-      -webkit-line-clamp: 3;
+      display: none;
     `}
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 `;
