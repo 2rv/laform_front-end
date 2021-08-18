@@ -50,6 +50,7 @@ export function LangSelectorComponent(props) {
 const Container = styled.div`
   display: flex;
   align-content: center;
+  position: relative;
 `;
 
 const LangContainer = styled.div`
