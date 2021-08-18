@@ -1,5 +1,15 @@
+import { USER_ROLE } from '../../common/auth';
+
 export interface ModalMenuPropsType {
   active: boolean;
-  items: { tid: string; tvalue: string; action: Function }[];
+  role: USER_ROLE;
+  userItems: IModalItems[];
+  adminUserItems: IModalItems[];
   onClose: Function;
+}
+
+interface IModalItems {
+  id: number;
+  tid: string;
+  path: string;
 }

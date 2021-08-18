@@ -8,10 +8,10 @@ import { ModalMenu } from '../../../../lib/element/modal';
 import { ReactComponent as CartIcon } from '../../../../asset/svg/cart.svg';
 import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { LOGIN_ROUTE_PATH, SIGNUP_ROUTE_PATH } from '../../header.constants';
-import { USER_MODAL_ITEMS } from './header-action.constant';
+import { USER_MODAL_ITEMS, ADMIN_USER_MODAL_ITEMS } from './header-action.constant';
 
 export function HeaderActionComponent(props) {
-  const { className, logged, user } = props;
+  const { className, logged, user, role } = props;
   const [isUserModalActive, setUserModalActive] = useState(false);
 
   const handleUserClick = () => {
@@ -31,7 +31,9 @@ export function HeaderActionComponent(props) {
           </UserContainer>
           {isUserModalActive && (
             <UserMenu
-              items={USER_MODAL_ITEMS}
+              userItems={USER_MODAL_ITEMS}
+              adminUserItems={ADMIN_USER_MODAL_ITEMS}
+              role={role}
               active={isUserModalActive}
               onClose={onUserModalClose}
             />

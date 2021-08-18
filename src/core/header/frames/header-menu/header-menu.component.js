@@ -4,7 +4,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { LinkSecondary } from '../../../../lib/element/link';
 
 export function HeaderMenuComponent(props) {
-  const { items, activePath } = props;
+  const { items, activePath, role } = props;
 
   return (
     <Container>

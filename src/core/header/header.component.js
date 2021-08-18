@@ -9,14 +9,14 @@ import {
 } from './frames';
 
 export function HeaderComponent(props) {
-  const { items, activePath, logged, user, isMobile } = props;
+  const { items, activePath, logged, user, role, isMobile } = props;
 
   return (
     <Container isMobile={isMobile}>
       {isMobile ? null : ( // <HeaderMenuMobileComponent />
         <React.Fragment>
           <HeaderMenuComponent items={items} activePath={activePath} />
-          <HeaderActionContainer logged={logged} user={user} />
+          <HeaderActionContainer logged={logged} user={user} role={role} />
         </React.Fragment>
       )}
     </Container>
