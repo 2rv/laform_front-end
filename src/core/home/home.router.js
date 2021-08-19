@@ -1,5 +1,4 @@
 import { setActivePath } from '../../lib/common/navigation';
-
 import { HOME_ROUTE_PATH } from './home.constant';
 
 export function homeRouter(ctx) {

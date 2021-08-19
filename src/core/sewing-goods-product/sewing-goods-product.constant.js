@@ -1,4 +1,4 @@
-export const SEWING_GOODS_PRODUCT_ROUTE_PATH = '/sewing-goods-product';
+export const SEWING_GOODS_PRODUCT_ROUTE_PATH = `/sewing-goods/[id]`;
 
 export const SEWING_GOODS_PRODUCT_STORE_NAME = 'sewing-goods-product';
 

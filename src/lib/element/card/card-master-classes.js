@@ -6,6 +6,8 @@ import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { CardActions } from './card-actions';
 import { SectionLayout } from '../layout';
+import { LinkPrimary } from '../link';
+import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../../../core/master-class-product';
 
 export function CardMasterClasses(props) {
   const {
@@ -18,7 +20,10 @@ export function CardMasterClasses(props) {
     price = { min: null, discount: null, max: null },
   } = props.data;
   return (
-    <Container>
+    <Container
+      path={MASTER_CLASS_PRODUCT_ROUTE_PATH}
+      pathConfig={{ query: { id: id } }}
+    >
       <CardImage
         image={image}
         bestseller={bestseller}
@@ -38,7 +43,7 @@ export function CardMasterClasses(props) {
   );
 }
 
-const Container = styled.div`
+const Container = styled(LinkPrimary)`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};

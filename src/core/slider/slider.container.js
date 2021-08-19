@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { SliderComponent } from './slider.component';
-import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { SLIDER_STORE_NAME } from './slider.constant';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { useDispatch, useSelector } from 'react-redux';
-import { sliderLoadData } from './slider.action';
 import {
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { SLIDER_STORE_NAME } from './slider.constant';
+import { sliderLoadData } from './slider.action';
+import { SliderComponent } from './slider.component';
 
 export function SliderContainer(props) {
   const dispatch = useDispatch();
@@ -29,7 +29,9 @@ export function SliderContainer(props) {
     setSlide(slide === BANNER_LIST_ITEMS.length - 1 ? slide : slide + 1);
   };
 
-  // useEffect(() => dispatch(sliderLoadData(lang)), []);
+  useEffect(() => {
+    //   dispatch(sliderLoadData(lang));
+  }, []);
 
   return (
     <SliderComponent
@@ -40,8 +42,8 @@ export function SliderContainer(props) {
       isPending={isRequestPending(state.slider)}
       isError={true}
       isSuccess={true}
-      errorMessage={getRequestErrorMessage(state.slider)}
       // isSuccess={isRequestSuccess(state.slider)}
+      errorMessage={getRequestErrorMessage(state.slider)}
     />
   );
 }

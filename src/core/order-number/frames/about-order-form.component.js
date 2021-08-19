@@ -61,7 +61,7 @@ export function AboutOrderFormComponent(props) {
         <Title tid="О заказе" />
         <SectionLayout type="TEXT_SMALL">
           <SelectTitle tid="Состояние заказа" />
-          <FieldLayout type="double">
+          <FieldLayout type="double" adaptive>
             <FieldSelect
               disabled={true}
               options={statusOptions}

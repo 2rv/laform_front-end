@@ -31,10 +31,12 @@ export function HomeContainer() {
       // isSuccess={isRequestSuccess(state.home)}
       // errorMessage={getRequestErrorMessage(state.home)}
       // pageLoading={pageLoading}
-      // masterClassesListItems={getRequestData(state.pinnedMasterClasses, [])} // будут приходить данные можно и исправить
+      // masterClassesListItems={getRequestData(state.pinnedMasterClasses, [])}
+      // будут приходить данные можно и исправить
       articlesListItems={testArticlesListItems}
       masterClassesListItems={testMasterClassesListItems}
       sewingGoodsListItems={testSewingGoodsListItems}
+      catalogListItems={catalogListItems}
     />
   );
 }
@@ -197,5 +199,31 @@ export const testSewingGoodsListItems = [
       discount: 100,
       max: 900,
     },
+  },
+];
+export const catalogListItems = [
+  {
+    title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
+    description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/400/500',
+    path: '/patterns',
+  },
+  {
+    title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
+    description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/600/500',
+    path: '/patterns',
+  },
+  {
+    title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
+    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/700/500',
+    path: '/master-classes',
+  },
+  {
+    title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
+    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/700/500',
+    path: '/sewing-goods',
   },
 ];

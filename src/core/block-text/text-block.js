@@ -6,18 +6,23 @@ import { useState } from 'react';
 
 export function TextBlock(props) {
   const [more, setMore] = useState(true);
-  const { height, text, limit = 200 } = props;
+  const { text, limit = 200 } = props;
   const firstText = text.slice(0, limit);
   const secondText = text.slice(limit);
   return (
-    <Container height={height}>
+    <Container>
       <TextSecondary>{firstText}</TextSecondary>
       <Text more={more}>{secondText}</Text>
-      <Text more={!more} tid="..." />
-      <Button
-        onClick={() => setMore(!more)}
-        tid={more ? 'Читать дальше' : 'Закрыть'}
-      />
+      {text.length > limit && (
+        <>
+          <Text more={!more} tid="..." />
+          &nbsp;
+          <Button
+            onClick={() => setMore(!more)}
+            tid={more ? 'Читать дальше' : 'Закрыть'}
+          />
+        </>
+      )}
     </Container>
   );
 }
