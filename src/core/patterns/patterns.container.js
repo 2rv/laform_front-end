@@ -15,12 +15,16 @@ import { filterByType } from '../../lib/common/filter-list-card';
 
 export function PatternsContainer() {
   const [activeTab, setActiveTab] = useState(9);
-
+  const [filteredProducts, setFilteredProducts] = useState(testListItems);
   const dispatch = useDispatch();
   const { state, pageLoading } = useSelector((state) => ({
     state: state[PATTERNS_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+
+  // useEffect(() => {
+  //   dispatch(patternsUploadData());
+  // }, []);
 
   const initialValue = () => {
     return {
@@ -34,9 +38,14 @@ export function PatternsContainer() {
     console.log(values); // это ответ с формы если пользователь что то изменяет селект/инпут
   };
 
-  useEffect(() => {
-    // dispatch(patternsUploadData());
-  }, []);
+  const filterProducts = (name) => {
+    setFilteredProducts(testListItems.filter((product) => {
+      return product.name
+        .toLowerCase()
+        .trim()
+        .includes(name);
+    }));
+  };
 
   return (
     <PatternsComponent
@@ -51,9 +60,10 @@ export function PatternsContainer() {
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
-      listItems={filterByType(testListItems, activeTab)}
+      listItems={filterByType(filteredProducts, activeTab)}
       fieldName={PATTERNS_FIELD_NAME}
       onSubmit={onSubmit}
+      filterProducts={filterProducts}
     />
   );
 }

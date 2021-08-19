@@ -16,6 +16,7 @@ export function SewingGoodsFilter(props) {
     formSuccess,
     formError,
     errorMessage,
+    filterProducts,
   } = props;
 
   return (
@@ -33,6 +34,7 @@ export function SewingGoodsFilter(props) {
       success={formSuccess}
       error={formError}
       errorMessage={errorMessage}
+      filterProducts={filterProducts}
     />
   );
 }
