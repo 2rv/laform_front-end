@@ -1,8 +1,8 @@
 export const USER_MODAL_ITEMS = [
-  { id: 1,  path: '/my-patterns',      tid: 'HEADER.USER_MENU.FAVORITE' }, // Путь тестовой, так как незнаю точную страницу
-  { id: 2,  path: '/my-patterns',      tid: 'HEADER.USER_MENU.PURCHASED_PATTERNS' },
-  { id: 3,  path: '/my-purchases',     tid: 'HEADER.USER_MENU.PURCHASE_HISTORY' },
-  { id: 4,  path: '/settings',         tid: 'HEADER.USER_MENU.SETTINGS' },
+  { id: 1, path: '/my-likes', tid: 'HEADER.USER_MENU.FAVORITE' }, // Путь тестовой, так как незнаю точную страницу
+  { id: 2, path: '/my-patterns', tid: 'HEADER.USER_MENU.PURCHASED_PATTERNS' },
+  { id: 3, path: '/my-purchases', tid: 'HEADER.USER_MENU.PURCHASE_HISTORY' },
+  { id: 4, path: '/settings', tid: 'HEADER.USER_MENU.SETTINGS' },
 ];
 
 export const ADMIN_USER_MODAL_ITEMS = [

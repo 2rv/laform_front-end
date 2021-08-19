@@ -6,6 +6,8 @@ import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
 import { useState } from 'react';
+import { LinkPrimary } from '../link';
+import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
 
 export function CardArticles(props) {
   const { id, image = null, name = null, date, like = false } = props.data;
@@ -14,7 +16,10 @@ export function CardArticles(props) {
     setLike(!isLiked);
   };
   return (
-    <Container>
+    <Container
+      path={ARTICLE_PAGE_ROUTE_PATH}
+      pathConfig={{ query: { id: id } }}
+    >
       <CardImage image={image} />
       <Content>
         <Column>
@@ -34,7 +39,7 @@ const Column = styled.div`
   flex-direction: column;
   gap: ${spacing(1)};
 `;
-const Container = styled.div`
+const Container = styled(LinkPrimary)`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};

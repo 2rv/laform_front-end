@@ -5,6 +5,8 @@ import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { CardActions } from './card-actions';
+import { LinkPrimary } from '../link';
+import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-product';
 
 export function CardSewingGoods(props) {
   const {
@@ -18,7 +20,10 @@ export function CardSewingGoods(props) {
   } = props.data;
 
   return (
-    <Container>
+    <Container
+      path={SEWING_GOODS_PRODUCT_ROUTE_PATH}
+      pathConfig={{ query: { id: id } }}
+    >
       <CardImage
         image={image}
         bestseller={bestseller}
@@ -38,7 +43,7 @@ export function CardSewingGoods(props) {
   );
 }
 
-const Container = styled.div`
+const Container = styled(LinkPrimary)`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};

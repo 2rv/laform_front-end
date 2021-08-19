@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import { TextPrimary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { Divider } from '../../lib/element/divider';
+import React from 'react';
 import { TableItem } from './table-item';
-import React, { useEffect, useState } from 'react';
+import { DividerTd } from './divider-td';
+import { HeaderTd } from './header-td';
+import styled from 'styled-components';
 
 export function TableList(props) {
   const {
@@ -14,42 +13,16 @@ export function TableList(props) {
     incrementCount,
     dicrementCoun,
   } = props;
-  //headers [name, name, name, name]
-  // items { name, price, image, params, otherParams, status }
-  // children передаёт любые блоки элементы кнопки в конец таблицы
-  // элементы сами задают ширину колонки
   return (
-    <table>
-      <col width="0" />
+    <Table>
       {headers && (
-        <>
-          <tr>
-            {headers.map((item, index) => {
-              if (index === 0) {
-                return (
-                  <Td>
-                    <Case>
-                      <TextPrimary tid={item} />
-                    </Case>
-                  </Td>
-                );
-              } else {
-                return (
-                  <Td>
-                    <GapTextPrimary>
-                      <TextPrimary tid={item} />
-                    </GapTextPrimary>
-                  </Td>
-                );
-              }
-            })}
-          </tr>
-          <Td colSpan="6">
-            <DividerTable />
-          </Td>
-        </>
+        <Tr>
+          {headers.map((item, index) => (
+            <HeaderTd text={item} key={index} />
+          ))}
+        </Tr>
       )}
-
+      <Tr>{headers && <DividerTd />}</Tr>
       {items.map((data, i) => (
         <React.Fragment key={i}>
           <TableItem
@@ -57,29 +30,22 @@ export function TableList(props) {
             incrementCount={incrementCount}
             dicrementCoun={dicrementCoun}
             data={data}
-          >
-            {children}
-          </TableItem>
-          <Td colSpan="6">
-            <DividerTable />
-          </Td>
+            children={children}
+          />
+          <DividerTd />
         </React.Fragment>
       ))}
-    </table>
+    </Table>
   );
 }
-
-const DividerTable = styled(Divider)`
-  margin: ${spacing(2)} 0;
+const Table = styled.table`
+  @media screen and (max-width: 875px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
-const Td = styled.td`
-  vertical-align: middle;
-`;
-const GapTextPrimary = styled.div`
-  margin: 0 30px;
-  min-width: max-content;
-`;
-const Case = styled.div`
-  display: flex;
-  min-width: fit-content;
+const Tr = styled.tr`
+  @media screen and (max-width: 875px) {
+    display: none;
+  }
 `;

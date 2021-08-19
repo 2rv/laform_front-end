@@ -5,6 +5,8 @@ import { ButtonPrimary, ButtonBasic, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { CardActions } from './card-actions';
+import { LinkPrimary } from '../link';
+import { PATTERNS_PRODUCT_ROUTE_PATH } from '../../../core/patterns-product';
 
 export function CardPattern(props) {
   const {
@@ -20,7 +22,10 @@ export function CardPattern(props) {
   } = props.data;
 
   return (
-    <Container>
+    <Container
+      path={PATTERNS_PRODUCT_ROUTE_PATH}
+      pathConfig={{ query: { id: id } }}
+    >
       <CardImage
         image={image}
         bestseller={bestseller}
@@ -47,7 +52,7 @@ export function CardPattern(props) {
   );
 }
 
-const Container = styled.div`
+const Container = styled(LinkPrimary)`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};

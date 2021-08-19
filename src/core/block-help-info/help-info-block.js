@@ -36,17 +36,17 @@ export const listItems = [
   {
     icon: SizeIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.SIZING_INFO',
-    path: '/',
+    path: '/faq',
   },
   {
     icon: DownloadIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.DOWNLOAD_AND_PRINT_PATTERN_INFO',
-    path: '/',
+    path: '/faq',
   },
   {
     icon: PaperIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.GLUE_PATTERN_INFO',
-    path: '/',
+    path: '/faq',
   },
 ];
 

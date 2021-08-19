@@ -21,7 +21,7 @@ export function AboutOrderFields(props) {
 
   return (
     <SectionLayout type="TEXT">
-      <FieldLayout type="double">
+      <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.FULL_NAME"
           placeholderTid="Илья Зинченко"
@@ -38,8 +38,6 @@ export function AboutOrderFields(props) {
           value={values[fieldCurrentCity]}
           onChange={handleChange}
         />
-      </FieldLayout>
-      <FieldLayout type="double">
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.DELIVERY_METHOD"
           options={dileveryOptions}
@@ -65,7 +63,7 @@ export function AboutOrderFields(props) {
         value={values[fieldOrderNote]}
         onChange={handleChange}
       />
-      <FieldLayout type="double">
+      <FieldLayout type="double" adaptive>
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PAYMENT_METHOD"
           options={paymentOptions}
