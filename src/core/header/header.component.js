@@ -9,11 +9,24 @@ import {
 } from './frames';
 
 export function HeaderComponent(props) {
-  const { items, activePath, logged, user, role, isMobile } = props;
-
+  const {
+    items,
+    activePath,
+    logged,
+    user,
+    role,
+    width,
+    setSidebarOpen,
+    sidebarIsOpen,
+  } = props;
   return (
-    <Container isMobile={isMobile}>
-      {isMobile ? null : ( // <HeaderMenuMobileComponent />
+    <Container>
+      {width < 950 ? (
+        <HeaderMenuMobileComponent
+          setSidebarOpen={setSidebarOpen}
+          sidebarIsOpen={sidebarIsOpen}
+        />
+      ) : (
         <React.Fragment>
           <HeaderMenuComponent items={items} activePath={activePath} />
           <HeaderActionContainer logged={logged} user={user} role={role} />
