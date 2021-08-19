@@ -8,9 +8,9 @@ export function HeaderMenuComponent(props) {
 
   return (
     <Container>
-      {items.map((x) => (
+      {items.map((x, index) => (
         <Item
-          key={x.name}
+          key={index}
           tid={x.name}
           path={x.path}
           active={activePath?.startsWith(x.path)}
@@ -22,7 +22,7 @@ export function HeaderMenuComponent(props) {
 
 const Container = styled.div`
   display: flex;
-  gap: ${spacing(5)};
+  gap: ${spacing(6)};
   align-items: center;
 `;
 const Item = styled(LinkSecondary)`
