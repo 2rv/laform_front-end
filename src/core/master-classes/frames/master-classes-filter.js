@@ -15,6 +15,7 @@ export function MasterClassesFormFilter(props) {
     success,
     error,
     errorMessage,
+    filterProducts,
   } = props;
 
   return (
@@ -32,6 +33,7 @@ export function MasterClassesFormFilter(props) {
       success={success}
       error={error}
       errorMessage={errorMessage}
+      filterProducts={filterProducts}
     />
   );
 }

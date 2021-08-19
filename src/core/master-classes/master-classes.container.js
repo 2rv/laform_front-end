@@ -21,6 +21,7 @@ export function MasterClassesContainer() {
     currentLang: state[LANG_STORE_NAME].active,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+  const [filteredProducts, setFilteredProducts] = useState(testListItems);
 
   const initialValue = () => {
     return {
@@ -49,6 +50,15 @@ export function MasterClassesContainer() {
     console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
   };
 
+  const filterProducts = (name) => {
+    setFilteredProducts(testListItems.filter((product) => {
+      return product.name
+        .toLowerCase()
+        .trim()
+        .includes(name);
+    }));
+  };
+
   return (
     <MasterClassesComponent
       // isPending={isRequestPending(state)}
@@ -59,9 +69,10 @@ export function MasterClassesContainer() {
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
-      listItems={testListItems}
+      listItems={filteredProducts}
       fieldName={MASTER_CLASSES_FIELD_NAME}
       onSubmit={onSubmit}
+      filterProducts={filterProducts}
     />
   );
 }

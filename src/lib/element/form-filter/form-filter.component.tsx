@@ -41,7 +41,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
   const changeInputHandler = (e: any) => {
     handleChange(e);
     handleSubmit();
-    filterProducts(e.target.value);
+    filterProducts(e.target.value.trim().toLowerCase());
   };
 
   return (

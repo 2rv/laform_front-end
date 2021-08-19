@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { articlesUploadData } from './articles.action';
@@ -19,6 +19,7 @@ export function ArticlesContainer() {
     state: state[ARTICLES_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+  const [filteredProducts, setFilteredProducts] = useState(testListItems);
 
   // React.useEffect(() => {
   //   dispatch(articlesUploadData());
@@ -36,6 +37,15 @@ export function ArticlesContainer() {
     console.log(values); // вроде должно приходить сюда изменения из формы
   };
 
+  const filterProducts = (name) => {
+    setFilteredProducts(testListItems.filter((product) => {
+      return product.name
+        .toLowerCase()
+        .trim()
+        .includes(name);
+    }));
+  };
+
   return (
     <ArticlesComponent
       isPending={isRequestPending(state.sewingGoods)}
@@ -46,9 +56,10 @@ export function ArticlesContainer() {
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
-      listItems={testListItems}
+      listItems={filteredProducts}
       fieldName={ARTICLES_FIELD_NAME}
       onSubmit={onSubmit}
+      filterProducts={filterProducts}
     />
   );
 }

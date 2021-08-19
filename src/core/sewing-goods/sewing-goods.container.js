@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { sewingGoodsUploadData } from './sewing-goods.action';
@@ -18,6 +18,7 @@ export function SewingGoodsContainer() {
     state: state[SEWING_GOODS_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+  const [filteredProducts, setFilteredProducts] = useState(testListItems);
 
   useEffect(() => {
     // dispatch(sewingGoodsUploadData());
@@ -34,6 +35,16 @@ export function SewingGoodsContainer() {
   const onSubmit = (values) => {
     console.log(values); // вроде должно приходить сюда изменения из формы
   };
+
+  const filterProducts = (name) => {
+    setFilteredProducts(testListItems.filter((product) => {
+      return product.name
+        .toLowerCase()
+        .trim()
+        .includes(name);
+    }));
+  };
+
   return (
     <SewingGoodsComponent
       isPending={isRequestPending(state.sewingGoods)}
@@ -44,9 +55,10 @@ export function SewingGoodsContainer() {
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
-      listItems={testListItems}
+      listItems={filteredProducts}
       fieldName={SEWING_GOODS_FIELD_NAME}
       onSubmit={onSubmit}
+      filterProducts={filterProducts}
     />
   );
 }

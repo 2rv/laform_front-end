@@ -35,16 +35,15 @@ export function PatternsContainer() {
   };
 
   const onSubmit = (values) => {
-    // console.log(values); // это ответ с формы если пользователь что то изменяет селект/инпут
+    console.log(values); // это ответ с формы если пользователь что то изменяет селект/инпут
   };
 
   const filterProducts = (name) => {
     setFilteredProducts(testListItems.filter((product) => {
-      return product
-        .name
+      return product.name
         .toLowerCase()
         .trim()
-        .includes(name.toLowerCase());
+        .includes(name);
     }));
   };
 
