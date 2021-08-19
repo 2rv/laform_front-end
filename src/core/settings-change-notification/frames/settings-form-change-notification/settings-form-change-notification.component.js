@@ -51,10 +51,10 @@ export function SettingsFormChangeNotificationComponent(props) {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        {isFormUploadSuccess && (
+        {!isFormUploadSuccess && (
           <SuccessAlert tid="SETTINGS.CHANGE_EMAIL.SUCCESS" />
         )}
-        {(isFormUploadError || formUploadErrorMessage) && (
+        {!(isFormUploadError || formUploadErrorMessage) && (
           <ErrorAlert tid={formUploadErrorMessage} />
         )}
         <FieldLayout type="double" adaptive>

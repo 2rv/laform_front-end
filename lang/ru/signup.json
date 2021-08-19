@@ -22,7 +22,7 @@
     "BUTTON": {
       "SUBMIT": "Создать аккаунт"
     },
-    "SUCCESS": "SUCCESS MESSAGE"
+    "SUCCESS": "Регистрация прошла успешно"
   },
   "SOCIAL": {
     "HELPER_TEXT": "Или войдите с помощью"
