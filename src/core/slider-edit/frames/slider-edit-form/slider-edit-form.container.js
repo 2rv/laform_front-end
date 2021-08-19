@@ -20,8 +20,6 @@ export function SliderEditFormContainer(props) {
     return acc;
   }, {});
 
-  console.log(initialValues);
-
   return (
     <Formik
       initialValues={initialValues}

@@ -83,8 +83,8 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               disabled={dataPending || formPending}
             />
           </FieldLayout>
-          {(formError || errorMessage) && <ErrorAlert tid={errorMessage} />}
-          {formSuccess && (
+          {!(formError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+          {!formSuccess && (
             <SuccessAlert tid="SETTINGS.CHANGE_DELIVERY_INFO.SUCCESS" />
           )}
         </SectionLayout>
