@@ -15,6 +15,7 @@ export function PatternsFormFilter(props) {
     success,
     error,
     errorMessage,
+    filterProducts,
   } = props;
 
   return (
@@ -32,6 +33,7 @@ export function PatternsFormFilter(props) {
       success={success}
       error={error}
       errorMessage={errorMessage}
+      filterProducts={filterProducts}
     />
   );
 }

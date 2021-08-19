@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { LinkSecondary } from '../link';
+import { Divider } from '../divider';
 
 import { ModalMenuPropsType } from './modal.type';
 
@@ -27,7 +28,10 @@ export function ModalMenu(props: ModalMenuPropsType) {
   return (
     <Container ref={modalRef} {...rest}>
       {items.map((item) => (
-        <Item key={item.id} tid={item.tid} path={item.path} />
+        <>
+          <Item key={item.id} tid={item.tid} path={item.path} />
+          {item.divider && <Divider />}
+        </>
       ))}
     </Container>
   );

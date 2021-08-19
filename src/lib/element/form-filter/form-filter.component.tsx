@@ -26,10 +26,22 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
     success,
     error,
     errorMessage,
+    filterProducts,
   } = props;
 
   const getFieldError = (name: string) => {
     return errors[name] && touched[name] && errors[name];
+  };
+
+  const changeSelectHandler = (e: any) => {
+    handleChange(e);
+    handleSubmit();
+  };
+
+  const changeInputHandler = (e: any) => {
+    handleChange(e);
+    handleSubmit();
+    filterProducts(e.target.value.trim().toLowerCase());
   };
 
   return (
@@ -40,10 +52,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
             options={categoryOptions}
             name={selectNameCategory}
             value={values[selectNameCategory]}
-            onChange={(e: any) => {
-              handleChange(e);
-              handleSubmit();
-            }}
+            onChange={changeSelectHandler}
             onBlur={handleBlur}
           />
 
@@ -51,10 +60,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
             options={tagsOptions}
             name={selectNameTags}
             value={values[selectNameTags]}
-            onChange={(e: any) => {
-              handleChange(e);
-              handleSubmit();
-            }}
+            onChange={changeSelectHandler}
             onBlur={handleBlur}
           />
         </FieldLayout>
@@ -63,10 +69,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
           name={fieldNameFind}
           value={values[fieldNameFind]}
           error={getFieldError(fieldNameFind)}
-          onChange={(e: any) => {
-            handleChange(e);
-            handleSubmit();
-          }}
+          onChange={changeInputHandler}
           onBlur={handleBlur}
           isFindInput
           width={195}

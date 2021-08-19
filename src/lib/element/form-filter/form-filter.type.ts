@@ -15,6 +15,7 @@ export interface FormFilterContainerPropsType {
   success: boolean;
   error: boolean;
   errorMessage: any;
+  filterProducts: Function;
 }
 
 export interface FormFilterComponentPropsType {
@@ -37,4 +38,5 @@ export interface FormFilterComponentPropsType {
   success: boolean;
   error: boolean;
   errorMessage: any;
+  filterProducts: Function;
 }
