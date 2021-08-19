@@ -7,12 +7,13 @@ export const USER_MODAL_ITEMS = [
 
 export const ADMIN_USER_MODAL_ITEMS = [
   ...USER_MODAL_ITEMS,
-  { id: 5,  path: '/about-account',    tid: 'Об аккаунте',  },
-  { id: 6,  path: '/create-product',   tid: 'Создание продукта',  },
-  { id: 7,  path: '/create-article',   tid: 'Создание мастер-класса',  },
-  { id: 8,  path: '/orders',           tid: 'Таблица заказов',  },
-  { id: 9,  path: '/compilation',      tid: 'Подборки',  },
-  { id: 10, path: '/edit-compilation', tid: 'Редактирование подборки',  },
-  { id: 11, path: '/order-number',     tid: 'Подробно о заказе',  },
-  { id: 12, path: '/slider-list',      tid: 'Список слайдеров',  },
+  { id: 5,  divider: true },
+  { id: 6,  path: '/about-account',    tid: 'Об аккаунте' },
+  { id: 7,  path: '/create-product',   tid: 'Создание продукта' },
+  { id: 8,  path: '/create-article',   tid: 'Создание мастер-класса' },
+  { id: 9,  path: '/orders',           tid: 'Таблица заказов' },
+  { id: 10, path: '/compilation',      tid: 'Подборки' },
+  { id: 11, path: '/edit-compilation', tid: 'Редактирование подборки' },
+  { id: 12, path: '/order-number',     tid: 'Подробно о заказе' },
+  { id: 13, path: '/slider-list',      tid: 'Список слайдеров' },
 ];

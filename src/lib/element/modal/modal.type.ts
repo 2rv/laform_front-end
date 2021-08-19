@@ -12,4 +12,5 @@ interface IModalItems {
   tid: string;
   tvalue: string;
   path: string;
+  divider: boolean;
 }
