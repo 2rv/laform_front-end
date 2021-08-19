@@ -16,6 +16,7 @@ export interface FormFilterContainerPropsType {
   error: boolean;
   errorMessage: any;
   filterProducts: Function;
+  sortProductsByDate: Function;
 }
 
 export interface FormFilterComponentPropsType {
@@ -39,4 +40,5 @@ export interface FormFilterComponentPropsType {
   error: boolean;
   errorMessage: any;
   filterProducts: Function;
+  sortProductsByDate: Function;
 }

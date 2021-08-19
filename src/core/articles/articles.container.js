@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { articlesUploadData } from './articles.action';
 import { ARTICLES_STORE_NAME } from './articles.constant';
@@ -46,6 +47,20 @@ export function ArticlesContainer() {
     }));
   };
 
+  const sortProductsByDate = (option = 1) => {
+    setFilteredProducts((prevProducts) => {
+      return [...prevProducts].sort((a, b) => {
+        if (option === 1) {
+          return prevProducts;
+        } else if (option === 2) {
+          return moment(b.createdDate) - moment(a.createdDate);
+        } else if (option === 3) {
+          return moment(a.createdDate) - moment(b.createdDate);
+        }
+      });
+    });
+  };
+
   return (
     <ArticlesComponent
       isPending={isRequestPending(state.sewingGoods)}
@@ -60,6 +75,7 @@ export function ArticlesContainer() {
       fieldName={ARTICLES_FIELD_NAME}
       onSubmit={onSubmit}
       filterProducts={filterProducts}
+      sortProductsByDate={sortProductsByDate}
     />
   );
 }
@@ -98,6 +114,7 @@ export const testListItems = [
     like: true,
     date: '1 неделю назад',
     type: 2,
+    createdDate: '2021-02-19T11:33:22.332Z',
   },
 
   {
@@ -107,15 +124,7 @@ export const testListItems = [
     like: false,
     date: '1 неделю назад',
     type: 2,
-  },
-  {
-    id: 3,
-    name: 'Батист',
-    image: '/static/test/popular-gods-3.png',
-
-    like: false,
-    date: '2 недели назад',
-    type: 2,
+    createdDate: '2021-08-19T11:33:22.332Z',
   },
   {
     id: 3,
@@ -124,5 +133,15 @@ export const testListItems = [
     like: false,
     date: '2 недели назад',
     type: 2,
+    createdDate: '2021-04-15T11:33:22.332Z',
+  },
+  {
+    id: 3,
+    name: 'Батист',
+    image: '/static/test/popular-gods-3.png',
+    like: false,
+    date: '2 недели назад',
+    type: 2,
+    createdDate: '2021-04-19T11:33:22.332Z',
   },
 ];

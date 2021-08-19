@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { sewingGoodsUploadData } from './sewing-goods.action';
 import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
@@ -45,6 +46,20 @@ export function SewingGoodsContainer() {
     }));
   };
 
+  const sortProductsByDate = (option = 1) => {
+    setFilteredProducts((prevProducts) => {
+      return [...prevProducts].sort((a, b) => {
+        if (option === 1) {
+          return prevProducts;
+        } else if (option === 2) {
+          return moment(b.createdDate) - moment(a.createdDate);
+        } else if (option === 3) {
+          return moment(a.createdDate) - moment(b.createdDate);
+        }
+      });
+    });
+  };
+
   return (
     <SewingGoodsComponent
       isPending={isRequestPending(state.sewingGoods)}
@@ -59,6 +74,7 @@ export function SewingGoodsContainer() {
       fieldName={SEWING_GOODS_FIELD_NAME}
       onSubmit={onSubmit}
       filterProducts={filterProducts}
+      sortProductsByDate={sortProductsByDate}
     />
   );
 }
@@ -97,6 +113,7 @@ export const testListItems = [
     select: true,
     like: true,
     type: 0,
+    createdDate: '2021-02-19T11:33:22.332Z',
     price: {
       min: 500,
       discount: 230,
@@ -111,6 +128,7 @@ export const testListItems = [
     like: false,
     bestseller: true,
     type: 0,
+    createdDate: '2021-08-19T11:33:22.332Z',
     price: {
       min: 200,
       discount: null,
@@ -125,6 +143,7 @@ export const testListItems = [
     like: false,
     bestseller: true,
     type: 0,
+    createdDate: '2021-04-19T11:33:22.332Z',
     price: {
       min: 200,
       discount: 100,
@@ -139,6 +158,7 @@ export const testListItems = [
     like: false,
     bestseller: true,
     type: 0,
+    createdDate: '2021-04-14T11:33:22.332Z',
     price: {
       min: 200,
       discount: 100,

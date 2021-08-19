@@ -27,16 +27,17 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
     error,
     errorMessage,
     filterProducts,
+    sortProductsByDate,
   } = props;
 
   const getFieldError = (name: string) => {
     return errors[name] && touched[name] && errors[name];
   };
 
-  const changeSelectHandler = (e: any) => {
-    handleChange(e);
-    handleSubmit();
-  };
+  // const changeSelectHandler = (e: any) => {
+  //   handleChange(e);
+  //   handleSubmit();
+  // };
 
   const changeInputHandler = (e: any) => {
     handleChange(e);
@@ -52,7 +53,10 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
             options={categoryOptions}
             name={selectNameCategory}
             value={values[selectNameCategory]}
-            onChange={changeSelectHandler}
+            onChange={(e: any) => {
+              handleChange(e);
+              handleSubmit();
+            }}
             onBlur={handleBlur}
           />
 
@@ -60,7 +64,11 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
             options={tagsOptions}
             name={selectNameTags}
             value={values[selectNameTags]}
-            onChange={changeSelectHandler}
+            onChange={(e: any) => {
+              handleChange(e);
+              handleSubmit();
+              sortProductsByDate(Number(e.target.value))
+            }}
             onBlur={handleBlur}
           />
         </FieldLayout>
