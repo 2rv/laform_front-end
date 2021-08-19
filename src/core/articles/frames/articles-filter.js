@@ -17,6 +17,7 @@ export function ArticlesFilter(props) {
     formError,
     errorMessage,
     filterProducts,
+    sortProductsByDate,
   } = props;
 
   return (
@@ -35,6 +36,7 @@ export function ArticlesFilter(props) {
       error={formError}
       errorMessage={errorMessage}
       filterProducts={filterProducts}
+      sortProductsByDate={sortProductsByDate}
     />
   );
 }

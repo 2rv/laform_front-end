@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   getRequestErrorMessage,
@@ -47,7 +48,7 @@ export function MasterClassesContainer() {
   }, []);
 
   const onSubmit = (values) => {
-    console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
+    // console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
   };
 
   const filterProducts = (name) => {
@@ -57,6 +58,20 @@ export function MasterClassesContainer() {
         .trim()
         .includes(name);
     }));
+  };
+
+  const sortProductsByDate = (option = 1) => {
+    setFilteredProducts((prevProducts) => {
+      return [...prevProducts].sort((a, b) => {
+        if (option === 1) {
+          return prevProducts;
+        } else if (option === 2) {
+          return moment(b.createdDate) - moment(a.createdDate);
+        } else if (option === 3) {
+          return moment(a.createdDate) - moment(b.createdDate);
+        }
+      });
+    });
   };
 
   return (
@@ -73,6 +88,7 @@ export function MasterClassesContainer() {
       fieldName={MASTER_CLASSES_FIELD_NAME}
       onSubmit={onSubmit}
       filterProducts={filterProducts}
+      sortProductsByDate={sortProductsByDate}
     />
   );
 }
@@ -104,12 +120,14 @@ export const tagsSelectOptions = [
 export const testListItems = [
   {
     id: 1,
-    name: 'Мастер-класс по пошиву мужских брюк 1003',
+    // name: 'Мастер-класс по пошиву мужских брюк 1003',
+    name: 'Old old 1',
     image: '/static/test/popular-gods-1.png',
     bestseller: true,
     select: false,
     like: true,
     type: 1,
+    createdDate: '2021-02-19T11:33:22.332Z',
     price: {
       min: 500,
       discount: 230,
@@ -118,12 +136,14 @@ export const testListItems = [
   },
   {
     id: 2,
-    name: 'Инструкция по пошиву Комбинезон 0717',
+    // name: 'Инструкция по пошиву Комбинезон 0717',
+    name: 'Old old 3',
     image: '/static/test/popular-gods-2.png',
     bestseller: true,
     select: true,
     like: false,
     type: 1,
+    createdDate: '2021-08-18T11:33:22.332Z',
     price: {
       min: 500,
       discount: null,
@@ -132,12 +152,14 @@ export const testListItems = [
   },
   {
     id: 3,
-    name: 'Мастер-класс по пошиву Жакета 0305',
+    // name: 'Мастер-класс по пошиву Жакета 0305',
+    name: 'Old 2',
     image: '/static/test/popular-gods-3.png',
     bestseller: false,
     select: true,
     like: true,
     type: 1,
+    createdDate: '2021-07-20T11:33:22.332Z',
     price: {
       min: 500,
       discount: 230,
