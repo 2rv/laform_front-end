@@ -25,7 +25,6 @@ const Container = styled(LinkPrimary)`
   display: flex;
   height: 100%;
   width: 100%;
-  max-height: 260px;
   flex: 1 0;
 `;
 
@@ -35,7 +34,8 @@ const ModifierContainer = styled.div`
   right: 0;
   bottom: 0;
   flex-direction: column;
-  gap: ${spacing(0.5)};
+  gap: ${spacing(1)};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Modifier = styled(TextSecondary)`
   background-color: ${({ alt }) =>

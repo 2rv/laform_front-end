@@ -21,11 +21,6 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
     handleChange,
     handleBlur,
     handleSubmit,
-
-    pending,
-    success,
-    error,
-    errorMessage,
     filterProducts,
     sortProductsByDate,
   } = props;
@@ -67,7 +62,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
             onChange={(e: any) => {
               handleChange(e);
               handleSubmit();
-              sortProductsByDate(Number(e.target.value))
+              sortProductsByDate(Number(e.target.value));
             }}
             onBlur={handleBlur}
           />
@@ -92,7 +87,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   gap: ${spacing(3)};
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 720px) {
     flex-flow: column;
   }
 `;

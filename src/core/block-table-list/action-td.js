@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-import { ButtonBasic } from '../../lib/element/button';
-import { LinkSecondary } from '../../lib/element/link';
-import { TextSecondary, TextPrimary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { spacing } from '../../lib/theme';
 
 export function ActionTd(props) {
   const { id, children } = props;
@@ -18,6 +15,7 @@ const Td = styled.td`
   padding-left: ${spacing(6)};
   @media screen and (max-width: 875px) {
     padding-left: 0;
+    margin-left: 90px;
   }
 `;
 const ActionBlock = styled.div`

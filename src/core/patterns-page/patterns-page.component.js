@@ -40,5 +40,6 @@ const Content = styled.div`
   @media screen and (max-width: 1070px) {
     display: flex;
     flex-direction: column;
+    gap: ${spacing(3)};
   }
 `;

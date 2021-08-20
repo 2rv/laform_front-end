@@ -6,7 +6,7 @@ import { ReactComponent as ArrowDown } from '../../asset/svg/arrow-down-solid.sv
 import { useState } from 'react';
 import { SidebarMenuItemSecondary } from './sidebar-menu-item-secondary';
 import { ButtonBasic } from 'src/lib/element/button';
-import { setLinkRedirect } from 'src/main/navigation';
+import { redirect } from 'src/main/navigation';
 
 export function SidebarMenuItemPrimary(props) {
   const { title, items, pathname } = props.data;
@@ -69,7 +69,6 @@ const Content = styled.div`
   width: 100%;
   overflow: hidden;
   gap: ${spacing(2)};
-  /* transition: max-height 0.5s; */
   max-height: 0;
   ${(p) =>
     p.isOpen &&

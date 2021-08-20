@@ -14,16 +14,14 @@ import { TitlePrimary } from '../../lib/element/title';
 export function LoginComponent(props) {
   return (
     <ContentLayout horizontal="center" vertical="center">
-      <PageLayout type="SMALL">
-        <SectionLayout type="SMALL">
-          <TitlePrimary tid="LOGIN.SECTION_TITLE" />
-          <SectionLayout>
-            <LoginFormContainer {...props} />
-            <LoginFormSocialComponent />
-            <LoginFooterComponent />
-          </SectionLayout>
+      <SectionLayout type="SMALL">
+        <TitlePrimary tid="LOGIN.SECTION_TITLE" />
+        <SectionLayout>
+          <LoginFormContainer {...props} />
+          <LoginFormSocialComponent />
+          <LoginFooterComponent />
         </SectionLayout>
-      </PageLayout>
+      </SectionLayout>
     </ContentLayout>
   );
 }

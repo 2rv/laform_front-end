@@ -22,14 +22,16 @@ export function BasicCardList(props) {
 
 const Container = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(6)};
-  @media screen and (max-width: 1170px) {
+  @media screen and (max-width: 1070px) {
     gap: ${spacing(3)};
+    grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 500px) {
-    justify-content: center;
+  @media screen and (max-width: 720px) {
+    gap: ${spacing(3)};
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 

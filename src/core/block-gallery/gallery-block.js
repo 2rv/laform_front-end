@@ -101,6 +101,7 @@ const MainImage = styled.img`
 `;
 const Action = styled(ButtonBasic)`
   z-index: 1;
+  width: auto;
   background: none;
   position: absolute;
   ${(p) => {

@@ -60,10 +60,10 @@ const File = styled.input`
 const Container = styled(SectionLayout)`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  @media screen and (max-width: 1170px) {
+  @media screen and (max-width: 1070px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media screen and (max-width: 820px) {
+  @media screen and (max-width: 720px) {
     grid-template-columns: repeat(2, 1fr);
   }
   @media screen and (max-width: 600px) {

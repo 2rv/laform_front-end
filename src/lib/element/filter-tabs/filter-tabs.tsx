@@ -21,10 +21,13 @@ export function FilterTabs(props: FilterTabsPropsType) {
 
 const Container = styled.div`
   display: flex;
+  overflow: auto;
+  width: 100%;
   gap: ${spacing(5)};
 `;
 const Tab = styled(TextButton)`
   padding: ${spacing(2)} 0;
+  min-width: max-content;
   border-bottom: 2px solid transparent;
   ${(p: { actived: any }) =>
     p.actived &&

@@ -30,7 +30,7 @@ export function ProductMainComponent(props) {
         {bestSeller && <Modifier alt tid={'Хит!'} />}
         {discount && <Modifier tid={'Скидка!'} />}
       </TitleCase>
-      <TextSecondary tid={shortDescription} />
+      <ShortDescriptionText tid={shortDescription} />
       <Divider />
       <TextBlock text={fullDescription} />
       <Divider />
@@ -42,17 +42,21 @@ export function ProductMainComponent(props) {
       <Divider />
       <FooterCase>
         <ProductPriceComponent price={price} discount={discount} />
-        <CardActions width={190} type={2} like={like} select={select} />
+        <CardActions type={2} like={like} select={select} />
       </FooterCase>
     </Container>
   );
 }
-
+const ShortDescriptionText = styled(TextSecondary)`
+  @media screen and (max-width: 720px) {
+    order: -1;
+  }
+`;
 const FooterCase = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 720px) {
     align-items: flex-start;
     flex-direction: column;
     gap: ${spacing(3)};
@@ -63,16 +67,22 @@ const TitleCase = styled.div`
   display: flex;
   align-items: baseline;
   gap: ${spacing(3)};
+  @media screen and (max-width: 720px) {
+    order: -1;
+  }
 `;
 const Modifier = styled(TextSecondary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
   color: ${({ alt }) => (alt ? THEME_COLOR.PRIMARY_DARK : THEME_COLOR.PRIMARY)};
 `;
 const Title = styled(TitlePrimary)`
-  font-size: 28px;
+  font-size: 1.5;
 `;
 const Container = styled.div`
   gap: ${spacing(3)};
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 720px) {
+    display: contents;
+  }
 `;

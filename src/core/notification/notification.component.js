@@ -18,4 +18,7 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   gap: ${spacing(3)};
+  @media screen and (max-width: 875px) {
+    order: 1;
+  }
 `;

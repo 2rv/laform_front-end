@@ -1,1 +1,1 @@
-export { SliderEditFormContainer } from './slider-edit-form.container';
+export { SliderEditFormComponent } from './slider-edit-form.component';

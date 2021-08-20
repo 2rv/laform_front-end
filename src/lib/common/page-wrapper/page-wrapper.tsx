@@ -9,7 +9,7 @@ import {
   ContentLayout,
 } from 'src/lib/element/layout';
 import styled from 'styled-components';
-import { THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { SidebarMenu } from '../../../core/sidebar-menu';
 
 export function PageWrapper(props: PageWrapperPropsType) {
@@ -27,6 +27,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
       window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);
+
   return (
     <Container type="LARGE" isOpen={sidebarIsOpen}>
       <Main type="MEDIUM">
@@ -34,7 +35,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
           <Paddings>
             <Content horizontal="center">
               <PageLayout>
-                <HeaderLogoContainer width={width} />
+                <HeaderLogoContainer isMobile={width < 720} />
               </PageLayout>
             </Content>
           </Paddings>
@@ -77,6 +78,9 @@ const Container = styled(SectionLayout)`
   height: 100vh;
   overflow: ${(p: { isOpen: boolean }) => (p.isOpen ? 'hidden' : 'auto')};
   flex-flow: column;
+  @media screen and (max-width: 720px) {
+    gap: ${spacing(6)};
+  }
 `;
 const Content = styled(ContentLayout)`
   flex: 1;
@@ -85,6 +89,9 @@ const Main = styled(SectionLayout)`
   flex: 1;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 720px) {
+    gap: ${spacing(3)};
+  }
 `;
 const Background = styled.div`
   background-color: ${THEME_COLOR.GRAY};

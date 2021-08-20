@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { ButtonBasic } from '../../lib/element/button';
-import { LinkSecondary } from '../../lib/element/link';
-import { TextSecondary, TextPrimary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { TextPrimary } from '../../lib/element/text';
+import { spacing } from '../../lib/theme';
 
 export function NameTd(props) {
   const { image, name } = props;
@@ -35,4 +33,7 @@ const Case = styled.div`
   align-items: center;
   gap: ${spacing(3)};
   line-height: 1.5;
+  @media screen and (max-width: 875px) {
+    align-items: flex-start;
+  }
 `;

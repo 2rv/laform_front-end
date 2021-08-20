@@ -5,7 +5,7 @@ import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg
 import { useEffect, useState } from 'react';
 
 export function CardActions(props) {
-  const { like = false, select = false, type = 0, width = 165 } = props;
+  const { like = false, select = false, type = 0 } = props;
   const [isLiked, setLike] = useState(like);
   const [isSelected, setSelect] = useState(select);
   const [selectText, setSelectText] = useState(null);
@@ -30,7 +30,8 @@ export function CardActions(props) {
   return (
     <LineCase>
       <Button
-        width={width}
+        width={190}
+        adaptive
         onClick={onSelect}
         select={isSelected}
         tid={selectText}
@@ -44,6 +45,9 @@ export function CardActions(props) {
 const LineCase = styled.div`
   display: flex;
   gap: ${spacing(3)};
+  @media screen and (max-width: 720px) {
+    width: 100%;
+  }
 `;
 const Button = styled(ButtonPrimary)`
   ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}

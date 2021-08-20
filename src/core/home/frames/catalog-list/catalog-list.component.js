@@ -29,21 +29,28 @@ const Container = styled.div`
   display: grid;
   gap: ${spacing(6)};
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(1, 262.5px);
-  @media only screen and (max-width: 1180px) {
+  /* grid-template-rows: repeat(1, 262.5px); */
+  @media only screen and (max-width: 1070px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(2, 170px);
+    /* grid-template-rows: repeat(2, 170px); */
     gap: ${spacing(3)};
   }
-  @media only screen and (max-width: 820px) {
+  @media only screen and (max-width: 720px) {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(4, minmax(160px, fit-content));
+    /* grid-template-rows: repeat(4, minmax(160px, fit-content)); */
     gap: ${spacing(2)};
   }
 `;
 const ContainerItem = styled(LinkPrimary)`
   display: grid;
   position: relative;
+  height: 270px;
+  @media only screen and (max-width: 1070px) {
+    height: 290px;
+  }
+  @media only screen and (max-width: 720px) {
+    height: 290px;
+  }
 `;
 const BackgroundImage = styled.img`
   width: 100%;

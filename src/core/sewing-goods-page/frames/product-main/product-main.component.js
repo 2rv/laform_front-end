@@ -30,7 +30,7 @@ export function ProductMainComponent(props) {
         {bestSeller && <Modifier alt tid={'Хит!'} />}
         {discount && <Modifier tid={'Скидка!'} />}
       </TitleCase>
-      <TextSecondary tid={shortDescription} />
+      <ShortDescriptionText tid={shortDescription} />
       <Divider />
       <TextBlock text={fullDescription} />
       <Divider />
@@ -56,16 +56,27 @@ const TitleCase = styled.div`
   display: flex;
   align-items: baseline;
   gap: ${spacing(3)};
+  @media screen and (max-width: 720px) {
+    order: -1;
+  }
 `;
 const Modifier = styled(TextSecondary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
   color: ${({ alt }) => (alt ? THEME_COLOR.PRIMARY_DARK : THEME_COLOR.PRIMARY)};
 `;
 const Title = styled(TitlePrimary)`
-  font-size: 28px;
+  font-size: 1.5;
+`;
+const ShortDescriptionText = styled(TextSecondary)`
+  @media screen and (max-width: 720px) {
+    order: -1;
+  }
 `;
 const Container = styled.div`
   gap: ${spacing(3)};
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 720px) {
+    display: contents;
+  }
 `;

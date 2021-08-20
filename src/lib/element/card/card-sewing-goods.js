@@ -46,7 +46,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
-  width: 360px;
 `;
 const Content = styled.div`
   display: flex;

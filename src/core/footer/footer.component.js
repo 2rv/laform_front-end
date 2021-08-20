@@ -41,8 +41,8 @@ const Content = styled.div`
   display: grid;
   gap: ${spacing(6)};
   grid-template-columns: 1fr auto;
-  @media screen and (max-width: 800px) {
-    grid-template-columns: repeat(1, 1fr);
+  @media screen and (max-width: 875px) {
+    display: contents;
   }
   input {
     background: ${THEME_COLOR.WHITE};
@@ -51,15 +51,18 @@ const Content = styled.div`
 const LinkCase = styled.div`
   display: flex;
   gap: ${spacing(3)};
-  justify-content: space-around;
-  @media screen and (max-width: 800px) {
-    grid-row: 2;
+  justify-content: space-between;
+  @media screen and (max-width: 875px) {
+    flex-direction: column;
   }
 `;
 const Case = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 875px) {
+    display: contents;
+  }
 `;
 const Container = styled.div`
   display: flex;

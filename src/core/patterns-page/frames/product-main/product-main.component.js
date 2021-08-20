@@ -23,7 +23,7 @@ export function ProductMainComponent(props) {
   return (
     <Container>
       <Title tid={title} />
-      <TextSecondary tid={shortDescription} />
+      <ShortDescriptionText tid={shortDescription} />
       <Divider />
       <TextBlock text={fullDescription} />
       <Divider />
@@ -42,10 +42,21 @@ export function ProductMainComponent(props) {
 }
 
 const Title = styled(TitlePrimary)`
-  font-size: 28px;
+  font-size: 1.5;
+  @media screen and (max-width: 720px) {
+    order: -1;
+  }
+`;
+const ShortDescriptionText = styled(TextSecondary)`
+  @media screen and (max-width: 720px) {
+    order: -1;
+  }
 `;
 const Container = styled.div`
   gap: ${spacing(3)};
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 720px) {
+    display: contents;
+  }
 `;

@@ -54,6 +54,8 @@ const HeaderCase = styled.div`
 `;
 const Button = styled(ButtonBasic)`
   padding: 0;
+  width: fit-content;
+  background-color: transparent;
   height: fit-content;
 `;
 const TextLight = styled(TextSecondary)`
