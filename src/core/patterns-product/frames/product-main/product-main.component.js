@@ -52,6 +52,11 @@ const FooterCase = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 550px) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: ${spacing(3)};
+  }
 `;
 
 const TitleCase = styled.div`

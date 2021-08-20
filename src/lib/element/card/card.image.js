@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { LinkPrimary } from '../link';
 
-export function CardImage({ image, bestseller, action }) {
+export function CardImage({ image, bestseller, action, path, pathConfig }) {
   return (
-    <Container>
+    <Container path={path} pathConfig={pathConfig}>
       <Image src={image} />
       <ModifierContainer>
         {action && <Modifier tid={'Акция'} />}
@@ -19,7 +20,7 @@ const Image = styled.img`
   object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
-const Container = styled.div`
+const Container = styled(LinkPrimary)`
   position: relative;
   display: flex;
   height: 100%;

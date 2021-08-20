@@ -20,11 +20,10 @@ export function CardMasterClasses(props) {
     price = { min: null, discount: null, max: null },
   } = props.data;
   return (
-    <Container
-      path={MASTER_CLASS_PRODUCT_ROUTE_PATH}
-      pathConfig={{ query: { id: id } }}
-    >
+    <Container>
       <CardImage
+        path={MASTER_CLASS_PRODUCT_ROUTE_PATH}
+        pathConfig={{ query: { id: id } }}
         image={image}
         bestseller={bestseller}
         action={price?.discount}
@@ -43,7 +42,7 @@ export function CardMasterClasses(props) {
   );
 }
 
-const Container = styled(LinkPrimary)`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
