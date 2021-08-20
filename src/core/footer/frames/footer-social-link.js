@@ -36,7 +36,7 @@ const Link = styled.a`
 const Container = styled.div`
   display: flex;
   gap: ${spacing(3)};
-  @media screen and (max-width: 875px) {
+  @media screen and (max-width: 720px) {
     order: 2;
   }
 `;

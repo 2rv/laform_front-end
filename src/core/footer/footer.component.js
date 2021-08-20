@@ -41,7 +41,7 @@ const Content = styled.div`
   display: grid;
   gap: ${spacing(6)};
   grid-template-columns: 1fr auto;
-  @media screen and (max-width: 875px) {
+  @media screen and (max-width: 720px) {
     display: contents;
   }
   input {
@@ -52,7 +52,7 @@ const LinkCase = styled.div`
   display: flex;
   gap: ${spacing(3)};
   justify-content: space-between;
-  @media screen and (max-width: 875px) {
+  @media screen and (max-width: 720px) {
     flex-direction: column;
   }
 `;
@@ -60,7 +60,7 @@ const Case = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media screen and (max-width: 875px) {
+  @media screen and (max-width: 720px) {
     display: contents;
   }
 `;
