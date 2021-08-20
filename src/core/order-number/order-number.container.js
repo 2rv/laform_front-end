@@ -20,9 +20,10 @@ export function OrderNumberContainer() {
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
 
+  const orderNumberDetails = getRequestData(state.orderNumber);
+
   useEffect(() => {
-    // dispatch(orderNumberUploadData());
-    // console.log('getreq', getRequestData(state.orderNumber, []));
+    dispatch(orderNumberUploadData());
   }, []);
 
   const onSubmit = (values) => {
@@ -47,12 +48,8 @@ export function OrderNumberContainer() {
       isSuccess={isRequestSuccess(state.orderNumber)}
       errorMessage={getRequestErrorMessage(state.orderNumber)}
       pageLoading={pageLoading}
-      itemsTable={itemsTable}
+      orderNumberDetails={orderNumberDetails}
       headersTable={headersTable}
-      infoData={infoData}
-      paymentOptions={paymentOptions}
-      dileveryOptions={dileveryOptions}
-      statusOptions={statusOptions}
       onSubmit={onSubmit}
       initialValue={initialValue()}
     />
@@ -91,25 +88,3 @@ const itemsTable = [
     ],
   },
 ];
-
-const infoData = {
-  orderId: 555105,
-  discountPrice: 299,
-  discount: 15,
-  diliveryPrice: 299,
-  price: 3200,
-};
-
-const paymentOptions = [
-  {
-    id: 0,
-    tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.PAYMENT_METHOD.ONLINE',
-  },
-];
-const dileveryOptions = [
-  {
-    id: 0,
-    tid: 'ORDER_NUMBER.FORM.FIELDS.SELECT_OPTIONS.DELIVERY_METHOD.SENDING_BY_EMAIL',
-  },
-];
-const statusOptions = [{ id: 0, tid: 'Доставлен' }];

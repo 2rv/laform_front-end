@@ -11,10 +11,7 @@ import { AboutOrderFields } from './about-order-fields.component';
 
 export function AboutOrderFormComponent(props) {
   const {
-    discountPrice,
-    discount,
-    diliveryPrice,
-    price,
+    orderNumberDetails,
 
     fieldFullName,
     fieldCurrentCity,
@@ -27,7 +24,6 @@ export function AboutOrderFormComponent(props) {
 
     paymentOptions,
     dileveryOptions,
-    statusOptions,
 
     values,
     handleSubmit,
@@ -50,13 +46,14 @@ export function AboutOrderFormComponent(props) {
           dileveryOptions={dileveryOptions}
           values={values}
           handleChange={handleChange}
+          orderNumberDetails={orderNumberDetails}
         />
         <Divider />
         <AboutOrderPrice
-          discountPrice={discountPrice}
-          discount={discount}
-          diliveryPrice={diliveryPrice}
-          price={price}
+          discountPrice={orderNumberDetails?.discountPrice}
+          discount={orderNumberDetails?.discount}
+          diliveryPrice={orderNumberDetails?.deliveryPrice}
+          price={orderNumberDetails?.totalPrice}
         />
         <Title tid="О заказе" />
         <SectionLayout type="TEXT_SMALL">
@@ -64,7 +61,7 @@ export function AboutOrderFormComponent(props) {
           <FieldLayout type="double">
             <FieldSelect
               disabled={true}
-              options={statusOptions}
+              options={[{ id: 0, tid: orderNumberDetails?.orderStatus }]}
               name={statusSelectName}
               value={values[statusSelectName]}
               onChange={handleChange}
