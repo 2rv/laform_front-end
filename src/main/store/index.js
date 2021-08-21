@@ -137,6 +137,10 @@ import {
   sliderEditStore,
   SLIDER_EDIT_STORE_NAME,
 } from '../../core/slider-edit';
+import {
+  promocodesStore,
+  PROMOCODES_STORE_NAME,
+} from '../../core/promocodes';
 
 export const reducers = combineReducers({
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
@@ -183,6 +187,7 @@ export const reducers = combineReducers({
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
   [SLIDER_LIST_STORE_NAME]: sliderListStore,
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
+  [PROMOCODES_STORE_NAME]: promocodesStore,
 });
 
 export { initStore } from './store.core';
