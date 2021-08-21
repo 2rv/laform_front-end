@@ -39,30 +39,28 @@ export function SettingsChangeNotificationContainer() {
     [SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME.NOTIFICATION]: notification,
   });
 
-  // useEffect(() => {
-  //   dispatch(settingsChangeNotificationLoad());
-  // }, []);
+  useEffect(() => {
+    // dispatch(settingsChangeNotificationLoad());
+  }, []);
 
   return (
     <SettingsFormChangeNotificationContainer
-      isFormUploadPending={
-        isRequestPending(state.settingsChangeNotificationUploadForm) || true
-      }
-      formUploadErrorMessage={
-        getRequestErrorMessage(state.settingsChangeNotificationUploadForm) ||
-        true
-      }
-      isFormUploadSuccess={
-        isRequestSuccess(state.settingsChangeNotificationUploadForm) || true
-      }
-      isFormUploadError={
-        isRequestError(state.settingsChangeNotificationUploadForm) || true
-      }
-      isNotificationLoadPending={
-        isRequestPending(state.settingsChangeNotificationLoadNotification) ||
-        true
-      }
-      pageLoading={pageLoading || true}
+      isFormUploadPending={isRequestPending(
+        state.settingsChangeNotificationUploadForm,
+      )}
+      formUploadErrorMessage={getRequestErrorMessage(
+        state.settingsChangeNotificationUploadForm,
+      )}
+      isFormUploadSuccess={isRequestSuccess(
+        state.settingsChangeNotificationUploadForm,
+      )}
+      isFormUploadError={isRequestError(
+        state.settingsChangeNotificationUploadForm,
+      )}
+      isNotificationLoadPending={isRequestPending(
+        state.settingsChangeNotificationLoadNotification,
+      )}
+      pageLoading={pageLoading}
       initialValue={settingsChangeNotificationFormGetInitialValue()}
       onSubmitForm={settingsChangeNotificationFormSendData}
       fieldName={SETTINGS_CHANGE_NOTIFICATION_FORM_FIELD_NAME}

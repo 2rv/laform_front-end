@@ -1,5 +1,5 @@
 import { TitlePrimary } from '../../lib/element/title';
-import { BasicField } from '../../lib/element/field';
+import { TextareaField } from '../../lib/element/field';
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { ReactComponent as SendIcon } from '../../asset/svg/message-send-icon.svg';
@@ -20,7 +20,7 @@ export function BlockComments(props) {
       <SectionLayout type="SMALL">
         <Title tid="Написать отзыв" />
         <IconWrapper>
-          <BasicField placeholderTid="Введите свой отзыв" />
+          <TextareaField maxHeight={200} placeholderTid="Введите свой отзыв" />
           <Button>
             <SendIcon />
           </Button>
@@ -29,10 +29,11 @@ export function BlockComments(props) {
     </SectionLayout>
   );
 }
+
 const Button = styled(IconButton)`
   position: absolute;
   background: none;
-  right: ${spacing(0)};
+  right: ${spacing(1)};
 `;
 const IconWrapper = styled.div`
   display: grid;

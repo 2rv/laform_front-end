@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { Price } from '../price';
+import { CardPrice } from './card-price';
 import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
@@ -30,11 +30,10 @@ export function CardMasterClasses(props) {
       />
       <Content>
         <CardName tid={name} />
-        <Price
+        <CardPrice
           min={price?.min}
           max={price?.max}
           discount={price?.discount}
-          valute="OTHER.VALUTE"
         />
       </Content>
       <CardActions type={1} select={select} like={like} />

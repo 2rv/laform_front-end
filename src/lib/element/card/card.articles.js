@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { Price } from '../price';
 import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';

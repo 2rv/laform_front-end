@@ -18,6 +18,7 @@ export function SettingsFormChangeNotificationComponent(props) {
     handleSubmit,
     isValid,
     isSubmitting,
+    setFieldValue,
 
     isFormUploadPending,
     isFormUploadSuccess,
@@ -45,11 +46,14 @@ export function SettingsFormChangeNotificationComponent(props) {
         <FieldCheckbox
           titleTid="SETTINGS.CHANGE_NOTIFICATION.NEWSLETTER.TITLE"
           labelTid="SETTINGS.CHANGE_NOTIFICATION.NEWSLETTER.LABEL"
-          checked={false}
           name={fieldNotification}
           value={values[fieldNotification]}
           onChange={handleChange}
           onBlur={handleBlur}
+          checked={values[fieldNotification]}
+          onClick={() =>
+            setFieldValue(fieldNotification, !values[fieldNotification])
+          }
         />
         {!isFormUploadSuccess && (
           <SuccessAlert tid="SETTINGS.CHANGE_EMAIL.SUCCESS" />

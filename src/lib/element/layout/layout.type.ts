@@ -4,19 +4,11 @@ export interface ContentLayoutPropsType {
   children?: React.ReactElement<any> | React.ReactElement<any>[] | null;
   className?: string;
 }
-
 export interface PageLayoutPropsType {
   type?: 'DEFAULT' | 'SMALL' | 'MEDIUM' | undefined;
   children?: React.ReactElement<any> | React.ReactElement<any>[] | null;
   className?: string;
 }
-
-export interface IndentLayoutPropsType {
-  type?: 'DEFAULT' | 'SMALL' | 'MEDIUM' | undefined;
-  children?: React.ReactElement<any> | React.ReactElement<any>[] | null;
-  className?: string;
-}
-
 export interface SectionLayoutPropsType {
   type?:
     | 'DEFAULT'
@@ -29,8 +21,7 @@ export interface SectionLayoutPropsType {
   children: React.ReactElement<any> | React.ReactElement<any>[] | null;
   className?: string;
 }
-
-export interface GridLayoutPropsType {
+export interface FieldLayoutPropsType {
   type?: 'double' | undefined;
   adaptive: boolean;
   children: React.ReactElement<any>[] | null;

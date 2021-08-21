@@ -63,4 +63,5 @@ export interface TextAreaPropsType {
   minHeight?: number;
   images: any;
   setImages: any;
+  maxHeight?: number;
 }

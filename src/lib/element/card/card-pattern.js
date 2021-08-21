@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { Price } from '../price';
+import { CardPrice } from './card-price';
 import { ButtonPrimary, ButtonBasic, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
@@ -33,11 +33,10 @@ export function CardPattern(props) {
       <Content>
         <CardName tid={name} />
         <LineCase>
-          <Price
+          <CardPrice
             min={price?.min}
             max={price?.max}
             discount={price?.discount}
-            valute="OTHER.VALUTE"
           />
           <ItemCase>
             {[1, 2, 3, 4, 5].map((rate, index) => (
