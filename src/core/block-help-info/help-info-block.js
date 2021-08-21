@@ -60,7 +60,7 @@ const List = styled.div`
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(6)};
-  @media screen and (max-width: 1170px) {
+  @media screen and (max-width: 1070px) {
     grid-template-columns: repeat(1, 1fr);
     gap: ${spacing(3)};
   }

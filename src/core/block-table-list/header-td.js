@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { TextPrimary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function HeaderTd(props) {
   const { text } = props;

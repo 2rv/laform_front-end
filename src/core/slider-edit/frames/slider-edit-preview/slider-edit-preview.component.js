@@ -1,38 +1,64 @@
-import { createRef } from 'react';
 import styled from 'styled-components';
-import { ReactComponent as UploadIcon } from 'src/asset/svg/upload.svg';
-import { THEME_COLOR, THEME_SIZE, spacing } from 'src/lib/theme';
-import { ContentLayout, IndentLayout } from 'src/lib/element/layout';
-import { TextSecondary } from 'src/lib/element/text';
-import { TitlePrimary } from 'src/lib/element/title';
-import { LinkPrimary } from 'src/lib/element/link';
-import { ButtonPrimary } from 'src/lib/element/button';
+import { ReactComponent as UploadIcon } from '../../../../asset/svg/upload.svg';
+import {
+  THEME_SIZE,
+  spacing,
+  THEME_COLOR,
+  THEME_VALUE,
+} from '../../../../lib/theme';
+import { TitlePrimary } from '../../../../lib/element/title';
+import { LinkPrimary } from '../../../../lib/element/link';
+import { ButtonBasic } from '../../../../lib/element/button';
+import { SectionLayout } from '../../../../lib/element/layout';
+import { SLIDER_EDIT_FIELD_NAME } from '../../slider-edit.type';
 
-export function SliderEditPreviewComponent({ sliderData, pickImage, sliderImage }) {
-  const fileRef = createRef();
-
+export function SliderEditPreviewComponent(props) {
+  const {
+    sliderData,
+    pickImage,
+    sliderImage,
+    values,
+    titleTextColorOptions,
+    buttonColorOptions,
+    buttonTextColorOptions,
+  } = props;
+  const textColor =
+    titleTextColorOptions[values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]]
+      .color;
+  const buttonTextColor =
+    buttonTextColorOptions[values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]]
+      .color;
+  const buttonColor =
+    buttonColorOptions[values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]].color;
+  const isButton = values[SLIDER_EDIT_FIELD_NAME.IS_BUTTON];
   return (
-    <IndentLayout type="small">
+    <SectionLayout type="SMALL">
       <PreviewTitle tid="Превью" />
       <PreviewContainer>
         <Blur />
         <SlideImage src={sliderImage || sliderData.imageUrl?.fileUrl} />
         <Field>
-          <File type="file" ref={fileRef} onChange={pickImage} />
+          <File type="file" onChange={pickImage} />
           <Placeholder tid="Выбрать фото" />
           <UploadIcon />
         </Field>
         <Content>
           <SlideText>
-            <Text tid={sliderData.headingTextRu} />&nbsp;
-            <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
+            <Text
+              color={textColor}
+              tid={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]}
+            />
           </SlideText>
-          <LinkPrimary>
-            <Button tid={sliderData.buttonTextRu} />
-          </LinkPrimary>
+          {isButton && (
+            <Button
+              color={buttonTextColor}
+              bgcolor={buttonColor}
+              tid={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]}
+            />
+          )}
         </Content>
       </PreviewContainer>
-    </IndentLayout>
+    </SectionLayout>
   );
 }
 const PreviewTitle = styled(TitlePrimary)`
@@ -41,16 +67,11 @@ const PreviewTitle = styled(TitlePrimary)`
 const SlideText = styled.div`
   text-align: center;
 `;
-const BrandText = styled(TextSecondary)`
-  color: ${THEME_COLOR.PRIMARY};
-  font-size: ${THEME_SIZE.FONT.EXTRA_LARGE};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-`;
 const Text = styled(TitlePrimary)`
-  color: white;
+  color: ${(p) => p.color};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
   font-size: ${THEME_SIZE.FONT.EXTRA_LARGE};
-  line-height: 44px;
+  line-height: 1.5;
 `;
 const Content = styled.div`
   position: absolute;
@@ -60,8 +81,9 @@ const Content = styled.div`
   align-items: center;
   gap: ${spacing(6)};
 `;
-const Button = styled(ButtonPrimary)`
-  padding: ${spacing(3)} ${spacing(11)};
+const Button = styled(ButtonBasic)`
+  color: ${(p) => p.color};
+  background-color: ${(p) => p.bgcolor}; ;
 `;
 const Placeholder = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
@@ -70,11 +92,14 @@ const Field = styled.label`
   position: absolute;
   left: 30px;
   top: 30px;
-  padding: 15px;
-  gap: 10px;
+  padding: ${spacing(3)};
+  gap: ${spacing(2)};
   display: flex;
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: ${THEME_COLOR.WHITE};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  :hover {
+    opacity: ${THEME_VALUE.OPACITY.HOVER};
+  }
 `;
 const File = styled.input`
   display: none;
@@ -82,7 +107,8 @@ const File = styled.input`
 const SlideImage = styled.img`
   height: 100%;
   width: 100%;
-  border-radius: 5px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  object-fit: cover;
 `;
 const Blur = styled.div`
   background: rgba(47, 42, 44, 0.5);

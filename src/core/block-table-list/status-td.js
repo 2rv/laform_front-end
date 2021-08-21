@@ -15,6 +15,9 @@ export function StatusTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
+  @media screen and (max-width: 875px) {
+    margin-left: 90px;
+  }
 `;
 const Case = styled.div`
   display: flex;

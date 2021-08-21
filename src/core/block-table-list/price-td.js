@@ -25,8 +25,7 @@ const Td = styled.td`
       padding-right: ${spacing(6)};
     `}
   @media screen and (max-width: 875px) {
-    order: 1;
-    margin-left: auto;
+    margin-left: 90px;
   }
 `;
 const Case = styled.div`

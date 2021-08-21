@@ -59,4 +59,5 @@ const Icon = styled(ArrowRightIcon)`
 const Title = styled(TextPrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  line-height: 1.5;
 `;

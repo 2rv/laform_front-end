@@ -22,11 +22,10 @@ export function CardPattern(props) {
   } = props.data;
 
   return (
-    <Container
-      path={PATTERNS_PRODUCT_ROUTE_PATH}
-      pathConfig={{ query: { id: id } }}
-    >
+    <Container>
       <CardImage
+        path={PATTERNS_PRODUCT_ROUTE_PATH}
+        pathConfig={{ query: { id: id } }}
         image={image}
         bestseller={bestseller}
         action={price?.discount}
@@ -52,11 +51,10 @@ export function CardPattern(props) {
   );
 }
 
-const Container = styled(LinkPrimary)`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
-  width: 360px;
 `;
 const Content = styled.div`
   display: flex;

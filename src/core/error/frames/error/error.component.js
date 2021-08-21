@@ -29,8 +29,11 @@ export function ErrorComponent(props) {
 }
 
 const Container = styled.div`
-  display: grid;
-  gap: ${spacing(4)};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: ${spacing(6)};
   text-align: center;
 `;
 

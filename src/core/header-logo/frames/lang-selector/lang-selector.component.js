@@ -58,17 +58,19 @@ const LangContainer = styled.div`
   align-items: center;
   gap: ${spacing(1)};
   cursor: pointer;
+  user-select: none;
 `;
 
 const Text = styled(TextPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  user-select: none;
 `;
 
 const LangModal = styled(ModalMenu)`
   margin-top: ${spacing(10)};
   z-index: 1;
   transform: translateX(-50%);
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 720px) {
     margin-top: ${spacing(5)};
   }
 `;

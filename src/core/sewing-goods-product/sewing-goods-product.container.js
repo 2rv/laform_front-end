@@ -23,7 +23,7 @@ export function SewingGoodsProductContainer() {
     //   dispatch(sewingGoodsProductUploadData());
   }, []);
 
-  console.log(selectOptionsValue); // тут появляется ответ от select
+  //   console.log(selectOptionsValue); // тут появляется ответ от select
 
   return (
     <SewingGoodsProductComponent
@@ -79,9 +79,12 @@ export const currentProductData = {
   like: true,
   select: false,
   images: [
-    '/static/test/product-image-1.png',
-    '/static/test/product-image-2.png',
-    '/static/test/product-image-3.png',
+    'http://placekitten.com/400/600',
+    'http://placekitten.com/100/200',
+    'http://placekitten.com/900/600',
+    'http://placekitten.com/500/600',
+    'http://placekitten.com/350/800',
+    'http://placekitten.com/700/900',
   ],
   selectOptions: testSelectOptions,
   initialValueForSelectOptions: initialValueForSelectOptions(testSelectOptions),

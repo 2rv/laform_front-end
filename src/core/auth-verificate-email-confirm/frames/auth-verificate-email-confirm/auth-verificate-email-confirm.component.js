@@ -27,7 +27,6 @@ export function AuthVerificateEmailConfirmComponent(props) {
                 tid="AUTH.VERIFICATE_EMAIL_CONFIRM.GO_TO_PURCHASES"
                 onClick={onButtonClick}
                 disabled={!isSuccess}
-                width={360}
               />
               {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
               {isPending && <LoaderPrimary />}

@@ -62,7 +62,7 @@ const Container = styled.div<{
     return (
       p.adaptive &&
       css`
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 720px) {
           width: 100%;
         }
       `
@@ -94,7 +94,10 @@ const Input = styled.input<InputPropsType>`
   align-items: center;
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
   padding: 0 ${spacing(7)} 0 ${spacing(3)};
-  color: ${THEME_COLOR.TEXT.LIGHT};
+  color: ${THEME_COLOR.SECONDARY_DARK};
+  ::placeholder {
+    color: ${THEME_COLOR.TEXT.LIGHT};
+  }
   background-color: ${THEME_COLOR.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-size: ${THEME_SIZE.FONT.SMALL};

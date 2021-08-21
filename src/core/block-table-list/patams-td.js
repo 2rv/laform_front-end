@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { ButtonBasic } from '../../lib/element/button';
-import { LinkSecondary } from '../../lib/element/link';
 import { TextSecondary, TextPrimary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { spacing } from '../../lib/theme';
 
 export function ParamsTd(props) {
   const { items } = props;
@@ -19,6 +17,11 @@ const Td = styled.td`
   vertical-align: middle;
   width: 100%;
   padding-right: ${spacing(6)};
+  @media screen and (max-width: 875px) {
+    padding-right: 0;
+    margin-left: 90px;
+    max-width: fit-content;
+  }
 `;
 const Case = styled.div`
   display: flex;

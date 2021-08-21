@@ -16,11 +16,12 @@ export function CardArticles(props) {
     setLike(!isLiked);
   };
   return (
-    <Container
-      path={ARTICLE_PAGE_ROUTE_PATH}
-      pathConfig={{ query: { id: id } }}
-    >
-      <CardImage image={image} />
+    <Container>
+      <CardImage
+        path={ARTICLE_PAGE_ROUTE_PATH}
+        pathConfig={{ query: { id: id } }}
+        image={image}
+      />
       <Content>
         <Column>
           <CardName tid={name} />
@@ -39,11 +40,10 @@ const Column = styled.div`
   flex-direction: column;
   gap: ${spacing(1)};
 `;
-const Container = styled(LinkPrimary)`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
-  width: 360px;
 `;
 const Content = styled.div`
   display: flex;

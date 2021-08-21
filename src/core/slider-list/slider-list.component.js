@@ -1,64 +1,45 @@
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
-import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import { IconButton } from '../../lib/element/button';
+import { ButtonBasic, IconButton } from '../../lib/element/button';
 import { Spinner } from '../../lib/element/spinner';
 import { ReactComponent as PlusIcon } from '../../asset/svg/plus-icon.svg';
-import { ReactComponent as EditIcon } from '../../asset/svg/change-icon.svg';
-import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon.svg';
 import { TextSecondary } from '../../lib/element/text';
-import { TableList } from '../block-table-list';
-import { sliderListUploadData, sliderItemRemove } from './slider-list.action';
-import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
-import { setLinkRedirect } from '../../main/navigation/navigation.core';
+import { SliderList } from './frames';
 
-export function SliderListComponent({ isPending, sliders, currentLang }) {
-  const dispatch = useDispatch();
-
-  const convertSliderData = sliders.map((slider) => ({
-    id: slider.id,
-    name: slider.headingTextRu,
-    image: slider.imageUrl?.fileUrl,
-  }));
-
+export function SliderListComponent(props) {
+  const { isPending, slidersItems, editSlide, addSlide, removeSlide } = props;
   return (
-    <SectionLayout>
+    <Container>
       <TitlePrimary tid="Слайдер" />
       {isPending ? (
         <Spinner />
       ) : (
-        <TableList items={convertSliderData}>
-          {(id) => (
-            <>
-              <Button onClick={setLinkRedirect(SLIDER_EDIT_ROUTE_PATH(id))}>
-                <EditIcon />
-              </Button>
-              <Button onClick={() => dispatch(sliderItemRemove(currentLang.toLowerCase(), id))}>
-                <DeleteIcon />
-              </Button>
-            </>
-          )}
-        </TableList>
+        <SliderList
+          slidersItems={slidersItems}
+          removeSlide={removeSlide}
+          editSlide={editSlide}
+        />
       )}
-      <AddSlide
-        onClick={() => dispatch(sliderListUploadData(currentLang.toLowerCase()))}
-        disabled={isPending}
-      >
+      <AddSlide onClick={addSlide} disabled={isPending}>
         <Button>
           <PlusIcon />
         </Button>
         <TextSecondary tid="Дополнить сборку" />
       </AddSlide>
-    </SectionLayout>
+    </Container>
   );
 }
-const AddSlide = styled.div`
-  gap: ${spacing(3)};
+const Container = styled.div`
   display: flex;
-  align-items: center;
-  cursor: pointer;
+  flex-direction: column;
+  gap: ${spacing(3)};
+`;
+const AddSlide = styled(ButtonBasic)`
+  background-color: transparent;
+  width: fit-content;
+  padding: 0;
+  gap: ${spacing(3)};
 `;
 const Button = styled(IconButton)`
   padding: 0;

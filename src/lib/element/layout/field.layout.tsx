@@ -26,7 +26,7 @@ const Layout = styled.div`
     return (
       p.adaptive &&
       css`
-        @media screen and (max-width: 875px) {
+        @media screen and (max-width: 720px) {
           grid-template-columns: 1fr;
         }
       `
