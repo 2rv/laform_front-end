@@ -8,7 +8,6 @@ import { TableList } from '../block-table-list';
 export function OrderNumberComponent(props) {
   const {
     headersTable,
-    itemsTable,
     onSubmit,
     initialValue,
     validate,
@@ -18,8 +17,7 @@ export function OrderNumberComponent(props) {
   const convertedPurchasedProductsData = orderNumberDetails.purchaseProducts?.map((product) => ({
       name: product.purchaseProductName,
       price: product.total,
-      image:
-        'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
+      image: 'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
       params: [
         { name: product?.color    && 'Цвет',       value: product?.color    },
         { name: product?.size     && 'Размер',     value: product?.size     },

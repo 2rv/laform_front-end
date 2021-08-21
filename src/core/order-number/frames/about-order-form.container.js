@@ -29,6 +29,7 @@ export function AboutOrderFormContainer(props) {
       initialValues={initialValue}
       validate={validate}
       onSubmit={onSubmit}
+      enableReinitialize={true}
     >
       {(formProps) => (
         <AboutOrderFormComponent

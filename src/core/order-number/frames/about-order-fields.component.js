@@ -26,8 +26,7 @@ export function AboutOrderFields(props) {
           placeholderTid="Илья Зинченко"
           disabled={true}
           name={fieldFullName}
-          // value={values[fieldFullName]}
-          value={orderNumberDetails?.fullName}
+          value={values[fieldFullName]}
           onChange={handleChange}
         />
         <BasicField
@@ -35,8 +34,7 @@ export function AboutOrderFields(props) {
           placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.MOSKVA"
           disabled={true}
           name={fieldCurrentCity}
-          // value={values[fieldCurrentCity]}
-          value={orderNumberDetails?.city}
+          value={values[fieldCurrentCity]}
           onChange={handleChange}
         />
         <FieldSelect
@@ -44,8 +42,7 @@ export function AboutOrderFields(props) {
           options={[{ id: 0, tid: orderNumberDetails?.typeOfDelivery }]}
           disabled={true}
           name={fieldConvenientDeliveryMethod}
-          // value={values[fieldConvenientDeliveryMethod]}
-          value={orderNumberDetails?.typeOfDelivery}
+          value={values[fieldConvenientDeliveryMethod]}
           onChange={handleChange}
         />
         <BasicField
@@ -53,8 +50,7 @@ export function AboutOrderFields(props) {
           placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.CONTACT_NUMBER"
           disabled={true}
           name={fieldContactPhoneNumber}
-          // value={values[fieldContactPhoneNumber]}
-          value={orderNumberDetails?.phoneNumber}
+          value={values[fieldContactPhoneNumber]}
           onChange={handleChange}
         />
       </FieldLayout>
@@ -63,8 +59,7 @@ export function AboutOrderFields(props) {
         placeholderTid="Товар упаковать надёжно"
         disabled={true}
         name={fieldOrderNote}
-        // value={values[fieldOrderNote]}
-        value={orderNumberDetails?.comment}
+        value={values[fieldOrderNote]}
         onChange={handleChange}
       />
       <FieldLayout type="double" adaptive>
@@ -73,8 +68,7 @@ export function AboutOrderFields(props) {
           options={[{ id: 0, tid: orderNumberDetails?.typeOfPayment }]}
           disabled={true}
           name={fieldConvenientPaymentMethod}
-          // value={values[fieldConvenientPaymentMethod]}
-          value={orderNumberDetails?.typeOfPayment}
+          value={values[fieldConvenientPaymentMethod]}
           onChange={handleChange}
         />
         <PromoCodeField
