@@ -6,17 +6,21 @@ import { TextSecondary } from '../../lib/element/text';
 import { LOGIN_ROUTE_PATH, SIGNUP_ROUTE_PATH } from './header-logo.constant';
 
 export function HeaderLogoComponent(props) {
-  const { currentLang, supportedLang, isMobile } = props;
+  const { currentLang, supportedLang, isMobile, logged } = props;
 
   return (
     <Container>
       {isMobile ? (
         <div>
-          <Link tid="HEADER_LOGO.MOBILE.LOGIN" path={LOGIN_ROUTE_PATH} />
-          &nbsp;
-          <Text tid="HEADER_LOGO.MOBILE.OR" />
-          &nbsp;
-          <Link tid="HEADER_LOGO.MOBILE.SIGNUP" path={SIGNUP_ROUTE_PATH} />
+          {!logged && (
+            <>
+              <Link tid="HEADER_LOGO.MOBILE.LOGIN" path={LOGIN_ROUTE_PATH} />
+              &nbsp;
+              <Text tid="HEADER_LOGO.MOBILE.OR" />
+              &nbsp;
+              <Link tid="HEADER_LOGO.MOBILE.SIGNUP" path={SIGNUP_ROUTE_PATH} />
+            </>
+          )}
         </div>
       ) : (
         <LogoComponent />

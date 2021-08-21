@@ -8,12 +8,15 @@ import {
 } from '../../../../lib/theme';
 import { ReactComponent as LogoMobile } from '../../../../asset/svg/logo-mobile.svg';
 import { ReactComponent as CartIcon } from '../../../../asset/svg/cart.svg';
-import { TextSecondary } from '../../../../lib/element/text';
+import { TextSecondary, TextPrimary } from '../../../../lib/element/text';
 import { LinkPrimary } from '../../../../lib/element/link';
 import { ButtonBasic, IconButton } from '../../../../lib/element/button';
+import { ReactComponent as IconUser } from '../../../../asset/svg/user.svg';
+import { LOGIN_ROUTE_PATH, SIGNUP_ROUTE_PATH } from '../../header.constants';
 
 export function HeaderMenuMobileComponent(props) {
-  const { cartitems = 2, setSidebarOpen, sidebarIsOpen } = props;
+  const { cartItems, setSidebarOpen, sidebarIsOpen, logged, user, isMobile } =
+    props;
 
   return (
     <Container>
@@ -27,16 +30,46 @@ export function HeaderMenuMobileComponent(props) {
           <LogoMobile />
         </Line>
         <Line>
+          {logged ? (
+            <Line>
+              <UserIcon />
+              <BolderText>{user}</BolderText>
+            </Line>
+          ) : (
+            !isMobile && (
+              <div>
+                <BolderLink
+                  tid="HEADER.MENU_ACTION.LOGIN"
+                  path={LOGIN_ROUTE_PATH}
+                />
+                &nbsp;
+                <TextSecondary tid="HEADER.MENU_ACTION.OR" />
+                &nbsp;
+                <BolderLink
+                  tid="HEADER.MENU_ACTION.SIGNUP"
+                  path={SIGNUP_ROUTE_PATH}
+                />
+              </div>
+            )
+          )}
+
           <BadgeButton>
             <CartIcon />
-            <Badge>{cartitems}</Badge>
+            <Badge>{cartItems}</Badge>
           </BadgeButton>
         </Line>
       </Content>
     </Container>
   );
 }
-
+const UserIcon = styled(IconUser)`
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
+`;
+const BolderLink = styled(LinkPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
 const BadgeButton = styled(IconButton)`
   display: flex;
   position: relative;
@@ -95,5 +128,9 @@ const Content = styled.div`
 `;
 const Line = styled.div`
   display: flex;
+  align-items: center;
   gap: ${spacing(3)};
+`;
+const BolderText = styled(TextPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;

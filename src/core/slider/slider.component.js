@@ -71,15 +71,16 @@ const Container = styled.div`
 `;
 const Button = styled(ButtonBasic)`
   z-index: 1;
+  width: fit-content;
   background: none;
   position: absolute;
   ${(p) =>
     p.right
       ? css`
-          right: ${spacing(0)};
+          right: 0;
         `
       : css`
-          left: ${spacing(0)};
+          left: 0;
         `}
 `;
 const Dots = styled.div`
