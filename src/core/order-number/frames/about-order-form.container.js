@@ -4,16 +4,13 @@ import { ABOUT_ORDER_FIELD_NAME } from '../order-number.type';
 
 export function AboutOrderFormContainer(props) {
   const {
-    discountPrice,
-    discount,
-    diliveryPrice,
-    price,
     paymentOptions,
     dileveryOptions,
     statusOptions,
     onSubmit,
     initialValue,
     validate,
+    orderNumberDetails,
   } = props;
 
   const fieldFullName = ABOUT_ORDER_FIELD_NAME.FULL_NAME;
@@ -46,10 +43,7 @@ export function AboutOrderFormContainer(props) {
           paymentOptions={paymentOptions}
           dileveryOptions={dileveryOptions}
           statusOptions={statusOptions}
-          discountPrice={discountPrice}
-          discount={discount}
-          diliveryPrice={diliveryPrice}
-          price={price}
+          orderNumberDetails={orderNumberDetails}
           {...formProps}
         />
       )}

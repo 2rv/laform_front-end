@@ -12,8 +12,7 @@ export function AboutOrderFields(props) {
     fieldContactPhoneNumber,
     fieldOrderNote,
     fieldPromoCode,
-    paymentOptions,
-    dileveryOptions,
+    orderNumberDetails,
 
     handleChange,
     values,
@@ -27,7 +26,8 @@ export function AboutOrderFields(props) {
           placeholderTid="Илья Зинченко"
           disabled={true}
           name={fieldFullName}
-          value={values[fieldFullName]}
+          // value={values[fieldFullName]}
+          value={orderNumberDetails?.fullName}
           onChange={handleChange}
         />
         <BasicField
@@ -35,15 +35,17 @@ export function AboutOrderFields(props) {
           placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.MOSKVA"
           disabled={true}
           name={fieldCurrentCity}
-          value={values[fieldCurrentCity]}
+          // value={values[fieldCurrentCity]}
+          value={orderNumberDetails?.city}
           onChange={handleChange}
         />
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.DELIVERY_METHOD"
-          options={dileveryOptions}
+          options={[{ id: 0, tid: orderNumberDetails?.typeOfDelivery }]}
           disabled={true}
           name={fieldConvenientDeliveryMethod}
-          value={values[fieldConvenientDeliveryMethod]}
+          // value={values[fieldConvenientDeliveryMethod]}
+          value={orderNumberDetails?.typeOfDelivery}
           onChange={handleChange}
         />
         <BasicField
@@ -51,7 +53,8 @@ export function AboutOrderFields(props) {
           placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.CONTACT_NUMBER"
           disabled={true}
           name={fieldContactPhoneNumber}
-          value={values[fieldContactPhoneNumber]}
+          // value={values[fieldContactPhoneNumber]}
+          value={orderNumberDetails?.phoneNumber}
           onChange={handleChange}
         />
       </FieldLayout>
@@ -60,16 +63,18 @@ export function AboutOrderFields(props) {
         placeholderTid="Товар упаковать надёжно"
         disabled={true}
         name={fieldOrderNote}
-        value={values[fieldOrderNote]}
+        // value={values[fieldOrderNote]}
+        value={orderNumberDetails?.comment}
         onChange={handleChange}
       />
       <FieldLayout type="double" adaptive>
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PAYMENT_METHOD"
-          options={paymentOptions}
+          options={[{ id: 0, tid: orderNumberDetails?.typeOfPayment }]}
           disabled={true}
           name={fieldConvenientPaymentMethod}
-          value={values[fieldConvenientPaymentMethod]}
+          // value={values[fieldConvenientPaymentMethod]}
+          value={orderNumberDetails?.typeOfPayment}
           onChange={handleChange}
         />
         <PromoCodeField
