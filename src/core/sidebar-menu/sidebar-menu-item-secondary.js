@@ -6,10 +6,10 @@ import { useState } from 'react';
 import { LinkSecondary } from 'src/lib/element/link';
 
 export function SidebarMenuItemSecondary(props) {
-  const { tid, pathname } = props.data;
+  const { title, pathname } = props.data;
   return (
     <Container>
-      <Light tid={tid} path={pathname} />
+      <Light tid={title} path={pathname} />
       <Divider />
     </Container>
   );

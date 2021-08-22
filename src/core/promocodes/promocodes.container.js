@@ -26,11 +26,11 @@ export function PromocodesContainer() {
     { id: 2, promocode: 'qB9mfsk9KL' },
     { id: 3, promocode: 'igfoi8jidg' },
     { id: 4, promocode: '1234567890' },
-  ])
+  ]);
 
-  // useEffect(() => {
-  //   dispatch(promocodesUploadData(currentLang.toLowerCase()));
-  // }, []);
+  useEffect(() => {
+    //   dispatch(promocodesUploadData(currentLang.toLowerCase()));
+  }, []);
 
   return (
     <PromocodesComponent

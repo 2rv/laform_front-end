@@ -18,13 +18,14 @@ export function SidebarMenu(props) {
   );
 }
 const navMenu = [
+  { title: 'Главная', pathname: '/' },
   {
-    title: 'auth',
+    title: 'Auth',
     items: [
       { title: 'регистрация', pathname: '/signup' },
       { title: 'авторизация', pathname: '/login' },
       { title: 'сменить пароль', pathname: '/auth/change-password' },
-      { title: 'восстановить аккаунт', pathname: '/auth/recovery-accoun' },
+      { title: 'восстановить аккаунт', pathname: '/auth/recovery-account' },
       {
         title: 'Отправить код на почту',
         pathname: '/auth/verificate-email',
@@ -36,35 +37,41 @@ const navMenu = [
     ],
   },
   {
-    title: 'Пользовательское',
+    title: 'Админка',
     items: [
-      { title: 'об аккаунте', pathname: '/about-account' },
-      { title: 'корзина', pathname: '/basket' },
-      { title: 'помощь', pathname: '/faq' },
-      { title: 'ошибка', pathname: '/error' },
-      { title: 'домашняя', pathname: '/' },
-      { title: 'настройки', pathname: '/settings' },
+      { title: 'Промокоды', pathname: '/promocodes' },
+      { title: 'Список слайдов', pathname: '/slider-list' },
+      { title: 'Редактировать слайд', pathname: '/slider-list/edit-slider/1' },
+      { title: 'Рекомендации', pathname: '/compilation ' },
+      { title: 'Подборка для home', pathname: '/edit-compilation' },
+      { title: 'Создание товара', pathname: '/create-product' },
+      { title: 'Создание статьи', pathname: '/create-article' },
     ],
   },
   {
-    title: 'Списки активности',
+    title: 'Разное',
     items: [
-      { title: 'Мои лайки', pathname: '/my-likes' },
-      { title: 'Мои покупки', pathname: '/my-purchases' },
-    ],
-  },
-  {
-    title: 'Заказы',
-    items: [
-      { title: 'Мои заказы', pathname: '/orders' },
-      { title: 'Заказ', pathname: '/order-number' },
+      { title: 'Ошибка', pathname: '/error' },
+      { title: 'Помощь', pathname: '/faq' },
+      { title: 'Настройки', pathname: '/settings' },
+      { title: 'Об аккаунте', pathname: '/about-account' },
+      { title: 'Корзина', pathname: '/basket' },
+      {
+        title: 'Товар',
+        items: [
+          { title: 'Мои лайки', pathname: '/my-likes' },
+          { title: 'Мои покупки', pathname: '/my-purchases' },
+          { title: 'Мои заказы', pathname: '/orders' },
+          { title: 'Заказ', pathname: '/order/1' },
+        ],
+      },
     ],
   },
   {
     title: 'Статьи',
     items: [
       { title: 'Все статьи', pathname: '/article' },
-      { title: 'Статья', pathname: '/article-page' },
+      { title: 'Статья', pathname: '/article/1' },
     ],
   },
   {
@@ -89,17 +96,6 @@ const navMenu = [
       { title: 'Все товары', pathname: '/sewing-goods' },
       { title: 'Товар для шитья', pathname: '/sewing-goods/1' },
       { title: 'Купленный товар для шитья', pathname: '/sewing-goods-page' },
-    ],
-  },
-  {
-    title: 'Админка',
-    items: [
-      { title: 'Список слайдов', pathname: '/slider-list' },
-      { title: 'Редактировать слайд', pathname: '/slider-list/edit-slider/1' },
-      { title: 'Подборки', pathname: '/compilation ' },
-      { title: 'Редактировать подборку', pathname: '/edit-compilation' },
-      { title: 'Создание товара', pathname: '/create-product' },
-      { title: 'Создание статьи', pathname: '/create-article' },
     ],
   },
 ];

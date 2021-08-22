@@ -21,9 +21,9 @@ export function EditCompilationContainer() {
   }));
 
   React.useEffect(() => {
-    dispatch(bestArticlesLoadData(currentLang.toLowerCase()));
-    dispatch(bestMasterClassesLoadData(currentLang.toLowerCase()));
-    dispatch(bestProductsLoadData(currentLang.toLowerCase()));
+    // dispatch(bestArticlesLoadData(currentLang.toLowerCase()));
+    // dispatch(bestMasterClassesLoadData(currentLang.toLowerCase()));
+    // dispatch(bestProductsLoadData(currentLang.toLowerCase()));
   }, []);
 
   return (

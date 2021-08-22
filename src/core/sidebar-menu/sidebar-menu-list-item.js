@@ -23,11 +23,11 @@ export function SidebarMenuListItem(props) {
     <Container>
       <Button onClick={click}>
         <Primary tid={title} />
-        {items && <Arrow isOpen={isOpen} />}
+        {items && <Arrow open={isOpen} />}
       </Button>
       <div>
         {items && (
-          <Content isOpen={isOpen}>
+          <Content open={isOpen}>
             {items.map((data, index) => (
               <SidebarMenuItemPrimary key={index} data={data} />
             ))}
@@ -60,7 +60,7 @@ const Button = styled(ButtonBasic)`
 const Arrow = styled(ArrowDown)`
   transition: 0.8s;
   ${(p) =>
-    p.isOpen &&
+    p.open &&
     css`
       transform: rotate(180deg);
     `}
@@ -79,7 +79,7 @@ const Content = styled.div`
   transition: max-height 0.5s;
   max-height: 0;
   ${(p) =>
-    p.isOpen &&
+    p.open &&
     css`
       max-height: 100%;
     `}

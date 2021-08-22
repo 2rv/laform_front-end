@@ -44,7 +44,7 @@ export function MasterClassesContainer() {
   };
 
   useEffect(() => {
-    dispatch(masterClassesUploadData(currentLang.toLowerCase()));
+    // dispatch(masterClassesUploadData(currentLang.toLowerCase()));
   }, []);
 
   const onSubmit = (values) => {
@@ -52,12 +52,11 @@ export function MasterClassesContainer() {
   };
 
   const filterProducts = (name) => {
-    setFilteredProducts(testListItems.filter((product) => {
-      return product.name
-        .toLowerCase()
-        .trim()
-        .includes(name);
-    }));
+    setFilteredProducts(
+      testListItems.filter((product) => {
+        return product.name.toLowerCase().trim().includes(name);
+      }),
+    );
   };
 
   const sortProductsByDate = (option = 1) => {
