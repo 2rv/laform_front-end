@@ -10,12 +10,15 @@ import { Router } from '../main/router';
 import { langServerDetection, langBrowserDetection } from '../lib/common/lang';
 import { authSetData, authGetCookieToken } from '../lib/common/auth';
 
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
 import { NavigationObserver } from '../lib/common/navigation';
 
 import '../asset/css/main.css';
 
-import '../core/signup'
-import '../core/login'
+import '../core/signup';
+import '../core/login';
 
 class MyApp extends App {
   componentDidMount() {
@@ -44,11 +47,13 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
-
+    const persistor = persistStore(store);
     return (
       <ReduxProvider store={store}>
         <NavigationObserver />
-        <Component {...pageProps} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
       </ReduxProvider>
     );
   }

@@ -1,18 +1,19 @@
+import React from 'react';
 import styled from 'styled-components';
 import { TextPrimary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { spacing } from '../../lib/theme';
 import { Divider } from '../../lib/element/divider';
 import { TableItem } from './table-item';
-import React, { useEffect, useState } from 'react';
 
 export function TableList(props) {
   const {
     headers,
     items = [],
     children,
-    count,
     incrementCount,
-    dicrementCoun,
+    decrementCount,
+    count,
+    type,
   } = props;
   //headers [name, name, name, name]
   // items { name, price, image, params, otherParams, status }
@@ -53,10 +54,11 @@ export function TableList(props) {
       {items.map((data, i) => (
         <React.Fragment key={i}>
           <TableItem
-            count={count}
+            type={type}
             incrementCount={incrementCount}
-            dicrementCoun={dicrementCoun}
+            decrementCount={decrementCount}
             data={data}
+            count={count}
           >
             {children}
           </TableItem>

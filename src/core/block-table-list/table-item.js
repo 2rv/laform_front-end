@@ -1,14 +1,100 @@
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 import { ButtonBasic } from '../../lib/element/button';
 import { LinkSecondary } from '../../lib/element/link';
 import { TextSecondary, TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { BLOCK_TABLE_LIST_ROW_TYPE } from './block-table-list.type';
+import {
+  SEWING_PRODUCT_KEY,
+  PATTERN_PRODUCT_KEY,
+  MASTER_CLASS_KEY,
+  PATTER_PRODUCT_FORMAT,
+} from '../../lib/common/cart';
 
 export function TableItem(props) {
-  const { children, data, incrementCount, dicrementCoun, count } = props;
-  const { name, price, image, params, otherParams, status, comment, id } = data;
-  let countedPrice = price || null;
-  if (count) countedPrice = count[id] * price;
+  const dispatch = useDispatch();
+  const { children, data, incrementCount, decrementCount, count, type } = props;
+  const {
+    name,
+    price,
+    quantity,
+    image,
+    params,
+    otherParams,
+    status,
+    comment,
+    id,
+  } = data;
+  const countedPrice = price * quantity;
+
+  const showParameters = (type) => {
+    switch (type) {
+      case BLOCK_TABLE_LIST_ROW_TYPE.SEWING_PRODUCT:
+        return (
+          <Td>
+            <Case>
+              <Contructor
+                items={[
+                  {
+                    name: 'BASKET.PARAMETERS.COLOR',
+                    value: data[SEWING_PRODUCT_KEY.COLOR],
+                  },
+                  {
+                    name: 'BASKET.PARAMETERS.SIZE',
+                    value: data[SEWING_PRODUCT_KEY.SIZE],
+                  },
+                  {
+                    name: 'BASKET.PARAMETERS.CATEGORY',
+                    value: data[SEWING_PRODUCT_KEY.CATEGORY],
+                  },
+                ]}
+              />
+            </Case>
+          </Td>
+        );
+      case BLOCK_TABLE_LIST_ROW_TYPE.PATTERN_PRODUCT:
+        return (
+          <Td>
+            <Case>
+              <Contructor
+                items={[
+                  {
+                    name: 'BASKET.PARAMETERS.SIZE',
+                    value: data[PATTERN_PRODUCT_KEY.SIZE],
+                  },
+                  {
+                    name: 'BASKET.PARAMETERS.FORMAT',
+                    value: data[PATTERN_PRODUCT_KEY.FORMAT],
+                  },
+                ]}
+              />
+            </Case>
+          </Td>
+        );
+      case BLOCK_TABLE_LIST_ROW_TYPE.MASTER_CLASS:
+        return (
+          <Td>
+            <Case>
+              <Contructor
+                items={[
+                  {
+                    name: 'BASKET.PARAMETERS.PROGRAM',
+                    value: data[MASTER_CLASS_KEY.PROGRAMM],
+                  },
+                ]}
+              />
+            </Case>
+          </Td>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const excludeCount =
+    type === BLOCK_TABLE_LIST_ROW_TYPE.PATTERN_PRODUCT &&
+    data[PATTERN_PRODUCT_KEY.FORMAT] === PATTER_PRODUCT_FORMAT.REMOTE;
 
   return (
     <tr>
@@ -36,6 +122,7 @@ export function TableItem(props) {
           </Case>
         </Td>
       )}
+      {type && showParameters(type)}
       {otherParams && (
         <Td>
           <Case>
@@ -43,12 +130,16 @@ export function TableItem(props) {
           </Case>
         </Td>
       )}
-      {count && (
+      {count && !excludeCount && (
         <Td>
           <CountCase>
-            <CountButton onClick={() => dicrementCoun(id)}>-</CountButton>
-            <TextPrimary>{count[id]}</TextPrimary>
-            <CountButton onClick={() => incrementCount(id)}>+</CountButton>
+            <CountButton onClick={() => dispatch(decrementCount(id))}>
+              -
+            </CountButton>
+            <TextPrimary>{quantity}</TextPrimary>
+            <CountButton onClick={() => dispatch(incrementCount(id))}>
+              +
+            </CountButton>
           </CountCase>
         </Td>
       )}
@@ -58,7 +149,7 @@ export function TableItem(props) {
             <div>
               <Price tid={countedPrice} />
               &nbsp;
-              <Valute tid="руб." />
+              <Valute tid="UNIT.CURRENCY" />
             </div>
           </Line>
         </Td>
@@ -127,6 +218,8 @@ const Image = styled.img`
   width: 75px;
   height: 75px;
   min-width: 75px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  overflow: hidden;
 `;
 const Price = styled(TextPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};

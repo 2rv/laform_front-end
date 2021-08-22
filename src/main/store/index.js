@@ -137,8 +137,12 @@ import {
   sliderEditStore,
   SLIDER_EDIT_STORE_NAME,
 } from '../../core/slider-edit';
+import { cartStore, CART_STORE_NAME } from '../../lib/common/cart';
 
-export const reducers = combineReducers({
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const reducers = combineReducers({
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
   [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,
@@ -183,6 +187,12 @@ export const reducers = combineReducers({
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
   [SLIDER_LIST_STORE_NAME]: sliderListStore,
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
+  [CART_STORE_NAME]: cartStore,
 });
+const configReduxPersist = {
+  key: 'persisted',
+  storage: storage,
+};
+export const reducer = persistReducer(configReduxPersist, reducers);
 
 export { initStore } from './store.core';

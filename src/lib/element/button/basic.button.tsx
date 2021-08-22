@@ -6,7 +6,7 @@ import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { ButtonPropsType } from './button.type';
 
 export function ButtonBasic(props: ButtonPropsType) {
-  const { tid, tvalue, width = undefined, children, ...rest } = props;
+  const { tid, tvalue, width, children, ...rest } = props;
   return (
     <Button width={width} {...rest}>
       {tid ? text(tid, tvalue) : children}

@@ -23,6 +23,7 @@ import PURCHASE from './purchase.json';
 import COMPILATION from './compilation.json';
 import ORDER_NUMBER from './order-number.json';
 import NOTIFICATION from './notification.json';
+import UNIT from './unit.json';
 
 export const RU = {
   translation: {
@@ -51,5 +52,6 @@ export const RU = {
     COMPILATION,
     ORDER_NUMBER,
     NOTIFICATION,
+    UNIT,
   },
 };

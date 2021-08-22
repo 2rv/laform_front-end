@@ -7,18 +7,18 @@ import { EditProductComponent } from '../edit-product';
 import { ReactComponent as EditIcon } from 'src/asset/svg/edit.svg';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 
-import { TableRow, TableData, TableImage, TableActionButton } from 'src/lib/element/table';
+import {
+  TableRow,
+  TableData,
+  TableImage,
+  TableActionButton,
+} from 'src/lib/element/table';
 import { TextSecondary, TextPrimary } from 'src/lib/element/text';
 import { Popup } from 'src/lib/element/popup';
 import { THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
 
 export function PatternsListItemComponent(props) {
-  const {
-    title,
-    image,
-    parameters,
-    totalPrice,
-  } = props;
+  const { title, image, parameters, totalPrice } = props;
 
   return (
     <TableRow columns={PATTERN_TABLE_COLUMNS}>
@@ -28,11 +28,14 @@ export function PatternsListItemComponent(props) {
       </TableData>
       <TableData>
         <span>
-          <TextSecondary tid="BASKET.TABLE.PARAMETERS.SIZE" />:&nbsp;
+          <TextSecondary tid="BASKET.TABLE.PARAMETERS.SIZE" />
+          :&nbsp;
           <TextPrimary>{parameters.size}</TextPrimary>,
-        </span>&nbsp;
+        </span>
+        &nbsp;
         <span>
-          <TextSecondary tid="BASKET.TABLE.PARAMETERS.FORMAT.TITLE" />:&nbsp;
+          <TextSecondary tid="BASKET.TABLE.PARAMETERS.FORMATS.TITLE" />
+          :&nbsp;
           <TextPrimary tid={parameters.format} />
         </span>
       </TableData>
