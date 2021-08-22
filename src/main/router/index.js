@@ -34,14 +34,6 @@ import {
   myPurchasesRouter,
   MY_PURCHASES_ROUTE_PATH,
 } from '../../core/my-purchases';
-import {
-  myPatternsRouter,
-  MY_PATTERNS_ROUTE_PATH,
-} from '../../core/my-patterns';
-import {
-  myMasterClassesRouter,
-  MY_MASTER_CLASSES_ROUTE_PATH,
-} from '../../core/my-master-classes';
 import { myLikesRouter, MY_LIKES_ROUTE_PATH } from '../../core/my-likes';
 import { faqPageRouter, FAQ_PAGE_ROUTE_PATH } from '../../core/faq-page';
 import {
@@ -105,10 +97,8 @@ export const routes = {
   [SEWING_GOODS_PAGE_ROUTE_PATH]: sewingGoodsPageRouter,
   [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
   [MASTER_CLASS_PRODUCT_ROUTE_PATH]: masterClassProductRouter,
-  [MY_MASTER_CLASSES_ROUTE_PATH]: myMasterClassesRouter,
   [PATTERNS_ROUTE_PATH]: patternsRouter,
   [PATTERNS_PRODUCT_ROUTE_PATH]: patternsProductRouter,
-  [MY_PATTERNS_ROUTE_PATH]: myPatternsRouter,
   [ARTICLES_ROUTE_PATH]: articlesRouter,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,

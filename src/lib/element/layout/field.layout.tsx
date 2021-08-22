@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { spacing } from '../../theme';
-import { GridLayoutPropsType } from './layout.type';
+import { FieldLayoutPropsType } from './layout.type';
 
-export function FieldLayout(props: GridLayoutPropsType) {
+export function FieldLayout(props: FieldLayoutPropsType) {
   const { type, children, adaptive } = props;
   return (
     <Layout adaptive={adaptive} type={type}>
@@ -14,7 +14,7 @@ export function FieldLayout(props: GridLayoutPropsType) {
 const Layout = styled.div`
   display: grid;
   gap: ${spacing(3)};
-  ${(p: GridLayoutPropsType) => {
+  ${(p: FieldLayoutPropsType) => {
     return (
       p.type === 'double' &&
       css`
@@ -22,7 +22,7 @@ const Layout = styled.div`
       `
     );
   }}
-  ${(p: GridLayoutPropsType) => {
+  ${(p: FieldLayoutPropsType) => {
     return (
       p.adaptive &&
       css`

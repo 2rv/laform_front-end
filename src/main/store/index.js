@@ -51,10 +51,6 @@ import {
   SETTINGS_CHANGE_NOTIFICATION_STORE_NAME,
 } from '../../core/settings-change-notification';
 import {
-  homeArticleStore,
-  HOME_ARTICLE_STORE_NAME,
-} from '../../core/home-articles';
-import {
   sewingGoodsStore,
   SEWING_GOODS_STORE_NAME,
 } from '../../core/sewing-goods';
@@ -64,14 +60,6 @@ import {
   myPurchasesStore,
   MY_PURCHASES_STORE_NAME,
 } from '../../core/my-purchases';
-import {
-  myPatternsStore,
-  MY_PATTERNS_STORE_NAME,
-} from '../../core/my-patterns';
-import {
-  myMasterClassesStore,
-  MY_MASTER_CLASSES_STORE_NAME,
-} from '../../core/my-master-classes';
 import { myLikesStore, MY_LIKES_STORE_NAME } from '../../core/my-likes';
 import { faqPageStore, FAQ_PAGE_STORE_NAME } from '../../core/faq-page';
 import {
@@ -145,10 +133,8 @@ export const reducers = combineReducers({
   [SEWING_GOODS_STORE_NAME]: sewingGoodsStore,
   [MASTER_CLASS_PRODUCT_STORE_NAME]: masterClassProductStore,
   [MASTER_CLASSES_STORE_NAME]: masterClassesStore,
-  [MY_MASTER_CLASSES_STORE_NAME]: myMasterClassesStore,
   [PATTERNS_STORE_NAME]: patternsStore,
   [PATTERNS_PRODUCT_STORE_NAME]: patternsProductStore,
-  [MY_PATTERNS_STORE_NAME]: myPatternsStore,
   [ARTICLES_STORE_NAME]: articlesStore,
   [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
@@ -169,7 +155,6 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
   [NOTIFICATION_STORE_NAME]: notificationStore,
-  [HOME_ARTICLE_STORE_NAME]: homeArticleStore,
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
   [ORDERS_STORE_NAME]: ordersStore,
   [MY_PURCHASES_STORE_NAME]: myPurchasesStore,

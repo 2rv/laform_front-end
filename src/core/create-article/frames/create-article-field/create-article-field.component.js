@@ -20,7 +20,8 @@ export function CreateArticleFieldComponent({ images, setImages }) {
         name="content"
         value={textareaValue}
         onChange={({ target: { value } }) => setTextareaValue(value)}
-        rows={8}
+        minHeight={190}
+        maxHeight={230}
         isFile={true}
         images={images}
         setImages={setImages}

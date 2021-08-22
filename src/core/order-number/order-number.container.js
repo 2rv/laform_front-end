@@ -23,7 +23,7 @@ export function OrderNumberContainer() {
   const orderNumberDetails = getRequestData(state.orderNumber);
 
   useEffect(() => {
-    dispatch(orderNumberUploadData());
+    // dispatch(orderNumberUploadData());
   }, []);
 
   const onSubmit = (values) => {
@@ -35,7 +35,8 @@ export function OrderNumberContainer() {
     [ABOUT_ORDER_FIELD_NAME.CURRENT_CITY]: orderNumberDetails.city,
     [ABOUT_ORDER_FIELD_NAME.CONVENIENT_DELIVERY_METHOD]: 0,
     [ABOUT_ORDER_FIELD_NAME.CONVENIENT_PAYMENT_METHOD]: 0,
-    [ABOUT_ORDER_FIELD_NAME.CONTACT_PHONE_NUMBER]: orderNumberDetails.phoneNumber,
+    [ABOUT_ORDER_FIELD_NAME.CONTACT_PHONE_NUMBER]:
+      orderNumberDetails.phoneNumber,
     [ABOUT_ORDER_FIELD_NAME.ORDER_NOTE]: orderNumberDetails.comment,
     [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: 0,
     [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: '',
