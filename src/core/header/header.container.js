@@ -11,7 +11,7 @@ import {
 } from './header.constants';
 
 export function HeaderContainer(props) {
-  const { setSidebarOpen, sidebarIsOpen, width } = props;
+  const { setSidebarOpen, sidebarIsOpen, isMobile, isTablet } = props;
   const { activePath, auth } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
     auth: state[AUTH_STORE_NAME],
@@ -24,7 +24,8 @@ export function HeaderContainer(props) {
       logged={auth.logged}
       user={auth.user?.login}
       role={auth.user?.role}
-      width={width}
+      isMobile={isMobile}
+      isTablet={isTablet}
       setSidebarOpen={setSidebarOpen}
       sidebarIsOpen={sidebarIsOpen}
     />

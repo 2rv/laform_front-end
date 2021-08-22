@@ -15,16 +15,22 @@ export function HeaderComponent(props) {
     logged,
     user,
     role,
-    width,
+    isMobile,
+    isTablet,
     setSidebarOpen,
     sidebarIsOpen,
+    cartItems = 0,
   } = props;
   return (
     <Container>
-      {width < 950 ? (
+      {isTablet ? (
         <HeaderMenuMobileComponent
           setSidebarOpen={setSidebarOpen}
           sidebarIsOpen={sidebarIsOpen}
+          cartItems={cartItems}
+          user={user}
+          logged={logged}
+          isMobile={isMobile}
         />
       ) : (
         <React.Fragment>
@@ -38,11 +44,6 @@ export function HeaderComponent(props) {
 
 const Container = styled.div`
   display: flex;
-  gap: ${spacing(5)};
+  gap: ${spacing(6)};
   justify-content: space-between;
-  ${(p) =>
-    p.isMobile &&
-    css`
-      align-items: center;
-    `}
 `;
