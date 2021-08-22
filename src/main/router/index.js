@@ -89,6 +89,10 @@ import {
   sliderListRouter,
   SLIDER_LIST_ROUTE_PATH,
 } from '../../core/slider-list';
+import {
+  promocodesRouter,
+  PROMOCODES_ROUTE_PATH,
+} from '../../core/promocodes';
 
 export const routes = {
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
@@ -121,6 +125,7 @@ export const routes = {
   [ORDER_NUMBER_ROUTE_PATH]: orderNumberRouter,
   [SLIDER_EDIT_ROUTE_PATH]: sliderEditRouter,
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
+  [PROMOCODES_ROUTE_PATH]: promocodesRouter,
 };
 
 export const Router = routesInit(routes);

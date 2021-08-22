@@ -16,4 +16,5 @@ export const ADMIN_USER_MODAL_ITEMS = [
   { id: 11, path: '/edit-compilation', tid: 'Редактирование подборки' },
   { id: 12, path: '/order-number',     tid: 'Подробно о заказе' },
   { id: 13, path: '/slider-list',      tid: 'Список слайдеров' },
+  { id: 14, path: '/promocodes',       tid: 'Промокоды' },
 ];
