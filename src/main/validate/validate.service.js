@@ -116,3 +116,6 @@ export const emailRepeat = (field) => (value, values) => {
 
   return null;
 };
+
+const PROMOCODE_DISCOUNT_RANGE = /^([1-9]\d?)?$/;
+export const promocodeDiscountRange = (value) => (!PROMOCODE_DISCOUNT_RANGE.test(value) ? getError('VALIDATION.PROMOCODE_DISCOUNT_RANGE') : null);
