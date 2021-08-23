@@ -16,7 +16,7 @@ export function PatternsFormFilter(props) {
     error,
     errorMessage,
     filterProducts,
-    sortProductsByDate,
+    sortProductsByPrice,
   } = props;
 
   return (
@@ -35,7 +35,7 @@ export function PatternsFormFilter(props) {
       error={error}
       errorMessage={errorMessage}
       filterProducts={filterProducts}
-      sortProductsByDate={sortProductsByDate}
+      sortProducts={sortProductsByPrice}
     />
   );
 }

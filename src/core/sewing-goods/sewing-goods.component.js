@@ -17,7 +17,7 @@ export function SewingGoodsComponent(props) {
     error,
     errorMessage,
     filterProducts,
-    sortProductsByDate,
+    sortProductsByPrice,
   } = props;
 
   return (
@@ -36,7 +36,7 @@ export function SewingGoodsComponent(props) {
         error={error}
         errorMessage={errorMessage}
         filterProducts={filterProducts}
-        sortProductsByDate={sortProductsByDate}
+        sortProductsByPrice={sortProductsByPrice}
       />
       <BasicCardList items={listItems} type="sewing-goods" />
     </SectionLayout>

@@ -59,15 +59,15 @@ export function MasterClassesContainer() {
     );
   };
 
-  const sortProductsByDate = (option = 1) => {
+  const sortProductsByPrice = (option = 1) => {
     setFilteredProducts((prevProducts) => {
       return [...prevProducts].sort((a, b) => {
         if (option === 1) {
           return prevProducts;
         } else if (option === 2) {
-          return moment(b.createdDate) - moment(a.createdDate);
+          return (a.price.discount !== null ? a.price.discount : a.price.min) - (b.price.discount !== null ? b.price.discount : b.price.min);
         } else if (option === 3) {
-          return moment(a.createdDate) - moment(b.createdDate);
+          return (b.price.discount !== null ? b.price.discount : b.price.min) - (a.price.discount !== null ? a.price.discount : a.price.min);
         }
       });
     });
@@ -87,7 +87,7 @@ export function MasterClassesContainer() {
       fieldName={MASTER_CLASSES_FIELD_NAME}
       onSubmit={onSubmit}
       filterProducts={filterProducts}
-      sortProductsByDate={sortProductsByDate}
+      sortProductsByPrice={sortProductsByPrice}
     />
   );
 }
@@ -109,24 +109,22 @@ export const tagsSelectOptions = [
   },
   {
     id: 2,
-    tid: 'Самые новые',
+    tid: 'Самые дешевые',
   },
   {
     id: 3,
-    tid: 'Самые старые',
+    tid: 'Самые дорогие',
   },
 ];
 export const testListItems = [
   {
     id: 1,
-    // name: 'Мастер-класс по пошиву мужских брюк 1003',
-    name: 'Old old 1',
+    name: 'Мастер-класс по пошиву мужских брюк 1003',
     image: '/static/test/popular-gods-1.png',
     bestseller: true,
     select: false,
     like: true,
     type: 1,
-    createdDate: '2021-02-19T11:33:22.332Z',
     price: {
       min: 500,
       discount: 230,
@@ -135,14 +133,12 @@ export const testListItems = [
   },
   {
     id: 2,
-    // name: 'Инструкция по пошиву Комбинезон 0717',
-    name: 'Old old 3',
+    name: 'Инструкция по пошиву Комбинезон 0717',
     image: '/static/test/popular-gods-2.png',
     bestseller: true,
     select: true,
     like: false,
     type: 1,
-    createdDate: '2021-08-18T11:33:22.332Z',
     price: {
       min: 500,
       discount: null,
@@ -151,14 +147,12 @@ export const testListItems = [
   },
   {
     id: 3,
-    // name: 'Мастер-класс по пошиву Жакета 0305',
-    name: 'Old 2',
+    name: 'Мастер-класс по пошиву Жакета 0305',
     image: '/static/test/popular-gods-3.png',
     bestseller: false,
     select: true,
     like: true,
     type: 1,
-    createdDate: '2021-07-20T11:33:22.332Z',
     price: {
       min: 500,
       discount: 230,

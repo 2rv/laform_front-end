@@ -17,7 +17,7 @@ export function MasterClassesComponent(props) {
     error,
     errorMessage,
     filterProducts,
-    sortProductsByDate,
+    sortProductsByPrice,
   } = props;
 
   return (
@@ -38,7 +38,7 @@ export function MasterClassesComponent(props) {
         error={error}
         errorMessage={errorMessage}
         filterProducts={filterProducts}
-        sortProductsByDate={sortProductsByDate}
+        sortProductsByPrice={sortProductsByPrice}
       />
       <BasicCardList type="master-classes" items={listItems} />
     </SectionLayout>

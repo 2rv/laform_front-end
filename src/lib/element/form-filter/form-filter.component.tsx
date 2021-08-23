@@ -22,17 +22,12 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
     handleBlur,
     handleSubmit,
     filterProducts,
-    sortProductsByDate,
+    sortProducts,
   } = props;
 
   const getFieldError = (name: string) => {
     return errors[name] && touched[name] && errors[name];
   };
-
-  // const changeSelectHandler = (e: any) => {
-  //   handleChange(e);
-  //   handleSubmit();
-  // };
 
   const changeInputHandler = (e: any) => {
     handleChange(e);
@@ -64,7 +59,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
             onChange={(e: any) => {
               handleChange(e);
               handleSubmit();
-              sortProductsByDate(Number(e.target.value));
+              sortProducts(Number(e.target.value));
             }}
             width={200}
             adaptive

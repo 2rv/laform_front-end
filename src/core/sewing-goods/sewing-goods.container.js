@@ -46,15 +46,15 @@ export function SewingGoodsContainer() {
     }));
   };
 
-  const sortProductsByDate = (option = 1) => {
+  const sortProductsByPrice = (option = 1) => {
     setFilteredProducts((prevProducts) => {
       return [...prevProducts].sort((a, b) => {
         if (option === 1) {
           return prevProducts;
         } else if (option === 2) {
-          return moment(b.createdDate) - moment(a.createdDate);
+          return (a.price.discount !== null ? a.price.discount : a.price.min) - (b.price.discount !== null ? b.price.discount : b.price.min);
         } else if (option === 3) {
-          return moment(a.createdDate) - moment(b.createdDate);
+          return (b.price.discount !== null ? b.price.discount : b.price.min) - (a.price.discount !== null ? a.price.discount : a.price.min);
         }
       });
     });
@@ -74,7 +74,7 @@ export function SewingGoodsContainer() {
       fieldName={SEWING_GOODS_FIELD_NAME}
       onSubmit={onSubmit}
       filterProducts={filterProducts}
-      sortProductsByDate={sortProductsByDate}
+      sortProductsByPrice={sortProductsByPrice}
     />
   );
 }
@@ -97,11 +97,11 @@ export const tagsSelectOptions = [
   },
   {
     id: 2,
-    tid: 'Самые новые',
+    tid: 'Самые дешевые',
   },
   {
     id: 3,
-    tid: 'Самые старые',
+    tid: 'Самые дорогие',
   },
 ];
 
