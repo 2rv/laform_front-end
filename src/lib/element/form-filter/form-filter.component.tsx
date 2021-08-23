@@ -52,6 +52,8 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
               handleChange(e);
               handleSubmit();
             }}
+            width={200}
+            adaptive
             onBlur={handleBlur}
           />
 
@@ -64,6 +66,8 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
               handleSubmit();
               sortProductsByDate(Number(e.target.value));
             }}
+            width={200}
+            adaptive
             onBlur={handleBlur}
           />
         </FieldLayout>
@@ -75,7 +79,7 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
           onChange={changeInputHandler}
           onBlur={handleBlur}
           isFindInput
-          width={195}
+          width={250}
           adaptive
         />
       </Container>

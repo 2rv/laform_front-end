@@ -47,6 +47,7 @@ export interface SelectPropsType {
   onBlur: any;
   width?: number;
   disabled?: boolean;
+  adaptive?: boolean;
 }
 
 export interface TextAreaPropsType {
