@@ -44,10 +44,11 @@ export interface SelectPropsType {
   value?: any;
   options: { id: number; tid: string; tvalue: any }[];
   onChange: any;
-  onBlur: any;
+  onBlur?: any;
   width?: number;
   disabled?: boolean;
   adaptive?: boolean;
+  textValue?: boolean;
 }
 
 export interface TextAreaPropsType {

@@ -21,6 +21,8 @@ import {
   deletePatternProduct,
   deleteMasterClass,
 } from '../../lib/common/cart';
+import { Popup } from '../../lib/element/popup';
+import { EditProductComponent } from '../../lib/element/edit';
 
 export function BasketComponent(props) {
   const {
@@ -74,12 +76,23 @@ export function BasketComponent(props) {
               count={true}
               type={BLOCK_TABLE_LIST_ROW_TYPE.SEWING_PRODUCT}
             >
-              {(id) => {
+              {(id, data) => {
                 return (
                   <>
-                    <Button>
-                      <EditIcon />
-                    </Button>
+                    <Popup
+                      content={(setVisible) => (
+                        <EditProductComponent
+                          setVisible={setVisible}
+                          type="SEWING"
+                          data={data}
+                        />
+                      )}
+                      children={
+                        <Button>
+                          <EditIcon />
+                        </Button>
+                      }
+                    />
                     <Button>
                       <DeleteIcon
                         onClick={() => dispatch(deleteSewingProduct(id))}
@@ -100,12 +113,23 @@ export function BasketComponent(props) {
               decrementCount={decrementPatternProduct}
               count={true}
             >
-              {(id) => {
+              {(id, data) => {
                 return (
                   <>
-                    <Button>
-                      <EditIcon />
-                    </Button>
+                    <Popup
+                      content={(setVisible) => (
+                        <EditProductComponent
+                          setVisible={setVisible}
+                          type="PATTERN"
+                          data={data}
+                        />
+                      )}
+                      children={
+                        <Button>
+                          <EditIcon />
+                        </Button>
+                      }
+                    />
                     <Button>
                       <DeleteIcon
                         onClick={() => dispatch(deletePatternProduct(id))}
@@ -125,12 +149,23 @@ export function BasketComponent(props) {
               decrementCount={decrementMasterClass}
               type={BLOCK_TABLE_LIST_ROW_TYPE.MASTER_CLASS}
             >
-              {(id) => {
+              {(id, data) => {
                 return (
                   <>
-                    <Button>
-                      <EditIcon />
-                    </Button>
+                    <Popup
+                      content={(setVisible) => (
+                        <EditProductComponent
+                          setVisible={setVisible}
+                          type="MASTER"
+                          data={data}
+                        />
+                      )}
+                      children={
+                        <Button>
+                          <EditIcon />
+                        </Button>
+                      }
+                    />
                     <Button>
                       <DeleteIcon
                         onClick={() => dispatch(deleteMasterClass(id))}

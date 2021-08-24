@@ -40,15 +40,15 @@ export function TableItem(props) {
           <ParamsTd
             items={[
               {
-                name: 'BASKET.PARAMETERS.COLOR',
+                name: 'BASKET.TABLE.PARAMETERS.COLOR',
                 value: data[SEWING_PRODUCT_KEY.COLOR],
               },
               {
-                name: 'BASKET.PARAMETERS.SIZE',
+                name: 'BASKET.TABLE.PARAMETERS.SIZE',
                 value: data[SEWING_PRODUCT_KEY.SIZE],
               },
               {
-                name: 'BASKET.PARAMETERS.CATEGORY',
+                name: 'BASKET.TABLE.PARAMETERS.CATEGORY',
                 value: data[SEWING_PRODUCT_KEY.CATEGORY],
               },
             ]}
@@ -59,11 +59,11 @@ export function TableItem(props) {
           <ParamsTd
             items={[
               {
-                name: 'BASKET.PARAMETERS.SIZE',
+                name: 'BASKET.TABLE.PARAMETERS.SIZE',
                 value: data[PATTERN_PRODUCT_KEY.SIZE],
               },
               {
-                name: 'BASKET.PARAMETERS.FORMAT',
+                name: 'BASKET.TABLE.PARAMETERS.FORMAT',
                 value: data[PATTERN_PRODUCT_KEY.FORMAT],
               },
             ]}
@@ -74,7 +74,7 @@ export function TableItem(props) {
           <ParamsTd
             items={[
               {
-                name: 'BASKET.PARAMETERS.PROGRAM',
+                name: 'BASKET.TABLE.PARAMETERS.PROGRAM',
                 value: data[MASTER_CLASS_KEY.PROGRAMM],
               },
             ]}
@@ -97,17 +97,18 @@ export function TableItem(props) {
       {params && <ParamsTd items={params} />}
       {otherParams && <ParamsTd items={otherParams} />}
       {type && showParameters(type)}
-      {count && !excludeCount && (
+      {count && (
         <CounterTd
           id={id}
           incrementCount={(id) => dispatch(incrementCount(id))}
           dicrementCoun={(id) => dispatch(decrementCount(id))}
           quantity={quantity}
+          excludeCount={excludeCount}
         />
       )}
       {countedPrice && <PriceTd countedPrice={countedPrice} isLast={status} />}
       {status && <StatusTd status={status} />}
-      {children && <ActionTd id={id} children={children} />}
+      {children && <ActionTd id={id} data={data} children={children} />}
     </Tr>
   );
 }

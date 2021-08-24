@@ -12,6 +12,7 @@ import {
   changeSewingProductParametrs,
   changePatternProductParametrs,
   changeMasterClassParametrs,
+  rehidrate,
 } from './cart.service';
 
 const initialState = initialCartState;
@@ -93,6 +94,9 @@ export const cartStore = (state = initialState, action) => {
 
     case CART_ACTION_TYPE.PURGE:
       return initialCartState;
+    case CART_ACTION_TYPE.REHIDRATE:
+      return rehidrate();
+
     default:
       return state;
   }

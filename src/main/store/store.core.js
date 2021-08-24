@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
-import { reducer } from './index';
+import { reducers } from './index';
 
 export const initStore = (initialState = {}) =>
   createStore(
-    reducer,
+    reducers,
     initialState,
     composeWithDevTools(applyMiddleware(thunk)),
   );

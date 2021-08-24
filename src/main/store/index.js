@@ -131,7 +131,9 @@ import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const reducers = combineReducers({
+export const PERSISTED_CART = 'PERSISTED_CART';
+
+export const reducers = combineReducers({
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
   [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,
@@ -176,10 +178,5 @@ const reducers = combineReducers({
   [CART_STORE_NAME]: cartStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
 });
-const configReduxPersist = {
-  key: 'persisted',
-  storage: storage,
-};
-export const reducer = persistReducer(configReduxPersist, reducers);
 
 export { initStore } from './store.core';

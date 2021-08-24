@@ -6,6 +6,11 @@ export {
   MASTER_CLASS_KEY,
   PATTER_PRODUCT_FORMAT,
 } from './cart.type';
+export type {
+  SewingProductPropType,
+  PatternProductPropType,
+  MasterClassPropType,
+} from './cart.type';
 export {
   purgeCart,
   incrementSewingProduct,

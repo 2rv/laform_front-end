@@ -11,13 +11,13 @@
       "TOTAL_PRICE": "Итоговая цена"
     },
     "PARAMETERS": {
-      "CATEGORY": "Категория:",
-      "SIZE": "Размер:",
+      "CATEGORY": "Категория",
+      "SIZE": "Размер",
       "OUTERWEAR": "Верхняя одежда",
       "PROGRAM": "Программа",
       "REMOTE": "Удалённая",
       "APPLY_CHANGES": "Применить изменения",
-      "COLOR": "Цвет:",
+      "COLOR": "Цвет",
       "FORMAT": "Формат",
       "FORMATS": {
         "TITLE": "Формат",

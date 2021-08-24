@@ -10,9 +10,6 @@ import { Router } from '../main/router';
 import { langServerDetection, langBrowserDetection } from '../lib/common/lang';
 import { authSetData, authGetCookieToken } from '../lib/common/auth';
 
-import { persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
-
 import { NavigationObserver } from '../lib/common/navigation';
 
 import '../asset/css/main.css';
@@ -47,13 +44,10 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
-    const persistor = persistStore(store);
     return (
       <ReduxProvider store={store}>
         <NavigationObserver />
-        <PersistGate loading={null} persistor={persistor}>
-          <Component {...pageProps} />
-        </PersistGate>
+        <Component {...pageProps} />
       </ReduxProvider>
     );
   }

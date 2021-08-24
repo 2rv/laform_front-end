@@ -27,6 +27,7 @@ import { AUTH_STORE_NAME } from '../../lib/common/auth';
 import {
   addPatternProduct,
   addSewingProduct,
+  addMasterClass,
   incrementPatternProduct,
   decrementPatternProduct,
   deletePatternProduct,
@@ -34,6 +35,7 @@ import {
   changePatternProductParametrs,
   PATTER_PRODUCT_FORMAT,
 } from '../../lib/common/cart';
+import { rehidrate } from '../../lib/common/cart/cart.action';
 
 export function BasketContainer() {
   const dispatch = useDispatch();
@@ -109,7 +111,8 @@ export function BasketContainer() {
   });
 
   useEffect(() => {
-    dispatch(basketLoadUserInfoData());
+    token && dispatch(basketLoadUserInfoData());
+    dispatch(rehidrate());
     // dispatch(
     //   changePatternProductParametrs(0, 'DIFFERENT SIZE', 'DIFFERENT FORMAT'),
     // );
@@ -123,37 +126,37 @@ export function BasketContainer() {
     //     limit: 20,
     //     size: 'SIZE',
     //     sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
-    //     format: PATTER_PRODUCT_FORMAT.REMOTE,
+    //     format: PATTER_PRODUCT_FORMAT.PRINT,
     //     formatEnum: ['FORMAT1', 'FORMAT2', 'FORMAT3', 'FORMAT4'],
     //   }),
     // );
-    dispatch(
-      addPatternProduct({
-        id: 2,
-        image: 'https://via.placeholder.com/1',
-        name: 'NAME',
-        price: 10000,
-        limit: 20,
-        size: 'SIZE',
-        sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
-        format: PATTER_PRODUCT_FORMAT.PRINT,
-        formatEnum: ['FORMAT1', 'FORMAT2', 'FORMAT3', 'FORMAT4'],
-      }),
-    );
-    dispatch(
-      addSewingProduct({
-        id: 1,
-        image: 'https://via.placeholder.com/1',
-        name: 'SEWINGNAME',
-        quantity: 1,
-        price: 5000,
-        limit: 4,
-        size: 'SIZE1',
-        sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
-        color: 'COLOR1',
-        colorEnum: ['COLOR1', 'COLOR2', 'COLOR3', 'COLOR4'],
-      }),
-    );
+    // dispatch(
+    //   addSewingProduct({
+    //     id: 1,
+    //     image: 'https://via.placeholder.com/1',
+    //     name: 'SEWINGNAME',
+    //     quantity: 1,
+    //     price: 5000,
+    //     limit: 4,
+    //     size: 'SIZE1',
+    //     category: 'CATEGORY1',
+    //     sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
+    //     color: 'COLOR1',
+    //     colorEnum: ['COLOR1', 'COLOR2', 'COLOR3', 'COLOR4'],
+    //   }),
+    // );
+    // dispatch(
+    //   addMasterClass({
+    //     id: 1,
+    //     image: 'https://via.placeholder.com/1',
+    //     name: 'SEWINGNAME',
+    //     quantity: 1,
+    //     price: 5000,
+    //     limit: 4,
+    //     programm: 'PROGRAMM1',
+    //   }),
+    // );
+    // );
     // dispatch(decrementPatternProduct(1, 1));
     // dispatch(deletePatternProduct(0));
   }, []);
@@ -195,7 +198,12 @@ export function BasketContainer() {
 }
 
 const headersMaster = ['Мастер-классы', 'Параметры', 'Итоговая цена'];
-const headersPatterns = ['Выкройки', 'Параметры', 'Итоговая цена'];
+const headersPatterns = [
+  'Выкройки',
+  'Параметры',
+  'Количество',
+  'Итоговая цена',
+];
 const headersGoods = [
   'Товары для шитья',
   'Параметры',

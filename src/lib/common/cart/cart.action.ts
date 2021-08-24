@@ -9,6 +9,9 @@ import {
 export const purgeCart = () => {
   return (dispatch: Dispatch) => dispatch({ type: CART_ACTION_TYPE.PURGE });
 };
+export const rehidrate = () => {
+  return (dispatch: Dispatch) => dispatch({ type: CART_ACTION_TYPE.REHIDRATE });
+};
 export const incrementSewingProduct = (
   id: number | string,
   incrementBy: number,

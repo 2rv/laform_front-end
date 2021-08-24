@@ -8,12 +8,67 @@ import {
   MasterClassPropType,
 } from './cart.type';
 
+import { PERSISTED_CART } from '../../../main/store';
+import { setLocalData, getLocalData } from '../../../main/store/store.service';
+
+import { PATTER_PRODUCT_FORMAT } from './cart.type';
+
 export const initialCartState = {
-  sewingProduct: [],
-  patternProduct: [],
-  masterClass: [],
-  total: 0,
-  quantity: 0,
+  sewingProduct: [
+    {
+      id: 1,
+      image: 'https://via.placeholder.com/1',
+      name: 'SEWINGNAME',
+      quantity: 1,
+      price: 5000,
+      limit: 4,
+      size: 'SIZE3',
+      category: 'CATEGORY1',
+      sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
+      color: 'COLOR2',
+      colorEnum: ['COLOR1', 'COLOR2', 'COLOR3', 'COLOR4'],
+    },
+  ],
+  patternProduct: [
+    {
+      id: 2,
+      image: 'https://via.placeholder.com/1',
+      name: 'PATTERN0',
+      price: 10000,
+      limit: 20,
+      size: 'SIZE',
+      quantity: 1,
+      sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
+      format: PATTER_PRODUCT_FORMAT.PRINT,
+      formatEnum: ['FORMAT1', 'FORMAT2', 'FORMAT3', 'FORMAT4'],
+    },
+    {
+      id: 1,
+      image: 'https://via.placeholder.com/1',
+      name: 'PATTERN1',
+      price: 1000,
+      limit: 2,
+      size: 'SIZE',
+      quantity: 1,
+      sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
+      format: PATTER_PRODUCT_FORMAT.REMOTE,
+      formatEnum: ['FORMAT1', 'FORMAT2', 'FORMAT3', 'FORMAT4'],
+    },
+  ],
+  masterClass: [
+    {
+      id: 1,
+      image: 'https://via.placeholder.com/1',
+      name: 'SEWINGNAME',
+      quantity: 1,
+      price: 5000,
+      limit: 4,
+      programm: 'PROGRAMM4',
+      programmEnum: ['PROGRAMM1', 'PROGRAMM2', 'PROGRAMM3', 'PROGRAMM4'],
+    },
+  ],
+  total: 21000,
+  quantity: 4,
 };
 
 export const incrementProduct = (
@@ -36,6 +91,7 @@ export const incrementProduct = (
           ? { ...p, quantity: p.quantity + 1 }
           : { ...p },
       );
+      setLocalData(PERSISTED_CART, state);
       return state;
     case 'patternProduct':
       const patternProduct = state.patternProduct.find(
@@ -51,6 +107,7 @@ export const incrementProduct = (
           ? { ...p, quantity: p.quantity + 1 }
           : { ...p };
       });
+      setLocalData(PERSISTED_CART, state);
       return state;
     case 'masterClass':
       const masterClass = state.masterClass.find(
@@ -66,6 +123,7 @@ export const incrementProduct = (
           ? { ...p, quantity: p.quantity + 1 }
           : { ...p },
       );
+      setLocalData(PERSISTED_CART, state);
       return state;
 
     default:
@@ -92,6 +150,7 @@ export const decrementProduct = (
           ? { ...p, quantity: p.quantity - 1 }
           : { ...p },
       );
+      setLocalData(PERSISTED_CART, state);
       return state;
     case 'patternProduct':
       const patternProduct = state.patternProduct.find(
@@ -107,6 +166,7 @@ export const decrementProduct = (
           ? { ...p, quantity: p.quantity - 1 }
           : { ...p },
       );
+      setLocalData(PERSISTED_CART, state);
       return state;
     case 'masterClass':
       const masterClass = state.masterClass.find(
@@ -122,6 +182,7 @@ export const decrementProduct = (
           ? { ...p, quantity: p.quantity - 1 }
           : { ...p },
       );
+      setLocalData(PERSISTED_CART, state);
       return state;
 
     default:
@@ -137,6 +198,7 @@ export const changeSewingProductParametrs = (
   state.sewingProduct = state.sewingProduct.map((p: any) =>
     p.id === id ? { ...p, size, color } : { ...p },
   );
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const changePatternProductParametrs = (
@@ -148,6 +210,7 @@ export const changePatternProductParametrs = (
   state.patternProduct = state.patternProduct.map((p: any) =>
     p.id === id ? { ...p, size, format } : { ...p },
   );
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const changeMasterClassParametrs = (
@@ -158,6 +221,7 @@ export const changeMasterClassParametrs = (
   state.masterClass = state.masterClass.map((p: any) =>
     p.id === id ? { ...p, programm } : { ...p },
   );
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const addSewingProduct = (product: SewingProductPropType) => {
@@ -190,6 +254,7 @@ export const addSewingProduct = (product: SewingProductPropType) => {
     [SEWING_PRODUCT_KEY.SIZE_ENUM]: sizeEnum,
     [SEWING_PRODUCT_KEY.CATEGORY]: category,
   });
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const addPatternProduct = (product: PatternProductPropType) => {
@@ -220,6 +285,7 @@ export const addPatternProduct = (product: PatternProductPropType) => {
     [PATTERN_PRODUCT_KEY.FORMAT]: format,
     [PATTERN_PRODUCT_KEY.FORMAT_ENUM]: formatEnum,
   });
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const addMasterClass = (product: MasterClassPropType) => {
@@ -246,6 +312,7 @@ export const addMasterClass = (product: MasterClassPropType) => {
     [MASTER_CLASS_KEY.PROGRAMM]: programm,
     [MASTER_CLASS_KEY.PROGRAMM_ENUM]: programmEnum,
   });
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const deleteSewingProduct = (state: any, id: number | string) => {
@@ -259,7 +326,7 @@ export const deleteSewingProduct = (state: any, id: number | string) => {
   state.sewingProduct = state.sewingProduct.filter(
     (p: any) => p[SEWING_PRODUCT_KEY.ID] !== id,
   );
-
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const deletePatternProduct = (state: any, id: number | string) => {
@@ -273,6 +340,7 @@ export const deletePatternProduct = (state: any, id: number | string) => {
   state.patternProduct = state.patternProduct.filter(
     (p: any) => p[PATTERN_PRODUCT_KEY.ID] !== id,
   );
+  setLocalData(PERSISTED_CART, state);
   return state;
 };
 export const deleteMasterClass = (state: any, id: number | string) => {
@@ -284,5 +352,9 @@ export const deleteMasterClass = (state: any, id: number | string) => {
   state.masterClass = state.masterClass.filter(
     (p: any) => p[MASTER_CLASS_KEY.ID] !== id,
   );
+  setLocalData(PERSISTED_CART, state);
   return state;
+};
+export const rehidrate = () => {
+  return getLocalData(PERSISTED_CART) || initialCartState;
 };
