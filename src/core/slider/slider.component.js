@@ -44,8 +44,8 @@ export function SliderComponent(props) {
           </Button>
 
           <div ref={sliderRef} className="keen-slider">
-            {items.map((data, index) => (
-              <SliderItemComponent data={data} index={index} />
+            {items.map((data) => (
+              <SliderItemComponent key={data.id} {...data} />
             ))}
           </div>
           <Dots>

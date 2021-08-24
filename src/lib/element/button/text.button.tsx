@@ -6,7 +6,7 @@ import { THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { ButtonPropsType } from './button.type';
 
 export function TextButton(props: ButtonPropsType) {
-  const { tid, tvalue, width = false, ...rest } = props;
+  const { tid, tvalue, width = undefined, ...rest } = props;
 
   return (
     <Button width={width} {...rest}>

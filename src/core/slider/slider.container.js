@@ -54,6 +54,7 @@ export function SliderContainer(props) {
 
 export const testSlides = [
   {
+    id: 1,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
     titleTextColor: '#FFFFFF',
     buttonText: 'Купить',
@@ -64,6 +65,7 @@ export const testSlides = [
     image: 'http://placekitten.com/900/300',
   },
   {
+    id: 2,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
     titleTextColor: '#2F80ED',
     buttonText: 'Купить',
@@ -74,6 +76,7 @@ export const testSlides = [
     image: 'http://placekitten.com/900/301',
   },
   {
+    id: 3,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
     titleTextColor: '#219653',
     buttonText: 'Купить',

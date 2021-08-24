@@ -8,7 +8,6 @@ import { ButtonBasic } from '../../lib/element/button';
 import 'keen-slider/keen-slider.min.css';
 
 export function SliderItemComponent(props) {
-  const { slide, data, index } = props;
   const {
     titleText,
     titleTextColor,
@@ -18,7 +17,7 @@ export function SliderItemComponent(props) {
     isButton,
     buttonPath,
     image,
-  } = data;
+  } = props;
   return (
     <Container className="keen-slider__slide">
       <Content>
