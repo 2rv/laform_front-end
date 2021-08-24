@@ -6,7 +6,7 @@ export function SliderEditComponent(props) {
   const {
     sliderData,
     pickImage,
-    removeSlide,
+    removeSlider,
     sliderImage,
     titleTextColorOptions,
     buttonColorOptions,
@@ -39,7 +39,7 @@ export function SliderEditComponent(props) {
           titleTextColorOptions={titleTextColorOptions}
           buttonColorOptions={buttonColorOptions}
           buttonTextColorOptions={buttonTextColorOptions}
-          removeSlide={removeSlide}
+          removeSlider={removeSlider}
           isPending={isPending}
           formikObject={formikObject}
           dataPending={dataPending}

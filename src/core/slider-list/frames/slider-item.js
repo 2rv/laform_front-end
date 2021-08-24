@@ -16,7 +16,7 @@ export function SliderItem({ data, removeSlide, editSlide }) {
           <TextPrimary tid={name} />
         </Case>
         <Case>
-          <Button onClick={editSlide(id)}>
+          <Button onClick={() => editSlide(id)}>
             <EditIcon />
           </Button>
           <Button onClick={() => removeSlide(id)}>

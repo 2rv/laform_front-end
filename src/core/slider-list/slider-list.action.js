@@ -48,7 +48,6 @@ export function sliderListLoadData(currentLang) {
       });
 
       const data = convertSliderData(response.data);
-      console.log('data: ', data);
 
       dispatch({
         type: SLIDER_LIST_ACTION_TYPE.SLIDER_LIST_UPLOAD_SUCCESS,

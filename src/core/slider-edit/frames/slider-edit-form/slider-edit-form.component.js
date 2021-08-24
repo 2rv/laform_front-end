@@ -17,7 +17,7 @@ export function SliderEditFormComponent(props) {
     buttonColorOptions,
     buttonTextColorOptions,
 
-    removeSlide,
+    removeSlider,
     formikObject,
 
     isPending,
@@ -130,7 +130,7 @@ export function SliderEditFormComponent(props) {
             type="button"
             tid="Удалить слайд"
             disabled={isPending}
-            onClick={removeSlide}
+            onClick={removeSlider}
           />
         </FieldLayout>
       </SectionLayout>

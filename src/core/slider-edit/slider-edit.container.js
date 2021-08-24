@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { sliderEditLoadData, sliderEditUploadData, sliderItemRemove } from './slider-edit.action';
+import { sliderEditLoadData, sliderEditUploadData, sliderEditRemove } from './slider-edit.action';
 import {
   SLIDER_FIELDS_DATA,
   SLIDER_EDIT_STORE_NAME,
@@ -20,7 +20,6 @@ import {
 } from '../../main/store/store.service';
 import { SLIDER_EDIT_FIELD_NAME } from './slider-edit.type';
 import { useFormik } from 'formik';
-import { redirect } from 'src/main/navigation';
 
 export function SliderEditContainer() {
   const dispatch = useDispatch();
@@ -48,7 +47,7 @@ export function SliderEditContainer() {
       reader.readAsDataURL(files[0]);
     }
   };
-  const removeSlide = () => dispatch(sliderItemRemove(query.sliderId));
+  const removeSlider = () => dispatch(sliderEditRemove(query.sliderId));
   const formikObject = useFormik({
     initialValues: {
       [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: getRequestData(state.sliderEdit).headingTextRu,
@@ -83,7 +82,7 @@ export function SliderEditContainer() {
       pageLoading={pageLoading}
       currentLang={currentLang}
       pickImage={pickImage}
-      removeSlide={removeSlide}
+      removeSlider={removeSlider}
       sliderImage={sliderImage}
       titleTextColorOptions={titleTextColorOptions}
       buttonColorOptions={buttonColorOptions}

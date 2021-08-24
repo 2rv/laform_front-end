@@ -73,7 +73,7 @@ export function sliderEditUploadData(data) {
   };
 }
 
-export function sliderItemRemove(id) {
+export function sliderEditRemove(id) {
   return async (dispatch) => {
     dispatch({
       type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_PENDING,
@@ -81,8 +81,8 @@ export function sliderItemRemove(id) {
 
     try {
       await httpRequest({
-        method: SLIDER_EDIT_API.SLIDER_ITEM_REMOVE.TYPE,
-        url: SLIDER_EDIT_API.SLIDER_ITEM_REMOVE.ENDPOINT(id),
+        method: SLIDER_EDIT_API.SLIDER_EDIT_REMOVE.TYPE,
+        url: SLIDER_EDIT_API.SLIDER_EDIT_REMOVE.ENDPOINT(id),
       });
 
       dispatch({ type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_SUCCESS });
