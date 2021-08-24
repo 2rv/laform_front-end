@@ -1,7 +1,6 @@
 export const PATTERNS_FIELD_NAME = {
-  CATEGORY: 'category',
-  TAGS: 'tags',
-  FIND_INPUT: 'find-input-patterns',
+  FILTER: 'filter',
+  FIND: 'find-input-patterns',
 };
 
 export const PATTERNS_ACTION_TYPE = {

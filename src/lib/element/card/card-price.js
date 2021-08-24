@@ -4,11 +4,13 @@ import { THEME_COLOR, THEME_SIZE } from '../../theme';
 
 export function CardPrice(props) {
   const { min = null, max = null, discount = null, valute = null } = props;
+  const discountPrice = () => min - (min / 100) * discount;
+  if (discount === 100) return <TextSecondary tid="Бесплатно" />;
   return (
     <div>
       {discount ? (
         <>
-          <Text>{discount}</Text>
+          <Text>{discountPrice()}</Text>
           &nbsp;
           <ThroughText>{min}</ThroughText>
         </>

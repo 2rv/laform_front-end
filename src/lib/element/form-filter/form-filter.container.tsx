@@ -5,44 +5,21 @@ import { FormFilterContainerPropsType } from './form-filter.type';
 export function FormFilter(props: FormFilterContainerPropsType) {
   const {
     findPlaceholderTid,
-    categoryOptions,
-    tagsOptions,
-
-    fieldNameFind,
-    selectNameCategory,
-    selectNameTags,
+    filterOptions,
+    findFieldName,
+    filterSelectName,
 
     initialValue,
-    validation,
     onSubmit,
-
-    pending,
-    success,
-    error,
-    errorMessage,
-    filterProducts,
-    sortProducts,
   } = props;
   return (
-    <Formik
-      initialValues={initialValue}
-      validate={validation}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={initialValue} onSubmit={onSubmit}>
       {(formProps) => (
         <FormFilterComponent
           findPlaceholderTid={findPlaceholderTid}
-          categoryOptions={categoryOptions}
-          tagsOptions={tagsOptions}
-          selectNameCategory={selectNameCategory}
-          selectNameTags={selectNameTags}
-          fieldNameFind={fieldNameFind}
-          pending={pending}
-          success={success}
-          error={error}
-          errorMessage={errorMessage}
-          filterProducts={filterProducts}
-          sortProducts={sortProducts}
+          filterOptions={filterOptions}
+          filterSelectName={filterSelectName}
+          findFieldName={findFieldName}
           {...formProps}
         />
       )}

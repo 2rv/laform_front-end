@@ -2,18 +2,13 @@ import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { FieldSelect, BasicField } from '../field';
 import { FormFilterComponentPropsType } from './form-filter.type';
-import { FieldLayout } from '../layout';
 
 export function FormFilterComponent(props: FormFilterComponentPropsType) {
   const {
     findPlaceholderTid,
-
-    categoryOptions = [],
-    tagsOptions = [],
-
-    fieldNameFind,
-    selectNameCategory,
-    selectNameTags,
+    filterOptions,
+    filterSelectName,
+    findFieldName,
 
     values,
     errors,
@@ -21,8 +16,6 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
     handleChange,
     handleBlur,
     handleSubmit,
-    filterProducts,
-    sortProducts,
   } = props;
 
   const getFieldError = (name: string) => {
@@ -32,45 +25,28 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
   const changeInputHandler = (e: any) => {
     handleChange(e);
     handleSubmit();
-    filterProducts(e.target.value.trim().toLowerCase());
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <Container>
-        <FieldLayout type="double" adaptive>
-          <FieldSelect
-            options={categoryOptions}
-            name={selectNameCategory}
-            value={values[selectNameCategory]}
-            onChange={(e: any) => {
-              handleChange(e);
-              handleSubmit();
-            }}
-            width={200}
-            adaptive
-            onBlur={handleBlur}
-          />
-
-          <FieldSelect
-            options={tagsOptions}
-            name={selectNameTags}
-            value={values[selectNameTags]}
-            onChange={(e: any) => {
-              handleChange(e);
-              handleSubmit();
-              sortProducts(Number(e.target.value));
-            }}
-            width={200}
-            adaptive
-            onBlur={handleBlur}
-          />
-        </FieldLayout>
+        <FieldSelect
+          options={filterOptions}
+          name={filterSelectName}
+          value={values[filterSelectName]}
+          onChange={(e: any) => {
+            handleChange(e);
+            handleSubmit();
+          }}
+          width={200}
+          adaptive
+          onBlur={handleBlur}
+        />
         <BasicField
           placeholderTid={findPlaceholderTid}
-          name={fieldNameFind}
-          value={values[fieldNameFind]}
-          error={getFieldError(fieldNameFind)}
+          name={findFieldName}
+          value={values[findFieldName]}
+          error={getFieldError(findFieldName)}
           onChange={changeInputHandler}
           onBlur={handleBlur}
           isFindInput

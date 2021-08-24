@@ -13,10 +13,10 @@ export function masterClassesUploadData(currentLang) {
         method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.TYPE,
         url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(currentLang),
       });
-
+      const data = response.data;
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
-        masterClasses: response.data,
+        data: data,
       });
     } catch (err) {
       if (err.response) {

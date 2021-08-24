@@ -1,32 +1,18 @@
 export interface FormFilterContainerPropsType {
   findPlaceholderTid: string;
-  categoryOptions: { id: number; tid: string; tvalue: any }[];
-  tagsOptions: { id: number; tid: string; tvalue: any }[];
-
-  fieldNameFind: string;
-  selectNameCategory: string;
-  selectNameTags: string;
+  filterOptions: { id: number; tid: string; tvalue: any }[];
+  findFieldName: string;
+  filterSelectName: string;
 
   initialValue: object;
-  validation: any;
   onSubmit: any;
-
-  pending: boolean;
-  success: boolean;
-  error: boolean;
-  errorMessage: any;
-  filterProducts: Function;
-  sortProducts: Function;
 }
 
 export interface FormFilterComponentPropsType {
   findPlaceholderTid: string;
-  categoryOptions: { id: number; tid: string; tvalue: any }[];
-  tagsOptions: { id: number; tid: string; tvalue: any }[];
-
-  fieldNameFind: string;
-  selectNameCategory: string;
-  selectNameTags: string;
+  filterOptions: { id: number; tid: string; tvalue: any }[];
+  findFieldName: string;
+  filterSelectName: string;
 
   values: any;
   errors: any;
@@ -34,11 +20,4 @@ export interface FormFilterComponentPropsType {
   handleChange: any;
   handleBlur: any;
   handleSubmit: any;
-
-  pending: boolean;
-  success: boolean;
-  error: boolean;
-  errorMessage: any;
-  filterProducts: Function;
-  sortProducts: Function;
 }

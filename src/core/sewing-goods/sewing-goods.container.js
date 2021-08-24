@@ -1,107 +1,95 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { sewingGoodsUploadData } from './sewing-goods.action';
-import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
-import { SewingGoodsComponent } from './sewing-goods.component';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { sewingGoodsUploadData } from './sewing-goods.action';
+import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
+import { SewingGoodsComponent } from './sewing-goods.component';
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods.type';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
+import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 
 export function SewingGoodsContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
-    state: state[SEWING_GOODS_STORE_NAME],
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
-  const [filteredProducts, setFilteredProducts] = useState(testListItems);
+  const { sewingGoodsState, pageLoading, currentLang } = useSelector(
+    (state) => ({
+      sewingGoodsState: getRequestData(
+        state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
+        [],
+      ),
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    }),
+  );
+  useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
+  const filterInitialValue = () => ({
+    [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
+    [SEWING_GOODS_FIELD_NAME.FIND]: '',
+  });
 
-  useEffect(() => {
-    // dispatch(sewingGoodsUploadData());
-  }, []);
+  const [filter, setFilter] = useState(filterInitialValue());
 
-  const initialValue = () => {
-    return {
-      [SEWING_GOODS_FIELD_NAME.CATEGORY]: 1,
-      [SEWING_GOODS_FIELD_NAME.TAGS]: 1,
-      [SEWING_GOODS_FIELD_NAME.FIND_INPUT]: '',
-    };
-  };
+  //---------------------------------------------------
 
-  const onSubmit = (values) => {
-    console.log(values); // вроде должно приходить сюда изменения из формы
-  };
-
-  const filterProducts = (name) => {
-    setFilteredProducts(testListItems.filter((product) => {
-      return product.name
-        .toLowerCase()
-        .trim()
-        .includes(name);
-    }));
-  };
-
-  const sortProductsByPrice = (option = 1) => {
-    setFilteredProducts((prevProducts) => {
-      return [...prevProducts].sort((a, b) => {
-        if (option === 1) {
-          return prevProducts;
-        } else if (option === 2) {
-          return (a.price.discount !== null ? a.price.discount : a.price.min) - (b.price.discount !== null ? b.price.discount : b.price.min);
-        } else if (option === 3) {
-          return (b.price.discount !== null ? b.price.discount : b.price.min) - (a.price.discount !== null ? a.price.discount : a.price.min);
-        }
-      });
+  const onSubmit = (values) =>
+    setFilter({
+      [SEWING_GOODS_FIELD_NAME.FILTER]: Number(
+        values[SEWING_GOODS_FIELD_NAME.FILTER],
+      ),
+      [SEWING_GOODS_FIELD_NAME.FIND]: values[SEWING_GOODS_FIELD_NAME.FIND],
     });
-  };
+
+  //---------------------------------------------------
 
   return (
     <SewingGoodsComponent
-      isPending={isRequestPending(state.sewingGoods)}
-      isError={isRequestError(state.sewingGoods)}
-      isSuccess={isRequestSuccess(state.sewingGoods)}
-      errorMessage={getRequestErrorMessage(state.sewingGoods)}
-      pageLoading={pageLoading}
-      initialValue={initialValue()}
-      categoryOptions={categorySelectOptions}
-      tagsOptions={tagsSelectOptions}
-      listItems={filteredProducts}
-      fieldName={SEWING_GOODS_FIELD_NAME}
+      listItems={sorterItemsByParams(
+        sewingGoodsState,
+        filter[SEWING_GOODS_FIELD_NAME.FIND],
+        filter[SEWING_GOODS_FIELD_NAME.FILTER],
+      )}
+      //-----
+      filterOptions={filterOptionss}
+      initialValue={filterInitialValue()}
       onSubmit={onSubmit}
-      filterProducts={filterProducts}
-      sortProductsByPrice={sortProductsByPrice}
+      filterSelectName={SEWING_GOODS_FIELD_NAME.FILTER}
+      findFieldName={SEWING_GOODS_FIELD_NAME.FIND}
+      //-----
+      pageLoading={pageLoading}
+      isPending={isRequestPending(sewingGoodsState)}
+      isError={isRequestError(sewingGoodsState)}
+      isSuccess={isRequestSuccess(sewingGoodsState)}
+      errorMessage={getRequestErrorMessage(sewingGoodsState)}
     />
   );
 }
 
-export const categorySelectOptions = [
+export const filterOptionss = [
+  {
+    id: 0,
+    tid: 'Все',
+  },
   {
     id: 1,
-    tid: 'Категория 1',
+    tid: 'Акция',
   },
   {
     id: 2,
-    tid: 'Категория 2',
-  },
-];
-
-export const tagsSelectOptions = [
-  {
-    id: 1,
-    tid: 'Популярные',
-  },
-  {
-    id: 2,
-    tid: 'Самые дешевые',
+    tid: 'Хит',
   },
   {
     id: 3,
-    tid: 'Самые дорогие',
+    tid: 'По возрастанию',
+  },
+  {
+    id: 4,
+    tid: 'По убыванию',
   },
 ];
 

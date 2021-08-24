@@ -1,27 +1,27 @@
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
-import { PatternsFormFilter } from './frames';
 import { BasicCardList } from '../../lib/element/card-list';
 import { FilterTabs } from '../../lib/element/filter-tabs';
+import { FormFilter } from '../../lib/element/form-filter';
 
 export function PatternsComponent(props) {
   const {
+    listItems,
+    //-----
     activeTab,
     setActiveTab,
     tabItems,
-    initialValue,
-    categoryOptions,
-    tagsOptions,
-    listItems,
-    fieldName,
+    //-----
+    filterOptions,
+    filterSelectName,
+    findFieldName,
     onSubmit,
-    validation,
+    initialValue,
+    //-----
     pending,
     success,
     error,
     errorMessage,
-    filterProducts,
-    sortProductsByPrice,
   } = props;
 
   return (
@@ -32,20 +32,13 @@ export function PatternsComponent(props) {
         setActiveTab={setActiveTab}
         tabItems={tabItems}
       />
-      <PatternsFormFilter
+      <FormFilter
         findPlaceholderTid={'PATTERNS.PATTERNS.FIELD.FIND_PATTERNS'}
-        categoryOptions={categoryOptions}
-        tagsOptions={tagsOptions}
+        filterOptions={filterOptions}
+        filterSelectName={filterSelectName}
+        findFieldName={findFieldName}
         initialValue={initialValue}
-        fieldName={fieldName}
         onSubmit={onSubmit}
-        validation={validation}
-        pending={pending}
-        success={success}
-        error={error}
-        errorMessage={errorMessage}
-        filterProducts={filterProducts}
-        sortProductsByPrice={sortProductsByPrice}
       />
       <BasicCardList items={listItems} />
     </SectionLayout>
