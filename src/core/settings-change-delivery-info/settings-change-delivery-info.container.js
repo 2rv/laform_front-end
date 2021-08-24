@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -8,7 +7,6 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-
 import { SettingsFormChangeDeliveryInfoContainer } from './frames/settings-form-change-delivery-info';
 import {
   SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME,
@@ -60,7 +58,9 @@ export function SettingsChangeDeliveryInfoContainer() {
     return performSettingsChangeDeliveryInfoFormData(rawData);
   };
 
-  useEffect(() => dispatch(settingsChangeDeliveryInfoLoadData()), []);
+  useEffect(() => {
+    // dispatch(settingsChangeDeliveryInfoLoadData())
+  }, []);
 
   return (
     <SettingsFormChangeDeliveryInfoContainer

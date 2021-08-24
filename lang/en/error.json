@@ -1,5 +1,5 @@
 {
   "SUBSCRIBE_SUBSCRIPTION_ALREADY_EXISTS": "Подписка уже оформлена.",
-  "USER_SETTINGS_UNCORRECT_CURRENT_PASSWORD": "Неверный старый пароль.",
+  "USER_SETTINGS_UNCORRECT_CURRENT_PASSWORD": "Неверный пароль.",
   "USER_VERIFICATION_EMAIL_CODE_DOESNT_EXISTS": "Код подтверждения не существует."
 }

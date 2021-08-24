@@ -1,18 +1,20 @@
-import { setLinkRedirect } from '../../../main/navigation';
-import { TextSecondary } from '../text';
-
+import styled from 'styled-components';
+import { THEME_COLOR, THEME_SIZE } from '../../theme';
+import { text } from '../../common/text';
 import { LinkPropsType } from './link.type';
+import { LinkPrimary } from './primary.link';
 
 export function LinkSecondary(props: LinkPropsType) {
   const { tid, tvalue, path, pathConfig, className, children } = props;
 
   return (
-    <a
-      className={className}
-      href={path}
-      onClick={setLinkRedirect(path, pathConfig)}
-    >
-      {children || <TextSecondary tid={tid} tvalue={tvalue} />}
-    </a>
+    <Link className={className} tid={tid} path={path} pathConfig={pathConfig}>
+      {children || text(tid, tvalue)}
+    </Link>
   );
 }
+
+const Link = styled(LinkPrimary)`
+  color: ${THEME_COLOR.SECONDARY};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
+`;

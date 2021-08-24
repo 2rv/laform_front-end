@@ -1,38 +1,44 @@
 import styled from 'styled-components';
-
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonPrimary } from '../../../../lib/element/button';
-import { ContentLayout, IndentLayout } from '../../../../lib/element/layout';
+import {
+  ContentLayout,
+  SectionLayout,
+  PageLayout,
+} from '../../../../lib/element/layout';
 import { LoaderPrimary } from '../../../../lib/element/loader';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert } from '../../../../lib/element/alert';
 import { TextSecondary } from '../../../../lib/element/text';
 import { THEME_SIZE } from '../../../../lib/theme';
 
 export function AuthVerificateEmailConfirmComponent(props) {
   const { onButtonClick, isPending, isSuccess, isError, errorMessage } = props;
-  const buttonDisabled = true;
   return (
-    <Container type="small">
-      <IndentLayout type="text">
-        <Title tid="AUTH.VERIFICATE_EMAIL_CONFIRM.TITLE" />
-        <Content tid="AUTH.VERIFICATE_EMAIL_CONFIRM.CONTENT" />
-      </IndentLayout>
-      <ContentLayout type="small">
-        <IndentLayout type="small">
-          <ButtonPrimary
-            tid="AUTH.VERIFICATE_EMAIL_CONFIRM.GO_TO_PURCHASES"
-            onClick={onButtonClick}
-            disabled={!isSuccess}
-          />
-          {isError && <ErrorRequest tid={errorMessage} />}
-          {isPending && <LoaderPrimary />}
-        </IndentLayout>
-      </ContentLayout>
-    </Container>
+    <ContentLayout horizontal="center" vertical="center">
+      <PageLayout type="MEDIUM">
+        <Container type="SMALL">
+          <SectionLayout type="TEXT">
+            <Title tid="AUTH.VERIFICATE_EMAIL_CONFIRM.TITLE" />
+            <Content tid="AUTH.VERIFICATE_EMAIL_CONFIRM.CONTENT" />
+          </SectionLayout>
+          <ContentLayout type="SMALL">
+            <SectionLayout type="SMALL">
+              <ButtonPrimary
+                tid="AUTH.VERIFICATE_EMAIL_CONFIRM.GO_TO_PURCHASES"
+                onClick={onButtonClick}
+                disabled={!isSuccess}
+              />
+              {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+              {isPending && <LoaderPrimary />}
+            </SectionLayout>
+          </ContentLayout>
+        </Container>
+      </PageLayout>
+    </ContentLayout>
   );
 }
 
-const Container = styled(IndentLayout)`
+const Container = styled(SectionLayout)`
   justify-items: center;
   text-align: center;
 `;

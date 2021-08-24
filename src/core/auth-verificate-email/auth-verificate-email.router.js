@@ -8,5 +8,5 @@ import {
 
 export function authVerificateEmailRouter(ctx) {
   ctx.store.dispatch(setActivePath(AUTH_VERIFICATE_EMAIL_ROUTE_PATH));
-  authRedirectPrivated(ctx, AUTH_VERIFICATE_EMAIL_GUEST_REDIRECT);
+  // authRedirectPrivated(ctx, AUTH_VERIFICATE_EMAIL_GUEST_REDIRECT);
 }

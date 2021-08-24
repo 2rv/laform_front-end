@@ -1,0 +1,23 @@
+export const CREATE_PRODUCT_ACTION_TYPE = {
+  CREATE_PRODUCT_UPLOAD_PENDING:
+    'CREATE_PRODUCT_ACTION_TYPE.CREATE_PRODUCT_UPLOAD_PENDING',
+  CREATE_PRODUCT_UPLOAD_SUCCESS:
+    'CREATE_PRODUCT_ACTION_TYPE.CREATE_PRODUCT_UPLOAD_SUCCESS',
+  CREATE_PRODUCT_UPLOAD_ERROR:
+    'CREATE_PRODUCT_ACTION_TYPE.CREATE_PRODUCT_UPLOAD_ERROR',
+};
+
+export const PRODUCT_FIELD_NAME = {
+  CATEGORIES: 'productCategories',
+  OPTIONS: 'productOptions',
+  POSITIONS: 'productPositions',
+  NAME: 'productName',
+  MODIFIER: 'productModifier',
+  ONE_CATEGORY: 'productCategory',
+  DESCRIPTION: 'productDescription',
+  ONE_OPTION_CATEGORY: 'productOptionCategory',
+  ONE_POSITION_NAME: 'productPositionName',
+  ONE_POSITION_PRICE: 'productPositionPrice',
+  PRICE: 'productPrice',
+  DISCOUNT: 'productDiscount',
+};

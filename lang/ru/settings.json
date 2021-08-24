@@ -1,4 +1,5 @@
 {
+  "HEADER": "Настройки",
   "CHANGE_DELIVERY_INFO": {
     "TITLE": "Удобная доставка",
     "FULLNAME": {
@@ -57,18 +58,19 @@
   },
   "CHANGE_EMAIL": {
     "TITLE": "Сменить Email",
-    "OLD_EMAIL": {
-      "TITLE": "Старый Email",
-      "PLACEHOLDER": "Email.com"
-    },
     "NEW_EMAIL": {
       "TITLE": "Новый Email",
       "PLACEHOLDER": "Newemail.com"
+    },
+    "OLD_EMAIL": {
+      "TITLE": "Старый Email",
+      "PLACEHOLDER": "Email.com"
     },
     "PASSWORD": {
       "TITLE": "Пароль",
       "PLACEHOLDER": "Пароль"
     },
+    "SUCCESS": "CHANGE_EMAIL SUCCESS MESSAGE",
     "SUBMIT": "Сменить"
   }
 }

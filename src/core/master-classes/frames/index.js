@@ -1,1 +1,1 @@
-export { MasterClassesFormFilterContainer } from './master-classes-form-filter';
+export { MasterClassesFormFilter } from './master-classes-filter';

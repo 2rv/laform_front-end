@@ -1,68 +1,66 @@
-import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-
 import { ReactComponent as CheckmarkIcon } from '../../../asset/svg/check-mark.svg';
-
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
 
 import { CheckboxPropsType } from './field.type';
 
 export function FieldCheckbox(props: CheckboxPropsType) {
-  const { titleTid, labelTid, name, checked, onChange, onBlur } = props;
-  const [isChecked, setChecked] = useState(!!checked);
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(!isChecked);
-
-    onChange?.(e);
-    onBlur?.(e);
-  };
+  const { titleTid, labelTid, name, checked, onClick, width, adaptive } = props;
 
   return (
-    <Indent>
+    <Container width={width} adaptive={adaptive}>
       {titleTid && <Title tid={titleTid} />}
-      <InputContainer htmlFor={name}>
-        <Input
-          type="checkbox"
-          name={name}
-          checked={isChecked}
-          onChange={onInputChange}
-        />
-        <CheckmarkContainer checked={isChecked}>
+      <Content htmlFor={name} onClick={onClick}>
+        <Input type="checkbox" name={name} checked={checked} />
+        <CheckmarkContainer checked={checked}>
           <Checkmark />
         </CheckmarkContainer>
         <Title tid={labelTid} />
-      </InputContainer>
-    </Indent>
+      </Content>
+    </Container>
   );
 }
-
-const Indent = styled.div`
-  padding: ${spacing(1)};
-`;
 
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
 `;
-
-const InputContainer = styled.label`
+const Container = styled.div<{
+  adaptive?: boolean;
+  width?: number;
+}>`
+  display: flex;
+  flex-direction: column;
+  width: ${(p) => {
+    if (p.width) return p.width + 'px';
+    return '100%';
+  }};
+  ${(p) => {
+    return (
+      p.adaptive &&
+      css`
+        @media screen and (max-width: 720px) {
+          width: 100%;
+        }
+      `
+    );
+  }}
+  gap: ${spacing(1)};
+`;
+const Content = styled.label`
   display: flex;
   align-items: center;
   gap: ${spacing(2)};
   padding: ${spacing(2)} ${spacing(3)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  background-color: ${THEME_COLOR.GRAY};
   cursor: pointer;
+  height: 46px;
+  user-select: none;
 `;
-
 const Input = styled.input`
-  position: absolute;
-  height: 0;
-  width: 0;
-  opacity: 0;
+  display: none;
 `;
-
 const CheckmarkContainer = styled.div<{ checked: boolean }>`
   display: flex;
   align-items: center;
@@ -78,16 +76,10 @@ const CheckmarkContainer = styled.div<{ checked: boolean }>`
   ${(p) =>
     p.checked &&
     css`
-      color: ${THEME_COLOR.BACKGROUND.GRAY};
+      color: ${THEME_COLOR.GRAY};
       background-color: ${THEME_COLOR.SECONDARY_DARK};
     `}
 `;
-
 const Checkmark = styled(CheckmarkIcon)`
   fill: currentColor;
 `;
-
-// const Checkmark = styled(CheckmarkIcon)<{ checked: boolean }>`
-//   transition-property: color;
-//   transition-duration: ${THEME_VALUE.TRANSITION.FAST};
-// `;

@@ -1,21 +1,27 @@
-import { IndentLayout } from '../../lib/element/layout';
-
+import styled from 'styled-components';
 import {
-  LoginHeaderComponent,
   LoginFormContainer,
   LoginFormSocialComponent,
   LoginFooterComponent,
 } from './frames';
+import {
+  SectionLayout,
+  PageLayout,
+  ContentLayout,
+} from '../../lib/element/layout';
+import { TitlePrimary } from '../../lib/element/title';
 
 export function LoginComponent(props) {
   return (
-    <IndentLayout type="small">
-      <LoginHeaderComponent />
-      <IndentLayout>
-        <LoginFormContainer {...props} />
-        <LoginFormSocialComponent />
-        <LoginFooterComponent />
-      </IndentLayout>
-    </IndentLayout>
+    <ContentLayout horizontal="center" vertical="center">
+      <SectionLayout type="SMALL">
+        <TitlePrimary tid="LOGIN.SECTION_TITLE" />
+        <SectionLayout>
+          <LoginFormContainer {...props} />
+          <LoginFormSocialComponent />
+          <LoginFooterComponent />
+        </SectionLayout>
+      </SectionLayout>
+    </ContentLayout>
   );
 }

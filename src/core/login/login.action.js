@@ -2,11 +2,9 @@ import { httpRequest } from '../../main/http';
 import { redirect } from '../../main/navigation';
 import { authSetData } from '../../lib/common/auth';
 
-import {
-  LOGIN_API,
-  LOGIN_FORM_REDIRECT_ON_UPLOAD_PATH,
-} from './login.constant';
+import { LOGIN_API } from './login.constant';
 import { LOGIN_ACTION_TYPE } from './login.type';
+import { HOME_ROUTE_PATH } from '../home';
 
 export function loginFormUploadData(data) {
   return async (dispatch) => {
@@ -27,7 +25,7 @@ export function loginFormUploadData(data) {
         type: LOGIN_ACTION_TYPE.LOGIN_FORM_UPLOAD_SUCCESS,
       });
 
-      redirect(LOGIN_FORM_REDIRECT_ON_UPLOAD_PATH);
+      redirect(HOME_ROUTE_PATH);
     } catch (err) {
       if (err.response) {
         dispatch({

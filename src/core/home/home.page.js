@@ -1,22 +1,10 @@
-import { IndentLayout } from '../../lib/element/layout';
-
-import { FooterContainer } from '../footer';
-import { HeaderContainer } from '../header';
-import { HeaderLogoContainer } from '../header-logo';
-
 import { HomeContainer } from './home.container';
+import { PageWrapper } from 'src/lib/common/page-wrapper';
 
 export function HomePage() {
   return (
-    <IndentLayout type="large">
-      <IndentLayout type="medium">
-        <IndentLayout type="small">
-          <HeaderLogoContainer />
-          <HeaderContainer />
-        </IndentLayout>
-        <HomeContainer />
-      </IndentLayout>
-      <FooterContainer />
-    </IndentLayout>
+    <PageWrapper>
+      <HomeContainer />
+    </PageWrapper>
   );
 }

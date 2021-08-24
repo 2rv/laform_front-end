@@ -1,1 +1,1 @@
-export { CatalogListContainer } from './catalog-list.container';
+export { CatalogListComponent } from './catalog-list.component';

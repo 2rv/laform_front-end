@@ -1,5 +1,4 @@
-export { BasicCard } from './basic.card';
-export { CardButton } from './card.button';
-export { CardDescription } from './card.description';
-export { CardImage } from './card.image';
+export { CardPattern } from './card-pattern';
+export { CardSewingGoods } from './card-sewing-goods';
+export { CardMasterClasses } from './card-master-classes';
 export { CardArticles } from './card.articles';

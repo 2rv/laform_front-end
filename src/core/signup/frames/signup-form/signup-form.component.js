@@ -1,7 +1,7 @@
-import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
-import { FieldPrimary } from '../../../../lib/element/field';
+import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
+import { BasicField } from '../../../../lib/element/field';
 import { ButtonPrimary } from '../../../../lib/element/button';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
 
 export function SignupFormComponent(props) {
@@ -34,9 +34,9 @@ export function SignupFormComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <IndentLayout type="small">
-        <FieldLayout>
-          <FieldPrimary
+      <SectionLayout type="SMALL">
+        <SectionLayout type="TEXT">
+          <BasicField
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.LOGIN.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.LOGIN.PLACEHOLDER"
             name={fieldLogin}
@@ -45,7 +45,7 @@ export function SignupFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.EMAIL.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.EMAIL.PLACEHOLDER"
             name={fieldEmail}
@@ -55,7 +55,7 @@ export function SignupFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD.PLACEHOLDER"
             name={fieldPassword}
@@ -65,7 +65,7 @@ export function SignupFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD_REPEAT.TITLE"
             placeholderTid="SIGNUP.SIGNUP_FORM.FIELD.PASSWORD_REPEAT.PLACEHOLDER"
             name={fieldPasswordRepeat}
@@ -75,15 +75,16 @@ export function SignupFormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {isError && <ErrorRequest tid={errorMessage} />}
-        </FieldLayout>
+          {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+          {isSuccess && <SuccessAlert tid="SIGNUP.SIGNUP_FORM.SUCCESS" />}
+        </SectionLayout>
         <ButtonPrimary
           tid="SIGNUP.SIGNUP_FORM.BUTTON.SUBMIT"
           type="submit"
           disabled={isSubmitDisabled()}
         />
         {isPending && <LoaderPrimary />}
-      </IndentLayout>
+      </SectionLayout>
     </form>
   );
 }

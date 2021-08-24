@@ -11,6 +11,8 @@ export function AuthFormRecoveryAccountContainer(props) {
     onSubmitForm,
     isPending,
     isSuccess,
+    isError,
+    errorMessage,
   } = props;
 
   const EMAIL_NAME = fieldName[AUTH_FORM_RECOVERY_ACCOUNT_FIELD_KEY.EMAIL];
@@ -26,6 +28,8 @@ export function AuthFormRecoveryAccountContainer(props) {
           fieldEmail={EMAIL_NAME}
           isPending={isPending}
           isSuccess={isSuccess}
+          isError={isError}
+          errorMessage={errorMessage}
           {...formProps}
         />
       )}

@@ -1,43 +1,40 @@
-import { useDispatch, useSelector } from 'react-redux';
-
-import {
-  getRequestErrorMessage,
-  isRequestError,
-  isRequestPending,
-  isRequestSuccess,
-} from '../../main/store/store.service';
-
-import { FOOTER_STORE_NAME } from './footer.constant';
-import { SUBSCRIBE_FIELD_NAME, SUBSCRIBE_FORM_FIELD_NAME } from './footer.type';
 import { FooterComponent } from './footer.component';
-import { subscribeFormUploadData } from './footer.action';
-import { parseSubscribeData } from './footer.convert';
-import { subscribeFormValidation } from './footer.validation';
 
 export function FooterContainer() {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state[FOOTER_STORE_NAME]);
-
-  const subscribeFormSubmit = (values) => {
-    const data = parseSubscribeData(values);
-
-    dispatch(subscribeFormUploadData(data));
-  };
-
-  const subscribeFormGetInitialValue = () => ({
-    [SUBSCRIBE_FIELD_NAME.EMAIL]: '',
-  });
-
   return (
     <FooterComponent
-      isPending={isRequestPending(state.subscribeForm)}
-      errorMessage={getRequestErrorMessage(state.subscribeForm)}
-      isSuccess={isRequestSuccess(state.subscribeForm)}
-      isError={isRequestError(state.subscribeForm)}
-      initialValue={subscribeFormGetInitialValue()}
-      validation={subscribeFormValidation}
-      onSubmitForm={subscribeFormSubmit}
-      fieldName={SUBSCRIBE_FORM_FIELD_NAME}
+      laFormeLinkItems={laFormeLinkItems}
+      faqLinkItems={faqLinkItems}
+      contactLinkItems={contactLinkItems}
     />
   );
 }
+
+const laFormeLinkItems = {
+  title: 'FOOTER.MENU.SECTION1.TITLE',
+  items: [
+    { tid: 'FOOTER.MENU.SECTION1.MY_ACCOUNT', path: '/' },
+    { tid: 'FOOTER.MENU.SECTION1.MY_PURCHASES', path: '/' },
+    { tid: 'FOOTER.MENU.SECTION1.WISH_LIST', path: '/' },
+    { tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS', path: '/' },
+    { tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO', path: '/' },
+  ],
+};
+const faqLinkItems = {
+  title: 'FOOTER.MENU.SECTION2.TITLE',
+  items: [
+    { tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE', path: '/' },
+    {
+      tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
+      path: '/',
+    },
+    { tid: 'FOOTER.MENU.SECTION2.QNA', path: '/' },
+  ],
+};
+const contactLinkItems = {
+  title: 'FOOTER.MENU.SECTION3.TITLE',
+  items: [
+    { tid: 'FOOTER.MENU.SECTION3.LEGAL_INFO', path: '/' },
+    { tid: 'FOOTER.MENU.SECTION3.PRIVACY_POLICY', path: '/' },
+  ],
+};

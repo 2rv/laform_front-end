@@ -9,5 +9,13 @@
 		"FIELD": {
 			"FIND_PATTERNS": "Найти выкройки"
 		}
+	},
+	"MY_PATTERNS": {
+		"TITLE": "Мои выкройки",
+		"DETAILS": {
+			"FORMAT": "Формат",
+			"ELECTRONIC": "Электронный",
+			"SIZE": "Размер"
+		}
 	}
 }

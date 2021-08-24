@@ -1,44 +1,72 @@
 import styled from 'styled-components';
-import { ReactComponent as LikeIcon } from 'src/asset/svg/favorite-icon.svg';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
+import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
-import { ButtonBasic } from '../button';
-import { CardDescription } from './card.description';
+import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
+import { useState } from 'react';
+import { LinkPrimary } from '../link';
+import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
 
 export function CardArticles(props) {
-  const {
-    id,
-    backgroundImage = null,
-    name = 'неуказано',
-    liked = false,
-    createDate = 'Изменить на что то',
-  } = props;
-
+  const { id, image = null, name = null, date, like = false } = props.data;
+  const [isLiked, setLike] = useState(like);
+  const onLike = () => {
+    setLike(!isLiked);
+  };
   return (
     <Container>
-      <CardImage backgroundImage={backgroundImage} />
+      <CardImage
+        path={ARTICLE_PAGE_ROUTE_PATH}
+        pathConfig={{ query: { id: id } }}
+        image={image}
+      />
       <Content>
-        <CardDescription name={name} />
-        <LikeButton like={liked} icon={LikeIcon} />
+        <Column>
+          <CardName tid={name} />
+          <Date tid={date} />
+        </Column>
+        <LikeButton onClick={onLike} like={isLiked}>
+          <LikeIcon />
+        </LikeButton>
       </Content>
-      <TextSecondary tid={createDate} />
     </Container>
   );
 }
-const LikeButton = styled(ButtonBasic)`
-  fill: ${({ like }) => (like ? '#ffffff' : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${({ like }) =>
-    like ? THEME_COLOR.SECONDARY : THEME_COLOR.GRAY};
-`;
-const Content = styled.div`
+
+const Column = styled.div`
   display: flex;
-  gap: ${spacing(3)};
+  flex-direction: column;
+  gap: ${spacing(1)};
 `;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 360px;
-  min-width: 260px;
   gap: ${spacing(3)};
+`;
+const Content = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+  flex: 1;
+  justify-content: space-between;
+`;
+const LikeButton = styled(IconButton)`
+  fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
+  background-color: ${(p) =>
+    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
+`;
+const Date = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  color: ${THEME_COLOR.TEXT.LIGHT};
+  line-height: 1.5;
+`;
+const CardName = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 `;

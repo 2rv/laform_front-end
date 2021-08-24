@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import { FieldPrimary } from '../../../../lib/element/field';
+import { BasicField } from '../../../../lib/element/field';
 import { TitlePrimary } from '../../../../lib/element/title';
 import { ButtonSecondary } from '../../../../lib/element/button';
-import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
-import { ErrorRequest } from '../../../../lib/element/error';
+import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
+import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
 import { LoaderPrimary } from '../../../../lib/element/loader';
-import { SuccessRequest } from '../../../../lib/element/success';
+import { THEME_SIZE } from '../../../../lib/theme';
 
 export function SettingsFormChangePasswordComponent(props) {
   const {
@@ -33,10 +33,10 @@ export function SettingsFormChangePasswordComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <IndentLayout type="small">
-        <TitlePrimary tid="SETTINGS.CHANGE_PASSWORD.TITLE" />
-        <FieldLayout>
-          <FieldPrimary
+      <SectionLayout type="SMALL">
+        <Title tid="SETTINGS.CHANGE_PASSWORD.TITLE" />
+        <SectionLayout type="TEXT">
+          <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.OLD_PASSWORD.TITLE"
             placeholderTid="SETTINGS.CHANGE_PASSWORD.OLD_PASSWORD.PLACEHOLDER"
             name={fieldOldPassword}
@@ -46,7 +46,7 @@ export function SettingsFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.NEW_PASSWORD.TITLE"
             placeholderTid="SETTINGS.CHANGE_PASSWORD.NEW_PASSWORD.PLACEHOLDER"
             name={fieldPassword}
@@ -56,7 +56,7 @@ export function SettingsFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <FieldPrimary
+          <BasicField
             titleTid="SETTINGS.CHANGE_PASSWORD.REPEAT_NEW_PASSWORD.TITLE"
             placeholderTid="SETTINGS.CHANGE_PASSWORD.REPEAT_NEW_PASSWORD.PLACEHOLDER"
             name={fieldPasswordRepeat}
@@ -66,22 +66,21 @@ export function SettingsFormChangePasswordComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {isSuccess && (
-            <SuccessRequest tid="SETTINGS.CHANGE_PASSWORD.SUCCESS" />
-          )}
-          {isError && <ErrorRequest tid={errorMessage} />}
-        </FieldLayout>
-        <Submit
-          tid="SETTINGS.CHANGE_PASSWORD.SUBMIT"
-          type="submit"
-          disabled={isPending}
-        />
+          <FieldLayout type="double" adaptive>
+            <ButtonSecondary
+              tid="SETTINGS.CHANGE_PASSWORD.SUBMIT"
+              type="submit"
+              disabled={isPending}
+            />
+          </FieldLayout>
+          {isSuccess && <SuccessAlert tid="SETTINGS.CHANGE_PASSWORD.SUCCESS" />}
+          {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+        </SectionLayout>
         {isPending && <LoaderPrimary />}
-      </IndentLayout>
+      </SectionLayout>
     </form>
   );
 }
-
-const Submit = styled(ButtonSecondary)`
-  width: 50%;
+const Title = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;

@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
-import { spacing, THEME_COLOR } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { LinkPrimary } from '../link';
 
-export function CardImage({ backgroundImage, bestseller, discount }) {
+export function CardImage({ image, bestseller, action, path, pathConfig }) {
   return (
-    <Container>
-      <Image src={backgroundImage} />
+    <Container path={path} pathConfig={pathConfig}>
+      <Image src={image} />
       <ModifierContainer>
-        {discount && <Modifier tid={'Акция'} />}
-        {bestseller && <Modifier alt={true} tid={'Хит'} />}
+        {action && <Modifier tid={'Акция'} />}
+        {bestseller && <Modifier alt tid={'Хит'} />}
       </ModifierContainer>
     </Container>
   );
@@ -17,26 +18,29 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
-const Container = styled.div`
+const Container = styled(LinkPrimary)`
   position: relative;
-  width: 100%;
+  display: flex;
   height: 100%;
-  max-height: 260px;
-  max-width: 360px;
+  width: 100%;
+  flex: 1 0;
 `;
+
 const ModifierContainer = styled.div`
   display: flex;
   position: absolute;
   right: 0;
   bottom: 0;
   flex-direction: column;
-  gap: ${spacing(0.5)};
+  gap: ${spacing(1)};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Modifier = styled(TextSecondary)`
   background-color: ${({ alt }) =>
     alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
-  color: ${THEME_COLOR.TEXT.WHITE};
+  color: ${THEME_COLOR.WHITE};
   width: 97px;
   padding: ${spacing(1.6)} 0;
   display: flex;

@@ -2,10 +2,14 @@ export const THEME_SIZE = {
   TRANSACTION: {
     DEFAULT: '0.5s',
   },
-  OPACITY: {
-    DEFAULT: '0.7',
-  },
   INDENT: {
+    HUGE: '120px',
+    LARGE: '60px',
+    DEFAULT: '30px',
+    MEDIUM: '15px',
+    SMALL: '10px',
+  },
+  SECTION: {
     DEFAULT: '30px',
     LARGE: '120px',
     MEDIUM: '60px',
@@ -13,10 +17,10 @@ export const THEME_SIZE = {
     TEXT: '10px',
     TEXT_SMALL: '5px',
   },
-  LAYOUT: {
-    DEFAULT: '1200px',
+  PAGE: {
+    DEFAULT: '1140px',
     MEDIUM: '680px',
-    SMALL: '360px',
+    SMALL: '290px',
   },
   FONT: {
     DEFAULT: '16px',
@@ -24,6 +28,7 @@ export const THEME_SIZE = {
     LARGE: '24px',
     MEDIUM: '18px',
     SMALL: '14px',
+    TINY: '12px',
   },
   FONT_WEIGHT: {
     DEFAULT: 400,

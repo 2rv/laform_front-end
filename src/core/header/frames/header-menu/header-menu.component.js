@@ -4,13 +4,13 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { LinkSecondary } from '../../../../lib/element/link';
 
 export function HeaderMenuComponent(props) {
-  const { items, activePath } = props;
+  const { items, activePath, role } = props;
 
   return (
     <Container>
-      {items.map((x) => (
+      {items.map((x, index) => (
         <Item
-          key={x.name}
+          key={index}
           tid={x.name}
           path={x.path}
           active={activePath?.startsWith(x.path)}
@@ -22,14 +22,12 @@ export function HeaderMenuComponent(props) {
 
 const Container = styled.div`
   display: flex;
-  height: 100%;
-  gap: ${spacing(5)};
+  gap: ${spacing(6)};
   align-items: center;
 `;
-
 const Item = styled(LinkSecondary)`
   padding: ${spacing(5)} 0;
-
+  text-align: center;
   ${(p) =>
     p.active &&
     css`
