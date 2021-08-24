@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { redirect } from '../../main/navigation/navigation.core';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { sliderListLoadData } from './slider-list.action';
 import { SLIDER_LIST_STORE_NAME } from './slider-list.constant';
@@ -18,13 +21,18 @@ import {
 
 export function SliderListContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
+  const { state, pageLoading, currentLang, user } = useSelector((state) => ({
     state: state[SLIDER_LIST_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    user: state[AUTH_STORE_NAME].user,
   }));
 
   React.useEffect(() => {
+    if (user && user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     // dispatch(sliderListLoadData(currentLang));
   }, []);
 

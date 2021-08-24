@@ -7,6 +7,9 @@ import {
 } from '../../main/store/store.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { redirect } from '../../main/navigation/navigation.core';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { createProductUploadData } from './create-product.action';
 import { CreateProductComponent } from './create-product.component';
 import { CREATE_PRODUCT_STORE_NAME } from './create-product.constant';
@@ -16,12 +19,17 @@ import { createProuctValidation } from './create-product.validation';
 export function CreateProductContainer() {
   const dispatch = useDispatch();
   const [imagesData, setImages] = useState([]);
-  const { state, pageLoading } = useSelector((state) => ({
+  const { state, pageLoading, user } = useSelector((state) => ({
     state: state[CREATE_PRODUCT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    user: state[AUTH_STORE_NAME].user,
   }));
 
   useEffect(() => {
+    if (user && user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     //   dispatch(createProductUploadData());
   }, []);
 

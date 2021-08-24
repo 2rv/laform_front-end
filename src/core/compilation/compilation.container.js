@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { redirect } from '../../main/navigation/navigation.core';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { filterByType } from '../../lib/common/filter-list-card';
 import { COMPILATION_STORE_NAME } from './compilation.constant';
@@ -22,10 +25,11 @@ import {
 export function CompilationContainer() {
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState(0);
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
+  const { state, pageLoading, currentLang, user } = useSelector((state) => ({
     state: state[COMPILATION_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active,
+    user: state[AUTH_STORE_NAME].user,
   }));
 
   const data = [
@@ -35,6 +39,10 @@ export function CompilationContainer() {
   ];
 
   useEffect(() => {
+    if (user && user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     // dispatch(productsLoadData(currentLang.toLowerCase()));
     // dispatch(masterClassesLoadData(currentLang.toLowerCase()));
     // dispatch(articlesLoadData(currentLang.toLowerCase()));

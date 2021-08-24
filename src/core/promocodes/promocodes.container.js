@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { redirect } from '../../main/navigation/navigation.core';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { promocodesUploadData } from './promocodes.action';
 import { PromocodesComponent } from './promocodes.component';
@@ -16,10 +19,11 @@ import {
 
 export function PromocodesContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
+  const { state, pageLoading, currentLang, user } = useSelector((state) => ({
     state: state[PROMOCODES_STORE_NAME].promocodes,
     currentLang: state[LANG_STORE_NAME].active,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    user: state[AUTH_STORE_NAME].user,
   }));
   const [promocodes, setPromocodes] = useState([
     { id: 1, promocode: 'halyavaotivangaya' },
@@ -29,6 +33,10 @@ export function PromocodesContainer() {
   ]);
 
   useEffect(() => {
+    if (user && user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     //   dispatch(promocodesUploadData(currentLang.toLowerCase()));
   }, []);
 
