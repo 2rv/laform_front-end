@@ -17,8 +17,10 @@ export function SliderEditFormComponent(props) {
     buttonColorOptions,
     buttonTextColorOptions,
 
+    removeSlide,
     formikObject,
 
+    isPending,
     dataPending,
     formPending,
     formSuccess,
@@ -48,83 +50,91 @@ export function SliderEditFormComponent(props) {
   };
 
   return (
-    <SectionLayout as="form" type="SMALL" onSubmit={handleSubmit}>
-      <Title tid="Редактирование" />
-      <FieldLayout type="double" adaptive>
-        <BasicField
-          titleTid="Основной текст баннера"
-          placeholderTid="Текст на баннере"
-          name={titleTextFieldName}
-          value={values[titleTextFieldName]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(titleTextFieldName)}
-        />
-        <FieldSelect
-          titleTid="Цвет текста на баннере"
-          name={titleTextColorSelectName}
-          options={titleTextColorOptions}
-          value={values[titleTextColorSelectName]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </FieldLayout>
-      <FieldLayout type="double">
-        <FieldCheckbox
-          titleTid="Кнопка"
-          name={isButtonCheckboxName}
-          checked={values[isButtonCheckboxName]}
-          onClick={() =>
-            setFieldValue(isButtonCheckboxName, !values[isButtonCheckboxName])
-          }
-          labelTid="Будет ли кнопка на баннере?"
-        />
+    <form onSubmit={handleSubmit}>
+      <SectionLayout type="SMALL">
+        <Title tid="Редактирование" />
+        <FieldLayout type="double" adaptive>
+          <BasicField
+            titleTid="Основной текст баннера"
+            placeholderTid="Текст на баннере"
+            name={titleTextFieldName}
+            value={values[titleTextFieldName]}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={getFieldError(titleTextFieldName)}
+          />
+          <FieldSelect
+            titleTid="Цвет текста на баннере"
+            name={titleTextColorSelectName}
+            options={titleTextColorOptions}
+            value={values[titleTextColorSelectName]}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </FieldLayout>
+        <FieldLayout type="double">
+          <FieldCheckbox
+            titleTid="Кнопка"
+            name={isButtonCheckboxName}
+            checked={values[isButtonCheckboxName]}
+            onClick={() =>
+              setFieldValue(isButtonCheckboxName, !values[isButtonCheckboxName])
+            }
+            labelTid="Будет ли кнопка на баннере?"
+          />
+          {values[isButtonCheckboxName] && (
+            <>
+              <BasicField
+                titleTid="Текст на кнопке"
+                placeholderTid="Текст на кнопке"
+                name={buttonTextFieldName}
+                value={values[buttonTextFieldName]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={getFieldError(buttonTextFieldName)}
+              />
+              <FieldSelect
+                titleTid="Цвет кнопки"
+                name={buttonColorSelectName}
+                options={buttonColorOptions}
+                value={values[buttonColorSelectName]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <FieldSelect
+                titleTid="Цвет текста на кнопке"
+                name={buttonTextColorSelectName}
+                options={buttonTextColorOptions}
+                value={values[buttonTextColorSelectName]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </>
+          )}
+        </FieldLayout>
         {values[isButtonCheckboxName] && (
-          <>
-            <BasicField
-              titleTid="Текст на кнопке"
-              placeholderTid="Текст на кнопке"
-              name={buttonTextFieldName}
-              value={values[buttonTextFieldName]}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={getFieldError(buttonTextFieldName)}
-            />
-            <FieldSelect
-              titleTid="Цвет кнопки"
-              name={buttonColorSelectName}
-              options={buttonColorOptions}
-              value={values[buttonColorSelectName]}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <FieldSelect
-              titleTid="Цвет текста на кнопке"
-              name={buttonTextColorSelectName}
-              options={buttonTextColorOptions}
-              value={values[buttonTextColorSelectName]}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </>
+          <BasicField
+            titleTid="Ссылка кнопки"
+            placeholderTid="Введите ссылку на страницу"
+            name={buttonPathFieldName}
+            value={values[buttonPathFieldName]}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={getFieldError(buttonPathFieldName)}
+          />
         )}
-      </FieldLayout>
-      {values[isButtonCheckboxName] && (
-        <BasicField
-          titleTid="Ссылка кнопки"
-          placeholderTid="Введите ссылку на страницу"
-          name={buttonPathFieldName}
-          value={values[buttonPathFieldName]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(buttonPathFieldName)}
-        />
-      )}
-      <FieldLayout type="double" adaptive>
-        <Button tid="Сохранить" type="submit" />
-        <Button altType={true} type="button" tid="Удалить слайд" />
-      </FieldLayout>
-    </SectionLayout>
+        <FieldLayout type="double" adaptive>
+          <Button tid="Сохранить" type="submit" disabled={isPending} />
+          <Button
+            altType={true}
+            type="button"
+            tid="Удалить слайд"
+            disabled={isPending}
+            onClick={removeSlide}
+          />
+        </FieldLayout>
+      </SectionLayout>
+    </form>
   );
 }
 

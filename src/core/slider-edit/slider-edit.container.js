@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { sliderEditLoadData, sliderEditUploadData } from './slider-edit.action';
+import { sliderEditLoadData, sliderEditUploadData, sliderItemRemove } from './slider-edit.action';
 import {
   SLIDER_FIELDS_DATA,
   SLIDER_EDIT_STORE_NAME,
@@ -20,6 +20,7 @@ import {
 } from '../../main/store/store.service';
 import { SLIDER_EDIT_FIELD_NAME } from './slider-edit.type';
 import { useFormik } from 'formik';
+import { redirect } from 'src/main/navigation';
 
 export function SliderEditContainer() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export function SliderEditContainer() {
     getRequestData(state.sliderEdit).imageUrl?.fileUrl,
   );
   useEffect(() => {
-    // dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId));
+    dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId));
   }, []);
   const pickImage = ({ target: { files } }) => {
     if (files[0].type.split('/')[0] !== 'image') {
@@ -47,27 +48,29 @@ export function SliderEditContainer() {
       reader.readAsDataURL(files[0]);
     }
   };
-  //   getRequestData(state.sliderEdit) // СДЕЛАТЬ СТАРТОВЫЕ ЗНАЧЕНИЯ В initialValues!!!
+  const removeSlide = () => dispatch(sliderItemRemove(query.sliderId));
   const formikObject = useFormik({
     initialValues: {
-      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: '',
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: '',
+      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: getRequestData(state.sliderEdit).headingTextRu,
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: getRequestData(state.sliderEdit).buttonTextRu,
       [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: 0,
       [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: 0,
       [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: 0,
       [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: true,
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: '',
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: getRequestData(state.sliderEdit).buttonUrl,
     },
     onSubmit: (values) => {
       dispatch(
         sliderEditUploadData({
           sliderId: query.sliderId,
-          headingTextRu: values.fieldTextName,
-          buttonTextRu: values.fieldButtonTextName,
+          headingTextRu: values.titleText,
+          buttonTextRu: values.buttonText,
+          buttonUrl: values.buttonPath,
           image: sliderImage,
         }),
       );
     },
+    enableReinitialize: true,
     sliderEditFormValidation,
   });
   return (
@@ -80,6 +83,7 @@ export function SliderEditContainer() {
       pageLoading={pageLoading}
       currentLang={currentLang}
       pickImage={pickImage}
+      removeSlide={removeSlide}
       sliderImage={sliderImage}
       titleTextColorOptions={titleTextColorOptions}
       buttonColorOptions={buttonColorOptions}

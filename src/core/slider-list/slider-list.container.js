@@ -33,7 +33,7 @@ export function SliderListContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    // dispatch(sliderListLoadData(currentLang));
+    dispatch(sliderListLoadData(currentLang));
   }, []);
 
   const editSlide = (id) => setLinkRedirect(SLIDER_EDIT_ROUTE_PATH(id));

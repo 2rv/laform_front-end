@@ -1,6 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { SLIDER_LIST_API } from './slider-list.constant';
 import { SLIDER_LIST_ACTION_TYPE } from './slider-list.type';
+import { convertSliderData } from './slider-list.convert';
 
 export function sliderListUploadData(currentLang) {
   return async (dispatch) => {
@@ -47,6 +48,7 @@ export function sliderListLoadData(currentLang) {
       });
 
       const data = convertSliderData(response.data);
+      console.log('data: ', data);
 
       dispatch({
         type: SLIDER_LIST_ACTION_TYPE.SLIDER_LIST_UPLOAD_SUCCESS,
