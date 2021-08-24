@@ -1,8 +1,6 @@
-import { USER_ROLE } from '../../common/auth';
-
 export interface ModalMenuPropsType {
   active: boolean;
-  role: USER_ROLE;
+  role: any;
   items: IModalItems[];
   onClose: Function;
 }
