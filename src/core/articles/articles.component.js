@@ -16,6 +16,8 @@ export function ArticlesComponent(props) {
     success,
     error,
     errorMessage,
+    filterProducts,
+    sortProductsByDate,
   } = props;
 
   return (
@@ -33,6 +35,8 @@ export function ArticlesComponent(props) {
         success={success}
         error={error}
         errorMessage={errorMessage}
+        filterProducts={filterProducts}
+        sortProductsByDate={sortProductsByDate}
       />
       <BasicCardList items={listItems} type="articles" />
     </SectionLayout>

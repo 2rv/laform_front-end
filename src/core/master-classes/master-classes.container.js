@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   getRequestErrorMessage,
@@ -21,6 +22,7 @@ export function MasterClassesContainer() {
     currentLang: state[LANG_STORE_NAME].active,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+  const [filteredProducts, setFilteredProducts] = useState(testListItems);
 
   const initialValue = () => {
     return {
@@ -42,11 +44,33 @@ export function MasterClassesContainer() {
   };
 
   useEffect(() => {
-    dispatch(masterClassesUploadData(currentLang.toLowerCase()));
+    // dispatch(masterClassesUploadData(currentLang.toLowerCase()));
   }, []);
 
   const onSubmit = (values) => {
-    console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
+    // console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
+  };
+
+  const filterProducts = (name) => {
+    setFilteredProducts(
+      testListItems.filter((product) => {
+        return product.name.toLowerCase().trim().includes(name);
+      }),
+    );
+  };
+
+  const sortProductsByPrice = (option = 1) => {
+    setFilteredProducts((prevProducts) => {
+      return [...prevProducts].sort((a, b) => {
+        if (option === 1) {
+          return prevProducts;
+        } else if (option === 2) {
+          return (a.price.discount !== null ? a.price.discount : a.price.min) - (b.price.discount !== null ? b.price.discount : b.price.min);
+        } else if (option === 3) {
+          return (b.price.discount !== null ? b.price.discount : b.price.min) - (a.price.discount !== null ? a.price.discount : a.price.min);
+        }
+      });
+    });
   };
 
   return (
@@ -59,9 +83,11 @@ export function MasterClassesContainer() {
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
-      listItems={testListItems}
+      listItems={filteredProducts}
       fieldName={MASTER_CLASSES_FIELD_NAME}
       onSubmit={onSubmit}
+      filterProducts={filterProducts}
+      sortProductsByPrice={sortProductsByPrice}
     />
   );
 }
@@ -83,11 +109,11 @@ export const tagsSelectOptions = [
   },
   {
     id: 2,
-    tid: 'Самые дорогие',
+    tid: 'Самые дешевые',
   },
   {
     id: 3,
-    tid: 'Самые дешевые',
+    tid: 'Самые дорогие',
   },
 ];
 export const testListItems = [

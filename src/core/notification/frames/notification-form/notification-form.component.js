@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { FieldLayout, IndentLayout } from '../../../../lib/element/layout';
+import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
 import { BasicField } from '../../../../lib/element/field';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { ErrorAlert, SuccessAlert } from '../../../../lib/element/alert';
@@ -35,25 +35,22 @@ export function NotificationFormComponent(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <IndentLayout type="small">
-        <FieldLayout>
-          <NotificationField
-            placeholderTid="NOTIFICATION.FIELD_PLACEHOLDER"
-            name={fieldEmail}
-            type="email"
-            value={values[fieldEmail]}
-            error={getFieldError(fieldEmail)}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
+      <SectionLayout type="SMALL">
+        <Field
+          placeholderTid="NOTIFICATION.FIELD_PLACEHOLDER"
+          name={fieldEmail}
+          type="email"
+          value={values[fieldEmail]}
+          error={getFieldError(fieldEmail)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
 
-          {(isFormError || formErrorMessage) && (
-            <ErrorAlert tid={formErrorMessage} />
-          )}
-          {isFormSuccess && <SuccessAlert tid="NOTIFICATION.SUCCESS" />}
-        </FieldLayout>
-
-        <NotificationButton
+        {(isFormError || formErrorMessage) && (
+          <ErrorAlert tid={formErrorMessage} />
+        )}
+        {isFormSuccess && <SuccessAlert tid="NOTIFICATION.SUCCESS" />}
+        <ButtonSecondary
           tid="NOTIFICATION.BUTTON_TEXT"
           type="submit"
           disabled={isSubmitDisabled()}
@@ -62,16 +59,10 @@ export function NotificationFormComponent(props) {
         {(pageLoading || isFormPending || loadEmailPending) && (
           <LoaderPrimary />
         )}
-      </IndentLayout>
+      </SectionLayout>
     </form>
   );
 }
-
-const NotificationField = styled(BasicField)`
-  background-color: ${THEME_COLOR.BACKGROUND.WHITE};
-`;
-
-const NotificationButton = styled(ButtonSecondary)`
-  height: ${spacing(9)};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
+const Field = styled(BasicField)`
+  background-color: ${THEME_COLOR.WHITE};
 `;

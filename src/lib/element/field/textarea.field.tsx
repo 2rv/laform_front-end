@@ -6,6 +6,7 @@ import { TextSecondary } from '../text';
 import { ErrorField } from '../error';
 import { TextAreaPropsType } from './field.type';
 import { ReactComponent as FileIcon } from '../../../asset/svg/file.svg';
+import { AutoSize } from './autosize';
 
 export function TextareaField(props: TextAreaPropsType) {
   const {
@@ -14,11 +15,12 @@ export function TextareaField(props: TextAreaPropsType) {
     onChange,
     onBlur,
     name,
-    rows = 1,
     error,
+    rows = 1,
     children,
     isFile,
-    minHeight = 56,
+    minHeight = 46,
+    maxHeight,
     images = null,
     setImages = null,
   } = props;
@@ -51,17 +53,21 @@ export function TextareaField(props: TextAreaPropsType) {
     setImages([...images, ...newImages]);
   };
 
+  const handleChange = (event: any) => {
+    AutoSize(event, minHeight);
+    onChange && onChange(event);
+  };
   return (
     <Container>
       {titleTid && <TextSecondary tid={titleTid} />}
-      <RelativeCase>
+      <RelativeCase maxHeight={maxHeight}>
         <Textarea
-          onChange={onChange}
+          onChange={handleChange}
           placeholder={text(placeholderTid)}
           onBlur={onBlur}
           name={name}
-          isError={!!error}
           rows={rows}
+          isError={!!error}
           minHeight={minHeight}
         />
         {isFile && (
@@ -86,17 +92,16 @@ export function TextareaField(props: TextAreaPropsType) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 56px;
-  flex: 1;
+  width: 100%;
   gap: ${spacing(1)};
 `;
-
-const RelativeCase = styled.div`
+const RelativeCase = styled.div<any>`
   display: flex;
+  max-height: ${(p) => (p.maxHeight ? `${p.maxHeight}px` : 'auto')};
   position: relative;
+  width: 100%;
   align-items: center;
 `;
-
 const ActionCase = styled.div`
   position: absolute;
   display: flex;
@@ -105,35 +110,32 @@ const ActionCase = styled.div`
   right: ${spacing(4)};
   align-items: center;
 `;
-
 const File = styled(FileIcon)`
   cursor: pointer;
 `;
-
 const Textarea = styled.textarea<any>`
   min-height: ${(p) => p.minHeight}px;
-  max-height: 200px;
-  height: fit-content;
-  flex-grow: 1;
-  display: flex;
-  line-height: 1.5;
+  max-height: inherit;
+  padding: ${spacing(2)} ${spacing(7)} ${spacing(2)} ${spacing(4)};
+  width: 100%;
+  overflow-y: auto;
   resize: none;
-  padding: ${spacing(4)};
+  line-height: 1.5;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   font-size: ${THEME_SIZE.FONT.SMALL};
-  color: ${THEME_COLOR.TEXT.LIGHT};
+  color: ${THEME_COLOR.SECONDARY_DARK};
+  ::placeholder {
+    color: ${THEME_COLOR.TEXT.LIGHT};
+  }
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  border: ${(p) =>
-    p.isError
-      ? `1px solid ${THEME_COLOR.TEXT.DANGER}`
-      : '1px solid transparent'};
   background: ${(p) => (p.isError ? THEME_COLOR.WHITE : THEME_COLOR.GRAY)};
+  border: 1px solid;
+  border-color: ${(p) => (p.isError ? THEME_COLOR.TEXT.DANGER : 'transparent')};
   &:focus {
-    border: 1px solid #b5b5b5;
+    border-color: #b5b5b5;
     opacity: 1;
   }
   &:hover {
     opacity: ${THEME_VALUE.OPACITY.HOVER};
   }
-  overflow-y: auto;
 `;

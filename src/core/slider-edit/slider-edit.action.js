@@ -32,11 +32,6 @@ export function sliderEditLoadData(currentLang, id) {
   };
 }
 
-/*
-  * TODO:
-    * ДАННЫЕ ПОД ВОПРОСОМ, НЕ ПОДХОДЯТ ТО ЧТО ОЖИДАЕТ БЭКЕНД И ТО ЧТО ЕСТЬ В ФИГМЕ
-    * ДЕЛАТЬ ВАЛИДАЦИЮ ФОРМЫ
-*/
 export function sliderEditUploadData(data) {
   return async (dispatch) => {
     dispatch({

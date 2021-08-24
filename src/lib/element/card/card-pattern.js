@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { Price } from '../price';
+import { CardPrice } from './card-price';
 import { ButtonPrimary, ButtonBasic, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { CardActions } from './card-actions';
+import { LinkPrimary } from '../link';
+import { PATTERNS_PRODUCT_ROUTE_PATH } from '../../../core/patterns-product';
 
 export function CardPattern(props) {
   const {
@@ -22,6 +24,8 @@ export function CardPattern(props) {
   return (
     <Container>
       <CardImage
+        path={PATTERNS_PRODUCT_ROUTE_PATH}
+        pathConfig={{ query: { id: id } }}
         image={image}
         bestseller={bestseller}
         action={price?.discount}
@@ -29,11 +33,10 @@ export function CardPattern(props) {
       <Content>
         <CardName tid={name} />
         <LineCase>
-          <Price
+          <CardPrice
             min={price?.min}
             max={price?.max}
             discount={price?.discount}
-            valute="OTHER.VALUTE"
           />
           <ItemCase>
             {[1, 2, 3, 4, 5].map((rate, index) => (
@@ -51,7 +54,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
-  width: 360px;
 `;
 const Content = styled.div`
   display: flex;

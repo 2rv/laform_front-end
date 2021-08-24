@@ -21,10 +21,18 @@ export function BasicCardList(props) {
 }
 
 const Container = styled.div`
-  display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: ${spacing(5)};
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${spacing(6)};
+  @media screen and (max-width: 1070px) {
+    gap: ${spacing(3)};
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 720px) {
+    gap: ${spacing(3)};
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 function cardType(type) {

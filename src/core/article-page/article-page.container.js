@@ -72,6 +72,7 @@ export const testArticlesListItems = [
     image: '/static/test/popular-gods-1.png',
     like: true,
     date: '1 неделю назад',
+    type: 2,
   },
 
   {
@@ -80,14 +81,15 @@ export const testArticlesListItems = [
     image: '/static/test/popular-gods-2.png',
     like: false,
     date: '1 неделю назад',
+    type: 2,
   },
   {
     id: 3,
     name: 'Батист',
     image: '/static/test/popular-gods-3.png',
-
     like: false,
     date: '2 недели назад',
+    type: 2,
   },
 ];
 export const testCommentsItems = [

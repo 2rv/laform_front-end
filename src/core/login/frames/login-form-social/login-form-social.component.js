@@ -16,13 +16,22 @@ export function LoginFormSocialComponent() {
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />
       <ButtonContainer>
         <IconButton auto>
-          <AppleIcon /> <AppleText />
+          <AppleIcon />
+          <SecondaryIconContainer>
+            <AppleText />
+          </SecondaryIconContainer>
         </IconButton>
         <IconButton auto>
-          <GoogleIcon /> <GoogleText />
+          <GoogleIcon />
+          <SecondaryIconContainer>
+            <GoogleText />
+          </SecondaryIconContainer>
         </IconButton>
         <IconButton auto>
-          <FbIcon /> <FbText />
+          <FbIcon />
+          <SecondaryIconContainer>
+            <FbText />
+          </SecondaryIconContainer>
         </IconButton>
       </ButtonContainer>
     </SectionLayout>
@@ -32,4 +41,9 @@ const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(2)};
+`;
+const SecondaryIconContainer = styled.div`
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
 `;

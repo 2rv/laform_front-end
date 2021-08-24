@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { Price } from '../price';
 import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
 import { useState } from 'react';
+import { LinkPrimary } from '../link';
+import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
 
 export function CardArticles(props) {
   const { id, image = null, name = null, date, like = false } = props.data;
@@ -15,7 +16,11 @@ export function CardArticles(props) {
   };
   return (
     <Container>
-      <CardImage image={image} />
+      <CardImage
+        path={ARTICLE_PAGE_ROUTE_PATH}
+        pathConfig={{ query: { id: id } }}
+        image={image}
+      />
       <Content>
         <Column>
           <CardName tid={name} />
@@ -38,7 +43,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
-  width: 360px;
 `;
 const Content = styled.div`
   display: flex;

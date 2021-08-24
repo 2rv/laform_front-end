@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -8,7 +7,6 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-
 import { SettingsFormChangeDeliveryInfoContainer } from './frames/settings-form-change-delivery-info';
 import {
   SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME,
@@ -60,16 +58,18 @@ export function SettingsChangeDeliveryInfoContainer() {
     return performSettingsChangeDeliveryInfoFormData(rawData);
   };
 
-  // useEffect(() => dispatch(settingsChangeDeliveryInfoLoadData()), []);
+  useEffect(() => {
+    // dispatch(settingsChangeDeliveryInfoLoadData())
+  }, []);
 
   return (
     <SettingsFormChangeDeliveryInfoContainer
       deliveryTypeOptions={SETTINGS_CHANGE_DELIVERY_INFO_DELIVERY_TYPE_OPTIONS}
       dataPending={isRequestPending(changeDeliveryInfo)}
       formPending={isRequestPending(formChangeDeliveryInfo)}
-      formSuccess={isRequestSuccess(formChangeDeliveryInfo) || true}
-      formError={isRequestError(formChangeDeliveryInfo) || true}
-      errorMessage={getRequestErrorMessage(formChangeDeliveryInfo) || true}
+      formSuccess={isRequestSuccess(formChangeDeliveryInfo)}
+      formError={isRequestError(formChangeDeliveryInfo)}
+      errorMessage={getRequestErrorMessage(formChangeDeliveryInfo)}
       initialValue={settingsChangeDeliveryInfoFormGetInitialValue()}
       validation={settingsChangeDeliveryInfoFormValidation}
       onSubmitForm={settingsChangeDeliveryInfoFormSendData}

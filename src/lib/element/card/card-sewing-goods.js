@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { Price } from '../price';
+import { CardPrice } from './card-price';
 import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { CardActions } from './card-actions';
+import { LinkPrimary } from '../link';
+import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-product';
 
 export function CardSewingGoods(props) {
   const {
@@ -20,17 +22,18 @@ export function CardSewingGoods(props) {
   return (
     <Container>
       <CardImage
+        path={SEWING_GOODS_PRODUCT_ROUTE_PATH}
+        pathConfig={{ query: { id: id } }}
         image={image}
         bestseller={bestseller}
         action={price?.discount}
       />
       <Content>
         <CardName tid={name} />
-        <Price
+        <CardPrice
           min={price?.min}
           max={price?.max}
           discount={price?.discount}
-          valute="OTHER.VALUTE"
         />
       </Content>
       <CardActions select={select} like={like} />
@@ -42,7 +45,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
-  width: 360px;
 `;
 const Content = styled.div`
   display: flex;

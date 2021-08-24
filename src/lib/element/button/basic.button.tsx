@@ -6,16 +6,32 @@ import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { ButtonPropsType } from './button.type';
 
 export function ButtonBasic(props: ButtonPropsType) {
-  const { tid, tvalue, width, children, ...rest } = props;
+  const { tid, tvalue, width, adaptive, children, ...rest } = props;
   return (
-    <Button width={width} {...rest}>
+    <Button width={width} adaptive={adaptive} {...rest}>
       {tid ? text(tid, tvalue) : children}
     </Button>
   );
 }
 
-const Button = styled.button`
-  width: ${(p: { width: false | number }) => p.width + 'px' || '100%'};
+const Button = styled.button<{
+  adaptive?: boolean;
+  width?: number;
+}>`
+  width: ${(p) => {
+    if (p.width) return p.width + 'px';
+    return '100%';
+  }};
+  ${(p) => {
+    return (
+      p.adaptive &&
+      css`
+        @media screen and (max-width: 720px) {
+          width: 100%;
+        }
+      `
+    );
+  }}
   display: flex;
   align-items: center;
   justify-content: center;

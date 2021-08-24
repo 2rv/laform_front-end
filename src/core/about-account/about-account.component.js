@@ -8,7 +8,7 @@ import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
 
 export function AboutAccountComponent(props) {
-  const { activityData, orderItems, likeItems, commentItems } = props;
+  const { orderItems, likeItems, commentItems } = props;
   return (
     <SectionLayout>
       <AboutAccountInfoComponent />
@@ -33,7 +33,6 @@ export function AboutAccountComponent(props) {
           <Title tid="Мои комментарии" />
           <Divider />
           <TableList items={commentItems} />
-          {/* <LinkSecondary tid="Посмотреть все..." /> */}
         </SectionLayout>
       </SectionLayout>
     </SectionLayout>
@@ -42,8 +41,3 @@ export function AboutAccountComponent(props) {
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
-{
-  /* <AboutAccountActivityComponent
-        {...activityData}
-      /> */
-}

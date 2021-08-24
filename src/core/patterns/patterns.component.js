@@ -20,6 +20,8 @@ export function PatternsComponent(props) {
     success,
     error,
     errorMessage,
+    filterProducts,
+    sortProductsByPrice,
   } = props;
 
   return (
@@ -42,6 +44,8 @@ export function PatternsComponent(props) {
         success={success}
         error={error}
         errorMessage={errorMessage}
+        filterProducts={filterProducts}
+        sortProductsByPrice={sortProductsByPrice}
       />
       <BasicCardList items={listItems} />
     </SectionLayout>

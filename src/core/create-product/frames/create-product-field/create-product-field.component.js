@@ -47,14 +47,12 @@ export function CreateProductFieldComponent({
   //----------------------------  other
   categoriesForOptionSelect,
 }) {
-  const getFieldError = (name) => {
-    return errors[name] && touched[name] && errors[name];
-  };
+  const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   return (
     <form onSubmit={handleSubmit}>
       <SectionLayout>
         <SectionLayout type="SMALL">
-          <FieldLayout type="double">
+          <FieldLayout type="double" adaptive>
             <BasicField
               titleTid="Название товара"
               placeholderTid="Введите название товара"
@@ -77,7 +75,7 @@ export function CreateProductFieldComponent({
 
           <SectionLayout type="TEXT_SMALL">
             <SmallText tid="Категории товара" />
-            <FieldLayout type="double">
+            <FieldLayout type="double" adaptive>
               <FieldArray name={categoriesFieldArray}>
                 {({ remove, push }) => (
                   <>
@@ -90,6 +88,10 @@ export function CreateProductFieldComponent({
                         productCategoryFieldName={productCategoryFieldName}
                         fieldCount={values[categoriesFieldArray].length}
                         removeCategoryField={remove}
+                        values={values[categoriesFieldArray]}
+                        getFieldError={getFieldError}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                       />
                     ))}
                     <ButtonBasic
@@ -133,9 +135,11 @@ export function CreateProductFieldComponent({
                       optionCategorySelect={optionCategorySelect}
                       positionNameFieldName={positionNameFieldName}
                       positionPriceFieldName={positionPriceFieldName}
+                      fieldCount={values[optionsFieldArray].length}
+                      removeOptionItem={remove}
                     />
                   ))}
-                  <FieldLayout type="double">
+                  <FieldLayout type="double" adaptive>
                     <ButtonSecondary
                       tid="Добавить опцию"
                       type="button"
@@ -150,7 +154,7 @@ export function CreateProductFieldComponent({
 
         <SectionLayout type="SMALL">
           <Title tid="Цена" />
-          <FieldLayout type="double">
+          <FieldLayout type="double" adaptive>
             <BasicField
               placeholderTid="Введите цену для товара"
               titleTid="Цена товара (минимальная)"

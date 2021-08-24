@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ChangeIcon } from '../../../../asset/svg/change-icon.svg';
-import { ReactComponent as Cancel } from '../../../../asset/svg/cancel-delete-icon.svg';
+import { ReactComponent as RemoveIcon } from '../../../../asset/svg/remove.svg';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../../../lib/theme';
 import { SectionLayout } from '../../../../lib/element/layout';
 import { TextSecondary } from '../../../../lib/element/text';
@@ -9,23 +9,20 @@ import { TitlePrimary } from '../../../../lib/element/title';
 import { IconButton } from '../../../../lib/element/button';
 
 export function CreateProductImageComponent(props) {
-  const { items } = props;
+  const { pickImage, imagesData, deleteImage } = props;
   const fileRef = createRef();
   return (
     <SectionLayout type="SMALL">
-      <Title tid="Фото" />
+      <Title tid="Фотографии товара" />
       <Container type="SMALL">
-        {items.map(({ backgroundImage }, index) => {
+        {imagesData.map((image, index) => {
           return (
             <ImageContainer key={index}>
-              <Image src={backgroundImage} />
+              <Image src={image} />
               <PositionContainer>
-                <Button>
-                  <ChangeIcon />
-                </Button>
-                <Button>
-                  <Cancel />
-                </Button>
+                <IconButton onClick={() => deleteImage(index)}>
+                  <RemoveIcon />
+                </IconButton>
               </PositionContainer>
             </ImageContainer>
           );
@@ -33,7 +30,7 @@ export function CreateProductImageComponent(props) {
         <ImageContainer>
           <AddImage>
             <ChangeIcon />
-            <File type="file" ref={fileRef} />
+            <File type="file" ref={fileRef} onChange={pickImage} />
             <Text tid="Добавить фото" />
           </AddImage>
         </ImageContainer>
@@ -62,21 +59,27 @@ const File = styled.input`
 `;
 const Container = styled(SectionLayout)`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  @media screen and (max-width: 1070px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
 `;
 const ImageContainer = styled.div`
+  background-color: ${THEME_COLOR.GRAY};
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 274px;
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
-`;
-const Button = styled(IconButton)`
-  padding: 0;
 `;
 const PositionContainer = styled.div`
   display: flex;
@@ -88,5 +91,6 @@ const PositionContainer = styled.div`
 const Image = styled.img`
   height: 100%;
   width: 100%;
+  object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

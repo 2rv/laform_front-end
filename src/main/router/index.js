@@ -34,14 +34,6 @@ import {
   myPurchasesRouter,
   MY_PURCHASES_ROUTE_PATH,
 } from '../../core/my-purchases';
-import {
-  myPatternsRouter,
-  MY_PATTERNS_ROUTE_PATH,
-} from '../../core/my-patterns';
-import {
-  myMasterClassesRouter,
-  MY_MASTER_CLASSES_ROUTE_PATH,
-} from '../../core/my-master-classes';
 import { myLikesRouter, MY_LIKES_ROUTE_PATH } from '../../core/my-likes';
 import { faqPageRouter, FAQ_PAGE_ROUTE_PATH } from '../../core/faq-page';
 import {
@@ -97,6 +89,10 @@ import {
   sliderListRouter,
   SLIDER_LIST_ROUTE_PATH,
 } from '../../core/slider-list';
+import {
+  promocodesRouter,
+  PROMOCODES_ROUTE_PATH,
+} from '../../core/promocodes';
 
 export const routes = {
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
@@ -105,10 +101,8 @@ export const routes = {
   [SEWING_GOODS_PAGE_ROUTE_PATH]: sewingGoodsPageRouter,
   [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
   [MASTER_CLASS_PRODUCT_ROUTE_PATH]: masterClassProductRouter,
-  [MY_MASTER_CLASSES_ROUTE_PATH]: myMasterClassesRouter,
   [PATTERNS_ROUTE_PATH]: patternsRouter,
   [PATTERNS_PRODUCT_ROUTE_PATH]: patternsProductRouter,
-  [MY_PATTERNS_ROUTE_PATH]: myPatternsRouter,
   [ARTICLES_ROUTE_PATH]: articlesRouter,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,
@@ -131,6 +125,7 @@ export const routes = {
   [ORDER_NUMBER_ROUTE_PATH]: orderNumberRouter,
   [SLIDER_EDIT_ROUTE_PATH]: sliderEditRouter,
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
+  [PROMOCODES_ROUTE_PATH]: promocodesRouter,
 };
 
 export const Router = routesInit(routes);

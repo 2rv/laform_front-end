@@ -14,8 +14,6 @@ export function orderNumberUploadData() {
         url: ORDER_NUMBER_API.ORDER_NUMBER_UPLOAD.ENDPOINT,
       });
 
-      console.log('res:', response);
-
       dispatch({
         type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_SUCCESS,
         orderNumberDetails: response.data,

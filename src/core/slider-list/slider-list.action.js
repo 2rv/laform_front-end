@@ -13,11 +13,11 @@ export function sliderListUploadData(currentLang) {
         method: SLIDER_LIST_API.SLIDER_LIST_UPLOAD_DATA.TYPE,
         url: SLIDER_LIST_API.SLIDER_LIST_UPLOAD_DATA.ENDPOINT,
         data: {
-          headingTextEn: "test",
-          buttonTextEn: "test",
-          buttonUrl: "Нужно редактировать",
-          headingTextRu: "Нужно редактировать",
-          buttonTextRu: "Нужно редактировать",
+          headingTextEn: 'test',
+          buttonTextEn: 'test',
+          buttonUrl: 'Нужно редактировать',
+          headingTextRu: 'Нужно редактировать',
+          buttonTextRu: 'Нужно редактировать',
         },
       });
 
@@ -46,9 +46,11 @@ export function sliderListLoadData(currentLang) {
         url: SLIDER_LIST_API.SLIDER_LIST_LOAD_DATA.ENDPOINT(currentLang),
       });
 
+      const data = convertSliderData(response.data);
+
       dispatch({
         type: SLIDER_LIST_ACTION_TYPE.SLIDER_LIST_UPLOAD_SUCCESS,
-        sliderList: response.data,
+        sliderList: data,
       });
     } catch (err) {
       if (err.response) {

@@ -20,7 +20,7 @@ export const THEME_SIZE = {
   PAGE: {
     DEFAULT: '1140px',
     MEDIUM: '680px',
-    SMALL: '360px',
+    SMALL: '290px',
   },
   FONT: {
     DEFAULT: '16px',

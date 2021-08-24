@@ -12,10 +12,11 @@ import {
   ButtonSecondary,
   ButtonBasic,
 } from '../../../../lib/element/button';
-import { SectionLayout } from '../../../../lib/element/layout';
+import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
 import { PromoCodeContainer } from '../promo-code/promo-code.container';
 import { Form } from 'formik';
 import { useFormikContext } from 'formik';
+import { Divider } from '../../../../lib/element/divider';
 
 export function FormalizationOrderingComponent(props) {
   const {
@@ -58,8 +59,6 @@ export function FormalizationOrderingComponent(props) {
     promoCodeErrorMessage,
   } = props;
 
-  console.log(values);
-
   const { submitForm } = useFormikContext();
 
   const getFieldError = (name) => {
@@ -83,7 +82,7 @@ export function FormalizationOrderingComponent(props) {
         <SectionLayout>
           <TitlePrimary tid="BASKET.FORM.TITLE" />
           <SectionLayout type="SMALL">
-            <FieldContainer>
+            <FieldLayout type="double" adaptive>
               <BasicField
                 titleTid="BASKET.FORM.FIELDS.TITLES.FULL_NAME"
                 placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.FULL_NAME"
@@ -102,8 +101,6 @@ export function FormalizationOrderingComponent(props) {
                 onBlur={handleBlur}
                 error={getFieldError(fieldCurrentCity)}
               />
-            </FieldContainer>
-            <FieldContainer>
               <FieldSelect
                 titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_DELIVERY_METHOD"
                 options={[
@@ -127,7 +124,7 @@ export function FormalizationOrderingComponent(props) {
                 onBlur={handleBlur}
                 error={getFieldError(fieldContactPhoneNumber)}
               />
-            </FieldContainer>
+            </FieldLayout>
             <BasicField
               titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"
               placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
@@ -137,7 +134,7 @@ export function FormalizationOrderingComponent(props) {
               onBlur={handleBlur}
               error={getFieldError(fieldOrderNote)}
             />
-            <FieldContainer>
+            <FieldLayout type="double" adaptive>
               <FieldSelect
                 titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_PAYMENT_METHOD"
                 options={[
@@ -152,7 +149,7 @@ export function FormalizationOrderingComponent(props) {
                 onBlur={handleBlur}
                 error={getFieldError(fieldConvenientPaymentMethod)}
               />
-            </FieldContainer>
+            </FieldLayout>
           </SectionLayout>
         </SectionLayout>
       </Form>
@@ -175,7 +172,7 @@ export function FormalizationOrderingComponent(props) {
           pageLoading ||
           isPromoCodePending) && <LoaderPrimary />}
         <Divider />
-        <FooterContainer>
+        <FieldLayout type="double" adaptive>
           <div>
             <FooterInfoContainer>
               <FooterInfoContent>
@@ -212,47 +209,31 @@ export function FormalizationOrderingComponent(props) {
                 </div>
               </FooterInfoContent>
             </FooterInfoContainer>
-            <ButtonsContent>
+            <FieldLayout type="double" adaptive>
               <ButtonPrimary
                 tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
                 onClick={submitForm}
                 disabled={isSubmitDisabled()}
               />
-            </ButtonsContent>
+            </FieldLayout>
           </div>
           {!isUserLoggedIn && (
             <div>
               <InfoText tid="BASKET.FORM.FOOTER.INFO" />
-              <ButtonsContent>
+              <FieldLayout type="double" adaptive>
                 <ButtonSecondary
                   tid="BASKET.FORM.FOOTER.SIGN_UP"
                   type="submit"
                 />
                 <ButtonBasic tid="BASKET.FORM.FOOTER.SIGN_IN" type="submit" />
-              </ButtonsContent>
+              </FieldLayout>
             </div>
           )}
-        </FooterContainer>
+        </FieldLayout>
       </SectionLayout>
     </SectionLayout>
   );
 }
-
-const Divider = styled.hr`
-  border: none;
-  border-bottom: 3px solid ${THEME_COLOR.GRAY};
-  border-radius: 1.5px;
-  width: 100%;
-  margin: 0;
-`;
-
-const FieldContainer = styled.div`
-  display: grid;
-  gap: ${spacing(3)};
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-`;
-
 const TextPrimary = styled(TextSecondary)`
   line-height: 24px;
   color: ${THEME_COLOR.TEXT.LIGHT};
@@ -275,13 +256,6 @@ const TextDiscount = styled(TextSecondary)`
 const InfoText = styled(TextSecondary)`
   line-height: 24px;
 `;
-
-const FooterContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${spacing(3)};
-`;
-
 const FooterInfoContainer = styled.div`
   display: flex;
   align-items: center;
@@ -293,13 +267,6 @@ const FooterInfoContent = styled.div`
   &:first-child {
     margin-right: ${spacing(4)};
   }
-`;
-
-const ButtonsContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin-top: ${spacing(2)};
 `;
 
 const VerticalLine = styled.hr`

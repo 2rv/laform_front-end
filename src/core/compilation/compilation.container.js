@@ -31,13 +31,13 @@ export function CompilationContainer() {
   const data = [
     ...getRequestData(state.products, []),
     ...getRequestData(state.masterClasses, []),
-    ...getRequestData(state.articles, [])
+    ...getRequestData(state.articles, []),
   ];
 
   useEffect(() => {
-    dispatch(productsLoadData(currentLang.toLowerCase()));
-    dispatch(masterClassesLoadData(currentLang.toLowerCase()));
-    dispatch(articlesLoadData(currentLang.toLowerCase()));
+    // dispatch(productsLoadData(currentLang.toLowerCase()));
+    // dispatch(masterClassesLoadData(currentLang.toLowerCase()));
+    // dispatch(articlesLoadData(currentLang.toLowerCase()));
   }, []);
 
   return (

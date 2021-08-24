@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ReactComponent as ArrowDown } from '../../../asset/svg/arrow-down-solid.svg';
 
@@ -9,11 +9,20 @@ import { TextSecondary } from '../text';
 import { SelectPropsType } from './field.type';
 
 export function FieldSelect(props: SelectPropsType) {
-  const { titleTid, name, value, options, onChange, onBlur, width, disabled } =
-    props;
+  const {
+    titleTid,
+    name,
+    value,
+    options,
+    onChange,
+    onBlur,
+    width,
+    disabled,
+    adaptive,
+  } = props;
 
   return (
-    <Container width={width}>
+    <Container width={width} adaptive={adaptive}>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
         <Select
@@ -35,12 +44,22 @@ export function FieldSelect(props: SelectPropsType) {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<any>`
   display: grid;
-  width: ${(p: { width?: number }) => {
+  width: ${(p) => {
     if (p.width) return p.width + 'px';
     return '100%';
   }};
+  ${(p) => {
+    return (
+      p.adaptive &&
+      css`
+        @media screen and (max-width: 720px) {
+          width: 100%;
+        }
+      `
+    );
+  }}
   gap: ${spacing(1)};
 `;
 

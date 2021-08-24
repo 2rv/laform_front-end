@@ -85,7 +85,7 @@ export function SettingsFormChangeEmailComponent(props) {
           {(isFormUploadError || formUploadErrorMessage) && (
             <ErrorAlert tid={formUploadErrorMessage} />
           )}
-          <FieldLayout type="double">
+          <FieldLayout type="double" adaptive>
             <ButtonSecondary
               tid="SETTINGS.CHANGE_EMAIL.SUBMIT"
               type="submit"

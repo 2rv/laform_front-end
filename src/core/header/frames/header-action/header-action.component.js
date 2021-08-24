@@ -8,10 +8,14 @@ import { ModalMenu } from '../../../../lib/element/modal';
 import { ReactComponent as CartIcon } from '../../../../asset/svg/cart.svg';
 import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { LOGIN_ROUTE_PATH, SIGNUP_ROUTE_PATH } from '../../header.constants';
-import { USER_MODAL_ITEMS } from './header-action.constant';
+import {
+  USER_MODAL_ITEMS,
+  ADMIN_USER_MODAL_ITEMS,
+} from './header-action.constant';
+import { USER_ROLE } from '../../../../lib/common/auth';
 
 export function HeaderActionComponent(props) {
-  const { className, logged, user } = props;
+  const { logged, user, role } = props;
   const [isUserModalActive, setUserModalActive] = useState(false);
 
   const handleUserClick = () => {
@@ -22,7 +26,7 @@ export function HeaderActionComponent(props) {
   };
 
   return (
-    <Container className={className} logged={logged}>
+    <Container logged={logged}>
       {logged ? (
         <LoggedContainer>
           <UserContainer onClick={handleUserClick}>
@@ -31,7 +35,11 @@ export function HeaderActionComponent(props) {
           </UserContainer>
           {isUserModalActive && (
             <UserMenu
-              items={USER_MODAL_ITEMS}
+              items={
+                role === USER_ROLE.ADMIN
+                  ? ADMIN_USER_MODAL_ITEMS
+                  : USER_MODAL_ITEMS
+              }
               active={isUserModalActive}
               onClose={onUserModalClose}
             />

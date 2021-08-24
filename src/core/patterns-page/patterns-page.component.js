@@ -37,4 +37,9 @@ const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${spacing(6)};
+  @media screen and (max-width: 1070px) {
+    display: flex;
+    flex-direction: column;
+    gap: ${spacing(3)};
+  }
 `;

@@ -9,6 +9,7 @@ import { SettingsChangePaymentMethodContainer } from '../settings-change-payment
 import { SettingsChangePasswordContainer } from '../settings-change-password';
 import { SettingsChangeEmailContainer } from '../settings-change-email';
 import { SettingsChangeNotificationContainer } from '../settings-change-notification';
+import { SettingsLogutContainer } from '../settings-logout';
 
 export function SettingsComponent() {
   return (
@@ -22,6 +23,7 @@ export function SettingsComponent() {
             <SettingsChangePasswordContainer />
             <SettingsChangeEmailContainer />
             <SettingsChangeNotificationContainer />
+            <SettingsLogutContainer />
           </SectionLayout>
         </SectionLayout>
       </PageLayout>

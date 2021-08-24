@@ -1,18 +1,35 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { spacing } from '../../theme';
-import { GridLayoutPropsType } from './layout.type';
+import { FieldLayoutPropsType } from './layout.type';
 
-export function FieldLayout(props: GridLayoutPropsType) {
-  const { type, children } = props;
-  return <Layout type={type}>{children}</Layout>;
+export function FieldLayout(props: FieldLayoutPropsType) {
+  const { type, children, adaptive } = props;
+  return (
+    <Layout adaptive={adaptive} type={type}>
+      {children}
+    </Layout>
+  );
 }
 
 const Layout = styled.div`
   display: grid;
-  grid-row-gap: ${spacing(3)};
-  ${(props: GridLayoutPropsType) =>
-    props.type === 'double'
-      ? ` grid-column-gap: ${spacing(3)};
-          grid-template-columns: 1fr 1fr `
-      : ''}
+  gap: ${spacing(3)};
+  ${(p: FieldLayoutPropsType) => {
+    return (
+      p.type === 'double' &&
+      css`
+        grid-template-columns: 1fr 1fr;
+      `
+    );
+  }}
+  ${(p: FieldLayoutPropsType) => {
+    return (
+      p.adaptive &&
+      css`
+        @media screen and (max-width: 720px) {
+          grid-template-columns: 1fr;
+        }
+      `
+    );
+  }}
 `;

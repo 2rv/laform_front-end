@@ -11,6 +11,7 @@ export interface FieldPropsType {
   isFindInput?: boolean;
   width?: number;
   disabled?: boolean;
+  adaptive?: boolean;
 }
 export interface InputPropsType {
   className?: string;
@@ -25,12 +26,16 @@ export interface InputPropsType {
 }
 
 export interface CheckboxPropsType {
-  titleTid?: string;
-  labelTid: string;
+  titleTid?: string | any;
+  labelTid?: string | any;
   name: string;
   checked: boolean;
-  onChange: any;
-  onBlur: any;
+  onChange?: any;
+  onClick?: any;
+  onBlur?: any;
+  disabled?: boolean;
+  width?: number;
+  adaptive?: boolean;
 }
 
 export interface SelectPropsType {
@@ -42,6 +47,7 @@ export interface SelectPropsType {
   onBlur: any;
   width?: number;
   disabled?: boolean;
+  adaptive?: boolean;
 }
 
 export interface TextAreaPropsType {
@@ -58,4 +64,5 @@ export interface TextAreaPropsType {
   minHeight?: number;
   images: any;
   setImages: any;
+  maxHeight?: number;
 }

@@ -19,7 +19,7 @@ export const EDIT_COMPILATION_API = {
     TYPE: 'DELETE',
   },
   BEST_MASTER_CLASS_UPDATE_ITEM: {
-    ENDPOINT: (id) => `master-class/update/${id}`,
-    TYPE: 'DELETE',
+    ENDPOINT: (compilationNamе, id) => `${compilationNamе}/update/${id}`,
+    TYPE: 'PUT',
   },
 };

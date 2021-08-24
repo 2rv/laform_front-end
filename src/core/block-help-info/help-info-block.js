@@ -21,8 +21,8 @@ export function HelpInfoBlock(props) {
         )}
       </Case>
       <List>
-        {listItems.map(({ icon: Icon, tid, path }) => (
-          <Content key={tid} onClick={setLinkRedirect(path)}>
+        {listItems.map(({ icon: Icon, tid, path }, index) => (
+          <Content key={index} onClick={setLinkRedirect(path)}>
             <Icon />
             <Text tid={tid} />
           </Content>
@@ -36,17 +36,17 @@ export const listItems = [
   {
     icon: SizeIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.SIZING_INFO',
-    path: '/',
+    path: '/faq',
   },
   {
     icon: DownloadIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.DOWNLOAD_AND_PRINT_PATTERN_INFO',
-    path: '/',
+    path: '/faq',
   },
   {
     icon: PaperIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.GLUE_PATTERN_INFO',
-    path: '/',
+    path: '/faq',
   },
 ];
 
@@ -60,12 +60,16 @@ const List = styled.div`
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(6)};
+  @media screen and (max-width: 1070px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: ${spacing(3)};
+  }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-flow: column;
-  width: 360px;
+  width: 100%;
   height: 140px;
   gap: ${spacing(2)};
   padding: ${spacing(7)};

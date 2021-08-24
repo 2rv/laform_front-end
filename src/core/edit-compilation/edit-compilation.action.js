@@ -118,7 +118,7 @@ export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
 }
 
 // TODO: Это под вопросом
-export function bestMasterClassesUpdateItem(id, newProductname) {
+export function bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang) {
   return async (dispatch) => {
     dispatch({
       type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_PENDING,
@@ -127,13 +127,21 @@ export function bestMasterClassesUpdateItem(id, newProductname) {
     try {
       await httpRequest({
         method: EDIT_COMPILATION_API.BEST_MASTER_CLASS_UPDATE_ITEM.TYPE,
-        url: EDIT_COMPILATION_API.BEST_MASTER_CLASS_UPDATE_ITEM.ENDPOINT(id),
+        url: EDIT_COMPILATION_API.BEST_MASTER_CLASS_UPDATE_ITEM.ENDPOINT(compilationNamе, id),
         data: newProductname,
       });
 
       dispatch({
         type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
       });
+
+      if (compilationNamе === 'post') {
+        dispatch(bestProductsLoadData(currentLang));
+      } else if (compilationName === 'master-class') {
+        dispatch(bestMasterClassesLoadData(currentLang));
+      } else if (compilationName === 'post') {
+        dispatch(bestArticlesLoadData(currentLang));
+      }
     } catch (err) {
       if (err.response) {
         dispatch({

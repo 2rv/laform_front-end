@@ -42,4 +42,5 @@ const Badge = styled.span`
   background-color: ${THEME_COLOR.PRIMARY_DARK};
   font-size: ${THEME_SIZE.FONT.DEFAULT};
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
+  user-select: none;
 `;

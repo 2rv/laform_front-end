@@ -6,6 +6,7 @@ import { IconButton, ButtonBasic } from '../../lib/element/button';
 import { ReactComponent as EditIcon } from '../../asset/svg/change-icon.svg';
 import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon.svg';
 import { FilterTabs } from '../../lib/element/filter-tabs';
+import { Spinner } from '../../lib/element/spinner';
 import { TableList } from '../block-table-list';
 import { CREATE_PRODUCT_ROUTE_PATH } from '../create-product';
 import { setLinkRedirect } from '../../main/navigation';
@@ -41,20 +42,24 @@ export function CompilationComponent(props) {
         setActiveTab={setActiveTab}
         tabItems={tabItems}
       />
-      <TableList items={itemsTable}>
-        {(props) => {
-          return (
-            <>
-              <Button>
-                <EditIcon />
-              </Button>
-              <Button>
-                <DeleteIcon />
-              </Button>
-            </>
-          );
-        }}
-      </TableList>
+      {isPending ? (
+        <Spinner />
+      ) : (
+        <TableList items={data}>
+          {(id) => {
+            return (
+              <>
+                <Button>
+                  <EditIcon />
+                </Button>
+                <Button onClick={() => removeCompilationHandler(id)}>
+                  <DeleteIcon />
+                </Button>
+              </>
+            );
+          }}
+        </TableList>
+      )}
       <ButtonBasic tid="Добавить товар" onClick={setLinkRedirect(CREATE_PRODUCT_ROUTE_PATH)} />
     </SectionLayout>
   );

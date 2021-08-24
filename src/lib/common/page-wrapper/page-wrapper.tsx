@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageWrapperPropsType } from './type.page-wrapper';
-
 import { FooterContainer } from '../../../core/footer';
 import { HeaderContainer } from '../../../core/header';
 import { HeaderLogoContainer } from '../../../core/header-logo';
@@ -10,27 +9,51 @@ import {
   ContentLayout,
 } from 'src/lib/element/layout';
 import styled from 'styled-components';
-import { THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { SidebarMenu } from '../../../core/sidebar-menu';
 
 export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
+  const [sidebarIsOpen, setSidebarOpen] = useState(false);
+  const [width, setwidth] = useState(1280);
+  const handleWindowSizeChange = () => {
+    if (typeof window !== 'undefined') {
+      setwidth(window.innerWidth);
+    }
+  };
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setwidth(window.innerWidth);
+      window.addEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
 
   return (
-    <Container type="LARGE">
+    <Container type="LARGE" isOpen={sidebarIsOpen}>
       <Main type="MEDIUM">
         <SectionLayout type="SMALL">
-          <ContentLayout horizontal="center">
-            <PageLayout>
-              <HeaderLogoContainer />
-            </PageLayout>
-          </ContentLayout>
+          <Paddings>
+            <Content horizontal="center">
+              <PageLayout>
+                <HeaderLogoContainer isMobile={width < 720} />
+              </PageLayout>
+            </Content>
+          </Paddings>
           <Wrapper>
-            <HeaderContainer />
+            <HeaderContainer
+              setSidebarOpen={setSidebarOpen}
+              sidebarIsOpen={sidebarIsOpen}
+              isTablet={width < 1070}
+              isMobile={width < 720}
+            />
           </Wrapper>
         </SectionLayout>
-        <Content horizontal="center">
-          <PageLayout>{children}</PageLayout>
-        </Content>
+        <SidebarMenu setOpen={setSidebarOpen} isOpen={sidebarIsOpen} />
+        <Paddings>
+          <Content horizontal="center">
+            <PageLayout>{children}</PageLayout>
+          </Content>
+        </Paddings>
       </Main>
       <Wrapper>
         <FooterContainer />
@@ -38,64 +61,45 @@ export function PageWrapper(props: PageWrapperPropsType) {
     </Container>
   );
 }
-
-const Container = styled(SectionLayout)`
-  padding-top: ${THEME_SIZE.INDENT.MEDIUM};
-  display: flex;
-  height: 100vh;
-  overflow: auto;
-  flex-flow: column;
-`;
-const Content = styled(ContentLayout)`
-  flex: 1;
-`;
-
-const Main = styled(SectionLayout)`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-`;
 const Wrapper = (props: PageWrapperPropsType) => {
   const { children } = props;
   return (
     <Background>
-      <ContentLayout horizontal="center">
-        <PageLayout>{children}</PageLayout>
-      </ContentLayout>
+      <Paddings>
+        <Content horizontal="center">
+          <PageLayout>{children}</PageLayout>
+        </Content>
+      </Paddings>
     </Background>
   );
 };
-
+const Container = styled(SectionLayout)`
+  padding-top: ${THEME_SIZE.INDENT.MEDIUM};
+  display: flex;
+  height: 100vh;
+  overflow: ${(p: { isOpen: boolean }) => (p.isOpen ? 'hidden' : 'auto')};
+  flex-flow: column;
+  @media screen and (max-width: 720px) {
+    gap: ${spacing(6)};
+  }
+`;
+const Content = styled(ContentLayout)`
+  flex: 1;
+`;
+const Main = styled(SectionLayout)`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 720px) {
+    gap: ${spacing(3)};
+  }
+`;
 const Background = styled.div`
   background-color: ${THEME_COLOR.GRAY};
   display: grid;
   width: 100%;
 `;
-
-// здесь будут штуки может для адаптива хз я
-
-// страница HOME
-
-// const ContentFooterLayout = styled(IndentLayout)`
-//   @media screen and (max-width: 600px) {
-//     grid-row-gap: ${spacing(12)};
-//   }
-// `;
-
-// const ContentLayout = styled(IndentLayout)`
-//   @media screen and (max-width: 600px) {
-//     grid-row-gap: ${spacing(3)};
-//   }
-// `;
-
-// const [width, setwidth] = useState(null);
-//   const handleWindowSizeChange = () => {
-//     setwidth(window.innerWidth);
-//   };
-//   useEffect(() => {
-//     setwidth(window.innerWidth);
-//     window.addEventListener('resize', handleWindowSizeChange);
-//   }, []);
-//   const isMobile = width && width < 600;
-// <HeaderLogoContainer isMobile={isMobile} />
-//           <HeaderContainer isMobile={isMobile} />
+const Paddings = styled.div`
+  width: 100%;
+  padding: 0 15px;
+`;

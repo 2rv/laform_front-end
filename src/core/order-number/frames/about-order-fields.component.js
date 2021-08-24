@@ -12,8 +12,7 @@ export function AboutOrderFields(props) {
     fieldContactPhoneNumber,
     fieldOrderNote,
     fieldPromoCode,
-    paymentOptions,
-    dileveryOptions,
+    orderNumberDetails,
 
     handleChange,
     values,
@@ -21,7 +20,7 @@ export function AboutOrderFields(props) {
 
   return (
     <SectionLayout type="TEXT">
-      <FieldLayout type="double">
+      <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.FULL_NAME"
           placeholderTid="Илья Зинченко"
@@ -38,11 +37,9 @@ export function AboutOrderFields(props) {
           value={values[fieldCurrentCity]}
           onChange={handleChange}
         />
-      </FieldLayout>
-      <FieldLayout type="double">
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.DELIVERY_METHOD"
-          options={dileveryOptions}
+          options={[{ id: 0, tid: orderNumberDetails?.typeOfDelivery }]}
           disabled={true}
           name={fieldConvenientDeliveryMethod}
           value={values[fieldConvenientDeliveryMethod]}
@@ -65,10 +62,10 @@ export function AboutOrderFields(props) {
         value={values[fieldOrderNote]}
         onChange={handleChange}
       />
-      <FieldLayout type="double">
+      <FieldLayout type="double" adaptive>
         <FieldSelect
           titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PAYMENT_METHOD"
-          options={paymentOptions}
+          options={[{ id: 0, tid: orderNumberDetails?.typeOfPayment }]}
           disabled={true}
           name={fieldConvenientPaymentMethod}
           value={values[fieldConvenientPaymentMethod]}

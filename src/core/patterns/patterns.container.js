@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { patternsUploadData } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
@@ -15,12 +16,16 @@ import { filterByType } from '../../lib/common/filter-list-card';
 
 export function PatternsContainer() {
   const [activeTab, setActiveTab] = useState(9);
-
+  const [filteredProducts, setFilteredProducts] = useState(testListItems);
   const dispatch = useDispatch();
   const { state, pageLoading } = useSelector((state) => ({
     state: state[PATTERNS_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+
+  // useEffect(() => {
+  //   dispatch(patternsUploadData());
+  // }, []);
 
   const initialValue = () => {
     return {
@@ -34,9 +39,28 @@ export function PatternsContainer() {
     console.log(values); // это ответ с формы если пользователь что то изменяет селект/инпут
   };
 
-  useEffect(() => {
-    // dispatch(patternsUploadData());
-  }, []);
+  const filterProducts = (name) => {
+    setFilteredProducts(testListItems.filter((product) => {
+      return product.name
+        .toLowerCase()
+        .trim()
+        .includes(name);
+    }));
+  };
+
+  const sortProductsByPrice = (option = 1) => {
+    setFilteredProducts((prevProducts) => {
+      return [...prevProducts].sort((a, b) => {
+        if (option === 1) {
+          return prevProducts;
+        } else if (option === 2) {
+          return (a.price.discount !== null ? a.price.discount : a.price.min) - (b.price.discount !== null ? b.price.discount : b.price.min);
+        } else if (option === 3) {
+          return (b.price.discount !== null ? b.price.discount : b.price.min) - (a.price.discount !== null ? a.price.discount : a.price.min);
+        }
+      });
+    });
+  };
 
   return (
     <PatternsComponent
@@ -51,9 +75,11 @@ export function PatternsContainer() {
       initialValue={initialValue()}
       categoryOptions={categorySelectOptions}
       tagsOptions={tagsSelectOptions}
-      listItems={filterByType(testListItems, activeTab)}
+      listItems={filterByType(filteredProducts, activeTab)}
       fieldName={PATTERNS_FIELD_NAME}
       onSubmit={onSubmit}
+      filterProducts={filterProducts}
+      sortProductsByPrice={sortProductsByPrice}
     />
   );
 }
@@ -118,6 +144,7 @@ export const testListItems = [
     like: false,
     bestseller: true,
     type: 5,
+    createdDate: '2021-04-14T11:33:22.332Z',
     price: {
       min: 200,
       discount: 100,
@@ -144,10 +171,10 @@ export const tagsSelectOptions = [
   },
   {
     id: 2,
-    tid: 'Самые дорогие',
+    tid: 'Самые дешевые',
   },
   {
     id: 3,
-    tid: 'Самые дешевые',
+    tid: 'Самые дорогие',
   },
 ];

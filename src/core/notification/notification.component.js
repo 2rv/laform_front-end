@@ -1,4 +1,6 @@
-import { IndentLayout } from '../../lib/element/layout';
+import styled from 'styled-components';
+import { SectionLayout } from '../../lib/element/layout';
+import { spacing } from '../../lib/theme';
 import {
   NotificationFormContainer,
   NotificationHeaderComponent,
@@ -6,9 +8,17 @@ import {
 
 export function NotificationComponent(props) {
   return (
-    <IndentLayout type="small">
+    <Container type="SMALL">
       <NotificationHeaderComponent />
       <NotificationFormContainer {...props} />
-    </IndentLayout>
+    </Container>
   );
 }
+const Container = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: ${spacing(3)};
+  @media screen and (max-width: 720px) {
+    order: 1;
+  }
+`;

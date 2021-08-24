@@ -20,6 +20,8 @@ export function FormFilter(props: FormFilterContainerPropsType) {
     success,
     error,
     errorMessage,
+    filterProducts,
+    sortProducts,
   } = props;
   return (
     <Formik
@@ -39,6 +41,8 @@ export function FormFilter(props: FormFilterContainerPropsType) {
           success={success}
           error={error}
           errorMessage={errorMessage}
+          filterProducts={filterProducts}
+          sortProducts={sortProducts}
           {...formProps}
         />
       )}

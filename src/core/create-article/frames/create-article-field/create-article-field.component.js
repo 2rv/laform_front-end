@@ -6,11 +6,11 @@ import { createArticleUploadData } from '../../create-article.action';
 import { THEME_COLOR, spacing } from '../../../../lib/theme';
 import { ButtonSecondary } from '../../../../lib/element/button';
 import { TextareaField } from '../../../../lib/element/field';
-import { MASTER_CLASSES_ROUTE_PATH } from '../../../master-classes';;
-
+import { MASTER_CLASSES_ROUTE_PATH } from '../../../master-classes';
+import { FieldLayout } from '../../../../lib/element/layout';
 export function CreateArticleFieldComponent({ images, setImages }) {
   const dispatch = useDispatch();
-  const [ textareaValue, setTextareaValue ] = React.useState('');
+  const [textareaValue, setTextareaValue] = React.useState('');
 
   return (
     <Layout>
@@ -20,32 +20,38 @@ export function CreateArticleFieldComponent({ images, setImages }) {
         name="content"
         value={textareaValue}
         onChange={({ target: { value } }) => setTextareaValue(value)}
-        rows={8}
+        minHeight={190}
+        maxHeight={230}
         isFile={true}
         images={images}
         setImages={setImages}
       />
-      <FieldContainer>
-        <Button tid="Создать" onClick={() => dispatch(createArticleUploadData(images, textareaValue))} />
-        <Button tid="Отменить создание" altType={true} onClick={setLinkRedirect(MASTER_CLASSES_ROUTE_PATH)}  />
-      </FieldContainer>
+      <FieldLayout type="double" adaptive>
+        <Button
+          tid="Создать"
+          onClick={() =>
+            dispatch(createArticleUploadData(images, textareaValue))
+          }
+        />
+        <Button
+          tid="Отменить создание"
+          altType={true}
+          onClick={setLinkRedirect(MASTER_CLASSES_ROUTE_PATH)}
+        />
+      </FieldLayout>
     </Layout>
   );
 }
 
 const Layout = styled.div`
   display: grid;
-  gap: ${spacing(3)}
-`;
-
-const FieldContainer = styled.div`
-  display: grid;
   gap: ${spacing(3)};
-  grid-template-columns: repeat(2, 1fr);
 `;
 
 const Button = styled(ButtonSecondary)`
-  ${({ altType }) => altType && `
+  ${({ altType }) =>
+    altType &&
+    `
     background-color: ${THEME_COLOR.GRAY}
     color: ${THEME_COLOR.SECONDARY_DARK}
   `};
