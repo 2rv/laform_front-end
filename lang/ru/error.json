@@ -2,6 +2,7 @@
   "SUBSCRIBE_SUBSCRIPTION_ALREADY_EXISTS": "Подписка уже оформлена.",
   "USER_SETTINGS_UNCORRECT_CURRENT_PASSWORD": "Неверный пароль.",
   "USER_VERIFICATION_EMAIL_CODE_DOESNT_EXISTS": "Код подтверждения не существует.",
+  "PROMO_CODE_NOT_EXISTS": "Промо-код не сушествует или не активен",
   "LOGIN_UNCORRECT_PASSWORD_OR_LOGIN": "Не корректный логин или пароль.",
   "LOGIN_COULDNT_FOUND_USER": "Пользователь с таким логином не найден.",
   "USER_ALREADY_EXISTS": "Пользователь уже существует."

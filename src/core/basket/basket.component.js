@@ -1,15 +1,39 @@
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
-import { spacing, THEME_SIZE } from '../../lib/theme';
+import { THEME_SIZE } from '../../lib/theme';
 import { ReactComponent as EditIcon } from '../../asset/svg/change-icon.svg';
 import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon.svg';
-import { TableList } from '../block-table-list';
+import { TableList, BLOCK_TABLE_LIST_ROW_TYPE } from '../block-table-list';
 import { FormalizationOrderingContainer } from './frames';
 import { IconButton } from '../../lib/element/button';
+import { TextSecondary } from '../../lib/element/text';
+
+import {
+  incrementSewingProduct,
+  incrementPatternProduct,
+  incrementMasterClass,
+  decrementSewingProduct,
+  decrementPatternProduct,
+  decrementMasterClass,
+  deleteSewingProduct,
+  deletePatternProduct,
+  deleteMasterClass,
+} from '../../lib/common/cart';
+import { Popup } from '../../lib/element/popup';
+import { EditProductComponent } from '../../lib/element/edit';
 
 export function BasketComponent(props) {
   const {
+    isNotEmpty,
+    discount,
+    total,
+    token,
+    cartPriceWithoutShipping,
+    shippingPrice,
+    cartPrice,
+
     isPending,
     isError,
     isSuccess,
@@ -23,77 +47,165 @@ export function BasketComponent(props) {
     headersGoods,
     headersMaster,
     headersPatterns,
-    itemsGoods,
-    itemsMaster,
-    itemsPatterns,
-    count,
-    incrementCount,
-    dicrementCoun,
+    sewingProduct,
+    patternProduct,
+    masterClass,
+    promoCodeInitialValue,
+    onSubmitPromoCode,
+    validationPromoCode,
+
+    isPromoCodePending,
+    isPromoCodeError,
+    isPromoCodeSuccess,
+    promoCodeErrorMessage,
   } = props;
+  const dispatch = useDispatch();
 
   return (
     <SectionLayout>
       <Title tid="BASKET.TITLE" />
-      <TableList
-        count={count}
-        incrementCount={incrementCount}
-        dicrementCoun={dicrementCoun}
-        headers={headersGoods}
-        items={itemsGoods}
-      >
-        {(props) => {
-          return (
-            <>
-              <Button>
-                <EditIcon />
-              </Button>
-              <Button>
-                <DeleteIcon />
-              </Button>
-            </>
-          );
-        }}
-      </TableList>
-      <TableList headers={headersMaster} items={itemsMaster}>
-        {(props) => {
-          return (
-            <>
-              <Button>
-                <EditIcon />
-              </Button>
-              <Button>
-                <DeleteIcon />
-              </Button>
-            </>
-          );
-        }}
-      </TableList>
-      <TableList headers={headersPatterns} items={itemsPatterns}>
-        {(props) => {
-          return (
-            <>
-              <Button>
-                <EditIcon />
-              </Button>
-              <Button>
-                <DeleteIcon />
-              </Button>
-            </>
-          );
-        }}
-      </TableList>
-      <FormalizationOrderingContainer
-        isPending={isPending}
-        isError={isError}
-        isSuccess={isSuccess}
-        errorMessage={errorMessage}
-        isUserInfoLoadPending={isUserInfoLoadPending}
-        pageLoading={pageLoading}
-        initialValue={initialValue}
-        validation={validation}
-        onSubmitForm={onSubmitForm}
-        fieldName={fieldName}
-      />
+
+      {isNotEmpty ? (
+        <>
+          {sewingProduct.length ? (
+            <TableList
+              incrementCount={incrementSewingProduct}
+              decrementCount={decrementSewingProduct}
+              headers={headersGoods}
+              items={sewingProduct}
+              count={true}
+              type={BLOCK_TABLE_LIST_ROW_TYPE.SEWING_PRODUCT}
+            >
+              {(id, data) => {
+                return (
+                  <>
+                    <Popup
+                      content={(setVisible) => (
+                        <EditProductComponent
+                          setVisible={setVisible}
+                          type="SEWING"
+                          data={data}
+                        />
+                      )}
+                      children={
+                        <Button>
+                          <EditIcon />
+                        </Button>
+                      }
+                    />
+                    <Button>
+                      <DeleteIcon
+                        onClick={() => dispatch(deleteSewingProduct(id))}
+                      />
+                    </Button>
+                  </>
+                );
+              }}
+            </TableList>
+          ) : null}
+
+          {patternProduct.length ? (
+            <TableList
+              type={BLOCK_TABLE_LIST_ROW_TYPE.PATTERN_PRODUCT}
+              headers={headersPatterns}
+              items={patternProduct}
+              incrementCount={incrementPatternProduct}
+              decrementCount={decrementPatternProduct}
+              count={true}
+            >
+              {(id, data) => {
+                return (
+                  <>
+                    <Popup
+                      content={(setVisible) => (
+                        <EditProductComponent
+                          setVisible={setVisible}
+                          type="PATTERN"
+                          data={data}
+                        />
+                      )}
+                      children={
+                        <Button>
+                          <EditIcon />
+                        </Button>
+                      }
+                    />
+                    <Button>
+                      <DeleteIcon
+                        onClick={() => dispatch(deletePatternProduct(id))}
+                      />
+                    </Button>
+                  </>
+                );
+              }}
+            </TableList>
+          ) : null}
+
+          {masterClass.length ? (
+            <TableList
+              headers={headersMaster}
+              items={masterClass}
+              incrementCount={incrementMasterClass}
+              decrementCount={decrementMasterClass}
+              type={BLOCK_TABLE_LIST_ROW_TYPE.MASTER_CLASS}
+            >
+              {(id, data) => {
+                return (
+                  <>
+                    <Popup
+                      content={(setVisible) => (
+                        <EditProductComponent
+                          setVisible={setVisible}
+                          type="MASTER"
+                          data={data}
+                        />
+                      )}
+                      children={
+                        <Button>
+                          <EditIcon />
+                        </Button>
+                      }
+                    />
+                    <Button>
+                      <DeleteIcon
+                        onClick={() => dispatch(deleteMasterClass(id))}
+                      />
+                    </Button>
+                  </>
+                );
+              }}
+            </TableList>
+          ) : null}
+
+          <FormalizationOrderingContainer
+            total={total}
+            discount={discount}
+            token={token}
+            cartPriceWithoutShipping={cartPriceWithoutShipping}
+            shippingPrice={shippingPrice}
+            cartPrice={cartPrice}
+            isPending={isPending}
+            isError={isError}
+            isSuccess={isSuccess}
+            errorMessage={errorMessage}
+            isUserInfoLoadPending={isUserInfoLoadPending}
+            pageLoading={pageLoading}
+            initialValue={initialValue}
+            validation={validation}
+            onSubmitForm={onSubmitForm}
+            fieldName={fieldName}
+            promoCodeInitialValue={promoCodeInitialValue}
+            onSubmitPromoCode={onSubmitPromoCode}
+            validationPromoCode={validationPromoCode}
+            isPromoCodePending={isPromoCodePending}
+            isPromoCodeError={isPromoCodeError}
+            isPromoCodeSuccess={isPromoCodeSuccess}
+            promoCodeErrorMessage={promoCodeErrorMessage}
+          />
+        </>
+      ) : (
+        <TextSecondary tid="BASKET.CART_IS_EMPTY" />
+      )}
     </SectionLayout>
   );
 }

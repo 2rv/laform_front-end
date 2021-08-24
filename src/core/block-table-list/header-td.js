@@ -13,6 +13,7 @@ export function HeaderTd(props) {
 }
 const Td = styled.td`
   vertical-align: middle;
+  padding-right: 30px;
 `;
 const Case = styled.div`
   display: flex;

@@ -26,12 +26,10 @@ export function Popup(props: PopupPropsType) {
     <PopupContainer ref={modalRef}>
       {visible && (
         <PopupContent>
-          {content}
+          {content instanceof Function ? content(setVisible) : content}
         </PopupContent>
       )}
-      <PopupAction onClick={() => setVisible(!visible)}>
-        {children}
-      </PopupAction>
+      <PopupAction onClick={() => setVisible(!visible)}>{children}</PopupAction>
     </PopupContainer>
   );
 }
