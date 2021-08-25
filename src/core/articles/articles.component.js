@@ -1,44 +1,36 @@
 import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
-import { ArticlesFilter } from './frames';
+import { FormFilter } from '../../lib/element/form-filter';
 
 export function ArticlesComponent(props) {
   const {
-    initialValue,
-    categoryOptions,
-    tagsOptions,
     listItems,
-    fieldName,
-    onSubmit,
-    validation,
+    //-----
+    filterOptions,
+    filterSelectName,
+    findFieldName,
+    setFilter,
+    initialValue,
+    //-----
     pending,
     success,
     error,
     errorMessage,
-    filterProducts,
-    sortProductsByDate,
   } = props;
 
   return (
     <SectionLayout>
       <TitlePrimary tid="ARTICLES.ARTICLES.TITLE" />
-      <ArticlesFilter
+      <FormFilter
         findPlaceholderTid={'ARTICLES.ARTICLES.FIELD.FIND_ARTICLES'}
-        categoryOptions={categoryOptions}
-        tagsOptions={tagsOptions}
+        filterOptions={filterOptions}
+        filterSelectName={filterSelectName}
+        findFieldName={findFieldName}
         initialValue={initialValue}
-        fieldName={fieldName}
-        onSubmit={onSubmit}
-        validation={validation}
-        pending={pending}
-        success={success}
-        error={error}
-        errorMessage={errorMessage}
-        filterProducts={filterProducts}
-        sortProductsByDate={sortProductsByDate}
+        setFilter={setFilter}
       />
-      <BasicCardList items={listItems} type="articles" />
+      <BasicCardList items={listItems} />
     </SectionLayout>
   );
 }

@@ -1,85 +1,66 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { patternsUploadData } from './patterns.action';
-import { PATTERNS_STORE_NAME } from './patterns.constant';
-import { PatternsComponent } from './patterns.component';
-import { PATTERNS_FIELD_NAME } from './patterns.type';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { filterByType } from '../../lib/common/filter-list-card';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import {
+  filterByType,
+  sorterItemsByParams,
+} from '../../lib/common/filter-list-card';
+import { patternsUploadData } from './patterns.action';
+import { PATTERNS_STORE_NAME } from './patterns.constant';
+import { PatternsComponent } from './patterns.component';
+import { PATTERNS_FIELD_NAME } from './patterns.type';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 export function PatternsContainer() {
-  const [activeTab, setActiveTab] = useState(9);
-  const [filteredProducts, setFilteredProducts] = useState(testListItems);
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
-    state: state[PATTERNS_STORE_NAME],
+  const { patternsState, pageLoading, currentLang } = useSelector((state) => ({
+    patternsState: state[PATTERNS_STORE_NAME].patternsState,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  // useEffect(() => {
-  //   dispatch(patternsUploadData());
-  // }, []);
-
-  const initialValue = () => {
-    return {
-      [PATTERNS_FIELD_NAME.CATEGORY]: 1,
-      [PATTERNS_FIELD_NAME.TAGS]: 1,
-      [PATTERNS_FIELD_NAME.FIND_INPUT]: '',
-    };
-  };
-
-  const onSubmit = (values) => {
-    console.log(values); // это ответ с формы если пользователь что то изменяет селект/инпут
-  };
-
-  const filterProducts = (name) => {
-    setFilteredProducts(testListItems.filter((product) => {
-      return product.name
-        .toLowerCase()
-        .trim()
-        .includes(name);
-    }));
-  };
-
-  const sortProductsByPrice = (option = 1) => {
-    setFilteredProducts((prevProducts) => {
-      return [...prevProducts].sort((a, b) => {
-        if (option === 1) {
-          return prevProducts;
-        } else if (option === 2) {
-          return (a.price.discount !== null ? a.price.discount : a.price.min) - (b.price.discount !== null ? b.price.discount : b.price.min);
-        } else if (option === 3) {
-          return (b.price.discount !== null ? b.price.discount : b.price.min) - (a.price.discount !== null ? a.price.discount : a.price.min);
-        }
-      });
-    });
-  };
+  //   useEffect(() => dispatch(patternsUploadData(currentLang)), []);
+  const filterInitialValue = () => ({
+    [PATTERNS_FIELD_NAME.FILTER]: 0,
+    [PATTERNS_FIELD_NAME.FIND]: '',
+  });
+  //---------------------------------------------------
+  const [activeTab, setActiveTab] = useState(9);
+  const [filter, setFilter] = useState(filterInitialValue());
 
   return (
     <PatternsComponent
-      isPending={isRequestPending(state.patterns)}
-      isError={isRequestError(state.patterns)}
-      isSuccess={isRequestSuccess(state.patterns)}
-      errorMessage={getRequestErrorMessage(state.patterns)}
-      pageLoading={pageLoading}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       tabItems={tabItems}
-      initialValue={initialValue()}
-      categoryOptions={categorySelectOptions}
-      tagsOptions={tagsSelectOptions}
-      listItems={filterByType(filteredProducts, activeTab)}
-      fieldName={PATTERNS_FIELD_NAME}
-      onSubmit={onSubmit}
-      filterProducts={filterProducts}
-      sortProductsByPrice={sortProductsByPrice}
+      //-----
+      listItems={filterByType(
+        sorterItemsByParams(
+          getRequestData(patternsState, [...testListItems]),
+          filter[PATTERNS_FIELD_NAME.FIND],
+          Number(filter[PATTERNS_FIELD_NAME.FILTER]),
+        ),
+        activeTab,
+      )}
+      //-----
+      filterOptions={filterOptionss}
+      initialValue={filterInitialValue()}
+      setFilter={setFilter}
+      filterSelectName={PATTERNS_FIELD_NAME.FILTER}
+      findFieldName={PATTERNS_FIELD_NAME.FIND}
+      //-----
+      pageLoading={pageLoading}
+      isPending={isRequestPending(patternsState)}
+      isError={isRequestError(patternsState)}
+      isSuccess={isRequestSuccess(patternsState)}
+      errorMessage={getRequestErrorMessage(patternsState)}
     />
   );
 }
@@ -89,7 +70,6 @@ export const tabItems = [
   { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 4 },
   { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 5 },
 ];
-
 export const testListItems = [
   {
     id: 1,
@@ -101,8 +81,6 @@ export const testListItems = [
     type: 4,
     price: {
       min: 500,
-      discount: 230,
-      max: null,
     },
   },
   {
@@ -116,7 +94,6 @@ export const testListItems = [
     type: 4,
     price: {
       min: 200,
-      discount: null,
       max: 4150,
     },
   },
@@ -131,7 +108,7 @@ export const testListItems = [
     type: 5,
     price: {
       min: 200,
-      discount: 100,
+      discount: 20,
       max: 900,
     },
   },
@@ -147,34 +124,29 @@ export const testListItems = [
     createdDate: '2021-04-14T11:33:22.332Z',
     price: {
       min: 200,
-      discount: 100,
-      max: 900,
+      discount: 30,
     },
   },
 ];
-
-export const categorySelectOptions = [
+export const filterOptionss = [
+  {
+    id: 0,
+    tid: 'Все',
+  },
   {
     id: 1,
-    tid: 'Категория 1',
+    tid: 'Акция',
   },
   {
     id: 2,
-    tid: 'Категория 2',
-  },
-];
-
-export const tagsSelectOptions = [
-  {
-    id: 1,
-    tid: 'Популярные',
-  },
-  {
-    id: 2,
-    tid: 'Самые дешевые',
+    tid: 'Хит',
   },
   {
     id: 3,
-    tid: 'Самые дорогие',
+    tid: 'По возрастанию',
+  },
+  {
+    id: 4,
+    tid: 'По убыванию',
   },
 ];

@@ -5,7 +5,7 @@ export interface FieldPropsType {
   name: string;
   type?: string;
   value: string;
-  error: string;
+  error?: string;
   onChange: any;
   onBlur: any;
   isFindInput?: boolean;

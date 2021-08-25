@@ -34,7 +34,7 @@ const ModifierContainer = styled.div`
   right: 0;
   bottom: 0;
   flex-direction: column;
-  gap: ${spacing(1)};
+  gap: ${spacing(2)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Modifier = styled(TextSecondary)`
@@ -46,4 +46,5 @@ const Modifier = styled(TextSecondary)`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT} 0 ${THEME_SIZE.RADIUS.DEFAULT} 0;
 `;

@@ -8,7 +8,7 @@ import {
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
 const initialState = {
-  sewingGoods: initRequestState(),
+  sewingGoodsState: initRequestState(),
 };
 
 export function sewingGoodsStore(state = initialState, action) {
@@ -16,17 +16,23 @@ export function sewingGoodsStore(state = initialState, action) {
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_PENDING:
       return {
         ...state,
-        sewingGoods: setRequestPending(state.sewingGoods),
+        sewingGoodsState: setRequestPending(state.sewingGoodsState),
       };
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS:
       return {
         ...state,
-        sewingGoods: setRequestSuccess(state.sewingGoods),
+        sewingGoodsState: setRequestSuccess(
+          state.sewingGoodsState,
+          action.data,
+        ),
       };
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_ERROR:
       return {
         ...state,
-        sewingGoods: setRequestError(state.sewingGoods, action.errorMessage),
+        sewingGoodsState: setRequestError(
+          state.sewingGoodsState,
+          action.errorMessage,
+        ),
       };
     default:
       return state;

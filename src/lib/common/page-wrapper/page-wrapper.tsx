@@ -43,7 +43,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
             <HeaderContainer
               setSidebarOpen={setSidebarOpen}
               sidebarIsOpen={sidebarIsOpen}
-              isTablet={width < 1070}
+              isTablet={width < 720}
               isMobile={width < 720}
             />
           </Wrapper>

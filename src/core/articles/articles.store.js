@@ -4,11 +4,10 @@ import {
   setRequestPending,
   setRequestSuccess,
 } from '../../main/store/store.service';
-
 import { ARTICLES_ACTION_TYPE } from './articles.type';
 
 const initialState = {
-  articles: initRequestState(),
+  articlesState: initRequestState(),
 };
 
 export function articlesStore(state = initialState, action) {
@@ -16,17 +15,20 @@ export function articlesStore(state = initialState, action) {
     case ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_PENDING:
       return {
         ...state,
-        articles: setRequestPending(state.articles),
+        articlesState: setRequestPending(state.articlesState),
       };
     case ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS:
       return {
         ...state,
-        articles: setRequestSuccess(state.articles),
+        articlesState: setRequestSuccess(state.articlesState, action.data),
       };
     case ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_ERROR:
       return {
         ...state,
-        articles: setRequestError(state.articles, action.errorMessage),
+        articlesState: setRequestError(
+          state.articlesState,
+          action.errorMessage,
+        ),
       };
     default:
       return state;
