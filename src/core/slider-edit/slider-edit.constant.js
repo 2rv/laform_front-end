@@ -12,6 +12,10 @@ export const SLIDER_EDIT_API = {
     ENDPOINT: (id) => `slider/update/${id}`,
     TYPE: 'PUT',
   },
+  SLIDER_EDIT_REMOVE: {
+    ENDPOINT: (id) => `slider/delete/${id}`,
+    TYPE: 'DELETE',
+  },
   IMAGE_LOAD: {
     ENDPOINT: 'file/create',
     TYPE: 'POST',

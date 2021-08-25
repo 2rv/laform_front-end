@@ -10,7 +10,6 @@ import { SLIDER_LIST_STORE_NAME } from './slider-list.constant';
 import { SliderListComponent } from './slider-list.component';
 import { sliderListUploadData, sliderItemRemove } from './slider-list.action';
 import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
-import { setLinkRedirect } from '../../main/navigation/navigation.core';
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -33,10 +32,10 @@ export function SliderListContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    // dispatch(sliderListLoadData(currentLang));
+    dispatch(sliderListLoadData(currentLang));
   }, []);
 
-  const editSlide = (id) => setLinkRedirect(SLIDER_EDIT_ROUTE_PATH(id));
+  const editSlide = (id) => redirect(SLIDER_EDIT_ROUTE_PATH(id));
   const removeSlide = (id) => dispatch(sliderItemRemove(currentLang, id));
   const addSlide = () => dispatch(sliderListUploadData(currentLang));
   return (

@@ -6,9 +6,9 @@ export function SliderList(props) {
   const { slidersItems, removeSlide, editSlide } = props;
   return (
     <Container>
-      {slidersItems.map((data, index) => (
+      {slidersItems.map((data) => (
         <SliderItem
-          key={index}
+          key={data.id}
           data={data}
           removeSlide={removeSlide}
           editSlide={editSlide}
