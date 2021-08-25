@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function filterByType(listItems, activeType) {
   return listItems.filter((item) => {
     if (activeType === 9) return true;
@@ -41,5 +43,16 @@ export function sorterItemsByParams(listData, find, filter) {
       );
     });
   }
+  if (filter === 5) {
+    return listData.sort(
+      (a, b) => moment(b.createdDate) - moment(a.createdDate),
+    );
+  }
+  if (filter === 6) {
+    return listData.sort(
+      (a, b) => moment(a.createdDate) - moment(b.createdDate),
+    );
+  }
+
   return listData;
 }

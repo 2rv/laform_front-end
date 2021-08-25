@@ -10,51 +10,30 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
     filterSelectName,
     findFieldName,
 
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
+    formik,
   } = props;
 
-  const getFieldError = (name: string) => {
-    return errors[name] && touched[name] && errors[name];
-  };
-
-  const changeInputHandler = (e: any) => {
-    handleChange(e);
-    handleSubmit();
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <Container>
-        <FieldSelect
-          options={filterOptions}
-          name={filterSelectName}
-          value={values[filterSelectName]}
-          onChange={(e: any) => {
-            handleChange(e);
-            handleSubmit();
-          }}
-          width={200}
-          adaptive
-          onBlur={handleBlur}
-        />
-        <BasicField
-          placeholderTid={findPlaceholderTid}
-          name={findFieldName}
-          value={values[findFieldName]}
-          error={getFieldError(findFieldName)}
-          onChange={changeInputHandler}
-          onBlur={handleBlur}
-          isFindInput
-          width={250}
-          adaptive
-        />
-      </Container>
-    </form>
+    <Container>
+      <FieldSelect
+        options={filterOptions}
+        name={filterSelectName}
+        value={formik.values[filterSelectName]}
+        onChange={formik.handleChange}
+        width={200}
+        adaptive
+      />
+      <BasicField
+        placeholderTid={findPlaceholderTid}
+        name={findFieldName}
+        value={formik.values[findFieldName]}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        isFindInput
+        width={250}
+        adaptive
+      />
+    </Container>
   );
 }
 

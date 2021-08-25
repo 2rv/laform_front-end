@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { useFormik } from 'formik';
 import { FormFilterComponent } from './form-filter.component';
 import { FormFilterContainerPropsType } from './form-filter.type';
 
@@ -8,21 +8,23 @@ export function FormFilter(props: FormFilterContainerPropsType) {
     filterOptions,
     findFieldName,
     filterSelectName,
-
+    setFilter,
     initialValue,
     onSubmit,
   } = props;
+
+  const formik = useFormik({
+    initialValues: initialValue,
+    onSubmit: onSubmit,
+  });
+  setFilter(formik.values);
   return (
-    <Formik initialValues={initialValue} onSubmit={onSubmit}>
-      {(formProps) => (
-        <FormFilterComponent
-          findPlaceholderTid={findPlaceholderTid}
-          filterOptions={filterOptions}
-          filterSelectName={filterSelectName}
-          findFieldName={findFieldName}
-          {...formProps}
-        />
-      )}
-    </Formik>
+    <FormFilterComponent
+      findPlaceholderTid={findPlaceholderTid}
+      filterOptions={filterOptions}
+      filterSelectName={filterSelectName}
+      findFieldName={findFieldName}
+      formik={formik}
+    />
   );
 }

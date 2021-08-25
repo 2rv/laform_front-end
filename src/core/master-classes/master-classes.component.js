@@ -10,7 +10,7 @@ export function MasterClassesComponent(props) {
     filterOptions,
     filterSelectName,
     findFieldName,
-    onSubmit,
+    setFilter,
     initialValue,
     //-----
     pending,
@@ -28,9 +28,9 @@ export function MasterClassesComponent(props) {
         filterSelectName={filterSelectName}
         findFieldName={findFieldName}
         initialValue={initialValue}
-        onSubmit={onSubmit}
+        setFilter={setFilter}
       />
-      <BasicCardList type="master-classes" items={listItems} />
+      <BasicCardList items={listItems} />
     </SectionLayout>
   );
 }

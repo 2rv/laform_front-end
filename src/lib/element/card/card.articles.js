@@ -7,9 +7,17 @@ import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg
 import { useState } from 'react';
 import { LinkPrimary } from '../link';
 import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
+import moment from 'moment';
 
 export function CardArticles(props) {
-  const { id, image = null, name = null, date, like = false } = props.data;
+  const {
+    id,
+    image = null,
+    name = null,
+    date,
+    createdDate,
+    like = false,
+  } = props.data;
   const [isLiked, setLike] = useState(like);
   const onLike = () => {
     setLike(!isLiked);
@@ -24,7 +32,9 @@ export function CardArticles(props) {
       <Content>
         <Column>
           <CardName tid={name} />
-          <Date tid={date} />
+          <Date
+            tid={moment(createdDate).locale('ru').startOf('hour').fromNow()}
+          />
         </Column>
         <LikeButton onClick={onLike} like={isLiked}>
           <LikeIcon />

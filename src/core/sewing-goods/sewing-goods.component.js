@@ -10,7 +10,7 @@ export function SewingGoodsComponent(props) {
     filterOptions,
     filterSelectName,
     findFieldName,
-    onSubmit,
+    setFilter,
     initialValue,
     //-----
     pending,
@@ -28,7 +28,7 @@ export function SewingGoodsComponent(props) {
         filterSelectName={filterSelectName}
         findFieldName={findFieldName}
         initialValue={initialValue}
-        onSubmit={onSubmit}
+        setFilter={setFilter}
       />
       <BasicCardList items={listItems} />
     </SectionLayout>

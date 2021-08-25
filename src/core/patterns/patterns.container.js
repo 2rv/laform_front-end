@@ -19,34 +19,21 @@ import { PATTERNS_FIELD_NAME } from './patterns.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 export function PatternsContainer() {
-  const [activeTab, setActiveTab] = useState(9);
   const dispatch = useDispatch();
   const { patternsState, pageLoading, currentLang } = useSelector((state) => ({
-    patternsState: getRequestData(state[PATTERNS_STORE_NAME].patternsState, []),
+    patternsState: state[PATTERNS_STORE_NAME].patternsState,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  useEffect(() => dispatch(patternsUploadData(currentLang)), []);
-
+  //   useEffect(() => dispatch(patternsUploadData(currentLang)), []);
   const filterInitialValue = () => ({
     [PATTERNS_FIELD_NAME.FILTER]: 0,
     [PATTERNS_FIELD_NAME.FIND]: '',
   });
-
   //---------------------------------------------------
-
+  const [activeTab, setActiveTab] = useState(9);
   const [filter, setFilter] = useState(filterInitialValue());
-
-  //---------------------------------------------------
-
-  const onSubmit = (values) =>
-    setFilter({
-      [PATTERNS_FIELD_NAME.FILTER]: Number(values[PATTERNS_FIELD_NAME.FILTER]),
-      [PATTERNS_FIELD_NAME.FIND]: values[PATTERNS_FIELD_NAME.FIND],
-    });
-
-  //---------------------------------------------------
 
   return (
     <PatternsComponent
@@ -56,16 +43,16 @@ export function PatternsContainer() {
       //-----
       listItems={filterByType(
         sorterItemsByParams(
-          patternsState,
+          getRequestData(patternsState, [...testListItems]),
           filter[PATTERNS_FIELD_NAME.FIND],
-          filter[PATTERNS_FIELD_NAME.FILTER],
+          Number(filter[PATTERNS_FIELD_NAME.FILTER]),
         ),
         activeTab,
       )}
       //-----
       filterOptions={filterOptionss}
       initialValue={filterInitialValue()}
-      onSubmit={onSubmit}
+      setFilter={setFilter}
       filterSelectName={PATTERNS_FIELD_NAME.FILTER}
       findFieldName={PATTERNS_FIELD_NAME.FIND}
       //-----

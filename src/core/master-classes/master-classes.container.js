@@ -20,16 +20,15 @@ export function MasterClassesContainer() {
   const dispatch = useDispatch();
   const { masterClassState, pageLoading, currentLang } = useSelector(
     (state) => ({
-      masterClassState: getRequestData(
-        state[MASTER_CLASSES_STORE_NAME].masterClassState,
-        [],
-      ),
+      masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
+
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     }),
   );
 
   useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
+
   const filterInitialValue = () => ({
     [MASTER_CLASSES_FIELD_NAME.FILTER]: 0,
     [MASTER_CLASSES_FIELD_NAME.FIND]: '',
@@ -37,29 +36,17 @@ export function MasterClassesContainer() {
 
   const [filter, setFilter] = useState(filterInitialValue());
 
-  //---------------------------------------------------
-
-  const onSubmit = (values) =>
-    setFilter({
-      [MASTER_CLASSES_FIELD_NAME.FILTER]: Number(
-        values[MASTER_CLASSES_FIELD_NAME.FILTER],
-      ),
-      [MASTER_CLASSES_FIELD_NAME.FIND]: values[MASTER_CLASSES_FIELD_NAME.FIND],
-    });
-
-  //---------------------------------------------------
-
   return (
     <MasterClassesComponent
       listItems={sorterItemsByParams(
-        masterClassState,
+        getRequestData(masterClassState, [...testListItems]),
         filter[MASTER_CLASSES_FIELD_NAME.FIND],
-        filter[MASTER_CLASSES_FIELD_NAME.FILTER],
+        Number(filter[MASTER_CLASSES_FIELD_NAME.FILTER]),
       )}
       //-----
       filterOptions={filterOptionss}
       initialValue={filterInitialValue()}
-      onSubmit={onSubmit}
+      setFilter={setFilter}
       filterSelectName={MASTER_CLASSES_FIELD_NAME.FILTER}
       findFieldName={MASTER_CLASSES_FIELD_NAME.FIND}
       //-----
@@ -94,7 +81,6 @@ export const filterOptionss = [
     tid: 'По убыванию',
   },
 ];
-
 export const testListItems = [
   {
     id: 1,

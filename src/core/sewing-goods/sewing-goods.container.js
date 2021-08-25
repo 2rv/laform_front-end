@@ -19,45 +19,29 @@ export function SewingGoodsContainer() {
   const dispatch = useDispatch();
   const { sewingGoodsState, pageLoading, currentLang } = useSelector(
     (state) => ({
-      sewingGoodsState: getRequestData(
-        state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
-        [],
-      ),
+      sewingGoodsState: state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
     }),
   );
-  useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
+  //   useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
   const filterInitialValue = () => ({
     [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
     [SEWING_GOODS_FIELD_NAME.FIND]: '',
   });
-
   const [filter, setFilter] = useState(filterInitialValue());
-
-  //---------------------------------------------------
-
-  const onSubmit = (values) =>
-    setFilter({
-      [SEWING_GOODS_FIELD_NAME.FILTER]: Number(
-        values[SEWING_GOODS_FIELD_NAME.FILTER],
-      ),
-      [SEWING_GOODS_FIELD_NAME.FIND]: values[SEWING_GOODS_FIELD_NAME.FIND],
-    });
-
-  //---------------------------------------------------
 
   return (
     <SewingGoodsComponent
       listItems={sorterItemsByParams(
-        sewingGoodsState,
+        getRequestData(sewingGoodsState, [...testListItems]),
         filter[SEWING_GOODS_FIELD_NAME.FIND],
-        filter[SEWING_GOODS_FIELD_NAME.FILTER],
+        Number(filter[SEWING_GOODS_FIELD_NAME.FILTER]),
       )}
       //-----
-      filterOptions={filterOptionss}
+      setFilter={setFilter}
       initialValue={filterInitialValue()}
-      onSubmit={onSubmit}
+      filterOptions={filterOptionss}
       filterSelectName={SEWING_GOODS_FIELD_NAME.FILTER}
       findFieldName={SEWING_GOODS_FIELD_NAME.FIND}
       //-----
@@ -104,7 +88,7 @@ export const testListItems = [
     createdDate: '2021-02-19T11:33:22.332Z',
     price: {
       min: 500,
-      discount: 230,
+      discount: 10,
       max: null,
     },
   },
@@ -149,7 +133,7 @@ export const testListItems = [
     createdDate: '2021-04-14T11:33:22.332Z',
     price: {
       min: 200,
-      discount: 100,
+      discount: 5,
       max: 900,
     },
   },

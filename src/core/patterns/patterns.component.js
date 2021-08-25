@@ -15,7 +15,7 @@ export function PatternsComponent(props) {
     filterOptions,
     filterSelectName,
     findFieldName,
-    onSubmit,
+    setFilter,
     initialValue,
     //-----
     pending,
@@ -38,7 +38,7 @@ export function PatternsComponent(props) {
         filterSelectName={filterSelectName}
         findFieldName={findFieldName}
         initialValue={initialValue}
-        onSubmit={onSubmit}
+        setFilter={setFilter}
       />
       <BasicCardList items={listItems} />
     </SectionLayout>

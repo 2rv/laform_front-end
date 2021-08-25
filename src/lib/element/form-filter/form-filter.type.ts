@@ -3,8 +3,8 @@ export interface FormFilterContainerPropsType {
   filterOptions: { id: number; tid: string; tvalue: any }[];
   findFieldName: string;
   filterSelectName: string;
-
   initialValue: object;
+  setFilter: any;
   onSubmit: any;
 }
 
@@ -13,11 +13,5 @@ export interface FormFilterComponentPropsType {
   filterOptions: { id: number; tid: string; tvalue: any }[];
   findFieldName: string;
   filterSelectName: string;
-
-  values: any;
-  errors: any;
-  touched: any;
-  handleChange: any;
-  handleBlur: any;
-  handleSubmit: any;
+  formik: any;
 }
