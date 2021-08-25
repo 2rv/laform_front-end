@@ -24,11 +24,11 @@ export function EditCompilationListItemComponent(props) {
 
   const changeProductNameHandler = (newProductname) => {
     setProductName(newProductname);
-    // dispatch(bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang.toLowerCase()));
+    // dispatch(bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang));
   };
 
   const removeCompilationItem = (compilationNamе, id) => {
-    dispatch(bestCompilationsRemoveItem(compilationNamе, id, currentLang.toLowerCase()));
+    dispatch(bestCompilationsRemoveItem(compilationNamе, id, currentLang));
   };
 
   return (

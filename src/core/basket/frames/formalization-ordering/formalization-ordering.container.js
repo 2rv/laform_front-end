@@ -4,6 +4,12 @@ import { FORMALIZATION_ORDERING_FIELD_KEY } from './formalization-ordering.type'
 
 export function FormalizationOrderingContainer(props) {
   const {
+    discount,
+    token,
+    cartPriceWithoutShipping,
+    shippingPrice,
+    cartPrice,
+
     isPending,
     isError,
     isSuccess,
@@ -14,6 +20,14 @@ export function FormalizationOrderingContainer(props) {
     validation,
     onSubmitForm,
     fieldName,
+    promoCodeInitialValue,
+    onSubmitPromoCode,
+    validationPromoCode,
+
+    isPromoCodePending,
+    isPromoCodeError,
+    isPromoCodeSuccess,
+    promoCodeErrorMessage,
   } = props;
 
   const FULL_NAME = fieldName[FORMALIZATION_ORDERING_FIELD_KEY.FULL_NAME];
@@ -35,11 +49,20 @@ export function FormalizationOrderingContainer(props) {
     >
       {(formProps) => (
         <FormalizationOrderingComponent
+          cartPriceWithoutShipping={cartPriceWithoutShipping}
+          shippingPrice={shippingPrice}
+          cartPrice={cartPrice}
+          discount={discount}
           isPending={isPending}
           isError={isError}
           isSuccess={isSuccess}
           errorMessage={errorMessage}
+          fieldName={fieldName}
           {...formProps}
+          isPromoCodePending={isPromoCodePending}
+          isPromoCodeError={isPromoCodeError}
+          isPromoCodeSuccess={isPromoCodeSuccess}
+          promoCodeErrorMessage={promoCodeErrorMessage}
           pageLoading={pageLoading}
           isUserInfoLoadPending={isUserInfoLoadPending}
           fieldFullName={FULL_NAME}
@@ -48,6 +71,10 @@ export function FormalizationOrderingContainer(props) {
           fieldConvenientPaymentMethod={CONVENIENT_PAYMENT_METHOD}
           fieldContactPhoneNumber={CONTACT_PHONE_NUMBER}
           fieldOrderNote={ORDER_NOTE}
+          promoCodeInitialValue={promoCodeInitialValue}
+          onSubmitPromoCode={onSubmitPromoCode}
+          validationPromoCode={validationPromoCode}
+          isUserLoggedIn={token}
         />
       )}
     </Formik>

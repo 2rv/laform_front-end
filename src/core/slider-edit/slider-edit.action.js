@@ -53,13 +53,36 @@ export function sliderEditUploadData(data) {
         method: SLIDER_EDIT_API.SLIDER_EDIT_UPLOAD_DATA.TYPE,
         url: SLIDER_EDIT_API.SLIDER_EDIT_UPLOAD_DATA.ENDPOINT(data.sliderId),
         data: {
-          headingTextEn: '4123d123',
-          buttonTextEn: '11231d23',
-          buttonUrl: null,
+          buttonUrl: data.buttonUrl,
           headingTextRu: data.headingTextRu,
           buttonTextRu: data.buttonTextRu,
           imageUrl: fileResponse.data.id,
         },
+      });
+
+      dispatch({ type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_SUCCESS });
+      redirect(SLIDER_LIST_ROUTE_PATH);
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function sliderEditRemove(id) {
+  return async (dispatch) => {
+    dispatch({
+      type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: SLIDER_EDIT_API.SLIDER_EDIT_REMOVE.TYPE,
+        url: SLIDER_EDIT_API.SLIDER_EDIT_REMOVE.ENDPOINT(id),
       });
 
       dispatch({ type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_SUCCESS });

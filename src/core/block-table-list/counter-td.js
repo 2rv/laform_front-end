@@ -4,13 +4,18 @@ import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function CounterTd(props) {
-  const { count, id, dicrementCoun, incrementCount } = props;
+  const { count, id, dicrementCoun, incrementCount, quantity, excludeCount } =
+    props;
   return (
     <Td>
       <CountCase>
-        <CountButton onClick={() => dicrementCoun(id)}>-</CountButton>
-        <TextPrimary>{count[id]}</TextPrimary>
-        <CountButton onClick={() => incrementCount(id)}>+</CountButton>
+        {excludeCount ? null : (
+          <>
+            <CountButton onClick={() => dicrementCoun(id)}>-</CountButton>
+            <TextPrimary>{quantity ? quantity : count[id]}</TextPrimary>
+            <CountButton onClick={() => incrementCount(id)}>+</CountButton>
+          </>
+        )}
       </CountCase>
     </Td>
   );

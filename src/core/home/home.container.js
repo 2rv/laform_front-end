@@ -1,8 +1,6 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { HomeComponent } from './home.component';
 import { useDispatch, useSelector } from 'react-redux';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { LANG_STORE_NAME } from '../../lib/common/lang';
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -10,65 +8,91 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { pinnedMasterClassesUploadData } from './home.action';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
+import {
+  masterClassUploadData,
+  sewingGoodsUploadData,
+  articleUploadData,
+} from './home.action';
 import { HOME_STORE_NAME } from './home.constant';
 
 export function HomeContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
-    state: state[HOME_STORE_NAME],
+  const {
+    masterClassState,
+    sewingGoodsState,
+    articleState,
+    pageLoading,
+    currentLang,
+  } = useSelector((state) => ({
+    masterClassState: state[HOME_STORE_NAME].masterClassState,
+    sewingGoodsState: state[HOME_STORE_NAME].sewingGoodsState,
+    articleState: state[HOME_STORE_NAME].articleState,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    currentLang: state[LANG_STORE_NAME].active,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  React.useEffect(() => {
-    // dispatch(pinnedMasterClassesUploadData(currentLang.toLowerCase()));
+  useEffect(() => {
+    dispatch(masterClassUploadData(currentLang));
+    dispatch(sewingGoodsUploadData(currentLang));
+    dispatch(articleUploadData(currentLang));
   }, []);
+
   return (
     <HomeComponent
-      // isPending={isRequestPending(state.home)}
-      // isError={isRequestError(state.home)}
-      // isSuccess={isRequestSuccess(state.home)}
-      // errorMessage={getRequestErrorMessage(state.home)}
-      // pageLoading={pageLoading}
-      // masterClassesListItems={getRequestData(state.pinnedMasterClasses, [])}
-      // будут приходить данные можно и исправить
-      articlesListItems={testArticlesListItems}
-      masterClassesListItems={testMasterClassesListItems}
-      sewingGoodsListItems={testSewingGoodsListItems}
+      pageLoading={pageLoading}
       catalogListItems={catalogListItems}
+      //------------
+      masterClassIsPending={isRequestPending(masterClassState)}
+      masterClassIsSuccess={isRequestSuccess(masterClassState)}
+      masterClassIsError={isRequestError(masterClassState)}
+      masterClassErrorMessage={getRequestErrorMessage(masterClassState)}
+      masterClassListItems={getRequestData(masterClassState, [])}
+      //------------
+      sewingGoodsIsPending={isRequestPending(sewingGoodsState)}
+      sewingGoodsIsSuccess={isRequestSuccess(sewingGoodsState)}
+      sewingGoodsIsError={isRequestError(sewingGoodsState)}
+      sewingGoodsErrorMessage={getRequestErrorMessage(sewingGoodsState)}
+      sewingGoodsListItems={getRequestData(sewingGoodsState, [])}
+      //------------
+      articleIsPending={isRequestPending(articleState)}
+      articleIsSuccess={isRequestSuccess(articleState)}
+      articleIsError={isRequestError(articleState)}
+      articleErrorMessage={getRequestErrorMessage(articleState)}
+      articleListItems={getRequestData(articleState, [])}
     />
   );
 }
 
-export const testArticlesListItems = [
+export const catalogListItems = [
   {
-    id: 1,
-    name: 'Сарафан 0445',
-    image: '/static/test/popular-gods-1.png',
-    like: true,
-    date: '1 неделю назад',
-    type: 2,
-  },
-
-  {
-    id: 2,
-    name: ' Батист Макс Мара Горохи',
-    image: '/static/test/popular-gods-2.png',
-    like: false,
-    date: '1 неделю назад',
-    type: 2,
+    title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
+    description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/400/500',
+    path: '/patterns',
   },
   {
-    id: 3,
-    name: 'Батист',
-    image: '/static/test/popular-gods-3.png',
-    like: false,
-    date: '2 недели назад',
-    type: 2,
+    title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
+    description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/600/500',
+    path: '/patterns',
+  },
+  {
+    title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
+    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/700/500',
+    path: '/master-classes',
+  },
+  {
+    title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
+    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
+    backgroundImage: 'http://placekitten.com/700/500',
+    path: '/sewing-goods',
   },
 ];
-export const testMasterClassesListItems = [
+
+export const masterClassState = [
   {
     id: 1,
     name: 'Мастер-класс по пошиву мужских брюк 1003',
@@ -112,53 +136,7 @@ export const testMasterClassesListItems = [
     },
   },
 ];
-export const testPatternsListItems = [
-  {
-    id: 1,
-    name: 'Сарафан 0445',
-    image: '/static/test/popular-gods-1.png',
-    complexity: 1,
-    select: true,
-    like: true,
-    type: 3,
-    price: {
-      min: 500,
-      discount: 230,
-      max: null,
-    },
-  },
-  {
-    id: 2,
-    name: ' Батист Макс Мара Горохи',
-    image: '/static/test/popular-gods-2.png',
-    complexity: 3,
-    select: false,
-    like: false,
-    bestseller: true,
-    type: 4,
-    price: {
-      min: 200,
-      discount: null,
-      max: 4150,
-    },
-  },
-  {
-    id: 3,
-    name: 'Батист',
-    image: '/static/test/popular-gods-3.png',
-    complexity: 3,
-    select: false,
-    like: false,
-    bestseller: true,
-    type: 5,
-    price: {
-      min: 200,
-      discount: 100,
-      max: 900,
-    },
-  },
-];
-export const testSewingGoodsListItems = [
+export const sewingGoodsState = [
   {
     id: 1,
     name: 'Сарафан 0445',
@@ -201,29 +179,30 @@ export const testSewingGoodsListItems = [
     },
   },
 ];
-export const catalogListItems = [
+export const articleState = [
   {
-    title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
-    description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/400/500',
-    path: '/patterns',
+    id: 1,
+    name: 'Сарафан 0445',
+    image: '/static/test/popular-gods-1.png',
+    like: true,
+    date: '1 неделю назад',
+    type: 2,
+  },
+
+  {
+    id: 2,
+    name: ' Батист Макс Мара Горохи',
+    image: '/static/test/popular-gods-2.png',
+    like: false,
+    date: '1 неделю назад',
+    type: 2,
   },
   {
-    title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
-    description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/600/500',
-    path: '/patterns',
-  },
-  {
-    title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
-    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/700/500',
-    path: '/master-classes',
-  },
-  {
-    title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
-    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/700/500',
-    path: '/sewing-goods',
+    id: 3,
+    name: 'Батист',
+    image: '/static/test/popular-gods-3.png',
+    like: false,
+    date: '2 недели назад',
+    type: 2,
   },
 ];

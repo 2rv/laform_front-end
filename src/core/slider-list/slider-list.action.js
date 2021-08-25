@@ -1,6 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { SLIDER_LIST_API } from './slider-list.constant';
 import { SLIDER_LIST_ACTION_TYPE } from './slider-list.type';
+import { convertSliderData } from './slider-list.convert';
 
 export function sliderListUploadData(currentLang) {
   return async (dispatch) => {

@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
+import { redirect } from '../../main/navigation/navigation.core';
 import { promocodesLoadData, promocodesUpoadData } from './promocodes.action';
 import { PromocodesComponent } from './promocodes.component';
 import { promocodeFormValidation } from './promocodes.validation';
@@ -18,12 +21,17 @@ import {
 
 export function PromocodesContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
-    state: state[PROMOCODES_STORE_NAME],
+  const { state, pageLoading, user } = useSelector((state) => ({
+    state: state[PROMOCODES_STORE_NAME].promocodes,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    user: state[AUTH_STORE_NAME].user,
   }));
 
   useEffect(() => {
+    if (user && user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     dispatch(promocodesLoadData());
   }, []);
 

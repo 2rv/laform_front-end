@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { redirect } from '../../main/navigation/navigation.core';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
 import {
   getRequestErrorMessage,
   isRequestError,
@@ -13,12 +16,17 @@ import { ABOUT_ACCOUNT_STORE_NAME } from './about-account.constant';
 
 export function AboutAccountContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
+  const { state, pageLoading, user } = useSelector((state) => ({
     state: state[ABOUT_ACCOUNT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    user: state[AUTH_STORE_NAME].user,
   }));
 
   useEffect(() => {
+    if (user && user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     //   dispatch(aboutAccountUploadData());
   }, []);
 

@@ -6,8 +6,8 @@ import { ReactComponent as DeleteIcon } from '../../../asset/svg/cancel-delete-i
 import { Divider } from '../../../lib/element/divider';
 import { TextPrimary } from '../../../lib/element/text';
 
-export function SliderItem(props) {
-  const { image, id, name, removeSlide, editSlide } = props.data;
+export function SliderItem({ data, removeSlide, editSlide }) {
+  const { image, id, name } = data;
   return (
     <Container>
       <Content>

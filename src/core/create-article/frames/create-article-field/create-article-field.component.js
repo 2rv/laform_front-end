@@ -8,9 +8,15 @@ import { ButtonSecondary } from '../../../../lib/element/button';
 import { TextareaField } from '../../../../lib/element/field';
 import { MASTER_CLASSES_ROUTE_PATH } from '../../../master-classes';
 import { FieldLayout } from '../../../../lib/element/layout';
+
 export function CreateArticleFieldComponent({ images, setImages }) {
   const dispatch = useDispatch();
   const [textareaValue, setTextareaValue] = React.useState('');
+
+  const createArticleHandler = () => {
+    if (!textareaValue.length) return;
+    dispatch(createArticleUploadData(images, textareaValue))
+  };
 
   return (
     <Layout>
@@ -29,9 +35,8 @@ export function CreateArticleFieldComponent({ images, setImages }) {
       <FieldLayout type="double" adaptive>
         <Button
           tid="Создать"
-          onClick={() =>
-            dispatch(createArticleUploadData(images, textareaValue))
-          }
+          disabled={!textareaValue.length}
+          onClick={createArticleHandler}
         />
         <Button
           tid="Отменить создание"

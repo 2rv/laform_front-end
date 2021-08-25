@@ -19,6 +19,7 @@ export function FieldSelect(props: SelectPropsType) {
     width,
     disabled,
     adaptive,
+    textValue,
   } = props;
 
   return (
@@ -33,7 +34,7 @@ export function FieldSelect(props: SelectPropsType) {
           onBlur={onBlur}
         >
           {options.map(({ id, tid, tvalue }) => (
-            <option key={id} value={id}>
+            <option key={id} value={textValue ? tid : id}>
               {text(tid, tvalue)}
             </option>
           ))}

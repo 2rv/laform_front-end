@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
 export interface PopupPropsType {
-  content: ReactNode;
+  content: any;
   children: ReactNode;
 }

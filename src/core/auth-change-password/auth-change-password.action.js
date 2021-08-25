@@ -1,11 +1,9 @@
 import { httpRequest } from '../../main/http';
 import { redirect } from '../../main/navigation';
 
-import {
-  AUTH_CHANGE_PASSWORD_API,
-  AUTH_CHANGE_PASSWORD_REDIRECT_ON_SUCCESS,
-} from './auth-change-password.constant';
+import { AUTH_CHANGE_PASSWORD_API } from './auth-change-password.constant';
 import { AUTH_CHANGE_PASSWORD_ACTION_TYPE } from './auth-change-password.type';
+import { HOME_ROUTE_PATH } from '../home';
 
 export function authChangePasswordFormUploadData(data, code) {
   return async (dispatch) => {
@@ -25,7 +23,7 @@ export function authChangePasswordFormUploadData(data, code) {
         type: AUTH_CHANGE_PASSWORD_ACTION_TYPE.AUTH_CHANGE_PASSWORD_FORM_UPLOAD_SUCCESS,
       });
 
-      redirect(AUTH_CHANGE_PASSWORD_REDIRECT_ON_SUCCESS);
+      redirect(HOME_ROUTE_PATH);
     } catch (err) {
       if (err.response) {
         dispatch({

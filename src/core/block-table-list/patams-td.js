@@ -34,16 +34,14 @@ const Contructor = (props) => {
     <ConstructorCase>
       {items.map(({ name, value }, i) => {
         return (
-          <>
-            <TextSecondary>
-              <TextSecondary tid={name} />
-              :&nbsp;
-              <TextPrimary>
-                <TextPrimary tid={value} />
-                {i !== items.length - 1 && ','}
-              </TextPrimary>
-            </TextSecondary>
-          </>
+          <TextSecondary key={i}>
+            <TextSecondary tid={name} />
+            :&nbsp;
+            <TextPrimary>
+              <TextPrimary tid={value} />
+              {i !== items.length - 1 && ','}
+            </TextPrimary>
+          </TextSecondary>
         );
       })}
     </ConstructorCase>

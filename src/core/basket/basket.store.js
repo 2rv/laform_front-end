@@ -10,6 +10,7 @@ import { BASKET_ACTION_TYPE } from './basket.type';
 const initialState = {
   basket: initRequestState(),
   basketLoadData: initRequestState(),
+  promoCode: initRequestState(),
 };
 
 export function basketStore(state = initialState, action) {
@@ -49,6 +50,21 @@ export function basketStore(state = initialState, action) {
         ),
       };
 
+    case BASKET_ACTION_TYPE.CHECK_PROMO_CODE_PENDING:
+      return {
+        ...state,
+        promoCode: setRequestPending(state.promoCode),
+      };
+    case BASKET_ACTION_TYPE.CHECK_PROMO_CODE_SUCCESS:
+      return {
+        ...state,
+        promoCode: setRequestSuccess(state.promoCode, action.payload),
+      };
+    case BASKET_ACTION_TYPE.CHECK_PROMO_CODE_ERROR:
+      return {
+        ...state,
+        promoCode: setRequestError(state.promoCode, action.errorMessage),
+      };
     default:
       return state;
   }

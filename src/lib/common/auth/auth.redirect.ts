@@ -36,17 +36,9 @@ export const authRedirectForNonAdminUser = (
   ctx: any,
   pathToRedirect: string,
 ) => {
-  const { res, store } = ctx;
-  const user = store.getState()[AUTH_STORE_NAME].user;
+  const user = ctx.store.getState()[AUTH_STORE_NAME].user;
 
-  if (user?.role !== USER_ROLE.ADMIN) {
-    if (res) {
-      res.writeHead(301, {
-        Location: pathToRedirect,
-      });
-      res.end();
-    } else {
-      redirect(pathToRedirect);
-    }
+  if (user && user?.role !== USER_ROLE.ADMIN) {
+    redirect(pathToRedirect);
   }
 };

@@ -1,16 +1,12 @@
 import { authRedirectLogged } from '../../lib/common/auth';
 import { setActivePath } from '../../lib/common/navigation';
 import { codeVerificationRedirect } from '../../lib/common/code-verification';
-
-import {
-  AUTH_CHANGE_PASSWORD_ROUTE_PATH,
-  AUTH_CHANGE_PASSWORD_REDIRECT_ON_NO_CODE,
-  AUTH_CHANGE_PASSWORD_REDIRECT_ON_LOGGED,
-} from './auth-change-password.constant';
+import { AUTH_CHANGE_PASSWORD_ROUTE_PATH } from './auth-change-password.constant';
+import { HOME_ROUTE_PATH } from '../home';
 
 export function authChangePasswordRouter(ctx) {
   ctx.store.dispatch(setActivePath(AUTH_CHANGE_PASSWORD_ROUTE_PATH));
 
-  // authRedirectLogged(ctx, AUTH_CHANGE_PASSWORD_REDIRECT_ON_LOGGED);
-  // codeVerificationRedirect(ctx, AUTH_CHANGE_PASSWORD_REDIRECT_ON_NO_CODE);
+  // authRedirectLogged(ctx, HOME_ROUTE_PATH);
+  // codeVerificationRedirect(ctx, HOME_ROUTE_PATH);
 }

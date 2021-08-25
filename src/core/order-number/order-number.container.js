@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { redirect } from '../../main/navigation/navigation.core';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -15,15 +18,20 @@ import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
 
 export function OrderNumberContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
+  const { state, pageLoading, user } = useSelector((state) => ({
     state: state[ORDER_NUMBER_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    user: state[AUTH_STORE_NAME].user,
   }));
 
   const orderNumberDetails = getRequestData(state.orderNumber);
 
   useEffect(() => {
-    // dispatch(orderNumberUploadData());
+    if (user && user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
+    dispatch(orderNumberUploadData());
   }, []);
 
   const onSubmit = (values) => {
@@ -56,15 +64,8 @@ export function OrderNumberContainer() {
     />
   );
 }
-// Тигран попросил оставить
-// orderNumberDetails.fullName
-// orderNumberDetails.city
-// orderNumberDetails.typeOfDelivery
-// orderNumberDetails.phoneNumber
-// orderNumberDetails.comment
-// orderNumberDetails.typeOfPayment
 
-const headersTable = ['Товары заказа', 'параметры', 'Итоговая цена'];
+const headersTable = ['Товары заказа', 'Параметры', 'Итоговая цена'];
 const itemsTable = [
   {
     name: 'Батист Макс Мара Горохи',

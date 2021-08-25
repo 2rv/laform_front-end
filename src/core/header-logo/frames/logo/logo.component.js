@@ -10,7 +10,7 @@ import { HOME_ROUTE_PATH } from '../../../home';
 
 export function LogoComponent() {
   return (
-    <a href={HOME_ROUTE_PATH} onClick={setLinkRedirect(HOME_ROUTE_PATH)}>
+    <a onClick={setLinkRedirect(HOME_ROUTE_PATH)}>
       <Container>
         <Logo />
         <div>

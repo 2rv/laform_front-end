@@ -15,6 +15,10 @@ export const BASKET_API = {
     ENDPOINT: 'user/delivery/info',
     TYPE: 'GET',
   },
+  CHECK_PROMO_CODE: {
+    ENDPOINT: 'promo-code/check',
+    TYPE: 'POST',
+  },
 };
 
 export const BASKET_SEEWING_GOODS_LIST = [

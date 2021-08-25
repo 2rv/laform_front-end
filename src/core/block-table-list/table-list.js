@@ -9,9 +9,10 @@ export function TableList(props) {
     headers,
     items = [],
     children,
-    count,
     incrementCount,
-    dicrementCoun,
+    decrementCount,
+    count,
+    type,
   } = props;
   return (
     <Table>
@@ -26,12 +27,14 @@ export function TableList(props) {
       {items.map((data, i) => (
         <React.Fragment key={i}>
           <TableItem
-            count={count}
+            type={type}
             incrementCount={incrementCount}
-            dicrementCoun={dicrementCoun}
+            decrementCount={decrementCount}
             data={data}
-            children={children}
-          />
+            count={count}
+          >
+            {children}
+          </TableItem>
           <DividerTd />
         </React.Fragment>
       ))}
