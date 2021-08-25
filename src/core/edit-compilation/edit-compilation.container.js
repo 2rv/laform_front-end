@@ -20,7 +20,7 @@ export function EditCompilationContainer() {
   const { state, pageLoading, currentLang, user } = useSelector((state) => ({
     state: state[EDIT_COMPILATION_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    currentLang: state[LANG_STORE_NAME].active,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
     user: state[AUTH_STORE_NAME].user,
   }));
 
@@ -29,9 +29,9 @@ export function EditCompilationContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    // dispatch(bestArticlesLoadData(currentLang.toLowerCase()));
-    // dispatch(bestMasterClassesLoadData(currentLang.toLowerCase()));
-    // dispatch(bestProductsLoadData(currentLang.toLowerCase()));
+    dispatch(bestArticlesLoadData(currentLang));
+    dispatch(bestMasterClassesLoadData(currentLang));
+    dispatch(bestProductsLoadData(currentLang));
   }, []);
 
   return (

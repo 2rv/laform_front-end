@@ -31,7 +31,7 @@ export function OrderNumberContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    // dispatch(orderNumberUploadData());
+    dispatch(orderNumberUploadData());
   }, []);
 
   const onSubmit = (values) => {
@@ -64,15 +64,8 @@ export function OrderNumberContainer() {
     />
   );
 }
-// Тигран попросил оставить
-// orderNumberDetails.fullName
-// orderNumberDetails.city
-// orderNumberDetails.typeOfDelivery
-// orderNumberDetails.phoneNumber
-// orderNumberDetails.comment
-// orderNumberDetails.typeOfPayment
 
-const headersTable = ['Товары заказа', 'параметры', 'Итоговая цена'];
+const headersTable = ['Товары заказа', 'Параметры', 'Итоговая цена'];
 const itemsTable = [
   {
     name: 'Батист Макс Мара Горохи',

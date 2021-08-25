@@ -28,7 +28,7 @@ export function CompilationComponent(props) {
     const compilationName = activeTab === 0 ? 'post' : activeTab === 1 ? 'master-class' : 'post';
 
     dispatch(removeCompilation(
-      currentLang.toLowerCase(),
+      currentLang,
       compilationName,
       id,
     ));

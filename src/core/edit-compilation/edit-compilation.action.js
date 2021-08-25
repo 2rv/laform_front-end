@@ -118,6 +118,9 @@ export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
 }
 
 // TODO: Это под вопросом
+/**
+ * по дизайну в фигме мы должны изменять только name продукта, но этого запроса нету
+ */
 export function bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang) {
   return async (dispatch) => {
     dispatch({
