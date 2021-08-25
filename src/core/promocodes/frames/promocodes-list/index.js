@@ -1,0 +1,1 @@
+export { PromocodesListComponent } from './promocodes-list.component';

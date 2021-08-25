@@ -18,25 +18,16 @@ export function promocodesStore(state = initialState, action) {
         ...state,
         promocodes: setRequestPending(state.promocodes),
       };
-
     case PROMOCODES_ACTION_TYPE.PROMOCODES_UPLOAD_SUCCESS:
       return {
         ...state,
-        promocodes: setRequestSuccess(
-          state.promocodes,
-          action.promocodes,
-        ),
+        promocodes: setRequestSuccess(state.promocodes, action.promocodes),
       };
-
     case PROMOCODES_ACTION_TYPE.PROMOCODES_UPLOAD_ERROR:
       return {
         ...state,
-        promocodes: setRequestError(
-          state.promocodes,
-          action.errorMessage,
-        ),
+        promocodes: setRequestError(state.promocodes, action.errorMessage),
       };
-
     default:
       return state;
   }
