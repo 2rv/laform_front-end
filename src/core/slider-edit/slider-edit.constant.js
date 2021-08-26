@@ -20,4 +20,8 @@ export const SLIDER_EDIT_API = {
     ENDPOINT: 'file/create',
     TYPE: 'POST',
   },
+  CREATE_SLIDER: {
+    ENDPOINT: 'slider/create',
+    TYPE: 'POST',
+  },
 };

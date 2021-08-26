@@ -13,6 +13,16 @@ const initialState = {
 
 export function sliderListStore(state = initialState, action) {
   switch (action.type) {
+    case SLIDER_LIST_ACTION_TYPE.CREATE_SLIDER:
+      return {
+        ...state,
+        sliderList: setRequestSuccess(state.sliderList, [...state.sliderList.data, action.slider]),
+      };
+    case SLIDER_LIST_ACTION_TYPE.REMOVE_SLIDER:
+      return {
+        ...state,
+        sliderList: setRequestSuccess(state.sliderList, [...state.sliderList.data.filter((slider) => slider.id !== action.id)]),
+      };
     case SLIDER_LIST_ACTION_TYPE.SLIDER_LIST_UPLOAD_PENDING:
       return {
         ...state,

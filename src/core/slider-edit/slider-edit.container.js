@@ -3,13 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { sliderEditLoadData, sliderEditUploadData, sliderEditRemove } from './slider-edit.action';
+import { redirect } from '../../main/navigation';
 import {
   SLIDER_FIELDS_DATA,
   SLIDER_EDIT_STORE_NAME,
 } from './slider-edit.constant';
 import { SliderEditComponent } from './slider-edit.component';
 import { sliderEditFormValidation } from './slider-edit.validation';
+import { convertSliderEditFormData } from './slider-edit.convert';
+import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
+import {
+  sliderEditLoadData,
+  sliderEditUploadData,
+  sliderEditRemove,
+  createSlider,
+} from './slider-edit.action';
 
 import {
   getRequestData,
@@ -29,12 +37,15 @@ export function SliderEditContainer() {
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active,
   }));
-  const [sliderImage, setSliderImage] = useState(
-    getRequestData(state.sliderEdit).imageUrl?.fileUrl,
-  );
+  const sliderData = getRequestData(state.sliderEdit, []);
+  const [sliderImage, setSliderImage] = useState(sliderData.imageUrl?.fileUrl);
+
   useEffect(() => {
-    dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId));
+    if (query.sliderId.includes('-')) {
+      dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId));
+    }
   }, []);
+
   const pickImage = ({ target: { files } }) => {
     if (files[0].type.split('/')[0] !== 'image') {
       alert('Please upload only image');
@@ -47,38 +58,48 @@ export function SliderEditContainer() {
       reader.readAsDataURL(files[0]);
     }
   };
-  const removeSlider = () => dispatch(sliderEditRemove(query.sliderId));
+
+  const removeSlider = () => {
+    if (query.sliderId.includes('-')) {
+      dispatch(sliderEditRemove(query.sliderId));
+    } else {
+      redirect(SLIDER_LIST_ROUTE_PATH);
+      window.location.reload();
+    }
+  };
+
   const formikObject = useFormik({
+    enableReinitialize: true,
+    validate: sliderEditFormValidation,
     initialValues: {
-      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: getRequestData(state.sliderEdit).headingTextRu,
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: getRequestData(state.sliderEdit).buttonTextRu,
+      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: sliderData.headingTextRu ?? '',
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: sliderData.buttonTextRu ?? '',
       [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: 0,
       [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: 0,
       [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: 0,
       [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: true,
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: getRequestData(state.sliderEdit).buttonUrl,
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: sliderData.buttonUrl ?? '',
     },
-    onSubmit: (values) => {
-      dispatch(
-        sliderEditUploadData({
-          sliderId: query.sliderId,
-          headingTextRu: values.titleText,
-          buttonTextRu: values.buttonText,
-          buttonUrl: values.buttonPath,
-          image: sliderImage,
-        }),
-      );
+    onSubmit: (values, { resetForm }) => {
+      const data = convertSliderEditFormData(values);
+
+      if (sliderData.id === query.sliderId) {
+        dispatch(sliderEditUploadData(query.sliderId, sliderImage, data));
+      } else {
+        dispatch(createSlider(sliderImage, data));
+      }
+
+      resetForm({});
     },
-    enableReinitialize: true,
-    sliderEditFormValidation,
   });
+
   return (
     <SliderEditComponent
       isPending={isRequestPending(state.sliderEdit)}
       isError={isRequestError(state.sliderEdit)}
       isSuccess={isRequestSuccess(state.sliderEdit)}
       errorMessage={getRequestErrorMessage(state.sliderEdit)}
-      sliderData={getRequestData(state.sliderEdit)}
+      sliderData={sliderData}
       pageLoading={pageLoading}
       currentLang={currentLang}
       pickImage={pickImage}
