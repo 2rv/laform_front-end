@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -15,14 +16,16 @@ import { useKeenSlider } from 'keen-slider/react';
 
 export function SliderContainer(props) {
   const dispatch = useDispatch();
-  const { state, pageLoading, slides, lang } = useSelector((state) => ({
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
     state: state[SLIDER_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    slides: state[SLIDER_STORE_NAME].slider.data,
-    lang: state[LANG_STORE_NAME].active,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
+
+  const sliders = getRequestData(state.slider, []);
+
   useEffect(() => {
-    //   dispatch(sliderLoadData(lang));
+    dispatch(sliderLoadData(currentLang));
   }, []);
 
   const [slide, setSlide] = useState(0);
@@ -46,7 +49,7 @@ export function SliderContainer(props) {
       prev={prevSlide}
       next={nextSlide}
       setSlide={slider?.moveToSlideRelative}
-      items={testSlides} // сделать нормальную конвертацию и посмотреть testSlides что бы понимать
+      items={sliders}
       sliderRef={sliderRef}
     />
   );

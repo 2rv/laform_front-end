@@ -78,6 +78,11 @@ export function SliderEditContainer() {
   };
 
   const onSubmit = (values, { resetForm }) => {
+    if (!sliderImage) {
+      alert('Please upload image');
+      return;
+    }
+
     const data = convertSliderEditFormData(values);
 
     if (sliderData.id === query.sliderId) {
