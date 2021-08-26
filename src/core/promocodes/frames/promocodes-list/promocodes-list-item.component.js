@@ -16,7 +16,7 @@ export function PromocodesListItemComponent({ id, promocode, discount }) {
 
   return (
     <List>
-      <TextSecondary>{promocode} | {discount}</TextSecondary>
+      <TextSecondary>{promocode} | {discount}%</TextSecondary>
       <IconButton onClick={() => removePromocode(id)}>
         <Remove />
       </IconButton>
