@@ -12,7 +12,7 @@ export const PROMOCODES_API = {
     TYPE: 'POST',
   },
   PROMOCODE_REMOVE_DATA: {
-    ENDPOINT: '/promo-code/delete',
+    ENDPOINT: 'promo-code/delete',
     TYPE: 'DELETE',
   },
 };

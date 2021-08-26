@@ -22,7 +22,7 @@ import {
 export function PromocodesContainer() {
   const dispatch = useDispatch();
   const { state, pageLoading, user } = useSelector((state) => ({
-    state: state[PROMOCODES_STORE_NAME].promocodes,
+    state: state[PROMOCODES_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     user: state[AUTH_STORE_NAME].user,
   }));
