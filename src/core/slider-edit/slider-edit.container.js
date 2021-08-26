@@ -64,33 +64,36 @@ export function SliderEditContainer() {
       dispatch(sliderEditRemove(query.sliderId));
     } else {
       redirect(SLIDER_LIST_ROUTE_PATH);
-      window.location.reload();
     }
   };
+
+  const initialValues = {
+    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: sliderData.headingTextRu ? sliderData.headingTextRu : 'Нужно редактировать',
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: sliderData.buttonTextRu ? sliderData.buttonTextRu : 'Нужно редактировать',
+    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: sliderData.titleTextColor ? +sliderData.titleTextColor : 0,
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: sliderData.buttonColor ? +sliderData.buttonColor : 0,
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: sliderData.buttonTextColor ? +sliderData.buttonTextColor : 0,
+    [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: sliderData.isHaveButton ? JSON.parse(sliderData.isHaveButton) : true,
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: sliderData.buttonUrl ? sliderData.buttonUrl : 'Нужно редактировать',
+  };
+
+  const onSubmit = (values, { resetForm }) => {
+    const data = convertSliderEditFormData(values);
+
+    if (sliderData.id === query.sliderId) {
+      dispatch(sliderEditUploadData(query.sliderId, sliderImage, data));
+    } else {
+      dispatch(createSlider(sliderImage, data));
+    }
+
+    resetForm({});
+  }
 
   const formikObject = useFormik({
     enableReinitialize: true,
     validate: sliderEditFormValidation,
-    initialValues: {
-      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: sliderData.headingTextRu ?? '',
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: sliderData.buttonTextRu ?? '',
-      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: 0,
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: 0,
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: 0,
-      [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: true,
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: sliderData.buttonUrl ?? '',
-    },
-    onSubmit: (values, { resetForm }) => {
-      const data = convertSliderEditFormData(values);
-
-      if (sliderData.id === query.sliderId) {
-        dispatch(sliderEditUploadData(query.sliderId, sliderImage, data));
-      } else {
-        dispatch(createSlider(sliderImage, data));
-      }
-
-      resetForm({});
-    },
+    initialValues,
+    onSubmit,
   });
 
   return (
@@ -112,6 +115,7 @@ export function SliderEditContainer() {
     />
   );
 }
+
 const titleTextColorOptions = [
   { id: 0, tid: 'белый', color: 'white' },
   { id: 1, tid: 'Чёрный', color: 'black' },
@@ -119,6 +123,7 @@ const titleTextColorOptions = [
   { id: 3, tid: 'Зелёный', color: 'green' },
   { id: 4, tid: 'Синий', color: 'blue' },
 ];
+
 const buttonColorOptions = [
   { id: 0, tid: 'Оранжевый', color: 'orange' },
   { id: 1, tid: 'Синий', color: 'blue' },
@@ -126,8 +131,9 @@ const buttonColorOptions = [
   { id: 3, tid: 'Красный', color: 'red' },
   { id: 4, tid: 'Желтый', color: 'yellow' },
 ];
+
 const buttonTextColorOptions = [
-  { id: 0, tid: 'Синой', color: 'blue' },
+  { id: 0, tid: 'Синий', color: 'blue' },
   { id: 1, tid: 'Серый', color: 'gray' },
   { id: 2, tid: 'Красный', color: 'red' },
   { id: 3, tid: 'Голубой', color: 'indigo' },

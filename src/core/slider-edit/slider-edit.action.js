@@ -32,39 +32,6 @@ export function sliderEditLoadData(currentLang, id) {
   };
 }
 
-export function sliderEditUploadData(id, sliderImage, data) {
-  return async (dispatch) => {
-    dispatch({
-      type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_PENDING,
-    });
-
-    try {
-      const fileResponse = await fileUpload(sliderImage);
-
-      await httpRequest({
-        method: SLIDER_EDIT_API.SLIDER_EDIT_UPLOAD_DATA.TYPE,
-        url: SLIDER_EDIT_API.SLIDER_EDIT_UPLOAD_DATA.ENDPOINT(id),
-        data: {
-          buttonUrl: data.buttonUrl,
-          headingTextRu: data.headingTextRu,
-          buttonTextRu: data.buttonTextRu,
-          imageUrl: fileResponse,
-        },
-      });
-
-      dispatch({ type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_SUCCESS });
-      redirect(SLIDER_LIST_ROUTE_PATH);
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
 export function sliderEditRemove(id) {
   return async (dispatch) => {
     dispatch({
@@ -90,6 +57,36 @@ export function sliderEditRemove(id) {
   };
 }
 
+export function sliderEditUploadData(id, sliderImage, data) {
+  return async (dispatch) => {
+    dispatch({
+      type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_PENDING,
+    });
+
+    try {
+      const fileResponse = await fileUpload(sliderImage);
+      await httpRequest({
+        method: SLIDER_EDIT_API.SLIDER_EDIT_UPLOAD_DATA.TYPE,
+        url: SLIDER_EDIT_API.SLIDER_EDIT_UPLOAD_DATA.ENDPOINT(id),
+        data: {
+          ...data,
+          imageUrl: fileResponse,
+        },
+      });
+
+      dispatch({ type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_SUCCESS });
+      redirect(SLIDER_LIST_ROUTE_PATH);
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
 export function createSlider(sliderImage, data) {
   return async (dispatch) => {
     dispatch({
@@ -98,16 +95,11 @@ export function createSlider(sliderImage, data) {
 
     try {
       const fileResponse = await fileUpload(sliderImage);
-
-      const response = await httpRequest({
+      await httpRequest({
         method: SLIDER_EDIT_API.CREATE_SLIDER.TYPE,
         url: SLIDER_EDIT_API.CREATE_SLIDER.ENDPOINT,
         data: {
-          buttonTextEn: 'test',
-          headingTextEn: 'test',
-          buttonTextRu: data.buttonTextRu,
-          headingTextRu: data.headingTextRu,
-          buttonUrl: data.buttonUrl,
+          ...data,
           imageUrl: fileResponse,
         },
       });
