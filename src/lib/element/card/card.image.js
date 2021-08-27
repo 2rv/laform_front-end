@@ -9,7 +9,7 @@ export function CardImage({ image, bestseller, action, path, pathConfig }) {
       <Image src={image} />
       <ModifierContainer>
         {action && <Modifier tid={'Акция'} />}
-        {bestseller && <Modifier alt tid={'Хит'} />}
+        {bestseller && <Modifier alt tid={bestseller} />}
       </ModifierContainer>
     </Container>
   );
@@ -17,6 +17,8 @@ export function CardImage({ image, bestseller, action, path, pathConfig }) {
 const Image = styled.img`
   width: 100%;
   height: 100%;
+  min-height: 260px;
+  max-height: 360px;
   object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

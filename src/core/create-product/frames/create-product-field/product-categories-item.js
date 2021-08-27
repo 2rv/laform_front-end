@@ -7,39 +7,34 @@ import styled from 'styled-components';
 
 export function ProuctCategoriesItem(props) {
   const {
-    //---------------------------- для fieldArray
     index,
     categoriesFieldArray,
+    productCategorySelectName,
     fieldCount,
-    removeCategoryField,
-    //----------------------------  fieldNames
-    productCategoryFieldName,
+    values,
+    remove,
+    categoryOptions,
+    handleChange,
+    handleBlur,
   } = props;
   return (
     <Line>
-      <Field
-        name={`${categoriesFieldArray}.${index}.${productCategoryFieldName}`}
-      >
-        {({ field, form, meta }) => (
-          <BasicField
-            placeholderTid="Введите название категории"
-            error={
-              meta.touched &&
-              !meta.value &&
-              form.errors[productCategoryFieldName]
-            }
-            {...field}
-          />
-        )}
-      </Field>
+      <FieldSelect
+        name={`${categoriesFieldArray}.${index}.${productCategorySelectName}`}
+        value={values[index][productCategorySelectName]}
+        options={categoryOptions}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
       {fieldCount !== 1 && (
-        <IconButton type="button" onClick={() => removeCategoryField(index)}>
+        <IconButton type="button" onClick={() => remove(index)}>
           <RemoveIcon />
         </IconButton>
       )}
     </Line>
   );
 }
+
 const Line = styled.div`
   display: flex;
   gap: ${spacing(2)};

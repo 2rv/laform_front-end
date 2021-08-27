@@ -8,16 +8,32 @@ export const CREATE_PRODUCT_ACTION_TYPE = {
 };
 
 export const PRODUCT_FIELD_NAME = {
-  CATEGORIES: 'productCategories',
-  OPTIONS: 'productOptions',
-  POSITIONS: 'productPositions',
-  NAME: 'productName',
-  MODIFIER: 'productModifier',
-  ONE_CATEGORY: 'productCategory',
-  DESCRIPTION: 'productDescription',
-  ONE_OPTION_CATEGORY: 'productOptionCategory',
-  ONE_POSITION_NAME: 'productPositionName',
-  ONE_POSITION_PRICE: 'productPositionPrice',
-  PRICE: 'productPrice',
-  DISCOUNT: 'productDiscount',
+  NAME: 'titleRu',
+  TYPE: 'type',
+  MODIFIER: 'modifier',
+  DESCRIPTION: 'descriptionRu',
+  DISCOUNT: 'discount',
+  CATEGORIES: 'categories',
+  CATEGORY_NAME: 'category',
+  IMAGES: 'imageUrls',
+
+  MATERIAL: 'material',
+  COMPLEXITY: 'complexity',
+
+  ELECTRONIC_PATTERN_PRICE: 'price',
+  ELECTRONIC_PATTERN_FILE: 'file',
+
+  COUNT: 'count',
+
+  SIZES: 'sizes',
+  SIZE_NAME: 'size',
+  SIZE_PRICE: 'price',
+
+  COLORS: 'colors',
+  COLOR_NAME: 'color',
+  COLOR_PRICE: 'price',
+
+  PROGRAMS: 'programs',
+  PROGRAM_NAME: 'name',
+  PROGRAM_PRICE: 'price',
 };

@@ -24,7 +24,7 @@ export function SewingGoodsContainer() {
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
     }),
   );
-  //   useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
+  useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
   const filterInitialValue = () => ({
     [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
     [SEWING_GOODS_FIELD_NAME.FIND]: '',
@@ -34,7 +34,7 @@ export function SewingGoodsContainer() {
   return (
     <SewingGoodsComponent
       listItems={sorterItemsByParams(
-        getRequestData(sewingGoodsState, [...testListItems]),
+        getRequestData(sewingGoodsState, []),
         filter[SEWING_GOODS_FIELD_NAME.FIND],
         Number(filter[SEWING_GOODS_FIELD_NAME.FILTER]),
       )}

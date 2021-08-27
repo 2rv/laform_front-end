@@ -67,3 +67,15 @@ export interface TextAreaPropsType {
   setImages: any;
   maxHeight?: number;
 }
+export interface FilefieldPropsType {
+  titleTid?: string;
+  placeholderTid: string;
+  name: string;
+  value: any;
+  error?: string;
+  onChange: any;
+  onBlur: any;
+  width?: number;
+  disabled?: boolean;
+  adaptive?: boolean;
+}

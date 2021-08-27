@@ -1,4 +1,4 @@
-import { createRef } from 'react';
+import { createRef, useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ChangeIcon } from '../../../../asset/svg/change-icon.svg';
 import { ReactComponent as RemoveIcon } from '../../../../asset/svg/remove.svg';
@@ -9,36 +9,97 @@ import { TitlePrimary } from '../../../../lib/element/title';
 import { IconButton } from '../../../../lib/element/button';
 
 export function CreateProductImageComponent(props) {
-  const { pickImage, imagesData, deleteImage } = props;
-  const fileRef = createRef();
+  const { setImage, removeImage, changeImage } = props;
+
+  //--------------------------------------------------------------------------
+
+  const [previewData, setPriviewData] = useState([]);
+
+  //--------------------------------------------------------------------------
+
+  const setPreview = (event) => {
+    const file = event.target?.files?.[0];
+    setImage(file);
+    if (file.type.split('/')[0] !== 'image') {
+      alert('Необходим тип - изображение');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const copy = [...previewData];
+      copy.push(reader?.result);
+      setPriviewData(copy);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const removePreview = (index) => {
+    removeImage(index);
+    const copy = [...previewData];
+    copy.splice(index, 1);
+    setPriviewData(copy);
+  };
+
+  const changePreview = (index) => (event) => {
+    const file = event.target?.files?.[0];
+    changeImage(file, index);
+    if (file.type.split('/')[0] !== 'image') {
+      alert('Необходим тип - изображение');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const copy = [...previewData];
+      copy.splice(index, 1, reader?.result);
+      setPriviewData(copy);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <SectionLayout type="SMALL">
       <Title tid="Фотографии товара" />
       <Container type="SMALL">
-        {imagesData.map((image, index) => {
+        {previewData.map((image, index) => {
           return (
             <ImageContainer key={index}>
               <Image src={image} />
               <PositionContainer>
-                <IconButton onClick={() => deleteImage(index)}>
+                <Button>
+                  <ChangeIcon />
+                  <File type="file" onChange={changePreview(index)} />
+                </Button>
+                <IconButton onClick={() => removePreview(index)}>
                   <RemoveIcon />
                 </IconButton>
               </PositionContainer>
             </ImageContainer>
           );
         })}
-        <ImageContainer>
-          <AddImage>
-            <ChangeIcon />
-            <File type="file" ref={fileRef} onChange={pickImage} />
-            <Text tid="Добавить фото" />
-          </AddImage>
-        </ImageContainer>
+        {previewData.length !== 6 && (
+          <ImageContainer>
+            <AddImage>
+              <ChangeIcon />
+              <File type="file" onChange={setPreview} />
+              <Text tid="Добавить фото" />
+            </AddImage>
+          </ImageContainer>
+        )}
       </Container>
     </SectionLayout>
   );
 }
-
+const Button = styled.label`
+  display: flex;
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
+  justify-content: center;
+  align-items: center;
+  background-color: ${THEME_COLOR.GRAY};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  cursor: pointer;
+`;
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.SECONDARY_DARK};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
@@ -51,7 +112,7 @@ const AddImage = styled.label`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: ${THEME_COLOR.BACKGROUND.GRAY};
+  background-color: ${THEME_COLOR.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const File = styled.input`

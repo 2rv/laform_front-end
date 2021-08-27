@@ -7,31 +7,44 @@ import {
 
 export function CreateProductComponent(props) {
   const {
-    initialCategoriesItem,
-    initialPositionsItem,
-    initialOptionsItem,
     initialValues,
     onSubmitForm,
     validation,
-    pickImage,
-    imagesData,
-    deleteImage,
+    //--------
+    setImage,
+    removeImage,
+    changeImage,
+    //--------
+    pageLoading,
+    isPending,
+    isSuccess,
+    isError,
+    errorMessage,
+    //--------
+    initialData,
+    selectOptionsData,
   } = props;
   return (
     <SectionLayout>
-      <TitlePrimary tid="Создание мастер-класса" />
+      <TitlePrimary tid="Создание товара" />
       <CreateProductImageComponent
-        pickImage={pickImage}
-        imagesData={imagesData}
-        deleteImage={deleteImage}
+        setImage={setImage}
+        removeImage={removeImage}
+        changeImage={changeImage}
       />
       <CreateProductFormContainer
-        initialCategoriesItem={initialCategoriesItem}
-        initialPositionsItem={initialPositionsItem}
-        initialOptionsItem={initialOptionsItem}
+        validation={validation}
         initialValues={initialValues}
         onSubmitForm={onSubmitForm}
-        validation={validation}
+        //--------
+        initialData={initialData}
+        selectOptionsData={selectOptionsData}
+        //--------
+        pageLoading={pageLoading}
+        isPending={isPending}
+        isSuccess={isSuccess}
+        isError={isError}
+        errorMessage={errorMessage}
       />
     </SectionLayout>
   );

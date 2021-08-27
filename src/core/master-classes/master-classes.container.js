@@ -39,7 +39,7 @@ export function MasterClassesContainer() {
   return (
     <MasterClassesComponent
       listItems={sorterItemsByParams(
-        getRequestData(masterClassState, [...testListItems]),
+        getRequestData(masterClassState, []),
         filter[MASTER_CLASSES_FIELD_NAME.FIND],
         Number(filter[MASTER_CLASSES_FIELD_NAME.FILTER]),
       )}
