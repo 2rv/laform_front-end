@@ -6,7 +6,7 @@ import { NEW_SLIDER_FORM_DATA, SLIDER_EDIT_FIELD_NAME } from '../slider-edit';
 
 export function sliderListUploadData() {
   return (dispatch) => {
-    const slider = { id: 'new', name: NEW_SLIDER_FORM_DATA[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT], image: {} };
+    const slider = { id: 'new', name: NEW_SLIDER_FORM_DATA[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT], image: null };
     dispatch({ type: SLIDER_LIST_ACTION_TYPE.CREATE_SLIDER, slider });
   };
 }

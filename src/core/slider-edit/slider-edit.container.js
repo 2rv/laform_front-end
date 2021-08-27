@@ -58,7 +58,8 @@ export function SliderEditContainer() {
       const reader = new FileReader();
       reader.onload = () => dispatch(sliderEditUpdateImage({
         id: null,
-        fileUrl: reader?.result
+        fileUrl: reader?.result,
+        file: files[0],
       }));
       reader.readAsDataURL(files[0]);
       setIsImageUploadError(false);
@@ -84,7 +85,7 @@ export function SliderEditContainer() {
   };
 
   const onSubmit = (values) => {
-    if (!sliderData.image.fileUrl) {
+    if (!sliderData.image?.fileUrl) {
       setIsImageUploadError(true);
       return;
     }

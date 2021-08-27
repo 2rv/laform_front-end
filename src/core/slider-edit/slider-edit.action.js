@@ -78,7 +78,7 @@ export function sliderEditUploadData(id, sliderImage, sliderData) {
     try {
       let data = sliderData;
       if (!sliderImage.id) {
-        const fileResponse = await fileUpload(sliderImage.fileUrl);
+        const fileResponse = await fileUpload(sliderImage.file);
         data = { ...data, imageUrl: fileResponse };
       }
 
@@ -108,7 +108,7 @@ export function createSlider(sliderImage, data) {
     });
 
     try {
-      const fileResponse = await fileUpload(sliderImage);
+      const fileResponse = await fileUpload(sliderImage.file);
       await httpRequest({
         method: SLIDER_EDIT_API.CREATE_SLIDER.TYPE,
         url: SLIDER_EDIT_API.CREATE_SLIDER.ENDPOINT,
@@ -137,13 +137,13 @@ export function sliderEditUpdateImage(image) {
   };
 }
 
-const fileUpload = async (image) => {
-  if (!image) {
+const fileUpload = async (file) => {
+  if (!file) {
     return null;
   }
 
   const formData = new FormData();
-  formData.append('file', image);
+  formData.append('file', file);
 
   const response = await httpRequest({
     method: SLIDER_EDIT_API.IMAGE_LOAD.TYPE,

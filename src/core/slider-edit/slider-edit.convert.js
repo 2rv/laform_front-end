@@ -20,7 +20,11 @@ export const convertNewSliderData = () => ({
   buttonTextColor: NEW_SLIDER_FORM_DATA[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR],
   isHaveButton: NEW_SLIDER_FORM_DATA[SLIDER_EDIT_FIELD_NAME.IS_BUTTON],
   buttonUrl: NEW_SLIDER_FORM_DATA[SLIDER_EDIT_FIELD_NAME.BUTTON_PATH],
-  image: {},
+  image: {
+    id: null,
+    fileUrl: null,
+    file: null
+  },
 });
 
 export const convertSliderEditData = (data) => ({
