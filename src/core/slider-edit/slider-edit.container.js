@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { redirect } from '../../main/navigation';
 import {
   SLIDER_FIELDS_DATA,
@@ -34,15 +36,20 @@ export function SliderEditContainer() {
   const dispatch = useDispatch();
   const { query } = useRouter();
   const isNewSlider = query.sliderId === 'new';
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
+  const { state, pageLoading, currentLang, user } = useSelector((state) => ({
     state: state[SLIDER_EDIT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active,
+    user: state[AUTH_STORE_NAME].user,
   }));
   const sliderData = getRequestData(state.sliderEdit);
   const [isImageUploadError, setIsImageUploadError] = useState(false);
 
   useEffect(() => {
+    if (user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId, isNewSlider));
   }, []);
 

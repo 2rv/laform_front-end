@@ -6,13 +6,13 @@ import { TextSecondary } from '../text';
 import { CheckboxPropsType } from './field.type';
 
 export function FieldCheckbox(props: CheckboxPropsType) {
-  const { titleTid, labelTid, name, checked, onClick, onChange, width, adaptive } = props;
+  const { titleTid, labelTid, name, checked, onClick, width, adaptive } = props;
 
   return (
     <Container width={width} adaptive={adaptive}>
       {titleTid && <Title tid={titleTid} />}
-      <Content htmlFor={name} onClick={onClick} onChange={onChange}>
-        <Input type="checkbox" name={name} checked={checked} onChange={onChange} />
+      <Content htmlFor={name} onClick={onClick}>
+        <Input type="checkbox" name={name} checked={checked} />
         <CheckmarkContainer checked={checked}>
           <Checkmark />
         </CheckmarkContainer>
