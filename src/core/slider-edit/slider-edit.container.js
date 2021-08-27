@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { useFormik } from 'formik';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { redirect } from '../../main/navigation';
@@ -17,6 +18,7 @@ import {
   sliderEditUploadData,
   sliderEditRemove,
   createSlider,
+  sliderEditUpdateImage,
 } from './slider-edit.action';
 
 import {
@@ -26,73 +28,68 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { SLIDER_EDIT_FIELD_NAME } from './slider-edit.type';
-import { useFormik } from 'formik';
+import { NEW_SLIDER_FORM_DATA, SLIDER_EDIT_FIELD_NAME } from './slider-edit.type';
 
 export function SliderEditContainer() {
   const dispatch = useDispatch();
   const { query } = useRouter();
+  const isNewSlider = query.sliderId === 'new';
   const { state, pageLoading, currentLang } = useSelector((state) => ({
     state: state[SLIDER_EDIT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active,
   }));
-  const sliderData = getRequestData(state.sliderEdit, []);
-  const [sliderImage, setSliderImage] = useState(sliderData.imageUrl?.fileUrl);
+  const sliderData = getRequestData(state.sliderEdit);
+  const [isImageUploadError, setIsImageUploadError] = useState(false);
 
   useEffect(() => {
-    if (query.sliderId.includes('-')) {
-      dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId));
-    }
+    dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId, isNewSlider));
   }, []);
 
   const pickImage = ({ target: { files } }) => {
-    if (files[0].type.split('/')[0] !== 'image') {
-      alert('Please upload only image');
-      return;
-    }
-
-    if (files && files[0]) {
+    if (files && files[0] && files[0].type.split('/')[0] === 'image') {
       const reader = new FileReader();
-      reader.onload = () => setSliderImage(reader?.result);
+      reader.onload = () => dispatch(sliderEditUpdateImage({
+        id: null,
+        fileUrl: reader?.result
+      }));
       reader.readAsDataURL(files[0]);
+      setIsImageUploadError(false);
     }
   };
 
   const removeSlider = () => {
-    if (query.sliderId.includes('-')) {
-      dispatch(sliderEditRemove(query.sliderId));
-    } else {
+    if (isNewSlider) {
       redirect(SLIDER_LIST_ROUTE_PATH);
+    } else {
+      dispatch(sliderEditRemove(query.sliderId));
     }
   };
 
   const initialValues = {
-    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: sliderData.headingTextRu ? sliderData.headingTextRu : 'Нужно редактировать',
-    [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: sliderData.buttonTextRu ? sliderData.buttonTextRu : 'Нужно редактировать',
-    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: sliderData.titleTextColor ? +sliderData.titleTextColor : 0,
-    [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: sliderData.buttonColor ? +sliderData.buttonColor : 0,
-    [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: sliderData.buttonTextColor ? +sliderData.buttonTextColor : 0,
-    [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: sliderData.isHaveButton ? JSON.parse(sliderData.isHaveButton) : true,
-    [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: sliderData.buttonUrl ? sliderData.buttonUrl : 'Нужно редактировать',
+    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: sliderData.headingTextRu,
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: sliderData.buttonTextRu,
+    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: sliderData.titleTextColor,
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: sliderData.buttonColor,
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: sliderData.buttonTextColor,
+    [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: sliderData.isHaveButton,
+    [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: sliderData.buttonUrl,
   };
 
-  const onSubmit = (values, { resetForm }) => {
-    if (!sliderImage) {
-      alert('Please upload image');
+  const onSubmit = (values) => {
+    if (!sliderData.image.fileUrl) {
+      setIsImageUploadError(true);
       return;
     }
 
     const data = convertSliderEditFormData(values);
 
-    if (sliderData.id === query.sliderId) {
-      dispatch(sliderEditUploadData(query.sliderId, sliderImage, data));
+    if (isNewSlider) {
+      dispatch(createSlider(sliderData.image, data));
     } else {
-      dispatch(createSlider(sliderImage, data));
+      dispatch(sliderEditUploadData(query.sliderId, sliderData.image, data));
     }
-
-    resetForm({});
-  }
+  };
 
   const formikObject = useFormik({
     enableReinitialize: true,
@@ -107,16 +104,17 @@ export function SliderEditContainer() {
       isError={isRequestError(state.sliderEdit)}
       isSuccess={isRequestSuccess(state.sliderEdit)}
       errorMessage={getRequestErrorMessage(state.sliderEdit)}
-      sliderData={sliderData}
       pageLoading={pageLoading}
       currentLang={currentLang}
       pickImage={pickImage}
       removeSlider={removeSlider}
-      sliderImage={sliderImage}
+      isNewSlider={isNewSlider}
+      sliderImage={sliderData.image?.fileUrl}
       titleTextColorOptions={titleTextColorOptions}
       buttonColorOptions={buttonColorOptions}
       buttonTextColorOptions={buttonTextColorOptions}
       formikObject={formikObject}
+      isImageUploadError={isImageUploadError}
     />
   );
 }

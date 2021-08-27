@@ -21,7 +21,7 @@ export function sliderListStore(state = initialState, action) {
     case SLIDER_LIST_ACTION_TYPE.REMOVE_SLIDER:
       return {
         ...state,
-        sliderList: setRequestSuccess(state.sliderList, [...state.sliderList.data.filter((slider) => slider.id !== action.id)]),
+        sliderList: setRequestSuccess(state.sliderList, [...state.sliderList.data.filter((_, index) => index !== action.index)]),
       };
     case SLIDER_LIST_ACTION_TYPE.SLIDER_LIST_UPLOAD_PENDING:
       return {

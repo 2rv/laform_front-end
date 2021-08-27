@@ -35,13 +35,12 @@ export function SliderListContainer() {
     dispatch(sliderListLoadData(currentLang));
   }, []);
 
+  const addSlide = () => dispatch(sliderListUploadData());
   const editSlide = (id) => redirect(SLIDER_EDIT_ROUTE_PATH(id));
 
-  const addSlide = () => dispatch(sliderListUploadData());
-
-  const removeSlide = (id) => {
-    if (typeof id === 'number') {
-      dispatch(sliderItemRemove(id));
+  const removeSlide = (index, id) => {
+    if (id === 'new') {
+      dispatch(sliderItemRemove(index));
     } else {
       dispatch(sliderItemRemoveFromServer(currentLang, id));
     }

@@ -5,5 +5,6 @@
   "PROMO_CODE_NOT_EXISTS": "Промо-код не сушествует или не активен",
   "LOGIN_UNCORRECT_PASSWORD_OR_LOGIN": "Не корректный логин или пароль.",
   "LOGIN_COULDNT_FOUND_USER": "Пользователь с таким логином не найден.",
-  "USER_ALREADY_EXISTS": "Пользователь уже существует."
+  "USER_ALREADY_EXISTS": "Пользователь уже существует.",
+  "PLEASE_UPLOAD_IMAGE": "Пожалуйста, загрузите изображение."
 }

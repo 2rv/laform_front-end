@@ -10,6 +10,7 @@ import {
   FieldSelect,
 } from '../../../../lib/element/field';
 import { TextSecondary } from '../../../../lib/element/text';
+import { ErrorAlert } from '../../../../lib/element/alert';
 import { SLIDER_EDIT_FIELD_NAME } from '../../slider-edit.type';
 
 export function SliderEditFormComponent(props) {
@@ -27,6 +28,7 @@ export function SliderEditFormComponent(props) {
     formSuccess,
     formError,
     errorMessage,
+    isImageUploadError,
   } = props;
   const {
     values,
@@ -52,7 +54,7 @@ export function SliderEditFormComponent(props) {
   };
 
   const isSubmitDisabled = () => {
-    return !isValid || (Object.keys(touched).length === 0 && touched.constructor === Object);
+    return !isValid || !(values[titleTextFieldName] || values[buttonTextFieldName] || values[buttonPathFieldName])
   };
 
   return (
@@ -133,12 +135,12 @@ export function SliderEditFormComponent(props) {
           <Button tid="Сохранить" type="submit" disabled={isSubmitDisabled()} />
           <Button
             altType={true}
-            type="reset"
             tid="Удалить слайд"
             disabled={isPending}
             onClick={removeSlider}
           />
         </FieldLayout>
+        {isImageUploadError && <ErrorAlert tid={'PLEASE_UPLOAD_IMAGE'} />}
       </SectionLayout>
     </form>
   );

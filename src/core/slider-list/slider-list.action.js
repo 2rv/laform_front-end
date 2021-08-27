@@ -2,13 +2,12 @@ import { httpRequest } from '../../main/http';
 import { SLIDER_LIST_API } from './slider-list.constant';
 import { SLIDER_LIST_ACTION_TYPE } from './slider-list.type';
 import { convertSliderData } from './slider-list.convert';
+import { NEW_SLIDER_FORM_DATA, SLIDER_EDIT_FIELD_NAME } from '../slider-edit';
 
 export function sliderListUploadData() {
-  return async (dispatch) => {
-    try {
-      const slider = { id: Date.now(), name: 'Нужно редактировать', image: undefined };
-      dispatch({ type: SLIDER_LIST_ACTION_TYPE.CREATE_SLIDER, slider });
-    } catch { }
+  return (dispatch) => {
+    const slider = { id: 'new', name: NEW_SLIDER_FORM_DATA[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT], image: {} };
+    dispatch({ type: SLIDER_LIST_ACTION_TYPE.CREATE_SLIDER, slider });
   };
 }
 
@@ -41,11 +40,9 @@ export function sliderListLoadData(currentLang) {
   };
 }
 
-export function sliderItemRemove(id) {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: SLIDER_LIST_ACTION_TYPE.REMOVE_SLIDER, id });
-    } catch {}
+export function sliderItemRemove(index) {
+  return (dispatch) => {
+    dispatch({ type: SLIDER_LIST_ACTION_TYPE.REMOVE_SLIDER, index });
   };
 }
 
