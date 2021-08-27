@@ -1,8 +1,13 @@
 import { SLIDER_DATA_NAME, SLIDER_DATA_KEY } from './slider.type';
 
 export const performSliderData = (data) => ({
-  [SLIDER_DATA_KEY.TITLE]: data[SLIDER_DATA_NAME.TITLE],
-  [SLIDER_DATA_KEY.BUTTON]: data[SLIDER_DATA_NAME.BUTTON],
-  [SLIDER_DATA_KEY.BUTTON_URL]: data[SLIDER_DATA_NAME.BUTTON_URL],
-  [SLIDER_DATA_KEY.IMAGE_URL]: data[SLIDER_DATA_NAME.IMAGE_URL],
+  id: data.id,
+  titleText: data.headingTextRu,
+  titleTextColor: data.titleTextColor,
+  buttonText: data.buttonTextRu,
+  buttonTextColor: data.buttonTextColor,
+  buttonColor: data.buttonColor,
+  isButton: JSON.parse(data.isHaveButton),
+  buttonPath: data.buttonUrl,
+  image: data.imageUrl?.fileUrl,
 });

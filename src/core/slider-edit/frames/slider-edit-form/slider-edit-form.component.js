@@ -1,3 +1,4 @@
+import { Field } from 'formik';
 import styled, { css } from 'styled-components';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../../../lib/theme';
 import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
@@ -9,6 +10,7 @@ import {
   FieldSelect,
 } from '../../../../lib/element/field';
 import { TextSecondary } from '../../../../lib/element/text';
+import { ErrorAlert } from '../../../../lib/element/alert';
 import { SLIDER_EDIT_FIELD_NAME } from '../../slider-edit.type';
 
 export function SliderEditFormComponent(props) {
@@ -26,6 +28,7 @@ export function SliderEditFormComponent(props) {
     formSuccess,
     formError,
     errorMessage,
+    isImageUploadError,
   } = props;
   const {
     values,
@@ -35,6 +38,7 @@ export function SliderEditFormComponent(props) {
     handleSubmit,
     touched,
     setFieldValue,
+    isValid,
   } = formikObject;
 
   const titleTextFieldName = SLIDER_EDIT_FIELD_NAME.TITLE_TEXT;
@@ -47,6 +51,10 @@ export function SliderEditFormComponent(props) {
 
   const getFieldError = (name) => {
     return errors[name] && touched[name] && errors[name];
+  };
+
+  const isSubmitDisabled = () => {
+    return !isValid || !(values[titleTextFieldName] || values[buttonTextFieldName] || values[buttonPathFieldName])
   };
 
   return (
@@ -75,12 +83,12 @@ export function SliderEditFormComponent(props) {
         <FieldLayout type="double">
           <FieldCheckbox
             titleTid="Кнопка"
+            labelTid="Будет ли кнопка на баннере?"
             name={isButtonCheckboxName}
             checked={values[isButtonCheckboxName]}
             onClick={() =>
               setFieldValue(isButtonCheckboxName, !values[isButtonCheckboxName])
             }
-            labelTid="Будет ли кнопка на баннере?"
           />
           {values[isButtonCheckboxName] && (
             <>
@@ -124,15 +132,15 @@ export function SliderEditFormComponent(props) {
           />
         )}
         <FieldLayout type="double" adaptive>
-          <Button tid="Сохранить" type="submit" disabled={isPending} />
+          <Button tid="Сохранить" type="submit" disabled={isSubmitDisabled()} />
           <Button
             altType={true}
-            type="button"
             tid="Удалить слайд"
             disabled={isPending}
             onClick={removeSlider}
           />
         </FieldLayout>
+        {isImageUploadError && <ErrorAlert tid={'PLEASE_UPLOAD_IMAGE'} />}
       </SectionLayout>
     </form>
   );

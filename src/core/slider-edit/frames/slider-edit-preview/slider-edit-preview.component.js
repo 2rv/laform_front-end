@@ -14,7 +14,6 @@ import { SLIDER_EDIT_FIELD_NAME } from '../../slider-edit.type';
 
 export function SliderEditPreviewComponent(props) {
   const {
-    sliderData,
     pickImage,
     sliderImage,
     values,
@@ -24,19 +23,19 @@ export function SliderEditPreviewComponent(props) {
   } = props;
   const textColor =
     titleTextColorOptions[values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]]
-      .color;
+      ?.color;
   const buttonTextColor =
     buttonTextColorOptions[values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]]
-      .color;
+      ?.color;
   const buttonColor =
-    buttonColorOptions[values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]].color;
+    buttonColorOptions[values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]]?.color;
   const isButton = values[SLIDER_EDIT_FIELD_NAME.IS_BUTTON];
   return (
     <SectionLayout type="SMALL">
       <PreviewTitle tid="Превью" />
       <PreviewContainer>
         <Blur />
-        <SlideImage src={sliderImage || sliderData.imageUrl?.fileUrl} />
+        <SlideImage src={sliderImage} />
         <Field>
           <File type="file" onChange={pickImage} />
           <Placeholder tid="Выбрать фото" />

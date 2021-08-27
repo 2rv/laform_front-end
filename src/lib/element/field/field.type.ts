@@ -30,7 +30,6 @@ export interface CheckboxPropsType {
   labelTid?: string | any;
   name: string;
   checked: boolean;
-  onChange?: any;
   onClick?: any;
   onBlur?: any;
   disabled?: boolean;

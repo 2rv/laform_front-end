@@ -6,5 +6,5 @@ import { SLIDER_EDIT_ROUTE_PATH } from './slider-edit.constant';
 
 export function sliderEditRouter(ctx) {
   ctx.store.dispatch(setActivePath(SLIDER_EDIT_ROUTE_PATH));
-    // authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }

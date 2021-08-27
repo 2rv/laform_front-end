@@ -4,8 +4,7 @@ import { SLIDER_API } from './slider.constant';
 import { SLIDER_ACTION_TYPE } from './slider.type';
 import { performSliderData } from './slider.convert';
 
-export function sliderLoadData(props) {
-  const { lang } = props;
+export function sliderLoadData(currentLang) {
   return async (dispatch) => {
     dispatch({
       type: SLIDER_ACTION_TYPE.SLIDER_LOAD_REQUEST_PENDING,
@@ -14,10 +13,10 @@ export function sliderLoadData(props) {
     try {
       const { data } = await httpRequest({
         method: SLIDER_API.LOAD_SLIDES.METHOD,
-        url: SLIDER_API.LOAD_SLIDES.ENDPOINT(lang),
+        url: SLIDER_API.LOAD_SLIDES.ENDPOINT(currentLang),
       });
 
-      const slides = performSliderData(data);
+      const slides = data.map(performSliderData);
 
       dispatch({
         type: SLIDER_ACTION_TYPE.SLIDER_LOAD_REQUEST_SUCCESS,
