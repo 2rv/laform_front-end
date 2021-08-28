@@ -16,18 +16,3 @@ export const CREATE_PRODUCT_API = {
     ENDPOINT: '/file/create-many',
   },
 };
-
-export const SELECT_OPTIONS_DATA = {
-  [PRODUCT_FIELD_NAME.TYPE]: [
-    { id: 0, tid: 'Мастер-класс' },
-    { id: 1, tid: 'Выкройка электронная' },
-    { id: 2, tid: 'Выкройка печатная' },
-    { id: 3, tid: 'Товар для шитья' },
-  ],
-  [PRODUCT_FIELD_NAME.CATEGORY_NAME]: [
-    { id: 0, tid: 'Платные' },
-    { id: 1, tid: 'Новые' },
-    { id: 2, tid: 'Инструкции' },
-    { id: 3, tid: 'Руководства' },
-  ],
-};

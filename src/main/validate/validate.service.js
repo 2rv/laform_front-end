@@ -13,6 +13,14 @@ export const minLength = (min) => (value) => {
   return null;
 };
 
+export const minLengthArray = (min) => (value) => {
+  if (value.length < min) {
+    return getError('VALIDATION.MIN_LENGTH_ARRAY', { min });
+  }
+
+  return null;
+};
+
 export const maxLength =
   (max) =>
   (value = '') => {

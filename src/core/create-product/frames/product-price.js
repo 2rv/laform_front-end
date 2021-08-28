@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { TextSecondary } from '../../../../lib/element/text';
-import { TitlePrimary } from '../../../../lib/element/title';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { PRODUCT_FIELD_NAME } from '../../create-product.type';
+import { TextSecondary } from '../../../lib/element/text';
+import { TitlePrimary } from '../../../lib/element/title';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
+import { PRODUCT_FIELD_NAME } from '../create-product.type';
 
 export function ProductPrice(props) {
   const { discount, values } = props;
@@ -45,7 +45,7 @@ export function ProductPrice(props) {
 
 const Container = styled.div`
   display: flex;
-  gap: ${spacing(3)};
+  gap: ${spacing(2)};
   margin-top: 18px;
   height: 46px;
   align-items: center;
@@ -68,7 +68,7 @@ const Colored = styled(TextSecondary)`
 `;
 
 function minimumPrice(values) {
-  const productType = Number(values[PRODUCT_FIELD_NAME.TYPE]);
+  const productType = values[PRODUCT_FIELD_NAME.TYPE];
   if (productType === 0) {
     return checkMinPrice(
       values[PRODUCT_FIELD_NAME.PROGRAMS],
@@ -76,7 +76,7 @@ function minimumPrice(values) {
     );
   }
   if (productType === 1) {
-    return Number(values[PRODUCT_FIELD_NAME.ELECTRONIC_PATTERN_PRICE]);
+    return values[PRODUCT_FIELD_NAME.PRICE];
   }
   if (productType === 2) {
     return checkMinPrice(
@@ -93,13 +93,13 @@ function minimumPrice(values) {
       values[PRODUCT_FIELD_NAME.COLORS],
       PRODUCT_FIELD_NAME.COLOR_PRICE,
     );
-    return Number(size) + Number(color);
+    return size + color;
   }
 }
 
 function checkMinPrice(listData, nameItem) {
   return listData.reduce((acc, item) => {
-    if (acc > item[nameItem]) acc = Number(item[nameItem]);
+    if (acc > item[nameItem]) acc = item[nameItem];
     return acc;
-  }, Number(listData[0][nameItem]));
+  }, listData[0][nameItem]);
 }

@@ -6,20 +6,22 @@ import {
   numberPositive,
   numberPositiveMin,
   numberPositiveMax,
+  requiredArray,
+  minLengthArray,
 } from '../../main/validate/validate.service';
-
 import { PRODUCT_FIELD_NAME } from './create-product.type';
+
 const validationByType = {
   1: {
     [PRODUCT_FIELD_NAME.COMPLEXITY]: [],
     [PRODUCT_FIELD_NAME.MATERIAL]: [required],
-    [PRODUCT_FIELD_NAME.ELECTRONIC_PATTERN_PRICE]: [
+    [PRODUCT_FIELD_NAME.FILE]: [required],
+    [PRODUCT_FIELD_NAME.PRICE]: [
       required,
       number,
       numberPositive,
       numberPositiveMin(0),
     ],
-    [PRODUCT_FIELD_NAME.ELECTRONIC_PATTERN_FILE]: [required],
   },
   2: {
     [PRODUCT_FIELD_NAME.COMPLEXITY]: [],
@@ -38,18 +40,19 @@ const validationByType = {
 const config = (productType) => ({
   [PRODUCT_FIELD_NAME.NAME]: [required, minLength(3)],
   [PRODUCT_FIELD_NAME.MODIFIER]: [],
-  [PRODUCT_FIELD_NAME.CATEGORIES]: [],
+  [PRODUCT_FIELD_NAME.CATEGORIES]: [required, requiredArray, minLengthArray(1)],
   [PRODUCT_FIELD_NAME.DESCRIPTION]: [required],
+  [PRODUCT_FIELD_NAME.IMAGES]: [required, requiredArray, minLengthArray(1)],
   // рекомендации
   [PRODUCT_FIELD_NAME.DISCOUNT]: [
     number,
     numberPositive,
-
     numberPositiveMin(0),
     numberPositiveMax(100),
   ],
   ...validationByType[productType],
 });
+
 const fieldArrayValidation = (values, type = 0) => {
   const errors = {};
   const isErrorIndicator = [];
@@ -88,16 +91,6 @@ const fieldArrayValidation = (values, type = 0) => {
   return {};
 };
 
-export const createProuctValidation = (values) => {
-  const productType = Number(values[PRODUCT_FIELD_NAME.TYPE]);
-  const errors = fieldArrayValidation(values, productType);
-  const validErrors = validate(values, config(productType));
-  return {
-    ...errors,
-    ...validErrors,
-  };
-};
-
 const constructiorValidation = (props) => {
   const { values, fieldName, fieldPrice, isError } = props;
   return values.map((item, index) => {
@@ -115,4 +108,14 @@ const constructiorValidation = (props) => {
       };
     }
   });
+};
+
+export const createProuctValidation = (values) => {
+  const productType = values[PRODUCT_FIELD_NAME.TYPE];
+  const errors = fieldArrayValidation(values, productType);
+  const validErrors = validate(values, config(productType));
+  return {
+    ...errors,
+    ...validErrors,
+  };
 };

@@ -1,19 +1,15 @@
+import { Formik } from 'formik';
+import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import {
-  CreateProductImageComponent,
-  CreateProductFormContainer,
-} from './frames';
+import { AddImageComponent, ProductFormComponent } from './frames';
 
 export function CreateProductComponent(props) {
   const {
     initialValues,
     onSubmitForm,
     validation,
-    //--------
-    setImage,
-    removeImage,
-    changeImage,
     //--------
     pageLoading,
     isPending,
@@ -25,27 +21,34 @@ export function CreateProductComponent(props) {
     selectOptionsData,
   } = props;
   return (
-    <SectionLayout>
-      <TitlePrimary tid="Создание товара" />
-      <CreateProductImageComponent
-        setImage={setImage}
-        removeImage={removeImage}
-        changeImage={changeImage}
-      />
-      <CreateProductFormContainer
-        validation={validation}
-        initialValues={initialValues}
-        onSubmitForm={onSubmitForm}
-        //--------
-        initialData={initialData}
-        selectOptionsData={selectOptionsData}
-        //--------
-        pageLoading={pageLoading}
-        isPending={isPending}
-        isSuccess={isSuccess}
-        isError={isError}
-        errorMessage={errorMessage}
-      />
-    </SectionLayout>
+    <>
+      {(pageLoading || isPending) && <LoaderPrimary />}
+      <SectionLayout>
+        <TitlePrimary tid="Создание товара" />
+        <Formik
+          initialValues={initialValues}
+          validate={validation}
+          onSubmit={onSubmitForm}
+          enableReinitialize={true}
+        >
+          {(formProps) => {
+            return (
+              <form onSubmit={formProps.handleSubmit}>
+                <SectionLayout>
+                  <AddImageComponent {...formProps} />
+                  <ProductFormComponent
+                    {...formProps}
+                    initialData={initialData}
+                    selectOptionsData={selectOptionsData}
+                  />
+                </SectionLayout>
+              </form>
+            );
+          }}
+        </Formik>
+        {isSuccess && <SuccessAlert tid="Товар успешно создан" />}
+        {isError && <ErrorAlert tid={errorMessage} />}
+      </SectionLayout>
+    </>
   );
 }

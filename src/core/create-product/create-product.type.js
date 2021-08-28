@@ -9,21 +9,25 @@ export const CREATE_PRODUCT_ACTION_TYPE = {
 
 export const PRODUCT_FIELD_NAME = {
   NAME: 'titleRu',
+  DESCRIPTION: 'descriptionRu',
   TYPE: 'type',
   MODIFIER: 'modifier',
-  DESCRIPTION: 'descriptionRu',
   DISCOUNT: 'discount',
-  CATEGORIES: 'categories',
-  CATEGORY_NAME: 'category',
-  IMAGES: 'imageUrls',
 
-  MATERIAL: 'material',
+  MATERIAL: 'materialRu',
   COMPLEXITY: 'complexity',
-
-  ELECTRONIC_PATTERN_PRICE: 'price',
-  ELECTRONIC_PATTERN_FILE: 'file',
-
   COUNT: 'count',
+  PRICE: 'price',
+  FILE: 'file',
+
+  IMAGES: 'images',
+  IMAGE: 'image',
+
+  CATEGORIES: 'categories',
+  CATEGORY: 'textRu',
+
+  RECOMENDATIONS: 'recomendations',
+  RECOMENDATION_NAME: 'recomendation',
 
   SIZES: 'sizes',
   SIZE_NAME: 'size',
@@ -34,6 +38,25 @@ export const PRODUCT_FIELD_NAME = {
   COLOR_PRICE: 'price',
 
   PROGRAMS: 'programs',
-  PROGRAM_NAME: 'name',
+  PROGRAM_NAME: 'programNameRu',
   PROGRAM_PRICE: 'price',
+};
+
+export const SELECT_OPTIONS = {
+  [PRODUCT_FIELD_NAME.TYPE]: [
+    { id: 0, tid: 'Мастер-класс' },
+    { id: 1, tid: 'Выкройка электронная' },
+    { id: 2, tid: 'Выкройка печатная' },
+    { id: 3, tid: 'Товар для шитья' },
+  ],
+  [PRODUCT_FIELD_NAME.CATEGORIES]: [
+    { id: 0, tid: 'Платные' },
+    { id: 1, tid: 'Новые' },
+    { id: 2, tid: 'Инструкции' },
+    { id: 3, tid: 'Руководства' },
+  ],
+};
+
+export const CREATE_PRODUCT_KEY = {
+  CATEGORY_NAME: 'textRu',
 };
