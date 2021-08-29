@@ -5,3 +5,4 @@ export {
   MASTER_CLASSES_ROUTE_PATH,
   MASTER_CLASSES_STORE_NAME,
 } from './master-classes.constant';
+export { performMasterClassData } from './master-classes.convert';

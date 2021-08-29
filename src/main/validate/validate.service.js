@@ -19,6 +19,22 @@ export const maxLength =
     if (String(value).length > max) {
       return getError('VALIDATION.MAX_LENGTH', { max });
     }
+  };
+
+export const minLengthArray = (min) => (value) => {
+  if (value.length < min) {
+    return getError('VALIDATION.MIN_LENGTH_ARRAY', { min });
+  }
+
+  return null;
+};
+
+export const maxLength =
+  (max) =>
+  (value = '') => {
+    if (String(value).length > max) {
+      return getError('VALIDATION.MAX_LENGTH', { max });
+    }
 
     return null;
   };
@@ -77,6 +93,15 @@ export const numberPositiveMin = (min) => (value) => {
 
   if (val < min) {
     return getError('VALIDATION.NUMBER_POSITIVE_MIN', { min });
+  }
+
+  return null;
+};
+export const numberPositiveMax = (max) => (value) => {
+  const val = parseFloat(value);
+
+  if (val > max) {
+    return getError('VALIDATION.NUMBER_POSITIVE_MAX', { max });
   }
 
   return null;

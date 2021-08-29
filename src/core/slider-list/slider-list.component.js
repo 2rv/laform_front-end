@@ -5,29 +5,37 @@ import { ButtonBasic, IconButton } from '../../lib/element/button';
 import { Spinner } from '../../lib/element/spinner';
 import { ReactComponent as PlusIcon } from '../../asset/svg/plus-icon.svg';
 import { TextSecondary } from '../../lib/element/text';
+import { LoaderPrimary } from '../..//lib/element/loader';
 import { SliderList } from './frames';
 
 export function SliderListComponent(props) {
-  const { isPending, slidersItems, editSlide, addSlide, removeSlide } = props;
+  const { pageLoading, isPending, slidersItems, editSlide, addSlide, removeSlide } = props;
   return (
-    <Container>
-      <TitlePrimary tid="Слайдер" />
-      {isPending ? (
-        <Spinner />
-      ) : (
-        <SliderList
-          slidersItems={slidersItems}
-          removeSlide={removeSlide}
-          editSlide={editSlide}
-        />
-      )}
-      <AddSlide onClick={addSlide} disabled={isPending}>
-        <Button>
-          <PlusIcon />
-        </Button>
-        <TextSecondary tid="Дополнить сборку" />
-      </AddSlide>
-    </Container>
+    <>
+      {pageLoading && <LoaderPrimary />}
+      <Container>
+        <TitlePrimary tid="Слайдер" />
+        {isPending ? (
+          <Spinner />
+        ) : (
+          <SliderList
+            slidersItems={slidersItems}
+            removeSlide={removeSlide}
+            editSlide={editSlide}
+          />
+        )}
+        {slidersItems?.map((slider) => slider.id).includes('new') ? (
+          <></>
+        ) : (
+          <AddSlide onClick={addSlide} disabled={isPending}>
+            <Button>
+              <PlusIcon />
+            </Button>
+            <TextSecondary tid="Дополнить сборку" />
+          </AddSlide>
+        )}
+      </Container>
+    </>
   );
 }
 const Container = styled.div`

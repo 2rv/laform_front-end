@@ -8,8 +8,8 @@ export function CardImage({ image, bestseller, action, path, pathConfig }) {
     <Container path={path} pathConfig={pathConfig}>
       <Image src={image} />
       <ModifierContainer>
-        {action && <Modifier tid={'Акция'} />}
-        {bestseller && <Modifier alt tid={'Хит'} />}
+        {action ? <Modifier tid="Акция" /> : null}
+        {bestseller && <Modifier alt tid={bestseller} />}
       </ModifierContainer>
     </Container>
   );
@@ -17,6 +17,8 @@ export function CardImage({ image, bestseller, action, path, pathConfig }) {
 const Image = styled.img`
   width: 100%;
   height: 100%;
+  min-height: 260px;
+  max-height: 360px;
   object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
@@ -33,6 +35,7 @@ const ModifierContainer = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
+  min-width: 97px;
   flex-direction: column;
   gap: ${spacing(2)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
@@ -41,8 +44,7 @@ const Modifier = styled(TextSecondary)`
   background-color: ${({ alt }) =>
     alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
   color: ${THEME_COLOR.WHITE};
-  width: 97px;
-  padding: ${spacing(1.6)} 0;
+  padding: ${spacing(2)};
   display: flex;
   justify-content: center;
   align-items: center;

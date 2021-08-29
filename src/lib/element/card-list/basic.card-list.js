@@ -38,17 +38,15 @@ const Container = styled.div`
 function cardType(type) {
   switch (type) {
     case 0:
-      return CardSewingGoods;
-    case 1:
       return CardMasterClasses;
+    case 1:
+      return CardPattern;
     case 2:
-      return CardArticles;
+      return CardPattern;
     case 3:
-      return CardPattern;
+      return CardSewingGoods;
     case 4:
-      return CardPattern;
-    case 5:
-      return CardPattern;
+      return CardArticles;
     default:
       return () => null;
   }

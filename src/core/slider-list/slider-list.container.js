@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
@@ -8,7 +8,7 @@ import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { sliderListLoadData } from './slider-list.action';
 import { SLIDER_LIST_STORE_NAME } from './slider-list.constant';
 import { SliderListComponent } from './slider-list.component';
-import { sliderListUploadData, sliderItemRemove } from './slider-list.action';
+import { sliderListUploadData, sliderItemRemove, sliderItemRemoveFromServer } from './slider-list.action';
 import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
 import {
   getRequestData,
@@ -27,17 +27,25 @@ export function SliderListContainer() {
     user: state[AUTH_STORE_NAME].user,
   }));
 
-  React.useEffect(() => {
-    if (user && user?.role !== USER_ROLE.ADMIN) {
+  useEffect(() => {
+    if (user?.role !== USER_ROLE.ADMIN) {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
     dispatch(sliderListLoadData(currentLang));
   }, []);
 
+  const addSlide = () => dispatch(sliderListUploadData());
   const editSlide = (id) => redirect(SLIDER_EDIT_ROUTE_PATH(id));
-  const removeSlide = (id) => dispatch(sliderItemRemove(currentLang, id));
-  const addSlide = () => dispatch(sliderListUploadData(currentLang));
+
+  const removeSlide = (index, id) => {
+    if (id === 'new') {
+      dispatch(sliderItemRemove(index));
+    } else {
+      dispatch(sliderItemRemoveFromServer(currentLang, id));
+    }
+  };
+
   return (
     <SliderListComponent
       isPending={isRequestPending(state.sliderList)}

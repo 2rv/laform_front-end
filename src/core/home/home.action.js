@@ -1,6 +1,11 @@
 import { httpRequest } from '../../main/http';
 import { HOME_API } from './home.constant';
 import { HOME_ACTION_TYPE } from './home.type';
+import {
+  performMasterClassData,
+  performPatternsData,
+  performSewingGoodsData,
+} from './home.convert';
 
 export function masterClassUploadData(currentLang) {
   return async (dispatch) => {
@@ -12,7 +17,8 @@ export function masterClassUploadData(currentLang) {
         method: HOME_API.MASTER_CLASS_UPLOAD_DATA.TYPE,
         url: HOME_API.MASTER_CLASS_UPLOAD_DATA.ENDPOINT(currentLang),
       });
-      const data = response.data;
+
+      const data = performMasterClassData(response.data);
       dispatch({
         type: HOME_ACTION_TYPE.HOME_MASTER_CLASS_SUCCESS,
         data: data,
@@ -37,7 +43,8 @@ export function sewingGoodsUploadData(currentLang) {
         method: HOME_API.SEWING_GOODS_UPLOAD_DATA.TYPE,
         url: HOME_API.SEWING_GOODS_UPLOAD_DATA.ENDPOINT(currentLang),
       });
-      const data = response.data;
+      const data = performSewingGoodsData(response.data);
+
       dispatch({
         type: HOME_ACTION_TYPE.HOME_SEWING_GOODS_SUCCESS,
         data: data,
@@ -62,7 +69,7 @@ export function articleUploadData(currentLang) {
         method: HOME_API.ARTICLE_UPLOAD_DATA.TYPE,
         url: HOME_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang),
       });
-      const data = response.data;
+      const data = performPatternsData(response.data);
       dispatch({
         type: HOME_ACTION_TYPE.HOME_ARTICLE_SUCCESS,
         data: data,

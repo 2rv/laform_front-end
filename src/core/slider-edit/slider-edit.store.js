@@ -28,6 +28,11 @@ export function sliderEditStore(state = initialState, action) {
         ...state,
         sliderEdit: setRequestError(state.sliderEdit, action.errorMessage),
       };
+    case SLIDER_EDIT_ACTION_TYPE.SLIDER_EDIT_UPDATE_IMAGE:
+      return {
+        ...state,
+        sliderEdit: setRequestSuccess(state.sliderEdit, { ...state.sliderEdit.data, image: action.image }),
+      };
     default:
       return state;
   }
