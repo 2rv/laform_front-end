@@ -13,6 +13,7 @@ export function SettingsFormChangePasswordContainer(props) {
     isSuccess,
     isError,
     errorMessage,
+    pageLoading,
   } = props;
 
   const OLD_PASSWORD_NAME =
@@ -37,6 +38,7 @@ export function SettingsFormChangePasswordContainer(props) {
           isSuccess={isSuccess}
           isError={isError}
           errorMessage={errorMessage}
+          pageLoading={pageLoading}
           {...formProps}
         />
       )}

@@ -37,10 +37,13 @@ export function SettingsChangeDeliveryInfoContainer() {
     }),
   );
 
-  const settingsChangeDeliveryInfoFormSendData = (values) => {
+  const settingsChangeDeliveryInfoFormSendData = (
+    values,
+    { setSubmitting },
+  ) => {
     const data = convertSettingsChangeDeliveryInfoFormData(values);
 
-    dispatch(settingsChangeDeliveryInfoFormUploadData(data));
+    dispatch(settingsChangeDeliveryInfoFormUploadData(data, setSubmitting));
   };
 
   const settingsChangeDeliveryInfoFormGetInitialValue = () => {
@@ -59,7 +62,7 @@ export function SettingsChangeDeliveryInfoContainer() {
   };
 
   useEffect(() => {
-    // dispatch(settingsChangeDeliveryInfoLoadData())
+    dispatch(settingsChangeDeliveryInfoLoadData());
   }, []);
 
   return (

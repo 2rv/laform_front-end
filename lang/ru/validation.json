@@ -1,11 +1,11 @@
 {
   "REQUIRED": "Обязательно",
-  "MIN_LENGTH": "MIN_LENGTH VALIDATION",
-  "MAX_LENGTH": "MAX_LENGHT VALIDATION",
+  "MIN_LENGTH": "Минимальное количество символов - {{min}}",
+  "MAX_LENGTH": "Максимальное количество символов - {{max}}",
   "LOGIN": "LOGIN VALIDATION",
-  "EMAIL": "EMAIL VALIDATION",
-  "PASSWORD_REPEAT": "PASSWORD VALIDATION",
-  "NOT_PHONE": "PHONE VALIDATION",
-  "NAME": "NAME VALIDATION",
+  "EMAIL": "Некорректный адрес электронной почты",
+  "PASSWORD_REPEAT": "Пароли не совпадают",
+  "PASSWORD": "",
+  "NOT_PHONE": "Некорректный номер телефона",
   "PROMOCODE_DISCOUNT_RANGE": "Пожалуйста, введите число в диапазоне 1-99."
 }
