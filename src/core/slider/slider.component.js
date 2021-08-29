@@ -1,79 +1,59 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useKeenSlider } from 'keen-slider/react';
 import styled, { css } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { TextPrimary } from '../../lib/element/text';
-import { LinkPrimary } from '../../lib/element/link';
-import { text } from '../../lib/common/text';
-import { ButtonPrimary, ButtonBasic } from '../../lib/element/button';
-import { SLIDER_DATA_KEY } from './slider.type';
+import { ButtonBasic } from '../../lib/element/button';
 import { ReactComponent as ArrowLeft } from '../../asset/svg/arrow-slider-left.svg';
 import { ReactComponent as ArrowRight } from '../../asset/svg/arrow-slider-right.svg';
-import { LoaderPrimary } from '../../lib/element/loader';
-import { ErrorAlert } from '../../lib/element/alert';
-import { SliderSkeleton } from '../../lib/element/skeleton';
 import { SliderItemComponent } from './slider-item.component';
 import 'keen-slider/keen-slider.min.css';
 
-export function SliderComponent(props) {
-  const {
-    items,
-    slide,
-    prev,
-    next,
-    setSlide,
-    sliderRef,
-    pDisabled,
-    nDisabled,
-    isPending,
-    isError,
-    errorMessage,
-  } = props;
+export function SliderComponent({ sliders }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [sliderRef, slider] = useKeenSlider({
+    initial: 0,
+    slideChanged(s) {
+      setCurrentSlide(s.details().relativeSlide);
+    },
+  });
+
   return (
-    <>
-      {isPending && <LoaderPrimary />}
-      {isError && errorMessage ? (
-        <ErrorAlert tid={errorMessage} />
-      ) : items ? (
-        <Container>
-          <Button onClick={prev}>
-            <ArrowLeft />
-          </Button>
+    <Container>
+      <Button onClick={(e) => e.stopPropagation() || slider.prev()}>
+        <ArrowLeft />
+      </Button>
 
-          <Button onClick={next} right>
-            <ArrowRight />
-          </Button>
+      <Button onClick={(e) => e.stopPropagation() || slider.next()} right>
+        <ArrowRight />
+      </Button>
 
-          <div ref={sliderRef} className="keen-slider">
-            {items.map((data) => (
-              <SliderItemComponent key={data.id} {...data} />
-            ))}
-          </div>
-          <Dots>
-            {items.map((_, i) => (
-              <Dot key={i} active={slide === i} onClick={() => setSlide(i)} />
-            ))}
-          </Dots>
-        </Container>
-      ) : (
-        <SliderSkeleton />
-      )}
-    </>
+      <div ref={sliderRef} className="keen-slider">
+        {sliders.map((data) => (
+          <SliderItemComponent key={data.id} {...data} />
+        ))}
+      </div>
+      <Dots>
+        {sliders.map((_, i) => (
+          <Dot key={i} active={currentSlide === i} onClick={() => slider.moveToSlideRelative(i)} />
+        ))}
+      </Dots>
+    </Container>
   );
 }
+
 const Container = styled.div`
-  display: flex;
-  width: 100%;
   position: relative;
-  height: 350px;
-  justify-content: center;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  align-items: center;
 `;
+
 const Button = styled(ButtonBasic)`
   z-index: 1;
   width: fit-content;
   background: none;
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   ${(p) =>
     p.right
       ? css`
@@ -83,8 +63,11 @@ const Button = styled(ButtonBasic)`
           left: 0;
         `}
 `;
+
 const Dots = styled.div`
   display: flex;
+  justify-content: center;
+  width: 100%;
   position: absolute;
   gap: ${spacing(2)};
   bottom: ${spacing(6)};
@@ -92,6 +75,7 @@ const Dots = styled.div`
     bottom: ${spacing(2)};
   }
 `;
+
 const Dot = styled.div`
   width: 10px;
   height: 10px;
