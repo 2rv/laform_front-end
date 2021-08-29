@@ -125,6 +125,12 @@ import {
   sliderEditStore,
   SLIDER_EDIT_STORE_NAME,
 } from '../../core/slider-edit';
+
+import {
+  AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME,
+  authVerificateEmailRecoveryAccountStore,
+} from '../../core/auth-verificate-email-recovery-account';
+
 import { cartStore, CART_STORE_NAME } from '../../lib/common/cart';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 
@@ -134,6 +140,8 @@ import storage from 'redux-persist/lib/storage';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
+  [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME]:
+    authVerificateEmailRecoveryAccountStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
   [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,
