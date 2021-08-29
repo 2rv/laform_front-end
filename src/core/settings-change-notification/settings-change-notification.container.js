@@ -49,7 +49,6 @@ export function SettingsChangeNotificationContainer() {
       notificationData[SETTINGS_CHANGE_NOTIFICATION_DATA_KEY.SUBSCRIBED] ||
       false,
   });
-  console.log(changeEmailSuccess);
 
   useEffect(() => {
     dispatch(settingsChangeNotificationLoad());
