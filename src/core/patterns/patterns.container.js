@@ -26,7 +26,7 @@ export function PatternsContainer() {
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  //   useEffect(() => dispatch(patternsUploadData(currentLang)), []);
+  useEffect(() => dispatch(patternsUploadData(currentLang)), []);
   const filterInitialValue = () => ({
     [PATTERNS_FIELD_NAME.FILTER]: 0,
     [PATTERNS_FIELD_NAME.FIND]: '',
@@ -43,7 +43,7 @@ export function PatternsContainer() {
       //-----
       listItems={filterByType(
         sorterItemsByParams(
-          getRequestData(patternsState, [...testListItems]),
+          getRequestData(patternsState, []),
           filter[PATTERNS_FIELD_NAME.FIND],
           Number(filter[PATTERNS_FIELD_NAME.FILTER]),
         ),
@@ -67,8 +67,8 @@ export function PatternsContainer() {
 
 export const tabItems = [
   { name: 'PATTERNS.PATTERNS.MENU.ALL', type: 9 },
-  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 4 },
-  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 5 },
+  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 2 },
+  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 1 },
 ];
 export const testListItems = [
   {

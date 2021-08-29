@@ -59,7 +59,7 @@ export function TextareaField(props: TextAreaPropsType) {
   };
   return (
     <Container>
-      {titleTid && <TextSecondary tid={titleTid} />}
+      {titleTid && <Title tid={titleTid} />}
       <RelativeCase maxHeight={maxHeight}>
         <Textarea
           onChange={handleChange}
@@ -88,7 +88,9 @@ export function TextareaField(props: TextAreaPropsType) {
     </Container>
   );
 }
-
+const Title = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -116,7 +118,7 @@ const File = styled(FileIcon)`
 const Textarea = styled.textarea<any>`
   min-height: ${(p) => p.minHeight}px;
   max-height: inherit;
-  padding: ${spacing(2)} ${spacing(7)} ${spacing(2)} ${spacing(4)};
+  padding: ${spacing(2)} ${spacing(7)} ${spacing(2)} ${spacing(3)};
   width: 100%;
   overflow-y: auto;
   resize: none;
@@ -127,7 +129,6 @@ const Textarea = styled.textarea<any>`
   ::placeholder {
     color: ${THEME_COLOR.TEXT.LIGHT};
   }
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   background: ${(p) => (p.isError ? THEME_COLOR.WHITE : THEME_COLOR.GRAY)};
   border: 1px solid;
   border-color: ${(p) => (p.isError ? THEME_COLOR.TEXT.DANGER : 'transparent')};

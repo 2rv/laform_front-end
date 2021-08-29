@@ -24,7 +24,6 @@ export interface InputPropsType {
   onBlur: any;
   disabled?: boolean;
 }
-
 export interface CheckboxPropsType {
   titleTid?: string | any;
   labelTid?: string | any;
@@ -36,7 +35,6 @@ export interface CheckboxPropsType {
   width?: number;
   adaptive?: boolean;
 }
-
 export interface SelectPropsType {
   titleTid?: string;
   name: string;
@@ -48,8 +46,8 @@ export interface SelectPropsType {
   disabled?: boolean;
   adaptive?: boolean;
   textValue?: boolean;
+  multiple?: boolean;
 }
-
 export interface TextAreaPropsType {
   titleTid?: string;
   placeholderTid?: string;
@@ -65,4 +63,31 @@ export interface TextAreaPropsType {
   images: any;
   setImages: any;
   maxHeight?: number;
+}
+export interface FilefieldPropsType {
+  titleTid?: string;
+  placeholderTid: string;
+  name: string;
+  value: any;
+  error?: string;
+  onChange: any;
+  onBlur: any;
+  width?: number;
+  disabled?: boolean;
+  adaptive?: boolean;
+}
+export interface MultiFieldPropsType {
+  titleTid?: string;
+  placeholderTid: string;
+  name: string;
+  type?: string;
+  value: string;
+  error?: string;
+  onChange: any;
+  onBlur: any;
+  items?: [];
+  width?: number;
+  disabled?: boolean;
+  adaptive?: boolean;
+  setItems: any;
 }

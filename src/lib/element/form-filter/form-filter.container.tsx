@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useEffect } from 'react';
 import { FormFilterComponent } from './form-filter.component';
 import { FormFilterContainerPropsType } from './form-filter.type';
 
@@ -17,7 +18,9 @@ export function FormFilter(props: FormFilterContainerPropsType) {
     initialValues: initialValue,
     onSubmit: onSubmit,
   });
-  setFilter(formik.values);
+  useEffect(() => {
+    setFilter(formik.values);
+  }, [formik.values]);
   return (
     <FormFilterComponent
       findPlaceholderTid={findPlaceholderTid}

@@ -1,2 +1,2 @@
-export { CreateProductImageComponent } from './create-product-image';
-export { CreateProductFormContainer } from './create-product-field';
+export { AddImageComponent } from './add-image.component';
+export { ProductFormComponent } from './product-form.component';
