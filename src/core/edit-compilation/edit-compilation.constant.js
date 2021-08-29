@@ -14,6 +14,10 @@ export const EDIT_COMPILATION_API = {
     ENDPOINT: (currentLang) => `post/best/get?lang=${currentLang}`,
     TYPE: 'GET',
   },
+  PRODUCTS_LOAD_DATA: {
+    ENDPOINT: (compilationName, currentLang) => `${compilationName}/get?lang=${currentLang}`,
+    TYPE: 'GET',
+  },
   BEST_COMPILATIONS_REMOVE_ITEM: {
     ENDPOINT: (compilationName, id) => `${compilationName}/delete/${id}`,
     TYPE: 'DELETE',

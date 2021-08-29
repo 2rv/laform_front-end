@@ -83,6 +83,33 @@ export function bestArticlesLoadData(currentLang) {
   };
 }
 
+export function productsLoadData(compilationName, currentLang) {
+  return async (dispatch) => {
+    dispatch({
+      type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.TYPE,
+        url: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.ENDPOINT(compilationName, currentLang),
+      });
+
+      dispatch({
+        type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_SUCCESS,
+        products: response.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
 export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
   return async (dispatch) => {
     dispatch({
