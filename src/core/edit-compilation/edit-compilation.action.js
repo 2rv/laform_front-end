@@ -110,62 +110,31 @@ export function productsLoadData(compilationName, currentLang) {
   };
 }
 
-export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
+export function updatePinned(id, compilationName, currentLang, body) {
   return async (dispatch) => {
     dispatch({
       type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_PENDING,
     });
 
     try {
-      await httpRequest({
-        method: EDIT_COMPILATION_API.BEST_COMPILATIONS_REMOVE_ITEM.TYPE,
-        url: EDIT_COMPILATION_API.BEST_COMPILATIONS_REMOVE_ITEM.ENDPOINT(compilationName, id),
-      });
-
-      dispatch({
-        type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
-      });
-
-      if (compilationName === 'post') {
-        dispatch(bestProductsLoadData(currentLang));
+      let data;
+      if (compilationName === 'sewing-product') {
+        data = { sewingProduct: body };
       } else if (compilationName === 'master-class') {
-        dispatch(bestMasterClassesLoadData(currentLang));
+        data = { masterClass: body };
       } else if (compilationName === 'post') {
-        dispatch(bestArticlesLoadData(currentLang));
+        data = body;
       }
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
 
-// TODO: Это под вопросом
-/**
- * по дизайну в фигме мы должны изменять только name продукта, но этого запроса нету
- */
-export function bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang) {
-  return async (dispatch) => {
-    dispatch({
-      type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_PENDING,
-    });
-
-    try {
       await httpRequest({
-        method: EDIT_COMPILATION_API.BEST_MASTER_CLASS_UPDATE_ITEM.TYPE,
-        url: EDIT_COMPILATION_API.BEST_MASTER_CLASS_UPDATE_ITEM.ENDPOINT(compilationNamе, id),
-        data: newProductname,
+        method: EDIT_COMPILATION_API.UPDATE_PINNED.TYPE,
+        url: EDIT_COMPILATION_API.UPDATE_PINNED.ENDPOINT(compilationName, id),
+        data,
       });
 
-      dispatch({
-        type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
-      });
+      dispatch({ type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS });
 
-      if (compilationNamе === 'post') {
+      if (compilationName === 'sewing-product') {
         dispatch(bestProductsLoadData(currentLang));
       } else if (compilationName === 'master-class') {
         dispatch(bestMasterClassesLoadData(currentLang));

@@ -1,50 +1,57 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 import { ButtonBasic } from 'src/lib/element/button';
+import { updatePinned } from '../../edit-compilation.action';
 
 export function SelectCompilationComponent(props) {
   const {
     id,
-    titleRu,
+    title,
+    pinned,
     image,
+    compilationName,
+    currentLang,
+    setModalVisibility,
   } = props;
+
+  const dispatch = useDispatch();
+
+  const updateCompilation = () => {
+    dispatch(updatePinned(
+      id,
+      compilationName,
+      currentLang,
+      { pinned: true },
+    ));
+    setModalVisibility(false);
+  }
 
   return (
     <>
-      <Product>
+      <ProductContainer>
         <ProductLayout>
           <ProductImage src={image} />
-          <ProductName tid={titleRu} />
+          <ProductName tid={title} />
         </ProductLayout>
         <ProductLayout>
-          <ButtonBasic>
-            <TextSecondary tid="Добавить в лучшие подборки" />
-          </ButtonBasic>
-        </ProductLayout>
-      </Product>
+          {pinned ? (
+            <TextSecondary tid="Уже добавлен в лучшие подборки" />
+          ) : (
+            <ButtonBasic onClick={updateCompilation}>
+              <TextSecondary tid="Добавить в лучшие подборки" />
+            </ButtonBasic>
+          )}
+          </ProductLayout>
+      </ProductContainer>
       <Divider />
     </>
   );
 }
 
-const Divider = styled.div`
-  border: 1px solid ${THEME_COLOR.GRAY};
-`;
-
-const ProductLayout = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing(3)};
-`;
-
-const ProductImage = styled.img`
-  height: 75px;
-  width: 75px;
-`;
-
-const Product = styled.div`
+const ProductContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,7 +61,22 @@ const Product = styled.div`
   }
 `;
 
+const ProductLayout = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing(3)};
+`;
+
 const ProductName = styled(TextSecondary)`
   color: ${THEME_COLOR.SECONDARY_DARK};
   line-height: ${THEME_SIZE.FONT.LARGE};
+`;
+
+const ProductImage = styled.img`
+  height: 75px;
+  width: 75px;
+`;
+
+const Divider = styled.div`
+  border: 1px solid ${THEME_COLOR.GRAY};
 `;

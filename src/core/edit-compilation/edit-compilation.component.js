@@ -6,11 +6,14 @@ import { FieldSelect } from 'src/lib/element/field';
 import { ModalPopup } from 'src/lib/element/modal';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { spacing } from 'src/lib/theme';
+import { Spinner } from 'src/lib/element/spinner';
+import { TextSecondary } from 'src/lib/element/text';
 
 const PRODUCTS_TYPE = [
-  { id: 0, tid: 'Товар' },
-  { id: 1, tid: 'Мастер-класс' },
-  { id: 2, tid: 'Полезную статью' },
+  { id: 0, tid: 'Добавить подборку', hidden: true },
+  { id: 1, tid: 'Товар' },
+  { id: 2, tid: 'Мастер-класс' },
+  { id: 3, tid: 'Полезную статью' },
 ];
 
 export function EditCompilationComponent(props) {
@@ -19,14 +22,14 @@ export function EditCompilationComponent(props) {
     bestMasterClasses,
     bestArticles,
     products,
+    compilationName,
+    isPendingProducts,
     fetchProductsToSelectBestCompilation,
     modalVisibilty,
     setModalVisibility,
     currentLang,
     pageLoading,
   } = props;
-
-  console.log('products:', products);
 
   return (
     <>
@@ -35,7 +38,7 @@ export function EditCompilationComponent(props) {
         <TitlePrimary tid="ПОДБОРКИ" />
         <EditCompilationListComponent
           title="Лучшие товары"
-          compilationName="post" // Изменить когда BE будет готов
+          compilationName="sewing-product"
           items={bestProducts}
           currentLang={currentLang}
         />
@@ -53,28 +56,38 @@ export function EditCompilationComponent(props) {
         />
         <FieldSelect
           titleTid="Добавить подборку"
+          value="addCompilation"
           options={PRODUCTS_TYPE}
           onChange={fetchProductsToSelectBestCompilation}
         />
-        <ModalPopup
-          modalVisibilty={modalVisibilty}
-          onClose={() => setModalVisibility(false)}
-        >
-          <ProductsContent>
-            {products.map((product) => (
-              <SelectCompilationComponent
-                key={product.id}
-                titleRu={product.titleRu}
-                image={(product.images ? product.images[0] : product.imageUrl)?.fileUrl} />
-            ))}
-          </ProductsContent>
+        <ModalPopup modalVisibilty={modalVisibilty} onClose={() => setModalVisibility(false)}>
+          {isPendingProducts ? <Spinner /> : (
+            <ModalContent>
+              {products.filter(({ pinned }) => pinned).length >= 3 ? (
+                <TextSecondary tid="В списке должно быть максимум 3 подборки данной категории" />
+              ) : (
+                products.map((product) => (
+                  <SelectCompilationComponent
+                    key={product.id}
+                    id={product.id}
+                    title={product.titleRu}
+                    pinned={product.pinned}
+                    image={(product.images ? product.images[0] : product.imageUrl)?.fileUrl}
+                    compilationName={compilationName}
+                    currentLang={currentLang}
+                    setModalVisibility={setModalVisibility}
+                  />
+                ))
+              )}
+            </ModalContent>
+          )}
         </ModalPopup>
       </SectionLayout>
     </>
   );
 }
 
-const ProductsContent= styled.div`
+const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};

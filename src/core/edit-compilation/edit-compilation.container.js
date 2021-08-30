@@ -31,6 +31,7 @@ export function EditCompilationContainer() {
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
     user: state[AUTH_STORE_NAME].user,
   }));
+  const [compilationName, setCompilationName] = useState('');
   const [modalVisibilty, setModalVisibility] = useState(false);
 
   useEffect(() => {
@@ -44,12 +45,9 @@ export function EditCompilationContainer() {
   }, []);
 
   const fetchProductsToSelectBestCompilation = ({ target: { value } }) => {
-    dispatch(productsLoadData(
-      value === '0' ? 'post' : value === '1' ? 'master-class' : value === '2' ? 'post' : '',
-      currentLang,
-    ));
-
-    console.log(isRequestError(state.products));
+    const compName = value === '1' ? 'sewing-product' : value === '2' ? 'master-class' : value === '3' ? 'post' : '';
+    setCompilationName(compName);
+    dispatch(productsLoadData(compName, currentLang));
 
     if (isRequestError(state.products) === false) {
       setModalVisibility(true);
@@ -58,13 +56,12 @@ export function EditCompilationContainer() {
 
   return (
     <EditCompilationComponent
-      // bestProducts={getRequestData(state.bestProducts, [])}
-      bestProducts={[]}
-      // bestMasterClasses={getRequestData(state.bestMasterClasses, [])}
-      bestMasterClasses={[]}
-      // bestArticles={getRequestData(state.bestArticles, [])}
-      bestArticles={[]}
+      bestProducts={getRequestData(state.bestProducts, [])}
+      bestMasterClasses={getRequestData(state.bestMasterClasses, [])}
+      bestArticles={getRequestData(state.bestArticles, [])}
       products={getRequestData(state.products, [])}
+      compilationName={compilationName}
+      isPendingProducts={isRequestPending(state.products)}
       fetchProductsToSelectBestCompilation={fetchProductsToSelectBestCompilation}
       modalVisibilty={modalVisibilty}
       setModalVisibility={setModalVisibility}
