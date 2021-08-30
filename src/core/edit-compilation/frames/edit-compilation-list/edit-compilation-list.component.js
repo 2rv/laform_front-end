@@ -18,8 +18,10 @@ export function EditCompilationListComponent(props) {
       <Content>
         {items?.map((item) => (
           <EditCompilationListItemComponent
-            {...item}
-            key={item?.id}
+            key={item.id}
+            id={item.id}
+            title={item.titleRu}
+            image={(item.images ? item.images[0] : item.imageUrl)?.fileUrl}
             compilationNamе={compilationName}
             currentLang={currentLang}
           />

@@ -39,7 +39,7 @@ export interface SelectPropsType {
   titleTid?: string;
   name: string;
   value?: any;
-  options: { id: number; tid: string; tvalue: any }[];
+  options: { id: number; tid: string; tvalue?: any; hidden?: boolean }[];
   onChange: any;
   onBlur?: any;
   width?: number;

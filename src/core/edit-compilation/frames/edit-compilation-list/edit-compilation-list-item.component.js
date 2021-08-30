@@ -8,40 +8,48 @@ import { Popup } from 'src/lib/element/popup';
 import { ReactComponent as EditIcon } from 'src/asset/svg/edit.svg';
 import { ReactComponent as DeleteIcon } from 'src/asset/svg/delete-cancel-icon.svg';
 import { EditCompilationComponent } from './edit-compilation..component';
-import { bestCompilationsRemoveItem, bestMasterClassesUpdateItem } from '../../edit-compilation.action';
+import { updatePinned, bestMasterClassesUpdateItem } from '../../edit-compilation.action';
 
 export function EditCompilationListItemComponent(props) {
   const {
     id,
-    titleRu,
-    imageUrls,
+    title,
+    image,
     compilationNamе,
     currentLang,
   } = props;
 
   const dispatch = useDispatch();
-  const [ productName, setProductName ] = React.useState(titleRu);
 
   const changeProductNameHandler = (newProductname) => {
-    setProductName(newProductname);
-    // dispatch(bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang));
+    dispatch(updatePinned(
+      id,
+      compilationNamе,
+      currentLang,
+      { titleRu: newProductname },
+    ));
   };
 
-  const removeCompilationItem = (compilationNamе, id) => {
-    dispatch(bestCompilationsRemoveItem(compilationNamе, id, currentLang));
+  const removeCompilationItem = () => {
+    dispatch(updatePinned(
+      id,
+      compilationNamе,
+      currentLang,
+      { pinned: false },
+    ));
   };
 
   return (
     <>
-      <Item>
-        <ItemLayout type="small">
-          <ItemImage src={imageUrls[0]?.fileUrl} />
-          <ItemName tid={productName} />
-        </ItemLayout>
-        <ItemLayout>
+      <ProductContainer>
+        <ProductLayout type="small">
+          <ProductImage src={image} />
+          <ProductName tid={title} />
+        </ProductLayout>
+        <ProductLayout>
           <Popup content={(
             <EditCompilationComponent
-              productName={productName}
+              title={title}
               changeProductNameHandler={changeProductNameHandler}
             />
           )}>
@@ -49,18 +57,40 @@ export function EditCompilationListItemComponent(props) {
               <EditIcon />
             </IconButton>
           </Popup>
-          <IconButton onClick={() => removeCompilationItem(compilationNamе, id)}>
+          <IconButton onClick={removeCompilationItem}>
             <DeleteIcon />
           </IconButton>
-        </ItemLayout>
-      </Item>
+        </ProductLayout>
+      </ProductContainer>
       <Divider />
     </>
   );
 }
 
-const Divider = styled.div`
-  border: 1px solid ${THEME_COLOR.GRAY};
+const ProductContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+  }
+`;
+
+const ProductLayout = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+  align-items: center;
+`;
+
+const ProductName = styled(TextSecondary)`
+  color: ${THEME_COLOR.SECONDARY_DARK};
+  line-height: ${THEME_SIZE.FONT.LARGE};
+`;
+
+const ProductImage = styled.img`
+  height: 75px;
+  width: 75px;
 `;
 
 const IconButton = styled(ButtonBasic)`
@@ -69,24 +99,6 @@ const IconButton = styled(ButtonBasic)`
   padding: ${spacing(2.4)};
 `;
 
-const ItemLayout = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
-  align-items: center;
-`;
-
-const ItemImage = styled.img`
-  height: 75px;
-  width: 75px;
-`;
-
-const Item = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const ItemName = styled(TextSecondary)`
-  color: ${THEME_COLOR.SECONDARY_DARK};
-  line-height: ${THEME_SIZE.FONT.LARGE};
+const Divider = styled.div`
+  border: 1px solid ${THEME_COLOR.GRAY};
 `;

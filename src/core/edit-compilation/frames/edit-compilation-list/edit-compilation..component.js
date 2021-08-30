@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { BasicField } from 'src/lib/element/field';
 import { ButtonSecondary } from 'src/lib/element/button';
 
-export function EditCompilationComponent({ productName, changeProductNameHandler }) {
-  const [ productNameValue, setProductNameValue ] = React.useState(productName);
+export function EditCompilationComponent({ title, changeProductNameHandler }) {
+  const [ productNameValue, setProductNameValue ] = React.useState(title);
 
   return (
     <EditProductContainer>
