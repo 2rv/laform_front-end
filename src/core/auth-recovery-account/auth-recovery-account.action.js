@@ -3,9 +3,10 @@ import { redirect } from '../../main/navigation';
 
 import {
   AUTH_RECOVERY_ACCOUNT_API,
-  AUTH_RECOVERY_ACCOUNT_REDIRECT_ON_SUCCESS,
+  AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH,
 } from './auth-recovery-account.constant';
 import { AUTH_RECOVERY_ACCOUNT_ACTION_TYPE } from './auth-recovery-account.type';
+import { AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ACTION_TYPE } from '../auth-verificate-email-recovery-account';
 
 export function authRecoveryAccountFormUploadData(data) {
   return async (dispatch) => {
@@ -24,7 +25,12 @@ export function authRecoveryAccountFormUploadData(data) {
         type: AUTH_RECOVERY_ACCOUNT_ACTION_TYPE.AUTH_RECOVERY_ACCOUNT_FORM_UPLOAD_SUCCESS,
       });
 
-      redirect(AUTH_RECOVERY_ACCOUNT_REDIRECT_ON_SUCCESS);
+      dispatch({
+        type: AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ACTION_TYPE.AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_SET_EMAIL,
+        data,
+      });
+
+      redirect(AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH);
     } catch (err) {
       if (err.response) {
         dispatch({
