@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import {
   SectionLayout,
   PageLayout,
@@ -10,6 +12,7 @@ import { SettingsChangePasswordContainer } from '../settings-change-password';
 import { SettingsChangeEmailContainer } from '../settings-change-email';
 import { SettingsChangeNotificationContainer } from '../settings-change-notification';
 import { SettingsLogutContainer } from '../settings-logout';
+import { SETTINGS_CHANGE_EMAIL_STORE_NAME } from '../settings-change-email';
 
 export function SettingsComponent() {
   return (

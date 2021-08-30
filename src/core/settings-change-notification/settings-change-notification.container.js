@@ -10,6 +10,7 @@ import {
 } from '../../main/store/store.service';
 
 import { SETTINGS_CHANGE_NOTIFICATION_STORE_NAME } from './settings-change-notification.constant';
+import { SETTINGS_CHANGE_EMAIL_STORE_NAME } from '../settings-change-email';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME,
@@ -24,24 +25,38 @@ import { convertSettingsChangeNotificationFormData } from './settings-change-not
 
 export function SettingsChangeNotificationContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
+  const { state, pageLoading, changeEmailSuccess } = useSelector((state) => ({
     state: state[SETTINGS_CHANGE_NOTIFICATION_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    changeEmailSuccess:
+      state[SETTINGS_CHANGE_EMAIL_STORE_NAME].settingsChangeEmailUploadForm
+        .success,
   }));
-  const notification = getRequestData(state);
+  const notificationData = getRequestData(
+    state.settingsChangeNotificationLoadNotification,
+  );
 
-  const settingsChangeNotificationFormSendData = (values) => {
+  const settingsChangeNotificationFormSendData = (
+    values,
+    { setSubmitting },
+  ) => {
     const data = convertSettingsChangeNotificationFormData(values);
-    dispatch(settingsChangeNotificationFormUploadData(data));
+    dispatch(settingsChangeNotificationFormUploadData(data, setSubmitting));
   };
 
   const settingsChangeNotificationFormGetInitialValue = () => ({
-    [SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME.NOTIFICATION]: notification,
+    [SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME.NOTIFICATION]:
+      notificationData[SETTINGS_CHANGE_NOTIFICATION_DATA_KEY.SUBSCRIBED] ||
+      false,
   });
 
   useEffect(() => {
-    // dispatch(settingsChangeNotificationLoad());
+    dispatch(settingsChangeNotificationLoad());
   }, []);
+
+  useEffect(() => {
+    dispatch(settingsChangeNotificationLoad());
+  }, [changeEmailSuccess]);
 
   return (
     <SettingsFormChangeNotificationContainer

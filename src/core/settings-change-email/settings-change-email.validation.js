@@ -10,7 +10,7 @@ import { SETTINGS_CHANGE_EMAIL_FIELD_NAME } from './settings-change-email.type';
 const config = {
   [SETTINGS_CHANGE_EMAIL_FIELD_NAME.OLD_EMAIL]: [email, required],
   [SETTINGS_CHANGE_EMAIL_FIELD_NAME.NEW_EMAIL]: [email, required],
-  [SETTINGS_CHANGE_EMAIL_FIELD_NAME.PASSWORD]: [required, password],
+  [SETTINGS_CHANGE_EMAIL_FIELD_NAME.PASSWORD]: [required],
 };
 
 export const settingsChangeEmailFormValidation = (values) =>

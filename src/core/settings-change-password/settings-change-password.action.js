@@ -19,6 +19,8 @@ export function settingsChangePasswordFormUploadData(data) {
       dispatch({
         type: SETTINGS_CHANGE_PASSWORD_ACTION_TYPE.SETTINGS_CHANGE_PASSWORD_FORM_UPLOAD_SUCCESS,
       });
+
+      setSubmitting(false);
     } catch (err) {
       if (err.response) {
         dispatch({

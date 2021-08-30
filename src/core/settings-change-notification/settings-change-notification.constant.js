@@ -3,11 +3,11 @@ export const SETTINGS_CHANGE_NOTIFICATION_STORE_NAME =
 
 export const SETTINGS_CHANGE_NOTIFICATION_API = {
   UPLOAD_FORM: {
-    ENDPOINT: 'user/settings/subscribe',
-    METHOD: 'PATCH',
+    ENDPOINT: 'notification/subscribe-authtorized',
+    METHOD: 'POST',
   },
   LOAD_NOTIFICATION: {
-    ENDPOINT: 'user/subscription',
+    ENDPOINT: 'notification/subscribe-status',
     METHOD: 'GET',
   },
 };
