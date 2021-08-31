@@ -5,12 +5,13 @@ import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
 import { redirect } from '../../main/navigation/navigation.core';
 import { HTTP_ERROR_ROUTER } from '../../main/http';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { aboutAccountUploadData } from './about-account.action';
+import { aboutAccountLoadData, likesLoadData } from './about-account.action';
 import { AboutAccountComponent } from './about-account.component';
 import { ABOUT_ACCOUNT_STORE_NAME } from './about-account.constant';
 
@@ -23,18 +24,16 @@ export function AboutAccountContainer() {
   }));
 
   useEffect(() => {
-    //   dispatch(aboutAccountUploadData());
+    // dispatch(aboutAccountLoadData());
+    dispatch(likesLoadData());
   }, []);
 
   return (
     <AboutAccountComponent
-      isPending={isRequestPending(state.aboutAccount)}
-      isError={isRequestError(state.aboutAccount)}
-      isSuccess={isRequestSuccess(state.aboutAccount)}
-      errorMessage={getRequestErrorMessage(state.aboutAccount)}
+      isLikesPending={isRequestPending(state.likes)}
+      likes={getRequestData(state.likes, [])}
       pageLoading={pageLoading}
       orderItems={orderItems}
-      likeItems={likeItems}
       commentItems={commentItems}
     />
   );
