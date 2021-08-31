@@ -15,7 +15,7 @@ export function TextButton(props: ButtonPropsType) {
   );
 }
 
-const Button = styled.button`
+const Button = styled.button<any>`
   width: ${(p: { width: false | number }) => p.width + 'px' || '100%'};
   display: flex;
   align-items: center;
