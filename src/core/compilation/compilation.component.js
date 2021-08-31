@@ -42,7 +42,8 @@ export function CompilationComponent(props) {
         setActiveTab={setActiveTab}
         tabItems={tabItems}
       />
-      {isPending ? (
+      {/* {isPending ? ( */}
+      {false ? (
         <Spinner />
       ) : (
         <TableList items={data}>

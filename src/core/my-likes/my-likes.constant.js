@@ -1,4 +1,4 @@
-export const MY_LIKES_ROUTE_PATH = '/my-likes';
+export const MY_LIKES_ROUTE_PATH = '/favorites';
 
 export const MY_LIKES_STORE_NAME = 'MY_LIKES';
 

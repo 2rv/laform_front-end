@@ -43,17 +43,17 @@ export function CompilationContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    dispatch(productsLoadData(currentLang));
-    dispatch(masterClassesLoadData(currentLang));
-    dispatch(articlesLoadData(currentLang));
+    // dispatch(productsLoadData(currentLang));
+    // dispatch(masterClassesLoadData(currentLang));
+    // dispatch(articlesLoadData(currentLang));
   }, []);
 
   return (
     <CompilationComponent
-      isPending={isRequestPending(state.articles)}
-      isError={isRequestError(state.articles)}
-      isSuccess={isRequestSuccess(state.articles)}
-      errorMessage={getRequestErrorMessage(state.articles)}
+      // isPending={isRequestPending(state.articles)}
+      // isError={isRequestError(state.articles)}
+      // isSuccess={isRequestSuccess(state.articles)}
+      // errorMessage={getRequestErrorMessage(state.articles)}
       pageLoading={pageLoading}
       data={filterByType(data, activeTab)}
       tabItems={tabItems}
