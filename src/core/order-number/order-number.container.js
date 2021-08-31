@@ -27,7 +27,7 @@ export function OrderNumberContainer() {
   const orderNumberDetails = getRequestData(state.orderNumber);
 
   useEffect(() => {
-    if (user && user?.role !== USER_ROLE.ADMIN) {
+    if (user?.role !== USER_ROLE.ADMIN) {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }

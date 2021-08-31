@@ -5,5 +5,5 @@ import { EDIT_COMPILATION_ROUTE_PATH } from './edit-compilation.constant';
 
 export function editCompilationRouter(ctx) {
   ctx.store.dispatch(setActivePath(EDIT_COMPILATION_ROUTE_PATH));
-  // authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }
