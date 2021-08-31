@@ -12,6 +12,7 @@ import { AUTH_ACTION_TYPE } from '.';
 export function authSetData(token: string | null = null) {
   const user = token ? parseUserAuthData(authDecode(token)) : null;
 
+  //@ts-ignore
   setAutorization(token);
 
   const data: AuthStoreAction = {
