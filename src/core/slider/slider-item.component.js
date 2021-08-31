@@ -8,7 +8,6 @@ import { ButtonBasic } from '../../lib/element/button';
 import 'keen-slider/keen-slider.min.css';
 
 export function SliderItemComponent(props) {
-  const { slide, data, index } = props;
   const {
     titleText,
     titleTextColor,
@@ -18,14 +17,38 @@ export function SliderItemComponent(props) {
     isButton,
     buttonPath,
     image,
-  } = data;
+  } = props;
   return (
     <Container className="keen-slider__slide">
       <Content>
-        <Title color={titleTextColor}>{titleText}</Title>
+        <Title color={
+            titleTextColor === '0' ? 'white'
+          : titleTextColor === '1' ? 'black'
+          : titleTextColor === '2' ? 'red'
+          : titleTextColor === '3' ? 'green'
+          : titleTextColor === '4' ? 'blue'
+          : ''
+        }>{titleText}</Title>
         {isButton && (
           <LinkPrimary path={buttonPath}>
-            <Button bgcolor={buttonColor} color={buttonTextColor}>
+            <Button
+              bgcolor={
+                  buttonColor === '0' ? 'orange'
+                : buttonColor === '1' ? 'blue'
+                : buttonColor === '2' ? 'white'
+                : buttonColor === '3' ? 'red'
+                : buttonColor === '4' ? 'yellow'
+                : ''
+              }
+              color={
+                  buttonTextColor === '0' ? 'blue'
+                : buttonTextColor === '1' ? 'gray'
+                : buttonTextColor === '2' ? 'red'
+                : buttonTextColor === '3' ? 'red'
+                : buttonTextColor === '4' ? 'purple'
+                : ''
+              }
+            >
               {buttonText}
             </Button>
           </LinkPrimary>

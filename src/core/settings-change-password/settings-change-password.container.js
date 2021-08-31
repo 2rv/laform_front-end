@@ -9,6 +9,7 @@ import {
 
 import { SettingsFormChangePasswordContainer } from './frames/settings-form-change-password';
 import { SETTINGS_CHANGE_PASSWORD_STORE_NAME } from './settings-change-password.constant';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   SETTINGS_CHANGE_PASSWORD_FIELD_NAME,
   SETTINGS_CHANGE_PASSWORD_FORM_FIELD_NAME,
@@ -19,14 +20,15 @@ import { convertSettingsChangePasswordFormData } from './settings-change-passwor
 
 export function SettingsChangePasswordContainer() {
   const dispatch = useDispatch();
-  const state = useSelector(
-    (state) => state[SETTINGS_CHANGE_PASSWORD_STORE_NAME],
-  );
+  const { state, pageLoading } = useSelector((state) => ({
+    state: state[SETTINGS_CHANGE_PASSWORD_STORE_NAME],
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+  }));
 
-  const settingsChangePasswordFormSendData = (values) => {
+  const settingsChangePasswordFormSendData = (values, { setSubmitting }) => {
     const data = convertSettingsChangePasswordFormData(values);
 
-    dispatch(settingsChangePasswordFormUploadData(data));
+    dispatch(settingsChangePasswordFormUploadData(data, setSubmitting));
   };
 
   const settingsChangePasswordFormGetInitialValue = () => ({
@@ -45,6 +47,7 @@ export function SettingsChangePasswordContainer() {
       validation={settingsChangePasswordFormValidation}
       onSubmitForm={settingsChangePasswordFormSendData}
       fieldName={SETTINGS_CHANGE_PASSWORD_FORM_FIELD_NAME}
+      pageLoading={pageLoading}
     />
   );
 }

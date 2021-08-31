@@ -1,1 +1,1 @@
-export { filterByType } from './filter-list-card';
+export { filterByType, sorterItemsByParams } from './filter-list-card';

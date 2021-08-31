@@ -10,6 +10,7 @@ const initialState = {
   bestArticles: initRequestState(),
   bestMasterClasses: initRequestState(),
   bestProducts: initRequestState(),
+  products: initRequestState(),
 };
 
 export function editCompilationStore(state = initialState, action) {
@@ -34,6 +35,21 @@ export function editCompilationStore(state = initialState, action) {
         bestArticles: setRequestError(state.bestArticles, action.errorMessage),
         bestMasterClasses: setRequestError(state.bestMasterClasses, action.errorMessage),
         bestProducts: setRequestError(state.bestProducts, action.errorMessage),
+      };
+    case EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_PENDING:
+      return {
+        ...state,
+        products: setRequestPending(state.products),
+      };
+    case EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_SUCCESS:
+      return {
+        ...state,
+        products: setRequestSuccess(state.products, action.products),
+      };
+    case EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_ERROR:
+      return {
+        ...state,
+        products: setRequestError(state.products, action.errorMessage),
       };
     default:
       return state;

@@ -4,11 +4,10 @@ import {
   setRequestPending,
   setRequestSuccess,
 } from '../../main/store/store.service';
-
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
 const initialState = {
-  patterns: initRequestState(),
+  patternsState: initRequestState(),
 };
 
 export function patternsStore(state = initialState, action) {
@@ -16,17 +15,20 @@ export function patternsStore(state = initialState, action) {
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_PENDING:
       return {
         ...state,
-        patterns: setRequestPending(state.patterns),
+        patternsState: setRequestPending(state.patternsState),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS:
       return {
         ...state,
-        patterns: setRequestSuccess(state.patterns),
+        patternsState: setRequestSuccess(state.patternsState, action.data),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_ERROR:
       return {
         ...state,
-        patterns: setRequestError(state.patterns, action.errorMessage),
+        patternsState: setRequestError(
+          state.patternsState,
+          action.errorMessage,
+        ),
       };
     default:
       return state;

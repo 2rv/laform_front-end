@@ -1,7 +1,6 @@
 export const MASTER_CLASSES_FIELD_NAME = {
-  CATEGORY: 'category',
-  TAGS: 'tags',
-  FIND_INPUT: 'find-master-classes',
+  FILTER: 'filter',
+  FIND: 'find-master-classes',
 };
 
 export const MASTER_CLASSES_ACTION_TYPE = {

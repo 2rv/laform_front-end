@@ -20,15 +20,23 @@ export function SettingsFormChangePasswordComponent(props) {
     handleChange,
     handleBlur,
     handleSubmit,
+    isValid,
 
     isPending,
     isSuccess,
     isError,
     errorMessage,
+    pageLoading,
   } = props;
 
   const getFieldError = (name) => {
     return errors[name] && touched[name] && errors[name];
+  };
+
+  const isSubmitDisabled = () => {
+    return JSON.stringify(touched) === '{}'
+      ? true
+      : !isValid || pageLoading || isPending;
   };
 
   return (
@@ -70,7 +78,7 @@ export function SettingsFormChangePasswordComponent(props) {
             <ButtonSecondary
               tid="SETTINGS.CHANGE_PASSWORD.SUBMIT"
               type="submit"
-              disabled={isPending}
+              disabled={isSubmitDisabled()}
             />
           </FieldLayout>
           {isSuccess && <SuccessAlert tid="SETTINGS.CHANGE_PASSWORD.SUCCESS" />}

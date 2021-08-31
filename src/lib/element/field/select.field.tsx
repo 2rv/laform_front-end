@@ -33,8 +33,8 @@ export function FieldSelect(props: SelectPropsType) {
           onChange={onChange}
           onBlur={onBlur}
         >
-          {options.map(({ id, tid, tvalue }) => (
-            <option key={id} value={textValue ? tid : id}>
+          {options.map(({ id, tid, tvalue, hidden }) => (
+            <option key={id} value={textValue ? tid : id} hidden={hidden}>
               {text(tid, tvalue)}
             </option>
           ))}

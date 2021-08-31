@@ -1,59 +1,49 @@
 import { useEffect, useState } from 'react';
-import {
-  getRequestErrorMessage,
-  isRequestError,
-  isRequestPending,
-  isRequestSuccess,
-} from '../../main/store/store.service';
-import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { useDispatch, useSelector } from 'react-redux';
+import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { SLIDER_STORE_NAME } from './slider.constant';
 import { sliderLoadData } from './slider.action';
 import { SliderComponent } from './slider.component';
-import { useKeenSlider } from 'keen-slider/react';
+import { LoaderPrimary } from '../../lib/element/loader';
+import { ErrorAlert } from '../../lib/element/alert';
+import { SliderSkeleton } from '../../lib/element/skeleton';
+
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+} from '../../main/store/store.service';
 
 export function SliderContainer(props) {
   const dispatch = useDispatch();
-  const { state, pageLoading, slides, lang } = useSelector((state) => ({
+  const { state, currentLang } = useSelector((state) => ({
     state: state[SLIDER_STORE_NAME],
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    slides: state[SLIDER_STORE_NAME].slider.data,
-    lang: state[LANG_STORE_NAME].active,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
+
+  const sliders = getRequestData(state.slider, []);
+
   useEffect(() => {
-    //   dispatch(sliderLoadData(lang));
+    dispatch(sliderLoadData(currentLang));
   }, []);
 
-  const [slide, setSlide] = useState(0);
-  const [sliderRef, slider] = useKeenSlider({
-    initial: 0,
-    slideChanged(s) {
-      setSlide(s.details().relativeSlide);
-    },
-  });
-  const nextSlide = (e) => e.stopPropagation() || slider.next();
-  const prevSlide = (e) => e.stopPropagation() || slider.prev();
-  //   const setActiveSlide = (index) => ;
+  if (isRequestPending(state.slider)) {
+    return <LoaderPrimary />;
+  }
+
+  if (isRequestError(state.slider) && getRequestErrorMessage(state.slider)) {
+    return <ErrorAlert tid={getRequestErrorMessage(state.slider)} />;
+  }
+
   return (
-    <SliderComponent
-      isPending={isRequestPending(state.slider)}
-      isError={true}
-      isSuccess={true}
-      // isSuccess={isRequestSuccess(state.slider)}
-      errorMessage={getRequestErrorMessage(state.slider)}
-      slide={slide}
-      prev={prevSlide}
-      next={nextSlide}
-      setSlide={slider?.moveToSlideRelative}
-      items={testSlides} // сделать нормальную конвертацию и посмотреть testSlides что бы понимать
-      sliderRef={sliderRef}
-    />
+    Boolean(sliders.length > 0) ? <SliderComponent sliders={sliders} /> : <SliderSkeleton />
   );
 }
 
 export const testSlides = [
   {
+    id: 1,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
     titleTextColor: '#FFFFFF',
     buttonText: 'Купить',
@@ -64,6 +54,7 @@ export const testSlides = [
     image: 'http://placekitten.com/900/300',
   },
   {
+    id: 2,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
     titleTextColor: '#2F80ED',
     buttonText: 'Купить',
@@ -74,6 +65,7 @@ export const testSlides = [
     image: 'http://placekitten.com/900/301',
   },
   {
+    id: 3,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
     titleTextColor: '#219653',
     buttonText: 'Купить',

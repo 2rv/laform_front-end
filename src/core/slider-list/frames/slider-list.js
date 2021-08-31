@@ -9,6 +9,7 @@ export function SliderList(props) {
       {slidersItems.map((data, index) => (
         <SliderItem
           key={index}
+          index={index}
           data={data}
           removeSlide={removeSlide}
           editSlide={editSlide}

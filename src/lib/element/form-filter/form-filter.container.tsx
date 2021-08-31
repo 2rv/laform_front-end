@@ -1,51 +1,33 @@
-import { Formik } from 'formik';
+import { useFormik } from 'formik';
+import { useEffect } from 'react';
 import { FormFilterComponent } from './form-filter.component';
 import { FormFilterContainerPropsType } from './form-filter.type';
 
 export function FormFilter(props: FormFilterContainerPropsType) {
   const {
     findPlaceholderTid,
-    categoryOptions,
-    tagsOptions,
-
-    fieldNameFind,
-    selectNameCategory,
-    selectNameTags,
-
+    filterOptions,
+    findFieldName,
+    filterSelectName,
+    setFilter,
     initialValue,
-    validation,
     onSubmit,
-
-    pending,
-    success,
-    error,
-    errorMessage,
-    filterProducts,
-    sortProducts,
   } = props;
+
+  const formik = useFormik({
+    initialValues: initialValue,
+    onSubmit: onSubmit,
+  });
+  useEffect(() => {
+    setFilter(formik.values);
+  }, [formik.values]);
   return (
-    <Formik
-      initialValues={initialValue}
-      validate={validation}
-      onSubmit={onSubmit}
-    >
-      {(formProps) => (
-        <FormFilterComponent
-          findPlaceholderTid={findPlaceholderTid}
-          categoryOptions={categoryOptions}
-          tagsOptions={tagsOptions}
-          selectNameCategory={selectNameCategory}
-          selectNameTags={selectNameTags}
-          fieldNameFind={fieldNameFind}
-          pending={pending}
-          success={success}
-          error={error}
-          errorMessage={errorMessage}
-          filterProducts={filterProducts}
-          sortProducts={sortProducts}
-          {...formProps}
-        />
-      )}
-    </Formik>
+    <FormFilterComponent
+      findPlaceholderTid={findPlaceholderTid}
+      filterOptions={filterOptions}
+      filterSelectName={filterSelectName}
+      findFieldName={findFieldName}
+      formik={formik}
+    />
   );
 }

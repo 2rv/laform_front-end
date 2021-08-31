@@ -1,7 +1,13 @@
-export const PROMOCODES_FIELD_NAME = {
-  CATEGORY: 'category',
-  TAGS: 'tags',
-  FIND_INPUT: 'find-promocodes',
+import { PROMOCODE_FIELD_KEY } from './frames';
+
+export const PROMOCODE_FIELD_NAME = {
+  PROMOCODE: 'promocode',
+  DISCOUNT: 'discount',
+};
+
+export const PROMOCODE_FORM_FIELD_NAME = {
+  [PROMOCODE_FIELD_KEY.PROMOCODE]: PROMOCODE_FIELD_NAME.PROMOCODE,
+  [PROMOCODE_FIELD_KEY.DISCOUNT]: PROMOCODE_FIELD_NAME.DISCOUNT,
 };
 
 export const PROMOCODES_ACTION_TYPE = {

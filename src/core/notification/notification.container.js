@@ -32,9 +32,9 @@ export function NotificationContainer() {
       ],
   }));
 
-  const notificationFormSendData = (values) => {
+  const notificationFormSendData = (values, { setSubmitting }) => {
     const data = convertNotificationFormData(values);
-    dispatch(notificationFormUploadData(data));
+    dispatch(notificationFormUploadData(data, setSubmitting));
   };
 
   const notificationFormGetInitialValue = () => ({

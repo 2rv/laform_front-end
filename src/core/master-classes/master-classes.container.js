@@ -14,106 +14,71 @@ import { masterClassesUploadData } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
 import { MASTER_CLASSES_FIELD_NAME } from './master-classes.type';
 import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
+import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
-    state: state[MASTER_CLASSES_STORE_NAME].masterClasses,
-    currentLang: state[LANG_STORE_NAME].active,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
-  const [filteredProducts, setFilteredProducts] = useState(testListItems);
+  const { masterClassState, pageLoading, currentLang } = useSelector(
+    (state) => ({
+      masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
 
-  const initialValue = () => {
-    return {
-      [MASTER_CLASSES_FIELD_NAME.CATEGORY]: 1,
-      [MASTER_CLASSES_FIELD_NAME.TAGS]: 1,
-      [MASTER_CLASSES_FIELD_NAME.FIND_INPUT]: '',
-    };
-  };
+      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }),
+  );
 
-  const masterClassesFormFilterGetInitialValue = () => {
-    //   const rawData = getRequestData(changeDeliveryInfo, null);
-    //   if (!rawData) {
-    //     return {
-    //       [MASTER_CLASSES_FILTER_FIELD_NAME.CATEGORY]:
-    //         MASTER_CLASSES_FILTER_CATEGORY_OPTIONS[0].id,
-    //       [MASTER_CLASSES_FILTER_FIELD_NAME.TAGS]:
-    //         MASTER_CLASSES_FILTER_TAGS_OPTIONS[0].id,
-    //     };
-  };
+  useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
 
-  useEffect(() => {
-    // dispatch(masterClassesUploadData(currentLang.toLowerCase()));
-  }, []);
+  const filterInitialValue = () => ({
+    [MASTER_CLASSES_FIELD_NAME.FILTER]: 0,
+    [MASTER_CLASSES_FIELD_NAME.FIND]: '',
+  });
 
-  const onSubmit = (values) => {
-    // console.log(values); // это ответ с формы если пользователь что то вводит или тыкает селект/инпут
-  };
-
-  const filterProducts = (name) => {
-    setFilteredProducts(
-      testListItems.filter((product) => {
-        return product.name.toLowerCase().trim().includes(name);
-      }),
-    );
-  };
-
-  const sortProductsByPrice = (option = 1) => {
-    setFilteredProducts((prevProducts) => {
-      return [...prevProducts].sort((a, b) => {
-        if (option === 1) {
-          return prevProducts;
-        } else if (option === 2) {
-          return (a.price.discount !== null ? a.price.discount : a.price.min) - (b.price.discount !== null ? b.price.discount : b.price.min);
-        } else if (option === 3) {
-          return (b.price.discount !== null ? b.price.discount : b.price.min) - (a.price.discount !== null ? a.price.discount : a.price.min);
-        }
-      });
-    });
-  };
+  const [filter, setFilter] = useState(filterInitialValue());
 
   return (
     <MasterClassesComponent
-      // isPending={isRequestPending(state)}
-      // isError={isRequestError(state)}
-      // isSuccess={isRequestSuccess(state)}
-      // errorMessage={getRequestErrorMessage(state)}
-      //   pageLoading={pageLoading}
-      initialValue={initialValue()}
-      categoryOptions={categorySelectOptions}
-      tagsOptions={tagsSelectOptions}
-      listItems={filteredProducts}
-      fieldName={MASTER_CLASSES_FIELD_NAME}
-      onSubmit={onSubmit}
-      filterProducts={filterProducts}
-      sortProductsByPrice={sortProductsByPrice}
+      listItems={sorterItemsByParams(
+        getRequestData(masterClassState, []),
+        filter[MASTER_CLASSES_FIELD_NAME.FIND],
+        Number(filter[MASTER_CLASSES_FIELD_NAME.FILTER]),
+      )}
+      //-----
+      filterOptions={filterOptionss}
+      initialValue={filterInitialValue()}
+      setFilter={setFilter}
+      filterSelectName={MASTER_CLASSES_FIELD_NAME.FILTER}
+      findFieldName={MASTER_CLASSES_FIELD_NAME.FIND}
+      //-----
+      pageLoading={pageLoading}
+      isPending={isRequestPending(masterClassState)}
+      isError={isRequestError(masterClassState)}
+      isSuccess={isRequestSuccess(masterClassState)}
+      errorMessage={getRequestErrorMessage(masterClassState)}
     />
   );
 }
 
-export const categorySelectOptions = [
+export const filterOptionss = [
+  {
+    id: 0,
+    tid: 'Все',
+  },
   {
     id: 1,
-    tid: 'Категория 1',
+    tid: 'Акция',
   },
   {
     id: 2,
-    tid: 'Категория 2',
-  },
-];
-export const tagsSelectOptions = [
-  {
-    id: 1,
-    tid: 'Популярные',
-  },
-  {
-    id: 2,
-    tid: 'Самые дешевые',
+    tid: 'Хит',
   },
   {
     id: 3,
-    tid: 'Самые дорогие',
+    tid: 'По возрастанию',
+  },
+  {
+    id: 4,
+    tid: 'По убыванию',
   },
 ];
 export const testListItems = [

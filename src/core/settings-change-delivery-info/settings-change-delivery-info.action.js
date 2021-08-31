@@ -30,7 +30,7 @@ export function settingsChangeDeliveryInfoLoadData() {
   };
 }
 
-export function settingsChangeDeliveryInfoFormUploadData(data) {
+export function settingsChangeDeliveryInfoFormUploadData(data, setSubmitting) {
   return async (dispatch) => {
     dispatch({
       type: SETTINGS_CHANGE_DELIVERY_INFO_ACTION_TYPE.SETTINGS_CHANGE_DELIVERY_INFO_FORM_UPLOAD_PENDING,
@@ -46,6 +46,8 @@ export function settingsChangeDeliveryInfoFormUploadData(data) {
       dispatch({
         type: SETTINGS_CHANGE_DELIVERY_INFO_ACTION_TYPE.SETTINGS_CHANGE_DELIVERY_INFO_FORM_UPLOAD_SUCCESS,
       });
+
+      setSubmitting(false);
     } catch (err) {
       if (err.response) {
         dispatch({

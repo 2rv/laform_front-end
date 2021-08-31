@@ -112,7 +112,7 @@ export function TableItem(props) {
     </Tr>
   );
 }
-const Tr = styled.div`
+const Tr = styled.tr`
   display: table-row;
   @media screen and (max-width: 875px) {
     display: flex;

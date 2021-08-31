@@ -1,4 +1,4 @@
-const convertSliderData = (rowData) => {
+export const convertSliderData = (rowData) => {
   return rowData.map((item) => ({
     id: item.id,
     name: item.headingTextRu,

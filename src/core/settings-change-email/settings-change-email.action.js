@@ -21,6 +21,8 @@ export function settingsChangeEmailFormUploadData(data) {
       dispatch({
         type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_SUCCESS,
       });
+
+      setSubmitting(false);
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -44,11 +46,7 @@ export function settingsChangeEmailLoadEmail() {
         url: SETTINGS_CHANGE_EMAIL_API.LOAD_EMAIL.ENDPOINT,
       });
 
-      console.log(data);
-
       const email = performSettingsChangeEmailLoadEmailData(data);
-
-      console.log(email);
 
       dispatch({
         type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_SUCCESS,

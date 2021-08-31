@@ -6,20 +6,19 @@ import { ReactComponent as DeleteIcon } from '../../../asset/svg/cancel-delete-i
 import { Divider } from '../../../lib/element/divider';
 import { TextPrimary } from '../../../lib/element/text';
 
-export function SliderItem(props) {
-  const { image, id, name, removeSlide, editSlide } = props.data;
+export function SliderItem({ index, data, removeSlide, editSlide }) {
   return (
     <Container>
       <Content>
         <Case>
-          <Image src={image} />
-          <TextPrimary tid={name} />
+          <Image src={data.image} />
+          <TextPrimary tid={data.name} />
         </Case>
         <Case>
-          <Button onClick={() => editSlide(id)}>
+          <Button onClick={() => editSlide(data.id)}>
             <EditIcon />
           </Button>
-          <Button onClick={() => removeSlide(id)}>
+          <Button onClick={() => removeSlide(index, data.id)}>
             <DeleteIcon />
           </Button>
         </Case>

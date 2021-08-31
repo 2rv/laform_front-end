@@ -12,11 +12,9 @@ export function SettingsFormChangeNotificationComponent(props) {
     fieldNotification,
 
     values,
-    touched,
     handleChange,
     handleBlur,
     handleSubmit,
-    isValid,
     isSubmitting,
     setFieldValue,
 
@@ -29,14 +27,7 @@ export function SettingsFormChangeNotificationComponent(props) {
   } = props;
 
   const isSubmitDisabled = () => {
-    return JSON.stringify(touched) === '{}'
-      ? true
-      : !isValid ||
-          isSubmitting ||
-          isFormUploadSuccess ||
-          pageLoading ||
-          isNotificationLoadPending ||
-          isFormUploadPending;
+    return pageLoading || isNotificationLoadPending || isFormUploadPending;
   };
 
   return (
@@ -55,10 +46,10 @@ export function SettingsFormChangeNotificationComponent(props) {
             setFieldValue(fieldNotification, !values[fieldNotification])
           }
         />
-        {!isFormUploadSuccess && (
-          <SuccessAlert tid="SETTINGS.CHANGE_EMAIL.SUCCESS" />
+        {isFormUploadSuccess && (
+          <SuccessAlert tid="SETTINGS.CHANGE_NOTIFICATION.SUCCESS" />
         )}
-        {!(isFormUploadError || formUploadErrorMessage) && (
+        {(isFormUploadError || formUploadErrorMessage) && (
           <ErrorAlert tid={formUploadErrorMessage} />
         )}
         <FieldLayout type="double" adaptive>

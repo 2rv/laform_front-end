@@ -65,17 +65,17 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            <BasicField
+              titleTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.TITLE"
+              placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.PLACEHOLDER"
+              name={fieldPhone}
+              value={values[fieldPhone]}
+              error={getFieldError(fieldPhone)}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              full
+            />
           </FieldLayout>
-          <BasicField
-            titleTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.TITLE"
-            placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.PLACEHOLDER"
-            name={fieldPhone}
-            value={values[fieldPhone]}
-            error={getFieldError(fieldPhone)}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            full
-          />
           <FieldLayout type="double" adaptive>
             <ButtonSecondary
               tid="SETTINGS.CHANGE_DELIVERY_INFO.SUBMIT"
@@ -83,8 +83,8 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               disabled={dataPending || formPending}
             />
           </FieldLayout>
-          {!(formError || errorMessage) && <ErrorAlert tid={errorMessage} />}
-          {!formSuccess && (
+          {(formError || errorMessage) && <ErrorAlert tid={errorMessage} />}
+          {formSuccess && (
             <SuccessAlert tid="SETTINGS.CHANGE_DELIVERY_INFO.SUCCESS" />
           )}
         </SectionLayout>

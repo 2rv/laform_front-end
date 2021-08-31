@@ -3,7 +3,7 @@ import { NOTIFICATION_API } from './notification.constant';
 import { NOTIFICATION_ACTION_TYPE } from './notification.type';
 import { performNotificationLoadEmailData } from './notification.convert';
 
-export function notificationFormUploadData(data) {
+export function notificationFormUploadData(data, setSubmitting) {
   return async (dispatch) => {
     dispatch({
       type: NOTIFICATION_ACTION_TYPE.NOTIFICATION_FORM_UPLOAD_PENDING,
@@ -20,7 +20,7 @@ export function notificationFormUploadData(data) {
         type: NOTIFICATION_ACTION_TYPE.NOTIFICATION_FORM_UPLOAD_SUCCESS,
       });
 
-      redirect(SIGNUP_FORM_REDIRECT_ON_UPLOAD_PATH);
+      setSubmitting(false);
     } catch (err) {
       if (err.response) {
         dispatch({

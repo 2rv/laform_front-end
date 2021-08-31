@@ -64,6 +64,7 @@ const Content = styled.div`
 `;
 const LineCase = styled.div`
   display: flex;
+  align-items: center;
   gap: ${spacing(3)};
 `;
 const ItemCase = styled.div`

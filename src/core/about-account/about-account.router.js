@@ -5,5 +5,5 @@ import { ABOUT_ACCOUNT_ROUTE_PATH } from './about-account.constant';
 
 export function aboutAccountRouter(ctx) {
   ctx.store.dispatch(setActivePath(ABOUT_ACCOUNT_ROUTE_PATH));
-  //   authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }

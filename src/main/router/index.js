@@ -89,12 +89,16 @@ import {
   sliderListRouter,
   SLIDER_LIST_ROUTE_PATH,
 } from '../../core/slider-list';
+import { promocodesRouter, PROMOCODES_ROUTE_PATH } from '../../core/promocodes';
+
 import {
-  promocodesRouter,
-  PROMOCODES_ROUTE_PATH,
-} from '../../core/promocodes';
+  AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH,
+  authVerificateEmailRecoveryAccountRouter,
+} from '../../core/auth-verificate-email-recovery-account';
 
 export const routes = {
+  [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH]:
+    authVerificateEmailRecoveryAccountRouter,
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
   [SEWING_GOODS_PRODUCT_ROUTE_PATH]: sewingGoodsProductRouter,
   [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,

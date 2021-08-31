@@ -1,9 +1,20 @@
 import { validate } from '../../main/validate/validate.core';
-import { required } from '../../main/validate/validate.service';
+import { required, url } from '../../main/validate/validate.service';
 
-const config = {
-  fieldTextName: [required],
-  fieldButtonTextName: [required],
+import { SLIDER_EDIT_FIELD_NAME } from './slider-edit.type';
+
+const config = (values) => {
+  if (values.isButton) {
+    return {
+      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT ]: [required],
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: [required],
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: [required, url],
+    };
+  }
+
+  return {
+    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT ]: [required],
+  };
 };
 
-export const sliderEditFormValidation = (values) => validate(values, config);
+export const sliderEditFormValidation = (values) => validate(values, config(values));

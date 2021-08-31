@@ -1,0 +1,4 @@
+export const PROMOCODE_FIELD_KEY = {
+  PROMOCODE: 'PROMOCODE',
+  DISCOUNT: 'DISCOUNT',
+};

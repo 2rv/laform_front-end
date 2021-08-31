@@ -8,7 +8,7 @@ import {
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 
 const initialState = {
-  masterClasses: initRequestState(),
+  masterClassState: initRequestState(),
 };
 
 export function masterClassesStore(state = initialState, action) {
@@ -16,23 +16,23 @@ export function masterClassesStore(state = initialState, action) {
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING:
       return {
         ...state,
-        masterClasses: setRequestPending(state.masterClasses),
+        masterClassState: setRequestPending(state.masterClassState),
       };
 
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS:
       return {
         ...state,
-        masterClasses: setRequestSuccess(
-          state.masterClasses,
-          action.masterClasses,
+        masterClassState: setRequestSuccess(
+          state.masterClassState,
+          action.data,
         ),
       };
 
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_ERROR:
       return {
         ...state,
-        masterClasses: setRequestError(
-          state.masterClasses,
+        masterClassState: setRequestError(
+          state.masterClassState,
           action.errorMessage,
         ),
       };

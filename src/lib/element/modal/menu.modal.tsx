@@ -28,10 +28,10 @@ export function ModalMenu(props: ModalMenuPropsType) {
   return (
     <Container ref={modalRef} {...rest}>
       {items.map((item) => (
-        <>
-          <Item key={item.id} tid={item.tid} path={item.path} />
+        <Item key={item.id} divider={item.divider}>
+          <Link tid={item.tid} path={item.path} />
           {item.divider && <Divider />}
-        </>
+        </Item>
       ))}
     </Container>
   );
@@ -47,14 +47,18 @@ const Container = styled.div`
   white-space: nowrap;
 `;
 
-const Item = styled(LinkSecondary)`
+const Item = styled.div`
   padding: ${spacing(1)} ${spacing(4)};
+  ${(props: { divider: boolean }) => !props.divider && `
+    &:hover {
+      background-color: ${THEME_COLOR.GRAY};
+    }
+  `}
+`;
+
+const Link = styled(LinkSecondary)`
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
   font-size: ${THEME_SIZE.FONT.DEFAULT};
   color: ${THEME_COLOR.SECONDARY_DARK};
   cursor: pointer;
-
-  &:hover {
-    background-color: ${THEME_COLOR.GRAY};
-  }
 `;

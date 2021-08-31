@@ -30,7 +30,7 @@ export function NotificationFormComponent(props) {
   };
 
   const isSubmitDisabled = () => {
-    return pageLoading || isFormPending || isFormSuccess || loadEmailPending;
+    return pageLoading || isFormPending || loadEmailPending;
   };
 
   return (

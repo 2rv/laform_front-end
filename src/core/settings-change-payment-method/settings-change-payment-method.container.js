@@ -31,7 +31,11 @@ export function SettingsChangePaymentMethodContainer() {
     SETTINGS_FORM_CHANGE_PAYMENT_METHOD_FIELD_NAME.PAYMENT_METHOD;
 
   return (
-    <Formik initialValues={getInitialValues()} onSubmit={savePaymentMethod}>
+    <Formik
+      initialValues={getInitialValues()}
+      onSubmit={savePaymentMethod}
+      enableReinitialize={true}
+    >
       {(formProps) => (
         <SettingsChangePaymentMethodComponent
           options={PAYMENT_METHODS}

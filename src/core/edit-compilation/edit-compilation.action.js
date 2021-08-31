@@ -83,33 +83,26 @@ export function bestArticlesLoadData(currentLang) {
   };
 }
 
-export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
+export function productsLoadData(compilationName, currentLang) {
   return async (dispatch) => {
     dispatch({
-      type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_PENDING,
+      type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_PENDING,
     });
 
     try {
-      await httpRequest({
-        method: EDIT_COMPILATION_API.BEST_COMPILATIONS_REMOVE_ITEM.TYPE,
-        url: EDIT_COMPILATION_API.BEST_COMPILATIONS_REMOVE_ITEM.ENDPOINT(compilationName, id),
+      const response = await httpRequest({
+        method: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.TYPE,
+        url: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.ENDPOINT(compilationName, currentLang),
       });
 
       dispatch({
-        type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
+        type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_SUCCESS,
+        products: response.data,
       });
-
-      if (compilationName === 'post') {
-        dispatch(bestProductsLoadData(currentLang));
-      } else if (compilationName === 'master-class') {
-        dispatch(bestMasterClassesLoadData(currentLang));
-      } else if (compilationName === 'post') {
-        dispatch(bestArticlesLoadData(currentLang));
-      }
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_ERROR,
+          type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_ERROR,
           errorMessage: err.response.data.message,
         });
       }
@@ -117,25 +110,31 @@ export function bestCompilationsRemoveItem(compilationName, id, currentLang) {
   };
 }
 
-// TODO: Это под вопросом
-export function bestMasterClassesUpdateItem(id, newProductname, compilationNamе, currentLang) {
+export function updatePinned(id, compilationName, currentLang, body) {
   return async (dispatch) => {
     dispatch({
       type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_PENDING,
     });
 
     try {
+      let data;
+      if (compilationName === 'sewing-product') {
+        data = { sewingProduct: body };
+      } else if (compilationName === 'master-class') {
+        data = { masterClass: body };
+      } else if (compilationName === 'post') {
+        data = body;
+      }
+
       await httpRequest({
-        method: EDIT_COMPILATION_API.BEST_MASTER_CLASS_UPDATE_ITEM.TYPE,
-        url: EDIT_COMPILATION_API.BEST_MASTER_CLASS_UPDATE_ITEM.ENDPOINT(compilationNamе, id),
-        data: newProductname,
+        method: EDIT_COMPILATION_API.UPDATE_PINNED.TYPE,
+        url: EDIT_COMPILATION_API.UPDATE_PINNED.ENDPOINT(compilationName, id),
+        data,
       });
 
-      dispatch({
-        type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
-      });
+      dispatch({ type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS });
 
-      if (compilationNamе === 'post') {
+      if (compilationName === 'sewing-product') {
         dispatch(bestProductsLoadData(currentLang));
       } else if (compilationName === 'master-class') {
         dispatch(bestMasterClassesLoadData(currentLang));

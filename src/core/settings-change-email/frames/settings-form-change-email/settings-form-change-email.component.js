@@ -21,7 +21,6 @@ export function SettingsFormChangeEmailComponent(props) {
     handleBlur,
     handleSubmit,
     isValid,
-    isSubmitting,
 
     isFormUploadPending,
     isFormUploadSuccess,
@@ -38,12 +37,7 @@ export function SettingsFormChangeEmailComponent(props) {
   const isSubmitDisabled = () => {
     return JSON.stringify(touched) === '{}'
       ? true
-      : !isValid ||
-          isSubmitting ||
-          isFormUploadSuccess ||
-          pageLoading ||
-          isEmailLoadPending ||
-          isFormUploadPending;
+      : !isValid || pageLoading || isEmailLoadPending || isFormUploadPending;
   };
 
   return (

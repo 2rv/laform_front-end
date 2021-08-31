@@ -12,3 +12,9 @@ interface IModalItems {
   path: string;
   divider: boolean;
 }
+
+export interface ModalPopupProps {
+  modalVisibilty: boolean;
+  onClose: Function;
+  children: React.ReactElement<any | null>
+}

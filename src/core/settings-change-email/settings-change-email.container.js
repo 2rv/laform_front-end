@@ -32,9 +32,9 @@ export function SettingsChangeEmailContainer() {
         .data?.[SETTINGS_CHANGE_EMAIL_DATA_KEY.EMAIL],
   }));
 
-  const settingsChangeEmailFormSendData = (values) => {
+  const settingsChangeEmailFormSendData = (values, { setSubmitting }) => {
     const data = convertSettingsChangeEmailFormData(values);
-    dispatch(settingsChangeEmailFormUploadData(data));
+    dispatch(settingsChangeEmailFormUploadData(data, setSubmitting));
   };
 
   const settingsChangeEmailFormGetInitialValue = () => ({
@@ -44,7 +44,7 @@ export function SettingsChangeEmailContainer() {
   });
 
   useEffect(() => {
-    // dispatch(settingsChangeEmailLoadEmail());
+    dispatch(settingsChangeEmailLoadEmail());
   }, []);
 
   return (

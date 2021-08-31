@@ -6,5 +6,5 @@ import { ORDER_NUMBER_ROUTE_PATH } from './order-number.constant';
 
 export function orderNumberRouter(ctx) {
   ctx.store.dispatch(setActivePath(ORDER_NUMBER_ROUTE_PATH));
-  // authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
+  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }
