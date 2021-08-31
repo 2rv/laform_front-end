@@ -1,4 +1,4 @@
-export const SLIDER_LIST_ROUTE_PATH = '/slider-list';
+export const SLIDER_LIST_ROUTE_PATH = '/slider';
 
 export const SLIDER_LIST_STORE_NAME = 'SLIDER_LIST';
 
