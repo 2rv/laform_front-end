@@ -23,10 +23,6 @@ export function AboutAccountContainer() {
   }));
 
   useEffect(() => {
-    if (user?.role !== USER_ROLE.ADMIN) {
-      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
-      return;
-    }
     //   dispatch(aboutAccountUploadData());
   }, []);
 
