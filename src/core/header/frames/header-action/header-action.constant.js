@@ -11,8 +11,7 @@ export const ADMIN_USER_MODAL_ITEMS = [
   { id: 6,  path: '/create-product',   tid: 'Создание продукта' },
   { id: 7,  path: '/create-article',   tid: 'Создание статьи' },
   { id: 8,  path: '/orders',           tid: 'Таблица заказов' },
-  { id: 9,  path: '/compilation',      tid: 'Подборки' },
-  { id: 10, path: '/best-products',    tid: 'Лучшие товары' },
-  { id: 11, path: '/slider',           tid: 'Слайдер' },
-  { id: 12, path: '/promocodes',       tid: 'Промокоды' },
+  { id: 9, path: '/best-products',     tid: 'Лучшие товары' },
+  { id: 10, path: '/slider',           tid: 'Слайдер' },
+  { id: 11, path: '/promocodes',       tid: 'Промокоды' },
 ];
