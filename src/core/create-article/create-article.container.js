@@ -5,7 +5,10 @@ import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
 import { redirect } from '../../main/navigation/navigation.core';
 import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { CreateArticleComponent } from './create-article.component';
-import { TEST_CREATE_ARTICLE_FIELDS__DATA, CREATE_ARTICLE_STORE_NAME } from './create-article.constant';
+import {
+  TEST_CREATE_ARTICLE_FIELDS__DATA,
+  CREATE_ARTICLE_STORE_NAME,
+} from './create-article.constant';
 
 import {
   getRequestErrorMessage,
@@ -21,12 +24,12 @@ export function CreateArticleContainer() {
     user: state[AUTH_STORE_NAME].user,
   }));
 
-  useEffect(() => {
-    if (user && user?.role !== USER_ROLE.ADMIN) {
-      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
-      return;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user && user?.role !== USER_ROLE.ADMIN) {
+  //     redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+  //     return;
+  //   }
+  // }, []);
 
   return (
     <CreateArticleComponent

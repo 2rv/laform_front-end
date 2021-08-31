@@ -30,7 +30,7 @@ export function MultiField(props: MultiFieldPropsType) {
   const addItem = (event: any) => {
     if (event.keyCode === 13) {
       event.preventDefault();
-      const copy = [...items];
+      const copy: any[] = [...items];
       copy.push(event.target.value);
       setItems(copy);
       event.target.value = '';
@@ -47,7 +47,8 @@ export function MultiField(props: MultiFieldPropsType) {
 
   useLayoutEffect(() => {
     if (containerRef.current) {
-      setPadding(containerRef.current.offsetWidth);
+      const { offsetWidth }: any = containerRef.current;
+      setPadding(offsetWidth);
     }
   }, [items]);
 
