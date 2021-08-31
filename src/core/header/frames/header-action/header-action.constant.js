@@ -1,5 +1,5 @@
 export const USER_MODAL_ITEMS = [
-  { id: 1, path: '/about-account',     tid: 'Мой профиль' },
+  { id: 1, path: '/profile',           tid: 'Мой профиль' },
   { id: 2, path: '/favorites',         tid: 'HEADER.USER_MENU.FAVORITE' },
   { id: 3, path: '/purchases-history', tid: 'HEADER.USER_MENU.PURCHASE_HISTORY' },
   { id: 4, path: '/settings',          tid: 'HEADER.USER_MENU.SETTINGS' },
