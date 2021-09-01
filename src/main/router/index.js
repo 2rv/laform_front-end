@@ -90,13 +90,18 @@ import {
   SLIDER_LIST_ROUTE_PATH,
 } from '../../core/slider-list';
 import { promocodesRouter, PROMOCODES_ROUTE_PATH } from '../../core/promocodes';
-
 import {
   AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH,
   authVerificateEmailRecoveryAccountRouter,
 } from '../../core/auth-verificate-email-recovery-account';
 
+import {
+  createMasterClassRouter,
+  CREATE_MASTER_CLASS_ROUTE_PATH,
+} from '../../core/master-class-create';
+
 export const routes = {
+  [CREATE_MASTER_CLASS_ROUTE_PATH]: createMasterClassRouter,
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH]:
     authVerificateEmailRecoveryAccountRouter,
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,

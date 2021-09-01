@@ -125,14 +125,16 @@ import {
   sliderEditStore,
   SLIDER_EDIT_STORE_NAME,
 } from '../../core/slider-edit';
-
 import {
   AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME,
   authVerificateEmailRecoveryAccountStore,
 } from '../../core/auth-verificate-email-recovery-account';
-
 import { cartStore, CART_STORE_NAME } from '../../lib/common/cart';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
+import {
+  createMasterClassStore,
+  CREATE_MASTER_CLASS_STORE_NAME,
+} from '../../core/master-class-create';
 
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -140,6 +142,7 @@ import storage from 'redux-persist/lib/storage';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
+  [CREATE_MASTER_CLASS_STORE_NAME]: createMasterClassStore,
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME]:
     authVerificateEmailRecoveryAccountStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { ReactComponent as SmallDelete } from 'src/asset/svg/small-delete.svg';
 import { text } from '../../common/text';
@@ -46,7 +46,7 @@ export function MultiField(props: MultiFieldPropsType) {
   const [padding, setPadding] = useState(0);
   const containerRef = useRef();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (containerRef.current) {
       //@ts-ignore
       setPadding(containerRef.current.offsetWidth);
