@@ -9,9 +9,29 @@ export const performPatternsData = (rowData) => {
       bestseller: item.modifier,
       complexity: item.complexity,
       price: {
-        min: item?.price || 0,
+        min: item?.price || checkMinPrice(item?.sizes, 'size'),
         discount: item.discount,
+        max: item?.price ? null : checkMaxPrice(item?.sizes, 'size'),
       },
     };
   });
 };
+
+function checkMinPrice(listData, nameItem) {
+  if (!listData?.[0]?.[nameItem]) return 0;
+  return listData.reduce((acc, item) => {
+    if (acc > item[nameItem]) acc = item[nameItem];
+    return acc;
+  }, listData[0][nameItem]);
+}
+function checkMaxPrice(listData, nameItem) {
+  if (listData?.length > 1) {
+    if (!listData?.[0]?.[nameItem]) return 0;
+    return listData.reduce((acc, item) => {
+      if (acc < item[nameItem]) acc = item[nameItem];
+      return acc;
+    }, listData[0][nameItem]);
+  } else {
+    return null;
+  }
+}

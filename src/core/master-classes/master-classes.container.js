@@ -39,7 +39,7 @@ export function MasterClassesContainer() {
   return (
     <MasterClassesComponent
       listItems={sorterItemsByParams(
-        getRequestData(masterClassState, []),
+        getRequestData(masterClassState, [...testListItems]),
         filter[MASTER_CLASSES_FIELD_NAME.FIND],
         Number(filter[MASTER_CLASSES_FIELD_NAME.FILTER]),
       )}
@@ -89,10 +89,10 @@ export const testListItems = [
     bestseller: true,
     select: false,
     like: true,
-    type: 1,
+    type: 0,
     price: {
       min: 500,
-      discount: 230,
+      discount: 10,
       max: null,
     },
   },
@@ -103,7 +103,7 @@ export const testListItems = [
     bestseller: true,
     select: true,
     like: false,
-    type: 1,
+    type: 0,
     price: {
       min: 500,
       discount: null,
@@ -117,10 +117,10 @@ export const testListItems = [
     bestseller: false,
     select: true,
     like: true,
-    type: 1,
+    type: 0,
     price: {
       min: 500,
-      discount: 230,
+      discount: 25,
       max: 1000,
     },
   },

@@ -10,23 +10,23 @@ import { HOME_ROUTE_PATH } from '../../../home';
 
 export function LogoComponent() {
   return (
-    <a onClick={setLinkRedirect(HOME_ROUTE_PATH)}>
-      <Container>
-        <Logo />
-        <div>
-          <Text tid="HEADER_LOGO.HEADING_TEXT" />
-          &nbsp;
-          <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
-        </div>
-      </Container>
-    </a>
+    <Container onClick={setLinkRedirect(HOME_ROUTE_PATH)}>
+      <Logo />
+      <div>
+        <Text tid="HEADER_LOGO.HEADING_TEXT" />
+        &nbsp;
+        <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
+      </div>
+    </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.a`
   display: flex;
   gap: ${spacing(6)};
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 `;
 
 const Text = styled(TextPrimary)`

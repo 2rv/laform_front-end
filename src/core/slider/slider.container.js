@@ -22,7 +22,7 @@ export function SliderContainer(props) {
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  const sliders = getRequestData(state.slider, []);
+  const sliders = getRequestData(state.slider, [...testSlides]);
 
   useEffect(() => {
     dispatch(sliderLoadData(currentLang));
@@ -36,8 +36,10 @@ export function SliderContainer(props) {
     return <ErrorAlert tid={getRequestErrorMessage(state.slider)} />;
   }
 
-  return (
-    Boolean(sliders.length > 0) ? <SliderComponent sliders={sliders} /> : <SliderSkeleton />
+  return Boolean(sliders.length > 0) ? (
+    <SliderComponent sliders={sliders} />
+  ) : (
+    <SliderSkeleton />
   );
 }
 
@@ -45,10 +47,10 @@ export const testSlides = [
   {
     id: 1,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
-    titleTextColor: '#FFFFFF',
+    titleTextColor: '5',
     buttonText: 'Купить',
-    buttonTextColor: '#FFFFFF',
-    buttonColor: '#FF005A',
+    buttonTextColor: '1',
+    buttonColor: '3',
     isButton: true,
     buttonPath: '/',
     image: 'http://placekitten.com/900/300',
@@ -56,10 +58,10 @@ export const testSlides = [
   {
     id: 2,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
-    titleTextColor: '#2F80ED',
-    buttonText: 'Купить',
-    buttonTextColor: '#5F5B5D',
-    buttonColor: '#F0F0F0',
+    titleTextColor: '1',
+    buttonText: 'Купить тоже',
+    buttonTextColor: '2',
+    buttonColor: '4',
     isButton: true,
     buttonPath: '/',
     image: 'http://placekitten.com/900/301',
@@ -67,9 +69,9 @@ export const testSlides = [
   {
     id: 3,
     titleText: 'Готовые выкройки в интернет-магазине LaForme',
-    titleTextColor: '#219653',
-    buttonText: 'Купить',
-    buttonTextColor: '#FFFFFF',
+    titleTextColor: '3',
+    buttonText: '5',
+    buttonTextColor: '1',
     buttonColor: '#FF005A',
     isButton: false,
     buttonPath: '/',
