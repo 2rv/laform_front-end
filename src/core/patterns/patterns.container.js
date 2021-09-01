@@ -43,7 +43,7 @@ export function PatternsContainer() {
       //-----
       listItems={filterByType(
         sorterItemsByParams(
-          getRequestData(patternsState, []),
+          getRequestData(patternsState, [...testListItems]),
           filter[PATTERNS_FIELD_NAME.FIND],
           Number(filter[PATTERNS_FIELD_NAME.FILTER]),
         ),
@@ -78,7 +78,7 @@ export const testListItems = [
     complexity: 1,
     select: true,
     like: true,
-    type: 4,
+    type: 1,
     price: {
       min: 500,
     },
@@ -90,8 +90,8 @@ export const testListItems = [
     complexity: 3,
     select: false,
     like: false,
-    bestseller: true,
-    type: 4,
+    bestseller: 'Хит',
+    type: 2,
     price: {
       min: 200,
       max: 4150,
@@ -105,7 +105,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    type: 5,
+    type: 1,
     price: {
       min: 200,
       discount: 20,
@@ -120,7 +120,7 @@ export const testListItems = [
     select: false,
     like: false,
     bestseller: true,
-    type: 5,
+    type: 2,
     createdDate: '2021-04-14T11:33:22.332Z',
     price: {
       min: 200,

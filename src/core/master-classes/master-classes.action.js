@@ -15,7 +15,6 @@ export function masterClassesUploadData(currentLang) {
         url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(currentLang),
       });
       const data = performMasterClassData(response.data);
-
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
         data: data,

@@ -48,19 +48,23 @@ export function HomeContainer() {
       masterClassIsSuccess={isRequestSuccess(masterClassState)}
       masterClassIsError={isRequestError(masterClassState)}
       masterClassErrorMessage={getRequestErrorMessage(masterClassState)}
-      masterClassListItems={getRequestData(masterClassState, [])}
+      masterClassListItems={getRequestData(masterClassState, [
+        ...masterClassTestState,
+      ])}
       //------------
       sewingGoodsIsPending={isRequestPending(sewingGoodsState)}
       sewingGoodsIsSuccess={isRequestSuccess(sewingGoodsState)}
       sewingGoodsIsError={isRequestError(sewingGoodsState)}
       sewingGoodsErrorMessage={getRequestErrorMessage(sewingGoodsState)}
-      sewingGoodsListItems={getRequestData(sewingGoodsState, [])}
+      sewingGoodsListItems={getRequestData(sewingGoodsState, [
+        ...sewingGoodsTestState,
+      ])}
       //------------
       articleIsPending={isRequestPending(articleState)}
       articleIsSuccess={isRequestSuccess(articleState)}
       articleIsError={isRequestError(articleState)}
       articleErrorMessage={getRequestErrorMessage(articleState)}
-      articleListItems={getRequestData(articleState, [])}
+      articleListItems={getRequestData(articleState, [...articleTestState])}
     />
   );
 }
@@ -92,7 +96,7 @@ export const catalogListItems = [
   },
 ];
 
-export const masterClassState = [
+export const masterClassTestState = [
   {
     id: 1,
     name: 'Мастер-класс по пошиву мужских брюк 1003',
@@ -100,10 +104,10 @@ export const masterClassState = [
     bestseller: true,
     select: false,
     like: true,
-    type: 1,
+    type: 0,
     price: {
       min: 500,
-      discount: 230,
+      discount: 5,
       max: null,
     },
   },
@@ -114,7 +118,7 @@ export const masterClassState = [
     bestseller: true,
     select: true,
     like: false,
-    type: 1,
+    type: 0,
     price: {
       min: 500,
       discount: null,
@@ -128,25 +132,25 @@ export const masterClassState = [
     bestseller: false,
     select: true,
     like: true,
-    type: 1,
+    type: 0,
     price: {
       min: 500,
-      discount: 230,
+      discount: 3,
       max: 1000,
     },
   },
 ];
-export const sewingGoodsState = [
+export const sewingGoodsTestState = [
   {
     id: 1,
     name: 'Сарафан 0445',
     image: '/static/test/popular-gods-1.png',
     select: true,
     like: true,
-    type: 0,
+    type: 3,
     price: {
       min: 500,
-      discount: 230,
+      discount: 0,
       max: null,
     },
   },
@@ -157,7 +161,7 @@ export const sewingGoodsState = [
     select: false,
     like: false,
     bestseller: true,
-    type: 0,
+    type: 3,
     price: {
       min: 200,
       discount: null,
@@ -171,7 +175,7 @@ export const sewingGoodsState = [
     select: false,
     like: false,
     bestseller: true,
-    type: 0,
+    type: 3,
     price: {
       min: 200,
       discount: 100,
@@ -179,14 +183,14 @@ export const sewingGoodsState = [
     },
   },
 ];
-export const articleState = [
+export const articleTestState = [
   {
     id: 1,
     name: 'Сарафан 0445',
     image: '/static/test/popular-gods-1.png',
     like: true,
     date: '1 неделю назад',
-    type: 2,
+    type: 4,
   },
 
   {
@@ -195,7 +199,7 @@ export const articleState = [
     image: '/static/test/popular-gods-2.png',
     like: false,
     date: '1 неделю назад',
-    type: 2,
+    type: 4,
   },
   {
     id: 3,
@@ -203,6 +207,6 @@ export const articleState = [
     image: '/static/test/popular-gods-3.png',
     like: false,
     date: '2 недели назад',
-    type: 2,
+    type: 4,
   },
 ];
