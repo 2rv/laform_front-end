@@ -8,9 +8,29 @@ export const performMasterClassData = (rowData) => {
       type: item.type.id,
       bestseller: item.modifier,
       price: {
-        min: 500,
+        min: checkMinPrice(item?.programs, 'price'),
         discount: item.discount,
+        max: checkMaxPrice(item?.programs, 'price'),
       },
     };
   });
 };
+
+function checkMinPrice(listData, nameItem) {
+  if (!listData?.[0]?.[nameItem]) return 0;
+  return listData.reduce((acc, item) => {
+    if (acc > item[nameItem]) acc = item[nameItem];
+    return acc;
+  }, listData[0][nameItem]);
+}
+function checkMaxPrice(listData, nameItem) {
+  if (listData?.length > 1) {
+    if (!listData?.[0]?.[nameItem]) return 0;
+    return listData.reduce((acc, item) => {
+      if (acc < item[nameItem]) acc = item[nameItem];
+      return acc;
+    }, listData[0][nameItem]);
+  } else {
+    return null;
+  }
+}
