@@ -11,7 +11,7 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { aboutAccountLoadData, likesLoadData } from './about-account.action';
+import { userLoadData, userDeliveryInfoLoadData, likesLoadData } from './about-account.action';
 import { AboutAccountComponent } from './about-account.component';
 import { ABOUT_ACCOUNT_STORE_NAME } from './about-account.constant';
 
@@ -24,12 +24,17 @@ export function AboutAccountContainer() {
   }));
 
   useEffect(() => {
-    // dispatch(aboutAccountLoadData());
+    dispatch(userLoadData());
+    dispatch(userDeliveryInfoLoadData());
     dispatch(likesLoadData());
   }, []);
 
   return (
     <AboutAccountComponent
+      isUserPending={isRequestPending(state.user)}
+      user={getRequestData(state.user, [])}
+      isUserDeliveryInfoPending={isRequestPending(state.userDeliveryInfo)}
+      userDeliveryInfo={getRequestData(state.userDeliveryInfo, [])}
       isLikesPending={isRequestPending(state.likes)}
       likes={getRequestData(state.likes, [])}
       pageLoading={pageLoading}

@@ -9,10 +9,15 @@ import { AboutAccountInfoComponent } from './frames';
 import { TextSecondary } from 'src/lib/element/text';
 
 export function AboutAccountComponent(props) {
-  const { orderItems, likes, commentItems } = props;
+  const {
+    orderItems,
+    likes,
+    commentItems,
+  } = props;
+
   return (
     <SectionLayout>
-      <AboutAccountInfoComponent />
+      <AboutAccountInfoComponent {...props} />
       <SectionLayout type="SMALL">
         <SectionLayout type="TEXT">
           <Title tid="Список покупок" />
