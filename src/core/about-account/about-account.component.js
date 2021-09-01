@@ -6,9 +6,10 @@ import { Divider } from '../../lib/element/divider';
 import { THEME_SIZE } from '../../lib/theme';
 import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
+import { TextSecondary } from 'src/lib/element/text';
 
 export function AboutAccountComponent(props) {
-  const { orderItems, likeItems, commentItems } = props;
+  const { orderItems, likes, commentItems } = props;
   return (
     <SectionLayout>
       <AboutAccountInfoComponent />
@@ -16,23 +17,35 @@ export function AboutAccountComponent(props) {
         <SectionLayout type="TEXT">
           <Title tid="Список покупок" />
           <Divider />
-          <TableList items={orderItems} />
-          <LinkSecondary tid="Посмотреть все..." />
+          {Boolean(orderItems.length) ? (
+            <>
+            <TableList items={orderItems} />
+            <LinkSecondary tid="Посмотреть все..." />
+            </>
+          ) : (
+            <TextSecondary tid="Нету покупок" />
+          )}
         </SectionLayout>
       </SectionLayout>
       <SectionLayout type="SMALL">
         <SectionLayout type="TEXT">
           <Title tid="Мои лайки" />
           <Divider />
-          <TableList items={likeItems} />
-          <LinkSecondary tid="Посмотреть все..." />
+          {Boolean(likes.length) ? (
+            <>
+              <TableList items={likes} />
+              <LinkSecondary tid="Посмотреть все..." />
+            </>
+          ) : (
+            <TextSecondary tid="Нету лайков" />
+          )}
         </SectionLayout>
       </SectionLayout>
       <SectionLayout type="SMALL">
         <SectionLayout type="TEXT">
           <Title tid="Мои комментарии" />
           <Divider />
-          <TableList items={commentItems} />
+          {Boolean(commentItems.length) ? <TableList items={commentItems} /> : <TextSecondary tid="Нету комментариев" />}
         </SectionLayout>
       </SectionLayout>
     </SectionLayout>

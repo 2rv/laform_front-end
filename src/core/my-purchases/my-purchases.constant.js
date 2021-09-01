@@ -1,4 +1,4 @@
-export const MY_PURCHASES_ROUTE_PATH = '/my-purchases';
+export const MY_PURCHASES_ROUTE_PATH = '/purchases-history';
 
 export const MY_PURCHASES_STORE_NAME = 'MY_PURCHASES';
 

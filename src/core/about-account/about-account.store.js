@@ -9,6 +9,7 @@ import { ABOUT_ACCOUNT_ACTION_TYPE } from './about-account.type';
 
 const initialState = {
   aboutAccount: initRequestState(),
+  likes: initRequestState(),
 };
 
 export function aboutAccountStore(state = initialState, action) {
@@ -27,6 +28,21 @@ export function aboutAccountStore(state = initialState, action) {
       return {
         ...state,
         aboutAccount: setRequestError(state.aboutAccount, action.errorMessage),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.LIKES_PENDING:
+      return {
+        ...state,
+        likes: setRequestPending(state.likes),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.LIKES_SUCCESS:
+      return {
+        ...state,
+        likes: setRequestSuccess(state.likes, action.likes),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.LIKES_ERROR:
+      return {
+        ...state,
+        likes: setRequestError(state.likes, action.errorMessage),
       };
     default:
       return state;
