@@ -13,4 +13,8 @@ export const ABOUT_ACCOUNT_API = {
     ENDPOINT: 'like/get',
     TYPE: 'GET',
   },
+  COMMENTS_LOAD: {
+    ENDPOINT: 'comment/get',
+    TYPE: 'GET',
+  },
 };

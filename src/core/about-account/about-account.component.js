@@ -7,12 +7,15 @@ import { THEME_SIZE } from '../../lib/theme';
 import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
 import { TextSecondary } from 'src/lib/element/text';
+import { Spinner } from 'src/lib/element/spinner';
 
 export function AboutAccountComponent(props) {
   const {
     orderItems,
+    isLikesPending,
     likes,
-    commentItems,
+    isCommentsPending,
+    comments,
   } = props;
 
   return (
@@ -24,8 +27,8 @@ export function AboutAccountComponent(props) {
           <Divider />
           {Boolean(orderItems.length) ? (
             <>
-            <TableList items={orderItems} />
-            <LinkSecondary tid="Посмотреть все..." />
+              <TableList items={orderItems} />
+              <LinkSecondary tid="Посмотреть все..." />
             </>
           ) : (
             <TextSecondary tid="Нету покупок" />
@@ -36,13 +39,17 @@ export function AboutAccountComponent(props) {
         <SectionLayout type="TEXT">
           <Title tid="Мои лайки" />
           <Divider />
-          {Boolean(likes.length) ? (
-            <>
-              <TableList items={likes} />
-              <LinkSecondary tid="Посмотреть все..." />
-            </>
+          {isLikesPending ? (
+            <Spinner />
           ) : (
-            <TextSecondary tid="Нету лайков" />
+            Boolean(likes.length) ? (
+              <>
+                <TableList items={likes} />
+                <LinkSecondary tid="Посмотреть все..." />
+              </>
+            ) : (
+              <TextSecondary tid="Нету лайков" />
+            )
           )}
         </SectionLayout>
       </SectionLayout>
@@ -50,7 +57,11 @@ export function AboutAccountComponent(props) {
         <SectionLayout type="TEXT">
           <Title tid="Мои комментарии" />
           <Divider />
-          {Boolean(commentItems.length) ? <TableList items={commentItems} /> : <TextSecondary tid="Нету комментариев" />}
+          {isCommentsPending ? (
+            <Spinner />
+          ) : (
+            Boolean(comments.length) ? <TableList items={comments} /> : <TextSecondary tid="Нету комментариев" />
+          )}
         </SectionLayout>
       </SectionLayout>
     </SectionLayout>

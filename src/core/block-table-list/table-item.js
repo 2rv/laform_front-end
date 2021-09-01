@@ -93,22 +93,22 @@ export function TableItem(props) {
   return (
     <Tr>
       <NameTd image={image} name={name} />
-      {comment && <CommentTd text={comment?.text} />}
-      {params && <ParamsTd items={params} />}
-      {otherParams && <ParamsTd items={otherParams} />}
-      {type && showParameters(type)}
-      {count && (
-        <CounterTd
+      {comment ? <CommentTd text={comment} /> : <></>}
+      {params ? <ParamsTd items={params} /> : <></>}
+      {otherParams ? <ParamsTd items={otherParams} /> : <></>}
+      {type ? showParameters(type) : <></>}
+      {count ? (
+        <CounerTd
           id={id}
           incrementCount={(id) => dispatch(incrementCount(id))}
           dicrementCoun={(id) => dispatch(decrementCount(id))}
           quantity={quantity}
           excludeCount={excludeCount}
         />
-      )}
-      {countedPrice && <PriceTd countedPrice={countedPrice} isLast={status} />}
-      {status && <StatusTd status={status} />}
-      {children && <ActionTd id={id} data={data} children={children} />}
+      ) : <></> }
+      {countedPrice ? <PriceTd countedPrice={countedPrice} isLast={status} /> : <></>}
+      {status ? <StatusTd status={status} /> : <></>}
+      {children ? <ActionTd id={id} data={data} children={children} /> : <></>}
     </Tr>
   );
 }

@@ -11,6 +11,7 @@ const initialState = {
   user: initRequestState(),
   userDeliveryInfo: initRequestState(),
   likes: initRequestState(),
+  comments: initRequestState(),
 };
 
 export function aboutAccountStore(state = initialState, action) {
@@ -59,6 +60,21 @@ export function aboutAccountStore(state = initialState, action) {
       return {
         ...state,
         likes: setRequestError(state.likes, action.errorMessage),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.COMMENTS_PENDING:
+      return {
+        ...state,
+        comments: setRequestPending(state.comments),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.COMMENTS_SUCCESS:
+      return {
+        ...state,
+        comments: setRequestSuccess(state.comments, action.comments),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.COMMENTS_ERROR:
+      return {
+        ...state,
+        comments: setRequestError(state.comments, action.errorMessage),
       };
     default:
       return state;
