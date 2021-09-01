@@ -16,7 +16,7 @@ import {
   dynamicFieldsMinPrice,
   numberValue,
 } from '../../../lib/common/create-product-helpers';
-import MarkdownEditor from './markdown-edittor';
+import { TextEditor } from '../../markdown-editor';
 
 export function FormComponent(props) {
   const {
@@ -76,7 +76,8 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           minHeight={100}
         />
-        <MarkdownEditor />
+
+        <TextEditor />
       </SectionLayout>
       <DynamicFields
         nameFieldArray={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAMS}

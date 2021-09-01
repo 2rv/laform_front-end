@@ -558,3 +558,6 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: inherit;
 }
+.react-component {
+  background-color: red;
+}
