@@ -1,11 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
-import { redirect } from '../../main/navigation/navigation.core';
-import { HTTP_ERROR_ROUTER } from '../../main/http';
-import { AboutAccountComponent } from './about-account.component';
 import { ABOUT_ACCOUNT_STORE_NAME } from './about-account.constant';
+import { AboutAccountComponent } from './about-account.component';
 
 import {
   userLoadData,
@@ -24,10 +21,9 @@ import {
 
 export function AboutAccountContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, user } = useSelector((state) => ({
+  const { state, pageLoading } = useSelector((state) => ({
     state: state[ABOUT_ACCOUNT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    user: state[AUTH_STORE_NAME].user,
   }));
 
   useEffect(() => {

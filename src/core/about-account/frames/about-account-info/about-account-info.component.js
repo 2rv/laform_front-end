@@ -16,53 +16,49 @@ export function AboutAccountInfoComponent(props) {
   } = props;
 
   return (
-    isUserDeliveryInfoPending ? (
-      <Spinner />
-    ) : (
-      <SectionLayout>
+    <SectionLayout>
+      {userDeliveryInfo.fullname && (
         <LineCase>
           <UserIcon />
-          {isUserDeliveryInfoPending ? <></> : <UserTitle tid={userDeliveryInfo.fullname ?? ''} />}
+          {isUserDeliveryInfoPending ? <></> : <UserTitle tid={userDeliveryInfo.fullname} />}
         </LineCase>
-        <SectionLayout type="SMALL">
-          <TitlePrimary tid="Об аккаунте" />
-          <LineSection>
-            <SectionLayout type="TEXT">
-              <InfoTitle tid="Дата регистрации" />
-              {isUserPending ? <></> : (
-                <InfoText tid={moment(user.createdDate).format('MMMM DD, YYYY')} />
-              )}
-            </SectionLayout>
-            <SectionLayout type="TEXT">
-              <InfoTitle tid="Город" />
-              <InfoText tid="Москва" />
-            </SectionLayout>
-            <SectionLayout type="TEXT">
-              <InfoTitle tid="Статус" />
-              {isUserPending ? <></> : (
-                <StatusInfo
-                  status={user.emailConfirmed}
-                  tid={user.emailConfirmed ? 'Верефицирован' : 'Не верефицирован'}
-                />
-              )}
-            </SectionLayout>
-          </LineSection>
-        </SectionLayout>
-        <SectionLayout type="SMALL">
-          <TitlePrimary tid="Доставка и оплата" />
-          <LineSection>
+      )}
+      <SectionLayout type="SMALL">
+        <TitlePrimary tid="Об аккаунте" />
+        <LineSection>
+          <SectionLayout type="TEXT">
+            <InfoTitle tid="Дата регистрации" />
+            {isUserPending ? <></> : (
+              <InfoText tid={moment(user.createdDate).format('MMMM DD, YYYY')} />
+            )}
+          </SectionLayout>
+          <SectionLayout type="TEXT">
+            <InfoTitle tid="Статус" />
+            {isUserPending ? <></> : (
+              <StatusInfo
+                status={user.emailConfirmed}
+                tid={user.emailConfirmed ? 'Верефицирован' : 'Не верефицирован'}
+              />
+            )}
+          </SectionLayout>
+        </LineSection>
+      </SectionLayout>
+      <SectionLayout type="SMALL">
+        <TitlePrimary tid="Доставка и оплата" />
+        <LineSection>
+          {userDeliveryInfo.location && (
             <SectionLayout type="TEXT">
               <InfoTitle tid="Адрес доставки" />
-              {isUserDeliveryInfoPending ? <></> : <InfoText tid={userDeliveryInfo.location ?? ''} />}
+              {isUserDeliveryInfoPending ? <></> : <InfoText tid={userDeliveryInfo.location} />}
             </SectionLayout>
-            <SectionLayout type="TEXT">
-              <InfoTitle tid="Способ оплаты" />
-              <InfoText tid="Наличными при получении" />
-            </SectionLayout>
-          </LineSection>
-        </SectionLayout>
+          )}
+          <SectionLayout type="TEXT">
+            <InfoTitle tid="Способ оплаты" />
+            <InfoText tid="Наличными при получении" />
+          </SectionLayout>
+        </LineSection>
       </SectionLayout>
-    )
+    </SectionLayout>
   );
 }
 

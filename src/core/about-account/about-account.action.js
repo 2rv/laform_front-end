@@ -69,7 +69,7 @@ export function likesLoadData() {
         url: ABOUT_ACCOUNT_API.LIKES_LOAD.ENDPOINT,
       });
 
-      const likes = response.data.map(convertLikesData);
+      const likes = convertLikesData(response.data);
 
       dispatch({
         type: ABOUT_ACCOUNT_ACTION_TYPE.LIKES_SUCCESS,

@@ -8,6 +8,7 @@ import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
 import { TextSecondary } from 'src/lib/element/text';
 import { Spinner } from 'src/lib/element/spinner';
+import { redirect } from 'src/main/navigation';
 
 export function AboutAccountComponent(props) {
   const {
@@ -17,6 +18,10 @@ export function AboutAccountComponent(props) {
     isCommentsPending,
     comments,
   } = props;
+
+  const redirectToProduct = (productName, id) => {
+    redirect(`${productName}/${id}`);
+  };
 
   return (
     <SectionLayout>
@@ -44,7 +49,7 @@ export function AboutAccountComponent(props) {
           ) : (
             Boolean(likes.length) ? (
               <>
-                <TableList items={likes} />
+                <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
                 <LinkSecondary tid="Посмотреть все..." />
               </>
             ) : (
