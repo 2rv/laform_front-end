@@ -7,7 +7,18 @@ export function ParamsTd(props) {
   return (
     <Td>
       <Case>
-        <Contructor items={items} />
+        {items.map(({ name, value }, i) => {
+          return (
+            <TextSecondary key={i}>
+              <TextSecondary tid={name} />
+              :&nbsp;
+              <TextPrimary>
+                <TextPrimary tid={value} />
+                {i !== items.length - 1 && ','}
+              </TextPrimary>
+            </TextSecondary>
+          );
+        })}
       </Case>
     </Td>
   );
@@ -15,8 +26,7 @@ export function ParamsTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  width: 100%;
-  padding-right: ${spacing(6)};
+  padding-right: ${spacing(5)};
   @media screen and (max-width: 875px) {
     padding-right: 0;
     margin-left: 90px;
@@ -25,33 +35,9 @@ const Td = styled.td`
 `;
 const Case = styled.div`
   display: flex;
-  line-height: 1.5;
-  align-items: center;
-`;
-const Contructor = (props) => {
-  const { items } = props;
-  return (
-    <ConstructorCase>
-      {items.map(({ name, value }, i) => {
-        return (
-          <TextSecondary key={i}>
-            <TextSecondary tid={name} />
-            :&nbsp;
-            <TextPrimary>
-              <TextPrimary tid={value} />
-              {i !== items.length - 1 && ','}
-            </TextPrimary>
-          </TextSecondary>
-        );
-      })}
-    </ConstructorCase>
-  );
-};
-const ConstructorCase = styled.div`
-  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: ${spacing(1)};
-  line-height: 1.5;
 `;
 const renderCondition = (condition) => {
   // if (condition === 'delivered') {

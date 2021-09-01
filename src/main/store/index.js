@@ -125,14 +125,16 @@ import {
   sliderEditStore,
   SLIDER_EDIT_STORE_NAME,
 } from '../../core/slider-edit';
-
 import {
   AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME,
   authVerificateEmailRecoveryAccountStore,
 } from '../../core/auth-verificate-email-recovery-account';
-
 import { cartStore, CART_STORE_NAME } from '../../lib/common/cart';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
+import {
+  ordersListStore,
+  ORDERS_LIST_STORE_NAME,
+} from '../../core/orders-list';
 
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -185,6 +187,7 @@ export const reducers = combineReducers({
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
   [CART_STORE_NAME]: cartStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
+  [ORDERS_LIST_STORE_NAME]: ordersListStore,
 });
 
 export { initStore } from './store.core';
