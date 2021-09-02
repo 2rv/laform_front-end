@@ -1,4 +1,7 @@
-import EditorJs from 'react-editor-js';
+import React, { useEffect, useState } from 'react';
+
+import EditorJS from '@editorjs/editorjs';
+
 import Embed from '@editorjs/embed';
 import Table from '@editorjs/table';
 import Paragraph from '@editorjs/paragraph';
@@ -6,7 +9,7 @@ import List from '@editorjs/list';
 import Warning from '@editorjs/warning';
 import Code from '@editorjs/code';
 import LinkTool from '@editorjs/link';
-import Image from '@editorjs/image';
+import ImageTool from '@editorjs/image';
 import Raw from '@editorjs/raw';
 import Header from '@editorjs/header';
 import Quote from '@editorjs/quote';
@@ -35,7 +38,7 @@ export const EDITOR_JS_TOOLS = {
   code: Code,
   linkTool: LinkTool,
   image: {
-    class: Image,
+    class: ImageTool,
     config: {
       uploader: {
         uploadByFile: uploadByFile,
@@ -77,80 +80,7 @@ const uploadByFile = (file) => {
   });
 };
 
-const Editor = () => {
-  return (
-    <EditorJs
-      data={data}
-      onChange={(data) => console.log(data)}
-      tools={EDITOR_JS_TOOLS}
-      i18n={{
-        messages: {
-          ui: {
-            blockTunes: {
-              toggler: {
-                'Click to tune': 'Нажмите, чтобы настроить',
-                'or drag to move': 'или перетащите',
-              },
-            },
-            inlineToolbar: {
-              converter: {
-                'Convert to': 'Конвертировать в',
-              },
-            },
-            toolbar: {
-              toolbox: {
-                Add: 'Добавить',
-              },
-            },
-          },
-          toolNames: {
-            Text: 'Параграф',
-            Heading: 'Заголовок',
-            List: 'Список',
-            Warning: 'Примечание',
-            Checklist: 'Чеклист',
-            Quote: 'Цитата',
-            Code: 'Код',
-            Delimiter: 'Разделитель',
-            'Raw HTML': 'HTML-фрагмент',
-            Image: 'Вставить картинку',
-            Table: 'Таблица',
-            Link: 'Ссылка',
-            Marker: 'Маркер',
-            Bold: 'Полужирный',
-            Italic: 'Курсив',
-            InlineCode: 'Моноширинный',
-            Personality: 'Вставить автора',
-          },
-          tools: {
-            warning: {
-              Title: 'Название',
-              Message: 'Сообщение',
-            },
-            link: {
-              'Add a link': 'Вставьте ссылку',
-            },
-            stub: {
-              'The block can not be displayed correctly.':
-                'Блок не может быть отображен',
-            },
-          },
-          blockTunes: {
-            delete: {
-              Delete: 'Удалить',
-            },
-            moveUp: {
-              'Move up': 'Переместить вверх',
-            },
-            moveDown: {
-              'Move down': 'Переместить вниз',
-            },
-          },
-        },
-      }}
-    />
-  );
-};
+const editor = new Editor({});
 
 export default Editor;
 
