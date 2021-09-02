@@ -15,7 +15,6 @@ export function MyPurchasesComponent(props) {
     activeTab,
     setActiveTab,
     tabItems,
-    headersTable,
     itemsTable,
   } = props;
   return (
@@ -26,9 +25,9 @@ export function MyPurchasesComponent(props) {
         setActiveTab={setActiveTab}
         tabItems={tabItems}
       />
-      <TableList headers={headersTable} items={itemsTable}>
+      <TableList items={itemsTable}>
         {(props) => {
-          if (activeTab === 2) {
+          if (activeTab === 1) {
             return (
               <IconButton>
                 <UploadIcon />

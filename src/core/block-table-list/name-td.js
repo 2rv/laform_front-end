@@ -16,9 +16,9 @@ export function NameTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  width: 290px;
-  min-width: 290px;
-  padding-right: ${spacing(5)};
+  padding-right: ${spacing(2)};
+  width: 310px;
+  min-width: 310px;
   @media screen and (max-width: 875px) {
     width: 100%;
   }

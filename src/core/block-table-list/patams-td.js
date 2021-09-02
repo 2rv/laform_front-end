@@ -26,7 +26,7 @@ export function ParamsTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  padding-right: ${spacing(5)};
+  padding-right: ${spacing(4)};
   @media screen and (max-width: 875px) {
     padding-right: 0;
     margin-left: 90px;
@@ -35,7 +35,6 @@ const Td = styled.td`
 `;
 const Case = styled.div`
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   gap: ${spacing(1)};
 `;

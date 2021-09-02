@@ -23,7 +23,7 @@ export function CounterTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  padding-right: ${spacing(5)};
+  padding-right: ${spacing(8)};
   width: 90px;
   min-width: 90px;
   @media screen and (max-width: 875px) {
