@@ -135,6 +135,10 @@ import {
   ordersListStore,
   ORDERS_LIST_STORE_NAME,
 } from '../../core/orders-list';
+import {
+  usersOrderStore,
+  USERS_ORDER_STORE_NAME,
+} from '../../core/users-order';
 
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -188,6 +192,7 @@ export const reducers = combineReducers({
   [CART_STORE_NAME]: cartStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [ORDERS_LIST_STORE_NAME]: ordersListStore,
+  [USERS_ORDER_STORE_NAME]: usersOrderStore,
 });
 
 export { initStore } from './store.core';
