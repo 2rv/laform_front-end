@@ -12,7 +12,7 @@ export function ActionTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  padding-left: ${spacing(6)};
+  padding-left: ${spacing(5)};
   @media screen and (max-width: 875px) {
     padding-left: 0;
     margin-left: 90px;

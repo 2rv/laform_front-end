@@ -31,7 +31,7 @@ export function TableItem(props) {
     comment,
     id,
   } = data;
-  const countedPrice = price * quantity;
+  const countedPrice = quantity ? price * quantity : price;
 
   const showParameters = (type) => {
     switch (type) {
@@ -93,11 +93,11 @@ export function TableItem(props) {
   return (
     <Tr>
       <NameTd image={image} name={name} />
-      {comment && <CommentTd text={comment?.text} />}
-      {params && <ParamsTd items={params} />}
-      {otherParams && <ParamsTd items={otherParams} />}
-      {type && showParameters(type)}
-      {count && (
+      {comment ? <CommentTd text={comment?.text} /> : <></>}
+      {params ? <ParamsTd items={params} /> : <></>}
+      {otherParams ? <ParamsTd items={otherParams} /> : <></>}
+      {type ? showParameters(type) : <></>}
+      {count ? (
         <CounterTd
           id={id}
           incrementCount={(id) => dispatch(incrementCount(id))}
@@ -105,10 +105,10 @@ export function TableItem(props) {
           quantity={quantity}
           excludeCount={excludeCount}
         />
-      )}
-      {countedPrice && <PriceTd countedPrice={countedPrice} isLast={status} />}
-      {status && <StatusTd status={status} />}
-      {children && <ActionTd id={id} data={data} children={children} />}
+      ) : <></>}
+      {countedPrice ? <PriceTd countedPrice={countedPrice} isLast={status} /> : <></>}
+      {status ? <StatusTd status={status} /> : <></>}
+      {children ? <ActionTd id={id} data={data} children={children} /> : <></>}
     </Tr>
   );
 }
