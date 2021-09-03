@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
+import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { HTTP_ERROR_ROUTER } from '../../main/http';
+import { redirect } from '../../main/navigation/navigation.core';
+import { ordersUploadData } from './users-order.action';
+import { UsersOrderComponent } from './users-order.component';
+import { USERS_ORDER_STORE_NAME } from './users-order.constant';
+
 import {
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
-import { redirect } from '../../main/navigation/navigation.core';
-import { HTTP_ERROR_ROUTER } from '../../main/http';
-import { filterByType } from '../../lib/common/filter-list-card';
-import { ordersUploadData } from './users-order.action';
-import { UsersOrderComponent } from './users-order.component';
-import { USERS_ORDER_STORE_NAME } from './users-order.constant';
 
 export function UsersOrderContainer() {
   const dispatch = useDispatch();
@@ -31,6 +31,10 @@ export function UsersOrderContainer() {
   const startIndex = (currentPage - 1) * itemsPerPage;
 
   useEffect(() => {
+    if (user?.role !== USER_ROLE.ADMIN) {
+      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
+      return;
+    }
     // dispatch(ordersUploadData());
   }, []);
 

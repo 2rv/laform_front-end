@@ -31,7 +31,7 @@ export function OrderNumberContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    dispatch(orderNumberUploadData());
+    // dispatch(orderNumberUploadData());
   }, []);
 
   const onSubmit = (values) => {
@@ -57,7 +57,7 @@ export function OrderNumberContainer() {
       isSuccess={isRequestSuccess(state.orderNumber)}
       errorMessage={getRequestErrorMessage(state.orderNumber)}
       pageLoading={pageLoading}
-      orderNumberDetails={orderNumberDetails}
+      orderNumberDetails={itemsTable}
       headersTable={headersTable}
       onSubmit={onSubmit}
       initialValue={initialValue()}
