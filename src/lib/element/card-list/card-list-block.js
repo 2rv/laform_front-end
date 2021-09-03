@@ -12,7 +12,7 @@ export function CardListBlock(props) {
         <TitlePrimary tid={title} />
         {path && <LinkSecondary tid="HOME.VIEW_ALL" path={path} />}
       </Header>
-      <BasicCardList items={items} type={cardType} />
+      <BasicCardList items={items.slice(0, 3)} type={cardType} />
     </SectionLayout>
   );
 }
