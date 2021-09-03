@@ -16,5 +16,10 @@ interface IModalItems {
 export interface ModalPopupProps {
   modalVisibilty: boolean;
   onClose: Function;
-  children: React.ReactElement<any | null>
+  children: React.ReactElement<any | null>;
+}
+
+export interface ModalFullProps {
+  onOpen: boolean;
+  children: React.ReactElement<any | null>;
 }

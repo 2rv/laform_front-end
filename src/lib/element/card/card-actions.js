@@ -5,43 +5,59 @@ import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg
 import { useEffect, useState } from 'react';
 
 export function CardActions(props) {
-  const { like = false, select = false, type = 0 } = props;
-  const [isLiked, setLike] = useState(like);
-  const [isSelected, setSelect] = useState(select);
-  const [selectText, setSelectText] = useState(null);
+  const { id, type } = props; // данные самого товара
+  const {
+    like = false,
+    purchase = false,
+    cart = false,
+    selected = false,
+  } = props; // данные для методов
+  const { onSetCart, onSetLike, onSetSelect } = props; // методы
+
+  const [isLiked, setLike] = useState(like); // Стейт лайка для лайка
+  const [inCart, setInCart] = useState(cart); // Стейт корзины для покупки
+  const [isSelected, setSelect] = useState(selected); // Стейт выбрано или не выбрано для выбора товара в рекомендации
+  const [selectText, setSelectText] = useState(
+    purchase ? 'OTHER.PURCHASED' : null,
+  ); // Стейт текста который должен быть на кнопке
 
   useEffect(() => {
-    if (type === 1) {
-      setSelectText(isSelected ? 'OTHER.PURCHASED' : 'OTHER.BUY');
-    } else if (type === 2) {
-      setSelectText(isSelected ? 'Убрать из корзины' : 'В корзину');
-    } else {
+    setSelectText(inCart ? 'Убрать из корзины' : 'В корзину');
+    onSetSelect &&
       setSelectText(isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT');
-    }
-  }, [isSelected]);
+  }, [inCart, isSelected]);
 
-  const onLike = () => {
+  const onLikeCard = () => {
     setLike(!isLiked);
+    onSetLike && onSetLike(id, !isLiked);
   };
-  const onSelect = () => {
-    setSelect(!isSelected);
+  const onSelectCard = () => {
+    if (onSetSelect) {
+      setSelect(!isSelected);
+      onSetSelect(id, !isSelected);
+    }
+    if (onSetCart && !purchase) {
+      setInCart(!inCart);
+      onSetCart(id, !inCart);
+    }
   };
 
   return (
     <LineCase>
       <Button
-        width={190}
+        disabled={onSetSelect ? null : purchase}
         adaptive
-        onClick={onSelect}
-        select={isSelected}
+        onClick={onSelectCard}
+        select={onSetSelect ? isSelected : purchase ? true : inCart}
         tid={selectText}
       />
-      <LikeButton onClick={onLike} like={isLiked}>
+      <LikeButton onClick={onLikeCard} like={isLiked}>
         <LikeIcon />
       </LikeButton>
     </LineCase>
   );
 }
+
 const LineCase = styled.div`
   display: flex;
   gap: ${spacing(3)};
