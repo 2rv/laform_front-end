@@ -5,4 +5,5 @@ export const parseUserAuthData = (raw: any): AuthUserDto => ({
   login: raw[AUTH_USER_DATA.LOGIN],
   email: raw[AUTH_USER_DATA.EMAIL],
   role: raw[AUTH_USER_DATA.ROLE],
+  emailConfirmed: raw[AUTH_USER_DATA.EMAIL_CONFIRMED],
 });

@@ -3,6 +3,7 @@ export enum AUTH_USER_DATA {
   LOGIN = 'login',
   EMAIL = 'email',
   ROLE = 'role',
+  EMAIL_CONFIRMED = 'emailConfirmed',
 }
 
 export enum USER_ROLE {
@@ -15,6 +16,7 @@ export interface AuthUserDto {
   id: number;
   login: string;
   email: string;
+  emailConfirmed: boolean;
   role: USER_ROLE;
 }
 
@@ -30,4 +32,5 @@ export interface AuthStoreAction extends AuthStoreState {
 
 export enum AUTH_ACTION_TYPE {
   SET_DATA = 'AUTH.SET_DATA',
+  SET_AUTH_CONFIRMED = 'AUTH.SET_AUTH_CONFIRMED',
 }

@@ -79,6 +79,9 @@ const Container = styled(SectionLayout)`
   height: 100vh;
   overflow: ${(p: { isOpen: boolean }) => (p.isOpen ? 'hidden' : 'auto')};
   flex-flow: column;
+  @media screen and (max-width: 1070px) {
+    gap: ${spacing(12)};
+  }
   @media screen and (max-width: 720px) {
     gap: ${spacing(6)};
   }

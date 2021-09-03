@@ -1,3 +1,4 @@
+import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from 'src/core/auth-verificate-email';
 import { redirect } from '../../../main/navigation/navigation.core';
 import { AUTH_STORE_NAME } from './auth.constant';
 import { USER_ROLE } from './auth.type';
@@ -13,6 +14,21 @@ export const authRedirectLogged = (ctx: any, pathToRedirect: string) => {
       res.end();
     } else {
       redirect(pathToRedirect);
+    }
+  }
+};
+
+export const authConfirmedEmail = (ctx: any) => {
+  const { res } = ctx;
+  const user = ctx.store.getState()[AUTH_STORE_NAME].user;
+  if (user && !user?.emailConfirmed) {
+    if (res) {
+      res.writeHead(301, {
+        Location: AUTH_VERIFICATE_EMAIL_ROUTE_PATH,
+      });
+      res.end();
+    } else {
+      redirect(AUTH_VERIFICATE_EMAIL_ROUTE_PATH);
     }
   }
 };
