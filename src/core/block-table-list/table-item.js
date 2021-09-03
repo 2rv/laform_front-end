@@ -42,8 +42,7 @@ export function TableItem(props) {
     id,
     productName = null,
   } = data;
-
-  const countedPrice = price * quantity;
+  const countedPrice = quantity ? price * quantity : price;
 
   const showParameters = (type) => {
     switch (type) {
@@ -103,21 +102,21 @@ export function TableItem(props) {
     data[PATTERN_PRODUCT_KEY.FORMAT] === PATTER_PRODUCT_FORMAT.REMOTE;
 
   return (
-    <Tr onClick={() => onClick(productName, id)} cursorPointer={cursorPointer}>
+    <Tr>
       <NameTd image={image} name={name} />
-      {comment ? <CommentTd text={comment} /> : <></>}
+      {comment ? <CommentTd text={comment?.text} /> : <></>}
       {params ? <ParamsTd items={params} /> : <></>}
       {otherParams ? <ParamsTd items={otherParams} /> : <></>}
       {type ? showParameters(type) : <></>}
       {count ? (
-        <CounerTd
+        <CounterTd
           id={id}
           incrementCount={(id) => dispatch(incrementCount(id))}
           dicrementCoun={(id) => dispatch(decrementCount(id))}
           quantity={quantity}
           excludeCount={excludeCount}
         />
-      ) : <></> }
+      ) : <></>}
       {countedPrice ? <PriceTd countedPrice={countedPrice} isLast={status} /> : <></>}
       {status ? <StatusTd status={status} /> : <></>}
       {children ? <ActionTd id={id} data={data} children={children} /> : <></>}

@@ -90,11 +90,18 @@ import {
   SLIDER_LIST_ROUTE_PATH,
 } from '../../core/slider-list';
 import { promocodesRouter, PROMOCODES_ROUTE_PATH } from '../../core/promocodes';
-
 import {
   AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH,
   authVerificateEmailRecoveryAccountRouter,
 } from '../../core/auth-verificate-email-recovery-account';
+import {
+  ordersListRouter,
+  ORDERS_LIST_ROUTE_PATH,
+} from '../../core/orders-list';
+import {
+  usersOrderRouter,
+  USERS_ORDER_ROUTE_PATH,
+} from '../../core/users-order';
 
 export const routes = {
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH]:
@@ -130,6 +137,8 @@ export const routes = {
   [SLIDER_EDIT_ROUTE_PATH]: sliderEditRouter,
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
+  [ORDERS_LIST_ROUTE_PATH]: ordersListRouter,
+  [USERS_ORDER_ROUTE_PATH]: usersOrderRouter,
 };
 
 export const Router = routesInit(routes);

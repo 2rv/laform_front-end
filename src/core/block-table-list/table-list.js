@@ -19,29 +19,35 @@ export function TableList(props) {
   return (
     <Table>
       {headers && (
-        <Tr>
-          {headers.map((item, index) => (
-            <HeaderTd text={item} key={index} />
-          ))}
-        </Tr>
+        <thead>
+          <Tr>
+            {headers.map((item, index) => (
+              <HeaderTd text={item} key={index} />
+            ))}
+          </Tr>
+          <Tr><DividerTd /></Tr>
+        </thead>
       )}
-      <Tr>{headers && <DividerTd />}</Tr>
-      {items.map((data, i) => (
-        <React.Fragment key={i}>
-          <TableItem
-            type={type}
-            incrementCount={incrementCount}
-            decrementCount={decrementCount}
-            data={data}
-            count={count}
-            onClick={onClick}
-            cursorPointer={cursorPointer}
-          >
-            {children}
-          </TableItem>
-          <DividerTd />
-        </React.Fragment>
-      ))}
+      {Boolean(items.length > 0) && (
+        <tbody>
+          {items.map((data, i) => (
+            <React.Fragment key={i}>
+              <TableItem
+                type={type}
+                incrementCount={incrementCount}
+                decrementCount={decrementCount}
+                data={data}
+                count={count}
+                onClick={onClick}
+                cursorPointer={cursorPointer}
+              >
+                {children}
+              </TableItem>
+              <Tr><DividerTd /></Tr>
+            </React.Fragment>
+          ))}
+        </tbody>
+      )}
     </Table>
   );
 }
