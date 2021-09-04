@@ -41,7 +41,7 @@ export function HeaderMenuComponent(props) {
               userName={userName}
             />
           )}
-          <CartButton />
+          <CartButton isTablet={isTablet} />
         </Case>
       ) : (
         !isMobile && <AuthLinks />

@@ -42,7 +42,7 @@ export function HeaderComponent(props) {
           isTablet={isTablet}
         />
       </HeaderMenuCase>
-      <MobileNavMenu activePath={activePath} />
+      {isMobile && <MobileNavMenu activePath={activePath} />}
     </Container>
   );
 }

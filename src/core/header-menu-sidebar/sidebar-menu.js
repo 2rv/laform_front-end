@@ -146,7 +146,7 @@ const Content = styled.div`
 
 const Container = styled.div`
   position: fixed;
-  top: 172px;
+  top: 180px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -162,6 +162,6 @@ const Container = styled.div`
   @media screen and (max-width: 720px) {
     width: 100vw;
     max-width: ${(p) => (p.toggle ? `100vw` : 0)};
-    top: 122px;
+    top: 120px;
   }
 `;

@@ -3,17 +3,20 @@ import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../lib/theme';
 import { ReactComponent as CartIcon } from '../../asset/svg/cart.svg';
 import { IconButton } from '../../lib/element/button';
 
-export function CartButton() {
+export function CartButton(props) {
+  const { isTablet } = props;
   return (
     <Container>
-      <BadgeDark badgeContent={0}>
-        <CartIcon />
-      </BadgeDark>
-
-      <BadgeButton>
-        <CartIcon />
-        <Badge>0</Badge>
-      </BadgeButton>
+      {isTablet ? (
+        <BadgeButton>
+          <CartIcon />
+          <Badge>0</Badge>
+        </BadgeButton>
+      ) : (
+        <BadgeDark badgeContent={0}>
+          <CartIcon />
+        </BadgeDark>
+      )}
     </Container>
   );
 }
