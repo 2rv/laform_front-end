@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as UserIcon } from '../../../../asset/svg/user-icon.svg';
+import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary as Title } from '../../../../lib/element/title';

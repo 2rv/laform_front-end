@@ -20,7 +20,7 @@ const animation = keyframes`
     opacity: 1;
   }
 `;
-const Container = styled.div`
+const Container = styled.div<any>`
   position: absolute;
   top: 0;
   bottom: 0;
