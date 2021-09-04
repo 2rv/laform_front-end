@@ -7,12 +7,8 @@ export const useSaveCallback = (editor) => {
   return useCallback(async () => {
     if (!editor) return;
     try {
-      const out = await editor.save();
-      console.group('EDITOR onSave');
-      console.dir(out);
-      localStorage.setItem(dataKey, JSON.stringify(out));
-      console.info('Saved in localStorage');
-      console.groupEnd();
+      const output = await editor.save();
+      localStorage.setItem(dataKey, JSON.stringify(output));
     } catch (e) {
       console.error('SAVE RESULT failed', e);
     }
@@ -62,15 +58,12 @@ export const useLoadData = () => {
   useEffect(() => {
     setLoading(true);
     const id = setTimeout(() => {
-      console.group('EDITOR load data');
-      const saved = localStorage.getItem(dataKey);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        setData(parsed);
-        console.dir(parsed);
+      console.group('LOAD DATA');
+      const savedrow = localStorage.getItem(dataKey);
+      const saved = JSON.parse(savedrow);
+      if (saved?.blocks.length) {
+        setData(saved);
       } else {
-        console.info('No saved data, using initial');
-        console.dir(initialData);
         setData(initialData);
       }
       console.groupEnd();

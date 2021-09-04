@@ -3,22 +3,28 @@ import List from '@editorjs/list';
 import Paragraph from '@editorjs/paragraph';
 import Embed from '@editorjs/embed';
 import Table from '@editorjs/table';
-import Warning from '@editorjs/warning';
-import Code from '@editorjs/code';
 import LinkTool from '@editorjs/link';
-// import Image from '@editorjs/image'
-import Raw from '@editorjs/raw';
-import Quote from '@editorjs/quote';
+import ImageTool from '@editorjs/image';
 import Marker from '@editorjs/marker';
-import CheckList from '@editorjs/checklist';
 import Delimiter from '@editorjs/delimiter';
-import InlineCode from '@editorjs/inline-code';
-import SimpleImage from '@editorjs/simple-image';
+// import Warning from '@editorjs/warning';
+// import Code from '@editorjs/code';
+// import Raw from '@editorjs/raw';
+// import Quote from '@editorjs/quote';
+// import CheckList from '@editorjs/checklist';
+// import InlineCode from '@editorjs/inline-code';
+
+import { httpRequest } from '../../main/http';
 
 export const tools = {
   header: {
     class: Header,
-    inlineToolbar: ['link'],
+    config: {
+      placeholder: 'Это заголовок',
+      levels: [1, 2, 3, 4, 5, 6],
+      defaultLevel: 1,
+    },
+    inlineToolbar: ['link', 'bold', 'italic'],
   },
   list: {
     class: List,
@@ -30,15 +36,32 @@ export const tools = {
   },
   embed: Embed,
   table: Table,
-  warning: Warning,
-  code: Code,
   linkTool: LinkTool,
-  // image: Image,
-  raw: Raw,
-  quote: Quote,
   marker: Marker,
-  checklist: CheckList,
   delimiter: Delimiter,
-  inlineCode: InlineCode,
-  simpleImage: SimpleImage,
+  image: {
+    class: ImageTool,
+    config: {
+      uploader: {
+        uploadByFile(file) {
+          const formData = new FormData();
+          formData.append('file', file);
+          return httpRequest({
+            method: 'POST',
+            url: 'file/create',
+            data: formData,
+            headers: { 'Content-Type': 'multipart/form-data' },
+          }).then((res) => {
+            return {
+              success: 1,
+              file: {
+                url: res.data.fileUrl,
+              },
+            };
+          });
+        },
+      },
+      captionPlaceholder: 'Описание',
+    },
+  },
 };

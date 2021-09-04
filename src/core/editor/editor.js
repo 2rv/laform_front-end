@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import EditorJS from '@editorjs/editorjs';
 import { tools } from './tools';
+import styled from 'styled-components';
+import { spacing, THEME_SIZE } from '../../lib/theme';
+import { dataKey } from './hooks';
 
-export const useEditor = (toolsList, { data, editorRef }, options = {}) => {
+export const useEditor = (
+  toolsList,
+  { data, editorRef, read },
+  options = {},
+) => {
   const [editorInstance, setEditor] = useState(null);
   const {
     data: ignoreData,
@@ -11,50 +18,35 @@ export const useEditor = (toolsList, { data, editorRef }, options = {}) => {
     ...editorOptions
   } = options;
 
-  // initialize
   useEffect(() => {
     const editor = new EditorJS({
-      /**
-       * Id of Element that should contain the Editor
-       */
-      holder: 'editor-js',
-
-      /**
-       * Available Tools list.
-       * Pass Tool's class or Settings object for each Tool you want to use
-       */
+      holder: 'editor',
       tools: toolsList,
-
-      /**
-       * Previously saved data that should be rendered
-       */
       data: data || {},
-
-      initialBlock: 'paragraph',
-
-      // Override editor options
+      readOnly: read,
+      onChange: async (e) => {
+        const output = await e.saver.save();
+        localStorage.setItem(dataKey, JSON.stringify(output));
+      },
       ...editorOptions,
     });
 
     setEditor(editor);
 
-    // cleanup
     return () => {
       editor.isReady
         .then(() => {
           editor.destroy();
           setEditor(null);
         })
-        .catch((e) => console.error('ERROR editor cleanup', e));
+        .catch((e) => console.error('EDITOR CLEANUP ERROR', e));
     };
   }, [toolsList]);
 
-  // set reference
   useEffect(() => {
     if (!editorInstance) {
       return;
     }
-    // Send instance to the parent
     if (editorRef) {
       editorRef(editorInstance);
     }
@@ -63,13 +55,19 @@ export const useEditor = (toolsList, { data, editorRef }, options = {}) => {
   return { editor: editorInstance };
 };
 
-export const EditorContainer = ({ editorRef, data, options }) => {
-  console.log(`editorRef: ${editorRef}, data: ${data}, options: ${options}`);
-  useEditor(tools, { data, editorRef }, options);
+export const EditorContainer = ({ editorRef, data, options, read = false }) => {
+  useEditor(tools, { data, editorRef, read }, options);
 
   return (
-    <React.Fragment>
-      <div className="container" id="editor-js"></div>
-    </React.Fragment>
+    <Container>
+      <div className="container" id="editor"></div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  padding: ${spacing(6)};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  box-shadow: 0 24px 24px -18px rgb(69 104 129 / 33%),
+    0 9px 45px 0 rgb(114 119 160 / 12%);
+`;
