@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../lib/theme';
 import { ReactComponent as CartIcon } from '../../asset/svg/cart.svg';
 import { IconButton } from '../../lib/element/button';
+import { setLinkRedirect } from 'src/main/navigation';
 
 export function CartButton(props) {
   const { isTablet } = props;
   return (
-    <Container>
+    <Container onClick={setLinkRedirect('/basket')}>
       {isTablet ? (
         <BadgeButton>
           <CartIcon />

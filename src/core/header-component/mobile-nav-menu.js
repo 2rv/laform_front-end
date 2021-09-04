@@ -12,8 +12,8 @@ export function MobileNavMenu(props) {
   const { activePath } = props;
   return (
     <Container>
-      <Button onClick={setLinkRedirect('/profile')}>
-        <UserStyledIcon active={activePath?.startsWith('/profile')} />
+      <Button onClick={setLinkRedirect('/purchases-history')}>
+        <UserStyledIcon active={activePath?.startsWith('/purchases-history')} />
       </Button>
 
       <Button onClick={setLinkRedirect('/sewing-goods')}>
@@ -73,10 +73,12 @@ const TShirtStyledIcon = styled(TShirtIcon)`
   ${(p) =>
     p.active
       ? css`
+          fill: ${THEME_COLOR.SECONDARY_DARK};
           stroke: ${THEME_COLOR.SECONDARY_DARK};
         `
       : css`
           stroke: ${THEME_COLOR.TEXT.LIGHT};
+          fill: ${THEME_COLOR.TEXT.LIGHT};
         `}
 `;
 

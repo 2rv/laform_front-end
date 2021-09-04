@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { ReactComponent as LogoIcon } from '../../asset/svg/logo.svg';
 import { TextPrimary } from '../../lib/element/text';
+import { setLinkRedirect } from 'src/main/navigation';
 
 export function BrandLogo() {
   return (
-    <Container>
+    <Container onClick={setLinkRedirect('/')}>
       <LogoIcon />
       <div>
         <Text tid="HEADER_LOGO.HEADING_TEXT" />
