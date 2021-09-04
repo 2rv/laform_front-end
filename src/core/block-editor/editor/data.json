@@ -1,0 +1,13 @@
+{
+  "time": "INITIALTIME",
+  "blocks": [
+    {
+      "type": "header",
+      "data": {
+        "text": "Нажмите чтобы редактировать заголовок",
+        "level": 1
+      }
+    }
+  ],
+  "version": "INITIAL_VERSION"
+}
