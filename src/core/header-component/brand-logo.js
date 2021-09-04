@@ -1,17 +1,12 @@
 import styled from 'styled-components';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { ReactComponent as LogoIcon } from '../../asset/svg/logo.svg';
+import { TextPrimary } from '../../lib/element/text';
 
-import { ReactComponent as Logo } from '../../../../asset/svg/logo.svg';
-
-import { setLinkRedirect } from '../../../../main/navigation';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { TextPrimary } from '../../../../lib/element/text';
-
-import { HOME_ROUTE_PATH } from '../../../home';
-
-export function LogoComponent() {
+export function BrandLogo() {
   return (
-    <Container onClick={setLinkRedirect(HOME_ROUTE_PATH)}>
-      <Logo />
+    <Container>
+      <LogoIcon />
       <div>
         <Text tid="HEADER_LOGO.HEADING_TEXT" />
         &nbsp;
@@ -21,7 +16,7 @@ export function LogoComponent() {
   );
 }
 
-const Container = styled.a`
+const Container = styled.div`
   display: flex;
   gap: ${spacing(6)};
   align-items: center;

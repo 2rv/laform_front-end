@@ -9,12 +9,13 @@ import {
 import { TextSecondary } from '../../lib/element/text';
 import { LinkPrimary } from '../../lib/element/link';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../lib/theme';
+import { AUTH_VERIFICATE_EMAIL_HELP_ROUTE } from './auth-verificate-email.constant';
 import { ErrorAlert } from '../../lib/element/alert';
 
-export function AuthVerificateEmailRecoveryAccountComponent(props) {
+export function AuthVerificateEmailComponent(props) {
   const { email, onResend, isPending, isError, isSuccess, errorMessage } =
     props;
-
+  // <ContentLayout vertical="center" horizontal="center"></ContentLayout>
   return (
     <Container>
       <Content type="SMALL">
@@ -23,7 +24,7 @@ export function AuthVerificateEmailRecoveryAccountComponent(props) {
           <div>
             <Text tid="AUTH.VERIFICATE_EMAIL.CONTENT_BEFORE" />
             <Email tid={email} />
-            <Text tid="было отправлена ссылка для смены пароля, нажмите на ссылку из письма для продолжения." />
+            <Text tid="AUTH.VERIFICATE_EMAIL.CONTENT_AFTER" />
           </div>
         </SectionLayout>
         <ButtonSecondary
@@ -33,6 +34,11 @@ export function AuthVerificateEmailRecoveryAccountComponent(props) {
         />
         <div>
           <LightText tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
+          &nbsp;
+          <LinkPrimary
+            path={AUTH_VERIFICATE_EMAIL_HELP_ROUTE}
+            tid="AUTH.VERIFICATE_EMAIL.HELP"
+          />
         </div>
         {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
       </Content>
@@ -59,7 +65,6 @@ const Title = styled(TitlePrimary)`
 `;
 const Text = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
 `;
 const Email = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
