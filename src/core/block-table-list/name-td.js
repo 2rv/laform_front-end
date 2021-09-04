@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { TextPrimary } from '../../lib/element/text';
-import { spacing } from '../../lib/theme';
+import { spacing, THEME_SIZE } from '../../lib/theme';
 
 export function NameTd(props) {
   const { image, name } = props;
@@ -27,6 +27,7 @@ const Image = styled.img`
   width: 75px;
   height: 75px;
   min-width: 75px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Text = styled(TextPrimary)`
   word-break: break-word;

@@ -32,20 +32,17 @@ export function HeaderMenuComponent(props) {
       ) : (
         <NavMenu items={navMenuItems} activePath={activePath} />
       )}
-      {isAuth ? (
-        <Case>
-          {!isMobile && (
-            <ModalMenu
-              currentLang={currentLang}
-              modalMenuItems={modalMenuItems}
-              userName={userName}
-            />
-          )}
-          <CartButton isTablet={isTablet} />
-        </Case>
-      ) : (
-        !isMobile && <AuthLinks />
-      )}
+      <Case>
+        {!isMobile && isAuth && (
+          <ModalMenu
+            currentLang={currentLang}
+            modalMenuItems={modalMenuItems}
+            userName={userName}
+          />
+        )}
+        {!isAuth && !isMobile && <AuthLinks />}
+        <CartButton isTablet={isTablet} />
+      </Case>
     </Container>
   );
 }

@@ -25,7 +25,7 @@ const Container = styled.div`
 `;
 
 const Item = styled(LinkSecondary)`
-  padding: ${spacing(5)} 0;
+  padding: ${spacing(6)} 0;
   text-align: center;
   ${(p) =>
     p.active &&

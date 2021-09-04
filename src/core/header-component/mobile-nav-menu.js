@@ -3,7 +3,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { LinkSecondary } from '../../lib/element/link';
 import { IconButton } from '../../lib/element/button';
 import { ReactComponent as UserIcon } from '../../asset/svg/user.svg';
-import { ReactComponent as ScissorsIcon } from '../../asset/svg/Scissors.svg';
+import { ReactComponent as ScissorsIcon } from '../../asset/svg/scissors.svg';
 import { ReactComponent as TShirtIcon } from '../../asset/svg/tee-shirt.svg';
 import { ReactComponent as PostIcon } from '../../asset/svg/post.svg';
 import { setLinkRedirect } from 'src/main/navigation';
@@ -12,8 +12,8 @@ export function MobileNavMenu(props) {
   const { activePath } = props;
   return (
     <Container>
-      <Button onClick={setLinkRedirect('/profile')}>
-        <UserStyledIcon active={activePath?.startsWith('/profile')} />
+      <Button onClick={setLinkRedirect('/purchases-history')}>
+        <UserStyledIcon active={activePath?.startsWith('/purchases-history')} />
       </Button>
 
       <Button onClick={setLinkRedirect('/sewing-goods')}>
@@ -73,9 +73,11 @@ const TShirtStyledIcon = styled(TShirtIcon)`
   ${(p) =>
     p.active
       ? css`
+          fill: ${THEME_COLOR.SECONDARY_DARK};
           stroke: ${THEME_COLOR.SECONDARY_DARK};
         `
       : css`
+          fill: ${THEME_COLOR.TEXT.LIGHT};
           stroke: ${THEME_COLOR.TEXT.LIGHT};
         `}
 `;
