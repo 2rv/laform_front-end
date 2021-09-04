@@ -31,6 +31,7 @@ export function MultiField(props: MultiFieldPropsType) {
     if (event.keyCode === 13) {
       event.preventDefault();
       const copy = [...items];
+
       //@ts-ignore
       copy.push(event.target.value);
       setItems(copy);
