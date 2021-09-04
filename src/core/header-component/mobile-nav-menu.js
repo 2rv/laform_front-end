@@ -3,7 +3,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { LinkSecondary } from '../../lib/element/link';
 import { IconButton } from '../../lib/element/button';
 import { ReactComponent as UserIcon } from '../../asset/svg/user.svg';
-import { ReactComponent as ScissorsIcon } from '../../asset/svg/Scissors.svg';
+import { ReactComponent as ScissorsIcon } from '../../asset/svg/scissors.svg';
 import { ReactComponent as TShirtIcon } from '../../asset/svg/tee-shirt.svg';
 import { ReactComponent as PostIcon } from '../../asset/svg/post.svg';
 import { setLinkRedirect } from 'src/main/navigation';
