@@ -25,6 +25,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 25px;
+  padding-right: 5px;
 `;
 const BadgeButton = styled(IconButton)`
   display: flex;

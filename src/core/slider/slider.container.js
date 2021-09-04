@@ -22,7 +22,7 @@ export function SliderContainer(props) {
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  const sliders = getRequestData(state.slider, [...testSlides]);
+  const sliders = getRequestData(state.slider, []);
 
   useEffect(() => {
     dispatch(sliderLoadData(currentLang));

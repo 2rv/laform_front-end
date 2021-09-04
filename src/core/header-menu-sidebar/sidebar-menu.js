@@ -1,8 +1,6 @@
-import { Divider } from '../../lib/element/divider';
+import styled from 'styled-components';
 import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_SIZE } from '../../lib/theme';
-import styled from 'styled-components';
-import { ReactComponent as ArrowDown } from '../../asset/svg/arrow-down-solid.svg';
 import { SidebarMenuListItem } from './sidebar-menu-list-item';
 
 export function SidebarMenu(props) {
@@ -17,6 +15,7 @@ export function SidebarMenu(props) {
     </Container>
   );
 }
+
 const navMenu = [
   { title: 'Главная', pathname: '/' },
   {
@@ -41,11 +40,11 @@ const navMenu = [
     items: [
       { title: 'Промокоды', pathname: '/promocodes' },
       { title: 'Список слайдов', pathname: '/slider-list' },
-      { title: 'Редактировать слайд', pathname: '/slider-list/edit-slider/1' },
+      { title: 'Редактировать слайд', pathname: '/slider/edit-slider/new' },
       { title: 'Рекомендации', pathname: '/compilation ' },
-      { title: 'Подборка для home', pathname: '/edit-compilation' },
       { title: 'Создание товара', pathname: '/create-product' },
       { title: 'Создание статьи', pathname: '/create-article' },
+      { title: 'Профиль пользователя', pathname: '/profile' },
     ],
   },
   {
@@ -54,13 +53,12 @@ const navMenu = [
       { title: 'Ошибка', pathname: '/error' },
       { title: 'Помощь', pathname: '/faq' },
       { title: 'Настройки', pathname: '/settings' },
-      { title: 'Об аккаунте', pathname: '/about-account' },
       { title: 'Корзина', pathname: '/basket' },
       {
         title: 'Товар',
         items: [
-          { title: 'Мои лайки', pathname: '/my-likes' },
-          { title: 'Мои покупки', pathname: '/my-purchases' },
+          { title: 'Мои лайки', pathname: '/favorites' },
+          { title: 'Мои покупки', pathname: '/purchases-history' },
           { title: 'Мои заказы', pathname: '/orders' },
           { title: 'Заказ', pathname: '/order/1' },
         ],
