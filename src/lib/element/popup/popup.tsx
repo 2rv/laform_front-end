@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 import { PopupPropsType } from './popup.type';
 
-import { spacing, THEME_COLOR } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
 export function Popup(props: PopupPropsType) {
-  const { content, children } = props;
+  const { content, children, top = 45 } = props;
   const [visible, setVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +25,7 @@ export function Popup(props: PopupPropsType) {
   return (
     <PopupContainer ref={modalRef}>
       {visible && (
-        <PopupContent>
+        <PopupContent top={top}>
           {content instanceof Function ? content(setVisible) : content}
         </PopupContent>
       )}
@@ -38,16 +38,18 @@ const PopupContainer = styled.div`
   position: relative;
 `;
 
-const PopupContent = styled.div`
+const PopupContent = styled.div<any>`
   position: absolute;
   z-index: 1;
-  transform: translateX(-85%);
-  top: 45px;
-  width: 300px;
+  /* transform: translateX(-85%); */
+  top: ${(p) => p.top}px;
+  right: 0;
+  display: flex;
+  width: max-content;
   background: ${THEME_COLOR.WHITE};
   box-shadow: ${THEME_COLOR.SHADOW.MODAL};
-  border-radius: 5px;
-  padding: ${spacing(3)};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  padding: ${spacing(2)};
 `;
 
 const PopupAction = styled.div`

@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { isRequestPending } from '../../main/store/store.service';
+import {
+  getRequestErrorMessage,
+  getRequestData,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from '../../main/store/store.service';
 import { AuthVerificateEmailRecoveryAccountComponent } from './auth-verificate-email-recovery-account.component';
 import { authVerificateEmailRecoveryAccountUploadData } from './auth-verificate-email-recovery-account.action';
 import { AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME } from './auth-verificate-email-recovery-account.constant';
@@ -9,8 +15,8 @@ import { AUTH_RECOVERY_ACCOUNT_ROUTE_PATH } from '../auth-recovery-account';
 
 export function AuthVerificateEmailRecoveryAccountContainer() {
   const dispatch = useDispatch();
-  const { authRecoveryAccountForm, user } = useSelector((state) => ({
-    authRecoveryAccountForm:
+  const { state, user } = useSelector((state) => ({
+    state:
       state[AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME]
         .authRecoveryAccountForm,
     user: state[AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME].user,
@@ -26,8 +32,11 @@ export function AuthVerificateEmailRecoveryAccountContainer() {
 
   return (
     <AuthVerificateEmailRecoveryAccountComponent
-      email={user.email}
-      isPending={isRequestPending(authRecoveryAccountForm)}
+      email={user?.email}
+      isPending={isRequestPending(state)}
+      isError={isRequestError(state)}
+      isSuccess={isRequestSuccess(state)}
+      errorMessage={getRequestErrorMessage(state)}
       onResend={sendVerificationRequest}
     />
   );

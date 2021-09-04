@@ -25,7 +25,7 @@ export function AboutAccountContainer() {
 
   useEffect(() => {
     // dispatch(aboutAccountLoadData());
-    dispatch(likesLoadData());
+    // dispatch(likesLoadData());
   }, []);
 
   return (

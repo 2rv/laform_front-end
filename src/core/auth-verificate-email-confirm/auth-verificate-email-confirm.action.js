@@ -1,3 +1,4 @@
+import { authSetEmailConfirmed } from 'src/lib/common/auth/auth.action';
 import { httpRequest } from '../../main/http';
 
 import { AUTH_VERIFICATE_EMAIL_CONFIRM_API } from './auth-verificate-email-confirm.constant';
@@ -10,11 +11,13 @@ export function authVerificateEmailConfirmUploadData(code) {
     });
 
     try {
-      await httpRequest({
+      const res = await httpRequest({
         method: AUTH_VERIFICATE_EMAIL_CONFIRM_API.METHOD,
         url: AUTH_VERIFICATE_EMAIL_CONFIRM_API.ENDPOINT(code),
       });
-
+      if (res.data === true) {
+        dispatch(authSetEmailConfirmed());
+      }
       dispatch({
         type: AUTH_VERIFICATE_EMAIL_CONFIRM_ACTION_TYPE.AUTH_VERIFICATE_EMAIL_CONFIRM_UPLOAD_SUCCESS,
       });

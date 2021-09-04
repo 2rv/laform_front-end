@@ -1,49 +1,76 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 import { spacing, THEME_COLOR } from '../../lib/theme';
-
-import {
-  HeaderActionContainer,
-  HeaderMenuComponent,
-  HeaderMenuMobileComponent,
-} from './frames';
+import { HeaderLogoComponent } from './header-logo.component';
+import { HeaderMenuComponent } from './header-menu.component';
+import { MobileNavMenu } from '../header-component';
 
 export function HeaderComponent(props) {
   const {
-    items,
     activePath,
-    logged,
-    user,
-    role,
+    isAuth,
+    userName,
+    currentLang,
+    navMenuItems,
+    modalMenuItems,
     isMobile,
     isTablet,
     setSidebarOpen,
     sidebarIsOpen,
-    cartItems = 0,
   } = props;
   return (
     <Container>
-      {isTablet ? (
-        <HeaderMenuMobileComponent
-          setSidebarOpen={setSidebarOpen}
-          sidebarIsOpen={sidebarIsOpen}
-          cartItems={cartItems}
-          user={user}
-          logged={logged}
+      <HeaderLogoCase>
+        <HeaderLogoComponent
+          activePath={activePath}
+          isAuth={isAuth}
+          currentLang={currentLang}
           isMobile={isMobile}
         />
-      ) : (
-        <React.Fragment>
-          <HeaderMenuComponent items={items} activePath={activePath} />
-          <HeaderActionContainer logged={logged} user={user} role={role} />
-        </React.Fragment>
-      )}
+      </HeaderLogoCase>
+      <HeaderMenuCase>
+        <HeaderMenuComponent
+          setSidebarOpen={setSidebarOpen}
+          sidebarIsOpen={sidebarIsOpen}
+          activePath={activePath}
+          isAuth={isAuth}
+          userName={userName}
+          currentLang={currentLang}
+          navMenuItems={navMenuItems}
+          modalMenuItems={modalMenuItems}
+          isMobile={isMobile}
+          isTablet={isTablet}
+        />
+      </HeaderMenuCase>
+      {isMobile && <MobileNavMenu activePath={activePath} />}
     </Container>
   );
 }
 
+// мобильное 120px 70px + 50px
+// обычное 180px  80px + 100px
+
 const Container = styled.div`
   display: flex;
-  gap: ${spacing(6)};
-  justify-content: space-between;
+  flex-direction: column;
+`;
+
+const HeaderLogoCase = styled.div`
+  display: flex;
+  height: 100px;
+  padding: ${spacing(3)};
+  justify-content: center;
+  @media screen and (max-width: 720px) {
+    height: 50px;
+  }
+`;
+const HeaderMenuCase = styled.div`
+  display: flex;
+  height: 80px;
+  padding: ${spacing(3)};
+  justify-content: center;
+  background-color: ${THEME_COLOR.GRAY};
+  @media screen and (max-width: 720px) {
+    height: 70px;
+  }
 `;

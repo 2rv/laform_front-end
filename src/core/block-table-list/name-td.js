@@ -8,7 +8,7 @@ export function NameTd(props) {
     <Td>
       <Case>
         <Image src={image} />
-        <TextPrimary tid={name} />
+        <Text tid={name} />
       </Case>
     </Td>
   );
@@ -16,9 +16,9 @@ export function NameTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  width: 290px;
-  min-width: 290px;
-  padding-right: ${spacing(6)};
+  padding-right: ${spacing(2)};
+  width: 310px;
+  min-width: 310px;
   @media screen and (max-width: 875px) {
     width: 100%;
   }
@@ -27,6 +27,9 @@ const Image = styled.img`
   width: 75px;
   height: 75px;
   min-width: 75px;
+`;
+const Text = styled(TextPrimary)`
+  word-break: break-word;
 `;
 const Case = styled.div`
   display: flex;
