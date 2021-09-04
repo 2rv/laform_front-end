@@ -5,5 +5,5 @@ import { BASKET_ROUTE_PATH } from './basket.constant';
 
 export function basketRouter(ctx) {
   ctx.store.dispatch(setActivePath(BASKET_ROUTE_PATH));
-  authConfirmedEmail(ctx);
+  //   authConfirmedEmail(ctx);
 }
