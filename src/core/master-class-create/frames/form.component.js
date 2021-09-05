@@ -79,11 +79,15 @@ export function FormComponent(props) {
           minHeight={100}
         />
       </SectionLayout>
-      <BlockEditor
-        formikOnChange={setEditorData(
-          CREATE_MASTER_CLASS_FIELD_NAME.MASTER_CLASS,
-        )}
-      />
+      <SectionLayout type="SMALL">
+        <Title tid="Статья мастер-класса" />
+        <BlockEditor
+          formikOnChange={setEditorData(
+            CREATE_MASTER_CLASS_FIELD_NAME.MASTER_CLASS,
+          )}
+        />
+      </SectionLayout>
+
       <DynamicFields
         nameFieldArray={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAMS}
         namePosition={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_NAME}

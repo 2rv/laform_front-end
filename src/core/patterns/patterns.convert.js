@@ -5,13 +5,13 @@ export const performPatternsData = (rowData) => {
       id: item.id,
       name: item.titleRu,
       image: item.images?.[0]?.fileUrl,
-      type: item.type.id,
+      type: item.type,
       bestseller: item.modifier,
       complexity: item.complexity,
       price: {
-        min: item?.price || checkMinPrice(item?.sizes, 'size'),
+        min: item?.price || checkMinPrice(item?.sizes, 'price'),
         discount: item.discount,
-        max: item?.price ? null : checkMaxPrice(item?.sizes, 'size'),
+        max: item?.price ? null : checkMaxPrice(item?.sizes, 'price'),
       },
     };
   });

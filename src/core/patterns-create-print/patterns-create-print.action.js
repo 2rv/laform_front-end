@@ -10,15 +10,15 @@ export function createPrintPatternUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
     try {
       const data = convertForUpload(imagesUrls, formValues);
-      console.log(data);
+
       //----------------------------------------------------------------------
 
-      //   const response = await httpRequest({
-      //     method: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_UPLOAD.TYPE,
-      //     url: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_UPLOAD.ENDPOINT,
-      //     data: data,
-      //   });
-
+      const response = await httpRequest({
+        method: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_UPLOAD.TYPE,
+        url: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_UPLOAD.ENDPOINT,
+        data: data,
+      });
+      console.log(response.data);
       //----------------------------------------------------------------------
 
       dispatch({
@@ -50,12 +50,12 @@ export function createPrintPatternPreUploadData(formValues) {
           ],
         );
       }
-      //   const response = await httpRequest({
-      //     method: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_IMAGE_UPLOAD.TYPE,
-      //     url: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_IMAGE_UPLOAD.ENDPOINT,
-      //     data: formData,
-      //   });
-      //   dispatch(createProductFormUploadData(response.data, formValues));
+      const response = await httpRequest({
+        method: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_IMAGE_UPLOAD.TYPE,
+        url: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_IMAGE_UPLOAD.ENDPOINT,
+        data: formData,
+      });
+      dispatch(createPrintPatternUploadData(response.data, formValues));
     } catch (err) {
       if (err.response) {
         dispatch({

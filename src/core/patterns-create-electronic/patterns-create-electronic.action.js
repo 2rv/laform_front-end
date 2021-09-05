@@ -10,15 +10,14 @@ export function createElectronicPatternUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
     try {
       const data = convertForUpload(imagesUrls, formValues);
-      console.log(data);
       //----------------------------------------------------------------------
 
-      //   const response = await httpRequest({
-      //     method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.TYPE,
-      //     url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.ENDPOINT(type),
-      //     data: data,
-      //   });
-
+      const response = await httpRequest({
+        method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.TYPE,
+        url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.ENDPOINT,
+        data: data,
+      });
+      console.log(response.data);
       //----------------------------------------------------------------------
 
       dispatch({
@@ -50,12 +49,13 @@ export function createElectronicPatternPreUploadData(formValues) {
           ],
         );
       }
-      //   const response = await httpRequest({
-      //     method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_IMAGE_UPLOAD.TYPE,
-      //     url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_IMAGE_UPLOAD.ENDPOINT,
-      //     data: formData,
-      //   });
-      //   dispatch(createElectronicPatternUploadData(response.data, formValues));
+      const response = await httpRequest({
+        method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_IMAGE_UPLOAD.TYPE,
+        url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_IMAGE_UPLOAD.ENDPOINT,
+        data: formData,
+      });
+      console.log(response.data);
+      dispatch(createElectronicPatternUploadData(response.data, formValues));
     } catch (err) {
       if (err.response) {
         dispatch({

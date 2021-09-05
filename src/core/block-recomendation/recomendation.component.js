@@ -23,6 +23,7 @@ export function RecomendationComponent(props) {
   const [modal, setModal] = useState(false);
   const {
     listItems,
+    selectedListItems,
     onSelect,
     activeTab,
     setActiveTab,
@@ -46,7 +47,7 @@ export function RecomendationComponent(props) {
         />
       </FieldLayout>
 
-      <RecomendationList items={listItems} onSelect={onSelect} />
+      <RecomendationList items={selectedListItems} onSelect={onSelect} />
 
       <ModalFull onOpen={modal}>
         <Case>

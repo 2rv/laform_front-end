@@ -68,6 +68,7 @@ export function RecomendationContainer(props) {
         ),
         activeTab,
       )}
+      selectedListItems={products}
       onSelect={onSelect}
       //-----
       activeTab={activeTab}

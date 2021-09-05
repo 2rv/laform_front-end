@@ -33,7 +33,6 @@ const config = {
     numberPositiveMax(100),
   ],
   [ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY]: [],
-  [ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL]: [required],
   [ELECTRONIC_PATTERN_FIELD_NAME.FILE]: [required],
   [ELECTRONIC_PATTERN_FIELD_NAME.PRICE]: [
     required,

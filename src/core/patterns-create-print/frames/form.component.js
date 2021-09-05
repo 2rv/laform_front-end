@@ -18,6 +18,7 @@ import {
   numberValue,
 } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
+import { BlockEditor } from '../../block-editor';
 
 export function FormComponent(props) {
   const {
@@ -35,7 +36,8 @@ export function FormComponent(props) {
   //----------------------------
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
-
+  const setEditorData = (name) => (editorData) =>
+    setFieldValue(name, editorData);
   //----------------------------
 
   return (
@@ -80,17 +82,12 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           minHeight={100}
         />
-
-        <TextareaField
-          titleTid="Материалы"
-          placeholderTid="Полное описание материалов"
-          name={PRINT_PATTERN_FIELD_NAME.MATERIAL}
-          value={values[PRINT_PATTERN_FIELD_NAME.MATERIAL]}
-          error={getFieldError(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          minHeight={100}
-        />
+        <SectionLayout type="TEXT_SMALL">
+          <SmallTitle tid="Материалы" />
+          <BlockEditor
+            formikOnChange={setEditorData(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
+          />
+        </SectionLayout>
       </SectionLayout>
       <Complexity>
         <SmallTitle tid="Сложность выкройки" />
@@ -138,7 +135,6 @@ export function FormComponent(props) {
             onChange={setNumber(PRINT_PATTERN_FIELD_NAME.DISCOUNT)}
             onBlur={handleBlur}
           />
-
           <ProductPrice
             discount={values[PRINT_PATTERN_FIELD_NAME.DISCOUNT]}
             price={dynamicFieldsMinPrice(

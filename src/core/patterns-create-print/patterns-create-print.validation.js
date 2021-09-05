@@ -33,7 +33,6 @@ const config = {
     numberPositiveMax(100),
   ],
   [PRINT_PATTERN_FIELD_NAME.COMPLEXITY]: [],
-  [PRINT_PATTERN_FIELD_NAME.MATERIAL]: [required],
 };
 
 export const formValidation = (values) => {

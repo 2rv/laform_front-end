@@ -15,6 +15,7 @@ import { ELECTRONIC_PATTERN_FIELD_NAME } from '../patterns-create-electronic.typ
 import { ProductPrice } from '../../block-product-components';
 import { numberValue } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
+import { BlockEditor } from '../../block-editor';
 
 export function FormComponent(props) {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
@@ -22,6 +23,8 @@ export function FormComponent(props) {
 
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
+  const setEditorData = (name) => (editorData) =>
+    setFieldValue(name, editorData);
 
   return (
     <SectionLayout>
@@ -65,17 +68,14 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           minHeight={100}
         />
-
-        <TextareaField
-          titleTid="Материалы"
-          placeholderTid="Полное описание материалов"
-          name={ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL}
-          value={values[ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL]}
-          error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL)}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          minHeight={100}
-        />
+        <SectionLayout type="TEXT_SMALL">
+          <SmallTitle tid="Материалы" />
+          <BlockEditor
+            formikOnChange={setEditorData(
+              ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL,
+            )}
+          />
+        </SectionLayout>
       </SectionLayout>
       <FieldLayout type="double" adaptive>
         <FileField
