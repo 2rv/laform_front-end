@@ -21,7 +21,7 @@ export function myLikesStore(state = initialState, action) {
     case MY_LIKES_ACTION_TYPE.MY_LIKES_UPLOAD_SUCCESS:
       return {
         ...state,
-        myLikes: setRequestSuccess(state.myLikes),
+        myLikes: setRequestSuccess(state.myLikes, action.payload),
       };
     case MY_LIKES_ACTION_TYPE.MY_LIKES_UPLOAD_ERROR:
       return {

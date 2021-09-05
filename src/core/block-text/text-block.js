@@ -7,13 +7,13 @@ import { useState } from 'react';
 export function TextBlock(props) {
   const [more, setMore] = useState(true);
   const { text, limit = 200 } = props;
-  const firstText = text.slice(0, limit);
-  const secondText = text.slice(limit);
+  const firstText = text?.slice(0, limit);
+  const secondText = text?.slice(limit);
   return (
     <Container>
       <TextSecondary>{firstText}</TextSecondary>
       <Text more={more}>{secondText}</Text>
-      {text.length > limit && (
+      {Boolean(text?.length) > limit && (
         <>
           <Text more={!more} tid="..." />
           &nbsp;
