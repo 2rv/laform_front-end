@@ -7,20 +7,33 @@ import { THEME_SIZE } from '../../lib/theme';
 import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
 import { TextSecondary } from 'src/lib/element/text';
+import { Spinner } from 'src/lib/element/spinner';
+import { redirect } from 'src/main/navigation';
 
 export function AboutAccountComponent(props) {
-  const { orderItems, likes, commentItems } = props;
+  const {
+    orderItems,
+    isLikesPending,
+    likes,
+    isCommentsPending,
+    comments,
+  } = props;
+
+  const redirectToProduct = (productName, id) => {
+    redirect(`${productName}/${id}`);
+  };
+
   return (
     <SectionLayout>
-      <AboutAccountInfoComponent />
+      <AboutAccountInfoComponent {...props} />
       <SectionLayout type="SMALL">
         <SectionLayout type="TEXT">
           <Title tid="Список покупок" />
           <Divider />
           {Boolean(orderItems.length) ? (
             <>
-            <TableList items={orderItems} />
-            <LinkSecondary tid="Посмотреть все..." />
+              <TableList items={orderItems} />
+              <LinkSecondary tid="Посмотреть все..." />
             </>
           ) : (
             <TextSecondary tid="Нету покупок" />
@@ -31,13 +44,17 @@ export function AboutAccountComponent(props) {
         <SectionLayout type="TEXT">
           <Title tid="Мои лайки" />
           <Divider />
-          {Boolean(likes.length) ? (
-            <>
-              <TableList items={likes} />
-              <LinkSecondary tid="Посмотреть все..." />
-            </>
+          {isLikesPending ? (
+            <Spinner />
           ) : (
-            <TextSecondary tid="Нету лайков" />
+            Boolean(likes.length) ? (
+              <>
+                <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
+                <LinkSecondary tid="Посмотреть все..." />
+              </>
+            ) : (
+              <TextSecondary tid="Нету лайков" />
+            )
           )}
         </SectionLayout>
       </SectionLayout>
@@ -45,7 +62,11 @@ export function AboutAccountComponent(props) {
         <SectionLayout type="TEXT">
           <Title tid="Мои комментарии" />
           <Divider />
-          {Boolean(commentItems.length) ? <TableList items={commentItems} /> : <TextSecondary tid="Нету комментариев" />}
+          {isCommentsPending ? (
+            <Spinner />
+          ) : (
+            Boolean(comments.length) ? <TableList items={comments} /> : <TextSecondary tid="Нету комментариев" />
+          )}
         </SectionLayout>
       </SectionLayout>
     </SectionLayout>

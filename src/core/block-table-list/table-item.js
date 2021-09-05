@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { spacing } from '../../lib/theme';
+import { spacing, THEME_COLOR } from '../../lib/theme';
 import { BLOCK_TABLE_LIST_ROW_TYPE } from './block-table-list.type';
 import {
   SEWING_PRODUCT_KEY,
@@ -19,7 +19,17 @@ import { StatusTd } from './status-td';
 
 export function TableItem(props) {
   const dispatch = useDispatch();
-  const { children, data, incrementCount, decrementCount, count, type } = props;
+
+  const {
+    children,
+    data, incrementCount,
+    decrementCount,
+    count,
+    type,
+    onClick,
+    cursorPointer,
+  } = props;
+
   const {
     name,
     price,
@@ -30,6 +40,7 @@ export function TableItem(props) {
     status,
     comment,
     id,
+    productName = null,
   } = data;
   const countedPrice = quantity ? price * quantity : price;
 
@@ -114,6 +125,12 @@ export function TableItem(props) {
 }
 const Tr = styled.tr`
   display: table-row;
+  ${(props) => props.cursorPointer && `
+    &:hover {
+      cursor: pointer;
+      background: ${THEME_COLOR.GRAY};
+    }
+  `};
   @media screen and (max-width: 875px) {
     display: flex;
     flex-direction: column;
