@@ -10,16 +10,15 @@ export function createMasterClassUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
     try {
       const data = convertForUpload(imagesUrls, formValues);
-      console.log(data);
 
       //----------------------------------------------------------------------
 
-      //   const response = await httpRequest({
-      //     method: CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_UPLOAD.TYPE,
-      //     url: CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_UPLOAD.ENDPOINT,
-      //     data: data,
-      //   });
-
+      const response = await httpRequest({
+        method: CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_UPLOAD.TYPE,
+        url: CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_UPLOAD.ENDPOINT,
+        data: data,
+      });
+      console.log(response.data);
       //----------------------------------------------------------------------
 
       dispatch({
@@ -51,14 +50,14 @@ export function createMasterClassPreUploadData(formValues) {
           ],
         );
       }
-      //   const response = await httpRequest({
-      //     method:
-      //       CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_IMAGE_PRE_UPLOAD.TYPE,
-      //     url: CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_IMAGE_PRE_UPLOAD
-      //       .ENDPOINT,
-      //     data: formData,
-      //   });
-      //   dispatch(createMasterClassUploadData(response.data, formValues));
+      const response = await httpRequest({
+        method:
+          CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_IMAGE_PRE_UPLOAD.TYPE,
+        url: CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_IMAGE_PRE_UPLOAD
+          .ENDPOINT,
+        data: formData,
+      });
+      dispatch(createMasterClassUploadData(response.data, formValues));
     } catch (err) {
       if (err.response) {
         dispatch({

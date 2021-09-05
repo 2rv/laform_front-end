@@ -3,7 +3,7 @@ export const options = {
   autofocus: true,
   minHeight: 100,
 
-  onReady: () => console.count('READY callback'),
+  //   onReady: () => console.count('READY callback'),
 
   i18n: {
     messages: {
@@ -49,7 +49,8 @@ export const options = {
           'Add a link': 'Вставить ссылку',
         },
         stub: {
-          'The block can not be displayed correctly.': 'Блок не может быть корректно отображен',
+          'The block can not be displayed correctly.':
+            'Блок не может быть корректно отображен',
         },
         image: {
           'Select an Image': 'Выбрать изображение',
@@ -72,10 +73,12 @@ export const options = {
         },
         linkTool: {
           Link: 'Ссылка',
-          "Couldn't fetch the link data": 'Не удалось запросить данные по ссылке',
+          "Couldn't fetch the link data":
+            'Не удалось запросить данные по ссылке',
           "Couldn't get this link data, try the other one":
             'Не удалось получить данные по ссылке. Попробуйте другую',
-          'Wrong response format from the server': 'Неправильный формат ответа сервера',
+          'Wrong response format from the server':
+            'Неправильный формат ответа сервера',
         },
       },
       blockTunes: {
@@ -91,4 +94,4 @@ export const options = {
       },
     },
   },
-}
+};

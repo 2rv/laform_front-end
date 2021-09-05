@@ -10,7 +10,7 @@ export const useSaveCallback = (editor) => {
       const output = await editor.save();
       localStorage.setItem(dataKey, JSON.stringify(output));
     } catch (e) {
-      console.error('SAVE RESULT failed', e);
+      //   console.error('SAVE RESULT failed', e);
     }
   }, [editor]);
 };
@@ -50,7 +50,7 @@ export const useClearDataCallback = (editor) => {
 };
 
 // load saved data
-export const useLoadData = () => {
+export const useLoadData = (formikOnChange) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -58,15 +58,18 @@ export const useLoadData = () => {
   useEffect(() => {
     setLoading(true);
     const id = setTimeout(() => {
-      console.group('LOAD DATA');
+      //   console.group('LOAD DATA');
       const savedrow = localStorage.getItem(dataKey);
       const saved = JSON.parse(savedrow);
       if (saved?.blocks.length) {
         setData(saved);
+        formikOnChange(saved);
       } else {
         setData(initialData);
+        formikOnChange(initialData);
       }
-      console.groupEnd();
+
+      //   console.groupEnd();
       setLoading(false);
     }, 200);
 

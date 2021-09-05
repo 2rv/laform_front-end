@@ -5,7 +5,7 @@ export const performMasterClassData = (rowData) => {
       id: item.id,
       name: item.titleRu,
       image: item.images[0]?.fileUrl,
-      type: item.type.id,
+      type: item.type || 0,
       bestseller: item.modifier,
       price: {
         min: checkMinPrice(item?.programs, 'price'),

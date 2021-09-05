@@ -20,8 +20,7 @@ export function CreateMasterClassContainer() {
   }));
 
   const onSubmit = (formValues) => {
-    console.log(formValues);
-    // dispatch(createMasterClassPreUploadData(formValues));
+    dispatch(createMasterClassPreUploadData(formValues));
   };
 
   const initialValues = () => ({

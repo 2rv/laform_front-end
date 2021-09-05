@@ -1,5 +1,5 @@
 export const performPatternsData = (rowData) => {
-  console.log(rowData);
+  //   console.log(rowData);
   return rowData.map((item) => {
     return {
       id: item.id,

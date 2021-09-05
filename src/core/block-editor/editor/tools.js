@@ -7,7 +7,7 @@ import LinkTool from '@editorjs/link';
 import ImageTool from '@editorjs/image';
 import Marker from '@editorjs/marker';
 import Delimiter from '@editorjs/delimiter';
-import { httpRequest } from '../../main/http';
+import { httpRequest } from '../../../main/http';
 
 export const tools = {
   header: {
