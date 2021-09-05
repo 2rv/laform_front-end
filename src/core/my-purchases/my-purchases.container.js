@@ -48,21 +48,21 @@ const itemsTable = [
   {
     name: 'Мастер-класс комбинезон',
     image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
+      'https://images.unsplash.com/photo-1613555612473-90cf723dfb60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
     otherParams: [{ name: 'Программа', value: 'Удалённая' }],
     type: 0,
   },
   {
     name: 'Мастер-класс по пошиву Жакета 0305',
     image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
+      'https://images.unsplash.com/photo-1613555612473-90cf723dfb60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
     otherParams: [{ name: 'Программа', value: 'Удалённая' }],
     type: 0,
   },
   {
     name: 'Выкройка Пальто 1250 Цк с рукавом',
     image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
+      'https://images.unsplash.com/photo-1613555612473-90cf723dfb60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
     params: [
       { name: 'Формат', value: 'Электронный' },
       { name: 'Размер', value: '15/70 250' },
@@ -72,7 +72,7 @@ const itemsTable = [
   {
     name: 'Выкройка Пальто 1250 Цк с рукавом',
     image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
+      'https://images.unsplash.com/photo-1613555612473-90cf723dfb60?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
     params: [
       { name: 'Формат', value: 'Электронный' },
       { name: 'Размер', value: '15/70 250' },

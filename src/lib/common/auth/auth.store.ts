@@ -5,7 +5,6 @@ const initialState: AuthStoreState = {
   logged: null,
   user: null,
 };
-
 export function authStore(
   state = initialState,
   action: AuthStoreAction,
@@ -17,6 +16,12 @@ export function authStore(
         token: action.token,
         user: action.user,
         logged: action.logged,
+      };
+
+    case AUTH_ACTION_TYPE.SET_AUTH_CONFIRMED:
+      return {
+        ...state,
+        user: action.user,
       };
 
     default:

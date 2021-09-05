@@ -1,4 +1,5 @@
-export const SLIDER_EDIT_ROUTE_PATH = (sliderId = '') => `/slider-list/edit-slider/${sliderId}`;
+export const SLIDER_EDIT_ROUTE_PATH = (sliderId = '') =>
+  `/slider/edit-slider/${sliderId}`;
 
 export const SLIDER_EDIT_STORE_NAME = 'SLIDER_EDIT';
 

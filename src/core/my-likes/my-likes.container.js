@@ -41,10 +41,11 @@ export function MyLikesContainer() {
 
 const tabItems = [
   { name: 'Все', type: 9 },
-  { name: 'Товары для шитья', type: 0 },
-  { name: 'Мастер-классы', type: 1 },
-  { name: 'Выкройки', type: 3 },
-  { name: 'Статьи', type: 2 },
+  { name: 'Товары для шитья', type: 3 },
+  { name: 'Мастер-классы', type: 0 },
+  { name: 'Выкройки печатные', type: 1 },
+  { name: 'Выкройки электронные', type: 2 },
+  { name: 'Статьи', type: 4 },
 ];
 
 const testMixedListItems = [
@@ -53,7 +54,19 @@ const testMixedListItems = [
     name: 'ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА',
     image: '/static/test/popular-gods-1.png',
     like: true,
-    select: true,
+    type: 3,
+    price: {
+      min: 500,
+      discount: 230,
+      max: null,
+    },
+  },
+  {
+    id: 2,
+    name: 'ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА',
+    image: '/static/test/popular-gods-1.png',
+    like: true,
+    bestseller: true,
     type: 0,
     price: {
       min: 500,
@@ -62,35 +75,20 @@ const testMixedListItems = [
     },
   },
   {
-    id: 1,
+    id: 3,
     name: 'ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА',
     image: '/static/test/popular-gods-1.png',
     like: true,
-    bestseller: true,
-    select: false,
-    type: 1,
-    price: {
-      min: 500,
-      discount: 230,
-      max: null,
-    },
-  },
-  {
-    id: 1,
-    name: 'ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА',
-    image: '/static/test/popular-gods-1.png',
-    like: true,
-    type: 2,
+    type: 4,
     date: '1 неделю назад',
   },
   {
-    id: 1,
+    id: 4,
     name: 'ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА',
     image: '/static/test/popular-gods-1.png',
     like: true,
     complexity: 1,
-    select: true,
-    type: 3,
+    type: 2,
     price: {
       min: 500,
       discount: 230,

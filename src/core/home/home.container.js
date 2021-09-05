@@ -73,25 +73,25 @@ export const catalogListItems = [
   {
     title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/400/500',
+    backgroundImage: '/static/image/catalog-list-1.png',
     path: '/patterns',
   },
   {
     title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/600/500',
+    backgroundImage: '/static/image/catalog-list-2.png',
     path: '/patterns',
   },
   {
     title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
     description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/700/500',
+    backgroundImage: '/static/image/catalog-list-3.png',
     path: '/master-classes',
   },
   {
     title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
     description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
-    backgroundImage: 'http://placekitten.com/700/500',
+    backgroundImage: '/static/image/catalog-list-4.png',
     path: '/sewing-goods',
   },
 ];

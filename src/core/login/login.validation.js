@@ -1,5 +1,5 @@
 import { validate } from '../../main/validate/validate.core';
-import { required } from '../../main/validate/validate.service';
+import { required, loginOrEmail } from '../../main/validate/validate.service';
 
 import { LOGIN_FIELD_NAME } from './login.type';
 

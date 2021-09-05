@@ -1,3 +1,4 @@
+import { authConfirmedEmail } from 'src/lib/common/auth/auth.redirect';
 import { setActivePath } from '../../lib/common/navigation';
 import { authRedirectPrivated } from '../../lib/common/auth';
 import { HOME_ROUTE_PATH } from '../home';

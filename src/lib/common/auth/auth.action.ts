@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { AuthStoreAction } from './auth.type';
-
+import { AuthStoreAction, AuthUserDto } from './auth.type';
+import { AUTH_STORE_NAME } from './auth.constant';
 import { authDecode, setAutorization } from '../../../main/auth';
 import { parseUserAuthData } from './auth.convert';
 import { getCookie } from 'src/main/cookie';
@@ -8,10 +8,12 @@ import { AUTH_COOKIE } from 'src/main/auth/auth.constant';
 import { HOME_ROUTE_PATH } from 'src/core/home';
 import { redirect } from 'src/main/navigation';
 import { AUTH_ACTION_TYPE } from '.';
+import { useSelector } from 'react-redux';
 
 export function authSetData(token: string | null = null) {
   const user = token ? parseUserAuthData(authDecode(token)) : null;
 
+  //@ts-ignore
   setAutorization(token);
 
   const data: AuthStoreAction = {
@@ -31,4 +33,25 @@ export function authGetCookieToken(ctx: any) {
 export function authLogout() {
   setAutorization(null);
   redirect(HOME_ROUTE_PATH);
+}
+export function authSetEmailConfirmed() {
+  //@ts-ignore
+  const user: AuthUserDto = useSelector((state) => ({
+    //@ts-ignore
+    user: state[AUTH_STORE_NAME].user,
+  }));
+
+  const data = {
+    type: AUTH_ACTION_TYPE.SET_AUTH_CONFIRMED,
+    user: {
+      id: user.id,
+      login: user.login,
+      email: user.email,
+      emailConfirmed: true,
+      role: user.role,
+    },
+  };
+  console.log(data);
+
+  return (dispatch: Dispatch) => dispatch(data);
 }
