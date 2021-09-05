@@ -3,11 +3,11 @@ export const SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME =
 
 export const SETTINGS_CHANGE_DELIVERY_INFO_API = {
   GET_INFO: {
-    ENDPOINT: '/user/delivery/info',
+    ENDPOINT: '/user/info/get',
     METHOD: 'GET',
   },
   UPDATE_INFO: {
-    ENDPOINT: '/user/delivery/info',
+    ENDPOINT: '/user/info/update',
     METHOD: 'PATCH',
   },
 };
