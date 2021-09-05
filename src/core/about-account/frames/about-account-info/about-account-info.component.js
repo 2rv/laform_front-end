@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import moment from 'moment';
-import { ReactComponent as UserIcon } from '../../../../asset/svg/user-icon.svg';
+import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary as Title } from '../../../../lib/element/title';
@@ -8,19 +8,19 @@ import { SectionLayout } from '../../../../lib/element/layout';
 import { Spinner } from '../../../../lib/element/spinner';
 
 export function AboutAccountInfoComponent(props) {
-  const {
-    isUserPending,
-    user,
-    isUserDeliveryInfoPending,
-    userDeliveryInfo,
-  } = props;
+  const { isUserPending, user, isUserDeliveryInfoPending, userDeliveryInfo } =
+    props;
 
   return (
     <SectionLayout>
       {userDeliveryInfo.fullname && (
         <LineCase>
           <UserIcon />
-          {isUserDeliveryInfoPending ? <></> : <UserTitle tid={userDeliveryInfo.fullname} />}
+          {isUserDeliveryInfoPending ? (
+            <></>
+          ) : (
+            <UserTitle tid={userDeliveryInfo.fullname} />
+          )}
         </LineCase>
       )}
       <SectionLayout type="SMALL">
@@ -28,13 +28,19 @@ export function AboutAccountInfoComponent(props) {
         <LineSection>
           <SectionLayout type="TEXT">
             <InfoTitle tid="Дата регистрации" />
-            {isUserPending ? <></> : (
-              <InfoText tid={moment(user.createdDate).format('MMMM DD, YYYY')} />
+            {isUserPending ? (
+              <></>
+            ) : (
+              <InfoText
+                tid={moment(user.createdDate).format('MMMM DD, YYYY')}
+              />
             )}
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="Статус" />
-            {isUserPending ? <></> : (
+            {isUserPending ? (
+              <></>
+            ) : (
               <StatusInfo
                 status={user.emailConfirmed}
                 tid={user.emailConfirmed ? 'Верефицирован' : 'Не верефицирован'}
@@ -49,7 +55,11 @@ export function AboutAccountInfoComponent(props) {
           {userDeliveryInfo.location && (
             <SectionLayout type="TEXT">
               <InfoTitle tid="Адрес доставки" />
-              {isUserDeliveryInfoPending ? <></> : <InfoText tid={userDeliveryInfo.location} />}
+              {isUserDeliveryInfoPending ? (
+                <></>
+              ) : (
+                <InfoText tid={userDeliveryInfo.location} />
+              )}
             </SectionLayout>
           )}
           <SectionLayout type="TEXT">

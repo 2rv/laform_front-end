@@ -131,14 +131,10 @@ import {
   ordersListStore,
   ORDERS_LIST_STORE_NAME,
 } from '../../core/orders-list';
-<<<<<<< HEAD
 import {
   usersOrderStore,
   USERS_ORDER_STORE_NAME,
 } from '../../core/users-order';
-
-=======
->>>>>>> rework-create-forms
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {
