@@ -129,7 +129,7 @@ export function FormComponent(props) {
         />
         <FieldLayout type="double" adaptive>
           <ButtonPrimary type="submit" tid="Создать мастер-класс" />
-          <ButtonSecondary type="button" tid="Отменить" />
+          <ButtonSecondary tid="Отменить" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>

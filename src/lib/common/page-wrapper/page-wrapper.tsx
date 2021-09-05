@@ -1,14 +1,10 @@
+import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { PageWrapperPropsType } from './type.page-wrapper';
 import { FooterContainer } from '../../../core/footer';
 import { Header } from '../../../core/header';
-import {
-  PageLayout,
-  SectionLayout,
-  ContentLayout,
-} from 'src/lib/element/layout';
-import styled from 'styled-components';
-import { spacing, THEME_COLOR } from 'src/lib/theme';
+import { SectionLayout } from 'src/lib/element/layout';
+import { spacing } from 'src/lib/theme';
 import { SidebarMenu } from '../../../core/header-menu-sidebar';
 
 export function PageWrapper(props: PageWrapperPropsType) {
@@ -28,37 +24,44 @@ export function PageWrapper(props: PageWrapperPropsType) {
   }, []);
 
   return (
-    <Container type="LARGE" isOpen={sidebarIsOpen}>
-      <Main type="MEDIUM">
-        <Header
-          width={width}
-          setSidebarOpen={setSidebarOpen}
-          sidebarIsOpen={sidebarIsOpen}
-        />
+    <Container isOpen={sidebarIsOpen}>
+      <Header
+        width={width}
+        setSidebarOpen={setSidebarOpen}
+        sidebarIsOpen={sidebarIsOpen}
+      />
+      <Main type="LARGE">
         <SidebarMenu setOpen={setSidebarOpen} isOpen={sidebarIsOpen} />
-        <Paddings>
-          <Content horizontal="center">
-            <PageLayout>{children}</PageLayout>
-          </Content>
-        </Paddings>
+        <Content>{children}</Content>
+        <FooterContainer />
       </Main>
-      <Background>
-        <Paddings>
-          <Content horizontal="center">
-            <PageLayout>
-              <FooterContainer />
-            </PageLayout>
-          </Content>
-        </Paddings>
-      </Background>
     </Container>
   );
 }
-const Container = styled(SectionLayout)`
-  display: flex;
+const Container = styled.div`
   height: 100vh;
-  overflow: ${(p: { isOpen: boolean }) => (p.isOpen ? 'hidden' : 'auto')};
+  display: flex;
   flex-flow: column;
+  /* overflow: ${(p: { isOpen: boolean }) => (p.isOpen ? 'hidden' : 'auto')}; */
+`;
+const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1140px;
+  flex: 1;
+  padding: 0 ${spacing(3)};
+  margin-top: ${spacing(12)};
+  @media screen and (max-width: 720px) {
+    margin-top: ${spacing(3)};
+  }
+`;
+const Main = styled(SectionLayout)`
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   @media screen and (max-width: 1070px) {
     gap: ${spacing(12)};
   }
@@ -66,24 +69,4 @@ const Container = styled(SectionLayout)`
     gap: ${spacing(6)};
     padding-bottom: 55px;
   }
-`;
-const Content = styled(ContentLayout)`
-  flex: 1;
-`;
-const Main = styled(SectionLayout)`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  @media screen and (max-width: 720px) {
-    gap: ${spacing(3)};
-  }
-`;
-const Background = styled.div`
-  background-color: ${THEME_COLOR.GRAY};
-  display: grid;
-  width: 100%;
-`;
-const Paddings = styled.div`
-  width: 100%;
-  padding: 0 ${spacing(3)};
 `;

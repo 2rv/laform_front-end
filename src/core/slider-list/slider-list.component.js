@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing } from '../../lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { TitlePrimary } from '../../lib/element/title';
 import { ButtonBasic, IconButton } from '../../lib/element/button';
 import { Spinner } from '../../lib/element/spinner';
@@ -9,7 +9,14 @@ import { LoaderPrimary } from '../..//lib/element/loader';
 import { SliderList } from './frames';
 
 export function SliderListComponent(props) {
-  const { pageLoading, isPending, slidersItems, editSlide, addSlide, removeSlide } = props;
+  const {
+    pageLoading,
+    isPending,
+    slidersItems,
+    editSlide,
+    addSlide,
+    removeSlide,
+  } = props;
   return (
     <>
       {pageLoading && <LoaderPrimary />}
@@ -49,6 +56,12 @@ const AddSlide = styled(ButtonBasic)`
   padding: 0;
   gap: ${spacing(3)};
 `;
-const Button = styled(IconButton)`
-  padding: 0;
+const Button = styled.div`
+  background-color: ${THEME_COLOR.GRAY};
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

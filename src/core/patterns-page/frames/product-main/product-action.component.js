@@ -13,7 +13,7 @@ export function ProductAction(props) {
   return (
     <Container>
       <ButtonSecondary tid="Отправить на Email" />
-      <ButtonPrimary width={125} tid="Скачать" />
+      <ButtonPrimary tid="Скачать" />
       <Button>
         <QuestionIcon />
       </Button>

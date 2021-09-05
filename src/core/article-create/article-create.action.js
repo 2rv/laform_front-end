@@ -53,6 +53,7 @@ export function createArticlePreUploadData(formValues) {
       //     data: formData,
       //   });
       //   dispatch(createArticleUploadData(response.data, formValues));
+      dispatch(createArticleUploadData([1, 2, 3, 4], formValues));
     } catch (err) {
       if (err.response) {
         dispatch({

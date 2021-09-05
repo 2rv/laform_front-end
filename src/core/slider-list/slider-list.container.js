@@ -8,7 +8,11 @@ import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { sliderListLoadData } from './slider-list.action';
 import { SLIDER_LIST_STORE_NAME } from './slider-list.constant';
 import { SliderListComponent } from './slider-list.component';
-import { sliderListUploadData, sliderItemRemove, sliderItemRemoveFromServer } from './slider-list.action';
+import {
+  sliderListUploadData,
+  sliderItemRemove,
+  sliderItemRemoveFromServer,
+} from './slider-list.action';
 import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
 import {
   getRequestData,
@@ -36,7 +40,8 @@ export function SliderListContainer() {
   }, []);
 
   const addSlide = () => dispatch(sliderListUploadData());
-  const editSlide = (id) => redirect(SLIDER_EDIT_ROUTE_PATH(id));
+  const editSlide = (id) =>
+    redirect(SLIDER_EDIT_ROUTE_PATH, { query: { id: id } });
 
   const removeSlide = (index, id) => {
     if (id === 'new') {
@@ -61,7 +66,7 @@ export function SliderListContainer() {
   );
 }
 
-const itemsTable = [
+const testSliderItems = [
   {
     id: 1,
     name: 'Товары для шитья',

@@ -66,14 +66,6 @@ import {
   editCompilationStore,
   EDIT_COMPILATION_STORE_NAME,
 } from '../../core/edit-compilation';
-import {
-  createProductStore,
-  CREATE_PRODUCT_STORE_NAME,
-} from '../../core/create-product';
-import {
-  compilationStore,
-  COMPILATION_STORE_NAME,
-} from '../../core/compilation';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import { articlesStore, ARTICLES_STORE_NAME } from '../../core/articles';
 import {
@@ -183,7 +175,6 @@ export const reducers = combineReducers({
   [PATTERNS_PRODUCT_STORE_NAME]: patternsProductStore,
   [ARTICLES_STORE_NAME]: articlesStore,
   [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
-  [CREATE_PRODUCT_STORE_NAME]: createProductStore,
   [AUTH_STORE_NAME]: authStore,
   [LANG_STORE_NAME]: langStore,
   [NAVIGATION_STORE_NAME]: navigationStore,
@@ -206,7 +197,6 @@ export const reducers = combineReducers({
   [MY_LIKES_STORE_NAME]: myLikesStore,
   [FAQ_PAGE_STORE_NAME]: faqPageStore,
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
-  [COMPILATION_STORE_NAME]: compilationStore,
   [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,

@@ -58,6 +58,7 @@ export function createSewingGoodsPreUploadData(formValues) {
       //     data: formData,
       //   });
       //   dispatch(createSewingGoodsUploadData(response.data, formValues));
+      dispatch(createSewingGoodsUploadData([1, 2, 3, 4], formValues));
     } catch (err) {
       if (err.response) {
         dispatch({

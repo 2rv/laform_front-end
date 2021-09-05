@@ -9,21 +9,23 @@ export function FooterComponent(props) {
   return (
     <Container>
       <Content>
-        <LinkCase>
-          <FooterLinkList data={laFormeLinkItems} />
-          <FooterLinkList data={faqLinkItems} />
-          <FooterLinkList data={contactLinkItems} />
-        </LinkCase>
-        <NotificationContainer />
+        <ContentCase>
+          <ListCase>
+            <FooterLinkList data={laFormeLinkItems} />
+            <FooterLinkList data={faqLinkItems} />
+            <FooterLinkList data={contactLinkItems} />
+          </ListCase>
+          <NotificationContainer />
+        </ContentCase>
+        <CopyrightCase>
+          <div>
+            <Copyright tid="FOOTER.COPYRIGHT.BRAND" />
+            &nbsp;
+            <CopyrightMessage tid="FOOTER.COPYRIGHT.ALL_RIGHTS_RESERVED" />
+          </div>
+          <FooterSocialLink />
+        </CopyrightCase>
       </Content>
-      <Case>
-        <div>
-          <Copyright tid="FOOTER.COPYRIGHT.BRAND" />
-          &nbsp;
-          <CopyrightMessage tid="FOOTER.COPYRIGHT.ALL_RIGHTS_RESERVED" />
-        </div>
-        <FooterSocialLink />
-      </Case>
     </Container>
   );
 }
@@ -37,7 +39,7 @@ const Copyright = styled(TextSecondary)`
   line-height: 1.5;
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
-const Content = styled.div`
+const ContentCase = styled.div`
   display: grid;
   gap: ${spacing(6)};
   grid-template-columns: 1fr auto;
@@ -48,7 +50,7 @@ const Content = styled.div`
     background: ${THEME_COLOR.WHITE};
   }
 `;
-const LinkCase = styled.div`
+const ListCase = styled.div`
   display: flex;
   gap: ${spacing(3)};
   justify-content: space-between;
@@ -56,7 +58,7 @@ const LinkCase = styled.div`
     flex-direction: column;
   }
 `;
-const Case = styled.div`
+const CopyrightCase = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,9 +66,17 @@ const Case = styled.div`
     display: contents;
   }
 `;
-const Container = styled.div`
+const Content = styled.div`
+  max-width: 1140px;
+  width: 100%;
   display: flex;
   flex-flow: column;
   padding: ${spacing(12)} 0;
   gap: ${spacing(6)};
+`;
+const Container = styled.div`
+  background-color: ${THEME_COLOR.GRAY};
+  padding: 0 ${spacing(3)};
+  display: flex;
+  justify-content: center;
 `;
