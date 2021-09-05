@@ -48,5 +48,5 @@ const Modifier = styled(TextSecondary)`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT} 0 ${THEME_SIZE.RADIUS.DEFAULT} 0;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

@@ -10,12 +10,18 @@ import { LinkPrimary } from '../link';
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../../../core/master-class-product';
 
 export function CardMasterClasses(props) {
+  const { onSetCart, onSetLike, onSetSelect } = props;
   const {
     id,
+    type,
+
+    selected,
+    cart,
+    purchase,
+    like,
+
     image = null,
     name = null,
-    select = false,
-    like = false,
     bestseller = false,
     price = { min: null, discount: null, max: null },
   } = props.data;
@@ -36,7 +42,17 @@ export function CardMasterClasses(props) {
           discount={price?.discount}
         />
       </Content>
-      <CardActions type={1} select={select} like={like} />
+      <CardActions
+        id={id}
+        type={type}
+        like={like}
+        selected={selected}
+        purchase={purchase}
+        cart={cart}
+        onSetCart={onSetCart}
+        onSetLike={onSetLike}
+        onSetSelect={onSetSelect}
+      />
     </Container>
   );
 }
