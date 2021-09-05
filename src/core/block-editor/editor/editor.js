@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import EditorJS from '@editorjs/editorjs';
-import { tools } from './tools';
+import { tools, notificationToolList } from './tools';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { dataKey } from './hooks';
 
@@ -55,8 +55,16 @@ export const useEditor = (toolsList, props, options = {}) => {
 };
 
 export const EditorContainer = (props) => {
-  const { editorRef, data, options, read = false, formikOnChange } = props;
-  useEditor(tools, { data, editorRef, read, formikOnChange }, options);
+  const {
+    editorRef,
+    data,
+    options,
+    read = false,
+    formikOnChange,
+    notification,
+  } = props;
+  const editorTools = notification ? notificationToolList : tools;
+  useEditor(editorTools, { data, editorRef, read, formikOnChange }, options);
 
   return (
     <Container>
@@ -67,7 +75,7 @@ export const EditorContainer = (props) => {
 
 const Container = styled.div`
   padding: ${spacing(6)};
-  background-color: ${THEME_COLOR.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  border: 1px solid ${THEME_COLOR.LIGHT_GRAY};
+  box-shadow: 0 24px 24px -18px rgb(69 104 129 / 33%),
+    0 9px 45px 0 rgb(114 119 160 / 12%);
 `;
