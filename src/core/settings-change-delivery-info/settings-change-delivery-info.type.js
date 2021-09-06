@@ -1,7 +1,7 @@
 import { SETTINGS_FORM_CHANGE_DELIVERY_INFO_FIELD_KEY } from './frames/settings-form-change-delivery-info';
 
 export const SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME = {
-  FULLNAME: 'fullname',
+  FULLNAME: 'fullName',
   PHONE: 'phone',
   LOCATION: 'location',
   DELIVERY_TYPE: 'deliveryType',
@@ -19,7 +19,7 @@ export const SETTINGS_CHANGE_DELIVERY_INFO_FORM_FIELD_NAME = {
 };
 
 export const SETTINGS_CHANGE_DELIVERY_INFO_DATA_NAME = {
-  FULLNAME: 'fullname',
+  FULLNAME: 'fullName',
   PHONE: 'phone',
   LOCATION: 'location',
   DELIVERY_TYPE: 'deliveryType',

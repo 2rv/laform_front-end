@@ -30,33 +30,6 @@ export function userLoadData() {
   };
 }
 
-export function userDeliveryInfoLoadData() {
-  return async (dispatch) => {
-    dispatch({
-      type: ABOUT_ACCOUNT_ACTION_TYPE.USER_DELIVERY_INFO_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: ABOUT_ACCOUNT_API.USER_DELIVERY_INFO_LOAD.TYPE,
-        url: ABOUT_ACCOUNT_API.USER_DELIVERY_INFO_LOAD.ENDPOINT,
-      });
-
-      dispatch({
-        type: ABOUT_ACCOUNT_ACTION_TYPE.USER_DELIVERY_INFO_SUCCESS,
-        userDeliveryInfo: response.data,
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: ABOUT_ACCOUNT_ACTION_TYPE.USER_DELIVERY_INFO_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
 export function likesLoadData() {
   return async (dispatch) => {
     dispatch({

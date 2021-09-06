@@ -7,20 +7,14 @@ import { TitlePrimary as Title } from '../../../../lib/element/title';
 import { SectionLayout } from '../../../../lib/element/layout';
 import { Spinner } from '../../../../lib/element/spinner';
 
-export function AboutAccountInfoComponent(props) {
-  const { isUserPending, user, isUserDeliveryInfoPending, userDeliveryInfo } =
-    props;
-
+export function AboutAccountInfoComponent({ isUserPending, user }) {
   return (
+    isUserPending ? <Spinner /> :
     <SectionLayout>
-      {userDeliveryInfo.fullname && (
+      {user.userInfo?.fullName && (
         <LineCase>
           <UserIcon />
-          {isUserDeliveryInfoPending ? (
-            <></>
-          ) : (
-            <UserTitle tid={userDeliveryInfo.fullname} />
-          )}
+          <UserTitle tid={user.userInfo?.fullName} />
         </LineCase>
       )}
       <SectionLayout type="SMALL">
@@ -28,38 +22,24 @@ export function AboutAccountInfoComponent(props) {
         <LineSection>
           <SectionLayout type="TEXT">
             <InfoTitle tid="Дата регистрации" />
-            {isUserPending ? (
-              <></>
-            ) : (
-              <InfoText
-                tid={moment(user.createdDate).format('MMMM DD, YYYY')}
-              />
-            )}
+            <InfoText tid={moment(user.createdDate).format('MMMM DD, YYYY')} />
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="Статус" />
-            {isUserPending ? (
-              <></>
-            ) : (
-              <StatusInfo
-                status={user.emailConfirmed}
-                tid={user.emailConfirmed ? 'Верефицирован' : 'Не верефицирован'}
-              />
-            )}
+            <StatusInfo
+              status={user.emailConfirmed}
+              tid={user.emailConfirmed ? 'Верефицирован' : 'Не верефицирован'}
+            />
           </SectionLayout>
         </LineSection>
       </SectionLayout>
       <SectionLayout type="SMALL">
         <TitlePrimary tid="Доставка и оплата" />
         <LineSection>
-          {userDeliveryInfo.location && (
+          {user.userInfo?.location && (
             <SectionLayout type="TEXT">
               <InfoTitle tid="Адрес доставки" />
-              {isUserDeliveryInfoPending ? (
-                <></>
-              ) : (
-                <InfoText tid={userDeliveryInfo.location} />
-              )}
+              <InfoText tid={user.userInfo?.location} />
             </SectionLayout>
           )}
           <SectionLayout type="TEXT">

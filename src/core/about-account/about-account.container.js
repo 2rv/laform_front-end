@@ -6,7 +6,6 @@ import { AboutAccountComponent } from './about-account.component';
 
 import {
   userLoadData,
-  userDeliveryInfoLoadData,
   likesLoadData,
   commentsLoadData,
 } from './about-account.action';
@@ -28,7 +27,6 @@ export function AboutAccountContainer() {
 
   useEffect(() => {
     dispatch(userLoadData());
-    dispatch(userDeliveryInfoLoadData());
     dispatch(likesLoadData());
     dispatch(commentsLoadData());
   }, []);
@@ -37,8 +35,6 @@ export function AboutAccountContainer() {
     <AboutAccountComponent
       isUserPending={isRequestPending(state.user)}
       user={getRequestData(state.user, [])}
-      isUserDeliveryInfoPending={isRequestPending(state.userDeliveryInfo)}
-      userDeliveryInfo={getRequestData(state.userDeliveryInfo, [])}
       isLikesPending={isRequestPending(state.likes)}
       likes={getRequestData(state.likes, [])}
       isCommentsPending={isRequestPending(state.comments)}

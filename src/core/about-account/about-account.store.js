@@ -9,7 +9,6 @@ import { ABOUT_ACCOUNT_ACTION_TYPE } from './about-account.type';
 
 const initialState = {
   user: initRequestState(),
-  userDeliveryInfo: initRequestState(),
   likes: initRequestState(),
   comments: initRequestState(),
 };
@@ -30,21 +29,6 @@ export function aboutAccountStore(state = initialState, action) {
       return {
         ...state,
         user: setRequestError(state.user, action.errorMessage),
-      };
-    case ABOUT_ACCOUNT_ACTION_TYPE.USER_DELIVERY_INFO_PENDING:
-      return {
-        ...state,
-        userDeliveryInfo: setRequestPending(state.userDeliveryInfo),
-      };
-    case ABOUT_ACCOUNT_ACTION_TYPE.USER_DELIVERY_INFO_SUCCESS:
-      return {
-        ...state,
-        userDeliveryInfo: setRequestSuccess(state.userDeliveryInfo, action.userDeliveryInfo),
-      };
-    case ABOUT_ACCOUNT_ACTION_TYPE.USER_DELIVERY_INFO_ERROR:
-      return {
-        ...state,
-        userDeliveryInfo: setRequestError(state.userDeliveryInfo, action.errorMessage),
       };
     case ABOUT_ACCOUNT_ACTION_TYPE.LIKES_PENDING:
       return {

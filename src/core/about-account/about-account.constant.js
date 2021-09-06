@@ -5,10 +5,6 @@ export const ABOUT_ACCOUNT_API = {
     ENDPOINT: 'auth/account-data',
     TYPE: 'GET',
   },
-  USER_DELIVERY_INFO_LOAD: {
-    ENDPOINT: 'user/info/get',
-    TYPE: 'GET',
-  },
   LIKES_LOAD: {
     ENDPOINT: 'like/get',
     TYPE: 'GET',

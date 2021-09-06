@@ -37,6 +37,8 @@ export function SettingsChangeDeliveryInfoContainer() {
     }),
   );
 
+  const changeDeliveryInfoData = getRequestData(changeDeliveryInfo);
+
   const settingsChangeDeliveryInfoFormSendData = (
     values,
     { setSubmitting },
@@ -50,10 +52,10 @@ export function SettingsChangeDeliveryInfoContainer() {
     const rawData = getRequestData(changeDeliveryInfo, null);
     if (!rawData) {
       return {
-        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.FULLNAME]: '',
-        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.PHONE]: '',
-        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.LOCATION]: '',
-        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.DELIVERY_TYPE]:
+        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.FULLNAME]: changeDeliveryInfoData?.fullName ?? '',
+        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.PHONE]: changeDeliveryInfoData?.phone ?? '',
+        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.LOCATION]: changeDeliveryInfoData?.location ?? '',
+        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.DELIVERY_TYPE]: changeDeliveryInfoData?.deliveryType ??
           SETTINGS_CHANGE_DELIVERY_INFO_DELIVERY_TYPE_OPTIONS[0].id,
       };
     }
