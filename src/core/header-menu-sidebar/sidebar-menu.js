@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SidebarMenuListItem } from './sidebar-menu-list-item';
@@ -18,30 +19,27 @@ export function SidebarMenu(props) {
 
 const Content = styled.div`
   display: flex;
-  min-height: 0;
   flex-direction: column;
-  padding: ${spacing(3)};
   gap: ${spacing(2)};
-  height: 100%;
-  flex: 1;
   overflow: auto;
-  min-height: max-content;
-  box-sizing: border-box;
-  padding-bottom: 200px;
+  padding: ${spacing(3)};
+  max-height: 100%;
 `;
 const Container = styled.div`
   position: absolute;
-  height: 100%;
   width: 350px;
-  min-width: 0;
-  min-height: max-content;
-  overflow: hidden;
+  bottom: 0;
+  top: 0;
+  left: 0;
   max-width: ${(p) => (p.open ? `350px` : 0)};
+  overflow: hidden;
   background-color: ${THEME_COLOR.WHITE};
-  z-index: 4;
+  z-index: 10;
   transition: 0.4s;
+  /* height: calc(100vh - 180px + ${(p) => p.scroll + 'px'}); */
   @media screen and (max-width: 720px) {
     width: 100vw;
     max-width: ${(p) => (p.open ? `100vw` : 0)};
+    /* height: calc(100vh - 120px + ${(p) => p.scroll + 'px'}); */
   }
 `;

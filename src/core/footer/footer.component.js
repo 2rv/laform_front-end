@@ -76,7 +76,7 @@ const Content = styled.div`
 `;
 const Container = styled.div`
   background-color: ${THEME_COLOR.GRAY};
-  padding: 0 ${spacing(3)};
   display: flex;
   justify-content: center;
+  padding: 0 ${spacing(3)};
 `;
