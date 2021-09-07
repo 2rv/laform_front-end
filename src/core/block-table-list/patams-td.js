@@ -7,13 +7,13 @@ export function ParamsTd(props) {
   return (
     <Td>
       <Case>
-        {items.map(({ name, value }, i) => {
+        {items.map((item, i) => {
           return (
             <TextSecondary key={i}>
-              <TextSecondary tid={name} />
+              <TextSecondary tid={item?.name} />
               :&nbsp;
               <TextPrimary>
-                <TextPrimary tid={value} />
+                <TextPrimary tid={item?.value} />
                 {i !== items.length - 1 && ','}
               </TextPrimary>
             </TextSecondary>
