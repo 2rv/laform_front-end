@@ -11,6 +11,7 @@ export const THEME_COLOR = {
   BACKGROUND: {
     DANGER: '#FFE6E6',
     SUCCESS: '#D1FFE4',
+    INFO: '#DDEBFF',
   },
 
   BACKGROUND_TRANSPARENT: {
@@ -22,6 +23,7 @@ export const THEME_COLOR = {
     DANGER: '#eb5757',
     SUCCESS: '#219653',
     BLUE: '#2D9CDB',
+    INFO: '#2f80ed',
   },
 
   SHADOW: {

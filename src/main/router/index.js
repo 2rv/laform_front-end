@@ -110,6 +110,10 @@ import {
   createArticleRouter,
   CREATE_ARTICLE_ROUTE_PATH,
 } from '../../core/article-create';
+import {
+  createNotificationRouter,
+  CREATE_NOTIFICATION_ROUTE_PATH,
+} from '../../core/create-notification';
 
 export const routes = {
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
@@ -149,6 +153,7 @@ export const routes = {
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
   [ORDERS_LIST_ROUTE_PATH]: ordersListRouter,
   [USERS_ORDER_ROUTE_PATH]: usersOrderRouter,
+  [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
 };
 
 export const Router = routesInit(routes);

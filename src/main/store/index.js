@@ -153,6 +153,10 @@ import {
   createArticleStore,
   CREATE_ARTICLE_STORE_NAME,
 } from '../../core/article-create';
+import {
+  createNotificationStore,
+  CREATE_NOTIFICATION_STORE_NAME,
+} from '../../core/create-notification';
 
 export const PERSISTED_CART = 'PERSISTED_CART';
 
@@ -207,6 +211,7 @@ export const reducers = combineReducers({
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [ORDERS_LIST_STORE_NAME]: ordersListStore,
   [USERS_ORDER_STORE_NAME]: usersOrderStore,
+  [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
 });
 
 export { initStore } from './store.core';
