@@ -1,36 +1,33 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
-import { redirect } from '../../main/navigation/navigation.core';
-import { HTTP_ERROR_ROUTER } from '../../main/http';
-import { filterByType } from '../../lib/common/filter-list-card';
-import { ordersUploadData } from './orders-list.action';
+import { ordersLoadData } from './orders-list.action';
 import { OrdersListComponent } from './orders-list.component';
 import { ORDERS_LIST_STORE_NAME } from './orders-list.constant';
 
 export function OrdersListContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, user } = useSelector((state) => ({
+  const { state, pageLoading } = useSelector((state) => ({
     state: state[ORDERS_LIST_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    user: state[AUTH_STORE_NAME].user,
   }));
 
   const [currentPage, setCurrentPage] = useState(1);
-  const filteredTableItems = tableItems;
-  const itemsPerPage = 2;
-  const totalPages = Math.ceil(tableItems.length / itemsPerPage);
+  const orders = getRequestData(state.ordersList, []);
+  const filteredTableItems = orders;
+  const itemsPerPage = 5;
+  const totalPages = Math.ceil(orders.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
 
   useEffect(() => {
-    // dispatch(ordersUploadData());
+    dispatch(ordersLoadData());
   }, []);
 
   return (

@@ -21,7 +21,7 @@ export function ordersListStore(state = initialState, action) {
     case ORDERS_LIST_ACTION_TYPE.ORDERS_LIST_UPLOAD_SUCCESS:
       return {
         ...state,
-        ordersList: setRequestSuccess(state.ordersList),
+        ordersList: setRequestSuccess(state.ordersList, action.payload),
       };
     case ORDERS_LIST_ACTION_TYPE.ORDERS_LIST_UPLOAD_ERROR:
       return {

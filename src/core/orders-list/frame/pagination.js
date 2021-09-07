@@ -4,18 +4,16 @@ import { ButtonBasic } from 'src/lib/element/button';
 import { THEME_COLOR } from 'src/lib/theme';
 
 export function Pagination({ totalPages, currentPage, setCurrentPage }) {
-  return (
+  return Boolean(totalPages === 1) ? <></> : (
     <Container>
-      {totalPages === 1 ? <></> : (
-        Array(totalPages).fill().map((_, i) => (
-          <Button
-            key={i + 1}
-            tid={i + 1}
-            active={currentPage === i + 1}
-            onClick={() => setCurrentPage(i + 1)}
-          />
-        ))
-      )}
+      {Array(totalPages).fill().map((_, i) => (
+        <Button
+          key={i + 1}
+          tid={i + 1}
+          active={currentPage === i + 1}
+          onClick={() => setCurrentPage(i + 1)}
+        />
+      ))}
     </Container>
   )
 }
