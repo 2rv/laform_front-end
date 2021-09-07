@@ -15,4 +15,5 @@ export const ARTICLE_FIELD_NAME = {
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
   RECOMENDATIONS: 'recomendations',
+  ARTICLE: 'article',
 };

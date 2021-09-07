@@ -40,14 +40,6 @@ import {
   editCompilationRouter,
   EDIT_COMPILATION_ROUTE_PATH,
 } from '../../core/edit-compilation';
-import {
-  createProductRouter,
-  CREATE_PRODUCT_ROUTE_PATH,
-} from '../../core/create-product';
-import {
-  compilationRouter,
-  COMPILATION_ROUTE_PATH,
-} from '../../core/compilation';
 import { basketRouter, BASKET_ROUTE_PATH } from '../../core/basket';
 import {
   aboutAccountRouter,
@@ -136,7 +128,6 @@ export const routes = {
   [PATTERNS_ROUTE_PATH]: patternsRouter,
   [PATTERNS_PRODUCT_ROUTE_PATH]: patternsProductRouter,
   [ARTICLES_ROUTE_PATH]: articlesRouter,
-  [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,
   [HOME_ROUTE_PATH]: homeRouter,
   [SIGNUP_ROUTE_PATH]: signupRouter,
   [LOGIN_ROUTE_PATH]: loginRouter,
@@ -150,7 +141,6 @@ export const routes = {
   [MY_LIKES_ROUTE_PATH]: myLikesRouter,
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
-  [COMPILATION_ROUTE_PATH]: compilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
   [ABOUT_ACCOUNT_ROUTE_PATH]: aboutAccountRouter,
   [ORDER_NUMBER_ROUTE_PATH]: orderNumberRouter,

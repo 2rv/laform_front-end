@@ -10,17 +10,12 @@ export function createSewingGoodsUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
     try {
       const data = convertForUpload(imagesUrls, formValues);
-      console.log(data);
 
-      //----------------------------------------------------------------------
-
-      //   const response = await httpRequest({
-      //     method: CREATE_SEWING_GOODS_API.SEWING_GOODS_UPLOAD.TYPE,
-      //     url: CREATE_SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT,
-      //     data: data,
-      //   });
-
-      //----------------------------------------------------------------------
+      const response = await httpRequest({
+        method: CREATE_SEWING_GOODS_API.SEWING_GOODS_UPLOAD.TYPE,
+        url: CREATE_SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT,
+        data: data,
+      });
 
       dispatch({
         type: CREATE_SEWING_GOODS__ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_SUCCESS,
@@ -52,12 +47,13 @@ export function createSewingGoodsPreUploadData(formValues) {
         );
       }
 
-      //   const response = await httpRequest({
-      //     method: CREATE_SEWING_GOODS_API.SEWING_GOODS_IMAGE_UPLOAD.TYPE,
-      //     url: CREATE_SEWING_GOODS_API.SEWING_GOODS_IMAGE_UPLOAD.ENDPOINT,
-      //     data: formData,
-      //   });
-      //   dispatch(createSewingGoodsUploadData(response.data, formValues));
+      const response = await httpRequest({
+        method: CREATE_SEWING_GOODS_API.SEWING_GOODS_IMAGE_UPLOAD.TYPE,
+        url: CREATE_SEWING_GOODS_API.SEWING_GOODS_IMAGE_UPLOAD.ENDPOINT,
+        data: formData,
+      });
+
+      dispatch(createSewingGoodsUploadData(response.data, formValues));
     } catch (err) {
       if (err.response) {
         dispatch({

@@ -152,7 +152,7 @@ export function FormComponent(props) {
         />
         <FieldLayout type="double" adaptive>
           <ButtonPrimary type="submit" tid="Создать товар" />
-          <ButtonSecondary type="button" tid="Отменить" />
+          <ButtonSecondary tid="Отменить" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>

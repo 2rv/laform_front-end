@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
 import { HTTP_ERROR_ROUTER } from '../../main/http';
-import { redirect } from '../../main/navigation';
+import { redirect, getQuery } from '../../main/navigation';
 import {
   SLIDER_FIELDS_DATA,
   SLIDER_EDIT_STORE_NAME,
@@ -30,12 +29,12 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { NEW_SLIDER_FORM_DATA, SLIDER_EDIT_FIELD_NAME } from './slider-edit.type';
+import { SLIDER_EDIT_FIELD_NAME } from './slider-edit.type';
 
 export function SliderEditContainer() {
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const isNewSlider = query.sliderId === 'new';
+  const sliderId = getQuery('id');
+  const isNewSlider = sliderId === 'new';
   const { state, pageLoading, currentLang, user } = useSelector((state) => ({
     state: state[SLIDER_EDIT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
@@ -50,17 +49,22 @@ export function SliderEditContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    dispatch(sliderEditLoadData(currentLang.toLowerCase(), query.sliderId, isNewSlider));
+    dispatch(
+      sliderEditLoadData(currentLang.toLowerCase(), sliderId, isNewSlider),
+    );
   }, []);
 
   const pickImage = ({ target: { files } }) => {
     if (files && files[0] && files[0].type.split('/')[0] === 'image') {
       const reader = new FileReader();
-      reader.onload = () => dispatch(sliderEditUpdateImage({
-        id: null,
-        fileUrl: reader?.result,
-        file: files[0],
-      }));
+      reader.onload = () =>
+        dispatch(
+          sliderEditUpdateImage({
+            id: null,
+            fileUrl: reader?.result,
+            file: files[0],
+          }),
+        );
       reader.readAsDataURL(files[0]);
       setIsImageUploadError(false);
     }
@@ -70,7 +74,7 @@ export function SliderEditContainer() {
     if (isNewSlider) {
       redirect(SLIDER_LIST_ROUTE_PATH);
     } else {
-      dispatch(sliderEditRemove(query.sliderId));
+      dispatch(sliderEditRemove(sliderId));
     }
   };
 
@@ -95,7 +99,7 @@ export function SliderEditContainer() {
     if (isNewSlider) {
       dispatch(createSlider(sliderData.image, data));
     } else {
-      dispatch(sliderEditUploadData(query.sliderId, sliderData.image, data));
+      dispatch(sliderEditUploadData(sliderId, sliderData.image, data));
     }
   };
 

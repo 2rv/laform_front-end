@@ -68,7 +68,7 @@ export function DynamicFields(props) {
                     )}
                   </Field>
                   {values[nameFieldArray].length !== 1 && (
-                    <Button type="button" onClick={() => remove(index)}>
+                    <Button onClick={() => remove(index)}>
                       <RemoveIcon />
                     </Button>
                   )}
@@ -77,7 +77,6 @@ export function DynamicFields(props) {
             ))}
             <ButtonSecondary
               tid={buttonText}
-              type="button"
               onClick={() => push(initialData)}
             />
           </FieldLayout>
