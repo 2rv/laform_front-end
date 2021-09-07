@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
+import { useDebounce } from '../../lib/common/hooks';
 import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { redirect } from '../../main/navigation/navigation.core';
-import { ordersUploadData } from './users-order.action';
+import { userOrdersLoadData } from './users-order.action';
 import { UsersOrderComponent } from './users-order.component';
 import { USERS_ORDER_STORE_NAME } from './users-order.constant';
 
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -24,25 +26,22 @@ export function UsersOrderContainer() {
   }));
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredTableItems, setFilteredTableItems] = useState(tableItems);
   const [inputValue, setInputValue] = useState('');
+  const debounce = useDebounce(inputValue, 500);
+  const usersOrder = getRequestData(state.usersOrder);
   const itemsPerPage = 5;
-  const totalPages = Math.ceil(tableItems.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
+  const totalPages = Math.ceil(usersOrder.total / itemsPerPage);
 
   useEffect(() => {
     if (user?.role !== USER_ROLE.ADMIN) {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    // dispatch(ordersUploadData());
-  }, []);
+    dispatch(userOrdersLoadData(inputValue.toLowerCase().trim(), itemsPerPage, currentPage));
+  }, [debounce, currentPage]);
 
   const onChange = ({ target: { value } }) => {
     setInputValue(value);
-    setFilteredTableItems(tableItems.filter((item) =>
-      item.name.toLowerCase().trim().includes(value.toLowerCase().trim()),
-    ));
   };
 
   return (
@@ -52,7 +51,7 @@ export function UsersOrderContainer() {
       isSuccess={isRequestSuccess(state.usersOrder)}
       errorMessage={getRequestErrorMessage(state.usersOrder)}
       pageLoading={pageLoading}
-      products={filteredTableItems.slice(startIndex, startIndex + itemsPerPage)}
+      products={usersOrder.purchases}
       headersTable={headersTable}
       totalPages={totalPages}
       setCurrentPage={setCurrentPage}

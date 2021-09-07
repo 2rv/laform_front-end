@@ -21,7 +21,7 @@ export function usersOrderStore(state = initialState, action) {
     case USERS_ORDER_ACTION_TYPE.USERS_ORDER_UPLOAD_SUCCESS:
       return {
         ...state,
-        usersOrder: setRequestSuccess(state.usersOrder),
+        usersOrder: setRequestSuccess(state.usersOrder, action.payload),
       };
     case USERS_ORDER_ACTION_TYPE.USERS_ORDER_UPLOAD_ERROR:
       return {
