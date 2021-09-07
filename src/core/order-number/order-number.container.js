@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
 import { redirect } from '../../main/navigation/navigation.core';
@@ -17,6 +18,7 @@ import { OrderNumberComponent } from './order-number.component';
 import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
 
 export function OrderNumberContainer() {
+  const { query } = useRouter();
   const dispatch = useDispatch();
   const { state, pageLoading, user } = useSelector((state) => ({
     state: state[ORDER_NUMBER_STORE_NAME],
@@ -31,7 +33,7 @@ export function OrderNumberContainer() {
       redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
       return;
     }
-    // dispatch(orderNumberUploadData());
+    dispatch(orderNumberUploadData(query.id));
   }, []);
 
   const onSubmit = (values) => {
@@ -39,14 +41,14 @@ export function OrderNumberContainer() {
   };
 
   const initialValue = () => ({
-    [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: orderNumberDetails.fullName,
-    [ABOUT_ORDER_FIELD_NAME.CURRENT_CITY]: orderNumberDetails.city,
-    [ABOUT_ORDER_FIELD_NAME.CONVENIENT_DELIVERY_METHOD]: 0,
-    [ABOUT_ORDER_FIELD_NAME.CONVENIENT_PAYMENT_METHOD]: 0,
+    [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: orderNumberDetails?.fullName,
+    [ABOUT_ORDER_FIELD_NAME.CURRENT_CITY]: orderNumberDetails?.city,
+    [ABOUT_ORDER_FIELD_NAME.CONVENIENT_DELIVERY_METHOD]: orderNumberDetails?.typeOfDelivery,
+    [ABOUT_ORDER_FIELD_NAME.CONVENIENT_PAYMENT_METHOD]: orderNumberDetails?.typeOfPayment,
     [ABOUT_ORDER_FIELD_NAME.CONTACT_PHONE_NUMBER]:
-      orderNumberDetails.phoneNumber,
-    [ABOUT_ORDER_FIELD_NAME.ORDER_NOTE]: orderNumberDetails.comment,
-    [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: 0,
+      orderNumberDetails?.phoneNumber,
+    [ABOUT_ORDER_FIELD_NAME.ORDER_NOTE]: orderNumberDetails?.comment,
+    [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: orderNumberDetails?.orderStatus,
     [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: '',
   });
 
@@ -56,8 +58,8 @@ export function OrderNumberContainer() {
       isError={isRequestError(state.orderNumber)}
       isSuccess={isRequestSuccess(state.orderNumber)}
       errorMessage={getRequestErrorMessage(state.orderNumber)}
+      orderNumberDetails={getRequestData(state.orderNumber, [])}
       pageLoading={pageLoading}
-      orderNumberDetails={itemsTable}
       headersTable={headersTable}
       onSubmit={onSubmit}
       initialValue={initialValue()}
