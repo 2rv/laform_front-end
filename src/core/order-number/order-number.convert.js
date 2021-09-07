@@ -2,7 +2,12 @@ export const convertUsersOrderData = (data) => {
   return {
     ...data,
     purchaseProducts: data.purchaseProducts.map((product) => {
-      const { productName, fetchedProduct } = getProduct(product);
+      const fetchedProduct = (
+        product.masterClassId
+        || product.patternProductId
+        || product.sewingProductId
+        || product.postId
+      );
 
       return {
         id: fetchedProduct.id,
@@ -18,29 +23,4 @@ export const convertUsersOrderData = (data) => {
       };
     }),
   };
-};
-
-const getProduct = (product) => {
-  const fetchedProduct = (
-    product.masterClassId
-    || product.patternProductId
-    || product.sewingProductId
-    || product.postId
-  );
-
-  let productName;
-
-  if (product.masterClassId) {
-    productName = 'master-class';
-  } else if (product.patternProductId) {
-    productName = 'patterns';
-  } else if (product.sewingProductId) {
-    productName = 'sewing-goods';
-  } else if (product.postId) {
-    productName = 'article';
-  }
-
-  return {
-    productName, fetchedProduct
-  }
 };
