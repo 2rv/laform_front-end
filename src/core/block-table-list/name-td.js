@@ -7,8 +7,8 @@ export function NameTd(props) {
   return (
     <Td>
       <Case>
-        <Image src={image} />
-        <Text tid={name} />
+        {image && <Image src={image} />}
+        {name && <Text tid={name} />}
       </Case>
     </Td>
   );

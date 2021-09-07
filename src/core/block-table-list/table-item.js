@@ -102,7 +102,7 @@ export function TableItem(props) {
     data[PATTERN_PRODUCT_KEY.FORMAT] === PATTER_PRODUCT_FORMAT.REMOTE;
 
   return (
-    <Tr>
+    <Tr onClick={() => onClick(productName, id)} cursorPointer={cursorPointer}>
       <NameTd image={image} name={name} />
       {comment ? <CommentTd text={comment?.text} /> : <></>}
       {params ? <ParamsTd items={params} /> : <></>}

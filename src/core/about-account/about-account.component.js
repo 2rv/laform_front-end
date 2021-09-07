@@ -1,20 +1,22 @@
+import moment from 'moment';
 import styled from 'styled-components';
 import { SectionLayout } from '../../lib/element/layout';
 import { LinkSecondary } from '../../lib/element/link';
 import { TitlePrimary } from '../../lib/element/title';
 import { Divider } from '../../lib/element/divider';
-import { THEME_SIZE } from '../../lib/theme';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
 import { TextSecondary } from 'src/lib/element/text';
 import { Spinner } from 'src/lib/element/spinner';
-import { redirect } from 'src/main/navigation';
+import { redirect, setLinkRedirect } from 'src/main/navigation';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function AboutAccountComponent(props) {
   const {
     pageLoading,
-    orderItems,
+    isPurchasesPending,
+    purchases,
     isLikesPending,
     likes,
     isCommentsPending,
@@ -31,52 +33,79 @@ export function AboutAccountComponent(props) {
       <SectionLayout>
         <AboutAccountInfoComponent {...props} />
         <SectionLayout type="SMALL">
-          <SectionLayout type="TEXT">
-            <Title tid="Список покупок" />
-            <Divider />
-            {Boolean(orderItems.length) ? (
+          <Title tid="Список покупок" />
+          <Divider />
+          {isPurchasesPending ? (
+            <Spinner />
+          ) : (
+            Boolean(purchases.length) ? (
               <>
-                <TableList items={orderItems} />
+                <TableList items={purchases} onClick={redirectToProduct} cursorPointer={true} />
                 <LinkSecondary tid="Посмотреть все..." />
               </>
             ) : (
               <TextSecondary tid="Нету покупок" />
-            )}
-          </SectionLayout>
+            )
+          )}
         </SectionLayout>
         <SectionLayout type="SMALL">
-          <SectionLayout type="TEXT">
-            <Title tid="Мои лайки" />
-            <Divider />
-            {isLikesPending ? (
-              <Spinner />
+          <Title tid="Мои лайки" />
+          <Divider />
+          {isLikesPending ? (
+            <Spinner />
+          ) : (
+            Boolean(likes.length) ? (
+              <>
+                <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
+                <LinkSecondary tid="Посмотреть все..." />
+              </>
             ) : (
-              Boolean(likes.length) ? (
-                <>
-                  <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
-                  <LinkSecondary tid="Посмотреть все..." />
-                </>
-              ) : (
-                <TextSecondary tid="Нету лайков" />
-              )
-            )}
-          </SectionLayout>
+              <TextSecondary tid="Нету лайков" />
+            )
+          )}
         </SectionLayout>
         <SectionLayout type="SMALL">
-          <SectionLayout type="TEXT">
-            <Title tid="Мои комментарии" />
-            <Divider />
-            {isCommentsPending ? (
-              <Spinner />
+          <Title tid="Мои комментарии" />
+          <Divider />
+          {isCommentsPending ? (
+            <Spinner />
+          ) : (
+            Boolean(comments.length) ? (
+              <CommentContainer>
+                {comments.map((comment) => (
+                  <CommentContent key={comment.id} onClick={() => redirectToProduct(comment.productName, comment.productId)}>
+                    <TextSecondary tid={comment.text} />
+                    <TextSecondary>{moment(comment.createDate).format('MMM DD, YYYY, hh:mm:ss')}</TextSecondary>
+                  </CommentContent>
+                  ))}
+              </CommentContainer>
             ) : (
-              Boolean(comments.length) ? <TableList items={comments} /> : <TextSecondary tid="Нету комментариев" />
-            )}
-          </SectionLayout>
+              <TextSecondary tid="Нету комментариев" />
+            )
+          )}
         </SectionLayout>
       </SectionLayout>
     </>
   );
 }
+
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+
+const CommentContainer = styled.div`
+  display: grid;
+  gap: ${spacing(6)};
+`
+
+const CommentContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: ${spacing(4)} 0;
+  &:hover {
+    cursor: pointer;
+    background: ${THEME_COLOR.GRAY};
+  }
 `;

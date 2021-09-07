@@ -9,6 +9,7 @@ import { ABOUT_ACCOUNT_ACTION_TYPE } from './about-account.type';
 
 const initialState = {
   user: initRequestState(),
+  purchases: initRequestState(),
   likes: initRequestState(),
   comments: initRequestState(),
 };
@@ -29,6 +30,21 @@ export function aboutAccountStore(state = initialState, action) {
       return {
         ...state,
         user: setRequestError(state.user, action.errorMessage),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.PURCHASES_PENDING:
+      return {
+        ...state,
+        purchases: setRequestPending(state.purchases),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.PURCHASES_SUCCESS:
+      return {
+        ...state,
+        purchases: setRequestSuccess(state.purchases, action.purchases),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.PURCHASES_ERROR:
+      return {
+        ...state,
+        purchases: setRequestError(state.purchases, action.errorMessage),
       };
     case ABOUT_ACCOUNT_ACTION_TYPE.LIKES_PENDING:
       return {
