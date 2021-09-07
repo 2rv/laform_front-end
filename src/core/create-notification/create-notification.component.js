@@ -40,7 +40,7 @@ export function CreateNotificationComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="Мастер-класс успешно создан" />}
+        {isSuccess && <SuccessAlert tid="Уведомление успешно отправлено" />}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

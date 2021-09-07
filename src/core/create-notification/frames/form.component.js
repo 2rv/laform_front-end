@@ -1,7 +1,4 @@
-import styled from 'styled-components';
-import { THEME_SIZE } from '../../../lib/theme';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
-import { TitlePrimary } from '../../../lib/element/title';
 import { ButtonPrimary } from '../../../lib/element/button';
 import { BasicField } from '../../../lib/element/field';
 import { CREATE_NOTIFICATION_FIELD_NAME } from '../create-notification.type';
@@ -45,25 +42,19 @@ export function FormComponent(props) {
           />
         </FieldLayout>
       </SectionLayout>
-      <SectionLayout type="SMALL">
-        {/* EDITOR USE GUIDE GOES HERE */}
-        <Title tid="Контент" />
-        <BlockEditor
-          notification={true}
-          formikOnChange={setEditorData(
-            CREATE_NOTIFICATION_FIELD_NAME.NOTIFICATION,
-          )}
-        />
-      </SectionLayout>
-      <ButtonPrimary
-        tid="Создать"
-        type="submit"
-        disabled={isSubmitDisabled()}
+      <BlockEditor
+        notification={true}
+        formikOnChange={setEditorData(
+          CREATE_NOTIFICATION_FIELD_NAME.NOTIFICATION,
+        )}
       />
+      <FieldLayout type="double" adaptive>
+        <ButtonPrimary
+          tid="Создать"
+          type="submit"
+          disabled={isSubmitDisabled()}
+        />
+      </FieldLayout>
     </SectionLayout>
   );
 }
-
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-`;
