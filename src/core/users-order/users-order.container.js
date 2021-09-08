@@ -30,7 +30,6 @@ export function UsersOrderContainer() {
   const debounce = useDebounce(inputValue, 500);
   const usersOrder = getRequestData(state.usersOrder);
   const itemsPerPage = 5;
-  const totalPages = Math.ceil(usersOrder.total / itemsPerPage);
 
   useEffect(() => {
     if (user?.role !== USER_ROLE.ADMIN) {
@@ -51,9 +50,9 @@ export function UsersOrderContainer() {
       isSuccess={isRequestSuccess(state.usersOrder)}
       errorMessage={getRequestErrorMessage(state.usersOrder)}
       pageLoading={pageLoading}
-      products={usersOrder.purchases}
       headersTable={headersTable}
-      totalPages={totalPages}
+      products={usersOrder.purchases}
+      totalPages={usersOrder.totalPages}
       setCurrentPage={setCurrentPage}
       currentPage={currentPage}
       onChange={onChange}

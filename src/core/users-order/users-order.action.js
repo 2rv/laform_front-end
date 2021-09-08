@@ -19,7 +19,7 @@ export function userOrdersLoadData(inputValue = '', size, page) {
         type: USERS_ORDER_ACTION_TYPE.USERS_ORDER_UPLOAD_SUCCESS,
         payload: {
           purchases: response.data.purchases.map(convertUsersOrderData),
-          total: response.data.total,
+          totalPages: response.data.total,
         },
       });
     } catch (err) {

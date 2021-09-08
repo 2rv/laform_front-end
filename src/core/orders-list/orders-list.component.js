@@ -30,7 +30,7 @@ export function OrdersListComponent(props) {
         {isPending ? (
           <Spinner />
         ) : (
-          Boolean(products.length > 0) ? (
+          Boolean(products?.length > 0) ? (
             <>
               <TableList items={products} headers={headersTable} onClick={redirectToPurchasePage} cursorPointer={true} />
               <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

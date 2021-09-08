@@ -20,15 +20,12 @@ export function OrdersListContainer() {
   }));
 
   const [currentPage, setCurrentPage] = useState(1);
-  const orders = getRequestData(state.ordersList, []);
-  const filteredTableItems = orders;
+  const orders = getRequestData(state.ordersList);
   const itemsPerPage = 5;
-  const totalPages = Math.ceil(orders.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
 
   useEffect(() => {
-    dispatch(ordersLoadData());
-  }, []);
+    dispatch(ordersLoadData(itemsPerPage, currentPage));
+  }, [currentPage]);
 
   return (
     <OrdersListComponent
@@ -37,9 +34,9 @@ export function OrdersListContainer() {
       isSuccess={isRequestSuccess(state.ordersList)}
       errorMessage={getRequestErrorMessage(state.ordersList)}
       pageLoading={pageLoading}
-      products={filteredTableItems.slice(startIndex, startIndex + itemsPerPage)}
       headersTable={headersTable}
-      totalPages={totalPages}
+      products={orders.purchases}
+      totalPages={orders.totalPages}
       setCurrentPage={setCurrentPage}
       currentPage={currentPage}
     />

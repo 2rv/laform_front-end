@@ -1,30 +1,29 @@
 export const convertPurchasesData = (data) => {
-  return data.purchaseProducts.map((product) => {
-    const { productName, fetchedProduct } = getProduct(product);
+  const firstPurchaseProduct = (data.purchaseProducts ?? [])[0] ?? {};
+  const { productName, fetchedProduct } = getProduct(firstPurchaseProduct);
 
-    return {
-      id: data?.id,
-      params: [
-        product?.color && { name: 'Цвет', value: product.color },
-        product?.size && { name: 'Размер', value: product.size },
-        product?.type && { name: 'Категория', value: product.type },
-        product?.quantity && { name: 'Количество', value: product.quantity },
-      ],
-      otherParams: [
-        data?.fullName && { name: 'ФИО', value: data.fullName },
-        data?.city && { name: 'Город', value: data.city },
-        { name: 'Адрес доставки', value: "Ул. Ленина 25А" },
-        { name: 'Способ оплаты', value: 'Полная предоплата' },
-        data?.phoneNumber && { name: 'Контактный телефон', value: data.phoneNumber },
-      ],
-      price: data?.price,
-      status: data?.typeOfDelivery,
-      name: fetchedProduct?.titleRu,
-      image: (fetchedProduct.images ? fetchedProduct.images[0] : fetchedProduct.imageUrl)?.fileUrl,
-      productId: fetchedProduct.id,
-      productName,
-    };
-  });
+  return {
+    id: data.id,
+    params: [
+      firstPurchaseProduct?.color && { name: 'Цвет', value: firstPurchaseProduct.color },
+      firstPurchaseProduct?.size && { name: 'Размер', value: firstPurchaseProduct.size },
+      firstPurchaseProduct?.type && { name: 'Категория', value: firstPurchaseProduct.type },
+      firstPurchaseProduct?.quantity && { name: 'Количество', value: firstPurchaseProduct.quantity },
+    ],
+    otherParams: [
+      data.fullName && { name: 'ФИО', value: data.fullName },
+      data.city && { name: 'Город', value: data.city },
+      { name: 'Адрес доставки', value: "Ул. Ленина 25А" },
+      { name: 'Способ оплаты', value: 'Полная предоплата' },
+      data.phoneNumber && { name: 'Контактный телефон', value: data.phoneNumber },
+    ],
+    price: data.price,
+    status: data.typeOfDelivery,
+    name: data.orderNumber,
+    image: (fetchedProduct?.images ? fetchedProduct?.images[0] : fetchedProduct?.imageUrl)?.fileUrl,
+    productId: fetchedProduct?.id,
+    productName,
+  };
 };
 
 const getProduct = (product) => {
@@ -48,6 +47,6 @@ const getProduct = (product) => {
   }
 
   return {
-    productName, fetchedProduct
-  }
+    productName, fetchedProduct,
+  };
 };
