@@ -144,7 +144,7 @@ export function FormComponent(props) {
         </FieldLayout>
         <RecomendationBlock
           onSetRecomendation={(data) =>
-            setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.RECOMENDATIONS, data)
+            setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.RECOMMENDATIONS, data)
           }
         />
         <FieldLayout type="double" adaptive>

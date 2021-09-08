@@ -22,8 +22,7 @@ export const PRINT_PATTERN_FIELD_NAME = {
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
 
-  RECOMENDATIONS: 'recomendations',
-  RECOMENDATION_NAME: 'recomendation',
+  RECOMMENDATIONS: 'recommendations',
 
   SIZES: 'sizes',
   SIZE_NAME: 'size',

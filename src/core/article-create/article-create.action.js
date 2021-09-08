@@ -9,16 +9,16 @@ import {
 export function createArticleUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
     try {
+      console.log(imagesUrls);
       const data = convertForUpload(imagesUrls, formValues);
       console.log(data);
-
       //----------------------------------------------------------------------
 
-      //   const response = await httpRequest({
-      //     method: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.TYPE,
-      //     url: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.ENDPOINT(type),
-      //     data: data,
-      //   });
+      const response = await httpRequest({
+        method: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.TYPE,
+        url: CREATE_ARTICLE_API.CREATE_ARTICLE_UPLOAD.ENDPOINT,
+        data: data,
+      });
 
       //----------------------------------------------------------------------
 
@@ -47,13 +47,12 @@ export function createArticlePreUploadData(formValues) {
         'file',
         formValues[ARTICLE_FIELD_NAME.IMAGES][0][ARTICLE_FIELD_NAME.IMAGE],
       );
-      //   const response = await httpRequest({
-      //     method: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.TYPE,
-      //     url: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.ENDPOINT,
-      //     data: formData,
-      //   });
-      //   dispatch(createArticleUploadData(response.data, formValues));
-      dispatch(createArticleUploadData([1, 2, 3, 4], formValues));
+      const response = await httpRequest({
+        method: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.TYPE,
+        url: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.ENDPOINT,
+        data: formData,
+      });
+      dispatch(createArticleUploadData(response.data, formValues));
     } catch (err) {
       if (err.response) {
         dispatch({

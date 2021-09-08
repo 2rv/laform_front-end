@@ -3,8 +3,8 @@ import { HOME_API } from './home.constant';
 import { HOME_ACTION_TYPE } from './home.type';
 import {
   performMasterClassData,
-  performPatternsData,
   performSewingGoodsData,
+  performArticlesData,
 } from './home.convert';
 
 export function masterClassUploadData(currentLang) {
@@ -69,7 +69,7 @@ export function articleUploadData(currentLang) {
         method: HOME_API.ARTICLE_UPLOAD_DATA.TYPE,
         url: HOME_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang),
       });
-      const data = performPatternsData(response.data);
+      const data = performArticlesData(response.data);
       dispatch({
         type: HOME_ACTION_TYPE.HOME_ARTICLE_SUCCESS,
         data: data,
