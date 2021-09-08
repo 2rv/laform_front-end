@@ -17,8 +17,7 @@ export const convertUsersOrderData = (data) => {
     ],
     otherParams: [
       data.fullName && { name: 'ФИО', value: data.fullName },
-      data.city && { name: 'Город', value: data.city },
-      { name: 'Адрес доставки', value: "Ул. Ленина 25А" },
+      data.city && { name: 'Город и точный адрес доставки', value: data.city },
       data.typeOfPayment && { name: 'Способ оплаты', value: data.typeOfPayment },
       data.phoneNumber && { name: 'Контактный телефон', value: data.phoneNumber },
     ],
