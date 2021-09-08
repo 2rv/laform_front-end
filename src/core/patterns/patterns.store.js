@@ -30,6 +30,24 @@ export function patternsStore(state = initialState, action) {
           action.errorMessage,
         ),
       };
+    case PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_PENDING:
+      return {
+        ...state,
+        patternsState: setRequestPending(state.patternsState),
+      };
+    case PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_SUCCESS:
+      return {
+        ...state,
+        patternsState: setRequestSuccess(state.patternsState),
+      };
+    case PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_ERROR:
+      return {
+        ...state,
+        patternsState: setRequestError(
+          state.patternsState,
+          action.errorMessage,
+        ),
+      };
     default:
       return state;
   }
