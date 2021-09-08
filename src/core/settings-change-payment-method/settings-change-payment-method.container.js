@@ -13,13 +13,21 @@ import {
 } from './settings-change-payment-method.constant';
 import { SETTINGS_FORM_CHANGE_PAYMENT_METHOD_FIELD_NAME } from './settings-change-payment-method.type';
 import { SettingsChangePaymentMethodComponent } from './settings-change-payment-method.component';
+import { httpRequest } from 'src/main/http';
 
 export function SettingsChangePaymentMethodContainer() {
   const dispatch = useDispatch();
   const { isSaved } = useSelector((state) => state[PAYMENT_METHOD_STORE_NAME]);
 
-  const savePaymentMethod = ({ paymentMethod }) => {
+  const savePaymentMethod = async ({ paymentMethod }) => {
     dispatch(setPaymentMethod(paymentMethod));
+    await httpRequest({
+      url: '/user/info/update',
+      method: 'PATCH',
+      data: {
+        paymentType: Number(paymentMethod)
+      },
+    });
   };
 
   const getInitialValues = () => ({

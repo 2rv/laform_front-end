@@ -12,24 +12,24 @@ export const convertLikesData = (data) => {
 };
 
 export const convertPurchasesData = (data) => {
-  return data.purchaseProducts.map((product) => {
-    const { productName, fetchedProduct } = getProduct(product);
-    return {
-      id: product?.id,
-      name: product?.purchaseProductName,
-      params: [
-        product?.color && { name: 'Цвет', value: product.color },
-        product?.size && { name: 'Размер', value: product.size },
-        product?.type && { name: 'Категория', value: product.type },
-        product?.quantity && { name: 'Количество', value: product.quantity },
-      ],
-      price: data?.price,
-      status: data?.typeOfDelivery,
-      image: (fetchedProduct.images ? fetchedProduct.images[0] : fetchedProduct.imageUrl)?.fileUrl,
-      productId: fetchedProduct.id,
-      productName,
-    };
-  });
+  const firstPurchaseProduct = (data.purchaseProducts ?? [])[0] ?? {};
+  const { productName, fetchedProduct } = getProduct(firstPurchaseProduct);
+
+  return {
+    id: data.id,
+    params: [
+      firstPurchaseProduct?.color && { name: 'Цвет', value: firstPurchaseProduct.color },
+      firstPurchaseProduct?.size && { name: 'Размер', value: firstPurchaseProduct.size },
+      firstPurchaseProduct?.type && { name: 'Категория', value: firstPurchaseProduct.type },
+      firstPurchaseProduct?.quantity && { name: 'Количество', value: firstPurchaseProduct.quantity },
+    ],
+    price: data.price,
+    status: data.orderStatus,
+    productId: fetchedProduct?.id,
+    name: fetchedProduct?.titleRu,
+    image: (fetchedProduct?.images ? fetchedProduct?.images[0] : fetchedProduct?.imageUrl)?.fileUrl,
+    productName,
+  };
 };
 
 export const convertCommentsData = (data) => {

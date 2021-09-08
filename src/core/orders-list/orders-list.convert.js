@@ -20,8 +20,8 @@ export const convertPurchasesData = (data) => {
     price: data.price,
     status: data.orderStatus,
     name: data.orderNumber,
-    image: (fetchedProduct?.images ? fetchedProduct?.images[0] : fetchedProduct?.imageUrl)?.fileUrl,
     productId: fetchedProduct?.id,
+    image: (fetchedProduct?.images ? fetchedProduct?.images[0] : fetchedProduct?.imageUrl)?.fileUrl,
     productName,
   };
 };

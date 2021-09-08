@@ -42,11 +42,9 @@ export function purchasesLoadData() {
         url: ABOUT_ACCOUNT_API.PURCHASES_LOAD.ENDPOINT,
       });
 
-      const purchases = response.data.flatMap(convertPurchasesData);
-
       dispatch({
         type: ABOUT_ACCOUNT_ACTION_TYPE.PURCHASES_SUCCESS,
-        purchases,
+        purchases: response.data.purchases.map(convertPurchasesData),
       });
     } catch (err) {
       if (err.response) {

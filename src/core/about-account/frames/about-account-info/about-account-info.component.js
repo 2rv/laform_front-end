@@ -10,10 +10,10 @@ import { Spinner } from '../../../../lib/element/spinner';
 export function AboutAccountInfoComponent({ isUserPending, user }) {
   return isUserPending ? <Spinner /> : (
     <SectionLayout>
-      {user.userInfo?.fullName && (
+      {user?.userInfo?.fullName && (
         <LineCase>
           <UserIcon />
-          <UserTitle tid={user.userInfo?.fullName} />
+          <UserTitle tid={user?.userInfo?.fullName} />
         </LineCase>
       )}
       <SectionLayout type="SMALL">
@@ -35,15 +35,15 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
       <SectionLayout type="SMALL">
         <TitlePrimary tid="Доставка и оплата" />
         <LineSection>
-          {user.userInfo?.location && (
+          {user?.userInfo?.location && (
             <SectionLayout type="TEXT">
               <InfoTitle tid="Адрес доставки" />
-              <InfoText tid={user.userInfo?.location} />
+              <InfoText tid={user?.userInfo?.location} />
             </SectionLayout>
           )}
           <SectionLayout type="TEXT">
             <InfoTitle tid="Способ оплаты" />
-            <InfoText tid="Наличными при получении" />
+            <InfoText tid={user?.userInfo?.paymentType === 1 ? 'Онлайн' : 'Другой'} />
           </SectionLayout>
         </LineSection>
       </SectionLayout>

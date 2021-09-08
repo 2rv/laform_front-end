@@ -6,7 +6,7 @@ export const ABOUT_ACCOUNT_API = {
     TYPE: 'GET',
   },
   PURCHASES_LOAD: {
-    ENDPOINT: '/purchase/user/get',
+    ENDPOINT: '/purchase/user/get?size=3',
     TYPE: 'GET',
   },
   LIKES_LOAD: {
