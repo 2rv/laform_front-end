@@ -1,6 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { ARTICLES_API } from './articles.constant';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
+import { performArticlesData } from './articles.convert';
 
 export function articlesUploadData(currentLang) {
   return async (dispatch) => {
@@ -13,7 +14,8 @@ export function articlesUploadData(currentLang) {
         method: ARTICLES_API.ARTICLES_UPLOAD.TYPE,
         url: ARTICLES_API.ARTICLES_UPLOAD.ENDPOINT(currentLang),
       });
-      const data = response.data;
+
+      const data = performArticlesData(response.data);
 
       dispatch({
         type: ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS,

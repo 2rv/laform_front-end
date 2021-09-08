@@ -1,6 +1,6 @@
 export const RECOMENDATION_FILTER = {
-  FILTER: 'filter-recomendations',
-  FIND: 'find-recomendations',
+  FILTER: 'filter-recommendations',
+  FIND: 'find-recommendations',
 };
 
 export const RECOMENDATION_ACTION_TYPE = {

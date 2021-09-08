@@ -57,7 +57,7 @@ export function FormComponent(props) {
         </SectionLayout>
         <RecomendationBlock
           onSetRecomendation={(data) =>
-            setFieldValue(ARTICLE_FIELD_NAME.RECOMENDATIONS, data)
+            setFieldValue(ARTICLE_FIELD_NAME.RECOMMENDATIONS, data)
           }
         />
         <FieldLayout type="double" adaptive>

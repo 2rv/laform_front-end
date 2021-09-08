@@ -15,7 +15,7 @@ export const SEWING_GOODS_FIELD_NAME = {
   DISCOUNT: 'discount',
   IMAGES: 'images',
   IMAGE: 'image',
-  RECOMENDATIONS: 'recomendations',
+  RECOMMENDATIONS: 'recommendations',
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
 

@@ -20,8 +20,7 @@ export const CREATE_MASTER_CLASS_FIELD_NAME = {
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
 
-  RECOMENDATIONS: 'recomendations',
-  RECOMENDATION_NAME: 'recomendation',
+  RECOMMENDATIONS: 'recommendations',
 
   PROGRAMS: 'programs',
   PROGRAM_NAME: 'programNameRu',

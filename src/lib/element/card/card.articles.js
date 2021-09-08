@@ -12,8 +12,9 @@ import moment from 'moment';
 export function CardArticles(props) {
   const {
     id,
-    image = null,
-    name = null,
+    image,
+    name,
+    bestseller,
     date,
     createdDate,
     like = false,
@@ -28,6 +29,7 @@ export function CardArticles(props) {
         path={ARTICLE_PAGE_ROUTE_PATH}
         pathConfig={{ query: { id: id } }}
         image={image}
+        bestseller={bestseller}
       />
       <Content>
         <Column>
