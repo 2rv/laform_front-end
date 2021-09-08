@@ -1,3 +1,4 @@
+import React from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
 import { SectionLayout } from '../../lib/element/layout';
@@ -9,11 +10,14 @@ import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
 import { TextSecondary } from 'src/lib/element/text';
 import { Spinner } from 'src/lib/element/spinner';
-import { redirect, setLinkRedirect } from 'src/main/navigation';
+import { redirect } from 'src/main/navigation';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function AboutAccountComponent(props) {
   const {
+    isUserPending,
+    user,
+    isNormalUser,
     pageLoading,
     isPurchasesPending,
     purchases,
@@ -31,39 +35,43 @@ export function AboutAccountComponent(props) {
     <>
       {pageLoading && <LoaderPrimary />}
       <SectionLayout>
-        <AboutAccountInfoComponent {...props} />
-        <SectionLayout type="SMALL">
-          <Title tid="Список покупок" />
-          <Divider />
-          {isPurchasesPending ? (
-            <Spinner />
-          ) : (
-            Boolean(purchases.length) ? (
-              <>
-                <TableList items={purchases} onClick={redirectToProduct} cursorPointer={true} />
-                <LinkSecondary tid="Посмотреть все..." />
-              </>
-            ) : (
-              <TextSecondary tid="Нету покупок" />
-            )
-          )}
-        </SectionLayout>
-        <SectionLayout type="SMALL">
-          <Title tid="Мои лайки" />
-          <Divider />
-          {isLikesPending ? (
-            <Spinner />
-          ) : (
-            Boolean(likes.length) ? (
-              <>
-                <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
-                <LinkSecondary tid="Посмотреть все..." />
-              </>
-            ) : (
-              <TextSecondary tid="Нету лайков" />
-            )
-          )}
-        </SectionLayout>
+        <AboutAccountInfoComponent isUserPending={isUserPending} user={user} />
+        {Boolean(isNormalUser) && (
+          <React.Fragment>
+            <SectionLayout type="SMALL">
+              <Title tid="Список покупок" />
+              <Divider />
+              {isPurchasesPending ? (
+                <Spinner />
+              ) : (
+                Boolean(purchases.length) ? (
+                  <>
+                    <TableList items={purchases} onClick={redirectToProduct} cursorPointer={true} />
+                    <LinkSecondary tid="Посмотреть все..." path={'/orders-list'} />
+                  </>
+                ) : (
+                  <TextSecondary tid="Нету покупок" />
+                )
+              )}
+            </SectionLayout>
+            <SectionLayout type="SMALL">
+              <Title tid="Мои лайки" />
+              <Divider />
+              {isLikesPending ? (
+                <Spinner />
+              ) : (
+                Boolean(likes.length) ? (
+                  <>
+                    <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
+                    <LinkSecondary tid="Посмотреть все..." path={'/favorites'} />
+                  </>
+                ) : (
+                  <TextSecondary tid="Нету лайков" />
+                )
+              )}
+            </SectionLayout>
+          </React.Fragment>
+        )}
         <SectionLayout type="SMALL">
           <Title tid="Мои комментарии" />
           <Divider />
@@ -107,5 +115,6 @@ const CommentContent = styled.div`
   &:hover {
     cursor: pointer;
     background: ${THEME_COLOR.GRAY};
+    transition: 0.5s;
   }
 `;

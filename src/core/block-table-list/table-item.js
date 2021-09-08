@@ -129,6 +129,7 @@ const Tr = styled.tr`
     &:hover {
       cursor: pointer;
       background: ${THEME_COLOR.GRAY};
+      transition: 0.5s;
     }
   `};
   @media screen and (max-width: 875px) {

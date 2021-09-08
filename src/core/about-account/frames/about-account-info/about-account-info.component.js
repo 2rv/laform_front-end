@@ -8,8 +8,7 @@ import { SectionLayout } from '../../../../lib/element/layout';
 import { Spinner } from '../../../../lib/element/spinner';
 
 export function AboutAccountInfoComponent({ isUserPending, user }) {
-  return (
-    isUserPending ? <Spinner /> :
+  return isUserPending ? <Spinner /> : (
     <SectionLayout>
       {user.userInfo?.fullName && (
         <LineCase>

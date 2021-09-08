@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
-import { redirect } from '../../main/navigation/navigation.core';
-import { HTTP_ERROR_ROUTER } from '../../main/http';
 import { ABOUT_ACCOUNT_STORE_NAME } from './about-account.constant';
 import { AboutAccountComponent } from './about-account.component';
 
@@ -30,17 +28,22 @@ export function AboutAccountContainer() {
     user: state[AUTH_STORE_NAME].user,
   }));
 
+  const isNormalUser = user?.role === USER_ROLE.USER;
+
   useEffect(() => {
     dispatch(userLoadData());
-    dispatch(purchasesLoadData());
-    dispatch(likesLoadData());
     dispatch(commentsLoadData());
+    if (isNormalUser) {
+      dispatch(purchasesLoadData());
+      dispatch(likesLoadData());
+    }
   }, []);
 
   return (
     <AboutAccountComponent
       isUserPending={isRequestPending(state.user)}
-      user={getRequestData(state.user, [])}
+      user={getRequestData(state.user)}
+      isNormalUser={isNormalUser}
       isPurchasesPending={isRequestPending(state.purchases)}
       purchases={getRequestData(state.purchases, [])}
       isLikesPending={isRequestPending(state.likes)}
