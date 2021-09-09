@@ -4,10 +4,12 @@ import { TextareaField } from '../../lib/element/field';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { ReactComponent as SendIcon } from '../../asset/svg/message-send-icon.svg';
 import { SectionLayout } from '../../lib/element/layout';
-import { IconButton } from '../../lib/element/button';
+import { IconButton, TextButton } from '../../lib/element/button';
 import { CommentItem } from './comment.item';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
+import { useEffect, useRef } from 'react';
+import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 
 export function CommentComponent(props) {
   const {
@@ -17,6 +19,13 @@ export function CommentComponent(props) {
     onSubmitEnter,
     handleChange,
     value,
+    textareaRef,
+    //------------------------------
+    subUser,
+    handleSetSubUser,
+    setSubUser,
+    handleDeleteComment,
+    handleDeleteSubComment,
     //------------------------------
     uploadErrorMessage,
     uploadError,
@@ -28,6 +37,14 @@ export function CommentComponent(props) {
     createSuccess,
     createPending,
   } = props;
+  const messageRef = useRef(null);
+
+  useEffect(() => {
+    if (messageRef.current) {
+      messageRef.current.parentNode.scrollTop = messageRef.current.offsetTop;
+    }
+  }, [comments]);
+
   return (
     <SectionLayout>
       {createPending && <LoaderPrimary />}
@@ -39,14 +56,35 @@ export function CommentComponent(props) {
       ) : (
         <ListComment>
           {comments.map((data, index) => (
-            <CommentItem key={index} data={data} />
+            <CommentItem
+              handleDeleteComment={handleDeleteComment}
+              handleDeleteSubComment={handleDeleteSubComment}
+              key={data?.id}
+              data={data}
+              handleSetSubUser={handleSetSubUser}
+            />
           ))}
+          <div ref={messageRef} />
         </ListComment>
       )}
       <SectionLayout type="SMALL">
-        <Title tid="Написать отзыв" />
+        <HeaderCase>
+          <Title tid="Написать отзыв" />
+          {subUser && (
+            <Line>
+              <div>
+                <LightText tid="Ответить пользователю -" />
+                &nbsp;
+                <SubTitle tid={subUser.user.login} />
+              </div>
+              &nbsp;
+              <CancelButton tid="Отменить" onClick={() => setSubUser(null)} />
+            </Line>
+          )}
+        </HeaderCase>
         <Content>
           <TextareaField
+            ref={textareaRef}
             disabled={createPending}
             onChange={handleChange}
             onKeyDown={onSubmitEnter}
@@ -62,6 +100,30 @@ export function CommentComponent(props) {
     </SectionLayout>
   );
 }
+const Line = styled.div`
+  display: flex;
+`;
+const CancelButton = styled(TextButton)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
+  width: fit-content;
+  padding: 0;
+`;
+const HeaderCase = styled.div`
+  display: flex;
+  gap: ${spacing(1)};
+  align-items: baseline;
+  flex-wrap: wrap;
+`;
+const LightText = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
+  color: ${THEME_COLOR.TEXT.LIGHT};
+`;
+const SubTitle = styled(TextPrimary)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
+  ::first-letter {
+    text-transform: uppercase;
+  }
+`;
 const SpinnerCase = styled.div`
   display: flex;
   justify-content: center;
@@ -87,5 +149,6 @@ const ListComment = styled.div`
   flex-direction: column;
   gap: ${spacing(3)};
   overflow: auto;
-  max-height: 250px;
+  max-height: 450px;
+  scroll-behavior: smooth;
 `;

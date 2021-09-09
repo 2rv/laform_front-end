@@ -8,7 +8,9 @@ import { TextAreaPropsType } from './field.type';
 import { ReactComponent as FileIcon } from '../../../asset/svg/file.svg';
 import { AutoSize } from './autosize';
 
-export function TextareaField(props: TextAreaPropsType) {
+export const TextareaField = React.forwardRef(TextareaClean);
+
+function TextareaClean(props: TextAreaPropsType, ref: any) {
   const {
     titleTid,
     placeholderTid,
@@ -64,6 +66,7 @@ export function TextareaField(props: TextAreaPropsType) {
       <RelativeCase maxHeight={maxHeight}>
         <Textarea
           {...restProps}
+          ref={ref}
           onChange={handleChange}
           placeholder={text(placeholderTid)}
           onBlur={onBlur}

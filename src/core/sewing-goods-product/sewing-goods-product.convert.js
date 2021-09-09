@@ -1,5 +1,5 @@
-export function performMasterClassProductData(rowData) {
-  //   console.log(rowData);
+export function performSewingGoodsProductData(rowData) {
+  console.log(rowData);
   return {
     id: rowData.id,
     type: rowData.type,
@@ -9,10 +9,16 @@ export function performMasterClassProductData(rowData) {
     categories: rowData.categories.map((item) => item.textRu),
     description: rowData.descriptionRu,
     images: rowData.images.map((item) => item.fileUrl),
-    programs: rowData.programs.map((item, index) => ({
+    sizes: rowData.sizes.map((item, index) => ({
       id: index,
-      tid: item.programNameRu,
+      tid: item.size,
       price: item.price,
     })),
+    colors: rowData.colors.map((item, index) => ({
+      id: index,
+      tid: item.color,
+      price: item.price,
+    })),
+    count: rowData.count,
   };
 }

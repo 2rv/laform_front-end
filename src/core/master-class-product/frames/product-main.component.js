@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
-import { TextSecondary } from '../../../../lib/element/text';
-import { BlockSelect } from '../../../block-select';
-import { TitlePrimary } from '../../../../lib/element/title';
-import { Divider } from '../../../../lib/element/divider';
-import { TextBlock } from '../../../block-text';
-import { CardActions } from '../../../../lib/element/card/card-actions';
-import { ProductPriceComponent } from './product-price.component';
 import React, { useState } from 'react';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
+import { TextSecondary } from '../../../lib/element/text';
+import { TitlePrimary } from '../../../lib/element/title';
+import { Divider } from '../../../lib/element/divider';
+import { CardActions } from '../../../lib/element/card/card-actions';
+import { ProductPriceComponent } from './product-price.component';
+import { BlockSelect } from '../../block-select';
+import { TextBlock } from '../../block-text';
 
 export function ProductMainComponent(props) {
   const {
@@ -29,27 +29,31 @@ export function ProductMainComponent(props) {
     <Container>
       <HeaderCase>
         <Title tid={name} />
-        {modifier && <Modifier alt tid={modifier} />}
+        {Boolean(modifier) && <Modifier alt tid={modifier} />}
         {discount !== 0 && <Modifier tid="Акция" />}
       </HeaderCase>
       <div>
         {categories.map((category, key) => (
           <React.Fragment key={key}>
-            <LigthText tid={category + ','} />
+            <LigthText
+              tid={categories.length > 1 ? category + ',' : category}
+            />
             &nbsp;
           </React.Fragment>
         ))}
       </div>
       <Divider />
       <TextBlock text={description} />
-      <Divider />
       {programs && (
-        <BlockSelect
-          name="Программа"
-          selectName="selectedProgram"
-          selectOptions={programs}
-          getValues={setProgram}
-        />
+        <>
+          <Divider />
+          <BlockSelect
+            name="Программа"
+            selectName="selectedProgram"
+            selectOptions={programs}
+            getValues={setProgram}
+          />
+        </>
       )}
       <Divider />
       <FooterCase>
@@ -71,7 +75,6 @@ const FooterCase = styled.div`
     flex-direction: column;
   }
 `;
-
 const HeaderCase = styled.div`
   display: flex;
   align-items: baseline;
@@ -82,12 +85,21 @@ const HeaderCase = styled.div`
 `;
 const Modifier = styled(TextSecondary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
+  ::first-letter {
+    text-transform: uppercase;
+  }
   color: ${({ alt }) => (alt ? THEME_COLOR.PRIMARY_DARK : THEME_COLOR.PRIMARY)};
 `;
 const Title = styled(TitlePrimary)`
   font-size: 1.5;
+  ::first-letter {
+    text-transform: uppercase;
+  }
 `;
 const LigthText = styled(TextSecondary)`
+  ::first-letter {
+    text-transform: uppercase;
+  }
   @media screen and (max-width: 720px) {
     order: -1;
   }

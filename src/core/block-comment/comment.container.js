@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestErrorMessage,
@@ -8,7 +8,13 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { COMMENT_STORE_NAME } from './comment.constant';
-import { commentUpload, commentCreate } from './comment.actions.js';
+import {
+  commentUpload,
+  commentCreate,
+  subCommentCreate,
+  commentDelete,
+  subCommentDelete,
+} from './comment.actions.js';
 import { CommentComponent } from './comment.component.js';
 import { convertForCreateComment } from './comment.convert';
 
@@ -26,13 +32,25 @@ export function CommentContainer(props) {
     }
   }, [id, type]);
 
+  const textareaRef = useRef(null);
   const [text, setValue] = useState(null);
+  const [subUser, setSubUser] = useState(null);
   const onChange = (e) => setValue(e.target.value);
 
   const onSubmit = () => {
-    if (text.length <= 0) alert('Введите сообщение');
-    const convertedData = convertForCreateComment(id, type, text);
-    dispatch(commentCreate(convertedData));
+    if (Boolean(!text) || text.length <= 0) return alert('Введите сообщение');
+    const convertedData = convertForCreateComment(
+      id,
+      type,
+      text,
+      subUser?.commentId,
+    );
+    if (subUser) {
+      dispatch(subCommentCreate(convertedData));
+    } else {
+      dispatch(commentCreate(convertedData));
+    }
+    textareaRef.current.value = '';
   };
 
   const onSubmitEnter = (e) => {
@@ -43,6 +61,12 @@ export function CommentContainer(props) {
     }
   };
 
+  const handleSetSubUser = (user, commentId) => setSubUser({ user, commentId });
+
+  const handleDeleteComment = (id) => dispatch(commentDelete(id));
+  const handleDeleteSubComment = (id, subId) =>
+    dispatch(subCommentDelete(id, subId));
+
   return (
     <CommentComponent
       comments={getRequestData(comments, [])}
@@ -50,6 +74,13 @@ export function CommentContainer(props) {
       onSubmit={onSubmit}
       onSubmitEnter={onSubmitEnter}
       handleChange={onChange}
+      textareaRef={textareaRef}
+      //--------------------------------------------------------------------
+      subUser={subUser}
+      handleDeleteComment={handleDeleteComment}
+      handleDeleteSubComment={handleDeleteSubComment}
+      handleSetSubUser={handleSetSubUser}
+      setSubUser={setSubUser}
       //--------------------------------------------------------------------
       uploadErrorMessage={getRequestErrorMessage(comments)}
       uploadError={isRequestError(comments)}

@@ -62,10 +62,11 @@ const List = styled.div`
   display: grid;
   height: 100%;
   gap: ${spacing(3)};
+  overflow: hidden;
   grid-template-rows: repeat(6, 68px);
   @media screen and (max-width: 1070px) {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(2, 239.5px);
     gap: ${spacing(1)};
   }
   @media screen and (max-width: 720px) {
@@ -75,10 +76,8 @@ const List = styled.div`
 const ImageCase = styled.div`
   display: grid;
   box-sizing: border-box;
-  height: 100%;
   width: 100%;
-  height: inherit;
-  overflow: hidden;
+  height: 100%;
   cursor: pointer;
   border: 3px solid transparent;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
@@ -92,6 +91,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  overflow: hidden;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   ${(p) =>
     p.active &&

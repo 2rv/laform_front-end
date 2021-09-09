@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { spacing } from '../../lib/theme';
+import { spacing, THEME_SIZE } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
-import { TextBlock } from '../block-text';
-import { ProductMainContainer } from './frames';
+import { EditorRenderer } from '../block-editor-renderer';
+import { ProductMainComponent } from './frames';
 
 export function PatternsProductComponent(props) {
   const {
@@ -16,40 +16,59 @@ export function PatternsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    listItems,
-    comments,
-    currentProductData,
-    setValueSelectOption,
+    //------------
+    productInfo,
   } = props;
-  const { materials, images, ...productMainData } = currentProductData;
+
+  const {
+    id,
+    type,
+    name,
+    description,
+    modifier,
+    discount,
+    categories = [],
+    images,
+    sizes = [],
+    materials,
+    price,
+    complexity,
+  } = productInfo;
+
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>Главная / Выкройки / Пальто 0105 ЦК-рукав</TextSecondary>
+        <TextSecondary>{`Главная / Выкройки / Электронные / ${name}`}</TextSecondary>
         <Content>
           <GalleryBlock items={images} />
-          <ProductMainContainer
-            data={productMainData}
-            setValueSelectOption={setValueSelectOption}
+          <ProductMainComponent
+            id={id}
+            type={type}
+            name={name}
+            description={description}
+            modifier={modifier}
+            discount={discount}
+            categories={categories}
+            images={images}
+            sizes={sizes}
+            materials={materials}
+            price={price}
+            complexity={complexity}
           />
         </Content>
       </SectionLayout>
-      {materials && (
-        <SectionLayout type="TEXT">
-          <TitlePrimary tid={'Материалы'} />
-          <TextBlock text={materials} />
-        </SectionLayout>
-      )}
-      <CardListBlock
-        title="Рекомендации"
-        cardType="sewing-goods"
-        items={listItems}
-      />
-      <BlockComment />
+      <SectionLayout type="TEXT_SMALL">
+        <Title tid="Материалы" />
+        <EditorRenderer data={materials} />
+      </SectionLayout>
+      {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}
+      <BlockComment type={type} id={id} />
     </SectionLayout>
   );
 }
-
+const Title = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.LARGE};
+`;
 const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

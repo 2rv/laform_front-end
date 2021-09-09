@@ -20,7 +20,7 @@ export function patternsProductStore(state = initialState, action) {
     case PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_UPLOAD_SUCCESS:
       return {
         ...state,
-        product: setRequestSuccess(state.product),
+        product: setRequestSuccess(state.product, action.data),
       };
     case PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_UPLOAD_ERROR:
       return {

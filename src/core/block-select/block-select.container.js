@@ -22,7 +22,6 @@ export function BlockSelect(props) {
   };
 
   useEffect(() => {
-    console.log(values);
     getValues(selectOptions[values[selectName]]);
   }, [values]);
 

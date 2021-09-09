@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
+import { TextPrimary, TextSecondary } from '../../../lib/element/text';
 
 export function ProductPriceComponent({ price = 0, discount = 0 }) {
   const discountPrice = price - (price / 100) * discount;

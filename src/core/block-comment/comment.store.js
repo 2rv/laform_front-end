@@ -48,6 +48,14 @@ export function commentStore(state = initialState, action) {
         ...state,
         createState: setRequestError(state.createState, action.errorMessage),
       };
+
+    case COMMENT_ACTION_TYPE.SUB_COMMENT_CREATE_SUCCESS:
+      return {
+        ...state,
+        commentState: setRequestSuccess(state.commentState, action.data),
+        createState: setRequestSuccess(state.createState),
+      };
+
     default:
       return state;
   }

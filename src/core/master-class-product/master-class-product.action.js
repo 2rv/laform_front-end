@@ -2,6 +2,7 @@ import { httpRequest } from '../../main/http';
 import { MASTER_CLASS_PRODUCT_API } from './master-class-product.constant';
 import { MASTER_CLASS_PRODUCT_ACTION_TYPE } from './master-class-product.type';
 import { performMasterClassProductData } from './master-class-product.convert';
+
 export function masterClassProductUploadData(currentLang, id) {
   return async (dispatch) => {
     dispatch({

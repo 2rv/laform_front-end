@@ -6,7 +6,7 @@ import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
-import { ProductMainContainer } from './frames';
+import { ProductMainComponent } from './frames';
 
 export function MasterClassProductComponent(props) {
   const {
@@ -17,8 +17,8 @@ export function MasterClassProductComponent(props) {
     pageLoading,
     //------------
     productInfo,
-    setValueSelectOption,
   } = props;
+
   const {
     id,
     name,
@@ -26,7 +26,6 @@ export function MasterClassProductComponent(props) {
     modifier,
     discount,
     type,
-    comment,
     images,
     categories,
     programs,
@@ -38,18 +37,16 @@ export function MasterClassProductComponent(props) {
         <TextSecondary>{`Главная / Мастер-классы / ${name}`}</TextSecondary>
         <Content>
           <GalleryBlock items={images} />
-          <ProductMainContainer
+          <ProductMainComponent
             id={id}
             name={name}
             description={description}
             modifier={modifier}
             discount={discount}
             type={type}
-            comment={comment}
             images={images}
             categories={categories}
             programs={programs}
-            setValueSelectOption={setValueSelectOption}
           />
         </Content>
       </SectionLayout>
