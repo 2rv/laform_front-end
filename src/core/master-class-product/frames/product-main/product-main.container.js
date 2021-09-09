@@ -1,21 +1,32 @@
 import { ProductMainComponent } from './product-main.component';
 
 export function ProductMainContainer(props) {
-  const { setValueSelectOption, data } = props;
   const {
-    title,
-    shortDescription,
-    fullDescription,
-    bestSeller,
-    price,
+    id,
+    name,
+    description,
+    modifier,
     discount,
-    like,
-    select,
-  } = data;
+    type,
+    comment,
+    images,
+    categories,
+    programs,
+    setValueSelectOption,
+  } = props;
 
   return (
     <ProductMainComponent
-      {...data}
+      id={id}
+      name={name}
+      description={description}
+      modifier={modifier}
+      discount={discount}
+      type={type}
+      comment={comment}
+      images={images}
+      categories={categories}
+      programs={programs}
       setValueSelectOption={setValueSelectOption}
     />
   );

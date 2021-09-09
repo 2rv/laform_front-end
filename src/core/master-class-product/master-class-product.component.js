@@ -4,7 +4,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
-import { BlockComments } from '../block-comments/comments-block';
+import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
 import { ProductMainContainer } from './frames';
 
@@ -15,30 +15,46 @@ export function MasterClassProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    listItems,
-    comments,
-    currentProductData,
+    //------------
+    productInfo,
     setValueSelectOption,
   } = props;
-  const { images, ...productMainData } = currentProductData;
+  const {
+    id,
+    name,
+    description,
+    modifier,
+    discount,
+    type,
+    comment,
+    images,
+    categories,
+    programs,
+  } = productInfo;
+
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>Главная / Выкройки / Пальто 0105 ЦК-рукав</TextSecondary>
+        <TextSecondary>{`Главная / Мастер-классы / ${name}`}</TextSecondary>
         <Content>
           <GalleryBlock items={images} />
           <ProductMainContainer
-            data={productMainData}
+            id={id}
+            name={name}
+            description={description}
+            modifier={modifier}
+            discount={discount}
+            type={type}
+            comment={comment}
+            images={images}
+            categories={categories}
+            programs={programs}
             setValueSelectOption={setValueSelectOption}
           />
         </Content>
       </SectionLayout>
-      <CardListBlock
-        title="Рекомендации"
-        cardType="sewing-goods"
-        items={listItems}
-      />
-      <BlockComments items={comments} />
+      {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}
+      <BlockComment type={type} id={id} />
     </SectionLayout>
   );
 }

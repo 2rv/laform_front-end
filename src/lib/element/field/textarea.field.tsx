@@ -23,6 +23,7 @@ export function TextareaField(props: TextAreaPropsType) {
     maxHeight,
     images = null,
     setImages = null,
+    ...restProps
   } = props;
 
   const fileInputRef = React.createRef<any>();
@@ -62,6 +63,7 @@ export function TextareaField(props: TextAreaPropsType) {
       {titleTid && <Title tid={titleTid} />}
       <RelativeCase maxHeight={maxHeight}>
         <Textarea
+          {...restProps}
           onChange={handleChange}
           placeholder={text(placeholderTid)}
           onBlur={onBlur}

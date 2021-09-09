@@ -157,10 +157,11 @@ import {
   createNotificationStore,
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
-
+import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
+  [COMMENT_STORE_NAME]: commentStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
   [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
   [CREATE_PRINT_PATTERN_STORE_NAME]: createPrintPatternStore,

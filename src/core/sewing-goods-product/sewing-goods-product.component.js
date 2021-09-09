@@ -4,7 +4,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
-import { BlockComments } from '../block-comments/comments-block';
+import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
 import { ProductMainContainer } from './frames';
 
@@ -38,7 +38,7 @@ export function SewingGoodsProductComponent(props) {
         cardType="sewing-goods"
         items={listItems}
       />
-      <BlockComments items={comments} />
+      <BlockComment />
     </SectionLayout>
   );
 }

@@ -4,7 +4,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
-import { BlockComments } from '../block-comments';
+import { BlockComment } from '../block-comment';
 import { MediaBlock } from '../block-media';
 
 export function ArticlePageComponent(props) {
@@ -21,7 +21,7 @@ export function ArticlePageComponent(props) {
       {descriptions.map((text, index) => (
         <Description key={index} tid={text} />
       ))}
-      <BlockComments items={comments} />
+      <BlockComment items={comments} />
       <CardListBlock title="Рекомендации" path="/articles" items={listItems} />
     </SectionLayout>
   );

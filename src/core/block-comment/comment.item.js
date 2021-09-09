@@ -8,27 +8,21 @@ import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
 
 export function CommentItem(props) {
-  const { me = false, id = null, username, date, message } = props.data;
+  const { id, text, createDate, userId, subComment } = props.data;
+
   return (
     <Container>
-      {me && (
-        <Button>
-          <CommentIcon />
-        </Button>
-      )}
-      <Column>
+      <Content>
         <HeaderCase>
-          <Title tid={username} />
-          <TextLight tid={date} />
-          {!me && (
-            <Button>
-              <CommentIcon />
-            </Button>
-          )}
+          <Title tid={userId.login} />
+          <TextLight tid={createDate} />
+          <Button>
+            <CommentIcon />
+          </Button>
         </HeaderCase>
-        <TextSecondary me={me} tid={message} />
+        <TextSecondary tid={text} />
         <Divider />
-      </Column>
+      </Content>
     </Container>
   );
 }
@@ -37,7 +31,7 @@ const Container = styled.div`
   gap: ${spacing(3)};
   align-items: baseline;
 `;
-const Column = styled.div`
+const Content = styled.div`
   display: flex;
   flex-flow: column;
   gap: ${spacing(1)};
@@ -46,6 +40,9 @@ const Column = styled.div`
 `;
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
+  ::first-letter {
+    text-transform: uppercase;
+  }
 `;
 const HeaderCase = styled.div`
   display: flex;

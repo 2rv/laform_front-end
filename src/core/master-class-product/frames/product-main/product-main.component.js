@@ -7,59 +7,72 @@ import { Divider } from '../../../../lib/element/divider';
 import { TextBlock } from '../../../block-text';
 import { CardActions } from '../../../../lib/element/card/card-actions';
 import { ProductPriceComponent } from './product-price.component';
+import React, { useState } from 'react';
 
 export function ProductMainComponent(props) {
   const {
-    title,
-    shortDescription,
-    fullDescription,
-    bestSeller,
-    price,
+    id,
+    name,
+    description,
+    modifier,
     discount,
-    like,
-    select,
-    selectOptions,
-    initialValueForSelectOptions,
-    setValueSelectOption,
+    type,
+    comment,
+    images,
+    categories = [],
+    programs = false,
   } = props;
+
+  const [program, setProgram] = useState();
 
   return (
     <Container>
-      <TitleCase>
-        <Title tid={title} />
-        {bestSeller && <Modifier alt tid={'Хит!'} />}
-        {discount && <Modifier tid={'Скидка!'} />}
-      </TitleCase>
-      <ShortDescriptionText tid={shortDescription} />
+      <HeaderCase>
+        <Title tid={name} />
+        {modifier && <Modifier alt tid={modifier} />}
+        {discount !== 0 && <Modifier tid="Акция" />}
+      </HeaderCase>
+      <div>
+        {categories.map((category, key) => (
+          <React.Fragment key={key}>
+            <LigthText tid={category + ','} />
+            &nbsp;
+          </React.Fragment>
+        ))}
+      </div>
       <Divider />
-      <TextBlock text={fullDescription} />
+      <TextBlock text={description} />
       <Divider />
-      <BlockSelect
-        selectOptions={selectOptions}
-        initialValue={initialValueForSelectOptions}
-        getValues={setValueSelectOption}
-      />
+      {programs && (
+        <BlockSelect
+          name="Программа"
+          selectName="selectedProgram"
+          selectOptions={programs}
+          getValues={setProgram}
+        />
+      )}
       <Divider />
       <FooterCase>
-        <ProductPriceComponent price={price} discount={discount} />
-        <CardActions type={2} like={like} select={select} />
+        <ProductPriceComponent price={program?.price} discount={discount} />
+        <CardActions />
       </FooterCase>
     </Container>
   );
 }
 
 const FooterCase = styled.div`
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  gap: ${spacing(3)};
   @media screen and (max-width: 720px) {
+    display: flex;
     align-items: flex-start;
     flex-direction: column;
-    gap: ${spacing(3)};
   }
 `;
 
-const TitleCase = styled.div`
+const HeaderCase = styled.div`
   display: flex;
   align-items: baseline;
   gap: ${spacing(3)};
@@ -74,7 +87,7 @@ const Modifier = styled(TextSecondary)`
 const Title = styled(TitlePrimary)`
   font-size: 1.5;
 `;
-const ShortDescriptionText = styled(TextSecondary)`
+const LigthText = styled(TextSecondary)`
   @media screen and (max-width: 720px) {
     order: -1;
   }

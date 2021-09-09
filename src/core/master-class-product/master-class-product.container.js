@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -10,20 +11,22 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.co
 import { masterClassProductUploadData } from './master-class-product.action';
 import { MASTER_CLASS_PRODUCT_STORE_NAME } from './master-class-product.constant';
 import { MasterClassProductComponent } from './master-class-product.component';
+import { getQuery } from 'src/main/navigation';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 export function MasterClassProductContainer() {
   const dispatch = useDispatch();
-  const [selectOptionsValue, setValueSelectOption] = useState();
-  const { state, pageLoading } = useSelector((state) => ({
+  const masterClassId = getQuery('id');
+
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
     state: state[MASTER_CLASS_PRODUCT_STORE_NAME].product,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
   useEffect(() => {
-    //   dispatch(masterClassProductUploadData());
+    dispatch(masterClassProductUploadData(currentLang, masterClassId));
   }, []);
-
-  console.log(selectOptionsValue); // тут появляется ответ от select
   return (
     <MasterClassProductComponent
       isPending={isRequestPending(state)}
@@ -32,9 +35,9 @@ export function MasterClassProductContainer() {
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
       listItems={testMasterClassListItems}
+      productInfo={getRequestData(state)}
       comments={testCommentsItems}
       currentProductData={currentProductData}
-      setValueSelectOption={setValueSelectOption}
     />
   );
 }
@@ -78,6 +81,9 @@ export const currentProductData = {
   like: true,
   select: false,
   images: [
+    '/static/test/product-image-1.png',
+    '/static/test/product-image-2.png',
+    '/static/test/product-image-3.png',
     '/static/test/product-image-1.png',
     '/static/test/product-image-2.png',
     '/static/test/product-image-3.png',
