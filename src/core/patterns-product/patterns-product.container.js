@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -10,17 +12,20 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.co
 import { patternsProductUploadData } from './patterns-product.action';
 import { PATTERNS_PRODUCT_STORE_NAME } from './patterns-product.constant';
 import { PatternsProductComponent } from './patterns-product.component';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 export function PatternsProductContainer() {
+  const { query } = useRouter();
   const dispatch = useDispatch();
   const [selectOptionsValue, setValueSelectOption] = useState();
-  const { state, pageLoading } = useSelector((state) => ({
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
     state: state[PATTERNS_PRODUCT_STORE_NAME].product,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
   useEffect(() => {
-    //   dispatch(patternsProductUploadData());
+    dispatch(patternsProductUploadData(query.id, currentLang));
   }, []);
   console.log(selectOptionsValue); // тут появляется ответ от select
   return (
@@ -29,6 +34,7 @@ export function PatternsProductContainer() {
       isError={isRequestError(state)}
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
+      product={getRequestData(state)}
       pageLoading={pageLoading}
       listItems={testListItems}
       comments={testCommentsItems}

@@ -15,6 +15,7 @@ export function PatternsProductComponent(props) {
     isError,
     isSuccess,
     errorMessage,
+    product,
     pageLoading,
     listItems,
     comments,
@@ -22,6 +23,7 @@ export function PatternsProductComponent(props) {
     setValueSelectOption,
   } = props;
   const { materials, images, ...productMainData } = currentProductData;
+
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
@@ -31,6 +33,7 @@ export function PatternsProductComponent(props) {
           <ProductMainContainer
             data={productMainData}
             setValueSelectOption={setValueSelectOption}
+            product={product}
           />
         </Content>
       </SectionLayout>

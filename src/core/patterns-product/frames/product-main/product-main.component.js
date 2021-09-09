@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
@@ -7,6 +8,8 @@ import { Divider } from '../../../../lib/element/divider';
 import { TextBlock } from '../../../block-text';
 import { CardActions } from '../../../../lib/element/card/card-actions';
 import { ProductPriceComponent } from './product-price.component';
+import { patternsProductSendPdfToMail } from '../../patterns-product.action';
+import { ButtonPrimary, ButtonSecondary } from 'src/lib/element/button';
 
 export function ProductMainComponent(props) {
   const {
@@ -21,7 +24,23 @@ export function ProductMainComponent(props) {
     selectOptions,
     initialValueForSelectOptions,
     setValueSelectOption,
+    product,
   } = props;
+
+  const dispatch = useDispatch();
+
+  const productPdfUrl = product?.filePdf?.fileUrl;
+
+  const sendPdfToMail = () => {
+    dispatch(patternsProductSendPdfToMail({
+      productName: product?.titleRu,
+      productPdfUrl,
+    }));
+  };
+
+  const redirectToPdfLink = () => {
+    window.open(productPdfUrl, '_blank');
+  };
 
   return (
     <Container>
@@ -44,6 +63,10 @@ export function ProductMainComponent(props) {
         <ProductPriceComponent price={price} discount={discount} />
         <CardActions type={2} like={like} select={select} />
       </FooterCase>
+      <DownloadPdfContainer>
+        <SendEmailButton tid="Отправить на Email" onClick={sendPdfToMail} />
+        <DownloadButton tid="Скачать" onClick={redirectToPdfLink} />
+      </DownloadPdfContainer>
     </Container>
   );
 }
@@ -85,4 +108,17 @@ const Container = styled.div`
   @media screen and (max-width: 720px) {
     display: contents;
   }
+`;
+
+const DownloadPdfContainer = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+`;
+
+const SendEmailButton = styled(ButtonSecondary)`
+  width: 200px;
+`;
+
+const DownloadButton = styled(ButtonPrimary)`
+  width: 120px;
 `;

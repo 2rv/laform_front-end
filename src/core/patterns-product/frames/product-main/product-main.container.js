@@ -1,7 +1,7 @@
 import { ProductMainComponent } from './product-main.component';
 
 export function ProductMainContainer(props) {
-  const { setValueSelectOption, data } = props;
+  const { setValueSelectOption, data, product } = props;
   const {
     title,
     shortDescription,
@@ -16,6 +16,7 @@ export function ProductMainContainer(props) {
   return (
     <ProductMainComponent
       {...data}
+      product={product}
       setValueSelectOption={setValueSelectOption}
     />
   );
