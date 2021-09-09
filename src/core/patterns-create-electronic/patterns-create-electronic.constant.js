@@ -10,4 +10,8 @@ export const ELECTRONIC_PATTERN_API = {
     TYPE: 'POST',
     ENDPOINT: '/file/create-many',
   },
+  ELECTRONIC_PATTERN_PDF_UPLOAD: {
+    TYPE: 'POST',
+    ENDPOINT: '/file/create',
+  },
 };

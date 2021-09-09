@@ -6,23 +6,51 @@ import {
   ELECTRONIC_PATTERN_FIELD_NAME,
 } from './patterns-create-electronic.type';
 
-export function createElectronicPatternUploadData(imagesUrls, formValues) {
+export function createElectronicPatternUploadData(
+  imagesUrls,
+  pdfFileUrl,
+  formValues,
+) {
   return async (dispatch) => {
     try {
-      const data = convertForUpload(imagesUrls, formValues);
-      //----------------------------------------------------------------------
+      const data = convertForUpload(imagesUrls, pdfFileUrl, formValues);
 
       const response = await httpRequest({
         method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.TYPE,
         url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.ENDPOINT,
         data: data,
       });
-      console.log(response.data);
-      //----------------------------------------------------------------------
 
       dispatch({
         type: CREATE_ELECTRONIC_PATTERN_TYPE.CREATE_ELECTRONIC_PATTERN_UPLOAD_SUCCESS,
       });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_ELECTRONIC_PATTERN_TYPE.CREATE_ELECTRONIC_PATTERN_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function createElectronicPatternPreUploadPDFFile(imageUrls, formValues) {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_ELECTRONIC_PATTERN_TYPE.CREATE_ELECTRONIC_PATTERN_UPLOAD_PENDING,
+    });
+    try {
+      const formData = new FormData();
+      formData.append('file', formValues[ELECTRONIC_PATTERN_FIELD_NAME.FILE]);
+      const response = await httpRequest({
+        method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_PDF_UPLOAD.TYPE,
+        url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_PDF_UPLOAD.ENDPOINT,
+        data: formData,
+      });
+      dispatch(
+        createElectronicPatternUploadData(imageUrls, response.data, formValues),
+      );
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -54,8 +82,9 @@ export function createElectronicPatternPreUploadData(formValues) {
         url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_IMAGE_UPLOAD.ENDPOINT,
         data: formData,
       });
-      console.log(response.data);
-      dispatch(createElectronicPatternUploadData(response.data, formValues));
+      dispatch(
+        createElectronicPatternPreUploadPDFFile(response.data, formValues),
+      );
     } catch (err) {
       if (err.response) {
         dispatch({

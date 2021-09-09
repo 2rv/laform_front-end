@@ -1,6 +1,6 @@
 import { ELECTRONIC_PATTERN_FIELD_NAME } from './patterns-create-electronic.type';
 
-export function convertForUpload(imageUrls, formValues) {
+export function convertForUpload(imageUrls, pdfFileUrl, formValues) {
   return {
     [ELECTRONIC_PATTERN_FIELD_NAME.IMAGES]: imageUrls,
     [ELECTRONIC_PATTERN_FIELD_NAME.NAME]:
@@ -18,8 +18,7 @@ export function convertForUpload(imageUrls, formValues) {
       formValues[ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY],
     [ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT]:
       formValues[ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT],
-    [ELECTRONIC_PATTERN_FIELD_NAME.FILE]:
-      formValues[ELECTRONIC_PATTERN_FIELD_NAME.FILE],
+    [ELECTRONIC_PATTERN_FIELD_NAME.FILE]: pdfFileUrl,
     [ELECTRONIC_PATTERN_FIELD_NAME.PRICE]:
       formValues[ELECTRONIC_PATTERN_FIELD_NAME.PRICE],
     [ELECTRONIC_PATTERN_FIELD_NAME.TYPE]: 1,

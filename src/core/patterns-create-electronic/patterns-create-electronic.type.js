@@ -17,7 +17,7 @@ export const ELECTRONIC_PATTERN_FIELD_NAME = {
   MATERIAL: 'materialRu',
   COMPLEXITY: 'complexity',
   PRICE: 'price',
-  FILE: 'file',
+  FILE: 'filePdf',
 
   IMAGES: 'images',
   IMAGE: 'image',

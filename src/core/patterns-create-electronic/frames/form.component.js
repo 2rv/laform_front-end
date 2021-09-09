@@ -25,6 +25,13 @@ export function FormComponent(props) {
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
   const setEditorData = (name) => (editorData) =>
     setFieldValue(name, editorData);
+  const setPdfFile = (event) => {
+    const file = event.currentTarget?.files?.[0];
+    if (!file || file.type.split('/')[1] !== 'pdf') {
+      alert('Нужен файл PDF');
+      setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.FILE, null);
+    } else setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.FILE, file);
+  };
 
   return (
     <SectionLayout>
@@ -81,15 +88,11 @@ export function FormComponent(props) {
         <FileField
           titleTid="Загрузка файла"
           placeholderTid="Загрузить файл pdf"
+          accept="application/pdf"
           name={ELECTRONIC_PATTERN_FIELD_NAME.FILE}
           value={values[ELECTRONIC_PATTERN_FIELD_NAME.FILE]}
           error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.FILE)}
-          onChange={(event) =>
-            setFieldValue(
-              ELECTRONIC_PATTERN_FIELD_NAME.FILE,
-              event.currentTarget.files[0],
-            )
-          }
+          onChange={setPdfFile}
           onBlur={handleBlur}
         />
         <Complexity>
