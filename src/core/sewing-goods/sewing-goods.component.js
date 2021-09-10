@@ -6,6 +6,8 @@ import { FormFilter } from '../../lib/element/form-filter';
 export function SewingGoodsComponent(props) {
   const {
     listItems,
+    onDeleteProduct,
+    isAdmin,
     //-----
     filterOptions,
     filterSelectName,
@@ -17,6 +19,7 @@ export function SewingGoodsComponent(props) {
     success,
     error,
     errorMessage,
+    //-----
   } = props;
 
   return (
@@ -30,7 +33,7 @@ export function SewingGoodsComponent(props) {
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} />
+      <BasicCardList items={listItems} onDeleteProduct={onDeleteProduct} isAdmin={isAdmin} />
     </SectionLayout>
   );
 }

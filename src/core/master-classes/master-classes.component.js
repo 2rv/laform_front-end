@@ -6,6 +6,8 @@ import { FormFilter } from '../../lib/element/form-filter';
 export function MasterClassesComponent(props) {
   const {
     listItems,
+    onDeleteProduct,
+    isAdmin,
     //-----
     filterOptions,
     filterSelectName,
@@ -30,7 +32,7 @@ export function MasterClassesComponent(props) {
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} />
+      <BasicCardList items={listItems} onDeleteProduct={onDeleteProduct} isAdmin={isAdmin} />
     </SectionLayout>
   );
 }

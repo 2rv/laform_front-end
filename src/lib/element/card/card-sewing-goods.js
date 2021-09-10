@@ -9,7 +9,7 @@ import { LinkPrimary } from '../link';
 import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-product';
 
 export function CardSewingGoods(props) {
-  const { onSetCart, onSetLike, onSetSelect } = props;
+  const { onSetCart, onSetLike, onSetSelect, onDeleteProduct, isAdmin } = props;
   const {
     id,
     type,
@@ -52,6 +52,8 @@ export function CardSewingGoods(props) {
         onSetCart={onSetCart}
         onSetLike={onSetLike}
         onSetSelect={onSetSelect}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
       />
     </Container>
   );

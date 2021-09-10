@@ -18,7 +18,6 @@ export function masterClassesStore(state = initialState, action) {
         ...state,
         masterClassState: setRequestPending(state.masterClassState),
       };
-
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS:
       return {
         ...state,
@@ -27,7 +26,6 @@ export function masterClassesStore(state = initialState, action) {
           action.data,
         ),
       };
-
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_ERROR:
       return {
         ...state,
@@ -36,7 +34,24 @@ export function masterClassesStore(state = initialState, action) {
           action.errorMessage,
         ),
       };
-
+    case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_PENDING:
+      return {
+        ...state,
+        masterClassState: setRequestPending(state.masterClassState),
+      };
+    case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_SUCCESS:
+      return {
+        ...state,
+        masterClassState: setRequestSuccess(state.masterClassState),
+      };
+    case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_ERROR:
+      return {
+        ...state,
+        masterClassState: setRequestError(
+          state.masterClassState,
+          action.errorMessage,
+        ),
+      };
     default:
       return state;
   }

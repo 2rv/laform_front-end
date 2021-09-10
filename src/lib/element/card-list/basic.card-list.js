@@ -8,8 +8,17 @@ import {
 } from '../card';
 
 export function BasicCardList(props) {
-  const { items, onSetCart, onSetLike, onSetSelect } = props;
+  const {
+    items,
+    onSetCart,
+    onSetLike,
+    onSetSelect,
+    onDeleteProduct,
+    isAdmin = false,
+  } = props;
+
   if (!items) return null;
+
   return (
     <Container>
       {items.map((data, index) => {
@@ -21,6 +30,8 @@ export function BasicCardList(props) {
             onSetCart={onSetCart}
             onSetLike={onSetLike}
             onSetSelect={onSetSelect}
+            onDeleteProduct={onDeleteProduct}
+            isAdmin={isAdmin}
           />
         );
       })}

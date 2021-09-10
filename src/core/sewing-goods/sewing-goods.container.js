@@ -8,20 +8,22 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { sewingGoodsUploadData } from './sewing-goods.action';
+import { sewingGoodsUploadData, sewingGoodsUpdateData } from './sewing-goods.action';
 import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
 import { SewingGoodsComponent } from './sewing-goods.component';
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { sorterItemsByParams } from '../../lib/common/filter-list-card';
+import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 
 export function SewingGoodsContainer() {
   const dispatch = useDispatch();
-  const { sewingGoodsState, pageLoading, currentLang } = useSelector(
+  const { sewingGoodsState, pageLoading, currentLang, user } = useSelector(
     (state) => ({
       sewingGoodsState: state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+      user: state[AUTH_STORE_NAME].user,
     }),
   );
   useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
@@ -30,6 +32,10 @@ export function SewingGoodsContainer() {
     [SEWING_GOODS_FIELD_NAME.FIND]: '',
   });
   const [filter, setFilter] = useState(filterInitialValue());
+
+  const onDeleteProduct = (id, body) => {
+    dispatch(sewingGoodsUpdateData(currentLang, id, body));
+  };
 
   return (
     <SewingGoodsComponent
@@ -50,6 +56,8 @@ export function SewingGoodsContainer() {
       isError={isRequestError(sewingGoodsState)}
       isSuccess={isRequestSuccess(sewingGoodsState)}
       errorMessage={getRequestErrorMessage(sewingGoodsState)}
+      onDeleteProduct={onDeleteProduct}
+      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
     />
   );
 }

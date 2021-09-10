@@ -7,6 +7,8 @@ import { FormFilter } from '../../lib/element/form-filter';
 export function PatternsComponent(props) {
   const {
     listItems,
+    onDeleteProduct,
+    isAdmin,
     //-----
     activeTab,
     setActiveTab,
@@ -40,7 +42,7 @@ export function PatternsComponent(props) {
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} />
+      <BasicCardList items={listItems} onDeleteProduct={onDeleteProduct} isAdmin={isAdmin} />
     </SectionLayout>
   );
 }

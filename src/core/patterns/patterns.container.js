@@ -12,18 +12,20 @@ import {
   filterByType,
   sorterItemsByParams,
 } from '../../lib/common/filter-list-card';
-import { patternsUploadData } from './patterns.action';
+import { patternsUploadData, patternsUpdateData } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
 import { PatternsComponent } from './patterns.component';
 import { PATTERNS_FIELD_NAME } from './patterns.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
+import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 
 export function PatternsContainer() {
   const dispatch = useDispatch();
-  const { patternsState, pageLoading, currentLang } = useSelector((state) => ({
+  const { patternsState, pageLoading, currentLang, user } = useSelector((state) => ({
     patternsState: state[PATTERNS_STORE_NAME].patternsState,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    user: state[AUTH_STORE_NAME].user,
   }));
 
   useEffect(() => dispatch(patternsUploadData(currentLang)), []);
@@ -34,6 +36,10 @@ export function PatternsContainer() {
   //---------------------------------------------------
   const [activeTab, setActiveTab] = useState(9);
   const [filter, setFilter] = useState(filterInitialValue());
+
+  const onDeleteProduct = (id, body) => {
+    dispatch(patternsUpdateData(currentLang, id, body));
+  };
 
   return (
     <PatternsComponent
@@ -61,6 +67,8 @@ export function PatternsContainer() {
       isError={isRequestError(patternsState)}
       isSuccess={isRequestSuccess(patternsState)}
       errorMessage={getRequestErrorMessage(patternsState)}
+      onDeleteProduct={onDeleteProduct}
+      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
     />
   );
 }

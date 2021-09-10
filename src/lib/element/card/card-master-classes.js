@@ -10,7 +10,7 @@ import { LinkPrimary } from '../link';
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../../../core/master-class-product';
 
 export function CardMasterClasses(props) {
-  const { onSetCart, onSetLike, onSetSelect } = props;
+  const { onSetCart, onSetLike, onSetSelect, onDeleteProduct, isAdmin } = props;
   const {
     id,
     type,
@@ -52,6 +52,8 @@ export function CardMasterClasses(props) {
         onSetCart={onSetCart}
         onSetLike={onSetLike}
         onSetSelect={onSetSelect}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
       />
     </Container>
   );

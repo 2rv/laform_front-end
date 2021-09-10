@@ -9,7 +9,7 @@ import { LinkPrimary } from '../link';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../../../core/patterns-product';
 
 export function CardPattern(props) {
-  const { onSetCart, onSetLike, onSetSelect } = props;
+  const { onSetCart, onSetLike, onSetSelect, onDeleteProduct, isAdmin } = props;
   const {
     id,
     type,
@@ -60,6 +60,8 @@ export function CardPattern(props) {
         onSetCart={onSetCart}
         onSetLike={onSetLike}
         onSetSelect={onSetSelect}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
       />
     </Container>
   );

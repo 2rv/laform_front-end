@@ -29,3 +29,31 @@ export function patternsUploadData(currentLang) {
     }
   };
 }
+
+export function patternsUpdateData(currentLang, id, body) {
+  return async (dispatch) => {
+    dispatch({
+      type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: PATTERNS_API.PATTERNS_UPDATE.TYPE,
+        url: PATTERNS_API.PATTERNS_UPDATE.ENDPOINT(id),
+        data: { patternProduct: body },
+      });
+
+      dispatch({
+        type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_SUCCESS,
+      });
+      dispatch(patternsUploadData(currentLang));
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}

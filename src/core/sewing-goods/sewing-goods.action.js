@@ -29,3 +29,31 @@ export function sewingGoodsUploadData(currentLang) {
     }
   };
 }
+
+export function sewingGoodsUpdateData(currentLang, id, body) {
+  return async (dispatch) => {
+    dispatch({
+      type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: SEWING_GOODS_API.SEWING_GOODS_UPDATE.TYPE,
+        url: SEWING_GOODS_API.SEWING_GOODS_UPDATE.ENDPOINT(id),
+        data: { sewingProduct: body },
+      });
+
+      dispatch({
+        type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_SUCCESS,
+      });
+      dispatch(sewingGoodsUploadData(currentLang));
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
