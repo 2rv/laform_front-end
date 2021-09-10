@@ -18,7 +18,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   min-height: 260px;
-  max-height: 360px;
+  max-height: 260px;
   object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
