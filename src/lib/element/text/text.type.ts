@@ -1,5 +1,5 @@
 export interface TextPropsType {
-  tid: string;
+  tid?: string;
   tvalue?: object | undefined;
   className?: string;
   onClick?: any;

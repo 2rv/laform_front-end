@@ -17,7 +17,7 @@ export function CardPrice(props) {
       ) : (
         <>
           <Text>{min}</Text>
-          {max && <Text>{` - ${max}`}</Text>}
+          {Boolean(max) && <Text>{` - ${max}`}</Text>}
         </>
       )}
       &nbsp;

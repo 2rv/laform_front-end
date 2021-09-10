@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { text } from '../../common/text';
+import { convertedText } from '../../common/text';
 import { THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../theme';
 
 import { TextPropsType } from './text.type';
@@ -10,7 +10,7 @@ export function TextPrimary(props: TextPropsType) {
 
   return (
     <Text className={className} onClick={onClick}>
-      {children || text(tid, tvalue)}
+      {convertedText(children, tid, tvalue)}
     </Text>
   );
 }
