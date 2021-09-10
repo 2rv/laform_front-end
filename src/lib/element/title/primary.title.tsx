@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { text } from '../../common/text';
+import { convertedText } from '../../common/text';
 import { THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../theme';
 
 import { TitlePropsType } from './title.type';
@@ -8,7 +8,7 @@ import { TitlePropsType } from './title.type';
 export function TitlePrimary(props: TitlePropsType) {
   const { className, tid, tvalue } = props;
 
-  return <Title className={className}>{text(tid, tvalue)}</Title>;
+  return <Title className={className}>{convertedText(null, tid, tvalue)}</Title>;
 }
 
 const Title = styled.span`
