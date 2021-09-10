@@ -22,7 +22,8 @@ export function TableItem(props) {
 
   const {
     children,
-    data, incrementCount,
+    data,
+    incrementCount,
     decrementCount,
     count,
     type,

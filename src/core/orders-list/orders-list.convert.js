@@ -9,6 +9,8 @@ export const convertPurchasesData = (data) => {
       firstPurchaseProduct?.size && { name: 'Размер', value: firstPurchaseProduct.size },
       firstPurchaseProduct?.type && { name: 'Категория', value: firstPurchaseProduct.type },
       firstPurchaseProduct?.quantity && { name: 'Количество', value: firstPurchaseProduct.quantity },
+      firstPurchaseProduct?.format && { name: 'Формат', value: firstPurchaseProduct.format },
+      firstPurchaseProduct?.program && { name: 'Программа', value: firstPurchaseProduct.program },
     ],
     otherParams: [
       data.fullName && { name: 'ФИО', value: data.fullName },

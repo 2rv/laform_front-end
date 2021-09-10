@@ -8,7 +8,7 @@ export function ParamsTd(props) {
     <Td>
       <Case>
         {items.map((item, i) => {
-          return (
+          return Boolean(item) && (
             <TextSecondary key={i}>
               <TextSecondary tid={item?.name} />
               :&nbsp;
