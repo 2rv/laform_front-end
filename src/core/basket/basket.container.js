@@ -8,7 +8,7 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { BASKET_STORE_NAME } from './basket.constant';
+import { BASKET_STORE_NAME, SHIPPING_PRICE } from './basket.constant';
 import { convertPromoCodeData } from './basket.convert';
 import { CART_STORE_NAME } from '../../lib/common/cart';
 import {
@@ -22,20 +22,12 @@ import {
   FORMALIZATION_ORDERING_FIELD_NAME,
   FORMALIZATION_ORDERING_FORM_FIELD_NAME,
   BASKET_DATA_KEY,
+  BASKET_DATA_NAME,
 } from './basket.type';
+
 import { AUTH_STORE_NAME } from '../../lib/common/auth';
-import {
-  addPatternProduct,
-  addSewingProduct,
-  addMasterClass,
-  incrementPatternProduct,
-  decrementPatternProduct,
-  deletePatternProduct,
-  purgeCart,
-  changePatternProductParametrs,
-  PATTER_PRODUCT_FORMAT,
-} from '../../lib/common/cart';
-import { rehidrate } from '../../lib/common/cart/cart.action';
+import { addProduct, getBasket } from '../../lib/common/cart/cart.action';
+import { convertBasketFormData } from './basket.convert';
 
 export function BasketContainer() {
   const dispatch = useDispatch();
@@ -44,36 +36,53 @@ export function BasketContainer() {
     pageLoading,
     userData,
     discount,
-    sewingProducts,
-    patternProduct,
-    masterClass,
-    total,
     token,
+
+    addProductStore,
+    basket,
+    changeProduct,
+    deleteProduct,
   } = useSelector((state) => ({
     state: state[BASKET_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     userData: getRequestData(state[BASKET_STORE_NAME].basketLoadData),
-    sewingProducts: state[CART_STORE_NAME].sewingProduct,
-    patternProduct: state[CART_STORE_NAME].patternProduct,
-    masterClass: state[CART_STORE_NAME].masterClass,
-    total: state[CART_STORE_NAME].total,
     discount: getRequestData(state[BASKET_STORE_NAME].promoCode)[
       BASKET_DATA_KEY.DISCOUNT
     ],
     token: state[AUTH_STORE_NAME].token,
+
+    addProductStore: state[CART_STORE_NAME].addProduct,
+    basket: state[CART_STORE_NAME].getBasket,
+    changeProduct: state[CART_STORE_NAME].changeProduct,
+    deleteProduct: state[CART_STORE_NAME].deleteProduct,
   }));
+
+  const sewingProducts = basket.data?.[BASKET_DATA_KEY.SEWING_PRODUCT] || [];
+  const patternProducts = basket.data?.[BASKET_DATA_KEY.PATTERN_PRODUCT] || [];
+  const masterClassProducts = basket.data?.[BASKET_DATA_KEY.MASTER_CLASS] || [];
+  const purchaseProducts = [
+    ...sewingProducts,
+    ...patternProducts,
+    ...masterClassProducts,
+  ];
+  const price = purchaseProducts.reduce((acc, cur) => acc + cur.price, 0);
+
   const cartPriceWithoutShipping = discount
-    ? Math.round(total * ((100 - discount) / 100))
-    : total;
-  const shippingPrice = 250;
+    ? Math.round(price * ((100 - discount) / 100))
+    : price;
+  const shippingPrice = SHIPPING_PRICE;
   const cartPrice = cartPriceWithoutShipping + shippingPrice;
 
-  const isNotEmpty =
-    sewingProducts.length || patternProduct.length || masterClass.length;
+  const isEmpty = getRequestData(basket)?.isEmpty;
 
   const basketFormSendData = (values) => {
-    // const data = convertSettingsChangeEmailFormData(values);
-    // dispatch(basketUploadData(data));
+    const data = convertBasketFormData(
+      values,
+      basket.data,
+      cartPrice,
+      discount,
+    );
+    dispatch(basketUploadData(data));
   };
 
   const basketCheckPromoCode = async (values) => {
@@ -112,64 +121,33 @@ export function BasketContainer() {
 
   useEffect(() => {
     token && dispatch(basketLoadUserInfoData());
-    dispatch(rehidrate());
     // dispatch(
-    //   changePatternProductParametrs(0, 'DIFFERENT SIZE', 'DIFFERENT FORMAT'),
+    //   addProduct(
+    //     {
+    //       sewingProductId: '308e3808-3734-404a-9e78-dcf2b55d540a',
+    //       color: 'Красный',
+    //       size: 'Взрослый',
+    //     },
+    //     3,
+    //     true,
+    //   ),
     // );
-    // dispatch(purgeCart());
-    // dispatch(
-    //   addPatternProduct({
-    //     id: 2,
-    //     image: 'https://via.placeholder.com/1',
-    //     name: 'NAME',
-    //     price: 10000,
-    //     limit: 20,
-    //     size: 'SIZE',
-    //     sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
-    //     format: PATTER_PRODUCT_FORMAT.PRINT,
-    //     formatEnum: ['FORMAT1', 'FORMAT2', 'FORMAT3', 'FORMAT4'],
-    //   }),
-    // );
-    // dispatch(
-    //   addSewingProduct({
-    //     id: 1,
-    //     image: 'https://via.placeholder.com/1',
-    //     name: 'SEWINGNAME',
-    //     quantity: 1,
-    //     price: 5000,
-    //     limit: 4,
-    //     size: 'SIZE1',
-    //     category: 'CATEGORY1',
-    //     sizeEnum: ['SIZE1', 'SIZE2', 'SIZE3', 'SIZE4'],
-    //     color: 'COLOR1',
-    //     colorEnum: ['COLOR1', 'COLOR2', 'COLOR3', 'COLOR4'],
-    //   }),
-    // );
-    // dispatch(
-    //   addMasterClass({
-    //     id: 1,
-    //     image: 'https://via.placeholder.com/1',
-    //     name: 'SEWINGNAME',
-    //     quantity: 1,
-    //     price: 5000,
-    //     limit: 4,
-    //     programm: 'PROGRAMM1',
-    //   }),
-    // );
-    // );
-    // dispatch(decrementPatternProduct(1, 1));
-    // dispatch(deletePatternProduct(0));
   }, []);
+
+  useEffect(() => {
+    dispatch(getBasket());
+  }, [changeProduct.success, deleteProduct.success, addProductStore.success]);
 
   return (
     <BasketComponent
-      total={total}
+      basketData={getRequestData(basket)}
+      total={price}
       discount={discount}
       token={token}
       cartPriceWithoutShipping={cartPriceWithoutShipping}
       shippingPrice={shippingPrice}
       cartPrice={cartPrice}
-      isNotEmpty={isNotEmpty}
+      isEmpty={isEmpty}
       isPending={isRequestPending(state.basket)}
       isError={isRequestError(state.basket)}
       isSuccess={isRequestSuccess(state.basket)}
@@ -187,9 +165,6 @@ export function BasketContainer() {
       headersGoods={headersGoods}
       headersMaster={headersMaster}
       headersPatterns={headersPatterns}
-      sewingProduct={sewingProducts}
-      patternProduct={patternProduct}
-      masterClass={masterClass}
       promoCodeInitialValue={promoCodeInitialValue()}
       onSubmitPromoCode={basketCheckPromoCode}
       validationPromoCode={promoCodeValidation}

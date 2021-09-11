@@ -10,25 +10,20 @@ import { FormalizationOrderingContainer } from './frames';
 import { IconButton } from '../../lib/element/button';
 import { TextSecondary } from '../../lib/element/text';
 
-import {
-  incrementSewingProduct,
-  incrementPatternProduct,
-  incrementMasterClass,
-  decrementSewingProduct,
-  decrementPatternProduct,
-  decrementMasterClass,
-  deleteSewingProduct,
-  deletePatternProduct,
-  deleteMasterClass,
-} from '../../lib/common/cart';
 import { Popup } from '../../lib/element/popup';
 import { EditProductComponent } from '../../lib/element/edit';
+import { BASKET_DATA_KEY } from './basket.type';
+
+import {
+  updateProduct,
+  deleteProduct,
+  CHANGE_PARAMS_PRODUCTS,
+} from '../../lib/common/cart';
 
 export function BasketComponent(props) {
   const {
-    isNotEmpty,
+    isEmpty,
     discount,
-    total,
     token,
     cartPriceWithoutShipping,
     shippingPrice,
@@ -53,6 +48,7 @@ export function BasketComponent(props) {
     promoCodeInitialValue,
     onSubmitPromoCode,
     validationPromoCode,
+    basketData,
 
     isPromoCodePending,
     isPromoCodeError,
@@ -65,14 +61,26 @@ export function BasketComponent(props) {
     <SectionLayout>
       <Title tid="BASKET.TITLE" />
 
-      {isNotEmpty ? (
+      {isEmpty ? (
+        <TextSecondary tid="BASKET.CART_IS_EMPTY" />
+      ) : (
         <>
-          {sewingProduct.length ? (
+          {basketData && basketData[BASKET_DATA_KEY.SEWING_PRODUCT]?.length ? (
             <TableList
-              incrementCount={incrementSewingProduct}
-              decrementCount={decrementSewingProduct}
+              incrementCount={(id, quantity) =>
+                updateProduct(id)({
+                  [CHANGE_PARAMS_PRODUCTS.QUANTITY]: quantity + 1,
+                })
+              }
+              decrementCount={(id, quantity) =>
+                quantity >= 2
+                  ? updateProduct(id)({
+                      [CHANGE_PARAMS_PRODUCTS.QUANTITY]: quantity - 1,
+                    })
+                  : console.log('UNABLE TO DECREMENT')
+              }
               headers={headersGoods}
-              items={sewingProduct}
+              items={basketData[BASKET_DATA_KEY.SEWING_PRODUCT]}
               count={true}
               type={BLOCK_TABLE_LIST_ROW_TYPE.SEWING_PRODUCT}
             >
@@ -85,6 +93,7 @@ export function BasketComponent(props) {
                           setVisible={setVisible}
                           type="SEWING"
                           data={data}
+                          saveAction={updateProduct(id)}
                         />
                       )}
                       children={
@@ -94,82 +103,7 @@ export function BasketComponent(props) {
                       }
                     />
                     <Button>
-                      <DeleteIcon
-                        onClick={() => dispatch(deleteSewingProduct(id))}
-                      />
-                    </Button>
-                  </>
-                );
-              }}
-            </TableList>
-          ) : null}
-
-          {patternProduct.length ? (
-            <TableList
-              type={BLOCK_TABLE_LIST_ROW_TYPE.PATTERN_PRODUCT}
-              headers={headersPatterns}
-              items={patternProduct}
-              incrementCount={incrementPatternProduct}
-              decrementCount={decrementPatternProduct}
-              count={true}
-            >
-              {(id, data) => {
-                return (
-                  <>
-                    <Popup
-                      content={(setVisible) => (
-                        <EditProductComponent
-                          setVisible={setVisible}
-                          type="PATTERN"
-                          data={data}
-                        />
-                      )}
-                      children={
-                        <Button>
-                          <EditIcon />
-                        </Button>
-                      }
-                    />
-                    <Button>
-                      <DeleteIcon
-                        onClick={() => dispatch(deletePatternProduct(id))}
-                      />
-                    </Button>
-                  </>
-                );
-              }}
-            </TableList>
-          ) : null}
-
-          {masterClass.length ? (
-            <TableList
-              headers={headersMaster}
-              items={masterClass}
-              incrementCount={incrementMasterClass}
-              decrementCount={decrementMasterClass}
-              type={BLOCK_TABLE_LIST_ROW_TYPE.MASTER_CLASS}
-            >
-              {(id, data) => {
-                return (
-                  <>
-                    <Popup
-                      content={(setVisible) => (
-                        <EditProductComponent
-                          setVisible={setVisible}
-                          type="MASTER"
-                          data={data}
-                        />
-                      )}
-                      children={
-                        <Button>
-                          <EditIcon />
-                        </Button>
-                      }
-                    />
-                    <Button>
-                      <DeleteIcon
-                        onClick={() => dispatch(deleteMasterClass(id))}
-                      />
+                      <DeleteIcon onClick={() => dispatch(deleteProduct(id))} />
                     </Button>
                   </>
                 );
@@ -178,7 +112,6 @@ export function BasketComponent(props) {
           ) : null}
 
           <FormalizationOrderingContainer
-            total={total}
             discount={discount}
             token={token}
             cartPriceWithoutShipping={cartPriceWithoutShipping}
@@ -203,8 +136,6 @@ export function BasketComponent(props) {
             promoCodeErrorMessage={promoCodeErrorMessage}
           />
         </>
-      ) : (
-        <TextSecondary tid="BASKET.CART_IS_EMPTY" />
       )}
     </SectionLayout>
   );

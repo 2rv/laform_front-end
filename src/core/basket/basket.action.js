@@ -6,7 +6,7 @@ import {
   performPromoCodeData,
 } from './basket.convert';
 
-export function basketUploadData() {
+export function basketUploadData(data) {
   return async (dispatch) => {
     dispatch({
       type: BASKET_ACTION_TYPE.BASKET_UPLOAD_PENDING,
@@ -14,8 +14,9 @@ export function basketUploadData() {
 
     try {
       await httpRequest({
-        method: BASKET_API.BASKET_UPLOAD.TYPE,
-        url: BASKET_API.BASKET_UPLOAD.ENDPOINT,
+        method: BASKET_API.PURCHASE_CREATE.TYPE,
+        url: BASKET_API.PURCHASE_CREATE.ENDPOINT,
+        data,
       });
 
       dispatch({

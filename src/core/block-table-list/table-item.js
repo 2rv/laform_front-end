@@ -22,7 +22,8 @@ export function TableItem(props) {
 
   const {
     children,
-    data, incrementCount,
+    data,
+    incrementCount,
     decrementCount,
     count,
     type,
@@ -42,7 +43,6 @@ export function TableItem(props) {
     id,
     productName = null,
   } = data;
-  const countedPrice = quantity ? price * quantity : price;
 
   const showParameters = (type) => {
     switch (type) {
@@ -57,10 +57,6 @@ export function TableItem(props) {
               {
                 name: 'BASKET.TABLE.PARAMETERS.SIZE',
                 value: data[SEWING_PRODUCT_KEY.SIZE],
-              },
-              {
-                name: 'BASKET.TABLE.PARAMETERS.CATEGORY',
-                value: data[SEWING_PRODUCT_KEY.CATEGORY],
               },
             ]}
           />
@@ -111,13 +107,15 @@ export function TableItem(props) {
       {count ? (
         <CounterTd
           id={id}
-          incrementCount={(id) => dispatch(incrementCount(id))}
-          dicrementCoun={(id) => dispatch(decrementCount(id))}
+          incrementCount={(id) => dispatch(incrementCount(id, quantity))}
+          dicrementCoun={(id) => dispatch(decrementCount(id, quantity))}
           quantity={quantity}
           excludeCount={excludeCount}
         />
-      ) : <></>}
-      {countedPrice ? <PriceTd countedPrice={countedPrice} isLast={status} /> : <></>}
+      ) : (
+        <></>
+      )}
+      {price ? <PriceTd countedPrice={price} isLast={status} /> : <></>}
       {status ? <StatusTd status={status} /> : <></>}
       {children ? <ActionTd id={id} data={data} children={children} /> : <></>}
     </Tr>
@@ -125,7 +123,9 @@ export function TableItem(props) {
 }
 const Tr = styled.tr`
   display: table-row;
-  ${(props) => props.cursorPointer && `
+  ${(props) =>
+    props.cursorPointer &&
+    `
     &:hover {
       cursor: pointer;
       background: ${THEME_COLOR.GRAY};

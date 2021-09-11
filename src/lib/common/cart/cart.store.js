@@ -1,102 +1,83 @@
+import { initRequestState } from '../../../main/store/store.service';
 import { CART_ACTION_TYPE, SEWING_PRODUCT } from './cart.constant';
 import {
-  initialCartState,
-  incrementProduct,
-  decrementProduct,
-  addSewingProduct,
-  addPatternProduct,
-  addMasterClass,
-  deleteSewingProduct,
-  deletePatternProduct,
-  deleteMasterClass,
-  changeSewingProductParametrs,
-  changePatternProductParametrs,
-  changeMasterClassParametrs,
-  rehidrate,
-} from './cart.service';
+  setRequestPending,
+  setRequestSuccess,
+  setRequestError,
+} from 'src/main/store/store.service';
 
-const initialState = initialCartState;
+const initialState = {
+  addProduct: initRequestState(),
+  getBasket: initRequestState(),
+  changeProduct: initRequestState(),
+  deleteProduct: initRequestState(),
+};
+
 export const cartStore = (state = initialState, action) => {
   switch (action.type) {
-    case CART_ACTION_TYPE.INCREMENT_SEWING_PRODUCT:
-      return incrementProduct(
-        state,
-        'sewingProduct',
-        action.id,
-        action.incrementBy,
-      );
-    case CART_ACTION_TYPE.INCREMENT_PATTERN_PRODUCT:
-      return incrementProduct(
-        state,
-        'patternProduct',
-        action.id,
-        action.incrementBy,
-      );
-    case CART_ACTION_TYPE.INCREMENT_MASTER_CLASS:
-      return incrementProduct(
-        state,
-        'masterClass',
-        action.id,
-        action.incrementBy,
-      );
-    case CART_ACTION_TYPE.DECREMENT_SEWING_PRODUCT:
-      return decrementProduct(
-        state,
-        'sewingProduct',
-        action.id,
-        action.decrementBy,
-      );
-    case CART_ACTION_TYPE.DECREMENT_PATTERN_PRODUCT:
-      return decrementProduct(
-        state,
-        'patternProduct',
-        action.id,
-        action.decrementBy,
-      );
-    case CART_ACTION_TYPE.DECREMENT_MASTER_CLASS:
-      return decrementProduct(
-        state,
-        'masterClass',
-        action.id,
-        action.decrementBy,
-      );
+    case CART_ACTION_TYPE.ADD_PRODUCT_PENDING:
+      return { ...state, addProduct: setRequestPending(state.addProduct) };
+    case CART_ACTION_TYPE.ADD_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        addProduct: setRequestSuccess(state.addProduct, action.payload),
+      };
+    case CART_ACTION_TYPE.ADD_PRODUCT_ERROR:
+      return {
+        ...state,
+        addProduct: setRequestError(state.addProduct, action.errorMessage),
+      };
 
-    case CART_ACTION_TYPE.ADD_SEWING_PRODUCT:
-      return addSewingProduct({ ...action.product, state });
-    case CART_ACTION_TYPE.ADD_PATTERN_PRODUCT:
-      return addPatternProduct({ ...action.product, state });
-    case CART_ACTION_TYPE.ADD_MASTER_CLASS:
-      return addMasterClass({ ...action.product, state });
+    case CART_ACTION_TYPE.GET_BASKET_PENDING:
+      return { ...state, getBasket: setRequestPending(state.getBasket) };
+    case CART_ACTION_TYPE.GET_BASKET_SUCCESS:
+      return {
+        ...state,
+        getBasket: setRequestSuccess(state.getBasket, action.payload),
+      };
+    case CART_ACTION_TYPE.GET_BASKET_ERROR:
+      return {
+        ...state,
+        getBasket: setRequestError(state.getBasket, action.errorMessage),
+      };
 
-    case CART_ACTION_TYPE.DELETE_SEWING_PRODUCT:
-      return deleteSewingProduct(state, action.id);
-    case CART_ACTION_TYPE.DELETE_PATTERN_PRODUCT:
-      return deletePatternProduct(state, action.id);
-    case CART_ACTION_TYPE.DELETE_MASTER_CLASS:
-      return deleteMasterClass(state, action.id);
+    case CART_ACTION_TYPE.CHANGE_PRODUCT_PENDING:
+      return {
+        ...state,
+        changeProduct: setRequestPending(state.changeProduct),
+      };
+    case CART_ACTION_TYPE.CHANGE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        changeProduct: setRequestSuccess(state.changeProduct),
+      };
+    case CART_ACTION_TYPE.CHANGE_PRODUCT_ERROR:
+      return {
+        ...state,
+        changeProduct: setRequestError(
+          state.changeProduct,
+          action.errorMessage,
+        ),
+      };
 
-    case CART_ACTION_TYPE.CHANGE_SEWING_PRODUCT_PARAMETRS:
-      return changeSewingProductParametrs(
-        state,
-        action.id,
-        action.size,
-        action.color,
-      );
-    case CART_ACTION_TYPE.CHANGE_PATTERN_PRODUCT_PARAMETRS:
-      return changePatternProductParametrs(
-        state,
-        action.id,
-        action.size,
-        action.format,
-      );
-    case CART_ACTION_TYPE.CHANGE_MASTER_CLASS_PARAMETRS:
-      return changeMasterClassParametrs(state, action.id, action.programm);
-
-    case CART_ACTION_TYPE.PURGE:
-      return initialCartState;
-    case CART_ACTION_TYPE.REHIDRATE:
-      return rehidrate();
-
+    case CART_ACTION_TYPE.DELETE_PRODUCT_PENDING:
+      return {
+        ...state,
+        deleteProduct: setRequestPending(state.deleteProduct),
+      };
+    case CART_ACTION_TYPE.DELETE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        deleteProduct: setRequestSuccess(state.deleteProduct),
+      };
+    case CART_ACTION_TYPE.DELETE_PRODUCT_ERROR:
+      return {
+        ...state,
+        deleteProduct: setRequestError(
+          state.deleteProduct,
+          action.errorMessage,
+        ),
+      };
     default:
       return state;
   }

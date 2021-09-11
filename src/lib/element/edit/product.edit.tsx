@@ -11,13 +11,11 @@ import {
   SEWING_PRODUCT_KEY,
   PATTERN_PRODUCT_KEY,
   MASTER_CLASS_KEY,
-  changeSewingProductParametrs,
-  changePatternProductParametrs,
-  changeMasterClassParametrs,
+  CHANGE_PARAMS_PRODUCTS,
 } from '../../common/cart';
 
 export function EditProductComponent(props: EditProductPropsType) {
-  const { data, type, setVisible } = props;
+  const { data, type, setVisible, saveAction } = props;
   const dispatch = useDispatch();
   const [masterClassProgramm, setMasterClassProgramm] = useState(
     data?.[MASTER_CLASS_KEY.PROGRAMM],
@@ -40,7 +38,7 @@ export function EditProductComponent(props: EditProductPropsType) {
           <FieldContainer>
             <span>
               <TextSecondary tid="BASKET.TABLE.PARAMETERS.SIZE" />
-              <QuestionMarkIcon />
+              {/* <QuestionMarkIcon /> */}
             </span>
             <FieldSelect
               value={sewingSize}
@@ -77,11 +75,10 @@ export function EditProductComponent(props: EditProductPropsType) {
           <ApplyChangesButton
             onClick={() => {
               dispatch(
-                changeSewingProductParametrs(
-                  data[SEWING_PRODUCT_KEY.ID],
-                  sewingSize,
-                  sewingColor,
-                ),
+                saveAction({
+                  [CHANGE_PARAMS_PRODUCTS.COLOR]: sewingColor,
+                  [CHANGE_PARAMS_PRODUCTS.SIZE]: sewingSize,
+                }),
               );
               setVisible(false);
             }}
@@ -93,7 +90,7 @@ export function EditProductComponent(props: EditProductPropsType) {
           <FieldContainer>
             <span>
               <TextSecondary tid="BASKET.TABLE.PARAMETERS.SIZE" />
-              <QuestionMarkIcon />
+              {/* <QuestionMarkIcon /> */}
             </span>
             <FieldSelect
               value={patternSize}
@@ -129,13 +126,7 @@ export function EditProductComponent(props: EditProductPropsType) {
           </FieldContainer>
           <ApplyChangesButton
             onClick={() => {
-              dispatch(
-                changePatternProductParametrs(
-                  data[PATTERN_PRODUCT_KEY.ID],
-                  patternSize,
-                  patternFormat,
-                ),
-              );
+              dispatch(saveAction());
               setVisible(false);
             }}
             tid="BASKET.TABLE.PARAMETERS.APPLY_CHANGES"
@@ -164,12 +155,7 @@ export function EditProductComponent(props: EditProductPropsType) {
           </FieldContainer>
           <ApplyChangesButton
             onClick={() => {
-              dispatch(
-                changeMasterClassParametrs(
-                  data[MASTER_CLASS_KEY.ID],
-                  masterClassProgramm,
-                ),
-              );
+              dispatch(saveAction());
               setVisible(false);
             }}
             tid="BASKET.TABLE.PARAMETERS.APPLY_CHANGES"

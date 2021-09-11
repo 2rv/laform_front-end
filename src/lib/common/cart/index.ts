@@ -5,27 +5,6 @@ export {
   PATTERN_PRODUCT_KEY,
   MASTER_CLASS_KEY,
   PATTER_PRODUCT_FORMAT,
+  CHANGE_PARAMS_PRODUCTS,
 } from './cart.type';
-export type {
-  SewingProductPropType,
-  PatternProductPropType,
-  MasterClassPropType,
-} from './cart.type';
-export {
-  purgeCart,
-  incrementSewingProduct,
-  incrementMasterClass,
-  incrementPatternProduct,
-  decrementPatternProduct,
-  decrementSewingProduct,
-  decrementMasterClass,
-  addSewingProduct,
-  addPatternProduct,
-  addMasterClass,
-  deleteSewingProduct,
-  deletePatternProduct,
-  deleteMasterClass,
-  changeSewingProductParametrs,
-  changePatternProductParametrs,
-  changeMasterClassParametrs,
-} from './cart.action';
+export { getBasket, updateProduct, deleteProduct } from './cart.action';

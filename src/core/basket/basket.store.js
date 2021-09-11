@@ -11,6 +11,7 @@ const initialState = {
   basket: initRequestState(),
   basketLoadData: initRequestState(),
   promoCode: initRequestState(),
+  deleteProduct: initRequestState(),
 };
 
 export function basketStore(state = initialState, action) {
@@ -65,6 +66,7 @@ export function basketStore(state = initialState, action) {
         ...state,
         promoCode: setRequestError(state.promoCode, action.errorMessage),
       };
+
     default:
       return state;
   }

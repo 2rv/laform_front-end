@@ -50,6 +50,12 @@ export const BASKET_DATA_NAME = {
   DELIVERY_TYPE: 'deliveryType',
   DISCOUNT: 'discount',
   PROMO_CODE: 'text',
+  BASKET_DATA: 'basket',
+  COUNT_OF_PRODUCTS: 'countOfProducts',
+  SEWING_PRODUCT: 'sewingProductId',
+  PATTERN_PRODUCT: 'patternProductId',
+  MASTER_CLASS: 'masterClassId',
+  PURCHASE_PRODUCTS: 'purchaseProducts',
 };
 
 export const BASKET_DATA_KEY = {
@@ -58,4 +64,7 @@ export const BASKET_DATA_KEY = {
   LOCATION: 'LOCATION',
   DELIVERY_TYPE: 'DELIVERY_TYPE',
   DISCOUNT: 'DISCOUNT',
+  SEWING_PRODUCT: 'SEWING_PRODUCT',
+  PATTERN_PRODUCT: 'PATTERN_PRODUCT',
+  MASTER_CLASS: 'MASTER_CLASS',
 };

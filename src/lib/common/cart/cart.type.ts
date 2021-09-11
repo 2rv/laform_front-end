@@ -1,35 +1,4 @@
-interface ProductPropType {
-  state?: any;
-  id: number | string;
-  image: string;
-  name: string;
-  quantity?: number | string;
-  price: number;
-  limit: number;
-}
-
-export interface SewingProductPropType extends ProductPropType {
-  color: string;
-  colorEnum: string[];
-  size: string;
-  sizeEnum: string[];
-  category: string;
-}
-
-export interface PatternProductPropType extends ProductPropType {
-  size: string;
-  sizeEnum: string[];
-  format: string;
-  formatEnum: string[];
-}
-
-export interface MasterClassPropType extends ProductPropType {
-  programm: string;
-  programmEnum: string[];
-}
-
 export const PRODUCT_KEY = {
-  ID: 'id',
   QUANTITY: 'quantity',
   PRICE: 'price',
   NAME: 'name',
@@ -38,6 +7,7 @@ export const PRODUCT_KEY = {
 };
 export const SEWING_PRODUCT_KEY = {
   ...PRODUCT_KEY,
+  SEWING_PRODUCT_ID: 'sewingProductId',
   COLOR: 'color',
   COLOR_ENUM: 'colorEnum',
   SIZE: 'size',
@@ -46,6 +16,7 @@ export const SEWING_PRODUCT_KEY = {
 };
 export const PATTERN_PRODUCT_KEY = {
   ...PRODUCT_KEY,
+  PATTERN_PRODUCT_ID: 'patternProductId',
   FORMAT: 'format',
   FORMAT_ENUM: 'formatEnum',
   SIZE: 'size',
@@ -53,8 +24,33 @@ export const PATTERN_PRODUCT_KEY = {
 };
 export const MASTER_CLASS_KEY = {
   ...PRODUCT_KEY,
+  MASTER_CLASS_ID: 'masterClassId',
   PROGRAMM: 'programm',
   PROGRAMM_ENUM: 'programmEnum',
+};
+
+export const PRODUCT_TYPE = {
+  MASTER_CLASS: 1,
+  PATTERN_PRODUCT: 2,
+  SEWING_PRODUCT: 3,
+};
+
+export const ADD_PRODUCT_KEY_AUTHTORIZED = {
+  MASTER_CLASS_ID: 'masterClassId',
+  PATTERN_PRODUCT_ID: 'patternProductId',
+  SEWING_PRODUCT_ID: 'sewingProductId',
+  COLOR: 'color',
+  SIZE: 'size',
+  FORMAT: 'format',
+  PROGRAM: 'program',
+};
+
+export const CHANGE_PARAMS_PRODUCTS = {
+  COLOR: 'color',
+  SIZE: 'size',
+  FORMAT: 'format',
+  PROGRAM: 'program',
+  QUANTITY: 'quantity',
 };
 
 export const PATTER_PRODUCT_FORMAT = {
