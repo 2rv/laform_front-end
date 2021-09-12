@@ -16,17 +16,18 @@ export function GalleryBlock(props) {
   const next = () => {
     setSlide(slide === items.length - 1 ? 0 : slide + 1);
   };
+
   return (
     <Container>
       <List>
         {items.map((src, index) => (
-          <ListItem
+          <ImageCase
             key={index}
             active={slide === index}
             onClick={() => setSlide(index)}
           >
-            <Image src={src} />
-          </ListItem>
+            <Image active={slide === index} src={src} />
+          </ImageCase>
         ))}
       </List>
       <Content>
@@ -43,42 +44,40 @@ export function GalleryBlock(props) {
 }
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 68px minmax(469px, 1fr);
   gap: ${spacing(3)};
   min-height: 0;
   height: 100%;
-  max-height: 470px;
+  max-height: 484px;
   width: 100%;
+  grid-template-columns: 68px 1fr;
   @media screen and (max-width: 1070px) {
-    grid-template-columns: minmax(100px, 300px) 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   @media screen and (max-width: 720px) {
     grid-template-columns: 1fr;
   }
 `;
-const Content = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-  max-height: inherit;
-`;
+
 const List = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  height: 100%;
   gap: ${spacing(3)};
-  overflow: auto;
+  overflow: hidden;
+  grid-template-rows: repeat(6, 68px);
+  @media screen and (max-width: 1070px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 239.5px);
+    gap: ${spacing(1)};
+  }
   @media screen and (max-width: 720px) {
     display: none;
   }
 `;
-const ListItem = styled.div`
-  display: flex;
+const ImageCase = styled.div`
+  display: grid;
   box-sizing: border-box;
-  height: 68px;
   width: 100%;
-  @media screen and (max-width: 1070px) {
-    height: 200px;
-  }
+  height: 100%;
   cursor: pointer;
   border: 3px solid transparent;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
@@ -92,6 +91,21 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  overflow: hidden;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  ${(p) =>
+    p.active &&
+    css`
+      border-radius: 0;
+    `}
+`;
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  height: 484px;
 `;
 const MainImage = styled.img`
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};

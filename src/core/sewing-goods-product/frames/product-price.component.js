@@ -1,19 +1,24 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
+import { TextPrimary, TextSecondary } from '../../../lib/element/text';
 
-export function ProductPriceComponent({ price, discount }) {
+export function ProductPriceComponent({ price = 0, discount = 0, count = 0 }) {
+  const discountPrice = (price - (price / 100) * discount) * count;
   return (
-    <Text>
+    <Container>
       <Text tid="Цена" />: &nbsp;
-      <Price tid={price} />
+      <Price tid={discountPrice} />
       &nbsp;
       <TextLight tid={'руб.'} />
       &nbsp;
-      {discount && <TextColored tid={`-${discount}%`} />}
-    </Text>
+      {discount !== 0 && <TextColored tid={`-${discount}%`} />}
+    </Container>
   );
 }
+const Container = styled.div`
+  height: fit-content;
+  width: max-content;
+`;
 const Text = styled(TextPrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};

@@ -21,7 +21,7 @@ export function articlePageStore(state = initialState, action) {
     case ARTICLE_PAGE_ACTION_TYPE.ARTICLE_PAGE_UPLOAD_SUCCESS:
       return {
         ...state,
-        articlePage: setRequestSuccess(state.articlePage),
+        articlePage: setRequestSuccess(state.articlePage, action.data),
       };
     case ARTICLE_PAGE_ACTION_TYPE.ARTICLE_PAGE_UPLOAD_ERROR:
       return {

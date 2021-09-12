@@ -4,7 +4,8 @@ export const SEWING_GOODS_PRODUCT_STORE_NAME = 'sewing-goods-product';
 
 export const SEWING_GOODS_PRODUCT_API = {
   SEWING_GOODS_PRODUCT_UPLOAD: {
-    ENDPOINT: '/',
-    TYPE: 'POST',
+    ENDPOINT: (currentLang, id) =>
+      `/sewing-product/get/${id}/?lang=${currentLang}`,
+    TYPE: 'GET',
   },
 };

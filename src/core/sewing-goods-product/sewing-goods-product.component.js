@@ -4,9 +4,9 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
-import { BlockComments } from '../block-comments/comments-block';
+import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
-import { ProductMainContainer } from './frames';
+import { ProductMainComponent } from './frames';
 
 export function SewingGoodsProductComponent(props) {
   const {
@@ -15,37 +15,53 @@ export function SewingGoodsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    listItems,
-    comments,
-    currentProductData,
-    setValueSelectOption,
+    //------------
+    productInfo,
   } = props;
-  const { images, ...productMainData } = currentProductData;
+
+  const {
+    id,
+    type,
+    modifier,
+    discount = 0,
+    name,
+    categories = [],
+    description,
+    images,
+    sizes = [],
+    colors = [],
+    count = 0,
+  } = productInfo;
+
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>Главная / Выкройки / Пальто 0105 ЦК-рукав</TextSecondary>
+        <TextSecondary>{`Главная / Товары для шитья / ${name}`}</TextSecondary>
         <Content>
           <GalleryBlock items={images} />
-          <ProductMainContainer
-            data={productMainData}
-            setValueSelectOption={setValueSelectOption}
+          <ProductMainComponent
+            id={id}
+            type={type}
+            modifier={modifier}
+            discount={discount}
+            name={name}
+            categories={categories}
+            description={description}
+            images={images}
+            sizes={sizes}
+            colors={colors}
+            count={count}
           />
         </Content>
       </SectionLayout>
-      <CardListBlock
-        title="Рекомендации"
-        cardType="sewing-goods"
-        items={listItems}
-      />
-      <BlockComments items={comments} />
+      <BlockComment type={type} id={id} />
     </SectionLayout>
   );
 }
 
 const Content = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: ${spacing(6)};
   @media screen and (max-width: 1070px) {
     display: flex;

@@ -4,9 +4,9 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
-import { BlockComments } from '../block-comments/comments-block';
+import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
-import { ProductMainContainer } from './frames';
+import { ProductMainComponent } from './frames';
 
 export function MasterClassProductComponent(props) {
   const {
@@ -15,30 +15,43 @@ export function MasterClassProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    listItems,
-    comments,
-    currentProductData,
-    setValueSelectOption,
+    //------------
+    productInfo,
   } = props;
-  const { images, ...productMainData } = currentProductData;
+
+  const {
+    id,
+    name,
+    description,
+    modifier,
+    discount,
+    type,
+    images,
+    categories,
+    programs,
+  } = productInfo;
+
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>Главная / Выкройки / Пальто 0105 ЦК-рукав</TextSecondary>
+        <TextSecondary>{`Главная / Мастер-классы / ${name}`}</TextSecondary>
         <Content>
           <GalleryBlock items={images} />
-          <ProductMainContainer
-            data={productMainData}
-            setValueSelectOption={setValueSelectOption}
+          <ProductMainComponent
+            id={id}
+            name={name}
+            description={description}
+            modifier={modifier}
+            discount={discount}
+            type={type}
+            images={images}
+            categories={categories}
+            programs={programs}
           />
         </Content>
       </SectionLayout>
-      <CardListBlock
-        title="Рекомендации"
-        cardType="sewing-goods"
-        items={listItems}
-      />
-      <BlockComments items={comments} />
+      {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}
+      <BlockComment type={type} id={id} />
     </SectionLayout>
   );
 }

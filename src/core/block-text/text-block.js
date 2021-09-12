@@ -13,7 +13,7 @@ export function TextBlock(props) {
     <Container>
       <TextSecondary>{firstText}</TextSecondary>
       <Text more={more}>{secondText}</Text>
-      {Boolean(text?.length) > limit && (
+      {Boolean(text?.length > limit) && (
         <>
           <Text more={!more} tid="..." />
           &nbsp;

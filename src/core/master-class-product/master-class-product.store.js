@@ -20,7 +20,7 @@ export function masterClassProductStore(state = initialState, action) {
     case MASTER_CLASS_PRODUCT_ACTION_TYPE.MASTER_CLASS_PRODUCT_UPLOAD_SUCCESS:
       return {
         ...state,
-        product: setRequestSuccess(state.product),
+        product: setRequestSuccess(state.product, action.data),
       };
     case MASTER_CLASS_PRODUCT_ACTION_TYPE.MASTER_CLASS_PRODUCT_UPLOAD_ERROR:
       return {

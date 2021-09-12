@@ -24,6 +24,7 @@ export function HeaderComponent(props) {
         <HeaderLogoComponent
           activePath={activePath}
           isAuth={isAuth}
+          userName={userName}
           currentLang={currentLang}
           isMobile={isMobile}
         />
