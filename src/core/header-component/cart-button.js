@@ -5,16 +5,16 @@ import { IconButton } from '../../lib/element/button';
 import { setLinkRedirect } from 'src/main/navigation';
 
 export function CartButton(props) {
-  const { isTablet } = props;
+  const { isTablet, cartCount } = props;
   return (
     <Container onClick={setLinkRedirect('/basket')}>
       {isTablet ? (
         <BadgeButton>
           <CartIcon />
-          <Badge>0</Badge>
+          <Badge>{cartCount}</Badge>
         </BadgeButton>
       ) : (
-        <BadgeDark badgeContent={0}>
+        <BadgeDark badgeContent={cartCount}>
           <CartIcon />
         </BadgeDark>
       )}

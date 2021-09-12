@@ -3,11 +3,12 @@ import { TextSecondary, TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function PriceTd(props) {
-  const { isLast, countedPrice } = props;
+  const { isLast, totalPrice } = props;
+  if (!totalPrice) return null;
   return (
     <Td last={isLast}>
       <Case>
-        <Price tid={countedPrice} />
+        <Price tid={totalPrice} />
         &nbsp;
         <Valute tid="руб." />
       </Case>
@@ -17,8 +18,8 @@ export function PriceTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  width: 130px;
-  min-width: 130px;
+  width: 140px;
+  min-width: 150px;
   ${(p) =>
     p.last &&
     css`
@@ -31,7 +32,6 @@ const Td = styled.td`
 const Case = styled.div`
   line-height: 1.5;
 `;
-
 const Price = styled(TextPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   font-size: ${THEME_SIZE.FONT.MEDIUM};

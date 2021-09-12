@@ -1,14 +1,5 @@
-import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { spacing, THEME_COLOR } from '../../lib/theme';
-import { BLOCK_TABLE_LIST_ROW_TYPE } from './block-table-list.type';
-import {
-  SEWING_PRODUCT_KEY,
-  PATTERN_PRODUCT_KEY,
-  MASTER_CLASS_KEY,
-  PATTER_PRODUCT_FORMAT,
-} from '../../lib/common/cart';
-
+import styled, { css } from 'styled-components';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { ActionTd } from './action-td';
 import { CommentTd } from './comment-td';
 import { CounterTd } from './counter-td';
@@ -16,123 +7,62 @@ import { NameTd } from './name-td';
 import { ParamsTd } from './patams-td';
 import { PriceTd } from './price-td';
 import { StatusTd } from './status-td';
-
+import { ChangeTd } from './change-td';
 export function TableItem(props) {
-  const dispatch = useDispatch();
-
+  const { children, countMethods, data, changeItem } = props;
   const {
-    children,
-    data,
-    incrementCount,
-    decrementCount,
-    count,
-    type,
-    onClick,
-    cursorPointer,
-  } = props;
-
-  const {
+    id,
     name,
-    price,
-    quantity,
     image,
+    comment,
     params,
     otherParams,
+    count,
+    maxCount,
+
+    totalPrice,
+    quantity,
     status,
-    comment,
-    id,
-    productName = null,
+
+    sizesOptions,
+    colorsOptions,
+    programsOptions,
   } = data;
-  const countedPrice = quantity ? price * quantity : price;
-
-  const showParameters = (type) => {
-    switch (type) {
-      case BLOCK_TABLE_LIST_ROW_TYPE.SEWING_PRODUCT:
-        return (
-          <ParamsTd
-            items={[
-              {
-                name: 'BASKET.TABLE.PARAMETERS.COLOR',
-                value: data[SEWING_PRODUCT_KEY.COLOR],
-              },
-              {
-                name: 'BASKET.TABLE.PARAMETERS.SIZE',
-                value: data[SEWING_PRODUCT_KEY.SIZE],
-              },
-              {
-                name: 'BASKET.TABLE.PARAMETERS.CATEGORY',
-                value: data[SEWING_PRODUCT_KEY.CATEGORY],
-              },
-            ]}
-          />
-        );
-      case BLOCK_TABLE_LIST_ROW_TYPE.PATTERN_PRODUCT:
-        return (
-          <ParamsTd
-            items={[
-              {
-                name: 'BASKET.TABLE.PARAMETERS.SIZE',
-                value: data[PATTERN_PRODUCT_KEY.SIZE],
-              },
-              {
-                name: 'BASKET.TABLE.PARAMETERS.FORMAT',
-                value: data[PATTERN_PRODUCT_KEY.FORMAT],
-              },
-            ]}
-          />
-        );
-      case BLOCK_TABLE_LIST_ROW_TYPE.MASTER_CLASS:
-        return (
-          <ParamsTd
-            items={[
-              {
-                name: 'BASKET.TABLE.PARAMETERS.PROGRAM',
-                value: data[MASTER_CLASS_KEY.PROGRAMM],
-              },
-            ]}
-          />
-        );
-
-      default:
-        return null;
-    }
-  };
-
-  const excludeCount =
-    type === BLOCK_TABLE_LIST_ROW_TYPE.PATTERN_PRODUCT &&
-    data[PATTERN_PRODUCT_KEY.FORMAT] === PATTER_PRODUCT_FORMAT.REMOTE;
 
   return (
-    <Tr onClick={() => onClick(productName, id)} cursorPointer={cursorPointer}>
+    <Tr>
       <NameTd image={image} name={name} />
-      {comment ? <CommentTd text={comment?.text} /> : <></>}
-      {params ? <ParamsTd items={params} /> : <></>}
-      {otherParams ? <ParamsTd items={otherParams} /> : <></>}
-      {type ? showParameters(type) : <></>}
-      {count ? (
-        <CounterTd
-          id={id}
-          incrementCount={(id) => dispatch(incrementCount(id))}
-          dicrementCoun={(id) => dispatch(decrementCount(id))}
-          quantity={quantity}
-          excludeCount={excludeCount}
-        />
-      ) : <></>}
-      {countedPrice ? <PriceTd countedPrice={countedPrice} isLast={status} /> : <></>}
-      {status ? <StatusTd status={status} /> : <></>}
-      {children ? <ActionTd id={id} data={data} children={children} /> : <></>}
+      <CommentTd comment={comment} />
+      <ParamsTd params={params} />
+      <ParamsTd params={otherParams} />
+      <CounterTd
+        id={id}
+        count={count}
+        maxCount={maxCount}
+        countMethods={countMethods}
+      />
+      <PriceTd isLast={status} totalPrice={totalPrice} />
+      <StatusTd status={status} />
+      <ChangeTd
+        id={id}
+        changeItem={changeItem}
+        sizesOptions={sizesOptions}
+        colorsOptions={colorsOptions}
+        programsOptions={programsOptions}
+      />
+      <ActionTd children={children} />
     </Tr>
   );
 }
+
 const Tr = styled.tr`
   display: table-row;
-  ${(props) => props.cursorPointer && `
-    &:hover {
-      cursor: pointer;
-      background: ${THEME_COLOR.GRAY};
-      transition: 0.5s;
-    }
-  `};
+  /* &:hover {
+    cursor: pointer;
+    background: ${THEME_COLOR.GRAY};
+    transition: 0.5s;
+  }
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT}; */
   @media screen and (max-width: 875px) {
     display: flex;
     flex-direction: column;

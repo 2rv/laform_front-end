@@ -6,9 +6,12 @@ import { Header } from '../../../core/header';
 import { SectionLayout } from 'src/lib/element/layout';
 import { spacing } from 'src/lib/theme';
 import { SidebarMenu } from '../../../core/header-menu-sidebar';
+import { initializeBasketStore } from '../../../core/basket/basket.action';
+import { useDispatch } from 'react-redux';
 
 export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
+  const dispatch = useDispatch();
   const [sidebarIsOpen, setSidebarOpen] = useState(false);
   const [width, setwidth] = useState(1280);
   //   const [scroll, setScroll] = useState(0);
@@ -21,6 +24,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setwidth(window.innerWidth);
+      dispatch(initializeBasketStore());
       window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);

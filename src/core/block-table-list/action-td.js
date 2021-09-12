@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 
 export function ActionTd(props) {
-  const { id, children, data } = props;
+  const { id, children } = props;
+  if (!children) return null;
   return (
     <Td>
-      <ActionBlock>{children(id, data)}</ActionBlock>
+      <ActionBlock>{children(id)}</ActionBlock>
     </Td>
   );
 }

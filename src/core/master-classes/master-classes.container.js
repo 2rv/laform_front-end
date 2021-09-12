@@ -10,24 +10,28 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { masterClassesUploadData, masterClassesUpdateData } from './master-classes.action';
+import {
+  masterClassesUploadData,
+  masterClassesUpdateData,
+} from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
 import { MASTER_CLASSES_FIELD_NAME } from './master-classes.type';
 import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { addToBasket } from '../basket';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { masterClassState, pageLoading, currentLang, user } = useSelector(
-    (state) => ({
+  const { masterClassState, pageLoading, currentLang, user, isAuth } =
+    useSelector((state) => ({
       masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
 
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       user: state[AUTH_STORE_NAME].user,
-    }),
-  );
+      isAuth: state[AUTH_STORE_NAME].logged,
+    }));
 
   useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
 
@@ -42,8 +46,13 @@ export function MasterClassesContainer() {
     dispatch(masterClassesUpdateData(currentLang, id, body));
   };
 
+  const addToCart = (id, type, inCart) => {
+    if (inCart) return dispatch(addToBasket({ id, type }, currentLang, isAuth));
+  };
+
   return (
     <MasterClassesComponent
+      addToCart={addToCart}
       listItems={sorterItemsByParams(
         getRequestData(masterClassState, [...testListItems]),
         filter[MASTER_CLASSES_FIELD_NAME.FIND],

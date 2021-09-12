@@ -8,9 +8,7 @@ import {
 import { BASKET_ACTION_TYPE } from './basket.type';
 
 const initialState = {
-  basket: initRequestState(),
-  basketLoadData: initRequestState(),
-  promoCode: initRequestState(),
+  basket: [],
 };
 
 export function basketStore(state = initialState, action) {
@@ -30,40 +28,15 @@ export function basketStore(state = initialState, action) {
         ...state,
         basket: setRequestError(state.basket, action.errorMessage),
       };
-
-    case BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_PENDING:
+    case BASKET_ACTION_TYPE.ADD_TO_BASKET:
       return {
         ...state,
-        basketLoadData: setRequestPending(state.basketLoadData),
+        basket: [...state.basket, action.data],
       };
-    case BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_SUCCESS:
+    case BASKET_ACTION_TYPE.INIT_BASKET:
       return {
         ...state,
-        basketLoadData: setRequestSuccess(state.basketLoadData, action.payload),
-      };
-    case BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_ERROR:
-      return {
-        ...state,
-        basketLoadData: setRequestError(
-          state.basketLoadData,
-          action.errorMessage,
-        ),
-      };
-
-    case BASKET_ACTION_TYPE.CHECK_PROMO_CODE_PENDING:
-      return {
-        ...state,
-        promoCode: setRequestPending(state.promoCode),
-      };
-    case BASKET_ACTION_TYPE.CHECK_PROMO_CODE_SUCCESS:
-      return {
-        ...state,
-        promoCode: setRequestSuccess(state.promoCode, action.payload),
-      };
-    case BASKET_ACTION_TYPE.CHECK_PROMO_CODE_ERROR:
-      return {
-        ...state,
-        promoCode: setRequestError(state.promoCode, action.errorMessage),
+        basket: action.data,
       };
     default:
       return state;

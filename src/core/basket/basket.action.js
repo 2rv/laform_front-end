@@ -1,10 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { BASKET_API } from './basket.constant';
 import { BASKET_ACTION_TYPE } from './basket.type';
-import {
-  performBasketLoadUserInfoData,
-  performPromoCodeData,
-} from './basket.convert';
+import { convertAddToCart } from './basket.convert';
 
 export function basketUploadData() {
   return async (dispatch) => {
@@ -84,6 +81,69 @@ export function checkPromoCode(data) {
           errorMessage: err.response.data.message,
         });
       }
+    }
+  };
+}
+
+//------------------------------------------------------------------
+
+export function addToBasket(data, currentLang, isAuth) {
+  return async (dispatch) => {
+    try {
+      const response = await httpRequest({
+        method: BASKET_API.ADD_BACKET_LOAD_ITEM_INFO.TYPE,
+        url: BASKET_API.ADD_BACKET_LOAD_ITEM_INFO.ENDPOINT(
+          data.type,
+          data.id,
+          currentLang,
+        ),
+      });
+      const convertedData = convertAddToCart(response.data, data);
+      if (isAuth) {
+      } else {
+        const basketStorage = JSON.parse(localStorage.getItem('basket'));
+        if (basketStorage) {
+          basketStorage.push(convertedData);
+          localStorage.setItem('basket', JSON.stringify(basketStorage));
+        } else {
+          localStorage.setItem('basket', JSON.stringify([convertedData]));
+        }
+      }
+
+      dispatch({
+        type: BASKET_ACTION_TYPE.ADD_TO_BASKET,
+        data: convertedData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+export function initializeBasketStore() {
+  return async (dispatch) => {
+    try {
+      const basketStorage = JSON.parse(localStorage.getItem('basket'));
+      if (basketStorage) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.INIT_BASKET,
+          data: basketStorage,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function changeItemAction(id, values, bascketState) {
+  const { count, size, color, program } = values;
+  return async (dispatch) => {
+    try {
+      console.log(values);
+      console.log(bascketState);
+      const currentItem = bascketState.find((i) => i.id === id);
+    } catch (error) {
+      console.log(error);
     }
   };
 }

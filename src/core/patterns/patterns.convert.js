@@ -1,4 +1,4 @@
-export const performPatternsData = (rowData) => {
+export const performPatternsData = (rowData, backet) => {
   //   console.log(rowData);
   return rowData.map((item) => {
     return {
@@ -8,6 +8,9 @@ export const performPatternsData = (rowData) => {
       type: item.type,
       bestseller: item.modifier,
       complexity: item.complexity,
+      cart: Boolean(
+        backet.find((bItem) => bItem?.patternProduct?.id === item.id),
+      ),
       price: {
         min: item?.price || checkMinPrice(item?.sizes, 'price'),
         discount: item.discount,

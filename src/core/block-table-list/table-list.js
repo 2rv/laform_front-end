@@ -1,49 +1,40 @@
 import React from 'react';
+import styled from 'styled-components';
 import { TableItem } from './table-item';
 import { DividerTd } from './divider-td';
 import { HeaderTd } from './header-td';
-import styled from 'styled-components';
 
 export function TableList(props) {
   const {
-    headers,
+    headers = [],
     items = [],
     children,
-    incrementCount,
-    decrementCount,
-    count,
-    type,
-    onClick = () => {},
-    cursorPointer = false,
+    countMethods,
+    changeItem,
   } = props;
   return (
     <Table>
-      {headers && (
+      {Boolean(headers.length > 0) && (
         <thead>
           <Tr>
             {headers.map((item, index) => (
               <HeaderTd text={item} key={index} />
             ))}
           </Tr>
-          <Tr><DividerTd /></Tr>
+          <DividerTd />
         </thead>
       )}
       {Boolean(items.length > 0) && (
         <tbody>
           {items.map((data, i) => (
-            <React.Fragment key={i}>
+            <React.Fragment key={data.id}>
               <TableItem
-                type={type}
-                incrementCount={incrementCount}
-                decrementCount={decrementCount}
+                changeItem={changeItem}
+                countMethods={countMethods}
                 data={data}
-                count={count}
-                onClick={onClick}
-                cursorPointer={cursorPointer}
-              >
-                {children}
-              </TableItem>
-              <Tr><DividerTd /></Tr>
+                children={children}
+              />
+              <DividerTd />
             </React.Fragment>
           ))}
         </tbody>
