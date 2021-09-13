@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../../lib/element/text';
+import { TextPrimary, TextSecondary, TextCurrency } from '../../../lib/element/text';
 
 export function ProductPriceComponent({ price = 0, discount = 0, count = 0 }) {
   const discountPrice = (price - (price / 100) * discount) * count;
   return (
     <Container>
       <Text tid="Цена" />: &nbsp;
-      <Price tid={discountPrice} />
+      <Price price={discountPrice} />
       &nbsp;
       <TextLight tid={'руб.'} />
       &nbsp;
@@ -23,7 +23,7 @@ const Text = styled(TextPrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
-const Price = styled(TextPrimary)`
+const Price = styled(TextCurrency)`
   font-size: ${THEME_SIZE.FONT.LARGE};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;

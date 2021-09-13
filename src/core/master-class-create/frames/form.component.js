@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../../lib/theme';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
-import { TextSecondary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import {

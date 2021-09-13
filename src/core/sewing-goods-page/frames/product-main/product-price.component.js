@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
-import { TitlePrimary } from '../../../../lib/element/title';
+import { TextCurrency, TextSecondary } from '../../../../lib/element/text';
 import { SectionLayout } from '../../../../lib/element/layout';
 export function ProductPriceComponent(props) {
   const {
@@ -15,7 +14,7 @@ export function ProductPriceComponent(props) {
       <SectionLayout type="TEXT">
         <Text tid="Цена со скидкой" />
         <div>
-          <Price tid={discountPrice} />
+          <Price price={discountPrice} />
           &nbsp;
           <TextLight tid={'руб.'} />
           &nbsp;
@@ -25,7 +24,7 @@ export function ProductPriceComponent(props) {
       <SectionLayout type="TEXT">
         <Text tid="Цена за доставку" />
         <div>
-          <Price tid={diliveryPrice} />
+          <Price price={diliveryPrice} />
           &nbsp;
           <TextLight tid={'руб.'} />
         </div>
@@ -34,7 +33,7 @@ export function ProductPriceComponent(props) {
       <SectionLayout type="TEXT">
         <Text tid="Итоговая цена заказа" />
         <div>
-          <TitlePrimary tid={price} />
+          <TitlePrice price={price} />
           &nbsp;
           <TextLight tid={'руб.'} />
         </div>
@@ -54,9 +53,12 @@ const VerticalDivider = styled.div`
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;
-const Price = styled(TextPrimary)`
+const Price = styled(TextCurrency)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
+const TitlePrice = styled(TextCurrency)`
+  font-size: ${THEME_SIZE.FONT.LARGE};
 `;
 const TextLight = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};

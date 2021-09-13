@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { TextSecondary, TextPrimary } from '../../lib/element/text';
+import { TextSecondary, TextCurrency } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function PriceTd(props) {
@@ -7,7 +7,7 @@ export function PriceTd(props) {
   return (
     <Td last={isLast}>
       <Case>
-        <Price tid={countedPrice} />
+        <Price price={countedPrice} />
         &nbsp;
         <Valute tid="руб." />
       </Case>
@@ -32,7 +32,7 @@ const Case = styled.div`
   line-height: 1.5;
 `;
 
-const Price = styled(TextPrimary)`
+const Price = styled(TextCurrency)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;

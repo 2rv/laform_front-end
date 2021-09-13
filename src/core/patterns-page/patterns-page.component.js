@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
-import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { GalleryBlock } from '../block-gallery';
 import { ProductMainContainer } from './frames';

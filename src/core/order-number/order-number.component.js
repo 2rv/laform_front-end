@@ -21,7 +21,7 @@ export function OrderNumberComponent(props) {
       <div>
         <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />
         &nbsp;
-        <BoldTitle tid={orderNumberDetails?.orderNumber ?? '777444'} />
+        <BoldTitle tid={orderNumberDetails?.orderNumber} />
       </div>
       <TableList items={orderNumberDetails?.purchaseProducts} headers={headersTable} />
       <AboutOrderFormContainer

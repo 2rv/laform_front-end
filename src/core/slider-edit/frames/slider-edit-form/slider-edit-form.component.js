@@ -9,7 +9,6 @@ import {
   FieldCheckbox,
   FieldSelect,
 } from '../../../../lib/element/field';
-import { TextSecondary } from '../../../../lib/element/text';
 import { ErrorAlert } from '../../../../lib/element/alert';
 import { SLIDER_EDIT_FIELD_NAME } from '../../slider-edit.type';
 
@@ -153,9 +152,6 @@ const Button = styled(ButtonSecondary)`
       background-color: ${THEME_COLOR.GRAY};
       color: ${THEME_COLOR.SECONDARY_DARK};
     `}
-`;
-const FieldTitle = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.SMALL};
 `;
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};

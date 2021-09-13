@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { TextSecondary } from '../../lib/element/text';
-import { TitlePrimary } from '../../lib/element/title';
+import { TextSecondary, TextCurrency } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function ProductPrice(props) {
@@ -14,7 +13,7 @@ export function ProductPrice(props) {
       <Column>
         <TextSecondary tid="Цена" />
         <div>
-          <Bold tid={price} />
+          <Bold price={price} />
           &nbsp;
           <Light tid="руб." />
         </div>
@@ -23,7 +22,7 @@ export function ProductPrice(props) {
       <Column>
         <TextSecondary tid="Скидка" />
         <div>
-          <Bold tid={priceWithDiscount} />
+          <Bold price={priceWithDiscount} />
           &nbsp;
           <Light tid="руб." />
           &nbsp;
@@ -34,7 +33,7 @@ export function ProductPrice(props) {
       <Column>
         <TextSecondary tid="Цена со скидкой" />
         <div>
-          <Bold tid={totalPrice} />
+          <Bold price={totalPrice} />
           &nbsp;
           <Light tid="руб." />
         </div>
@@ -56,8 +55,9 @@ const Column = styled.div`
   gap: ${spacing(2)};
   justify-content: space-between;
 `;
-const Bold = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
+const Bold = styled(TextCurrency)`
+  font-size: ${THEME_SIZE.FONT.LARGE};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
 const Light = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};

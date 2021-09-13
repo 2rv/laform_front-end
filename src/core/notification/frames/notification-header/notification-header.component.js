@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE } from '../../../../lib/theme';
-import { TextPrimary } from '../../../../lib/element/text';
 import { TitlePrimary } from 'src/lib/element/title';
 
 export function NotificationHeaderComponent() {

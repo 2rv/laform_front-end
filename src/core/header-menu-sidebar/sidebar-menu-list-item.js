@@ -1,5 +1,5 @@
 import { Divider } from '../../lib/element/divider';
-import { TextPrimary, TextSecondary } from '../../lib/element/text';
+import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_SIZE } from '../../lib/theme';
 import styled, { css } from 'styled-components';
 import { ReactComponent as ArrowDown } from '../../asset/svg/arrow-down-solid.svg';

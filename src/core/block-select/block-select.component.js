@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FieldSelect } from '../../lib/element/field';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../lib/element/text';
+import { TextSecondary } from '../../lib/element/text';
 import { ReactComponent as QuestionIcon } from '../../asset/svg/question-mark.svg';
 import { IconButton } from '../../lib/element/button';
 

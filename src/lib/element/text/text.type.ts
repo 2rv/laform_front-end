@@ -5,3 +5,8 @@ export interface TextPropsType {
   onClick?: any;
   children?: any;
 }
+
+export interface TextCurrenyType {
+  price: string;
+  className?: string;
+}

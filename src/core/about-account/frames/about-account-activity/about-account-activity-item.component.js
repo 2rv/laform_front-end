@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary as SecondaryText } from '../../../../lib/element/text';
-import { TitlePrimary } from '../../../../lib/element/title';
+import { TextCurrency } from '../../../../lib/element/text';
 
 export function AboutAccountActivityItemComponent(props) {
   const {
@@ -59,7 +59,7 @@ export function AboutAccountActivityItemComponent(props) {
         </TextContainer>
         {price && (
           <PriceContainer>
-            <TitlePrimary tid={price} />
+            <TitlePrice price={price} />
             <SecondaryText tid="руб." />
           </PriceContainer>
         )}
@@ -112,4 +112,7 @@ const GridContainer = styled.div`
   align-items: center;
   grid-template-columns: 75px 175px 530px 1fr auto;
   grid-template-rows: 75px;
+`;
+const TitlePrice = styled(TextCurrency)`
+  font-size: ${THEME_SIZE.FONT.LARGE};
 `;

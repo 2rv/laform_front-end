@@ -12,7 +12,7 @@ export const BASKET_API = {
     TYPE: 'POST',
   },
   BASKET_LOAD_USER_INFO: {
-    ENDPOINT: 'user/delivery/info',
+    ENDPOINT: 'user/info/get',
     TYPE: 'GET',
   },
   CHECK_PROMO_CODE: {
