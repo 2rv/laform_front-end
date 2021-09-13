@@ -94,10 +94,15 @@ const Main = styled.div`
 `;
 const ScrollToTopButton = styled(IconButton)`
   background: ${THEME_COLOR.SECONDARY_DARK};
+  z-index: 999;
   position: fixed;
-  right: 40px;
+  right: 20px;
   bottom: 20px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  @media screen and (max-width: 720px) {
+    right: 10px;
+    bottom: 60px;
+  }
 `;
