@@ -8,6 +8,7 @@ export function performPatternProductData(rowData) {
     name: rowData.titleRu,
     description: rowData.descriptionRu,
     categories: rowData.categories.map((item) => item.textRu),
+    filePdf: rowData.filePdf,
     images: rowData.images.map((item) => item.fileUrl),
     sizes: rowData.sizes.map((item, index) => ({
       id: index,

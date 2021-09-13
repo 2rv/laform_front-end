@@ -27,6 +27,21 @@ export function patternsProductStore(state = initialState, action) {
         ...state,
         product: setRequestError(state.product, action.errorMessage),
       };
+    case PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_PENDING:
+      return {
+        ...state,
+        product: setRequestPending(state.product),
+      };
+    case PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_SUCCESS:
+      return {
+        ...state,
+        product: setRequestSuccess(state.product),
+      };
+    case PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_ERROR:
+      return {
+        ...state,
+        product: setRequestError(state.product, action.errorMessage),
+      };
     default:
       return state;
   }
