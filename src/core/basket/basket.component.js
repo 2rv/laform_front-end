@@ -5,17 +5,22 @@ import { SectionLayout } from '../../lib/element/layout';
 import { THEME_SIZE } from '../../lib/theme';
 import { TableList } from '../block-table-list';
 import { TextSecondary } from '../../lib/element/text';
-// import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon.svg';
-// import { FormalizationOrderingContainer } from './frames';
-// import { EditProductComponent } from '../../lib/element/edit';
+import { SignComponent, FormContainer } from './frames';
 
 export function BasketComponent(props) {
   const {
     pageLoading,
-    backetData,
+    IsEmpty,
+    isAuth,
+    //--------------
+    onSubmit,
+    initialValues,
+    validation,
+    diliveryOptions,
+    paymentMethodOptions,
     //--------------
     changeItem,
-    countMethods,
+    deleteItem,
     //--------------
     headersGoods,
     headersMaster,
@@ -29,15 +34,41 @@ export function BasketComponent(props) {
   return (
     <SectionLayout>
       <Title tid="BASKET.TITLE" />
-      <TableList
-        headers={headersGoods}
-        items={itemsGoods}
-        changeItem={changeItem}
-        countMethods={countMethods}
-      />
-      <TableList headers={headersPatterns} items={itemsPatterns} />
-      <TableList headers={headersMaster} items={itemsMaster} />
-      <TextSecondary tid="BASKET.CART_IS_EMPTY" />
+      {IsEmpty ? (
+        <TextSecondary tid="BASKET.CART_IS_EMPTY" />
+      ) : (
+        <>
+          <TableList
+            changeItem={changeItem}
+            deleteItem={deleteItem}
+            headers={headersGoods}
+            items={itemsGoods}
+          />
+          <TableList
+            changeItem={changeItem}
+            deleteItem={deleteItem}
+            headers={headersPatterns}
+            items={itemsPatterns}
+          />
+          <TableList
+            changeItem={changeItem}
+            deleteItem={deleteItem}
+            headers={headersMaster}
+            items={itemsMaster}
+          />
+        </>
+      )}
+      {isAuth ? (
+        <FormContainer
+          diliveryOptions={diliveryOptions}
+          paymentMethodOptions={paymentMethodOptions}
+          onSubmit={onSubmit}
+          initialValues={initialValues}
+          validation={validation}
+        />
+      ) : (
+        <SignComponent />
+      )}
     </SectionLayout>
   );
 }

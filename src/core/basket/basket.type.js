@@ -1,11 +1,14 @@
-export const FORMALIZATION_ORDERING_FIELD_NAME = {
+export const ORDER_FIELD_NAME = {
   FULL_NAME: 'fullName',
-  CURRENT_CITY: 'currentCity',
-  CONVENIENT_DELIVERY_METHOD: 'convenientDeliveryMethod',
-  CONVENIENT_PAYMENT_METHOD: 'convenientPaymentMethod',
-  CONTACT_PHONE_NUMBER: 'contactPhoneNumber',
-  ORDER_NOTE: 'OrderNote',
+  CITY: 'city',
+  DELIVERY_METHOD: 'deliveryMethod',
+  PAYMENT_METHOD: 'paymentMethod',
+  PHONE: 'phoneNumber',
+  DESCRIPTION: 'description',
   PROMO_CODE: 'promocode',
+  PROMO_DISCOUNT: 'promoDiscount',
+  PRICE: 'price',
+  DILIVERY_PRICE: 'diliveryPrice',
 };
 
 export const BASKET_ACTION_TYPE = {
@@ -13,6 +16,7 @@ export const BASKET_ACTION_TYPE = {
   BASKET_UPLOAD_SUCCESS: 'BASKET_ACTION_TYPE.BASKET_UPLOAD_SUCCESS',
   BASKET_UPLOAD_ERROR: 'BASKET_ACTION_TYPE.BASKET_UPLOAD_ERROR',
 
+  CHANGE_BASKET: 'BASKET_ACTION_TYPE.CHANGE_BASKET',
   ADD_TO_BASKET: 'BASKET_ACTION_TYPE.ADD_TO_BASKET',
   INIT_BASKET: 'BASKET_ACTION_TYPE.INIT_BASKET',
 };

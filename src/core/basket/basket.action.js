@@ -86,6 +86,22 @@ export function checkPromoCode(data) {
 }
 
 //------------------------------------------------------------------
+export function initializeBasketStore() {
+  return async (dispatch) => {
+    try {
+      const basketStorage = JSON.parse(localStorage.getItem('basket'));
+      if (basketStorage) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.INIT_BASKET,
+          data: basketStorage,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      localStorage.removeItem('basket');
+    }
+  };
+}
 
 export function addToBasket(data, currentLang, isAuth) {
   return async (dispatch) => {
@@ -99,51 +115,55 @@ export function addToBasket(data, currentLang, isAuth) {
         ),
       });
       const convertedData = convertAddToCart(response.data, data);
-      if (isAuth) {
+      const basketStorage = JSON.parse(localStorage.getItem('basket'));
+      if (basketStorage) {
+        basketStorage.push(convertedData);
+        localStorage.setItem('basket', JSON.stringify(basketStorage));
       } else {
-        const basketStorage = JSON.parse(localStorage.getItem('basket'));
-        if (basketStorage) {
-          basketStorage.push(convertedData);
-          localStorage.setItem('basket', JSON.stringify(basketStorage));
-        } else {
-          localStorage.setItem('basket', JSON.stringify([convertedData]));
-        }
+        localStorage.setItem('basket', JSON.stringify([convertedData]));
       }
-
       dispatch({
         type: BASKET_ACTION_TYPE.ADD_TO_BASKET,
         data: convertedData,
       });
     } catch (error) {
       console.log(error);
-    }
-  };
-}
-export function initializeBasketStore() {
-  return async (dispatch) => {
-    try {
-      const basketStorage = JSON.parse(localStorage.getItem('basket'));
-      if (basketStorage) {
-        dispatch({
-          type: BASKET_ACTION_TYPE.INIT_BASKET,
-          data: basketStorage,
-        });
-      }
-    } catch (error) {
-      console.log(error);
+      localStorage.removeItem('basket');
     }
   };
 }
 
 export function changeItemAction(id, values, bascketState) {
-  const { count, size, color, program } = values;
   return async (dispatch) => {
     try {
-      console.log(values);
-      console.log(bascketState);
-      const currentItem = bascketState.find((i) => i.id === id);
+      const changedState = bascketState.map((item) => {
+        if (item.id === id) return { ...item, ...values };
+        return item;
+      });
+      dispatch({
+        type: BASKET_ACTION_TYPE.CHANGE_BASKET,
+        data: changedState,
+      });
+      localStorage.setItem('basket', JSON.stringify(changedState));
     } catch (error) {
       console.log(error);
+      localStorage.removeItem('basket');
+    }
+  };
+}
+
+export function deleteItemAction(id, bascketState) {
+  return async (dispatch) => {
+    try {
+      const changedState = bascketState.filter((item) => item.id !== id);
+      dispatch({
+        type: BASKET_ACTION_TYPE.CHANGE_BASKET,
+        data: changedState,
+      });
+      localStorage.setItem('basket', JSON.stringify(changedState));
+    } catch (error) {
+      console.log(error);
+      localStorage.removeItem('basket');
     }
   };
 }

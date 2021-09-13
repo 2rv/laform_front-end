@@ -1,34 +1,35 @@
 import styled, { css } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { ActionTd } from './action-td';
+import { ActionTd } from './button.td';
 import { CommentTd } from './comment-td';
 import { CounterTd } from './counter-td';
 import { NameTd } from './name-td';
 import { ParamsTd } from './patams-td';
 import { PriceTd } from './price-td';
 import { StatusTd } from './status-td';
-import { ChangeTd } from './change-td';
+import { ButtonTd } from './button.td';
+
 export function TableItem(props) {
-  const { children, countMethods, data, changeItem } = props;
+  const { children, data, changeItem, deleteItem } = props;
   const {
     id,
     name,
     image,
-    comment,
+    //------ основные данные
     params,
     otherParams,
-    count,
-    maxCount,
-
-    totalPrice,
-    quantity,
-    status,
-
     sizesOptions,
     colorsOptions,
     programsOptions,
+    //------ параметры и опции
+    count,
+    maxCount,
+    totalPrice,
+    //------ количество и цена
+    status,
+    comment,
+    //------ другое
   } = data;
-
   return (
     <Tr>
       <NameTd image={image} name={name} />
@@ -36,21 +37,21 @@ export function TableItem(props) {
       <ParamsTd params={params} />
       <ParamsTd params={otherParams} />
       <CounterTd
+        changeItem={changeItem}
         id={id}
         count={count}
         maxCount={maxCount}
-        countMethods={countMethods}
       />
       <PriceTd isLast={status} totalPrice={totalPrice} />
       <StatusTd status={status} />
-      <ChangeTd
+      <ButtonTd
         id={id}
         changeItem={changeItem}
+        deleteItem={deleteItem}
         sizesOptions={sizesOptions}
         colorsOptions={colorsOptions}
         programsOptions={programsOptions}
       />
-      <ActionTd children={children} />
     </Tr>
   );
 }

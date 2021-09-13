@@ -5,13 +5,8 @@ import { DividerTd } from './divider-td';
 import { HeaderTd } from './header-td';
 
 export function TableList(props) {
-  const {
-    headers = [],
-    items = [],
-    children,
-    countMethods,
-    changeItem,
-  } = props;
+  const { headers = [], items = [], children, changeItem, deleteItem } = props;
+  if (!Boolean(items) || Boolean(items.length <= 0)) return null;
   return (
     <Table>
       {Boolean(headers.length > 0) && (
@@ -24,21 +19,19 @@ export function TableList(props) {
           <DividerTd />
         </thead>
       )}
-      {Boolean(items.length > 0) && (
-        <tbody>
-          {items.map((data, i) => (
-            <React.Fragment key={data.id}>
-              <TableItem
-                changeItem={changeItem}
-                countMethods={countMethods}
-                data={data}
-                children={children}
-              />
-              <DividerTd />
-            </React.Fragment>
-          ))}
-        </tbody>
-      )}
+      <tbody>
+        {items.map((data, i) => (
+          <React.Fragment key={data.id}>
+            <TableItem
+              data={data}
+              changeItem={changeItem}
+              deleteItem={deleteItem}
+              children={children}
+            />
+            <DividerTd />
+          </React.Fragment>
+        ))}
+      </tbody>
     </Table>
   );
 }
