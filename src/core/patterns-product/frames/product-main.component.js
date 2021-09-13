@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextSecondary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
+import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import { ProductPriceComponent } from './product-price.component';
 import { BlockSelect } from '../../block-select';
 import { TextBlock } from '../../block-text';
+import { patternsProductSendPdfToMail } from '../patterns-product.action';
 
 export function ProductMainComponent(props) {
   const {
@@ -23,8 +26,24 @@ export function ProductMainComponent(props) {
     materials,
     price,
     complexity,
+    filePdf,
   } = props;
+
+  const dispatch = useDispatch();
   const [size, setSize] = useState({ price: 0 });
+  const productPdfUrl = filePdf?.fileUrl;
+
+  const sendPdfToMail = () => {
+    dispatch(patternsProductSendPdfToMail({
+      productName: name,
+      productPdfUrl,
+    }));
+  };
+
+  const redirectToPdfLink = () => {
+    window.open(productPdfUrl, '_blank');
+  };
+
   return (
     <Container>
       <HeaderCase>
@@ -33,7 +52,7 @@ export function ProductMainComponent(props) {
         {discount !== 0 && <Modifier tid="Акция" />}
       </HeaderCase>
       <div>
-        {categories.map((category, key) => (
+        {categories?.map((category, key) => (
           <React.Fragment key={key}>
             <LigthText
               tid={categories.length > 1 ? category + ',' : category}
@@ -53,7 +72,7 @@ export function ProductMainComponent(props) {
           ))}
         </Complexity>
       </LineCase>
-      {Boolean(sizes.length > 0) && (
+      {Boolean(sizes?.length > 0) && (
         <>
           <Divider />
           <BlockSelect
@@ -73,6 +92,10 @@ export function ProductMainComponent(props) {
         />
         <CardActions />
       </FooterCase>
+      <DownloadPdfContainer>
+        <SendEmailButton tid="Отправить на Email" onClick={sendPdfToMail} />
+        <DownloadButton tid="Скачать" onClick={redirectToPdfLink} />
+      </DownloadPdfContainer>
     </Container>
   );
 }
@@ -149,4 +172,17 @@ const Container = styled.div`
   @media screen and (max-width: 720px) {
     display: contents;
   }
+`;
+
+const DownloadPdfContainer = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+`;
+
+const SendEmailButton = styled(ButtonSecondary)`
+  width: 200px;
+`;
+
+const DownloadButton = styled(ButtonPrimary)`
+  width: 120px;
 `;

@@ -16,53 +16,24 @@ export function PatternsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    //------------
     productInfo,
   } = props;
-
-  const {
-    id,
-    type,
-    name,
-    description,
-    modifier,
-    discount,
-    categories = [],
-    images,
-    sizes = [],
-    materials,
-    price,
-    complexity,
-  } = productInfo;
 
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>{`Главная / Выкройки / Электронные / ${name}`}</TextSecondary>
+        <TextSecondary>{`Главная / Выкройки / Электронные / ${productInfo.name}`}</TextSecondary>
         <Content>
-          <GalleryBlock items={images} />
-          <ProductMainComponent
-            id={id}
-            type={type}
-            name={name}
-            description={description}
-            modifier={modifier}
-            discount={discount}
-            categories={categories}
-            images={images}
-            sizes={sizes}
-            materials={materials}
-            price={price}
-            complexity={complexity}
-          />
+          <GalleryBlock items={productInfo.images} />
+          <ProductMainComponent {...productInfo} />
         </Content>
       </SectionLayout>
       <SectionLayout type="TEXT_SMALL">
         <Title tid="Материалы" />
-        <EditorRenderer data={materials} />
+        <EditorRenderer data={productInfo.materials} />
       </SectionLayout>
       {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}
-      <BlockComment type={type} id={id} />
+      <BlockComment type={productInfo.type} id={productInfo.id} />
     </SectionLayout>
   );
 }
