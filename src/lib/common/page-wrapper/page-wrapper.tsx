@@ -4,8 +4,10 @@ import { PageWrapperPropsType } from './type.page-wrapper';
 import { FooterContainer } from '../../../core/footer';
 import { Header } from '../../../core/header';
 import { SectionLayout } from 'src/lib/element/layout';
-import { spacing } from 'src/lib/theme';
+import { spacing, THEME_COLOR } from 'src/lib/theme';
 import { SidebarMenu } from '../../../core/header-menu-sidebar';
+import { IconButton } from 'src/lib/element/button';
+import { ReactComponent as ArrowUp } from 'src/asset/svg/arrow-up.svg';
 
 export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
@@ -24,9 +26,11 @@ export function PageWrapper(props: PageWrapperPropsType) {
       window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);
-  // @ts-ignore
-  //   const handleScroll = (e) => setScroll(e.target.scrollTop);
-  // onScroll={handleScroll}
+
+  const scrollToTop = (): void => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <Container isOpen={sidebarIsOpen}>
       <Header
@@ -44,12 +48,15 @@ export function PageWrapper(props: PageWrapperPropsType) {
           </MainCase>
           <FooterContainer />
         </Content>
+        <ScrollToTopButton type={'button'} onClick={scrollToTop}>
+          <ArrowUp />
+        </ScrollToTopButton>
       </Relative>
     </Container>
   );
 }
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-flow: column;
@@ -84,4 +91,13 @@ const Main = styled.div`
   width: 100%;
   max-width: 1140px;
   align-self: center;
+`;
+const ScrollToTopButton = styled(IconButton)`
+  background: ${THEME_COLOR.SECONDARY_DARK};
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 `;
