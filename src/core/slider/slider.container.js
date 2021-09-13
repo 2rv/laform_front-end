@@ -7,18 +7,21 @@ import { SliderComponent } from './slider.component';
 import { LoaderPrimary } from '../../lib/element/loader';
 import { ErrorAlert } from '../../lib/element/alert';
 import { SliderSkeleton } from '../../lib/element/skeleton';
+import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 
 import {
   getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
+  isRequestSuccess,
 } from '../../main/store/store.service';
 
 export function SliderContainer(props) {
   const dispatch = useDispatch();
-  const { state, currentLang } = useSelector((state) => ({
+  const { state, pageLoading, currentLang } = useSelector((state) => ({
     state: state[SLIDER_STORE_NAME],
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
@@ -28,18 +31,18 @@ export function SliderContainer(props) {
     dispatch(sliderLoadData(currentLang));
   }, []);
 
-  if (isRequestPending(state.slider)) {
-    return <LoaderPrimary />;
+  if (isRequestPending(state.slider) || pageLoading) {
+    return <SliderSkeleton />;
   }
 
   if (isRequestError(state.slider) && getRequestErrorMessage(state.slider)) {
     return <ErrorAlert tid={getRequestErrorMessage(state.slider)} />;
   }
 
-  return Boolean(sliders.length > 0) ? (
+  return isRequestSuccess(state.slider) && Boolean(sliders.length > 0) ? (
     <SliderComponent sliders={sliders} />
   ) : (
-    <SliderSkeleton />
+    <></>
   );
 }
 
