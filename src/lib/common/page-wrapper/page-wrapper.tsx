@@ -13,6 +13,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
   const [sidebarIsOpen, setSidebarOpen] = useState(false);
   const [width, setwidth] = useState(1280);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
   //   const [scroll, setScroll] = useState(0);
 
   const handleWindowSizeChange = () => {
@@ -20,9 +21,19 @@ export function PageWrapper(props: PageWrapperPropsType) {
       setwidth(window.innerWidth);
     }
   };
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsButtonVisible(true);
+    } else {
+      setIsButtonVisible(false);
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setwidth(window.innerWidth);
+      window.addEventListener('scroll', toggleVisibility);
       window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);
@@ -48,9 +59,11 @@ export function PageWrapper(props: PageWrapperPropsType) {
           </MainCase>
           <FooterContainer />
         </Content>
-        <ScrollToTopButton type={'button'} onClick={scrollToTop}>
-          <ArrowUp />
-        </ScrollToTopButton>
+        {isButtonVisible && (
+          <ScrollToTopButton type={'button'} onClick={scrollToTop}>
+            <ArrowUp />
+          </ScrollToTopButton>
+        )}
       </Relative>
     </Container>
   );
