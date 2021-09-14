@@ -14,6 +14,8 @@ import {
   subCommentCreate,
   commentDelete,
   subCommentDelete,
+  commentUpdate,
+  subCommentUpdate,
 } from './comment.actions.js';
 import { CommentComponent } from './comment.component.js';
 import { convertForCreateComment } from './comment.convert';
@@ -35,22 +37,44 @@ export function CommentContainer(props) {
   const textareaRef = useRef(null);
   const [text, setValue] = useState(null);
   const [subUser, setSubUser] = useState(null);
+  const [editComment, setEditComment] = useState({ id: null, type: null });
   const onChange = (e) => setValue(e.target.value);
 
   const onSubmit = () => {
     if (Boolean(!text) || text.length <= 0) return alert('Введите сообщение');
+
+    if (Boolean(editComment.id)) {
+      editCommentHandler();
+    } else {
+      createCommentHandler();
+    }
+
+    textareaRef.current.value = '';
+  };
+
+  const createCommentHandler = () => {
     const convertedData = convertForCreateComment(
       id,
       type,
       text,
       subUser?.commentId,
     );
+
     if (subUser) {
       dispatch(subCommentCreate(convertedData));
     } else {
       dispatch(commentCreate(convertedData));
     }
-    textareaRef.current.value = '';
+  };
+
+  const editCommentHandler = () => {
+    if (editComment.type === 'comment') {
+      dispatch(commentUpdate(editComment.id, textareaRef.current.value));
+    } else if (editComment.type === 'subComment') {
+      dispatch(subCommentUpdate(editComment.id, textareaRef.current.value));
+    }
+
+    setEditComment({ id: null, type: null });
   };
 
   const onSubmitEnter = (e) => {
@@ -67,6 +91,11 @@ export function CommentContainer(props) {
   const handleDeleteSubComment = (id, subId) =>
     dispatch(subCommentDelete(id, subId));
 
+  const handleEditComment = (id, commentText, type) => {
+    textareaRef.current.value = commentText;
+    setEditComment({ id, type });
+  };
+
   return (
     <CommentComponent
       comments={getRequestData(comments, [])}
@@ -76,10 +105,13 @@ export function CommentContainer(props) {
       handleChange={onChange}
       textareaRef={textareaRef}
       //--------------------------------------------------------------------
+      editComment={editComment}
+      setEditComment={setEditComment}
       subUser={subUser}
       handleDeleteComment={handleDeleteComment}
       handleDeleteSubComment={handleDeleteSubComment}
       handleSetSubUser={handleSetSubUser}
+      handleEditComment={handleEditComment}
       setSubUser={setSubUser}
       //--------------------------------------------------------------------
       uploadErrorMessage={getRequestErrorMessage(comments)}

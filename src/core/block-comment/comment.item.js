@@ -5,17 +5,31 @@ import { ButtonBasic } from '../../lib/element/button';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { ReactComponent as CommentIcon } from '../../asset/svg/arrow-for-comment.svg';
 import { ReactComponent as DeleteIcon } from '../../asset/svg/delete-cancel-icon.svg';
+import { ReactComponent as EditIcon } from '../../asset/svg/edit-icon.svg';
 import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
 import moment from 'moment';
 import { SubComment } from './comment.sub-item';
 
 export function CommentItem(props) {
-  const { handleSetSubUser, handleDeleteComment, handleDeleteSubComment } =
-    props;
+  const {
+    handleSetSubUser,
+    handleDeleteComment,
+    handleDeleteSubComment,
+    handleEditComment,
+    cancelEditing,
+    setSubUser,
+  } = props;
   const { id, text, createDate, userId, subComment = [] } = props.data;
-  const createSubComment = () => handleSetSubUser(userId, id);
+  const createSubComment = () => {
+    handleSetSubUser(userId, id)
+    cancelEditing();
+  };
   const removeSubComment = (subId) => handleDeleteSubComment(id, subId);
+  const editComment = () => {
+    handleEditComment(id, text, 'comment');
+    setSubUser(null);
+  };
   return (
     <Container>
       <Content>
@@ -29,16 +43,23 @@ export function CommentItem(props) {
               <CommentIcon />
             </Button>
           </Case>
-          <Button onClick={() => handleDeleteComment(id)}>
-            <DeleteIcon />
-          </Button>
+          <ActionsCase>
+            <Button onClick={() => handleDeleteComment(id)}>
+              <DeleteIcon />
+            </Button>
+            <Button onClick={editComment}>
+              <EditIcon />
+            </Button>
+          </ActionsCase>
         </HeaderCase>
         <TextSecondary tid={text} />
         <Divider />
         <SubComment
           handleDeleteSubComment={removeSubComment}
+          handleEditComment={handleEditComment}
           createSubComment={createSubComment}
           subComment={subComment}
+          setSubUser={setSubUser}
         />
       </Content>
     </Container>
@@ -85,4 +106,8 @@ const Button = styled(ButtonBasic)`
 const TextLight = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};
   font-size: ${THEME_SIZE.FONT.SMALL};
+`;
+const ActionsCase = styled.div`
+  display: flex;
+  gap: ${spacing(2)};
 `;
