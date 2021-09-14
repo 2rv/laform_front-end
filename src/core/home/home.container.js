@@ -74,13 +74,13 @@ export const catalogListItems = [
     title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
     backgroundImage: '/static/image/catalog-list-1.png',
-    path: '/patterns',
+    path: '/patterns/electronic',
   },
   {
     title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
     backgroundImage: '/static/image/catalog-list-2.png',
-    path: '/patterns',
+    path: '/patterns/printed',
   },
   {
     title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
