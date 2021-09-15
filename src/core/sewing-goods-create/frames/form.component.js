@@ -9,12 +9,14 @@ import {
   TextareaField,
 } from '../../../lib/element/field';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
-import { DynamicFields, ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,
 } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
+import { DynamicField } from './dynamic-field';
+import { DynamicFields } from './dynamic-fields';
 
 export function FormComponent(props) {
   const {
@@ -79,40 +81,20 @@ export function FormComponent(props) {
         />
       </SectionLayout>
 
-      <BasicField
-        titleTid="Количество товара (единиц)"
-        placeholderTid="Введите количество товара"
-        name={SEWING_GOODS_FIELD_NAME.COUNT}
-        value={values[SEWING_GOODS_FIELD_NAME.COUNT]}
-        error={getFieldError(SEWING_GOODS_FIELD_NAME.COUNT)}
-        onChange={setNumber(SEWING_GOODS_FIELD_NAME.COUNT)}
-        onBlur={handleBlur}
-      />
-
       <DynamicFields
-        nameFieldArray={SEWING_GOODS_FIELD_NAME.SIZES}
-        namePosition={SEWING_GOODS_FIELD_NAME.SIZE_NAME}
-        pricePosition={SEWING_GOODS_FIELD_NAME.SIZE_PRICE}
         initialData={initialSizes}
-        title="Размеры"
-        fieldTitle="Название размера"
-        fieldPlaceholder="Введите название размера"
-        buttonText="Добавить размер"
+        handleChange={handleChange}
+        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
         setFieldValue={setFieldValue}
       />
 
-      <DynamicFields
-        nameFieldArray={SEWING_GOODS_FIELD_NAME.COLORS}
-        namePosition={SEWING_GOODS_FIELD_NAME.COLOR_NAME}
-        pricePosition={SEWING_GOODS_FIELD_NAME.COLOR_PRICE}
+      <DynamicField
         initialData={initialColors}
-        title="Цвета"
-        fieldTitle="Название цвета"
-        fieldPlaceholder="Введите название цвета"
-        buttonText="Добавить цвет"
+        handleChange={handleChange}
+        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
@@ -133,16 +115,10 @@ export function FormComponent(props) {
           />
           <ProductPrice
             discount={values[SEWING_GOODS_FIELD_NAME.DISCOUNT]}
-            price={
-              dynamicFieldsMinPrice(
-                values[SEWING_GOODS_FIELD_NAME.COLORS],
-                SEWING_GOODS_FIELD_NAME.COLOR_PRICE,
-              ) +
-              dynamicFieldsMinPrice(
-                values[SEWING_GOODS_FIELD_NAME.SIZES],
-                SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
-              )
-            }
+            price={dynamicFieldsMinPrice(
+              values[SEWING_GOODS_FIELD_NAME.SIZES],
+              SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
+            )}
           />
         </FieldLayout>
         <RecomendationBlock

@@ -94,5 +94,5 @@ const Line = styled.div`
   gap: ${spacing(2)};
 `;
 const Button = styled(IconButton)`
-  margin-top: ${spacing(4)};
+  margin-top: 19px;
 `;

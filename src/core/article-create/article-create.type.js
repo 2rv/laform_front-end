@@ -14,7 +14,7 @@ export const ARTICLE_FIELD_NAME = {
   IMAGE: 'image',
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
-  ARTICLE: 'postArticle',
+  ARTICLE: 'articleText',
   RECOMMENDATIONS: 'recommendations',
   TYPE: 'type',
 };

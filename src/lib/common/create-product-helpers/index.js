@@ -48,3 +48,59 @@ export const dynamicFieldsValidation = (
     }
     return acc;
   }, {});
+
+export const dynamicFieldsValidationNamePriceCount = (
+  // ищет обязательные параметры если они будут вернётся обьект с ошибками в этом параметре
+  values, // это values конкретного массива динамических филдов
+  nameArray, // назавание этого массива
+  nameField, // филд в котором указывается название параметра
+  priceField, // филд в котором указывается цена параметра
+  countField, // филд в котором указывается цена параметра
+) =>
+  values.reduce((acc, item, index) => {
+    const name = required(item[nameField]);
+    const price =
+      required(item[priceField]) ||
+      number(item[priceField]) ||
+      numberPositive(item[priceField]) ||
+      numberPositiveMin(0)(item[priceField]);
+    const count =
+      required(item[priceField]) ||
+      number(item[priceField]) ||
+      numberPositive(item[priceField]) ||
+      numberPositiveMin(0)(item[priceField]);
+    if (name || price || count) {
+      acc[nameArray] = {
+        ...acc[nameArray],
+        [index]: (() => {
+          const obj = {};
+          if (name) obj[nameField] = name;
+          if (price) obj[priceField] = price;
+          if (count) obj[countField] = count;
+          return obj;
+        })(),
+      };
+    }
+    return acc;
+  }, {});
+
+export const dynamicFieldsValidationNameParam = (
+  // ищет обязательные параметры если они будут вернётся обьект с ошибками в этом параметре
+  values, // это values конкретного массива динамических филдов
+  nameArray, // назавание этого массива
+  nameField, // филд в котором указывается название параметра
+) =>
+  values.reduce((acc, item, index) => {
+    const name = required(item[nameField]);
+    if (name) {
+      acc[nameArray] = {
+        ...acc[nameArray],
+        [index]: (() => {
+          const obj = {};
+          if (name) obj[nameField] = name;
+          return obj;
+        })(),
+      };
+    }
+    return acc;
+  }, {});
