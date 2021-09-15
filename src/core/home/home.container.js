@@ -48,23 +48,19 @@ export function HomeContainer() {
       masterClassIsSuccess={isRequestSuccess(masterClassState)}
       masterClassIsError={isRequestError(masterClassState)}
       masterClassErrorMessage={getRequestErrorMessage(masterClassState)}
-      masterClassListItems={getRequestData(masterClassState, [
-        ...masterClassTestState,
-      ])}
+      masterClassListItems={getRequestData(masterClassState, [])}
       //------------
       sewingGoodsIsPending={isRequestPending(sewingGoodsState)}
       sewingGoodsIsSuccess={isRequestSuccess(sewingGoodsState)}
       sewingGoodsIsError={isRequestError(sewingGoodsState)}
       sewingGoodsErrorMessage={getRequestErrorMessage(sewingGoodsState)}
-      sewingGoodsListItems={getRequestData(sewingGoodsState, [
-        ...sewingGoodsTestState,
-      ])}
+      sewingGoodsListItems={getRequestData(sewingGoodsState, [])}
       //------------
       articleIsPending={isRequestPending(articleState)}
       articleIsSuccess={isRequestSuccess(articleState)}
       articleIsError={isRequestError(articleState)}
       articleErrorMessage={getRequestErrorMessage(articleState)}
-      articleListItems={getRequestData(articleState, [...articleTestState])}
+      articleListItems={getRequestData(articleState, [])}
     />
   );
 }

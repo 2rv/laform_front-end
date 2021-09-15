@@ -25,7 +25,7 @@ export function CreateMasterClassComponent(props) {
     <>
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Создание мастер-класса" />
+        <TitlePrimary tid="MASTER_CLASSES.CREATE.TITLE" />
         <Formik
           initialValues={initialValues}
           validate={validation}
@@ -40,7 +40,7 @@ export function CreateMasterClassComponent(props) {
                     {...formProps}
                     imagesArrayName={CREATE_MASTER_CLASS_FIELD_NAME.IMAGES}
                     imageFieldName={CREATE_MASTER_CLASS_FIELD_NAME.IMAGE}
-                    title="Фотографии товара"
+                    title="PRODUCT_IMAGES.TITLE"
                   />
                   <FormComponent {...formProps} programsInit={programsInit} />
                 </SectionLayout>
@@ -48,7 +48,7 @@ export function CreateMasterClassComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="Мастер-класс успешно создан" />}
+        {isSuccess && <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

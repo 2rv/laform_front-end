@@ -1,4 +1,4 @@
-export const performSewingGoodsData = (rowData) => {
+export const performSewingGoodsData = (rowData, backet) => {
   //   console.log(rowData);
   return rowData.map((item) => {
     return {
@@ -7,6 +7,10 @@ export const performSewingGoodsData = (rowData) => {
       image: item.images?.[0]?.fileUrl,
       type: item.type,
       bestseller: item.modifier,
+      categories: item.categories,
+      cart: Boolean(
+        backet?.find((bItem) => bItem?.sewingProduct?.id === item.id),
+      ),
       price: {
         min:
           checkMinPrice(item?.sizes, 'price') +

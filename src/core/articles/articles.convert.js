@@ -7,6 +7,7 @@ export const performArticlesData = (rowData) => {
       image: item.image?.fileUrl,
       type: item.type,
       bestseller: item.modifier,
+      categories: item.categories,
     };
   });
 };

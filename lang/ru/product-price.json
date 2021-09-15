@@ -4,5 +4,6 @@
   "DISCOUNT": "Скидка",
   "DISCOUNT_PRICE": "Цена со скидкой",
   "DELIVERY_PRICE": "Цена за доставку",
-  "TOTAL_ORDER_PRICE": "Итоговая цена заказа"
+  "TOTAL_ORDER_PRICE": "Итоговая цена заказа",
+  "STOCK": "Акция"
 }

@@ -43,7 +43,7 @@ export function CommentContainer(props) {
   const onChange = (e) => setValue(e.target.value);
 
   const onSubmit = () => {
-    if (Boolean(!text) || text.length <= 0) return alert('Введите сообщение');
+    if (Boolean(!text) || text.length <= 0) return alert('COMMENTS.WRITE_MESSAGE');
 
     if (Boolean(editComment.id)) {
       editCommentHandler();

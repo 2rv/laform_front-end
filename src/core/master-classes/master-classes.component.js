@@ -5,6 +5,7 @@ import { FormFilter } from '../../lib/element/form-filter';
 
 export function MasterClassesComponent(props) {
   const {
+    addToCart,
     listItems,
     onDeleteProduct,
     isAdmin,
@@ -32,7 +33,12 @@ export function MasterClassesComponent(props) {
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} onDeleteProduct={onDeleteProduct} isAdmin={isAdmin} />
+      <BasicCardList
+        onSetCart={addToCart}
+        items={listItems}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </SectionLayout>
   );
 }
