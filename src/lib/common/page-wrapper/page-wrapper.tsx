@@ -1,16 +1,19 @@
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PageWrapperPropsType } from './type.page-wrapper';
 import { FooterContainer } from '../../../core/footer';
 import { Header } from '../../../core/header';
 import { SectionLayout } from 'src/lib/element/layout';
-import { spacing } from 'src/lib/theme';
+import { spacing, THEME_COLOR } from 'src/lib/theme';
 import { SidebarMenu } from '../../../core/header-menu-sidebar';
+import { IconButton } from 'src/lib/element/button';
+import { ReactComponent as ArrowUp } from 'src/asset/svg/arrow-up.svg';
 
 export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
   const [sidebarIsOpen, setSidebarOpen] = useState(false);
   const [width, setwidth] = useState(1280);
+  const containerRef = useRef<any>(null);
   //   const [scroll, setScroll] = useState(0);
 
   const handleWindowSizeChange = () => {
@@ -18,6 +21,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
       setwidth(window.innerWidth);
     }
   };
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setwidth(window.innerWidth);
@@ -27,8 +31,14 @@ export function PageWrapper(props: PageWrapperPropsType) {
 
   //   const handleScroll = (e) => setScroll(e.target.scrollTop);
   // onScroll={handleScroll}
+  const scrollToTop = (): void => {
+    if (containerRef.current) {
+      containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <Container isOpen={sidebarIsOpen}>
+    <Container ref={containerRef} isOpen={sidebarIsOpen}>
       <Header
         width={width}
         setSidebarOpen={setSidebarOpen}
@@ -38,13 +48,16 @@ export function PageWrapper(props: PageWrapperPropsType) {
         {width < 1071 && (
           <SidebarMenu setOpen={setSidebarOpen} isOpen={sidebarIsOpen} />
         )}
-        <Content type="LARGE">
+        <Content type={'LARGE'}>
           <MainCase>
             <Main>{children}</Main>
           </MainCase>
           <FooterContainer />
         </Content>
       </Relative>
+      <ScrollToTopButton onClick={scrollToTop}>
+        <ArrowUp />
+      </ScrollToTopButton>
     </Container>
   );
 }
@@ -84,4 +97,18 @@ const Main = styled.div`
   width: 100%;
   max-width: 1140px;
   align-self: center;
+`;
+const ScrollToTopButton = styled(IconButton)`
+  background: ${THEME_COLOR.SECONDARY_DARK};
+  z-index: 999;
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  @media screen and (max-width: 720px) {
+    right: 10px;
+    bottom: 60px;
+  }
 `;
