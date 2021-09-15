@@ -21,7 +21,7 @@ import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 
 export function PatternsContainer() {
-  const { query, push } = useRouter();
+  const router = useRouter();
   const dispatch = useDispatch();
   const { patternsState, pageLoading, currentLang, user } = useSelector((state) => ({
     patternsState: state[PATTERNS_STORE_NAME].patternsState,
@@ -30,22 +30,28 @@ export function PatternsContainer() {
     user: state[AUTH_STORE_NAME].user,
   }));
   const [activeTab, setActiveTab] = useState(
-    query.patternCategory === 'all'
-    ? 9 : query.patternCategory === 'printed'
-    ? 2 : query.patternCategory === 'electronic' ? 1 : 0
+    router.query.type === 'all' ? 9
+    : router.query.type === 'printed' ? 2
+    : router.query.type === 'electronic' ? 1
+    : 0
   );
 
   useEffect(() => {
     dispatch(patternsUploadData(currentLang));
 
-    if (activeTab === 9) {
-      push('/patterns/all', undefined, { shallow: true });
-    } else if (activeTab === 2) {
-      push('/patterns/printed', undefined, { shallow: true });
-    } else if (activeTab === 1) {
-      push('/patterns/electronic', undefined, { shallow: true });
+    if (!['all','printed','electronic'].includes(router.query.type)) {
+      router.push('/patterns?type=all', { query: { type: 'all' } }, { shallow: true });
+      setActiveTab(9);
     }
-  }, [activeTab]);
+
+    if (activeTab === 9) {
+      router.push('/patterns?type=all', { query: { type: 'all' } }, { shallow: true });
+    } else if (activeTab === 2) {
+      router.push('/patterns?type=printed', { query: { type: 'printed' } }, { shallow: true });
+    } else if (activeTab === 1) {
+      router.push('/patterns?type=electronic', { query: { type: 'electronic' } }, { shallow: true });
+    }
+  }, [activeTab, router.query.type]);
   const filterInitialValue = () => ({
     [PATTERNS_FIELD_NAME.FILTER]: 0,
     [PATTERNS_FIELD_NAME.FIND]: '',
