@@ -2,9 +2,10 @@ import { httpRequest } from '../../main/http';
 import { MASTER_CLASSES_API } from './master-classes.constant';
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 import { performMasterClassData } from './master-classes.convert';
+import { BASKET_STORE_NAME } from '../basket';
 
 export function masterClassesUploadData(currentLang) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING,
     });
@@ -14,13 +15,15 @@ export function masterClassesUploadData(currentLang) {
         method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.TYPE,
         url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(currentLang),
       });
-      const data = performMasterClassData(response.data);
+      const data = performMasterClassData(
+        response.data,
+        getState()[BASKET_STORE_NAME].basket,
+      );
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
         data: data,
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_ERROR,
@@ -49,7 +52,6 @@ export function masterClassesUpdateData(currentLang, id, body) {
       });
       dispatch(masterClassesUploadData(currentLang));
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_ERROR,

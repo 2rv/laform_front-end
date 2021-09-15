@@ -1,5 +1,6 @@
-export const performMasterClassData = (rowData) => {
+export const performMasterClassData = (rowData, backet) => {
   //   console.log(rowData);
+
   return rowData.map((item) => {
     return {
       id: item.id,
@@ -8,6 +9,9 @@ export const performMasterClassData = (rowData) => {
       type: item.type || 0,
       bestseller: item.modifier,
       categories: item.categories,
+      cart: Boolean(
+        backet.find(({ masterClass }) => masterClass.id === item.id),
+      ),
       price: {
         min: checkMinPrice(item?.programs, 'price'),
         discount: item.discount,

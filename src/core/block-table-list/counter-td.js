@@ -1,22 +1,29 @@
 import styled from 'styled-components';
 import { ButtonBasic } from '../../lib/element/button';
-import { TextPrimary } from '../../lib/element/text';
+import { TextPrimary, TextSecondary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function CounterTd(props) {
-  const { count, id, dicrementCoun, incrementCount, quantity, excludeCount } =
-    props;
+  const { id, count, maxCount, changeItem } = props;
+
+  if (!id || !maxCount) return null;
+  const isMax = count < maxCount;
+  const isMin = count > 1;
+
+  const increment = () => {
+    isMax && changeItem(id, { count: count + 1 });
+  };
+
+  const dicrement = () => {
+    isMin && changeItem(id, { count: count - 1 });
+  };
   return (
     <Td>
-      <CountCase>
-        {excludeCount ? null : (
-          <>
-            <CountButton onClick={() => dicrementCoun(id)}>-</CountButton>
-            <TextPrimary>{quantity ? quantity : count[id]}</TextPrimary>
-            <CountButton onClick={() => incrementCount(id)}>+</CountButton>
-          </>
-        )}
-      </CountCase>
+      <Case>
+        <Button disabled={!isMax} tid="+" onClick={increment} />
+        <Count tid={count} />
+        <Button disabled={!isMin} tid="-" onClick={dicrement} />
+      </Case>
     </Td>
   );
 }
@@ -30,16 +37,17 @@ const Td = styled.td`
     margin-left: 90px;
   }
 `;
-const CountCase = styled.div`
+const Count = styled(TextSecondary)`
+  width: max-content;
+  padding: ${spacing(2)};
+`;
+const Case = styled.div`
   display: flex;
-  justify-content: space-between;
+  width: max-content;
   align-items: center;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   background-color: ${THEME_COLOR.GRAY};
 `;
-
-const CountButton = styled(ButtonBasic)`
-  width: 100%;
-  padding: 0;
+const Button = styled(ButtonBasic)`
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;

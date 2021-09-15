@@ -1,1 +1,2 @@
-export { FormalizationOrderingContainer } from './formalization-ordering';
+export { SignComponent } from './sign.component';
+export { FormContainer } from './form.container';
