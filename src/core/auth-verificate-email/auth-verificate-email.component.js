@@ -12,6 +12,8 @@ import { THEME_COLOR, THEME_SIZE, spacing } from '../../lib/theme';
 import { AUTH_VERIFICATE_EMAIL_HELP_ROUTE } from './auth-verificate-email.constant';
 import { ErrorAlert } from '../../lib/element/alert';
 
+import { EmailConfirmedContainer } from '../../core/email-confirmed';
+
 export function AuthVerificateEmailComponent(props) {
   const { email, onResend, isPending, isError, isSuccess, errorMessage } =
     props;
@@ -32,6 +34,7 @@ export function AuthVerificateEmailComponent(props) {
           onClick={onResend}
           disabled={isPending}
         />
+        <EmailConfirmedContainer />
         <div>
           <LightText tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
           &nbsp;

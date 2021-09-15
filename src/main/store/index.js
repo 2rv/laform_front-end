@@ -158,6 +158,10 @@ import {
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
 import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
+import {
+  emailConfirmedStore,
+  EMAIL_CONFIRMED_STORE_NAME,
+} from '../../core/email-confirmed';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -213,6 +217,7 @@ export const reducers = combineReducers({
   [ORDERS_LIST_STORE_NAME]: ordersListStore,
   [USERS_ORDER_STORE_NAME]: usersOrderStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
+  [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
 });
 
 export { initStore } from './store.core';
