@@ -11,6 +11,7 @@ import {
 
 export function HeaderMenuComponent(props) {
   const {
+    cartCount,
     activePath,
     isAuth,
     userName,
@@ -42,7 +43,7 @@ export function HeaderMenuComponent(props) {
           />
         )}
         {!isAuth && !isMobile && <AuthLinks />}
-        <CartButton isTablet={isTablet} />
+        <CartButton cartCount={cartCount} isTablet={isTablet} />
       </Case>
     </Container>
   );

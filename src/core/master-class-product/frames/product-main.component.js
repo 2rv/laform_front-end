@@ -30,7 +30,7 @@ export function ProductMainComponent(props) {
       <HeaderCase>
         <Title tid={name} />
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="Акция" />}
+        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
       <div>
         {categories.map((category, key) => (

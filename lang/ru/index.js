@@ -34,6 +34,7 @@ import PRODUCT_IMAGES from './product-images.json';
 import PRODUCT_PRICE from './product-price.json';
 import DYNAMIC_FIELDS from './dynamic-fields.json';
 import FAVORITES from './favorites.json';
+import BLOCK_TEXT from './block-text.json';
 
 export const RU = {
   translation: {
@@ -72,5 +73,7 @@ export const RU = {
     PRODUCT_PRICE,
     DYNAMIC_FIELDS,
     FAVORITES,
+    COMMENTS,
+    BLOCK_TEXT,
   },
 };

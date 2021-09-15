@@ -7,6 +7,7 @@ import { MobileNavMenu } from '../header-component';
 
 export function HeaderComponent(props) {
   const {
+    cartCount,
     activePath,
     isAuth,
     userName,
@@ -31,6 +32,7 @@ export function HeaderComponent(props) {
       </HeaderLogoCase>
       <HeaderMenuCase>
         <HeaderMenuComponent
+          cartCount={cartCount}
           setSidebarOpen={setSidebarOpen}
           sidebarIsOpen={sidebarIsOpen}
           activePath={activePath}

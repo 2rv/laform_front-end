@@ -23,7 +23,7 @@ export function AuthVerificateEmailRecoveryAccountComponent(props) {
           <div>
             <Text tid="AUTH.VERIFICATE_EMAIL.CONTENT_BEFORE" />
             <Email tid={email} />
-            <Text tid="было отправлена ссылка для смены пароля, нажмите на ссылку из письма для продолжения." />
+            <Text tid="AUTH.VERIFICATE_EMAIL.LINK_TO_CHANGE_PASSWORD" />
           </div>
         </SectionLayout>
         <ButtonSecondary

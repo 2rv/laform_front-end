@@ -19,25 +19,32 @@ import { PatternsComponent } from './patterns.component';
 import { PATTERNS_FIELD_NAME } from './patterns.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { addToBasket } from '../basket';
 
 export function PatternsContainer() {
   const { query, push } = useRouter();
   const dispatch = useDispatch();
-  const { patternsState, pageLoading, currentLang, user } = useSelector((state) => ({
-    patternsState: state[PATTERNS_STORE_NAME].patternsState,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-    user: state[AUTH_STORE_NAME].user,
-  }));
+  const { patternsState, pageLoading, currentLang, user, isAuth } = useSelector(
+    (state) => ({
+      patternsState: state[PATTERNS_STORE_NAME].patternsState,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+      user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
+    }),
+  );
   const [activeTab, setActiveTab] = useState(
     query.patternCategory === 'all'
-    ? 9 : query.patternCategory === 'printed'
-    ? 2 : query.patternCategory === 'electronic' ? 1 : 0
+      ? 9
+      : query.patternCategory === 'printed'
+      ? 2
+      : query.patternCategory === 'electronic'
+      ? 1
+      : 0,
   );
 
   useEffect(() => {
     dispatch(patternsUploadData(currentLang));
-
     if (activeTab === 9) {
       push('/patterns/all', undefined, { shallow: true });
     } else if (activeTab === 2) {
@@ -57,15 +64,20 @@ export function PatternsContainer() {
     dispatch(patternsUpdateData(currentLang, id, body));
   };
 
+  const addToCart = (id, type, inCart) => {
+    if (inCart) return dispatch(addToBasket({ id, type }, currentLang, isAuth));
+  };
+
   return (
     <PatternsComponent
+      addToCart={addToCart}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       tabItems={tabItems}
       //-----
       listItems={filterByType(
         sorterItemsByParams(
-          getRequestData(patternsState, [...testListItems]),
+          getRequestData(patternsState, []),
           filter[PATTERNS_FIELD_NAME.FIND],
           Number(filter[PATTERNS_FIELD_NAME.FILTER]),
         ),

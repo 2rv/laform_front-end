@@ -8,9 +8,12 @@ import { spacing, THEME_COLOR } from 'src/lib/theme';
 import { SidebarMenu } from '../../../core/header-menu-sidebar';
 import { IconButton } from 'src/lib/element/button';
 import { ReactComponent as ArrowUp } from 'src/asset/svg/arrow-up.svg';
+import { initializeBasketStore } from '../../../core/basket/basket.action';
+import { useDispatch } from 'react-redux';
 
 export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
+  const dispatch = useDispatch();
   const [sidebarIsOpen, setSidebarOpen] = useState(false);
   const [width, setwidth] = useState(1280);
   const containerRef = useRef<any>(null);
@@ -25,6 +28,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setwidth(window.innerWidth);
+      dispatch(initializeBasketStore());
       window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);
