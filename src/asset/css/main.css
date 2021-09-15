@@ -583,3 +583,7 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
 .ce-block__content {
   max-width: 1000px;
 }
+.tc-wrap {
+  --color-border: #000 !important;
+  --color-background: rgba(0, 0, 0, 0.06) !important;
+}
