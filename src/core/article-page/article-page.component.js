@@ -24,7 +24,7 @@ export function ArticlePageComponent(props) {
       <HeaderCase>
         <Title tid={name} />
         <TextLight
-          tid={moment(createdDate).fromNow()}
+          tid={moment(createdDate).local().fromNow()}
         />
       </HeaderCase>
       <EditorRenderer data={postArticle} />

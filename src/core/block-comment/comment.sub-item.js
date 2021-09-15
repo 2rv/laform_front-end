@@ -48,7 +48,7 @@ export function SubComment(props) {
                   <HeaderCase>
                     <Title tid={userId.login} />
                     <TextLight
-                      tid={moment(createDate).fromNow()}
+                      tid={moment(createDate).local().fromNow()}
                     />
                   </HeaderCase>
                   <TextSecondary tid={text} />

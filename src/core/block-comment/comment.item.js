@@ -38,12 +38,14 @@ export function CommentItem(props) {
           <Case>
             <Title tid={userId.login} />
             <TextLight
-              tid={moment(createDate).fromNow()}
+              tid={moment(createDate).local().fromNow()}
             />
-            <Button onClick={createSubComment}>
-              <CommentIcon />
-            </Button>
-          </Case>
+            {Boolean(user !== null) && (
+              <Button onClick={createSubComment}>
+                <CommentIcon />
+              </Button>
+            )}
+            </Case>
           {Boolean(userId?.id === user?.id) && (
             <ActionsCase>
               <Button onClick={() => handleDeleteComment(id)}>
