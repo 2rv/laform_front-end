@@ -19,6 +19,8 @@ export function SubComment(props) {
     handleDeleteSubComment,
     handleEditComment,
     setSubUser,
+    userId,
+    user,
   } = props;
 
   const editComment = (id, text) => {
@@ -46,24 +48,23 @@ export function SubComment(props) {
                   <HeaderCase>
                     <Title tid={userId.login} />
                     <TextLight
-                      tid={moment(createDate)
-                        .locale('ru')
-                        .startOf('hour')
-                        .fromNow()}
+                      tid={moment(createDate).fromNow()}
                     />
                   </HeaderCase>
                   <TextSecondary tid={text} />
                   <Divider />
                 </Content>
               </Container>
-              <ActionsCase>
-                <Button onClick={() => handleDeleteSubComment(id)}>
-                  <DeleteIcon />
-                </Button>
-                <Button onClick={() => editComment(id, text)}>
-                  <EditIcon />
-                </Button>
-              </ActionsCase>
+              {Boolean(userId.id === user?.id) && (
+                <ActionsCase>
+                  <Button onClick={() => handleDeleteSubComment(id)}>
+                    <DeleteIcon />
+                  </Button>
+                  <Button onClick={() => editComment(id, text)}>
+                    <EditIcon />
+                  </Button>
+                </ActionsCase>
+              )}
             </Wrapper>
           );
         })}

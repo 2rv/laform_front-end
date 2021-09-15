@@ -19,14 +19,16 @@ import {
 } from './comment.actions.js';
 import { CommentComponent } from './comment.component.js';
 import { convertForCreateComment } from './comment.convert';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function CommentContainer(props) {
   const dispatch = useDispatch();
   const { id = false, type = false } = props;
 
-  const { comments, create } = useSelector((state) => ({
+  const { comments, create, user } = useSelector((state) => ({
     comments: state[COMMENT_STORE_NAME].commentState,
     create: state[COMMENT_STORE_NAME].createState,
+    user: state[AUTH_STORE_NAME].user,
   }));
   useEffect(() => {
     if (type !== false && id !== false) {
@@ -49,6 +51,7 @@ export function CommentContainer(props) {
       createCommentHandler();
     }
 
+    setSubUser(null);
     textareaRef.current.value = '';
   };
 
@@ -98,6 +101,7 @@ export function CommentContainer(props) {
 
   return (
     <CommentComponent
+      user={user}
       comments={getRequestData(comments, [])}
       //--------------------------------------------------------------------
       onSubmit={onSubmit}

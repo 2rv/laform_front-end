@@ -19,6 +19,7 @@ export function CommentItem(props) {
     handleEditComment,
     cancelEditing,
     setSubUser,
+    user,
   } = props;
   const { id, text, createDate, userId, subComment = [] } = props.data;
   const createSubComment = () => {
@@ -37,20 +38,22 @@ export function CommentItem(props) {
           <Case>
             <Title tid={userId.login} />
             <TextLight
-              tid={moment(createDate).locale('ru').startOf('hour').fromNow()}
+              tid={moment(createDate).fromNow()}
             />
             <Button onClick={createSubComment}>
               <CommentIcon />
             </Button>
           </Case>
-          <ActionsCase>
-            <Button onClick={() => handleDeleteComment(id)}>
-              <DeleteIcon />
-            </Button>
-            <Button onClick={editComment}>
-              <EditIcon />
-            </Button>
-          </ActionsCase>
+          {Boolean(userId?.id === user?.id) && (
+            <ActionsCase>
+              <Button onClick={() => handleDeleteComment(id)}>
+                <DeleteIcon />
+              </Button>
+                <Button onClick={editComment}>
+                  <EditIcon />
+                </Button>
+            </ActionsCase>
+          )}
         </HeaderCase>
         <TextSecondary tid={text} />
         <Divider />
@@ -60,6 +63,8 @@ export function CommentItem(props) {
           createSubComment={createSubComment}
           subComment={subComment}
           setSubUser={setSubUser}
+          userId={userId}
+          user={user}
         />
       </Content>
     </Container>

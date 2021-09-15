@@ -14,6 +14,7 @@ import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 
 export function CommentComponent(props) {
   const {
+    user,
     comments,
     //------------------------------
     onSubmit,
@@ -80,48 +81,51 @@ export function CommentComponent(props) {
               key={data?.id}
               data={data}
               handleSetSubUser={handleSetSubUser}
+              user={user}
             />
           ))}
           <div ref={messageRef} />
         </ListComment>
       )}
-      <SectionLayout type="SMALL">
-        <HeaderCase>
-          <Title tid="Написать отзыв" />
-          {Boolean(subUser) && (
-            <Line>
-              <div>
-                <LightText tid="Ответить пользователю -" />
+      {Boolean(user !== null) && (
+        <SectionLayout type="SMALL">
+          <HeaderCase>
+            <Title tid="Написать отзыв" />
+            {Boolean(subUser) && (
+              <Line>
+                <div>
+                  <LightText tid="Ответить пользователю -" />
+                  &nbsp;
+                  <SubTitle tid={subUser?.user?.login} />
+                </div>
                 &nbsp;
-                <SubTitle tid={subUser?.user?.login} />
-              </div>
-              &nbsp;
-              <CancelButton tid="Отменить" onClick={cancelReplying} />
-            </Line>
-          )}
-        </HeaderCase>
-        <Content>
-          <TextareaField
-            ref={textareaRef}
-            disabled={createPending}
-            onChange={handleChange}
-            onKeyDown={onSubmitEnter}
-            value={value}
-            maxHeight={200}
-            placeholderTid="Введите свой отзыв"
-          />
-          <TextareaActionButtons>
-            {Boolean(editComment.id) && (
-              <Button onClick={cancelEditing}>
-                <CancelIcon />
-              </Button>
+                <CancelButton tid="Отменить" onClick={cancelReplying} />
+              </Line>
             )}
-            <Button onClick={onSubmit} disabled={uploadPending || createPending}>
-              <SendIcon />
-            </Button>
-          </TextareaActionButtons>
-        </Content>
-      </SectionLayout>
+          </HeaderCase>
+          <Content>
+            <TextareaField
+              ref={textareaRef}
+              disabled={createPending}
+              onChange={handleChange}
+              onKeyDown={onSubmitEnter}
+              value={value}
+              maxHeight={200}
+              placeholderTid="Введите свой отзыв"
+            />
+              <TextareaActionButtons>
+                {Boolean(editComment.id) && (
+                  <Button onClick={cancelEditing}>
+                    <CancelIcon />
+                  </Button>
+                )}
+                <Button onClick={onSubmit} disabled={uploadPending || createPending}>
+                  <SendIcon />
+                </Button>
+              </TextareaActionButtons>
+          </Content>
+        </SectionLayout>
+      )}
     </SectionLayout>
   );
 }
