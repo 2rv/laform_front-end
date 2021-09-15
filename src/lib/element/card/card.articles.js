@@ -35,7 +35,7 @@ export function CardArticles(props) {
         <Column>
           <CardName tid={name} />
           <Date
-            tid={moment(createdDate).locale('ru').startOf('hour').fromNow()}
+            tid={moment(createdDate).local().fromNow()}
           />
         </Column>
         <LikeButton onClick={onLike} like={isLiked}>

@@ -147,3 +147,57 @@ export function subCommentDelete(currentCommentId, commentId) {
     }
   };
 }
+
+export function commentUpdate(id, text) {
+  return async (dispatch) => {
+    dispatch({
+      type: COMMENT_ACTION_TYPE.COMMENT_UPDATE_PENDING,
+    });
+    try {
+      const response = await httpRequest({
+        method: COMMENT_API.COMMENT_UPDATE.TYPE,
+        url: COMMENT_API.COMMENT_UPDATE.ENDPOINT(id),
+        data: { text },
+      });
+
+      dispatch({
+        type: COMMENT_ACTION_TYPE.COMMENT_UPDATE_SUCCESS,
+        payload: response.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: COMMENT_ACTION_TYPE.COMMENT_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function subCommentUpdate(id, text) {
+  return async (dispatch) => {
+    dispatch({
+      type: COMMENT_ACTION_TYPE.SUB_COMMENT_UPDATE_PENDING,
+    });
+    try {
+      const response = await httpRequest({
+        method: COMMENT_API.SUB_COMMENT_UPDATE.TYPE,
+        url: COMMENT_API.SUB_COMMENT_UPDATE.ENDPOINT(id),
+        data: { text },
+      });
+
+      dispatch({
+        type: COMMENT_ACTION_TYPE.SUB_COMMENT_UPDATE_SUCCESS,
+        payload: response.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: COMMENT_ACTION_TYPE.SUB_COMMENT_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
