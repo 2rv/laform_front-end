@@ -8,6 +8,7 @@ export function SewingGoodsComponent(props) {
     listItems,
     onDeleteProduct,
     isAdmin,
+    addToCart,
     //-----
     filterOptions,
     filterSelectName,
@@ -33,7 +34,12 @@ export function SewingGoodsComponent(props) {
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} onDeleteProduct={onDeleteProduct} isAdmin={isAdmin} />
+      <BasicCardList
+        onSetCart={addToCart}
+        items={listItems}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </SectionLayout>
   );
 }
