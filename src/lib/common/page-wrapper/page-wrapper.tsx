@@ -52,10 +52,10 @@ export function PageWrapper(props: PageWrapperPropsType) {
           </MainCase>
           <FooterContainer />
         </Content>
-        <ScrollToTopButton type={'button'} onClick={scrollToTop}>
-          <ArrowUp />
-        </ScrollToTopButton>
       </Relative>
+      <ScrollToTopButton onClick={scrollToTop}>
+        <ArrowUp />
+      </ScrollToTopButton>
     </Container>
   );
 }
