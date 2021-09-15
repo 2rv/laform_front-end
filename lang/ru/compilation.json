@@ -1,8 +1,14 @@
 {
 	"TITLE": "Подборки",
 	"SUB_MENU": {
-		"POPULAR_GOODS": "Популярные товары",
+		"BEST_GOODS": "Лучшие товары",
 		"BEST_MASTER_CLASSES": "Лучшие мастер-классы",
-		"BEST_ARCTICLES": "Лучшие полезные статьи"
+		"BEST_ARTICLES": "Лучшие полезные статьи"
+	},
+	"SELECT": {
+		"TITLE": "Добавить подборку",
+		"PRODUCT": "Товар",
+		"MASTER_CLASS": "Мастер-класс",
+		"ARTICLE": "Полезную статью"
 	}
 }

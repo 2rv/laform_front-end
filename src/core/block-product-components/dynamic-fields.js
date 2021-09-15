@@ -57,8 +57,8 @@ export function DynamicFields(props) {
                   <Field name={`${nameFieldArray}.${index}.${pricePosition}`}>
                     {({ field, form, meta }) => (
                       <BasicField
-                        titleTid="Цена"
-                        placeholderTid="Введите цену (в руб.)"
+                        titleTid="DYNAMIC_FIELDS.PRICE.TITLE"
+                        placeholderTid="DYNAMIC_FIELDS.PRICE.PLACEHOLDER"
                         error={getFieldError(pricePosition, index)}
                         name={field.name}
                         value={field.value}

@@ -32,8 +32,8 @@ export function FormComponent(props) {
       <SectionLayout type="TEXT">
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Тема письма"
-            placeholderTid="Например: Новые товары в разделе мастер-классы"
+            titleTid="CREATE_NOTIFICATION.FIELD_TITLE"
+            placeholderTid="CREATE_NOTIFICATION.FIELD_PLACEHOLDER"
             name={CREATE_NOTIFICATION_FIELD_NAME.SUBJECT}
             value={values[CREATE_NOTIFICATION_FIELD_NAME.SUBJECT]}
             error={getFieldError(CREATE_NOTIFICATION_FIELD_NAME.SUBJECT)}
@@ -50,7 +50,7 @@ export function FormComponent(props) {
       />
       <FieldLayout type="double" adaptive>
         <ButtonPrimary
-          tid="Создать"
+          tid="CREATE_NOTIFICATION.BUTTON_CREATE"
           type="submit"
           disabled={isSubmitDisabled()}
         />

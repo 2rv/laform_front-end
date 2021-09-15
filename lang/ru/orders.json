@@ -1,0 +1,27 @@
+{
+  "TITLE": "Список заказов",
+  "ORDERS": "Заказы",
+  "SEARCH_BY_NUMBER": "Искать по номеру",
+  "LIST_IS_EMPTY": "Список пуст",
+  "TABLE": {
+    "HEADER": {
+      "ORDER_NUMBER": "Номер заказа",
+      "ORDER_DETAILS": "Детали заказа",
+      "DELIVERY_DATA": "Данные доставки",
+      "PRODUCT_PRICE": "Цена товара",
+      "STATE": "Состояние"
+    },
+    "BODY": {
+      "COLOR": "Цвет",
+      "SIZE": "Размер",
+      "CATEGORY": "Категория",
+      "QUANTITY": "Количество",
+      "FORMAT": "Формат",
+      "PROGRAM": "Программа",
+      "FULL_NAME": "ФИО",
+      "CITY_AND_EXACT_DELIVERY_ADDRESS": "Город и точный адрес доставки",
+      "PAYMENT_METHOD": "Способ оплаты",
+      "PHONE": "Контактный телефон"
+    }
+  }
+}

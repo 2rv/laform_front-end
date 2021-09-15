@@ -25,7 +25,7 @@ export function CreateSewingGoodsComponent(props) {
     <>
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Создание товара для шитья" />
+        <TitlePrimary tid="SEWING_GOODS.CREATE.TITLE" />
         <Formik
           initialValues={initialValues}
           validate={validation}
@@ -40,7 +40,7 @@ export function CreateSewingGoodsComponent(props) {
                     {...formProps}
                     imagesArrayName={SEWING_GOODS_FIELD_NAME.IMAGES}
                     imageFieldName={SEWING_GOODS_FIELD_NAME.IMAGE}
-                    title="Фотографии товара"
+                    title="PRODUCT_IMAGES.TITLE"
                   />
                   <FormComponent
                     {...formProps}
@@ -52,7 +52,7 @@ export function CreateSewingGoodsComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="Товар успешно создан" />}
+        {isSuccess && <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

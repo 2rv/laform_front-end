@@ -45,8 +45,8 @@ export function FormComponent(props) {
       <SectionLayout type="TEXT">
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Название товара"
-            placeholderTid="Введите название товара"
+            titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.NAME"
+            placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
             name={PRINT_PATTERN_FIELD_NAME.NAME}
             value={values[PRINT_PATTERN_FIELD_NAME.NAME]}
             error={getFieldError(PRINT_PATTERN_FIELD_NAME.NAME)}
@@ -54,8 +54,8 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="Плашка товара"
-            placeholderTid="Введите плашку товара"
+            titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DICE_OF_GOODS"
+            placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.DICE_OF_GOODS"
             name={PRINT_PATTERN_FIELD_NAME.MODIFIER}
             value={values[PRINT_PATTERN_FIELD_NAME.MODIFIER]}
             error={getFieldError(PRINT_PATTERN_FIELD_NAME.MODIFIER)}
@@ -69,12 +69,12 @@ export function FormComponent(props) {
             setFieldValue(PRINT_PATTERN_FIELD_NAME.CATEGORIES, data)
           }
           error={getFieldError(PRINT_PATTERN_FIELD_NAME.CATEGORIES)}
-          titleTid={'Категории товара'}
-          placeholderTid="Введите категории товара"
+          titleTid={'PATTERNS.CREATE.FORM.FIELDS.TITLE.PRODUCT_CATEGORIES'}
+          placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.PRODUCT_CATEGORIES"
         />
         <TextareaField
-          titleTid="Описание товара"
-          placeholderTid="Полное описание товара"
+          titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
+          placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
           name={PRINT_PATTERN_FIELD_NAME.DESCRIPTION}
           value={values[PRINT_PATTERN_FIELD_NAME.DESCRIPTION]}
           error={getFieldError(PRINT_PATTERN_FIELD_NAME.DESCRIPTION)}
@@ -83,14 +83,14 @@ export function FormComponent(props) {
           minHeight={100}
         />
         <SectionLayout type="TEXT_SMALL">
-          <SmallTitle tid="Материалы" />
+          <SmallTitle tid="PATTERNS.CREATE.FORM.MATERIALS" />
           <BlockEditor
             formikOnChange={setEditorData(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
           />
         </SectionLayout>
       </SectionLayout>
       <Complexity>
-        <SmallTitle tid="Сложность выкройки" />
+        <SmallTitle tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
         <FieldComplexity>
           {[1, 2, 3, 4, 5].map((value, index) => (
             <ComplexityDot
@@ -113,10 +113,10 @@ export function FormComponent(props) {
         namePosition={PRINT_PATTERN_FIELD_NAME.SIZE_NAME}
         pricePosition={PRINT_PATTERN_FIELD_NAME.SIZE_PRICE}
         initialData={sizesInit}
-        title="Размеры"
-        fieldTitle="Название размера"
-        fieldPlaceholder="Введите название размера"
-        buttonText="Добавить размер"
+        title="DYNAMIC_FIELDS.SIZE.TITLE"
+        fieldTitle="DYNAMIC_FIELDS.SIZE.FIELD_TITLE"
+        fieldPlaceholder="DYNAMIC_FIELDS.SIZE.FIELD_PLACEHOLDER"
+        buttonText="DYNAMIC_FIELDS.SIZE.BUTTON_TEXT"
         errors={errors}
         touched={touched}
         values={values}
@@ -124,11 +124,11 @@ export function FormComponent(props) {
       />
 
       <SectionLayout type="SMALL">
-        <Title tid="Цена" />
+        <Title tid="PATTERNS.CREATE.FORM.PRICE" />
         <FieldLayout type="double" adaptive>
           <BasicField
             placeholderTid="0"
-            titleTid="Скидка (%)"
+            titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DISCOUNT"
             name={PRINT_PATTERN_FIELD_NAME.DISCOUNT}
             value={values[PRINT_PATTERN_FIELD_NAME.DISCOUNT]}
             error={getFieldError(PRINT_PATTERN_FIELD_NAME.DISCOUNT)}
@@ -149,8 +149,8 @@ export function FormComponent(props) {
           }
         />
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="Создать товар" />
-          <ButtonSecondary tid="Отменить" />
+          <ButtonPrimary type="submit" tid="PATTERNS.CREATE.FORM.BUTTON.CREATE_PRODUCT" />
+          <ButtonSecondary tid="PATTERNS.CREATE.FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>
