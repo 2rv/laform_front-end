@@ -10,7 +10,6 @@ export function filterByType(listItems, activeType) {
 export function sorterItemsByParams(listData, find, filter) {
   if (find !== '') {
     return listData.filter((product) => {
-      console.log('product:', product);
       return product.name.toLowerCase().trim().includes(find.toLowerCase().trim())
         || product?.categories?.some((category) => category.textRu.toLowerCase().trim().includes(find.toLowerCase().trim()));
     });

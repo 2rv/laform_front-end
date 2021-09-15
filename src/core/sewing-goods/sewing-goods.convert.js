@@ -7,6 +7,7 @@ export const performSewingGoodsData = (rowData) => {
       image: item.images?.[0]?.fileUrl,
       type: item.type,
       bestseller: item.modifier,
+      categories: item.categories,
       price: {
         min:
           checkMinPrice(item?.sizes, 'price') +
