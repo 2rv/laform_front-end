@@ -30,12 +30,10 @@ export function MultiField(props: MultiFieldPropsType) {
   const addItem = (event: any) => {
     if (event.keyCode === 13) {
       event.preventDefault();
-      const copy = [...items];
-
-      //@ts-ignore
-      copy.push(event.target.value);
+      const copy = [...items] as any;
+      copy.push((event.target as HTMLInputElement).value);
       setItems(copy);
-      event.target.value = '';
+      (event.target as HTMLInputElement).value = '';
     }
   };
 
@@ -49,8 +47,7 @@ export function MultiField(props: MultiFieldPropsType) {
 
   useEffect(() => {
     if (containerRef.current) {
-      //@ts-ignore
-      setPadding(containerRef.current.offsetWidth);
+      setPadding((containerRef.current as HTMLDivElement).offsetWidth);
     }
   }, [items]);
 

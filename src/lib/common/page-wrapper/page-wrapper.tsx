@@ -24,7 +24,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
       window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);
-  // @ts-ignore
+
   //   const handleScroll = (e) => setScroll(e.target.scrollTop);
   // onScroll={handleScroll}
   return (

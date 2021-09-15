@@ -1,5 +1,4 @@
 import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from '../auth-verificate-email/auth-verificate-email.constant';
-import { HOME_ROUTE_PATH } from '../home';
 
 export const AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH =
   '/auth/verificate-email/confirm';

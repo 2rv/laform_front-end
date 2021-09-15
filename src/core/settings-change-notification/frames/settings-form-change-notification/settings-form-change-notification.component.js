@@ -39,10 +39,9 @@ export function SettingsFormChangeNotificationComponent(props) {
           labelTid="SETTINGS.CHANGE_NOTIFICATION.NEWSLETTER.LABEL"
           name={fieldNotification}
           value={values[fieldNotification]}
-          onChange={handleChange}
           onBlur={handleBlur}
           checked={values[fieldNotification]}
-          onClick={() =>
+          onClick={(e) =>
             setFieldValue(fieldNotification, !values[fieldNotification])
           }
         />

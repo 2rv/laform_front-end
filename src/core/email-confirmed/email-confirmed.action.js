@@ -3,7 +3,7 @@ import { EMAIL_CONFIRMED_API } from './email-confirmed.constant';
 import { httpRequest } from '../../main/http';
 import { authSetData } from '../../lib/common/auth';
 import { redirect } from '../../main/navigation';
-import { HOME_ROUTE_PATH } from '../home';
+import { HOME_ROUTE_PATH } from './email-confirmed.constant';
 
 export function emailConfirmCheckConfirmed() {
   return async (dispatch) => {
