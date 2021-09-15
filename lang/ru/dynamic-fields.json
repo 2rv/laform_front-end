@@ -14,5 +14,11 @@
     "FIELD_TITLE": "Название цвета",
     "FIELD_PLACEHOLDER": "Введите название цвета",
     "BUTTON_TEXT": "Добавить цвет"
+  },
+  "PROGRAM": {
+    "TITLE": "Программы",
+    "FIELD_TITLE": "Название программы",
+    "FIELD_PLACEHOLDER": "Введите название программы",
+    "BUTTON_TEXT": "Добавить программу"
   }
 }

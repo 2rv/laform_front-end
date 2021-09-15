@@ -14,7 +14,7 @@ export function PriceTd(props) {
       <Case>
         <Price tid={totalPrice} />
         &nbsp;
-        <Valute tid="руб." />
+        <Valute tid="PRODUCT_PRICE.CURRENCY" />
       </Case>
     </Td>
   );

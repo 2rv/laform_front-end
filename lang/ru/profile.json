@@ -8,5 +8,12 @@
   "DELIVERY_ADDRESS": "Адрес доставки",
   "PAYMENT_METHOD": "Способ оплаты",
   "ONLINE": "Онлайн",
-  "OTHER": "Другой"
+  "OTHER": "Другой",
+  "MY_PURCHASES": "Список покупок",
+  "MY_LIKES": "Мои лайки",
+  "MY_COMMENTS": "Мои комментарии",
+  "NOT_HAVE_PURCHASES": "Нету покупок",
+  "NOT_HAVE_LIKES": "Нету лайков",
+  "NOT_HAVE_COMMENTS": "Нету комментариев",
+  "SHOW_ALL": "Посмотреть все..."
 }

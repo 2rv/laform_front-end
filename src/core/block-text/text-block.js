@@ -19,7 +19,7 @@ export function TextBlock(props) {
           &nbsp;
           <Button
             onClick={() => setMore(!more)}
-            tid={more ? 'Читать дальше' : 'Закрыть'}
+            tid={more ? 'BLOCK_TEXT.READ_MORE' : 'BLOCK_TEXT.CLOSE'}
           />
         </>
       )}

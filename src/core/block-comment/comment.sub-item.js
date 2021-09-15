@@ -19,7 +19,7 @@ export function SubComment(props) {
     <List>
       <ButtonText
         onClick={() => setView(!view)}
-        tid={view ? 'Закрыть' : 'Открыть'}
+        tid={view ? 'COMMENTS.CLOSE' : 'COMMENTS.OPEN'}
       />
       {view &&
         subComment.map((data, index) => {
