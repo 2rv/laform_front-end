@@ -4,10 +4,10 @@ import { TitlePrimary } from '../../lib/element/title';
 import { FieldSelect } from 'src/lib/element/field';
 
 const PRODUCTS_TYPE = [
-  { id: 0, tid: 'Добавить подборку', hidden: true },
-  { id: 1, tid: 'Товар' },
-  { id: 2, tid: 'Мастер-класс' },
-  { id: 3, tid: 'Полезную статью' },
+  { id: 0, tid: 'COMPILATION.SELECT.TITLE', hidden: true },
+  { id: 1, tid: 'COMPILATION.SELECT.PRODUCT' },
+  { id: 2, tid: 'COMPILATION.SELECT.MASTER_CLASS' },
+  { id: 3, tid: 'COMPILATION.SELECT.ARTICLE' },
 ];
 
 export function EditCompilationComponent(props) {
@@ -21,27 +21,27 @@ export function EditCompilationComponent(props) {
 
   return (
     <SectionLayout>
-      <TitlePrimary tid="ПОДБОРКИ" />
+      <TitlePrimary tid="COMPILATION.TITLE" />
       <EditCompilationListComponent
-        title="Лучшие товары"
+        title="COMPILATION.SUB_MENU.BEST_GOODS"
         compilationName="sewing-product"
         items={bestProducts}
         currentLang={currentLang}
       />
       <EditCompilationListComponent
-        title="Лучшие мастер-классы"
+        title="COMPILATION.SUB_MENU.BEST_MASTER_CLASSES"
         compilationName="master-class"
         items={bestMasterClasses}
         currentLang={currentLang}
       />
       <EditCompilationListComponent
-        title="Лучшие полезные статьи"
+        title="COMPILATION.SUB_MENU.BEST_ARTICLES"
         compilationName="post"
         items={bestArticles}
         currentLang={currentLang}
       />
       <FieldSelect
-        titleTid="Добавить подборку"
+        titleTid="COMPILATION.SELECT.TITLE"
         value="addCompilation"
         options={PRODUCTS_TYPE}
         onChange={fetchProductsToSelectBestCompilation}

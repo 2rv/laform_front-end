@@ -64,7 +64,7 @@ export function CommentComponent(props) {
   return (
     <SectionLayout>
       {createPending && <LoaderPrimary />}
-      <TitlePrimary tid="Отзывы" />
+      <TitlePrimary tid="COMMENTS.REVIEWS" />
       {uploadPending ? (
         <SpinnerCase>
           <Spinner />
@@ -90,16 +90,16 @@ export function CommentComponent(props) {
       {Boolean(user !== null) && (
         <SectionLayout type="SMALL">
           <HeaderCase>
-            <Title tid="Написать отзыв" />
+            <Title tid="COMMENTS.WRITE_REVIEW" />
             {Boolean(subUser) && (
               <Line>
                 <div>
-                  <LightText tid="Ответить пользователю -" />
+                  <LightText tid="COMMENTS.REPLY_USER -" />
                   &nbsp;
                   <SubTitle tid={subUser?.user?.login} />
                 </div>
                 &nbsp;
-                <CancelButton tid="Отменить" onClick={cancelReplying} />
+                <CancelButton tid="COMMENTS.CANCEL" onClick={cancelReplying} />
               </Line>
             )}
           </HeaderCase>
@@ -111,18 +111,18 @@ export function CommentComponent(props) {
               onKeyDown={onSubmitEnter}
               value={value}
               maxHeight={200}
-              placeholderTid="Введите свой отзыв"
+              placeholderTid="COMMENTS.WRITE_YOUR_REVIEW"
             />
-              <TextareaActionButtons>
-                {Boolean(editComment.id) && (
-                  <Button onClick={cancelEditing}>
-                    <CancelIcon />
-                  </Button>
-                )}
-                <Button onClick={onSubmit} disabled={uploadPending || createPending}>
-                  <SendIcon />
+            <TextareaActionButtons>
+              {Boolean(editComment.id) && (
+                <Button onClick={cancelEditing}>
+                  <CancelIcon />
                 </Button>
-              </TextareaActionButtons>
+              )}
+              <Button onClick={onSubmit} disabled={uploadPending || createPending}>
+                <SendIcon />
+              </Button>
+            </TextareaActionButtons>
           </Content>
         </SectionLayout>
       )}

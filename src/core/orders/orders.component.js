@@ -7,7 +7,7 @@ export function OrdersComponent(props) {
   const { activeTab, setActiveTab, tabItems, headersTable, itemsTable } = props;
   return (
     <SectionLayout>
-      <TitlePrimary tid="Заказы" />
+      <TitlePrimary tid="ORDERS.ORDERS" />
       <FilterTabs
         activeTab={activeTab}
         setActiveTab={setActiveTab}

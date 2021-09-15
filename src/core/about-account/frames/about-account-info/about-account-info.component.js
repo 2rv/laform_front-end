@@ -17,33 +17,33 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
         </LineCase>
       )}
       <SectionLayout type="SMALL">
-        <TitlePrimary tid="Об аккаунте" />
+        <TitlePrimary tid="PROFILE.ABOUT_ACCOUNT" />
         <LineSection>
           <SectionLayout type="TEXT">
-            <InfoTitle tid="Дата регистрации" />
+            <InfoTitle tid="PROFILE.DATE_OF_REGISTRATION" />
             <InfoText tid={moment(user.createdDate).format('MMMM DD, YYYY')} />
           </SectionLayout>
           <SectionLayout type="TEXT">
-            <InfoTitle tid="Статус" />
+            <InfoTitle tid="PROFILE.STATUS" />
             <StatusInfo
               status={user.emailConfirmed}
-              tid={user.emailConfirmed ? 'Верефицирован' : 'Не верефицирован'}
+              tid={user.emailConfirmed ? 'PROFILE.VERIFIED' : 'PROFILE.NOT_VERIFIED'}
             />
           </SectionLayout>
         </LineSection>
       </SectionLayout>
       <SectionLayout type="SMALL">
-        <TitlePrimary tid="Доставка и оплата" />
+        <TitlePrimary tid="PROFILE.SHIPPING_AND_PAYMENT" />
         <LineSection>
           {user?.userInfo?.location && (
             <SectionLayout type="TEXT">
-              <InfoTitle tid="Адрес доставки" />
+              <InfoTitle tid="PROFILE.DELIVERY_ADDRESS" />
               <InfoText tid={user?.userInfo?.location} />
             </SectionLayout>
           )}
           <SectionLayout type="TEXT">
-            <InfoTitle tid="Способ оплаты" />
-            <InfoText tid={user?.userInfo?.paymentType === 1 ? 'Онлайн' : 'Другой'} />
+            <InfoTitle tid="PROFILE.PAYMENT_METHOD" />
+            <InfoText tid={user?.userInfo?.paymentType === 1 ? 'PROFILE.ONLINE' : 'PROFILE.OTHER'} />
           </SectionLayout>
         </LineSection>
       </SectionLayout>

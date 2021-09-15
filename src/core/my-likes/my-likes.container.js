@@ -41,12 +41,12 @@ export function MyLikesContainer() {
 }
 
 const tabItems = [
-  { name: 'Все', type: 9 },
-  { name: 'Товары для шитья', type: 3 },
-  { name: 'Мастер-классы', type: 0 },
-  { name: 'Выкройки печатные', type: 1 },
-  { name: 'Выкройки электронные', type: 2 },
-  { name: 'Статьи', type: 4 },
+  { name: 'FAVORITES.TABLE.HEADER.ALL', type: 9 },
+  { name: 'FAVORITES.TABLE.HEADER.SEWING_GOODS', type: 3 },
+  { name: 'FAVORITES.TABLE.HEADER.MASTER_CLASSES', type: 0 },
+  { name: 'FAVORITES.TABLE.HEADER.PATTERNS_PRINTED', type: 1 },
+  { name: 'FAVORITES.TABLE.HEADER.PATTERNS_ELECTRONIC', type: 2 },
+  { name: 'FAVORITES.TABLE.HEADER.ARTICLES', type: 4 },
 ];
 
 const testMixedListItems = [

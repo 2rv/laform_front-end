@@ -38,11 +38,11 @@ export function RecomendationComponent(props) {
 
   return (
     <SectionLayout type="SMALL">
-      <Title tid="Рекомендации" />
+      <Title tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE" />
 
       <FieldLayout type="double" adaptive>
         <ButtonSecondary
-          tid="Добавить рекомендации"
+          tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.ADD_RECOMENDATIONS"
           onClick={() => setModal(true)}
         />
       </FieldLayout>
@@ -53,7 +53,7 @@ export function RecomendationComponent(props) {
         <Case>
           <Wrapper type="SMALL">
             <HeaderCase>
-              <TitlePrimary tid="Выбор рекомедаций" />
+              <TitlePrimary tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.SELECT_RECOMENDATION" />
               <ButtonIcon onClick={() => setModal(false)}>
                 <CancelIcon />
               </ButtonIcon>
@@ -64,7 +64,7 @@ export function RecomendationComponent(props) {
               setActiveTab={setActiveTab}
             />
             <FormFilter
-              findPlaceholderTid="Найти товар"
+              findPlaceholderTid="ARTICLE_CREATE_FORM.RECOMENDATIONS.SEARCH_PRODUCT"
               filterOptions={filterOptions}
               filterSelectName={filterSelectName}
               findFieldName={findFieldName}

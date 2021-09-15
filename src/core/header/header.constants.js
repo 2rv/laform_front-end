@@ -5,7 +5,7 @@ import { ARTICLES_ROUTE_PATH } from '../articles';
 import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
 
 export const NAV_MENU_ITEMS = [
-  { name: 'HEADER.MENU_ITEMS.PATTERNS', path: PATTERNS_ROUTE_PATH },
+  { name: 'HEADER.MENU_ITEMS.PATTERNS', path: PATTERNS_ROUTE_PATH + '/all' },
   { name: 'HEADER.MENU_ITEMS.SEWING_GOODS', path: SEWING_GOODS_ROUTE_PATH },
   { name: 'HEADER.MENU_ITEMS.MASTER_CLASSES', path: MASTER_CLASSES_ROUTE_PATH },
   { name: 'HEADER.MENU_ITEMS.ARTICLES', path: ARTICLES_ROUTE_PATH },
