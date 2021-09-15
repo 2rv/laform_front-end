@@ -2,8 +2,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
-import { redirect } from '../../main/navigation/navigation.core';
-import { HTTP_ERROR_ROUTER } from '../../main/http';
+import { ABOUT_ACCOUNT_STORE_NAME } from './about-account.constant';
+import { AboutAccountComponent } from './about-account.component';
+
+import {
+  userLoadData,
+  purchasesLoadData,
+  likesLoadData,
+  commentsLoadData,
+} from './about-account.action';
+
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -11,9 +19,6 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { aboutAccountLoadData, likesLoadData } from './about-account.action';
-import { AboutAccountComponent } from './about-account.component';
-import { ABOUT_ACCOUNT_STORE_NAME } from './about-account.constant';
 
 export function AboutAccountContainer() {
   const dispatch = useDispatch();
@@ -23,18 +28,29 @@ export function AboutAccountContainer() {
     user: state[AUTH_STORE_NAME].user,
   }));
 
+  const isNormalUser = user?.role === USER_ROLE.USER;
+
   useEffect(() => {
-    // dispatch(aboutAccountLoadData());
-    // dispatch(likesLoadData());
+    dispatch(userLoadData());
+    dispatch(commentsLoadData());
+    if (isNormalUser) {
+      dispatch(purchasesLoadData());
+      dispatch(likesLoadData());
+    }
   }, []);
 
   return (
     <AboutAccountComponent
+      isUserPending={isRequestPending(state.user)}
+      user={getRequestData(state.user)}
+      isNormalUser={isNormalUser}
+      isPurchasesPending={isRequestPending(state.purchases)}
+      purchases={getRequestData(state.purchases, [])}
       isLikesPending={isRequestPending(state.likes)}
       likes={getRequestData(state.likes, [])}
+      isCommentsPending={isRequestPending(state.comments)}
+      comments={getRequestData(state.comments, [])}
       pageLoading={pageLoading}
-      orderItems={orderItems}
-      commentItems={commentItems}
     />
   );
 }
@@ -100,32 +116,5 @@ const likeItems = [
     image:
       'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
     params: [{ name: 'Категория', value: 'Верхняя одежда' }],
-  },
-];
-const commentItems = [
-  {
-    name: 'Батист Макс Мара Горохи',
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-    comment: {
-      id: 1,
-      text: `Подходит для пальтово-костюмной группы тканей.
-		Очень удгобная и хорошая вещь, спасибо! Хотелось`,
-    },
-  },
-  {
-    name: 'Батист Макс Мара Горохи',
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-    comment: {
-      id: 1,
-      text: `Подходит для пальтово-костюмной группы тканей.
-		Очень удгобная и хорошая вещь, спасиодходит для пальтово-костюмной группы тканей.
-		Очень удгобная и хорошая вещь, спасибо! Хотелосодходит для пальтово-костюмной группы тканей.
-		Очень удгобная и хорошая вещь, спасибо! Хотелосодходит для пальтово-костюмной группы тканей.
-		Очень удгобная и хорошая вещь, спасибо! Хотелосодходит для пальтово-костюмной группы тканей.
-		Очень удгобная и хорошая вещь, спасибо! Хотелосодходит для пальтово-костюмной группы тканей.
-		Очень удгобная и хорошая вещь, спасибо! Хотелосбо! Хотелось`,
-    },
   },
 ];

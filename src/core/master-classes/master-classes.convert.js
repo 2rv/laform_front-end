@@ -1,12 +1,13 @@
 export const performMasterClassData = (rowData) => {
-  console.log(rowData);
+  //   console.log(rowData);
   return rowData.map((item) => {
     return {
       id: item.id,
       name: item.titleRu,
       image: item.images[0]?.fileUrl,
-      type: item.type.id,
+      type: item.type || 0,
       bestseller: item.modifier,
+      categories: item.categories,
       price: {
         min: checkMinPrice(item?.programs, 'price'),
         discount: item.discount,

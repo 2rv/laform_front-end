@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
-import { TitlePrimary } from '../../../../lib/element/title';
+import { TextCurrency, TextSecondary } from '../../../../lib/element/text';
 import { SectionLayout } from '../../../../lib/element/layout';
 export function ProductPriceComponent(props) {
   const {
@@ -13,30 +12,30 @@ export function ProductPriceComponent(props) {
   return (
     <Container>
       <SectionLayout type="TEXT">
-        <Text tid="Цена со скидкой" />
+        <Text tid="PRODUCT_PRICE.DISCOUNT_PRICE" />
         <div>
-          <Price tid={discountPrice} />
+          <Price price={discountPrice} />
           &nbsp;
-          <TextLight tid={'руб.'} />
+          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
           &nbsp;
           {discount && <TextColored tid={`-${discount}%`} />}
         </div>
       </SectionLayout>
       <SectionLayout type="TEXT">
-        <Text tid="Цена за доставку" />
+        <Text tid="PRODUCT_PRICE.DELIVERY_PRICE" />
         <div>
-          <Price tid={diliveryPrice} />
+          <Price price={diliveryPrice} />
           &nbsp;
-          <TextLight tid={'руб.'} />
+          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
         </div>
       </SectionLayout>
       <VerticalDivider />
       <SectionLayout type="TEXT">
-        <Text tid="Итоговая цена заказа" />
+        <Text tid="PRODUCT_PRICE.TOTAL_ORDER_PRICE" />
         <div>
-          <TitlePrimary tid={price} />
+          <TitlePrice price={price} />
           &nbsp;
-          <TextLight tid={'руб.'} />
+          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
         </div>
       </SectionLayout>
     </Container>
@@ -54,9 +53,12 @@ const VerticalDivider = styled.div`
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;
-const Price = styled(TextPrimary)`
+const Price = styled(TextCurrency)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
+const TitlePrice = styled(TextCurrency)`
+  font-size: ${THEME_SIZE.FONT.LARGE};
 `;
 const TextLight = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};

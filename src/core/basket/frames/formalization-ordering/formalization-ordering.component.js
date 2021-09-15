@@ -6,7 +6,7 @@ import { BasicField, FieldSelect } from 'src/lib/element/field';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { TitlePrimary } from 'src/lib/element/title';
-import { TextSecondary } from '../../../../lib/element/text';
+import { TextSecondary, TextCurrency } from '../../../../lib/element/text';
 import {
   ButtonPrimary,
   ButtonSecondary,
@@ -185,7 +185,7 @@ export function FormalizationOrderingComponent(props) {
                     }
                   />
                   <div>
-                    <TextDark>{cartPriceWithoutShipping}</TextDark>&nbsp;
+                    <TextDark price={cartPriceWithoutShipping} />&nbsp;
                     <TextPrimary tid="OTHER.VALUTE" />
                     .&nbsp;
                     {discount && <TextDiscount>{`-${discount}%`}</TextDiscount>}
@@ -194,7 +194,7 @@ export function FormalizationOrderingComponent(props) {
                 <FooterInfoContent>
                   <TextPrimary tid="BASKET.FORM.FOOTER.SHIPPING_PRICE" />
                   <div>
-                    <TextDark>{shippingPrice}</TextDark>&nbsp;
+                    <TextDark price={shippingPrice} />&nbsp;
                     <TextPrimary tid="OTHER.VALUTE" />.
                   </div>
                 </FooterInfoContent>
@@ -202,9 +202,7 @@ export function FormalizationOrderingComponent(props) {
                 <FooterInfoContent>
                   <TextPrimary tid="BASKET.FORM.FOOTER.TOTAL_ORDER_PRICE" />
                   <div>
-                    <TextDark fontSize={THEME_SIZE.FONT.LARGE}>
-                      {cartPrice}
-                    </TextDark>
+                    <TextDark price={cartPrice} fontSize={THEME_SIZE.FONT.LARGE} />
                     &nbsp;
                     <TextPrimary tid="OTHER.VALUTE" />.
                   </div>
@@ -242,7 +240,7 @@ const TextPrimary = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;
 
-const TextDark = styled(TextSecondary)`
+const TextDark = styled(TextCurrency)`
   line-height: 24px;
   font-size: ${(props) => props.fontSize ?? THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};

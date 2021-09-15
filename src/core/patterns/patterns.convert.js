@@ -1,17 +1,18 @@
 export const performPatternsData = (rowData) => {
-  console.log(rowData);
+  //   console.log(rowData);
   return rowData.map((item) => {
     return {
       id: item.id,
       name: item.titleRu,
       image: item.images?.[0]?.fileUrl,
-      type: item.type.id,
+      type: item.type,
       bestseller: item.modifier,
       complexity: item.complexity,
+      categories: item.categories,
       price: {
-        min: item?.price || checkMinPrice(item?.sizes, 'size'),
+        min: item?.price || checkMinPrice(item?.sizes, 'price'),
         discount: item.discount,
-        max: item?.price ? null : checkMaxPrice(item?.sizes, 'size'),
+        max: item?.price ? null : checkMaxPrice(item?.sizes, 'price'),
       },
     };
   });

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -12,28 +13,49 @@ import {
   filterByType,
   sorterItemsByParams,
 } from '../../lib/common/filter-list-card';
-import { patternsUploadData } from './patterns.action';
+import { patternsUploadData, patternsUpdateData } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
 import { PatternsComponent } from './patterns.component';
 import { PATTERNS_FIELD_NAME } from './patterns.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
+import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 
 export function PatternsContainer() {
+  const { query, push } = useRouter();
   const dispatch = useDispatch();
-  const { patternsState, pageLoading, currentLang } = useSelector((state) => ({
+  const { patternsState, pageLoading, currentLang, user } = useSelector((state) => ({
     patternsState: state[PATTERNS_STORE_NAME].patternsState,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    user: state[AUTH_STORE_NAME].user,
   }));
+  const [activeTab, setActiveTab] = useState(
+    query.patternCategory === 'all'
+    ? 9 : query.patternCategory === 'printed'
+    ? 2 : query.patternCategory === 'electronic' ? 1 : 0
+  );
 
-  useEffect(() => dispatch(patternsUploadData(currentLang)), []);
+  useEffect(() => {
+    dispatch(patternsUploadData(currentLang));
+
+    if (activeTab === 9) {
+      push('/patterns/all', undefined, { shallow: true });
+    } else if (activeTab === 2) {
+      push('/patterns/printed', undefined, { shallow: true });
+    } else if (activeTab === 1) {
+      push('/patterns/electronic', undefined, { shallow: true });
+    }
+  }, [activeTab]);
   const filterInitialValue = () => ({
     [PATTERNS_FIELD_NAME.FILTER]: 0,
     [PATTERNS_FIELD_NAME.FIND]: '',
   });
   //---------------------------------------------------
-  const [activeTab, setActiveTab] = useState(9);
   const [filter, setFilter] = useState(filterInitialValue());
+
+  const onDeleteProduct = (id, body) => {
+    dispatch(patternsUpdateData(currentLang, id, body));
+  };
 
   return (
     <PatternsComponent
@@ -61,6 +83,8 @@ export function PatternsContainer() {
       isError={isRequestError(patternsState)}
       isSuccess={isRequestSuccess(patternsState)}
       errorMessage={getRequestErrorMessage(patternsState)}
+      onDeleteProduct={onDeleteProduct}
+      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
     />
   );
 }

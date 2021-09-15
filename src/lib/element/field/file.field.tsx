@@ -19,6 +19,7 @@ export function FileField(props: FilefieldPropsType) {
 
     onChange,
     onBlur,
+    ...restProps
   } = props;
 
   return (
@@ -27,6 +28,7 @@ export function FileField(props: FilefieldPropsType) {
       <Content error={!!error}>
         {placeholderTid && <Text tid={placeholderTid} />}
         <Input
+          {...restProps}
           disabled={disabled}
           onChange={onChange}
           onBlur={onBlur}

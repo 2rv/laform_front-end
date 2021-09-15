@@ -3,10 +3,14 @@ import { SectionLayout } from '../../lib/element/layout';
 import { LoaderPrimary } from '../../lib/element/loader';
 import { TableList } from '../block-table-list';
 import { Pagination } from './frame/pagination';
+import { Spinner } from 'src/lib/element/spinner';
+import { TextSecondary } from 'src/lib/element/text';
+import { redirect } from 'src/main/navigation';
 
 export function OrdersListComponent(props) {
   const {
     pageLoading,
+    isPending,
     headersTable,
     products,
     totalPages,
@@ -14,13 +18,27 @@ export function OrdersListComponent(props) {
     currentPage,
   } = props;
 
+  const redirectToPurchasePage = (productName, productId) => {
+    redirect(`${productName}/${productId}`);
+  };
+
   return (
     <>
       {pageLoading && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Список заказов" />
-        <TableList items={products} headers={headersTable} />
-        <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <TitlePrimary tid="ORDERS.TITLE" />
+        {isPending ? (
+          <Spinner />
+        ) : (
+          Boolean(products?.length > 0) ? (
+            <>
+              <TableList items={products} headers={headersTable} onClick={redirectToPurchasePage} cursorPointer={true} />
+              <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            </>
+          ) : (
+            <TextSecondary tid="ORDERS.LIST_IS_EMPTY" />
+          )
+        )}
       </SectionLayout>
     </>
   );

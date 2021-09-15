@@ -24,6 +24,7 @@ export function HeaderComponent(props) {
         <HeaderLogoComponent
           activePath={activePath}
           isAuth={isAuth}
+          userName={userName}
           currentLang={currentLang}
           isMobile={isMobile}
         />
@@ -58,7 +59,7 @@ const Container = styled.div`
 const HeaderLogoCase = styled.div`
   display: flex;
   height: 100px;
-  padding: ${spacing(3)};
+  padding: 0 ${spacing(3)};
   justify-content: center;
   @media screen and (max-width: 720px) {
     height: 50px;
@@ -67,7 +68,7 @@ const HeaderLogoCase = styled.div`
 const HeaderMenuCase = styled.div`
   display: flex;
   height: 80px;
-  padding: ${spacing(3)};
+  padding: 0 ${spacing(3)};
   justify-content: center;
   background-color: ${THEME_COLOR.GRAY};
   @media screen and (max-width: 720px) {

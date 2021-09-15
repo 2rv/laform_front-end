@@ -9,12 +9,18 @@ import { LinkPrimary } from '../link';
 import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-product';
 
 export function CardSewingGoods(props) {
+  const { onSetCart, onSetLike, onSetSelect, onDeleteProduct, isAdmin } = props;
   const {
     id,
+    type,
+
+    selected,
+    cart,
+    purchase,
+    like,
+
     image = null,
     name = null,
-    select = false,
-    like = false,
     bestseller = false,
     price = { min: null, discount: null, max: null },
   } = props.data;
@@ -36,7 +42,19 @@ export function CardSewingGoods(props) {
           discount={price?.discount}
         />
       </Content>
-      <CardActions select={select} like={like} />
+      <CardActions
+        id={id}
+        type={type}
+        like={like}
+        selected={selected}
+        purchase={purchase}
+        cart={cart}
+        onSetCart={onSetCart}
+        onSetLike={onSetLike}
+        onSetSelect={onSetSelect}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </Container>
   );
 }

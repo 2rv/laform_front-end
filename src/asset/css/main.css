@@ -504,8 +504,7 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 * {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-family: 'Golos Text';
   letter-spacing: 0.01em;
 }
 .default.text,
@@ -537,7 +536,7 @@ body {
 
 body,
 * {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Golos Text';
 }
 img {
   max-width: 100%;
@@ -557,4 +556,30 @@ select:-webkit-autofill:hover,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: inherit;
+}
+
+/* editor styles */
+.ce-block__content h1 {
+  font-size: 2em;
+}
+.ce-block__content h2 {
+  font-size: 1.5em;
+}
+.ce-block__content h3 {
+  font-size: 1.17em;
+}
+.ce-block__content h4 {
+  font-size: 1em;
+}
+.ce-block__content h5 {
+  font-size: 0.83em;
+}
+.ce-block__content h6 {
+  font-size: 0.67em;
+}
+.ce-toolbar__content {
+  max-width: 1000px;
+}
+.ce-block__content {
+  max-width: 1000px;
 }

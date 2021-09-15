@@ -66,7 +66,7 @@ export function AboutOrderFormComponent(props) {
               value={values[statusSelectName]}
               onChange={handleChange}
             />
-            <ButtonSecondary tid="Сохранить данные" />
+            <ButtonSecondary type="submit" tid="Сохранить данные" />
           </FieldLayout>
         </SectionLayout>
       </SectionLayout>

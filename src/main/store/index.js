@@ -66,18 +66,6 @@ import {
   editCompilationStore,
   EDIT_COMPILATION_STORE_NAME,
 } from '../../core/edit-compilation';
-import {
-  createProductStore,
-  CREATE_PRODUCT_STORE_NAME,
-} from '../../core/create-product';
-import {
-  createArticleStore,
-  CREATE_ARTICLE_STORE_NAME,
-} from '../../core/create-article';
-import {
-  compilationStore,
-  COMPILATION_STORE_NAME,
-} from '../../core/compilation';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import { articlesStore, ARTICLES_STORE_NAME } from '../../core/articles';
 import {
@@ -139,13 +127,51 @@ import {
   usersOrderStore,
   USERS_ORDER_STORE_NAME,
 } from '../../core/users-order';
-
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
+import {
+  createMasterClassStore,
+  CREATE_MASTER_CLASS_STORE_NAME,
+} from '../../core/master-class-create';
+import {
+  recomendationStore,
+  RECOMENDATION_STORE_NAME,
+} from '../../core/block-recomendation';
+import {
+  createElectronicPatternStore,
+  ELECTRONIC_PATTERN_STORE_NAME,
+} from '../../core/patterns-create-electronic';
+import {
+  createPrintPatternStore,
+  CREATE_PRINT_PATTERN_STORE_NAME,
+} from '../../core/patterns-create-print';
+import {
+  createSewingGoodsStore,
+  CREATE_SEWING_GOODS_STORE_NAME,
+} from '../../core/sewing-goods-create';
+import {
+  createArticleStore,
+  CREATE_ARTICLE_STORE_NAME,
+} from '../../core/article-create';
+import {
+  createNotificationStore,
+  CREATE_NOTIFICATION_STORE_NAME,
+} from '../../core/create-notification';
+import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
+import {
+  emailConfirmedStore,
+  EMAIL_CONFIRMED_STORE_NAME,
+} from '../../core/email-confirmed';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
+  [COMMENT_STORE_NAME]: commentStore,
+  [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
+  [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
+  [CREATE_PRINT_PATTERN_STORE_NAME]: createPrintPatternStore,
+  [ELECTRONIC_PATTERN_STORE_NAME]: createElectronicPatternStore,
+  [RECOMENDATION_STORE_NAME]: recomendationStore,
+  [CREATE_MASTER_CLASS_STORE_NAME]: createMasterClassStore,
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME]:
     authVerificateEmailRecoveryAccountStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
@@ -158,8 +184,6 @@ export const reducers = combineReducers({
   [PATTERNS_PRODUCT_STORE_NAME]: patternsProductStore,
   [ARTICLES_STORE_NAME]: articlesStore,
   [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
-  [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
-  [CREATE_PRODUCT_STORE_NAME]: createProductStore,
   [AUTH_STORE_NAME]: authStore,
   [LANG_STORE_NAME]: langStore,
   [NAVIGATION_STORE_NAME]: navigationStore,
@@ -182,7 +206,6 @@ export const reducers = combineReducers({
   [MY_LIKES_STORE_NAME]: myLikesStore,
   [FAQ_PAGE_STORE_NAME]: faqPageStore,
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
-  [COMPILATION_STORE_NAME]: compilationStore,
   [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
@@ -193,6 +216,8 @@ export const reducers = combineReducers({
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [ORDERS_LIST_STORE_NAME]: ordersListStore,
   [USERS_ORDER_STORE_NAME]: usersOrderStore,
+  [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
+  [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
 });
 
 export { initStore } from './store.core';

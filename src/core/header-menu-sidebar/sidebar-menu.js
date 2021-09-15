@@ -1,14 +1,15 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { TextPrimary } from '../../lib/element/text';
-import { spacing, THEME_SIZE } from '../../lib/theme';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SidebarMenuListItem } from './sidebar-menu-list-item';
+import { NAVIGATION_MENU } from './sidebar-menu.constant';
 
 export function SidebarMenu(props) {
   const { items, setOpen, isOpen } = props;
   return (
-    <Container toggle={isOpen}>
+    <Container open={isOpen}>
       <Content>
-        {navMenu.map((data, index) => (
+        {NAVIGATION_MENU.map((data, index) => (
           <SidebarMenuListItem key={index} data={data} />
         ))}
       </Content>
@@ -16,150 +17,29 @@ export function SidebarMenu(props) {
   );
 }
 
-const navMenu = [
-  { title: 'Главная', pathname: '/' },
-  {
-    title: 'Auth',
-    items: [
-      { title: 'регистрация', pathname: '/signup' },
-      { title: 'авторизация', pathname: '/login' },
-      { title: 'сменить пароль', pathname: '/auth/change-password' },
-      { title: 'восстановить аккаунт', pathname: '/auth/recovery-account' },
-      {
-        title: 'Отправить код на почту',
-        pathname: '/auth/verificate-email',
-      },
-      {
-        title: 'Почта подтверждена',
-        pathname: '/auth/verificate-email/confirm',
-      },
-    ],
-  },
-  {
-    title: 'Админка',
-    items: [
-      { title: 'Промокоды', pathname: '/promocodes' },
-      { title: 'Список слайдов', pathname: '/slider-list' },
-      { title: 'Редактировать слайд', pathname: '/slider/edit-slider/new' },
-      { title: 'Рекомендации', pathname: '/compilation ' },
-      { title: 'Создание товара', pathname: '/create-product' },
-      { title: 'Создание статьи', pathname: '/create-article' },
-      { title: 'Профиль пользователя', pathname: '/profile' },
-    ],
-  },
-  {
-    title: 'Разное',
-    items: [
-      { title: 'Ошибка', pathname: '/error' },
-      { title: 'Помощь', pathname: '/faq' },
-      { title: 'Настройки', pathname: '/settings' },
-      { title: 'Корзина', pathname: '/basket' },
-      {
-        title: 'Товар',
-        items: [
-          { title: 'Мои лайки', pathname: '/favorites' },
-          { title: 'Мои покупки', pathname: '/purchases-history' },
-          { title: 'Мои заказы', pathname: '/orders' },
-          { title: 'Заказ', pathname: '/order/1' },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Статьи',
-    items: [
-      { title: 'Все статьи', pathname: '/article' },
-      { title: 'Статья', pathname: '/article/1' },
-    ],
-  },
-  {
-    title: 'Мастер-классы',
-    items: [
-      { title: 'Все мастер-классы', pathname: '/master-class' },
-      { title: 'Мастер-класс', pathname: '/master-class/1' },
-      { title: 'Купленный мастер-класс', pathname: '/master-class-page' },
-    ],
-  },
-  {
-    title: 'Выкройки',
-    items: [
-      { title: 'Все выкройки', pathname: '/patterns' },
-      { title: 'Выкройка', pathname: '/patterns/1' },
-      { title: 'Купленная выкройка', pathname: '/patterns-page' },
-    ],
-  },
-  {
-    title: 'Товары для шитья',
-    items: [
-      { title: 'Все товары', pathname: '/sewing-goods' },
-      { title: 'Товар для шитья', pathname: '/sewing-goods/1' },
-      { title: 'Купленный товар для шитья', pathname: '/sewing-goods-page' },
-    ],
-  },
-];
-
-// const test = [
-//   {
-//     title: 'Название',
-//     items: [
-//       { title: 'Под название', pathname: 'путь обязателен' },
-//       {
-//         title: 'Под под название',
-//         pathname: 'путь обязателен',
-//       },
-//       {
-//         title: 'Под под название',
-//         items: [{ tid: 'Под под под название', pathname: 'путь обязателен' }],
-//       },
-//     ],
-//   },
-// ];
-
-const Text = styled(TextPrimary)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-`;
-const Case = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-const ItemContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing(2)};
-`;
 const Content = styled.div`
   display: flex;
-  min-height: 0;
   flex-direction: column;
-  padding: ${spacing(3)};
   gap: ${spacing(2)};
-  height: 100%;
-  flex: 1;
   overflow: auto;
-  min-height: max-content;
-  box-sizing: border-box;
-  padding-bottom: 200px;
+  padding: ${spacing(3)};
+  max-height: 100%;
 `;
-
 const Container = styled.div`
-  position: fixed;
-  top: 180px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
+  position: absolute;
   width: 350px;
-  min-width: 0;
-  min-height: max-content;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  max-width: ${(p) => (p.open ? `350px` : 0)};
   overflow: hidden;
-  max-width: ${(p) => (p.toggle ? `350px` : 0)};
-  background-color: #fff;
-  z-index: 4;
+  background-color: ${THEME_COLOR.WHITE};
+  z-index: 10;
   transition: 0.4s;
+  /* height: calc(100vh - 180px + ${(p) => p.scroll + 'px'}); */
   @media screen and (max-width: 720px) {
     width: 100vw;
-    max-width: ${(p) => (p.toggle ? `100vw` : 0)};
-    top: 120px;
+    max-width: ${(p) => (p.open ? `100vw` : 0)};
+    /* height: calc(100vh - 120px + ${(p) => p.scroll + 'px'}); */
   }
 `;

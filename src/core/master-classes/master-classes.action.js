@@ -30,3 +30,32 @@ export function masterClassesUploadData(currentLang) {
     }
   };
 }
+
+export function masterClassesUpdateData(currentLang, id, body) {
+  return async (dispatch) => {
+    dispatch({
+      type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: MASTER_CLASSES_API.MASTER_CLASSES_UPDATE.TYPE,
+        url: MASTER_CLASSES_API.MASTER_CLASSES_UPDATE.ENDPOINT(id),
+        data: { masterClass: body },
+      });
+
+      dispatch({
+        type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_SUCCESS,
+      });
+      dispatch(masterClassesUploadData(currentLang));
+    } catch (err) {
+      console.log(err);
+      if (err.response) {
+        dispatch({
+          type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}

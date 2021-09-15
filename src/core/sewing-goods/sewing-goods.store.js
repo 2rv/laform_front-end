@@ -34,6 +34,24 @@ export function sewingGoodsStore(state = initialState, action) {
           action.errorMessage,
         ),
       };
+    case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_PENDING:
+      return {
+        ...state,
+        sewingGoodsState: setRequestPending(state.sewingGoodsState),
+      };
+    case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_SUCCESS:
+      return {
+        ...state,
+        sewingGoodsState: setRequestSuccess(state.sewingGoodsState),
+      };
+    case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_ERROR:
+      return {
+        ...state,
+        sewingGoodsState: setRequestError(
+          state.sewingGoodsState,
+          action.errorMessage,
+        ),
+      };
     default:
       return state;
   }

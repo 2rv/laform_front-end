@@ -18,8 +18,9 @@ export function LangSelect(props) {
       top={20}
       content={(setVisible) => (
         <Container onClick={() => setVisible(false)}>
-          {LANG_SUPPORTED.map((lang) => (
+          {LANG_SUPPORTED.map((lang, index) => (
             <Button
+              key={index}
               tid={`HEADER_LOGO.LANG.${lang}.FULL`}
               onClick={() => dispatch(langUpdateLanguage(lang))}
             />

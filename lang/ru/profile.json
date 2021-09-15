@@ -1,0 +1,12 @@
+{
+  "ABOUT_ACCOUNT": "Об аккаунте",
+  "DATE_OF_REGISTRATION": "Дата регистрации",
+  "STATUS": "Статус",
+  "VERIFIED": "Верифицирован",
+  "NOT_VERIFIED": "Не верифицирован",
+  "SHIPPING_AND_PAYMENT": "Доставка и оплата",
+  "DELIVERY_ADDRESS": "Адрес доставки",
+  "PAYMENT_METHOD": "Способ оплаты",
+  "ONLINE": "Онлайн",
+  "OTHER": "Другой"
+}

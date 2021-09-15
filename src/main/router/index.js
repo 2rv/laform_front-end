@@ -40,18 +40,6 @@ import {
   editCompilationRouter,
   EDIT_COMPILATION_ROUTE_PATH,
 } from '../../core/edit-compilation';
-import {
-  createProductRouter,
-  CREATE_PRODUCT_ROUTE_PATH,
-} from '../../core/create-product';
-import {
-  createArticleRouter,
-  CREATE_ARTICLE_ROUTE_PATH,
-} from '../../core/create-article';
-import {
-  compilationRouter,
-  COMPILATION_ROUTE_PATH,
-} from '../../core/compilation';
 import { basketRouter, BASKET_ROUTE_PATH } from '../../core/basket';
 import {
   aboutAccountRouter,
@@ -102,8 +90,37 @@ import {
   usersOrderRouter,
   USERS_ORDER_ROUTE_PATH,
 } from '../../core/users-order';
+import {
+  createMasterClassRouter,
+  CREATE_MASTER_CLASS_ROUTE_PATH,
+} from '../../core/master-class-create';
+import {
+  createElectronicPatternRouter,
+  ELECTRONIC_PATTERN_ROUTE_PATH,
+} from '../../core/patterns-create-electronic';
+import {
+  createPrintPatternRouter,
+  CREATE_PRINT_PATTERN_ROUTE_PATH,
+} from '../../core/patterns-create-print';
+import {
+  createSewingGoodsRouter,
+  CREATE_SEWING_GOODS_ROUTE_PATH,
+} from '../../core/sewing-goods-create';
+import {
+  createArticleRouter,
+  CREATE_ARTICLE_ROUTE_PATH,
+} from '../../core/article-create';
+import {
+  createNotificationRouter,
+  CREATE_NOTIFICATION_ROUTE_PATH,
+} from '../../core/create-notification';
 
 export const routes = {
+  [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
+  [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
+  [CREATE_PRINT_PATTERN_ROUTE_PATH]: createPrintPatternRouter,
+  [ELECTRONIC_PATTERN_ROUTE_PATH]: createElectronicPatternRouter,
+  [CREATE_MASTER_CLASS_ROUTE_PATH]: createMasterClassRouter,
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH]:
     authVerificateEmailRecoveryAccountRouter,
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
@@ -115,8 +132,6 @@ export const routes = {
   [PATTERNS_ROUTE_PATH]: patternsRouter,
   [PATTERNS_PRODUCT_ROUTE_PATH]: patternsProductRouter,
   [ARTICLES_ROUTE_PATH]: articlesRouter,
-  [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
-  [CREATE_PRODUCT_ROUTE_PATH]: createProductRouter,
   [HOME_ROUTE_PATH]: homeRouter,
   [SIGNUP_ROUTE_PATH]: signupRouter,
   [LOGIN_ROUTE_PATH]: loginRouter,
@@ -130,7 +145,6 @@ export const routes = {
   [MY_LIKES_ROUTE_PATH]: myLikesRouter,
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
-  [COMPILATION_ROUTE_PATH]: compilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
   [ABOUT_ACCOUNT_ROUTE_PATH]: aboutAccountRouter,
   [ORDER_NUMBER_ROUTE_PATH]: orderNumberRouter,
@@ -139,6 +153,7 @@ export const routes = {
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
   [ORDERS_LIST_ROUTE_PATH]: ordersListRouter,
   [USERS_ORDER_ROUTE_PATH]: usersOrderRouter,
+  [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
 };
 
 export const Router = routesInit(routes);

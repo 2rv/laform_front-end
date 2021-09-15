@@ -77,6 +77,7 @@ const TShirtStyledIcon = styled(TShirtIcon)`
           stroke: ${THEME_COLOR.SECONDARY_DARK};
         `
       : css`
+          fill: ${THEME_COLOR.TEXT.LIGHT};
           stroke: ${THEME_COLOR.TEXT.LIGHT};
           fill: ${THEME_COLOR.TEXT.LIGHT};
         `}

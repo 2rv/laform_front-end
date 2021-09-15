@@ -5,4 +5,8 @@ export const MASTER_CLASSES_API = {
     ENDPOINT: (currentLang) => `/master-class/get?lang=${currentLang}`,
     TYPE: 'GET',
   },
+  MASTER_CLASSES_UPDATE: {
+    ENDPOINT: (id) => `/master-class/update/${id}`,
+    TYPE: 'PUT',
+  },
 };

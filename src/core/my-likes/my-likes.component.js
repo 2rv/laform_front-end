@@ -9,18 +9,16 @@ export function MyLikesComponent(props) {
 
   return (
     <SectionLayout>
-      <TitlePrimary tid="Мои лайки" />
-      {listItems ? (
-        <>
-          <FilterTabs
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            tabItems={tabItems}
-          />
-          <BasicCardList items={listItems} type="mixed" />
-        </>
+      <TitlePrimary tid="FAVORITES.TITLE" />
+      <FilterTabs
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        tabItems={tabItems}
+      />
+      {Boolean(listItems.length > 0) ? (
+        <BasicCardList items={listItems} />
       ) : (
-        <TextSecondary tid="В вашем списке лайков ещё ничего нет" />
+        <TextSecondary tid="FAVORITES.LIST_IS_EMPTY" />
       )}
     </SectionLayout>
   );

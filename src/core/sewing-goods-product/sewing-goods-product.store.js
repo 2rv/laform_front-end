@@ -20,7 +20,7 @@ export function sewingGoodsProductStore(state = initialState, action) {
     case SEWING_GOODS_PRODUCT_ACTION_TYPE.SEWING_GOODS_PRODUCT_UPLOAD_SUCCESS:
       return {
         ...state,
-        product: setRequestSuccess(state.product),
+        product: setRequestSuccess(state.product, action.data),
       };
     case SEWING_GOODS_PRODUCT_ACTION_TYPE.SEWING_GOODS_PRODUCT_UPLOAD_ERROR:
       return {

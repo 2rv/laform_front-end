@@ -18,3 +18,8 @@ export interface ModalPopupProps {
   onClose: Function;
   children: React.ReactElement<any | null>;
 }
+
+export interface ModalFullProps {
+  onOpen: boolean;
+  children: React.ReactElement<any | null>;
+}

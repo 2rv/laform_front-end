@@ -23,7 +23,7 @@ export function ArticlesContainer() {
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  //   useEffect(() => dispatch(articlesUploadData(currentLang)), []);
+  useEffect(() => dispatch(articlesUploadData(currentLang)), []);
   //---------------------------------------------------
   const filterInitialValue = () => ({
     [ARTICLES_FIELD_NAME.FILTER]: 0,
@@ -34,7 +34,7 @@ export function ArticlesContainer() {
   return (
     <ArticlesComponent
       listItems={sorterItemsByParams(
-        getRequestData(articlesState, [...testListItems]),
+        getRequestData(articlesState, []),
         filter[ARTICLES_FIELD_NAME.FIND],
         Number(filter[ARTICLES_FIELD_NAME.FILTER]),
       )}

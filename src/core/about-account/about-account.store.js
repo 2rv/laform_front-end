@@ -8,26 +8,43 @@ import {
 import { ABOUT_ACCOUNT_ACTION_TYPE } from './about-account.type';
 
 const initialState = {
-  aboutAccount: initRequestState(),
+  user: initRequestState(),
+  purchases: initRequestState(),
   likes: initRequestState(),
+  comments: initRequestState(),
 };
 
 export function aboutAccountStore(state = initialState, action) {
   switch (action.type) {
-    case ABOUT_ACCOUNT_ACTION_TYPE.ABOUT_ACCOUNT_UPLOAD_PENDING:
+    case ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_PENDING:
       return {
         ...state,
-        aboutAccount: setRequestPending(state.aboutAccount),
+        user: setRequestPending(state.user),
       };
-    case ABOUT_ACCOUNT_ACTION_TYPE.ABOUT_ACCOUNT_UPLOAD_SUCCESS:
+    case ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_SUCCESS:
       return {
         ...state,
-        aboutAccount: setRequestSuccess(state.aboutAccount),
+        user: setRequestSuccess(state.user, action.user),
       };
-    case ABOUT_ACCOUNT_ACTION_TYPE.ABOUT_ACCOUNT_UPLOAD_ERROR:
+    case ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_ERROR:
       return {
         ...state,
-        aboutAccount: setRequestError(state.aboutAccount, action.errorMessage),
+        user: setRequestError(state.user, action.errorMessage),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.PURCHASES_PENDING:
+      return {
+        ...state,
+        purchases: setRequestPending(state.purchases),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.PURCHASES_SUCCESS:
+      return {
+        ...state,
+        purchases: setRequestSuccess(state.purchases, action.purchases),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.PURCHASES_ERROR:
+      return {
+        ...state,
+        purchases: setRequestError(state.purchases, action.errorMessage),
       };
     case ABOUT_ACCOUNT_ACTION_TYPE.LIKES_PENDING:
       return {
@@ -43,6 +60,21 @@ export function aboutAccountStore(state = initialState, action) {
       return {
         ...state,
         likes: setRequestError(state.likes, action.errorMessage),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.COMMENTS_PENDING:
+      return {
+        ...state,
+        comments: setRequestPending(state.comments),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.COMMENTS_SUCCESS:
+      return {
+        ...state,
+        comments: setRequestSuccess(state.comments, action.comments),
+      };
+    case ABOUT_ACCOUNT_ACTION_TYPE.COMMENTS_ERROR:
+      return {
+        ...state,
+        comments: setRequestError(state.comments, action.errorMessage),
       };
     default:
       return state;

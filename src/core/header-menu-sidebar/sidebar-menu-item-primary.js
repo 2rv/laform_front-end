@@ -1,5 +1,5 @@
 import { Divider } from '../../lib/element/divider';
-import { TextPrimary, TextSecondary } from '../../lib/element/text';
+import { TextSecondary } from '../../lib/element/text';
 import { spacing, THEME_SIZE } from '../../lib/theme';
 import styled, { css } from 'styled-components';
 import { ReactComponent as ArrowDown } from '../../asset/svg/arrow-down-solid.svg';
@@ -22,7 +22,7 @@ export function SidebarMenuItemPrimary(props) {
   return (
     <Container>
       <Button onClick={click}>
-        <Secondary tid={title} />
+        <Text tid={title} />
         {items && <Arrow open={isOpen} />}
       </Button>
       <div>
@@ -38,8 +38,10 @@ export function SidebarMenuItemPrimary(props) {
     </Container>
   );
 }
-const Secondary = styled(TextSecondary)`
+const Text = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
+  text-align: start;
+  line-height: 1.5;
 `;
 const Button = styled(ButtonBasic)`
   padding: 0;

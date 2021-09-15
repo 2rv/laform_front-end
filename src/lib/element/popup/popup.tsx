@@ -40,7 +40,7 @@ const PopupContainer = styled.div`
 
 const PopupContent = styled.div<any>`
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   /* transform: translateX(-85%); */
   top: ${(p) => p.top}px;
   right: 0;

@@ -9,7 +9,6 @@ import {
   FieldCheckbox,
   FieldSelect,
 } from '../../../../lib/element/field';
-import { TextSecondary } from '../../../../lib/element/text';
 import { ErrorAlert } from '../../../../lib/element/alert';
 import { SLIDER_EDIT_FIELD_NAME } from '../../slider-edit.type';
 
@@ -60,11 +59,11 @@ export function SliderEditFormComponent(props) {
   return (
     <form onSubmit={handleSubmit}>
       <SectionLayout type="SMALL">
-        <Title tid="Редактирование" />
+        <Title tid="SLIDER.EDIT_SLIDER.EDIT" />
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Основной текст баннера"
-            placeholderTid="Текст на баннере"
+            titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.TEXT"
+            placeholderTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.PLACEHOLDER.TEXT"
             name={titleTextFieldName}
             value={values[titleTextFieldName]}
             onChange={handleChange}
@@ -72,7 +71,7 @@ export function SliderEditFormComponent(props) {
             error={getFieldError(titleTextFieldName)}
           />
           <FieldSelect
-            titleTid="Цвет текста на баннере"
+            titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.TEXT_COLOR"
             name={titleTextColorSelectName}
             options={titleTextColorOptions}
             value={values[titleTextColorSelectName]}
@@ -82,8 +81,8 @@ export function SliderEditFormComponent(props) {
         </FieldLayout>
         <FieldLayout type="double">
           <FieldCheckbox
-            titleTid="Кнопка"
-            labelTid="Будет ли кнопка на баннере?"
+            titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.BUTTON"
+            labelTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.PLACEHOLDER.BUTTON"
             name={isButtonCheckboxName}
             checked={values[isButtonCheckboxName]}
             onClick={() =>
@@ -93,8 +92,8 @@ export function SliderEditFormComponent(props) {
           {values[isButtonCheckboxName] && (
             <>
               <BasicField
-                titleTid="Текст на кнопке"
-                placeholderTid="Текст на кнопке"
+                titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.BUTTON_TEXT"
+                placeholderTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.PLACEHOLDER.BUTTON_TEXT"
                 name={buttonTextFieldName}
                 value={values[buttonTextFieldName]}
                 onChange={handleChange}
@@ -102,7 +101,7 @@ export function SliderEditFormComponent(props) {
                 error={getFieldError(buttonTextFieldName)}
               />
               <FieldSelect
-                titleTid="Цвет кнопки"
+                titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.BUTTON_COLOR"
                 name={buttonColorSelectName}
                 options={buttonColorOptions}
                 value={values[buttonColorSelectName]}
@@ -110,7 +109,7 @@ export function SliderEditFormComponent(props) {
                 onBlur={handleBlur}
               />
               <FieldSelect
-                titleTid="Цвет текста на кнопке"
+                titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.BUTTON_TEXT_COLOR"
                 name={buttonTextColorSelectName}
                 options={buttonTextColorOptions}
                 value={values[buttonTextColorSelectName]}
@@ -122,8 +121,8 @@ export function SliderEditFormComponent(props) {
         </FieldLayout>
         {values[isButtonCheckboxName] && (
           <BasicField
-            titleTid="Ссылка кнопки"
-            placeholderTid="Введите ссылку на страницу"
+            titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.BUTTON_LINK"
+            placeholderTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.PLACEHOLDER.BUTTON_LINK"
             name={buttonPathFieldName}
             value={values[buttonPathFieldName]}
             onChange={handleChange}
@@ -132,10 +131,10 @@ export function SliderEditFormComponent(props) {
           />
         )}
         <FieldLayout type="double" adaptive>
-          <Button tid="Сохранить" type="submit" disabled={isSubmitDisabled()} />
+          <Button tid="SLIDER.EDIT_SLIDER.FORM.BUTTON.SAVE" type="submit" disabled={isSubmitDisabled()} />
           <Button
             altType={true}
-            tid="Удалить слайд"
+            tid="SLIDER.EDIT_SLIDER.FORM.BUTTON.DELETE_SLIDE"
             disabled={isPending}
             onClick={removeSlider}
           />
@@ -153,9 +152,6 @@ const Button = styled(ButtonSecondary)`
       background-color: ${THEME_COLOR.GRAY};
       color: ${THEME_COLOR.SECONDARY_DARK};
     `}
-`;
-const FieldTitle = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.SMALL};
 `;
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};

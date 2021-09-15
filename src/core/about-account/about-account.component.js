@@ -1,56 +1,120 @@
+import React from 'react';
+import moment from 'moment';
 import styled from 'styled-components';
 import { SectionLayout } from '../../lib/element/layout';
 import { LinkSecondary } from '../../lib/element/link';
 import { TitlePrimary } from '../../lib/element/title';
 import { Divider } from '../../lib/element/divider';
-import { THEME_SIZE } from '../../lib/theme';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { TableList } from '../block-table-list';
 import { AboutAccountInfoComponent } from './frames';
 import { TextSecondary } from 'src/lib/element/text';
+import { Spinner } from 'src/lib/element/spinner';
+import { redirect } from 'src/main/navigation';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function AboutAccountComponent(props) {
-  const { orderItems, likes, commentItems } = props;
+  const {
+    isUserPending,
+    user,
+    isNormalUser,
+    pageLoading,
+    isPurchasesPending,
+    purchases,
+    isLikesPending,
+    likes,
+    isCommentsPending,
+    comments,
+  } = props;
+
+  const redirectToProduct = (productName, id) => {
+    redirect(`${productName}/${id}`);
+  };
+
   return (
-    <SectionLayout>
-      <AboutAccountInfoComponent />
-      <SectionLayout type="SMALL">
-        <SectionLayout type="TEXT">
-          <Title tid="Список покупок" />
-          <Divider />
-          {Boolean(orderItems.length) ? (
-            <>
-            <TableList items={orderItems} />
-            <LinkSecondary tid="Посмотреть все..." />
-            </>
-          ) : (
-            <TextSecondary tid="Нету покупок" />
-          )}
-        </SectionLayout>
-      </SectionLayout>
-      <SectionLayout type="SMALL">
-        <SectionLayout type="TEXT">
-          <Title tid="Мои лайки" />
-          <Divider />
-          {Boolean(likes.length) ? (
-            <>
-              <TableList items={likes} />
-              <LinkSecondary tid="Посмотреть все..." />
-            </>
-          ) : (
-            <TextSecondary tid="Нету лайков" />
-          )}
-        </SectionLayout>
-      </SectionLayout>
-      <SectionLayout type="SMALL">
-        <SectionLayout type="TEXT">
+    <>
+      {pageLoading && <LoaderPrimary />}
+      <SectionLayout>
+        <AboutAccountInfoComponent isUserPending={isUserPending} user={user} />
+        {Boolean(isNormalUser) && (
+          <React.Fragment>
+            <SectionLayout type="SMALL">
+              <Title tid="Список покупок" />
+              <Divider />
+              {isPurchasesPending ? (
+                <Spinner />
+              ) : (
+                Boolean(purchases.length) ? (
+                  <>
+                    <TableList items={purchases} onClick={redirectToProduct} cursorPointer={true} />
+                    <LinkSecondary tid="Посмотреть все..." path={'/orders-list'} />
+                  </>
+                ) : (
+                  <TextSecondary tid="Нету покупок" />
+                )
+              )}
+            </SectionLayout>
+            <SectionLayout type="SMALL">
+              <Title tid="Мои лайки" />
+              <Divider />
+              {isLikesPending ? (
+                <Spinner />
+              ) : (
+                Boolean(likes.length) ? (
+                  <>
+                    <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
+                    <LinkSecondary tid="Посмотреть все..." path={'/favorites'} />
+                  </>
+                ) : (
+                  <TextSecondary tid="Нету лайков" />
+                )
+              )}
+            </SectionLayout>
+          </React.Fragment>
+        )}
+        <SectionLayout type="SMALL">
           <Title tid="Мои комментарии" />
           <Divider />
-          {Boolean(commentItems.length) ? <TableList items={commentItems} /> : <TextSecondary tid="Нету комментариев" />}
+          {isCommentsPending ? (
+            <Spinner />
+          ) : (
+            Boolean(comments.length) ? (
+              <CommentContainer>
+                {comments.map((comment) => (
+                  <CommentContent key={comment.id} onClick={() => redirectToProduct(comment.productName, comment.productId)}>
+                    <TextSecondary tid={comment.text} />
+                    <TextSecondary>{moment(comment.createDate).format('MMM DD, YYYY, hh:mm:ss')}</TextSecondary>
+                  </CommentContent>
+                  ))}
+              </CommentContainer>
+            ) : (
+              <TextSecondary tid="Нету комментариев" />
+            )
+          )}
         </SectionLayout>
       </SectionLayout>
-    </SectionLayout>
+    </>
   );
 }
+
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+
+const CommentContainer = styled.div`
+  display: grid;
+  gap: ${spacing(6)};
+`
+
+const CommentContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: ${spacing(4)} 0;
+  &:hover {
+    cursor: pointer;
+    background: ${THEME_COLOR.GRAY};
+    transition: 0.5s;
+  }
 `;

@@ -5,4 +5,8 @@ export const PATTERNS_API = {
     ENDPOINT: (currentLang) => `/pattern-product/get?lang=${currentLang}`, //&page=1&size=1
     TYPE: 'GET',
   },
+  PATTERNS_UPDATE: {
+    ENDPOINT: (id) => `/pattern-product/update/${id}`,
+    TYPE: 'PUT',
+  },
 };

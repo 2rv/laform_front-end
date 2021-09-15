@@ -6,7 +6,7 @@ export function ModalPopup(props: ModalPopupProps) {
   const { modalVisibilty = false, onClose, children } = props;
 
   return (
-    <Container isOpen={modalVisibilty} onClick={onClose}>
+    <Container isopen={modalVisibilty} onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>{children}</Content>
     </Container>
   );
@@ -28,7 +28,7 @@ const Container = styled.div<any>`
   right: 0;
   z-index: 10;
   animation: ${animation} 0.2s;
-  display: ${(p: { isOpen: boolean }) => (p.isOpen ? 'flex' : 'none')};
+  display: ${(p) => (p.isopen ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.25);

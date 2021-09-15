@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
-import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { GalleryBlock } from '../block-gallery';
 import { ProductMainContainer } from './frames';
@@ -25,7 +24,7 @@ export function PatternsPageComponent(props) {
       </Content>
       {materials && (
         <SectionLayout type="TEXT">
-          <TitlePrimary tid={'Материалы'} />
+          <TitlePrimary tid={'PATTERNS.CREATE.FORM.COMPLEXITY'} />
           <TextBlock text={materials} />
         </SectionLayout>
       )}

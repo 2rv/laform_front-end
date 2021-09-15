@@ -15,28 +15,31 @@ export function LoginFormSocialComponent() {
     <SectionLayout type="TEXT">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />
       <ButtonContainer>
-        <IconButton auto>
+        <Button>
           <AppleIcon />
           <SecondaryIconContainer>
             <AppleText />
           </SecondaryIconContainer>
-        </IconButton>
-        <IconButton auto>
+        </Button>
+        <Button>
           <GoogleIcon />
           <SecondaryIconContainer>
             <GoogleText />
           </SecondaryIconContainer>
-        </IconButton>
-        <IconButton auto>
+        </Button>
+        <Button>
           <FbIcon />
           <SecondaryIconContainer>
             <FbText />
           </SecondaryIconContainer>
-        </IconButton>
+        </Button>
       </ButtonContainer>
     </SectionLayout>
   );
 }
+const Button = styled(IconButton)`
+  width: auto;
+`;
 const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -1,24 +1,23 @@
-import { TextPrimary, TextSecondary } from '../text';
 import styled from 'styled-components';
+import { TextSecondary, TextCurrency } from '../text';
 import { THEME_COLOR, THEME_SIZE } from '../../theme';
 
 export function CardPrice(props) {
-  const { min = 0, max = 0, discount = null } = props;
+  const { min = 0, max, discount = null } = props;
   const discountPrice = () => min - (min / 100) * discount;
-  if (discount === 100 || min === 0 || max === 0)
-    return <TextSecondary tid="Бесплатно" />;
+  if (discount === 100 || min === 0) return <TextSecondary tid="Бесплатно" />;
   return (
     <div>
       {discount ? (
         <>
-          <Text>{discountPrice()}</Text>
+          <Text price={discountPrice()} />
           &nbsp;
-          <ThroughText>{min}</ThroughText>
+          <ThroughText price={min} />
         </>
       ) : (
         <>
-          <Text>{min}</Text>
-          {max && <Text>{` - ${max}`}</Text>}
+          <Text price={min} />
+          {Boolean(max) && <>- <Text price={max} /></>}
         </>
       )}
       &nbsp;
@@ -29,11 +28,12 @@ export function CardPrice(props) {
 const LightText = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;
-const Text = styled(TextPrimary)`
+const Text = styled(TextCurrency)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
   font-size: ${THEME_SIZE.FONT.LARGE};
+  color: ${THEME_COLOR.SECONDARY_DARK};
 `;
-const ThroughText = styled(TextSecondary)`
+const ThroughText = styled(TextCurrency)`
   text-decoration: line-through;
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;

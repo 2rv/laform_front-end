@@ -4,6 +4,8 @@ import { SETTINGS_CHANGE_EMAIL_API } from './settings-change-email.constant';
 import { SETTINGS_CHANGE_EMAIL_ACTION_TYPE } from './settings-change-email.type';
 
 import { performSettingsChangeEmailLoadEmailData } from './settings-change-email.convert';
+import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from '../../core/auth-verificate-email';
+import { redirect } from '../../main/navigation';
 
 export function settingsChangeEmailFormUploadData(data) {
   return async (dispatch) => {
@@ -21,8 +23,8 @@ export function settingsChangeEmailFormUploadData(data) {
       dispatch({
         type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_SUCCESS,
       });
-
       setSubmitting(false);
+      redirect(AUTH_VERIFICATE_EMAIL_ROUTE_PATH);
     } catch (err) {
       if (err.response) {
         dispatch({

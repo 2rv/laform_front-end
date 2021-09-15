@@ -17,5 +17,35 @@
 			"ELECTRONIC": "Электронный",
 			"SIZE": "Размер"
 		}
+	},
+	"CREATE": {
+		"TITLE": "Создание печатной выкройки",
+		"PRODUCT_SUCCESSFULLY_CREATED": "Товар успешно создан",
+		"FORM": {
+			"PRICE": "Цена",
+			"MATERIALS": "Материалы",
+			"COMPLEXITY": "Сложность выкройки",
+			"FIELDS": {
+				"TITLE": {
+					"NAME": "Название товара",
+					"DICE_OF_GOODS": "Плашка товара",
+					"PRODUCT_CATEGORIES": "Категории товара",
+					"DESCRIPTION": "Описание товара",
+					"PRODUCT_QUANTITY": "Количество товара (единиц)",
+					"DISCOUNT": "Скидка (%)"
+				},
+				"PLACEHOLDER": {
+					"NAME": "Введите название товара",
+					"DICE_OF_GOODS": "Введите плашку товара",
+					"PRODUCT_CATEGORIES": "Введите категории товара",
+					"DESCRIPTION": "Полное описание товара",
+					"PRODUCT_QUANTITY": "Введите количество товара"
+				}
+			},
+			"BUTTON": {
+				"CREATE_PRODUCT": "Создать товар",
+				"CANCEL": "Отменить"
+			}
+		}
 	}
 }

@@ -13,6 +13,8 @@ export function TableList(props) {
     decrementCount,
     count,
     type,
+    onClick = () => {},
+    cursorPointer = false,
   } = props;
   return (
     <Table>
@@ -36,6 +38,8 @@ export function TableList(props) {
                 decrementCount={decrementCount}
                 data={data}
                 count={count}
+                onClick={onClick}
+                cursorPointer={cursorPointer}
               >
                 {children}
               </TableItem>

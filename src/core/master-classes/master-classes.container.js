@@ -10,20 +10,22 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { masterClassesUploadData } from './master-classes.action';
+import { masterClassesUploadData, masterClassesUpdateData } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
 import { MASTER_CLASSES_FIELD_NAME } from './master-classes.type';
 import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 import { sorterItemsByParams } from '../../lib/common/filter-list-card';
+import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { masterClassState, pageLoading, currentLang } = useSelector(
+  const { masterClassState, pageLoading, currentLang, user } = useSelector(
     (state) => ({
       masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
 
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+      user: state[AUTH_STORE_NAME].user,
     }),
   );
 
@@ -35,6 +37,10 @@ export function MasterClassesContainer() {
   });
 
   const [filter, setFilter] = useState(filterInitialValue());
+
+  const onDeleteProduct = (id, body) => {
+    dispatch(masterClassesUpdateData(currentLang, id, body));
+  };
 
   return (
     <MasterClassesComponent
@@ -55,6 +61,8 @@ export function MasterClassesContainer() {
       isError={isRequestError(masterClassState)}
       isSuccess={isRequestSuccess(masterClassState)}
       errorMessage={getRequestErrorMessage(masterClassState)}
+      onDeleteProduct={onDeleteProduct}
+      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
     />
   );
 }

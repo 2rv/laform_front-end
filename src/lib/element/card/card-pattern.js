@@ -9,16 +9,21 @@ import { LinkPrimary } from '../link';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../../../core/patterns-product';
 
 export function CardPattern(props) {
+  const { onSetCart, onSetLike, onSetSelect, onDeleteProduct, isAdmin } = props;
   const {
     id,
-    image = null,
+    type,
+
     name = null,
-    complexity = false,
-    select = false,
-    like = false,
-    bestseller = false,
-    patternType = null,
+    image = null,
+    complexity = 0,
+    bestseller = null,
     price = { min: null, discount: null, max: null },
+
+    selected,
+    cart,
+    purchase,
+    like,
   } = props.data;
 
   return (
@@ -45,7 +50,19 @@ export function CardPattern(props) {
           </ItemCase>
         </LineCase>
       </Content>
-      <CardActions select={select} like={like} />
+      <CardActions
+        id={id}
+        selected={selected}
+        type={type}
+        like={like}
+        purchase={purchase}
+        cart={cart}
+        onSetCart={onSetCart}
+        onSetLike={onSetLike}
+        onSetSelect={onSetSelect}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </Container>
   );
 }

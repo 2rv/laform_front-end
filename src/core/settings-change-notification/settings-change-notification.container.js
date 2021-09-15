@@ -52,10 +52,6 @@ export function SettingsChangeNotificationContainer() {
 
   useEffect(() => {
     dispatch(settingsChangeNotificationLoad());
-  }, []);
-
-  useEffect(() => {
-    dispatch(settingsChangeNotificationLoad());
   }, [changeEmailSuccess]);
 
   return (

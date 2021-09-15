@@ -1,22 +1,22 @@
-import { Divider } from '../../lib/element/divider';
-import { TextPrimary, TextSecondary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import styled, { css } from 'styled-components';
-import { useState } from 'react';
+import { Divider } from '../../lib/element/divider';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { LinkSecondary } from 'src/lib/element/link';
 
 export function SidebarMenuItemSecondary(props) {
   const { title, pathname } = props.data;
   return (
     <Container>
-      <Light tid={title} path={pathname} />
+      <Text tid={title} path={pathname} />
       <Divider />
     </Container>
   );
 }
-const Light = styled(LinkSecondary)`
+const Text = styled(LinkSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
   color: ${THEME_COLOR.TEXT.LIGHT};
+  text-align: start;
+  line-height: 1.5;
 `;
 const Container = styled.div`
   display: flex;
