@@ -47,5 +47,38 @@
 				"CANCEL": "Отменить"
 			}
 		}
+	},
+	"CREATE_ELECTRONIC": {
+		"TITLE": "Создание электронной выкройки",
+		"PRODUCT_SUCCESSFULLY_CREATED": "Товар успешно создан",
+		"FORM": {
+			"PRICE": "Цена",
+			"MATERIALS": "Материалы",
+			"COMPLEXITY": "Сложность выкройки",
+			"NEED_PDF": "Нужен файл PDF",
+			"FIELDS": {
+				"TITLE": {
+					"NAME": "Название",
+					"DICE_OF_GOODS": "Плашка",
+					"TAG": "Теги",
+					"DESCRIPTION": "Описание",
+					"FILE_UPLOAD": "Загрузка файла",
+					"DISCOUNT": "Скидка (%)",
+					"PRICE": "Цена товара"
+				},
+				"PLACEHOLDER": {
+					"NAME": "Введите название",
+					"DICE_OF_GOODS": "Например - Хит",
+					"TAG": "Введите тег и нажмите Enter",
+					"DESCRIPTION": "Опишите товар",
+					"FILE_UPLOAD": "Загрузить файл pdf",
+					"PRICE": "Введите цену товара (в руб.)"
+				}
+			},
+			"BUTTON": {
+				"CREATE_PRODUCT": "Создать электронную выкройку",
+				"CANCEL": "Отменить"
+			}
+		}
 	}
 }

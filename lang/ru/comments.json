@@ -3,5 +3,8 @@
   "WRITE_REVIEW": "Написать отзыв",
   "REPLY_USER": "Ответить пользователю -",
   "CANCEL": "Отменить",
-  "WRITE_YOUR_REVIEW": "Введите свой отзыв"
+  "WRITE_YOUR_REVIEW": "Введите свой отзыв",
+  "WRITE_MESSAGE": "Введите сообщение",
+  "CLOSE": "Закрыть",
+  "OPEN": "Открыть"
 }

@@ -8,7 +8,7 @@ export function FaqPageComponent(props) {
     <SectionLayout>
       <HelpInfoBlock />
       <FaqListComponent items={mainItems} />
-      <FaqListComponent titleTid={'Вопросы о продаже'} items={saleItems} />
+      <FaqListComponent titleTid={'FAQ_LIST.SALES_QUESTION'} items={saleItems} />
     </SectionLayout>
   );
 }

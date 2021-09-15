@@ -39,7 +39,7 @@ export function AboutAccountComponent(props) {
         {Boolean(isNormalUser) && (
           <React.Fragment>
             <SectionLayout type="SMALL">
-              <Title tid="Список покупок" />
+              <Title tid="PROFILE.MY_PURCHASES" />
               <Divider />
               {isPurchasesPending ? (
                 <Spinner />
@@ -47,15 +47,15 @@ export function AboutAccountComponent(props) {
                 Boolean(purchases.length) ? (
                   <>
                     <TableList items={purchases} onClick={redirectToProduct} cursorPointer={true} />
-                    <LinkSecondary tid="Посмотреть все..." path={'/orders-list'} />
+                    <LinkSecondary tid="PROFILE.SHOW_ALL" path={'/orders-list'} />
                   </>
                 ) : (
-                  <TextSecondary tid="Нету покупок" />
+                  <TextSecondary tid="PROFILE.NOT_HAVE_PURCHASES" />
                 )
               )}
             </SectionLayout>
             <SectionLayout type="SMALL">
-              <Title tid="Мои лайки" />
+              <Title tid="PROFILE.MY_LIKES" />
               <Divider />
               {isLikesPending ? (
                 <Spinner />
@@ -63,17 +63,17 @@ export function AboutAccountComponent(props) {
                 Boolean(likes.length) ? (
                   <>
                     <TableList items={likes} onClick={redirectToProduct} cursorPointer={true} />
-                    <LinkSecondary tid="Посмотреть все..." path={'/favorites'} />
+                    <LinkSecondary tid="PROFILE.SHOW_ALL" path={'/favorites'} />
                   </>
                 ) : (
-                  <TextSecondary tid="Нету лайков" />
+                  <TextSecondary tid="PROFILE.NOT_HAVE_LIKES" />
                 )
               )}
             </SectionLayout>
           </React.Fragment>
         )}
         <SectionLayout type="SMALL">
-          <Title tid="Мои комментарии" />
+          <Title tid="PROFILE.MY_COMMENTS" />
           <Divider />
           {isCommentsPending ? (
             <Spinner />
@@ -88,7 +88,7 @@ export function AboutAccountComponent(props) {
                   ))}
               </CommentContainer>
             ) : (
-              <TextSecondary tid="Нету комментариев" />
+              <TextSecondary tid="PROFILE.NOT_HAVE_COMMENTS" />
             )
           )}
         </SectionLayout>
