@@ -77,7 +77,7 @@ export function PatternsContainer() {
       //-----
       listItems={filterByType(
         sorterItemsByParams(
-          getRequestData(patternsState, [...testListItems]),
+          getRequestData(patternsState, []),
           filter[PATTERNS_FIELD_NAME.FIND],
           Number(filter[PATTERNS_FIELD_NAME.FILTER]),
         ),

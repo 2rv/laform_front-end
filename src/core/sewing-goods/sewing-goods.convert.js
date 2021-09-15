@@ -9,7 +9,7 @@ export const performSewingGoodsData = (rowData, backet) => {
       bestseller: item.modifier,
       categories: item.categories,
       cart: Boolean(
-        backet.find((bItem) => bItem?.sewingProduct?.id === item.id),
+        backet?.find((bItem) => bItem?.sewingProduct?.id === item.id),
       ),
       price: {
         min:

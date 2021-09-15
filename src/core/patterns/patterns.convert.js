@@ -10,7 +10,7 @@ export const performPatternsData = (rowData, backet) => {
       complexity: item.complexity,
       categories: item.categories,
       cart: Boolean(
-        backet.find((bItem) => bItem?.patternProduct?.id === item.id),
+        backet?.find((bItem) => bItem?.patternProduct?.id === item.id),
       ),
       price: {
         min: item?.price || checkMinPrice(item?.sizes, 'price'),

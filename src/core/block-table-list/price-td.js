@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
-import { TextSecondary, TextCurrency } from '../../lib/element/text';
+import {
+  TextSecondary,
+  TextPrimary,
+  TextCurrency,
+} from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function PriceTd(props) {
