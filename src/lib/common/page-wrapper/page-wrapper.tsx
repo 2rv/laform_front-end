@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PageWrapperPropsType } from './type.page-wrapper';
 import { FooterContainer } from '../../../core/footer';
 import { Header } from '../../../core/header';
@@ -13,7 +13,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
   const [sidebarIsOpen, setSidebarOpen] = useState(false);
   const [width, setwidth] = useState(1280);
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const containerRef = useRef<any>(null);
   //   const [scroll, setScroll] = useState(0);
 
   const handleWindowSizeChange = () => {
@@ -22,28 +22,21 @@ export function PageWrapper(props: PageWrapperPropsType) {
     }
   };
 
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsButtonVisible(true);
-    } else {
-      setIsButtonVisible(false);
-    }
-  };
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setwidth(window.innerWidth);
-      window.addEventListener('scroll', toggleVisibility);
       window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);
 
   const scrollToTop = (): void => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (containerRef.current) {
+      containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
-    <Container isOpen={sidebarIsOpen}>
+    <Container ref={containerRef} isOpen={sidebarIsOpen}>
       <Header
         width={width}
         setSidebarOpen={setSidebarOpen}
@@ -53,23 +46,21 @@ export function PageWrapper(props: PageWrapperPropsType) {
         {width < 1071 && (
           <SidebarMenu setOpen={setSidebarOpen} isOpen={sidebarIsOpen} />
         )}
-        <Content type="LARGE">
+        <Content type={'LARGE'}>
           <MainCase>
             <Main>{children}</Main>
           </MainCase>
           <FooterContainer />
         </Content>
-        {isButtonVisible && (
-          <ScrollToTopButton type={'button'} onClick={scrollToTop}>
-            <ArrowUp />
-          </ScrollToTopButton>
-        )}
+        <ScrollToTopButton type={'button'} onClick={scrollToTop}>
+          <ArrowUp />
+        </ScrollToTopButton>
       </Relative>
     </Container>
   );
 }
 const Container = styled.div`
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-flow: column;
@@ -109,7 +100,7 @@ const ScrollToTopButton = styled(IconButton)`
   background: ${THEME_COLOR.SECONDARY_DARK};
   z-index: 999;
   position: fixed;
-  right: 20px;
+  right: 30px;
   bottom: 20px;
   width: 50px;
   height: 50px;

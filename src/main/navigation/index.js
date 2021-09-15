@@ -1,1 +1,1 @@
-export { redirect, setLinkRedirect, getQuery, router, scrollToTop } from './navigation.core';
+export { redirect, setLinkRedirect, getQuery, router } from './navigation.core';
