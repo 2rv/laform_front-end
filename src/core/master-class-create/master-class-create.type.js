@@ -26,5 +26,5 @@ export const CREATE_MASTER_CLASS_FIELD_NAME = {
   PROGRAM_NAME: 'programNameRu',
   PROGRAM_PRICE: 'price',
 
-  MASTER_CLASS: 'masterClassArticle',
+  MASTER_CLASS: 'articleText',
 };

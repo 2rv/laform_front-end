@@ -1,5 +1,5 @@
 export function performSewingGoodsProductData(rowData) {
-  console.log(rowData);
+  //   console.log(rowData);
   return {
     id: rowData.id,
     type: rowData.type,
@@ -10,15 +10,15 @@ export function performSewingGoodsProductData(rowData) {
     description: rowData.descriptionRu,
     images: rowData.images.map((item) => item.fileUrl),
     sizes: rowData.sizes.map((item, index) => ({
-      id: index,
+      id: item.id,
       tid: item.size,
       price: item.price,
+      count: item.count,
+      vendorCode: item.vendorCode,
     })),
     colors: rowData.colors.map((item, index) => ({
-      id: index,
+      id: item.id,
       tid: item.color,
-      price: item.price,
     })),
-    count: rowData.count,
   };
 }
