@@ -34,7 +34,7 @@ export function PatternsProductContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      productInfo={getRequestData(state)}
+      productInfo={getRequestData(state, false)}
     />
   );
 }

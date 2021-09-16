@@ -1,4 +1,3 @@
-import moment from 'moment';
 import styled from 'styled-components';
 import { TitlePrimary } from '../../lib/element/title';
 import { TextareaField } from '../../lib/element/field';
@@ -120,7 +119,10 @@ export function CommentComponent(props) {
                   <CancelIcon />
                 </Button>
               )}
-              <Button onClick={onSubmit} disabled={uploadPending || createPending}>
+              <Button
+                onClick={onSubmit}
+                disabled={uploadPending || createPending}
+              >
                 <SendIcon />
               </Button>
             </TextareaActionButtons>

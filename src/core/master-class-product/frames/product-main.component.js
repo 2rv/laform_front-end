@@ -19,11 +19,14 @@ export function ProductMainComponent(props) {
     type,
     comment,
     images,
-    categories = [],
-    programs = false,
+    categories,
+    programs,
   } = props;
-
-  const [program, setProgram] = useState();
+  const [program, setProgram] = useState(
+    programs?.length > 0
+      ? programs[0]
+      : { id: 0, tid: 0, price: 0, vendorCode: 0 },
+  );
 
   return (
     <Container>
@@ -49,9 +52,8 @@ export function ProductMainComponent(props) {
           <Divider />
           <BlockSelect
             name="Программа"
-            selectName="selectedProgram"
             selectOptions={programs}
-            getValues={setProgram}
+            handleChange={setProgram}
           />
         </>
       )}
