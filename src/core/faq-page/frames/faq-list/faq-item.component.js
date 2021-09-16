@@ -35,7 +35,8 @@ const Markdown = styled(ReactMarkdown)`
 `;
 
 const Container = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: ${spacing(2)};
 `;
 
