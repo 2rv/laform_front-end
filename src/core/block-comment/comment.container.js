@@ -14,17 +14,21 @@ import {
   subCommentCreate,
   commentDelete,
   subCommentDelete,
+  commentUpdate,
+  subCommentUpdate,
 } from './comment.actions.js';
 import { CommentComponent } from './comment.component.js';
 import { convertForCreateComment } from './comment.convert';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function CommentContainer(props) {
   const dispatch = useDispatch();
   const { id = false, type = false } = props;
 
-  const { comments, create } = useSelector((state) => ({
+  const { comments, create, user } = useSelector((state) => ({
     comments: state[COMMENT_STORE_NAME].commentState,
     create: state[COMMENT_STORE_NAME].createState,
+    user: state[AUTH_STORE_NAME].user,
   }));
   useEffect(() => {
     if (type !== false && id !== false) {
@@ -35,22 +39,45 @@ export function CommentContainer(props) {
   const textareaRef = useRef(null);
   const [text, setValue] = useState(null);
   const [subUser, setSubUser] = useState(null);
+  const [editComment, setEditComment] = useState({ id: null, type: null });
   const onChange = (e) => setValue(e.target.value);
 
   const onSubmit = () => {
     if (Boolean(!text) || text.length <= 0) return alert('COMMENTS.WRITE_MESSAGE');
+
+    if (Boolean(editComment.id)) {
+      editCommentHandler();
+    } else {
+      createCommentHandler();
+    }
+
+    setSubUser(null);
+    textareaRef.current.value = '';
+  };
+
+  const createCommentHandler = () => {
     const convertedData = convertForCreateComment(
       id,
       type,
       text,
       subUser?.commentId,
     );
+
     if (subUser) {
       dispatch(subCommentCreate(convertedData));
     } else {
       dispatch(commentCreate(convertedData));
     }
-    textareaRef.current.value = '';
+  };
+
+  const editCommentHandler = () => {
+    if (editComment.type === 'comment') {
+      dispatch(commentUpdate(editComment.id, textareaRef.current.value));
+    } else if (editComment.type === 'subComment') {
+      dispatch(subCommentUpdate(editComment.id, textareaRef.current.value));
+    }
+
+    setEditComment({ id: null, type: null });
   };
 
   const onSubmitEnter = (e) => {
@@ -67,8 +94,14 @@ export function CommentContainer(props) {
   const handleDeleteSubComment = (id, subId) =>
     dispatch(subCommentDelete(id, subId));
 
+  const handleEditComment = (id, commentText, type) => {
+    textareaRef.current.value = commentText;
+    setEditComment({ id, type });
+  };
+
   return (
     <CommentComponent
+      user={user}
       comments={getRequestData(comments, [])}
       //--------------------------------------------------------------------
       onSubmit={onSubmit}
@@ -76,10 +109,13 @@ export function CommentContainer(props) {
       handleChange={onChange}
       textareaRef={textareaRef}
       //--------------------------------------------------------------------
+      editComment={editComment}
+      setEditComment={setEditComment}
       subUser={subUser}
       handleDeleteComment={handleDeleteComment}
       handleDeleteSubComment={handleDeleteSubComment}
       handleSetSubUser={handleSetSubUser}
+      handleEditComment={handleEditComment}
       setSubUser={setSubUser}
       //--------------------------------------------------------------------
       uploadErrorMessage={getRequestErrorMessage(comments)}

@@ -29,4 +29,13 @@ export const COMMENT_API = {
     ENDPOINT: (id) => `/comment/sub/delete/${id}`,
     TYPE: 'DELETE',
   },
+
+  COMMENT_UPDATE: {
+    ENDPOINT: (id) => `/comment/update/${id}`,
+    TYPE: 'PATCH',
+  },
+  SUB_COMMENT_UPDATE: {
+    ENDPOINT: (id) => `/comment/sub/update/${id}`,
+    TYPE: 'PATCH',
+  },
 };
