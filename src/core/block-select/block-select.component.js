@@ -6,8 +6,7 @@ import { ReactComponent as QuestionIcon } from '../../asset/svg/question-mark.sv
 import { IconButton } from '../../lib/element/button';
 
 export function BlockSelectComponent(props) {
-  const { name, selectName, handleChange, values, selectOptions, isTooltip } =
-    props;
+  const { name, onChange, value, selectOptions, isTooltip } = props;
   return (
     <Container>
       <Line>
@@ -18,11 +17,7 @@ export function BlockSelectComponent(props) {
           </Button>
         )}
       </Line>
-      <FieldSelect
-        options={selectOptions}
-        value={values[selectName]}
-        onChange={handleChange}
-      />
+      <FieldSelect options={selectOptions} value={value} onChange={onChange} />
     </Container>
   );
 }

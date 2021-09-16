@@ -1,5 +1,5 @@
 export const performSewingGoodsData = (rowData) => {
-  //   console.log(rowData);
+  console.log(rowData);
   return rowData.map((item) => {
     return {
       id: item.id,
@@ -8,13 +8,9 @@ export const performSewingGoodsData = (rowData) => {
       type: item.type,
       bestseller: item.modifier,
       price: {
-        min:
-          checkMinPrice(item?.sizes, 'price') +
-          checkMinPrice(item.colors, 'price'),
+        min: checkMinPrice(item?.sizes, 'price'),
         discount: item.discount,
-        max:
-          checkMaxPrice(item?.sizes, 'price') +
-          checkMaxPrice(item.colors, 'price'),
+        max: checkMaxPrice(item?.sizes, 'price'),
       },
     };
   });

@@ -35,6 +35,7 @@ const Button = styled(TextButton)`
 const Container = styled.div`
   display: inline;
   line-height: 1.5;
+  word-break: break-all;
 `;
 
 const Text = styled(TextSecondary)`

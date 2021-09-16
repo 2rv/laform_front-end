@@ -19,10 +19,12 @@ export function PatternsProductComponent(props) {
     productInfo,
   } = props;
 
+  if (!productInfo) return null;
+
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>{`Главная / Выкройки / Электронные / ${productInfo.name}`}</TextSecondary>
+        {/* <TextSecondary>{`Главная / Выкройки / Электронные / ${productInfo.name}`}</TextSecondary> */}
         <Content>
           <GalleryBlock items={productInfo.images} />
           <ProductMainComponent {...productInfo} />

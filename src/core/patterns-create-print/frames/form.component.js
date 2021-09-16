@@ -18,7 +18,7 @@ import {
   numberValue,
 } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
-import { BlockEditor } from '../../block-editor';
+import { ReactEditor } from 'src/core/block-react-editor';
 
 export function FormComponent(props) {
   const {
@@ -84,8 +84,10 @@ export function FormComponent(props) {
         />
         <SectionLayout type="TEXT_SMALL">
           <SmallTitle tid="Материалы" />
-          <BlockEditor
-            formikOnChange={setEditorData(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
+          <ReactEditor
+            handleChange={setEditorData(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
+            values={values[PRINT_PATTERN_FIELD_NAME.MATERIAL]}
+            name={PRINT_PATTERN_FIELD_NAME.MATERIAL}
           />
         </SectionLayout>
       </SectionLayout>
