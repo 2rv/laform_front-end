@@ -43,9 +43,9 @@ export function PageWrapper(props: PageWrapperPropsType) {
   }, []);
 
   useEffect(() => {
-    containerRef.current.addEventListener('scroll', toggleVisibility);
+    containerRef?.current?.addEventListener('scroll', toggleVisibility);
     return () => {
-      containerRef.current.removeEventListener('scroll', toggleVisibility);
+      containerRef?.current?.removeEventListener('scroll', toggleVisibility);
     };
   }, []);
 
