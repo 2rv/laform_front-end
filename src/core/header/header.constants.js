@@ -25,14 +25,11 @@ export const USER_MENU_ITEMS = [
 
 export const ADMIN_MENU_ITEMS = [
   { divider: true },
-  { path: '/create-product', tid: 'Создание продукта' },
   { path: '/master-class/create', tid: 'Создание мастер-класса' },
   { path: '/patterns/create/print', tid: 'Создание печатной выкройки' },
   { path: '/patterns/create/electronic', tid: 'Создание электронной выкройки' },
   { path: '/sewing-goods/create', tid: 'Создание товара для шитья' },
   { path: '/article/create', tid: 'Создание статьи' },
-  { path: '/create-product', tid: 'Создание продукта' },
-  { path: '/create-article', tid: 'Создание статьи' },
   { path: '/orders', tid: 'Таблица заказов' },
   { path: '/users-order', tid: 'Список заказов' },
   { path: '/best-products', tid: 'Лучшие товары' },

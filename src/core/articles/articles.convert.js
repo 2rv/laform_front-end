@@ -8,6 +8,7 @@ export const performArticlesData = (rowData) => {
       type: item.type,
       bestseller: item.modifier,
       categories: item.categories,
+      createdDate: item.createdDate,
     };
   });
 };

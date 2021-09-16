@@ -40,10 +40,12 @@ const PopupContainer = styled.div`
 
 const PopupContent = styled.div<any>`
   position: absolute;
-  z-index: 3;
-  /* transform: translateX(-85%); */
+  z-index: 11;
   top: ${(p) => p.top}px;
   right: 0;
+  @media screen and (max-width: 720px) {
+    left: 0;
+  }
   display: flex;
   width: max-content;
   background: ${THEME_COLOR.WHITE};
