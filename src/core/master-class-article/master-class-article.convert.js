@@ -1,4 +1,4 @@
-export function performArticleProductData(rowData) {
+export function convertPurchasedMasterClassData(rowData) {
   return {
     id: rowData.id,
     type: rowData?.type,

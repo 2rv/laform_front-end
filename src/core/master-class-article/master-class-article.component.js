@@ -11,8 +11,6 @@ import { Spinner } from 'src/lib/element/spinner';
 export function MasterClassArticleComponent(props) {
   const { isPending, pageLoading, productInfo } = props;
 
-  console.log('productInfo:',productInfo);
-
   return (
     <>
       {pageLoading && <LoaderPrimary />}

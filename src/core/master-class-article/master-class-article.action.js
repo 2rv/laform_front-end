@@ -1,7 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { MASTER_CLASS_ARTICLE_API } from './master-class-article.constant';
 import { MASTER_CLASS_ARTICLE_ACTION_TYPE } from './master-class-article.type';
-import { performArticleProductData } from './master-class-article.convert';
+import { convertPurchasedMasterClassData } from './master-class-article.convert';
 
 export function masterClassArticleUploadData(currentLang, id) {
   return async (dispatch) => {
@@ -14,7 +14,7 @@ export function masterClassArticleUploadData(currentLang, id) {
         method: MASTER_CLASS_ARTICLE_API.MASTER_CLASS_ARTICLE_UPLOAD.TYPE,
         url: MASTER_CLASS_ARTICLE_API.MASTER_CLASS_ARTICLE_UPLOAD.ENDPOINT(currentLang, id),
       });
-      const data = performArticleProductData(response.data);
+      const data = convertPurchasedMasterClassData(response.data);
       dispatch({
         type: MASTER_CLASS_ARTICLE_ACTION_TYPE.MASTER_CLASS_ARTICLE_UPLOAD_SUCCESS,
         data: data,
