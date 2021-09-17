@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { TextBlock } from '../block-text';
 
 export function CommentTd(props) {
-  const { text } = props;
+  const { comment = null } = props;
+  if (!comment) return null;
   return (
     <Td>
-      <TextBlock text={text} />
+      <TextBlock text={comment} />
     </Td>
   );
 }

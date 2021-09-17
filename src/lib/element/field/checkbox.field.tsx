@@ -12,7 +12,12 @@ export function FieldCheckbox(props: CheckboxPropsType) {
     <Container width={width} adaptive={adaptive}>
       {titleTid && <Title tid={titleTid} />}
       <Content htmlFor={name} onClick={onClick}>
-        <Input type="checkbox" name={name} checked={checked} />
+        <Input
+          type="checkbox"
+          onChange={() => null}
+          name={name}
+          checked={checked}
+        />
         <CheckmarkContainer checked={checked}>
           <Checkmark />
         </CheckmarkContainer>

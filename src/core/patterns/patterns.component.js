@@ -9,6 +9,7 @@ export function PatternsComponent(props) {
     listItems,
     onDeleteProduct,
     isAdmin,
+    addToCart,
     //-----
     activeTab,
     setActiveTab,
@@ -42,7 +43,12 @@ export function PatternsComponent(props) {
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} onDeleteProduct={onDeleteProduct} isAdmin={isAdmin} />
+      <BasicCardList
+        onSetCart={addToCart}
+        items={listItems}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </SectionLayout>
   );
 }

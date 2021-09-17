@@ -21,8 +21,8 @@ export function FormComponent(props) {
       <SectionLayout type="TEXT">
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Название статьи"
-            placeholderTid="Введите название статьи"
+            titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.ARTICLE_NAME"
+            placeholderTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.WRITE_ARTICLE_NAME"
             name={ARTICLE_FIELD_NAME.NAME}
             value={values[ARTICLE_FIELD_NAME.NAME]}
             error={getFieldError(ARTICLE_FIELD_NAME.NAME)}
@@ -30,8 +30,8 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="Плашка"
-            placeholderTid="Например - хит"
+            titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.DIE"
+            placeholderTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.EXAMPLE_HIT"
             name={ARTICLE_FIELD_NAME.MODIFIER}
             value={values[ARTICLE_FIELD_NAME.MODIFIER]}
             error={getFieldError(ARTICLE_FIELD_NAME.MODIFIER)}
@@ -46,11 +46,11 @@ export function FormComponent(props) {
             setFieldValue(ARTICLE_FIELD_NAME.CATEGORIES, data)
           }
           error={getFieldError(ARTICLE_FIELD_NAME.CATEGORIES)}
-          titleTid="Теги"
-          placeholderTid="Введите тег"
+          titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.TAGS"
+          placeholderTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.WRITE_TAG"
         />
         <SectionLayout type="SMALL">
-          <Title tid="Статья мастер-класса" />
+          <Title tid="ARTICLE_CREATE_FORM.MASTER_CLASS_ARTICLE" />
           <BlockEditor
             formikOnChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
           />
@@ -61,8 +61,8 @@ export function FormComponent(props) {
           }
         />
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="Создать статью" />
-          <ButtonSecondary tid="Отменить" />
+          <ButtonPrimary type="submit" tid="ARTICLE_CREATE_FORM.BUTTON.CREATE_ARTICLE" />
+          <ButtonSecondary tid="ARTICLE_CREATE_FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>

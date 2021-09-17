@@ -11,5 +11,32 @@
 			"PROGRAM": "Программа",
 			"REMOTE": "Удалённая"
 		}
+	},
+	"CREATE": {
+		"TITLE": "Создание мастер-класса",
+		"PRODUCT_SUCCESSFULLY_CREATED": "Мастер-класс успешно создан",
+		"FORM": {
+			"PRICE": "Цена",
+			"MASTER_CLASS_ARTICLE": "Статья мастер-класса",
+			"FIELDS": {
+				"TITLE": {
+					"NAME": "Название товара",
+					"DICE_OF_GOODS": "Плашка",
+					"TAG": "Теги",
+					"DESCRIPTION": "Описание",
+					"DISCOUNT": "Скидка (%)"
+				},
+				"PLACEHOLDER": {
+					"NAME": "Введите название",
+					"DICE_OF_GOODS": "Например - Хит",
+					"TAG": "Введите тег и нажмите Enter",
+					"DESCRIPTION": "Опишите мастер-класс"
+				}
+			},
+			"BUTTON": {
+				"CREATE_PRODUCT": "Создать мастер-класс",
+				"CANCEL": "Отменить"
+			}
+		}
 	}
 }

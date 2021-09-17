@@ -9,13 +9,15 @@ import {
   ADMIN_MENU_ITEMS,
 } from './header.constants';
 import { USER_ROLE } from '../../lib/common/auth';
+import { BASKET_STORE_NAME } from '../basket';
 
 export function HeaderContainer(props) {
   const { setSidebarOpen, sidebarIsOpen, width } = props;
-  const { activePath, auth, currentLang } = useSelector((state) => ({
+  const { activePath, auth, currentLang, cartCount } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
     auth: state[AUTH_STORE_NAME],
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    cartCount: state[BASKET_STORE_NAME].basket.length,
   }));
 
   const modalMenuItems = () => {
@@ -28,6 +30,7 @@ export function HeaderContainer(props) {
 
   return (
     <HeaderComponent
+      cartCount={cartCount}
       setSidebarOpen={setSidebarOpen}
       sidebarIsOpen={sidebarIsOpen}
       isMobile={width < 720}

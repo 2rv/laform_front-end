@@ -28,6 +28,7 @@ const Container = styled.div`
 const Tab = styled(TextButton)`
   padding: ${spacing(2)} 0;
   min-width: max-content;
+  width: fit-content;
   border-bottom: 2px solid transparent;
   ${(p: { actived: any }) =>
     p.actived &&

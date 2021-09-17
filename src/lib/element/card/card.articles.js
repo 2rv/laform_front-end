@@ -7,7 +7,7 @@ import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg
 import { useState } from 'react';
 import { LinkPrimary } from '../link';
 import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
-import moment from 'moment';
+import { ConvertTime } from 'src/lib/common/time-convert';
 
 export function CardArticles(props) {
   const {
@@ -34,9 +34,7 @@ export function CardArticles(props) {
       <Content>
         <Column>
           <CardName tid={name} />
-          <Date
-            tid={moment(createdDate).locale('ru').startOf('hour').fromNow()}
-          />
+          <Date tid={ConvertTime(createdDate)} />
         </Column>
         <LikeButton onClick={onLike} like={isLiked}>
           <LikeIcon />

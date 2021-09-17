@@ -20,7 +20,7 @@ export function CreateNotificationComponent(props) {
     <>
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Создание уведомления" />
+        <TitlePrimary tid="CREATE_NOTIFICATION.TITLE" />
         <Formik
           initialValues={initialValues}
           validate={validation}
@@ -40,7 +40,7 @@ export function CreateNotificationComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="Уведомление успешно отправлено" />}
+        {isSuccess && <SuccessAlert tid="CREATE_NOTIFICATION.NOTIFICATION_SUCCESSFULLY_SENDED" />}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

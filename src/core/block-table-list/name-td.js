@@ -3,7 +3,8 @@ import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_SIZE } from '../../lib/theme';
 
 export function NameTd(props) {
-  const { image, name } = props;
+  const { image = null, name = null } = props;
+  if (!image && !name) return null;
   return (
     <Td>
       <Case>

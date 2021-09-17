@@ -1,0 +1,24 @@
+{
+  "PRICE": {
+    "TITLE": "Цена",
+    "PLACEHOLDER": "Введите цену (в руб.)"
+  },
+  "SIZE": {
+    "TITLE": "Размеры",
+    "FIELD_TITLE": "Название размера",
+    "FIELD_PLACEHOLDER": "Введите название размера",
+    "BUTTON_TEXT": "Добавить размер"
+  },
+  "COLOR": {
+    "TITLE": "Цвета",
+    "FIELD_TITLE": "Название цвета",
+    "FIELD_PLACEHOLDER": "Введите название цвета",
+    "BUTTON_TEXT": "Добавить цвет"
+  },
+  "PROGRAM": {
+    "TITLE": "Программы",
+    "FIELD_TITLE": "Название программы",
+    "FIELD_PLACEHOLDER": "Введите название программы",
+    "BUTTON_TEXT": "Добавить программу"
+  }
+}

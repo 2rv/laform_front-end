@@ -18,6 +18,8 @@ export function MasterClassProductComponent(props) {
     productInfo,
   } = props;
 
+  if (!productInfo) return null;
+
   const {
     id,
     name,

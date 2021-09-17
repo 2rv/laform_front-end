@@ -3,6 +3,7 @@ import { TitlePrimary } from '../../lib/element/title';
 import { TextareaField } from '../../lib/element/field';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { ReactComponent as SendIcon } from '../../asset/svg/message-send-icon.svg';
+import { ReactComponent as CancelIcon } from '../../asset/svg/cancel-delete-icon.svg';
 import { SectionLayout } from '../../lib/element/layout';
 import { IconButton, TextButton } from '../../lib/element/button';
 import { CommentItem } from './comment.item';
@@ -13,6 +14,7 @@ import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 
 export function CommentComponent(props) {
   const {
+    user,
     comments,
     //------------------------------
     onSubmit,
@@ -21,11 +23,15 @@ export function CommentComponent(props) {
     value,
     textareaRef,
     //------------------------------
+    editComment,
+    setEditComment,
+    handleModesToInitialState,
     subUser,
     handleSetSubUser,
     setSubUser,
     handleDeleteComment,
     handleDeleteSubComment,
+    handleEditComment,
     //------------------------------
     uploadErrorMessage,
     uploadError,
@@ -45,58 +51,84 @@ export function CommentComponent(props) {
     }
   }, [comments]);
 
+  const cancelEditing = () => {
+    setEditComment({ id: null, type: null });
+    textareaRef.current.value = '';
+  };
+
+  const cancelReplying = () => {
+    setSubUser(null);
+    cancelEditing();
+  };
+
   return (
     <SectionLayout>
       {createPending && <LoaderPrimary />}
-      <TitlePrimary tid="Отзывы" />
+      <TitlePrimary tid="COMMENTS.REVIEWS" />
       {uploadPending ? (
         <SpinnerCase>
           <Spinner />
         </SpinnerCase>
       ) : (
         <ListComment>
-          {comments.map((data, index) => (
+          {comments?.map((data, index) => (
             <CommentItem
               handleDeleteComment={handleDeleteComment}
               handleDeleteSubComment={handleDeleteSubComment}
+              handleEditComment={handleEditComment}
+              cancelEditing={cancelEditing}
+              setSubUser={setSubUser}
               key={data?.id}
               data={data}
               handleSetSubUser={handleSetSubUser}
+              user={user}
             />
           ))}
           <div ref={messageRef} />
         </ListComment>
       )}
-      <SectionLayout type="SMALL">
-        <HeaderCase>
-          <Title tid="Написать отзыв" />
-          {subUser && (
-            <Line>
-              <div>
-                <LightText tid="Ответить пользователю -" />
+      {Boolean(user !== null) && (
+        <SectionLayout type="SMALL">
+          <HeaderCase>
+            <Title tid="COMMENTS.WRITE_REVIEW" />
+            {Boolean(subUser) && (
+              <Line>
+                <div>
+                  <LightText tid="COMMENTS.REPLY_USER -" />
+                  &nbsp;
+                  <SubTitle tid={subUser?.user?.login} />
+                </div>
                 &nbsp;
-                <SubTitle tid={subUser.user.login} />
-              </div>
-              &nbsp;
-              <CancelButton tid="Отменить" onClick={() => setSubUser(null)} />
-            </Line>
-          )}
-        </HeaderCase>
-        <Content>
-          <TextareaField
-            ref={textareaRef}
-            disabled={createPending}
-            onChange={handleChange}
-            onKeyDown={onSubmitEnter}
-            value={value}
-            maxHeight={200}
-            placeholderTid="Введите свой отзыв"
-          />
-          <Button onClick={onSubmit} disabled={uploadPending || createPending}>
-            <SendIcon />
-          </Button>
-        </Content>
-      </SectionLayout>
+                <CancelButton tid="COMMENTS.CANCEL" onClick={cancelReplying} />
+              </Line>
+            )}
+          </HeaderCase>
+          <Content>
+            <TextareaField
+              ref={textareaRef}
+              disabled={createPending}
+              onChange={handleChange}
+              onKeyDown={onSubmitEnter}
+              value={value}
+              maxHeight={200}
+              placeholderTid="COMMENTS.WRITE_YOUR_REVIEW"
+            />
+            <TextareaActionButtons>
+              {Boolean(editComment.id) && (
+                <Button onClick={cancelEditing}>
+                  <CancelIcon />
+                </Button>
+              )}
+              <Button
+                onClick={onSubmit}
+                disabled={uploadPending || createPending}
+              >
+                <SendIcon />
+              </Button>
+            </TextareaActionButtons>
+          </Content>
+        </SectionLayout>
+      )}
     </SectionLayout>
   );
 }
@@ -129,10 +161,15 @@ const SpinnerCase = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const Button = styled(IconButton)`
+const TextareaActionButtons = styled.div`
+  display: flex;
+  gap: ${spacing(1)};
   position: absolute;
-  background: none;
-  right: ${spacing(1)};
+  right: ${spacing(4)};
+`;
+const Button = styled(IconButton)`
+  width: inherit;
+  padding: 0;
 `;
 const Content = styled.div`
   display: grid;

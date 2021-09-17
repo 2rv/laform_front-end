@@ -1,0 +1,19 @@
+{
+  "ABOUT_ACCOUNT": "Об аккаунте",
+  "DATE_OF_REGISTRATION": "Дата регистрации",
+  "STATUS": "Статус",
+  "VERIFIED": "Верифицирован",
+  "NOT_VERIFIED": "Не верифицирован",
+  "SHIPPING_AND_PAYMENT": "Доставка и оплата",
+  "DELIVERY_ADDRESS": "Адрес доставки",
+  "PAYMENT_METHOD": "Способ оплаты",
+  "ONLINE": "Онлайн",
+  "OTHER": "Другой",
+  "MY_PURCHASES": "Список покупок",
+  "MY_LIKES": "Мои лайки",
+  "MY_COMMENTS": "Мои комментарии",
+  "NOT_HAVE_PURCHASES": "Нету покупок",
+  "NOT_HAVE_LIKES": "Нету лайков",
+  "NOT_HAVE_COMMENTS": "Нету комментариев",
+  "SHOW_ALL": "Посмотреть все..."
+}

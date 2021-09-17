@@ -18,6 +18,8 @@ export function SewingGoodsProductComponent(props) {
     productInfo,
   } = props;
 
+  if (!productInfo) return null;
+
   const {
     id,
     type,
@@ -35,7 +37,7 @@ export function SewingGoodsProductComponent(props) {
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>{`Главная / Товары для шитья / ${name}`}</TextSecondary>
+        {/* <TextSecondary>{`Главная / Товары для шитья / ${name}`}</TextSecondary> */}
         <Content>
           <GalleryBlock items={images} />
           <ProductMainComponent

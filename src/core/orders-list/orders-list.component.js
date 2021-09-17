@@ -26,7 +26,7 @@ export function OrdersListComponent(props) {
     <>
       {pageLoading && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Список заказов" />
+        <TitlePrimary tid="ORDERS.TITLE" />
         {isPending ? (
           <Spinner />
         ) : (
@@ -36,7 +36,7 @@ export function OrdersListComponent(props) {
               <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </>
           ) : (
-            <TextSecondary tid="Нет купленных продуктов" />
+            <TextSecondary tid="ORDERS.LIST_IS_EMPTY" />
           )
         )}
       </SectionLayout>

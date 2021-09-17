@@ -33,7 +33,7 @@ export function AboutOrderFormComponent(props) {
   return (
     <form onSubmit={handleSubmit}>
       <SectionLayout type="SMALL">
-        <Title tid="О заказе" />
+        <Title tid="ORDER_NUMBER.FORM.TITLE" />
         <AboutOrderFields
           fieldFullName={fieldFullName}
           fieldCurrentCity={fieldCurrentCity}
@@ -55,9 +55,9 @@ export function AboutOrderFormComponent(props) {
           diliveryPrice={orderNumberDetails?.deliveryPrice}
           price={orderNumberDetails?.totalPrice}
         />
-        <Title tid="О заказе" />
+        <Title tid="ORDER_NUMBER.FORM.TITLE" />
         <SectionLayout type="TEXT_SMALL">
-          <SelectTitle tid="Состояние заказа" />
+          <SelectTitle tid="ORDER_NUMBER.FORM.ORDER_STATUS" />
           <FieldLayout type="double" adaptive>
             <FieldSelect
               disabled={true}
@@ -66,7 +66,7 @@ export function AboutOrderFormComponent(props) {
               value={values[statusSelectName]}
               onChange={handleChange}
             />
-            <ButtonSecondary type="submit" tid="Сохранить данные" />
+            <ButtonSecondary type="submit" tid="ORDER_NUMBER.FORM.SAVE_DATA" />
           </FieldLayout>
         </SectionLayout>
       </SectionLayout>

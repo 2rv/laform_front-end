@@ -1,3 +1,0 @@
-export const PROMO_CODE_FIELD_KEY = {
-  PROMO_CODE: 'PROMO_CODE',
-};

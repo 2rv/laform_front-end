@@ -9,12 +9,14 @@ import {
   TextareaField,
 } from '../../../lib/element/field';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
-import { DynamicFields, ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,
 } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
+import { DynamicField } from './dynamic-field';
+import { DynamicFields } from './dynamic-fields';
 
 export function FormComponent(props) {
   const {
@@ -39,8 +41,8 @@ export function FormComponent(props) {
       <SectionLayout type="TEXT">
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Название товара"
-            placeholderTid="Введите название товара"
+            titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.NAME"
+            placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
             name={SEWING_GOODS_FIELD_NAME.NAME}
             value={values[SEWING_GOODS_FIELD_NAME.NAME]}
             error={getFieldError(SEWING_GOODS_FIELD_NAME.NAME)}
@@ -48,8 +50,8 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="Плашка товара"
-            placeholderTid="Введите плашку товара"
+            titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.DICE_OF_GOODS"
+            placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.DICE_OF_GOODS"
             name={SEWING_GOODS_FIELD_NAME.MODIFIER}
             value={values[SEWING_GOODS_FIELD_NAME.MODIFIER]}
             error={getFieldError(SEWING_GOODS_FIELD_NAME.MODIFIER)}
@@ -64,12 +66,12 @@ export function FormComponent(props) {
             setFieldValue(SEWING_GOODS_FIELD_NAME.CATEGORIES, data)
           }
           error={getFieldError(SEWING_GOODS_FIELD_NAME.CATEGORIES)}
-          titleTid={'Категории товара'}
-          placeholderTid="Введите категории товара"
+          titleTid={'SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.PRODUCT_CATEGORIES'}
+          placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.PRODUCT_CATEGORIES"
         />
         <TextareaField
-          titleTid="Описание товара"
-          placeholderTid="Полное описание товара"
+          titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
+          placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
           name={SEWING_GOODS_FIELD_NAME.DESCRIPTION}
           value={values[SEWING_GOODS_FIELD_NAME.DESCRIPTION]}
           error={getFieldError(SEWING_GOODS_FIELD_NAME.DESCRIPTION)}
@@ -80,8 +82,8 @@ export function FormComponent(props) {
       </SectionLayout>
 
       <BasicField
-        titleTid="Количество товара (единиц)"
-        placeholderTid="Введите количество товара"
+        titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.PRODUCT_QUANTITY"
+        placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.PRODUCT_QUANTITY"
         name={SEWING_GOODS_FIELD_NAME.COUNT}
         value={values[SEWING_GOODS_FIELD_NAME.COUNT]}
         error={getFieldError(SEWING_GOODS_FIELD_NAME.COUNT)}
@@ -90,29 +92,27 @@ export function FormComponent(props) {
       />
 
       <DynamicFields
-        nameFieldArray={SEWING_GOODS_FIELD_NAME.SIZES}
-        namePosition={SEWING_GOODS_FIELD_NAME.SIZE_NAME}
-        pricePosition={SEWING_GOODS_FIELD_NAME.SIZE_PRICE}
         initialData={initialSizes}
-        title="Размеры"
-        fieldTitle="Название размера"
-        fieldPlaceholder="Введите название размера"
-        buttonText="Добавить размер"
+        title="DYNAMIC_FIELDS.SIZE.TITLE"
+        fieldTitle="DYNAMIC_FIELDS.SIZE.FIELD_TITLE"
+        fieldPlaceholder="DYNAMIC_FIELDS.SIZE.FIELD_PLACEHOLDER"
+        buttonText="DYNAMIC_FIELDS.SIZE.BUTTON_TEXT"
+        handleChange={handleChange}
+        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
         setFieldValue={setFieldValue}
       />
 
-      <DynamicFields
-        nameFieldArray={SEWING_GOODS_FIELD_NAME.COLORS}
-        namePosition={SEWING_GOODS_FIELD_NAME.COLOR_NAME}
-        pricePosition={SEWING_GOODS_FIELD_NAME.COLOR_PRICE}
+      <DynamicField
         initialData={initialColors}
-        title="Цвета"
-        fieldTitle="Название цвета"
-        fieldPlaceholder="Введите название цвета"
-        buttonText="Добавить цвет"
+        title="DYNAMIC_FIELDS.COLOR.TITLE"
+        fieldTitle="DYNAMIC_FIELDS.COLOR.FIELD_TITLE"
+        fieldPlaceholder="DYNAMIC_FIELDS.COLOR.FIELD_PLACEHOLDER"
+        buttonText="DYNAMIC_FIELDS.COLOR.BUTTON_TEXT"
+        handleChange={handleChange}
+        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
@@ -120,11 +120,11 @@ export function FormComponent(props) {
       />
 
       <SectionLayout type="SMALL">
-        <Title tid="Цена" />
+        <Title tid="SEWING_GOODS.CREATE.FORM.PRICE" />
         <FieldLayout type="double" adaptive>
           <BasicField
             placeholderTid="0"
-            titleTid="Скидка (%)"
+            titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.DISCOUNT"
             name={SEWING_GOODS_FIELD_NAME.DISCOUNT}
             value={values[SEWING_GOODS_FIELD_NAME.DISCOUNT]}
             error={getFieldError(SEWING_GOODS_FIELD_NAME.DISCOUNT)}
@@ -133,16 +133,10 @@ export function FormComponent(props) {
           />
           <ProductPrice
             discount={values[SEWING_GOODS_FIELD_NAME.DISCOUNT]}
-            price={
-              dynamicFieldsMinPrice(
-                values[SEWING_GOODS_FIELD_NAME.COLORS],
-                SEWING_GOODS_FIELD_NAME.COLOR_PRICE,
-              ) +
-              dynamicFieldsMinPrice(
-                values[SEWING_GOODS_FIELD_NAME.SIZES],
-                SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
-              )
-            }
+            price={dynamicFieldsMinPrice(
+              values[SEWING_GOODS_FIELD_NAME.SIZES],
+              SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
+            )}
           />
         </FieldLayout>
         <RecomendationBlock
@@ -151,8 +145,11 @@ export function FormComponent(props) {
           }
         />
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="Создать товар" />
-          <ButtonSecondary tid="Отменить" />
+          <ButtonPrimary
+            type="submit"
+            tid="SEWING_GOODS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+          />
+          <ButtonSecondary tid="SEWING_GOODS.CREATE.FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>

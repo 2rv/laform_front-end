@@ -9,9 +9,10 @@ export function filterByType(listItems, activeType) {
 
 export function sorterItemsByParams(listData, find, filter) {
   if (find !== '') {
-    return listData.filter((product) =>
-      product.name.toLowerCase().trim().includes(find.toLowerCase().trim()),
-    );
+    return listData.filter((product) => {
+      return product.name.toLowerCase().trim().includes(find.toLowerCase().trim())
+        || product?.categories?.some((category) => category.textRu.toLowerCase().trim().includes(find.toLowerCase().trim()));
+    });
   }
   if (filter === 1) {
     return listData.filter((item) => item.price?.discount);

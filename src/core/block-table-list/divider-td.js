@@ -3,11 +3,12 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { Divider } from '../../lib/element/divider';
 
 export function DividerTd(props) {
-  const {} = props;
   return (
-    <Td colSpan="6">
-      <DividerTable />
-    </Td>
+    <Tr>
+      <Td colSpan="6">
+        <DividerTable />
+      </Td>
+    </Tr>
   );
 }
 const Td = styled.td`
@@ -15,4 +16,10 @@ const Td = styled.td`
 `;
 const DividerTable = styled(Divider)`
   margin: ${spacing(2)} 0;
+`;
+
+const Tr = styled.tr`
+  @media screen and (max-width: 875px) {
+    display: none;
+  }
 `;

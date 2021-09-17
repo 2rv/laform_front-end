@@ -32,13 +32,13 @@ export function SliderEditPreviewComponent(props) {
   const isButton = values[SLIDER_EDIT_FIELD_NAME.IS_BUTTON];
   return (
     <SectionLayout type="SMALL">
-      <PreviewTitle tid="Превью" />
+      <PreviewTitle tid="SLIDER.EDIT_SLIDER.PHOTO.PREVIEW" />
       <PreviewContainer>
         <Blur />
         <SlideImage src={sliderImage} />
         <Field>
           <File type="file" onChange={pickImage} />
-          <Placeholder tid="Выбрать фото" />
+          <Placeholder tid="SLIDER.EDIT_SLIDER.PHOTO.SELECT_PHOTO" />
           <UploadIcon />
         </Field>
         <Content>

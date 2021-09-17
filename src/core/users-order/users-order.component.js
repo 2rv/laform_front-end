@@ -29,8 +29,8 @@ export function UsersOrderComponent(props) {
     <>
       {pageLoading && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Список заказов" />
-        <BasicField placeholderTid="Искать по номеру" value={inputValue} onChange={onChange} />
+        <TitlePrimary tid="ORDERS.TITLE" />
+        <BasicField placeholderTid="ORDERS.SEARCH_BY_NUMBER" value={inputValue} onChange={onChange} />
         {isPending ? (
           <Spinner />
         ) : (
@@ -40,7 +40,7 @@ export function UsersOrderComponent(props) {
               <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </>
           ) : (
-            <TextSecondary tid="Список пуст" />
+            <TextSecondary tid="ORDERS.LIST_IS_EMPTY" />
           )
         )}
       </SectionLayout>

@@ -3,7 +3,8 @@ import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function StatusTd(props) {
-  const { status } = props;
+  const { status = null } = props;
+  if (!status) return null;
   return (
     <Td>
       <Case>

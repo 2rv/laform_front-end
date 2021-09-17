@@ -11,31 +11,31 @@ export function ProductPrice(props) {
   return (
     <Container>
       <Column>
-        <TextSecondary tid="Цена" />
+        <TextSecondary tid="PRODUCT_PRICE.PRICE" />
         <div>
           <Bold price={price} />
           &nbsp;
-          <Light tid="руб." />
+          <Light tid="PRODUCT_PRICE.CURRENCY" />
         </div>
       </Column>
       <TextSecondary tid="-" />
       <Column>
-        <TextSecondary tid="Скидка" />
+        <TextSecondary tid="PRODUCT_PRICE.DISCOUNT" />
         <div>
           <Bold price={priceWithDiscount} />
           &nbsp;
-          <Light tid="руб." />
+          <Light tid="PRODUCT_PRICE.CURRENCY" />
           &nbsp;
           <Colored tid={`${discount}%`} />
         </div>
       </Column>
       <TextSecondary tid="=" />
       <Column>
-        <TextSecondary tid="Цена со скидкой" />
+        <TextSecondary tid="PRODUCT_PRICE.DISCOUNT_PRICE" />
         <div>
           <Bold price={totalPrice} />
           &nbsp;
-          <Light tid="руб." />
+          <Light tid="PRODUCT_PRICE.CURRENCY" />
         </div>
       </Column>
     </Container>

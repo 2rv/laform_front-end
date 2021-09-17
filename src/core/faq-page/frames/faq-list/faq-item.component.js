@@ -35,7 +35,8 @@ const Markdown = styled(ReactMarkdown)`
 `;
 
 const Container = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: ${spacing(2)};
 `;
 
@@ -48,7 +49,8 @@ const TitleContainer = styled.div`
 
 const Icon = styled(ArrowRightIcon)`
   transition: transform 0.25s linear;
-  min-width: fit-content;
+  width: min-content;
+  max-width: min-content;
   ${(p) =>
     p.active &&
     css`
