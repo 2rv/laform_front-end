@@ -162,6 +162,10 @@ import {
   emailConfirmedStore,
   EMAIL_CONFIRMED_STORE_NAME,
 } from '../../core/email-confirmed';
+import {
+  masterClassArticleStore,
+  MASTER_CLASS_ARTICLE_STORE_NAME,
+} from '../../core/master-class-article';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -218,6 +222,7 @@ export const reducers = combineReducers({
   [USERS_ORDER_STORE_NAME]: usersOrderStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
+  [MASTER_CLASS_ARTICLE_STORE_NAME]: masterClassArticleStore,
 });
 
 export { initStore } from './store.core';

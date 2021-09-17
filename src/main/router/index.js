@@ -114,6 +114,10 @@ import {
   createNotificationRouter,
   CREATE_NOTIFICATION_ROUTE_PATH,
 } from '../../core/create-notification';
+import {
+  masterClassArticleRouter,
+  MASTER_CLASS_ARTICLE_ROUTE_PATH,
+} from '../../core/master-class-article';
 
 export const routes = {
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
@@ -154,6 +158,7 @@ export const routes = {
   [ORDERS_LIST_ROUTE_PATH]: ordersListRouter,
   [USERS_ORDER_ROUTE_PATH]: usersOrderRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
+  [MASTER_CLASS_ARTICLE_ROUTE_PATH]: masterClassArticleRouter,
 };
 
 export const Router = routesInit(routes);
