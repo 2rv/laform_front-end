@@ -13,6 +13,11 @@ export function BasketComponent(props) {
     IsEmpty,
     isAuth,
     //--------------
+    promoCodeErrorMessage,
+    promoCodeError,
+    promoCodePending,
+    promoCodeSuccess,
+    //--------------
     onSubmit,
     initialValues,
     validation,
@@ -21,6 +26,7 @@ export function BasketComponent(props) {
     //--------------
     changeItem,
     deleteItem,
+    checkPromoCode,
     //--------------
     headersGoods,
     headersMaster,
@@ -58,17 +64,19 @@ export function BasketComponent(props) {
           />
         </>
       )}
-      {isAuth ? (
-        <FormContainer
-          diliveryOptions={diliveryOptions}
-          paymentMethodOptions={paymentMethodOptions}
-          onSubmit={onSubmit}
-          initialValues={initialValues}
-          validation={validation}
-        />
-      ) : (
-        <SignComponent />
-      )}
+      <FormContainer
+        diliveryOptions={diliveryOptions}
+        paymentMethodOptions={paymentMethodOptions}
+        onSubmit={onSubmit}
+        checkPromoCode={checkPromoCode}
+        initialValues={initialValues}
+        validation={validation}
+        promoCodeErrorMessage={promoCodeErrorMessage}
+        promoCodeError={promoCodeError}
+        promoCodePending={promoCodePending}
+        promoCodeSuccess={promoCodeSuccess}
+      />
+      {!isAuth && <SignComponent />}
     </SectionLayout>
   );
 }

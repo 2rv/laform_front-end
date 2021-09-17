@@ -3,11 +3,14 @@ export const BASKET_ROUTE_PATH = '/basket';
 export const BASKET_STORE_NAME = 'BASKET';
 
 export const BASKET_API = {
-  BASKET_UPLOAD: {
-    ENDPOINT: () => 'purchase/user/get',
+  CREATE_ORDER: {
+    ENDPOINT: (isAuth) => {
+      if (isAuth) return 'purchase/create';
+      else return 'purchase/not-auth/create';
+    },
     TYPE: 'POST',
   },
-  BASKET_LOAD_USER_INFO: {
+  LOAD_USER_INFO: {
     ENDPOINT: 'user/info/get',
     TYPE: 'GET',
   },

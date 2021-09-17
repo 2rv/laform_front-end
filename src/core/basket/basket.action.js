@@ -1,27 +1,36 @@
 import { httpRequest } from '../../main/http';
 import { BASKET_API } from './basket.constant';
 import { BASKET_ACTION_TYPE } from './basket.type';
-import { convertAddToCart } from './basket.convert';
+import {
+  convertAddToCart,
+  convertPromoCodeForCheck,
+  performPromoCode,
+  convertForCreateOrder,
+} from './basket.convert';
 
-export function basketUploadData() {
+export function basketUploadData(values, bascketState, isAuth) {
   return async (dispatch) => {
     dispatch({
-      type: BASKET_ACTION_TYPE.BASKET_UPLOAD_PENDING,
+      type: BASKET_ACTION_TYPE.CREATE_ORDER_PENDING,
     });
-
     try {
-      await httpRequest({
-        method: BASKET_API.BASKET_UPLOAD.TYPE,
-        url: BASKET_API.BASKET_UPLOAD.ENDPOINT,
+      const data = convertForCreateOrder(values, bascketState);
+      console.log(data);
+      const responst = await httpRequest({
+        method: BASKET_API.CREATE_ORDER.TYPE,
+        url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
+        data: data,
       });
-
+      console.log(responst.data);
       dispatch({
-        type: BASKET_ACTION_TYPE.BASKET_UPLOAD_SUCCESS,
+        type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
     } catch (err) {
+      console.log(err);
+      console.log(err.response.data.message);
       if (err.response) {
         dispatch({
-          type: BASKET_ACTION_TYPE.BASKET_UPLOAD_ERROR,
+          type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,
           errorMessage: err.response.data.message,
         });
       }
@@ -29,55 +38,24 @@ export function basketUploadData() {
   };
 }
 
-export function basketLoadUserInfoData() {
+export function LoadUserInfoAction() {
   return async (dispatch) => {
     dispatch({
-      type: BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_PENDING,
-    });
-
-    try {
-      const res = await httpRequest({
-        method: BASKET_API.BASKET_LOAD_USER_INFO.TYPE,
-        url: BASKET_API.BASKET_LOAD_USER_INFO.ENDPOINT,
-      });
-      const data = performBasketLoadUserInfoData(res.data);
-      dispatch({
-        type: BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_SUCCESS,
-        payload: data,
-      });
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data.message);
-        dispatch({
-          type: BASKET_ACTION_TYPE.BASKET_LOAD_USER_INFO_DATA_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
-export function checkPromoCode(data) {
-  return async (dispatch) => {
-    dispatch({
-      type: BASKET_ACTION_TYPE.CHECK_PROMO_CODE_PENDING,
+      type: BASKET_ACTION_TYPE.LOAD_USER_INFO_PENDING,
     });
 
     try {
       const res = await httpRequest({
-        method: BASKET_API.CHECK_PROMO_CODE.TYPE,
-        url: BASKET_API.CHECK_PROMO_CODE.ENDPOINT,
-        data,
+        method: BASKET_API.LOAD_USER_INFO.TYPE,
+        url: BASKET_API.LOAD_USER_INFO.ENDPOINT,
       });
-      const discount = performPromoCodeData(res.data);
       dispatch({
-        type: BASKET_ACTION_TYPE.CHECK_PROMO_CODE_SUCCESS,
-        payload: discount,
+        type: BASKET_ACTION_TYPE.LOAD_USER_INFO_SUCCESS,
       });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: BASKET_ACTION_TYPE.CHECK_PROMO_CODE_ERROR,
+          type: BASKET_ACTION_TYPE.LOAD_USER_INFO_ERROR,
           errorMessage: err.response.data.message,
         });
       }
@@ -85,7 +63,6 @@ export function checkPromoCode(data) {
   };
 }
 
-//------------------------------------------------------------------
 export function initializeBasketStore() {
   return async (dispatch) => {
     try {
@@ -164,6 +141,33 @@ export function deleteItemAction(id, bascketState) {
     } catch (error) {
       console.log(error);
       localStorage.removeItem('basket');
+    }
+  };
+}
+
+export function checkPromoCodeAction(promocode) {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_PENDING,
+    });
+    const data = convertPromoCodeForCheck(promocode);
+    try {
+      const res = await httpRequest({
+        method: BASKET_API.CHECK_PROMO_CODE.TYPE,
+        url: BASKET_API.CHECK_PROMO_CODE.ENDPOINT,
+        data,
+      });
+      dispatch({
+        type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_SUCCESS,
+        data: res.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
     }
   };
 }

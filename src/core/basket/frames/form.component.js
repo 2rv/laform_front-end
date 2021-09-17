@@ -3,13 +3,12 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
 import { BasicField, FieldSelect, TextareaField } from 'src/lib/element/field';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ORDER_FIELD_NAME } from '../basket.type';
-import { ButtonBasic } from 'src/lib/element/button';
+import { ButtonBasic, ButtonSecondary } from 'src/lib/element/button';
 
 export function FormComponent(props) {
   const {
     errors,
     touched,
-    handleSubmit,
     values,
     handleChange,
     handleBlur,
@@ -17,7 +16,8 @@ export function FormComponent(props) {
     isPending,
     diliveryOptions = [],
     paymentMethodOptions = [],
-	
+    checkPromoCode,
+    promoCodePending,
   } = props;
 
   const getFieldError = (name) => {
@@ -27,6 +27,15 @@ export function FormComponent(props) {
   return (
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
+        <BasicField
+          titleTid="Email"
+          placeholderTid="укажите Email"
+          name={ORDER_FIELD_NAME.EMAIL}
+          value={values[ORDER_FIELD_NAME.EMAIL]}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={getFieldError(ORDER_FIELD_NAME.EMAIL)}
+        />
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.FULL_NAME"
           placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.FULL_NAME"
@@ -82,7 +91,11 @@ export function FormComponent(props) {
             onBlur={handleBlur}
             error={getFieldError(ORDER_FIELD_NAME.PROMO_CODE)}
           />
-          <Button tid="BASKET.FORM.ACTIVATE" />
+          <Button
+            tid="BASKET.FORM.ACTIVATE"
+            disabled={promoCodePending}
+            onClick={() => checkPromoCode(values[ORDER_FIELD_NAME.PROMO_CODE])}
+          />
         </FieldLayout>
       </FieldLayout>
       <TextareaField
@@ -97,6 +110,6 @@ export function FormComponent(props) {
     </SectionLayout>
   );
 }
-const Button = styled(ButtonBasic)`
+const Button = styled(ButtonSecondary)`
   margin-top: 19px;
 `;

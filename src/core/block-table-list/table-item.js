@@ -32,7 +32,7 @@ export function TableItem(props) {
   } = data;
   return (
     <Tr>
-      <NameTd image={image} name={name} />
+      <NameTd image={image} name={name} vendorCode={params.vendorCode} />
       <CommentTd comment={comment} />
       <ParamsTd params={params} />
       <ParamsTd params={otherParams} />
