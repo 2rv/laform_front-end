@@ -3,22 +3,15 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
-import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
 import { useState } from 'react';
 import { LinkPrimary } from '../link';
 import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
 import moment from 'moment';
+import { LikeButton } from '../../../core/block-like';
 
 export function CardArticles(props) {
-  const {
-    id,
-    image,
-    name,
-    bestseller,
-    date,
-    createdDate,
-    like = false,
-  } = props.data;
+  const { id, image, name, bestseller, date, createdDate, like, type } =
+    props.data;
   const [isLiked, setLike] = useState(like);
   const onLike = () => {
     setLike(!isLiked);
@@ -38,9 +31,7 @@ export function CardArticles(props) {
             tid={moment(createdDate).locale('ru').startOf('hour').fromNow()}
           />
         </Column>
-        <LikeButton onClick={onLike} like={isLiked}>
-          <LikeIcon />
-        </LikeButton>
+        {like === null ? null : <LikeButton id={id} type={type} like={like} />}
       </Content>
     </Container>
   );
@@ -61,11 +52,6 @@ const Content = styled.div`
   gap: ${spacing(3)};
   flex: 1;
   justify-content: space-between;
-`;
-const LikeButton = styled(IconButton)`
-  fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${(p) =>
-    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
 `;
 const Date = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};

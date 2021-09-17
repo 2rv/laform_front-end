@@ -158,6 +158,7 @@ import {
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
 import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
+import { likeStore, LIKE_STORE_NAME } from '../../core/block-like';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -213,6 +214,7 @@ export const reducers = combineReducers({
   [ORDERS_LIST_STORE_NAME]: ordersListStore,
   [USERS_ORDER_STORE_NAME]: usersOrderStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
+  [LIKE_STORE_NAME]: likeStore,
 });
 
 export { initStore } from './store.core';

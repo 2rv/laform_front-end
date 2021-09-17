@@ -6,6 +6,7 @@ import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg
 import { ReactComponent as Delete } from '../../../asset/svg/delete-cancel-icon.svg';
 import { useEffect, useState } from 'react';
 import { TextSecondary } from '../text';
+import { LikeButton } from '../../../core/block-like';
 
 export function CardActions(props) {
   const { id, type } = props; // данные самого товара
@@ -31,10 +32,6 @@ export function CardActions(props) {
       setSelectText(isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT');
   }, [inCart, isSelected]);
 
-  const onLikeCard = () => {
-    setLike(!isLiked);
-    onSetLike && onSetLike(id, !isLiked);
-  };
   const onSelectCard = () => {
     if (onSetSelect) {
       setSelect(!isSelected);
@@ -55,9 +52,7 @@ export function CardActions(props) {
         select={onSetSelect ? isSelected : purchase ? true : inCart}
         tid={selectText}
       />
-      <LikeButton onClick={onLikeCard} like={isLiked}>
-        <LikeIcon />
-      </LikeButton>
+      {like === null ? null : <LikeButton id={id} type={type} like={like} />}
       {isAdmin && (
         <Popup
           content={(setVisible) => (
@@ -75,11 +70,11 @@ export function CardActions(props) {
               </ModalButtons>
             </ModalContent>
           )}
-          children={(
+          children={
             <IconButton>
               <Delete />
             </IconButton>
-          )}
+          }
         />
       )}
     </LineCase>
@@ -96,11 +91,11 @@ const LineCase = styled.div`
 const Button = styled(ButtonPrimary)`
   ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}
 `;
-const LikeButton = styled(IconButton)`
-  fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${(p) =>
-    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
-`;
+// const LikeButton = styled(IconButton)`
+//   fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
+//   background-color: ${(p) =>
+//     p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
+// `;
 
 const ModalContent = styled.div`
   display: grid;

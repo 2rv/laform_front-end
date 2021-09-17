@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { createLike, deleteLike } from './like.action';
-import { LIKE_STORE_NAME } from './like.constant';
+import { LIKE_STORE_NAME, BLOCK_LIKE_DATA_KEY } from './like.constant';
 import { LikeComponent } from './like.component';
 import { useDispatch, useSelector } from 'react-redux';
 import { likeConvertType } from './like.convert';
-import { getRequestData } from 'src/main/store/store.service';
+import { getRequestData, isRequestPending } from 'src/main/store/store.service';
 
 export function LikeContainer({ id, type, like }) {
   const dispatch = useDispatch();
@@ -13,23 +13,31 @@ export function LikeContainer({ id, type, like }) {
     likeState: state[LIKE_STORE_NAME].like,
   }));
 
-  const [isLiked, setLike] = useState(false);
-  useEffect(() => setLike(like), [like]);
-
-  const currentId = getRequestData(likeState);
+  const [isLiked, setLike] = useState(false || like);
   useEffect(() => {
-    if (typeof currentId !== 'object') {
-      if (toString(currentId) === toString(id)) {
-        console.log(id);
-        setLike(!isLiked);
-      }
+    setLike(like);
+  }, [like]);
+
+  const requestData = getRequestData(likeState);
+  const productId = requestData[BLOCK_LIKE_DATA_KEY.ID];
+  useEffect(() => {
+    if (productId == id && likeState.success === true) {
+      setLike(!isLiked);
     }
-  }, [currentId]);
+  }, [likeState.success]);
 
   const onLike = () => {
     const data = likeConvertType(id, type);
-    if (isLiked) dispatch(deleteLike(data, id));
-    else dispatch(createLike(data, id));
+    console.log(JSON.stringify(data));
+    console.log(isLiked);
+    if (isLiked) dispatch(deleteLike(data));
+    else dispatch(createLike(data));
   };
-  return <LikeComponent onLike={onLike} like={isLiked} />;
+  return (
+    <LikeComponent
+      isPending={isRequestPending(likeState)}
+      onLike={onLike}
+      like={isLiked}
+    />
+  );
 }

@@ -7,16 +7,21 @@ import {
   performArticlesData,
 } from './home.convert';
 
-export function masterClassUploadData(currentLang) {
+export function masterClassUploadData(currentLang, logged) {
   return async (dispatch) => {
     dispatch({
       type: HOME_ACTION_TYPE.HOME_MASTER_CLASS_PENDING,
     });
     try {
-      const response = await httpRequest({
-        method: HOME_API.MASTER_CLASS_UPLOAD_DATA.TYPE,
-        url: HOME_API.MASTER_CLASS_UPLOAD_DATA.ENDPOINT(currentLang),
-      });
+      const response = logged
+        ? await httpRequest({
+            method: HOME_API.MASTER_CLASS_UPLOAD_DATA_AUTH.TYPE,
+            url: HOME_API.MASTER_CLASS_UPLOAD_DATA_AUTH.ENDPOINT(currentLang),
+          })
+        : await httpRequest({
+            method: HOME_API.MASTER_CLASS_UPLOAD_DATA.TYPE,
+            url: HOME_API.MASTER_CLASS_UPLOAD_DATA.ENDPOINT(currentLang),
+          });
 
       const data = performMasterClassData(response.data);
       dispatch({
@@ -33,16 +38,21 @@ export function masterClassUploadData(currentLang) {
     }
   };
 }
-export function sewingGoodsUploadData(currentLang) {
+export function sewingGoodsUploadData(currentLang, logged) {
   return async (dispatch) => {
     dispatch({
       type: HOME_ACTION_TYPE.HOME_SEWING_GOODS_ERROR,
     });
     try {
-      const response = await httpRequest({
-        method: HOME_API.SEWING_GOODS_UPLOAD_DATA.TYPE,
-        url: HOME_API.SEWING_GOODS_UPLOAD_DATA.ENDPOINT(currentLang),
-      });
+      const response = logged
+        ? await httpRequest({
+            method: HOME_API.SEWING_GOODS_UPLOAD_DATA_AUTH.TYPE,
+            url: HOME_API.SEWING_GOODS_UPLOAD_DATA_AUTH.ENDPOINT(currentLang),
+          })
+        : await httpRequest({
+            method: HOME_API.SEWING_GOODS_UPLOAD_DATA.TYPE,
+            url: HOME_API.SEWING_GOODS_UPLOAD_DATA.ENDPOINT(currentLang),
+          });
       const data = performSewingGoodsData(response.data);
 
       dispatch({
@@ -59,17 +69,23 @@ export function sewingGoodsUploadData(currentLang) {
     }
   };
 }
-export function articleUploadData(currentLang) {
+export function articleUploadData(currentLang, logged) {
   return async (dispatch) => {
     dispatch({
       type: HOME_ACTION_TYPE.HOME_ARTICLE_ERROR,
     });
     try {
-      const response = await httpRequest({
-        method: HOME_API.ARTICLE_UPLOAD_DATA.TYPE,
-        url: HOME_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang),
-      });
+      const response = logged
+        ? await httpRequest({
+            method: HOME_API.ARTICLE_UPLOAD_DATA_AUTH.TYPE,
+            url: HOME_API.ARTICLE_UPLOAD_DATA_AUTH.ENDPOINT(currentLang),
+          })
+        : await httpRequest({
+            method: HOME_API.ARTICLE_UPLOAD_DATA.TYPE,
+            url: HOME_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang),
+          });
       const data = performArticlesData(response.data);
+      console.log(data);
       dispatch({
         type: HOME_ACTION_TYPE.HOME_ARTICLE_SUCCESS,
         data: data,

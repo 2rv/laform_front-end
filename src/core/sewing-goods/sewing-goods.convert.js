@@ -6,6 +6,7 @@ export const performSewingGoodsData = (rowData) => {
       name: item.titleRu,
       image: item.images?.[0]?.fileUrl,
       type: item.type,
+      like: item?.like ? (item.like?.length ? true : false) : null,
       bestseller: item.modifier,
       price: {
         min:

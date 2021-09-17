@@ -8,6 +8,7 @@ export const performPatternsData = (rowData) => {
       type: item.type,
       bestseller: item.modifier,
       complexity: item.complexity,
+      like: item?.like ? (item.like?.length ? true : false) : null,
       price: {
         min: item?.price || checkMinPrice(item?.sizes, 'price'),
         discount: item.discount,

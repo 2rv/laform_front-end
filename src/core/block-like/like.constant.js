@@ -1,4 +1,4 @@
-export const LIKE_STORE_NAME = 'LIKE_STORE';
+export const LIKE_STORE_NAME = 'LIKE';
 
 export const LIKE_API = {
   LIKE_CREATE: {
@@ -9,4 +9,12 @@ export const LIKE_API = {
     ENDPOINT: '/like/delete',
     TYPE: 'DELETE',
   },
+};
+
+export const BLOCK_LIKE_DATA_KEY = {
+  ID: 'id',
+};
+
+export const BLOCK_LIKE_DATA_NAME = {
+  PRODUCT_ID: 'id',
 };

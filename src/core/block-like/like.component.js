@@ -3,9 +3,9 @@ import { ReactComponent as LikeIcon } from '../../asset/svg/favorite-icon.svg';
 import { IconButton } from '../../lib/element/button';
 import { THEME_COLOR } from '../../lib/theme';
 
-export function LikeComponent({ onLike, like }) {
+export function LikeComponent({ onLike, like, isPending }) {
   return (
-    <Button onClick={onLike} like={like}>
+    <Button onClick={onLike} like={like} disabled={isPending}>
       <LikeIcon />
     </Button>
   );

@@ -10,12 +10,26 @@ export const HOME_API = {
     ENDPOINT: (currentLang) => `/master-class/pinned/get?lang=${currentLang}`,
     TYPE: 'GET',
   },
+  MASTER_CLASS_UPLOAD_DATA_AUTH: {
+    ENDPOINT: (currentLang) =>
+      `/master-class/pinned/get/auth?lang=${currentLang}`,
+    TYPE: 'GET',
+  },
   SEWING_GOODS_UPLOAD_DATA: {
     ENDPOINT: (currentLang) => `/sewing-product/pinned/get?lang=${currentLang}`,
     TYPE: 'GET',
   },
+  SEWING_GOODS_UPLOAD_DATA_AUTH: {
+    ENDPOINT: (currentLang) =>
+      `/sewing-product/pinned/get/auth?lang=${currentLang}`,
+    TYPE: 'GET',
+  },
   ARTICLE_UPLOAD_DATA: {
     ENDPOINT: (currentLang) => `/post/pinned/get?lang=${currentLang}`,
+    TYPE: 'GET',
+  },
+  ARTICLE_UPLOAD_DATA_AUTH: {
+    ENDPOINT: (currentLang) => `/post/pinned/get/auth?lang=${currentLang}`,
     TYPE: 'GET',
   },
 };
