@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { PopupPropsType } from './popup.type';
 
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
 export function Popup(props: PopupPropsType) {
-  const { content, children, top = 45 } = props;
+  const { content, children, top = 45, middleLeft } = props;
   const [visible, setVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +25,7 @@ export function Popup(props: PopupPropsType) {
   return (
     <PopupContainer ref={modalRef}>
       {visible && (
-        <PopupContent top={top}>
+        <PopupContent top={top} middleLeft={middleLeft}>
           {content instanceof Function ? content(setVisible) : content}
         </PopupContent>
       )}
@@ -43,6 +43,13 @@ const PopupContent = styled.div<any>`
   z-index: 11;
   top: ${(p) => p.top}px;
   right: 0;
+  ${(p) =>
+    p.middleLeft &&
+    css`
+      @media screen and (max-width: 875px) {
+        left: 0;
+      }
+    `}
   @media screen and (max-width: 720px) {
     left: 0;
   }

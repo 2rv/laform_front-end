@@ -5,7 +5,6 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function CounterTd(props) {
   const { id, count, maxCount, changeItem } = props;
-
   if (!id || !maxCount) return null;
   const isMax = count < maxCount;
   const isMin = count > 1;

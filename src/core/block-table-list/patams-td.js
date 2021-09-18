@@ -8,26 +8,26 @@ export function ParamsTd(props) {
   return (
     <Td>
       <Case>
-        {Boolean(params.program) && (
+        {Boolean(params.program?.value) && (
           <div>
             <TextSecondary tid="Программа -" />
             &nbsp;
-            <TextPrimary tid={params.program} />
+            <TextPrimary tid={params.program.value} />
           </div>
         )}
 
-        {Boolean(params.color) && (
+        {Boolean(params.color?.value) && (
           <div>
             <TextSecondary tid="Цвет -" />
             &nbsp;
-            <TextPrimary tid={params.color} />
+            <TextPrimary tid={params.color.value} />
           </div>
         )}
-        {Boolean(params.size) && (
+        {Boolean(params.size?.value) && (
           <div>
             <TextSecondary tid="Размер -" />
             &nbsp;
-            <TextPrimary tid={params.size} />
+            <TextPrimary tid={params.size.value} />
           </div>
         )}
         {Boolean(params.format) && (

@@ -5,11 +5,12 @@ import { ButtonPrimary } from '../../../lib/element/button';
 import { FormComponent } from './form.component';
 import { CartPrice } from './cart.price';
 import { ORDER_FIELD_NAME } from '../basket.type';
+import { LoaderPrimary } from 'src/lib/element/loader';
+import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 
 export function FormContainer(props) {
   const {
     onSubmit,
-    promoSuccess,
     initialValues,
     validation,
     pageLoading,
@@ -19,6 +20,11 @@ export function FormContainer(props) {
     isSuccess,
     diliveryOptions,
     paymentMethodOptions,
+    checkPromoCode,
+    promoCodeErrorMessage,
+    promoCodeError,
+    promoCodePending,
+    promoCodeSuccess,
   } = props;
   return (
     <Formik
@@ -29,12 +35,15 @@ export function FormContainer(props) {
     >
       {(formProps) => {
         return (
-          <form>
+          <form onSubmit={formProps.handleSubmit}>
             <SectionLayout>
               <TitlePrimary tid="BASKET.FORM.TITLE" />
               <FormComponent
                 diliveryOptions={diliveryOptions}
                 paymentMethodOptions={paymentMethodOptions}
+                checkPromoCode={checkPromoCode}
+                promoCodePending={promoCodePending}
+                promoCodeSuccess={promoCodeSuccess}
                 {...formProps}
               />
               <SectionLayout type="SMALL">
@@ -43,13 +52,14 @@ export function FormContainer(props) {
                   <ButtonPrimary
                     tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
                     disabled={pageLoading || isPending}
+                    type="submit"
                   />
                 </FieldLayout>
               </SectionLayout>
               {isSuccess && (
                 <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />
               )}
-              {promoSuccess && (
+              {promoCodeSuccess && (
                 <SuccessAlert
                   tid="BASKET.FORM.PROMO_CODE_SUCCESS"
                   tvalue={{
@@ -57,8 +67,15 @@ export function FormContainer(props) {
                   }}
                 />
               )}
-              {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
-              {(isPending || pageLoading) && <LoaderPrimary />}
+              {(isError ||
+                errorMessage ||
+                promoCodeErrorMessage ||
+                promoCodeError) && (
+                <ErrorAlert tid={errorMessage || promoCodeErrorMessage} />
+              )}
+              {(isPending || pageLoading || promoCodePending) && (
+                <LoaderPrimary />
+              )}
             </SectionLayout>
           </form>
         );

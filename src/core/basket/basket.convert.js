@@ -1,8 +1,20 @@
-export const convertBasketFormData = (data) => ({
-  // [BASKET_DATA_NAME.FULLNAME]:
-  //   data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.NEW_EMAIL],
-  // [BASKET_DATA_NAME.PASSWORD]:
-  //   data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.PASSWORD],
+import { ORDER_DATA_NAME, ORDER_FIELD_NAME } from './basket.type';
+
+export const convertForCreateOrder = (data, bascketState) => ({
+  purchase: data,
+  purchaseProducts: bascketState.map((item) => {
+    return {
+      masterClassId: item.type === 0 ? item.id : undefined,
+      patternProductId:
+        item.type === 1 || item.type === 2 ? item.id : undefined,
+      sewingProductId: item.type === 3 ? item.id : undefined,
+      type: item.type,
+      color: item.color,
+      size: item.size,
+      program: item.program,
+      totalCount: item.count ?? 1,
+    };
+  }),
 });
 
 export const performBasketLoadUserInfoData = (data) => ({
@@ -12,13 +24,17 @@ export const performBasketLoadUserInfoData = (data) => ({
   //   [BASKET_DATA_KEY.PHONE]: data[BASKET_DATA_NAME.PHONE],
 });
 
+export const convertPromoCodeForCheck = (promocode) => ({
+  [ORDER_DATA_NAME.PROMO_CODE]: promocode,
+});
+
 export function convertAddToCart(product, data) {
   if (data.type === 0) {
     return {
       id: product.id,
       type: data.type,
       masterClass: product,
-      program: data.program ?? null,
+      program: data.program ? data.program : product.programs[0].id,
     };
   }
   if (data.type === 1) {
@@ -33,7 +49,7 @@ export function convertAddToCart(product, data) {
       id: product.id,
       type: data.type,
       patternProduct: product,
-      size: data.size ?? null,
+      size: data.size ? data.size : product.sizes[0].id,
     };
   }
   if (data.type === 3) {
@@ -41,12 +57,13 @@ export function convertAddToCart(product, data) {
       id: product.id,
       type: data.type,
       sewingProduct: product,
-      size: data.size ?? null,
-      color: data.color ?? null,
+      size: data.size ? data.size : product.sizes[0].id,
+      color: data.color ? data.color : product.colors[0].id,
       count: data.count ?? 1,
     };
   }
 }
+
 export function reduceBascketState(bascketState) {
   return bascketState.reduce(
     (acc, i) => {
@@ -90,13 +107,13 @@ const constructorMasterClassItem = (data) => {
       image: data.masterClass.images[0].fileUrl,
       name: data.masterClass.titleRu,
       params: {
-        program: program.programNameRu,
+        program: { id: program.id, value: program.programNameRu },
+        vendorCode: program.vendorCode,
         category: data.masterClass.categories[0].textRu,
       },
       programsOptions: data.masterClass.programs.map((item) => ({
         id: item.id,
         tid: item.programNameRu,
-        price: item.price,
       })),
       totalPrice: totalPrice,
     },
@@ -112,9 +129,7 @@ const constructorSewingGoodsItem = (data) => {
     data.sewingProduct.colors[0];
 
   const totalPrice =
-    size.price +
-    color.price -
-    (size.price + color.price) * (data.sewingProduct.discount / 100);
+    size.price - size.price * (data.sewingProduct.discount / 100);
 
   return {
     price: totalPrice * count,
@@ -123,8 +138,9 @@ const constructorSewingGoodsItem = (data) => {
       image: data.sewingProduct.images[0].fileUrl,
       name: data.sewingProduct.titleRu,
       params: {
-        size: size.size,
-        color: color.color,
+        size: { id: size.id, value: size.size },
+        color: { id: color.id, value: color.color },
+        vendorCode: size.vendorCode,
         category: data.sewingProduct.categories[0].textRu,
       },
       sizesOptions: data.sewingProduct.sizes.map((item) => ({
@@ -138,7 +154,7 @@ const constructorSewingGoodsItem = (data) => {
         price: item.price,
       })),
       count: count,
-      maxCount: data.sewingProduct.count,
+      maxCount: size.count,
       totalPrice: count * totalPrice,
     },
   };
@@ -177,7 +193,7 @@ const constructorPrintPatternItem = (data) => {
       image: data.patternProduct.images[0].fileUrl,
       name: data.patternProduct.titleRu,
       params: {
-        size: size.size,
+        size: { id: size.id, value: size.size },
         format: 'печатный',
         complexity: data.patternProduct.complexity,
         category: data.patternProduct.categories[0].textRu,
@@ -185,7 +201,6 @@ const constructorPrintPatternItem = (data) => {
       sizesOptions: data.patternProduct.sizes.map((item) => ({
         id: item.id,
         tid: item.size,
-        price: item.price,
       })),
       totalPrice: totalPrice,
     },
