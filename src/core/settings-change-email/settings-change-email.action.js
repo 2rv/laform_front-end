@@ -47,11 +47,11 @@ export function settingsChangeEmailLoadEmail() {
         url: SETTINGS_CHANGE_EMAIL_API.LOAD_EMAIL.ENDPOINT,
       });
 
-      const email = performSettingsChangeEmailLoadEmailData(data);
+      const performedData = performSettingsChangeEmailLoadEmailData(data);
 
       dispatch({
         type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_SUCCESS,
-        data: email,
+        data: performedData,
       });
     } catch (err) {
       if (err.response) {
