@@ -80,9 +80,9 @@ export function CardActions(props) {
             </ModalContent>
           )}
           children={
-            <IconButton>
+            <RemoveProductButton>
               <Delete />
-            </IconButton>
+            </RemoveProductButton>
           }
         />
       )}
@@ -116,4 +116,8 @@ const ModalContent = styled.div`
 const ModalButtons = styled.div`
   display: flex;
   gap: ${spacing(2)};
+`;
+
+const RemoveProductButton = styled(IconButton)`
+  padding: 0;
 `;
