@@ -6,6 +6,9 @@ import { DeleteButton } from './delete.button';
 export function ButtonTd(props) {
   const {
     id,
+    sizeId,
+    colorId,
+    programId,
     changeItem,
     deleteItem,
     sizesOptions,
@@ -14,12 +17,14 @@ export function ButtonTd(props) {
   } = props;
 
   if (!id || !changeItem || !deleteItem) return null;
-
   return (
     <Td>
       <Container>
         <ChangeButton
           id={id}
+          sizeId={sizeId}
+          colorId={colorId}
+          programId={programId}
           changeItem={changeItem}
           sizesOptions={sizesOptions}
           colorsOptions={colorsOptions}

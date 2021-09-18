@@ -46,6 +46,9 @@ export function TableItem(props) {
       <StatusTd status={status} />
       <ButtonTd
         id={id}
+        sizeId={params.size?.id}
+        colorId={params.color?.id}
+        programId={params.program?.id}
         changeItem={changeItem}
         deleteItem={deleteItem}
         sizesOptions={sizesOptions}

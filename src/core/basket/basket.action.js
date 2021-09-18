@@ -15,7 +15,6 @@ export function basketUploadData(values, bascketState, isAuth) {
     });
     try {
       const data = convertForCreateOrder(values, bascketState);
-      console.log(data);
       const responst = await httpRequest({
         method: BASKET_API.CREATE_ORDER.TYPE,
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),

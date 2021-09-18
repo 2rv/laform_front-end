@@ -36,7 +36,6 @@ export function BasketContainer() {
 
   const { itemsGoods, itemsMaster, itemsPatterns, price } =
     reduceBascketState(bascketState);
-
   const changeItem = (id, values) => {
     dispatch(changeItemAction(id, values, bascketState));
   };

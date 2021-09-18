@@ -6,7 +6,7 @@ export const ORDER_FIELD_NAME = {
   PAYMENT_METHOD: 'typeOfPayment',
   PHONE: 'phoneNumber',
   DESCRIPTION: 'comment',
-  PROMO_CODE: 'promocode',
+  PROMO_CODE: 'promoCode',
   PROMO_DISCOUNT: 'promoCodeDiscount',
   PRICE: 'price',
   DILIVERY_PRICE: 'diliveryPrice',

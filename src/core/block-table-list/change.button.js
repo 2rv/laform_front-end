@@ -10,6 +10,9 @@ import { Formik } from 'formik';
 export function ChangeButton(props) {
   const {
     id,
+    sizeId,
+    colorId,
+    programId,
     sizesOptions = [],
     colorsOptions = [],
     programsOptions = [],
@@ -25,9 +28,9 @@ export function ChangeButton(props) {
   return (
     <Formik
       initialValues={{
-        size: undefined,
-        color: undefined,
-        program: undefined,
+        size: sizeId,
+        color: colorId,
+        program: programId,
         count: 1,
       }}
       onSubmit={(values) => changeItem(id, values)}
