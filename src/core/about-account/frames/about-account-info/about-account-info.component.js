@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-import moment from 'moment';
 import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary as Title } from '../../../../lib/element/title';
 import { SectionLayout } from '../../../../lib/element/layout';
 import { Spinner } from '../../../../lib/element/spinner';
+import { ConvertDate } from 'src/lib/common/time-convert';
 
 export function AboutAccountInfoComponent({ isUserPending, user }) {
-  return isUserPending ? <Spinner /> : (
+  return isUserPending ? (
+    <Spinner />
+  ) : (
     <SectionLayout>
       {user?.userInfo?.fullName && (
         <LineCase>
@@ -17,33 +19,43 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
         </LineCase>
       )}
       <SectionLayout type="SMALL">
-        <TitlePrimary tid="Об аккаунте" />
+        <TitlePrimary tid="PROFILE.ABOUT_ACCOUNT" />
         <LineSection>
           <SectionLayout type="TEXT">
-            <InfoTitle tid="Дата регистрации" />
-            <InfoText tid={moment(user.createdDate).format('MMMM DD, YYYY')} />
+            <InfoTitle tid="PROFILE.DATE_OF_REGISTRATION" />
+            <InfoText tid={ConvertDate(user.createdDate)} />
           </SectionLayout>
           <SectionLayout type="TEXT">
-            <InfoTitle tid="Статус" />
+            <InfoTitle tid="PROFILE.STATUS" />
             <StatusInfo
               status={user.emailConfirmed}
-              tid={user.emailConfirmed ? 'Верефицирован' : 'Не верефицирован'}
+              tid={
+                user.emailConfirmed
+                  ? 'PROFILE.VERIFIED'
+                  : 'PROFILE.NOT_VERIFIED'
+              }
             />
           </SectionLayout>
         </LineSection>
       </SectionLayout>
       <SectionLayout type="SMALL">
-        <TitlePrimary tid="Доставка и оплата" />
+        <TitlePrimary tid="PROFILE.SHIPPING_AND_PAYMENT" />
         <LineSection>
           {user?.userInfo?.location && (
             <SectionLayout type="TEXT">
-              <InfoTitle tid="Адрес доставки" />
+              <InfoTitle tid="PROFILE.DELIVERY_ADDRESS" />
               <InfoText tid={user?.userInfo?.location} />
             </SectionLayout>
           )}
           <SectionLayout type="TEXT">
-            <InfoTitle tid="Способ оплаты" />
-            <InfoText tid={user?.userInfo?.paymentType === 1 ? 'Онлайн' : 'Другой'} />
+            <InfoTitle tid="PROFILE.PAYMENT_METHOD" />
+            <InfoText
+              tid={
+                user?.userInfo?.paymentType === 1
+                  ? 'PROFILE.ONLINE'
+                  : 'PROFILE.OTHER'
+              }
+            />
           </SectionLayout>
         </LineSection>
       </SectionLayout>

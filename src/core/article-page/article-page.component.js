@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import moment from 'moment';
 import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
@@ -7,6 +6,7 @@ import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { BlockComment } from '../block-comment';
 import { EditorRenderer } from '../block-editor-renderer';
+import { ConvertTime } from 'src/lib/common/time-convert';
 
 export function ArticlePageComponent(props) {
   const {
@@ -23,9 +23,7 @@ export function ArticlePageComponent(props) {
     <SectionLayout>
       <HeaderCase>
         <Title tid={name} />
-        <TextLight
-          tid={moment(createdDate).locale('ru').startOf('hour').fromNow()}
-        />
+        <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
       <EditorRenderer data={postArticle} />
       <BlockComment type={type} id={id} />

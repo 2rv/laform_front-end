@@ -38,10 +38,10 @@ export function SelectCompilationComponent(props) {
         </ProductLayout>
         <ProductLayout>
           {pinned ? (
-            <TextSecondary tid="Уже добавлен в лучшие подборки" />
+            <TextSecondary tid="COMPILATION.ALREADY_ADDED_ON_BEST_PRODUCTS" />
           ) : (
             <ButtonBasic onClick={updateCompilation}>
-              <TextSecondary tid="Добавить в лучшие подборки" />
+              <TextSecondary tid="COMPILATION.ADD_TO_BEST_PRODUCT" />
             </ButtonBasic>
           )}
           </ProductLayout>

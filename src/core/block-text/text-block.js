@@ -19,7 +19,7 @@ export function TextBlock(props) {
           &nbsp;
           <Button
             onClick={() => setMore(!more)}
-            tid={more ? 'Читать дальше' : 'Закрыть'}
+            tid={more ? 'BLOCK_TEXT.READ_MORE' : 'BLOCK_TEXT.CLOSE'}
           />
         </>
       )}
@@ -35,6 +35,7 @@ const Button = styled(TextButton)`
 const Container = styled.div`
   display: inline;
   line-height: 1.5;
+  word-break: break-all;
 `;
 
 const Text = styled(TextSecondary)`

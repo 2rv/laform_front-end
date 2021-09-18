@@ -56,7 +56,7 @@ export function AboutOrderFields(props) {
       </FieldLayout>
       <BasicField
         titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.ORDER_NOTE"
-        placeholderTid="Товар упаковать надёжно"
+        placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
         disabled={true}
         name={fieldOrderNote}
         value={values[fieldOrderNote]}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -18,38 +19,68 @@ import { PatternsComponent } from './patterns.component';
 import { PATTERNS_FIELD_NAME } from './patterns.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { addToBasket } from '../basket';
 
 export function PatternsContainer() {
+  const router = useRouter();
   const dispatch = useDispatch();
-  const { patternsState, pageLoading, currentLang, user } = useSelector((state) => ({
-    patternsState: state[PATTERNS_STORE_NAME].patternsState,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-    user: state[AUTH_STORE_NAME].user,
-  }));
+  const { patternsState, pageLoading, currentLang, user, isAuth } = useSelector(
+    (state) => ({
+      patternsState: state[PATTERNS_STORE_NAME].patternsState,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+      user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
+    }),
+  );
+  const [activeTab, setActiveTab] = useState(
+    router.query.type === 'all' ? 9
+    : router.query.type === 'printed' ? 2
+    : router.query.type === 'electronic' ? 1
+    : 0
+  );
 
-  useEffect(() => dispatch(patternsUploadData(currentLang)), []);
+  useEffect(() => {
+    dispatch(patternsUploadData(currentLang));
+
+    if (!['all','printed','electronic'].includes(router.query.type)) {
+      router.push('/patterns?type=all', { query: { type: 'all' } }, { shallow: true });
+      setActiveTab(9);
+    }
+
+    if (activeTab === 9) {
+      router.push('/patterns?type=all', { query: { type: 'all' } }, { shallow: true });
+    } else if (activeTab === 2) {
+      router.push('/patterns?type=printed', { query: { type: 'printed' } }, { shallow: true });
+    } else if (activeTab === 1) {
+      router.push('/patterns?type=electronic', { query: { type: 'electronic' } }, { shallow: true });
+    }
+  }, [activeTab, router.query.type]);
   const filterInitialValue = () => ({
     [PATTERNS_FIELD_NAME.FILTER]: 0,
     [PATTERNS_FIELD_NAME.FIND]: '',
   });
   //---------------------------------------------------
-  const [activeTab, setActiveTab] = useState(9);
   const [filter, setFilter] = useState(filterInitialValue());
 
   const onDeleteProduct = (id, body) => {
     dispatch(patternsUpdateData(currentLang, id, body));
   };
 
+  const addToCart = (id, type, inCart) => {
+    if (inCart) return dispatch(addToBasket({ id, type }, currentLang, isAuth));
+  };
+
   return (
     <PatternsComponent
+      addToCart={addToCart}
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       tabItems={tabItems}
       //-----
       listItems={filterByType(
         sorterItemsByParams(
-          getRequestData(patternsState, [...testListItems]),
+          getRequestData(patternsState, []),
           filter[PATTERNS_FIELD_NAME.FIND],
           Number(filter[PATTERNS_FIELD_NAME.FILTER]),
         ),

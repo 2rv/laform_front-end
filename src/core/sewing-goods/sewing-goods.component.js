@@ -8,6 +8,7 @@ export function SewingGoodsComponent(props) {
     listItems,
     onDeleteProduct,
     isAdmin,
+    addToCart,
     //-----
     filterOptions,
     filterSelectName,
@@ -24,16 +25,21 @@ export function SewingGoodsComponent(props) {
 
   return (
     <SectionLayout>
-      <TitlePrimary tid="SEWING_GOODS.SEWING_GOODS.TITLE" />
+      <TitlePrimary tid="SEWING_GOODS.TITLE" />
       <FormFilter
-        findPlaceholderTid="SEWING_GOODS.SEWING_GOODS.FIELD.FIND_SEWING_GOODS"
+        findPlaceholderTid="SEWING_GOODS.FIELD.FIND_SEWING_GOODS"
         filterOptions={filterOptions}
         filterSelectName={filterSelectName}
         findFieldName={findFieldName}
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} onDeleteProduct={onDeleteProduct} isAdmin={isAdmin} />
+      <BasicCardList
+        onSetCart={addToCart}
+        items={listItems}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </SectionLayout>
   );
 }

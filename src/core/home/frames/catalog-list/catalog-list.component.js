@@ -9,9 +9,9 @@ export function CatalogListComponent(props) {
   return (
     <Container>
       {items.map((data, index) => {
-        const { title, description, backgroundImage, path } = data;
+        const { title, description, backgroundImage, path, pathConfig } = data;
         return (
-          <ContainerItem path={path} key={index}>
+          <ContainerItem path={path} pathConfig={pathConfig} key={index}>
             <BackgroundImage src={backgroundImage} />
             <Content>
               <TitleText tid={title} />

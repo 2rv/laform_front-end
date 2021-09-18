@@ -8,6 +8,7 @@ import { LinkPrimary } from '../link';
 import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
 import moment from 'moment';
 import { LikeButton } from '../../../core/block-like';
+import { ConvertTime } from 'src/lib/common/time-convert';
 
 export function CardArticles(props) {
   const { id, image, name, bestseller, date, createdDate, like, type } =
@@ -27,9 +28,7 @@ export function CardArticles(props) {
       <Content>
         <Column>
           <CardName tid={name} />
-          <Date
-            tid={moment(createdDate).locale('ru').startOf('hour').fromNow()}
-          />
+          <Date tid={ConvertTime(createdDate)} />
         </Column>
         {like === null ? null : <LikeButton id={id} type={type} like={like} />}
       </Content>

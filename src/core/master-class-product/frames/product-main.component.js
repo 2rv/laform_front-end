@@ -19,18 +19,21 @@ export function ProductMainComponent(props) {
     type,
     comment,
     images,
-    categories = [],
-    programs = false,
+    categories,
+    programs,
   } = props;
-
-  const [program, setProgram] = useState();
+  const [program, setProgram] = useState(
+    programs?.length > 0
+      ? programs[0]
+      : { id: 0, tid: 0, price: 0, vendorCode: 0 },
+  );
 
   return (
     <Container>
       <HeaderCase>
         <Title tid={name} />
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="Акция" />}
+        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
       <div>
         {categories.map((category, key) => (
@@ -49,9 +52,8 @@ export function ProductMainComponent(props) {
           <Divider />
           <BlockSelect
             name="Программа"
-            selectName="selectedProgram"
             selectOptions={programs}
-            getValues={setProgram}
+            handleChange={setProgram}
           />
         </>
       )}

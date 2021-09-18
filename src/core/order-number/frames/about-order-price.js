@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../../lib/theme';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextCurrency, TextSecondary } from '../../../lib/element/text';
 import { SectionLayout } from '../../../lib/element/layout';
 
@@ -13,30 +13,30 @@ export function AboutOrderPrice(props) {
   return (
     <Container>
       <SectionLayout type="TEXT">
-        <Text tid="Цена со скидкой" />
+        <Text tid="PRODUCT_PRICE.DISCOUNT_PRICE" />
         <div>
           <Price price={discountPrice} />
           &nbsp;
-          <TextLight tid={'руб.'} />
+          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
           &nbsp;
           {discount && <TextColored tid={`-${discount}%`} />}
         </div>
       </SectionLayout>
       <SectionLayout type="TEXT">
-        <Text tid="Цена за доставку" />
+        <Text tid="PRODUCT_PRICE.DELIVERY_PRICE" />
         <div>
           <Price price={diliveryPrice} />
           &nbsp;
-          <TextLight tid={'руб.'} />
+          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
         </div>
       </SectionLayout>
       <VerticalDivider />
       <SectionLayout type="TEXT">
-        <Text tid="Итоговая цена заказа" />
+        <Text tid="PRODUCT_PRICE.TOTAL_ORDER_PRICE" />
         <div>
           <TitlePrice price={price} />
           &nbsp;
-          <TextLight tid={'руб.'} />
+          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
         </div>
       </SectionLayout>
     </Container>

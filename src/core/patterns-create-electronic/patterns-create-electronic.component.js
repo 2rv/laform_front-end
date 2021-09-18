@@ -23,7 +23,7 @@ export function CreateElectronicPatternComponent(props) {
     <>
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Создание электронной выкройки" />
+        <TitlePrimary tid="PATTERNS.CREATE_ELECTRONIC.TITLE" />
         <Formik
           initialValues={initialValues}
           validate={validation}
@@ -37,7 +37,7 @@ export function CreateElectronicPatternComponent(props) {
                     {...formProps}
                     imagesArrayName={ELECTRONIC_PATTERN_FIELD_NAME.IMAGES}
                     imageFieldName={ELECTRONIC_PATTERN_FIELD_NAME.IMAGE}
-                    title="Фотографии товара"
+                    title="PRODUCT_IMAGES.TITLE"
                   />
                   <FormComponent {...formProps} />
                 </SectionLayout>
@@ -45,7 +45,7 @@ export function CreateElectronicPatternComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="Товар успешно создан" />}
+        {isSuccess && <SuccessAlert tid="PATTERNS.CREATE_ELECTRONIC.PRODUCT_SUCCESSFULLY_CREATED" />}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

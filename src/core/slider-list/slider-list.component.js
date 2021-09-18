@@ -21,7 +21,7 @@ export function SliderListComponent(props) {
     <>
       {pageLoading && <LoaderPrimary />}
       <Container>
-        <TitlePrimary tid="Слайдер" />
+        <TitlePrimary tid="SLIDER.LIST.TITLE" />
         {isPending ? (
           <Spinner />
         ) : (
@@ -38,7 +38,7 @@ export function SliderListComponent(props) {
             <Button>
               <PlusIcon />
             </Button>
-            <TextSecondary tid="Дополнить сборку" />
+            <TextSecondary tid="SLIDER.LIST.ADD_ASSEMLBY" />
           </AddSlide>
         )}
       </Container>

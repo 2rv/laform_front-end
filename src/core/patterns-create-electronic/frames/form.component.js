@@ -15,7 +15,7 @@ import { ELECTRONIC_PATTERN_FIELD_NAME } from '../patterns-create-electronic.typ
 import { ProductPrice } from '../../block-product-components';
 import { numberValue } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
-import { BlockEditor } from '../../block-editor';
+import { ReactEditor } from 'src/core/block-react-editor';
 
 export function FormComponent(props) {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
@@ -28,7 +28,7 @@ export function FormComponent(props) {
   const setPdfFile = (event) => {
     const file = event.currentTarget?.files?.[0];
     if (!file || file.type.split('/')[1] !== 'pdf') {
-      alert('Нужен файл PDF');
+      alert('PATTERNS.CREATE_ELECTRONIC.FORM.NEED_PDF');
       setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.FILE, null);
     } else setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.FILE, file);
   };
@@ -38,8 +38,8 @@ export function FormComponent(props) {
       <SectionLayout type="TEXT">
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Название"
-            placeholderTid="Введите название"
+            titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.NAME"
+            placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.NAME"
             name={ELECTRONIC_PATTERN_FIELD_NAME.NAME}
             value={values[ELECTRONIC_PATTERN_FIELD_NAME.NAME]}
             error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.NAME)}
@@ -47,8 +47,8 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="Плашка"
-            placeholderTid="Например - Хит"
+            titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.DICE_OF_GOODS"
+            placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.DICE_OF_GOODS"
             name={ELECTRONIC_PATTERN_FIELD_NAME.MODIFIER}
             value={values[ELECTRONIC_PATTERN_FIELD_NAME.MODIFIER]}
             error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.MODIFIER)}
@@ -62,12 +62,12 @@ export function FormComponent(props) {
             setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.CATEGORIES, data)
           }
           error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.CATEGORIES)}
-          titleTid="Теги"
-          placeholderTid="Введите тег и нажмите Enter"
+          titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.TAG"
+          placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.TAG"
         />
         <TextareaField
-          titleTid="Описание"
-          placeholderTid="Опишите товар"
+          titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.DESCRIPTION"
+          placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
           name={ELECTRONIC_PATTERN_FIELD_NAME.DESCRIPTION}
           value={values[ELECTRONIC_PATTERN_FIELD_NAME.DESCRIPTION]}
           error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.DESCRIPTION)}
@@ -76,18 +76,18 @@ export function FormComponent(props) {
           minHeight={100}
         />
         <SectionLayout type="TEXT_SMALL">
-          <SmallTitle tid="Материалы" />
-          <BlockEditor
-            formikOnChange={setEditorData(
-              ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL,
-            )}
+          <SmallTitle tid="PATTERNS.CREATE_ELECTRONIC.FORM.MATERIALS" />
+          <ReactEditor
+            handleChange={setEditorData(ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL)}
+            values={values[ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL]}
+            name={ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL}
           />
         </SectionLayout>
       </SectionLayout>
       <FieldLayout type="double" adaptive>
         <FileField
-          titleTid="Загрузка файла"
-          placeholderTid="Загрузить файл pdf"
+          titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.FILE_UPLOAD"
+          placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.FILE_UPLOAD"
           accept="application/pdf"
           name={ELECTRONIC_PATTERN_FIELD_NAME.FILE}
           value={values[ELECTRONIC_PATTERN_FIELD_NAME.FILE]}
@@ -96,7 +96,7 @@ export function FormComponent(props) {
           onBlur={handleBlur}
         />
         <Complexity>
-          <SmallTitle tid="Сложность выкройки" />
+          <SmallTitle tid="PATTERNS.CREATE_ELECTRONIC.FORM.COMPLEXITY" />
           <FieldComplexity>
             {[1, 2, 3, 4, 5].map((value, index) => (
               <ComplexityDot
@@ -120,11 +120,11 @@ export function FormComponent(props) {
       </FieldLayout>
 
       <SectionLayout type="SMALL">
-        <Title tid="Цена" />
+        <Title tid="PATTERNS.CREATE_ELECTRONIC.FORM.PRICE" />
         <FieldLayout type="double" adaptive>
           <BasicField
             placeholderTid="0"
-            titleTid="Скидка (%)"
+            titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.DISCOUNT"
             name={ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT}
             value={values[ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT]}
             error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT)}
@@ -132,8 +132,8 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="Цена товара"
-            placeholderTid="Введите цену товара (в руб.)"
+            titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.PRICE"
+            placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.PRICE"
             name={ELECTRONIC_PATTERN_FIELD_NAME.PRICE}
             value={values[ELECTRONIC_PATTERN_FIELD_NAME.PRICE]}
             error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.PRICE)}
@@ -151,8 +151,11 @@ export function FormComponent(props) {
           }
         />
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="Создать электронную выкройку" />
-          <ButtonSecondary tid="Отменить" />
+          <ButtonPrimary
+            type="submit"
+            tid="PATTERNS.CREATE_ELECTRONIC.FORM.BUTTON.CREATE_PRODUCT"
+          />
+          <ButtonSecondary tid="PATTERNS.CREATE_ELECTRONIC.FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>

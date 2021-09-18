@@ -10,14 +10,14 @@ export function EditCompilationComponent({ title, changeProductNameHandler }) {
   return (
     <EditProductContainer>
       <BasicField
-        titleTid="Название"
-        placeholderTid="Изменить название"
+        titleTid="COMPILATION.EDIT_PRODUCT.FIELD.TITLE"
+        placeholderTid="COMPILATION.EDIT_PRODUCT.FIELD.PLACEHOLDER"
         name="productName"
         value={productNameValue}
         onChange={(e) => setProductNameValue(e.target.value)}
       />
       <ButtonSecondary
-        tid="Заменить"
+        tid="COMPILATION.EDIT_PRODUCT.BUTTON_TITLE"
         onClick={() => changeProductNameHandler(productNameValue)}
         disabled={!productNameValue.length}
       />

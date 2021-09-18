@@ -80,7 +80,7 @@ export function EditCompilationContainer() {
           <ModalContent>
             {Boolean(products.length > 0) ? (
               products.filter(({ pinned }) => pinned).length >= 3 ? (
-                <TextSecondary tid="В списке должно быть максимум 3 подборки данной категории" />
+                <TextSecondary tid="COMPILATION.MAX_BEST_PRODUCTS" />
               ) : (
                 products.map((product) => (
                   <SelectCompilationComponent
@@ -96,7 +96,7 @@ export function EditCompilationContainer() {
                 ))
               )
             ) : (
-              <TextSecondary tid="Список пуст" />
+              <TextSecondary tid="COMPILATION.LIST_IS_EMPTY" />
             )}
           </ModalContent>
         )}

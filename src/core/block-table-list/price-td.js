@@ -1,15 +1,20 @@
 import styled, { css } from 'styled-components';
-import { TextSecondary, TextCurrency } from '../../lib/element/text';
+import {
+  TextSecondary,
+  TextPrimary,
+  TextCurrency,
+} from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function PriceTd(props) {
-  const { isLast, countedPrice } = props;
+  const { isLast, totalPrice } = props;
+  if (!totalPrice) return null;
   return (
     <Td last={isLast}>
       <Case>
-        <Price price={countedPrice} />
+        <Price tid={totalPrice} />
         &nbsp;
-        <Valute tid="руб." />
+        <Valute tid="PRODUCT_PRICE.CURRENCY" />
       </Case>
     </Td>
   );
@@ -17,8 +22,8 @@ export function PriceTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
-  width: 130px;
-  min-width: 130px;
+  width: 140px;
+  min-width: 150px;
   ${(p) =>
     p.last &&
     css`
@@ -31,8 +36,7 @@ const Td = styled.td`
 const Case = styled.div`
   line-height: 1.5;
 `;
-
-const Price = styled(TextCurrency)`
+const Price = styled(TextPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;

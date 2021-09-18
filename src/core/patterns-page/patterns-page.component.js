@@ -24,7 +24,7 @@ export function PatternsPageComponent(props) {
       </Content>
       {materials && (
         <SectionLayout type="TEXT">
-          <TitlePrimary tid={'Материалы'} />
+          <TitlePrimary tid={'PATTERNS.CREATE.FORM.COMPLEXITY'} />
           <TextBlock text={materials} />
         </SectionLayout>
       )}

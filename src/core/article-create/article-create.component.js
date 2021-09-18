@@ -23,7 +23,7 @@ export function CreateArticleComponent(props) {
     <>
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Создание статьи" />
+        <TitlePrimary tid="ARTICLE_CREATE_FORM.CREATING_AN_ARTICLE" />
         <Formik
           initialValues={initialValues}
           validate={validation}
@@ -39,7 +39,7 @@ export function CreateArticleComponent(props) {
                     maxImages={1}
                     imagesArrayName={ARTICLE_FIELD_NAME.IMAGES}
                     imageFieldName={ARTICLE_FIELD_NAME.IMAGE}
-                    title="Фотография статьи"
+                    title="ARTICLE_CREATE_FORM.PHOTO_ARTICLE"
                   />
                   <FormComponent {...formProps} />
                 </SectionLayout>
@@ -47,7 +47,7 @@ export function CreateArticleComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="Статья успешно создана" />}
+        {isSuccess && <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_CREATED" />}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

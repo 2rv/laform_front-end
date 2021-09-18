@@ -27,7 +27,11 @@ export function CardActions(props) {
   ); // Стейт текста который должен быть на кнопке
 
   useEffect(() => {
-    setSelectText(inCart ? 'Убрать из корзины' : 'В корзину');
+    setInCart(cart);
+  }, [cart]);
+
+  useEffect(() => {
+    setSelectText(inCart ? 'Зайти в корзину' : 'Добавить в корзину');
     onSetSelect &&
       setSelectText(isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT');
   }, [inCart, isSelected]);
@@ -35,11 +39,11 @@ export function CardActions(props) {
   const onSelectCard = () => {
     if (onSetSelect) {
       setSelect(!isSelected);
-      onSetSelect(id, !isSelected);
+      onSetSelect(id, type, !isSelected);
     }
     if (onSetCart && !purchase) {
       setInCart(!inCart);
-      onSetCart(id, !inCart);
+      onSetCart(id, type, !inCart);
     }
   };
 

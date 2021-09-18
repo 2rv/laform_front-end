@@ -33,7 +33,7 @@ export function SliderEditComponent(props) {
         <Spinner />
       ) : (
         <SectionLayout type="SMALL">
-          <TitlePrimary tid="Редактирование слайдера" />
+          <TitlePrimary tid="SLIDER.EDIT_SLIDER.TITLE" />
           <SectionLayout>
             <SliderEditPreviewComponent
               pickImage={pickImage}

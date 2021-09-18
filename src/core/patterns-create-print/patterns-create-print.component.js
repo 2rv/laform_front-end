@@ -24,7 +24,7 @@ export function CreatePrintPatternComponent(props) {
     <>
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Создание печатной выкройки" />
+        <TitlePrimary tid="PATTERNS.CREATE.TITLE" />
         <Formik
           initialValues={initialValues}
           validate={validation}
@@ -39,7 +39,7 @@ export function CreatePrintPatternComponent(props) {
                     {...formProps}
                     imagesArrayName={PRINT_PATTERN_FIELD_NAME.IMAGES}
                     imageFieldName={PRINT_PATTERN_FIELD_NAME.IMAGE}
-                    title="Фотографии товара"
+                    title="PRODUCT_IMAGES.TITLE"
                   />
                   <FormComponent {...formProps} sizesInit={sizesInit} />
                 </SectionLayout>
@@ -47,7 +47,7 @@ export function CreatePrintPatternComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="Товар успешно создан" />}
+        {isSuccess && <SuccessAlert tid="PATTERNS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

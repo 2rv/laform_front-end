@@ -19,6 +19,8 @@
   },
   "FORM": {
     "TITLE": "О заказе",
+    "ORDER_STATUS": "Состояние заказа",
+    "SAVE_DATA": "Сохранить данные",
     "FIELDS": {
       "TITLE": {
         "FULL_NAME": "ФИО",
@@ -32,6 +34,7 @@
       "PLACEHOLDER": {
         "MOSKVA": "Москва",
         "CONTACT_NUMBER": "+7 000 000 00 00",
+        "ORDER_NOTE": "Товар упаковать надёжно",
         "YOUR_PROMO": "Ваше промо"
       },
       "SELECT_OPTIONS": {

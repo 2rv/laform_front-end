@@ -2,9 +2,10 @@ import { httpRequest } from '../../main/http';
 import { PATTERNS_API } from './patterns.constant';
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 import { performPatternsData } from './patterns.convert';
+import { BASKET_STORE_NAME } from '../basket';
 
 export function patternsUploadData(currentLang) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_PENDING,
     });
@@ -14,7 +15,10 @@ export function patternsUploadData(currentLang) {
         method: PATTERNS_API.PATTERNS_UPLOAD.TYPE,
         url: PATTERNS_API.PATTERNS_UPLOAD.ENDPOINT(currentLang),
       });
-      const data = performPatternsData(response.data);
+      const data = performPatternsData(
+        response.data,
+        getState()[BASKET_STORE_NAME].basket,
+      );
       dispatch({
         type: PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS,
         data: data,

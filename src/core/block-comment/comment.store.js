@@ -56,6 +56,64 @@ export function commentStore(state = initialState, action) {
         createState: setRequestSuccess(state.createState),
       };
 
+    case COMMENT_ACTION_TYPE.COMMENT_UPDATE_PENDING:
+      return {
+        ...state,
+        createState: setRequestPending(state.createState),
+      };
+    case COMMENT_ACTION_TYPE.COMMENT_UPDATE_SUCCESS:
+      return {
+        ...state,
+        commentState: {
+          ...state.commentState,
+          data: state.commentState?.data.map((comment) => {
+            if (comment.id === action.payload.id) {
+              comment.text = action.payload.text;
+            }
+
+            return comment;
+          }),
+        },
+        createState: setRequestSuccess(state.createState),
+      };
+    case COMMENT_ACTION_TYPE.COMMENT_UPDATE_ERROR:
+      return {
+        ...state,
+        createState: setRequestError(state.createState, action.errorMessage),
+      };
+
+    case COMMENT_ACTION_TYPE.SUB_COMMENT_UPDATE_PENDING:
+      return {
+        ...state,
+        createState: setRequestPending(state.createState),
+      };
+    case COMMENT_ACTION_TYPE.SUB_COMMENT_UPDATE_SUCCESS:
+      return {
+        ...state,
+        commentState: {
+          ...state.commentState,
+          data: state.commentState?.data.map((comment) => {
+            if (comment.id === action.payload.commentId.id) {
+              comment.subComment = comment.subComment.map((subComment) => {
+                if (subComment.id === action.payload.id) {
+                  subComment.text = action.payload.text;
+                }
+
+                return subComment;
+              });
+            }
+
+            return comment;
+          }),
+        },
+        createState: setRequestSuccess(state.createState),
+      };
+    case COMMENT_ACTION_TYPE.SUB_COMMENT_UPDATE_ERROR:
+      return {
+        ...state,
+        createState: setRequestError(state.createState, action.errorMessage),
+      };
+
     default:
       return state;
   }

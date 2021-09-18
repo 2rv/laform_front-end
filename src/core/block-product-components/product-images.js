@@ -25,7 +25,7 @@ export function ProductImages(props) {
   const setPreview = (push) => (event) => {
     const file = event.currentTarget?.files?.[0];
     if (file?.type.split('/')[0] !== 'image' || !file) {
-      alert('Необходим тип - изображение');
+      alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
       return;
     }
     const reader = new FileReader();
@@ -51,7 +51,7 @@ export function ProductImages(props) {
     const file = event.currentTarget?.files?.[0];
 
     if (file?.type.split('/')[0] !== 'image' || !file) {
-      alert('Необходимо изображение');
+      alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
       return;
     }
     const reader = new FileReader();
@@ -93,7 +93,7 @@ export function ProductImages(props) {
                 <AddImage>
                   <Icon />
                   <File type="file" onChange={setPreview(push)} />
-                  <Text tid="Добавить фото" />
+                  <Text tid="PRODUCT_IMAGES.ADD_PHOTO" />
                 </AddImage>
               </ImageContainer>
             )}

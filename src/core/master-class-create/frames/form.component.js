@@ -10,13 +10,13 @@ import {
 } from '../../../lib/element/field';
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
-import { DynamicFields, ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,
 } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
-import { BlockEditor } from '../../block-editor';
+import { DynamicFields } from './dynamic-fields';
 
 export function FormComponent(props) {
   const {
@@ -31,8 +31,7 @@ export function FormComponent(props) {
 
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
-  const setEditorData = (name) => (editorData) =>
-    setFieldValue(name, editorData);
+
   //----------------------------
 
   return (
@@ -40,8 +39,8 @@ export function FormComponent(props) {
       <SectionLayout type="TEXT">
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Название"
-            placeholderTid="Введите название"
+            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.NAME"
+            placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
             name={CREATE_MASTER_CLASS_FIELD_NAME.NAME}
             value={values[CREATE_MASTER_CLASS_FIELD_NAME.NAME]}
             error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.NAME)}
@@ -49,8 +48,8 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="Плашка"
-            placeholderTid="Например - Хит"
+            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DICE_OF_GOODS"
+            placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
             name={CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER}
             value={values[CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER]}
             error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER)}
@@ -64,12 +63,12 @@ export function FormComponent(props) {
             setFieldValue(CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES, data)
           }
           error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES)}
-          titleTid="Теги"
-          placeholderTid="Введите тег и нажмите Enter"
+          titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.TAG"
+          placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
         />
         <TextareaField
-          titleTid="Описание"
-          placeholderTid="Опишите мастер-класс"
+          titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
+          placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
           name={CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION}
           value={values[CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]}
           error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION)}
@@ -78,35 +77,25 @@ export function FormComponent(props) {
           minHeight={100}
         />
       </SectionLayout>
-      <SectionLayout type="SMALL">
-        <Title tid="Статья мастер-класса" />
-        <BlockEditor
-          formikOnChange={setEditorData(
-            CREATE_MASTER_CLASS_FIELD_NAME.MASTER_CLASS,
-          )}
-        />
-      </SectionLayout>
-
       <DynamicFields
-        nameFieldArray={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAMS}
-        namePosition={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_NAME}
-        pricePosition={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_PRICE}
         initialData={programsInit}
-        title="Программы"
-        fieldTitle="Название программы"
-        fieldPlaceholder="Введите название программы"
-        buttonText="Добавить программу"
+        title="DYNAMIC_FIELDS.PROGRAM.TITLE"
+        fieldTitle="DYNAMIC_FIELDS.PROGRAM.FIELD_TITLE"
+        fieldPlaceholder="DYNAMIC_FIELDS.PROGRAM.FIELD_PLACEHOLDER"
+        buttonText="DYNAMIC_FIELDS.PROGRAM.BUTTON_TEXT"
         errors={errors}
         touched={touched}
         values={values}
         setFieldValue={setFieldValue}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
       />
       <SectionLayout type="SMALL">
-        <Title tid="Цена" />
+        <Title tid="MASTER_CLASSES.CREATE.FORM.PRICE" />
         <FieldLayout type="double" adaptive>
           <BasicField
             placeholderTid="0"
-            titleTid="Скидка (%)"
+            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DISCOUNT"
             name={CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT}
             value={values[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]}
             error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT)}
@@ -127,8 +116,11 @@ export function FormComponent(props) {
           }
         />
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="Создать мастер-класс" />
-          <ButtonSecondary tid="Отменить" />
+          <ButtonPrimary
+            type="submit"
+            tid="MASTER_CLASSES.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+          />
+          <ButtonSecondary tid="MASTER_CLASSES.CREATE.FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>

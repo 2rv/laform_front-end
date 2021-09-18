@@ -86,13 +86,13 @@ export function RecomendationContainer(props) {
 }
 
 const tabItems = [
-  { name: 'Все', type: 9 },
-  { name: 'Выбранные', type: 10 },
-  { name: 'Мастер-классы', type: 0 },
-  { name: 'Выкройки-электронные', type: 1 },
-  { name: 'Выкройки-печатные', type: 2 },
-  { name: 'Товары для шитья', type: 3 },
-  { name: 'Статьи', type: 4 },
+  { name: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.TAB_ITEMS.ALL', type: 9 },
+  { name: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.TAB_ITEMS.SELECTED', type: 10 },
+  { name: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.TAB_ITEMS.MASTER_CLASSES', type: 0 },
+  { name: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.TAB_ITEMS.PATTERNS_ELECTRONIC', type: 1 },
+  { name: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.TAB_ITEMS.PATTERNS_PRINTED', type: 2 },
+  { name: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.TAB_ITEMS.SEWING_GOODS', type: 3 },
+  { name: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.TAB_ITEMS.ARTICLES', type: 4 },
 ];
 const testListItems = [
   {
@@ -262,23 +262,23 @@ const testListItems = [
 const filterOptions = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.FILTER_OPTIONS.ALL',
   },
   {
     id: 1,
-    tid: 'Акция',
+    tid: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.FILTER_OPTIONS.STOCK',
   },
   {
     id: 2,
-    tid: 'Хит',
+    tid: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,
-    tid: 'По возрастанию',
+    tid: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.FILTER_OPTIONS.ASCENDING',
   },
   {
     id: 4,
-    tid: 'По убыванию',
+    tid: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.FILTER_OPTIONS.DESCENDING',
   },
 ];
 
