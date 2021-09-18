@@ -16,6 +16,7 @@ export function SewingGoodsProductComponent(props) {
     pageLoading,
     //------------
     productInfo,
+    addToCart,
   } = props;
 
   if (!productInfo) return null;
@@ -29,6 +30,7 @@ export function SewingGoodsProductComponent(props) {
     categories = [],
     description,
     images,
+    cart,
     sizes = [],
     colors = [],
     count = 0,
@@ -46,12 +48,14 @@ export function SewingGoodsProductComponent(props) {
             modifier={modifier}
             discount={discount}
             name={name}
+            cart={cart}
             categories={categories}
             description={description}
             images={images}
             sizes={sizes}
             colors={colors}
             count={count}
+            addToCart={addToCart}
           />
         </Content>
       </SectionLayout>

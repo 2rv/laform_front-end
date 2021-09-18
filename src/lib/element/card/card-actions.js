@@ -45,8 +45,10 @@ export function CardActions(props) {
       onSetSelect(id, type, !isSelected);
     }
     if (onSetCart && !purchase) {
-      setInCart(!inCart);
-      onSetCart(id, type, !inCart);
+      if (!inCart) {
+        setInCart(!inCart);
+        onSetCart(id, type, !inCart);
+      }
     }
   };
 

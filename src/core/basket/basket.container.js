@@ -25,14 +25,21 @@ import {
 export function BasketContainer() {
   const dispatch = useDispatch();
 
-  const { bascketState, promoCodeState, pageLoading, isAuth, email } =
-    useSelector((state) => ({
-      bascketState: state[BASKET_STORE_NAME].basket,
-      promoCodeState: state[BASKET_STORE_NAME].promoCode,
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-      isAuth: state[AUTH_STORE_NAME].logged,
-      email: state[AUTH_STORE_NAME].user?.email,
-    }));
+  const {
+    bascketState,
+    promoCodeState,
+    orderState,
+    pageLoading,
+    isAuth,
+    email,
+  } = useSelector((state) => ({
+    bascketState: state[BASKET_STORE_NAME].basket,
+    promoCodeState: state[BASKET_STORE_NAME].promoCode,
+    orderState: state[BASKET_STORE_NAME].order,
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    isAuth: state[AUTH_STORE_NAME].logged,
+    email: state[AUTH_STORE_NAME].user?.email,
+  }));
 
   const { itemsGoods, itemsMaster, itemsPatterns, price } =
     reduceBascketState(bascketState);
@@ -55,10 +62,6 @@ export function BasketContainer() {
   };
 
   const initialValues = () => {
-    const { promocode, discount } = getRequestData(promoCodeState, {
-      promocode: '',
-      discount: 0,
-    });
     return {
       [ORDER_FIELD_NAME.EMAIL]: email ? email : '',
       [ORDER_FIELD_NAME.FULL_NAME]: '',
@@ -67,22 +70,39 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.PAYMENT_METHOD]: 0,
       [ORDER_FIELD_NAME.DELIVERY_METHOD]: 0,
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
-      [ORDER_FIELD_NAME.PRICE]: price,
-      [ORDER_FIELD_NAME.PROMO_DISCOUNT]: discount,
-      [ORDER_FIELD_NAME.PROMO_CODE]: promocode,
+      [ORDER_FIELD_NAME.PRICE]: 0,
+      [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
+      [ORDER_FIELD_NAME.PROMO_CODE]: '',
       [ORDER_FIELD_NAME.DILIVERY_PRICE]: 0,
     };
   };
+
+  const { promocode, discount } = getRequestData(promoCodeState, {
+    promocode: '',
+    discount: 0,
+  });
+
   return (
     <BasketComponent
       pageLoading={pageLoading}
       IsEmpty={bascketState && bascketState.length === 0}
       isAuth={isAuth}
       //-----------------
+      promocode={promocode}
+      discount={discount}
+      price={price}
+      //-----------------
+      checkPromoCode={checkPromoCode}
+      //-----------------
       promoCodeErrorMessage={getRequestErrorMessage(promoCodeState)}
       promoCodeError={isRequestError(promoCodeState)}
       promoCodePending={isRequestPending(promoCodeState)}
       promoCodeSuccess={isRequestSuccess(promoCodeState)}
+      //-----------------
+      orderErrorMessage={getRequestErrorMessage(orderState)}
+      orderError={isRequestError(orderState)}
+      orderPending={isRequestPending(orderState)}
+      orderSuccess={isRequestSuccess(orderState)}
       //--------------
       onSubmit={onSubmit}
       initialValues={initialValues()}
@@ -92,7 +112,6 @@ export function BasketContainer() {
       //--------------
       changeItem={changeItem}
       deleteItem={deleteItem}
-      checkPromoCode={checkPromoCode}
       //--------------
       headersGoods={headersGoods}
       headersMaster={headersMaster}

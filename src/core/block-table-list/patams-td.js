@@ -100,6 +100,7 @@ export function ParamsTd(props) {
 
 const Td = styled.td`
   vertical-align: middle;
+  width: 100%;
   padding-right: ${spacing(4)};
   @media screen and (max-width: 875px) {
     padding-right: 0;

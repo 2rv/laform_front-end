@@ -22,15 +22,15 @@ import { addToBasket } from '../basket';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { masterClassState, pageLoading, currentLang, user, isAuth } =
-    useSelector((state) => ({
+  const { masterClassState, pageLoading, currentLang, user } = useSelector(
+    (state) => ({
       masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
 
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       user: state[AUTH_STORE_NAME].user,
-      isAuth: state[AUTH_STORE_NAME].logged,
-    }));
+    }),
+  );
 
   useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
 
@@ -46,7 +46,7 @@ export function MasterClassesContainer() {
   };
 
   const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang, isAuth));
+    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
   };
 
   return (

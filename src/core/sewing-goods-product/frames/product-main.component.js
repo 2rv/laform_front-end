@@ -20,8 +20,10 @@ export function ProductMainComponent(props) {
     categories,
     description,
     images,
+    cart,
     sizes,
     colors,
+    addToCart,
   } = props;
 
   const [size, setSize] = useState(
@@ -41,6 +43,11 @@ export function ProductMainComponent(props) {
     if (currentCount <= 1) return;
     setCount(currentCount - 1);
   };
+
+  const handleAddToCart = (_, __, inCart) => {
+    addToCart(id, type, inCart, currentCount, size.id, color.id);
+  };
+
   return (
     <Container>
       <HeaderCase>
@@ -91,7 +98,7 @@ export function ProductMainComponent(props) {
           </ActionCase>
         </Case>
 
-        <CardActions />
+        <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
     </Container>
   );

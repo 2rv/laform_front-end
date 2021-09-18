@@ -24,36 +24,54 @@ import { addToBasket } from '../basket';
 export function PatternsContainer() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { patternsState, pageLoading, currentLang, user, isAuth } = useSelector(
+  const { patternsState, pageLoading, currentLang, user } = useSelector(
     (state) => ({
       patternsState: state[PATTERNS_STORE_NAME].patternsState,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
-      isAuth: state[AUTH_STORE_NAME].logged,
     }),
   );
   const [activeTab, setActiveTab] = useState(
-    router.query.type === 'all' ? 9
-    : router.query.type === 'printed' ? 2
-    : router.query.type === 'electronic' ? 1
-    : 0
+    router.query.type === 'all'
+      ? 9
+      : router.query.type === 'printed'
+      ? 2
+      : router.query.type === 'electronic'
+      ? 1
+      : 0,
   );
 
   useEffect(() => {
     dispatch(patternsUploadData(currentLang));
 
-    if (!['all','printed','electronic'].includes(router.query.type)) {
-      router.push('/patterns?type=all', { query: { type: 'all' } }, { shallow: true });
+    if (!['all', 'printed', 'electronic'].includes(router.query.type)) {
+      router.push(
+        '/patterns?type=all',
+        { query: { type: 'all' } },
+        { shallow: true },
+      );
       setActiveTab(9);
     }
 
     if (activeTab === 9) {
-      router.push('/patterns?type=all', { query: { type: 'all' } }, { shallow: true });
+      router.push(
+        '/patterns?type=all',
+        { query: { type: 'all' } },
+        { shallow: true },
+      );
     } else if (activeTab === 2) {
-      router.push('/patterns?type=printed', { query: { type: 'printed' } }, { shallow: true });
+      router.push(
+        '/patterns?type=printed',
+        { query: { type: 'printed' } },
+        { shallow: true },
+      );
     } else if (activeTab === 1) {
-      router.push('/patterns?type=electronic', { query: { type: 'electronic' } }, { shallow: true });
+      router.push(
+        '/patterns?type=electronic',
+        { query: { type: 'electronic' } },
+        { shallow: true },
+      );
     }
   }, [activeTab, router.query.type]);
   const filterInitialValue = () => ({
@@ -68,7 +86,7 @@ export function PatternsContainer() {
   };
 
   const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang, isAuth));
+    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
   };
 
   return (

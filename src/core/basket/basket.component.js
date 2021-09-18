@@ -13,6 +13,15 @@ export function BasketComponent(props) {
     IsEmpty,
     isAuth,
     //--------------
+    promocode,
+    discount,
+    price,
+    //--------------
+    orderErrorMessage,
+    orderError,
+    orderPending,
+    orderSuccess,
+    //--------------
     promoCodeErrorMessage,
     promoCodeError,
     promoCodePending,
@@ -65,6 +74,13 @@ export function BasketComponent(props) {
         </>
       )}
       <FormContainer
+        promocode={promocode}
+        discount={discount}
+        price={price}
+        orderErrorMessage={orderErrorMessage}
+        orderError={orderError}
+        orderPending={orderPending}
+        orderSuccess={orderSuccess}
         diliveryOptions={diliveryOptions}
         paymentMethodOptions={paymentMethodOptions}
         onSubmit={onSubmit}

@@ -7,20 +7,30 @@ import { CartPrice } from './cart.price';
 import { ORDER_FIELD_NAME } from '../basket.type';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { useEffect } from 'react';
 
 export function FormContainer(props) {
   const {
+    //--------------
+    promocode,
+    discount,
+    price,
+    //--------------
     onSubmit,
     initialValues,
     validation,
+    //--------------
     pageLoading,
-    isPending,
-    isError,
-    errorMessage,
-    isSuccess,
+    //--------------
     diliveryOptions,
     paymentMethodOptions,
     checkPromoCode,
+    //--------------
+    orderErrorMessage,
+    orderError,
+    orderPending,
+    orderSuccess,
+    //--------------
     promoCodeErrorMessage,
     promoCodeError,
     promoCodePending,
@@ -31,9 +41,26 @@ export function FormContainer(props) {
       initialValues={initialValues}
       validate={validation}
       onSubmit={onSubmit}
-      enableReinitialize={true}
     >
       {(formProps) => {
+        useEffect(
+          () => formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, promocode),
+          [promocode],
+        );
+        useEffect(
+          () =>
+            formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_DISCOUNT, discount),
+          [discount],
+        );
+        useEffect(
+          () => formProps.setFieldValue(ORDER_FIELD_NAME.PRICE, price),
+          [price],
+        );
+        useEffect(() => {
+          formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, '');
+          formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_DISCOUNT, 0);
+        }, [promoCodeError]);
+
         return (
           <form onSubmit={formProps.handleSubmit}>
             <SectionLayout>
@@ -43,7 +70,6 @@ export function FormContainer(props) {
                 paymentMethodOptions={paymentMethodOptions}
                 checkPromoCode={checkPromoCode}
                 promoCodePending={promoCodePending}
-                promoCodeSuccess={promoCodeSuccess}
                 {...formProps}
               />
               <SectionLayout type="SMALL">
@@ -51,29 +77,32 @@ export function FormContainer(props) {
                 <FieldLayout type="double" adaptive>
                   <ButtonPrimary
                     tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
-                    disabled={pageLoading || isPending}
+                    disabled={pageLoading || orderPending || promoCodePending}
                     type="submit"
                   />
+                  {orderSuccess && (
+                    <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />
+                  )}
+                  {promoCodeSuccess && (
+                    <SuccessAlert
+                      tid="BASKET.FORM.PROMO_CODE_SUCCESS"
+                      tvalue={{
+                        discount:
+                          formProps.values[ORDER_FIELD_NAME.PROMO_DISCOUNT],
+                      }}
+                    />
+                  )}
+                  {(orderError ||
+                    promoCodeErrorMessage ||
+                    promoCodeErrorMessage ||
+                    promoCodeError) && (
+                    <ErrorAlert
+                      tid={promoCodeErrorMessage || promoCodeErrorMessage}
+                    />
+                  )}
                 </FieldLayout>
               </SectionLayout>
-              {isSuccess && (
-                <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />
-              )}
-              {promoCodeSuccess && (
-                <SuccessAlert
-                  tid="BASKET.FORM.PROMO_CODE_SUCCESS"
-                  tvalue={{
-                    discount: formProps.values[ORDER_FIELD_NAME.PROMO_DISCOUNT],
-                  }}
-                />
-              )}
-              {(isError ||
-                errorMessage ||
-                promoCodeErrorMessage ||
-                promoCodeError) && (
-                <ErrorAlert tid={errorMessage || promoCodeErrorMessage} />
-              )}
-              {(isPending || pageLoading || promoCodePending) && (
+              {(orderPending || pageLoading || promoCodePending) && (
                 <LoaderPrimary />
               )}
             </SectionLayout>

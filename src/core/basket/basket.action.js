@@ -20,13 +20,10 @@ export function basketUploadData(values, bascketState, isAuth) {
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
         data: data,
       });
-      console.log(responst.data);
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
     } catch (err) {
-      console.log(err);
-      console.log(err.response.data.message);
       if (err.response) {
         dispatch({
           type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,
@@ -79,7 +76,10 @@ export function initializeBasketStore() {
   };
 }
 
-export function addToBasket(data, currentLang, isAuth) {
+export function addToBasket(data, currentLang) {
+  // {id: продукт id , type: 0-3, size: id размера, color: id цвета, count: количество не превышающее максимума }
+  // {id: обязательно , type: обязательно, size: необязательно (дефол первый в размерах), color: необязательно (дефол первый в цветах), count: необязательно (дефол 1) }
+  // currentLang - обязательно так как будут делаться запросы на разные языки товара
   return async (dispatch) => {
     try {
       const response = await httpRequest({

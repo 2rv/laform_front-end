@@ -22,14 +22,14 @@ import { addToBasket } from '../basket';
 
 export function SewingGoodsContainer() {
   const dispatch = useDispatch();
-  const { sewingGoodsState, pageLoading, currentLang, user, isAuth } =
-    useSelector((state) => ({
+  const { sewingGoodsState, pageLoading, currentLang, user } = useSelector(
+    (state) => ({
       sewingGoodsState: state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
-      isAuth: state[AUTH_STORE_NAME].logged,
-    }));
+    }),
+  );
   useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
   const filterInitialValue = () => ({
     [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
@@ -42,7 +42,7 @@ export function SewingGoodsContainer() {
   };
 
   const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang, isAuth));
+    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
   };
 
   return (

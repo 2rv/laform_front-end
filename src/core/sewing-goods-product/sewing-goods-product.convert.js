@@ -1,4 +1,4 @@
-export function performSewingGoodsProductData(rowData) {
+export function performSewingGoodsProductData(rowData, backet) {
   //   console.log(rowData);
   return {
     id: rowData.id,
@@ -7,6 +7,9 @@ export function performSewingGoodsProductData(rowData) {
     discount: rowData?.discount,
     name: rowData.titleRu,
     categories: rowData.categories.map((item) => item.textRu),
+    cart: Boolean(
+      backet?.find((bItem) => bItem?.sewingProduct?.id === rowData.id),
+    ),
     description: rowData.descriptionRu,
     images: rowData.images.map((item) => item.fileUrl),
     sizes: rowData.sizes.map((item, index) => ({
