@@ -17,6 +17,7 @@ export function PatternsProductComponent(props) {
     errorMessage,
     pageLoading,
     productInfo,
+    addToCart,
   } = props;
 
   if (!productInfo) return null;
@@ -27,7 +28,7 @@ export function PatternsProductComponent(props) {
         {/* <TextSecondary>{`Главная / Выкройки / Электронные / ${productInfo.name}`}</TextSecondary> */}
         <Content>
           <GalleryBlock items={productInfo.images} />
-          <ProductMainComponent {...productInfo} />
+          <ProductMainComponent addToCart={addToCart} {...productInfo} />
         </Content>
       </SectionLayout>
       <SectionLayout type="TEXT_SMALL">

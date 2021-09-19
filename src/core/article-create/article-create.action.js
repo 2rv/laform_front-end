@@ -9,9 +9,8 @@ import {
 export function createArticleUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
     try {
-      console.log(imagesUrls);
       const data = convertForUpload(imagesUrls, formValues);
-      console.log(data);
+
       //----------------------------------------------------------------------
 
       const response = await httpRequest({

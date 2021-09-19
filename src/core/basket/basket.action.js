@@ -6,6 +6,7 @@ import {
   convertPromoCodeForCheck,
   performPromoCode,
   convertForCreateOrder,
+  performUserInfoData,
 } from './basket.convert';
 
 export function basketUploadData(values, bascketState, isAuth) {
@@ -23,6 +24,7 @@ export function basketUploadData(values, bascketState, isAuth) {
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
+      dispatch(clearBasketAction());
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -41,12 +43,14 @@ export function LoadUserInfoAction() {
     });
 
     try {
-      const res = await httpRequest({
+      const response = await httpRequest({
         method: BASKET_API.LOAD_USER_INFO.TYPE,
         url: BASKET_API.LOAD_USER_INFO.ENDPOINT,
       });
+      const data = performUserInfoData(response.data);
       dispatch({
         type: BASKET_ACTION_TYPE.LOAD_USER_INFO_SUCCESS,
+        data: data,
       });
     } catch (err) {
       if (err.response) {
@@ -70,8 +74,7 @@ export function initializeBasketStore() {
         });
       }
     } catch (error) {
-      console.log(error);
-      localStorage.removeItem('basket');
+      dispatch(clearBasketAction());
     }
   };
 }
@@ -103,8 +106,7 @@ export function addToBasket(data, currentLang) {
         data: convertedData,
       });
     } catch (error) {
-      console.log(error);
-      localStorage.removeItem('basket');
+      dispatch(clearBasketAction());
     }
   };
 }
@@ -122,8 +124,7 @@ export function changeItemAction(id, values, bascketState) {
       });
       localStorage.setItem('basket', JSON.stringify(changedState));
     } catch (error) {
-      console.log(error);
-      localStorage.removeItem('basket');
+      dispatch(clearBasketAction());
     }
   };
 }
@@ -138,8 +139,7 @@ export function deleteItemAction(id, bascketState) {
       });
       localStorage.setItem('basket', JSON.stringify(changedState));
     } catch (error) {
-      console.log(error);
-      localStorage.removeItem('basket');
+      dispatch(clearBasketAction());
     }
   };
 }
@@ -167,6 +167,20 @@ export function checkPromoCodeAction(promocode) {
           errorMessage: err.response.data.message,
         });
       }
+    }
+  };
+}
+
+export function clearBasketAction() {
+  return async (dispatch) => {
+    try {
+      localStorage.removeItem('basket');
+      dispatch({
+        type: BASKET_ACTION_TYPE.CHANGE_BASKET,
+        data: [],
+      });
+    } catch (error) {
+      localStorage.removeItem('basket');
     }
   };
 }

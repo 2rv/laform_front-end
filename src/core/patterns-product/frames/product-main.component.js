@@ -26,7 +26,9 @@ export function ProductMainComponent(props) {
     materials,
     price,
     complexity,
+    cart,
     filePdf,
+    addToCart,
   } = props;
 
   const dispatch = useDispatch();
@@ -46,6 +48,10 @@ export function ProductMainComponent(props) {
 
   const redirectToPdfLink = () => {
     window.open(productPdfUrl, '_blank');
+  };
+
+  const handleAddToCart = (_, __, inCart) => {
+    addToCart(inCart, { id, type, size: size.id });
   };
 
   return (
@@ -93,7 +99,7 @@ export function ProductMainComponent(props) {
           price={price ? price : size?.price}
           discount={discount}
         />
-        <CardActions />
+        <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
       <DownloadPdfContainer>
         <SendEmailButton tid="Отправить на Email" onClick={sendPdfToMail} />

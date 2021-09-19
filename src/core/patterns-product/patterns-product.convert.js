@@ -1,5 +1,4 @@
-export function performPatternProductData(rowData) {
-  //   console.log(rowData);
+export function performPatternProductData(rowData, backet) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -9,6 +8,9 @@ export function performPatternProductData(rowData) {
     description: rowData.descriptionRu,
     categories: rowData.categories.map((item) => item.textRu),
     images: rowData.images.map((item) => item.fileUrl),
+    cart: Boolean(
+      backet?.find((bItem) => bItem?.patternProduct?.id === rowData.id),
+    ),
     sizes: rowData.sizes.map((item, index) => ({
       id: item.id,
       tid: item.size,

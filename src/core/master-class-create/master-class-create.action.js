@@ -18,7 +18,7 @@ export function createMasterClassUploadData(imagesUrls, formValues) {
         url: CREATE_MASTER_CLASS_API.CREATE_MASTER_CLASS_UPLOAD.ENDPOINT,
         data: data,
       });
-      console.log(response.data);
+
       //----------------------------------------------------------------------
 
       dispatch({

@@ -21,5 +21,7 @@ export function EditorRenderer(props) {
 }
 const Container = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   word-break: break-all;
 `;

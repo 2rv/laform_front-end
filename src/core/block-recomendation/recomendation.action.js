@@ -25,7 +25,6 @@ export function masterClassUploadData(currentLang) {
         data: data,
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: RECOMENDATION_ACTION_TYPE.MASTER_CLASSES_UPLOAD_ERROR,

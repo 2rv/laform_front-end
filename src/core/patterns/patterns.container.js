@@ -127,64 +127,6 @@ export const tabItems = [
   { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 2 },
   { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 1 },
 ];
-export const testListItems = [
-  {
-    id: 1,
-    name: 'Сарафан 0445',
-    image: '/static/test/popular-gods-1.png',
-    complexity: 1,
-    select: true,
-    like: true,
-    type: 1,
-    price: {
-      min: 500,
-    },
-  },
-  {
-    id: 2,
-    name: ' Батист Макс Мара Горохи',
-    image: '/static/test/popular-gods-2.png',
-    complexity: 3,
-    select: false,
-    like: false,
-    bestseller: 'Хит',
-    type: 2,
-    price: {
-      min: 200,
-      max: 4150,
-    },
-  },
-  {
-    id: 3,
-    name: 'Батист',
-    image: '/static/test/popular-gods-3.png',
-    complexity: 3,
-    select: false,
-    like: false,
-    bestseller: true,
-    type: 1,
-    price: {
-      min: 200,
-      discount: 20,
-      max: 900,
-    },
-  },
-  {
-    id: 3,
-    name: 'Батист',
-    image: '/static/test/popular-gods-3.png',
-    complexity: 3,
-    select: false,
-    like: false,
-    bestseller: true,
-    type: 2,
-    createdDate: '2021-04-14T11:33:22.332Z',
-    price: {
-      min: 200,
-      discount: 30,
-    },
-  },
-];
 export const filterOptionss = [
   {
     id: 0,

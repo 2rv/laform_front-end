@@ -29,6 +29,7 @@ export function BasketContainer() {
     bascketState,
     promoCodeState,
     orderState,
+    userInfoState,
     pageLoading,
     isAuth,
     email,
@@ -36,39 +37,53 @@ export function BasketContainer() {
     bascketState: state[BASKET_STORE_NAME].basket,
     promoCodeState: state[BASKET_STORE_NAME].promoCode,
     orderState: state[BASKET_STORE_NAME].order,
+    userInfoState: state[BASKET_STORE_NAME].userInfo,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     isAuth: state[AUTH_STORE_NAME].logged,
     email: state[AUTH_STORE_NAME].user?.email,
   }));
 
+  const isEmpty = bascketState ? bascketState.length === 0 : true;
+
+  const userInfo = getRequestData(userInfoState, false);
+
+  useEffect(() => isAuth && dispatch(LoadUserInfoAction()), []);
+
   const { itemsGoods, itemsMaster, itemsPatterns, price } =
     reduceBascketState(bascketState);
+
   const changeItem = (id, values) => {
     dispatch(changeItemAction(id, values, bascketState));
   };
+
   const deleteItem = (id) => {
     dispatch(deleteItemAction(id, bascketState));
   };
-  const onSubmit = (values) => {
-    dispatch(basketUploadData(values, bascketState, isAuth));
-  };
-
-  useEffect(() => {
-    // dispatch(LoadUserInfoAction());
-  }, []);
 
   const checkPromoCode = (promocode) => {
     dispatch(checkPromoCodeAction(promocode));
   };
 
+  const onSubmit = (values) => {
+    dispatch(basketUploadData(values, bascketState, isAuth));
+  };
+
   const initialValues = () => {
     return {
       [ORDER_FIELD_NAME.EMAIL]: email ? email : '',
-      [ORDER_FIELD_NAME.FULL_NAME]: '',
-      [ORDER_FIELD_NAME.CITY]: '',
-      [ORDER_FIELD_NAME.PHONE]: '',
-      [ORDER_FIELD_NAME.PAYMENT_METHOD]: 0,
-      [ORDER_FIELD_NAME.DELIVERY_METHOD]: 0,
+      [ORDER_FIELD_NAME.FULL_NAME]: userInfo
+        ? userInfo[ORDER_FIELD_NAME.FULL_NAME]
+        : '',
+      [ORDER_FIELD_NAME.CITY]: userInfo ? userInfo[ORDER_FIELD_NAME.CITY] : '',
+      [ORDER_FIELD_NAME.PHONE]: userInfo
+        ? userInfo[ORDER_FIELD_NAME.PHONE]
+        : '',
+      [ORDER_FIELD_NAME.PAYMENT_METHOD]: userInfo
+        ? userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD]
+        : 0,
+      [ORDER_FIELD_NAME.DELIVERY_METHOD]: userInfo
+        ? userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD]
+        : 0,
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
@@ -85,7 +100,7 @@ export function BasketContainer() {
   return (
     <BasketComponent
       pageLoading={pageLoading}
-      IsEmpty={bascketState && bascketState.length === 0}
+      IsEmpty={isEmpty}
       isAuth={isAuth}
       //-----------------
       promocode={promocode}
@@ -98,6 +113,11 @@ export function BasketContainer() {
       promoCodeError={isRequestError(promoCodeState)}
       promoCodePending={isRequestPending(promoCodeState)}
       promoCodeSuccess={isRequestSuccess(promoCodeState)}
+      //-----------------
+      userInfoErrorMessage={getRequestErrorMessage(userInfoState)}
+      userInfoError={isRequestError(userInfoState)}
+      userInfoPending={isRequestPending(userInfoState)}
+      userInfoSuccess={isRequestSuccess(userInfoState)}
       //-----------------
       orderErrorMessage={getRequestErrorMessage(orderState)}
       orderError={isRequestError(orderState)}

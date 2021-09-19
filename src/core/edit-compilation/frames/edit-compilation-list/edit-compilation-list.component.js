@@ -5,12 +5,7 @@ import { EditCompilationListItemComponent } from './edit-compilation-list-item.c
 import { TitlePrimary } from '../../../../lib/element/title';
 
 export function EditCompilationListComponent(props) {
-  const {
-    title,
-    items,
-    compilationName,
-    currentLang,
-  } = props;
+  const { title, items, compilationName, currentLang } = props;
 
   return (
     <Container>
@@ -21,7 +16,7 @@ export function EditCompilationListComponent(props) {
             key={item.id}
             id={item.id}
             title={item.titleRu}
-            image={(item.images ? item.images[0] : item.imageUrl)?.fileUrl}
+            image={item.images?.[0].fileUrl || item.image?.fileUrl}
             compilationNamе={compilationName}
             currentLang={currentLang}
           />

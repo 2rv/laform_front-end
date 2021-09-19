@@ -2,9 +2,10 @@ import { httpRequest } from '../../main/http';
 import { PATTERNS_PRODUCT_API } from './patterns-product.constant';
 import { PATTERNS_PRODUCT_ACTION_TYPE } from './patterns-product.type';
 import { performPatternProductData } from './patterns-product.convert';
+import { BASKET_STORE_NAME } from '../basket';
 
 export function patternProductUploadData(currentLang, id) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_UPLOAD_PENDING,
     });
@@ -17,7 +18,10 @@ export function patternProductUploadData(currentLang, id) {
           id,
         ),
       });
-      const data = performPatternProductData(response.data);
+      const data = performPatternProductData(
+        response.data,
+        getState()[BASKET_STORE_NAME].basket,
+      );
       dispatch({
         type: PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_UPLOAD_SUCCESS,
         data: data,
