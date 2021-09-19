@@ -9,7 +9,9 @@ import {
 import { TextSecondary } from '../../lib/element/text';
 import { LinkPrimary } from '../../lib/element/link';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../lib/theme';
-import { AUTH_VERIFICATE_EMAIL_HELP_ROUTE } from './auth-verificate-email.constant';
+import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from './auth-verificate-email.constant';
+import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
+import { SETTINGS_ROUTE_PATH } from '../settings';
 import { ErrorAlert } from '../../lib/element/alert';
 
 import { EmailConfirmedContainer } from '../../core/email-confirmed';
@@ -36,12 +38,22 @@ export function AuthVerificateEmailComponent(props) {
         />
         <EmailConfirmedContainer />
         <div>
-          <LightText tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
-          &nbsp;
-          <LinkPrimary
-            path={AUTH_VERIFICATE_EMAIL_HELP_ROUTE}
-            tid="AUTH.VERIFICATE_EMAIL.HELP"
-          />
+          <div>
+            <LightText tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
+            &nbsp;
+            <LinkPrimary
+              path={FAQ_PAGE_ROUTE_PATH}
+              tid="AUTH.VERIFICATE_EMAIL.HELP"
+            />
+          </div>
+          <div>
+            <LightText tid="AUTH.VERIFICATE_EMAIL.CHOOSE_WRONG_EMAIL" />
+            &nbsp;
+            <LinkPrimary
+              path={SETTINGS_ROUTE_PATH}
+              tid="AUTH.VERIFICATE_EMAIL.CHANGE_EMAIL_SETTINGS"
+            />
+          </div>
         </div>
         {(isError || errorMessage) && <ErrorAlert tid={errorMessage} />}
       </Content>
