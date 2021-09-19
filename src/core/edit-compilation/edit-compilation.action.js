@@ -38,7 +38,9 @@ export function bestMasterClassesLoadData(currentLang) {
     try {
       const response = await httpRequest({
         method: EDIT_COMPILATION_API.BEST_MASTER_CLASSES_LOAD_DATA.TYPE,
-        url: EDIT_COMPILATION_API.BEST_MASTER_CLASSES_LOAD_DATA.ENDPOINT(currentLang),
+        url: EDIT_COMPILATION_API.BEST_MASTER_CLASSES_LOAD_DATA.ENDPOINT(
+          currentLang,
+        ),
       });
 
       dispatch({
@@ -92,7 +94,10 @@ export function productsLoadData(compilationName, currentLang) {
     try {
       const response = await httpRequest({
         method: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.TYPE,
-        url: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.ENDPOINT(compilationName, currentLang),
+        url: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.ENDPOINT(
+          compilationName,
+          currentLang,
+        ),
       });
 
       dispatch({
@@ -132,7 +137,9 @@ export function updatePinned(id, compilationName, currentLang, body) {
         data,
       });
 
-      dispatch({ type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS });
+      dispatch({
+        type: EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_SUCCESS,
+      });
 
       if (compilationName === 'sewing-product') {
         dispatch(bestProductsLoadData(currentLang));

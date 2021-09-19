@@ -21,12 +21,22 @@ export function ProductMainComponent(props) {
     images,
     categories,
     programs,
+    addToCart,
+    cart,
   } = props;
   const [program, setProgram] = useState(
     programs?.length > 0
       ? programs[0]
       : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
+
+  const handleAddToCart = (_, __, inCart) => {
+    addToCart(inCart, {
+      id,
+      type,
+      program: program.id,
+    });
+  };
 
   return (
     <Container>
@@ -60,7 +70,7 @@ export function ProductMainComponent(props) {
       <Divider />
       <FooterCase>
         <ProductPriceComponent price={program?.price} discount={discount} />
-        <CardActions />
+        <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
     </Container>
   );

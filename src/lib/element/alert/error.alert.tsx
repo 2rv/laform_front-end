@@ -23,8 +23,6 @@ const Icon = styled(AlertIcon)`
 const Message = styled.span`
   color: ${THEME_COLOR.TEXT.DANGER};
   font-size: ${THEME_SIZE.FONT.SMALL};
-  /* text-overflow: ellipsis;
-  overflow: hidden; */
   word-break: break-all;
 `;
 

@@ -45,7 +45,13 @@ export function ProductMainComponent(props) {
   };
 
   const handleAddToCart = (_, __, inCart) => {
-    addToCart(id, type, inCart, currentCount, size.id, color.id);
+    addToCart(inCart, {
+      id,
+      type,
+      currentCount,
+      size: size.id,
+      color: color.id,
+    });
   };
 
   return (

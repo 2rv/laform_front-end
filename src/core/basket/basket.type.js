@@ -16,6 +16,14 @@ export const ORDER_DATA_NAME = {
   PROMO_CODE: 'text',
 };
 
+export const USER_INFO_DATA_NAME = {
+  FULL_NAME: 'fullName',
+  CITY: 'location',
+  DELIVERY_METHOD: 'deliveryType',
+  PAYMENT_METHOD: 'paymentType',
+  PHONE: 'phone',
+};
+
 export const BASKET_ACTION_TYPE = {
   CREATE_ORDER_PENDING: 'BASKET_ACTION_TYPE.CREATE_ORDER_PENDING',
   CREATE_ORDER_SUCCESS: 'BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS',

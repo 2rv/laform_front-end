@@ -29,12 +29,8 @@ export function SewingGoodsProductContainer() {
     dispatch(sewingGoodsProductUploadData(currentLang, sewingGoodsProductId));
   }, []);
 
-  const addToCart = (id, type, inCart, count, size, color) => {
-    if (inCart) {
-      return dispatch(
-        addToBasket({ id, type, count, size, color }, currentLang),
-      );
-    }
+  const addToCart = (inCart, values) => {
+    if (inCart) dispatch(addToBasket(values, currentLang));
   };
 
   return (

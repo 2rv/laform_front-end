@@ -13,6 +13,7 @@ import { MASTER_CLASS_PRODUCT_STORE_NAME } from './master-class-product.constant
 import { MasterClassProductComponent } from './master-class-product.component';
 import { getQuery } from 'src/main/navigation';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
+import { addToBasket } from '../basket';
 
 export function MasterClassProductContainer() {
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ export function MasterClassProductContainer() {
   useEffect(() => {
     dispatch(masterClassProductUploadData(currentLang, masterClassId));
   }, []);
+
+  const addToCart = (inCart, values) => {
+    if (inCart) dispatch(addToBasket(values, currentLang));
+  };
+
   return (
     <MasterClassProductComponent
       isPending={isRequestPending(state)}
@@ -35,6 +41,7 @@ export function MasterClassProductContainer() {
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
       productInfo={getRequestData(state, false)}
+      addToCart={addToCart}
     />
   );
 }

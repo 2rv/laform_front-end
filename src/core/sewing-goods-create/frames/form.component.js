@@ -81,16 +81,6 @@ export function FormComponent(props) {
         />
       </SectionLayout>
 
-      <BasicField
-        titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.PRODUCT_QUANTITY"
-        placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.PRODUCT_QUANTITY"
-        name={SEWING_GOODS_FIELD_NAME.COUNT}
-        value={values[SEWING_GOODS_FIELD_NAME.COUNT]}
-        error={getFieldError(SEWING_GOODS_FIELD_NAME.COUNT)}
-        onChange={setNumber(SEWING_GOODS_FIELD_NAME.COUNT)}
-        onBlur={handleBlur}
-      />
-
       <DynamicFields
         initialData={initialSizes}
         title="DYNAMIC_FIELDS.SIZE.TITLE"
@@ -139,11 +129,11 @@ export function FormComponent(props) {
             )}
           />
         </FieldLayout>
-        <RecomendationBlock
+        {/* <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS, data)
           }
-        />
+        /> */}
         <FieldLayout type="double" adaptive>
           <ButtonPrimary
             type="submit"

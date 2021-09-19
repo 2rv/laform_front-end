@@ -68,39 +68,3 @@ export const filterOptionss = [
     tid: 'Созданы последними',
   },
 ];
-
-export const testListItems = [
-  {
-    id: 1,
-    name: 'Сарафан 0445',
-    image: '/static/test/popular-gods-1.png',
-    like: true,
-    type: 4,
-    createdDate: '2021-02-19T11:33:22.332Z',
-  },
-
-  {
-    id: 2,
-    name: ' Батист Макс Мара Горохи',
-    image: '/static/test/popular-gods-2.png',
-    like: false,
-    type: 4,
-    createdDate: '2021-08-25T06:20:10.332Z',
-  },
-  {
-    id: 3,
-    name: 'Батист',
-    image: '/static/test/popular-gods-3.png',
-    like: false,
-    type: 4,
-    createdDate: '2021-04-15T11:33:05.332Z',
-  },
-  {
-    id: 3,
-    name: 'Батист',
-    image: '/static/test/popular-gods-3.png',
-    like: false,
-    type: 4,
-    createdDate: '2021-04-19T11:33:22.332Z',
-  },
-];

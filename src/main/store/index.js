@@ -117,7 +117,6 @@ import {
   AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME,
   authVerificateEmailRecoveryAccountStore,
 } from '../../core/auth-verificate-email-recovery-account';
-import { cartStore, CART_STORE_NAME } from '../../lib/common/cart';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 import {
   ordersListStore,
@@ -127,8 +126,6 @@ import {
   usersOrderStore,
   USERS_ORDER_STORE_NAME,
 } from '../../core/users-order';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import {
   createMasterClassStore,
   CREATE_MASTER_CLASS_STORE_NAME,
@@ -166,7 +163,6 @@ import {
   masterClassArticleStore,
   MASTER_CLASS_ARTICLE_STORE_NAME,
 } from '../../core/master-class-article';
-export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
   [COMMENT_STORE_NAME]: commentStore,
@@ -216,7 +212,6 @@ export const reducers = combineReducers({
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
   [SLIDER_LIST_STORE_NAME]: sliderListStore,
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
-  [CART_STORE_NAME]: cartStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [ORDERS_LIST_STORE_NAME]: ordersListStore,
   [USERS_ORDER_STORE_NAME]: usersOrderStore,

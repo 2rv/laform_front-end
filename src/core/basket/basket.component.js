@@ -17,6 +17,11 @@ export function BasketComponent(props) {
     discount,
     price,
     //--------------
+    userInfoErrorMessage,
+    userInfoError,
+    userInfoPending,
+    userInfoSuccess,
+    //--------------
     orderErrorMessage,
     orderError,
     orderPending,
@@ -71,27 +76,31 @@ export function BasketComponent(props) {
             headers={headersMaster}
             items={itemsMaster}
           />
+          <FormContainer
+            promocode={promocode}
+            discount={discount}
+            price={price}
+            userInfoErrorMessage={userInfoErrorMessage}
+            userInfoError={userInfoError}
+            userInfoPending={userInfoPending}
+            userInfoSuccess={userInfoSuccess}
+            orderErrorMessage={orderErrorMessage}
+            orderError={orderError}
+            orderPending={orderPending}
+            orderSuccess={orderSuccess}
+            diliveryOptions={diliveryOptions}
+            paymentMethodOptions={paymentMethodOptions}
+            onSubmit={onSubmit}
+            checkPromoCode={checkPromoCode}
+            initialValues={initialValues}
+            validation={validation}
+            promoCodeErrorMessage={promoCodeErrorMessage}
+            promoCodeError={promoCodeError}
+            promoCodePending={promoCodePending}
+            promoCodeSuccess={promoCodeSuccess}
+          />
         </>
       )}
-      <FormContainer
-        promocode={promocode}
-        discount={discount}
-        price={price}
-        orderErrorMessage={orderErrorMessage}
-        orderError={orderError}
-        orderPending={orderPending}
-        orderSuccess={orderSuccess}
-        diliveryOptions={diliveryOptions}
-        paymentMethodOptions={paymentMethodOptions}
-        onSubmit={onSubmit}
-        checkPromoCode={checkPromoCode}
-        initialValues={initialValues}
-        validation={validation}
-        promoCodeErrorMessage={promoCodeErrorMessage}
-        promoCodeError={promoCodeError}
-        promoCodePending={promoCodePending}
-        promoCodeSuccess={promoCodeSuccess}
-      />
       {!isAuth && <SignComponent />}
     </SectionLayout>
   );

@@ -11,6 +11,7 @@ const initialState = {
   basket: [],
   promoCode: initRequestState(),
   order: initRequestState(),
+  userInfo: initRequestState(),
 };
 
 export function basketStore(state = initialState, action) {
@@ -60,6 +61,22 @@ export function basketStore(state = initialState, action) {
       return {
         ...state,
         order: setRequestError(state.order, action.errorMessage),
+      };
+
+    case BASKET_ACTION_TYPE.LOAD_USER_INFO_PENDING:
+      return {
+        ...state,
+        userInfo: setRequestPending(state.userInfo),
+      };
+    case BASKET_ACTION_TYPE.LOAD_USER_INFO_SUCCESS:
+      return {
+        ...state,
+        userInfo: setRequestSuccess(state.userInfo, action.data),
+      };
+    case BASKET_ACTION_TYPE.LOAD_USER_INFO_ERROR:
+      return {
+        ...state,
+        userInfo: setRequestError(state.userInfo, action.errorMessage),
       };
 
     default:

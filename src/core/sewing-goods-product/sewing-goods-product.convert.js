@@ -1,5 +1,4 @@
 export function performSewingGoodsProductData(rowData, backet) {
-  //   console.log(rowData);
   return {
     id: rowData.id,
     type: rowData.type,

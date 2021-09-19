@@ -1,5 +1,4 @@
 export function performArticleProductData(rowData) {
-  console.log(rowData);
   return {
     id: rowData.id,
     type: rowData.type,

@@ -26,6 +26,11 @@ export function FormContainer(props) {
     paymentMethodOptions,
     checkPromoCode,
     //--------------
+    userInfoErrorMessage,
+    userInfoError,
+    userInfoPending,
+    userInfoSuccess,
+    //--------------
     orderErrorMessage,
     orderError,
     orderPending,
@@ -41,6 +46,7 @@ export function FormContainer(props) {
       initialValues={initialValues}
       validate={validation}
       onSubmit={onSubmit}
+      enableReinitialize={true}
     >
       {(formProps) => {
         useEffect(
@@ -80,9 +86,7 @@ export function FormContainer(props) {
                     disabled={pageLoading || orderPending || promoCodePending}
                     type="submit"
                   />
-                  {orderSuccess && (
-                    <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />
-                  )}
+
                   {promoCodeSuccess && (
                     <SuccessAlert
                       tid="BASKET.FORM.PROMO_CODE_SUCCESS"
@@ -92,19 +96,29 @@ export function FormContainer(props) {
                       }}
                     />
                   )}
+                  {orderSuccess && (
+                    <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />
+                  )}
+
                   {(orderError ||
+                    userInfoError ||
                     promoCodeErrorMessage ||
-                    promoCodeErrorMessage ||
+                    userInfoErrorMessage ||
                     promoCodeError) && (
                     <ErrorAlert
-                      tid={promoCodeErrorMessage || promoCodeErrorMessage}
+                      tid={
+                        promoCodeErrorMessage ||
+                        promoCodeErrorMessage ||
+                        userInfoErrorMessage
+                      }
                     />
                   )}
                 </FieldLayout>
               </SectionLayout>
-              {(orderPending || pageLoading || promoCodePending) && (
-                <LoaderPrimary />
-              )}
+              {(orderPending ||
+                pageLoading ||
+                promoCodePending ||
+                userInfoPending) && <LoaderPrimary />}
             </SectionLayout>
           </form>
         );

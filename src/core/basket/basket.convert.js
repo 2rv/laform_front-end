@@ -1,4 +1,8 @@
-import { ORDER_DATA_NAME, ORDER_FIELD_NAME } from './basket.type';
+import {
+  ORDER_DATA_NAME,
+  ORDER_FIELD_NAME,
+  USER_INFO_DATA_NAME,
+} from './basket.type';
 
 export const convertForCreateOrder = (data, bascketState) => ({
   purchase: data,
@@ -17,11 +21,14 @@ export const convertForCreateOrder = (data, bascketState) => ({
   }),
 });
 
-export const performBasketLoadUserInfoData = (data) => ({
-  //   [BASKET_DATA_KEY.FULLNAME]: data[BASKET_DATA_NAME.FULLNAME],
-  //   [BASKET_DATA_KEY.DELIVERY_TYPE]: data[BASKET_DATA_NAME.DELIVERY_TYPE],
-  //   [BASKET_DATA_KEY.LOCATION]: data[BASKET_DATA_NAME.LOCATION],
-  //   [BASKET_DATA_KEY.PHONE]: data[BASKET_DATA_NAME.PHONE],
+export const performUserInfoData = (rowData) => ({
+  [ORDER_FIELD_NAME.FULL_NAME]: rowData[USER_INFO_DATA_NAME.FULL_NAME],
+  [ORDER_FIELD_NAME.CITY]: rowData[USER_INFO_DATA_NAME.CITY],
+  [ORDER_FIELD_NAME.DELIVERY_METHOD]:
+    rowData[USER_INFO_DATA_NAME.DELIVERY_METHOD],
+  [ORDER_FIELD_NAME.PAYMENT_METHOD]:
+    rowData[USER_INFO_DATA_NAME.PAYMENT_METHOD],
+  [ORDER_FIELD_NAME.PHONE]: rowData[USER_INFO_DATA_NAME.PHONE],
 });
 
 export const convertPromoCodeForCheck = (promocode) => ({
