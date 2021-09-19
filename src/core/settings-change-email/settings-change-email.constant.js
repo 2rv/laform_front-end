@@ -6,7 +6,7 @@ export const SETTINGS_CHANGE_EMAIL_API = {
     METHOD: 'PATCH',
   },
   LOAD_EMAIL: {
-    ENDPOINT: 'user/settings/email',
+    ENDPOINT: 'user/email',
     METHOD: 'GET',
   },
 };
