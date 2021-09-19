@@ -19,11 +19,14 @@ export function sewingGoodsStore(state = initialState, action) {
         sewingGoodsState: setRequestPending(state.sewingGoodsState),
       };
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS:
+      const oldProducts = state.sewingGoodsState?.data?.products || [];
+      const newProducts = action.payload.products || [];
+      const totalCount = action.payload.totalCount || 0;
       return {
         ...state,
         sewingGoodsState: setRequestSuccess(
           state.sewingGoodsState,
-          action.data,
+          { products: [...oldProducts, ...newProducts], totalCount },
         ),
       };
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_ERROR:

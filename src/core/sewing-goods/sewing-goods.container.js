@@ -14,11 +14,15 @@ import {
 } from './sewing-goods.action';
 import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
 import { SewingGoodsComponent } from './sewing-goods.component';
-import { SEWING_GOODS_FIELD_NAME } from './sewing-goods.type';
+import { SEWING_GOODS_FIELD_NAME, SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
+
+const FOOTER_HEIGHT = 350;
+const INITIAL_PAGE = 1;
+const INITIAL_PER = 6;
 
 export function SewingGoodsContainer() {
   const dispatch = useDispatch();
@@ -30,7 +34,30 @@ export function SewingGoodsContainer() {
       user: state[AUTH_STORE_NAME].user,
     }),
   );
-  useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
+
+  let currentPage = INITIAL_PAGE;
+  const productData = getRequestData(sewingGoodsState);
+
+  useEffect(() => dispatch(sewingGoodsUploadData(currentLang, INITIAL_PAGE, INITIAL_PER)), []);
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
+
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < FOOTER_HEIGHT
+      && Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalCount)
+      && !isRequestPending(sewingGoodsState)
+    ) {
+      currentPage += 1;
+      dispatch(sewingGoodsUploadData(currentLang, currentPage, INITIAL_PER));
+    }
+  };
   const filterInitialValue = () => ({
     [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
     [SEWING_GOODS_FIELD_NAME.FIND]: '',
@@ -48,7 +75,7 @@ export function SewingGoodsContainer() {
   return (
     <SewingGoodsComponent
       listItems={sorterItemsByParams(
-        getRequestData(sewingGoodsState, []),
+        productData.products,
         filter[SEWING_GOODS_FIELD_NAME.FIND],
         Number(filter[SEWING_GOODS_FIELD_NAME.FILTER]),
       )}

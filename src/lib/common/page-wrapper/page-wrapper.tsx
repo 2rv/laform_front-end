@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageWrapperPropsType } from './type.page-wrapper';
 import { FooterContainer } from '../../../core/footer';
 import { Header } from '../../../core/header';
@@ -17,7 +17,6 @@ export function PageWrapper(props: PageWrapperPropsType) {
   const [sidebarIsOpen, setSidebarOpen] = useState(false);
   const [width, setwidth] = useState(1280);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
-  const containerRef = useRef<any>(null);
   //   const [scroll, setScroll] = useState(0);
 
   const handleWindowSizeChange = () => {
@@ -26,8 +25,8 @@ export function PageWrapper(props: PageWrapperPropsType) {
     }
   };
 
-  const toggleVisibility = (e: any) => {
-    if (e.target.scrollTop > 300) {
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
       setIsButtonVisible(true);
     } else {
       setIsButtonVisible(false);
@@ -43,22 +42,22 @@ export function PageWrapper(props: PageWrapperPropsType) {
   }, []);
 
   useEffect(() => {
-    containerRef?.current?.addEventListener('scroll', toggleVisibility);
+    document.addEventListener('scroll', toggleVisibility);
+
     return () => {
-      containerRef?.current?.removeEventListener('scroll', toggleVisibility);
+      document.removeEventListener('scroll', toggleVisibility);
     };
   }, []);
 
   //   const handleScroll = (e) => setScroll(e.target.scrollTop);
   // onScroll={handleScroll}
-  const scrollToTop = (): void => {
-    if (containerRef.current) {
-      containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <Container ref={containerRef} isOpen={sidebarIsOpen}>
+    <Container isOpen={sidebarIsOpen}>
       <Header
         width={width}
         setSidebarOpen={setSidebarOpen}
@@ -84,8 +83,6 @@ export function PageWrapper(props: PageWrapperPropsType) {
   );
 }
 const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
   display: flex;
   flex-flow: column;
   overflow: ${(p: { isOpen: boolean }) => (p.isOpen ? 'hidden' : 'auto')};

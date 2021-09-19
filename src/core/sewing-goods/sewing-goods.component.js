@@ -2,6 +2,8 @@ import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormFilter } from '../../lib/element/form-filter';
+import { Spinner } from 'src/lib/element/spinner';
+import styled from 'styled-components';
 
 export function SewingGoodsComponent(props) {
   const {
@@ -16,10 +18,7 @@ export function SewingGoodsComponent(props) {
     setFilter,
     initialValue,
     //-----
-    pending,
-    success,
-    error,
-    errorMessage,
+    isPending,
     //-----
   } = props;
 
@@ -40,6 +39,12 @@ export function SewingGoodsComponent(props) {
         onDeleteProduct={onDeleteProduct}
         isAdmin={isAdmin}
       />
+      {isPending && <CenteredSpinner />}
     </SectionLayout>
   );
 }
+
+const CenteredSpinner = styled(Spinner)`
+  display: flex;
+  justify-self: center;
+`;
