@@ -10,6 +10,9 @@ import { Formik } from 'formik';
 export function ChangeButton(props) {
   const {
     id,
+    sizeId,
+    colorId,
+    programId,
     sizesOptions = [],
     colorsOptions = [],
     programsOptions = [],
@@ -25,9 +28,10 @@ export function ChangeButton(props) {
   return (
     <Formik
       initialValues={{
-        size: undefined,
-        color: undefined,
-        program: undefined,
+        size: sizeId,
+        color: colorId,
+        program: programId,
+        count: 1,
       }}
       onSubmit={(values) => changeItem(id, values)}
     >
@@ -36,6 +40,7 @@ export function ChangeButton(props) {
           <Container onSubmit={handleSubmit}>
             <Popup
               top={50}
+              middleLeft
               content={(setVisible) => (
                 <Content>
                   {Boolean(sizesOptions.length > 1) && (
@@ -66,7 +71,10 @@ export function ChangeButton(props) {
                     />
                   )}
                   <ButtonSecondary
-                    //   onClick={() => setVisible(false)}
+                    onClick={() => {
+                      handleSubmit();
+                      setVisible(false);
+                    }}
                     type="submit"
                     tid="Сохранить изменения"
                   />

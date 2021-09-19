@@ -15,7 +15,7 @@ import { ELECTRONIC_PATTERN_FIELD_NAME } from '../patterns-create-electronic.typ
 import { ProductPrice } from '../../block-product-components';
 import { numberValue } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
-import { BlockEditor } from '../../block-editor';
+import { ReactEditor } from 'src/core/block-react-editor';
 
 export function FormComponent(props) {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
@@ -77,10 +77,10 @@ export function FormComponent(props) {
         />
         <SectionLayout type="TEXT_SMALL">
           <SmallTitle tid="PATTERNS.CREATE_ELECTRONIC.FORM.MATERIALS" />
-          <BlockEditor
-            formikOnChange={setEditorData(
-              ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL,
-            )}
+          <ReactEditor
+            handleChange={setEditorData(ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL)}
+            values={values[ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL]}
+            name={ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL}
           />
         </SectionLayout>
       </SectionLayout>
@@ -132,8 +132,8 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <BasicField
-          titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.PRICE"
-          placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.PRICE"
+            titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.PRICE"
+            placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.PRICE"
             name={ELECTRONIC_PATTERN_FIELD_NAME.PRICE}
             value={values[ELECTRONIC_PATTERN_FIELD_NAME.PRICE]}
             error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.PRICE)}
@@ -145,13 +145,16 @@ export function FormComponent(props) {
             price={values[ELECTRONIC_PATTERN_FIELD_NAME.PRICE]}
           />
         </FieldLayout>
-        <RecomendationBlock
+        {/* <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.RECOMMENDATIONS, data)
           }
-        />
+        /> */}
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="PATTERNS.CREATE_ELECTRONIC.FORM.BUTTON.CREATE_PRODUCT" />
+          <ButtonPrimary
+            type="submit"
+            tid="PATTERNS.CREATE_ELECTRONIC.FORM.BUTTON.CREATE_PRODUCT"
+          />
           <ButtonSecondary tid="PATTERNS.CREATE_ELECTRONIC.FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>

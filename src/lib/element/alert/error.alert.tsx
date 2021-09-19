@@ -23,8 +23,6 @@ const Icon = styled(AlertIcon)`
 const Message = styled.span`
   color: ${THEME_COLOR.TEXT.DANGER};
   font-size: ${THEME_SIZE.FONT.SMALL};
-  /* text-overflow: ellipsis;
-  overflow: hidden; */
   word-break: break-all;
 `;
 
@@ -34,7 +32,8 @@ const Alert = styled.div`
   justify-content: flex-start;
   background-color: ${THEME_COLOR.BACKGROUND.DANGER};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  padding: ${spacing(3)};
+  height: 46px;
+  padding: 0 ${spacing(3)};
   line-height: 1.5;
   min-width: 0;
   gap: ${spacing(2)};

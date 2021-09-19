@@ -2,9 +2,10 @@ import { httpRequest } from '../../main/http';
 import { MASTER_CLASS_PRODUCT_API } from './master-class-product.constant';
 import { MASTER_CLASS_PRODUCT_ACTION_TYPE } from './master-class-product.type';
 import { performMasterClassProductData } from './master-class-product.convert';
+import { BASKET_STORE_NAME } from '../basket';
 
 export function masterClassProductUploadData(currentLang, id) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: MASTER_CLASS_PRODUCT_ACTION_TYPE.MASTER_CLASS_PRODUCT_UPLOAD_PENDING,
     });
@@ -17,7 +18,10 @@ export function masterClassProductUploadData(currentLang, id) {
           id,
         ),
       });
-      const data = performMasterClassProductData(response.data);
+      const data = performMasterClassProductData(
+        response.data,
+        getState()[BASKET_STORE_NAME].basket,
+      );
       dispatch({
         type: MASTER_CLASS_PRODUCT_ACTION_TYPE.MASTER_CLASS_PRODUCT_UPLOAD_SUCCESS,
         data: data,

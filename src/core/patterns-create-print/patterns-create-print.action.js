@@ -18,7 +18,7 @@ export function createPrintPatternUploadData(imagesUrls, formValues) {
         url: CREATE_PRINT_PATTERN_API.PRINT_PATTERN_UPLOAD.ENDPOINT,
         data: data,
       });
-      console.log(response.data);
+
       //----------------------------------------------------------------------
 
       dispatch({

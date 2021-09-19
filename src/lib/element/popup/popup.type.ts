@@ -4,4 +4,5 @@ export interface PopupPropsType {
   content: any;
   children: ReactNode;
   top?: number;
+  middleLeft?: boolean;
 }

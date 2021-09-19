@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   getRequestErrorMessage,
@@ -23,15 +22,15 @@ import { addToBasket } from '../basket';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { masterClassState, pageLoading, currentLang, user, isAuth } =
-    useSelector((state) => ({
+  const { masterClassState, pageLoading, currentLang, user } = useSelector(
+    (state) => ({
       masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
 
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       user: state[AUTH_STORE_NAME].user,
-      isAuth: state[AUTH_STORE_NAME].logged,
-    }));
+    }),
+  );
 
   useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
 
@@ -47,7 +46,7 @@ export function MasterClassesContainer() {
   };
 
   const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang, isAuth));
+    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
   };
 
   return (
@@ -96,49 +95,5 @@ export const filterOptionss = [
   {
     id: 4,
     tid: 'По убыванию',
-  },
-];
-export const testListItems = [
-  {
-    id: 1,
-    name: 'Мастер-класс по пошиву мужских брюк 1003',
-    image: '/static/test/popular-gods-1.png',
-    bestseller: true,
-    select: false,
-    like: true,
-    type: 0,
-    price: {
-      min: 500,
-      discount: 10,
-      max: null,
-    },
-  },
-  {
-    id: 2,
-    name: 'Инструкция по пошиву Комбинезон 0717',
-    image: '/static/test/popular-gods-2.png',
-    bestseller: true,
-    select: true,
-    like: false,
-    type: 0,
-    price: {
-      min: 500,
-      discount: null,
-      max: 1000,
-    },
-  },
-  {
-    id: 3,
-    name: 'Мастер-класс по пошиву Жакета 0305',
-    image: '/static/test/popular-gods-3.png',
-    bestseller: false,
-    select: true,
-    like: true,
-    type: 0,
-    price: {
-      min: 500,
-      discount: 25,
-      max: 1000,
-    },
   },
 ];

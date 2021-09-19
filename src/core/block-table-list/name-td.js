@@ -3,13 +3,16 @@ import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_SIZE } from '../../lib/theme';
 
 export function NameTd(props) {
-  const { image = null, name = null } = props;
+  const { image = null, name = null, vendorCode = null } = props;
   if (!image && !name) return null;
   return (
     <Td>
       <Case>
         {image && <Image src={image} />}
-        {name && <Text tid={name} />}
+        <Column>
+          {name && <Text tid={name} />}
+          {vendorCode && <Text tid={vendorCode} />}
+        </Column>
       </Case>
     </Td>
   );
@@ -23,6 +26,12 @@ const Td = styled.td`
   @media screen and (max-width: 875px) {
     width: 100%;
   }
+`;
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing(3)};
+  line-height: 1.5;
 `;
 const Image = styled.img`
   width: 75px;

@@ -26,6 +26,7 @@ export function HeaderComponent(props) {
           activePath={activePath}
           isAuth={isAuth}
           userName={userName}
+          modalMenuItems={modalMenuItems}
           currentLang={currentLang}
           isMobile={isMobile}
         />

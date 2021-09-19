@@ -29,7 +29,6 @@ export function CreateSewingGoodsContainer() {
     [SEWING_GOODS_FIELD_NAME.TYPE]: 0,
     [SEWING_GOODS_FIELD_NAME.MODIFIER]: '',
     [SEWING_GOODS_FIELD_NAME.DISCOUNT]: 0,
-    [SEWING_GOODS_FIELD_NAME.COUNT]: 0,
     [SEWING_GOODS_FIELD_NAME.CATEGORIES]: [],
     [SEWING_GOODS_FIELD_NAME.IMAGES]: [],
     [SEWING_GOODS_FIELD_NAME.SIZES]: [initialSizes],
@@ -39,10 +38,10 @@ export function CreateSewingGoodsContainer() {
   const initialSizes = {
     [SEWING_GOODS_FIELD_NAME.SIZE_NAME]: '',
     [SEWING_GOODS_FIELD_NAME.SIZE_PRICE]: 0,
+    [SEWING_GOODS_FIELD_NAME.COUNT]: 0,
   };
   const initialColors = {
     [SEWING_GOODS_FIELD_NAME.COLOR_NAME]: '',
-    [SEWING_GOODS_FIELD_NAME.COLOR_PRICE]: 0,
   };
 
   //--------------------------------------------------------------------------

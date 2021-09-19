@@ -16,7 +16,10 @@ export function MasterClassProductComponent(props) {
     pageLoading,
     //------------
     productInfo,
+    addToCart,
   } = props;
+
+  if (!productInfo) return null;
 
   const {
     id,
@@ -27,6 +30,7 @@ export function MasterClassProductComponent(props) {
     type,
     images,
     categories,
+    cart,
     programs,
   } = productInfo;
 
@@ -37,12 +41,14 @@ export function MasterClassProductComponent(props) {
         <Content>
           <GalleryBlock items={images} />
           <ProductMainComponent
+            addToCart={addToCart}
             id={id}
             name={name}
             description={description}
             modifier={modifier}
             discount={discount}
             type={type}
+            cart={cart}
             images={images}
             categories={categories}
             programs={programs}

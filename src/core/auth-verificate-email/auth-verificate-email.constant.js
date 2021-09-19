@@ -1,4 +1,6 @@
 export const AUTH_VERIFICATE_EMAIL_ROUTE_PATH = '/auth/verificate-email';
+export const AUTH_VERIFICATE_EMAIL_ROUTE_PATH_DYNAMIC = () =>
+  '/auth/verificate-email';
 
 export const AUTH_VERIFICATE_EMAIL_STORE_NAME = 'AUTH_VERIFICATE_EMAIL';
 
@@ -8,4 +10,3 @@ export const AUTH_VERIFICATE_EMAIL_API = {
 };
 
 export const AUTH_VERIFICATE_EMAIL_GUEST_REDIRECT = '/';
-export const AUTH_VERIFICATE_EMAIL_HELP_ROUTE = '#';

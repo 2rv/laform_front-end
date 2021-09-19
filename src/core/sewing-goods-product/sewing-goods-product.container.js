@@ -13,6 +13,7 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.co
 import { sewingGoodsProductUploadData } from './sewing-goods-product.action';
 import { SEWING_GOODS_PRODUCT_STORE_NAME } from './sewing-goods-product.constant';
 import { SewingGoodsProductComponent } from './sewing-goods-product.component';
+import { addToBasket } from '../basket';
 
 export function SewingGoodsProductContainer() {
   const dispatch = useDispatch();
@@ -23,9 +24,14 @@ export function SewingGoodsProductContainer() {
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
+
   useEffect(() => {
     dispatch(sewingGoodsProductUploadData(currentLang, sewingGoodsProductId));
   }, []);
+
+  const addToCart = (inCart, values) => {
+    if (inCart) dispatch(addToBasket(values, currentLang));
+  };
 
   return (
     <SewingGoodsProductComponent
@@ -34,7 +40,8 @@ export function SewingGoodsProductContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      productInfo={getRequestData(state)}
+      addToCart={addToCart}
+      productInfo={getRequestData(state, false)}
     />
   );
 }

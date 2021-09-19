@@ -1,12 +1,12 @@
+import styled from 'styled-components';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import { BasicField, MultiField } from '../../../lib/element/field';
 import { ARTICLE_FIELD_NAME } from '../article-create.type';
 import { RecomendationBlock } from '../../block-recomendation';
-import { BlockEditor } from '../../block-editor';
 import { TitlePrimary } from 'src/lib/element/title';
-import styled from 'styled-components';
 import { THEME_SIZE } from 'src/lib/theme';
+import { ReactEditor } from 'src/core/block-react-editor';
 
 export function FormComponent(props) {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
@@ -51,17 +51,22 @@ export function FormComponent(props) {
         />
         <SectionLayout type="SMALL">
           <Title tid="ARTICLE_CREATE_FORM.MASTER_CLASS_ARTICLE" />
-          <BlockEditor
-            formikOnChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
+          <ReactEditor
+            handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
+            values={values[ARTICLE_FIELD_NAME.ARTICLE]}
+            name={ARTICLE_FIELD_NAME.ARTICLE}
           />
         </SectionLayout>
-        <RecomendationBlock
+        {/* <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(ARTICLE_FIELD_NAME.RECOMMENDATIONS, data)
           }
-        />
+        /> */}
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="ARTICLE_CREATE_FORM.BUTTON.CREATE_ARTICLE" />
+          <ButtonPrimary
+            type="submit"
+            tid="ARTICLE_CREATE_FORM.BUTTON.CREATE_ARTICLE"
+          />
           <ButtonSecondary tid="ARTICLE_CREATE_FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>

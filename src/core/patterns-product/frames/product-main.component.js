@@ -26,22 +26,32 @@ export function ProductMainComponent(props) {
     materials,
     price,
     complexity,
+    cart,
     filePdf,
+    addToCart,
   } = props;
 
   const dispatch = useDispatch();
-  const [size, setSize] = useState({ price: 0 });
+  const [size, setSize] = useState(
+    sizes?.length > 0 ? sizes[0] : { id: 0, tid: 0, price: 0, vendorCode: 0 },
+  );
   const productPdfUrl = filePdf?.fileUrl;
 
   const sendPdfToMail = () => {
-    dispatch(patternsProductSendPdfToMail({
-      productName: name,
-      productPdfUrl,
-    }));
+    dispatch(
+      patternsProductSendPdfToMail({
+        productName: name,
+        productPdfUrl,
+      }),
+    );
   };
 
   const redirectToPdfLink = () => {
     window.open(productPdfUrl, '_blank');
+  };
+
+  const handleAddToCart = (_, __, inCart) => {
+    addToCart(inCart, { id, type, size: size.id });
   };
 
   return (
@@ -76,21 +86,20 @@ export function ProductMainComponent(props) {
         <>
           <Divider />
           <BlockSelect
-            isTooltip
             name="Размер"
-            selectName="selectedSizes"
             selectOptions={sizes}
-            getValues={setSize}
+            handleChange={setSize}
+            isTooltip
           />
         </>
       )}
       <Divider />
       <FooterCase>
         <ProductPriceComponent
-          price={price || size?.price}
+          price={price ? price : size?.price}
           discount={discount}
         />
-        <CardActions />
+        <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
       <DownloadPdfContainer>
         <SendEmailButton tid="Отправить на Email" onClick={sendPdfToMail} />

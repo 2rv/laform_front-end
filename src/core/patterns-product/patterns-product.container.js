@@ -13,6 +13,7 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.co
 import { patternProductUploadData } from './patterns-product.action';
 import { PATTERNS_PRODUCT_STORE_NAME } from './patterns-product.constant';
 import { PatternsProductComponent } from './patterns-product.component';
+import { addToBasket } from '../basket';
 
 export function PatternsProductContainer() {
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ export function PatternsProductContainer() {
   useEffect(() => {
     dispatch(patternProductUploadData(currentLang, patternId));
   }, []);
+
+  const addToCart = (inCart, values) => {
+    if (inCart) dispatch(addToBasket(values, currentLang));
+  };
+
   return (
     <PatternsProductComponent
       isPending={isRequestPending(state)}
@@ -34,7 +40,8 @@ export function PatternsProductContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      productInfo={getRequestData(state)}
+      productInfo={getRequestData(state, false)}
+      addToCart={addToCart}
     />
   );
 }

@@ -1,6 +1,4 @@
 export const performMasterClassData = (rowData, backet) => {
-  //   console.log(rowData);
-
   return rowData.map((item) => {
     return {
       id: item.id,

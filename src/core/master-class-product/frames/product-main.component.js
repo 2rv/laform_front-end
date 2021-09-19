@@ -19,11 +19,24 @@ export function ProductMainComponent(props) {
     type,
     comment,
     images,
-    categories = [],
-    programs = false,
+    categories,
+    programs,
+    addToCart,
+    cart,
   } = props;
+  const [program, setProgram] = useState(
+    programs?.length > 0
+      ? programs[0]
+      : { id: 0, tid: 0, price: 0, vendorCode: 0 },
+  );
 
-  const [program, setProgram] = useState();
+  const handleAddToCart = (_, __, inCart) => {
+    addToCart(inCart, {
+      id,
+      type,
+      program: program.id,
+    });
+  };
 
   return (
     <Container>
@@ -49,16 +62,15 @@ export function ProductMainComponent(props) {
           <Divider />
           <BlockSelect
             name="Программа"
-            selectName="selectedProgram"
             selectOptions={programs}
-            getValues={setProgram}
+            handleChange={setProgram}
           />
         </>
       )}
       <Divider />
       <FooterCase>
         <ProductPriceComponent price={program?.price} discount={discount} />
-        <CardActions />
+        <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
     </Container>
   );

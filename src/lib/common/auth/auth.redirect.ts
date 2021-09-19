@@ -35,7 +35,6 @@ export const authConfirmedEmail = (ctx: any) => {
 
 export const authRedirectPrivated = (ctx: any, pathToRedirect: string) => {
   const { res, token = null } = ctx;
-  console.log(token);
 
   if (!token) {
     if (res) {

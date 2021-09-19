@@ -2,30 +2,31 @@ import styled, { css } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { LinkSecondary } from '../../lib/element/link';
 import { IconButton } from '../../lib/element/button';
-import { ReactComponent as UserIcon } from '../../asset/svg/user.svg';
-import { ReactComponent as ScissorsIcon } from '../../asset/svg/scissors.svg';
+import { ReactComponent as CartIcon } from '../../asset/svg/mobile-cart.svg';
 import { ReactComponent as TShirtIcon } from '../../asset/svg/tee-shirt.svg';
-import { ReactComponent as PostIcon } from '../../asset/svg/post.svg';
+import { ReactComponent as SewingIcon } from '../../asset/svg/mobile-sewing.svg';
 import { setLinkRedirect } from 'src/main/navigation';
 
 export function MobileNavMenu(props) {
   const { activePath } = props;
   return (
     <Container>
-      <Button onClick={setLinkRedirect('/purchases-history')}>
-        <UserStyledIcon active={activePath?.startsWith('/purchases-history')} />
-      </Button>
-
       <Button onClick={setLinkRedirect('/sewing-goods')}>
-        <ScissorsStyledIcon active={activePath?.startsWith('/sewing-goods')} />
+        <SewingStyledIcon
+          active={activePath?.startsWith('/sewing-goods') ? 'true' : undefined}
+        />
       </Button>
 
       <Button onClick={setLinkRedirect('/patterns')}>
-        <TShirtStyledIcon active={activePath?.startsWith('/patterns')} />
+        <TShirtStyledIcon
+          active={activePath?.startsWith('/patterns') ? 'true' : undefined}
+        />
       </Button>
 
-      <Button onClick={setLinkRedirect('/article')}>
-        <PostStyledIcon active={activePath?.startsWith('/article')} />
+      <Button onClick={setLinkRedirect('/basket')}>
+        <CartStyledIcon
+          active={activePath?.startsWith('/basket') ? 'true' : undefined}
+        />
       </Button>
     </Container>
   );
@@ -47,25 +48,16 @@ const Container = styled.div`
 const Button = styled(IconButton)`
   padding: 0;
 `;
-const UserStyledIcon = styled(UserIcon)`
+const SewingStyledIcon = styled(SewingIcon)`
   ${(p) =>
     p.active
       ? css`
           fill: ${THEME_COLOR.SECONDARY_DARK};
+          stroke: ${THEME_COLOR.SECONDARY_DARK};
         `
       : css`
           fill: ${THEME_COLOR.TEXT.LIGHT};
-        `}
-`;
-
-const ScissorsStyledIcon = styled(ScissorsIcon)`
-  ${(p) =>
-    p.active
-      ? css`
-          fill: ${THEME_COLOR.SECONDARY_DARK};
-        `
-      : css`
-          fill: ${THEME_COLOR.TEXT.LIGHT};
+          stroke: ${THEME_COLOR.TEXT.LIGHT};
         `}
 `;
 
@@ -83,7 +75,7 @@ const TShirtStyledIcon = styled(TShirtIcon)`
         `}
 `;
 
-const PostStyledIcon = styled(PostIcon)`
+const CartStyledIcon = styled(CartIcon)`
   ${(p) =>
     p.active
       ? css`

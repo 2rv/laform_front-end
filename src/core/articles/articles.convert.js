@@ -1,5 +1,4 @@
 export const performArticlesData = (rowData) => {
-  //   console.log(rowData);
   return rowData.map((item) => {
     return {
       id: item.id,
@@ -8,6 +7,7 @@ export const performArticlesData = (rowData) => {
       type: item.type,
       bestseller: item.modifier,
       categories: item.categories,
+      createdDate: item.createdDate,
     };
   });
 };

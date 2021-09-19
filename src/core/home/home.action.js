@@ -44,7 +44,6 @@ export function sewingGoodsUploadData(currentLang) {
         url: HOME_API.SEWING_GOODS_UPLOAD_DATA.ENDPOINT(currentLang),
       });
       const data = performSewingGoodsData(response.data);
-
       dispatch({
         type: HOME_ACTION_TYPE.HOME_SEWING_GOODS_SUCCESS,
         data: data,

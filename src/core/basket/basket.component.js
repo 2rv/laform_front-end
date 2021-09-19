@@ -13,6 +13,25 @@ export function BasketComponent(props) {
     IsEmpty,
     isAuth,
     //--------------
+    promocode,
+    discount,
+    price,
+    //--------------
+    userInfoErrorMessage,
+    userInfoError,
+    userInfoPending,
+    userInfoSuccess,
+    //--------------
+    orderErrorMessage,
+    orderError,
+    orderPending,
+    orderSuccess,
+    //--------------
+    promoCodeErrorMessage,
+    promoCodeError,
+    promoCodePending,
+    promoCodeSuccess,
+    //--------------
     onSubmit,
     initialValues,
     validation,
@@ -21,6 +40,7 @@ export function BasketComponent(props) {
     //--------------
     changeItem,
     deleteItem,
+    checkPromoCode,
     //--------------
     headersGoods,
     headersMaster,
@@ -56,19 +76,32 @@ export function BasketComponent(props) {
             headers={headersMaster}
             items={itemsMaster}
           />
+          <FormContainer
+            promocode={promocode}
+            discount={discount}
+            price={price}
+            userInfoErrorMessage={userInfoErrorMessage}
+            userInfoError={userInfoError}
+            userInfoPending={userInfoPending}
+            userInfoSuccess={userInfoSuccess}
+            orderErrorMessage={orderErrorMessage}
+            orderError={orderError}
+            orderPending={orderPending}
+            orderSuccess={orderSuccess}
+            diliveryOptions={diliveryOptions}
+            paymentMethodOptions={paymentMethodOptions}
+            onSubmit={onSubmit}
+            checkPromoCode={checkPromoCode}
+            initialValues={initialValues}
+            validation={validation}
+            promoCodeErrorMessage={promoCodeErrorMessage}
+            promoCodeError={promoCodeError}
+            promoCodePending={promoCodePending}
+            promoCodeSuccess={promoCodeSuccess}
+          />
         </>
       )}
-      {isAuth ? (
-        <FormContainer
-          diliveryOptions={diliveryOptions}
-          paymentMethodOptions={paymentMethodOptions}
-          onSubmit={onSubmit}
-          initialValues={initialValues}
-          validation={validation}
-        />
-      ) : (
-        <SignComponent />
-      )}
+      {!isAuth && <SignComponent />}
     </SectionLayout>
   );
 }

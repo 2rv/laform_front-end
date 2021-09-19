@@ -1,5 +1,4 @@
 export const performPatternsData = (rowData, backet) => {
-  //   console.log(rowData);
   return rowData.map((item) => {
     return {
       id: item.id,

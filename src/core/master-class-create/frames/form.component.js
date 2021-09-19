@@ -10,13 +10,13 @@ import {
 } from '../../../lib/element/field';
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
-import { DynamicFields, ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,
 } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
-import { BlockEditor } from '../../block-editor';
+import { DynamicFields } from './dynamic-fields';
 
 export function FormComponent(props) {
   const {
@@ -31,8 +31,7 @@ export function FormComponent(props) {
 
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
-  const setEditorData = (name) => (editorData) =>
-    setFieldValue(name, editorData);
+
   //----------------------------
 
   return (
@@ -78,19 +77,7 @@ export function FormComponent(props) {
           minHeight={100}
         />
       </SectionLayout>
-      <SectionLayout type="SMALL">
-        <Title tid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE" />
-        <BlockEditor
-          formikOnChange={setEditorData(
-            CREATE_MASTER_CLASS_FIELD_NAME.MASTER_CLASS,
-          )}
-        />
-      </SectionLayout>
-
       <DynamicFields
-        nameFieldArray={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAMS}
-        namePosition={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_NAME}
-        pricePosition={CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_PRICE}
         initialData={programsInit}
         title="DYNAMIC_FIELDS.PROGRAM.TITLE"
         fieldTitle="DYNAMIC_FIELDS.PROGRAM.FIELD_TITLE"
@@ -100,6 +87,8 @@ export function FormComponent(props) {
         touched={touched}
         values={values}
         setFieldValue={setFieldValue}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
       />
       <SectionLayout type="SMALL">
         <Title tid="MASTER_CLASSES.CREATE.FORM.PRICE" />
@@ -121,13 +110,16 @@ export function FormComponent(props) {
             )}
           />
         </FieldLayout>
-        <RecomendationBlock
+        {/* <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS, data)
           }
-        />
+        /> */}
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="MASTER_CLASSES.CREATE.FORM.BUTTON.CREATE_PRODUCT" />
+          <ButtonPrimary
+            type="submit"
+            tid="MASTER_CLASSES.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+          />
           <ButtonSecondary tid="MASTER_CLASSES.CREATE.FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>

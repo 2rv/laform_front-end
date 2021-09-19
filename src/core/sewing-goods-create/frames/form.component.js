@@ -9,12 +9,14 @@ import {
   TextareaField,
 } from '../../../lib/element/field';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
-import { DynamicFields, ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,
 } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
+import { DynamicField } from './dynamic-field';
+import { DynamicFields } from './dynamic-fields';
 
 export function FormComponent(props) {
   const {
@@ -79,40 +81,28 @@ export function FormComponent(props) {
         />
       </SectionLayout>
 
-      <BasicField
-        titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.PRODUCT_QUANTITY"
-        placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.PRODUCT_QUANTITY"
-        name={SEWING_GOODS_FIELD_NAME.COUNT}
-        value={values[SEWING_GOODS_FIELD_NAME.COUNT]}
-        error={getFieldError(SEWING_GOODS_FIELD_NAME.COUNT)}
-        onChange={setNumber(SEWING_GOODS_FIELD_NAME.COUNT)}
-        onBlur={handleBlur}
-      />
-
       <DynamicFields
-        nameFieldArray={SEWING_GOODS_FIELD_NAME.SIZES}
-        namePosition={SEWING_GOODS_FIELD_NAME.SIZE_NAME}
-        pricePosition={SEWING_GOODS_FIELD_NAME.SIZE_PRICE}
         initialData={initialSizes}
         title="DYNAMIC_FIELDS.SIZE.TITLE"
         fieldTitle="DYNAMIC_FIELDS.SIZE.FIELD_TITLE"
         fieldPlaceholder="DYNAMIC_FIELDS.SIZE.FIELD_PLACEHOLDER"
         buttonText="DYNAMIC_FIELDS.SIZE.BUTTON_TEXT"
+        handleChange={handleChange}
+        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
         setFieldValue={setFieldValue}
       />
 
-      <DynamicFields
-        nameFieldArray={SEWING_GOODS_FIELD_NAME.COLORS}
-        namePosition={SEWING_GOODS_FIELD_NAME.COLOR_NAME}
-        pricePosition={SEWING_GOODS_FIELD_NAME.COLOR_PRICE}
+      <DynamicField
         initialData={initialColors}
         title="DYNAMIC_FIELDS.COLOR.TITLE"
         fieldTitle="DYNAMIC_FIELDS.COLOR.FIELD_TITLE"
         fieldPlaceholder="DYNAMIC_FIELDS.COLOR.FIELD_PLACEHOLDER"
         buttonText="DYNAMIC_FIELDS.COLOR.BUTTON_TEXT"
+        handleChange={handleChange}
+        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
@@ -133,25 +123,22 @@ export function FormComponent(props) {
           />
           <ProductPrice
             discount={values[SEWING_GOODS_FIELD_NAME.DISCOUNT]}
-            price={
-              dynamicFieldsMinPrice(
-                values[SEWING_GOODS_FIELD_NAME.COLORS],
-                SEWING_GOODS_FIELD_NAME.COLOR_PRICE,
-              ) +
-              dynamicFieldsMinPrice(
-                values[SEWING_GOODS_FIELD_NAME.SIZES],
-                SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
-              )
-            }
+            price={dynamicFieldsMinPrice(
+              values[SEWING_GOODS_FIELD_NAME.SIZES],
+              SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
+            )}
           />
         </FieldLayout>
-        <RecomendationBlock
+        {/* <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS, data)
           }
-        />
+        /> */}
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary type="submit" tid="SEWING_GOODS.CREATE.FORM.BUTTON.CREATE_PRODUCT" />
+          <ButtonPrimary
+            type="submit"
+            tid="SEWING_GOODS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+          />
           <ButtonSecondary tid="SEWING_GOODS.CREATE.FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>

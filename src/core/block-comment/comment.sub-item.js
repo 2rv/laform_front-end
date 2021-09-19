@@ -8,8 +8,8 @@ import { ReactComponent as DeleteIcon } from '../../asset/svg/delete-cancel-icon
 import { ReactComponent as EditIcon } from '../../asset/svg/edit-icon.svg';
 import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
-import moment from 'moment';
 import { useState } from 'react';
+import { ConvertTime } from 'src/lib/common/time-convert';
 
 export function SubComment(props) {
   const [view, setView] = useState(false);
@@ -47,9 +47,7 @@ export function SubComment(props) {
                 <Content>
                   <HeaderCase>
                     <Title tid={userId.login} />
-                    <TextLight
-                      tid={moment(createDate).local().fromNow()}
-                    />
+                    <TextLight tid={ConvertTime(createDate)} />
                   </HeaderCase>
                   <TextSecondary tid={text} />
                   <Divider />

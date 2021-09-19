@@ -1,5 +1,4 @@
 export const performSewingGoodsData = (rowData, backet) => {
-  //   console.log(rowData);
   return rowData.map((item) => {
     return {
       id: item.id,
@@ -12,13 +11,9 @@ export const performSewingGoodsData = (rowData, backet) => {
         backet?.find((bItem) => bItem?.sewingProduct?.id === item.id),
       ),
       price: {
-        min:
-          checkMinPrice(item?.sizes, 'price') +
-          checkMinPrice(item.colors, 'price'),
+        min: checkMinPrice(item?.sizes, 'price'),
         discount: item.discount,
-        max:
-          checkMaxPrice(item?.sizes, 'price') +
-          checkMaxPrice(item.colors, 'price'),
+        max: checkMaxPrice(item?.sizes, 'price'),
       },
     };
   });

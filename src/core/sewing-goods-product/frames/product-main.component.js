@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextSecondary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
@@ -20,22 +20,38 @@ export function ProductMainComponent(props) {
     categories,
     description,
     images,
+    cart,
     sizes,
     colors,
-    count,
+    addToCart,
   } = props;
 
-  const [size, setSize] = useState({ price: 0 });
-  const [color, setColor] = useState({ price: 0 });
+  const [size, setSize] = useState(
+    sizes?.length > 0
+      ? sizes[0]
+      : { id: 0, tid: 0, price: 0, count: 0, vendorCode: 0 },
+  );
+  const [color, setColor] = useState(
+    colors?.length > 0 ? colors[0] : { id: 0, tid: 0 },
+  );
   const [currentCount, setCount] = useState(1);
-
   const increment = () => {
-    if (currentCount >= count) return;
+    if (currentCount >= size?.count) return;
     setCount(currentCount + 1);
   };
   const diincrement = () => {
     if (currentCount <= 1) return;
     setCount(currentCount - 1);
+  };
+
+  const handleAddToCart = (_, __, inCart) => {
+    addToCart(inCart, {
+      id,
+      type,
+      currentCount,
+      size: size.id,
+      color: color.id,
+    });
   };
 
   return (
@@ -61,36 +77,34 @@ export function ProductMainComponent(props) {
       {Boolean(sizes.length > 0) && (
         <BlockSelect
           name="Размер"
-          isTooltip
-          selectName="selectSize"
           selectOptions={sizes}
-          getValues={setSize}
+          handleChange={setSize}
+          isTooltip
         />
       )}
       {Boolean(colors.length > 0) && (
         <BlockSelect
           name="Цвет"
-          selectName="selectColor"
           selectOptions={colors}
-          getValues={setColor}
+          handleChange={setColor}
         />
       )}
       <Divider />
       <FooterCase>
         <Case>
           <ProductPriceComponent
-            price={size?.price + color?.price}
+            price={size?.price}
             discount={discount}
             count={currentCount}
           />
           <ActionCase>
-            <Button tid="+" onClick={increment} />
-            <Count tid={currentCount} />
             <Button tid="-" onClick={diincrement} />
+            <Count tid={currentCount} />
+            <Button tid="+" onClick={increment} />
           </ActionCase>
         </Case>
 
-        <CardActions />
+        <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
     </Container>
   );

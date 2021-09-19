@@ -8,8 +8,8 @@ import { ReactComponent as DeleteIcon } from '../../asset/svg/delete-cancel-icon
 import { ReactComponent as EditIcon } from '../../asset/svg/edit-icon.svg';
 import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
-import moment from 'moment';
 import { SubComment } from './comment.sub-item';
+import { ConvertTime } from 'src/lib/common/time-convert';
 
 export function CommentItem(props) {
   const {
@@ -23,7 +23,7 @@ export function CommentItem(props) {
   } = props;
   const { id, text, createDate, userId, subComment = [] } = props.data;
   const createSubComment = () => {
-    handleSetSubUser(userId, id)
+    handleSetSubUser(userId, id);
     cancelEditing();
   };
   const removeSubComment = (subId) => handleDeleteSubComment(id, subId);
@@ -37,23 +37,21 @@ export function CommentItem(props) {
         <HeaderCase>
           <Case>
             <Title tid={userId.login} />
-            <TextLight
-              tid={moment(createDate).local().fromNow()}
-            />
+            <TextLight tid={ConvertTime(createDate)} />
             {Boolean(user !== null) && (
               <Button onClick={createSubComment}>
                 <CommentIcon />
               </Button>
             )}
-            </Case>
+          </Case>
           {Boolean(userId?.id === user?.id) && (
             <ActionsCase>
               <Button onClick={() => handleDeleteComment(id)}>
                 <DeleteIcon />
               </Button>
-                <Button onClick={editComment}>
-                  <EditIcon />
-                </Button>
+              <Button onClick={editComment}>
+                <EditIcon />
+              </Button>
             </ActionsCase>
           )}
         </HeaderCase>

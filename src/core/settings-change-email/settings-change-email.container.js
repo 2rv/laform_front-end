@@ -44,7 +44,7 @@ export function SettingsChangeEmailContainer() {
   });
 
   useEffect(() => {
-    // dispatch(settingsChangeEmailLoadEmail());
+    dispatch(settingsChangeEmailLoadEmail());
   }, []);
 
   return (

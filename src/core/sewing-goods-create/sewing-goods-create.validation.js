@@ -10,7 +10,10 @@ import {
   minLengthArray,
 } from '../../main/validate/validate.service';
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods-create.type';
-import { dynamicFieldsValidation } from 'src/lib/common/create-product-helpers';
+import {
+  dynamicFieldsValidationNameParam,
+  dynamicFieldsValidationNamePriceCount,
+} from 'src/lib/common/create-product-helpers';
 
 const config = {
   [SEWING_GOODS_FIELD_NAME.NAME]: [required, minLength(3)],
@@ -32,32 +35,26 @@ const config = {
     numberPositiveMin(0),
     numberPositiveMax(100),
   ],
-  [SEWING_GOODS_FIELD_NAME.COUNT]: [
-    required,
-    number,
-    numberPositive,
-    numberPositiveMin(0),
-  ],
 };
 
 export const formValidation = (values) => {
-  const dynamicFieldsSizesErrors = dynamicFieldsValidation(
+  const dynamicFieldsSizesErrors = dynamicFieldsValidationNamePriceCount(
     values[SEWING_GOODS_FIELD_NAME.SIZES],
     SEWING_GOODS_FIELD_NAME.SIZES,
     SEWING_GOODS_FIELD_NAME.SIZE_NAME,
     SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
+    SEWING_GOODS_FIELD_NAME.COUNT,
   );
-  const dynamicFieldsColorsErrors = dynamicFieldsValidation(
+
+  const dynamicFieldsColorsErrors = dynamicFieldsValidationNameParam(
     values[SEWING_GOODS_FIELD_NAME.COLORS],
     SEWING_GOODS_FIELD_NAME.COLORS,
     SEWING_GOODS_FIELD_NAME.COLOR_NAME,
-    SEWING_GOODS_FIELD_NAME.COLOR_PRICE,
   );
-
   const fieldErrors = validate(values, config);
   return {
     ...fieldErrors,
-    ...dynamicFieldsColorsErrors,
     ...dynamicFieldsSizesErrors,
+    ...dynamicFieldsColorsErrors,
   };
 };

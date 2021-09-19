@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-import moment from 'moment';
 import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
 import { TitlePrimary as Title } from '../../../../lib/element/title';
 import { SectionLayout } from '../../../../lib/element/layout';
 import { Spinner } from '../../../../lib/element/spinner';
+import { ConvertDate } from 'src/lib/common/time-convert';
 
 export function AboutAccountInfoComponent({ isUserPending, user }) {
-  return isUserPending ? <Spinner /> : (
+  return isUserPending ? (
+    <Spinner />
+  ) : (
     <SectionLayout>
       {user?.userInfo?.fullName && (
         <LineCase>
@@ -21,13 +23,17 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
         <LineSection>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.DATE_OF_REGISTRATION" />
-            <InfoText tid={moment(user.createdDate).format('MMMM DD, YYYY')} />
+            <InfoText tid={ConvertDate(user.createdDate)} />
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.STATUS" />
             <StatusInfo
               status={user.emailConfirmed}
-              tid={user.emailConfirmed ? 'PROFILE.VERIFIED' : 'PROFILE.NOT_VERIFIED'}
+              tid={
+                user.emailConfirmed
+                  ? 'PROFILE.VERIFIED'
+                  : 'PROFILE.NOT_VERIFIED'
+              }
             />
           </SectionLayout>
         </LineSection>
@@ -43,7 +49,13 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
           )}
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.PAYMENT_METHOD" />
-            <InfoText tid={user?.userInfo?.paymentType === 1 ? 'PROFILE.ONLINE' : 'PROFILE.OTHER'} />
+            <InfoText
+              tid={
+                user?.userInfo?.paymentType === 1
+                  ? 'PROFILE.ONLINE'
+                  : 'PROFILE.OTHER'
+              }
+            />
           </SectionLayout>
         </LineSection>
       </SectionLayout>
