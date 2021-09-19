@@ -3,20 +3,29 @@ import { MASTER_CLASS_PRODUCT_API } from './master-class-product.constant';
 import { MASTER_CLASS_PRODUCT_ACTION_TYPE } from './master-class-product.type';
 import { performMasterClassProductData } from './master-class-product.convert';
 
-export function masterClassProductUploadData(currentLang, id) {
+export function masterClassProductUploadData(currentLang, id, logged) {
   return async (dispatch) => {
     dispatch({
       type: MASTER_CLASS_PRODUCT_ACTION_TYPE.MASTER_CLASS_PRODUCT_UPLOAD_PENDING,
     });
 
     try {
-      const response = await httpRequest({
-        method: MASTER_CLASS_PRODUCT_API.MASTER_CLASS_PRODUCT_UPLOAD.TYPE,
-        url: MASTER_CLASS_PRODUCT_API.MASTER_CLASS_PRODUCT_UPLOAD.ENDPOINT(
-          currentLang,
-          id,
-        ),
-      });
+      const response = logged
+        ? await httpRequest({
+            method:
+              MASTER_CLASS_PRODUCT_API.MASTER_CLASS_PRODUCT_UPLOAD_AUTH.TYPE,
+            url: MASTER_CLASS_PRODUCT_API.MASTER_CLASS_PRODUCT_UPLOAD_AUTH.ENDPOINT(
+              currentLang,
+              id,
+            ),
+          })
+        : await httpRequest({
+            method: MASTER_CLASS_PRODUCT_API.MASTER_CLASS_PRODUCT_UPLOAD.TYPE,
+            url: MASTER_CLASS_PRODUCT_API.MASTER_CLASS_PRODUCT_UPLOAD.ENDPOINT(
+              currentLang,
+              id,
+            ),
+          });
       const data = performMasterClassProductData(response.data);
       dispatch({
         type: MASTER_CLASS_PRODUCT_ACTION_TYPE.MASTER_CLASS_PRODUCT_UPLOAD_SUCCESS,

@@ -21,6 +21,7 @@ export function ProductMainComponent(props) {
     images,
     categories,
     programs,
+    like,
   } = props;
   const [program, setProgram] = useState(
     programs?.length > 0
@@ -60,7 +61,7 @@ export function ProductMainComponent(props) {
       <Divider />
       <FooterCase>
         <ProductPriceComponent price={program?.price} discount={discount} />
-        <CardActions />
+        <CardActions like={like} id={id} type={type} />
       </FooterCase>
     </Container>
   );

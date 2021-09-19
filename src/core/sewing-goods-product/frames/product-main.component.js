@@ -22,6 +22,7 @@ export function ProductMainComponent(props) {
     images,
     sizes,
     colors,
+    like,
   } = props;
 
   const [size, setSize] = useState(
@@ -91,7 +92,7 @@ export function ProductMainComponent(props) {
           </ActionCase>
         </Case>
 
-        <CardActions />
+        <CardActions like={like} id={id} type={type} />
       </FooterCase>
     </Container>
   );

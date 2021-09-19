@@ -15,5 +15,6 @@ export function performMasterClassProductData(rowData) {
       price: item.price,
       vendorCode: item.vendorCode,
     })),
+    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
   };
 }

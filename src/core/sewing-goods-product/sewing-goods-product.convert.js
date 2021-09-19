@@ -1,5 +1,4 @@
 export function performSewingGoodsProductData(rowData) {
-  //   console.log(rowData);
   return {
     id: rowData.id,
     type: rowData.type,
@@ -20,5 +19,6 @@ export function performSewingGoodsProductData(rowData) {
       id: item.id,
       tid: item.color,
     })),
+    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
   };
 }

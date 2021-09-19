@@ -11,7 +11,7 @@ import { LikeButton } from '../../../core/block-like';
 export function CardActions(props) {
   const { id, type } = props; // данные самого товара
   const {
-    like = false,
+    like,
     purchase = false,
     cart = false,
     selected = false,

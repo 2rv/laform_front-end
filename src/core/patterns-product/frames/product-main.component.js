@@ -27,6 +27,7 @@ export function ProductMainComponent(props) {
     price,
     complexity,
     filePdf,
+    like,
   } = props;
 
   const dispatch = useDispatch();
@@ -93,7 +94,7 @@ export function ProductMainComponent(props) {
           price={price ? price : size?.price}
           discount={discount}
         />
-        <CardActions />
+        <CardActions like={like} id={id} type={type} />
       </FooterCase>
       <DownloadPdfContainer>
         <SendEmailButton tid="Отправить на Email" onClick={sendPdfToMail} />

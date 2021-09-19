@@ -30,6 +30,7 @@ export function MasterClassProductComponent(props) {
     images,
     categories,
     programs,
+    like,
   } = productInfo;
 
   return (
@@ -48,6 +49,7 @@ export function MasterClassProductComponent(props) {
             images={images}
             categories={categories}
             programs={programs}
+            like={like}
           />
         </Content>
       </SectionLayout>

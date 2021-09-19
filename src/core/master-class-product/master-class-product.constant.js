@@ -8,4 +8,9 @@ export const MASTER_CLASS_PRODUCT_API = {
       `/master-class/get/${id}/?lang=${currentLang}`,
     TYPE: 'GET',
   },
+  MASTER_CLASS_PRODUCT_UPLOAD_AUTH: {
+    ENDPOINT: (currentLang, id) =>
+      `/master-class/get/auth/${id}/?lang=${currentLang}`,
+    TYPE: 'GET',
+  },
 };
