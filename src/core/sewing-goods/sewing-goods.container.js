@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestData,
@@ -20,7 +20,7 @@ import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
 
-const FOOTER_HEIGHT = 350;
+const SECTION_LAYOUT_BOTTOM_SPACING = 120;
 const INITIAL_PAGE = 1;
 const INITIAL_PER = 6;
 
@@ -35,6 +35,7 @@ export function SewingGoodsContainer() {
     }),
   );
 
+  const containerRef = useRef(null);
   let currentPage = INITIAL_PAGE;
   const productData = getRequestData(sewingGoodsState);
 
@@ -46,11 +47,11 @@ export function SewingGoodsContainer() {
     return () => {
       document.removeEventListener('scroll', scrollHandler);
     };
-  }, []);
+  }, [containerRef.current?.clientHeight]);
 
   const scrollHandler = (e) => {
     if (
-      e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < FOOTER_HEIGHT
+      containerRef.current.getBoundingClientRect().bottom < (window.innerHeight - SECTION_LAYOUT_BOTTOM_SPACING)
       && Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalRecords)
       && !isRequestPending(sewingGoodsState)
     ) {
@@ -73,28 +74,30 @@ export function SewingGoodsContainer() {
   };
 
   return (
-    <SewingGoodsComponent
-      listItems={sorterItemsByParams(
-        productData.products,
-        filter[SEWING_GOODS_FIELD_NAME.FIND],
-        Number(filter[SEWING_GOODS_FIELD_NAME.FILTER]),
-      )}
-      addToCart={addToCart}
-      //-----
-      setFilter={setFilter}
-      initialValue={filterInitialValue()}
-      filterOptions={filterOptionss}
-      filterSelectName={SEWING_GOODS_FIELD_NAME.FILTER}
-      findFieldName={SEWING_GOODS_FIELD_NAME.FIND}
-      //-----
-      pageLoading={pageLoading}
-      isPending={isRequestPending(sewingGoodsState)}
-      isError={isRequestError(sewingGoodsState)}
-      isSuccess={isRequestSuccess(sewingGoodsState)}
-      errorMessage={getRequestErrorMessage(sewingGoodsState)}
-      onDeleteProduct={onDeleteProduct}
-      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
-    />
+    <div ref={containerRef}>
+      <SewingGoodsComponent
+        listItems={sorterItemsByParams(
+          productData.products,
+          filter[SEWING_GOODS_FIELD_NAME.FIND],
+          Number(filter[SEWING_GOODS_FIELD_NAME.FILTER]),
+        )}
+        addToCart={addToCart}
+        //-----
+        setFilter={setFilter}
+        initialValue={filterInitialValue()}
+        filterOptions={filterOptionss}
+        filterSelectName={SEWING_GOODS_FIELD_NAME.FILTER}
+        findFieldName={SEWING_GOODS_FIELD_NAME.FIND}
+        //-----
+        pageLoading={pageLoading}
+        isPending={isRequestPending(sewingGoodsState)}
+        isError={isRequestError(sewingGoodsState)}
+        isSuccess={isRequestSuccess(sewingGoodsState)}
+        errorMessage={getRequestErrorMessage(sewingGoodsState)}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
+      />
+    </div>
   );
 }
 
