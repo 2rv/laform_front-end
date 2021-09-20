@@ -35,6 +35,8 @@ import PRODUCT_PRICE from './product-price.json';
 import DYNAMIC_FIELDS from './dynamic-fields.json';
 import FAVORITES from './favorites.json';
 import BLOCK_TEXT from './block-text.json';
+import BLOCK_TABLE_LIST from './block-table-list.json';
+import PROMOCODE from './promocode.json';
 
 export const RU = {
   translation: {
@@ -75,5 +77,7 @@ export const RU = {
     FAVORITES,
     COMMENTS,
     BLOCK_TEXT,
+    BLOCK_TABLE_LIST,
+    PROMOCODE,
   },
 };

@@ -28,8 +28,8 @@ export function FormComponent(props) {
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
         <BasicField
-          titleTid="Email"
-          placeholderTid="укажите Email"
+          titleTid="BASKET.FORM.FIELDS.TITLES.EMAIL"
+          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.EMAIL"
           name={ORDER_FIELD_NAME.EMAIL}
           value={values[ORDER_FIELD_NAME.EMAIL]}
           onChange={handleChange}

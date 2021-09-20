@@ -27,8 +27,8 @@ export function ProductMainComponent(props) {
     <Container>
       <TitleCase>
         <Title tid={title} />
-        {bestSeller && <Modifier alt tid={'Хит!'} />}
-        {discount && <Modifier tid={'Скидка!'} />}
+        {bestSeller && <Modifier alt tid={'PRODUCT_PRICE.HIT'} />}
+        {discount && <Modifier tid={'PRODUCT_PRICE.DISCOUNT'} />}!
       </TitleCase>
       <ShortDescriptionText tid={shortDescription} />
       <Divider />

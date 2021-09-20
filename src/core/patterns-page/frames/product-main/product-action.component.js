@@ -12,8 +12,8 @@ export function ProductAction(props) {
 
   return (
     <Container>
-      <ButtonSecondary tid="Отправить на Email" />
-      <ButtonPrimary tid="Скачать" />
+      <ButtonSecondary tid="PATTENRS.SEND_TO_EMAIL" />
+      <ButtonPrimary tid="PATTENRS.DOWNLOAD" />
       <Button>
         <QuestionIcon />
       </Button>

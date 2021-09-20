@@ -32,7 +32,7 @@ export function PatternsProductComponent(props) {
         </Content>
       </SectionLayout>
       <SectionLayout type="TEXT_SMALL">
-        <Title tid="Материалы" />
+        <Title tid="PATTERNS.MATERIALS" />
         <EditorRenderer data={productInfo.materials} />
       </SectionLayout>
       {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}

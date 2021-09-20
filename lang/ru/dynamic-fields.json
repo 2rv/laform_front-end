@@ -7,7 +7,9 @@
     "TITLE": "Размеры",
     "FIELD_TITLE": "Название размера",
     "FIELD_PLACEHOLDER": "Введите название размера",
-    "BUTTON_TEXT": "Добавить размер"
+    "BUTTON_TEXT": "Добавить размер",
+    "PRODUCT_COUNT_FIELD_TITLE": "Количество товара (единиц)",
+    "PRODUCT_COUNT_FIELD_PLACEHOLDER": "Введите количество товара"
   },
   "COLOR": {
     "TITLE": "Цвета",

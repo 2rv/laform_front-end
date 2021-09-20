@@ -76,7 +76,7 @@ export function ChangeButton(props) {
                       setVisible(false);
                     }}
                     type="submit"
-                    tid="Сохранить изменения"
+                    tid="BLOCK_TABLE_LIST.SAVE_CHANGES"
                   />
                 </Content>
               )}

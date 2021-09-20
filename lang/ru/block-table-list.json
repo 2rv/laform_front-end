@@ -1,0 +1,17 @@
+{
+  "SAVE_CHANGES": "Сохранить изменения",
+  "PARAMS": {
+    "PROGRAM": "Программа -",
+    "COLOR": "Цвет -",
+    "SIZE": "Размер -",
+    "FORMAT": "Формат -",
+    "CATEGORY": "Категория -",
+    "QUANTITY": "Количество -",
+    "COMPLEXITY": "Сложность -",
+    "FULL_NAME": "ФИО -",
+    "CITY": "Город -",
+    "DELIVERY_ADDRESS": "Адресс доставки -",
+    "PAYMENT_METHOD": "Способ оплаты -",
+    "PHONE": "Контактный телефон -"
+  }
+}

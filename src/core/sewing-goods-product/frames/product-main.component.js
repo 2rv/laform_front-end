@@ -59,7 +59,7 @@ export function ProductMainComponent(props) {
       <HeaderCase>
         <Title tid={name} />
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="Акция" />}
+        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
       <div>
         {categories.map((category, key) => (
@@ -76,7 +76,7 @@ export function ProductMainComponent(props) {
       {(sizes || colors) && <Divider />}
       {Boolean(sizes.length > 0) && (
         <BlockSelect
-          name="Размер"
+          name="PRODUCT_PRICE.SIZE"
           selectOptions={sizes}
           handleChange={setSize}
           isTooltip
@@ -84,7 +84,7 @@ export function ProductMainComponent(props) {
       )}
       {Boolean(colors.length > 0) && (
         <BlockSelect
-          name="Цвет"
+          name="PRODUCT_PRICE.COLOR"
           selectOptions={colors}
           handleChange={setColor}
         />

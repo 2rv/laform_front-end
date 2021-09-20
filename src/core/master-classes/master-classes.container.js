@@ -78,22 +78,22 @@ export function MasterClassesContainer() {
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.ALL',
   },
   {
     id: 1,
-    tid: 'Акция',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.STOCK',
   },
   {
     id: 2,
-    tid: 'Хит',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,
-    tid: 'По возрастанию',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.ASCENDING',
   },
   {
     id: 4,
-    tid: 'По убыванию',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.DESCENDING',
   },
 ];

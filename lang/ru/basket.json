@@ -37,6 +37,7 @@
     "ACTIVATE": "Активировать",
     "FIELDS": {
       "TITLES": {
+        "EMAIL": "Email",
         "FULL_NAME": "Укажите ваше ФИО",
         "CURRENT_CITY": "Укажите адрес доставки",
         "CONVENIET_DELIVERY_METHOD": "Укажите удобный способ доставки",
@@ -46,6 +47,7 @@
         "PROMO_CODE": "Промокод"
       },
       "PLACEHOLDER": {
+        "EMAIL": "Укажите Email",
         "FULL_NAME": "Фамилия, имя и отчество",
         "CURRENT_CITY": "ул. Недорубова, д. 18 к. 3, Москва,",
         "CONTACT_PHONE_NUMBER": "+7 000 000 00 00",

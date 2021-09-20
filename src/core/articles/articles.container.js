@@ -57,14 +57,14 @@ export function ArticlesContainer() {
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'ARTICLES.FILTER_OPTIONS.ALL',
   },
   {
     id: 5,
-    tid: 'Созданы первыми',
+    tid: 'ARTICLES.FILTER_OPTIONS.NEW',
   },
   {
     id: 6,
-    tid: 'Созданы последними',
+    tid: 'ARTICLES.FILTER_OPTIONS.OLD',
   },
 ];

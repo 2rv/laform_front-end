@@ -9,15 +9,15 @@ export function ProductDiliveryInfo(props) {
   return (
     <SectionLayout type="TEXT">
       <TextSecondary>
-        <TextSecondary tid="Адрес доставки" />: &nbsp;
+        <TextSecondary tid="PROFILE.DELIVERY_ADDRESS" />: &nbsp;
         <TextPrimary tid={adress} />
       </TextSecondary>
       <TextSecondary>
-        <TextSecondary tid="Способ оплаты" />: &nbsp;
+        <TextSecondary tid="PROFILE.PAYMENT_METHOD" />: &nbsp;
         <TextPrimary tid={paymentMethod} />
       </TextSecondary>
       <TextSecondary>
-        <TextSecondary tid="Состояние" />: &nbsp;
+        <TextSecondary tid="PROFILE.STATE" />: &nbsp;
         <ColoredText tid={status} />
       </TextSecondary>
     </SectionLayout>

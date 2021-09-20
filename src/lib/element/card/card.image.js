@@ -8,7 +8,7 @@ export function CardImage({ image, bestseller, action, path, pathConfig }) {
     <Container path={path} pathConfig={pathConfig}>
       <Image src={image} />
       <ModifierContainer>
-        {action ? <Modifier tid="Акция" /> : null}
+        {action ? <Modifier tid="PRODUCT_PRICE.STOCK" /> : null}
         {bestseller && <Modifier alt tid={bestseller} />}
       </ModifierContainer>
     </Container>

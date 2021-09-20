@@ -74,22 +74,22 @@ export function SewingGoodsContainer() {
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.ALL',
   },
   {
     id: 1,
-    tid: 'Акция',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.STOCK',
   },
   {
     id: 2,
-    tid: 'Хит',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,
-    tid: 'По возрастанию',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.ASCENDING',
   },
   {
     id: 4,
-    tid: 'По убыванию',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.DESCENDING',
   },
 ];

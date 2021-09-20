@@ -29,7 +29,7 @@ export function PromocodeFormComponent(props) {
     <Form onSubmit={handleSubmit}>
       <FieldLayout type="double">
         <BasicField
-          placeholderTid="Введите промокод"
+          placeholderTid="PROMOCODE.WRITE_PROMOCODE"
           name={fieldPromocode}
           value={values[fieldPromocode]}
           error={getFieldError(fieldPromocode)}
@@ -37,7 +37,7 @@ export function PromocodeFormComponent(props) {
           onBlur={handleBlur}
         />
         <BasicField
-          placeholderTid="Скидка"
+          placeholderTid="PRODUCT_PRICE.DISCOUNT"
           name={fieldDiscount}
           value={values[fieldDiscount]}
           error={getFieldError(fieldDiscount)}
@@ -46,7 +46,7 @@ export function PromocodeFormComponent(props) {
         />
       </FieldLayout>
       <FieldLayout type="double">
-        <ButtonSecondary tid="Добавить" type="submit" disabled={isSubmitDisabled()} />
+        <ButtonSecondary tid="PROMOCODE.ADD_PROMOCODE" type="submit" disabled={isSubmitDisabled()} />
       </FieldLayout>
     </Form>
   );

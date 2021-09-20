@@ -59,7 +59,7 @@ export function ProductMainComponent(props) {
       <HeaderCase>
         <Title tid={name} />
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="Акция" />}
+        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
       <div>
         {categories?.map((category, key) => (
@@ -75,7 +75,7 @@ export function ProductMainComponent(props) {
       <TextBlock text={description} />
       <Divider />
       <LineCase>
-        <Text tid="Сложность выкройки" />
+        <Text tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
         <Complexity>
           {[1, 2, 3, 4, 5].map((rate, index) => (
             <ComplexityDot key={index} act={rate <= complexity ? 1 : 0} />
@@ -86,7 +86,7 @@ export function ProductMainComponent(props) {
         <>
           <Divider />
           <BlockSelect
-            name="Размер"
+            name="PRODUCT_PRICE.SIZE"
             selectOptions={sizes}
             handleChange={setSize}
             isTooltip
@@ -102,8 +102,8 @@ export function ProductMainComponent(props) {
         <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
       <DownloadPdfContainer>
-        <SendEmailButton tid="Отправить на Email" onClick={sendPdfToMail} />
-        <DownloadButton tid="Скачать" onClick={redirectToPdfLink} />
+        <SendEmailButton tid="PATTERNS.SEND_TO_EMAIL" onClick={sendPdfToMail} />
+        <DownloadButton tid="PATTERNS.DOWNLOAD" onClick={redirectToPdfLink} />
       </DownloadPdfContainer>
     </Container>
   );

@@ -10,7 +10,7 @@ export function ParamsTd(props) {
       <Case>
         {Boolean(params.program?.value) && (
           <div>
-            <TextSecondary tid="Программа -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PROGRAM" />
             &nbsp;
             <TextPrimary tid={params.program.value} />
           </div>
@@ -18,42 +18,42 @@ export function ParamsTd(props) {
 
         {Boolean(params.color?.value) && (
           <div>
-            <TextSecondary tid="Цвет -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.COLOR" />
             &nbsp;
             <TextPrimary tid={params.color.value} />
           </div>
         )}
         {Boolean(params.size?.value) && (
           <div>
-            <TextSecondary tid="Размер -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.SIZE" />
             &nbsp;
             <TextPrimary tid={params.size.value} />
           </div>
         )}
         {Boolean(params.format) && (
           <div>
-            <TextSecondary tid="Формат -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FORMAT" />
             &nbsp;
             <TextPrimary tid={params.format} />
           </div>
         )}
         {Boolean(params.category) && (
           <div>
-            <TextSecondary tid="Категория -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CATEGORY" />
             &nbsp;
             <TextPrimary tid={params.category} />
           </div>
         )}
         {Boolean(params.count) && (
           <div>
-            <TextSecondary tid="Количество -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.QUANTITY" />
             &nbsp;
             <TextPrimary tid={params.count} />
           </div>
         )}
         {Boolean(params.complexity) && (
           <div>
-            <TextSecondary tid="Сложность -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.COMPLEXITY" />
             &nbsp;
             <TextPrimary tid={params.complexity} />
           </div>
@@ -61,34 +61,34 @@ export function ParamsTd(props) {
 
         {Boolean(params.fullName) && (
           <div>
-            <TextSecondary tid="ФИО -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FULL_NAME" />
             &nbsp;
             <TextPrimary tid={params.fullName} />
           </div>
         )}
         {Boolean(params.city) && (
           <div>
-            <TextSecondary tid="Город -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CITY" />
             &nbsp;
             <TextPrimary tid={params.city} />
           </div>
         )}
         {Boolean(params.diliveryInfo) && (
           <div>
-            <TextSecondary tid="Адресс доставки -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_ADDRESS" />
             &nbsp;
             <TextPrimary tid={params.diliveryInfo} />
           </div>
         )}
         {Boolean(params.paymentMethod) && (
           <div>
-            <TextSecondary tid="Способ оплаты -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PAYMENT_METHOD" />
             <TextPrimary tid={params.paymentMethod} />
           </div>
         )}
         {Boolean(params.phoneNumber) && (
           <div>
-            <TextSecondary tid="Контактный телефон -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PHONE" />
             &nbsp;
             <TextPrimary tid={params.phoneNumber} />
           </div>

@@ -68,16 +68,16 @@ export function CardActions(props) {
         <Popup
           content={(setVisible) => (
             <ModalContent>
-              <TextSecondary tid="Вы точно хотите удалить данный товар? Это действие нельзя отменить" />
+              <TextSecondary tid="OTHER.ARE_YOU_SURE_TO_DELETE_PRODUCT" />
               <ModalButtons>
                 <ButtonSecondary
-                  tid="Да"
+                  tid="OTHER.YES"
                   onClick={() => {
                     onDeleteProduct(id, { deleted: true });
                     setVisible(false);
                   }}
                 />
-                <ButtonPrimary tid="Отмена" onClick={() => setVisible(false)} />
+                <ButtonPrimary tid="OTHER.CANCEL" onClick={() => setVisible(false)} />
               </ModalButtons>
             </ModalContent>
           )}

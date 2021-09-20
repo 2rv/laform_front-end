@@ -36,15 +36,15 @@ export function DynamicFields(props) {
     errors?.[fieldArrayName]?.[index]?.[name];
   return (
     <SectionLayout type="SMALL">
-      <Title tid="Размеры" />
+      <Title tid="DYNAMIC_FIELDS.SIZE.TITLE" />
       <FieldArray name={fieldArrayName}>
         {({ remove, push }) => (
           <SectionLayout type="SMALL">
             {values[fieldArrayName].map((value, index) => (
               <FieldLayout type="double" adaptive key={index}>
                 <BasicField
-                  titleTid="Название размера"
-                  placeholderTid="Введите название размера"
+                  titleTid="DYNAMIC_FIELDS.SIZE.FIELD_TITLE"
+                  placeholderTid="DYNAMIC_FIELDS.SIZE.FIELD_PLACEHOLDER"
                   name={`${fieldArrayName}.${index}.${SEWING_GOODS_FIELD_NAME.SIZE_NAME}`}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -57,8 +57,8 @@ export function DynamicFields(props) {
                 />
                 <Line>
                   <BasicField
-                    titleTid="Цена"
-                    placeholderTid="Введите цену (в руб.)"
+                    titleTid="DYNAMIC_FIELDS.PRICE.TITLE"
+                    placeholderTid="DYNAMIC_FIELDS.PRICE.PLACEHOLDER"
                     name={`${fieldArrayName}.${index}.${SEWING_GOODS_FIELD_NAME.SIZE_PRICE}`}
                     onBlur={handleBlur}
                     touched={touched}
@@ -80,8 +80,8 @@ export function DynamicFields(props) {
                   )}
                 </Line>
                 <BasicField
-                  titleTid="Количество товара (единиц)"
-                  placeholderTid="Введите количество товара"
+                  titleTid="DYNAMIC_FIELDS.SIZE.PRODUCT_COUNT_FIELD_TITLE"
+                  placeholderTid="DYNAMIC_FIELDS.SIZE.PRODUCT_COUNT_FIELD_PLACEHOLDER"
                   name={`${fieldArrayName}.${index}.${SEWING_GOODS_FIELD_NAME.COUNT}`}
                   onBlur={handleBlur}
                   touched={touched}
@@ -92,7 +92,7 @@ export function DynamicFields(props) {
               </FieldLayout>
             ))}
             <ButtonSecondary
-              tid="Добавить размер"
+              tid="DYNAMIC_FIELDS.SIZE.BUTTON_TEXT"
               onClick={() => push(initialData)}
             />
           </SectionLayout>

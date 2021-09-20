@@ -130,22 +130,22 @@ export const tabItems = [
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'PATTERNS.FILTER_OPTIONS.ALL',
   },
   {
     id: 1,
-    tid: 'Акция',
+    tid: 'PATTERNS.FILTER_OPTIONS.STOCK',
   },
   {
     id: 2,
-    tid: 'Хит',
+    tid: 'PATTERNS.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,
-    tid: 'По возрастанию',
+    tid: 'PATTERNS.FILTER_OPTIONS.ASCENDING',
   },
   {
     id: 4,
-    tid: 'По убыванию',
+    tid: 'PATTERNS.FILTER_OPTIONS.DESCENDING',
   },
 ];
