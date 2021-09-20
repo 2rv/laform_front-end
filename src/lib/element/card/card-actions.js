@@ -30,7 +30,7 @@ export function CardActions(props) {
   }, [cart]);
 
   useEffect(() => {
-    setSelectText(inCart ? 'Зайти в корзину' : 'Добавить в корзину');
+    setSelectText(inCart ? 'BASKET.GO_TO_BASKET' : 'BASKET.ADD_TO_BASKET');
     onSetSelect &&
       setSelectText(isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT');
   }, [inCart, isSelected]);

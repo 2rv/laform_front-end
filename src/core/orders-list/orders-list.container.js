@@ -44,11 +44,11 @@ export function OrdersListContainer() {
 }
 
 const headersTable = [
-  'Номер заказа',
-  'Детали заказа',
-  'Данные доставки',
-  'Цена товара',
-  'Состояние',
+  'ORDERS.TABLE.HEADER.ORDER_NUMBER',
+  'ORDERS.TABLE.HEADER.ORDER_DETAILS',
+  'ORDERS.TABLE.HEADER.DELIVERY_DATA',
+  'ORDERS.TABLE.HEADER.PRODUCT_PRICE',
+  'ORDERS.TABLE.HEADER.STATE',
 ];
 
 const tableItems = [

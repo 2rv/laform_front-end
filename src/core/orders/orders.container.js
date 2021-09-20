@@ -54,11 +54,11 @@ const tabItems = [
 ];
 
 const headersTable = [
-  'название',
-  'параметры',
-  'данные доставки',
-  'цена товара',
-  'состояние',
+  'ORDERS.TABLE.HEADER.ORDER_NUMBER',
+  'ORDER_NUMBER.TABLE.HEADER.PARAMETERS',
+  'ORDERS.TABLE.HEADER.DELIVERY_DATA',
+  'ORDERS.TABLE.HEADER.PRODUCT_PRICE',
+  'ORDERS.TABLE.HEADER.STATE',
 ];
 const itemsTable = [
   {

@@ -178,7 +178,7 @@ const constructorElectronicPatternItem = (data) => {
       image: data.patternProduct.images[0].fileUrl,
       name: data.patternProduct.titleRu,
       params: {
-        format: 'электронный',
+        format: 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC',
         complexity: data.patternProduct.complexity,
         category: data.patternProduct.categories[0].textRu,
       },
@@ -201,7 +201,7 @@ const constructorPrintPatternItem = (data) => {
       name: data.patternProduct.titleRu,
       params: {
         size: { id: size.id, value: size.size },
-        format: 'печатный',
+        format: 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
         complexity: data.patternProduct.complexity,
         category: data.patternProduct.categories[0].textRu,
       },

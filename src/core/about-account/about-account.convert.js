@@ -18,10 +18,10 @@ export const convertPurchasesData = (data) => {
   return {
     id: data.id,
     params: [
-      firstPurchaseProduct?.color && { name: 'Цвет', value: firstPurchaseProduct.color },
-      firstPurchaseProduct?.size && { name: 'Размер', value: firstPurchaseProduct.size },
-      firstPurchaseProduct?.type && { name: 'Категория', value: firstPurchaseProduct.type },
-      firstPurchaseProduct?.quantity && { name: 'Количество', value: firstPurchaseProduct.quantity },
+      firstPurchaseProduct?.color && { name: 'ORDERS.TABLE.BODY.COLOR', value: firstPurchaseProduct.color },
+      firstPurchaseProduct?.size && { name: 'ORDERS.TABLE.BODY.SIZE', value: firstPurchaseProduct.size },
+      firstPurchaseProduct?.type && { name: 'ORDERS.TABLE.BODY.CATEGORY', value: firstPurchaseProduct.type },
+      firstPurchaseProduct?.quantity && { name: 'ORDERS.TABLE.BODY.QUANTITY', value: firstPurchaseProduct.quantity },
     ],
     price: data.price,
     status: data.orderStatus,

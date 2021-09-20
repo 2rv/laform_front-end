@@ -40,8 +40,8 @@ export function MyPurchasesContainer() {
 }
 
 const tabItems = [
-  { name: 'Мастер-классы', type: 0 },
-  { name: 'Полезные статьи', type: 1 },
+  { name: 'PURCHASE.TAB.MASTER_CLASSES', type: 0 },
+  { name: 'PURCHASE.TAB.ARTICLES', type: 1 },
 ];
 
 const itemsTable = [

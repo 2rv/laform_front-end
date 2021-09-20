@@ -144,13 +144,21 @@ export function BasketContainer() {
   );
 }
 const headersGoods = [
-  'Товары для шитья',
-  'Параметры',
-  'Количество',
-  'Итоговая цена',
+  'BASKET.HEADERS_GOODS.SEWING_GOODS',
+  'BASKET.HEADERS_GOODS.PARAMETERS',
+  'BASKET.HEADERS_GOODS.QUANTITY',
+  'BASKET.HEADERS_GOODS.TOTAL_PRICE',
 ];
-const headersMaster = ['Мастер-классы', 'Параметры', 'Итоговая цена'];
-const headersPatterns = ['Выкройки', 'Параметры', 'Итоговая цена'];
+const headersMaster = [
+  'BASKET.HEADERS_MASTER.MASTER_CLASSES',
+  'BASKET.HEADERS_MASTER.PARAMETERS',
+  'BASKET.HEADERS_MASTER.QUANTITY',
+];
+const headersPatterns = [
+  'BASKET.HEADERS_PATTERNS.PATTERNS',
+  'BASKET.HEADERS_PATTERNS.PARAMETERS',
+  'BASKET.HEADERS_PATTERNS.QUANTITY',
+];
 const diliveryOptions = [
   {
     id: 1,

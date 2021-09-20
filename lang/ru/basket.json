@@ -1,6 +1,24 @@
 {
   "TITLE": "Корзина",
   "CART_IS_EMPTY": "В вашей корзинов ещё ничего нет",
+  "GO_TO_BASKET": "Зайти в корзину",
+  "ADD_TO_BASKET": "Добавить в корзину",
+  "HEADERS_GOODS": {
+    "SEWING_GOODS": "Товары для шитья",
+    "PARAMETERS": "Параметры",
+    "QUANTITY": "Количество",
+    "TOTAL_PRICE": "Итоговая цена"
+  },
+  "HEADERS_MASTER": {
+    "MASTER_CLASSES": "Мастер-классы",
+    "PARAMETERS": "Параметры",
+    "TOTAL_PRICE": "Итоговая цена"
+  },
+  "HEADERS_PATTERNS": {
+    "PATTERNS": "Выкройки",
+    "PARAMETERS": "Параметры",
+    "TOTAL_PRICE": "Итоговая цена"
+  },
   "TABLE": {
     "HEADER": {
       "SEEWING_GOODS": "Товары для шитья",
