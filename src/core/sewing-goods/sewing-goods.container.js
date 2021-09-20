@@ -51,7 +51,7 @@ export function SewingGoodsContainer() {
   const scrollHandler = (e) => {
     if (
       e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < FOOTER_HEIGHT
-      && Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalCount)
+      && Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalRecords)
       && !isRequestPending(sewingGoodsState)
     ) {
       currentPage += 1;

@@ -21,12 +21,12 @@ export function sewingGoodsStore(state = initialState, action) {
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS:
       const oldProducts = state.sewingGoodsState?.data?.products || [];
       const newProducts = action.payload.products || [];
-      const totalCount = action.payload.totalCount || 0;
+      const totalRecords = action.payload.totalRecords || 0;
       return {
         ...state,
         sewingGoodsState: setRequestSuccess(
           state.sewingGoodsState,
-          { products: [...oldProducts, ...newProducts], totalCount },
+          { products: [...oldProducts, ...newProducts], totalRecords },
         ),
       };
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_ERROR:

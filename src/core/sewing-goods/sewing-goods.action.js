@@ -16,14 +16,14 @@ export function sewingGoodsUploadData(currentLang, page, size) {
         url: SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT(currentLang, page, size),
       });
       const data = performSewingGoodsData(
-        response.data,
+        response.data.products,
         getState()[BASKET_STORE_NAME].basket,
       );
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
         payload: {
           products: data,
-          totalCount: response.headers['total-records'],
+          totalRecords: response.data.totalRecords,
         },
       });
     } catch (err) {
