@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import moment from 'moment';
 import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
@@ -23,7 +24,7 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
         <LineSection>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.DATE_OF_REGISTRATION" />
-            <InfoText tid={ConvertDate(user.createdDate)} />
+            <InfoText>{ConvertDate(user.createDate, 'MMMM DD, YYYY')}</InfoText>
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.STATUS" />
@@ -84,9 +85,10 @@ const InfoTitle = styled(TextSecondary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;
-const InfoText = styled(Title)`
+const InfoText = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.DEFAULT};
+  color: ${THEME_COLOR.SECONDARY_DARK};
 `;
 const StatusInfo = styled(InfoText)`
   color: ${(p) =>

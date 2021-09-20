@@ -92,7 +92,7 @@ export function AboutAccountComponent(props) {
                 >
                   <TextSecondary tid={comment.text} />
                   <TextSecondary>
-                    {ConvertDate(comment.createDate)}
+                    {ConvertDate(comment.createDate, 'MMM DD, YYYY, hh:mm:ss')}
                   </TextSecondary>
                 </CommentContent>
               ))}
