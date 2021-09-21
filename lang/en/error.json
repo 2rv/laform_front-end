@@ -1,5 +1,12 @@
 {
-  "SUBSCRIBE_SUBSCRIPTION_ALREADY_EXISTS": "Подписка уже оформлена.",
-  "USER_SETTINGS_UNCORRECT_CURRENT_PASSWORD": "Неверный пароль.",
-  "USER_VERIFICATION_EMAIL_CODE_DOESNT_EXISTS": "Код подтверждения не существует."
+  "SUBSCRIBE_SUBSCRIPTION_ALREADY_EXISTS": "Subscribed already.",
+  "USER_SETTINGS_UNCORRECT_CURRENT_PASSWORD": "Wrong password.",
+  "USER_VERIFICATION_EMAIL_CODE_DOESNT_EXISTS": "Verification code does not exist.",
+  "PROMO_CODE_NOT_EXISTS": "Promo code does not exist or is not active",
+  "LOGIN_UNCORRECT_PASSWORD_OR_LOGIN": "Incorrect username or password.",
+  "LOGIN_COULDNT_FOUND_USER": "User with this username was not found.",
+  "USER_ALREADY_EXISTS": "User already exists.",
+  "PLEASE_UPLOAD_IMAGE": "Please upload an image.",
+  "USER_NOT_CONFIRMED": "You haven't verified your email address yet",
+  "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Email address already verified"
 }

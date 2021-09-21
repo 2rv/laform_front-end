@@ -1,43 +1,46 @@
 {
   "CATALOG_LIST": {
     "E_PATTERNS": {
-      "TITLE": "Электронные выкройки",
-      "DESCRIPTION": "Заказать готовые электронные выкройки одежды в интернет-магазине"
+      "TITLE": "Electronic patterns",
+      "DESCRIPTION": "Order ready-made electronic clothing patterns in the online store"
     },
     "PRINTED_PATTERNS": {
-      "TITLE": "Печатные выкройки",
-      "DESCRIPTION": "Заказать готовые печатные выкройки одежды с доставкой"
+      "TITLE": "Printed patterns",
+      "DESCRIPTION": "Order ready-made printed clothing patterns with delivery"
     },
     "MASTER_CLASSES": {
-      "TITLE": "Мастер-классы",
-      "DESCRIPTION": "Приобретайте доступ к онлайн урокам пошива изделий по выкройкам LaForme"
+      "TITLE": "Master classes",
+      "DESCRIPTION": "Get access to online sewing lessons on patterns LaForme"
     },
     "SEEWING_GOODS": {
-      "TITLE": "Товары для шитья",
-      "DESCRIPTION": "Ткани, наборы, услуги и прочие товары для шитья"
+      "TITLE": "Sewing goods",
+      "DESCRIPTION": "Fabrics, sets, services and other goods for sewing"
     }
   },
   "INFORMATION_LIST": {
-    "TITLE": "Полезные ссылки",
-    "VIEW_ALL": "Смотреть всё",
+    "TITLE": "Useful links",
     "ITEMS": {
-      "SIZING_INFO": "Как определить свой размер",
-      "DOWNLOAD_AND_PRINT_PATTERN_INFO": "Как скачать и распечатать выкройку",
-      "GLUE_PATTERN_INFO": "Как склеить выкройку формата А4"
+      "SIZING_INFO": "How to determine your size",
+      "DOWNLOAD_AND_PRINT_PATTERN_INFO": "How to download and print a pattern",
+      "GLUE_PATTERN_INFO": "How to glue an A4 pattern"
     }
   },
+  "POPULAR_GOODS_TITLE": "Popular goods",
+  "POPULAR_ARTICLES_TITLE": "Popular publications",
+  "POPULAR_MASTER_CLASSES_TITLE": "Popular master classes",
   "ADVANTAGE_LIST": {
     "PATTERNS": {
-      "TITLE": "Выкроек изготовлено за всё время",
+      "TITLE": "Patterns made in all the time",
       "COUNT": "1520"
     },
     "YEARS": {
-      "TITLE": "Лет активной работы на рынке",
+      "TITLE": "Years of active work in the market",
       "COUNT": "5+"
     },
     "CLIENTS": {
-      "TITLE": "Довольных клиентов",
+      "TITLE": "Satisfied customers",
       "COUNT": "5000"
     }
-  }
+  },
+  "VIEW_ALL": "See all"
 }

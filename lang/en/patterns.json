@@ -1,0 +1,95 @@
+{
+	"PATTERNS": {
+		"TITLE": "Patterns",
+		"MENU": {
+			"ALL": "All",
+			"PRINTED": "Printed",
+			"ELECTRONIC": "Electronic"
+		},
+		"FIELD": {
+			"FIND_PATTERNS": "Find patterns"
+		}
+	},
+	"MY_PATTERNS": {
+		"TITLE": "My patterns",
+		"DETAILS": {
+			"FORMAT": "Format",
+			"ELECTRONIC": "Electronic",
+			"PRINTED": "Printed",
+			"SIZE": "Size"
+		}
+	},
+	"FILTER_OPTIONS": {
+		"ALL": "All",
+		"STOCK": "Stock",
+		"HIT": "Hit",
+		"ASCENDING": "Ascending",
+		"DESCENDING": "Descending"
+	},
+	"MATERIALS": "Materials",
+	"SEND_TO_EMAIL": "Send to Email",
+	"DOWNLOAD": "Download",
+	"CREATE": {
+		"TITLE": "Creating a printed pattern",
+		"PRODUCT_SUCCESSFULLY_CREATED": "Product successfully created",
+		"FORM": {
+			"PRICE": "Price",
+			"MATERIALS": "Materials",
+			"COMPLEXITY": "Patterns complexity",
+			"FIELDS": {
+				"TITLE": {
+					"NAME": "Product name",
+					"DICE_OF_GOODS": "Dice of goods",
+					"PRODUCT_CATEGORIES": "Product categories",
+					"DESCRIPTION": "Product description",
+					"PRODUCT_QUANTITY": "Quantity of goods (units)",
+					"DISCOUNT": "Discount (%)"
+				},
+				"PLACEHOLDER": {
+					"NAME": "Write Product name",
+					"DICE_OF_GOODS": "Write Dice of goods",
+					"PRODUCT_CATEGORIES": "Write Product categories",
+					"DESCRIPTION": "Full product description",
+					"PRODUCT_QUANTITY": "Enter the quantity of goods"
+				}
+			},
+			"BUTTON": {
+				"CREATE_PRODUCT": "Create product",
+				"CANCEL": "Cancel"
+			}
+		}
+	},
+	"CREATE_ELECTRONIC": {
+		"TITLE": "Creating an electronic pattern",
+		"PRODUCT_SUCCESSFULLY_CREATED": "Product successfully created",
+		"FORM": {
+			"PRICE": "Price",
+			"MATERIALS": "Materials",
+			"COMPLEXITY": "Patterns complexity",
+			"NEED_PDF": "Need PDF file",
+			"FIELDS": {
+				"TITLE": {
+					"NAME": "Name",
+					"DICE_OF_GOODS": "Dice of goods",
+					"TAG": "Tags",
+					"DESCRIPTION": "Description",
+					"FILE_UPLOAD": "File upload",
+					"DISCOUNT": "Discount (%)",
+					"PRICE": "Price"
+				},
+				"PLACEHOLDER": {
+					"NAME": "Wirte name",
+					"DICE_OF_GOODS": "For example - Hit",
+					"TAG": "Enter the tag and press Enter",
+					"DESCRIPTION": "Describe the product",
+					"FILE_UPLOAD": "Upload pdf file",
+					"PRICE": "Enter the price of the product (on RUB)"
+				}
+			},
+			"BUTTON": {
+				"CREATE_PRODUCT": "Create an electronic pattern",
+				"CANCEL": "Cancel"
+			}
+		}
+	}
+}

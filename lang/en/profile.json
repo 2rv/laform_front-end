@@ -1,0 +1,20 @@
+{
+  "ABOUT_ACCOUNT": "About account",
+  "DATE_OF_REGISTRATION": "Date of registration",
+  "STATUS": "Status",
+  "VERIFIED": "Verified",
+  "NOT_VERIFIED": "Not verified",
+  "SHIPPING_AND_PAYMENT": "Shipping and payment",
+  "DELIVERY_ADDRESS": "Delivery address",
+  "PAYMENT_METHOD": "Payment method",
+  "STATE": "State",
+  "ONLINE": "Online",
+  "OTHER": "Other",
+  "MY_PURCHASES": "Purchases list",
+  "MY_LIKES": "My likes",
+  "MY_COMMENTS": "My comments",
+  "NOT_HAVE_PURCHASES": "Not have purchases",
+  "NOT_HAVE_LIKES": "Not have likes",
+  "NOT_HAVE_COMMENTS": "Not have comments",
+  "SHOW_ALL": "Show all..."
+}

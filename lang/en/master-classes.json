@@ -1,0 +1,49 @@
+{
+	"MASTER_CLASSES": {
+		"TITLE": "Master-classes",
+		"FIELD": {
+			"FIND_MASTER_CLASSES": "Find Master-class"
+		}
+	},
+	"MY_MASTER_CLASSES": {
+		"TITLE": "My Master-classes",
+		"LIST": {
+			"PROGRAM": "Program",
+			"REMOTE": "Remote"
+		}
+	},
+	"FILTER_OPTIONS": {
+		"ALL": "All",
+		"STOCK": "Stock",
+		"HIT": "Hit",
+		"ASCENDING": "Ascending",
+		"DESCENDING": "Descending"
+	},
+	"CREATE": {
+		"TITLE": "Creation of a master class",
+		"PRODUCT_SUCCESSFULLY_CREATED": "The master class has been successfully created",
+		"FORM": {
+			"PRICE": "Price",
+			"MASTER_CLASS_ARTICLE": "Master-class article",
+			"FIELDS": {
+				"TITLE": {
+					"NAME": "Product name",
+					"DICE_OF_GOODS": "Dice of goods",
+					"TAG": "Tags",
+					"DESCRIPTION": "Description",
+					"DISCOUNT": "Discount (%)"
+				},
+				"PLACEHOLDER": {
+					"NAME": "Enter the title",
+					"DICE_OF_GOODS": "For example - Hit",
+					"TAG": "Enter the tag and press Enter",
+					"DESCRIPTION": "Describe the master class"
+				}
+			},
+			"BUTTON": {
+				"CREATE_PRODUCT": "Create a master class",
+				"CANCEL": "Cancel"
+			}
+		}
+	}
+}

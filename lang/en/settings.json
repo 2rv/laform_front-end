@@ -1,70 +1,82 @@
 {
+  "HEADER": "Settings",
   "CHANGE_DELIVERY_INFO": {
-    "TITLE": "Удобная доставка",
+    "TITLE": "Convenient delivery",
     "FULLNAME": {
-      "TITLE": "Ваше ФИО",
-      "PLACEHOLDER": "Фамилия, имя и отчество"
+      "TITLE": "Your full name",
+      "PLACEHOLDER": "Full name"
     },
     "PHONE": {
-      "TITLE": "Контактный номер телефона",
+      "TITLE": "Contact phone number",
       "PLACEHOLDER": "+7 (000) 000 00 00"
     },
     "LOCATION": {
-      "TITLE": "Город и точный адрес доставки",
-      "PLACEHOLDER": "Улица, дом"
+      "TITLE": "City and exact delivery address",
+      "PLACEHOLDER": "Street, house"
     },
     "DELIVERY_TYPE": {
-      "TITLE": "Удобный способ доставки",
-      "ON_THE_POINT": "На точке выдачи",
-      "COURIER": "Курьером"
+      "TITLE": "Convenient delivery method",
+      "ON_THE_POINT": "At the point of issue",
+      "COURIER": "By courier"
     },
-    "SUCCESS": "Данные успешно обновлены",
-    "SUBMIT": "Сохранить"
+    "SUCCESS": "Data updated successfully",
+    "SUBMIT": "Save"
   },
   "CHANGE_PASSWORD": {
-    "TITLE": "Сменить пароль",
+    "TITLE": "Change password",
     "OLD_PASSWORD": {
-      "TITLE": "Старый пароль",
-      "PLACEHOLDER": "Пароль"
+      "TITLE": "Old password",
+      "PLACEHOLDER": "Password"
     },
     "NEW_PASSWORD": {
-      "TITLE": "Новый пароль",
-      "PLACEHOLDER": "Новый пароль"
+      "TITLE": "Old password",
+      "PLACEHOLDER": "Old password"
     },
     "REPEAT_NEW_PASSWORD": {
-      "TITLE": "Повторите новый пароль",
-      "PLACEHOLDER": "Новый пароль"
+      "TITLE": "Repeat Old password",
+      "PLACEHOLDER": "Old password"
     },
-    "SUBMIT": "Сменить"
+    "SUCCESS": "Password changed successfully!",
+    "SUBMIT": "Change"
   },
   "CHANGE_NOTIFICATION": {
-    "TITLE": "Подписка на рассылку",
+    "TITLE": "Subscribe to the newsletter",
     "NEWSLETTER": {
-      "TITLE": "Рассылка новостей",
-      "LABEL": "Я согласен(-на) на получение рассылки"
+      "TITLE": "Newsletter",
+      "LABEL": "I agree to receive the newsletter"
     },
-    "SUBMIT": "Сохранить"
+    "SUBMIT": "Save",
+    "SUCCESS": "Your selection has been saved"
   },
   "CHANGE_PAYMENT_METHOD": {
-    "TITLE": "Удобная оплата",
+    "TITLE": "Convenient payment",
     "PAYMENT_METHOD": {
-      "TITLE": "Способ оплаты",
-      "ONLINE": "Онлайн"
+      "TITLE": "Payment method",
+      "ONLINE": "Online",
+      "DIFFERENT": "Other"
     },
-    "SUCCESS": "Способ оплаты успешно изменен",
-    "SUBMIT": "Сохранить"
+    "SUCCESS": "Payment method changed successfully",
+    "SUBMIT": "Save"
   },
   "CHANGE_EMAIL": {
-    "TITLE": "Сменить Email",
-    "EMAIL": {
-      "TITLE": "Новый Email",
+    "TITLE": "Change email",
+    "NEW_EMAIL": {
+      "TITLE": "New email",
       "PLACEHOLDER": "Newemail.com"
     },
-    "PASSWORD": {
-      "TITLE": "Пароль",
-      "PLACEHOLDER": "Пароль"
+    "OLD_EMAIL": {
+      "TITLE": "Old email",
+      "PLACEHOLDER": "Email.com"
     },
-    "SUCCESS": "Email успешно изменен!",
-    "SUBMIT": "Сменить"
+    "PASSWORD": {
+      "TITLE": "Password",
+      "PLACEHOLDER": "Password"
+    },
+    "SUCCESS": "Email address changed successfully",
+    "SUBMIT": "Change"
+  },
+  "LOGOUT": {
+    "TITLE": "Sign out of your account",
+    "BUTTON": "Sign out"
   }
 }

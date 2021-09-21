@@ -1,40 +1,41 @@
 {
+  "SALES_QUESTION": "Questions about the sale",
   "GENERAL": {
-    "TITLE": "Базовые вопросы",
+    "TITLE": "Basic questions",
     "HOW_TO_CHOOSE_SIZE": {
-      "TITLE": "Как выбрать размер?",
-      "CONTENT": "* Если величина Ог попадает в межразмерный интервал, например, Ог=98см (между 48 и 50 размерами), то при выборе размера ориентируйтесь на сравнительные данные От и Об, выбирая размер в большую или меньшую сторону.  Если в вашей фигуре разница между Об и Ог находится в пределах  4 — 12 см, то в группе плечевых изделий удобнее корректировать выкройку,  выбранную по Ог  (как и принято в размерной типологии). Группу поясных изделий рекомендуется выбирать по Об и корректировать по От в зоне талиевых вытачек, в рельефах и боковых швах.\n\n**Ростовые группы** в сдвоенных ростах: 158-164 включает роста от 155 см до 167 см, 170-176 включает роста от 168 см до 179 см. Разница по длинам в изделиях составляет ок.6-7 см по низу (длинные модели, брюки) и ок.4 см по длине рукава.155 см до 167 см, 170-176 включает роста от 168 см до 179 см. Разница по длинам в изделиях составляет ок.6-7 см по низу"
+      "TITLE": "How to choose the size?",
+      "CONTENT": "* If the Og value falls into the interdimensional interval, for example, Og = 98cm (between 48 and 50 sizes), then when choosing a size, be guided by the comparative data From and About, choosing the size up or down. If in your figure the difference between O and O is within 4 - 12 cm, then in the group of shoulder products it is more convenient to adjust the pattern selected according to O (as is customary in dimensional typology). It is recommended to choose a group of belt products by About and adjust by From in the zone of waist darts, in reliefs and side seams. \n\n** Growth groups ** in double heights: 158-164 includes heights from 155 cm to 167 cm, 170- 176 includes heights from 168 cm to 179 cm.The difference in length in the products is about 6-7 cm at the bottom (long models, trousers) and about 4 cm along the length of the sleeve. 155 cm to 167 cm, 170-176 includes heights from 168 cm to 179 cm.The difference in lengths in the products is about 6-7 cm at the bottom"
     },
     "SIZE_MARKING_INFO": {
-      "TITLE": "Что значат буквы в указании размера?",
-      "CONTENT": "Ответ"
+      "TITLE": "What do the letters in the indication of size mean??",
+      "CONTENT": "Answer"
     },
     "HOW_TO_BUY_PATTERN": {
-      "TITLE": "Как купить выкройку?",
-      "CONTENT": "Ответ"
+      "TITLE": "How to buy a pattern?",
+      "CONTENT": "Answer"
     },
     "HOW_TO_DOWNLOAD_PATTERN": {
-      "TITLE": "Как скачать выкройку?",
-      "CONTENT": "Ответ"
+      "TITLE": "How to download a pattern?",
+      "CONTENT": "Answer"
     },
     "WRONG_SIZE": {
-      "TITLE": "Я купил не тот размер, что делать?",
-      "CONTENT": "Ответ"
+      "TITLE": "I bought the wrong size, what should I do?",
+      "CONTENT": "Answer"
     }
   },
   "SALES": {
     "TITLE": "Sales Questions",
     "INCORRECT_PACKAGE_CONTENT": {
-      "TITLE": "Мне пришли несоответствующие моему выбору файлы, что делать?",
-      "CONTENT": "Ответ"
+      "TITLE": "I received files that did not match my choice, what to do?",
+      "CONTENT": "Answer"
     },
     "PACKAGE_DIDNT_ARRIVE": {
-      "TITLE": "Мне не пришли файлы на почту, что делать?",
-      "CONTENT": "Ответ"
+      "TITLE": "I have not received files by mail, what should I do?",
+      "CONTENT": "Answer"
     },
     "HOW_TO_PRINT_PATTERN": {
-      "TITLE": "Как распечатать выкройку?",
-      "CONTENT": "Ответ"
+      "TITLE": "How to print a pattern?",
+      "CONTENT": "Answer"
     }
   }
 }

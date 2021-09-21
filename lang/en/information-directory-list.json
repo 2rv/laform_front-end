@@ -1,8 +1,8 @@
 {
-  "TITLE": "С чем вам помочь?",
+  "TITLE": "What can I help you with?",
   "ITEMS": {
-    "SIZING_INFO": "Как определить свой размер",
-    "DOWNLOAD_AND_PRINT_PATTERN_INFO": "Как скачать и распечатать выкройку",
-    "GLUE_PATTERN_INFO": "Как склеить выкройку формата А4"
+    "SIZING_INFO": "How to determine your size",
+    "DOWNLOAD_AND_PRINT_PATTERN_INFO": "How to download and print a pattern",
+    "GLUE_PATTERN_INFO": "How to glue an A4 pattern"
   }
 }

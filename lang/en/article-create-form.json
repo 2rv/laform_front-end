@@ -1,0 +1,44 @@
+{
+  "CREATING_AN_ARTICLE": "Creating an article",
+  "PHOTO_ARTICLE": "Photo article",
+  "ARTICLE_SUCCESFULLY_CREATED": "The article was successfully created.",
+  "MASTER_CLASS_ARTICLE": "Master class article",
+  "FIELDS": {
+    "TITLE": {
+      "ARTICLE_NAME": "Article title",
+      "DIE": "Die",
+      "TAGS": "Tags"
+    },
+    "PLACEHOLDER": {
+      "WRITE_ARTICLE_NAME": "Enter the title of the article",
+      "EXAMPLE_HIT": "For example - hit",
+      "WRITE_TAG": "Enter the tag"
+    }
+  },
+  "BUTTON": {
+    "CREATE_ARTICLE": "Create article",
+    "CANCEL": "Cancel"
+  },
+  "RECOMENDATIONS": {
+    "TITLE": "Recommendations",
+    "ADD_RECOMENDATIONS": "Add recommendations",
+    "SELECT_RECOMENDATION": "Selection of recommendations",
+    "SEARCH_PRODUCT": "Find a product",
+    "FILTER_OPTIONS": {
+      "ALL": "All",
+      "STOCK": "Stock",
+      "HIT": "Hit",
+      "ASCENDING": "Ascending",
+      "DESCENDING": "Descending"
+    },
+    "TAB_ITEMS": {
+      "ALL": "All",
+      "SELECTED": "Selected",
+      "MASTER_CLASSES": "Master classes",
+      "PATTERNS_ELECTRONIC": "Patterns-electronic",
+      "PATTERNS_PRINTED": "Patterns-printed",
+      "SEWING_GOODS": "Sewing goods",
+      "ARTICLES": "Articles"
+    }
+  }
+}

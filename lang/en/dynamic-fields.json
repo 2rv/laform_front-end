@@ -1,0 +1,26 @@
+{
+  "PRICE": {
+    "TITLE": "Price",
+    "PLACEHOLDER": "Write price (on RUB.)"
+  },
+  "SIZE": {
+    "TITLE": "Size",
+    "FIELD_TITLE": "Size name",
+    "FIELD_PLACEHOLDER": "Enter size name",
+    "BUTTON_TEXT": "Add size",
+    "PRODUCT_COUNT_FIELD_TITLE": "Quantity of goods (units)",
+    "PRODUCT_COUNT_FIELD_PLACEHOLDER": "Enter the quantity of goods"
+  },
+  "COLOR": {
+    "TITLE": "Colors",
+    "FIELD_TITLE": "Color name",
+    "FIELD_PLACEHOLDER": "Enter color name",
+    "BUTTON_TEXT": "Add color"
+  },
+  "PROGRAM": {
+    "TITLE": "Programs",
+    "FIELD_TITLE": "Program name",
+    "FIELD_PLACEHOLDER": "Enter program name",
+    "BUTTON_TEXT": "Add program"
+  }
+}
