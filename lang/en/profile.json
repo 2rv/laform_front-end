@@ -16,5 +16,7 @@
   "NOT_HAVE_PURCHASES": "Not have purchases",
   "NOT_HAVE_LIKES": "Not have likes",
   "NOT_HAVE_COMMENTS": "Not have comments",
-  "SHOW_ALL": "Show all..."
+  "SHOW_ALL": "Show all...",
+  "ACCOUNT_STATE": "Account state -",
+  "SUBSCRIBED_TO_MAILING_LISTS": "Subscribed to mailing lists -"
 }

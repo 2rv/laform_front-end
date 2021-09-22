@@ -63,10 +63,20 @@ export function ParamsTd(props) {
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FULL_NAME" />
             &nbsp;
-            <FullNameText tid={params.fullName} path={`user/${params?.userId}`} />
+            <FullNameText
+              tid={params.fullName}
+              path={`user/${params?.userId}`}
+            />
           </div>
         )}
         {Boolean(params.diliveryInfo) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DILIVERY_INFO" />
+            &nbsp;
+            <TextPrimary tid={params.diliveryInfo} />
+          </div>
+        )}
+        {Boolean(params.city) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CITY" />
             &nbsp;
@@ -75,9 +85,9 @@ export function ParamsTd(props) {
         )}
         {Boolean(params.diliveryMethod) && (
           <div>
-            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_ADDRESS" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_METHOD" />
             &nbsp;
-            <TextPrimary tid={params.diliveryInfo} />
+            <TextPrimary tid={params.diliveryMethod} />
           </div>
         )}
         {Boolean(params.paymentMethod) && (
@@ -104,7 +114,9 @@ export function ParamsTd(props) {
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CREATED_DATE" />
             &nbsp;
-            <TextPrimary tid={ConvertDate(params.createdDate, 'MMMM DD, YYYY')} />
+            <TextPrimary
+              tid={ConvertDate(params.createdDate, 'MMMM DD, YYYY')}
+            />
           </div>
         )}
       </Case>

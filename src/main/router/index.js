@@ -110,6 +110,10 @@ import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_ROUTE_PATH,
 } from '../../core/master-class-page';
+import {
+  usersStore,
+  USERS_ROUTE_PATH,
+} from '../../core/users';
 
 export const routes = {
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
@@ -149,6 +153,7 @@ export const routes = {
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
+  [USERS_ROUTE_PATH]: usersStore,
 };
 
 export const Router = routesInit(routes);

@@ -16,5 +16,7 @@
   "NOT_HAVE_PURCHASES": "Нету покупок",
   "NOT_HAVE_LIKES": "Нету лайков",
   "NOT_HAVE_COMMENTS": "Нету комментариев",
-  "SHOW_ALL": "Посмотреть все..."
+  "SHOW_ALL": "Посмотреть все...",
+  "ACCOUNT_STATE": "Состояние аккаунта -",
+  "SUBSCRIBED_TO_MAILING_LISTS": "Подписан на рассылки -"
 }

@@ -30,6 +30,7 @@ export const ADMIN_MENU_ITEMS = [
   { path: '/patterns/create/electronic', tid: 'HEADER.ADMIN_MENU.ELECTRONIC_PATTERNS_CREATING' },
   { path: '/sewing-goods/create', tid: 'HEADER.ADMIN_MENU.SEWING_GOODS_CREATING' },
   { path: '/article/create', tid: 'HEADER.ADMIN_MENU.ARTICLE_CREATING' },
+  { path: '/users', tid: 'HEADER.ADMIN_MENU.USERS_LIST' },
   { path: '/orders', tid: 'HEADER.ADMIN_MENU.ORDERS_TABLE' },
   { path: '/users-order', tid: 'HEADER.ADMIN_MENU.ORDERS_lIST' },
   { path: '/best-products', tid: 'HEADER.ADMIN_MENU.BEST_PRODUCTS' },

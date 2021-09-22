@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE } from '../../lib/theme';
 import { LinkPrimary, LinkSecondary } from 'src/lib/element/link';
 import { TextPrimary } from '../../lib/element/text';
+import { ReactComponent as OrderIcon } from '../../asset/svg/order.svg';
 
 export function NameTd(props) {
   const {
@@ -9,6 +10,7 @@ export function NameTd(props) {
     name = null,
     vendorCode = null,
     path = '/',
+    isOrder,
     pathConfig = undefined,
   } = props;
   if (!image && !name) return null;
@@ -19,6 +21,11 @@ export function NameTd(props) {
           <LinkSecondary pathConfig={pathConfig} path={path}>
             <Image src={image} />
           </LinkSecondary>
+        )}
+        {isOrder && (
+          <ImageLink pathConfig={pathConfig} path={path}>
+            <OrderIcon />
+          </ImageLink>
         )}
         <Column>
           {name && (
@@ -36,12 +43,17 @@ export function NameTd(props) {
     </Td>
   );
 }
-
+const ImageLink = styled(LinkSecondary)`
+  width: 75px;
+  height: 75px;
+  min-width: 75px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+`;
 const Td = styled.td`
   vertical-align: middle;
   padding-right: ${spacing(2)};
-  width: 310px;
-  min-width: 310px;
+  width: 200px;
+  min-width: 200px;
   @media screen and (max-width: 875px) {
     width: 100%;
   }
