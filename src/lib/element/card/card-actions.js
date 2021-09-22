@@ -6,6 +6,9 @@ import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg
 import { ReactComponent as Delete } from '../../../asset/svg/delete-cancel-icon.svg';
 import { useEffect, useState } from 'react';
 import { TextSecondary } from '../text';
+import { LinkPrimary } from '../link';
+import { BASKET_ROUTE_PATH } from 'src/core/basket';
+import { redirect } from 'src/main/navigation';
 
 export function CardActions(props) {
   const { id, type } = props; // данные самого товара
@@ -40,6 +43,10 @@ export function CardActions(props) {
     onSetLike && onSetLike(id, !isLiked);
   };
   const onSelectCard = () => {
+    if (Boolean(inCart)) {
+      redirect(BASKET_ROUTE_PATH)
+    }
+
     if (onSetSelect) {
       setSelect(!isSelected);
       onSetSelect(id, type, !isSelected);

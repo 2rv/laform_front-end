@@ -1,97 +1,97 @@
 {
-  "TITLE": "Basket",
-  "CART_IS_EMPTY": "There is nothing in your shopping cart yet.",
-  "GO_TO_BASKET": "Go to Basket",
-  "ADD_TO_BASKET": "Add to Basket",
-  "HEADERS_GOODS": {
-    "SEWING_GOODS": "Sewing goods",
-    "PARAMETERS": "Parameters",
-    "QUANTITY": "Quantity",
-    "TOTAL_PRICE": "Total price"
-  },
-  "HEADERS_MASTER": {
-    "MASTER_CLASSES": "Master-classes",
-    "PARAMETERS": "Parameters",
-    "TOTAL_PRICE": "Total price"
-  },
-  "HEADERS_PATTERNS": {
-    "PATTERNS": "Patterns",
-    "PARAMETERS": "Parameters",
-    "TOTAL_PRICE": "Total price"
-  },
-  "TABLE": {
-    "HEADER": {
-      "SEEWING_GOODS": "Sewing goods",
-      "MASTER_CLASSES": "Master-classes",
-      "PATTERNS": "Patterns",
-      "PARAMETERS": "Parameters",
-      "COUNT": "Quantity",
-      "TOTAL_PRICE": "Total price"
-    },
-    "PARAMETERS": {
-      "CATEGORY": "Category",
-      "SIZE": "Size",
-      "OUTERWEAR": "Outerwear",
-      "PROGRAM": "Program",
-      "REMOTE": "Remote",
-      "APPLY_CHANGES": "Apply changes",
-      "COLOR": "Color",
-      "FORMAT": "Format",
-      "FORMATS": {
-        "TITLE": "Format",
-        "PRINTED": "Printed",
-        "ELECTRONIC": "Electronic"
-      },
-      "COLORS": {
-        "TITLE": "Color",
-        "WHITE": "White",
-        "GREEN": "Green",
-        "RED": "Red"
-      }
-    }
-  },
-  "FORM": {
-    "TITLE": "Order registration",
-    "ACTIVATE": "Activate",
-    "FIELDS": {
-      "TITLES": {
-        "EMAIL": "Email",
-        "FULL_NAME": "Your full name",
-        "CURRENT_CITY": "Enter delivery address",
-        "CONVENIET_DELIVERY_METHOD": "Specify a convenient delivery method",
-        "CONTACT_PHONE_NUMBER": "Enter your contact phone number",
-        "ORDER_NOTE": "Order note",
-        "CONVENIET_PAYMENT_METHOD": "Specify a convenient payment method",
-        "PROMO_CODE": "Promocode"
-      },
-      "PLACEHOLDER": {
-        "EMAIL": "Your Email",
-        "FULL_NAME": "Full name",
-        "CURRENT_CITY": "San francisko",
-        "CONTACT_PHONE_NUMBER": "+7 000 000 00 00",
-        "ORDER_NOTE": "Product wishes",
-        "PROMO_CODE": "Your promo"
-      },
-      "SELECT_OPTIONS": {
-        "CONVENIET_DELIVERY_METHOD": {
-          "MAIL": "Email"
-        },
-        "CONVENIET_PAYMENT_METHOD": {
-          "ONLINE": "Online"
-        }
-      }
-    },
-    "FOOTER": {
-      "PRICE": "Price",
-      "DISCOUNT_PRICE": "Discount price",
-      "SHIPPING_PRICE": "Shipping price",
-      "TOTAL_ORDER_PRICE": "Total order price",
-      "CONFIRM_ORDER": "Confirm order",
-      "SIGN_UP": "Sign up",
-      "SIGN_IN": "Log in",
-      "INFO": "To purchase on the LaForme website, you must be a registered user. Create an account or sign in to continue."
-    },
-    "PROMO_CODE_SUCCESS": "Promo code {{discount}}% successfully applied",
-    "FORM_SEND_SUCCESS": "Order has been successfully completed"
-  }
+	"TITLE": "Basket",
+	"CART_IS_EMPTY": "There is nothing in your shopping cart yet.",
+	"GO_TO_BASKET": "Go to Basket",
+	"ADD_TO_BASKET": "Add to Basket",
+	"HEADERS_GOODS": {
+		"SEWING_GOODS": "Sewing goods",
+		"PARAMETERS": "Parameters",
+		"QUANTITY": "Quantity",
+		"TOTAL_PRICE": "Total price"
+	},
+	"HEADERS_MASTER": {
+		"MASTER_CLASSES": "Master-classes",
+		"PARAMETERS": "Parameters",
+		"TOTAL_PRICE": "Total price"
+	},
+	"HEADERS_PATTERNS": {
+		"PATTERNS": "Patterns",
+		"PARAMETERS": "Parameters",
+		"TOTAL_PRICE": "Total price"
+	},
+	"TABLE": {
+		"HEADER": {
+			"SEEWING_GOODS": "Sewing goods",
+			"MASTER_CLASSES": "Master-classes",
+			"PATTERNS": "Patterns",
+			"PARAMETERS": "Parameters",
+			"COUNT": "Quantity",
+			"TOTAL_PRICE": "Total price"
+		},
+		"PARAMETERS": {
+			"CATEGORY": "Category",
+			"SIZE": "Size",
+			"OUTERWEAR": "Outerwear",
+			"PROGRAM": "Program",
+			"REMOTE": "Remote",
+			"APPLY_CHANGES": "Apply changes",
+			"COLOR": "Color",
+			"FORMAT": "Format",
+			"FORMATS": {
+				"TITLE": "Format",
+				"PRINTED": "Printed",
+				"ELECTRONIC": "Electronic"
+			},
+			"COLORS": {
+				"TITLE": "Color",
+				"WHITE": "White",
+				"GREEN": "Green",
+				"RED": "Red"
+			}
+		}
+	},
+	"FORM": {
+		"TITLE": "Order registration",
+		"ACTIVATE": "Activate",
+		"FIELDS": {
+			"TITLES": {
+				"EMAIL": "Email",
+				"FULL_NAME": "Your full name",
+				"CURRENT_CITY": "Enter delivery address",
+				"CONVENIET_DELIVERY_METHOD": "Specify a convenient delivery method",
+				"CONTACT_PHONE_NUMBER": "Enter your contact phone number",
+				"ORDER_NOTE": "Order note",
+				"CONVENIET_PAYMENT_METHOD": "Specify a convenient payment method",
+				"PROMO_CODE": "Promocode"
+			},
+			"PLACEHOLDER": {
+				"EMAIL": "Your Email",
+				"FULL_NAME": "Full name",
+				"CURRENT_CITY": "San francisko",
+				"CONTACT_PHONE_NUMBER": "+7 000 000 00 00",
+				"ORDER_NOTE": "Product wishes",
+				"PROMO_CODE": "Your promo"
+			},
+			"SELECT_OPTIONS": {
+				"CONVENIET_DELIVERY_METHOD": {
+					"MAIL": "Email"
+				},
+				"CONVENIET_PAYMENT_METHOD": {
+					"ONLINE": "Online"
+				}
+			}
+		},
+		"FOOTER": {
+			"PRICE": "Price",
+			"DISCOUNT_PRICE": "Discount price",
+			"SHIPPING_PRICE": "Shipping price",
+			"TOTAL_ORDER_PRICE": "Total order price",
+			"CONFIRM_ORDER": "Confirm order",
+			"SIGN_UP": "Sign up",
+			"SIGN_IN": "Log in",
+			"INFO": "To gain access to the purchase history, you must: login or register"
+		},
+		"PROMO_CODE_SUCCESS": "Promo code {{discount}}% successfully applied",
+		"FORM_SEND_SUCCESS": "Order has been successfully completed"
+	}
 }
