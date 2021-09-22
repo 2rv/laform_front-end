@@ -5,7 +5,12 @@ import { TextPrimary, TextSecondary } from '../../../lib/element/text';
 import { LinkSecondary } from '../../../lib/element/link';
 import { spacing, THEME_COLOR } from '../../../lib/theme';
 
-export function UsersListItemComponent({ id, login, emailConfirmed, notificationEmail }) {
+export function UsersListItemComponent({
+  id,
+  login,
+  emailConfirmed,
+  notificationEmail,
+}) {
   return (
     <List>
       <UsersImageLogin>
@@ -16,14 +21,16 @@ export function UsersListItemComponent({ id, login, emailConfirmed, notification
       </UsersImageLogin>
       <UsersInfo>
         <div>
-          <TextSecondary tid="PROFILE.ACCOUNT_STATE" />&nbsp;
+          <TextSecondary tid="PROFILE.ACCOUNT_STATE" />
+          &nbsp;
           <StatusInfo
             status={emailConfirmed}
             tid={emailConfirmed ? 'PROFILE.VERIFIED' : 'PROFILE.NOT_VERIFIED'}
           />
         </div>
         <div>
-          <TextSecondary tid="PROFILE.SUBSCRIBED_TO_MAILING_LISTS" />&nbsp;
+          <TextSecondary tid="PROFILE.SUBSCRIBED_TO_MAILING_LISTS" />
+          &nbsp;
           <StatusInfo
             status={notificationEmail}
             tid={notificationEmail ? 'OTHER.YES' : 'OTHER.NO'}
@@ -36,8 +43,8 @@ export function UsersListItemComponent({ id, login, emailConfirmed, notification
 }
 
 const List = styled.li`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  display: flex;
+  width: 100%;
   gap: ${spacing(3)};
 `;
 const UsersImageLogin = styled.div`

@@ -17,6 +17,7 @@ export function TableItem(props) {
     image,
     totalPrice,
     vendorCode,
+    isOrder,
     //------ основные данные
     params,
     otherParams,
@@ -40,6 +41,7 @@ export function TableItem(props) {
         pathConfig={pathConfig}
         image={image}
         name={name}
+        isOrder={isOrder}
         vendorCode={vendorCode}
       />
       <CommentTd comment={comment} />

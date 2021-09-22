@@ -1,19 +1,20 @@
 {
-  "SAVE_CHANGES": "Сохранить изменения",
-  "PARAMS": {
-    "PROGRAM": "Программа -",
-    "COLOR": "Цвет -",
-    "SIZE": "Размер -",
-    "FORMAT": "Формат -",
-    "CATEGORY": "Категория -",
-    "QUANTITY": "Количество -",
-    "COMPLEXITY": "Сложность -",
-    "FULL_NAME": "ФИО -",
-    "CITY": "Город -",
-    "EMAIL": "Почта -",
-    "CREATED_DATE": "Дата создания -",
-    "DELIVERY_ADDRESS": "Адресс доставки -",
-    "PAYMENT_METHOD": "Способ оплаты -",
-    "PHONE": "Контактный телефон -"
-  }
+	"SAVE_CHANGES": "Сохранить изменения",
+	"PARAMS": {
+		"PROGRAM": "Программа:",
+		"COLOR": "Цвет:",
+		"SIZE": "Размер:",
+		"FORMAT": "Формат:",
+		"CATEGORY": "Категория:",
+		"QUANTITY": "Количество:",
+		"COMPLEXITY": "Сложность:",
+		"FULL_NAME": "ФИО:",
+		"CITY": "Город:",
+		"EMAIL": "Почта:",
+		"CREATED_DATE": "Дата создания:",
+		"DILIVERY_INFO": "Адресс доставки:",
+		"DELIVERY_METHOD": "Способ доставки:",
+		"PAYMENT_METHOD": "Способ оплаты:",
+		"PHONE": "Контактный телефон:"
+	}
 }
