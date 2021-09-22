@@ -20,7 +20,6 @@ import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
 
-const SECTION_LAYOUT_BOTTOM_SPACING = 120;
 const INITIAL_PAGE = 1;
 const INITIAL_PER = 6;
 
@@ -47,11 +46,11 @@ export function SewingGoodsContainer() {
     return () => {
       document.removeEventListener('scroll', scrollHandler);
     };
-  }, [containerRef.current?.clientHeight]);
+  }, []);
 
   const scrollHandler = (e) => {
     if (
-      containerRef.current.getBoundingClientRect().bottom < (window.innerHeight - SECTION_LAYOUT_BOTTOM_SPACING)
+      containerRef.current.getBoundingClientRect().bottom < window.innerHeight
       && Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalRecords)
       && !isRequestPending(sewingGoodsState)
     ) {
