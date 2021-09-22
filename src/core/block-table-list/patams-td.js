@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { TextSecondary, TextPrimary } from '../../lib/element/text';
-import { spacing } from '../../lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { ConvertDate } from 'src/lib/common/time-convert';
+import { LinkPrimary } from 'src/lib/element/link';
 
 export function ParamsTd(props) {
   const { params } = props;
@@ -61,7 +63,7 @@ export function ParamsTd(props) {
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FULL_NAME" />
             &nbsp;
-            <TextPrimary tid={params.fullName} />
+            <FullNameText tid={params.fullName} path={`user/${params?.userId}`} />
           </div>
         )}
         {Boolean(params.diliveryInfo) && (
@@ -93,9 +95,16 @@ export function ParamsTd(props) {
         )}
         {Boolean(params.email) && (
           <div>
-            <TextSecondary tid="Почта" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.EMAIL" />
             &nbsp;
             <TextPrimary tid={params.email} />
+          </div>
+        )}
+        {Boolean(params?.createdDate) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CREATED_DATE" />
+            &nbsp;
+            <TextPrimary tid={ConvertDate(params.createdDate, 'MMMM DD, YYYY')} />
           </div>
         )}
       </Case>
@@ -117,4 +126,7 @@ const Case = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: ${spacing(1)};
+`;
+const FullNameText = styled(LinkPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;

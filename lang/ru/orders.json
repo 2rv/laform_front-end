@@ -5,10 +5,10 @@
   "LIST_IS_EMPTY": "Список пуст",
   "TABLE": {
     "HEADER": {
-      "ORDER_NUMBER": "Номер заказа",
-      "ORDER_DETAILS": "Детали заказа",
+      "ORDER": "Заказ",
+      "DETAILS": "Подробности",
       "DELIVERY_DATA": "Данные доставки",
-      "PRODUCT_PRICE": "Цена товара",
+      "TOTAL": "Итого",
       "STATE": "Состояние"
     },
     "BODY": {

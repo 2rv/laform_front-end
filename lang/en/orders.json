@@ -5,10 +5,10 @@
   "LIST_IS_EMPTY": "The list is empty",
   "TABLE": {
     "HEADER": {
-      "ORDER_NUMBER": "Order number",
-      "ORDER_DETAILS": "Order details",
+      "ORDER": "Order",
+      "DETAILS": "Details",
       "DELIVERY_DATA": "Delivery data",
-      "PRODUCT_PRICE": "Price",
+      "TOTAL": "Total",
       "STATE": "State"
     },
     "BODY": {

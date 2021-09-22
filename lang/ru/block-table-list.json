@@ -10,6 +10,8 @@
     "COMPLEXITY": "Сложность -",
     "FULL_NAME": "ФИО -",
     "CITY": "Город -",
+    "EMAIL": "Почта -",
+    "CREATED_DATE": "Дата создания -",
     "DELIVERY_ADDRESS": "Адресс доставки -",
     "PAYMENT_METHOD": "Способ оплаты -",
     "PHONE": "Контактный телефон -"

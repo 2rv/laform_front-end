@@ -10,6 +10,8 @@
     "COMPLEXITY": "Complexity -",
     "FULL_NAME": "Full name -",
     "CITY": "City -",
+    "EMAIL": "Email -",
+    "CREATED_DATE": "Created date -",
     "DELIVERY_ADDRESS": "Delivery address -",
     "PAYMENT_METHOD": "Payment method -",
     "PHONE": "Contact phone -"

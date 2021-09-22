@@ -20,7 +20,7 @@ export function ordersStore(state = initialState, action) {
     case ORDERS_ACTION_TYPE.ORDERS_UPLOAD_SUCCESS:
       return {
         ...state,
-        orders: setRequestSuccess(state.orders, action.data),
+        orders: setRequestSuccess(state.orders, action.payload),
       };
     case ORDERS_ACTION_TYPE.ORDERS_UPLOAD_ERROR:
       return {
