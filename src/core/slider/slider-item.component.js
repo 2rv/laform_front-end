@@ -24,15 +24,15 @@ export function SliderItemComponent(props) {
         <Title
           color={
             titleTextColor === '0'
-              ? 'white'
+              ? '#fff'
               : titleTextColor === '1'
-              ? 'black'
+              ? '#2f2a2c'
               : titleTextColor === '2'
-              ? 'red'
+              ? '#ff005a'
               : titleTextColor === '3'
-              ? 'green'
+              ? '#9EDE73'
               : titleTextColor === '4'
-              ? 'blue'
+              ? '#3D56B2'
               : ''
           }
         >
@@ -43,28 +43,28 @@ export function SliderItemComponent(props) {
             <Button
               bgcolor={
                 buttonColor === '0'
-                  ? 'orange'
+                  ? '#FF7600'
                   : buttonColor === '1'
-                  ? 'blue'
+                  ? '#3D56B2'
                   : buttonColor === '2'
-                  ? 'white'
+                  ? '#fff'
                   : buttonColor === '3'
-                  ? 'red'
+                  ? '#ff005a'
                   : buttonColor === '4'
-                  ? 'yellow'
+                  ? '#FFF338'
                   : ''
               }
               color={
                 buttonTextColor === '0'
-                  ? 'blue'
+                  ? '#3D56B2'
                   : buttonTextColor === '1'
-                  ? 'gray'
+                  ? '#5f5b5d'
                   : buttonTextColor === '2'
-                  ? 'red'
+                  ? '#ff005a'
                   : buttonTextColor === '3'
-                  ? 'red'
+                  ? '#6F69AC'
                   : buttonTextColor === '4'
-                  ? 'purple'
+                  ? '#4B3869'
                   : ''
               }
             >
