@@ -107,11 +107,12 @@ import {
   CREATE_NOTIFICATION_ROUTE_PATH,
 } from '../../core/create-notification';
 import {
-  masterClassArticleRouter,
-  MASTER_CLASS_ARTICLE_ROUTE_PATH,
-} from '../../core/master-class-article';
+  masterClassPageStore,
+  MASTER_CLASS_PAGE_ROUTE_PATH,
+} from '../../core/master-class-page';
 
 export const routes = {
+  [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
   [CREATE_PRINT_PATTERN_ROUTE_PATH]: createPrintPatternRouter,
@@ -148,7 +149,6 @@ export const routes = {
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
-  [MASTER_CLASS_ARTICLE_ROUTE_PATH]: masterClassArticleRouter,
 };
 
 export const Router = routesInit(routes);
