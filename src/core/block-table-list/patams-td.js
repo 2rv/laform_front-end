@@ -15,7 +15,6 @@ export function ParamsTd(props) {
             <TextPrimary tid={params.program.value} />
           </div>
         )}
-
         {Boolean(params.color?.value) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.COLOR" />
@@ -58,7 +57,6 @@ export function ParamsTd(props) {
             <TextPrimary tid={params.complexity} />
           </div>
         )}
-
         {Boolean(params.fullName) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FULL_NAME" />
@@ -66,14 +64,14 @@ export function ParamsTd(props) {
             <TextPrimary tid={params.fullName} />
           </div>
         )}
-        {Boolean(params.city) && (
+        {Boolean(params.diliveryInfo) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CITY" />
             &nbsp;
             <TextPrimary tid={params.city} />
           </div>
         )}
-        {Boolean(params.diliveryInfo) && (
+        {Boolean(params.diliveryMethod) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_ADDRESS" />
             &nbsp;
@@ -91,6 +89,13 @@ export function ParamsTd(props) {
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PHONE" />
             &nbsp;
             <TextPrimary tid={params.phoneNumber} />
+          </div>
+        )}
+        {Boolean(params.email) && (
+          <div>
+            <TextSecondary tid="Почта" />
+            &nbsp;
+            <TextPrimary tid={params.email} />
           </div>
         )}
       </Case>
@@ -113,12 +118,3 @@ const Case = styled.div`
   flex-wrap: wrap;
   gap: ${spacing(1)};
 `;
-const renderCondition = (condition) => {
-  // if (condition === 'delivered') {
-  //   return <DeliveredText tid="PURCHASE.SEЕWING_GOODS.CONDITION.DELIVERED" />;
-  // } else if (condition === 'paid') {
-  //   return <PaidText tid="PURCHASE.SEЕWING_GOODS.CONDITION.PAID" />;
-  // } else {
-  //   return null;
-  // }
-};

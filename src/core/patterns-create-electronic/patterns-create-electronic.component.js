@@ -10,6 +10,7 @@ import { ELECTRONIC_PATTERN_FIELD_NAME } from './patterns-create-electronic.type
 export function CreateElectronicPatternComponent(props) {
   const {
     initialValues,
+    initialSizes,
     onSubmit,
     validation,
     //--------
@@ -39,13 +40,15 @@ export function CreateElectronicPatternComponent(props) {
                     imageFieldName={ELECTRONIC_PATTERN_FIELD_NAME.IMAGE}
                     title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent {...formProps} />
+                  <FormComponent initialSizes={initialSizes} {...formProps} />
                 </SectionLayout>
               </form>
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="PATTERNS.CREATE_ELECTRONIC.PRODUCT_SUCCESSFULLY_CREATED" />}
+        {isSuccess && (
+          <SuccessAlert tid="PATTERNS.CREATE_ELECTRONIC.PRODUCT_SUCCESSFULLY_CREATED" />
+        )}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

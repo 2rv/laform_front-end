@@ -23,7 +23,7 @@ export function CreateElectronicPatternContainer() {
     dispatch(createElectronicPatternPreUploadData(formValues));
   };
 
-  const initialValues = {
+  const initialValues = () => ({
     [ELECTRONIC_PATTERN_FIELD_NAME.NAME]: '',
     [ELECTRONIC_PATTERN_FIELD_NAME.DESCRIPTION]: '',
     [ELECTRONIC_PATTERN_FIELD_NAME.TYPE]: 0,
@@ -34,8 +34,12 @@ export function CreateElectronicPatternContainer() {
 
     [ELECTRONIC_PATTERN_FIELD_NAME.MATERIAL]: '',
     [ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY]: 1,
-    [ELECTRONIC_PATTERN_FIELD_NAME.PRICE]: 0,
-    [ELECTRONIC_PATTERN_FIELD_NAME.FILE]: null,
+    [ELECTRONIC_PATTERN_FIELD_NAME.SIZES]: [initialSizes],
+  });
+  const initialSizes = {
+    [ELECTRONIC_PATTERN_FIELD_NAME.SIZE_NAME]: '',
+    [ELECTRONIC_PATTERN_FIELD_NAME.SIZE_PRICE]: 0,
+    [ELECTRONIC_PATTERN_FIELD_NAME.FILE]: undefined,
   };
 
   //--------------------------------------------------------------------------
@@ -48,7 +52,8 @@ export function CreateElectronicPatternContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       //-------------
-      initialValues={initialValues}
+      initialValues={initialValues()}
+      initialSizes={initialSizes}
       onSubmit={onSubmit}
       validation={formValidation}
     />

@@ -29,3 +29,12 @@ const ColoredText = styled(TextPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   color: ${THEME_COLOR.TEXT.SUCCESS};
 `;
+const renderCondition = (condition) => {
+  // if (condition === 'delivered') {
+  //   return <DeliveredText tid="PURCHASE.SEЕWING_GOODS.CONDITION.DELIVERED" />;
+  // } else if (condition === 'paid') {
+  //   return <PaidText tid="PURCHASE.SEЕWING_GOODS.CONDITION.PAID" />;
+  // } else {
+  //   return null;
+  // }
+};

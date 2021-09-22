@@ -83,14 +83,6 @@ import {
   authVerificateEmailRecoveryAccountRouter,
 } from '../../core/auth-verificate-email-recovery-account';
 import {
-  ordersListRouter,
-  ORDERS_LIST_ROUTE_PATH,
-} from '../../core/orders-list';
-import {
-  usersOrderRouter,
-  USERS_ORDER_ROUTE_PATH,
-} from '../../core/users-order';
-import {
   createMasterClassRouter,
   CREATE_MASTER_CLASS_ROUTE_PATH,
 } from '../../core/master-class-create';
@@ -155,8 +147,6 @@ export const routes = {
   [SLIDER_EDIT_ROUTE_PATH]: sliderEditRouter,
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
-  [ORDERS_LIST_ROUTE_PATH]: ordersListRouter,
-  [USERS_ORDER_ROUTE_PATH]: usersOrderRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
   [MASTER_CLASS_ARTICLE_ROUTE_PATH]: masterClassArticleRouter,
 };

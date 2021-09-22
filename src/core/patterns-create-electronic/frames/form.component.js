@@ -10,28 +10,31 @@ import {
   TextareaField,
 } from '../../../lib/element/field';
 import { Field } from 'formik';
-import { FileField } from '../../../lib/element/field/file.field';
 import { ELECTRONIC_PATTERN_FIELD_NAME } from '../patterns-create-electronic.type';
 import { ProductPrice } from '../../block-product-components';
-import { numberValue } from '../../../lib/common/create-product-helpers';
+import {
+  dynamicFieldsMinPrice,
+  numberValue,
+} from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
 import { ReactEditor } from 'src/core/block-react-editor';
+import { DynamicFields } from './dynamic-fields';
 
 export function FormComponent(props) {
-  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
-    props;
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    setFieldValue,
+    initialSizes,
+  } = props;
 
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
   const setEditorData = (name) => (editorData) =>
     setFieldValue(name, editorData);
-  const setPdfFile = (event) => {
-    const file = event.currentTarget?.files?.[0];
-    if (!file || file.type.split('/')[1] !== 'pdf') {
-      alert('PATTERNS.CREATE_ELECTRONIC.FORM.NEED_PDF');
-      setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.FILE, null);
-    } else setFieldValue(ELECTRONIC_PATTERN_FIELD_NAME.FILE, file);
-  };
 
   return (
     <SectionLayout>
@@ -84,40 +87,38 @@ export function FormComponent(props) {
           />
         </SectionLayout>
       </SectionLayout>
-      <FieldLayout type="double" adaptive>
-        <FileField
-          titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.FILE_UPLOAD"
-          placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.FILE_UPLOAD"
-          accept="application/pdf"
-          name={ELECTRONIC_PATTERN_FIELD_NAME.FILE}
-          value={values[ELECTRONIC_PATTERN_FIELD_NAME.FILE]}
-          error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.FILE)}
-          onChange={setPdfFile}
-          onBlur={handleBlur}
-        />
-        <Complexity>
-          <SmallTitle tid="PATTERNS.CREATE_ELECTRONIC.FORM.COMPLEXITY" />
-          <FieldComplexity>
-            {[1, 2, 3, 4, 5].map((value, index) => (
-              <ComplexityDot
-                key={index}
-                act={
-                  value <= values[ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY]
-                    ? 1
-                    : 0
-                }
-              >
-                <FieldRadio
-                  type="radio"
-                  name={ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY}
-                  value={value}
-                  onChange={setNumber(ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY)}
-                />
-              </ComplexityDot>
-            ))}
-          </FieldComplexity>
-        </Complexity>
-      </FieldLayout>
+      <Complexity>
+        <SmallTitle tid="PATTERNS.CREATE_ELECTRONIC.FORM.COMPLEXITY" />
+        <FieldComplexity>
+          {[1, 2, 3, 4, 5].map((value, index) => (
+            <ComplexityDot
+              key={index}
+              act={
+                value <= values[ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY]
+                  ? 1
+                  : 0
+              }
+            >
+              <FieldRadio
+                type="radio"
+                name={ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY}
+                value={value}
+                onChange={setNumber(ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY)}
+              />
+            </ComplexityDot>
+          ))}
+        </FieldComplexity>
+      </Complexity>
+
+      <DynamicFields
+        initialData={initialSizes}
+        errors={errors}
+        touched={touched}
+        values={values}
+        setFieldValue={setFieldValue}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
+      />
 
       <SectionLayout type="SMALL">
         <Title tid="PATTERNS.CREATE_ELECTRONIC.FORM.PRICE" />
@@ -131,18 +132,12 @@ export function FormComponent(props) {
             onChange={setNumber(ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT)}
             onBlur={handleBlur}
           />
-          <BasicField
-            titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.PRICE"
-            placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.PRICE"
-            name={ELECTRONIC_PATTERN_FIELD_NAME.PRICE}
-            value={values[ELECTRONIC_PATTERN_FIELD_NAME.PRICE]}
-            error={getFieldError(ELECTRONIC_PATTERN_FIELD_NAME.PRICE)}
-            onChange={setNumber(ELECTRONIC_PATTERN_FIELD_NAME.PRICE)}
-            onBlur={handleBlur}
-          />
           <ProductPrice
             discount={values[ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT]}
-            price={values[ELECTRONIC_PATTERN_FIELD_NAME.PRICE]}
+            price={dynamicFieldsMinPrice(
+              values[ELECTRONIC_PATTERN_FIELD_NAME.SIZES],
+              ELECTRONIC_PATTERN_FIELD_NAME.SIZE_PRICE,
+            )}
           />
         </FieldLayout>
         {/* <RecomendationBlock

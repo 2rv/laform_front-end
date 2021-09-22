@@ -18,8 +18,6 @@ export function performPatternProductData(rowData, backet) {
       vendorCode: item.vendorCode,
     })),
     materials: rowData.materialRu,
-    price: rowData.price,
     complexity: rowData.complexity,
-    filePdf: rowData.filePdf,
   };
 }

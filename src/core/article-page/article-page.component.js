@@ -5,7 +5,7 @@ import { TextSecondary } from '../../lib/element/text';
 import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { BlockComment } from '../block-comment';
-import { EditorRenderer } from '../block-editor-renderer';
+import { ReactEditor } from '../block-react-editor';
 import { ConvertTime } from 'src/lib/common/time-convert';
 
 export function ArticlePageComponent(props) {
@@ -25,7 +25,7 @@ export function ArticlePageComponent(props) {
         <Title tid={name} />
         <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
-      <EditorRenderer data={postArticle} />
+      <ReactEditor data={postArticle} enableReInitialize readOnly />
       <BlockComment type={type} id={id} />
     </SectionLayout>
   );
