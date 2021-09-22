@@ -19,14 +19,19 @@ export function OrdersContainer() {
     ordersState: state[ORDERS_STORE_NAME].orders,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
-  // всё что выше оставить всё что ниже можно удалить по усмотрению делающего
-  const [currentPage, setCurrentPage] = useState(1);
-  const [inputValue, setInputValue] = useState('');
-  const debounce = useDebounce(inputValue, 500);
-  const orders = getRequestData(ordersState);
-  const itemsPerPage = 5;
 
   useEffect(() => {
+    dispatch(ordersLoadData());
+  }, []);
+
+  // всё что выше оставить всё что ниже можно удалить по усмотрению делающего
+  // Для пагинации и фильтров
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [inputValue, setInputValue] = useState('');
+  // const orders = getRequestData(ordersState);
+  // const debounce = useDebounce(inputValue, 500);
+  // const itemsPerPage = 5;
+  // useEffect(() => {
     // dispatch(
     //   ordersLoadData(
     //     inputValue.toLowerCase().trim(),
@@ -34,11 +39,11 @@ export function OrdersContainer() {
     //     currentPage,
     //   ),
     // );
-  }, [debounce, currentPage]);
-
-  const onChange = ({ target: { value } }) => {
-    setInputValue(value);
-  };
+  // }, [debounce, currentPage]);
+  // const onChange = ({ target: { value } }) => {
+  //   setInputValue(value);
+  // };
+  // Для пагинации и фильтров
 
   return (
     <OrdersComponent
@@ -48,21 +53,19 @@ export function OrdersContainer() {
       errorMessage={getRequestErrorMessage(ordersState)}
       pageLoading={pageLoading}
       headersTable={headersTable}
+      products={getRequestData(ordersState, [])}
       // всё что выше оставить всё что ниже можно удалить по усмотрению делающего
-      products={orders.purchases}
-      totalPages={orders.totalPages}
-      setCurrentPage={setCurrentPage}
-      currentPage={currentPage}
-      onChange={onChange}
-      inputValue={inputValue}
+      // products={orders.purchases}
+      // onChange={onChange}
+      // inputValue={inputValue}
     />
   );
 }
 
 const headersTable = [
-  'ORDERS.TABLE.HEADER.ORDER_NUMBER',
-  'ORDERS.TABLE.HEADER.ORDER_DETAILS',
+  'ORDERS.TABLE.HEADER.ORDER',
+  'ORDERS.TABLE.HEADER.DETAILS',
   'ORDERS.TABLE.HEADER.DELIVERY_DATA',
-  'ORDERS.TABLE.HEADER.PRODUCT_PRICE',
+  'ORDERS.TABLE.HEADER.TOTAL',
   'ORDERS.TABLE.HEADER.STATE',
 ];

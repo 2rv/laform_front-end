@@ -3,7 +3,7 @@ import { ORDERS_API } from './orders.constant';
 import { ORDERS_ACTION_TYPE } from './orders.type';
 import { convertUsersOrderData } from './orders.convert';
 
-export function ordersLoadData(inputValue = '', size, page) {
+export function ordersLoadData() {
   return async (dispatch) => {
     dispatch({
       type: ORDERS_ACTION_TYPE.ORDERS_UPLOAD_PENDING,
@@ -12,15 +12,12 @@ export function ordersLoadData(inputValue = '', size, page) {
     try {
       const response = await httpRequest({
         method: ORDERS_API.ORDERS_LOAD.TYPE,
-        url: ORDERS_API.ORDERS_LOAD.ENDPOINT(inputValue, size, page),
+        url: ORDERS_API.ORDERS_LOAD.ENDPOINT,
       });
 
       dispatch({
         type: ORDERS_ACTION_TYPE.ORDERS_UPLOAD_SUCCESS,
-        payload: {
-          purchases: response.data.purchases.map(convertUsersOrderData),
-          totalPages: response.data.total,
-        },
+        payload: response.data.map(convertUsersOrderData),
       });
     } catch (err) {
       if (err.response) {

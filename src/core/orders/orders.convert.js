@@ -1,62 +1,25 @@
-export const convertUsersOrderData = (data) => {
-  const firstPurchaseProduct = (data.purchaseProducts ?? [])[0];
-  const product =
-    firstPurchaseProduct?.masterClassId ||
-    firstPurchaseProduct?.patternProductId ||
-    firstPurchaseProduct?.sewingProductId ||
-    firstPurchaseProduct?.postId;
+import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
 
+export const convertUsersOrderData = (data) => {
   return {
     id: data.id,
-    params: [
-      firstPurchaseProduct?.color && {
-        name: 'ORDERS.TABLE.BODY.COLOR',
-        value: firstPurchaseProduct.color,
-      },
-      firstPurchaseProduct?.size && {
-        name: 'ORDERS.TABLE.BODY.SIZE',
-        value: firstPurchaseProduct.size,
-      },
-      firstPurchaseProduct?.type && {
-        name: 'ORDERS.TABLE.BODY.CATEGORY',
-        value: firstPurchaseProduct.type,
-      },
-      firstPurchaseProduct?.quantity && {
-        name: 'ORDERS.TABLE.BODY.QUANTITY',
-        value: firstPurchaseProduct.quantity,
-      },
-      firstPurchaseProduct?.format && {
-        name: 'ORDERS.TABLE.BODY.FORMAT',
-        value: firstPurchaseProduct.format,
-      },
-      firstPurchaseProduct?.program && {
-        name: 'ORDERS.TABLE.BODY.PROGRAM',
-        value: firstPurchaseProduct.program,
-      },
-    ],
-    otherParams: [
-      data.fullName && {
-        name: 'ORDERS.TABLE.BODY.FULL_NAME',
-        value: data.fullName,
-      },
-      data.city && {
-        name: 'ORDERS.TABLE.BODY.CITY_AND_EXACT_DELIVERY_ADDRESS',
-        value: data.city,
-      },
-      data.typeOfPayment && {
-        name: 'ORDERS.TABLE.BODY.PAYMENT_METHOD',
-        value: data.typeOfPayment,
-      },
-      data.phoneNumber && {
-        name: 'ORDERS.TABLE.BODY.PHONE',
-        value: data.phoneNumber,
-      },
-    ],
-    price: data.price,
-    status: data.orderStatus,
-    name: data.orderNumber,
-    productId: product?.id,
-    image: (product?.images ? product?.images[0] : product?.imageUrl)?.fileUrl,
+    name: data?.orderNumber,
+    path: `${ORDER_NUMBER_ROUTE_PATH}/${data?.orderNumber}`,
+    totalPrice: Boolean(data?.promoCodeDiscount) ? Number(data?.price) * (Number(data?.promoCodeDiscount) / 100) : data?.price,
+    status: data?.orderStatus ?? 'Состояние',
+    image: (data?.images ? data?.images[0] : data?.imageUrl)?.fileUrl ?? 'https://lh3.googleusercontent.com/proxy/wXY6W50wZlaUZne7tvv7ro0mlyD8vbuJJe38yjYFz8B7V350YO5sn0wXWqBqyrylGlVy66y_3XByEtdirf6mlZGFpSDPhoW6EYh2EfXH3YtOYmqr6Mii4nLmSlYJGtD6CSa8aS0Cmyt1T7ak',
+    params: {
+      count: data?.purchaseProductsCount,
+      createdDate: data?.createdDate,
+    },
+    otherParams: {
+      paymentMethod: data?.paymentMethod,
+      deliveryMethod: data?.deliveryMethod,
+      email: data?.email,
+      fullName: data?.fullName,
+      city: data?.city,
+      phoneNumber: data?.phoneNumber,
+      userId: data?.userId?.id,
+    },
   };
 };
-// конвертацию делать заного нужно будет это полная лажа
