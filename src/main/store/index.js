@@ -155,6 +155,10 @@ import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_STORE_NAME,
 } from '../../core/master-class-page';
+import {
+  usersStore,
+  USERS_STORE_NAME,
+} from '../../core/users';
 
 export const reducers = combineReducers({
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
@@ -208,6 +212,7 @@ export const reducers = combineReducers({
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
+  [USERS_STORE_NAME]: usersStore,
 });
 
 export { initStore } from './store.core';
