@@ -89,7 +89,7 @@
       "CONFIRM_ORDER": "Confirm order",
       "SIGN_UP": "Sign up",
       "SIGN_IN": "Log in",
-      "INFO": "To purchase on the LaForme website, you must be a registered user. Create an account or sign in to continue."
+      "INFO": "Sign in to LaForme to make purchases."
     },
     "PROMO_CODE_SUCCESS": "Promo code {{discount}}% successfully applied",
     "FORM_SEND_SUCCESS": "Order has been successfully completed"

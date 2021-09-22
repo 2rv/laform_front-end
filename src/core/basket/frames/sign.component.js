@@ -2,14 +2,21 @@ import styled from 'styled-components';
 import { TextSecondary } from '../../../lib/element/text';
 import { ButtonSecondary, ButtonBasic } from '../../../lib/element/button';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
+import { LinkPrimary } from 'src/lib/element/link';
+import { LOGIN_ROUTE_PATH } from 'src/core/login';
+import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
 
 export function SignComponent() {
   return (
     <SectionLayout type="SMALL">
       <Text tid="BASKET.FORM.FOOTER.INFO" />
       <FieldLayout type="double" adaptive>
-        <ButtonSecondary tid="BASKET.FORM.FOOTER.SIGN_UP" />
-        <ButtonBasic tid="BASKET.FORM.FOOTER.SIGN_IN" />
+        <LinkPrimary path={SIGNUP_ROUTE_PATH}>
+          <ButtonSecondary tid="BASKET.FORM.FOOTER.SIGN_UP" />
+        </LinkPrimary>
+        <LinkPrimary path={LOGIN_ROUTE_PATH}>
+          <ButtonBasic tid="BASKET.FORM.FOOTER.SIGN_IN" />
+        </LinkPrimary>
       </FieldLayout>
     </SectionLayout>
   );
