@@ -42,17 +42,15 @@ export function CardActions(props) {
     setLike(!isLiked);
     onSetLike && onSetLike(id, !isLiked);
   };
-  const onSelectCard = () => {
-    if (Boolean(inCart)) {
-      redirect(BASKET_ROUTE_PATH)
-    }
-
+  const onSelectCard = (e) => {
     if (onSetSelect) {
       setSelect(!isSelected);
       onSetSelect(id, type, !isSelected);
     }
     if (onSetCart && !purchase) {
-      if (!inCart) {
+      if (inCart) {
+        redirect(BASKET_ROUTE_PATH);
+      } else {
         setInCart(!inCart);
         onSetCart(id, type, !inCart);
       }
@@ -84,7 +82,10 @@ export function CardActions(props) {
                     setVisible(false);
                   }}
                 />
-                <ButtonPrimary tid="OTHER.CANCEL" onClick={() => setVisible(false)} />
+                <ButtonPrimary
+                  tid="OTHER.CANCEL"
+                  onClick={() => setVisible(false)}
+                />
               </ModalButtons>
             </ModalContent>
           )}
