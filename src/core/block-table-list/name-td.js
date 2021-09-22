@@ -1,17 +1,36 @@
 import styled from 'styled-components';
-import { TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_SIZE } from '../../lib/theme';
+import { LinkPrimary, LinkSecondary } from 'src/lib/element/link';
+import { TextPrimary } from '../../lib/element/text';
 
 export function NameTd(props) {
-  const { image = null, name = null, vendorCode = null } = props;
+  const {
+    image = null,
+    name = null,
+    vendorCode = null,
+    path = '/',
+    pathConfig = undefined,
+  } = props;
   if (!image && !name) return null;
   return (
     <Td>
       <Case>
-        {image && <Image src={image} />}
+        {image && (
+          <LinkSecondary pathConfig={pathConfig} path={path}>
+            <Image src={image} />
+          </LinkSecondary>
+        )}
         <Column>
-          {name && <Text tid={name} />}
-          {vendorCode && <Text tid={vendorCode} />}
+          {name && (
+            <LinkSecondary tid={name} pathConfig={pathConfig} path={path} />
+          )}
+          {vendorCode && (
+            <LinkSecondary
+              tid={vendorCode}
+              path={path}
+              pathConfig={pathConfig}
+            />
+          )}
         </Column>
       </Case>
     </Td>
@@ -30,7 +49,6 @@ const Td = styled.td`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing(3)};
   line-height: 1.5;
 `;
 const Image = styled.img`

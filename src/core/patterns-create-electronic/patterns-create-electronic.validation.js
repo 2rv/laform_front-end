@@ -1,3 +1,4 @@
+import { dynamicFieldsValidationNamePriceFile } from 'src/lib/common/create-product-helpers';
 import { validate } from '../../main/validate/validate.core';
 import {
   required,
@@ -33,12 +34,20 @@ const config = {
     numberPositiveMax(100),
   ],
   [ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY]: [],
-  [ELECTRONIC_PATTERN_FIELD_NAME.FILE]: [required],
-  [ELECTRONIC_PATTERN_FIELD_NAME.PRICE]: [
-    required,
-    number,
-    numberPositive,
-    numberPositiveMin(0),
-  ],
 };
-export const formValidation = (values) => validate(values, config);
+
+export const formValidation = (values) => {
+  const dynamicFieldsSizesErrors = dynamicFieldsValidationNamePriceFile(
+    values[ELECTRONIC_PATTERN_FIELD_NAME.SIZES],
+    ELECTRONIC_PATTERN_FIELD_NAME.SIZES,
+    ELECTRONIC_PATTERN_FIELD_NAME.SIZE_NAME,
+    ELECTRONIC_PATTERN_FIELD_NAME.SIZE_PRICE,
+    ELECTRONIC_PATTERN_FIELD_NAME.FILE,
+  );
+
+  const fieldErrors = validate(values, config);
+  return {
+    ...fieldErrors,
+    ...dynamicFieldsSizesErrors,
+  };
+};

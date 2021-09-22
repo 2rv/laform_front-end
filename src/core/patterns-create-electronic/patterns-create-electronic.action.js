@@ -1,6 +1,9 @@
 import { httpRequest } from '../../main/http';
 import { ELECTRONIC_PATTERN_API } from './patterns-create-electronic.constant';
-import { convertForUpload } from './patterns-create-electronic.convert';
+import {
+  convertForPreUploadPDFFiles,
+  convertForUpload,
+} from './patterns-create-electronic.convert';
 import {
   CREATE_ELECTRONIC_PATTERN_TYPE,
   ELECTRONIC_PATTERN_FIELD_NAME,
@@ -8,13 +11,12 @@ import {
 
 export function createElectronicPatternUploadData(
   imagesUrls,
-  pdfFileUrl,
+  pdfFileUrls,
   formValues,
 ) {
   return async (dispatch) => {
     try {
-      const data = convertForUpload(imagesUrls, pdfFileUrl, formValues);
-
+      const data = convertForUpload(imagesUrls, pdfFileUrls, formValues);
       const response = await httpRequest({
         method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.TYPE,
         url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_UPLOAD.ENDPOINT,
@@ -35,14 +37,23 @@ export function createElectronicPatternUploadData(
   };
 }
 
-export function createElectronicPatternPreUploadPDFFile(imageUrls, formValues) {
+export function createElectronicPatternPreUploadPDFFiles(
+  imageUrls,
+  formValues,
+) {
   return async (dispatch) => {
     dispatch({
       type: CREATE_ELECTRONIC_PATTERN_TYPE.CREATE_ELECTRONIC_PATTERN_UPLOAD_PENDING,
     });
     try {
+      const files = convertForPreUploadPDFFiles(
+        formValues[ELECTRONIC_PATTERN_FIELD_NAME.SIZES],
+      );
       const formData = new FormData();
-      formData.append('file', formValues[ELECTRONIC_PATTERN_FIELD_NAME.FILE]);
+      for (const file of files) {
+        formData.append('files', file);
+      }
+
       const response = await httpRequest({
         method: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_PDF_UPLOAD.TYPE,
         url: ELECTRONIC_PATTERN_API.ELECTRONIC_PATTERN_PDF_UPLOAD.ENDPOINT,
@@ -83,7 +94,7 @@ export function createElectronicPatternPreUploadData(formValues) {
         data: formData,
       });
       dispatch(
-        createElectronicPatternPreUploadPDFFile(response.data, formValues),
+        createElectronicPatternPreUploadPDFFiles(response.data, formValues),
       );
     } catch (err) {
       if (err.response) {

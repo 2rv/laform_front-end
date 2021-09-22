@@ -6,7 +6,7 @@ import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
-import { EditorRenderer } from '../block-editor-renderer';
+import { ReactEditor } from '../block-react-editor';
 import { ProductMainComponent } from './frames';
 
 export function PatternsProductComponent(props) {
@@ -33,7 +33,7 @@ export function PatternsProductComponent(props) {
       </SectionLayout>
       <SectionLayout type="TEXT_SMALL">
         <Title tid="PATTERNS.MATERIALS" />
-        <EditorRenderer data={productInfo.materials} />
+        <ReactEditor data={productInfo.materials} enableReInitialize readOnly />
       </SectionLayout>
       {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}
       <BlockComment type={productInfo.type} id={productInfo.id} />

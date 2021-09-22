@@ -35,20 +35,25 @@ export function ProductMainComponent(props) {
   const [size, setSize] = useState(
     sizes?.length > 0 ? sizes[0] : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
-  const productPdfUrl = filePdf?.fileUrl;
 
-  const sendPdfToMail = () => {
-    dispatch(
-      patternsProductSendPdfToMail({
-        productName: name,
-        productPdfUrl,
-      }),
-    );
-  };
-
-  const redirectToPdfLink = () => {
-    window.open(productPdfUrl, '_blank');
-  };
+  //   const productPdfUrl = filePdf?.fileUrl;
+  //   const sendPdfToMail = () => {
+  //     dispatch(
+  //       patternsProductSendPdfToMail({
+  //         productName: name,
+  //         productPdfUrl,
+  //       }),
+  //     );
+  //   };
+  //   const redirectToPdfLink = () => {
+  //     window.open(productPdfUrl, '_blank');
+  //   };
+  {
+    /* <DownloadPdfContainer>
+        <SendEmailButton tid="PATTERNS.SEND_TO_EMAIL" onClick={sendPdfToMail} />
+        <DownloadButton tid="PATTERNS.DOWNLOAD" onClick={redirectToPdfLink} />
+      </DownloadPdfContainer> */
+  }
 
   const handleAddToCart = (_, __, inCart) => {
     addToCart(inCart, { id, type, size: size.id });
@@ -101,10 +106,6 @@ export function ProductMainComponent(props) {
         />
         <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
-      <DownloadPdfContainer>
-        <SendEmailButton tid="PATTERNS.SEND_TO_EMAIL" onClick={sendPdfToMail} />
-        <DownloadButton tid="PATTERNS.DOWNLOAD" onClick={redirectToPdfLink} />
-      </DownloadPdfContainer>
     </Container>
   );
 }

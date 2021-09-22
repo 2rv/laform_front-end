@@ -3,7 +3,7 @@ import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
-import { EditorRenderer } from '../block-editor-renderer';
+import { ReactEditor } from '../block-react-editor';
 import { ConvertTime } from 'src/lib/common/time-convert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
@@ -22,7 +22,11 @@ export function MasterClassArticleComponent(props) {
             <Title tid={productInfo.name} />
             <TextLight tid={ConvertTime(productInfo.createdDate)} />
           </HeaderCase>
-          <EditorRenderer data={productInfo.postArticle} />
+          <ReactEditor
+            data={productInfo.materials}
+            enableReInitialize
+            readOnly
+          />
         </SectionLayout>
       )}
     </>

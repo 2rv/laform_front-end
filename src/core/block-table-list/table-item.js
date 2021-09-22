@@ -10,11 +10,13 @@ import { StatusTd } from './status-td';
 import { ButtonTd } from './button.td';
 
 export function TableItem(props) {
-  const { children, data, changeItem, deleteItem } = props;
+  const { data, changeItem, deleteItem, downloadItem } = props;
   const {
     id,
     name,
     image,
+    totalPrice,
+    vendorCode,
     //------ основные данные
     params,
     otherParams,
@@ -24,15 +26,22 @@ export function TableItem(props) {
     //------ параметры и опции
     count,
     maxCount,
-    totalPrice,
-    //------ количество и цена
+    //------ количество
     status,
     comment,
+    path,
+    pathConfig,
     //------ другое
   } = data;
   return (
     <Tr>
-      <NameTd image={image} name={name} vendorCode={params?.vendorCode} />
+      <NameTd
+        path={path}
+        pathConfig={pathConfig}
+        image={image}
+        name={name}
+        vendorCode={vendorCode}
+      />
       <CommentTd comment={comment} />
       <ParamsTd params={params} />
       <ParamsTd params={otherParams} />
@@ -46,13 +55,14 @@ export function TableItem(props) {
       <StatusTd status={status} />
       <ButtonTd
         id={id}
-        sizeId={params?.size?.id}
-        colorId={params?.color?.id}
-        programId={params?.program?.id}
         changeItem={changeItem}
         deleteItem={deleteItem}
+        downloadItem={downloadItem}
+        sizeId={params?.size?.id}
         sizesOptions={sizesOptions}
+        colorId={params?.color?.id}
         colorsOptions={colorsOptions}
+        programId={params?.program?.id}
         programsOptions={programsOptions}
       />
     </Tr>

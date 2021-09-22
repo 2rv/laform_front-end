@@ -44,14 +44,7 @@ export function convertAddToCart(product, data) {
       program: data.program ? data.program : product.programs[0].id,
     };
   }
-  if (data.type === 1) {
-    return {
-      id: product.id,
-      type: data.type,
-      patternProduct: product,
-    };
-  }
-  if (data.type === 2) {
+  if (data.type === 1 || data.type === 2) {
     return {
       id: product.id,
       type: data.type,
@@ -75,24 +68,19 @@ export function reduceBascketState(bascketState) {
   return bascketState.reduce(
     (acc, i) => {
       if (i.type === 0) {
-        const { price, item } = constructorMasterClassItem(i);
+        const item = constructorMasterClassItem(i);
         acc.itemsMaster.push(item);
-        acc.price = acc.price + price;
+        acc.price = acc.price + item.totalPrice;
       }
-      if (i.type === 1) {
-        const { price, item } = constructorElectronicPatternItem(i);
+      if (i.type === 1 || i.type === 2) {
+        const item = constructorPatternItem(i);
         acc.itemsPatterns.push(item);
-        acc.price = acc.price + price;
-      }
-      if (i.type === 2) {
-        const { price, item } = constructorPrintPatternItem(i);
-        acc.itemsPatterns.push(item);
-        acc.price = acc.price + price;
+        acc.price = acc.price + item.totalPrice;
       }
       if (i.type === 3) {
-        const { price, item } = constructorSewingGoodsItem(i);
+        const item = constructorSewingGoodsItem(i);
         acc.itemsGoods.push(item);
-        acc.price = acc.price + price;
+        acc.price = acc.price + item.totalPrice;
       }
       return acc;
     },
@@ -104,28 +92,24 @@ const constructorMasterClassItem = (data) => {
   const program =
     data.masterClass.programs.find(({ id }) => id === data.program) ??
     data.masterClass.programs[0];
-
-  const totalPrice =
-    program.price - program.price * (data.masterClass.discount / 100);
+  const totalPrice = calcTotalPrice(program.price, data.masterClass.discount);
   return {
-    price: totalPrice,
-    item: {
-      id: data.masterClass.id,
-      image: data.masterClass.images[0].fileUrl,
-      name: data.masterClass.titleRu,
-      params: {
-        program: { id: program.id, value: program.programNameRu },
-        vendorCode: program.vendorCode,
-        category: data.masterClass.categories[0].textRu,
-      },
-      programsOptions: data.masterClass.programs.map((item) => ({
-        id: item.id,
-        tid: item.programNameRu,
-      })),
-      totalPrice: totalPrice,
+    id: data.masterClass.id,
+    image: data.masterClass.images[0].fileUrl,
+    name: data.masterClass.titleRu,
+    vendorCode: program.vendorCode,
+    totalPrice: totalPrice,
+    params: {
+      program: { id: program.id, value: program.programNameRu },
+      category: data.masterClass.categories[0].textRu,
     },
+    programsOptions: data.masterClass.programs.map((item) => ({
+      id: item.id,
+      tid: item.programNameRu,
+    })),
   };
 };
+
 const constructorSewingGoodsItem = (data) => {
   const count = data.count ?? 1;
   const size =
@@ -136,80 +120,62 @@ const constructorSewingGoodsItem = (data) => {
     data.sewingProduct.colors[0];
 
   const totalPrice =
-    size.price - size.price * (data.sewingProduct.discount / 100);
+    calcTotalPrice(size.price, data.sewingProduct.discount) * count;
 
   return {
-    price: totalPrice * count,
-    item: {
-      id: data.sewingProduct.id,
-      image: data.sewingProduct.images[0].fileUrl,
-      name: data.sewingProduct.titleRu,
-      params: {
-        size: { id: size.id, value: size.size },
-        color: { id: color.id, value: color.color },
-        vendorCode: size.vendorCode,
-        category: data.sewingProduct.categories[0].textRu,
-      },
-      sizesOptions: data.sewingProduct.sizes.map((item) => ({
-        id: item.id,
-        tid: item.size,
-        price: item.price,
-      })),
-      colorsOptions: data.sewingProduct.colors.map((item) => ({
-        id: item.id,
-        tid: item.color,
-        price: item.price,
-      })),
-      count: count,
-      maxCount: size.count,
-      totalPrice: count * totalPrice,
+    id: data.sewingProduct.id,
+    image: data.sewingProduct.images[0].fileUrl,
+    name: data.sewingProduct.titleRu,
+    vendorCode: size.vendorCode,
+    count: count,
+    maxCount: size.count,
+    totalPrice: totalPrice,
+    params: {
+      size: { id: size.id, value: size.size },
+      color: { id: color.id, value: color.color },
+      category: data.sewingProduct.categories[0].textRu,
     },
+    sizesOptions: data.sewingProduct.sizes.map((item) => ({
+      id: item.id,
+      tid: item.size,
+      price: item.price,
+    })),
+    colorsOptions: data.sewingProduct.colors.map((item) => ({
+      id: item.id,
+      tid: item.color,
+      price: item.price,
+    })),
   };
 };
-const constructorElectronicPatternItem = (data) => {
-  const totalPrice =
-    data.patternProduct.price -
-    data.patternProduct.price * (data.patternProduct.discount / 100);
 
-  return {
-    price: totalPrice,
-    item: {
-      id: data.patternProduct.id,
-      image: data.patternProduct.images[0].fileUrl,
-      name: data.patternProduct.titleRu,
-      params: {
-        format: 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC',
-        complexity: data.patternProduct.complexity,
-        category: data.patternProduct.categories[0].textRu,
-      },
-      totalPrice: totalPrice,
-    },
-  };
-};
-const constructorPrintPatternItem = (data) => {
+const constructorPatternItem = (data) => {
   const size =
     data.patternProduct.sizes.find(({ id }) => id === data.size) ??
     data.patternProduct.sizes[0];
-  const totalPrice =
-    size.price - size.price * (data.patternProduct.discount / 100);
+
+  const totalPrice = calcTotalPrice(size.price, data.patternProduct.discount);
 
   return {
-    price: totalPrice,
-    item: {
-      id: data.patternProduct.id,
-      image: data.patternProduct.images[0].fileUrl,
-      name: data.patternProduct.titleRu,
-      params: {
-        size: { id: size.id, value: size.size },
-        format: 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
-        complexity: data.patternProduct.complexity,
-        category: data.patternProduct.categories[0].textRu,
-      },
-      sizesOptions: data.patternProduct.sizes.map((item) => ({
-        id: item.id,
-        tid: item.size,
-      })),
-      totalPrice: totalPrice,
+    id: data.patternProduct.id,
+    image: data.patternProduct.images[0].fileUrl,
+    name: data.patternProduct.titleRu,
+    vendorCode: size.vendorCode,
+    totalPrice: totalPrice,
+    params: {
+      size: { id: size.id, value: size.size },
+      format:
+        data.type === 1
+          ? 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC'
+          : 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
+      complexity: data.patternProduct.complexity,
+      category: data.patternProduct.categories[0].textRu,
     },
+    sizesOptions: data.patternProduct.sizes.map((item) => ({
+      id: item.id,
+      tid: item.size,
+    })),
   };
 };
+
+// вспомогательное
+const calcTotalPrice = (price, discount) => price - price * (discount / 100);
