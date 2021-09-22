@@ -22,12 +22,15 @@ export function PromocodeFormComponent(props) {
   };
 
   const isSubmitDisabled = () => {
-    return !isValid || (Object.keys(touched).length === 0 && touched.constructor === Object);
+    return (
+      !isValid ||
+      (Object.keys(touched).length === 0 && touched.constructor === Object)
+    );
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <FieldLayout type="double">
+    <form onSubmit={handleSubmit}>
+      <FieldLayout type="double" adaptive>
         <BasicField
           placeholderTid="PROMOCODE.WRITE_PROMOCODE"
           name={fieldPromocode}
@@ -44,15 +47,12 @@ export function PromocodeFormComponent(props) {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        <ButtonSecondary
+          tid="PROMOCODE.ADD_PROMOCODE"
+          type="submit"
+          disabled={isSubmitDisabled()}
+        />
       </FieldLayout>
-      <FieldLayout type="double">
-        <ButtonSecondary tid="PROMOCODE.ADD_PROMOCODE" type="submit" disabled={isSubmitDisabled()} />
-      </FieldLayout>
-    </Form>
+    </form>
   );
 }
-
-const Form = styled.form`
-  display: grid;
-  gap: ${spacing(3)};
-`;
