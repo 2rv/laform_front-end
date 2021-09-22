@@ -152,11 +152,12 @@ import {
   EMAIL_CONFIRMED_STORE_NAME,
 } from '../../core/email-confirmed';
 import {
-  masterClassArticleStore,
-  MASTER_CLASS_ARTICLE_STORE_NAME,
-} from '../../core/master-class-article';
+  masterClassPageStore,
+  MASTER_CLASS_PAGE_STORE_NAME,
+} from '../../core/master-class-page';
 
 export const reducers = combineReducers({
+  [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
   [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
@@ -207,7 +208,6 @@ export const reducers = combineReducers({
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
-  [MASTER_CLASS_ARTICLE_STORE_NAME]: masterClassArticleStore,
 });
 
 export { initStore } from './store.core';

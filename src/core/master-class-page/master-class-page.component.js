@@ -1,18 +1,23 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
+import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
+import { ReactEditor } from '../block-react-editor';
+import { ConvertTime } from 'src/lib/common/time-convert';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function MasterClassPageComponent(props) {
-  const { name, descriptions, date, content } = props.data;
+  const { isPending, pageLoading, productInfo } = props;
 
   return (
     <SectionLayout>
+      {isPending && <LoaderPrimary />}
       <HeaderCase>
-        <Title tid={name} />
-        <TextLight tid={date} />
+        <Title tid={productInfo.name} />
+        <TextLight tid={ConvertTime(productInfo.createdDate)} />
       </HeaderCase>
+      <ReactEditor data={productInfo.articleText} enableReInitialize readOnly />
     </SectionLayout>
   );
 }
@@ -23,10 +28,11 @@ const HeaderCase = styled.div`
   align-items: baseline;
   line-height: 1.5;
 `;
+
 const TextLight = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};
-  font-size: ${THEME_SIZE.FONT.SMALL};
 `;
+
 const Title = styled(TitlePrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
 `;
