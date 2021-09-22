@@ -58,15 +58,13 @@ export function FormContainer(props) {
             formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_DISCOUNT, discount),
           [discount],
         );
-        useEffect(
-          () => formProps.setFieldValue(ORDER_FIELD_NAME.PRICE, price),
-          [price],
-        );
+        useEffect(() => {
+          formProps.setFieldValue(ORDER_FIELD_NAME.PRICE, price);
+        }, [price, formProps.values]);
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, '');
           formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_DISCOUNT, 0);
         }, [promoCodeError]);
-
         return (
           <form onSubmit={formProps.handleSubmit}>
             <SectionLayout>

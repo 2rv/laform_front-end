@@ -7,7 +7,7 @@ export const performMasterClassData = (rowData, backet) => {
       type: item.type || 0,
       bestseller: item.modifier,
       categories: item.categories,
-      cart: Boolean(backet?.find((item) => item?.masterClass?.id === item.id)),
+      cart: Boolean(backet?.find((bItem) => bItem?.id === item.id)),
       price: {
         min: checkMinPrice(item?.programs, 'price'),
         discount: item.discount,
