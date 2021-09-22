@@ -70,20 +70,14 @@ export function BasketContainer() {
 
   const initialValues = () => {
     return {
-      [ORDER_FIELD_NAME.EMAIL]: email ? email : '',
-      [ORDER_FIELD_NAME.FULL_NAME]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.FULL_NAME]
-        : '',
-      [ORDER_FIELD_NAME.CITY]: userInfo ? userInfo[ORDER_FIELD_NAME.CITY] : '',
-      [ORDER_FIELD_NAME.PHONE]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.PHONE]
-        : '',
-      [ORDER_FIELD_NAME.PAYMENT_METHOD]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD]
-        : 0,
-      [ORDER_FIELD_NAME.DELIVERY_METHOD]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD]
-        : 0,
+      [ORDER_FIELD_NAME.EMAIL]: Boolean(email) ? email.toString() : '',
+      [ORDER_FIELD_NAME.FULL_NAME]: userInfo[ORDER_FIELD_NAME.FULL_NAME] || '',
+      [ORDER_FIELD_NAME.CITY]: userInfo[ORDER_FIELD_NAME.CITY] || '',
+      [ORDER_FIELD_NAME.PHONE]: userInfo[ORDER_FIELD_NAME.PHONE] || '',
+      [ORDER_FIELD_NAME.PAYMENT_METHOD]:
+        userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD] || 0,
+      [ORDER_FIELD_NAME.DELIVERY_METHOD]:
+        userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD] || 0,
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,

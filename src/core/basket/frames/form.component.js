@@ -23,7 +23,7 @@ export function FormComponent(props) {
   const getFieldError = (name) => {
     return errors[name] && touched[name] && errors[name];
   };
-
+  console.log(values);
   return (
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>

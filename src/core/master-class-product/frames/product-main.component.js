@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextSecondary } from '../../../lib/element/text';
+import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
@@ -72,10 +72,18 @@ export function ProductMainComponent(props) {
         <ProductPriceComponent price={program?.price} discount={discount} />
         <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
+      <LineCase>
+        <TextPrimary tid="Артикул - " />
+        <LigthText>{program.vendorCode}</LigthText>
+      </LineCase>
     </Container>
   );
 }
-
+const LineCase = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing(3)};
+`;
 const FooterCase = styled.div`
   display: grid;
   align-items: center;

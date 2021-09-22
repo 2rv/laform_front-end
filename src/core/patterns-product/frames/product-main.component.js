@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextSecondary } from '../../../lib/element/text';
+import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
@@ -31,11 +31,11 @@ export function ProductMainComponent(props) {
     addToCart,
   } = props;
 
-  const dispatch = useDispatch();
   const [size, setSize] = useState(
     sizes?.length > 0 ? sizes[0] : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
 
+  //   const dispatch = useDispatch();
   //   const productPdfUrl = filePdf?.fileUrl;
   //   const sendPdfToMail = () => {
   //     dispatch(
@@ -106,9 +106,14 @@ export function ProductMainComponent(props) {
         />
         <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
+      <LineCase>
+        <TextPrimary tid="Артикул - " />
+        <LigthText>{size.vendorCode}</LigthText>
+      </LineCase>
     </Container>
   );
 }
+
 const Text = styled(TextSecondary)`
   min-width: max-content;
 `;

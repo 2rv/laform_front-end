@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextSecondary } from '../../../lib/element/text';
+import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
@@ -106,9 +106,18 @@ export function ProductMainComponent(props) {
 
         <CardActions cart={cart} onSetCart={handleAddToCart} />
       </FooterCase>
+      <LineCase>
+        <TextPrimary tid="Артикул - " />
+        <LigthText>{size.vendorCode}</LigthText>
+      </LineCase>
     </Container>
   );
 }
+const LineCase = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing(3)};
+`;
 const Count = styled(TextSecondary)`
   width: max-content;
   padding: ${spacing(2)};
