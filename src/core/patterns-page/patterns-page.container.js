@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -10,6 +11,7 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.co
 import { patternsPageUploadData } from './patterns-page.action';
 import { PATTERNS_PAGE_STORE_NAME } from './patterns-page.constant';
 import { PatternsPageComponent } from './patterns-page.component';
+import { getQuery } from 'src/main/navigation';
 
 export function PatternsPageContainer() {
   const dispatch = useDispatch();
@@ -17,9 +19,10 @@ export function PatternsPageContainer() {
     state: state[PATTERNS_PAGE_STORE_NAME].product,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+  const id = getQuery('id');
 
   useEffect(() => {
-    //   dispatch(patternsPageUploadData());
+    dispatch(patternsPageUploadData(id));
   }, []);
 
   return (
@@ -29,7 +32,7 @@ export function PatternsPageContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      currentPageData={currentPageData}
+      currentPageData={getRequestData(state)}
     />
   );
 }

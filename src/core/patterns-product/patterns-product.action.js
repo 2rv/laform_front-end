@@ -36,30 +36,3 @@ export function patternProductUploadData(currentLang, id) {
     }
   };
 }
-
-export function patternsProductSendPdfToMail(body) {
-  return async (dispatch) => {
-    dispatch({
-      type: PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_PENDING,
-    });
-
-    try {
-      await httpRequest({
-        method: PATTERNS_PRODUCT_API.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL.TYPE,
-        url: PATTERNS_PRODUCT_API.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL.ENDPOINT,
-        data: body,
-      });
-
-      dispatch({
-        type: PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_SUCCESS,
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}

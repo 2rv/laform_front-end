@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
-import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import { ProductPriceComponent } from './product-price.component';
 import { BlockSelect } from '../../block-select';
 import { TextBlock } from '../../block-text';
-import { patternsProductSendPdfToMail } from '../patterns-product.action';
 
 export function ProductMainComponent(props) {
   const {
@@ -27,33 +24,12 @@ export function ProductMainComponent(props) {
     price,
     complexity,
     cart,
-    filePdf,
     addToCart,
   } = props;
 
   const [size, setSize] = useState(
     sizes?.length > 0 ? sizes[0] : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
-
-  //   const dispatch = useDispatch();
-  //   const productPdfUrl = filePdf?.fileUrl;
-  //   const sendPdfToMail = () => {
-  //     dispatch(
-  //       patternsProductSendPdfToMail({
-  //         productName: name,
-  //         productPdfUrl,
-  //       }),
-  //     );
-  //   };
-  //   const redirectToPdfLink = () => {
-  //     window.open(productPdfUrl, '_blank');
-  //   };
-  {
-    /* <DownloadPdfContainer>
-        <SendEmailButton tid="PATTERNS.SEND_TO_EMAIL" onClick={sendPdfToMail} />
-        <DownloadButton tid="PATTERNS.DOWNLOAD" onClick={redirectToPdfLink} />
-      </DownloadPdfContainer> */
-  }
 
   const handleAddToCart = (_, __, inCart) => {
     addToCart(inCart, { id, type, size: size.id });
@@ -187,17 +163,4 @@ const Container = styled.div`
   @media screen and (max-width: 720px) {
     display: contents;
   }
-`;
-
-const DownloadPdfContainer = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
-`;
-
-const SendEmailButton = styled(ButtonSecondary)`
-  width: 200px;
-`;
-
-const DownloadButton = styled(ButtonPrimary)`
-  width: 120px;
 `;

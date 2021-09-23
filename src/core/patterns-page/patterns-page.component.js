@@ -3,6 +3,7 @@ import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { GalleryBlock } from '../block-gallery';
+import { ReactEditor } from '../block-react-editor';
 import { ProductMainContainer } from './frames';
 import { TextBlock } from '../block-text';
 
@@ -25,7 +26,7 @@ export function PatternsPageComponent(props) {
       {materials && (
         <SectionLayout type="TEXT">
           <TitlePrimary tid={'PATTERNS.CREATE.FORM.COMPLEXITY'} />
-          <TextBlock text={materials} />
+          <ReactEditor data={materials} enableReInitialize readOnly />
         </SectionLayout>
       )}
     </SectionLayout>

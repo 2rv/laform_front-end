@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
 import { TextSecondary } from '../../../../lib/element/text';
@@ -7,6 +8,7 @@ import { TextBlock } from '../../../block-text';
 import { ProductPriceComponent } from './product-price.component';
 import { ProductOptionInfo } from './product-option-info.component';
 import { ProductAction } from './product-action.component';
+import { patternProductSendPdfToMail } from '../../patterns-page.action';
 
 export function ProductMainComponent(props) {
   const {
@@ -18,7 +20,22 @@ export function ProductMainComponent(props) {
     discountPrice,
     diliveryPrice,
     optionInfo,
+    type,
+    filePdf,
   } = props;
+
+  const dispatch = useDispatch();
+  const sendPdfToMail = () => {
+    dispatch(
+      patternProductSendPdfToMail({
+        productName: title,
+        productPdfUrl: filePdf,
+      }),
+    );
+  };
+  const redirectToPdfLink = () => {
+    window.open(filePdf, '_blank');
+  };
 
   return (
     <Container>
@@ -36,7 +53,7 @@ export function ProductMainComponent(props) {
         discount={discount}
       />
       <Divider />
-      <ProductAction />
+      {type === 1 && <ProductAction sendPdfToMail={sendPdfToMail} redirectToPdfLink={redirectToPdfLink} />}
     </Container>
   );
 }
