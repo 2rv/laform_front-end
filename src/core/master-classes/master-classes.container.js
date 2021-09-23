@@ -32,7 +32,7 @@ export function MasterClassesContainer() {
       isAuth: state[AUTH_STORE_NAME].logged,
     }));
 
-  useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
+  useEffect(() => dispatch(masterClassesUploadData(currentLang, isAuth)), []);
 
   const filterInitialValue = () => ({
     [MASTER_CLASSES_FIELD_NAME.FILTER]: 0,

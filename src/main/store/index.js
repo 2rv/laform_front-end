@@ -163,6 +163,7 @@ import {
   emailConfirmedStore,
   EMAIL_CONFIRMED_STORE_NAME,
 } from '../../core/email-confirmed';
+import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -220,6 +221,7 @@ export const reducers = combineReducers({
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [LIKE_STORE_NAME]: likeStore,
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
+  [ALL_LIKES_STORE_NAME]: allLikesStore,
 });
 
 export { initStore } from './store.core';

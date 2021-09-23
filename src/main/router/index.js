@@ -114,6 +114,7 @@ import {
   createNotificationRouter,
   CREATE_NOTIFICATION_ROUTE_PATH,
 } from '../../core/create-notification';
+import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
 
 export const routes = {
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
@@ -154,6 +155,7 @@ export const routes = {
   [ORDERS_LIST_ROUTE_PATH]: ordersListRouter,
   [USERS_ORDER_ROUTE_PATH]: usersOrderRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
+  [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
 };
 
 export const Router = routesInit(routes);

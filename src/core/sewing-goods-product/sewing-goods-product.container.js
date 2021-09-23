@@ -31,6 +31,8 @@ export function SewingGoodsProductContainer() {
     );
   }, []);
 
+  console.log(getRequestData(state));
+
   return (
     <SewingGoodsProductComponent
       isPending={isRequestPending(state)}

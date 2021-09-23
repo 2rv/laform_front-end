@@ -30,7 +30,7 @@ export function SewingGoodsContainer() {
       user: state[AUTH_STORE_NAME].user,
       isAuth: state[AUTH_STORE_NAME].logged,
     }));
-  useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
+  useEffect(() => dispatch(sewingGoodsUploadData(currentLang, isAuth)), []);
   const filterInitialValue = () => ({
     [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
     [SEWING_GOODS_FIELD_NAME.FIND]: '',

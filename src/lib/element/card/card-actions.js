@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../theme';
 import { ButtonSecondary, ButtonPrimary, IconButton } from '../button';
 import { Popup } from '../popup';
-import { ReactComponent as LikeIcon } from '../../../asset/svg/favorite-icon.svg';
 import { ReactComponent as Delete } from '../../../asset/svg/delete-cancel-icon.svg';
 import { useEffect, useState } from 'react';
 import { TextSecondary } from '../text';

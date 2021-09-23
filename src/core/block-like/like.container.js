@@ -5,12 +5,15 @@ import { LikeComponent } from './like.component';
 import { useDispatch, useSelector } from 'react-redux';
 import { likeConvertType } from './like.convert';
 import { getRequestData, isRequestPending } from 'src/main/store/store.service';
+import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
+import { ALL_LIKES_ROUTE_PATH } from '../likes';
 
 export function LikeContainer({ id, type, like }) {
   const dispatch = useDispatch();
 
-  const { likeState } = useSelector((state) => ({
+  const { likeState, activePath } = useSelector((state) => ({
     likeState: state[LIKE_STORE_NAME].like,
+    activePath: state[NAVIGATION_STORE_NAME].activePath,
   }));
 
   const [isLiked, setLike] = useState(false || like);
@@ -35,6 +38,7 @@ export function LikeContainer({ id, type, like }) {
   };
   return (
     <LikeComponent
+      isAllLikePage={activePath === ALL_LIKES_ROUTE_PATH ? true : false}
       isPending={isRequestPending(likeState)}
       onLike={onLike}
       like={isLiked}

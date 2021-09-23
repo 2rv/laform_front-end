@@ -2,7 +2,12 @@ export const SEWING_GOODS_ROUTE_PATH = '/sewing-goods';
 export const SEWING_GOODS_STORE_NAME = 'SEWING_GOODS';
 export const SEWING_GOODS_API = {
   SEWING_GOODS_UPLOAD: {
-    ENDPOINT: (currentLang) => `/sewing-product/get?lang=${currentLang}`, //&page=1&size=1
+    ENDPOINT: (currentLang) => `/sewing-product/get-all?lang=${currentLang}`, //&page=1&size=1
+    TYPE: 'GET',
+  },
+  SEWING_GOODS_UPLOAD_AUTH: {
+    ENDPOINT: (currentLang) =>
+      `/sewing-product/get-all/authtorized?lang=${currentLang}`, //&page=1&size=1
     TYPE: 'GET',
   },
   SEWING_GOODS_UPDATE: {

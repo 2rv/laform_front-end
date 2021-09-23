@@ -1,18 +1,21 @@
-export const performMasterClassData = (rowData, backet) => {
+export const performPatternsData = (rowData, backet) => {
   return rowData.map((item) => {
     return {
       id: item.id,
       name: item.titleRu,
-      image: item.images[0]?.fileUrl,
-      like: item?.like ? (item.like?.length ? true : false) : null,
-      type: item.type || 0,
+      image: item.images?.[0]?.fileUrl,
+      type: item.type,
       bestseller: item.modifier,
+      complexity: item.complexity,
+      like: item?.like ? (item.like?.length ? true : false) : null,
       categories: item.categories,
-      cart: Boolean(backet?.find((item) => item?.masterClass?.id === item.id)),
+      cart: Boolean(
+        backet?.find((bItem) => bItem?.patternProduct?.id === item.id),
+      ),
       price: {
-        min: checkMinPrice(item?.programs, 'price'),
+        min: item?.price || checkMinPrice(item?.sizes, 'price'),
         discount: item.discount,
-        max: checkMaxPrice(item?.programs, 'price'),
+        max: item?.price ? null : checkMaxPrice(item?.sizes, 'price'),
       },
     };
   });

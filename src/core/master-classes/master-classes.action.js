@@ -4,17 +4,26 @@ import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 import { performMasterClassData } from './master-classes.convert';
 import { BASKET_STORE_NAME } from '../basket';
 
-export function masterClassesUploadData(currentLang) {
+export function masterClassesUploadData(currentLang, isAuth) {
   return async (dispatch, getState) => {
     dispatch({
       type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING,
     });
 
     try {
-      const response = await httpRequest({
-        method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.TYPE,
-        url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(currentLang),
-      });
+      const response = isAuth
+        ? await httpRequest({
+            method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA_AUTH.TYPE,
+            url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA_AUTH.ENDPOINT(
+              currentLang,
+            ),
+          })
+        : await httpRequest({
+            method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.TYPE,
+            url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(
+              currentLang,
+            ),
+          });
       const data = performMasterClassData(
         response.data,
         getState()[BASKET_STORE_NAME].basket,

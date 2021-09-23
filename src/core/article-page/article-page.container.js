@@ -25,7 +25,7 @@ export function ArticlePageContainer() {
   }));
 
   useEffect(() => {
-    dispatch(articlePageUploadData(currentLang, articleProductId, logged));
+    dispatch(articlePageUploadData(currentLang, articleProductId));
   }, []);
 
   return (
