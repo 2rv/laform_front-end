@@ -10,13 +10,23 @@
   "STATE": "Состояние",
   "ONLINE": "Онлайн",
   "OTHER": "Другой",
-  "MY_PURCHASES": "Список покупок",
-  "MY_LIKES": "Мои лайки",
-  "MY_COMMENTS": "Мои комментарии",
+  "EMAIL": "Почта",
+  "BAN_USER": "Забанить пользователя",
+  "PURHCASES_QUANTITY": "Количество покупок",
+  "PURCHASES": "Покупки",
+  "LIKES": "Лайки",
+  "COMMENTS": "Комментарии",
   "NOT_HAVE_PURCHASES": "Нету покупок",
   "NOT_HAVE_LIKES": "Нету лайков",
   "NOT_HAVE_COMMENTS": "Нету комментариев",
   "SHOW_ALL": "Посмотреть все...",
   "ACCOUNT_STATE": "Состояние аккаунта -",
-  "SUBSCRIBED_TO_MAILING_LISTS": "Подписан на рассылки -"
+  "SUBSCRIBED_TO_MAILING_LISTS": "Подписан на рассылки -",
+  "CATEGORIES": {
+    "MASTER_CLASS": "Мастер-класс",
+    "SEWING_GOODS": "Товар для шитья",
+    "ELECTRONIC_PATTERN": "Электронная выкройка",
+    "PRINTED_PATTERN": "Печатная выкройка",
+    "ARTICLE": "Статья"
+  }
 }

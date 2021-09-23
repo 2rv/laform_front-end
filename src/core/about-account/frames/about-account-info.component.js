@@ -1,22 +1,19 @@
 import styled from 'styled-components';
-import moment from 'moment';
-import { ReactComponent as UserIcon } from '../../../../asset/svg/user.svg';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { TextSecondary } from '../../../../lib/element/text';
-import { TitlePrimary as Title } from '../../../../lib/element/title';
-import { SectionLayout } from '../../../../lib/element/layout';
-import { Spinner } from '../../../../lib/element/spinner';
+import { ReactComponent as UserIcon } from '../../../asset/svg/user.svg';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TextSecondary } from 'src/lib/element/text';
+import { TitlePrimary as Title } from 'src/lib/element/title';
+import { SectionLayout } from 'src/lib/element/layout';
 import { ConvertDate } from 'src/lib/common/time-convert';
+// import { ButtonBasic } from 'src/lib/element/button';
 
-export function AboutAccountInfoComponent({ isUserPending, user }) {
-  return isUserPending ? (
-    <Spinner />
-  ) : (
+export function AboutAccountInfoComponent({ user }) {
+  return (
     <SectionLayout>
-      {user?.userInfo?.fullName && (
+      {user?.userSettingId?.fullName && (
         <LineCase>
           <UserIcon />
-          <UserTitle tid={user?.userInfo?.fullName} />
+          <UserTitle tid={user?.userSettingId?.fullName} />
         </LineCase>
       )}
       <SectionLayout type="SMALL">
@@ -25,6 +22,10 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.DATE_OF_REGISTRATION" />
             <InfoText>{ConvertDate(user.createDate, 'MMMM DD, YYYY')}</InfoText>
+          </SectionLayout>
+          <SectionLayout type="TEXT">
+            <InfoTitle tid="PROFILE.EMAIL" />
+            <InfoText>{user.email}</InfoText>
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.STATUS" />
@@ -37,22 +38,29 @@ export function AboutAccountInfoComponent({ isUserPending, user }) {
               }
             />
           </SectionLayout>
+          <SectionLayout type="TEXT">
+            <InfoTitle tid="PROFILE.PURHCASES_QUANTITY" />
+            <InfoText tid={user?.purchase?.length} />
+          </SectionLayout>
+          {/* <SectionLayout type="TEXT">
+            <ButtonBasic tid="PROFILE.BAN_USER" />
+          </SectionLayout> */}
         </LineSection>
       </SectionLayout>
       <SectionLayout type="SMALL">
         <TitlePrimary tid="PROFILE.SHIPPING_AND_PAYMENT" />
         <LineSection>
-          {user?.userInfo?.location && (
+          {user?.userSettingId?.location && (
             <SectionLayout type="TEXT">
               <InfoTitle tid="PROFILE.DELIVERY_ADDRESS" />
-              <InfoText tid={user?.userInfo?.location} />
+              <InfoText tid={user?.userSettingId?.location} />
             </SectionLayout>
           )}
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.PAYMENT_METHOD" />
             <InfoText
               tid={
-                user?.userInfo?.paymentType === 1
+                user?.userSettingId?.paymentType === 1
                   ? 'PROFILE.ONLINE'
                   : 'PROFILE.OTHER'
               }
