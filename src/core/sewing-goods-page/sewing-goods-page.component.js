@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
+import { LoaderPrimary } from '../../lib/element/loader';
 import { GalleryBlock } from '../block-gallery';
 import { ProductMainContainer } from './frames';
 
@@ -15,12 +16,15 @@ export function SewingGoodsPageComponent(props) {
   } = props;
   const { images, ...productMainData } = currentPageData;
   return (
-    <SectionLayout type="MEDIUM">
-      <Content>
-        <GalleryBlock items={images} />
-        <ProductMainContainer data={productMainData} />
-      </Content>
-    </SectionLayout>
+    <>
+      {pageLoading && <LoaderPrimary />}
+      <SectionLayout type="MEDIUM">
+        <Content>
+          <GalleryBlock items={images} />
+          <ProductMainContainer data={productMainData} />
+        </Content>
+      </SectionLayout>
+    </>
   );
 }
 

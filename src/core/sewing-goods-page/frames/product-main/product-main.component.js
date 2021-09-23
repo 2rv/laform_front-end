@@ -18,7 +18,7 @@ export function ProductMainComponent(props) {
     discountPrice,
     diliveryPrice,
     optionInfo,
-    adress,
+    address,
     paymentMethod,
     status,
   } = props;
@@ -27,8 +27,6 @@ export function ProductMainComponent(props) {
     <Container>
       <TitleCase>
         <Title tid={title} />
-        {bestSeller && <Modifier alt tid={'PRODUCT_PRICE.HIT'} />}
-        {discount && <Modifier tid={'PRODUCT_PRICE.DISCOUNT'} />}!
       </TitleCase>
       <ShortDescriptionText tid={shortDescription} />
       <Divider />
@@ -44,7 +42,7 @@ export function ProductMainComponent(props) {
       />
       <Divider />
       <ProductDiliveryInfo
-        adress={adress}
+        address={address}
         paymentMethod={paymentMethod}
         status={status}
       />
