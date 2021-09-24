@@ -20,7 +20,7 @@ export function sewingGoodsPageStore(state = initialState, action) {
     case SEWING_GOODS_PAGE_ACTION_TYPE.SEWING_GOODS_PAGE_UPLOAD_SUCCESS:
       return {
         ...state,
-        product: setRequestSuccess(state.product),
+        product: setRequestSuccess(state.product, action.payload),
       };
     case SEWING_GOODS_PAGE_ACTION_TYPE.SEWING_GOODS_PAGE_UPLOAD_ERROR:
       return {
