@@ -132,25 +132,31 @@ export function SliderEditContainer() {
 }
 
 const titleTextColorOptions = [
-  { id: 0, tid: 'белый', color: '#fff' },
-  { id: 1, tid: 'Чёрный', color: '#2f2a2c' },
-  { id: 2, tid: 'Красный', color: '#ff005a' },
-  { id: 3, tid: 'Зелёный', color: '#9EDE73' },
-  { id: 4, tid: 'Синий', color: '#3D56B2' },
+  { id: 0, tid: 'Чёрный', color: '#2F2A2C' },
+  { id: 1, tid: 'Серый', color: '#5F5B5D' },
+  { id: 2, tid: 'Светло серый', color: '#8F8D8E' },
+  { id: 3, tid: 'Белый', color: '#FFFFFF' },
+  { id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
+  { id: 5, tid: 'Розовый основной', color: '#FF005A' },
+  { id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
 ];
 
 const buttonColorOptions = [
-  { id: 0, tid: 'Оранжевый', color: '#FF7600' },
-  { id: 1, tid: 'Синий', color: '#3D56B2' },
-  { id: 2, tid: 'белый', color: '#fff' },
-  { id: 3, tid: 'Красный', color: '#ff005a' },
-  { id: 4, tid: 'Желтый', color: '#FFF338' },
+  { id: 0, tid: 'Чёрный', color: '#2F2A2C' },
+  { id: 1, tid: 'Серый', color: '#5F5B5D' },
+  { id: 2, tid: 'Светло серый', color: '#8F8D8E' },
+  { id: 3, tid: 'Белый', color: '#FFFFFF' },
+  { id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
+  { id: 5, tid: 'Розовый основной', color: '#FF005A' },
+  { id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
 ];
 
 const buttonTextColorOptions = [
-  { id: 0, tid: 'Синий', color: '#3D56B2' },
-  { id: 1, tid: 'Серый', color: '#5f5b5d' },
-  { id: 2, tid: 'Красный', color: '#ff005a' },
-  { id: 3, tid: 'Голубой', color: '#6F69AC' },
-  { id: 4, tid: 'Фиолетовый', color: '#4B3869' },
+  { id: 0, tid: 'Чёрный', color: '#2F2A2C' },
+  { id: 1, tid: 'Серый', color: '#5F5B5D' },
+  { id: 2, tid: 'Светло серый', color: '#8F8D8E' },
+  { id: 3, tid: 'Белый', color: '#FFFFFF' },
+  { id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
+  { id: 5, tid: 'Розовый основной', color: '#FF005A' },
+  { id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
 ];

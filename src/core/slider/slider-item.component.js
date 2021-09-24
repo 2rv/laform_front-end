@@ -18,55 +18,36 @@ export function SliderItemComponent(props) {
     buttonPath,
     image,
   } = props;
+
+  const sliderItemsColor = (item) => {
+    return item === '0'
+      ? '#2F2A2C'
+      : item === '1'
+      ? '#5F5B5D'
+      : item === '2'
+      ? '#8F8D8E'
+      : item === '3'
+      ? '#FFFFFF'
+      : item === '4'
+      ? '#F0F0F0'
+      : item === '5'
+      ? '#FF005A'
+      : item === '6'
+      ? '#7C1C3E'
+      : '';
+  };
+
   return (
     <Container className="keen-slider__slide">
       <Content>
-        <Title
-          color={
-            titleTextColor === '0'
-              ? '#fff'
-              : titleTextColor === '1'
-              ? '#2f2a2c'
-              : titleTextColor === '2'
-              ? '#ff005a'
-              : titleTextColor === '3'
-              ? '#9EDE73'
-              : titleTextColor === '4'
-              ? '#3D56B2'
-              : ''
-          }
-        >
+        <Title color={sliderItemsColor(titleTextColor)}>
           {titleText}
         </Title>
         {isButton && (
           <LinkPrimary path={buttonPath}>
             <Button
-              bgcolor={
-                buttonColor === '0'
-                  ? '#FF7600'
-                  : buttonColor === '1'
-                  ? '#3D56B2'
-                  : buttonColor === '2'
-                  ? '#fff'
-                  : buttonColor === '3'
-                  ? '#ff005a'
-                  : buttonColor === '4'
-                  ? '#FFF338'
-                  : ''
-              }
-              color={
-                buttonTextColor === '0'
-                  ? '#3D56B2'
-                  : buttonTextColor === '1'
-                  ? '#5f5b5d'
-                  : buttonTextColor === '2'
-                  ? '#ff005a'
-                  : buttonTextColor === '3'
-                  ? '#6F69AC'
-                  : buttonTextColor === '4'
-                  ? '#4B3869'
-                  : ''
-              }
+              bgcolor={sliderItemsColor(buttonColor)}
+              color={sliderItemsColor(buttonTextColor)}
             >
               {buttonText}
             </Button>
