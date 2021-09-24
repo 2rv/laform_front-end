@@ -28,6 +28,7 @@ export function CreateArticleContainer() {
     [ARTICLE_FIELD_NAME.MODIFIER]: '',
     [ARTICLE_FIELD_NAME.CATEGORIES]: [],
     [ARTICLE_FIELD_NAME.IMAGES]: [],
+    [ARTICLE_FIELD_NAME.RECOMMENDATIONS]: [],
   });
 
   return (

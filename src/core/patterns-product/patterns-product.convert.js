@@ -1,4 +1,6 @@
-export function performPatternProductData(rowData, backet) {
+import { convertMultiProducts } from 'src/lib/common/product-converters';
+
+export function performPatternProductData(rowData, basket) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -9,7 +11,7 @@ export function performPatternProductData(rowData, backet) {
     categories: rowData.categories.map((item) => item.textRu),
     images: rowData.images.map((item) => item.fileUrl),
     cart: Boolean(
-      backet?.find((bItem) => bItem?.patternProduct?.id === rowData.id),
+      basket?.find((bItem) => bItem?.patternProduct?.id === rowData.id),
     ),
     sizes: rowData.sizes.map((item, index) => ({
       id: item.id,
@@ -21,5 +23,9 @@ export function performPatternProductData(rowData, backet) {
     complexity: rowData.complexity,
     filePdf: rowData.filePdf,
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
+    recommendations: convertMultiProducts(
+      rowData.recommendationProduct,
+      basket,
+    ),
   };
 }

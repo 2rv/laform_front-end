@@ -1,8 +1,8 @@
 import { httpRequest } from '../../main/http';
 import { SEWING_GOODS_API } from './sewing-goods.constant';
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
-import { performSewingGoodsData } from './sewing-goods.convert';
 import { BASKET_STORE_NAME } from '../basket';
+import { convertSewingGoodProducts } from 'src/lib/common/product-converters';
 
 export function sewingGoodsUploadData(currentLang, isAuth) {
   return async (dispatch, getState) => {
@@ -22,13 +22,12 @@ export function sewingGoodsUploadData(currentLang, isAuth) {
             method: SEWING_GOODS_API.SEWING_GOODS_UPLOAD.TYPE,
             url: SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT(currentLang),
           });
-      const data = performSewingGoodsData(
-        response.data,
-        getState()[BASKET_STORE_NAME].basket,
-      );
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
-        data: data,
+        data: onvertSewingGoodProducts(
+          response.data,
+          getState()[BASKET_STORE_NAME].basket,
+        ),
       });
     } catch (err) {
       if (err.response) {

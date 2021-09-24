@@ -33,6 +33,7 @@ export function MasterClassProductComponent(props) {
     cart,
     programs,
     like,
+    recommendations,
   } = productInfo;
 
   return (
@@ -57,7 +58,7 @@ export function MasterClassProductComponent(props) {
           />
         </Content>
       </SectionLayout>
-      {/* <CardListBlock ="Рекомендации" cardType="sewing-goods" items={[]} /> */}
+      <CardListBlock title="Рекомендации" items={recommendations} />
       <BlockComment type={type} id={id} />
     </SectionLayout>
   );

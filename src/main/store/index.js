@@ -60,7 +60,6 @@ import {
   myPurchasesStore,
   MY_PURCHASES_STORE_NAME,
 } from '../../core/my-purchases';
-import { myLikesStore, MY_LIKES_STORE_NAME } from '../../core/my-likes';
 import { faqPageStore, FAQ_PAGE_STORE_NAME } from '../../core/faq-page';
 import {
   editCompilationStore,
@@ -200,7 +199,6 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
   [ORDERS_STORE_NAME]: ordersStore,
   [MY_PURCHASES_STORE_NAME]: myPurchasesStore,
-  [MY_LIKES_STORE_NAME]: myLikesStore,
   [FAQ_PAGE_STORE_NAME]: faqPageStore,
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
   [BASKET_STORE_NAME]: basketStore,

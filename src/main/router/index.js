@@ -34,7 +34,6 @@ import {
   myPurchasesRouter,
   MY_PURCHASES_ROUTE_PATH,
 } from '../../core/my-purchases';
-import { myLikesRouter, MY_LIKES_ROUTE_PATH } from '../../core/my-likes';
 import { faqPageRouter, FAQ_PAGE_ROUTE_PATH } from '../../core/faq-page';
 import {
   editCompilationRouter,
@@ -141,7 +140,6 @@ export const routes = {
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
   [MY_PURCHASES_ROUTE_PATH]: myPurchasesRouter,
-  [MY_LIKES_ROUTE_PATH]: myLikesRouter,
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,

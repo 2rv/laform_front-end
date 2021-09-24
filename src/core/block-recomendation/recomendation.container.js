@@ -48,21 +48,15 @@ export function RecomendationContainer(props) {
     }, []);
     onSetRecomendation(selectedItems);
   }, [products]);
-  const onSelect = (id, status) => {
-    if (status) {
-      const copy = products.map((item) => {
-        if (item.id === id) item['selected'] = true;
-        return item;
-      });
-      setProduct(copy);
-    }
-    if (!status) {
-      const copy = products.map((item) => {
-        if (item.id === id) item.selected = false;
-        return item;
-      });
-      setProduct(copy);
-    }
+
+  const onSelect = (id, type, status) => {
+    const copy = products.map((item) => {
+      if (item.id === id) {
+        status ? (item.selected = true) : (item.selected = false);
+      }
+      return item;
+    });
+    setProduct(copy);
   };
   return (
     <RecomendationComponent

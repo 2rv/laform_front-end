@@ -1,14 +1,16 @@
+import {
+  convertArticleProducts,
+  convertMasterClassProducts,
+  convertPatternProducts,
+  convertSewingGoodProducts,
+} from 'src/lib/common/product-converters';
 import { httpRequest } from '../../main/http';
+import { BASKET_STORE_NAME } from '../basket';
 import { RECOMENDATION_API } from './recomendation.constant';
 import { RECOMENDATION_ACTION_TYPE } from './recomendation.type';
-import {
-  performMasterClassData,
-  performPatternsData,
-  performSewingGoodsData,
-} from './recomendation.convert';
 
 export function masterClassUploadData(currentLang) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: RECOMENDATION_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING,
     });
@@ -17,12 +19,12 @@ export function masterClassUploadData(currentLang) {
         method: RECOMENDATION_API.MASTER_CLASS_UPLOAD_DATA.TYPE,
         url: RECOMENDATION_API.MASTER_CLASS_UPLOAD_DATA.ENDPOINT(currentLang),
       });
-
-      const data = performMasterClassData(response.data);
-
       dispatch({
         type: RECOMENDATION_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
-        data: data,
+        data: convertMasterClassProducts(
+          response.data,
+          getState()[BASKET_STORE_NAME].basket,
+        ),
       });
     } catch (err) {
       if (err.response) {
@@ -35,7 +37,7 @@ export function masterClassUploadData(currentLang) {
   };
 }
 export function sewingGoodsUploadData(currentLang) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: RECOMENDATION_ACTION_TYPE.SEWING_GOODS_UPLOAD_PENDING,
     });
@@ -44,10 +46,12 @@ export function sewingGoodsUploadData(currentLang) {
         method: RECOMENDATION_API.SEWING_GOODS_UPLOAD_DATA.TYPE,
         url: RECOMENDATION_API.SEWING_GOODS_UPLOAD_DATA.ENDPOINT(currentLang),
       });
-      const data = performSewingGoodsData(response.data);
       dispatch({
         type: RECOMENDATION_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
-        data: data,
+        data: convertSewingGoodProducts(
+          response.data,
+          getState()[BASKET_STORE_NAME].basket,
+        ),
       });
     } catch (err) {
       if (err.response) {
@@ -65,14 +69,13 @@ export function articleUploadData(currentLang) {
       type: RECOMENDATION_ACTION_TYPE.ARTICLES_UPLOAD_PENDING,
     });
     try {
-      //   const response = await httpRequest({
-      //     method: RECOMENDATION_API.ARTICLE_UPLOAD_DATA.TYPE,
-      //     url: RECOMENDATION_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang),
-      //   });
-      const data = [];
+      const response = await httpRequest({
+        method: RECOMENDATION_API.ARTICLE_UPLOAD_DATA.TYPE,
+        url: RECOMENDATION_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang),
+      });
       dispatch({
         type: RECOMENDATION_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS,
-        data: data,
+        data: convertArticleProducts(response.data),
       });
     } catch (err) {
       if (err.response) {
@@ -85,7 +88,7 @@ export function articleUploadData(currentLang) {
   };
 }
 export function patternsUploadData(currentLang) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: RECOMENDATION_ACTION_TYPE.PATTERNS_UPLOAD_PENDING,
     });
@@ -95,11 +98,12 @@ export function patternsUploadData(currentLang) {
         method: RECOMENDATION_API.PATTERNS_UPLOAD.TYPE,
         url: RECOMENDATION_API.PATTERNS_UPLOAD.ENDPOINT(currentLang),
       });
-
-      const data = performPatternsData(response.data);
       dispatch({
         type: RECOMENDATION_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS,
-        data: data,
+        data: convertPatternProducts(
+          response.data,
+          getState()[BASKET_STORE_NAME].basket,
+        ),
       });
     } catch (err) {
       if (err.response) {

@@ -18,6 +18,7 @@ export function PatternsProductComponent(props) {
     pageLoading,
     productInfo,
     addToCart,
+    recommendations,
   } = props;
 
   if (!productInfo) return null;
@@ -35,7 +36,7 @@ export function PatternsProductComponent(props) {
         <Title tid="PATTERNS.MATERIALS" />
         <ReactEditor data={productInfo.materials} enableReInitialize readOnly />
       </SectionLayout>
-      {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}
+      {/* <CardListBlock title="Рекомендации" items={recommendations} /> */}
       <BlockComment type={productInfo.type} id={productInfo.id} />
     </SectionLayout>
   );

@@ -29,5 +29,5 @@ export const ELECTRONIC_PATTERN_FIELD_NAME = {
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
 
-  RECOMMENDATIONS: 'recommendations',
+  RECOMMENDATIONS: 'recommendation',
 };
