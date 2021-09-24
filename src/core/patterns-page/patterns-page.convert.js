@@ -20,7 +20,7 @@ export const convertPatternData = (data) => {
     diliveryPrice: data?.deliveryPrice,
     filePdf: data.size?.filePdf?.fileUrl,
     optionInfo: [
-      { name: 'Размер', value: data.size.size },
+      { name: 'BLOCK_TABLE_LIST.PARAMS.QUANTITY', value: data.size.size },
     ],
   };
 };
