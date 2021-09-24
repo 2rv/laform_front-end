@@ -10,13 +10,23 @@
   "STATE": "State",
   "ONLINE": "Online",
   "OTHER": "Other",
-  "MY_PURCHASES": "Purchases list",
-  "MY_LIKES": "My likes",
-  "MY_COMMENTS": "My comments",
+  "EMAIL": "Email",
+  "BAN_USER": "Ban user",
+  "PURHCASES_QUANTITY": "Purchases quantity",
+  "PURCHASES": "Purchases",
+  "LIKES": "Likes",
+  "COMMENTS": "Comments",
   "NOT_HAVE_PURCHASES": "Not have purchases",
   "NOT_HAVE_LIKES": "Not have likes",
   "NOT_HAVE_COMMENTS": "Not have comments",
   "SHOW_ALL": "Show all...",
   "ACCOUNT_STATE": "Account state -",
-  "SUBSCRIBED_TO_MAILING_LISTS": "Subscribed to mailing lists -"
+  "SUBSCRIBED_TO_MAILING_LISTS": "Subscribed to mailing lists -",
+  "CATEGORIES": {
+    "MASTER_CLASS": "Master-class",
+    "SEWING_GOODS": "Sewing good",
+    "ELECTRONIC_PATTERN": "Electronic pattern",
+    "PRINTED_PATTERN": "Printed pattern",
+    "ARTICLE": "Article"
+  }
 }
