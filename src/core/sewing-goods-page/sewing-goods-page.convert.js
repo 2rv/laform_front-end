@@ -20,9 +20,9 @@ export const convertSewingGoodData = (data) => {
     paymentMethod: data.purchase.paymentMethod,
     status: data.purchase.status,
     optionInfo: [
-      { name: 'Цвет', value: data.color.color },
-      { name: 'Размер', value: data.size.size },
-      { name: 'Количество', value: data.totalCount },
+      { name: 'BLOCK_TABLE_LIST.PARAMS.COLOR', value: data.color.color },
+      { name: 'BLOCK_TABLE_LIST.PARAMS.SIZE', value: data.size.size },
+      { name: 'BLOCK_TABLE_LIST.PARAMS.QUANTITY', value: data.totalCount },
     ],
   };
 };

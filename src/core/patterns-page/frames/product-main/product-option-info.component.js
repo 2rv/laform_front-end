@@ -12,7 +12,7 @@ export function ProductOptionInfo(props) {
       {optionInfo.map(({ name, value }, index) => {
         return (
           <TextSecondary key={index}>
-            <TextSecondary tid={name} />: &nbsp;
+            <TextSecondary tid={name} />&nbsp;
             <TextPrimary tid={value} />
           </TextSecondary>
         );
