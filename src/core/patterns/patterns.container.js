@@ -43,7 +43,7 @@ export function PatternsContainer() {
   );
 
   useEffect(() => {
-    dispatch(patternsUploadData(currentLang));
+    dispatch(patternsUploadData(currentLang, isAuth));
 
     if (!['all', 'printed', 'electronic'].includes(router.query.type)) {
       router.push(

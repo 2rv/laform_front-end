@@ -16,6 +16,7 @@ import {
   articleUploadData,
 } from './home.action';
 import { HOME_STORE_NAME } from './home.constant';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function HomeContainer() {
   const dispatch = useDispatch();
@@ -25,18 +26,20 @@ export function HomeContainer() {
     articleState,
     pageLoading,
     currentLang,
+    logged,
   } = useSelector((state) => ({
     masterClassState: state[HOME_STORE_NAME].masterClassState,
     sewingGoodsState: state[HOME_STORE_NAME].sewingGoodsState,
     articleState: state[HOME_STORE_NAME].articleState,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    logged: state[AUTH_STORE_NAME].logged,
   }));
 
   useEffect(() => {
-    dispatch(masterClassUploadData(currentLang));
-    dispatch(sewingGoodsUploadData(currentLang));
-    dispatch(articleUploadData(currentLang));
+    dispatch(masterClassUploadData(currentLang, logged));
+    dispatch(sewingGoodsUploadData(currentLang, logged));
+    dispatch(articleUploadData(currentLang, logged));
   }, []);
 
   return (

@@ -110,10 +110,8 @@ import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_ROUTE_PATH,
 } from '../../core/master-class-page';
-import {
-  usersStore,
-  USERS_ROUTE_PATH,
-} from '../../core/users';
+import { usersStore, USERS_ROUTE_PATH } from '../../core/users';
+import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
 
 export const routes = {
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
@@ -154,6 +152,7 @@ export const routes = {
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
   [USERS_ROUTE_PATH]: usersStore,
+  [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
 };
 
 export const Router = routesInit(routes);

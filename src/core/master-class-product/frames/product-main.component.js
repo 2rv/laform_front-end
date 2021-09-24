@@ -23,6 +23,7 @@ export function ProductMainComponent(props) {
     programs,
     addToCart,
     cart,
+    like,
   } = props;
   const [program, setProgram] = useState(
     programs?.length > 0
@@ -70,7 +71,13 @@ export function ProductMainComponent(props) {
       <Divider />
       <FooterCase>
         <ProductPriceComponent price={program?.price} discount={discount} />
-        <CardActions cart={cart} onSetCart={handleAddToCart} />
+        <CardActions
+          like={like}
+          id={id}
+          type={type}
+          cart={cart}
+          onSetCart={handleAddToCart}
+        />
       </FooterCase>
       <LineCase>
         <TextPrimary tid="Артикул - " />

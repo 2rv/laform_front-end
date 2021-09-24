@@ -32,7 +32,7 @@ export function MasterClassesContainer() {
     }),
   );
 
-  useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
+  useEffect(() => dispatch(masterClassesUploadData(currentLang, isAuth)), []);
 
   const filterInitialValue = () => ({
     [MASTER_CLASSES_FIELD_NAME.FILTER]: 0,

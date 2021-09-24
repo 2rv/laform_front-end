@@ -147,6 +147,7 @@ import {
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
 import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
+import { likeStore, LIKE_STORE_NAME } from '../../core/block-like';
 import {
   emailConfirmedStore,
   EMAIL_CONFIRMED_STORE_NAME,
@@ -155,10 +156,9 @@ import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_STORE_NAME,
 } from '../../core/master-class-page';
-import {
-  usersStore,
-  USERS_STORE_NAME,
-} from '../../core/users';
+import { usersStore, USERS_STORE_NAME } from '../../core/users';
+import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
+export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
@@ -211,8 +211,10 @@ export const reducers = combineReducers({
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
+  [LIKE_STORE_NAME]: likeStore,
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
   [USERS_STORE_NAME]: usersStore,
+  [ALL_LIKES_STORE_NAME]: allLikesStore,
 });
 
 export { initStore } from './store.core';

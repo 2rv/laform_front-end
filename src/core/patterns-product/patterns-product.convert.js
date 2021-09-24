@@ -19,5 +19,7 @@ export function performPatternProductData(rowData, backet) {
     })),
     materials: rowData.materialRu,
     complexity: rowData.complexity,
+    filePdf: rowData.filePdf,
+    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
   };
 }

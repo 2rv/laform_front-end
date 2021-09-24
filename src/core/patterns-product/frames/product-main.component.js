@@ -25,6 +25,8 @@ export function ProductMainComponent(props) {
     complexity,
     cart,
     addToCart,
+    filePdf,
+    like,
   } = props;
 
   const [size, setSize] = useState(
@@ -80,7 +82,13 @@ export function ProductMainComponent(props) {
           price={price ? price : size?.price}
           discount={discount}
         />
-        <CardActions cart={cart} onSetCart={handleAddToCart} />
+        <CardActions
+          like={like}
+          id={id}
+          type={type}
+          cart={cart}
+          onSetCart={handleAddToCart}
+        />
       </FooterCase>
       <LineCase>
         <TextPrimary tid="Артикул - " />

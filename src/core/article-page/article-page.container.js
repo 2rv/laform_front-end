@@ -13,6 +13,7 @@ import {
 import { articlePageUploadData } from './article-page.action';
 import { ArticlePageComponent } from './article-page.component';
 import { ARTICLE_PAGE_STORE_NAME } from './article-page.constant';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function ArticlePageContainer() {
   const dispatch = useDispatch();

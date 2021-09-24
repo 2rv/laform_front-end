@@ -14,7 +14,6 @@ export function SewingGoodsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    //------------
     productInfo,
     addToCart,
   } = props;
@@ -34,6 +33,7 @@ export function SewingGoodsProductComponent(props) {
     sizes = [],
     colors = [],
     count = 0,
+    like,
   } = productInfo;
 
   return (
@@ -56,6 +56,7 @@ export function SewingGoodsProductComponent(props) {
             colors={colors}
             count={count}
             addToCart={addToCart}
+            like={like}
           />
         </Content>
       </SectionLayout>

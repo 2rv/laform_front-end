@@ -4,11 +4,12 @@ import { FilterTabsPropsType } from './filter-tabs.type';
 import { TextButton } from '../button';
 
 export function FilterTabs(props: FilterTabsPropsType) {
-  const { activeTab, setActiveTab, tabItems } = props;
+  const { activeTab, setActiveTab, tabItems, disabled } = props;
   return (
     <Container>
       {tabItems?.map((x, i) => (
         <Tab
+          disabled={disabled}
           onClick={() => setActiveTab(x.type)}
           key={i}
           tid={x.name}

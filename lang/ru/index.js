@@ -37,6 +37,7 @@ import FAVORITES from './favorites.json';
 import BLOCK_TEXT from './block-text.json';
 import BLOCK_TABLE_LIST from './block-table-list.json';
 import PROMOCODE from './promocode.json';
+import ALL_LIKES from './all-likes.json';
 
 export const RU = {
   translation: {
@@ -79,5 +80,6 @@ export const RU = {
     BLOCK_TEXT,
     BLOCK_TABLE_LIST,
     PROMOCODE,
+    ALL_LIKES,
   },
 };

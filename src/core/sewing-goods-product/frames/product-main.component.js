@@ -24,6 +24,7 @@ export function ProductMainComponent(props) {
     sizes,
     colors,
     addToCart,
+    like,
   } = props;
 
   const [size, setSize] = useState(
@@ -103,8 +104,13 @@ export function ProductMainComponent(props) {
             <Button tid="+" onClick={increment} />
           </ActionCase>
         </Case>
-
-        <CardActions cart={cart} onSetCart={handleAddToCart} />
+        <CardActions
+          like={like}
+          id={id}
+          type={type}
+          cart={cart}
+          onSetCart={handleAddToCart}
+        />
       </FooterCase>
       <LineCase>
         <TextPrimary tid="Артикул - " />

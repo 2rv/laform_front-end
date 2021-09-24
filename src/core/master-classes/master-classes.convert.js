@@ -4,6 +4,7 @@ export const performMasterClassData = (rowData, backet) => {
       id: item.id,
       name: item.titleRu,
       image: item.images[0]?.fileUrl,
+      like: item?.like ? (item.like?.length ? true : false) : null,
       type: item.type || 0,
       bestseller: item.modifier,
       categories: item.categories,

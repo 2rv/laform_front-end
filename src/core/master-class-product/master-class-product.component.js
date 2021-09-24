@@ -32,6 +32,7 @@ export function MasterClassProductComponent(props) {
     categories,
     cart,
     programs,
+    like,
   } = productInfo;
 
   return (
@@ -52,6 +53,7 @@ export function MasterClassProductComponent(props) {
             images={images}
             categories={categories}
             programs={programs}
+            like={like}
           />
         </Content>
       </SectionLayout>

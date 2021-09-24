@@ -22,5 +22,6 @@ export function performSewingGoodsProductData(rowData, backet) {
       id: item.id,
       tid: item.color,
     })),
+    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
   };
 }
