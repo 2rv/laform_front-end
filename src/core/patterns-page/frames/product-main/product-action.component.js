@@ -8,12 +8,12 @@ import {
 import { ReactComponent as QuestionIcon } from '../../../../asset/svg/question-mark.svg';
 
 export function ProductAction(props) {
-  const {} = props;
+  const { sendPdfToMail, redirectToPdfLink } = props;
 
   return (
     <Container>
-      <ButtonSecondary tid="PATTENRS.SEND_TO_EMAIL" />
-      <ButtonPrimary tid="PATTENRS.DOWNLOAD" />
+      <ButtonSecondary tid="PATTERNS.SEND_TO_EMAIL" onClick={sendPdfToMail} />
+      <ButtonPrimary tid="PATTERNS.DOWNLOAD" onClick={redirectToPdfLink} />
       <Button>
         <QuestionIcon />
       </Button>

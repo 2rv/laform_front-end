@@ -20,9 +20,24 @@ export function patternsPageStore(state = initialState, action) {
     case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PAGE_UPLOAD_SUCCESS:
       return {
         ...state,
-        product: setRequestSuccess(state.product),
+        product: setRequestSuccess(state.product, action.payload),
       };
     case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PAGE_UPLOAD_ERROR:
+      return {
+        ...state,
+        product: setRequestError(state.product, action.errorMessage),
+      };
+    case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_PENDING:
+      return {
+        ...state,
+        product: setRequestPending(state.product),
+      };
+    case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_SUCCESS:
+      return {
+        ...state,
+        product: setRequestSuccess(state.product),
+      };
+    case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_ERROR:
       return {
         ...state,
         product: setRequestError(state.product, action.errorMessage),
