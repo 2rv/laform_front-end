@@ -18,5 +18,13 @@
   "NOT_HAVE_COMMENTS": "Нету комментариев",
   "SHOW_ALL": "Посмотреть все...",
   "ACCOUNT_STATE": "Состояние аккаунта -",
-  "SUBSCRIBED_TO_MAILING_LISTS": "Подписан на рассылки -"
+  "SUBSCRIBED_TO_MAILING_LISTS": "Подписан на рассылки -",
+  "ROLE": {
+    "TITLE": "Роль -",
+    "BLOCK": "Заблокировать",
+    "BLOCKED": "Заблокированный",
+    "USER": "Обычный пользователь",
+    "ADMIN": "Администратор",
+    "CHANGE_ROLE": "Изменить роль пользователя"
+  }
 }

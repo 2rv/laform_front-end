@@ -18,5 +18,13 @@
   "NOT_HAVE_COMMENTS": "Not have comments",
   "SHOW_ALL": "Show all...",
   "ACCOUNT_STATE": "Account state -",
-  "SUBSCRIBED_TO_MAILING_LISTS": "Subscribed to mailing lists -"
+  "SUBSCRIBED_TO_MAILING_LISTS": "Subscribed to mailing lists -",
+  "ROLE": {
+    "TITLE": "Role -",
+    "BLOCK": "Block",
+    "BLOCKED": "Blocked",
+    "USER": "Normal user",
+    "ADMIN": "Administrator",
+    "CHANGE_ROLE": "Change user role"
+  }
 }

@@ -5,4 +5,8 @@ export const USERS_API = {
     ENDPOINT: 'user/get',
     TYPE: 'GET',
   },
+  USER_UPDATE_DATA: {
+    ENDPOINT: (userId) => `user/update/${userId}`,
+    TYPE: 'PUT',
+  },
 };
