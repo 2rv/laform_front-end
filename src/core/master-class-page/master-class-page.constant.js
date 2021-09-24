@@ -3,8 +3,7 @@ export const MASTER_CLASS_PAGE_STORE_NAME = 'MASTER_CLASS_PAGE';
 
 export const MASTER_CLASS_PAGE_API = {
   MASTER_CLASS_DATA_UPLOAD: {
-    ENDPOINT: (currentLang, id) =>
-      `/master-class/get/${id}/?lang=${currentLang}`, // сделать правильно
+    ENDPOINT: (id) => `/purchase/user/get/master-class/${id}`,
     TYPE: 'GET',
   },
 };
