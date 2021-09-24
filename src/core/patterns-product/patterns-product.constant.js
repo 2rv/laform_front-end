@@ -10,7 +10,7 @@ export const PATTERNS_PRODUCT_API = {
   },
   PATTERNS_PRODUCT_UPLOAD_AUTH: {
     ENDPOINT: (currentLang, id) =>
-      `/pattern-product/get/auth/${id}/?lang=${currentLang}`,
+      `/pattern-product/auth/get/${id}/?lang=${currentLang}`,
     TYPE: 'GET',
   },
   PATTERNS_PRODUCT_SEND_PDF_TO_MAIL: {

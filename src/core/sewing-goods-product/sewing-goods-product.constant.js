@@ -10,7 +10,7 @@ export const SEWING_GOODS_PRODUCT_API = {
   },
   SEWING_GOODS_PRODUCT_AUTH_UPLOAD: {
     ENDPOINT: (currentLang, id) =>
-      `/sewing-product/get/auth/${id}/?lang=${currentLang}`,
+      `/sewing-product/auth/get/${id}/?lang=${currentLang}`,
     TYPE: 'GET',
   },
 };

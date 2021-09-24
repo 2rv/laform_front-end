@@ -24,12 +24,13 @@ import { addToBasket } from '../basket';
 export function PatternsContainer() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { patternsState, pageLoading, currentLang, user } = useSelector(
+  const { patternsState, pageLoading, currentLang, user, isAuth } = useSelector(
     (state) => ({
       patternsState: state[PATTERNS_STORE_NAME].patternsState,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
     }),
   );
   const [activeTab, setActiveTab] = useState(
