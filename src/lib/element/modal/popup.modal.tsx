@@ -24,7 +24,7 @@ const Container = styled.div<any>`
   display: ${(p) => (p.isopen ? 'flex' : 'none')};
   position: fixed;
   z-index: 9999;
-  padding-top: 100px;
+  padding: 100px 0;
   left: 0;
   top: 0;
   width: 100%;
