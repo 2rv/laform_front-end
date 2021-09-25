@@ -2,71 +2,110 @@ import styled from 'styled-components';
 import { SectionLayout, FieldLayout } from '../../../lib/element/layout';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
-import { FieldSelect } from '../../../lib/element/field';
 import { ButtonSecondary } from '../../../lib/element/button';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
 import { TextSecondary } from '../../../lib/element/text';
+import {
+  BasicField,
+  FieldSelect,
+  TextareaField,
+} from '../../../lib/element/field';
+import { ABOUT_ORDER_FIELD_NAME } from '../order-number.type';
 import { AboutOrderPrice } from './about-order-price';
-import { AboutOrderFields } from './about-order-fields.component';
 
 export function AboutOrderFormComponent(props) {
   const {
-    orderNumberDetails,
-
-    fieldFullName,
-    fieldCurrentCity,
-    fieldConvenientDeliveryMethod,
-    fieldConvenientPaymentMethod,
-    fieldContactPhoneNumber,
-    fieldOrderNote,
-    fieldPromoCode,
-    statusSelectName,
-
-    paymentOptions,
-    dileveryOptions,
-
     values,
     handleSubmit,
     handleChange,
+    statusOrderSelect,
+    errors,
+    touched,
+    handleBlur,
   } = props;
 
   return (
     <form onSubmit={handleSubmit}>
-      <SectionLayout type="SMALL">
-        <Title tid="ORDER_NUMBER.FORM.TITLE" />
-        <AboutOrderFields
-          fieldFullName={fieldFullName}
-          fieldCurrentCity={fieldCurrentCity}
-          fieldConvenientDeliveryMethod={fieldConvenientDeliveryMethod}
-          fieldConvenientPaymentMethod={fieldConvenientPaymentMethod}
-          fieldContactPhoneNumber={fieldContactPhoneNumber}
-          fieldOrderNote={fieldOrderNote}
-          fieldPromoCode={fieldPromoCode}
-          paymentOptions={paymentOptions}
-          dileveryOptions={dileveryOptions}
-          values={values}
-          handleChange={handleChange}
-          orderNumberDetails={orderNumberDetails}
-        />
+      <SectionLayout>
+        <SectionLayout type="SMALL">
+          <Title tid="Информация о заказе" />
+          <SectionLayout type="TEXT">
+            <FieldLayout type="double" adaptive>
+              <BasicField
+                titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.FULL_NAME"
+                placeholderTid="ФИО покупателя"
+                name={ABOUT_ORDER_FIELD_NAME.FULL_NAME}
+                value={values[ABOUT_ORDER_FIELD_NAME.FULL_NAME]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={true}
+              />
+              <BasicField
+                titleTid="Почта"
+                placeholderTid="Почта покупателя"
+                name={ABOUT_ORDER_FIELD_NAME.EMAIL}
+                value={values[ABOUT_ORDER_FIELD_NAME.EMAIL]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={true}
+              />
+              <BasicField
+                titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CURRENT_CITY"
+                placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.MOSKVA"
+                name={ABOUT_ORDER_FIELD_NAME.CITY}
+                value={values[ABOUT_ORDER_FIELD_NAME.CITY]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={true}
+              />
+              <BasicField
+                titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CONTACT_NUMBER"
+                placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.CONTACT_NUMBER"
+                name={ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER}
+                value={values[ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={true}
+              />
+              <BasicField
+                titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PROMO_CODE"
+                placeholderTid="Нету промокода"
+                name={ABOUT_ORDER_FIELD_NAME.PROMO_CODE}
+                value={values[ABOUT_ORDER_FIELD_NAME.PROMO_CODE]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={true}
+              />
+            </FieldLayout>
+            <TextareaField
+              titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.ORDER_NOTE"
+              placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
+              name={ABOUT_ORDER_FIELD_NAME.COMMENT}
+              value={values[ABOUT_ORDER_FIELD_NAME.COMMENT]}
+              onBlur={handleBlur}
+              disabled={true}
+            />
+          </SectionLayout>
+          <AboutOrderPrice
+            discount={values[ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]}
+            price={values[ABOUT_ORDER_FIELD_NAME.PRICE]}
+          />
+        </SectionLayout>
+
         <Divider />
-        <AboutOrderPrice
-          discountPrice={orderNumberDetails?.discountPrice}
-          discount={orderNumberDetails?.discount}
-          diliveryPrice={orderNumberDetails?.deliveryPrice}
-          price={orderNumberDetails?.totalPrice}
-        />
-        <Title tid="ORDER_NUMBER.FORM.TITLE" />
-        <SectionLayout type="TEXT_SMALL">
-          <SelectTitle tid="ORDER_NUMBER.FORM.ORDER_STATUS" />
+
+        <SectionLayout type="SMALL">
+          <Title tid="Данные " />
           <FieldLayout type="double" adaptive>
             <FieldSelect
-              disabled={true}
-              options={[{ id: 0, tid: orderNumberDetails?.orderStatus }]}
-              name={statusSelectName}
-              value={values[statusSelectName]}
+              titleTid="ORDER_NUMBER.FORM.ORDER_STATUS"
+              options={statusOrderSelect}
+              name={ABOUT_ORDER_FIELD_NAME.ORDER_STATUS}
+              value={values[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]}
               onChange={handleChange}
+              onBlur={handleBlur}
             />
-            <ButtonSecondary type="submit" tid="ORDER_NUMBER.FORM.SAVE_DATA" />
+            <Button type="submit" tid="ORDER_NUMBER.FORM.SAVE_DATA" />
           </FieldLayout>
         </SectionLayout>
       </SectionLayout>
@@ -81,3 +120,23 @@ const Title = styled(TitlePrimary)`
 const SelectTitle = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
 `;
+const Button = styled(ButtonSecondary)`
+  margin-top: 19px;
+`;
+{
+  /* 
+<FieldSelect
+titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PAYMENT_METHOD"
+options={[{ id: 0, tid: orderNumberDetails?.typeOfPayment }]}
+name={fieldConvenientPaymentMethod}
+value={values[fieldConvenientPaymentMethod]}
+onChange={handleChange}
+/>
+<FieldSelect
+titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.DELIVERY_METHOD"
+options={[{ id: 0, tid: orderNumberDetails?.typeOfDelivery }]}
+name={ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD}
+value={values[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]}
+onChange={handleChange}
+/>  */
+}

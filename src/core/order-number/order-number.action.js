@@ -15,11 +15,9 @@ export function orderNumberUploadData(orderId) {
         url: ORDER_NUMBER_API.ORDER_NUMBER_UPLOAD.ENDPOINT(orderId),
       });
 
-      const orderNumberDetails = convertUsersOrderData(response.data);
-
       dispatch({
         type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_SUCCESS,
-        orderNumberDetails,
+        data: convertUsersOrderData(response.data),
       });
     } catch (err) {
       if (err.response) {
