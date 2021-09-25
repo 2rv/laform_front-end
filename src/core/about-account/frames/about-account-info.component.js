@@ -42,9 +42,6 @@ export function AboutAccountInfoComponent({ user }) {
             <InfoTitle tid="PROFILE.PURHCASES_QUANTITY" />
             <InfoText tid={user?.purchase?.length} />
           </SectionLayout>
-          {/* <SectionLayout type="TEXT">
-            <ButtonBasic tid="PROFILE.BAN_USER" />
-          </SectionLayout> */}
         </LineSection>
       </SectionLayout>
       <SectionLayout type="SMALL">
@@ -75,6 +72,7 @@ export function AboutAccountInfoComponent({ user }) {
 const LineSection = styled.div`
   gap: ${spacing(6)};
   display: flex;
+  flex-wrap: wrap;
 `;
 const LineCase = styled.div`
   display: flex;

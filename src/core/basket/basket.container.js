@@ -84,6 +84,7 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
       [ORDER_FIELD_NAME.DILIVERY_PRICE]: 0,
+      [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
     };
   };
 

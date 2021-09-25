@@ -30,6 +30,11 @@ export const performUserInfoData = (rowData) => ({
     rowData[USER_INFO_DATA_NAME.PAYMENT_METHOD],
   [ORDER_FIELD_NAME.PHONE]: rowData[USER_INFO_DATA_NAME.PHONE],
 });
+export const convertUserInfoData = (data) => ({
+  [USER_INFO_DATA_NAME.FULL_NAME]: data[ORDER_FIELD_NAME.FULL_NAME],
+  [USER_INFO_DATA_NAME.CITY]: data[ORDER_FIELD_NAME.CITY],
+  [USER_INFO_DATA_NAME.PHONE]: data[ORDER_FIELD_NAME.PHONE],
+});
 
 export const convertPromoCodeForCheck = (promocode) => ({
   [ORDER_DATA_NAME.PROMO_CODE]: promocode,

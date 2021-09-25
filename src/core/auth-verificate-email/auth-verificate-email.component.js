@@ -19,7 +19,6 @@ import { EmailConfirmedContainer } from '../../core/email-confirmed';
 export function AuthVerificateEmailComponent(props) {
   const { email, onResend, isPending, isError, isSuccess, errorMessage } =
     props;
-  // <ContentLayout vertical="center" horizontal="center"></ContentLayout>
   return (
     <Container>
       <Content type="SMALL">

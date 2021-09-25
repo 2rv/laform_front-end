@@ -56,6 +56,11 @@ const Container = styled.div`
   width: 100%;
   align-items: center;
   gap: ${spacing(6)};
+  @media screen and (max-width: 400px) {
+    gap: ${spacing(3)};
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 const Content = styled.div`
   display: flex;

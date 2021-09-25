@@ -14,6 +14,10 @@ export const BASKET_API = {
     ENDPOINT: 'user/info/get',
     TYPE: 'GET',
   },
+  UPDATE_USER_INFO: {
+    ENDPOINT: '/user/info/update',
+    TYPE: 'PATCH',
+  },
   CHECK_PROMO_CODE: {
     ENDPOINT: 'promo-code/check',
     TYPE: 'POST',

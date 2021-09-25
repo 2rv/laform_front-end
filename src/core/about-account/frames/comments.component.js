@@ -21,9 +21,7 @@ export function CommentsComponent({ comments }) {
                 <Image src={comment.image} />
                 <TextSecondary tid={comment.text} />
               </Link>
-              <TextSecondary>
-                {ConvertTime(comment.createDate)}
-              </TextSecondary>
+              <Text>{ConvertTime(comment.createDate)}</Text>
             </Content>
           ))}
         </Container>
@@ -45,13 +43,25 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    gap: ${spacing(3)};
+    align-items: flex-start;
+  }
+`;
+const Text = styled(TextSecondary)`
+  @media screen and (max-width: 720px) {
+    margin-left: 90px;
+  }
 `;
 const Link = styled(LinkSecondary)`
   display: flex;
   align-items: center;
   cursor: pointer;
   gap: ${spacing(2)};
+  @media screen and (max-width: 720px) {
+    align-items: flex-start;
+  }
 `;
 const Image = styled.img`
   width: 75px;

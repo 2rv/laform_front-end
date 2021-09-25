@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
-import { BasicField, FieldSelect, TextareaField } from 'src/lib/element/field';
+import {
+  BasicField,
+  FieldCheckbox,
+  FieldSelect,
+  TextareaField,
+} from 'src/lib/element/field';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ORDER_FIELD_NAME } from '../basket.type';
 import { ButtonBasic, ButtonSecondary } from 'src/lib/element/button';
@@ -12,6 +17,7 @@ export function FormComponent(props) {
     values,
     handleChange,
     handleBlur,
+    setFieldValue,
     pageLoading,
     isPending,
     diliveryOptions = [],
@@ -96,6 +102,19 @@ export function FormComponent(props) {
             onClick={() => checkPromoCode(values[ORDER_FIELD_NAME.PROMO_CODE])}
           />
         </FieldLayout>
+        <FieldCheckbox
+          titleTid="Сохранить данные для следующего раза?"
+          name={ORDER_FIELD_NAME.SAVE_USER_INFO}
+          value={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
+          onBlur={handleBlur}
+          checked={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
+          onClick={(e) =>
+            setFieldValue(
+              ORDER_FIELD_NAME.SAVE_USER_INFO,
+              !values[ORDER_FIELD_NAME.SAVE_USER_INFO],
+            )
+          }
+        />
       </FieldLayout>
       <TextareaField
         titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"

@@ -10,6 +10,7 @@ export const ORDER_FIELD_NAME = {
   PROMO_DISCOUNT: 'promoCodeDiscount',
   PRICE: 'price',
   DILIVERY_PRICE: 'diliveryPrice',
+  SAVE_USER_INFO: 'saveUserInfo',
 };
 
 export const ORDER_DATA_NAME = {

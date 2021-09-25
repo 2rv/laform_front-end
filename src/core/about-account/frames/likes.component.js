@@ -20,11 +20,11 @@ export function LikesComponent({ likes }) {
                 <Image src={like.image} />
                 <ProductTitle tid={like.text} />
               </Link>
-              <div>
+              <Case>
                 <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CATEGORY" />
                 &nbsp;
                 <TextPrimary tid={like.category} />
-              </div>
+              </Case>
             </Content>
           ))}
         </Container>
@@ -46,15 +46,28 @@ const Container = styled.div`
   gap: ${spacing(6)};
 `;
 const Content = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(900px, 1fr));
+  display: flex;
   align-items: center;
-  gap: ${spacing(2)};
+  gap: ${spacing(6)};
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    gap: ${spacing(3)};
+    align-items: flex-start;
+  }
 `;
+const Case = styled.div`
+  @media screen and (max-width: 720px) {
+    margin-left: 90px;
+  }
+`;
+
 const Link = styled(LinkSecondary)`
   display: flex;
   align-items: center;
   gap: ${spacing(2)};
+  @media screen and (max-width: 720px) {
+    align-items: flex-start;
+  }
 `;
 const Image = styled.img`
   width: 75px;
