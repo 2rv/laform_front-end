@@ -41,7 +41,7 @@ export function CardActions(props) {
     if (onSetCart && !purchase) {
       if (inCart) return redirect(BASKET_ROUTE_PATH);
       setInCart(!inCart);
-      onSetCart(id, type, !inCart);
+      onSetCart({ id, type }, !inCart);
     }
   };
 

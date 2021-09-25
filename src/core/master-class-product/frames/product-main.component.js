@@ -31,13 +31,8 @@ export function ProductMainComponent(props) {
       : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
 
-  const handleAddToCart = (_, __, inCart) => {
-    addToCart(inCart, {
-      id,
-      type,
-      program: program.id,
-    });
-  };
+  const handleAddToCart = (values) =>
+    addToCart({ id, type, program: program.id });
 
   return (
     <Container>

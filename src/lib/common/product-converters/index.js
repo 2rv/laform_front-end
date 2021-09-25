@@ -70,6 +70,7 @@ export const convertArticleItemConverter = (item) => ({
   like: item?.like ? (item.like?.length ? true : false) : null,
   image: item.image?.fileUrl,
   type: item.type,
+  like: item?.like ? (item.like?.length ? true : false) : null,
   bestseller: item.modifier,
   categories: item.categories,
   createdDate: item.createdDate,
@@ -90,7 +91,7 @@ export const convertArticleProducts = (data) => {
 };
 
 // методы для конвертации лайков, рекомендаций и ещё чего нить
-export const convertMultiProducts = (rowData, basket) => {
+export const convertMultiProducts = (rowData = [], basket) => {
   return rowData.map((item) => {
     const { masterClassId, patternProductId, sewingProductId, postId } = item;
     if (masterClassId) return masterClassItemConverter(masterClassId, basket);

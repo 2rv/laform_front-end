@@ -18,7 +18,6 @@ export function PatternsProductComponent(props) {
     pageLoading,
     productInfo,
     addToCart,
-    recommendations,
   } = props;
 
   if (!productInfo) return null;
@@ -26,7 +25,6 @@ export function PatternsProductComponent(props) {
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        {/* <TextSecondary>{`Главная / Выкройки / Электронные / ${productInfo.name}`}</TextSecondary> */}
         <Content>
           <GalleryBlock items={productInfo.images} />
           <ProductMainComponent addToCart={addToCart} {...productInfo} />
@@ -36,7 +34,11 @@ export function PatternsProductComponent(props) {
         <Title tid="PATTERNS.MATERIALS" />
         <ReactEditor data={productInfo.materials} enableReInitialize readOnly />
       </SectionLayout>
-      {/* <CardListBlock title="Рекомендации" items={recommendations} /> */}
+      <CardListBlock
+        onSetCart={addToCart}
+        title="Рекомендации"
+        items={productInfo.recommendations}
+      />
       <BlockComment type={productInfo.type} id={productInfo.id} />
     </SectionLayout>
   );

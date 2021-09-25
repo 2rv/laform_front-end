@@ -5,4 +5,8 @@ export const ARTICLES_API = {
     ENDPOINT: (currentLang) => `/post/get?lang=${currentLang}`, //&size=1&page=1
     TYPE: 'GET',
   },
+  ARTICLES_UPLOAD_AUTH: {
+    ENDPOINT: (currentLang) => `/post/auth/get?lang=${currentLang}`, //&size=1&page=1
+    TYPE: 'GET',
+  },
 };

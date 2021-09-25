@@ -7,6 +7,8 @@ export function ArticlesComponent(props) {
   const {
     listItems,
     //-----
+    addToCart,
+    //-----
     filterOptions,
     filterSelectName,
     findFieldName,

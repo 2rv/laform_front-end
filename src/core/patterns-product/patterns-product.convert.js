@@ -24,7 +24,7 @@ export function performPatternProductData(rowData, basket) {
     filePdf: rowData.filePdf,
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
     recommendations: convertMultiProducts(
-      rowData.recommendationProduct,
+      rowData.recommendation?.recommendationProducts,
       basket,
     ),
   };

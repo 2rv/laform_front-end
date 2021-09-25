@@ -33,9 +33,7 @@ export function SewingGoodsProductContainer() {
     );
   }, []);
 
-  const addToCart = (inCart, values) => {
-    if (inCart) dispatch(addToBasket(values, currentLang));
-  };
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <SewingGoodsProductComponent
@@ -44,8 +42,8 @@ export function SewingGoodsProductContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      addToCart={addToCart}
       productInfo={getRequestData(state, false)}
+      addToCart={addToCart}
     />
   );
 }

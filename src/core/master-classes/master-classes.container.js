@@ -44,9 +44,7 @@ export function MasterClassesContainer() {
     dispatch(masterClassesUpdateData(currentLang, id, body));
   };
 
-  const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
-  };
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <MasterClassesComponent

@@ -24,7 +24,7 @@ export function sewingGoodsUploadData(currentLang, isAuth) {
           });
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
-        data: onvertSewingGoodProducts(
+        data: convertSewingGoodProducts(
           response.data,
           getState()[BASKET_STORE_NAME].basket,
         ),
