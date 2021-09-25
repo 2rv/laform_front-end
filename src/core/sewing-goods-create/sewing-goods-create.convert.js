@@ -17,5 +17,9 @@ export function convertForUpload(imageUrls, formValues) {
     [SEWING_GOODS_FIELD_NAME.COLORS]:
       formValues[SEWING_GOODS_FIELD_NAME.COLORS],
     [SEWING_GOODS_FIELD_NAME.TYPE]: 3,
+    [SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS]: {
+      recommendationProducts:
+        formValues[SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS],
+    },
   };
 }

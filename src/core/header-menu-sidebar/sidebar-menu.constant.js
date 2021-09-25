@@ -11,12 +11,12 @@ import { BASKET_ROUTE_PATH } from '../basket';
 import { EDIT_COMPILATION_ROUTE_PATH } from '../edit-compilation';
 import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
 import { HOME_ROUTE_PATH } from '../home';
+import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { LOGIN_ROUTE_PATH } from '../login';
 import { CREATE_MASTER_CLASS_ROUTE_PATH } from '../master-class-create';
 import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
-import { MY_LIKES_ROUTE_PATH } from '../my-likes';
 import { MY_PURCHASES_ROUTE_PATH } from '../my-purchases';
 import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
 import { ORDERS_ROUTE_PATH } from '../orders';
@@ -106,7 +106,7 @@ export const NAVIGATION_MENU = [
       {
         title: 'Товар',
         items: [
-          { title: 'Мои лайки', pathname: MY_LIKES_ROUTE_PATH },
+          { title: 'Мои лайки', pathname: ALL_LIKES_ROUTE_PATH },
           { title: 'Мои покупки', pathname: MY_PURCHASES_ROUTE_PATH },
           { title: 'Заказ', pathname: `${ORDER_NUMBER_ROUTE_PATH}/test` },
         ],

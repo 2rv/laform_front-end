@@ -30,7 +30,6 @@ export function sewingGoodsProductUploadData(currentLang, id, logged) {
 
       const data = performSewingGoodsProductData(
         response.data,
-
         getState()[BASKET_STORE_NAME].basket,
       );
       dispatch({

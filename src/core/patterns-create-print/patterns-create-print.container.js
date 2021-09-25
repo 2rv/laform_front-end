@@ -36,6 +36,7 @@ export function CreatePrintPatternContainer() {
     [PRINT_PATTERN_FIELD_NAME.CATEGORIES]: [],
     [PRINT_PATTERN_FIELD_NAME.IMAGES]: [],
     [PRINT_PATTERN_FIELD_NAME.SIZES]: [sizesInit],
+    [PRINT_PATTERN_FIELD_NAME.RECOMMENDATIONS]: [],
   });
   const sizesInit = {
     [PRINT_PATTERN_FIELD_NAME.SIZE_NAME]: '',

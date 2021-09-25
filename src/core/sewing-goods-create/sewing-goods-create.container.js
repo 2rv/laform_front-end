@@ -33,6 +33,7 @@ export function CreateSewingGoodsContainer() {
     [SEWING_GOODS_FIELD_NAME.IMAGES]: [],
     [SEWING_GOODS_FIELD_NAME.SIZES]: [initialSizes],
     [SEWING_GOODS_FIELD_NAME.COLORS]: [initialColors],
+    [SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS]: [],
   });
 
   const initialSizes = {

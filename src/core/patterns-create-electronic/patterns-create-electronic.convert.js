@@ -25,6 +25,10 @@ export function convertForUpload(imageUrls, pdfFilesUrls, formValues) {
       item[ELECTRONIC_PATTERN_FIELD_NAME.FILE] = pdfFilesUrls[index];
       return item;
     }),
+    [ELECTRONIC_PATTERN_FIELD_NAME.RECOMMENDATIONS]: {
+      recommendationProducts:
+        formValues[ELECTRONIC_PATTERN_FIELD_NAME.RECOMMENDATIONS],
+    },
   };
 }
 

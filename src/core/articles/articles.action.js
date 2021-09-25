@@ -1,7 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { ARTICLES_API } from './articles.constant';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
-import { performArticlesData } from './articles.convert';
+import { convertArticleProducts } from 'src/lib/common/product-converters';
 
 export function articlesUploadData(currentLang) {
   return async (dispatch) => {
@@ -15,7 +15,7 @@ export function articlesUploadData(currentLang) {
         url: ARTICLES_API.ARTICLES_UPLOAD.ENDPOINT(currentLang),
       });
 
-      const data = performArticlesData(response.data);
+      const data = convertArticleProducts(response.data);
 
       dispatch({
         type: ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS,

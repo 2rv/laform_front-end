@@ -1,8 +1,8 @@
 import { httpRequest } from '../../main/http';
 import { MASTER_CLASSES_API } from './master-classes.constant';
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
-import { performMasterClassData } from './master-classes.convert';
 import { BASKET_STORE_NAME } from '../basket';
+import { convertMasterClassProducts } from '../../lib/common/product-converters';
 
 export function masterClassesUploadData(currentLang, isAuth) {
   return async (dispatch, getState) => {
@@ -24,13 +24,12 @@ export function masterClassesUploadData(currentLang, isAuth) {
               currentLang,
             ),
           });
-      const data = performMasterClassData(
-        response.data,
-        getState()[BASKET_STORE_NAME].basket,
-      );
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
-        data: data,
+        data: convertMasterClassProducts(
+          response.data,
+          getState()[BASKET_STORE_NAME].basket,
+        ),
       });
     } catch (err) {
       if (err.response) {
