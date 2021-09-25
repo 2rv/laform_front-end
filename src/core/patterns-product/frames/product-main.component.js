@@ -33,9 +33,7 @@ export function ProductMainComponent(props) {
     sizes?.length > 0 ? sizes[0] : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
 
-  const handleAddToCart = (_, __, inCart) => {
-    addToCart(inCart, { id, type, size: size.id });
-  };
+  const handleAddToCart = (values) => addToCart({ id, type, size: size.id });
 
   return (
     <Container>

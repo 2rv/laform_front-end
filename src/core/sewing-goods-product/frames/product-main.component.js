@@ -45,15 +45,14 @@ export function ProductMainComponent(props) {
     setCount(currentCount - 1);
   };
 
-  const handleAddToCart = (_, __, inCart) => {
-    addToCart(inCart, {
+  const handleAddToCart = (values) =>
+    addToCart({
       id,
       type,
       currentCount,
       size: size.id,
       color: color.id,
     });
-  };
 
   return (
     <Container>

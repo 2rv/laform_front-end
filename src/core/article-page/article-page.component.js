@@ -16,9 +16,18 @@ export function ArticlePageComponent(props) {
     errorMessage,
     pageLoading,
     productInfo,
+    addToCart,
   } = props;
-  const { id, type, modifier, name, categories, postArticle, createdDate } =
-    productInfo;
+  const {
+    id,
+    type,
+    modifier,
+    name,
+    categories,
+    postArticle,
+    createdDate,
+    recommendations,
+  } = productInfo;
   return (
     <SectionLayout>
       <HeaderCase>
@@ -26,7 +35,12 @@ export function ArticlePageComponent(props) {
         <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
       <ReactEditor data={postArticle} enableReInitialize readOnly />
-      <BlockComment type={type} id={id} />
+      <CardListBlock
+        onSetCart={addToCart}
+        title="Рекомендации"
+        items={recommendations}
+      />
+      <BlockComment onSetCart={addToCart} type={type} id={id} />
     </SectionLayout>
   );
 }

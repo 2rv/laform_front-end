@@ -36,6 +36,7 @@ export const convertPromoCodeForCheck = (promocode) => ({
 });
 
 export function convertAddToCart(product, data) {
+  console.log(product);
   if (data.type === 0) {
     return {
       id: product.id,
@@ -101,7 +102,7 @@ const constructorMasterClassItem = (data) => {
     totalPrice: totalPrice,
     params: {
       program: { id: program.id, value: program.programNameRu },
-      category: data.masterClass.categories[0].textRu,
+      category: data.masterClass.categories[0]?.textRu,
     },
     programsOptions: data.masterClass.programs.map((item) => ({
       id: item.id,
@@ -133,7 +134,7 @@ const constructorSewingGoodsItem = (data) => {
     params: {
       size: { id: size.id, value: size.size },
       color: { id: color.id, value: color.color },
-      category: data.sewingProduct.categories[0].textRu,
+      category: data.sewingProduct.categories[0]?.textRu,
     },
     sizesOptions: data.sewingProduct.sizes.map((item) => ({
       id: item.id,
@@ -149,6 +150,7 @@ const constructorSewingGoodsItem = (data) => {
 };
 
 const constructorPatternItem = (data) => {
+  console.log(data);
   const size =
     data.patternProduct.sizes.find(({ id }) => id === data.size) ??
     data.patternProduct.sizes[0];
@@ -168,7 +170,7 @@ const constructorPatternItem = (data) => {
           ? 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC'
           : 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
       complexity: data.patternProduct.complexity,
-      category: data.patternProduct.categories[0].textRu,
+      category: data.patternProduct.categories[0]?.textRu,
     },
     sizesOptions: data.patternProduct.sizes.map((item) => ({
       id: item.id,

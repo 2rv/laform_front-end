@@ -31,9 +31,7 @@ export function MasterClassProductContainer() {
     dispatch(masterClassProductUploadData(currentLang, masterClassId, logged));
   }, []);
 
-  const addToCart = (inCart, values) => {
-    if (inCart) dispatch(addToBasket(values, currentLang));
-  };
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <MasterClassProductComponent
