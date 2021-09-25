@@ -2,9 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { AUTH_STORE_NAME, USER_ROLE } from '../../lib/common/auth';
-import { redirect } from '../../main/navigation/navigation.core';
-import { HTTP_ERROR_ROUTER } from '../../main/http';
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -20,75 +17,75 @@ import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
 export function OrderNumberContainer() {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const { state, pageLoading, user } = useSelector((state) => ({
-    state: state[ORDER_NUMBER_STORE_NAME],
+  const { orderState, pageLoading } = useSelector((state) => ({
+    orderState: state[ORDER_NUMBER_STORE_NAME].order,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    user: state[AUTH_STORE_NAME].user,
   }));
 
-  const orderNumberDetails = getRequestData(state.orderNumber);
+  const { purchaseInfo, purchaseProducts } = getRequestData(orderState, {
+    purchaseInfo: null,
+    purchaseProducts: null,
+  });
 
-  useEffect(() => {
-    if (user?.role !== USER_ROLE.ADMIN) {
-      redirect(HTTP_ERROR_ROUTER.NOT_FOUND);
-      return;
-    }
-    dispatch(orderNumberUploadData(query.id));
-  }, []);
+  useEffect(() => dispatch(orderNumberUploadData(query.id)), []);
 
   const onSubmit = (values) => {
     console.log('Values: ', values);
   };
 
   const initialValue = () => ({
-    [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: orderNumberDetails?.fullName,
-    [ABOUT_ORDER_FIELD_NAME.CURRENT_CITY]: orderNumberDetails?.city,
-    [ABOUT_ORDER_FIELD_NAME.CONVENIENT_DELIVERY_METHOD]: orderNumberDetails?.typeOfDelivery,
-    [ABOUT_ORDER_FIELD_NAME.CONVENIENT_PAYMENT_METHOD]: orderNumberDetails?.typeOfPayment,
-    [ABOUT_ORDER_FIELD_NAME.CONTACT_PHONE_NUMBER]:
-      orderNumberDetails?.phoneNumber,
-    [ABOUT_ORDER_FIELD_NAME.ORDER_NOTE]: orderNumberDetails?.comment,
-    [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: orderNumberDetails?.orderStatus,
-    [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: '',
+    [ABOUT_ORDER_FIELD_NAME.CITY]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.CITY] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.EMAIL]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.EMAIL] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.FULL_NAME]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.FULL_NAME] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PROMO_CODE] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.COMMENT]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.COMMENT] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS] ?? 0,
+    [ABOUT_ORDER_FIELD_NAME.PRICE]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PRICE] ?? 0,
+    [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT] ?? 0,
+    // не используемое
+    [ABOUT_ORDER_FIELD_NAME.ID]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ID] ?? null,
+    [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.PAYMENT_METHOD]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PAYMENT_METHOD] ?? '',
   });
 
   return (
     <OrderNumberComponent
-      isPending={isRequestPending(state.orderNumber)}
-      isError={isRequestError(state.orderNumber)}
-      isSuccess={isRequestSuccess(state.orderNumber)}
-      errorMessage={getRequestErrorMessage(state.orderNumber)}
-      orderNumberDetails={getRequestData(state.orderNumber, [])}
+      isPending={isRequestPending(orderState)}
+      isError={isRequestError(orderState)}
+      isSuccess={isRequestSuccess(orderState)}
+      errorMessage={getRequestErrorMessage(orderState)}
       pageLoading={pageLoading}
       headersTable={headersTable}
       onSubmit={onSubmit}
       initialValue={initialValue()}
+      orderNumberTitle={
+        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER] || 0
+      }
+      purchaseProducts={purchaseProducts}
+      statusOrderSelect={statusOrderSelect}
     />
   );
 }
 
 const headersTable = ['Товары заказа', 'Параметры', 'Итоговая цена'];
-const itemsTable = [
-  {
-    name: 'Батист Макс Мара Горохи',
-    price: 999,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-    params: [
-      { name: 'Цвет', value: 'Зелёный' },
-      { name: 'Размер', value: '15/70 250' },
-    ],
-  },
-  {
-    name: 'Хлопок Том Форд',
-    price: 320000,
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-    params: [
-      { name: 'Цвет', value: 'Зелёный' },
-      { name: 'Размер', value: '15/70 250' },
-      { name: 'Категория', value: 'Верхняя одежда' },
-      { name: 'Количество', value: 4 },
-    ],
-  },
+const statusOrderSelect = [
+  { id: 0, tid: 'Ожидает оплаты' },
+  { id: 1, tid: 'Оплачено' },
+  { id: 2, tid: 'Ожидает доставки' },
+  { id: 3, tid: 'В пути' },
+  { id: 4, tid: 'Доставлен' },
+  { id: 5, tid: 'Отменен' },
 ];
