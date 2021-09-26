@@ -30,10 +30,6 @@ import {
 } from '../../core/auth-verificate-email-confirm';
 import { settingsRouter, SETTINGS_ROUTE_PATH } from '../../core/settings';
 import { ordersRouter, ORDERS_ROUTE_PATH } from '../../core/orders';
-import {
-  myPurchasesRouter,
-  MY_PURCHASES_ROUTE_PATH,
-} from '../../core/my-purchases';
 import { faqPageRouter, FAQ_PAGE_ROUTE_PATH } from '../../core/faq-page';
 import {
   editCompilationRouter,
@@ -143,7 +139,6 @@ export const routes = {
   [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
-  [MY_PURCHASES_ROUTE_PATH]: myPurchasesRouter,
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,

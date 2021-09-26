@@ -17,7 +17,6 @@ import { CREATE_MASTER_CLASS_ROUTE_PATH } from '../master-class-create';
 import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
-import { MY_PURCHASES_ROUTE_PATH } from '../my-purchases';
 import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
 import { ORDERS_ROUTE_PATH } from '../orders';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
@@ -34,6 +33,7 @@ import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
 import { SIGNUP_ROUTE_PATH } from '../signup';
 import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
+import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 
 export const NAVIGATION_MENU = [
   { title: 'Домашняя', pathname: HOME_ROUTE_PATH },
@@ -107,7 +107,7 @@ export const NAVIGATION_MENU = [
         title: 'Товар',
         items: [
           { title: 'Мои лайки', pathname: ALL_LIKES_ROUTE_PATH },
-          { title: 'Мои покупки', pathname: MY_PURCHASES_ROUTE_PATH },
+          { title: 'Мои покупки', pathname: PURCHASE_PRODUCTS_ROUTE_PATH },
           { title: 'Заказ', pathname: `${ORDER_NUMBER_ROUTE_PATH}/test` },
         ],
       },

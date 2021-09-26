@@ -56,10 +56,6 @@ import {
 } from '../../core/sewing-goods';
 import { patternsStore, PATTERNS_STORE_NAME } from '../../core/patterns';
 import { ordersStore, ORDERS_STORE_NAME } from '../../core/orders';
-import {
-  myPurchasesStore,
-  MY_PURCHASES_STORE_NAME,
-} from '../../core/my-purchases';
 import { faqPageStore, FAQ_PAGE_STORE_NAME } from '../../core/faq-page';
 import {
   editCompilationStore,
@@ -202,7 +198,6 @@ export const reducers = combineReducers({
   [NOTIFICATION_STORE_NAME]: notificationStore,
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
   [ORDERS_STORE_NAME]: ordersStore,
-  [MY_PURCHASES_STORE_NAME]: myPurchasesStore,
   [FAQ_PAGE_STORE_NAME]: faqPageStore,
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
   [BASKET_STORE_NAME]: basketStore,

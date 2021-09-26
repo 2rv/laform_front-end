@@ -1,2 +1,2 @@
-import { MyPurchasesPage } from '../../core/my-purchases';
-export default MyPurchasesPage;
+import { PurchaseProductPage } from '../../core/purchase-products';
+export default PurchaseProductPage;
