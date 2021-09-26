@@ -9,6 +9,8 @@ import { spacing } from '../../../../lib/theme';
 import { SectionLayout } from '../../../../lib/element/layout';
 import { TextPrimary } from '../../../../lib/element/text';
 import { IconButton } from '../../../../lib/element/button';
+import { setLinkRedirect } from '../../../../main/navigation';
+import { BASE_URL } from '../../../../main/http';
 
 export function LoginFormSocialComponent() {
   return (
@@ -21,13 +23,13 @@ export function LoginFormSocialComponent() {
             <AppleText />
           </SecondaryIconContainer>
         </Button>
-        <Button>
+        <Button onClick={setLinkRedirect(`${BASE_URL}auth/google`)}>
           <GoogleIcon />
           <SecondaryIconContainer>
             <GoogleText />
           </SecondaryIconContainer>
         </Button>
-        <Button>
+        <Button onClick={setLinkRedirect(`${BASE_URL}auth/facebook`)}>
           <FbIcon />
           <SecondaryIconContainer>
             <FbText />

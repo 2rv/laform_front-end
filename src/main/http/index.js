@@ -7,3 +7,4 @@ export const HTTP_ERROR_ROUTER = {
 };
 
 export { httpRequest } from './http.core';
+export { BASE_URL } from './http.constant';
