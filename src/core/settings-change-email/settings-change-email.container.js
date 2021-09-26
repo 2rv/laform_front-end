@@ -2,6 +2,7 @@ import { SettingsFormChangeEmailContainer } from './frames/settings-form-change-
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -21,16 +22,21 @@ import {
 } from './settings-change-email.action';
 import { settingsChangeEmailFormValidation } from './settings-change-email.validation';
 import { convertSettingsChangeEmailFormData } from './settings-change-email.convert';
+import { SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME } from '../settings-change-delivery-info';
 
 export function SettingsChangeEmailContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, email } = useSelector((state) => ({
+  const { state, pageLoading, email, userInfo } = useSelector((state) => ({
     state: state[SETTINGS_CHANGE_EMAIL_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     email:
       state[SETTINGS_CHANGE_EMAIL_STORE_NAME].settingsChangeEmailLoadEmail
         .data?.[SETTINGS_CHANGE_EMAIL_DATA_KEY.EMAIL],
+    userInfo:
+      state[SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME].changeDeliveryInfo,
   }));
+
+  const userInfoData = getRequestData(userInfo);
 
   const settingsChangeEmailFormSendData = (values, { setSubmitting }) => {
     const data = convertSettingsChangeEmailFormData(values);
@@ -46,6 +52,10 @@ export function SettingsChangeEmailContainer() {
   useEffect(() => {
     dispatch(settingsChangeEmailLoadEmail());
   }, []);
+
+  if (Boolean(userInfoData?.googleId) || Boolean(userInfoData?.facebookId) || Boolean(userInfoData?.appleId)) {
+    return null;
+  }
 
   return (
     <SettingsFormChangeEmailContainer
