@@ -1,0 +1,33 @@
+{
+  "HEADERS": {
+    "SEWING_PRODUCTS": {
+      "NAME": "Название",
+      "DETAILS": "Подробности",
+      "PRICE": "Цена товара",
+      "STATUS": "Состояние"
+    },
+    "MASTER_CLASS": {
+      "NAME": "Название",
+      "DETAILS": "Подробности",
+      "PRICE": "Цена товара"
+    },
+    "PATTERN_PRODUCTS_DIGITAL": {
+      "NAME": "Название",
+      "DETAILS": "Подробности",
+      "PRICE": "Цена товара"
+    },
+    "PATTERN_PRODUCTS_ANALOGUE": {
+      "NAME": "Название",
+      "DETAILS": "Подробности",
+      "PRICE": "Цена товара",
+      "STATUS": "Состояние"
+    }
+  },
+  "TABS": {
+    "SEWING_PRODUCTS": "Товары для шитья",
+    "MASTER_CLASS": "Мастер-классы",
+    "PATTERN_ANALOGUE": "Выкройки печатные",
+    "PATTERN_DIGITAL": "Выкройки электронные"
+  },
+  "EMPTY": "Нет купленных товаров данной категории"
+}

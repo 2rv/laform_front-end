@@ -9,7 +9,7 @@ export function ButtonTd(props) {
     id,
     changeItem,
     deleteItem,
-    downloadItem,
+    filePDF,
     //-------
     sizeId,
     sizesOptions,
@@ -38,9 +38,7 @@ export function ButtonTd(props) {
         {Boolean(deleteItem) && (
           <DeleteButton id={id} deleteItem={deleteItem} />
         )}
-        {Boolean(downloadItem) && (
-          <DownloadButton id={id} downloadItem={downloadItem} />
-        )}
+        {Boolean(filePDF) && <DownloadButton filePDF={filePDF} />}
       </Container>
     </Td>
   );
