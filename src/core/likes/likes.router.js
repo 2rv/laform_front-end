@@ -1,6 +1,5 @@
 import { setActivePath } from '../../lib/common/navigation';
 import { authRedirectPrivated } from 'src/lib/common/auth';
-
 import { ALL_LIKES_ROUTE_PATH } from './likes.constant';
 import { HOME_ROUTE_PATH } from '../home';
 

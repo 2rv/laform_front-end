@@ -183,6 +183,4 @@ const constructorPatternItem = (data) => {
     })),
   };
 };
-
-// вспомогательное
 const calcTotalPrice = (price, discount) => price - price * (discount / 100);

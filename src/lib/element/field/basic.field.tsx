@@ -117,26 +117,3 @@ const Input = styled.input<InputPropsType>`
     opacity: ${THEME_VALUE.OPACITY.HOVER};
   }
 `;
-
-/* мусорные стили
-transition-property: border; 
-:-webkit-autofill {
-    border-color: ${(p) =>
-    p.error &&
-    css`
-      border-color: ${THEME_COLOR.TEXT.DANGER};
-    `};
-  } 
-:-webkit-autofill:hover {
-    ${(p) =>
-    p.error &&
-    css`
-      border-color: ${THEME_COLOR.TEXT.DANGER};
-    `}
-    opacity: ${THEME_VALUE.OPACITY.HOVER};
-  } 
-
-:-webkit-autofill:focus {
-    border-color:  ${THEME_COLOR.FIELD_FOCUS};
-  } 
- */

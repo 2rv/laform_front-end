@@ -9,7 +9,7 @@ export const convertUsersOrderData = (data) => {
       ? Number(data?.price) * (Number(data?.promoCodeDiscount) / 100)
       : data?.price,
     status: data?.orderStatus ?? 'Неизвестно',
-    isOrder: true, // для показа картинки заказа
+    isOrder: true,
     params: {
       count: data?.purchaseProductsCount,
       createdDate: data?.createdDate,

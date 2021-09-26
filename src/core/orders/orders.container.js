@@ -24,27 +24,6 @@ export function OrdersContainer() {
     dispatch(ordersLoadData());
   }, []);
 
-  // всё что выше оставить всё что ниже можно удалить по усмотрению делающего
-  // Для пагинации и фильтров
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [inputValue, setInputValue] = useState('');
-  // const orders = getRequestData(ordersState);
-  // const debounce = useDebounce(inputValue, 500);
-  // const itemsPerPage = 5;
-  // useEffect(() => {
-    // dispatch(
-    //   ordersLoadData(
-    //     inputValue.toLowerCase().trim(),
-    //     itemsPerPage,
-    //     currentPage,
-    //   ),
-    // );
-  // }, [debounce, currentPage]);
-  // const onChange = ({ target: { value } }) => {
-  //   setInputValue(value);
-  // };
-  // Для пагинации и фильтров
-
   return (
     <OrdersComponent
       isPending={isRequestPending(ordersState)}
@@ -54,10 +33,6 @@ export function OrdersContainer() {
       pageLoading={pageLoading}
       headersTable={headersTable}
       products={getRequestData(ordersState, [])}
-      // всё что выше оставить всё что ниже можно удалить по усмотрению делающего
-      // products={orders.purchases}
-      // onChange={onChange}
-      // inputValue={inputValue}
     />
   );
 }

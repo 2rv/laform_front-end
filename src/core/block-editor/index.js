@@ -42,19 +42,19 @@ export function BlockEditor(props) {
             <SectionLayout type="SMALL">
               <div>
                 Чтобы добавить новый блок установите курсор на свободное место
-                на полотне редактора и нажмите кнопку{' '}
-                <ManualEditorButton>Добавить</ManualEditorButton> или{' '}
-                <ManualButton>Tab</ManualButton>. Нажимайте{' '}
-                <ManualButton>Tab</ManualButton> или используйте{' '}
-                <ManualButton>&#129046;</ManualButton> и{' '}
+                на полотне редактора и нажмите кнопку
+                <ManualEditorButton>Добавить</ManualEditorButton> или
+                <ManualButton>Tab</ManualButton>. Нажимайте
+                <ManualButton>Tab</ManualButton> или используйте
+                <ManualButton>&#129046;</ManualButton> и
                 <ManualButton>&#129044;</ManualButton> чтобы переключаться между
-                доступными блоками. Нажмите <ManualButton>Enter</ManualButton>{' '}
+                доступными блоками. Нажмите <ManualButton>Enter</ManualButton>
                 чтобы выбрать нужный блок.
-              </div>{' '}
+              </div>
               <div>
                 После выбора блока вы можете редактировать его. Установите
-                курсор на нужном блоке и нажмите{' '}
-                <ManualButton>Tab</ManualButton> или кнопку{' '}
+                курсор на нужном блоке и нажмите
+                <ManualButton>Tab</ManualButton> или кнопку
                 <ManualEditorButton>четыре точки</ManualEditorButton> чтобы
                 открыть инструменты редактирования. Наведите на инструмент чтобы
                 ознакомться с ним
