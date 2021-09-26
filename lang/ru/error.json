@@ -8,5 +8,6 @@
   "USER_ALREADY_EXISTS": "Пользователь уже существует.",
   "PLEASE_UPLOAD_IMAGE": "Пожалуйста, загрузите изображение.",
   "USER_NOT_CONFIRMED": "Вы еще не подтвердили адрес электронной почты",
-  "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Адрес электронной почты уже подтвержден"
+  "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Адрес электронной почты уже подтвержден",
+  "EMAIL_ALREADY_IN_USE": "Данный адрес электронной почты уже используется"
 }

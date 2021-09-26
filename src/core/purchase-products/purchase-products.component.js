@@ -18,7 +18,7 @@ export function PurchaseProductsComponent(props) {
     <>
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="ORDERS.TITLE" />
+        <TitlePrimary tid="PURCHASED_PRODUCTS.TITLE" />
         {products ? (
           <>
             <FilterTabs
