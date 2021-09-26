@@ -8,35 +8,26 @@ import { Popup } from 'src/lib/element/popup';
 import { ReactComponent as EditIcon } from 'src/asset/svg/edit.svg';
 import { ReactComponent as DeleteIcon } from 'src/asset/svg/delete-cancel-icon.svg';
 import { EditCompilationComponent } from './edit-compilation..component';
-import { updatePinned, bestMasterClassesUpdateItem } from '../../edit-compilation.action';
+import {
+  updatePinned,
+  bestMasterClassesUpdateItem,
+} from '../../edit-compilation.action';
 
 export function EditCompilationListItemComponent(props) {
-  const {
-    id,
-    title,
-    image,
-    compilationNamе,
-    currentLang,
-  } = props;
+  const { id, title, image, compilationName, currentLang } = props;
 
   const dispatch = useDispatch();
 
   const changeProductNameHandler = (newProductname) => {
-    dispatch(updatePinned(
-      id,
-      compilationNamе,
-      currentLang,
-      { titleRu: newProductname },
-    ));
+    dispatch(
+      updatePinned(id, compilationName, currentLang, {
+        titleRu: newProductname,
+      }),
+    );
   };
 
   const removeCompilationItem = () => {
-    dispatch(updatePinned(
-      id,
-      compilationNamе,
-      currentLang,
-      { pinned: false },
-    ));
+    dispatch(updatePinned(id, compilationName, currentLang, { pinned: false }));
   };
 
   return (
@@ -47,12 +38,14 @@ export function EditCompilationListItemComponent(props) {
           <ProductName tid={title} />
         </ProductLayout>
         <ProductLayout>
-          <Popup content={(
-            <EditCompilationComponent
-              title={title}
-              changeProductNameHandler={changeProductNameHandler}
-            />
-          )}>
+          <Popup
+            content={
+              <EditCompilationComponent
+                title={title}
+                changeProductNameHandler={changeProductNameHandler}
+              />
+            }
+          >
             <IconButton>
               <EditIcon />
             </IconButton>

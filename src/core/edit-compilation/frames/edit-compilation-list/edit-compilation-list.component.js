@@ -17,7 +17,7 @@ export function EditCompilationListComponent(props) {
             id={item.id}
             title={item.titleRu}
             image={item.images?.[0]?.fileUrl || item.image?.fileUrl}
-            compilationNamе={compilationName}
+            compilationName={compilationName}
             currentLang={currentLang}
           />
         ))}

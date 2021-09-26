@@ -18,22 +18,22 @@ export function TableItem(props) {
     totalPrice,
     vendorCode,
     isOrder,
-    //------ основные данные
+    //------
     params,
     otherParams,
     sizesOptions,
     colorsOptions,
     programsOptions,
-    //------ параметры и опции
+    //------
     count,
     maxCount,
-    //------ количество
+    //------
     status,
     comment,
     path,
     pathConfig,
     filePDF,
-    //------ другое
+    //------
   } = data;
   return (
     <Tr>
@@ -74,12 +74,6 @@ export function TableItem(props) {
 
 const Tr = styled.tr`
   display: table-row;
-  /* &:hover {
-    cursor: pointer;
-    background: ${THEME_COLOR.GRAY};
-    transition: 0.5s;
-  }
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT}; */
   @media screen and (max-width: 875px) {
     display: flex;
     flex-direction: column;

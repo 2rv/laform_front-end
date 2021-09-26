@@ -26,7 +26,6 @@ const config = {
     requiredArray,
     minLengthArray(1),
   ],
-  // рекомендации
   [ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT]: [
     number,
     numberPositive,
