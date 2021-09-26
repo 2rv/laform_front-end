@@ -5,13 +5,7 @@ import { DividerTd } from './divider-td';
 import { HeaderTd } from './header-td';
 
 export function TableList(props) {
-  const {
-    headers = [],
-    items = [],
-    changeItem,
-    deleteItem,
-    downloadItem,
-  } = props;
+  const { headers = [], items = [], changeItem, deleteItem } = props;
   if (!Boolean(items) || Boolean(items.length <= 0)) return null;
   return (
     <Table>
@@ -32,7 +26,6 @@ export function TableList(props) {
               data={data}
               changeItem={changeItem}
               deleteItem={deleteItem}
-              downloadItem={downloadItem}
             />
             <DividerTd />
           </React.Fragment>

@@ -1,4 +1,4 @@
-export const PATTERNS_PAGE_ROUTE_PATH = '/patterns-page';
+export const PATTERNS_PAGE_ROUTE_PATH = '/purchases/pattern/';
 
 export const PATTERNS_PAGE_STORE_NAME = 'patterns-page';
 

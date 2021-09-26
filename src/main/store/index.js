@@ -157,6 +157,10 @@ import {
 } from '../../core/master-class-page';
 import { usersStore, USERS_STORE_NAME } from '../../core/users';
 import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
+import {
+  purchaseProductsStore,
+  PURCHASE_PRODUCTS_STORE_NAME,
+} from '../../core/purchase-products';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -213,6 +217,7 @@ export const reducers = combineReducers({
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
+  [PURCHASE_PRODUCTS_STORE_NAME]: purchaseProductsStore,
 });
 
 export { initStore } from './store.core';

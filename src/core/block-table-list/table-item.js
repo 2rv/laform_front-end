@@ -10,7 +10,7 @@ import { StatusTd } from './status-td';
 import { ButtonTd } from './button.td';
 
 export function TableItem(props) {
-  const { data, changeItem, deleteItem, downloadItem } = props;
+  const { data, changeItem, deleteItem } = props;
   const {
     id,
     name,
@@ -32,6 +32,7 @@ export function TableItem(props) {
     comment,
     path,
     pathConfig,
+    filePDF,
     //------ другое
   } = data;
   return (
@@ -56,10 +57,10 @@ export function TableItem(props) {
       <PriceTd isLast={status} totalPrice={totalPrice} />
       <StatusTd status={status} />
       <ButtonTd
+        filePDF={filePDF}
         id={id}
         changeItem={changeItem}
         deleteItem={deleteItem}
-        downloadItem={downloadItem}
         sizeId={params?.size?.id}
         sizesOptions={sizesOptions}
         colorId={params?.color?.id}
