@@ -15,4 +15,8 @@ export const LIKES_API = {
       `/pattern-product/liked/get/?lang=${currentLang}`,
     TYPE: 'GET',
   },
+  POST_LIKES_UPLOAD: {
+    ENDPOINT: (currentLang) => `/post/liked/get/?lang=${currentLang}`,
+    TYPE: 'GET',
+  },
 };

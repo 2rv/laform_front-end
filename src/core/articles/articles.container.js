@@ -43,8 +43,6 @@ export function ArticlesContainer() {
         Number(filter[ARTICLES_FIELD_NAME.FILTER]),
       )}
       //-----
-      addToCart={addToCart}
-      //-----
       filterOptions={filterOptionss}
       initialValue={filterInitialValue()}
       setFilter={setFilter}
