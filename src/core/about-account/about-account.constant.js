@@ -1,4 +1,5 @@
-export const ABOUT_ACCOUNT_ROUTE_PATH = '/profile';
+export const ABOUT_ACCOUNT_ROUTE_PATH = ({ id } = { id: '[id]' }) =>
+  `/user/get/${id}`;
 export const ABOUT_ACCOUNT_STORE_NAME = 'ABOUT_ACCOUNT';
 export const ABOUT_ACCOUNT_API = {
   USER_LOAD_DATA: {

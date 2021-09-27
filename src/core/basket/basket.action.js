@@ -9,7 +9,7 @@ import {
   performUserInfoData,
   convertUserInfoData,
 } from './basket.convert';
-import { setLinkRedirect } from 'src/main/navigation';
+import { redirect } from 'src/main/navigation';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 
 export function basketUploadData(values, bascketState, isAuth) {
@@ -31,7 +31,9 @@ export function basketUploadData(values, bascketState, isAuth) {
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
       dispatch(clearBasketAction());
-      setLinkRedirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+      if (isAuth) {
+        redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+      }
     } catch (err) {
       if (err.response) {
         dispatch({

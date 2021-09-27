@@ -1,3 +1,6 @@
+import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
+import { PATTERNS_PRODUCT_ROUTE_PATH } from '../patterns-product';
+import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
 import {
   ORDER_DATA_NAME,
   ORDER_FIELD_NAME,
@@ -101,6 +104,8 @@ const constructorMasterClassItem = (data) => {
   const totalPrice = calcTotalPrice(program.price, data.masterClass.discount);
   return {
     id: data.masterClass.id,
+    path: MASTER_CLASS_PRODUCT_ROUTE_PATH,
+    pathConfig: { dynamic: true, params: { id: data.masterClass.id } },
     image: data.masterClass.images[0].fileUrl,
     name: data.masterClass.titleRu,
     vendorCode: program.vendorCode,
@@ -130,6 +135,8 @@ const constructorSewingGoodsItem = (data) => {
 
   return {
     id: data.sewingProduct.id,
+    path: SEWING_GOODS_PRODUCT_ROUTE_PATH,
+    pathConfig: { dynamic: true, params: { id: data.sewingProduct.id } },
     image: data.sewingProduct.images[0].fileUrl,
     name: data.sewingProduct.titleRu,
     vendorCode: size.vendorCode,
@@ -155,7 +162,6 @@ const constructorSewingGoodsItem = (data) => {
 };
 
 const constructorPatternItem = (data) => {
-  console.log(data);
   const size =
     data.patternProduct.sizes.find(({ id }) => id === data.size) ??
     data.patternProduct.sizes[0];
@@ -164,6 +170,8 @@ const constructorPatternItem = (data) => {
 
   return {
     id: data.patternProduct.id,
+    path: PATTERNS_PRODUCT_ROUTE_PATH,
+    pathConfig: { dynamic: true, params: { id: data.patternProduct.id } },
     image: data.patternProduct.images[0].fileUrl,
     name: data.patternProduct.titleRu,
     vendorCode: size.vendorCode,

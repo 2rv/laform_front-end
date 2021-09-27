@@ -26,7 +26,7 @@ export const convertUsersOrderData = (rowData) => {
       return {
         id: product.id,
         path: typePathProduct(product.type),
-        pathConfig: { query: { id: product.id } },
+        pathConfig: { dynamic: true, params: { id: product.id } },
         type: product.type,
         name: product.titleRu,
         image: product.images?.[0]?.fileUrl,

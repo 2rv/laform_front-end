@@ -12,6 +12,7 @@ import { FieldSelect } from '../../../lib/element/field';
 import { spacing, THEME_COLOR } from '../../../lib/theme';
 import { updateUserData } from '../users.action';
 import { USER_ROLE } from '../../../lib/common/auth';
+import { ABOUT_ACCOUNT_ROUTE_PATH } from '../../about-account';
 
 const userRoles = [
   { id: USER_ROLE.BLOCKED, tid: 'PROFILE.ROLE.BLOCK' },
@@ -36,16 +37,19 @@ export function UsersListComponent({ isPending, users }) {
         const { id, login, emailConfirmed, notificationEmail, role } = item;
         const currentUserRole =
           role === USER_ROLE.BLOCKED
-          ? 'PROFILE.ROLE.BLOCKED'
-          : role === USER_ROLE.USER
-          ? 'PROFILE.ROLE.USER'
-          : role === USER_ROLE.ADMIN
-          ? 'PROFILE.ROLE.ADMIN'
-          : '';
+            ? 'PROFILE.ROLE.BLOCKED'
+            : role === USER_ROLE.USER
+            ? 'PROFILE.ROLE.USER'
+            : role === USER_ROLE.ADMIN
+            ? 'PROFILE.ROLE.ADMIN'
+            : '';
         return (
           <React.Fragment key={id}>
             <Content>
-              <CaseLink path={`user/${id}`}>
+              <CaseLink
+                path={ABOUT_ACCOUNT_ROUTE_PATH}
+                pathConfig={{ dynamic: true, params: { id: id } }}
+              >
                 <UserIcon />
                 <LoginText>{login}</LoginText>
               </CaseLink>
@@ -89,7 +93,10 @@ export function UsersListComponent({ isPending, users }) {
                   </ModalContent>
                 )}
                 children={
-                  <ButtonBasic tid="PROFILE.ROLE.CHANGE_ROLE" onClick={() => setUserRole(role)} />
+                  <ButtonBasic
+                    tid="PROFILE.ROLE.CHANGE_ROLE"
+                    onClick={() => setUserRole(role)}
+                  />
                 }
               />
             </Content>

@@ -11,13 +11,10 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-
 import { AuthVerificateEmailConfirmComponent } from './frames/auth-verificate-email-confirm';
-import {
-  AUTH_VERIFICATE_EMAIL_CONFIRM_PURCHASES_ROUTE,
-  AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME,
-} from './auth-verificate-email-confirm.constant';
+import { AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME } from './auth-verificate-email-confirm.constant';
 import { authVerificateEmailConfirmUploadData } from './auth-verificate-email-confirm.action';
+import { HOME_ROUTE_PATH } from '../home';
 
 export function AuthVerificateEmailConfirmContainer() {
   const dispatch = useDispatch();
@@ -35,9 +32,7 @@ export function AuthVerificateEmailConfirmContainer() {
 
   return (
     <AuthVerificateEmailConfirmComponent
-      onButtonClick={setLinkRedirect(
-        AUTH_VERIFICATE_EMAIL_CONFIRM_PURCHASES_ROUTE,
-      )}
+      onButtonClick={setLinkRedirect(HOME_ROUTE_PATH)}
       isPending={isRequestPending(state.authVerificateEmailConfirm)}
       isSuccess={isRequestSuccess(state.authVerificateEmailConfirm)}
       isError={isRequestError(state.authVerificateEmailConfirm)}

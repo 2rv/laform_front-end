@@ -26,7 +26,7 @@ export function AboutAccountContainer() {
     state: state[ABOUT_ACCOUNT_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
-  const userId = getQuery('userId');
+  const userId = getQuery('id');
 
   useEffect(() => {
     dispatch(userLoadData(userId));

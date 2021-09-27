@@ -13,5 +13,5 @@ export function SocialAuthAccessPage() {
     redirect(HOME_ROUTE_PATH);
   }, []);
 
-  return <></>;
+  return null;
 }
