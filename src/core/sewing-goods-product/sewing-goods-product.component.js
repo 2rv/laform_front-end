@@ -14,7 +14,6 @@ export function SewingGoodsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    //------------
     productInfo,
     addToCart,
   } = props;
@@ -34,12 +33,13 @@ export function SewingGoodsProductComponent(props) {
     sizes = [],
     colors = [],
     count = 0,
+    like,
+    recommendations,
   } = productInfo;
 
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        {/* <TextSecondary>{`Главная / Товары для шитья / ${name}`}</TextSecondary> */}
         <Content>
           <GalleryBlock items={images} />
           <ProductMainComponent
@@ -56,9 +56,15 @@ export function SewingGoodsProductComponent(props) {
             colors={colors}
             count={count}
             addToCart={addToCart}
+            like={like}
           />
         </Content>
       </SectionLayout>
+      <CardListBlock
+        onSetCart={addToCart}
+        title="Рекомендации"
+        items={recommendations}
+      />
       <BlockComment type={type} id={id} />
     </SectionLayout>
   );

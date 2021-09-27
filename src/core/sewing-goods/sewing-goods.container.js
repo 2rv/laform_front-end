@@ -22,15 +22,15 @@ import { addToBasket } from '../basket';
 
 export function SewingGoodsContainer() {
   const dispatch = useDispatch();
-  const { sewingGoodsState, pageLoading, currentLang, user } = useSelector(
-    (state) => ({
+  const { sewingGoodsState, pageLoading, currentLang, user, isAuth } =
+    useSelector((state) => ({
       sewingGoodsState: state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
-    }),
-  );
-  useEffect(() => dispatch(sewingGoodsUploadData(currentLang)), []);
+      isAuth: state[AUTH_STORE_NAME].logged,
+    }));
+  useEffect(() => dispatch(sewingGoodsUploadData(currentLang, isAuth)), []);
   const filterInitialValue = () => ({
     [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
     [SEWING_GOODS_FIELD_NAME.FIND]: '',
@@ -41,9 +41,7 @@ export function SewingGoodsContainer() {
     dispatch(sewingGoodsUpdateData(currentLang, id, body));
   };
 
-  const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
-  };
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <SewingGoodsComponent
@@ -74,22 +72,22 @@ export function SewingGoodsContainer() {
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.ALL',
   },
   {
     id: 1,
-    tid: 'Акция',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.STOCK',
   },
   {
     id: 2,
-    tid: 'Хит',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,
-    tid: 'По возрастанию',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.ASCENDING',
   },
   {
     id: 4,
-    tid: 'По убыванию',
+    tid: 'SEWING_GOODS.FILTER_OPTIONS.DESCENDING',
   },
 ];

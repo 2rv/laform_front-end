@@ -1,5 +1,4 @@
 import { PageWrapper } from '../../lib/common/page-wrapper';
-import { ContentLayout } from '../../lib/element/layout';
 import { ErrorContainer } from './error.container';
 
 export function ErrorPage(props) {
@@ -7,9 +6,7 @@ export function ErrorPage(props) {
 
   return (
     <PageWrapper>
-      <ContentLayout horizontal="center">
-        <ErrorContainer errorStatus={errorStatus} />
-      </ContentLayout>
+      <ErrorContainer errorStatus={errorStatus} />
     </PageWrapper>
   );
 }

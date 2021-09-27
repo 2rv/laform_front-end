@@ -51,9 +51,6 @@ export function HeaderComponent(props) {
   );
 }
 
-// мобильное 120px 70px + 50px
-// обычное 180px  80px + 100px
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;

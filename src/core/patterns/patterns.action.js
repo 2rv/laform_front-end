@@ -1,21 +1,26 @@
 import { httpRequest } from '../../main/http';
 import { PATTERNS_API } from './patterns.constant';
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
-import { performPatternsData } from './patterns.convert';
 import { BASKET_STORE_NAME } from '../basket';
+import { convertPatternProducts } from 'src/lib/common/product-converters';
 
-export function patternsUploadData(currentLang) {
+export function patternsUploadData(currentLang, isAuth) {
   return async (dispatch, getState) => {
     dispatch({
       type: PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_PENDING,
     });
 
     try {
-      const response = await httpRequest({
-        method: PATTERNS_API.PATTERNS_UPLOAD.TYPE,
-        url: PATTERNS_API.PATTERNS_UPLOAD.ENDPOINT(currentLang),
-      });
-      const data = performPatternsData(
+      const response = isAuth
+        ? await httpRequest({
+            method: PATTERNS_API.PATTERNS_UPLOAD_AUTH.TYPE,
+            url: PATTERNS_API.PATTERNS_UPLOAD_AUTH.ENDPOINT(currentLang),
+          })
+        : await httpRequest({
+            method: PATTERNS_API.PATTERNS_UPLOAD.TYPE,
+            url: PATTERNS_API.PATTERNS_UPLOAD.ENDPOINT(currentLang),
+          });
+      const data = convertPatternProducts(
         response.data,
         getState()[BASKET_STORE_NAME].basket,
       );

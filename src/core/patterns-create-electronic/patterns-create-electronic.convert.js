@@ -1,6 +1,6 @@
 import { ELECTRONIC_PATTERN_FIELD_NAME } from './patterns-create-electronic.type';
 
-export function convertForUpload(imageUrls, pdfFileUrl, formValues) {
+export function convertForUpload(imageUrls, pdfFilesUrls, formValues) {
   return {
     [ELECTRONIC_PATTERN_FIELD_NAME.IMAGES]: imageUrls,
     [ELECTRONIC_PATTERN_FIELD_NAME.NAME]:
@@ -18,9 +18,20 @@ export function convertForUpload(imageUrls, pdfFileUrl, formValues) {
       formValues[ELECTRONIC_PATTERN_FIELD_NAME.COMPLEXITY],
     [ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT]:
       formValues[ELECTRONIC_PATTERN_FIELD_NAME.DISCOUNT],
-    [ELECTRONIC_PATTERN_FIELD_NAME.FILE]: pdfFileUrl,
-    [ELECTRONIC_PATTERN_FIELD_NAME.PRICE]:
-      formValues[ELECTRONIC_PATTERN_FIELD_NAME.PRICE],
     [ELECTRONIC_PATTERN_FIELD_NAME.TYPE]: 1,
+    [ELECTRONIC_PATTERN_FIELD_NAME.SIZES]: formValues[
+      ELECTRONIC_PATTERN_FIELD_NAME.SIZES
+    ].map((item, index) => {
+      item[ELECTRONIC_PATTERN_FIELD_NAME.FILE] = pdfFilesUrls[index];
+      return item;
+    }),
+    [ELECTRONIC_PATTERN_FIELD_NAME.RECOMMENDATIONS]: {
+      recommendationProducts:
+        formValues[ELECTRONIC_PATTERN_FIELD_NAME.RECOMMENDATIONS],
+    },
   };
+}
+
+export function convertForPreUploadPDFFiles(data) {
+  return data.map((item) => item[ELECTRONIC_PATTERN_FIELD_NAME.FILE]);
 }

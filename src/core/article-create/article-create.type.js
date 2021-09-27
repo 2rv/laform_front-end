@@ -15,6 +15,6 @@ export const ARTICLE_FIELD_NAME = {
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
   ARTICLE: 'articleText',
-  RECOMMENDATIONS: 'recommendations',
+  RECOMMENDATIONS: 'recommendation',
   TYPE: 'type',
 };

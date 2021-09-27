@@ -4,22 +4,28 @@ import { TextSecondary, TextPrimary } from '../../../../lib/element/text';
 import { SectionLayout } from '../../../../lib/element/layout';
 
 export function ProductDiliveryInfo(props) {
-  const { adress, paymentMethod, status } = props;
+  const { address, paymentMethod, status } = props;
 
   return (
     <SectionLayout type="TEXT">
-      <TextSecondary>
-        <TextSecondary tid="Адрес доставки" />: &nbsp;
-        <TextPrimary tid={adress} />
-      </TextSecondary>
-      <TextSecondary>
-        <TextSecondary tid="Способ оплаты" />: &nbsp;
-        <TextPrimary tid={paymentMethod} />
-      </TextSecondary>
-      <TextSecondary>
-        <TextSecondary tid="Состояние" />: &nbsp;
-        <ColoredText tid={status} />
-      </TextSecondary>
+      {Boolean(address) && (
+        <TextSecondary>
+          <TextSecondary tid="PROFILE.DELIVERY_ADDRESS" />: &nbsp;
+          <TextPrimary tid={address} />
+        </TextSecondary>
+      )}
+      {Boolean(paymentMethod) && (
+        <TextSecondary>
+          <TextSecondary tid="PROFILE.PAYMENT_METHOD" />: &nbsp;
+          <TextPrimary tid={paymentMethod} />
+        </TextSecondary>
+      )}
+      {Boolean(status) && (
+        <TextSecondary>
+          <TextSecondary tid="PROFILE.STATE" />: &nbsp;
+          <ColoredText tid={status} />
+        </TextSecondary>
+      )}
     </SectionLayout>
   );
 }

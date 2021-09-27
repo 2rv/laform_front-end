@@ -56,11 +56,6 @@ import {
 } from '../../core/sewing-goods';
 import { patternsStore, PATTERNS_STORE_NAME } from '../../core/patterns';
 import { ordersStore, ORDERS_STORE_NAME } from '../../core/orders';
-import {
-  myPurchasesStore,
-  MY_PURCHASES_STORE_NAME,
-} from '../../core/my-purchases';
-import { myLikesStore, MY_LIKES_STORE_NAME } from '../../core/my-likes';
 import { faqPageStore, FAQ_PAGE_STORE_NAME } from '../../core/faq-page';
 import {
   editCompilationStore,
@@ -119,14 +114,6 @@ import {
 } from '../../core/auth-verificate-email-recovery-account';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 import {
-  ordersListStore,
-  ORDERS_LIST_STORE_NAME,
-} from '../../core/orders-list';
-import {
-  usersOrderStore,
-  USERS_ORDER_STORE_NAME,
-} from '../../core/users-order';
-import {
   createMasterClassStore,
   CREATE_MASTER_CLASS_STORE_NAME,
 } from '../../core/master-class-create';
@@ -155,16 +142,25 @@ import {
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
 import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
+import { likeStore, LIKE_STORE_NAME } from '../../core/block-like';
 import {
   emailConfirmedStore,
   EMAIL_CONFIRMED_STORE_NAME,
 } from '../../core/email-confirmed';
 import {
-  masterClassArticleStore,
-  MASTER_CLASS_ARTICLE_STORE_NAME,
-} from '../../core/master-class-article';
+  masterClassPageStore,
+  MASTER_CLASS_PAGE_STORE_NAME,
+} from '../../core/master-class-page';
+import { usersStore, USERS_STORE_NAME } from '../../core/users';
+import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
+import {
+  purchaseProductsStore,
+  PURCHASE_PRODUCTS_STORE_NAME,
+} from '../../core/purchase-products';
+export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
+  [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
   [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
@@ -202,8 +198,6 @@ export const reducers = combineReducers({
   [NOTIFICATION_STORE_NAME]: notificationStore,
   [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
   [ORDERS_STORE_NAME]: ordersStore,
-  [MY_PURCHASES_STORE_NAME]: myPurchasesStore,
-  [MY_LIKES_STORE_NAME]: myLikesStore,
   [FAQ_PAGE_STORE_NAME]: faqPageStore,
   [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
   [BASKET_STORE_NAME]: basketStore,
@@ -213,11 +207,12 @@ export const reducers = combineReducers({
   [SLIDER_LIST_STORE_NAME]: sliderListStore,
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
-  [ORDERS_LIST_STORE_NAME]: ordersListStore,
-  [USERS_ORDER_STORE_NAME]: usersOrderStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
+  [LIKE_STORE_NAME]: likeStore,
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
-  [MASTER_CLASS_ARTICLE_STORE_NAME]: masterClassArticleStore,
+  [USERS_STORE_NAME]: usersStore,
+  [ALL_LIKES_STORE_NAME]: allLikesStore,
+  [PURCHASE_PRODUCTS_STORE_NAME]: purchaseProductsStore,
 });
 
 export { initStore } from './store.core';

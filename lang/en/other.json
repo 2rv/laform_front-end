@@ -1,0 +1,15 @@
+{
+	"BUY": "Buy",
+	"SELECT": "Select",
+	"SELECTED": "Selected",
+	"VALUTE": "Rub",
+	"PURCHASED": "Purchased",
+	"NO_INFORMATION_ABOUT_PARAMETERS": "There is no information about the parameters of the product",
+	"ARE_YOU_SURE_TO_DELETE_PRODUCT": "Are you sure you want to delete this item? This action cannot be undone",
+	"YES": "Yes",
+	"NO": "No",
+	"CANCEL": "Cancel",
+	"USERS_LIST": "Users",
+  "LIST_IS_EMPTY": "List is empty",
+	"SAVE": "Save"
+}

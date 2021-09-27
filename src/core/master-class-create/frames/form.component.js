@@ -110,11 +110,11 @@ export function FormComponent(props) {
             )}
           />
         </FieldLayout>
-        {/* <RecomendationBlock
+        <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS, data)
           }
-        /> */}
+        />
         <FieldLayout type="double" adaptive>
           <ButtonPrimary
             type="submit"

@@ -1,4 +1,6 @@
-export function performMasterClassProductData(rowData, backet) {
+import { convertMultiProducts } from '../../lib/common/product-converters';
+
+export function performMasterClassProductData(rowData, basket) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -7,7 +9,7 @@ export function performMasterClassProductData(rowData, backet) {
     name: rowData.titleRu,
     categories: rowData.categories.map((item) => item.textRu),
     cart: Boolean(
-      backet?.find((bItem) => bItem?.masterClass?.id === rowData.id),
+      basket?.find((bItem) => bItem?.masterClass?.id === rowData.id),
     ),
     description: rowData.descriptionRu,
     images: rowData.images.map((item) => item.fileUrl),
@@ -17,5 +19,10 @@ export function performMasterClassProductData(rowData, backet) {
       price: item.price,
       vendorCode: item.vendorCode,
     })),
+    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
+    recommendations: convertMultiProducts(
+      rowData.recommendation?.recommendationProducts,
+      basket,
+    ),
   };
 }

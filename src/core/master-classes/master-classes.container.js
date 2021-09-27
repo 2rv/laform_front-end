@@ -22,17 +22,16 @@ import { addToBasket } from '../basket';
 
 export function MasterClassesContainer() {
   const dispatch = useDispatch();
-  const { masterClassState, pageLoading, currentLang, user } = useSelector(
-    (state) => ({
+  const { masterClassState, pageLoading, currentLang, user, isAuth } =
+    useSelector((state) => ({
       masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
-
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       user: state[AUTH_STORE_NAME].user,
-    }),
-  );
+      isAuth: state[AUTH_STORE_NAME].logged,
+    }));
 
-  useEffect(() => dispatch(masterClassesUploadData(currentLang)), []);
+  useEffect(() => dispatch(masterClassesUploadData(currentLang, isAuth)), []);
 
   const filterInitialValue = () => ({
     [MASTER_CLASSES_FIELD_NAME.FILTER]: 0,
@@ -45,9 +44,7 @@ export function MasterClassesContainer() {
     dispatch(masterClassesUpdateData(currentLang, id, body));
   };
 
-  const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
-  };
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <MasterClassesComponent
@@ -78,22 +75,22 @@ export function MasterClassesContainer() {
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.ALL',
   },
   {
     id: 1,
-    tid: 'Акция',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.STOCK',
   },
   {
     id: 2,
-    tid: 'Хит',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,
-    tid: 'По возрастанию',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.ASCENDING',
   },
   {
     id: 4,
-    tid: 'По убыванию',
+    tid: 'MASTER_CLASSES.FILTER_OPTIONS.DESCENDING',
   },
 ];

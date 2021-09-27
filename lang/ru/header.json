@@ -12,9 +12,24 @@
     "SIGNUP": "регистрация"
   },
   "USER_MENU": {
+    "PROFILE": "Мой профиль",
     "FAVORITE": "Список избранного",
     "PURCHASED_PATTERNS": "Купленные выкройки",
+    "ORDERS_lIST": "Список заказов",
     "PURCHASE_HISTORY": "История покупок",
     "SETTINGS": "Настройки"
+  },
+  "ADMIN_MENU": {
+    "MASTER_CLASS_ARTICLE_CREATING": "Создание мастер-класса",
+    "PRINTED_PATTERN_CREATING": "Создание печатной выкройки",
+    "ELECTRONIC_PATTERNS_CREATING": "Создание электронной выкройки",
+    "SEWING_GOODS_CREATING": "Создание товара для шитья",
+    "ARTICLE_CREATING": "Создание статьи",
+    "USERS_LIST": "Список пользователей",
+    "ORDERS_TABLE": "Таблица заказов",
+    "ORDERS_lIST": "Список заказов",
+    "BEST_PRODUCTS": "Лучшие товары",
+    "SLIDER": "Слайдер",
+    "PROMOCODES": "Промокоды"
   }
 }

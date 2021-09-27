@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { TextSecondary, TextPrimary } from '../../lib/element/text';
-import { spacing } from '../../lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { ConvertDate } from 'src/lib/common/time-convert';
+import { LinkPrimary } from 'src/lib/element/link';
 
 export function ParamsTd(props) {
   const { params } = props;
@@ -10,87 +12,111 @@ export function ParamsTd(props) {
       <Case>
         {Boolean(params.program?.value) && (
           <div>
-            <TextSecondary tid="Программа -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PROGRAM" />
             &nbsp;
             <TextPrimary tid={params.program.value} />
           </div>
         )}
-
         {Boolean(params.color?.value) && (
           <div>
-            <TextSecondary tid="Цвет -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.COLOR" />
             &nbsp;
             <TextPrimary tid={params.color.value} />
           </div>
         )}
         {Boolean(params.size?.value) && (
           <div>
-            <TextSecondary tid="Размер -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.SIZE" />
             &nbsp;
             <TextPrimary tid={params.size.value} />
           </div>
         )}
         {Boolean(params.format) && (
           <div>
-            <TextSecondary tid="Формат -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FORMAT" />
             &nbsp;
             <TextPrimary tid={params.format} />
           </div>
         )}
         {Boolean(params.category) && (
           <div>
-            <TextSecondary tid="Категория -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CATEGORY" />
             &nbsp;
             <TextPrimary tid={params.category} />
           </div>
         )}
         {Boolean(params.count) && (
           <div>
-            <TextSecondary tid="Количество -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.QUANTITY" />
             &nbsp;
             <TextPrimary tid={params.count} />
           </div>
         )}
         {Boolean(params.complexity) && (
           <div>
-            <TextSecondary tid="Сложность -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.COMPLEXITY" />
             &nbsp;
             <TextPrimary tid={params.complexity} />
           </div>
         )}
-
         {Boolean(params.fullName) && (
           <div>
-            <TextSecondary tid="ФИО -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FULL_NAME" />
             &nbsp;
-            <TextPrimary tid={params.fullName} />
-          </div>
-        )}
-        {Boolean(params.city) && (
-          <div>
-            <TextSecondary tid="Город -" />
-            &nbsp;
-            <TextPrimary tid={params.city} />
+            <FullNameText
+              tid={params.fullName}
+              path={`user/${params?.userId}`}
+            />
           </div>
         )}
         {Boolean(params.diliveryInfo) && (
           <div>
-            <TextSecondary tid="Адресс доставки -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DILIVERY_INFO" />
             &nbsp;
             <TextPrimary tid={params.diliveryInfo} />
           </div>
         )}
+        {Boolean(params.city) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CITY" />
+            &nbsp;
+            <TextPrimary tid={params.city} />
+          </div>
+        )}
+        {Boolean(params.diliveryMethod) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_METHOD" />
+            &nbsp;
+            <TextPrimary tid={params.diliveryMethod} />
+          </div>
+        )}
         {Boolean(params.paymentMethod) && (
           <div>
-            <TextSecondary tid="Способ оплаты -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PAYMENT_METHOD" />
             <TextPrimary tid={params.paymentMethod} />
           </div>
         )}
         {Boolean(params.phoneNumber) && (
           <div>
-            <TextSecondary tid="Контактный телефон -" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PHONE" />
             &nbsp;
             <TextPrimary tid={params.phoneNumber} />
+          </div>
+        )}
+        {Boolean(params.email) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.EMAIL" />
+            &nbsp;
+            <TextPrimary tid={params.email} />
+          </div>
+        )}
+        {Boolean(params?.createdDate) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CREATED_DATE" />
+            &nbsp;
+            <TextPrimary
+              tid={ConvertDate(params.createdDate, 'MMMM DD, YYYY')}
+            />
           </div>
         )}
       </Case>
@@ -113,12 +139,6 @@ const Case = styled.div`
   flex-wrap: wrap;
   gap: ${spacing(1)};
 `;
-const renderCondition = (condition) => {
-  // if (condition === 'delivered') {
-  //   return <DeliveredText tid="PURCHASE.SEЕWING_GOODS.CONDITION.DELIVERED" />;
-  // } else if (condition === 'paid') {
-  //   return <PaidText tid="PURCHASE.SEЕWING_GOODS.CONDITION.PAID" />;
-  // } else {
-  //   return null;
-  // }
-};
+const FullNameText = styled(LinkPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;

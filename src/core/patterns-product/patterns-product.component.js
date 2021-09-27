@@ -6,7 +6,7 @@ import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
 import { GalleryBlock } from '../block-gallery';
-import { EditorRenderer } from '../block-editor-renderer';
+import { ReactEditor } from '../block-react-editor';
 import { ProductMainComponent } from './frames';
 
 export function PatternsProductComponent(props) {
@@ -25,17 +25,20 @@ export function PatternsProductComponent(props) {
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        {/* <TextSecondary>{`Главная / Выкройки / Электронные / ${productInfo.name}`}</TextSecondary> */}
         <Content>
           <GalleryBlock items={productInfo.images} />
           <ProductMainComponent addToCart={addToCart} {...productInfo} />
         </Content>
       </SectionLayout>
       <SectionLayout type="TEXT_SMALL">
-        <Title tid="Материалы" />
-        <EditorRenderer data={productInfo.materials} />
+        <Title tid="PATTERNS.MATERIALS" />
+        <ReactEditor data={productInfo.materials} enableReInitialize readOnly />
       </SectionLayout>
-      {/* <CardListBlock title="Рекомендации" cardType="sewing-goods" items={[]} /> */}
+      <CardListBlock
+        onSetCart={addToCart}
+        title="Рекомендации"
+        items={productInfo.recommendations}
+      />
       <BlockComment type={productInfo.type} id={productInfo.id} />
     </SectionLayout>
   );

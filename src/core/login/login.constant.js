@@ -12,9 +12,5 @@ export const LOGIN_API = {
     METHOD: 'POST',
   },
 };
-
 export const LOGIN_FORM_REGISTER_PATH = SIGNUP_ROUTE_PATH;
-
 export const LOGIN_FORM_FORGOT_PASSWORD_PATH = AUTH_RECOVERY_ACCOUNT_ROUTE_PATH;
-
-export const LOGIN_REDIRECT_ON_LOGGED = '/logout';

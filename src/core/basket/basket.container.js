@@ -65,30 +65,26 @@ export function BasketContainer() {
   };
 
   const onSubmit = (values) => {
+    console.log(values);
     dispatch(basketUploadData(values, bascketState, isAuth));
   };
 
   const initialValues = () => {
     return {
-      [ORDER_FIELD_NAME.EMAIL]: email ? email : '',
-      [ORDER_FIELD_NAME.FULL_NAME]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.FULL_NAME]
-        : '',
-      [ORDER_FIELD_NAME.CITY]: userInfo ? userInfo[ORDER_FIELD_NAME.CITY] : '',
-      [ORDER_FIELD_NAME.PHONE]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.PHONE]
-        : '',
-      [ORDER_FIELD_NAME.PAYMENT_METHOD]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD]
-        : 0,
-      [ORDER_FIELD_NAME.DELIVERY_METHOD]: userInfo
-        ? userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD]
-        : 0,
+      [ORDER_FIELD_NAME.EMAIL]: Boolean(email) ? email.toString() : '',
+      [ORDER_FIELD_NAME.FULL_NAME]: userInfo[ORDER_FIELD_NAME.FULL_NAME] || '',
+      [ORDER_FIELD_NAME.CITY]: userInfo[ORDER_FIELD_NAME.CITY] || '',
+      [ORDER_FIELD_NAME.PHONE]: userInfo[ORDER_FIELD_NAME.PHONE] || '',
+      [ORDER_FIELD_NAME.PAYMENT_METHOD]:
+        userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD] || 0,
+      [ORDER_FIELD_NAME.DELIVERY_METHOD]:
+        userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD] || 0,
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
       [ORDER_FIELD_NAME.DILIVERY_PRICE]: 0,
+      [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
     };
   };
 
@@ -144,13 +140,21 @@ export function BasketContainer() {
   );
 }
 const headersGoods = [
-  'Товары для шитья',
-  'Параметры',
-  'Количество',
-  'Итоговая цена',
+  'BASKET.HEADERS_GOODS.SEWING_GOODS',
+  'BASKET.HEADERS_GOODS.PARAMETERS',
+  'BASKET.HEADERS_GOODS.QUANTITY',
+  'BASKET.HEADERS_GOODS.TOTAL_PRICE',
 ];
-const headersMaster = ['Мастер-классы', 'Параметры', 'Итоговая цена'];
-const headersPatterns = ['Выкройки', 'Параметры', 'Итоговая цена'];
+const headersMaster = [
+  'BASKET.HEADERS_MASTER.MASTER_CLASSES',
+  'BASKET.HEADERS_MASTER.PARAMETERS',
+  'BASKET.HEADERS_MASTER.QUANTITY',
+];
+const headersPatterns = [
+  'BASKET.HEADERS_PATTERNS.PATTERNS',
+  'BASKET.HEADERS_PATTERNS.PARAMETERS',
+  'BASKET.HEADERS_PATTERNS.QUANTITY',
+];
 const diliveryOptions = [
   {
     id: 1,

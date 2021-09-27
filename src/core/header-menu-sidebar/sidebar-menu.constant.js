@@ -11,16 +11,14 @@ import { BASKET_ROUTE_PATH } from '../basket';
 import { EDIT_COMPILATION_ROUTE_PATH } from '../edit-compilation';
 import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
 import { HOME_ROUTE_PATH } from '../home';
+import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { LOGIN_ROUTE_PATH } from '../login';
 import { CREATE_MASTER_CLASS_ROUTE_PATH } from '../master-class-create';
 import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
-import { MY_LIKES_ROUTE_PATH } from '../my-likes';
-import { MY_PURCHASES_ROUTE_PATH } from '../my-purchases';
 import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
 import { ORDERS_ROUTE_PATH } from '../orders';
-import { ORDERS_LIST_ROUTE_PATH } from '../orders-list';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { ELECTRONIC_PATTERN_ROUTE_PATH } from '../patterns-create-electronic';
 import { CREATE_PRINT_PATTERN_ROUTE_PATH } from '../patterns-create-print';
@@ -35,7 +33,7 @@ import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
 import { SIGNUP_ROUTE_PATH } from '../signup';
 import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
-import { USERS_ORDER_ROUTE_PATH } from '../users-order';
+import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 
 export const NAVIGATION_MENU = [
   { title: 'Домашняя', pathname: HOME_ROUTE_PATH },
@@ -68,7 +66,7 @@ export const NAVIGATION_MENU = [
     title: 'Админка',
     items: [
       { title: 'Профиль пользователя', pathname: ABOUT_ACCOUNT_ROUTE_PATH },
-      { title: 'Заказы пользователей', pathname: USERS_ORDER_ROUTE_PATH },
+      { title: 'Список заказов', pathname: ORDERS_ROUTE_PATH },
       { title: 'Промокоды', pathname: PROMOCODES_ROUTE_PATH },
       { title: 'Список слайдов', pathname: SLIDER_LIST_ROUTE_PATH },
       {
@@ -108,10 +106,8 @@ export const NAVIGATION_MENU = [
       {
         title: 'Товар',
         items: [
-          { title: 'Мои лайки', pathname: MY_LIKES_ROUTE_PATH },
-          { title: 'Мои покупки', pathname: MY_PURCHASES_ROUTE_PATH },
-          { title: 'Активные заказы', pathname: ORDERS_ROUTE_PATH },
-          { title: 'История заказов', pathname: ORDERS_LIST_ROUTE_PATH },
+          { title: 'Мои лайки', pathname: ALL_LIKES_ROUTE_PATH },
+          { title: 'Мои покупки', pathname: PURCHASE_PRODUCTS_ROUTE_PATH },
           { title: 'Заказ', pathname: `${ORDER_NUMBER_ROUTE_PATH}/test` },
         ],
       },

@@ -18,7 +18,7 @@ export function ProductPriceComponent(props) {
           &nbsp;
           <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
           &nbsp;
-          {discount && <TextColored tid={`-${discount}%`} />}
+          {Boolean(discount) && <TextColored tid={`-${discount}%`} />}
         </div>
       </SectionLayout>
       <SectionLayout type="TEXT">

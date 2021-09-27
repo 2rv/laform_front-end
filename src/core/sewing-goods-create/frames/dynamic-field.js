@@ -21,7 +21,7 @@ export function DynamicField(props) {
 
   return (
     <SectionLayout type="SMALL">
-      <Title tid="Цвета" />
+      <Title tid="DYNAMIC_FIELDS.COLOR.TITLE" />
       <FieldArray name={nameFieldArray}>
         {({ remove, push }) => (
           <FieldLayout type="double" adaptive>
@@ -29,8 +29,8 @@ export function DynamicField(props) {
               <Line key={index}>
                 <BasicField
                   name={`${nameFieldArray}.${index}.${SEWING_GOODS_FIELD_NAME.COLOR_NAME}`}
-                  titleTid="Название цвета"
-                  placeholderTid="Введите название цвета"
+                  titleTid="DYNAMIC_FIELDS.COLOR.FIELD_TITLE"
+                  placeholderTid="DYNAMIC_FIELDS.COLOR.FIELD_PLACEHOLDER"
                   error={getFieldError(
                     SEWING_GOODS_FIELD_NAME.COLOR_NAME,
                     index,
@@ -48,7 +48,7 @@ export function DynamicField(props) {
               </Line>
             ))}
             <SecondaryButton
-              tid="Добавить цвет"
+              tid="DYNAMIC_FIELDS.COLOR.BUTTON_TEXT"
               onClick={() => push(initialData)}
             />
           </FieldLayout>

@@ -2,8 +2,12 @@
   "PRICE": "Цена",
   "CURRENCY": "руб.",
   "DISCOUNT": "Скидка",
+  "HIT": "Хит!",
   "DISCOUNT_PRICE": "Цена со скидкой",
   "DELIVERY_PRICE": "Цена за доставку",
   "TOTAL_ORDER_PRICE": "Итоговая цена заказа",
-  "STOCK": "Акция"
+  "FREE": "Бесплатно",
+  "STOCK": "Акция",
+  "SIZE": "Размер",
+  "COLOR": "Цвет"
 }

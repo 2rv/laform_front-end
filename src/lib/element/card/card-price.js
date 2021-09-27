@@ -5,7 +5,7 @@ import { THEME_COLOR, THEME_SIZE } from '../../theme';
 export function CardPrice(props) {
   const { min = 0, max, discount = null } = props;
   const discountPrice = () => min - (min / 100) * discount;
-  if (discount === 100 || min === 0) return <TextSecondary tid="Бесплатно" />;
+  if (discount === 100 || min === 0) return <TextSecondary tid="PRODUCT_PRICE.FREE" />;
   return (
     <div>
       {discount ? (

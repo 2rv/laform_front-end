@@ -33,6 +33,7 @@ export function CreateSewingGoodsContainer() {
     [SEWING_GOODS_FIELD_NAME.IMAGES]: [],
     [SEWING_GOODS_FIELD_NAME.SIZES]: [initialSizes],
     [SEWING_GOODS_FIELD_NAME.COLORS]: [initialColors],
+    [SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS]: [],
   });
 
   const initialSizes = {
@@ -44,8 +45,6 @@ export function CreateSewingGoodsContainer() {
     [SEWING_GOODS_FIELD_NAME.COLOR_NAME]: '',
   };
 
-  //--------------------------------------------------------------------------
-
   return (
     <CreateSewingGoodsComponent
       pageLoading={pageLoading}
@@ -53,10 +52,8 @@ export function CreateSewingGoodsContainer() {
       isError={isRequestError(state)}
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
-      //-------------
       initialSizes={initialSizes}
       initialColors={initialColors}
-      //-------------
       initialValues={initialValues()}
       onSubmit={onSubmit}
       validation={formValidation}

@@ -1,19 +1,26 @@
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
-import { FilterTabs } from '../../lib/element/filter-tabs';
+import { LoaderPrimary } from '../../lib/element/loader';
+import { Spinner } from '../../lib/element/spinner';
+import { TextSecondary } from '../../lib/element/text';
 import { TableList } from '../block-table-list';
 
 export function OrdersComponent(props) {
-  const { activeTab, setActiveTab, tabItems, headersTable, itemsTable } = props;
+  const { pageLoading, isPending, headersTable, products } = props;
+
   return (
-    <SectionLayout>
-      <TitlePrimary tid="ORDERS.ORDERS" />
-      <FilterTabs
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        tabItems={tabItems}
-      />
-      <TableList items={itemsTable} headers={headersTable} />
-    </SectionLayout>
+    <>
+      {pageLoading && <LoaderPrimary />}
+      <SectionLayout>
+        <TitlePrimary tid="ORDERS.TITLE" />
+        {isPending ? (
+          <Spinner />
+        ) : Boolean(products?.length > 0) ? (
+          <TableList items={products} headers={headersTable} />
+        ) : (
+          <TextSecondary tid="ORDERS.LIST_IS_EMPTY" />
+        )}
+      </SectionLayout>
+    </>
   );
 }

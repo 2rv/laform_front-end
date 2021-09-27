@@ -8,7 +8,12 @@
     },
     "RU": {
       "SHORT": "Rus",
-      "FULL": "Русский"
+      "FULL": "Russian"
     }
+  },
+  "MOBILE": {
+    "LOGIN": "Login",
+    "SIGNUP": "Signup",
+    "OR": "Or"
   }
 }

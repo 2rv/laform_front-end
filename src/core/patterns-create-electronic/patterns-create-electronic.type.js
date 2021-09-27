@@ -16,14 +16,18 @@ export const ELECTRONIC_PATTERN_FIELD_NAME = {
 
   MATERIAL: 'materialRu',
   COMPLEXITY: 'complexity',
-  PRICE: 'price',
-  FILE: 'filePdf',
 
   IMAGES: 'images',
   IMAGE: 'image',
 
+  SIZES: 'sizes',
+  SIZE_NAME: 'size',
+  SIZE_PRICE: 'price',
+
+  FILE: 'filePdf',
+
   CATEGORIES: 'categories',
   CATEGORY: 'textRu',
 
-  RECOMMENDATIONS: 'recommendations',
+  RECOMMENDATIONS: 'recommendation',
 };

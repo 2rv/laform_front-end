@@ -24,12 +24,13 @@ import { addToBasket } from '../basket';
 export function PatternsContainer() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { patternsState, pageLoading, currentLang, user } = useSelector(
+  const { patternsState, pageLoading, currentLang, user, isAuth } = useSelector(
     (state) => ({
       patternsState: state[PATTERNS_STORE_NAME].patternsState,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
     }),
   );
   const [activeTab, setActiveTab] = useState(
@@ -43,7 +44,7 @@ export function PatternsContainer() {
   );
 
   useEffect(() => {
-    dispatch(patternsUploadData(currentLang));
+    dispatch(patternsUploadData(currentLang, isAuth));
 
     if (!['all', 'printed', 'electronic'].includes(router.query.type)) {
       router.push(
@@ -85,9 +86,7 @@ export function PatternsContainer() {
     dispatch(patternsUpdateData(currentLang, id, body));
   };
 
-  const addToCart = (id, type, inCart) => {
-    if (inCart) return dispatch(addToBasket({ id, type }, currentLang));
-  };
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <PatternsComponent
@@ -130,22 +129,22 @@ export const tabItems = [
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'PATTERNS.FILTER_OPTIONS.ALL',
   },
   {
     id: 1,
-    tid: 'Акция',
+    tid: 'PATTERNS.FILTER_OPTIONS.STOCK',
   },
   {
     id: 2,
-    tid: 'Хит',
+    tid: 'PATTERNS.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,
-    tid: 'По возрастанию',
+    tid: 'PATTERNS.FILTER_OPTIONS.ASCENDING',
   },
   {
     id: 4,
-    tid: 'По убыванию',
+    tid: 'PATTERNS.FILTER_OPTIONS.DESCENDING',
   },
 ];

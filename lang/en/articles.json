@@ -1,0 +1,13 @@
+{
+	"ARTICLES": {
+		"TITLE": "Publications",
+		"FIELD": {
+			"FIND_ARTICLES": "Find publications"
+		}
+	},
+	"FILTER_OPTIONS": {
+		"ALL": "All",
+		"NEW": "Created the first",
+		"OLD": "Created the last"
+	}
+}

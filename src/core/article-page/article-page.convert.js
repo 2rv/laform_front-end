@@ -1,4 +1,6 @@
-export function performArticleProductData(rowData) {
+import { convertMultiProducts } from 'src/lib/common/product-converters';
+
+export function performArticleProductData(rowData, basket) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -7,5 +9,9 @@ export function performArticleProductData(rowData) {
     categories: rowData.categories.map((item) => item.textRu),
     postArticle: rowData.articleText,
     createdDate: rowData.createdDate,
+    recommendations: convertMultiProducts(
+      rowData.recommendation?.recommendationProducts,
+      basket,
+    ),
   };
 }

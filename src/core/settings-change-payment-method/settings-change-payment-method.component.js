@@ -26,7 +26,7 @@ export function SettingsChangePaymentMethodComponent(props) {
         <Title tid="SETTINGS.CHANGE_PAYMENT_METHOD.TITLE" />
         <SectionLayout type="TEXT">
           <FieldSelect
-            titleTid="Способ оплаты"
+            titleTid="PROFILE.PAYMENT_METHOD"
             name={fieldPaymentMethod}
             options={options}
             value={values[fieldPaymentMethod]}

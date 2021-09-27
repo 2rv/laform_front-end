@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -17,13 +18,18 @@ import {
 import { settingsChangePasswordFormUploadData } from './settings-change-password.action';
 import { settingsChangePasswordFormValidation } from './settings-change-password.validation';
 import { convertSettingsChangePasswordFormData } from './settings-change-password.convert';
+import { SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME } from '../settings-change-delivery-info';
 
 export function SettingsChangePasswordContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
+  const { state, pageLoading, userInfo } = useSelector((state) => ({
     state: state[SETTINGS_CHANGE_PASSWORD_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    userInfo:
+      state[SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME].changeDeliveryInfo,
   }));
+
+  const userInfoData = getRequestData(userInfo);
 
   const settingsChangePasswordFormSendData = (values, { setSubmitting }) => {
     const data = convertSettingsChangePasswordFormData(values);
@@ -36,6 +42,10 @@ export function SettingsChangePasswordContainer() {
     [SETTINGS_CHANGE_PASSWORD_FIELD_NAME.PASSWORD]: '',
     [SETTINGS_CHANGE_PASSWORD_FIELD_NAME.PASSWORD_REPEAT]: '',
   });
+
+  if (Boolean(userInfoData?.googleId) || Boolean(userInfoData?.facebookId) || Boolean(userInfoData?.appleId)) {
+    return null;
+  }
 
   return (
     <SettingsFormChangePasswordContainer

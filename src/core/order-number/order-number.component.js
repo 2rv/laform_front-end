@@ -12,23 +12,27 @@ export function OrderNumberComponent(props) {
     onSubmit,
     initialValue,
     validate,
-    orderNumberDetails,
     isPending,
+    orderNumberTitle,
+    purchaseProducts,
+    statusOrderSelect,
   } = props;
 
-  return isPending ? <Spinner /> : (
+  return isPending ? (
+    <Spinner />
+  ) : (
     <SectionLayout>
       <div>
         <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />
         &nbsp;
-        <BoldTitle tid={orderNumberDetails?.orderNumber} />
+        <BoldTitle tid={orderNumberTitle} />
       </div>
-      <TableList items={orderNumberDetails?.purchaseProducts} headers={headersTable} />
+      <TableList items={purchaseProducts} headers={headersTable} />
       <AboutOrderFormContainer
-        orderNumberDetails={orderNumberDetails}
         onSubmit={onSubmit}
         initialValue={initialValue}
         validate={validate}
+        statusOrderSelect={statusOrderSelect}
       />
     </SectionLayout>
   );

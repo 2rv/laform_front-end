@@ -65,24 +65,3 @@ export function SliderListContainer() {
     />
   );
 }
-
-const testSliderItems = [
-  {
-    id: 1,
-    name: 'Товары для шитья',
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    id: 2,
-    name: 'Товары для шитья',
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-  {
-    id: 3,
-    name: 'Инструкция по пошиву Комбинезон 0717',
-    image:
-      'https://cs7.pikabu.ru/post_img/big/2018/04/07/0/1523049466170621730.png',
-  },
-];

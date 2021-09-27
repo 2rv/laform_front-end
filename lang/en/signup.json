@@ -1,33 +1,34 @@
 {
-  "SECTION_TITLE": "Регистрация",
+  "SECTION_TITLE": "Sign up",
   "SIGNUP_FORM": {
     "FIELD": {
       "LOGIN": {
-        "TITLE": "Логин",
+        "TITLE": "Login",
         "PLACEHOLDER": "La Forme"
       },
       "EMAIL": {
-        "TITLE": "Почта",
+        "TITLE": "Email",
         "PLACEHOLDER": "email.com"
       },
       "PASSWORD": {
-        "TITLE": "Пароль",
+        "TITLE": "Password",
         "PLACEHOLDER": "Password"
       },
       "PASSWORD_REPEAT": {
-        "TITLE": "Повторите пароль",
+        "TITLE": "Repeat password",
         "PLACEHOLDER": "Password"
       }
     },
     "BUTTON": {
-      "SUBMIT": "Создать аккаунт"
-    }
+      "SUBMIT": "Create account"
+    },
+    "SUCCESS": "Registration completed successfully"
   },
   "SOCIAL": {
-    "HELPER_TEXT": "Или войдите с помощью"
+    "HELPER_TEXT": "Or sign in with"
   },
   "FOOTER": {
-    "HAVE_ACCOUNT": "Уже есть аккаунт?",
-    "LOGIN": "Войти"
+    "HAVE_ACCOUNT": "Already have an account?",
+    "LOGIN": "Log in"
   }
 }

@@ -1,0 +1,60 @@
+{
+  "TABLE": {
+    "TITLE": "Order number",
+    "HEADER": {
+      "ORDER_ITEMS": "Orders product",
+      "PARAMETERS": "Parameters",
+      "TOTAL_PRICE": "Total price"
+    },
+    "DATA": {
+      "PARAMETERS": {
+        "FORMAT": "Format",
+        "SIZE": "Size",
+        "COLOR": "Color",
+        "COUNT": "Quantity",
+        "WHITE": "Color",
+        "PRINTED": "Printed"
+      }
+    }
+  },
+  "FORM": {
+    "TITLE": "About order",
+    "ORDER_STATUS": "Order status",
+    "SAVE_DATA": "Save data",
+    "FIELDS": {
+      "TITLE": {
+        "FULL_NAME": "Full name",
+        "CURRENT_CITY": "Current city",
+        "DELIVERY_METHOD": "Delivery method",
+        "CONTACT_NUMBER": "Contact phone",
+        "ORDER_NOTE": "Order note",
+        "PAYMENT_METHOD": "Payment method",
+        "PROMO_CODE": "Promocode"
+      },
+      "PLACEHOLDER": {
+        "MOSKVA": "Moscow",
+        "CONTACT_NUMBER": "+7 000 000 00 00",
+        "ORDER_NOTE": "Pack the goods securely",
+        "YOUR_PROMO": "Your promo"
+      },
+      "SELECT_OPTIONS": {
+        "DELIVERY_METHOD": {
+          "SENDING_BY_EMAIL": "Sending by mail",
+          "SENDING_BY_PLANE": "Sending by plane"
+        },
+        "PAYMENT_METHOD": {
+          "ONLINE": "Online",
+          "CASH": "In cash"
+        }
+      }
+    },
+    "FOOTER": {
+      "DISCOUNT_PRICE": "Discount price",
+      "SHIPPING_PRICE": "Shipping price",
+      "TOTAL_ORDER_PRICE": "Total price",
+      "ORDER_STATUS": "Order status",
+      "DELIVERED": "Delivered",
+      "SAVE_DATA": "Save data"
+    }
+  }
+}

@@ -1,12 +1,13 @@
 import { httpRequest } from '../../main/http';
 import { BASKET_API } from './basket.constant';
-import { BASKET_ACTION_TYPE } from './basket.type';
+import { BASKET_ACTION_TYPE, ORDER_FIELD_NAME } from './basket.type';
 import {
   convertAddToCart,
   convertPromoCodeForCheck,
   performPromoCode,
   convertForCreateOrder,
   performUserInfoData,
+  convertUserInfoData,
 } from './basket.convert';
 
 export function basketUploadData(values, bascketState, isAuth) {
@@ -21,6 +22,9 @@ export function basketUploadData(values, bascketState, isAuth) {
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
         data: data,
       });
+      if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
+        await basketUpdateUserInfodData(values);
+      }
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
@@ -34,6 +38,15 @@ export function basketUploadData(values, bascketState, isAuth) {
       }
     }
   };
+}
+
+async function basketUpdateUserInfodData(values) {
+  const response = await httpRequest({
+    method: BASKET_API.UPDATE_USER_INFO.TYPE,
+    url: BASKET_API.UPDATE_USER_INFO.ENDPOINT,
+    data: convertUserInfoData(values),
+  });
+  return response;
 }
 
 export function LoadUserInfoAction() {
@@ -80,9 +93,6 @@ export function initializeBasketStore() {
 }
 
 export function addToBasket(data, currentLang) {
-  // {id: продукт id , type: 0-3, size: id размера, color: id цвета, count: количество не превышающее максимума }
-  // {id: обязательно , type: обязательно, size: необязательно (дефол первый в размерах), color: необязательно (дефол первый в цветах), count: необязательно (дефол 1) }
-  // currentLang - обязательно так как будут делаться запросы на разные языки товара
   return async (dispatch) => {
     try {
       const response = await httpRequest({

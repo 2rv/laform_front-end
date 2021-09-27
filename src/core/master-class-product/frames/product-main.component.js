@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextSecondary } from '../../../lib/element/text';
+import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
@@ -23,6 +23,7 @@ export function ProductMainComponent(props) {
     programs,
     addToCart,
     cart,
+    like,
   } = props;
   const [program, setProgram] = useState(
     programs?.length > 0
@@ -30,13 +31,8 @@ export function ProductMainComponent(props) {
       : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
 
-  const handleAddToCart = (_, __, inCart) => {
-    addToCart(inCart, {
-      id,
-      type,
-      program: program.id,
-    });
-  };
+  const handleAddToCart = (values) =>
+    addToCart({ id, type, program: program.id });
 
   return (
     <Container>
@@ -70,12 +66,26 @@ export function ProductMainComponent(props) {
       <Divider />
       <FooterCase>
         <ProductPriceComponent price={program?.price} discount={discount} />
-        <CardActions cart={cart} onSetCart={handleAddToCart} />
+        <CardActions
+          like={like}
+          id={id}
+          type={type}
+          cart={cart}
+          onSetCart={handleAddToCart}
+        />
       </FooterCase>
+      <LineCase>
+        <TextPrimary tid="Артикул - " />
+        <LigthText>{program.vendorCode}</LigthText>
+      </LineCase>
     </Container>
   );
 }
-
+const LineCase = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing(3)};
+`;
 const FooterCase = styled.div`
   display: grid;
   align-items: center;

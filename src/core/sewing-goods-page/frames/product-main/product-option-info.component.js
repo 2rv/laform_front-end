@@ -6,13 +6,13 @@ import { SectionLayout } from '../../../../lib/element/layout';
 export function ProductOptionInfo(props) {
   const { optionInfo } = props;
   if (!optionInfo)
-    return <TextPrimary tid="Нету сведений о параметрах товара" />;
+    return <TextPrimary tid="OTHER.NO_INFORMATION_ABOUT_PARAMETERS" />;
   return (
     <SectionLayout type="TEXT">
       {optionInfo.map(({ name, value }, index) => {
         return (
           <TextSecondary key={index}>
-            <TextSecondary tid={name} />: &nbsp;
+            <TextSecondary tid={name} />&nbsp;
             <TextPrimary tid={value} />
           </TextSecondary>
         );

@@ -1,24 +1,24 @@
 {
-  "SECTION_TITLE": "Вход",
+  "SECTION_TITLE": "Login",
   "LOGIN_FORM": {
     "FIELD": {
       "LOGIN": {
-        "TITLE": "Логин",
+        "TITLE": "Login",
         "PLACEHOLDER": "La Forme"
       },
       "PASSWORD": {
-        "TITLE": "Пароль",
+        "TITLE": "Password",
         "PLACEHOLDER": "Password"
       }
     },
     "BUTTON": {
-      "SUBMIT": "Войти в аккаунт"
+      "SUBMIT": "Sign in to your account"
     }
   },
   "FOOTER": {
-    "HAVENT_ACCOUNT_YET": "Ещё нет аккаунта?",
-    "REGISTER": "Регистрация",
-    "FORGOT_PASSWORD": "Забыли пароль?",
-    "FORGOT_PASSWORD_LINK": "Помощь"
+    "HAVENT_ACCOUNT_YET": "Don't have an account yet?",
+    "REGISTER": "Signup",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "FORGOT_PASSWORD_LINK": "Help"
   }
 }

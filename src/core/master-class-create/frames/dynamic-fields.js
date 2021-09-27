@@ -38,7 +38,7 @@ export function DynamicFields(props) {
 
   return (
     <SectionLayout type="SMALL">
-      <Title tid="Программы" />
+      <Title tid="DYNAMIC_FIELDS.PROGRAM.TITLE" />
 
       <FieldArray name={fieldArrayName}>
         {({ remove, push }) => (
@@ -48,8 +48,8 @@ export function DynamicFields(props) {
                 <FieldLayout type="double" adaptive>
                   <BasicField
                     name={`${fieldArrayName}.${index}.${CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_NAME}`}
-                    titleTid="Название программы"
-                    placeholderTid="Введите название программы"
+                    titleTid="DYNAMIC_FIELDS.PROGRAM.FIELD_TITLE"
+                    placeholderTid="DYNAMIC_FIELDS.PROGRAM.FIELD_PLACEHOLDER"
                     error={getFieldError(
                       CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_NAME,
                       index,
@@ -62,8 +62,8 @@ export function DynamicFields(props) {
                   <Case>
                     <BasicField
                       name={`${fieldArrayName}.${index}.${CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_PRICE}`}
-                      titleTid="Цена"
-                      placeholderTid="Введите цену (в руб.)"
+                      titleTid="DYNAMIC_FIELDS.PRICE.TITLE"
+                      placeholderTid="DYNAMIC_FIELDS.PRICE.PLACEHOLDER"
                       error={getFieldError(
                         CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_PRICE,
                         index,
@@ -86,7 +86,7 @@ export function DynamicFields(props) {
                   </Case>
                 </FieldLayout>
 
-                <Title tid="Статья мастер-класса" />
+                <Title tid="ARTICLE_CREATE_FORM.MASTER_CLASS_ARTICLE" />
                 <ReactEditor
                   handleChange={setEditorData(
                     CREATE_MASTER_CLASS_FIELD_NAME.MASTER_CLASS,
@@ -98,7 +98,7 @@ export function DynamicFields(props) {
               </Container>
             ))}
             <ButtonSecondary
-              tid="Добавить программу"
+              tid="DYNAMIC_FIELDS.PROGRAM.BUTTON_TEXT"
               onClick={() => push(initialData)}
             />
           </SectionLayout>

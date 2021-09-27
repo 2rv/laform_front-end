@@ -1,17 +1,15 @@
 {
   "401": {
-    "TITLE": "Ошибка 401",
-    "TEXT": "",
-    "LINK_TEXT": ""
+    "TITLE": "Error 401",
+    "TEXT": ""
   },
   "404": {
-    "TITLE": "Ошибка 404",
-    "TEXT": "Страницы на которую вы перешли – не существует. Можете перейти",
-    "LINK_TEXT": "на главную"
+    "TITLE": "Error 404",
+    "TEXT": "The page you went to does not exist. You can go",
+    "LINK_TEXT": "To home"
   },
   "500": {
-    "TITLE": "Ошибка 500",
-    "TEXT": "",
-    "LINK_TEXT": ""
+    "TITLE": "Error 500",
+    "TEXT": ""
   }
 }

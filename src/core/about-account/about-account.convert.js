@@ -1,46 +1,28 @@
 export const convertLikesData = (data) => {
   return data.map((n) => {
-    const { productName, fetchedProduct } = getProduct(n);
+    const { fetchedProduct, productName, productCategory } = getProduct(n);
 
     return {
       id: n.id,
-      name: fetchedProduct.titleRu,
+      productId: fetchedProduct.id,
+      text: fetchedProduct.titleRu,
       image: (fetchedProduct.images ? fetchedProduct.images[0] : fetchedProduct.imageUrl)?.fileUrl,
+      category: productCategory,
       productName,
     };
   });
 };
 
-export const convertPurchasesData = (data) => {
-  const firstPurchaseProduct = (data.purchaseProducts ?? [])[0] ?? {};
-  const { productName, fetchedProduct } = getProduct(firstPurchaseProduct);
-
-  return {
-    id: data.id,
-    params: [
-      firstPurchaseProduct?.color && { name: 'Цвет', value: firstPurchaseProduct.color },
-      firstPurchaseProduct?.size && { name: 'Размер', value: firstPurchaseProduct.size },
-      firstPurchaseProduct?.type && { name: 'Категория', value: firstPurchaseProduct.type },
-      firstPurchaseProduct?.quantity && { name: 'Количество', value: firstPurchaseProduct.quantity },
-    ],
-    price: data.price,
-    status: data.orderStatus,
-    productId: fetchedProduct?.id,
-    name: fetchedProduct?.titleRu,
-    image: (fetchedProduct?.images ? fetchedProduct?.images[0] : fetchedProduct?.imageUrl)?.fileUrl,
-    productName,
-  };
-};
-
 export const convertCommentsData = (data) => {
-  return data.map((n) => {
-    const { productName, fetchedProduct } = getProduct(n);
+  return data?.map((n) => {
+    const { fetchedProduct, productName } = getProduct(n);
 
     return {
       id: n.id,
       text: n.text,
       createDate: n.createDate,
       productId: fetchedProduct.id,
+      image: (fetchedProduct?.images ? fetchedProduct?.images[0] : fetchedProduct?.imageUrl)?.fileUrl,
       productName,
     };
   });
@@ -55,18 +37,27 @@ const getProduct = (product) => {
   );
 
   let productName;
+  let productCategory;
 
   if (product.masterClassId) {
     productName = 'master-class';
+    productCategory = 'PROFILE.CATEGORIES.MASTER_CLASS';
   } else if (product.patternProductId) {
-    productName = 'patterns';
+    productName = 'pattern';
+    if (product.patternProductId.type === 1) {
+      productCategory = 'PROFILE.CATEGORIES.ELECTRONIC_PATTERN';
+    } else if (product.patternProductId.type === 2) {
+      productCategory = 'PROFILE.CATEGORIES.PRINTED_PATTERN';
+    }
   } else if (product.sewingProductId) {
     productName = 'sewing-goods';
+    productCategory = 'PROFILE.CATEGORIES.SEWING_GOODS';
   } else if (product.postId) {
     productName = 'article';
+    productCategory = 'PROFILE.CATEGORIES.ARTICLE';
   }
 
   return {
-    productName, fetchedProduct
-  }
+    fetchedProduct, productName, productCategory,
+  };
 };

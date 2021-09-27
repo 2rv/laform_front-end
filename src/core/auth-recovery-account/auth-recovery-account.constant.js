@@ -9,5 +9,4 @@ export const AUTH_RECOVERY_ACCOUNT_API = {
   METHOD: 'POST',
 };
 
-export const AUTH_RECOVERY_ACCOUNT_REDIRECT_ON_LOGGED = '/';
 export { AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH } from '../auth-verificate-email-recovery-account';

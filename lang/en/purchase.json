@@ -1,0 +1,30 @@
+{
+  "SEЕWING_GOODS": {
+    "MY_PURCHASES": "My purchases",
+    "DESIGNATION": "Name",
+    "PRODUCT_PRICE": "Price",
+    "DETAILS": {
+      "TITLE": "Details",
+      "SIZE": "Size",
+      "CATEGORY": {
+        "TITLE": "Title",
+        "OUTERWEAR": "Outerwear"
+      },
+      "COUNT": "Quantity",
+      "COLOR": {
+        "TITLE": "Color",
+        "WHITE": "White",
+        "GREEN": "Green"
+      }
+    },
+    "CONDITION": {
+      "TITLE": "State",
+      "DELIVERED": "Delivered",
+      "PAID": "Paid"
+    }
+  },
+  "TAB": {
+    "MASTER_CLASSES": "Master-classes",
+    "ARTICLES": "Articles"
+  }
+}

@@ -37,21 +37,27 @@ export function HomeComponent(props) {
     <SectionLayout type="MEDIUM">
       <SliderContainer />
       <CatalogListComponent items={catalogListItems} />
-      <CardListBlock
-        title={'HOME.POPULAR_GOODS_TITLE'}
-        path={SEWING_GOODS_ROUTE_PATH}
-        items={sewingGoodsListItems}
-      />
-      <CardListBlock
-        title={'HOME.POPULAR_MASTER_CLASSES_TITLE'}
-        path={MASTER_CLASSES_ROUTE_PATH}
-        items={masterClassListItems}
-      />
-      <CardListBlock
-        title={'HOME.POPULAR_ARTICLES_TITLE'}
-        path={ARTICLES_ROUTE_PATH}
-        items={articleListItems}
-      />
+      {Boolean(sewingGoodsListItems.length > 0) && (
+        <CardListBlock
+          title={'HOME.POPULAR_GOODS_TITLE'}
+          path={SEWING_GOODS_ROUTE_PATH}
+          items={sewingGoodsListItems}
+        />
+      )}
+      {Boolean(masterClassListItems.length > 0) && (
+        <CardListBlock
+          title={'HOME.POPULAR_MASTER_CLASSES_TITLE'}
+          path={MASTER_CLASSES_ROUTE_PATH}
+          items={masterClassListItems}
+        />
+      )}
+      {Boolean(articleListItems.length > 0) && (
+        <CardListBlock
+          title={'HOME.POPULAR_ARTICLES_TITLE'}
+          path={ARTICLES_ROUTE_PATH}
+          items={articleListItems}
+        />
+      )}
       <HelpInfoBlock viewAll />
       <AdvantageInfoComponent />
     </SectionLayout>

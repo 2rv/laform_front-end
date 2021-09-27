@@ -14,16 +14,20 @@ import { ARTICLES_FIELD_NAME } from './articles.type';
 import { ArticlesComponent } from './articles.component';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { sorterItemsByParams } from '../../lib/common/filter-list-card';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function ArticlesContainer() {
   const dispatch = useDispatch();
-  const { articlesState, pageLoading, currentLang } = useSelector((state) => ({
-    articlesState: state[ARTICLES_STORE_NAME].articlesState,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-  }));
+  const { articlesState, pageLoading, currentLang, isAuth } = useSelector(
+    (state) => ({
+      articlesState: state[ARTICLES_STORE_NAME].articlesState,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+      isAuth: state[AUTH_STORE_NAME].logged,
+    }),
+  );
 
-  useEffect(() => dispatch(articlesUploadData(currentLang)), []);
+  useEffect(() => dispatch(articlesUploadData(currentLang, isAuth)), []);
   //---------------------------------------------------
   const filterInitialValue = () => ({
     [ARTICLES_FIELD_NAME.FILTER]: 0,
@@ -57,14 +61,14 @@ export function ArticlesContainer() {
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'ARTICLES.FILTER_OPTIONS.ALL',
   },
   {
     id: 5,
-    tid: 'Созданы первыми',
+    tid: 'ARTICLES.FILTER_OPTIONS.NEW',
   },
   {
     id: 6,
-    tid: 'Созданы последними',
+    tid: 'ARTICLES.FILTER_OPTIONS.OLD',
   },
 ];

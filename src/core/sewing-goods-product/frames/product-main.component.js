@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextSecondary } from '../../../lib/element/text';
+import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
@@ -24,6 +24,7 @@ export function ProductMainComponent(props) {
     sizes,
     colors,
     addToCart,
+    like,
   } = props;
 
   const [size, setSize] = useState(
@@ -44,22 +45,21 @@ export function ProductMainComponent(props) {
     setCount(currentCount - 1);
   };
 
-  const handleAddToCart = (_, __, inCart) => {
-    addToCart(inCart, {
+  const handleAddToCart = (values) =>
+    addToCart({
       id,
       type,
       currentCount,
       size: size.id,
       color: color.id,
     });
-  };
 
   return (
     <Container>
       <HeaderCase>
         <Title tid={name} />
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="Акция" />}
+        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
       <div>
         {categories.map((category, key) => (
@@ -76,7 +76,7 @@ export function ProductMainComponent(props) {
       {(sizes || colors) && <Divider />}
       {Boolean(sizes.length > 0) && (
         <BlockSelect
-          name="Размер"
+          name="PRODUCT_PRICE.SIZE"
           selectOptions={sizes}
           handleChange={setSize}
           isTooltip
@@ -84,7 +84,7 @@ export function ProductMainComponent(props) {
       )}
       {Boolean(colors.length > 0) && (
         <BlockSelect
-          name="Цвет"
+          name="PRODUCT_PRICE.COLOR"
           selectOptions={colors}
           handleChange={setColor}
         />
@@ -103,12 +103,26 @@ export function ProductMainComponent(props) {
             <Button tid="+" onClick={increment} />
           </ActionCase>
         </Case>
-
-        <CardActions cart={cart} onSetCart={handleAddToCart} />
+        <CardActions
+          like={like}
+          id={id}
+          type={type}
+          cart={cart}
+          onSetCart={handleAddToCart}
+        />
       </FooterCase>
+      <LineCase>
+        <TextPrimary tid="Артикул - " />
+        <LigthText>{size.vendorCode}</LigthText>
+      </LineCase>
     </Container>
   );
 }
+const LineCase = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing(3)};
+`;
 const Count = styled(TextSecondary)`
   width: max-content;
   padding: ${spacing(2)};

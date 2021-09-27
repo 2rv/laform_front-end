@@ -1,77 +1,97 @@
 {
-  "TITLE": "Корзина",
-  "CART_IS_EMPTY": "В вашей корзинов ещё ничего нет",
-  "TABLE": {
-    "HEADER": {
-      "SEEWING_GOODS": "Товары для шитья",
-      "MASTER_CLASSES": "Мастер-классы",
-      "PATTERNS": "Выкройки",
-      "PARAMETERS": "Параметры",
-      "COUNT": "Количество",
-      "TOTAL_PRICE": "Итоговая цена"
-    },
-    "PARAMETERS": {
-      "CATEGORY": "Категория",
-      "SIZE": "Размер",
-      "OUTERWEAR": "Верхняя одежда",
-      "PROGRAM": "Программа",
-      "REMOTE": "Удалённая",
-      "APPLY_CHANGES": "Применить изменения",
-      "COLOR": "Цвет",
-      "FORMAT": "Формат",
-      "FORMATS": {
-        "TITLE": "Формат",
-        "PRINTED": "Печатная",
-        "ELECTRONIC": "Электронная"
-      },
-      "COLORS": {
-        "TITLE": "Цвет",
-        "WHITE": "Белый",
-        "GREEN": "Зелёный",
-        "RED": "Красный"
-      }
-    }
-  },
-  "FORM": {
-    "TITLE": "Оформление заказа",
-    "ACTIVATE": "Активировать",
-    "FIELDS": {
-      "TITLES": {
-        "FULL_NAME": "Укажите ваше ФИО",
-        "CURRENT_CITY": "Укажите адрес доставки",
-        "CONVENIET_DELIVERY_METHOD": "Укажите удобный способ доставки",
-        "CONTACT_PHONE_NUMBER": "Укажите контактный телефон",
-        "ORDER_NOTE": "Примечание к заказу",
-        "CONVENIET_PAYMENT_METHOD": "Укажите удобный способ оплаты",
-        "PROMO_CODE": "Промокод"
-      },
-      "PLACEHOLDER": {
-        "FULL_NAME": "Фамилия, имя и отчество",
-        "CURRENT_CITY": "ул. Недорубова, д. 18 к. 3, Москва,",
-        "CONTACT_PHONE_NUMBER": "+7 000 000 00 00",
-        "ORDER_NOTE": "Пожелания касаемо товара",
-        "PROMO_CODE": "Ваше промо"
-      },
-      "SELECT_OPTIONS": {
-        "CONVENIET_DELIVERY_METHOD": {
-          "MAIL": "Почта"
-        },
-        "CONVENIET_PAYMENT_METHOD": {
-          "ONLINE": "Онлайн"
-        }
-      }
-    },
-    "FOOTER": {
-      "PRICE": "Цена",
-      "DISCOUNT_PRICE": "Цена со скидкой",
-      "SHIPPING_PRICE": "Цена за доставку",
-      "TOTAL_ORDER_PRICE": "Итоговая цена заказа",
-      "CONFIRM_ORDER": "Подтвердить заказ",
-      "SIGN_UP": "Регистрация",
-      "SIGN_IN": "Войти",
-      "INFO": "Для покупки на сайте LaForme требуется быть зарегистрированным пользователем. Создайте аккаунт либо войдите для продолжения."
-    },
-    "PROMO_CODE_SUCCESS": "Промокод на {{discount}}% успешно применён",
-    "FORM_SEND_SUCCESS": "Заказ успешно сформирован"
-  }
+	"TITLE": "Корзина",
+	"CART_IS_EMPTY": "В вашей корзинов ещё ничего нет",
+	"GO_TO_BASKET": "Зайти в корзину",
+	"ADD_TO_BASKET": "Добавить в корзину",
+	"HEADERS_GOODS": {
+		"SEWING_GOODS": "Товары для шитья",
+		"PARAMETERS": "Параметры",
+		"QUANTITY": "Количество",
+		"TOTAL_PRICE": "Итоговая цена"
+	},
+	"HEADERS_MASTER": {
+		"MASTER_CLASSES": "Мастер-классы",
+		"PARAMETERS": "Параметры",
+		"TOTAL_PRICE": "Итоговая цена"
+	},
+	"HEADERS_PATTERNS": {
+		"PATTERNS": "Выкройки",
+		"PARAMETERS": "Параметры",
+		"TOTAL_PRICE": "Итоговая цена"
+	},
+	"TABLE": {
+		"HEADER": {
+			"SEEWING_GOODS": "Товары для шитья",
+			"MASTER_CLASSES": "Мастер-классы",
+			"PATTERNS": "Выкройки",
+			"PARAMETERS": "Параметры",
+			"COUNT": "Количество",
+			"TOTAL_PRICE": "Итоговая цена"
+		},
+		"PARAMETERS": {
+			"CATEGORY": "Категория",
+			"SIZE": "Размер",
+			"OUTERWEAR": "Верхняя одежда",
+			"PROGRAM": "Программа",
+			"REMOTE": "Удалённая",
+			"APPLY_CHANGES": "Применить изменения",
+			"COLOR": "Цвет",
+			"FORMAT": "Формат",
+			"FORMATS": {
+				"TITLE": "Формат",
+				"PRINTED": "Печатная",
+				"ELECTRONIC": "Электронная"
+			},
+			"COLORS": {
+				"TITLE": "Цвет",
+				"WHITE": "Белый",
+				"GREEN": "Зелёный",
+				"RED": "Красный"
+			}
+		}
+	},
+	"FORM": {
+		"TITLE": "Оформление заказа",
+		"ACTIVATE": "Активировать",
+		"FIELDS": {
+			"TITLES": {
+				"EMAIL": "Email",
+				"FULL_NAME": "Укажите ваше ФИО",
+				"CURRENT_CITY": "Укажите адрес доставки",
+				"CONVENIET_DELIVERY_METHOD": "Укажите удобный способ доставки",
+				"CONTACT_PHONE_NUMBER": "Укажите контактный телефон",
+				"ORDER_NOTE": "Примечание к заказу",
+				"CONVENIET_PAYMENT_METHOD": "Укажите удобный способ оплаты",
+				"PROMO_CODE": "Промокод"
+			},
+			"PLACEHOLDER": {
+				"EMAIL": "Укажите Email",
+				"FULL_NAME": "Фамилия, имя и отчество",
+				"CURRENT_CITY": "ул. Недорубова, д. 18 к. 3, Москва,",
+				"CONTACT_PHONE_NUMBER": "+7 000 000 00 00",
+				"ORDER_NOTE": "Пожелания касаемо товара",
+				"PROMO_CODE": "Ваше промо"
+			},
+			"SELECT_OPTIONS": {
+				"CONVENIET_DELIVERY_METHOD": {
+					"MAIL": "Почта"
+				},
+				"CONVENIET_PAYMENT_METHOD": {
+					"ONLINE": "Онлайн"
+				}
+			}
+		},
+		"FOOTER": {
+			"PRICE": "Цена",
+			"DISCOUNT_PRICE": "Цена со скидкой",
+			"SHIPPING_PRICE": "Цена за доставку",
+			"TOTAL_ORDER_PRICE": "Итоговая цена заказа",
+			"CONFIRM_ORDER": "Подтвердить заказ",
+			"SIGN_UP": "Регистрация",
+			"SIGN_IN": "Войти",
+			"INFO": "Для получения доступа к истории покупок необходимо: войти или зарегистрироваться"
+		},
+		"PROMO_CODE_SUCCESS": "Промокод на {{discount}}% успешно применён",
+		"FORM_SEND_SUCCESS": "Заказ успешно сформирован"
+	}
 }

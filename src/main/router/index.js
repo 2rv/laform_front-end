@@ -30,11 +30,6 @@ import {
 } from '../../core/auth-verificate-email-confirm';
 import { settingsRouter, SETTINGS_ROUTE_PATH } from '../../core/settings';
 import { ordersRouter, ORDERS_ROUTE_PATH } from '../../core/orders';
-import {
-  myPurchasesRouter,
-  MY_PURCHASES_ROUTE_PATH,
-} from '../../core/my-purchases';
-import { myLikesRouter, MY_LIKES_ROUTE_PATH } from '../../core/my-likes';
 import { faqPageRouter, FAQ_PAGE_ROUTE_PATH } from '../../core/faq-page';
 import {
   editCompilationRouter,
@@ -83,14 +78,6 @@ import {
   authVerificateEmailRecoveryAccountRouter,
 } from '../../core/auth-verificate-email-recovery-account';
 import {
-  ordersListRouter,
-  ORDERS_LIST_ROUTE_PATH,
-} from '../../core/orders-list';
-import {
-  usersOrderRouter,
-  USERS_ORDER_ROUTE_PATH,
-} from '../../core/users-order';
-import {
   createMasterClassRouter,
   CREATE_MASTER_CLASS_ROUTE_PATH,
 } from '../../core/master-class-create';
@@ -115,11 +102,18 @@ import {
   CREATE_NOTIFICATION_ROUTE_PATH,
 } from '../../core/create-notification';
 import {
-  masterClassArticleRouter,
-  MASTER_CLASS_ARTICLE_ROUTE_PATH,
-} from '../../core/master-class-article';
+  masterClassPageStore,
+  MASTER_CLASS_PAGE_ROUTE_PATH,
+} from '../../core/master-class-page';
+import { usersStore, USERS_ROUTE_PATH } from '../../core/users';
+import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
+import {
+  purchaseProductsRouter,
+  PURCHASE_PRODUCTS_ROUTE_PATH,
+} from '../../core/purchase-products';
 
 export const routes = {
+  [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
   [CREATE_PRINT_PATTERN_ROUTE_PATH]: createPrintPatternRouter,
@@ -145,8 +139,6 @@ export const routes = {
   [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
-  [MY_PURCHASES_ROUTE_PATH]: myPurchasesRouter,
-  [MY_LIKES_ROUTE_PATH]: myLikesRouter,
   [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
@@ -155,10 +147,10 @@ export const routes = {
   [SLIDER_EDIT_ROUTE_PATH]: sliderEditRouter,
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
-  [ORDERS_LIST_ROUTE_PATH]: ordersListRouter,
-  [USERS_ORDER_ROUTE_PATH]: usersOrderRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
-  [MASTER_CLASS_ARTICLE_ROUTE_PATH]: masterClassArticleRouter,
+  [USERS_ROUTE_PATH]: usersStore,
+  [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
+  [PURCHASE_PRODUCTS_ROUTE_PATH]: purchaseProductsRouter,
 };
 
 export const Router = routesInit(routes);

@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextSecondary } from '../../../lib/element/text';
+import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
 import { CardActions } from '../../../lib/element/card/card-actions';
-import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import { ProductPriceComponent } from './product-price.component';
 import { BlockSelect } from '../../block-select';
 import { TextBlock } from '../../block-text';
-import { patternsProductSendPdfToMail } from '../patterns-product.action';
 
 export function ProductMainComponent(props) {
   const {
@@ -27,39 +24,23 @@ export function ProductMainComponent(props) {
     price,
     complexity,
     cart,
-    filePdf,
     addToCart,
+    filePdf,
+    like,
   } = props;
 
-  const dispatch = useDispatch();
   const [size, setSize] = useState(
     sizes?.length > 0 ? sizes[0] : { id: 0, tid: 0, price: 0, vendorCode: 0 },
   );
-  const productPdfUrl = filePdf?.fileUrl;
 
-  const sendPdfToMail = () => {
-    dispatch(
-      patternsProductSendPdfToMail({
-        productName: name,
-        productPdfUrl,
-      }),
-    );
-  };
-
-  const redirectToPdfLink = () => {
-    window.open(productPdfUrl, '_blank');
-  };
-
-  const handleAddToCart = (_, __, inCart) => {
-    addToCart(inCart, { id, type, size: size.id });
-  };
+  const handleAddToCart = (values) => addToCart({ id, type, size: size.id });
 
   return (
     <Container>
       <HeaderCase>
         <Title tid={name} />
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="Акция" />}
+        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
       <div>
         {categories?.map((category, key) => (
@@ -75,7 +56,7 @@ export function ProductMainComponent(props) {
       <TextBlock text={description} />
       <Divider />
       <LineCase>
-        <Text tid="Сложность выкройки" />
+        <Text tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
         <Complexity>
           {[1, 2, 3, 4, 5].map((rate, index) => (
             <ComplexityDot key={index} act={rate <= complexity ? 1 : 0} />
@@ -86,7 +67,7 @@ export function ProductMainComponent(props) {
         <>
           <Divider />
           <BlockSelect
-            name="Размер"
+            name="PRODUCT_PRICE.SIZE"
             selectOptions={sizes}
             handleChange={setSize}
             isTooltip
@@ -99,15 +80,22 @@ export function ProductMainComponent(props) {
           price={price ? price : size?.price}
           discount={discount}
         />
-        <CardActions cart={cart} onSetCart={handleAddToCart} />
+        <CardActions
+          like={like}
+          id={id}
+          type={type}
+          cart={cart}
+          onSetCart={handleAddToCart}
+        />
       </FooterCase>
-      <DownloadPdfContainer>
-        <SendEmailButton tid="Отправить на Email" onClick={sendPdfToMail} />
-        <DownloadButton tid="Скачать" onClick={redirectToPdfLink} />
-      </DownloadPdfContainer>
+      <LineCase>
+        <TextPrimary tid="Артикул - " />
+        <LigthText>{size.vendorCode}</LigthText>
+      </LineCase>
     </Container>
   );
 }
+
 const Text = styled(TextSecondary)`
   min-width: max-content;
 `;
@@ -181,17 +169,4 @@ const Container = styled.div`
   @media screen and (max-width: 720px) {
     display: contents;
   }
-`;
-
-const DownloadPdfContainer = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
-`;
-
-const SendEmailButton = styled(ButtonSecondary)`
-  width: 200px;
-`;
-
-const DownloadButton = styled(ButtonPrimary)`
-  width: 120px;
 `;

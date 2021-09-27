@@ -45,39 +45,3 @@ export function SliderContainer(props) {
     <></>
   );
 }
-
-export const testSlides = [
-  {
-    id: 1,
-    titleText: 'Готовые выкройки в интернет-магазине LaForme',
-    titleTextColor: '5',
-    buttonText: 'Купить',
-    buttonTextColor: '1',
-    buttonColor: '3',
-    isButton: true,
-    buttonPath: '/',
-    image: 'http://placekitten.com/900/300',
-  },
-  {
-    id: 2,
-    titleText: 'Готовые выкройки в интернет-магазине LaForme',
-    titleTextColor: '1',
-    buttonText: 'Купить тоже',
-    buttonTextColor: '2',
-    buttonColor: '4',
-    isButton: true,
-    buttonPath: '/',
-    image: 'http://placekitten.com/900/301',
-  },
-  {
-    id: 3,
-    titleText: 'Готовые выкройки в интернет-магазине LaForme',
-    titleTextColor: '3',
-    buttonText: '5',
-    buttonTextColor: '1',
-    buttonColor: '#FF005A',
-    isButton: false,
-    buttonPath: '/',
-    image: 'http://placekitten.com/901/300',
-  },
-];

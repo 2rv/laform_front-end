@@ -93,7 +93,7 @@ export function EditCompilationContainer() {
                     title={product.titleRu}
                     pinned={product.pinned}
                     image={
-                      product.images?.[0].fileUrl || product.image?.fileUrl
+                      product.images?.[0]?.fileUrl || product.image?.fileUrl
                     }
                     compilationName={compilationName}
                     currentLang={currentLang}

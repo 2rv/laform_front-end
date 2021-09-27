@@ -1,0 +1,13 @@
+{
+  "PRICE": "Price",
+  "CURRENCY": "rub.",
+  "DISCOUNT": "Discount",
+  "HIT": "Hit!",
+  "DISCOUNT_PRICE": "Discount price",
+  "DELIVERY_PRICE": "Delivery price",
+  "TOTAL_ORDER_PRICE": "Total order price",
+  "FREE": "Free",
+  "STOCK": "Stock",
+  "SIZE": "Size",
+  "COLOR": "Color"
+}

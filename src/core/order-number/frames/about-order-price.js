@@ -4,12 +4,8 @@ import { TextCurrency, TextSecondary } from '../../../lib/element/text';
 import { SectionLayout } from '../../../lib/element/layout';
 
 export function AboutOrderPrice(props) {
-  const {
-    discountPrice = 0,
-    discount = false,
-    diliveryPrice = 0,
-    price = 0,
-  } = props;
+  const { discount = 0, dilivery = 0, price = 0 } = props;
+  const discountPrice = price - price * (discount / 100);
   return (
     <Container>
       <SectionLayout type="TEXT">
@@ -17,15 +13,15 @@ export function AboutOrderPrice(props) {
         <div>
           <Price price={discountPrice} />
           &nbsp;
-          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
+          <TextLight tid="PRODUCT_PRICE.CURRENCY" />
           &nbsp;
-          {discount && <TextColored tid={`-${discount}%`} />}
+          {Boolean(discount) && <TextColored tid={`-${discount}%`} />}
         </div>
       </SectionLayout>
       <SectionLayout type="TEXT">
         <Text tid="PRODUCT_PRICE.DELIVERY_PRICE" />
         <div>
-          <Price price={diliveryPrice} />
+          <Price price={dilivery} />
           &nbsp;
           <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
         </div>

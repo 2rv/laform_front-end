@@ -10,29 +10,41 @@ import { StatusTd } from './status-td';
 import { ButtonTd } from './button.td';
 
 export function TableItem(props) {
-  const { children, data, changeItem, deleteItem } = props;
+  const { data, changeItem, deleteItem } = props;
   const {
     id,
     name,
     image,
-    //------ основные данные
+    totalPrice,
+    vendorCode,
+    isOrder,
+    //------
     params,
     otherParams,
     sizesOptions,
     colorsOptions,
     programsOptions,
-    //------ параметры и опции
+    //------
     count,
     maxCount,
-    totalPrice,
-    //------ количество и цена
+    //------
     status,
     comment,
-    //------ другое
+    path,
+    pathConfig,
+    filePDF,
+    //------
   } = data;
   return (
     <Tr>
-      <NameTd image={image} name={name} vendorCode={params.vendorCode} />
+      <NameTd
+        path={path}
+        pathConfig={pathConfig}
+        image={image}
+        name={name}
+        isOrder={isOrder}
+        vendorCode={vendorCode}
+      />
       <CommentTd comment={comment} />
       <ParamsTd params={params} />
       <ParamsTd params={otherParams} />
@@ -45,14 +57,15 @@ export function TableItem(props) {
       <PriceTd isLast={status} totalPrice={totalPrice} />
       <StatusTd status={status} />
       <ButtonTd
+        filePDF={filePDF}
         id={id}
-        sizeId={params.size?.id}
-        colorId={params.color?.id}
-        programId={params.program?.id}
         changeItem={changeItem}
         deleteItem={deleteItem}
+        sizeId={params?.size?.id}
         sizesOptions={sizesOptions}
+        colorId={params?.color?.id}
         colorsOptions={colorsOptions}
+        programId={params?.program?.id}
         programsOptions={programsOptions}
       />
     </Tr>
@@ -61,12 +74,6 @@ export function TableItem(props) {
 
 const Tr = styled.tr`
   display: table-row;
-  /* &:hover {
-    cursor: pointer;
-    background: ${THEME_COLOR.GRAY};
-    transition: 0.5s;
-  }
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT}; */
   @media screen and (max-width: 875px) {
     display: flex;
     flex-direction: column;

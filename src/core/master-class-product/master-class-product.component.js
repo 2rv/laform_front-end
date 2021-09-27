@@ -14,7 +14,6 @@ export function MasterClassProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    //------------
     productInfo,
     addToCart,
   } = props;
@@ -32,12 +31,13 @@ export function MasterClassProductComponent(props) {
     categories,
     cart,
     programs,
+    like,
+    recommendations,
   } = productInfo;
 
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
-        <TextSecondary>{`Главная / Мастер-классы / ${name}`}</TextSecondary>
         <Content>
           <GalleryBlock items={images} />
           <ProductMainComponent
@@ -52,10 +52,15 @@ export function MasterClassProductComponent(props) {
             images={images}
             categories={categories}
             programs={programs}
+            like={like}
           />
         </Content>
       </SectionLayout>
-      {/* <CardListBlock ="Рекомендации" cardType="sewing-goods" items={[]} /> */}
+      <CardListBlock
+        onSetCart={addToCart}
+        title="Рекомендации"
+        items={recommendations}
+      />
       <BlockComment type={type} id={id} />
     </SectionLayout>
   );

@@ -1,0 +1,40 @@
+{
+	"ABOUT_ACCOUNT": "About account",
+	"DATE_OF_REGISTRATION": "Date of registration",
+	"STATUS": "Status",
+	"VERIFIED": "Verified",
+	"NOT_VERIFIED": "Not verified",
+	"SHIPPING_AND_PAYMENT": "Shipping and payment",
+	"DELIVERY_ADDRESS": "Delivery address",
+	"PAYMENT_METHOD": "Payment method",
+	"STATE": "State",
+	"ONLINE": "Online",
+	"OTHER": "Other",
+	"EMAIL": "Email",
+	"BAN_USER": "Ban user",
+	"PURHCASES_QUANTITY": "Purchases quantity",
+	"PURCHASES": "Purchases",
+	"LIKES": "Likes",
+	"COMMENTS": "Comments",
+	"NOT_HAVE_PURCHASES": "Not have purchases",
+	"NOT_HAVE_LIKES": "Not have likes",
+	"NOT_HAVE_COMMENTS": "Not have comments",
+	"SHOW_ALL": "Show all...",
+	"ACCOUNT_STATE": "Account state -",
+	"SUBSCRIBED_TO_MAILING_LISTS": "Subscribed to mailing lists -",
+	"CATEGORIES": {
+		"MASTER_CLASS": "Master-class",
+		"SEWING_GOODS": "Sewing good",
+		"ELECTRONIC_PATTERN": "Electronic pattern",
+		"PRINTED_PATTERN": "Printed pattern",
+		"ARTICLE": "Article"
+	},
+	"ROLE": {
+		"TITLE": "Role -",
+		"BLOCK": "Block",
+		"BLOCKED": "Blocked",
+		"USER": "Normal user",
+		"ADMIN": "Administrator",
+		"CHANGE_ROLE": "Change user role"
+	}
+}

@@ -18,55 +18,36 @@ export function SliderItemComponent(props) {
     buttonPath,
     image,
   } = props;
+
+  const sliderItemsColor = (item) => {
+    return item === '0'
+      ? '#2F2A2C'
+      : item === '1'
+      ? '#5F5B5D'
+      : item === '2'
+      ? '#8F8D8E'
+      : item === '3'
+      ? '#FFFFFF'
+      : item === '4'
+      ? '#F0F0F0'
+      : item === '5'
+      ? '#FF005A'
+      : item === '6'
+      ? '#7C1C3E'
+      : '';
+  };
+
   return (
     <Container className="keen-slider__slide">
       <Content>
-        <Title
-          color={
-            titleTextColor === '0'
-              ? 'white'
-              : titleTextColor === '1'
-              ? 'black'
-              : titleTextColor === '2'
-              ? 'red'
-              : titleTextColor === '3'
-              ? 'green'
-              : titleTextColor === '4'
-              ? 'blue'
-              : ''
-          }
-        >
+        <Title color={sliderItemsColor(titleTextColor)}>
           {titleText}
         </Title>
         {isButton && (
           <LinkPrimary path={buttonPath}>
             <Button
-              bgcolor={
-                buttonColor === '0'
-                  ? 'orange'
-                  : buttonColor === '1'
-                  ? 'blue'
-                  : buttonColor === '2'
-                  ? 'white'
-                  : buttonColor === '3'
-                  ? 'red'
-                  : buttonColor === '4'
-                  ? 'yellow'
-                  : ''
-              }
-              color={
-                buttonTextColor === '0'
-                  ? 'blue'
-                  : buttonTextColor === '1'
-                  ? 'gray'
-                  : buttonTextColor === '2'
-                  ? 'red'
-                  : buttonTextColor === '3'
-                  ? 'red'
-                  : buttonTextColor === '4'
-                  ? 'purple'
-                  : ''
-              }
+              bgcolor={sliderItemsColor(buttonColor)}
+              color={sliderItemsColor(buttonTextColor)}
             >
               {buttonText}
             </Button>

@@ -1,9 +1,11 @@
 {
-  "REQUIRED": "Это поле обязательно.",
-  "MIN_LENGTH": "Значение слишком короткое.",
-  "MAX_LENGTH": "Значение слишком длинное.",
-  "LOGIN": "Логин содержит недопустимые символы.",
-  "EMAIL": "Некорректный e-mail адрес.",
-  "PASSWORD_REPEAT": "Пароли не совпадают.",
-  "NOT_PHONE": "Неверный номер телефона."
+  "REQUIRED": "Required",
+  "MIN_LENGTH": "Minimum number of characters - {{min}}",
+  "MAX_LENGTH": "Maximum number of characters - {{max}}",
+  "LOGIN": "LOGIN VALIDATION",
+  "EMAIL": "Invalid email address",
+  "PASSWORD_REPEAT": "Password mismatch",
+  "PASSWORD": "",
+  "NOT_PHONE": "Invalid phone number",
+  "PROMOCODE_DISCOUNT_RANGE": "Please enter a number in the range 1-99."
 }

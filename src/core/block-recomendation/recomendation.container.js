@@ -37,26 +37,26 @@ export function RecomendationContainer(props) {
 
   useEffect(() => {
     const selectedItems = products.reduce((acc, item) => {
-      if (item?.selected) acc.push(item.id);
+      if (item?.selected) {
+        if (item.type === 0) acc.push({ masterClassId: item.id });
+        if (item.type === 1) acc.push({ patternProductId: item.id });
+        if (item.type === 2) acc.push({ patternProductId: item.id });
+        if (item.type === 3) acc.push({ sewingProductId: item.id });
+        if (item.type === 4) acc.push({ postId: item.id });
+      }
       return acc;
     }, []);
     onSetRecomendation(selectedItems);
   }, [products]);
-  const onSelect = (id, status) => {
-    if (status) {
-      const copy = products.map((item) => {
-        if (item.id === id) item['selected'] = true;
-        return item;
-      });
-      setProduct(copy);
-    }
-    if (!status) {
-      const copy = products.map((item) => {
-        if (item.id === id) item.selected = false;
-        return item;
-      });
-      setProduct(copy);
-    }
+
+  const onSelect = (id, type, status) => {
+    const copy = products.map((item) => {
+      if (item.id === id) {
+        status ? (item.selected = true) : (item.selected = false);
+      }
+      return item;
+    });
+    setProduct(copy);
   };
   return (
     <RecomendationComponent

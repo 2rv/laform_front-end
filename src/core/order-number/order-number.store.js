@@ -8,7 +8,7 @@ import {
 import { ORDER_NUMBER_ACTION_TYPE } from './order-number.type';
 
 const initialState = {
-  orderNumber: initRequestState(),
+  order: initRequestState(),
 };
 
 export function orderNumberStore(state = initialState, action) {
@@ -16,17 +16,17 @@ export function orderNumberStore(state = initialState, action) {
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_PENDING:
       return {
         ...state,
-        orderNumber: setRequestPending(state.orderNumber),
+        order: setRequestPending(state.order),
       };
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_SUCCESS:
       return {
         ...state,
-        orderNumber: setRequestSuccess(state.orderNumber, action.orderNumberDetails),
+        order: setRequestSuccess(state.order, action.data),
       };
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_ERROR:
       return {
         ...state,
-        orderNumber: setRequestError(state.orderNumber, action.errorMessage),
+        order: setRequestError(state.order, action.errorMessage),
       };
     default:
       return state;

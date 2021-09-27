@@ -14,24 +14,24 @@ import { MasterClassProductComponent } from './master-class-product.component';
 import { getQuery } from 'src/main/navigation';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { addToBasket } from '../basket';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function MasterClassProductContainer() {
   const dispatch = useDispatch();
   const masterClassId = getQuery('id');
 
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
+  const { state, pageLoading, currentLang, logged } = useSelector((state) => ({
     state: state[MASTER_CLASS_PRODUCT_STORE_NAME].product,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    logged: state[AUTH_STORE_NAME].logged,
   }));
 
   useEffect(() => {
-    dispatch(masterClassProductUploadData(currentLang, masterClassId));
+    dispatch(masterClassProductUploadData(currentLang, masterClassId, logged));
   }, []);
 
-  const addToCart = (inCart, values) => {
-    if (inCart) dispatch(addToBasket(values, currentLang));
-  };
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <MasterClassProductComponent

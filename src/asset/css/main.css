@@ -578,12 +578,9 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
   font-size: 0.67em;
 }
 .ce-toolbar__content {
-  max-width: 1000px;
+  max-width: 100%;
 }
 .ce-block__content {
-  max-width: 1000px;
-}
-.tc-wrap {
-  --color-border: #000 !important;
-  --color-background: rgba(0, 0, 0, 0.06) !important;
+  max-width: 100%;
+  margin: 0;
 }

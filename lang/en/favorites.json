@@ -1,0 +1,14 @@
+{
+  "TITLE": "My likes",
+  "LIST_IS_EMPTY": "There are no likes in this list yet",
+  "TABLE": {
+    "HEADER": {
+      "ALL": "All",
+      "MASTER_CLASSES": "Master-classes",
+      "PATTERNS_ELECTRONIC": "Electronic patterns",
+      "PATTERNS_PRINTED": "Printed patterns",
+      "SEWING_GOODS": "Sewing goods",
+      "ARTICLES": "Article"
+    }
+  }
+}

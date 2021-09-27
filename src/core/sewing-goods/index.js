@@ -5,4 +5,3 @@ export {
   SEWING_GOODS_ROUTE_PATH,
   SEWING_GOODS_STORE_NAME,
 } from './sewing-goods.constant';
-export { performSewingGoodsData } from './sewing-goods.convert';

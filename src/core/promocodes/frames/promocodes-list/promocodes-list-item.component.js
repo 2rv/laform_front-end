@@ -16,7 +16,7 @@ export function PromocodesListItemComponent({ id, promocode, discount }) {
 
   return (
     <List>
-      <TextSecondary>{promocode} | {discount}%</TextSecondary>
+      <PromocodeText>{promocode} | {discount}%</PromocodeText>
       <IconButton onClick={() => removePromocode(id)}>
         <Remove />
       </IconButton>
@@ -26,8 +26,13 @@ export function PromocodesListItemComponent({ id, promocode, discount }) {
 }
 
 const List = styled.li`
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-template-columns: 1fr 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: ${spacing(3)};
+`;
+
+const PromocodeText = styled(TextSecondary)`
+  word-break: break-word;
 `;
