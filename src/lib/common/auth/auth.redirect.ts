@@ -58,22 +58,3 @@ export const authRedirectForNonAdminUser = (
     redirect(pathToRedirect);
   }
 };
-
-export const checkQueryIdRedirect = (
-  ctx: any,
-  pathToRedirect: any,
-  queryName: string,
-) => {
-  const { res, query } = ctx;
-
-  if (!query?.[queryName]) {
-    if (res) {
-      res.writeHead(302, {
-        Location: pathToRedirect,
-      });
-      res.end();
-    } else {
-      redirect(pathToRedirect);
-    }
-  }
-};

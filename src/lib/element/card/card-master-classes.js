@@ -29,7 +29,7 @@ export function CardMasterClasses(props) {
     <Container>
       <CardImage
         path={MASTER_CLASS_PRODUCT_ROUTE_PATH}
-        pathConfig={{ query: { id: id } }}
+        pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         bestseller={bestseller}
         action={price?.discount}

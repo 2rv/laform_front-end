@@ -31,8 +31,6 @@ export function LikeContainer({ id, type, like }) {
 
   const onLike = () => {
     const data = likeConvertType(id, type);
-    console.log(JSON.stringify(data));
-    console.log(isLiked);
     if (isLiked) dispatch(deleteLike(data));
     else dispatch(createLike(data));
   };

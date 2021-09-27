@@ -1,7 +1,6 @@
-export const SLIDER_EDIT_ROUTE_PATH = '/slider/edit/[id]';
-
+export const SLIDER_EDIT_ROUTE_PATH = ({ id } = { id: '[id]' }) =>
+  `/slider/edit/${id}`;
 export const SLIDER_EDIT_STORE_NAME = 'SLIDER_EDIT';
-
 export const SLIDER_EDIT_API = {
   SLIDER_EDIT_LOAD_DATA: {
     ENDPOINT: (currentLang, id) => `slider/get/${id}/?lang=${currentLang}`,

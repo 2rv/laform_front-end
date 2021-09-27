@@ -4,7 +4,8 @@ export const convertUsersOrderData = (data) => {
   return {
     id: data.id,
     name: data?.orderNumber,
-    path: `${ORDER_NUMBER_ROUTE_PATH}/${data?.id}`,
+    path: ORDER_NUMBER_ROUTE_PATH,
+    pathConfig: { dynamic: true, params: { id: data?.id } },
     totalPrice: Boolean(data?.promoCodeDiscount)
       ? Number(data?.price) * (Number(data?.promoCodeDiscount) / 100)
       : data?.price,

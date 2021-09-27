@@ -30,7 +30,7 @@ export function CardPattern(props) {
     <Container>
       <CardImage
         path={PATTERNS_PRODUCT_ROUTE_PATH}
-        pathConfig={{ query: { id: id } }}
+        pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         bestseller={bestseller}
         action={price?.discount}

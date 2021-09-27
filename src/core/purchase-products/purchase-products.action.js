@@ -22,7 +22,6 @@ export function purchaseProductLoadData(data) {
         data: data,
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: PURCHASE_PRODUCTS_ACTION_TYPE.PURCHASE_PRODUCTS_DATA_LOAD_ERROR,

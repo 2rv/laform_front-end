@@ -37,7 +37,6 @@ export function sewingGoodsProductUploadData(currentLang, id, logged) {
         data: data,
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: SEWING_GOODS_PRODUCT_ACTION_TYPE.SEWING_GOODS_PRODUCT_UPLOAD_ERROR,

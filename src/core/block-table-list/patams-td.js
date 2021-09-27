@@ -3,6 +3,7 @@ import { TextSecondary, TextPrimary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { ConvertDate } from 'src/lib/common/time-convert';
 import { LinkPrimary } from 'src/lib/element/link';
+import { ABOUT_ACCOUNT_ROUTE_PATH } from '../about-account';
 
 export function ParamsTd(props) {
   const { params } = props;
@@ -65,7 +66,8 @@ export function ParamsTd(props) {
             &nbsp;
             <FullNameText
               tid={params.fullName}
-              path={`user/${params?.userId}`}
+              path={ABOUT_ACCOUNT_ROUTE_PATH}
+              pathConfig={{ dynamic: true, params: { id: params?.userId } }}
             />
           </div>
         )}

@@ -65,13 +65,12 @@ export const NAVIGATION_MENU = [
   {
     title: 'Админка',
     items: [
-      { title: 'Профиль пользователя', pathname: ABOUT_ACCOUNT_ROUTE_PATH },
       { title: 'Список заказов', pathname: ORDERS_ROUTE_PATH },
       { title: 'Промокоды', pathname: PROMOCODES_ROUTE_PATH },
       { title: 'Список слайдов', pathname: SLIDER_LIST_ROUTE_PATH },
       {
         title: 'Редактировать слайд',
-        pathname: `${SLIDER_EDIT_ROUTE_PATH}/new`,
+        pathname: SLIDER_EDIT_ROUTE_PATH,
       },
       {
         title: 'Подборка лучших товаров',
@@ -108,7 +107,7 @@ export const NAVIGATION_MENU = [
         items: [
           { title: 'Мои лайки', pathname: ALL_LIKES_ROUTE_PATH },
           { title: 'Мои покупки', pathname: PURCHASE_PRODUCTS_ROUTE_PATH },
-          { title: 'Заказ', pathname: `${ORDER_NUMBER_ROUTE_PATH}/test` },
+          { title: 'Заказ', pathname: ORDER_NUMBER_ROUTE_PATH },
         ],
       },
     ],
@@ -117,7 +116,7 @@ export const NAVIGATION_MENU = [
     title: 'Статьи',
     items: [
       { title: 'Все статьи', pathname: ARTICLES_ROUTE_PATH },
-      { title: 'Статья', pathname: `${ARTICLE_PAGE_ROUTE_PATH}/test` },
+      { title: 'Статья', pathname: ARTICLE_PAGE_ROUTE_PATH },
     ],
   },
   {
@@ -126,7 +125,7 @@ export const NAVIGATION_MENU = [
       { title: 'Все мастер-классы', pathname: MASTER_CLASSES_ROUTE_PATH },
       {
         title: 'Мастер-класс',
-        pathname: `${MASTER_CLASS_PRODUCT_ROUTE_PATH}/test`,
+        pathname: MASTER_CLASS_PRODUCT_ROUTE_PATH,
       },
       {
         title: 'Купленный мастер-класс',
@@ -138,7 +137,7 @@ export const NAVIGATION_MENU = [
     title: 'Выкройки',
     items: [
       { title: 'Все выкройки', pathname: PATTERNS_ROUTE_PATH },
-      { title: 'Выкройка', pathname: `${PATTERNS_PRODUCT_ROUTE_PATH}/test` },
+      { title: 'Выкройка', pathname: PATTERNS_PRODUCT_ROUTE_PATH },
       { title: 'Купленная выкройка', pathname: PATTERNS_PAGE_ROUTE_PATH },
     ],
   },
@@ -148,7 +147,7 @@ export const NAVIGATION_MENU = [
       { title: 'Все товары', pathname: SEWING_GOODS_ROUTE_PATH },
       {
         title: 'Товар для шитья',
-        pathname: `${SEWING_GOODS_PRODUCT_ROUTE_PATH}/test`,
+        pathname: SEWING_GOODS_PRODUCT_ROUTE_PATH,
       },
       {
         title: 'Купленный товар для шитья',

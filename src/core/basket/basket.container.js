@@ -65,7 +65,6 @@ export function BasketContainer() {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
     dispatch(basketUploadData(values, bascketState, isAuth));
   };
 

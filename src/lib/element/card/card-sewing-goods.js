@@ -29,7 +29,7 @@ export function CardSewingGoods(props) {
     <Container>
       <CardImage
         path={SEWING_GOODS_PRODUCT_ROUTE_PATH}
-        pathConfig={{ query: { id: id } }}
+        pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         bestseller={bestseller}
         action={price?.discount}

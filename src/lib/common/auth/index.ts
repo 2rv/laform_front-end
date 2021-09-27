@@ -7,5 +7,4 @@ export {
   authRedirectPrivated,
   authRedirectForNonAdminUser,
   authConfirmedEmail,
-  checkQueryIdRedirect,
 } from './auth.redirect';

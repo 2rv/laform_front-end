@@ -41,7 +41,7 @@ export function SliderListContainer() {
 
   const addSlide = () => dispatch(sliderListUploadData());
   const editSlide = (id) =>
-    redirect(SLIDER_EDIT_ROUTE_PATH, { query: { id: id } });
+    redirect(SLIDER_EDIT_ROUTE_PATH, { dynamic: true, params: { id: id } });
 
   const removeSlide = (index, id) => {
     if (id === 'new') {

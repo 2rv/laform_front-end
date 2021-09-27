@@ -21,7 +21,7 @@ export function CardArticles(props) {
     <Container>
       <CardImage
         path={ARTICLE_PAGE_ROUTE_PATH}
-        pathConfig={{ query: { id: id } }}
+        pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         bestseller={bestseller}
       />
