@@ -12,6 +12,8 @@ import { IconButton } from '../../../../lib/element/button';
 import { setLinkRedirect } from '../../../../main/navigation';
 import { BASE_URL } from '../../../../main/http';
 
+const BASE_URL_SLASH_END = BASE_URL.includes('localhost') ? BASE_URL : `${BASE_URL}/`;
+
 export function SignupFormSocialComponent() {
   return (
     <SectionLayout type="TEXT">
@@ -23,13 +25,13 @@ export function SignupFormSocialComponent() {
             <AppleText />
           </SecondaryIconContainer>
         </Button>
-        <Button onClick={setLinkRedirect(`${BASE_URL}auth/google`)}>
+        <Button onClick={setLinkRedirect(`${BASE_URL_SLASH_END}auth/google`)}>
           <GoogleIcon />
           <SecondaryIconContainer>
             <GoogleText />
           </SecondaryIconContainer>
         </Button>
-        <Button onClick={setLinkRedirect(`${BASE_URL}auth/facebook`)}>
+        <Button onClick={setLinkRedirect(`${BASE_URL_SLASH_END}auth/facebook`)}>
           <FbIcon />
           <SecondaryIconContainer>
             <FbText />
