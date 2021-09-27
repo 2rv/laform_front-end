@@ -68,7 +68,7 @@ export function likeMasterClassUploadData(currentLang) {
   };
 }
 
-export function likePatternPrductUploadData(currentLang) {
+export function likePatternProductUploadData(currentLang) {
   return async (dispatch, getState) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
@@ -85,6 +85,32 @@ export function likePatternPrductUploadData(currentLang) {
           response.data,
           getState()[BASKET_STORE_NAME].basket,
         ),
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: LIKES_ACTION_TYPE.LIKES_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function likePostUploadData(currentLang) {
+  return async (dispatch, getState) => {
+    dispatch({
+      type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: LIKES_API.POST_LIKES_UPLOAD.TYPE,
+        url: LIKES_API.POST_LIKES_UPLOAD.ENDPOINT(currentLang),
+      });
+      dispatch({
+        type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
+        data: convertArticleProducts(response.data),
       });
     } catch (err) {
       if (err.response) {

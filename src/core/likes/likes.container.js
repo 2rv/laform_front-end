@@ -11,7 +11,8 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   likeSewingProductUploadData,
   likeMasterClassUploadData,
-  likePatternPrductUploadData,
+  likePatternProductUploadData,
+  likePostUploadData,
 } from './likes.action';
 import { ALL_LIKES_STORE_NAME } from './likes.constant';
 import { PatternsComponent } from './likes.component';
@@ -37,8 +38,8 @@ export function LikesContainer() {
     } else if (activeTab === 2) {
       dispatch(likeMasterClassUploadData(currentLang));
     } else if (activeTab === 1) {
-      dispatch(likePatternPrductUploadData(currentLang));
-    }
+      dispatch(likePatternProductUploadData(currentLang));
+    } else if (activeTab === 0) dispatch(likePostUploadData(currentLang));
   }, [activeTab, updated]);
 
   return (
@@ -57,4 +58,5 @@ export const tabs = [
   { name: 'ALL_LIKES.TABS.SEWING_PRODUCT', type: 3 },
   { name: 'ALL_LIKES.TABS.MASTER_CLASS', type: 2 },
   { name: 'ALL_LIKES.TABS.PATTERN_PRODUCT', type: 1 },
+  { name: 'ALL_LIKES.TABS.POST', type: 0 },
 ];
