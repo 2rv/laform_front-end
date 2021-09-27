@@ -49,7 +49,8 @@ const performPurchaseSewingProduct = (row) => {
   return {
     id: row.id,
     name: row.sewingProductId.titleRu,
-    path: `${SEWING_GOODS_PAGE_ROUTE_PATH}${row.id}`,
+    path: SEWING_GOODS_PAGE_ROUTE_PATH,
+    pathConfig: { dinamic: true, params: { id: row.id } },
     image: row.sewingProductId.images[0]?.fileUrl,
     totalPrice: getPrice(row.totalPrice, row.totalDiscount),
     totalDiscount: row.totalDiscount,
@@ -66,7 +67,8 @@ const performMasterClassProduct = (row) => {
   return {
     id: row.id,
     name: row.masterClassId.titleRu,
-    path: `${MASTER_CLASS_PAGE_ROUTE_PATH}${row.id}`,
+    path: MASTER_CLASS_PAGE_ROUTE_PATH,
+    pathConfig: { dinamic: true, params: { id: row.id } },
     image: row.masterClassId.images[0]?.fileUrl,
     totalPrice: getPrice(row.totalPrice, row.totalDiscount),
     totalDiscount: row.totalDiscount,
@@ -80,7 +82,8 @@ const performPatternProductDigital = (row) => {
   return {
     id: row.id,
     name: row.patternProductId.titleRu,
-    path: `${PATTERNS_PAGE_ROUTE_PATH}${row.id}`,
+    path: PATTERNS_PAGE_ROUTE_PATH,
+    pathConfig: { dinamic: true, params: { id: row.id } },
     image: row.patternProductId.images[0]?.fileUrl,
     totalPrice: getPrice(row.totalPrice, row.totalDiscount),
     totalDiscount: row.totalDiscount,
@@ -88,10 +91,7 @@ const performPatternProductDigital = (row) => {
     vendorCode: row.size.vendorCode,
     params: {
       size: { id: row.size.id, value: row.size.size },
-      format:
-        row.type === 1
-          ? 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC'
-          : 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
+      format: 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC',
     },
   };
 };
@@ -99,17 +99,15 @@ const performPatternProductAnalogue = (row) => {
   return {
     id: row.id,
     name: row.patternProductId.titleRu,
-    path: `${PATTERNS_PAGE_ROUTE_PATH}${row.id}`,
+    path: PATTERNS_PAGE_ROUTE_PATH,
+    pathConfig: { dinamic: true, params: { id: row.id } },
     image: row.patternProductId.images[0]?.fileUrl,
     totalPrice: getPrice(row.totalPrice, row.totalDiscount),
     totalDiscount: row.totalDiscount,
     vendorCode: row.size.vendorCode,
     params: {
       size: { id: row.size.id, value: row.size.size },
-      format:
-        row.type === 1
-          ? 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC'
-          : 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
+      format: 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
     },
     status: row.status,
   };
