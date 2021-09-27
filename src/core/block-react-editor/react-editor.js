@@ -40,6 +40,9 @@ const Container = styled.div`
   .ce-block__content h4 {
     font-size: ${THEME_SIZE.FONT.DEFAULT};
   }
+  .embed-tool__caption {
+    display: none;
+  }
   .ce-block__content h5 {
     font-size: ${THEME_SIZE.FONT.SMALL};
   }
