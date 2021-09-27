@@ -35,7 +35,6 @@ export function patternProductUploadData(currentLang, id, logged) {
         type: PATTERNS_PRODUCT_ACTION_TYPE.PATTERNS_PRODUCT_UPLOAD_SUCCESS,
         data: data,
       });
-      console.log(response.data);
     } catch (err) {
       if (err.response) {
         dispatch({

@@ -57,7 +57,6 @@ export function likeMasterClassUploadData(currentLang) {
         ),
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: LIKES_ACTION_TYPE.LIKES_UPLOAD_ERROR,

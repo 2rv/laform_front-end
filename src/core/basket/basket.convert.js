@@ -44,7 +44,6 @@ export const convertPromoCodeForCheck = (promocode) => ({
 });
 
 export function convertAddToCart(product, data) {
-  console.log(product);
   if (data.type === 0) {
     return {
       id: product.id,
