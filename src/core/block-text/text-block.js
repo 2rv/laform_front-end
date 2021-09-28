@@ -16,7 +16,6 @@ export function TextBlock(props) {
       {Boolean(text?.length > limit) && (
         <>
           <Text more={!more} tid="..." />
-          &nbsp;
           <Button
             onClick={() => setMore(!more)}
             tid={more ? 'BLOCK_TEXT.READ_MORE' : 'BLOCK_TEXT.CLOSE'}
@@ -31,6 +30,7 @@ const Button = styled(TextButton)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   width: fit-content;
   display: inline;
+  padding: 0;
 `;
 const Container = styled.div`
   display: inline;

@@ -53,8 +53,6 @@ export function ProductMainComponent(props) {
         ))}
       </div>
       <Divider />
-      <TextBlock text={description} />
-      <Divider />
       <LineCase>
         <Text tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
         <Complexity>
@@ -63,6 +61,8 @@ export function ProductMainComponent(props) {
           ))}
         </Complexity>
       </LineCase>
+      <Divider />
+      <TextBlock text={description} />
       {Boolean(sizes?.length > 0) && (
         <>
           <Divider />
@@ -88,26 +88,30 @@ export function ProductMainComponent(props) {
           onSetCart={handleAddToCart}
         />
       </FooterCase>
-      <LineCase>
-        <TextPrimary tid="Артикул - " />
-        <LigthText>{size.vendorCode}</LigthText>
-      </LineCase>
+      <ArticleCase>
+        <TextPrimary tid="OTHER.VENDOR_CODE" />
+        <ArticleText>{size.vendorCode}</ArticleText>
+      </ArticleCase>
     </Container>
   );
 }
-
+const ArticleText = styled(TextPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  font-size: ${THEME_SIZE.FONT.LARGE};
+`;
+const ArticleCase = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: ${spacing(1)};
+`;
 const Text = styled(TextSecondary)`
   min-width: max-content;
 `;
 const Complexity = styled.div`
   display: flex;
   gap: ${spacing(2)};
-  height: 46px;
   width: 100%;
   align-items: center;
-  padding: ${spacing(3)};
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  background-color: ${THEME_COLOR.GRAY};
 `;
 const ComplexityDot = styled.div`
   width: 16px;

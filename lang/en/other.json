@@ -11,5 +11,6 @@
 	"CANCEL": "Cancel",
 	"USERS_LIST": "Users",
 	"LIST_IS_EMPTY": "List is empty",
-	"SAVE": "Save"
+	"SAVE": "Save",
+	"VENDOR_CODE": "Vendor code:"
 }

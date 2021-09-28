@@ -110,10 +110,11 @@ const SlideImage = styled.img`
   object-fit: cover;
 `;
 const Blur = styled.div`
-  background: rgba(47, 42, 44, 0.5);
   position: absolute;
   height: 100%;
   width: 100%;
+  background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+  filter: drop-shadow(0px 15px 75px rgba(0, 0, 0, 0.1));
 `;
 const PreviewContainer = styled.div`
   position: relative;

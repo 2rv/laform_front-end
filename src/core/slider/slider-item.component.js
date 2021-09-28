@@ -40,9 +40,7 @@ export function SliderItemComponent(props) {
   return (
     <Container className="keen-slider__slide">
       <Content>
-        <Title color={sliderItemsColor(titleTextColor)}>
-          {titleText}
-        </Title>
+        <Title color={sliderItemsColor(titleTextColor)}>{titleText}</Title>
         {isButton && (
           <LinkPrimary path={buttonPath}>
             <Button
@@ -55,10 +53,17 @@ export function SliderItemComponent(props) {
         )}
       </Content>
       <Image src={image} />
+      <Blur />
     </Container>
   );
 }
-
+const Blur = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+  filter: drop-shadow(0px 15px 75px rgba(0, 0, 0, 0.1));
+`;
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -74,6 +79,7 @@ const Content = styled.div`
   align-items: center;
   gap: ${spacing(6.3)};
   margin: 0 36px;
+  z-index: 1;
 `;
 const Title = styled(TextPrimary)`
   text-align: center;

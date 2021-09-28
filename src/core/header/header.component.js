@@ -18,6 +18,7 @@ export function HeaderComponent(props) {
     isTablet,
     setSidebarOpen,
     sidebarIsOpen,
+    emailConfirmed,
   } = props;
   return (
     <Container>
@@ -33,6 +34,7 @@ export function HeaderComponent(props) {
       </HeaderLogoCase>
       <HeaderMenuCase>
         <HeaderMenuComponent
+          emailConfirmed={emailConfirmed}
           cartCount={cartCount}
           setSidebarOpen={setSidebarOpen}
           sidebarIsOpen={sidebarIsOpen}

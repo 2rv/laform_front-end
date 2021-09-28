@@ -74,13 +74,23 @@ export function ProductMainComponent(props) {
           onSetCart={handleAddToCart}
         />
       </FooterCase>
-      <LineCase>
-        <TextPrimary tid="Артикул - " />
-        <LigthText>{program.vendorCode}</LigthText>
-      </LineCase>
+      <ArticleCase>
+        <TextPrimary tid="OTHER.VENDOR_CODE" />
+        <ArticleText>{program.vendorCode}</ArticleText>
+      </ArticleCase>
     </Container>
   );
 }
+
+const ArticleText = styled(TextPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  font-size: ${THEME_SIZE.FONT.LARGE};
+`;
+const ArticleCase = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: ${spacing(1)};
+`;
 const LineCase = styled.div`
   display: flex;
   align-items: center;

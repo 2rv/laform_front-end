@@ -10,7 +10,7 @@ const ReactEditor = (props) => {
     handleChange(data);
   };
   return (
-    <Container>
+    <Container readOnly={readOnly}>
       <EditorJs
         minHeight={0}
         enableReInitialize={enableReInitialize}
@@ -25,16 +25,12 @@ const ReactEditor = (props) => {
 };
 
 const Container = styled.div`
-  ${(p) => {
-    if (!p.readOnly) {
-      return css`
-	 border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  border: 1px solid ${THEME_COLOR.DARK_GRAY}; 
-  
-	  }
-	  `;
-    }
-  }}
+  ${(p) =>
+    !p.readOnly &&
+    css`
+      border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+      border: 1px solid ${THEME_COLOR.DARK_GRAY};
+    `}
   .codex-editor__redactor {
     ${(p) => {
       if (!p.readOnly) {

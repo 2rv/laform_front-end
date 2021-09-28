@@ -1,38 +1,38 @@
 {
-  "LIST": {
-    "TITLE": "Slider",
-    "ADD_ASSEMLBY": "Add slider"
-  },
-  "EDIT_SLIDER": {
-    "TITLE": "Edit slider",
-    "NEED_EDIT": "Need edit",
-    "EDIT": "Editing",
-    "PHOTO": {
-      "SELECT_PHOTO": "Select photo",
-      "PREVIEW": "Preview"
-    },
-    "FORM": {
-      "FIELDS": {
-        "TITLE": {
-          "TEXT": "Banner main text",
-          "TEXT_COLOR": "Banner text color",
-          "BUTTON": "Button",
-          "BUTTON_TEXT": "Text on button",
-          "BUTTON_COLOR": "Button color",
-          "BUTTON_TEXT_COLOR": "Text color on button",
-          "BUTTON_LINK": "Button link"
-        },
-        "PLACEHOLDER": {
-          "TEXT": "Banner main text",
-          "BUTTON": "Have been button on the banner?",
-          "BUTTON_TEXT": "Text on button",
-          "BUTTON_LINK": "Write button link"
-        }
-      },
-      "BUTTON": {
-        "SAVE": "Save",
-        "DELETE_SLIDE": "Delete slide"
-      }
-    }
-  }
+	"LIST": {
+		"TITLE": "Slider",
+		"ADD_ASSEMLBY": "Add slider"
+	},
+	"EDIT_SLIDER": {
+		"TITLE": "Edit slider",
+		"NEED_EDIT": "Need edit",
+		"EDIT": "Editing",
+		"PHOTO": {
+			"SELECT_PHOTO": "Select photo",
+			"PREVIEW": "Preview"
+		},
+		"FORM": {
+			"FIELDS": {
+				"TITLE": {
+					"TEXT": "Banner main text",
+					"TEXT_COLOR": "Banner text color",
+					"BUTTON": "Button",
+					"BUTTON_TEXT": "Text on button",
+					"BUTTON_COLOR": "Button color",
+					"BUTTON_TEXT_COLOR": "Text color on button",
+					"BUTTON_LINK": "Button link"
+				},
+				"PLACEHOLDER": {
+					"TEXT": "Banner main text",
+					"BUTTON": "The presence of a button",
+					"BUTTON_TEXT": "Text on button",
+					"BUTTON_LINK": "Write button link"
+				}
+			},
+			"BUTTON": {
+				"SAVE": "Save",
+				"DELETE_SLIDE": "Delete slide"
+			}
+		}
+	}
 }

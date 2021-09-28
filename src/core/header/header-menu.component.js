@@ -7,6 +7,7 @@ import {
   AuthLinks,
   MenuButton,
   LogoMobile,
+  EmailConfirmed,
 } from '../header-component';
 
 export function HeaderMenuComponent(props) {
@@ -22,6 +23,7 @@ export function HeaderMenuComponent(props) {
     isTablet,
     setSidebarOpen,
     sidebarIsOpen,
+    emailConfirmed,
   } = props;
   return (
     <Container>
@@ -34,6 +36,7 @@ export function HeaderMenuComponent(props) {
         <NavMenu items={navMenuItems} activePath={activePath} />
       )}
       <Case>
+        {isAuth && emailConfirmed && <EmailConfirmed isMobile={isMobile} />}
         {!isMobile && isAuth && (
           <ModalMenu
             currentLang={currentLang}

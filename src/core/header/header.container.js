@@ -37,6 +37,7 @@ export function HeaderContainer(props) {
       isTablet={width < 1070}
       activePath={activePath}
       isAuth={auth.logged}
+      emailConfirmed={auth.emailConfirmed}
       userName={auth?.user?.login}
       currentLang={currentLang}
       navMenuItems={NAV_MENU_ITEMS}
