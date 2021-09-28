@@ -10,6 +10,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
 import { useState } from 'react';
 import { ConvertTime } from 'src/lib/common/time-convert';
+import { USER_ROLE } from 'src/lib/common/auth';
 
 export function SubComment(props) {
   const [view, setView] = useState(false);
@@ -41,9 +42,11 @@ export function SubComment(props) {
           return (
             <Wrapper key={id}>
               <Container>
-                <Button onClick={createSubComment}>
-                  <CommentIcon />
-                </Button>
+                {Boolean(user) && (
+                  <Button onClick={createSubComment}>
+                    <CommentIcon />
+                  </Button>
+                )}
                 <Content>
                   <HeaderCase>
                     <Title tid={userId.login} />
@@ -53,16 +56,18 @@ export function SubComment(props) {
                   <Divider />
                 </Content>
               </Container>
-              {Boolean(userId.id === user?.id) && (
-                <ActionsCase>
+              <ActionsCase>
+                {(userId?.id === user?.id || user?.role === USER_ROLE.ADMIN) && (
                   <Button onClick={() => handleDeleteSubComment(id)}>
                     <DeleteIcon />
                   </Button>
+                )}
+                {userId?.id === user?.id && (
                   <Button onClick={() => editComment(id, text)}>
                     <EditIcon />
                   </Button>
-                </ActionsCase>
-              )}
+                )}
+              </ActionsCase>
             </Wrapper>
           );
         })}
