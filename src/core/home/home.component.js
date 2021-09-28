@@ -14,6 +14,7 @@ export function HomeComponent(props) {
   const {
     catalogListItems,
     pageLoading,
+    addToCart,
     //------------
     masterClassIsPending,
     masterClassIsSuccess,
@@ -39,6 +40,7 @@ export function HomeComponent(props) {
       <CatalogListComponent items={catalogListItems} />
       {Boolean(sewingGoodsListItems.length > 0) && (
         <CardListBlock
+          onSetCart={addToCart}
           title={'HOME.POPULAR_GOODS_TITLE'}
           path={SEWING_GOODS_ROUTE_PATH}
           items={sewingGoodsListItems}
@@ -46,6 +48,7 @@ export function HomeComponent(props) {
       )}
       {Boolean(masterClassListItems.length > 0) && (
         <CardListBlock
+          onSetCart={addToCart}
           title={'HOME.POPULAR_MASTER_CLASSES_TITLE'}
           path={MASTER_CLASSES_ROUTE_PATH}
           items={masterClassListItems}
@@ -53,6 +56,7 @@ export function HomeComponent(props) {
       )}
       {Boolean(articleListItems.length > 0) && (
         <CardListBlock
+          onSetCart={addToCart}
           title={'HOME.POPULAR_ARTICLES_TITLE'}
           path={ARTICLES_ROUTE_PATH}
           items={articleListItems}

@@ -139,7 +139,6 @@ const ModalContent = styled.div`
   display: grid;
   width: 250px;
   gap: ${spacing(2)};
-  padding: ${spacing(2)};
 `;
 const LoginText = styled(TextSecondary)`
   word-break: break-word;

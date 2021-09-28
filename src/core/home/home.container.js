@@ -17,6 +17,7 @@ import {
 } from './home.action';
 import { HOME_STORE_NAME } from './home.constant';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import { addToBasket } from '../basket';
 
 export function HomeContainer() {
   const dispatch = useDispatch();
@@ -42,10 +43,13 @@ export function HomeContainer() {
     dispatch(articleUploadData(currentLang, logged));
   }, []);
 
+  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
+
   return (
     <HomeComponent
       pageLoading={pageLoading}
       catalogListItems={catalogListItems}
+      addToCart={addToCart}
       //------------
       masterClassIsPending={isRequestPending(masterClassState)}
       masterClassIsSuccess={isRequestSuccess(masterClassState)}

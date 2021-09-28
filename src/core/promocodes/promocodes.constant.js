@@ -1,4 +1,4 @@
-export const PROMOCODES_ROUTE_PATH = '/promocodes';
+export const PROMOCODES_ROUTE_PATH = '/promocodes/';
 
 export const PROMOCODES_STORE_NAME = 'PROMOCODES';
 
