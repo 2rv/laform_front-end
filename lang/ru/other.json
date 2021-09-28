@@ -2,7 +2,7 @@
 	"BUY": "Купить",
 	"SELECT": "Выбрать",
 	"SELECTED": "Выбрано",
-	"VALUTE": "руб",
+	"VALUTE": "руб.",
 	"PURCHASED": "Куплено",
 	"NO_INFORMATION_ABOUT_PARAMETERS": "Нету сведений о параметрах товара",
 	"ARE_YOU_SURE_TO_DELETE_PRODUCT": "Вы точно хотите удалить данный товар? Это действие нельзя отменить",
@@ -10,6 +10,6 @@
 	"NO": "Нет",
 	"CANCEL": "Отмена",
 	"USERS_LIST": "Список пользователей",
-  "LIST_IS_EMPTY": "Список пуст",
+	"LIST_IS_EMPTY": "Список пуст",
 	"SAVE": "Сохранить"
 }

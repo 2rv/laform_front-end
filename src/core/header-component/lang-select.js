@@ -16,6 +16,7 @@ export function LangSelect(props) {
   return (
     <Popup
       top={20}
+      mobileRight
       content={(setVisible) => (
         <Container onClick={() => setVisible(false)}>
           {LANG_SUPPORTED.map((lang, index) => (
