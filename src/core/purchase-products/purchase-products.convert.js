@@ -2,10 +2,10 @@ import { SEWING_GOODS_PAGE_ROUTE_PATH } from '../sewing-goods-page';
 import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
 import { PATTERNS_PAGE_ROUTE_PATH } from '../patterns-page';
 
-const getPrice = (totalPrice, totalDiscount) => {
-  return Boolean(totalDiscount)
-    ? Number(totalPrice) * (1 - Number(totalDiscount) / 100)
-    : totalPrice;
+const getPrice = (price = 0, discount = 0, count = 1) => {
+  const discountPrice = Number(price) * (Number(discount) / 100);
+  const totalPrice = (Number(price) - discountPrice) * Number(count);
+  return totalPrice;
 };
 
 export function performPurchaseProduct(row) {
@@ -52,11 +52,12 @@ const performPurchaseSewingProduct = (row) => {
     path: SEWING_GOODS_PAGE_ROUTE_PATH,
     pathConfig: { dinamic: true, params: { id: row.id } },
     image: row.sewingProductId.images[0]?.fileUrl,
-    totalPrice: getPrice(row.totalPrice, row.totalDiscount),
+    totalPrice: getPrice(row.totalPrice, row.totalDiscount, row.totalCount),
     totalDiscount: row.totalDiscount,
     status: row.status,
     vendorCode: row.size.vendorCode,
     params: {
+      count: row.totalCount,
       size: { id: row.size.id, value: row.size.size },
       color: { id: row.color.id, value: row.color.color },
       category: row.sewingProductId.categories[0].textRu,

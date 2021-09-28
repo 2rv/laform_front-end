@@ -140,7 +140,6 @@ const constructorSewingGoodsItem = (data) => {
     name: data.sewingProduct.titleRu,
     vendorCode: size.vendorCode,
     count: count,
-    maxCount: size.count,
     totalPrice: totalPrice,
     params: {
       size: { id: size.id, value: size.size },

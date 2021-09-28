@@ -12,7 +12,7 @@ import {
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods-create.type';
 import {
   dynamicFieldsValidationNameParam,
-  dynamicFieldsValidationNamePriceCount,
+  dynamicFieldsValidation,
 } from 'src/lib/common/create-product-helpers';
 
 const config = {
@@ -38,12 +38,11 @@ const config = {
 };
 
 export const formValidation = (values) => {
-  const dynamicFieldsSizesErrors = dynamicFieldsValidationNamePriceCount(
+  const dynamicFieldsSizesErrors = dynamicFieldsValidation(
     values[SEWING_GOODS_FIELD_NAME.SIZES],
     SEWING_GOODS_FIELD_NAME.SIZES,
     SEWING_GOODS_FIELD_NAME.SIZE_NAME,
     SEWING_GOODS_FIELD_NAME.SIZE_PRICE,
-    SEWING_GOODS_FIELD_NAME.COUNT,
   );
 
   const dynamicFieldsColorsErrors = dynamicFieldsValidationNameParam(
