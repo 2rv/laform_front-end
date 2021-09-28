@@ -17,7 +17,6 @@ export function performSewingGoodsProductData(rowData, basket) {
       id: item.id,
       tid: item.size,
       price: item.price,
-      count: item.count,
       vendorCode: item.vendorCode,
     })),
     colors: rowData.colors.map((item, index) => ({

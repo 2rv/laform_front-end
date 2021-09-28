@@ -35,21 +35,18 @@ export function ProductMainComponent(props) {
   const [color, setColor] = useState(
     colors?.length > 0 ? colors[0] : { id: 0, tid: 0 },
   );
-  const [currentCount, setCount] = useState(1);
-  const increment = () => {
-    if (currentCount >= size?.count) return;
-    setCount(currentCount + 1);
-  };
-  const diincrement = () => {
-    if (currentCount <= 1) return;
-    setCount(currentCount - 1);
+  const [count, setCount] = useState(1);
+  const increment = () => setCount(count + 1);
+  const dicrement = () => {
+    if (count <= 1) return;
+    setCount(count - 1);
   };
 
   const handleAddToCart = (values) =>
     addToCart({
       id,
       type,
-      currentCount,
+      count: count,
       size: size.id,
       color: color.id,
     });
@@ -95,11 +92,11 @@ export function ProductMainComponent(props) {
           <ProductPriceComponent
             price={size?.price}
             discount={discount}
-            count={currentCount}
+            count={count}
           />
           <ActionCase>
-            <Button tid="-" onClick={diincrement} />
-            <Count tid={currentCount} />
+            <Button tid="-" onClick={dicrement} />
+            <Count tid={count} />
             <Button tid="+" onClick={increment} />
           </ActionCase>
         </Case>

@@ -11,7 +11,6 @@ import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { TitlePrimary } from '../../../lib/element/title';
 import { numberValue } from '../../../lib/common/create-product-helpers';
-import React from 'react';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
 
 export function DynamicFields(props) {
@@ -34,6 +33,7 @@ export function DynamicFields(props) {
     errors?.[fieldArrayName]?.[index]?.[name] &&
     touched?.[fieldArrayName]?.[index]?.[name] &&
     errors?.[fieldArrayName]?.[index]?.[name];
+
   return (
     <SectionLayout type="SMALL">
       <Title tid="DYNAMIC_FIELDS.SIZE.TITLE" />
@@ -79,16 +79,6 @@ export function DynamicFields(props) {
                     </Button>
                   )}
                 </Line>
-                <BasicField
-                  titleTid="DYNAMIC_FIELDS.SIZE.PRODUCT_COUNT_FIELD_TITLE"
-                  placeholderTid="DYNAMIC_FIELDS.SIZE.PRODUCT_COUNT_FIELD_PLACEHOLDER"
-                  name={`${fieldArrayName}.${index}.${SEWING_GOODS_FIELD_NAME.COUNT}`}
-                  onBlur={handleBlur}
-                  touched={touched}
-                  value={value[SEWING_GOODS_FIELD_NAME.COUNT]}
-                  error={getFieldError(SEWING_GOODS_FIELD_NAME.COUNT, index)}
-                  onChange={setNumber(SEWING_GOODS_FIELD_NAME.COUNT, index)}
-                />
               </FieldLayout>
             ))}
             <ButtonSecondary

@@ -32,7 +32,6 @@ export function SewingGoodsProductComponent(props) {
     cart,
     sizes = [],
     colors = [],
-    count = 0,
     like,
     recommendations,
   } = productInfo;
@@ -54,7 +53,6 @@ export function SewingGoodsProductComponent(props) {
             images={images}
             sizes={sizes}
             colors={colors}
-            count={count}
             addToCart={addToCart}
             like={like}
           />

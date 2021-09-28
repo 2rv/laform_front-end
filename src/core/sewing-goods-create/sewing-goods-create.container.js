@@ -39,7 +39,6 @@ export function CreateSewingGoodsContainer() {
   const initialSizes = {
     [SEWING_GOODS_FIELD_NAME.SIZE_NAME]: '',
     [SEWING_GOODS_FIELD_NAME.SIZE_PRICE]: 0,
-    [SEWING_GOODS_FIELD_NAME.COUNT]: 0,
   };
   const initialColors = {
     [SEWING_GOODS_FIELD_NAME.COLOR_NAME]: '',
