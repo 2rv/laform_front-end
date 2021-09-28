@@ -94,7 +94,7 @@ export function CommentComponent(props) {
             {Boolean(subUser) && (
               <Line>
                 <div>
-                  <LightText tid="COMMENTS.REPLY_USER -" />
+                  <LightText tid="COMMENTS.REPLY_USER" />
                   &nbsp;
                   <SubTitle tid={subUser?.user?.login} />
                 </div>
