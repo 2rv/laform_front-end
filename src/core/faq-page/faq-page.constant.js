@@ -1,4 +1,4 @@
-export const FAQ_PAGE_ROUTE_PATH = '/faq/';
+export const FAQ_PAGE_ROUTE_PATH = '/faq';
 
 export const FAQ_PAGE_STORE_NAME = 'FAQ_PAGE';
 

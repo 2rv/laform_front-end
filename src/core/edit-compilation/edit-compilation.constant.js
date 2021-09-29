@@ -1,4 +1,4 @@
-export const EDIT_COMPILATION_ROUTE_PATH = '/best-products/';
+export const EDIT_COMPILATION_ROUTE_PATH = '/best-products';
 export const EDIT_COMPILATION_STORE_NAME = 'EDIT_COMPILATION';
 
 export const EDIT_COMPILATION_API = {

@@ -27,7 +27,7 @@ export function HeaderContainer(props) {
       return USER_MENU_ITEMS;
     }
   };
-
+  console.log(activePath);
   return (
     <HeaderComponent
       cartCount={cartCount}

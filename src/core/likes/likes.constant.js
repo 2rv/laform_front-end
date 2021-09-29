@@ -1,4 +1,4 @@
-export const ALL_LIKES_ROUTE_PATH = '/likes/';
+export const ALL_LIKES_ROUTE_PATH = '/likes';
 export const ALL_LIKES_STORE_NAME = 'ALL_LIKES';
 export const ALL_LIKES_GUEST_REDIRECT = '';
 export const LIKES_API = {
