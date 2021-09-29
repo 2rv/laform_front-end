@@ -4,7 +4,7 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-components';
+import { ProductImages } from '../block-product-create-components';
 import { PRINT_PATTERN_FIELD_NAME } from './patterns-create-print.type';
 
 export function CreatePrintPatternComponent(props) {
@@ -47,7 +47,9 @@ export function CreatePrintPatternComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="PATTERNS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />}
+        {isSuccess && (
+          <SuccessAlert tid="PATTERNS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
+        )}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

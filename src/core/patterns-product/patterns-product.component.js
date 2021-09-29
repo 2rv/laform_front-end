@@ -5,9 +5,10 @@ import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
-import { GalleryBlock } from '../block-gallery';
 import { ReactEditor } from '../block-react-editor';
 import { ProductMainComponent } from './frames';
+import { ProductImages } from '../block-product-components';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function PatternsProductComponent(props) {
   const {
@@ -16,39 +17,38 @@ export function PatternsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    productInfo,
+
+    productData,
     addToCart,
   } = props;
 
-  if (!productInfo) return null;
+  if (!productData) return <LoaderPrimary />;
 
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
         <Content>
-          <GalleryBlock items={productInfo.images} />
-          <ProductMainComponent addToCart={addToCart} {...productInfo} />
+          <ProductImages items={productData.images} />
+          <ProductMainComponent addToCart={addToCart} {...productData} />
         </Content>
       </SectionLayout>
       <SectionLayout type="TEXT_SMALL">
-        <Title tid="PATTERNS.MATERIALS" />
-        <ReactEditor data={productInfo.materials} enableReInitialize readOnly />
+        <TitlePrimary tid="PATTERNS.MATERIALS" />
+        <ReactEditor data={productData.materials} enableReInitialize readOnly />
       </SectionLayout>
       <CardListBlock
         onSetCart={addToCart}
         title="Рекомендации"
-        items={productInfo.recommendations}
+        items={productData.recommendations}
       />
-      <BlockComment type={productInfo.type} id={productInfo.id} />
+      <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );
 }
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
-`;
+
 const Content = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: ${spacing(6)};
   @media screen and (max-width: 1070px) {
     display: flex;

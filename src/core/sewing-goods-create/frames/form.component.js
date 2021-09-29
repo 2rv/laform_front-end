@@ -9,7 +9,7 @@ import {
   TextareaField,
 } from '../../../lib/element/field';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
-import { ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-create-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,

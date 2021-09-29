@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import { GalleryBlock } from '../block-gallery';
 import { ReactEditor } from '../block-react-editor';
-import { ProductMainContainer } from './frames';
-import { TextBlock } from '../block-text';
+import { ProductMainComponent } from './frames';
+import { ProductImages } from '../block-product-components';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function PatternsPageComponent(props) {
   const {
@@ -14,28 +14,27 @@ export function PatternsPageComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    currentPageData,
+    productData,
   } = props;
-  const { materials, images, ...productMainData } = currentPageData;
+  if (!productData) return <LoaderPrimary />;
+
   return (
     <SectionLayout type="MEDIUM">
       <Content>
-        <GalleryBlock items={images} />
-        <ProductMainContainer data={productMainData} />
+        <ProductImages items={productData.images} />
+        <ProductMainComponent {...productData} />
       </Content>
-      {materials && (
-        <SectionLayout type="TEXT">
-          <TitlePrimary tid={'PATTERNS.CREATE.FORM.COMPLEXITY'} />
-          <ReactEditor data={materials} enableReInitialize readOnly />
-        </SectionLayout>
-      )}
+      <SectionLayout type="TEXT">
+        <TitlePrimary tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
+        <ReactEditor data={productData.materials} enableReInitialize readOnly />
+      </SectionLayout>
     </SectionLayout>
   );
 }
 
 const Content = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: ${spacing(6)};
   @media screen and (max-width: 1070px) {
     display: flex;

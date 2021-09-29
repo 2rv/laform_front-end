@@ -1,178 +1,130 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useState } from 'react';
-import { FieldArray } from 'formik';
-import { ReactComponent as ImageIcon } from '../../asset/svg/image.svg';
-import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
-import { THEME_COLOR, THEME_SIZE, spacing } from '../../lib/theme';
-import { SectionLayout } from '../../lib/element/layout';
-import { TextSecondary } from '../../lib/element/text';
-import { TitlePrimary } from '../../lib/element/title';
-import { IconButton } from '../../lib/element/button';
-import { ErrorField } from '../../lib/element/error';
+import { spacing, THEME_SIZE } from '../../lib/theme';
+import { ReactComponent as ArrowLeft } from '../../asset/svg/arrow-slider-left.svg';
+import { ReactComponent as ArrowRight } from '../../asset/svg/arrow-slider-right.svg';
+import { ButtonBasic } from '../../lib/element/button';
+import { THEME_COLOR } from '../../lib/theme';
 
 export function ProductImages(props) {
-  const {
-    errors,
-    setFieldValue,
-    imagesArrayName,
-    imageFieldName,
-    maxImages = 6,
-    title,
-  } = props;
-
-  const [priviewImages, setPreviewImage] = useState([]);
-
-  const setPreview = (push) => (event) => {
-    const file = event.currentTarget?.files?.[0];
-    if (file?.type.split('/')[0] !== 'image' || !file) {
-      alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader?.result) {
-        const copy = [...priviewImages];
-        copy.push(reader.result);
-        setPreviewImage(copy);
-        push({ [imageFieldName]: file });
-      }
-    };
-    reader.readAsDataURL(file);
+  const { items = [] } = props;
+  if (!items) return null;
+  const [slide, setSlide] = useState(0);
+  const prev = () => {
+    setSlide(slide === 0 ? items.length - 1 : slide - 1);
   };
-
-  const removePreview = (remove, index) => {
-    const copy = [...priviewImages];
-    copy.splice(index, 1);
-    setPreviewImage(copy);
-    remove(index);
-  };
-
-  const changePreview = (index) => (event) => {
-    const file = event.currentTarget?.files?.[0];
-
-    if (file?.type.split('/')[0] !== 'image' || !file) {
-      alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader?.result) {
-        const copy = [...priviewImages];
-        copy.splice(index, 1, reader.result);
-        setPreviewImage(copy);
-        setFieldValue(`${imagesArrayName}.${index}.${imageFieldName}`, file);
-      }
-    };
-    reader.readAsDataURL(file);
+  const next = () => {
+    setSlide(slide === items.length - 1 ? 0 : slide + 1);
   };
 
   return (
-    <SectionLayout type="SMALL">
-      <Title tid={title} />
-      <FieldArray name={imagesArrayName}>
-        {({ remove, push }) => (
-          <Container type="SMALL">
-            {priviewImages.map((item, index) => {
-              return (
-                <ImageContainer key={index}>
-                  <Image src={item} />
-                  <PositionContainer>
-                    <Button>
-                      <Icon />
-                      <File type="file" onChange={changePreview(index)} />
-                    </Button>
-                    <IconButton onClick={() => removePreview(remove, index)}>
-                      <RemoveIcon />
-                    </IconButton>
-                  </PositionContainer>
-                </ImageContainer>
-              );
-            })}
-            {priviewImages.length !== maxImages && (
-              <ImageContainer>
-                <AddImage>
-                  <Icon />
-                  <File type="file" onChange={setPreview(push)} />
-                  <Text tid="PRODUCT_IMAGES.ADD_PHOTO" />
-                </AddImage>
-              </ImageContainer>
-            )}
-          </Container>
-        )}
-      </FieldArray>
-      {errors[imagesArrayName] && (
-        <ErrorField errorTid={errors[imagesArrayName]} />
-      )}
-    </SectionLayout>
+    <Container>
+      <List>
+        {items.map((src, index) => (
+          <ImageCase
+            key={index}
+            active={slide === index}
+            onClick={() => setSlide(index)}
+          >
+            <Image active={slide === index} src={src} />
+          </ImageCase>
+        ))}
+      </List>
+      <Content>
+        <MainImage src={items[slide]} />
+        <Action onClick={prev}>
+          <ArrowLeft />
+        </Action>
+        <Action onClick={next} right>
+          <ArrowRight />
+        </Action>
+      </Content>
+    </Container>
   );
 }
-const Icon = styled(ImageIcon)`
-width: 20px;
-height: 20px;
-`
-const Button = styled.label`
-  display: flex;
-  width: 46px;
-  min-width: 46px;
-  height: 46px;
-  justify-content: center;
-  align-items: center;
-  background-color: ${THEME_COLOR.GRAY};
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  cursor: pointer;
-`;
-const Text = styled(TextSecondary)`
-  color: ${THEME_COLOR.SECONDARY_DARK};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-`;
-const AddImage = styled.label`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  gap: ${spacing(2)};
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: ${THEME_COLOR.GRAY};
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-`;
-const File = styled.input`
-  display: none;
-`;
-const Container = styled(SectionLayout)`
+const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  gap: ${spacing(3)};
+  min-height: 0;
+  height: 100%;
+  max-height: 484px;
+  width: 100%;
+  grid-template-columns: 68px 1fr;
   @media screen and (max-width: 1070px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
   @media screen and (max-width: 720px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
 `;
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.DEFAULT};
+
+const List = styled.div`
+  display: grid;
+  height: 100%;
+  gap: ${spacing(3)};
+  overflow: hidden;
+  grid-template-rows: repeat(6, 68px);
+  @media screen and (max-width: 1070px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 239.5px);
+    gap: ${spacing(1)};
+  }
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 `;
-const ImageContainer = styled.div`
-  background-color: ${THEME_COLOR.GRAY};
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 274px;
-`;
-const PositionContainer = styled.div`
-  display: flex;
-  position: absolute;
-  gap: ${spacing(2)};
-  left: ${spacing(2)};
-  top: ${spacing(2)};
+const ImageCase = styled.div`
+  display: grid;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  ${(p) =>
+    p.active &&
+    css`
+      border-color: ${THEME_COLOR.PRIMARY};
+    `}
 `;
 const Image = styled.img`
-  height: 100%;
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  overflow: hidden;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  ${(p) =>
+    p.active &&
+    css`
+      border-radius: 0;
+    `}
+`;
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  height: 484px;
+`;
+const MainImage = styled.img`
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+`;
+const Action = styled(ButtonBasic)`
+  z-index: 1;
+  width: auto;
+  background: none;
+  position: absolute;
+  ${(p) => {
+    return p.right
+      ? css`
+          right: ${spacing(2)};
+        `
+      : css`
+          left: ${spacing(2)};
+        `;
+  }}
 `;

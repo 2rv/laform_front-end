@@ -4,7 +4,7 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-components';
+import { ProductImages } from '../block-product-create-components';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from './master-class-create.type';
 
 export function CreateMasterClassComponent(props) {
@@ -48,7 +48,9 @@ export function CreateMasterClassComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />}
+        {isSuccess && (
+          <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
+        )}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

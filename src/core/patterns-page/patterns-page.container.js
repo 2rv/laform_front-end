@@ -32,7 +32,7 @@ export function PatternsPageContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      currentPageData={getRequestData(state)}
+      productData={getRequestData(state, false)}
     />
   );
 }

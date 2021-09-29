@@ -4,11 +4,15 @@ import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
-import { CardActions } from '../../../lib/element/card/card-actions';
-import { ProductPriceComponent } from './product-price.component';
-import { BlockSelect } from '../../block-select';
-import { TextBlock } from '../../block-text';
 import { ButtonBasic } from 'src/lib/element/button';
+import {
+  ProductActions,
+  ProductSelect,
+  ProductCategories,
+  ProductDescription,
+  ProductPrice,
+  ProductVendorCode,
+} from 'src/core/block-product-components';
 
 export function ProductMainComponent(props) {
   const {
@@ -23,8 +27,8 @@ export function ProductMainComponent(props) {
     cart,
     sizes,
     colors,
-    addToCart,
     like,
+    addToCart,
   } = props;
 
   const [size, setSize] = useState(
@@ -58,79 +62,43 @@ export function ProductMainComponent(props) {
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
         {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
-      <div>
-        {categories.map((category, key) => (
-          <React.Fragment key={key}>
-            <LigthText
-              tid={categories.length > 1 ? category + ',' : category}
-            />
-            &nbsp;
-          </React.Fragment>
-        ))}
-      </div>
+      <ProductCategories categories={categories} />
       <Divider />
-      <TextBlock text={description} />
-      {(sizes || colors) && <Divider />}
-      {Boolean(sizes.length > 0) && (
-        <BlockSelect
-          name="PRODUCT_PRICE.SIZE"
-          selectOptions={sizes}
-          handleChange={setSize}
-          isTooltip
-        />
-      )}
-      {Boolean(colors.length > 0) && (
-        <BlockSelect
-          name="PRODUCT_PRICE.COLOR"
-          selectOptions={colors}
-          handleChange={setColor}
-        />
-      )}
+      <ProductDescription text={description} />
+      {(sizes?.length > 1 || colors?.length > 1) && <Divider />}
+      <ProductSelect
+        name="PRODUCT_PRICE.SIZE"
+        selectOptions={sizes}
+        handleChange={setSize}
+        isTooltip
+      />
+      <ProductSelect
+        name="PRODUCT_PRICE.COLOR"
+        selectOptions={colors}
+        handleChange={setColor}
+      />
       <Divider />
       <FooterCase>
         <Case>
-          <ProductPriceComponent
-            price={size?.price}
-            discount={discount}
-            count={count}
-          />
+          <ProductPrice price={size?.price} discount={discount} count={count} />
           <ActionCase>
             <Button tid="-" onClick={dicrement} />
             <Count tid={count} />
             <Button tid="+" onClick={increment} />
           </ActionCase>
         </Case>
-        <CardActions
-          like={like}
+        <ProductActions
           id={id}
           type={type}
           cart={cart}
+          like={like}
           onSetCart={handleAddToCart}
         />
       </FooterCase>
-      <ArticleText>
-        <TextPrimary tid="OTHER.VENDOR_CODE" />
-        <ArticleText>{size.vendorCode}</ArticleText>
-      </ArticleText>
+      <ProductVendorCode vendorCode={size.vendorCode} />
     </Container>
   );
 }
-
-const ArticleText = styled(TextPrimary)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  font-size: ${THEME_SIZE.FONT.LARGE};
-`;
-const ArticleCase = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: ${spacing(1)};
-`;
-
-const LineCase = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing(3)};
-`;
 const Count = styled(TextSecondary)`
   width: max-content;
   padding: ${spacing(2)};
@@ -182,14 +150,6 @@ const Title = styled(TitlePrimary)`
   font-size: 1.5;
   ::first-letter {
     text-transform: uppercase;
-  }
-`;
-const LigthText = styled(TextSecondary)`
-  ::first-letter {
-    text-transform: uppercase;
-  }
-  @media screen and (max-width: 720px) {
-    order: -1;
   }
 `;
 const Container = styled.div`

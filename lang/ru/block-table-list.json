@@ -13,6 +13,7 @@
 		"EMAIL": "Почта:",
 		"CREATED_DATE": "Дата создания:",
 		"DILIVERY_INFO": "Адресс доставки:",
+		"STATUS": "Статус:",
 		"DELIVERY_METHOD": "Способ доставки:",
 		"PAYMENT_METHOD": "Способ оплаты:",
 		"PHONE": "Контактный телефон:"

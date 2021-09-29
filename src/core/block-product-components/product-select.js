@@ -4,9 +4,20 @@ import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { TextSecondary } from '../../lib/element/text';
 import { ReactComponent as QuestionIcon } from '../../asset/svg/question-mark.svg';
 import { IconButton } from '../../lib/element/button';
+import { useEffect, useState } from 'react';
 
-export function BlockSelectComponent(props) {
-  const { name, onChange, value, selectOptions, isTooltip } = props;
+export function ProductSelect(props) {
+  const { name, selectOptions, handleChange, isTooltip } = props;
+  if (Boolean(selectOptions.length <= 0) || !selectOptions) return null;
+
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (value !== 0) {
+      handleChange(selectOptions.find((i) => i.id === value));
+    }
+  }, [value]);
+  const onChange = (event) => setValue(event.target.value);
+
   return (
     <Container>
       <Line>

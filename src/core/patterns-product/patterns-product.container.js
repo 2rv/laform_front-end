@@ -40,7 +40,7 @@ export function PatternsProductContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      productInfo={getRequestData(state, false)}
+      productData={getRequestData(state, false)}
       addToCart={addToCart}
     />
   );

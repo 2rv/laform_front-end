@@ -38,8 +38,10 @@ export function CommentItem(props) {
       <Content>
         <HeaderCase>
           <Case>
-            <Title tid={userId.login} />
-            <TextLight tid={ConvertTime(createDate)} />
+            <TitleCase>
+              <Title tid={userId.login} />
+              <TextLight tid={ConvertTime(createDate)} />
+            </TitleCase>
             {Boolean(user) && (
               <Button onClick={createSubComment}>
                 <CommentIcon />
@@ -78,6 +80,15 @@ const Case = styled.div`
   display: flex;
   align-items: baseline;
   gap: ${spacing(2)};
+`;
+const TitleCase = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: ${spacing(2)};
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    gap: 0;
+  }
 `;
 const HeaderCase = styled.div`
   display: flex;
