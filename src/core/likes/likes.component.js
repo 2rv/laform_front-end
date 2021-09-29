@@ -9,6 +9,7 @@ import { LoaderPrimary } from '../../lib/element/loader';
 export function PatternsComponent(props) {
   const {
     listItems,
+    activeTabText,
     activeTab,
     setActiveTab,
     tabItems,
@@ -21,7 +22,7 @@ export function PatternsComponent(props) {
     <React.Fragment>
       {isPending && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="PATTERNS.PATTERNS.TITLE" />
+        <TitlePrimary tid={activeTabText} />
         <FilterTabs
           activeTab={activeTab}
           setActiveTab={setActiveTab}
