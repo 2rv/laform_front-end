@@ -1,1 +1,1 @@
-export { ProductMainContainer } from './product-main';
+export { ProductMainComponent } from './product-main.component';

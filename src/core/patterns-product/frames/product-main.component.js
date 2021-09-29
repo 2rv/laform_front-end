@@ -4,10 +4,14 @@ import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
-import { CardActions } from '../../../lib/element/card/card-actions';
-import { ProductPriceComponent } from './product-price.component';
-import { BlockSelect } from '../../block-select';
-import { TextBlock } from '../../block-text';
+import {
+  ProductActions,
+  ProductSelect,
+  ProductPrice,
+  ProductVendorCode,
+  ProductDescription,
+  ProductCategories,
+} from '../../block-product-components';
 
 export function ProductMainComponent(props) {
   const {
@@ -24,9 +28,9 @@ export function ProductMainComponent(props) {
     price,
     complexity,
     cart,
-    addToCart,
     filePdf,
     like,
+    addToCart,
   } = props;
 
   const [size, setSize] = useState(
@@ -42,18 +46,7 @@ export function ProductMainComponent(props) {
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
         {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
-      <div>
-        {categories?.map((category, key) => (
-          <React.Fragment key={key}>
-            <LigthText
-              tid={categories.length > 1 ? category + ',' : category}
-            />
-            &nbsp;
-          </React.Fragment>
-        ))}
-      </div>
-      <Divider />
-      <TextBlock text={description} />
+      <ProductCategories categories={categories} />
       <Divider />
       <LineCase>
         <Text tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
@@ -63,35 +56,27 @@ export function ProductMainComponent(props) {
           ))}
         </Complexity>
       </LineCase>
-      {Boolean(sizes?.length > 0) && (
-        <>
-          <Divider />
-          <BlockSelect
-            name="PRODUCT_PRICE.SIZE"
-            selectOptions={sizes}
-            handleChange={setSize}
-            isTooltip
-          />
-        </>
-      )}
+      <Divider />
+      <ProductDescription text={description} />
+      {Boolean(sizes?.length > 1) && <Divider />}
+      <ProductSelect
+        name="PRODUCT_PRICE.SIZE"
+        selectOptions={sizes}
+        handleChange={setSize}
+        isTooltip
+      />
       <Divider />
       <FooterCase>
-        <ProductPriceComponent
-          price={price ? price : size?.price}
-          discount={discount}
-        />
-        <CardActions
-          like={like}
+        <ProductPrice price={price ? price : size?.price} discount={discount} />
+        <ProductActions
           id={id}
           type={type}
           cart={cart}
+          like={like}
           onSetCart={handleAddToCart}
         />
       </FooterCase>
-      <LineCase>
-        <TextPrimary tid="Артикул - " />
-        <LigthText>{size.vendorCode}</LigthText>
-      </LineCase>
+      <ProductVendorCode vendorCode={size.vendorCode} />
     </Container>
   );
 }
@@ -102,12 +87,8 @@ const Text = styled(TextSecondary)`
 const Complexity = styled.div`
   display: flex;
   gap: ${spacing(2)};
-  height: 46px;
   width: 100%;
   align-items: center;
-  padding: ${spacing(3)};
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  background-color: ${THEME_COLOR.GRAY};
 `;
 const ComplexityDot = styled.div`
   width: 16px;
@@ -121,6 +102,10 @@ const LineCase = styled.div`
   display: flex;
   align-items: center;
   gap: ${spacing(3)};
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 const FooterCase = styled.div`
   display: grid;
@@ -152,14 +137,6 @@ const Title = styled(TitlePrimary)`
   font-size: 1.5;
   ::first-letter {
     text-transform: uppercase;
-  }
-`;
-const LigthText = styled(TextSecondary)`
-  ::first-letter {
-    text-transform: uppercase;
-  }
-  @media screen and (max-width: 720px) {
-    order: -1;
   }
 `;
 const Container = styled.div`

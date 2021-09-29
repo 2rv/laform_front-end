@@ -4,22 +4,18 @@ import { TextPrimary, TextSecondary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function CounterTd(props) {
-  const { id, count, maxCount, changeItem } = props;
-  if (!id || !maxCount) return null;
-  const isMax = count < maxCount;
+  const { id, count, changeItem } = props;
+  if (!id || !count || !changeItem) return null;
+
   const isMin = count > 1;
 
-  const increment = () => {
-    isMax && changeItem(id, { count: count + 1 });
-  };
+  const increment = () => changeItem(id, { count: count + 1 });
+  const dicrement = () => isMin && changeItem(id, { count: count - 1 });
 
-  const dicrement = () => {
-    isMin && changeItem(id, { count: count - 1 });
-  };
   return (
     <Td>
       <Case>
-        <Button disabled={!isMax} tid="+" onClick={increment} />
+        <Button tid="+" onClick={increment} />
         <Count tid={count} />
         <Button disabled={!isMin} tid="-" onClick={dicrement} />
       </Case>

@@ -10,7 +10,7 @@ import {
 } from '../../../lib/element/field';
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
-import { ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-create-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,

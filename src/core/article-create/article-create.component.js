@@ -5,7 +5,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { ARTICLE_FIELD_NAME } from './article-create.type';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-components';
+import { ProductImages } from '../block-product-create-components';
 
 export function CreateArticleComponent(props) {
   const {
@@ -47,7 +47,9 @@ export function CreateArticleComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_CREATED" />}
+        {isSuccess && (
+          <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_CREATED" />
+        )}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

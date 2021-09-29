@@ -8,7 +8,7 @@ export function performPatternProductData(rowData, basket) {
     discount: rowData?.discount,
     name: rowData.titleRu,
     description: rowData.descriptionRu,
-    categories: rowData.categories.map((item) => item.textRu),
+    categories: rowData.categories,
     images: rowData.images.map((item) => item.fileUrl),
     cart: Boolean(
       basket?.find((bItem) => bItem?.patternProduct?.id === rowData.id),

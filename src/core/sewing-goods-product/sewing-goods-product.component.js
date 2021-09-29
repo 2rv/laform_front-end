@@ -4,8 +4,9 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
-import { GalleryBlock } from '../block-gallery';
 import { ProductMainComponent } from './frames';
+import { ProductImages } from '../block-product-components';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function SewingGoodsProductComponent(props) {
   const {
@@ -14,58 +15,27 @@ export function SewingGoodsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    productInfo,
+
+    productData,
     addToCart,
   } = props;
 
-  if (!productInfo) return null;
-
-  const {
-    id,
-    type,
-    modifier,
-    discount = 0,
-    name,
-    categories = [],
-    description,
-    images,
-    cart,
-    sizes = [],
-    colors = [],
-    count = 0,
-    like,
-    recommendations,
-  } = productInfo;
+  if (!productData) return <LoaderPrimary />;
 
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
         <Content>
-          <GalleryBlock items={images} />
-          <ProductMainComponent
-            id={id}
-            type={type}
-            modifier={modifier}
-            discount={discount}
-            name={name}
-            cart={cart}
-            categories={categories}
-            description={description}
-            images={images}
-            sizes={sizes}
-            colors={colors}
-            count={count}
-            addToCart={addToCart}
-            like={like}
-          />
+          <ProductImages items={productData.images} />
+          <ProductMainComponent addToCart={addToCart} {...productData} />
         </Content>
       </SectionLayout>
       <CardListBlock
         onSetCart={addToCart}
         title="Рекомендации"
-        items={recommendations}
+        items={productData.recommendations}
       />
-      <BlockComment type={type} id={id} />
+      <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );
 }

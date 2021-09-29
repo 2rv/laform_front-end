@@ -77,7 +77,7 @@ const Content = styled.div`
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
-  gap: ${spacing(3)};
+  gap: ${spacing(1)};
 `;
 const LineCase = styled.div`
   display: flex;

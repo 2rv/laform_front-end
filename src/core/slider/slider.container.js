@@ -19,9 +19,8 @@ import {
 
 export function SliderContainer(props) {
   const dispatch = useDispatch();
-  const { state, pageLoading, currentLang } = useSelector((state) => ({
+  const { state, currentLang } = useSelector((state) => ({
     state: state[SLIDER_STORE_NAME],
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
@@ -31,7 +30,7 @@ export function SliderContainer(props) {
     dispatch(sliderLoadData(currentLang));
   }, []);
 
-  if (isRequestPending(state.slider) || pageLoading) {
+  if (isRequestPending(state.slider)) {
     return <SliderSkeleton />;
   }
 

@@ -52,8 +52,8 @@ const ImageLink = styled(LinkSecondary)`
 const Td = styled.td`
   vertical-align: middle;
   padding-right: ${spacing(2)};
-  width: 200px;
-  min-width: 200px;
+  width: 300px;
+  min-width: 300px;
   @media screen and (max-width: 875px) {
     width: 100%;
   }

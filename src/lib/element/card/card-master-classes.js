@@ -66,10 +66,10 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
   justify-content: space-between;
-  flex-direction: column;
-  gap: ${spacing(3)};
+  gap: ${spacing(1)};
 `;
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};

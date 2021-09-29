@@ -1,7 +1,7 @@
 export const PATTERNS_PAGE_ROUTE_PATH = ({ id } = { id: '[id]' }) =>
   `/purchases/pattern/${id}`;
 
-export const PATTERNS_PAGE_STORE_NAME = 'patterns-page';
+export const PATTERNS_PAGE_STORE_NAME = 'PATTERN_PAGE';
 
 export const PATTERNS_PAGE_API = {
   PATTERNS_PAGE_UPLOAD: {

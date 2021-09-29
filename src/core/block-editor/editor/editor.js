@@ -78,4 +78,30 @@ const Container = styled.div`
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   box-shadow: 0 24px 24px -18px rgb(69 104 129 / 33%),
     0 9px 45px 0 rgb(114 119 160 / 12%);
+
+  .ce-block__content h1 {
+    font-size: 2em;
+  }
+  .ce-block__content h2 {
+    font-size: 1.5em;
+  }
+  .ce-block__content h3 {
+    font-size: 1.17em;
+  }
+  .ce-block__content h4 {
+    font-size: 1em;
+  }
+  .ce-block__content h5 {
+    font-size: 0.83em;
+  }
+  .ce-block__content h6 {
+    font-size: 0.67em;
+  }
+  .ce-toolbar__content {
+    max-width: 100%;
+  }
+  .ce-block__content {
+    max-width: 100%;
+    margin: 0;
+  }
 `;

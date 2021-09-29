@@ -29,15 +29,12 @@ const Container = styled.div`
   display: grid;
   gap: ${spacing(6)};
   grid-template-columns: repeat(4, 1fr);
-  /* grid-template-rows: repeat(1, 262.5px); */
   @media only screen and (max-width: 1070px) {
     grid-template-columns: 1fr 1fr;
-    /* grid-template-rows: repeat(2, 170px); */
     gap: ${spacing(3)};
   }
   @media only screen and (max-width: 720px) {
     grid-template-columns: repeat(1, 1fr);
-    /* grid-template-rows: repeat(4, minmax(160px, fit-content)); */
     gap: ${spacing(2)};
   }
 `;
@@ -45,6 +42,7 @@ const ContainerItem = styled(LinkPrimary)`
   display: grid;
   position: relative;
   height: 270px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   @media only screen and (max-width: 1070px) {
     height: 290px;
   }
@@ -67,11 +65,13 @@ const Content = styled.div`
   flex: 1;
   z-index: 1;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: ${spacing(3)};
   background-color: rgba(47, 42, 44, 0.75);
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  @media only screen and (max-width: 720px) {
+    align-items: center;
+  }
 `;
 const TitleText = styled(TitlePrimary)`
   color: ${THEME_COLOR.WHITE};

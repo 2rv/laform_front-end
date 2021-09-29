@@ -33,7 +33,6 @@ const Content = styled.div`
   gap: ${spacing(6)};
   padding: ${spacing(6)} ${spacing(3)};
   align-items: center;
-  justify-content: center;
   background-color: ${THEME_COLOR.GRAY};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

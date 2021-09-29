@@ -26,7 +26,6 @@ export function TableItem(props) {
     programsOptions,
     //------
     count,
-    maxCount,
     //------
     status,
     comment,
@@ -48,12 +47,7 @@ export function TableItem(props) {
       <CommentTd comment={comment} />
       <ParamsTd params={params} />
       <ParamsTd params={otherParams} />
-      <CounterTd
-        changeItem={changeItem}
-        id={id}
-        count={count}
-        maxCount={maxCount}
-      />
+      <CounterTd changeItem={changeItem} id={id} count={count} />
       <PriceTd isLast={status} totalPrice={totalPrice} />
       <StatusTd status={status} />
       <ButtonTd

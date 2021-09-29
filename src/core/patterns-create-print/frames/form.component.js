@@ -12,7 +12,10 @@ import {
   TextareaField,
 } from '../../../lib/element/field';
 import { PRINT_PATTERN_FIELD_NAME } from '../patterns-create-print.type';
-import { DynamicFields, ProductPrice } from '../../block-product-components';
+import {
+  DynamicFields,
+  ProductPrice,
+} from '../../block-product-create-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,

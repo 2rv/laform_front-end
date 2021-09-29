@@ -1,4 +1,4 @@
-export const ELECTRONIC_PATTERN_ROUTE_PATH = 'patterns/create/electronic';
+export const ELECTRONIC_PATTERN_ROUTE_PATH = '/patterns/create/electronic';
 export const ELECTRONIC_PATTERN_STORE_NAME = 'ELECTRONIC_PATTERN';
 
 export const ELECTRONIC_PATTERN_API = {

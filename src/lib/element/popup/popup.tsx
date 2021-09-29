@@ -6,7 +6,7 @@ import { PopupPropsType } from './popup.type';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
 export function Popup(props: PopupPropsType) {
-  const { content, children, top = 45, middleLeft } = props;
+  const { content, children, top = 45, middleLeft, mobileRight } = props;
   const [visible, setVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +25,11 @@ export function Popup(props: PopupPropsType) {
   return (
     <PopupContainer ref={modalRef}>
       {visible && (
-        <PopupContent top={top} middleLeft={middleLeft}>
+        <PopupContent
+          top={top}
+          middleLeft={middleLeft}
+          mobileRight={mobileRight}
+        >
           {content instanceof Function ? content(setVisible) : content}
         </PopupContent>
       )}
@@ -51,14 +55,21 @@ const PopupContent = styled.div<any>`
       }
     `}
   @media screen and (max-width: 720px) {
-    left: 0;
+    ${(p) =>
+      p.mobileRight
+        ? css`
+            right: 0;
+          `
+        : css`
+            left: 0;
+          `}
   }
   display: flex;
   width: max-content;
   background: ${THEME_COLOR.WHITE};
   box-shadow: ${THEME_COLOR.SHADOW.MODAL};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  padding: ${spacing(2)};
+  padding: ${spacing(4)};
 `;
 
 const PopupAction = styled.div`

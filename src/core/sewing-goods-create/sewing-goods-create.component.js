@@ -4,7 +4,7 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-components';
+import { ProductImages } from '../block-product-create-components';
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods-create.type';
 
 export function CreateSewingGoodsComponent(props) {
@@ -52,7 +52,9 @@ export function CreateSewingGoodsComponent(props) {
             );
           }}
         </Formik>
-        {isSuccess && <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />}
+        {isSuccess && (
+          <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
+        )}
         {isError && <ErrorAlert tid={errorMessage} />}
       </SectionLayout>
     </>

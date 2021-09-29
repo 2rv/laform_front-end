@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 import { Field, FieldArray } from 'formik';
 import { spacing, THEME_SIZE } from '../../lib/theme';
-import {
-  ButtonBasic,
-  ButtonSecondary,
-  IconButton,
-} from '../../lib/element/button';
-import { BasicField, FieldSelect } from '../../lib/element/field';
+import { ButtonSecondary, IconButton } from '../../lib/element/button';
+import { BasicField } from '../../lib/element/field';
 import { FieldLayout, SectionLayout } from '../../lib/element/layout';
 import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
 import { TitlePrimary } from '../../lib/element/title';

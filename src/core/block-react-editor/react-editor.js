@@ -1,7 +1,7 @@
 import EditorJs from 'react-editor-js';
 import { tools, i18n } from './options';
 import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../lib/theme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const ReactEditor = (props) => {
   const { handleChange, name, enableReInitialize, readOnly, data } = props;
@@ -10,8 +10,9 @@ const ReactEditor = (props) => {
     handleChange(data);
   };
   return (
-    <Container>
+    <Container readOnly={readOnly}>
       <EditorJs
+        minHeight={0}
         enableReInitialize={enableReInitialize}
         readOnly={readOnly}
         i18n={i18n}
@@ -24,10 +25,23 @@ const ReactEditor = (props) => {
 };
 
 const Container = styled.div`
-  box-shadow: 0 24px 24px -18px rgb(69 104 129 / 33%),
-    0 9px 45px 0 rgb(114 119 160 / 12%);
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  padding: ${spacing(6)};
+  ${(p) =>
+    !p.readOnly &&
+    css`
+      border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+      border: 1px solid ${THEME_COLOR.DARK_GRAY};
+    `}
+  .codex-editor__redactor {
+    ${(p) => {
+      if (!p.readOnly) {
+        return css`
+	 padding: 0 10px;
+  
+	  }
+	  `;
+      }
+    }}
+  }
   .ce-block__content h1 {
     font-size: ${THEME_SIZE.FONT.EXTRA_LARGE};
   }

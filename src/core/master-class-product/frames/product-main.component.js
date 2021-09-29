@@ -1,13 +1,17 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextSecondary, TextPrimary } from '../../../lib/element/text';
 import { TitlePrimary } from '../../../lib/element/title';
 import { Divider } from '../../../lib/element/divider';
-import { CardActions } from '../../../lib/element/card/card-actions';
-import { ProductPriceComponent } from './product-price.component';
-import { BlockSelect } from '../../block-select';
-import { TextBlock } from '../../block-text';
+import {
+  ProductActions,
+  ProductCategories,
+  ProductDescription,
+  ProductPrice,
+  ProductVendorCode,
+  ProductSelect,
+} from 'src/core/block-product-components';
 
 export function ProductMainComponent(props) {
   const {
@@ -21,10 +25,11 @@ export function ProductMainComponent(props) {
     images,
     categories,
     programs,
-    addToCart,
     cart,
     like,
+    addToCart,
   } = props;
+
   const [program, setProgram] = useState(
     programs?.length > 0
       ? programs[0]
@@ -41,51 +46,30 @@ export function ProductMainComponent(props) {
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
         {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
       </HeaderCase>
-      <div>
-        {categories.map((category, key) => (
-          <React.Fragment key={key}>
-            <LigthText
-              tid={categories.length > 1 ? category + ',' : category}
-            />
-            &nbsp;
-          </React.Fragment>
-        ))}
-      </div>
+      <ProductCategories categories={categories} />
       <Divider />
-      <TextBlock text={description} />
-      {programs && (
-        <>
-          <Divider />
-          <BlockSelect
-            name="Программа"
-            selectOptions={programs}
-            handleChange={setProgram}
-          />
-        </>
-      )}
+      <ProductDescription text={description} />
+      {programs?.length > 1 && <Divider />}
+      <ProductSelect
+        name="Программа"
+        selectOptions={programs}
+        handleChange={setProgram}
+      />
       <Divider />
       <FooterCase>
-        <ProductPriceComponent price={program?.price} discount={discount} />
-        <CardActions
-          like={like}
+        <ProductPrice price={program?.price} discount={discount} />
+        <ProductActions
           id={id}
           type={type}
           cart={cart}
+          like={like}
           onSetCart={handleAddToCart}
         />
       </FooterCase>
-      <LineCase>
-        <TextPrimary tid="Артикул - " />
-        <LigthText>{program.vendorCode}</LigthText>
-      </LineCase>
+      <ProductVendorCode vendorCode={program.vendorCode} />
     </Container>
   );
 }
-const LineCase = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing(3)};
-`;
 const FooterCase = styled.div`
   display: grid;
   align-items: center;
@@ -116,14 +100,6 @@ const Title = styled(TitlePrimary)`
   font-size: 1.5;
   ::first-letter {
     text-transform: uppercase;
-  }
-`;
-const LigthText = styled(TextSecondary)`
-  ::first-letter {
-    text-transform: uppercase;
-  }
-  @media screen and (max-width: 720px) {
-    order: -1;
   }
 `;
 const Container = styled.div`

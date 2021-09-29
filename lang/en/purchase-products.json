@@ -1,0 +1,34 @@
+{
+  "HEADERS": {
+    "SEWING_PRODUCTS": {
+      "NAME": "Name",
+      "DETAILS": "Details",
+      "PRICE": "Price",
+      "STATUS": "State"
+    },
+    "MASTER_CLASS": {
+      "NAME": "Name",
+      "DETAILS": "Details",
+      "PRICE": "Price"
+    },
+    "PATTERN_PRODUCTS_DIGITAL": {
+      "NAME": "Name",
+      "DETAILS": "Details",
+      "PRICE": "Price"
+    },
+    "PATTERN_PRODUCTS_ANALOGUE": {
+      "NAME": "Name",
+      "DETAILS": "Details",
+      "PRICE": "Price",
+      "STATUS": "State"
+    }
+  },
+  "TABS": {
+    "SEWING_PRODUCTS": "Sewing goods",
+    "MASTER_CLASS": "Master-classes",
+    "PATTERN_ANALOGUE": "Printed pattern",
+    "PATTERN_DIGITAL": "Electronic pattern"
+  },
+  "EMPTY": "No items purchased in this category",
+  "TITLE": "My purchases"
+}

@@ -5,7 +5,8 @@ import { THEME_COLOR, THEME_SIZE } from '../../theme';
 export function CardPrice(props) {
   const { min = 0, max, discount = null } = props;
   const discountPrice = () => min - (min / 100) * discount;
-  if (discount === 100 || min === 0) return <TextSecondary tid="PRODUCT_PRICE.FREE" />;
+  if (discount === 100 || min === 0)
+    return <TextSecondary tid="PRODUCT_PRICE.FREE" />;
   return (
     <div>
       {discount ? (
@@ -17,7 +18,11 @@ export function CardPrice(props) {
       ) : (
         <>
           <Text price={min} />
-          {Boolean(max) && <>- <Text price={max} /></>}
+          {Boolean(max) && (
+            <>
+              <Text price={-max} />
+            </>
+          )}
         </>
       )}
       &nbsp;
@@ -29,8 +34,8 @@ const LightText = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;
 const Text = styled(TextCurrency)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  font-size: ${THEME_SIZE.FONT.LARGE};
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   color: ${THEME_COLOR.SECONDARY_DARK};
 `;
 const ThroughText = styled(TextCurrency)`

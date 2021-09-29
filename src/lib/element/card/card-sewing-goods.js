@@ -67,9 +67,9 @@ const Container = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing(3)};
   flex: 1;
   justify-content: space-between;
+  gap: ${spacing(1)};
 `;
 const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};

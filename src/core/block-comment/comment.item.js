@@ -10,6 +10,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
 import { SubComment } from './comment.sub-item';
 import { ConvertTime } from 'src/lib/common/time-convert';
+import { USER_ROLE } from 'src/lib/common/auth';
 
 export function CommentItem(props) {
   const {
@@ -31,29 +32,34 @@ export function CommentItem(props) {
     handleEditComment(id, text, 'comment');
     setSubUser(null);
   };
+
   return (
     <Container>
       <Content>
         <HeaderCase>
           <Case>
-            <Title tid={userId.login} />
-            <TextLight tid={ConvertTime(createDate)} />
-            {Boolean(user !== null) && (
+            <TitleCase>
+              <Title tid={userId.login} />
+              <TextLight tid={ConvertTime(createDate)} />
+            </TitleCase>
+            {Boolean(user) && (
               <Button onClick={createSubComment}>
                 <CommentIcon />
               </Button>
             )}
           </Case>
-          {Boolean(userId?.id === user?.id) && (
-            <ActionsCase>
+          <ActionsCase>
+            {(userId?.id === user?.id || user?.role === USER_ROLE.ADMIN) && (
               <Button onClick={() => handleDeleteComment(id)}>
                 <DeleteIcon />
               </Button>
+            )}
+            {userId?.id === user?.id && (
               <Button onClick={editComment}>
                 <EditIcon />
               </Button>
-            </ActionsCase>
-          )}
+            )}
+          </ActionsCase>
         </HeaderCase>
         <TextSecondary tid={text} />
         <Divider />
@@ -74,6 +80,15 @@ const Case = styled.div`
   display: flex;
   align-items: baseline;
   gap: ${spacing(2)};
+`;
+const TitleCase = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: ${spacing(2)};
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    gap: 0;
+  }
 `;
 const HeaderCase = styled.div`
   display: flex;

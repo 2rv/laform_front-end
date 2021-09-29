@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { TextBlock } from '../block-text';
+import { ProductDescription } from '../block-product-components';
 
 export function CommentTd(props) {
   const { comment = null } = props;
   if (!comment) return null;
   return (
     <Td>
-      <TextBlock text={comment} />
+      <ProductDescription text={comment} />
     </Td>
   );
 }

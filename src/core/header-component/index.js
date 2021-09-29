@@ -7,3 +7,4 @@ export { ModalMenu } from './modal-menu';
 export { LogoMobile } from './logo-mobile';
 export { MenuButton } from './menu-button';
 export { MobileNavMenu } from './mobile-nav-menu';
+export { EmailConfirmed } from './email-confirmed';

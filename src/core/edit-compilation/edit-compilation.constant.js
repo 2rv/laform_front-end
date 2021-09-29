@@ -15,11 +15,12 @@ export const EDIT_COMPILATION_API = {
     TYPE: 'GET',
   },
   PRODUCTS_LOAD_DATA: {
-    ENDPOINT: (compilationName, currentLang) => `${compilationName}/get?lang=${currentLang}`,
+    ENDPOINT: (compilationName, currentLang) =>
+      `${compilationName}/get?lang=${currentLang}`,
     TYPE: 'GET',
   },
   UPDATE_PINNED: {
     ENDPOINT: (compilationName, id) => `${compilationName}/update/${id}`,
     TYPE: 'PUT',
-  }
+  },
 };

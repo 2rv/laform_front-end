@@ -11,7 +11,7 @@ import {
 } from '../../../lib/element/field';
 import { Field } from 'formik';
 import { ELECTRONIC_PATTERN_FIELD_NAME } from '../patterns-create-electronic.type';
-import { ProductPrice } from '../../block-product-components';
+import { ProductPrice } from '../../block-product-create-components';
 import {
   dynamicFieldsMinPrice,
   numberValue,
