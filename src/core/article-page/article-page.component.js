@@ -48,7 +48,7 @@ export function ArticlePageComponent(props) {
 const HeaderCase = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   line-height: 1.5;
 `;
 const TextLight = styled(TextSecondary)`
