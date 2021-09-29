@@ -4,8 +4,9 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
-import { GalleryBlock } from '../block-gallery';
 import { ProductMainComponent } from './frames';
+import { ProductImages } from '../block-product-components';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function MasterClassProductComponent(props) {
   const {
@@ -14,54 +15,27 @@ export function MasterClassProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-    productInfo,
+
+    productData,
     addToCart,
   } = props;
 
-  if (!productInfo) return null;
-
-  const {
-    id,
-    name,
-    description,
-    modifier,
-    discount,
-    type,
-    images,
-    categories,
-    cart,
-    programs,
-    like,
-    recommendations,
-  } = productInfo;
+  if (!productData) return <LoaderPrimary />;
 
   return (
     <SectionLayout type="MEDIUM">
       <SectionLayout>
         <Content>
-          <GalleryBlock items={images} />
-          <ProductMainComponent
-            addToCart={addToCart}
-            id={id}
-            name={name}
-            description={description}
-            modifier={modifier}
-            discount={discount}
-            type={type}
-            cart={cart}
-            images={images}
-            categories={categories}
-            programs={programs}
-            like={like}
-          />
+          <ProductImages items={productData.images} />
+          <ProductMainComponent addToCart={addToCart} {...productData} />
         </Content>
       </SectionLayout>
       <CardListBlock
         onSetCart={addToCart}
         title="Рекомендации"
-        items={recommendations}
+        items={productData.recommendations}
       />
-      <BlockComment type={type} id={id} />
+      <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );
 }

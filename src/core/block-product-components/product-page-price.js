@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../../../lib/theme';
-import { TextCurrency, TextSecondary } from '../../../../lib/element/text';
-import { SectionLayout } from '../../../../lib/element/layout';
-export function ProductPriceComponent(props) {
-  const {
-    discountPrice = 0,
-    discount = 0,
-    diliveryPrice = 0,
-    price = 0,
-  } = props;
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
+import { TextCurrency, TextSecondary } from '../../lib/element/text';
+import { SectionLayout } from '../../lib/element/layout';
+
+export function ProductPagePrice(props) {
+  const { discount = 0, diliveryPrice = 0, price = 0, count = 1 } = props;
+
+  const discountPrice = price - price * (discount / 100);
+
+  const totalPrice = discountPrice + diliveryPrice * count;
+
   return (
     <Container>
       <SectionLayout type="TEXT">
@@ -16,7 +17,7 @@ export function ProductPriceComponent(props) {
         <div>
           <Price price={discountPrice} />
           &nbsp;
-          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
+          <TextLight tid="PRODUCT_PRICE.CURRENCY" />
           &nbsp;
           {Boolean(discount) && <TextColored tid={`-${discount}%`} />}
         </div>
@@ -26,16 +27,16 @@ export function ProductPriceComponent(props) {
         <div>
           <Price price={diliveryPrice} />
           &nbsp;
-          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
+          <TextLight tid="PRODUCT_PRICE.CURRENCY" />
         </div>
       </SectionLayout>
       <VerticalDivider />
       <SectionLayout type="TEXT">
         <Text tid="PRODUCT_PRICE.TOTAL_ORDER_PRICE" />
         <div>
-          <TitlePrice price={price} />
+          <TitlePrice price={totalPrice} />
           &nbsp;
-          <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
+          <TextLight tid="PRODUCT_PRICE.CURRENCY" />
         </div>
       </SectionLayout>
     </Container>
@@ -44,11 +45,18 @@ export function ProductPriceComponent(props) {
 const Container = styled.div`
   display: flex;
   gap: ${spacing(6)};
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    gap: ${spacing(3)};
+  }
 `;
 const VerticalDivider = styled.div`
-  display: grid;
-  width: 3px;
   background-color: ${THEME_COLOR.GRAY};
+  width: 3px;
+  height: 100%;
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 `;
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};

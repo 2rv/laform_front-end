@@ -1,26 +1,27 @@
 export const convertPatternData = (data) => {
-  const fetchedProduct = (
-    data.masterClassId
-    || data.patternProductId
-    || data.sewingProductId
-    || data.postId
-  );
-
   return {
     id: data.id,
-    title: fetchedProduct?.titleRu,
-    shortDescription: fetchedProduct?.categories.map((category) => category.textRu).join(', '),
-    fullDescription: fetchedProduct?.descriptionRu,
-    images: fetchedProduct?.images.map((image) => image.fileUrl),
-    type: fetchedProduct?.type,
-    materials: fetchedProduct.materialRu,
-    price: Boolean(data.totalDiscount) ? data.totalPrice - data.totalPrice * (data.totalDiscount / 100) : data.totalPrice,
-    discount: data.totalDiscount,
-    discountPrice: Boolean(data.totalDiscount) ? data.totalPrice * (data.totalDiscount / 100) : 0,
-    diliveryPrice: data?.deliveryPrice,
+    type: data.patternProductId?.type,
+    images: data.patternProductId?.images.map((image) => image.fileUrl),
+    title: data.patternProductId?.titleRu,
+    categories: data.patternProductId?.categories,
+    description: data.patternProductId?.descriptionRu,
+    materials: data.patternProductId.materialRu,
+
+    price: Number(data.totalPrice),
+    discount: Number(data.totalDiscount),
+    diliveryPrice: Number(data?.deliveryPrice || 0),
+
     filePdf: data.size?.filePdf?.fileUrl,
-    optionInfo: [
-      { name: 'BLOCK_TABLE_LIST.PARAMS.QUANTITY', value: data.size.size },
-    ],
+    vendorCode: data.size?.vendorCode,
+    params: {
+      size: data.size.size,
+    },
+    otherParams: {
+      paymentMethod: data.purchase.paymentMethod,
+      diliveryMethod: data.purchase.diliveryMethod,
+      diliveryAdress: data.purchase.city,
+      status: data.purchase.status ?? 'Не известно',
+    },
   };
 };

@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../lib/theme';
+import { THEME_SIZE } from '../../lib/theme';
 import { TextSecondary } from '../../lib/element/text';
 import { TextButton } from '../../lib/element/button';
 import { useState } from 'react';
 
-export function TextBlock(props) {
+export function ProductDescription(props) {
   const [more, setMore] = useState(true);
   const { text, limit = 200 } = props;
   const firstText = text?.slice(0, limit);

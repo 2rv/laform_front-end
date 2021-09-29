@@ -22,9 +22,11 @@ import { convertForCreateComment } from './comment.convert';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function CommentContainer(props) {
-  const dispatch = useDispatch();
   const { id = false, type = false } = props;
 
+  if (!id || type === false || type === null || type === undefined) return null;
+
+  const dispatch = useDispatch();
   const { comments, create, user } = useSelector((state) => ({
     comments: state[COMMENT_STORE_NAME].commentState,
     create: state[COMMENT_STORE_NAME].createState,
@@ -43,7 +45,8 @@ export function CommentContainer(props) {
   const onChange = (e) => setValue(e.target.value);
 
   const onSubmit = () => {
-    if (Boolean(!text) || text.length <= 0) return alert('COMMENTS.WRITE_MESSAGE');
+    if (Boolean(!text) || text.length <= 0)
+      return alert('COMMENTS.WRITE_MESSAGE');
 
     if (Boolean(editComment.id)) {
       editCommentHandler();

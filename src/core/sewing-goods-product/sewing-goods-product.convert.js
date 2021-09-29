@@ -7,7 +7,7 @@ export function performSewingGoodsProductData(rowData, basket) {
     modifier: rowData?.modifier,
     discount: rowData?.discount,
     name: rowData.titleRu,
-    categories: rowData.categories.map((item) => item.textRu),
+    categories: rowData.categories,
     cart: Boolean(
       basket?.find((bItem) => bItem?.sewingProduct?.id === rowData.id),
     ),

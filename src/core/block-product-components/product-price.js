@@ -1,68 +1,41 @@
 import styled from 'styled-components';
-import { TextSecondary, TextCurrency } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
+import {
+  TextPrimary,
+  TextSecondary,
+  TextCurrency,
+} from '../../lib/element/text';
 
 export function ProductPrice(props) {
-  const { price, discount } = props;
-
-  const priceWithDiscount = ((price / 100) * discount).toFixed(2);
-  const totalPrice = (price - priceWithDiscount).toFixed(2);
-
+  const { price = 0, discount = 0, count = 1 } = props;
+  const discountPrice = (price - price * (discount / 100)) * count;
   return (
     <Container>
-      <Column>
-        <TextSecondary tid="PRODUCT_PRICE.PRICE" />
-        <div>
-          <Bold price={price} />
-          &nbsp;
-          <Light tid="PRODUCT_PRICE.CURRENCY" />
-        </div>
-      </Column>
-      <TextSecondary tid="-" />
-      <Column>
-        <TextSecondary tid="PRODUCT_PRICE.DISCOUNT" />
-        <div>
-          <Bold price={priceWithDiscount} />
-          &nbsp;
-          <Light tid="PRODUCT_PRICE.CURRENCY" />
-          &nbsp;
-          <Colored tid={`${discount}%`} />
-        </div>
-      </Column>
-      <TextSecondary tid="=" />
-      <Column>
-        <TextSecondary tid="PRODUCT_PRICE.DISCOUNT_PRICE" />
-        <div>
-          <Bold price={totalPrice} />
-          &nbsp;
-          <Light tid="PRODUCT_PRICE.CURRENCY" />
-        </div>
-      </Column>
+      <TextPrimary tid="PRODUCT_PRICE.PRICE" />
+      &nbsp;
+      <Price price={discountPrice} />
+      &nbsp;
+      <TextLight tid="PRODUCT_PRICE.CURRENCY" />
+      &nbsp;
+      {discount !== 0 && <TextColored tid={`-${discount}%`} />}
     </Container>
   );
 }
-
 const Container = styled.div`
-  display: flex;
-  gap: ${spacing(2)};
-  margin-top: 18px;
-  height: 46px;
-  align-items: center;
+  height: fit-content;
+  width: max-content;
 `;
-const Column = styled.div`
-  display: flex;
-  flex-flow: column;
-  gap: ${spacing(2)};
-  justify-content: space-between;
-`;
-const Bold = styled(TextCurrency)`
+const Price = styled(TextCurrency)`
   font-size: ${THEME_SIZE.FONT.LARGE};
+  color: ${THEME_COLOR.SECONDARY_DARK};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
 `;
-const Light = styled(TextSecondary)`
+const TextLight = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
   color: ${THEME_COLOR.TEXT.LIGHT};
 `;
-const Colored = styled(TextSecondary)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+const TextColored = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.SUCCESS};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;

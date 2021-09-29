@@ -13,6 +13,7 @@
 		"EMAIL": "Email:",
 		"CREATED_DATE": "Created date:",
 		"DILIVERY_INFO": "Delivery address:",
+		"STATUS": "Status:",
 		"DELIVERY_METHOD": "Delivery method:",
 		"PAYMENT_METHOD": "Payment method:",
 		"PHONE": "Contact phone:"
