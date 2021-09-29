@@ -31,7 +31,7 @@ export function SliderContainer(props) {
     dispatch(sliderLoadData(currentLang));
   }, []);
 
-  if (isRequestPending(state.slider) || pageLoading) {
+  if (isRequestPending(state.slider)) {
     return <SliderSkeleton />;
   }
 

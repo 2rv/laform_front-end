@@ -1,12 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { useState } from 'react';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { LinkPrimary } from '../link';
 
 export function CardImage({ image, bestseller, action, path, pathConfig }) {
+  const [imageLoaded, setimageLoaded] = useState(false);
   return (
     <Container path={path} pathConfig={pathConfig}>
-      <Image src={image} />
+      {!imageLoaded && <SkeletonImage />}
+      <Image onLoad={() => setimageLoaded(true)} src={image} />
       <ModifierContainer>
         {action ? <Modifier tid="PRODUCT_PRICE.STOCK" /> : null}
         {bestseller && <Modifier alt tid={bestseller} />}
@@ -49,4 +52,22 @@ const Modifier = styled(TextSecondary)`
   justify-content: center;
   align-items: center;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+`;
+
+const animation = keyframes`
+    0% {
+      background-position: -600px;
+    }
+    100% {
+      background-position: 600px;
+    }
+`;
+const SkeletonImage = styled.div`
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-size: 600px;
+  min-width: 360px;
+  height: 260px;
+  background-color: #ccc;
+  animation: ${animation} 1.6s infinite linear;
 `;
