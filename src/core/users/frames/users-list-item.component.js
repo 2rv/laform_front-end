@@ -5,16 +5,15 @@ import { TextPrimary, TextSecondary } from '../../../lib/element/text';
 import { LinkSecondary } from '../../../lib/element/link';
 import { spacing, THEME_COLOR } from '../../../lib/theme';
 
-export function UsersListItemComponent({
-  id,
-  login,
-  emailConfirmed,
-  notificationEmail,
-}) {
+export function UsersListItemComponent(props) {
+  const { id, login, emailConfirmed, notificationEmail } = props;
   return (
     <List>
       <UsersImageLogin>
-        <Link path={`user/${id}`}>
+        <Link
+          path={ABOUT_ACCOUNT_ROUTE_PATH}
+          pathConfig={{ dynamic: true, params: { id: id } }}
+        >
           <UserIcon />
           <TextSecondary>{login}</TextSecondary>
         </Link>
