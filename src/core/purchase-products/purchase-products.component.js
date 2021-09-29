@@ -19,18 +19,16 @@ export function PurchaseProductsComponent(props) {
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
         <TitlePrimary tid="PURCHASED_PRODUCTS.TITLE" />
-        {products ? (
-          <>
-            <FilterTabs
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-              tabItems={tabItems}
-            />
-            <TableList
-              items={products.purchasedProducts}
-              headers={products.headers}
-            />
-          </>
+        <FilterTabs
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          tabItems={tabItems}
+        />
+        {Boolean(products.purchasedProducts?.length > 0) ? (
+          <TableList
+            items={products.purchasedProducts}
+            headers={products.headers}
+          />
         ) : (
           <TextSecondary tid="PURCHASED_PRODUCTS.EMPTY" />
         )}
