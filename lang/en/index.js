@@ -37,6 +37,7 @@ import FAVORITES from './favorites.json';
 import BLOCK_TEXT from './block-text.json';
 import BLOCK_TABLE_LIST from './block-table-list.json';
 import PROMOCODE from './promocode.json';
+import PURCHASED_PRODUCTS from './purchase-products.json';
 
 export const EN = {
   translation: {
@@ -79,5 +80,6 @@ export const EN = {
     BLOCK_TEXT,
     BLOCK_TABLE_LIST,
     PROMOCODE,
+    PURCHASED_PRODUCTS,
   },
 };
