@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import {
-  TextPrimary,
-  TextSecondary,
-  TextCurrency,
-} from '../../lib/element/text';
+import { TextSecondary, TextCurrency } from '../../lib/element/text';
 
 export function ProductPrice(props) {
   const { price = 0, discount = 0, count = 1 } = props;
   const discountPrice = (price - price * (discount / 100)) * count;
   return (
     <Container>
-      <TextPrimary tid="PRODUCT_PRICE.PRICE" />
+      <TextSecondary tid="PRODUCT_PRICE.PRICE" />
       &nbsp;
       <Price price={discountPrice} />
       &nbsp;
