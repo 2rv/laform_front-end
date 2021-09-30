@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { spacing, THEME_SIZE } from '../../lib/theme';
-import { TextPrimary } from '../../lib/element/text';
+import { TextPrimary, TextSecondary } from '../../lib/element/text';
 
 export const ProductVendorCode = (props) => {
   const { vendorCode } = props;
   if (!vendorCode) return null;
   return (
     <Container>
-      <TextPrimary tid="OTHER.VENDOR_CODE" />
+      <TextSecondary tid="OTHER.VENDOR_CODE" />
       <Text>{vendorCode}</Text>
     </Container>
   );

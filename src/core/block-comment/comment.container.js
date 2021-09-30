@@ -20,11 +20,13 @@ import {
 import { CommentComponent } from './comment.component.js';
 import { convertForCreateComment } from './comment.convert';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import { TextPrimary } from 'src/lib/element/text';
 
 export function CommentContainer(props) {
   const { id = false, type = false } = props;
 
-  if (!id || type === false || type === null || type === undefined) return null;
+  if (!id || type === false || type === null || type === undefined)
+    return <TextPrimary tid="Отсутствуют отзывы" />;
 
   const dispatch = useDispatch();
   const { comments, create, user } = useSelector((state) => ({

@@ -4,19 +4,22 @@ import { ButtonPrimary, IconButton } from '../button';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { useState } from 'react';
-import { LinkPrimary } from '../link';
 import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
-import moment from 'moment';
 import { LikeButton } from '../../../core/block-like';
 import { ConvertTime } from 'src/lib/common/time-convert';
 
 export function CardArticles(props) {
+  const { onSetSelect } = props;
   const { id, image, name, bestseller, date, createdDate, like, type } =
     props.data;
-  const [isLiked, setLike] = useState(like);
-  const onLike = () => {
-    setLike(!isLiked);
+
+  const [isSelected, setSelect] = useState(false);
+
+  const onSelectCard = () => {
+    const result = onSetSelect(id, type, !isSelected);
+    if (result) setSelect(!isSelected);
   };
+
   return (
     <Container>
       <CardImage
@@ -32,10 +35,19 @@ export function CardArticles(props) {
         </Column>
         {like === null ? null : <LikeButton id={id} type={type} like={like} />}
       </Content>
+      {Boolean(onSetSelect) && (
+        <Button
+          onClick={onSelectCard}
+          select={isSelected}
+          tid={isSelected ? 'OTHER.SELECTED' : 'OTHER.SELECT'}
+        />
+      )}
     </Container>
   );
 }
-
+const Button = styled(ButtonPrimary)`
+  ${(p) => p.select && `background-color: ${THEME_COLOR.DARK_GRAY}`}
+`;
 const Column = styled.div`
   display: flex;
   flex-direction: column;
@@ -45,6 +57,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
+  overflow: hidden;
 `;
 const Content = styled.div`
   display: flex;

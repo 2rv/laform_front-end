@@ -82,10 +82,6 @@ export const filterOptionss = [
     tid: 'MASTER_CLASSES.FILTER_OPTIONS.STOCK',
   },
   {
-    id: 2,
-    tid: 'MASTER_CLASSES.FILTER_OPTIONS.HIT',
-  },
-  {
     id: 3,
     tid: 'MASTER_CLASSES.FILTER_OPTIONS.ASCENDING',
   },

@@ -136,10 +136,6 @@ export const filterOptionss = [
     tid: 'PATTERNS.FILTER_OPTIONS.STOCK',
   },
   {
-    id: 2,
-    tid: 'PATTERNS.FILTER_OPTIONS.HIT',
-  },
-  {
     id: 3,
     tid: 'PATTERNS.FILTER_OPTIONS.ASCENDING',
   },

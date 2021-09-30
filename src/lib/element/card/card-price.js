@@ -16,14 +16,8 @@ export function CardPrice(props) {
           <ThroughText price={min} />
         </>
       ) : (
-        <>
-          <Text price={min} />
-          {Boolean(max) && (
-            <>
-              <Text price={-max} />
-            </>
-          )}
-        </>
+        <Text price={min} />
+        // {Boolean(max) && <Text price={-max} />}
       )}
       &nbsp;
       <LightText tid="OTHER.VALUTE" />

@@ -6,7 +6,6 @@ import { redirect } from 'src/main/navigation';
 import { ButtonSecondary, ButtonPrimary, IconButton } from '../button';
 import { Popup } from '../popup';
 import { TextSecondary } from '../text';
-import { LinkPrimary } from '../link';
 import { ReactComponent as Delete } from '../../../asset/svg/delete-cancel-icon.svg';
 import { LikeButton } from '../../../core/block-like';
 
@@ -35,8 +34,10 @@ export function CardActions(props) {
 
   const onSelectCard = () => {
     if (onSetSelect) {
-      setSelect(!isSelected);
-      onSetSelect(id, type, !isSelected);
+      const result = onSetSelect(id, type, !isSelected);
+      if (result) {
+        setSelect(!isSelected);
+      }
     }
     if (onSetCart && !purchase) {
       if (inCart) return redirect(BASKET_ROUTE_PATH);
@@ -49,7 +50,6 @@ export function CardActions(props) {
     <LineCase>
       <Button
         disabled={onSetSelect ? null : purchase}
-        adaptive
         onClick={onSelectCard}
         select={onSetSelect ? isSelected : purchase ? true : inCart}
         tid={selectText}
