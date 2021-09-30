@@ -16,6 +16,7 @@ export const SETTINGS_CHANGE_PASSWORD_FORM_FIELD_NAME = {
 };
 
 export const SETTINGS_CHANGE_EMAIL_DATA_NAME = {
+  OLD_EMAIL: 'oldEmail',
   EMAIL: 'email',
   PASSWORD: 'password',
 };

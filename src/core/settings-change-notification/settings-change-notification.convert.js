@@ -10,6 +10,6 @@ export const convertSettingsChangeNotificationFormData = (data) => ({
 });
 
 export const performSettingsChangeNotificationLoadData = (data) => ({
-  [SETTINGS_CHANGE_NOTIFICATION_DATA_KEY.SUBSCRIBED]:
+  [SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME.NOTIFICATION]:
     data[SETTINGS_CHANGE_NOTIFICATION_DATA_NAME.SUBSCRIBE],
 });

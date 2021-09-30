@@ -5,6 +5,8 @@ import {
 } from './settings-change-email.type';
 
 export const convertSettingsChangeEmailFormData = (data) => ({
+  [SETTINGS_CHANGE_EMAIL_DATA_NAME.OLD_EMAIL]:
+    data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.OLD_EMAIL],
   [SETTINGS_CHANGE_EMAIL_DATA_NAME.EMAIL]:
     data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.NEW_EMAIL],
   [SETTINGS_CHANGE_EMAIL_DATA_NAME.PASSWORD]:
