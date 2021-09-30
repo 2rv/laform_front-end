@@ -16,7 +16,7 @@ import { getQuery } from 'src/main/navigation';
 export function PatternsPageContainer() {
   const dispatch = useDispatch();
   const { state, pageLoading } = useSelector((state) => ({
-    state: state[PATTERNS_PAGE_STORE_NAME].product,
+    state: state[PATTERNS_PAGE_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
   const id = getQuery('id');
@@ -27,12 +27,14 @@ export function PatternsPageContainer() {
 
   return (
     <PatternsPageComponent
-      isPending={isRequestPending(state)}
-      isError={isRequestError(state)}
-      isSuccess={isRequestSuccess(state)}
-      errorMessage={getRequestErrorMessage(state)}
+      isPending={isRequestPending(state.product)}
+      isError={isRequestError(state.product)}
+      isSuccess={isRequestSuccess(state.product)}
+      errorMessage={getRequestErrorMessage(state.product)}
+      isPdfPending={isRequestPending(state.productPdf)}
+      isPdfSuccess={isRequestSuccess(state.productPdf)}
       pageLoading={pageLoading}
-      productData={getRequestData(state, false)}
+      productData={getRequestData(state.product, false)}
     />
   );
 }

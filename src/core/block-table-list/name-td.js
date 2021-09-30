@@ -27,7 +27,7 @@ export function NameTd(props) {
             <OrderIcon />
           </ImageLink>
         )}
-        <Column>
+        <div>
           {name && (
             <LinkSecondary tid={name} pathConfig={pathConfig} path={path} />
           )}
@@ -38,7 +38,7 @@ export function NameTd(props) {
               pathConfig={pathConfig}
             />
           )}
-        </Column>
+        </div>
       </Case>
     </Td>
   );
@@ -57,11 +57,6 @@ const Td = styled.td`
   @media screen and (max-width: 875px) {
     width: 100%;
   }
-`;
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  line-height: 1.5;
 `;
 const Image = styled.img`
   width: 75px;

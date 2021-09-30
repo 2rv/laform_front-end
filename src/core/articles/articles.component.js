@@ -2,6 +2,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormFilter } from '../../lib/element/form-filter';
+import { TextSecondary } from 'src/lib/element/text';
 
 export function ArticlesComponent(props) {
   const {
@@ -30,7 +31,11 @@ export function ArticlesComponent(props) {
         initialValue={initialValue}
         setFilter={setFilter}
       />
-      <BasicCardList items={listItems} />
+      {!listItems || listItems.length === 0 ? (
+        <TextSecondary tid="Список пуст" />
+      ) : (
+        <BasicCardList items={listItems} />
+      )}
     </SectionLayout>
   );
 }

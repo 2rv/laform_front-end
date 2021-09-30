@@ -10,15 +10,19 @@ export function filterByType(listItems, activeType) {
 export function sorterItemsByParams(listData, find, filter) {
   if (find !== '') {
     return listData.filter((product) => {
-      return product.name.toLowerCase().trim().includes(find.toLowerCase().trim())
-        || product?.categories?.some((category) => category.textRu.toLowerCase().trim().includes(find.toLowerCase().trim()));
+      return (
+        product.name.toLowerCase().trim().includes(find.toLowerCase().trim()) ||
+        product?.categories?.some((category) =>
+          category.textRu
+            .toLowerCase()
+            .trim()
+            .includes(find.toLowerCase().trim()),
+        )
+      );
     });
   }
   if (filter === 1) {
     return listData.filter((item) => item.price?.discount);
-  }
-  if (filter === 2) {
-    return listData.filter((item) => item?.bestseller);
   }
   if (filter === 3) {
     return listData.sort((a, b) => {

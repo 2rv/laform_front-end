@@ -53,6 +53,7 @@ export function SettingsFormChangeEmailComponent(props) {
             error={getFieldError(fieldOldEmail)}
             onChange={handleChange}
             onBlur={handleBlur}
+            disabled={true}
           />
           <BasicField
             titleTid="SETTINGS.CHANGE_EMAIL.NEW_EMAIL.TITLE"

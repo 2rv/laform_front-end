@@ -8,5 +8,9 @@
   "USER_ALREADY_EXISTS": "User already exists.",
   "PLEASE_UPLOAD_IMAGE": "Please upload an image.",
   "USER_NOT_CONFIRMED": "You haven't verified your email address yet",
-  "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Email address already verified"
+  "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Email address already verified",
+  "EMAIL_ALREADY_IN_USE": "This email already exists",
+  "USER_NOT_VERIFIED": "You not confirmed your email",
+  "YOUR_EMAIL_IS_WRONG": "Your old email is incorrect",
+  "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Verification code payload has wrong email"
 }

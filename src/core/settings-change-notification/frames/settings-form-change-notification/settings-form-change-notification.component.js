@@ -24,10 +24,11 @@ export function SettingsFormChangeNotificationComponent(props) {
     formUploadErrorMessage,
     isNotificationLoadPending,
     pageLoading,
+    notificationData,
   } = props;
 
   const isSubmitDisabled = () => {
-    return pageLoading || isNotificationLoadPending || isFormUploadPending;
+    return pageLoading || isNotificationLoadPending || isFormUploadPending || notificationData[fieldNotification] === values[fieldNotification];
   };
 
   return (

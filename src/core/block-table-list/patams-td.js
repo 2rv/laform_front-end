@@ -139,6 +139,7 @@ const Td = styled.td`
 const Case = styled.div`
   display: flex;
   flex-wrap: wrap;
+  line-height: 1.5;
   gap: ${spacing(1)};
 `;
 const FullNameText = styled(LinkPrimary)`

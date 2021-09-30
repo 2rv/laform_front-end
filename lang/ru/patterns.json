@@ -29,6 +29,7 @@
 	"MATERIALS": "Материалы",
 	"SEND_TO_EMAIL": "Отправить на Email",
 	"DOWNLOAD": "Скачать",
+	"FILE_HAS_ALREADY_BEN_SENT": "Файл уже был отправлен. Ожидайте.",
 	"CREATE": {
 		"TITLE": "Создание печатной выкройки",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Товар успешно создан",

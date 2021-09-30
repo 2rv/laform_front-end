@@ -79,10 +79,6 @@ export const filterOptionss = [
     tid: 'SEWING_GOODS.FILTER_OPTIONS.STOCK',
   },
   {
-    id: 2,
-    tid: 'SEWING_GOODS.FILTER_OPTIONS.HIT',
-  },
-  {
     id: 3,
     tid: 'SEWING_GOODS.FILTER_OPTIONS.ASCENDING',
   },

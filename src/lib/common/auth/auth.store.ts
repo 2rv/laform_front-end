@@ -21,7 +21,7 @@ export function authStore(
     case AUTH_ACTION_TYPE.SET_AUTH_CONFIRMED:
       return {
         ...state,
-        user: action.user,
+        user: Object.assign(state.user, { emailConfirmed: true }),
       };
 
     default:

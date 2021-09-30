@@ -10,5 +10,7 @@
   "USER_NOT_CONFIRMED": "Вы еще не подтвердили адрес электронной почты",
   "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Адрес электронной почты уже подтвержден",
   "EMAIL_ALREADY_IN_USE": "Данный адрес электронной почты уже используется",
-  "NOTIFICATION_ERROR.USER_NOT_VERIFIED": "Адрес электронной почты не подтверждён"
+  "USER_NOT_VERIFIED": "Адрес электронной почты не подтверждён",
+  "YOUR_EMAIL_IS_WRONG": "Ваш старый Email некорректен",
+  "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Код верификации имеет не правильный Email"
 }

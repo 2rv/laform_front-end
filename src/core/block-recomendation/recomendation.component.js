@@ -13,10 +13,7 @@ import { BasicCardList } from 'src/lib/element/card-list';
 import { ReactComponent as CancelIcon } from '../../asset/svg/delete-cancel-icon.svg';
 import { FilterTabs } from 'src/lib/element/filter-tabs';
 import { FormFilter } from 'src/lib/element/form-filter';
-import {
-  filterByType,
-  sorterItemsByParams,
-} from 'src/lib/common/filter-list-card';
+import { filterByType } from 'src/lib/common/filter-list-card';
 import { RecomendationList } from './list-recomendation';
 
 export function RecomendationComponent(props) {

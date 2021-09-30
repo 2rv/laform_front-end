@@ -6,6 +6,7 @@ export function PromocodesComponent(props) {
 
   return (
     <SectionLayout>
+      <TitlePrimary tid="Промокоды" />
       <PromocodeFormContainer {...props} />
       <PromocodesListComponent promocodes={promocodes} isPending={isPending} />
     </SectionLayout>

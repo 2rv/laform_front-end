@@ -15,6 +15,8 @@ export function PatternsPageComponent(props) {
     errorMessage,
     pageLoading,
     productData,
+    isPdfPending,
+    isPdfSuccess,
   } = props;
   if (!productData) return <LoaderPrimary />;
 
@@ -22,7 +24,7 @@ export function PatternsPageComponent(props) {
     <SectionLayout type="MEDIUM">
       <Content>
         <ProductImages items={productData.images} />
-        <ProductMainComponent {...productData} />
+        <ProductMainComponent {...productData} isPdfPending={isPdfPending} isPdfSuccess={isPdfSuccess} />
       </Content>
       <SectionLayout type="TEXT">
         <TitlePrimary tid="PATTERNS.CREATE.FORM.COMPLEXITY" />

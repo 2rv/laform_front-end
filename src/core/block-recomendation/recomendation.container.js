@@ -34,22 +34,25 @@ export function RecomendationContainer(props) {
   const [activeTab, setActiveTab] = useState(9);
   const [filter, setFilter] = useState(filterInitialValue);
   const [products, setProduct] = useState(listItems);
-
+  const selectedItems = products.reduce((acc, item) => {
+    if (item?.selected) {
+      if (item.type === 0) acc.push({ masterClassId: item.id });
+      if (item.type === 1) acc.push({ patternProductId: item.id });
+      if (item.type === 2) acc.push({ patternProductId: item.id });
+      if (item.type === 3) acc.push({ sewingProductId: item.id });
+      if (item.type === 4) acc.push({ postId: item.id });
+    }
+    return acc;
+  }, []);
   useEffect(() => {
-    const selectedItems = products.reduce((acc, item) => {
-      if (item?.selected) {
-        if (item.type === 0) acc.push({ masterClassId: item.id });
-        if (item.type === 1) acc.push({ patternProductId: item.id });
-        if (item.type === 2) acc.push({ patternProductId: item.id });
-        if (item.type === 3) acc.push({ sewingProductId: item.id });
-        if (item.type === 4) acc.push({ postId: item.id });
-      }
-      return acc;
-    }, []);
     onSetRecomendation(selectedItems);
   }, [products]);
 
   const onSelect = (id, type, status) => {
+    if (selectedItems.length >= 3 && status) {
+      alert('Больше 3х нельзя');
+      return false;
+    }
     const copy = products.map((item) => {
       if (item.id === id) {
         status ? (item.selected = true) : (item.selected = false);
@@ -57,6 +60,7 @@ export function RecomendationContainer(props) {
       return item;
     });
     setProduct(copy);
+    return true;
   };
   return (
     <RecomendationComponent
@@ -114,10 +118,6 @@ const filterOptions = [
   {
     id: 1,
     tid: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.FILTER_OPTIONS.STOCK',
-  },
-  {
-    id: 2,
-    tid: 'ARTICLE_CREATE_FORM.RECOMENDATIONS.FILTER_OPTIONS.HIT',
   },
   {
     id: 3,

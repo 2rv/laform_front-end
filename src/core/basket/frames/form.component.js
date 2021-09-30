@@ -104,7 +104,7 @@ export function FormComponent(props) {
         </FieldLayout>
         <FieldCheckbox
           titleTid="Сохранение данных"
-          labelTid="Вы хотите сохранить данные"
+          labelTid="Cохранить данные"
           name={ORDER_FIELD_NAME.SAVE_USER_INFO}
           value={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
           onBlur={handleBlur}

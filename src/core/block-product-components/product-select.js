@@ -35,6 +35,7 @@ export function ProductSelect(props) {
 
 const Line = styled.div`
   display: flex;
+  align-items: center;
   gap: ${spacing(2)};
 `;
 const Container = styled.div`
