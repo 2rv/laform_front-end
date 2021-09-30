@@ -23,7 +23,7 @@ export function settingsChangeEmailFormUploadData(data) {
       dispatch({
         type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_SUCCESS,
       });
-      redirect(AUTH_VERIFICATE_EMAIL_ROUTE_PATH);
+      redirect(AUTH_VERIFICATE_EMAIL_ROUTE_PATH, { query: { data: data.email } });
     } catch (err) {
       if (err.response) {
         dispatch({

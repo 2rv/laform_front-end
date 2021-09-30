@@ -16,6 +16,7 @@ import {
   SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME,
   SETTINGS_CHANGE_NOTIFICATION_FORM_FIELD_NAME,
   SETTINGS_CHANGE_NOTIFICATION_DATA_KEY,
+  SETTINGS_CHANGE_NOTIFICATION_DATA_NAME,
 } from './settings-change-notification.type';
 import {
   settingsChangeNotificationFormUploadData,
@@ -46,7 +47,7 @@ export function SettingsChangeNotificationContainer() {
 
   const settingsChangeNotificationFormGetInitialValue = () => ({
     [SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME.NOTIFICATION]:
-      notificationData[SETTINGS_CHANGE_NOTIFICATION_DATA_KEY.SUBSCRIBED] ||
+      notificationData[SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME.NOTIFICATION] ||
       false,
   });
 
@@ -75,6 +76,7 @@ export function SettingsChangeNotificationContainer() {
       initialValue={settingsChangeNotificationFormGetInitialValue()}
       onSubmitForm={settingsChangeNotificationFormSendData}
       fieldName={SETTINGS_CHANGE_NOTIFICATION_FORM_FIELD_NAME}
+      notificationData={notificationData}
     />
   );
 }

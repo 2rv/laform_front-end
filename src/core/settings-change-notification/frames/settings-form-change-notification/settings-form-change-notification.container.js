@@ -13,6 +13,7 @@ export function SettingsFormChangeNotificationContainer(props) {
     formUploadErrorMessage,
     isEmailLoadPending,
     pageLoading,
+    notificationData,
   } = props;
 
   const NOTIFICATION_NAME =
@@ -33,6 +34,7 @@ export function SettingsFormChangeNotificationContainer(props) {
           formUploadErrorMessage={formUploadErrorMessage}
           isNotificationLoadPending={isEmailLoadPending}
           pageLoading={pageLoading}
+          notificationData={notificationData}
           {...formProps}
         />
       )}

@@ -7,17 +7,17 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { AUTH_STORE_NAME } from '../../lib/common/auth';
 import { AuthVerificateEmailComponent } from './auth-verificate-email.component';
 import { authVerificateEmailUploadData } from './auth-verificate-email.action';
 import { AUTH_VERIFICATE_EMAIL_STORE_NAME } from './auth-verificate-email.constant';
+import { getQuery } from 'src/main/navigation';
 
 export function AuthVerificateEmailContainer() {
   const dispatch = useDispatch();
-  const { state, user } = useSelector((state) => ({
+  const { state } = useSelector((state) => ({
     state: state[AUTH_VERIFICATE_EMAIL_STORE_NAME].authVerificateEmail,
-    user: state[AUTH_STORE_NAME].user,
   }));
+  const email = getQuery('data');
 
   const sendVerificationRequest = () => {
     dispatch(authVerificateEmailUploadData());
@@ -27,7 +27,7 @@ export function AuthVerificateEmailContainer() {
 
   return (
     <AuthVerificateEmailComponent
-      email={user?.email}
+      email={email ?? ''}
       isPending={isRequestPending(state)}
       isError={isRequestError(state)}
       isSuccess={isRequestSuccess(state)}

@@ -1,13 +1,11 @@
 import { Dispatch } from 'redux';
-import { AuthStoreAction, AuthUserDto } from './auth.type';
-import { AUTH_STORE_NAME } from './auth.constant';
+import { AuthStoreAction } from './auth.type';
 import { authDecode, setAutorization } from '../../../main/auth';
 import { parseUserAuthData } from './auth.convert';
 import { getCookie } from 'src/main/cookie';
 import { AUTH_COOKIE } from 'src/main/auth/auth.constant';
 import { redirect } from 'src/main/navigation';
 import { AUTH_ACTION_TYPE } from '.';
-import { useSelector } from 'react-redux';
 
 export function authSetData(token: any) {
   const user = token ? parseUserAuthData(authDecode(token)) : null;
@@ -31,20 +29,5 @@ export function authLogout() {
   redirect('/');
 }
 export function authSetEmailConfirmed() {
-  const user = useSelector(
-    (state: any): AuthUserDto => state[AUTH_STORE_NAME].user,
-  );
-
-  const data = {
-    type: AUTH_ACTION_TYPE.SET_AUTH_CONFIRMED,
-    user: {
-      id: user.id,
-      login: user.login,
-      email: user.email,
-      emailConfirmed: true,
-      role: user.role,
-    },
-  };
-
-  return (dispatch: Dispatch) => dispatch(data);
+  return (dispatch: Dispatch) => dispatch({ type: AUTH_ACTION_TYPE.SET_AUTH_CONFIRMED });
 }
