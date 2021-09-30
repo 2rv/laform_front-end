@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { spacing, THEME_SIZE } from '../../../lib/theme';
@@ -8,13 +9,22 @@ import {
 } from '../../../lib/element/button';
 import { ReactComponent as QuestionIcon } from '../../../asset/svg/question-mark.svg';
 import { Divider } from 'src/lib/element/divider';
+import { TextSecondary } from 'src/lib/element/text';
+import { ModalPopup } from 'src/lib/element/modal';
+import { patternProductSendPdfToMail } from '../patterns-page.action';
 
 export function FilePdfActions(props) {
-  const { title, filePdf } = props;
-
-  if (!title || !filePdf) return null;
-
+  const { title, filePdf, isPdfPending, isPdfSuccess } = props;
   const dispatch = useDispatch();
+  const [modalVisibilty, setModalVisibility] = useState(false);
+  const isPdfSending = isPdfPending === true && isPdfSuccess === false;
+  const isPdfSended = isPdfPending === false && isPdfSuccess === true;
+
+  useEffect(() => {
+    if (isPdfSended) {
+      setModalVisibility(true);
+    }
+  }, [isPdfPending, isPdfSuccess]);
 
   const sendPdfToMail = () => {
     dispatch(
@@ -24,6 +34,7 @@ export function FilePdfActions(props) {
       }),
     );
   };
+
   const redirectToPdfLink = () => {
     window.open(filePdf, '_blank');
   };
@@ -32,12 +43,18 @@ export function FilePdfActions(props) {
     <>
       <Divider />
       <Container>
-        <ButtonSecondary tid="PATTERNS.SEND_TO_EMAIL" onClick={sendPdfToMail} />
+        <ButtonSecondary tid="PATTERNS.SEND_TO_EMAIL" disabled={isPdfSending} onClick={sendPdfToMail} />
         <ButtonPrimary tid="PATTERNS.DOWNLOAD" onClick={redirectToPdfLink} />
         <Button>
           <QuestionIcon />
         </Button>
       </Container>
+      <ModalPopup
+        modalVisibilty={modalVisibilty}
+        onClose={() => setModalVisibility(false)}
+      >
+        <TextSecondary tid="PATTERNS.FILE_HAS_ALREADY_BEN_SENT" />
+      </ModalPopup>
     </>
   );
 }
