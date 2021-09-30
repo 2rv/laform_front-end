@@ -29,6 +29,7 @@
 	"MATERIALS": "Materials",
 	"SEND_TO_EMAIL": "Send to Email",
 	"DOWNLOAD": "Download",
+	"FILE_HAS_ALREADY_BEN_SENT": "The file has already been sent. Expect.",
 	"CREATE": {
 		"TITLE": "Creating a printed pattern",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Product successfully created",

@@ -27,6 +27,8 @@ export function ProductMainComponent(props) {
     params,
     otherParams,
     vendorCode,
+    isPdfPending,
+    isPdfSuccess,
   } = props;
 
   return (
@@ -45,7 +47,7 @@ export function ProductMainComponent(props) {
         discount={discount}
       />
       <ProductParams params={otherParams} />
-      <FilePdfActions title={title} filePdf={filePdf} />
+      <FilePdfActions title={title} filePdf={filePdf} isPdfPending={isPdfPending} isPdfSuccess={isPdfSuccess} />
       <Divider />
       <ProductVendorCode vendorCode={vendorCode} />
     </Container>
