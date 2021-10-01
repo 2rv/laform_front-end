@@ -1,8 +1,9 @@
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
-import { FormFilter } from '../../lib/element/form-filter';
+import { SearchFilter } from '../../lib/common/search-filter';
 import { TextSecondary } from 'src/lib/element/text';
+import { CenteredSpinner } from 'src/lib/element/spinner';
 
 export function MasterClassesComponent(props) {
   const {
@@ -14,28 +15,24 @@ export function MasterClassesComponent(props) {
     filterOptions,
     filterSelectName,
     findFieldName,
-    setFilter,
+    handleFilter,
     initialValue,
     //-----
-    pending,
-    success,
-    error,
-    errorMessage,
+    isPending,
   } = props;
 
   return (
     <SectionLayout>
       <TitlePrimary tid="MASTER_CLASSES.MASTER_CLASSES.TITLE" />
-      <FormFilter
+      <SearchFilter
         findPlaceholderTid="MASTER_CLASSES.MASTER_CLASSES.FIELD.FIND_MASTER_CLASSES"
         filterOptions={filterOptions}
-        filterSelectName={filterSelectName}
-        findFieldName={findFieldName}
-        initialValue={initialValue}
-        setFilter={setFilter}
+        handleFilter={handleFilter}
       />
       {!listItems || listItems.length === 0 ? (
         <TextSecondary tid="Список пуст" />
+      ) : isPending ? (
+        <CenteredSpinner />
       ) : (
         <BasicCardList
           onSetCart={addToCart}

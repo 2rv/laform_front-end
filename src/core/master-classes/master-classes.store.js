@@ -8,7 +8,10 @@ import {
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 
 const initialState = {
-  masterClassState: initRequestState(),
+  masterClassState: initRequestState(null, {
+    totalCount: 0,
+    currentCount: 0,
+  }),
 };
 
 export function masterClassesStore(state = initialState, action) {
@@ -24,6 +27,16 @@ export function masterClassesStore(state = initialState, action) {
         masterClassState: setRequestSuccess(
           state.masterClassState,
           action.data,
+          action.count,
+        ),
+      };
+    case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_PAGINATION_SUCCESS:
+      return {
+        ...state,
+        masterClassState: setRequestSuccess(
+          state.masterClassState,
+          action.data.concat(state.masterClassState?.data || []),
+          action.count,
         ),
       };
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_ERROR:

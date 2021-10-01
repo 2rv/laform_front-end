@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestData,
@@ -10,18 +10,16 @@ import {
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   sewingGoodsUploadData,
+  sewingGoodsPaginationData,
   sewingGoodsUpdateData,
 } from './sewing-goods.action';
 import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
 import { SewingGoodsComponent } from './sewing-goods.component';
-import { SEWING_GOODS_FIELD_NAME } from './sewing-goods.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
-import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
 
 export function SewingGoodsContainer() {
-  const dispatch = useDispatch();
   const { sewingGoodsState, pageLoading, currentLang, user, isAuth } =
     useSelector((state) => ({
       sewingGoodsState: state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
@@ -30,12 +28,66 @@ export function SewingGoodsContainer() {
       user: state[AUTH_STORE_NAME].user,
       isAuth: state[AUTH_STORE_NAME].logged,
     }));
-  useEffect(() => dispatch(sewingGoodsUploadData(currentLang, isAuth)), []);
-  const filterInitialValue = () => ({
-    [SEWING_GOODS_FIELD_NAME.FILTER]: 0,
-    [SEWING_GOODS_FIELD_NAME.FIND]: '',
-  });
-  const [filter, setFilter] = useState(filterInitialValue());
+
+  const dispatch = useDispatch();
+  const containerRef = useRef(null);
+  const [currentPage, setPage] = useState(1);
+  let isPagination = false;
+  const isPending = isRequestPending(sewingGoodsState);
+  const [filter, setFilter] = useState({ where: null, sort: null, by: null });
+
+  useEffect(() => {
+    if (!isPending) isPagination = false;
+  }, [isPending]);
+
+  const togglePagination = () => {
+    const total = sewingGoodsState?.additional?.totalCount || 0;
+    const current = sewingGoodsState?.additional?.currentCount || 0;
+    if (
+      containerRef.current.getBoundingClientRect().bottom <
+        window.innerHeight &&
+      !isPending &&
+      total > current &&
+      !isPagination
+    ) {
+      isPagination = true;
+      dispatch(
+        sewingGoodsPaginationData(
+          currentLang,
+          isAuth,
+          currentPage + 1,
+          filter.where,
+          filter.sort,
+          filter.by,
+        ),
+      );
+      setPage(currentPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    dispatch(sewingGoodsUploadData(currentLang, isAuth));
+    document.addEventListener('scroll', togglePagination);
+    return () => document.removeEventListener('scroll', togglePagination);
+  }, []);
+
+  const handleFilter = ({ where, sort, by }) => {
+    const copy = { ...filter };
+    copy.where = where;
+    copy.sort = sort;
+    copy.by = by;
+    setFilter(copy);
+
+    dispatch(
+      sewingGoodsUploadData(
+        currentLang,
+        isAuth,
+        copy.where,
+        copy.sort,
+        copy.by,
+      ),
+    );
+  };
 
   const onDeleteProduct = (id, body) => {
     dispatch(sewingGoodsUpdateData(currentLang, id, body));
@@ -44,28 +96,21 @@ export function SewingGoodsContainer() {
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
-    <SewingGoodsComponent
-      listItems={sorterItemsByParams(
-        getRequestData(sewingGoodsState, []),
-        filter[SEWING_GOODS_FIELD_NAME.FIND],
-        Number(filter[SEWING_GOODS_FIELD_NAME.FILTER]),
-      )}
-      addToCart={addToCart}
-      //-----
-      setFilter={setFilter}
-      initialValue={filterInitialValue()}
-      filterOptions={filterOptionss}
-      filterSelectName={SEWING_GOODS_FIELD_NAME.FILTER}
-      findFieldName={SEWING_GOODS_FIELD_NAME.FIND}
-      //-----
-      pageLoading={pageLoading}
-      isPending={isRequestPending(sewingGoodsState)}
-      isError={isRequestError(sewingGoodsState)}
-      isSuccess={isRequestSuccess(sewingGoodsState)}
-      errorMessage={getRequestErrorMessage(sewingGoodsState)}
-      onDeleteProduct={onDeleteProduct}
-      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
-    />
+    <div ref={containerRef}>
+      <SewingGoodsComponent
+        listItems={getRequestData(sewingGoodsState, [])}
+        addToCart={addToCart}
+        handleFilter={handleFilter}
+        filterOptions={filterOptionss}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
+        pageLoading={pageLoading}
+        isPending={isRequestPending(sewingGoodsState)}
+        isError={isRequestError(sewingGoodsState)}
+        isSuccess={isRequestSuccess(sewingGoodsState)}
+        errorMessage={getRequestErrorMessage(sewingGoodsState)}
+      />
+    </div>
   );
 }
 
@@ -76,14 +121,14 @@ export const filterOptionss = [
   },
   {
     id: 1,
-    tid: 'SEWING_GOODS.FILTER_OPTIONS.STOCK',
+    tid: 'По алфавиту от а до я',
+    sort: 'title',
+    by: 'ASC',
   },
   {
-    id: 3,
-    tid: 'SEWING_GOODS.FILTER_OPTIONS.ASCENDING',
-  },
-  {
-    id: 4,
-    tid: 'SEWING_GOODS.FILTER_OPTIONS.DESCENDING',
+    id: 2,
+    tid: 'По алфавиту от я до а',
+    sort: 'title',
+    by: 'DESC',
   },
 ];

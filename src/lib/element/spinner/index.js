@@ -1,1 +1,1 @@
-export { Spinner } from './spinner';
+export { Spinner, CenteredSpinner } from './spinner';

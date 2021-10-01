@@ -8,7 +8,10 @@ import {
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
 const initialState = {
-  sewingGoodsState: initRequestState(),
+  sewingGoodsState: initRequestState(null, {
+    totalCount: 0,
+    currentCount: 0,
+  }),
 };
 
 export function sewingGoodsStore(state = initialState, action) {
@@ -24,6 +27,16 @@ export function sewingGoodsStore(state = initialState, action) {
         sewingGoodsState: setRequestSuccess(
           state.sewingGoodsState,
           action.data,
+          action.count,
+        ),
+      };
+    case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PAGINATION_SUCCESS:
+      return {
+        ...state,
+        sewingGoodsState: setRequestSuccess(
+          state.sewingGoodsState,
+          action.data.concat(state.sewingGoodsState?.data || []),
+          action.count,
         ),
       };
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_ERROR:

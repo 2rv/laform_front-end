@@ -286,10 +286,6 @@ input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-textarea {
-  overflow: auto;
-  vertical-align: top;
-}
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -530,8 +526,6 @@ html {
 html,
 body {
   min-height: 100vh;
-  overflow: auto;
-  height: 100vh;
 }
 
 body,
