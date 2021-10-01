@@ -1,10 +1,19 @@
 import styled, { keyframes } from 'styled-components';
 import { spacing, THEME_COLOR } from 'src/lib/theme';
 import { ModalFullProps } from './modal.type';
+import { useEffect } from 'react';
 
 export function ModalFull(props: ModalFullProps) {
   const { onOpen = false, children } = props;
+  useEffect(() => {
+    if (onOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [onOpen]);
   if (!onOpen) return null;
+
   return (
     <Container open={onOpen}>
       <Content>{children}</Content>

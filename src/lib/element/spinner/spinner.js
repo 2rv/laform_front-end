@@ -21,3 +21,8 @@ export const Spinner = styled.div`
     }
   }
 `;
+
+export const CenteredSpinner = styled(Spinner)`
+  display: flex;
+  justify-self: center;
+`;

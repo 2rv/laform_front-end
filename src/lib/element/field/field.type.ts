@@ -2,12 +2,12 @@ export interface FieldPropsType {
   className?: string;
   titleTid?: string;
   placeholderTid: string;
-  name: string;
+  name?: string;
   type?: string;
   value: string;
   error?: string;
   onChange: any;
-  onBlur: any;
+  onBlur?: any;
   isFindInput?: boolean;
   width?: number;
   disabled?: boolean;
@@ -37,7 +37,7 @@ export interface CheckboxPropsType {
 }
 export interface SelectPropsType {
   titleTid?: string;
-  name: string;
+  name?: string;
   value?: any;
   options: { id: number; tid: string; tvalue?: any; hidden?: boolean }[];
   onChange: any;

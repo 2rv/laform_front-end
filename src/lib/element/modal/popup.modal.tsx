@@ -1,9 +1,18 @@
 import styled, { keyframes } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { ModalPopupProps } from './modal.type';
+import { useEffect } from 'react';
 
 export function ModalPopup(props: ModalPopupProps) {
   const { modalVisibilty = false, onClose, children } = props;
+
+  useEffect(() => {
+    if (modalVisibilty) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [modalVisibilty]);
 
   return (
     <Container isopen={modalVisibilty} onClick={onClose}>
@@ -32,7 +41,7 @@ const Container = styled.div<any>`
   overflow: auto;
   background: rgba(0, 0, 0, 0.25);
   animation: ${animation} 0.2s;
-`
+`;
 const Content = styled.div`
   display: flex;
   align-items: center;

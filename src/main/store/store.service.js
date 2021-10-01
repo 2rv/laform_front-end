@@ -57,7 +57,7 @@ export const setRequestPending = (state) => {
   return state;
 };
 
-export const setRequestSuccess = (state, data = null) => {
+export const setRequestSuccess = (state, data = null, additional = null) => {
   state.error = false;
   state.errorMessage = false;
   state.success = true;
@@ -67,6 +67,9 @@ export const setRequestSuccess = (state, data = null) => {
 
   if (data) {
     state.data = data;
+  }
+  if (additional) {
+    state.additional = additional;
   }
 
   return state;

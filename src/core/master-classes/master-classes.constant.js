@@ -2,11 +2,21 @@ export const MASTER_CLASSES_ROUTE_PATH = '/master-class';
 export const MASTER_CLASSES_STORE_NAME = 'MASTER_CLASSES';
 export const MASTER_CLASSES_API = {
   MASTER_CLASSES_LOAD_DATA: {
-    ENDPOINT: (currentLang) => `/master-class/get?lang=${currentLang}`,
+    ENDPOINT: (currentLang, page, where, sort, by) =>
+      `/master-class/get?lang=${currentLang}&page=${page}${
+        Boolean(where) ? `&where=${where}` : ''
+      }${Boolean(sort) ? `&sort=${sort}` : ''}${
+        Boolean(by) ? `&by=${by}` : ''
+      }`,
     TYPE: 'GET',
   },
   MASTER_CLASSES_LOAD_DATA_AUTH: {
-    ENDPOINT: (currentLang) => `/master-class/auth/get?lang=${currentLang}`,
+    ENDPOINT: (currentLang, page, where, sort, by) =>
+      `/master-class/auth/get?lang=${currentLang}&page=${page}${
+        Boolean(where) ? `&where=${where}` : ''
+      }${Boolean(sort) ? `&sort=${sort}` : ''}${
+        Boolean(by) ? `&by=${by}` : ''
+      }`,
     TYPE: 'GET',
   },
   MASTER_CLASSES_UPDATE: {
