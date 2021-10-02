@@ -1,24 +1,17 @@
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
-import { BasicCardList } from '../../lib/element/card-list';
+import { PaginationContainer } from '../../lib/common/block-pagination';
 import { SearchFilter } from '../../lib/common/search-filter';
-import { TextSecondary } from 'src/lib/element/text';
-import { CenteredSpinner } from 'src/lib/element/spinner';
+import { BasicCardList } from 'src/lib/element/card-list';
 
 export function MasterClassesComponent(props) {
   const {
-    addToCart,
     listItems,
+    addToCart,
     onDeleteProduct,
-    isAdmin,
-    //-----
     filterOptions,
-    filterSelectName,
-    findFieldName,
     handleFilter,
-    initialValue,
-    //-----
-    isPending,
+    isAdmin,
   } = props;
 
   return (
@@ -29,18 +22,12 @@ export function MasterClassesComponent(props) {
         filterOptions={filterOptions}
         handleFilter={handleFilter}
       />
-      {!listItems || listItems.length === 0 ? (
-        <TextSecondary tid="Список пуст" />
-      ) : isPending ? (
-        <CenteredSpinner />
-      ) : (
-        <BasicCardList
-          onSetCart={addToCart}
-          items={listItems}
-          onDeleteProduct={onDeleteProduct}
-          isAdmin={isAdmin}
-        />
-      )}
+      <BasicCardList
+        items={listItems}
+        onSetCart={addToCart}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </SectionLayout>
   );
 }

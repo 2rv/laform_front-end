@@ -6,18 +6,7 @@ import { TextSecondary } from 'src/lib/element/text';
 import { CenteredSpinner } from 'src/lib/element/spinner';
 
 export function ArticlesComponent(props) {
-  const {
-    listItems,
-    //-----
-    filterOptions,
-    handleFilter,
-    //-----
-    pageLoading,
-    isPending,
-    isError,
-    isSuccess,
-    errorMessage,
-  } = props;
+  const { listItems, filterOptions, handleFilter } = props;
 
   return (
     <SectionLayout>
@@ -27,13 +16,7 @@ export function ArticlesComponent(props) {
         filterOptions={filterOptions}
         handleFilter={handleFilter}
       />
-      {!listItems || listItems.length === 0 ? (
-        <TextSecondary tid="Список пуст" />
-      ) : isPending ? (
-        <CenteredSpinner />
-      ) : (
-        <BasicCardList items={listItems} />
-      )}
+      <BasicCardList items={listItems} />
     </SectionLayout>
   );
 }

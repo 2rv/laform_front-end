@@ -34,18 +34,12 @@ export function PatternsComponent(props) {
         filterOptions={filterOptions}
         handleFilter={handleFilter}
       />
-      {!listItems || listItems.length === 0 ? (
-        <TextSecondary tid="Список пуст" />
-      ) : isPending ? (
-        <CenteredSpinner />
-      ) : (
-        <BasicCardList
-          onSetCart={addToCart}
-          items={listItems}
-          onDeleteProduct={onDeleteProduct}
-          isAdmin={isAdmin}
-        />
-      )}
+      <BasicCardList
+        onSetCart={addToCart}
+        items={listItems}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </SectionLayout>
   );
 }

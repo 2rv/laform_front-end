@@ -4,7 +4,8 @@ import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 import { BASKET_STORE_NAME } from '../basket';
 import { convertMasterClassProducts } from '../../lib/common/product-converters';
 
-export function masterClassesUploadData(currentLang, isAuth, where, sort, by) {
+export function masterClassesUploadData(isAuth, query) {
+  console.log(query);
   return async (dispatch, getState) => {
     dispatch({
       type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING,
@@ -15,33 +16,19 @@ export function masterClassesUploadData(currentLang, isAuth, where, sort, by) {
         ? await httpRequest({
             method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA_AUTH.TYPE,
             url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA_AUTH.ENDPOINT(
-              currentLang,
-              1,
-              where,
-              sort,
-              by,
+              query,
             ),
           })
         : await httpRequest({
             method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.TYPE,
-            url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(
-              currentLang,
-              1,
-              where,
-              sort,
-              by,
-            ),
+            url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(query),
           });
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
         data: convertMasterClassProducts(
-          response.data[0],
+          response.data,
           getState()[BASKET_STORE_NAME].basket,
         ),
-        count: {
-          totalCount: response.data[1],
-          currentCount: response.data[0].length,
-        },
       });
     } catch (err) {
       if (err.response) {
@@ -53,64 +40,6 @@ export function masterClassesUploadData(currentLang, isAuth, where, sort, by) {
     }
   };
 }
-
-export function masterClassesPaginationData(
-  currentLang,
-  isAuth,
-  page,
-  where,
-  sort,
-  by,
-) {
-  return async (dispatch, getState) => {
-    dispatch({
-      type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING,
-    });
-
-    try {
-      const response = isAuth
-        ? await httpRequest({
-            method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA_AUTH.TYPE,
-            url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA_AUTH.ENDPOINT(
-              currentLang,
-              page,
-              where,
-              sort,
-              by,
-            ),
-          })
-        : await httpRequest({
-            method: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.TYPE,
-            url: MASTER_CLASSES_API.MASTER_CLASSES_LOAD_DATA.ENDPOINT(
-              currentLang,
-              page,
-              where,
-              sort,
-              by,
-            ),
-          });
-      dispatch({
-        type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_PAGINATION_SUCCESS,
-        data: convertMasterClassProducts(
-          response.data[0],
-          getState()[BASKET_STORE_NAME].basket,
-        ),
-        count: {
-          totalCount: response.data[1],
-          currentCount: response.data[0].length,
-        },
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
 export function masterClassesUpdateData(currentLang, id, body) {
   return async (dispatch) => {
     dispatch({

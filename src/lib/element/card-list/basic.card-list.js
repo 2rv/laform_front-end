@@ -25,7 +25,7 @@ export function BasicCardList(props) {
         const CardItem = cardType(data?.type);
         return (
           <CardItem
-            key={index}
+            key={data?.id + '' + index}
             data={data}
             onSetCart={onSetCart}
             onSetLike={onSetLike}

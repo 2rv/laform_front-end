@@ -1,9 +1,7 @@
 import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
-import { TextSecondary } from 'src/lib/element/text';
 import { SearchFilter } from 'src/lib/common/search-filter';
-import { CenteredSpinner } from 'src/lib/element/spinner';
 
 export function SewingGoodsComponent(props) {
   const {
@@ -13,7 +11,6 @@ export function SewingGoodsComponent(props) {
     addToCart,
     filterOptions,
     handleFilter,
-    isPending,
   } = props;
 
   return (
@@ -24,18 +21,12 @@ export function SewingGoodsComponent(props) {
         filterOptions={filterOptions}
         handleFilter={handleFilter}
       />
-      {!listItems || listItems.length === 0 ? (
-        <TextSecondary tid="Список пуст" />
-      ) : isPending ? (
-        <CenteredSpinner />
-      ) : (
-        <BasicCardList
-          onSetCart={addToCart}
-          items={listItems}
-          onDeleteProduct={onDeleteProduct}
-          isAdmin={isAdmin}
-        />
-      )}
+      <BasicCardList
+        onSetCart={addToCart}
+        items={listItems}
+        onDeleteProduct={onDeleteProduct}
+        isAdmin={isAdmin}
+      />
     </SectionLayout>
   );
 }
