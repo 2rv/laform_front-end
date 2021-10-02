@@ -15,7 +15,7 @@ import { PurchaseProductsComponent } from './purchase-products.component';
 
 export function PurchaseProductsContainer() {
   const dispatch = useDispatch();
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(3);
   const { purchaseProductsLoadData, pageLoading } = useSelector((state) => ({
     purchaseProductsLoadData:
       state[PURCHASE_PRODUCTS_STORE_NAME].purchaseProductsLoadData,
@@ -58,10 +58,10 @@ export function PurchaseProductsContainer() {
 }
 
 const tabItems = [
-  { name: 'PURCHASED_PRODUCTS.TABS.SEWING_PRODUCTS', type: 0 },
-  { name: 'PURCHASED_PRODUCTS.TABS.MASTER_CLASS', type: 1 },
-  { name: 'PURCHASED_PRODUCTS.TABS.PATTERN_ANALOGUE', type: 2 },
   { name: 'PURCHASED_PRODUCTS.TABS.PATTERN_DIGITAL', type: 3 },
+  { name: 'PURCHASED_PRODUCTS.TABS.PATTERN_ANALOGUE', type: 2 },
+  { name: 'PURCHASED_PRODUCTS.TABS.MASTER_CLASS', type: 1 },
+  { name: 'PURCHASED_PRODUCTS.TABS.SEWING_PRODUCTS', type: 0 },
 ];
 
 const headersGoods = [
