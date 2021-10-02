@@ -26,8 +26,8 @@
   "TABS": {
     "SEWING_PRODUCTS": "Товары для шитья",
     "MASTER_CLASS": "Мастер-классы",
-    "PATTERN_ANALOGUE": "Выкройки печатные",
-    "PATTERN_DIGITAL": "Выкройки электронные"
+    "PATTERN_ANALOGUE": "Печатные выкройки",
+    "PATTERN_DIGITAL": "Электронные выкройки"
   },
   "EMPTY": "Нет купленных товаров данной категории",
   "TITLE": "Мои покупки"
