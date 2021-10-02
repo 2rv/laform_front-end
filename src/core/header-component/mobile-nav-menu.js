@@ -11,9 +11,16 @@ import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { BASKET_ROUTE_PATH } from '../basket';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
+import { SIGNUP_ROUTE_PATH } from 'src/lib/common/signup/signup.constant';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import { useSelector } from 'react-redux';
 
 export function MobileNavMenu(props) {
   const { activePath } = props;
+  const { isAuth } = useSelector((state) => ({
+    isAuth: state[AUTH_STORE_NAME].logged,
+  }));
+
   return (
     <Container>
       <Button onClick={setLinkRedirect(PATTERNS_ROUTE_PATH)}>
@@ -42,7 +49,7 @@ export function MobileNavMenu(props) {
         />
       </Button>
 
-      <Button onClick={setLinkRedirect(PURCHASE_PRODUCTS_ROUTE_PATH)}>
+      <Button onClick={setLinkRedirect(isAuth ? PURCHASE_PRODUCTS_ROUTE_PATH : SIGNUP_ROUTE_PATH)}>
         <UserStyledIcon
           active={
             activePath?.startsWith(PURCHASE_PRODUCTS_ROUTE_PATH)

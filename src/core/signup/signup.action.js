@@ -2,11 +2,9 @@ import { httpRequest } from '../../main/http';
 import { redirect } from '../../main/navigation';
 import { authSetData } from '../../lib/common/auth';
 
-import {
-  SIGNUP_API,
-  SIGNUP_FORM_REDIRECT_ON_UPLOAD_PATH,
-} from './signup.constant';
+import { SIGNUP_API } from './signup.constant';
 import { SIGNUP_ACTION_TYPE } from './signup.type';
+import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from '../auth-verificate-email';
 
 export function signupFormUploadData(data) {
   return async (dispatch) => {
@@ -27,7 +25,7 @@ export function signupFormUploadData(data) {
         type: SIGNUP_ACTION_TYPE.SIGNUP_FORM_UPLOAD_SUCCESS,
       });
 
-      redirect(SIGNUP_FORM_REDIRECT_ON_UPLOAD_PATH);
+      redirect(AUTH_VERIFICATE_EMAIL_ROUTE_PATH);
     } catch (err) {
       if (err.response) {
         dispatch({
