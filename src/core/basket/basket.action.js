@@ -106,6 +106,9 @@ export function initializeBasketStore() {
 
 export function addToBasket(data, currentLang) {
   return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING,
+    });
     try {
       const response = await httpRequest({
         method: BASKET_API.ADD_BACKET_LOAD_ITEM_INFO.TYPE,
@@ -152,8 +155,11 @@ export function changeItemAction(values, bascketState) {
       });
       localStorage.setItem('basket', JSON.stringify(changedState));
     } catch (error) {
-      console.log(error);
       dispatch(clearBasketAction());
+      dispatch({
+        type: BASKET_ACTION_TYPE.PRODUCT_ADD_ERROR,
+        errorMessage: err.response.data.message,
+      });
     }
   };
 }

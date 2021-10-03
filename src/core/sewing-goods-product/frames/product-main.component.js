@@ -12,6 +12,8 @@ import {
   ProductDescription,
   ProductPrice,
   ProductVendorCode,
+  ProducName,
+  ProducCounter,
 } from 'src/core/block-product-components';
 
 export function ProductMainComponent(props) {
@@ -31,25 +33,17 @@ export function ProductMainComponent(props) {
     addToCart,
   } = props;
 
-  const [size, setSize] = useState(
-    sizes?.length > 0
-      ? sizes[0]
-      : { id: 0, tid: 0, price: 0, count: 0, vendorCode: 0 },
-  );
-  const [color, setColor] = useState(
-    colors?.length > 0 ? colors[0] : { id: 0, tid: 0 },
-  );
+  const [size, setSize] = useState({ id: undefined, price: null });
+  const [color, setColor] = useState({ id: undefined, price: null });
   const [count, setCount] = useState(1);
-  const increment = () => setCount(count + 1);
-  const dicrement = () => {
-    if (count <= 1) return;
-    setCount(count - 1);
-  };
 
-  const handleAddToCart = (values) =>
+  const increment = () => setCount(count + 1);
+  const dicrement = () => setCount(count - 1);
+
+  const handleAddToCart = () =>
     addToCart({
-      id,
-      type,
+      id: id,
+      type: type,
       count: count,
       size: size.id,
       color: color.id,
@@ -57,11 +51,7 @@ export function ProductMainComponent(props) {
 
   return (
     <Container>
-      <HeaderCase>
-        <Title tid={name} />
-        {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
-      </HeaderCase>
+      <ProducName name={name} modifier={modifier} discount={discount} />
       <ProductCategories categories={categories} />
       <Divider />
       <ProductDescription text={description} />
@@ -81,43 +71,31 @@ export function ProductMainComponent(props) {
       <FooterCase>
         <Case>
           <ProductPrice price={size?.price} discount={discount} count={count} />
-          <ActionCase>
-            <Button tid="-" onClick={dicrement} />
-            <Count tid={count} />
-            <Button tid="+" onClick={increment} />
-          </ActionCase>
+          <ProducCounter
+            count={count}
+            increment={increment}
+            dicrement={dicrement}
+          />
         </Case>
         <ProductActions
           id={id}
           type={type}
-          cart={cart}
           like={like}
-          onSetCart={handleAddToCart}
+          size={size}
+          color={color}
+          onCart={handleAddToCart}
         />
       </FooterCase>
       <ProductVendorCode vendorCode={size.vendorCode} />
     </Container>
   );
 }
-const Count = styled(TextSecondary)`
-  width: max-content;
-  padding: ${spacing(2)};
-`;
+
 const Case = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
   gap: ${spacing(3)};
-`;
-const ActionCase = styled.div`
-  display: flex;
-  width: max-content;
-  align-items: center;
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  background-color: ${THEME_COLOR.GRAY};
-`;
-const Button = styled(ButtonBasic)`
-  color: ${THEME_COLOR.TEXT.LIGHT};
 `;
 const FooterCase = styled.div`
   display: grid;
@@ -129,27 +107,6 @@ const FooterCase = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-  }
-`;
-const HeaderCase = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: ${spacing(3)};
-  @media screen and (max-width: 720px) {
-    order: -1;
-  }
-`;
-const Modifier = styled(TextSecondary)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  ::first-letter {
-    text-transform: uppercase;
-  }
-  color: ${({ alt }) => (alt ? THEME_COLOR.PRIMARY_DARK : THEME_COLOR.PRIMARY)};
-`;
-const Title = styled(TitlePrimary)`
-  font-size: 1.5;
-  ::first-letter {
-    text-transform: uppercase;
   }
 `;
 const Container = styled.div`

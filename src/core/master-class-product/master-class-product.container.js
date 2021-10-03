@@ -29,7 +29,7 @@ export function MasterClassProductContainer() {
 
   useEffect(() => {
     dispatch(masterClassProductUploadData(currentLang, masterClassId, logged));
-  }, []);
+  }, [masterClassId]);
 
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 

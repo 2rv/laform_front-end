@@ -11,14 +11,17 @@ import { ProductSelect } from 'src/core/block-product-components';
 import { TextSecondary } from '../text';
 import { CardPrice } from './card.components';
 import { useSelector } from 'react-redux';
+import { isRequestPending } from 'src/main/store/store.service';
 
 export function CartButton(props: CardActionTypeProps) {
-  const { id, type, onCart, sizes, colors, programs } = props;
-  if (!id || !type || !onCart) return null;
+  const { id, type = false, onCart, sizes, colors, programs } = props;
+  if (!id || type === false || !onCart) return null;
+  const { bascketState, basketAction } = useSelector((state: any) => ({
+    bascketState: state[BASKET_STORE_NAME].basket,
+    basketAction: state[BASKET_STORE_NAME].basketAction,
+  }));
+  const isPending = isRequestPending(basketAction);
 
-  const bascketState = useSelector(
-    (state: any) => state[BASKET_STORE_NAME].basket,
-  );
   const [size, setSize] = useState({ id: undefined, price: null });
   const [color, setColor] = useState({ id: undefined, price: null });
   const [program, setProgram] = useState({ id: undefined, price: null });
@@ -98,8 +101,11 @@ export function CartButton(props: CardActionTypeProps) {
       )}
       children={
         <Button
+          disabled={isPending}
           active={isCart}
-          tid={isCart ? 'OTHER.SELECTED' : 'OTHER.SELECT'}
+          tid={
+            isPending ? 'Подождите' : isCart ? 'OTHER.SELECTED' : 'OTHER.SELECT'
+          }
         />
       }
     />

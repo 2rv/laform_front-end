@@ -31,7 +31,7 @@ export function SewingGoodsProductContainer() {
     dispatch(
       sewingGoodsProductUploadData(currentLang, sewingGoodsProductId, logged),
     );
-  }, []);
+  }, [sewingGoodsProductId]);
 
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 

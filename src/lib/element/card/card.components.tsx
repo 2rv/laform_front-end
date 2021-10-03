@@ -89,17 +89,28 @@ const ButtonIcon = styled(IconButton)`
   padding: 0;
 `;
 
-export function ComplexityDots(props: { complexity?: number }) {
-  const { complexity = 0 } = props;
+export function ComplexityDots(props: { complexity?: number; title?: string }) {
+  const { complexity = 0, title } = props;
 
   return (
-    <ComplexityCase>
-      {[1, 2, 3, 4, 5].map((rate, index) => (
-        <ComplexityDot key={index} active={rate <= complexity} />
-      ))}
-    </ComplexityCase>
+    <ComplexityContainer>
+      {title && <ComplexityText tid={title} />}
+      <ComplexityCase>
+        {[1, 2, 3, 4, 5].map((rate, index) => (
+          <ComplexityDot key={index} active={rate <= complexity} />
+        ))}
+      </ComplexityCase>
+    </ComplexityContainer>
   );
 }
+const ComplexityContainer = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
 const ComplexityCase = styled.div`
   display: flex;
   gap: ${spacing(2)};
@@ -111,6 +122,9 @@ const ComplexityDot = styled.div<{ active: boolean }>`
   border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
   background-color: ${(p) =>
     p.active ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
+`;
+const ComplexityText = styled(TextSecondary)`
+  min-width: max-content;
 `;
 
 export const CardName = styled(TextSecondary)`

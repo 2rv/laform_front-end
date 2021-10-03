@@ -44,16 +44,6 @@ const Case = styled.div`
   gap: ${spacing(2)};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
-const Modifier = styled(TextSecondary)<{ alt?: boolean }>`
-  background-color: ${(p) =>
-    p.alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
-  color: ${THEME_COLOR.WHITE};
-  padding: ${spacing(2)};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-`;
 const animation = keyframes`
     0% {
       background-position: -600px;
@@ -70,4 +60,16 @@ const SkeletonImage = styled.div`
   height: 260px;
   background-color: #ccc;
   animation: ${animation} 1.6s infinite linear;
+`;
+const Modifier = styled(TextSecondary)<{ alt?: boolean }>`
+  background-color: ${(p) =>
+    p.alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
+  color: ${THEME_COLOR.WHITE};
+  ::first-letter {
+    text-transform: uppercase;
+  }
+  padding: ${spacing(2)};
+  align-items: center;
+  justify-content: center;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

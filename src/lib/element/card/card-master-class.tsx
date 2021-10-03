@@ -21,7 +21,6 @@ export function CardMasterClass(props: CardMasterClassTypeProps) {
     modifier,
     discount,
     price,
-    cart,
     like,
     admin,
     onSelect,
@@ -45,13 +44,7 @@ export function CardMasterClass(props: CardMasterClassTypeProps) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton
-          id={id}
-          type={type}
-          cart={cart}
-          onCart={onCart}
-          programs={programs}
-        />
+        <CartButton id={id} type={type} onCart={onCart} programs={programs} />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />

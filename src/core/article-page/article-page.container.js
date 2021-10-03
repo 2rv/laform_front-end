@@ -28,7 +28,7 @@ export function ArticlePageContainer() {
 
   useEffect(() => {
     dispatch(articlePageUploadData(currentLang, articleProductId, isAuth));
-  }, []);
+  }, [articleProductId]);
 
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
