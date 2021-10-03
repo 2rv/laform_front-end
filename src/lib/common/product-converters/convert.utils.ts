@@ -1,10 +1,5 @@
 import { ParamsType } from '../../element/card';
-import {
-  BasicProgram,
-  BasicSize,
-  BasicColor,
-  BasicBasketType,
-} from './convert.type';
+import { BasicProgram, BasicSize, BasicColor } from './convert.type';
 
 export function checkMinPrice(params: BasicProgram[] | BasicSize[]): number {
   if (!params || params.length <= 0) return 0;
@@ -26,21 +21,5 @@ export const convertParams = (
     tid: item.programNameRu || item.programNameEn || item.size || item.color,
     price: item.price,
     vendorCode: item.vendorCode,
-  }));
-};
-
-export const checkInCart = (
-  id: string,
-  basket: BasicBasketType[],
-): BasicBasketType[] | undefined => {
-  if (!basket || basket.length <= 0) return undefined;
-  const result = basket.filter((bItem: any) => bItem?.id === id);
-  if (!result) return undefined;
-  return result.map((item) => ({
-    id: item.id,
-    color: item.color,
-    size: item.size,
-    program: item.program,
-    count: item.count,
   }));
 };

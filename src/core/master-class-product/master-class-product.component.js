@@ -24,6 +24,7 @@ export function MasterClassProductComponent(props) {
 
   return (
     <SectionLayout type="MEDIUM">
+      {isPending && <LoaderPrimary />}
       <SectionLayout>
         <Content>
           <ProductImages items={productData.images} />

@@ -1,10 +1,3 @@
-export interface BasketType {
-  id: string;
-  color?: string;
-  size?: string;
-  count?: number;
-  program?: string;
-}
 export interface ParamsType {
   id: string;
   tid: string;
@@ -22,7 +15,6 @@ export interface CardActionTypeProps {
   id: string;
   type: number;
   like?: boolean;
-  cart?: BasketType[];
   admin?: boolean;
   sizes?: ParamsType[];
   colors?: ParamsType[];
@@ -57,7 +49,6 @@ export interface CardSewingGoodTypeProps {
   discount?: number;
   price: number;
   like?: boolean;
-  cart?: BasketType[];
   admin?: boolean;
   sizes?: ParamsType[];
   colors?: ParamsType[];
@@ -75,7 +66,6 @@ export interface CardPatternTypeProps {
   discount?: number;
   price: number;
   like?: boolean;
-  cart?: BasketType[];
   admin?: boolean;
   sizes?: ParamsType[];
   onSelect?: Function;
@@ -91,7 +81,6 @@ export interface CardMasterClassTypeProps {
   discount?: number;
   price: number;
   like?: boolean;
-  cart?: BasketType[];
   admin?: boolean;
   programs?: ParamsType[];
   onSelect?: Function;

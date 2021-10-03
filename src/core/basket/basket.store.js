@@ -9,6 +9,7 @@ import { BASKET_ACTION_TYPE } from './basket.type';
 
 const initialState = {
   basket: [],
+  basketAction: initRequestState(),
   promoCode: initRequestState(),
   order: initRequestState(),
   userInfo: initRequestState(),
@@ -20,7 +21,25 @@ export function basketStore(state = initialState, action) {
       return {
         ...state,
         basket: [...state.basket, action.data],
+        basketAction: setRequestSuccess(state.basketAction),
       };
+
+    case BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING:
+      return {
+        ...state,
+        basketAction: setRequestPending(state.basketAction),
+      };
+    case BASKET_ACTION_TYPE.PRODUCT_ADD_SUCCESS:
+      return {
+        ...state,
+        basketAction: setRequestSuccess(state.basketAction),
+      };
+    case BASKET_ACTION_TYPE.PRODUCT_ADD_ERROR:
+      return {
+        ...state,
+        basketAction: setRequestError(state.basketAction, action.errorMessage),
+      };
+
     case BASKET_ACTION_TYPE.INIT_BASKET:
       return {
         ...state,

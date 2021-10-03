@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextSecondary, TextPrimary } from '../../../lib/element/text';
-import { TitlePrimary } from '../../../lib/element/title';
+import { useState } from 'react';
+import { spacing } from '../../../lib/theme';
 import { Divider } from '../../../lib/element/divider';
 import {
+  ProducName,
   ProductActions,
   ProductSelect,
   ProductPrice,
@@ -12,6 +11,7 @@ import {
   ProductDescription,
   ProductCategories,
 } from '../../block-product-components';
+import { ComplexityDots } from 'src/lib/element/card';
 
 export function ProductMainComponent(props) {
   const {
@@ -25,7 +25,6 @@ export function ProductMainComponent(props) {
     images,
     sizes,
     materials,
-    price,
     complexity,
     cart,
     filePdf,
@@ -33,29 +32,18 @@ export function ProductMainComponent(props) {
     addToCart,
   } = props;
 
-  const [size, setSize] = useState(
-    sizes?.length > 0 ? sizes[0] : { id: 0, tid: 0, price: 0, vendorCode: 0 },
-  );
-
+  const [size, setSize] = useState({ id: undefined, price: null });
   const handleAddToCart = (values) => addToCart({ id, type, size: size.id });
 
   return (
     <Container>
-      <HeaderCase>
-        <Title tid={name} />
-        {Boolean(modifier) && <Modifier alt tid={modifier} />}
-        {discount !== 0 && <Modifier tid="PRODUCT_PRICE.STOCK" />}
-      </HeaderCase>
+      <ProducName name={name} modifier={modifier} discount={discount} />
       <ProductCategories categories={categories} />
       <Divider />
-      <LineCase>
-        <Text tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
-        <Complexity>
-          {[1, 2, 3, 4, 5].map((rate, index) => (
-            <ComplexityDot key={index} act={rate <= complexity ? 1 : 0} />
-          ))}
-        </Complexity>
-      </LineCase>
+      <ComplexityDots
+        complexity={complexity}
+        title="PATTERNS.CREATE.FORM.COMPLEXITY"
+      />
       <Divider />
       <ProductDescription text={description} />
       {Boolean(sizes?.length > 1) && <Divider />}
@@ -67,13 +55,13 @@ export function ProductMainComponent(props) {
       />
       <Divider />
       <FooterCase>
-        <ProductPrice price={price ? price : size?.price} discount={discount} />
+        <ProductPrice price={size?.price} discount={discount} />
         <ProductActions
           id={id}
           type={type}
-          cart={cart}
           like={like}
-          onSetCart={handleAddToCart}
+          size={size}
+          onCart={handleAddToCart}
         />
       </FooterCase>
       <ProductVendorCode vendorCode={size.vendorCode} />
@@ -81,32 +69,6 @@ export function ProductMainComponent(props) {
   );
 }
 
-const Text = styled(TextSecondary)`
-  min-width: max-content;
-`;
-const Complexity = styled.div`
-  display: flex;
-  gap: ${spacing(2)};
-  width: 100%;
-  align-items: center;
-`;
-const ComplexityDot = styled.div`
-  width: 16px;
-  min-width: 16px;
-  height: 16px;
-  border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  background-color: ${(p) =>
-    p.act ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
-`;
-const LineCase = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${spacing(3)};
-  @media screen and (max-width: 720px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`;
 const FooterCase = styled.div`
   display: grid;
   align-items: center;
@@ -116,27 +78,6 @@ const FooterCase = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-  }
-`;
-const HeaderCase = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: ${spacing(3)};
-  @media screen and (max-width: 720px) {
-    order: -1;
-  }
-`;
-const Modifier = styled(TextSecondary)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  ::first-letter {
-    text-transform: uppercase;
-  }
-  color: ${({ alt }) => (alt ? THEME_COLOR.PRIMARY_DARK : THEME_COLOR.PRIMARY)};
-`;
-const Title = styled(TitlePrimary)`
-  font-size: 1.5;
-  ::first-letter {
-    text-transform: uppercase;
   }
 `;
 const Container = styled.div`

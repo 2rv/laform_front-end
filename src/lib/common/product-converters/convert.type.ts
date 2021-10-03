@@ -15,14 +15,6 @@ export interface BasicColor {
   id: string;
   color?: string;
 }
-export interface BasicBasketType {
-  id: string;
-  color?: string;
-  size?: string;
-  count?: number;
-  program?: string;
-}
-
 interface BasicImage {
   id: string;
   fileUrl: string;

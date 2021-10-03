@@ -23,7 +23,6 @@ export function CardPattern(props: CardPatternTypeProps) {
     modifier,
     price,
     discount,
-    cart,
     like,
     onCart,
     onSelect,
@@ -50,13 +49,7 @@ export function CardPattern(props: CardPatternTypeProps) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton
-          id={id}
-          type={type}
-          cart={cart}
-          onCart={onCart}
-          sizes={sizes}
-        />
+        <CartButton id={id} type={type} onCart={onCart} sizes={sizes} />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />

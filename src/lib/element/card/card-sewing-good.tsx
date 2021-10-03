@@ -21,7 +21,6 @@ export function CardSewingGood(props: CardSewingGoodTypeProps) {
     modifier,
     price,
     discount,
-    cart,
     like,
     onCart,
     onSelect,
@@ -48,7 +47,6 @@ export function CardSewingGood(props: CardSewingGoodTypeProps) {
         <CartButton
           id={id}
           type={type}
-          cart={cart}
           onCart={onCart}
           sizes={sizes}
           colors={colors}

@@ -7,3 +7,5 @@ export { ProductCategories } from './product-categories';
 export { ProductSelect } from './product-select';
 export { ProductActions } from './product-actions';
 export { ProductPagePrice } from './product-page-price';
+export { ProducName } from './product-name';
+export { ProducCounter } from './product-counter';
