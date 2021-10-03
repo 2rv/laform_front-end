@@ -11,7 +11,11 @@ const getPrice = (price = 0, discount = 0, count = 1) => {
 export function performPurchaseProduct(row) {
   const purchaseProducts = row.reduce((acc, purchase) => {
     purchase.purchaseProducts.forEach((purchaseProduct) => {
-      purchaseProduct.status = purchase.orderStatus;
+      purchaseProduct.status = purchase?.orderStatus ?? 'Неизвестно';
+      purchaseProduct.email = purchase?.email;
+      purchaseProduct.fullName = purchase?.fullName;
+      purchaseProduct.city = purchase?.city;
+      purchaseProduct.phoneNumber = purchase?.phoneNumber;
       acc.push(purchaseProduct);
     });
     return acc;
@@ -62,6 +66,12 @@ const performPurchaseSewingProduct = (row) => {
       color: { id: row.color.id, value: row.color.color },
       category: row.sewingProductId.categories[0].textRu,
     },
+    otherParams: {
+      email: row.email,
+      fullName: row.fullName,
+      city: row.city,
+      phoneNumber: row.phoneNumber,
+    },
   };
 };
 const performMasterClassProduct = (row) => {
@@ -76,6 +86,12 @@ const performMasterClassProduct = (row) => {
     vendorCode: row.program.vendorCode,
     params: {
       program: { id: row.program.id, value: row.program.programNameRu },
+    },
+    otherParams: {
+      email: row.email,
+      fullName: row.fullName,
+      city: row.city,
+      phoneNumber: row.phoneNumber,
     },
   };
 };
@@ -94,6 +110,12 @@ const performPatternProductDigital = (row) => {
       size: { id: row.size.id, value: row.size.size },
       format: 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC',
     },
+    otherParams: {
+      email: row.email,
+      fullName: row.fullName,
+      city: row.city,
+      phoneNumber: row.phoneNumber,
+    },
   };
 };
 const performPatternProductAnalogue = (row) => {
@@ -109,6 +131,12 @@ const performPatternProductAnalogue = (row) => {
     params: {
       size: { id: row.size.id, value: row.size.size },
       format: 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
+    },
+    otherParams: {
+      email: row.email,
+      fullName: row.fullName,
+      city: row.city,
+      phoneNumber: row.phoneNumber,
     },
     status: row.status,
   };
