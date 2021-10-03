@@ -16,7 +16,7 @@ export interface FieldPropsType {
 export interface InputPropsType {
   className?: string;
   placeholder: string;
-  name: string;
+  name?: string;
   type?: string;
   value: string;
   error: string | boolean;
