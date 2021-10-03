@@ -15,8 +15,8 @@ export interface BasicCardListTypeProps {
   onSelect?: Function;
   onDelete?: Function;
   admin?: boolean;
-  emptyText: string;
-  emptyTvalue: object;
+  emptyText?: string;
+  emptyTvalue?: object;
 }
 export interface CardListTypeProps extends BasicCardListTypeProps {
   path: string;
