@@ -23,6 +23,6 @@ export interface SectionLayoutPropsType {
 }
 export interface FieldLayoutPropsType {
   type?: 'double' | undefined;
-  adaptive: boolean;
+  adaptive?: boolean;
   children: React.ReactElement<any>[] | null;
 }

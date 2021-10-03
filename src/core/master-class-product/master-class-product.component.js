@@ -31,9 +31,9 @@ export function MasterClassProductComponent(props) {
         </Content>
       </SectionLayout>
       <CardListBlock
-        onSetCart={addToCart}
-        title="Рекомендации"
         items={productData.recommendations}
+        onCart={addToCart}
+        title="Рекомендации"
       />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>

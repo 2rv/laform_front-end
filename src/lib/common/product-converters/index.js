@@ -1,9 +1,9 @@
-function checkMinPrice(listData, nameItem) {
-  if (!listData?.[0]?.[nameItem]) return 0;
+function checkMinPrice(listData) {
+  if (!listData?.[0]?.['price']) return 0;
   return listData.reduce((acc, item) => {
-    if (acc > item[nameItem]) acc = item[nameItem];
+    if (acc > item['price']) acc = item['price'];
     return acc;
-  }, listData[0][nameItem]);
+  }, listData[0]['price']);
 }
 function checkMaxPrice(listData, nameItem) {
   if (listData?.length > 1) {
@@ -24,55 +24,45 @@ export const masterClassItemConverter = (item, basket) => ({
   image: item.images[0]?.fileUrl,
   like: item?.like ? (item.like?.length ? true : false) : null,
   type: item.type || 0,
-  bestseller: item.modifier,
-  categories: item.categories,
+  modifier: item.modifier,
   cart: Boolean(basket?.find((bItem) => bItem?.id === item.id)),
-  price: {
-    min: checkMinPrice(item?.programs, 'price'),
-    discount: item.discount,
-    max: checkMaxPrice(item?.programs, 'price'),
-  },
+  price: checkMinPrice(item?.programs),
+  discount: item.discount,
+  programs: convertParams(item?.programs),
 });
 export const convertPatternItemConverter = (item, basket) => ({
   id: item.id,
   name: item.titleRu,
   image: item.images?.[0]?.fileUrl,
   type: item.type,
-  bestseller: item.modifier,
+  modifier: item.modifier,
   complexity: item.complexity,
   like: item?.like ? (item.like?.length ? true : false) : null,
-  categories: item.categories,
   cart: Boolean(basket?.find((bItem) => bItem?.patternProduct?.id === item.id)),
-  price: {
-    min: item?.price || checkMinPrice(item?.sizes, 'price'),
-    discount: item.discount,
-    max: item?.price ? null : checkMaxPrice(item?.sizes, 'price'),
-  },
+  price: checkMinPrice(item?.sizes),
+  discount: item.discount,
+  sizes: convertParams(item?.sizes),
 });
 export const convertSewingGoodItemConverter = (item, backet) => ({
   id: item.id,
+  type: item.type,
   name: item.titleRu,
   image: item.images?.[0]?.fileUrl,
-  type: item.type,
   like: item?.like ? (item.like?.length ? true : false) : null,
-  bestseller: item.modifier,
-  categories: item.categories,
+  modifier: item.modifier,
   cart: Boolean(backet?.find((bItem) => bItem?.sewingProduct?.id === item.id)),
-  price: {
-    min: checkMinPrice(item?.sizes, 'price'),
-    discount: item.discount,
-    max: checkMaxPrice(item?.sizes, 'price'),
-  },
+  price: checkMinPrice(item?.sizes),
+  sizes: convertParams(item?.sizes),
+  colors: convertParams(item?.colors),
+  discount: item.discount,
 });
 export const convertArticleItemConverter = (item) => ({
   id: item.id,
-  name: item.titleRu,
-  like: item?.like ? (item.like?.length ? true : false) : null,
-  image: item.image?.fileUrl,
   type: item.type,
+  name: item.titleRu,
+  image: item.image?.fileUrl,
   like: item?.like ? (item.like?.length ? true : false) : null,
-  bestseller: item.modifier,
-  categories: item.categories,
+  modifier: item.modifier,
   createdDate: item.createdDate,
 });
 
@@ -101,4 +91,14 @@ export const convertMultiProducts = (rowData = [], basket) => {
       return convertSewingGoodItemConverter(sewingProductId, basket);
     if (postId) return convertArticleItemConverter(postId);
   });
+};
+
+const convertParams = (params) => {
+  if (!params || params.length === 0) return null;
+  console.log(params);
+  return params.map((item) => ({
+    id: item.id,
+    tid: item?.size || item?.color || item?.programNameRu,
+    price: item?.price,
+  }));
 };

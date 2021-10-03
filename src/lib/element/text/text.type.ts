@@ -7,6 +7,6 @@ export interface TextPropsType {
 }
 
 export interface TextCurrenyType {
-  price: string;
+  price: string | number;
   className?: string;
 }

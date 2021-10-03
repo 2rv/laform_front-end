@@ -50,7 +50,7 @@ export function RecomendationContainer(props) {
 
   const onSelect = (id, type, status) => {
     if (selectedItems.length >= 3 && status) {
-      alert('Больше 3х нельзя');
+      alert('Максимум 3 рекомендации');
       return false;
     }
     const copy = products.map((item) => {

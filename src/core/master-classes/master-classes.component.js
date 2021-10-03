@@ -24,9 +24,10 @@ export function MasterClassesComponent(props) {
       />
       <BasicCardList
         items={listItems}
-        onSetCart={addToCart}
-        onDeleteProduct={onDeleteProduct}
-        isAdmin={isAdmin}
+        onCart={addToCart}
+        onDelete={onDeleteProduct}
+        admin={isAdmin}
+        emptyText="Список пустой"
       />
     </SectionLayout>
   );

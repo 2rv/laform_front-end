@@ -29,11 +29,7 @@ export function PatternsComponent(props) {
           tabItems={tabItems}
           disabled={isPending}
         />
-        {listItems === null ? null : listItems.length ? (
-          <BasicCardList items={listItems} />
-        ) : (
-          <TextSecondary tid="ALL_LIKES.CATEGORY_EMPTY" />
-        )}
+        <BasicCardList items={listItems} emptyText="ALL_LIKES.CATEGORY_EMPTY" />
       </SectionLayout>
     </React.Fragment>
   );

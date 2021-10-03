@@ -35,10 +35,11 @@ export function PatternsComponent(props) {
         handleFilter={handleFilter}
       />
       <BasicCardList
-        onSetCart={addToCart}
         items={listItems}
-        onDeleteProduct={onDeleteProduct}
-        isAdmin={isAdmin}
+        onCart={addToCart}
+        onDelete={onDeleteProduct}
+        admin={isAdmin}
+        emptyText="Список пустой"
       />
     </SectionLayout>
   );
