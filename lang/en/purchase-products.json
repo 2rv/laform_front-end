@@ -4,23 +4,27 @@
       "NAME": "Name",
       "DETAILS": "Details",
       "PRICE": "Price",
-      "STATUS": "State"
+      "STATUS": "Status",
+      "DELIVERY_DATA": "Delivery data"
     },
     "MASTER_CLASS": {
       "NAME": "Name",
       "DETAILS": "Details",
-      "PRICE": "Price"
+      "PRICE": "Price",
+      "DELIVERY_DATA": "Delivery data"
     },
     "PATTERN_PRODUCTS_DIGITAL": {
       "NAME": "Name",
       "DETAILS": "Details",
-      "PRICE": "Price"
+      "PRICE": "Price",
+      "DELIVERY_DATA": "Delivery data"
     },
     "PATTERN_PRODUCTS_ANALOGUE": {
       "NAME": "Name",
       "DETAILS": "Details",
       "PRICE": "Price",
-      "STATUS": "State"
+      "STATUS": "Status",
+      "DELIVERY_DATA": "Delivery data"
     }
   },
   "TABS": {
