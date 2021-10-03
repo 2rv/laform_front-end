@@ -4,10 +4,12 @@ import { ReactComponent as DeleteIcon } from '../../asset/svg/cancel-delete-icon
 import { IconButton } from 'src/lib/element/button';
 
 export function DeleteButton(props) {
-  const { id, deleteItem } = props;
+  const { id, indexId, sizeId, colorId, programId, deleteItem } = props;
 
   return (
-    <Button onClick={() => deleteItem(id)}>
+    <Button
+      onClick={() => deleteItem({ indexId, id, sizeId, colorId, programId })}
+    >
       <DeleteIcon />
     </Button>
   );

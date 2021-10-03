@@ -6,11 +6,11 @@ import { CardMasterClassTypeProps } from './card.type';
 import {
   CardName,
   CardPrice,
-  CartButton,
   DeleteButton,
   LikeButton,
   SelectButton,
 } from './card.components';
+import { CartButton } from './card.cart-button';
 
 export function CardMasterClass(props: CardMasterClassTypeProps) {
   const {
@@ -66,6 +66,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: ${spacing(3)};
   position: relative;
+  overflow: hidden;
 `;
 const Content = styled.div`
   display: flex;

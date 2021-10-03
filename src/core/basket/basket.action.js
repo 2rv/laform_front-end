@@ -24,6 +24,13 @@ export function basketUploadData(values, bascketState, isAuth) {
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
         data: data,
       });
+      if (isAuth) {
+        await httpRequest({
+          method: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.TYPE,
+          url: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.ENDPOINT,
+          data,
+        });
+      }
       if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
         await basketUpdateUserInfodData(values);
       }
@@ -108,8 +115,12 @@ export function addToBasket(data, currentLang) {
           currentLang,
         ),
       });
-      const convertedData = convertAddToCart(response.data, data);
       const basketStorage = JSON.parse(localStorage.getItem('basket'));
+      const convertedData = convertAddToCart(
+        response.data,
+        data,
+        basketStorage?.length,
+      );
       if (basketStorage) {
         basketStorage.push(convertedData);
         localStorage.setItem('basket', JSON.stringify(basketStorage));
@@ -121,16 +132,18 @@ export function addToBasket(data, currentLang) {
         data: convertedData,
       });
     } catch (error) {
+      console.log(error);
       dispatch(clearBasketAction());
     }
   };
 }
 
-export function changeItemAction(id, values, bascketState) {
+export function changeItemAction(values, bascketState) {
   return async (dispatch) => {
     try {
+      const { indexId, ...otherValues } = values;
       const changedState = bascketState.map((item) => {
-        if (item.id === id) return { ...item, ...values };
+        if (item.indexId === indexId) return { ...item, ...otherValues };
         return item;
       });
       dispatch({
@@ -139,15 +152,28 @@ export function changeItemAction(id, values, bascketState) {
       });
       localStorage.setItem('basket', JSON.stringify(changedState));
     } catch (error) {
+      console.log(error);
       dispatch(clearBasketAction());
     }
   };
 }
 
-export function deleteItemAction(id, bascketState) {
+export function deleteItemAction(params, bascketState) {
   return async (dispatch) => {
     try {
-      const changedState = bascketState.filter((item) => item.id !== id);
+      const { indexId, id, sizeId, colorId, programId } = params;
+      const changedState = bascketState.filter((item) => {
+        if (item.indexId === indexId) {
+          if (item.type === 0) return item.program !== programId;
+          if (item.type === 1) return item.size !== sizeId;
+          if (item.type === 2) return item.size !== sizeId;
+          if (item.type === 3) {
+            const isSize = item.size === sizeId;
+            const isColor = item.color === colorId;
+            return isSize && isColor ? false : true;
+          }
+        } else return true;
+      });
       dispatch({
         type: BASKET_ACTION_TYPE.CHANGE_BASKET,
         data: changedState,

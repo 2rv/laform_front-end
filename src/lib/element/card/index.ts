@@ -8,4 +8,5 @@ export type {
   CardSewingGoodTypeProps,
   CardPatternTypeProps,
   CardMasterClassTypeProps,
+  ParamsType,
 } from './card.type';
