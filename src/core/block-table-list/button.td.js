@@ -7,6 +7,7 @@ import { DownloadButton } from './download.button';
 export function ButtonTd(props) {
   const {
     id,
+    indexId,
     changeItem,
     deleteItem,
     filePDF,
@@ -26,6 +27,7 @@ export function ButtonTd(props) {
         {Boolean(changeItem) && (
           <ChangeButton
             id={id}
+            indexId={indexId}
             changeItem={changeItem}
             sizeId={sizeId}
             sizesOptions={sizesOptions}
@@ -36,7 +38,14 @@ export function ButtonTd(props) {
           />
         )}
         {Boolean(deleteItem) && (
-          <DeleteButton id={id} deleteItem={deleteItem} />
+          <DeleteButton
+            id={id}
+            indexId={indexId}
+            sizeId={sizeId}
+            colorId={colorId}
+            programId={programId}
+            deleteItem={deleteItem}
+          />
         )}
         {Boolean(filePDF) && <DownloadButton filePDF={filePDF} />}
       </Container>

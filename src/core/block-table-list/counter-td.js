@@ -4,13 +4,14 @@ import { TextPrimary, TextSecondary } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function CounterTd(props) {
-  const { id, count, changeItem } = props;
+  const { id, indexId, count, changeItem } = props;
   if (!id || !count || !changeItem) return null;
 
   const isMin = count > 1;
 
-  const increment = () => changeItem(id, { count: count + 1 });
-  const dicrement = () => isMin && changeItem(id, { count: count - 1 });
+  const increment = () => changeItem({ indexId, id, count: count + 1 });
+  const dicrement = () =>
+    isMin && changeItem({ indexId, id, count: count - 1 });
 
   return (
     <Td>

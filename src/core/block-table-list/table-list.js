@@ -21,7 +21,7 @@ export function TableList(props) {
       )}
       <tbody>
         {items.map((data, i) => (
-          <React.Fragment key={data.id}>
+          <React.Fragment key={data.id + i}>
             <TableItem
               data={data}
               changeItem={changeItem}

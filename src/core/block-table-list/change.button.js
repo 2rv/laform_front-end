@@ -10,6 +10,7 @@ import { Formik } from 'formik';
 export function ChangeButton(props) {
   const {
     id,
+    indexId,
     sizeId,
     colorId,
     programId,
@@ -33,7 +34,7 @@ export function ChangeButton(props) {
         program: programId,
         count: 1,
       }}
-      onSubmit={(values) => changeItem(id, values)}
+      onSubmit={(values) => changeItem({ indexId, id, ...values })}
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => {
         return (

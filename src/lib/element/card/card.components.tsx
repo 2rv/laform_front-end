@@ -3,18 +3,15 @@ import { useState } from 'react';
 import { THEME_SIZE, THEME_COLOR, spacing } from '../../theme';
 import { CardActionTypeProps, CardPriceTypeProps } from './card.type';
 import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
-import { BASKET_ROUTE_PATH } from 'src/core/basket';
-import { redirect } from 'src/main/navigation';
 import { LikeButton as LikeAction } from 'src/core/block-like';
 import { ReactComponent as DeleteIcon } from '../../../asset/svg/delete-cancel-icon.svg';
 import { TextCurrency, TextSecondary } from '../text';
 import { Popup } from '../popup';
 import { FieldLayout } from '../layout';
-import { ProductSelect } from 'src/core/block-product-components';
 
 export function LikeButton(props: CardActionTypeProps) {
   const { id, type, like = null } = props;
-  if (like === null || undefined) return null;
+  if (like === null) return null;
 
   return <LikeAction id={id} type={type} like={like} />;
 }
@@ -38,94 +35,6 @@ export function SelectButton(props: CardActionTypeProps) {
     />
   );
 }
-export function CartButton(props: CardActionTypeProps) {
-  const { id, type, cart = false, onCart, sizes, colors, programs } = props;
-  if (!onCart) return null;
-
-  const [isCart, setCart] = useState(cart);
-  const [size, setSize] = useState({ id: false, price: null });
-  const [color, setColor] = useState({ id: false, price: null });
-  const [program, setProgram] = useState({ id: false, price: null });
-
-  const onCartCard = () => {
-    onCart({
-      id,
-      type,
-      color: color.id,
-      size: size.id,
-      program: program.id,
-    });
-    setCart(!isCart);
-  };
-  const disabled = () => {
-    if (type === 0 && !program.id) return true;
-    if ((type === 1 || type === 2) && !size.id) return true;
-    if (type === 3 && (!size.id || !color.id)) return true;
-    return false;
-  };
-  if (isCart)
-    return (
-      <Button
-        onClick={() => redirect(BASKET_ROUTE_PATH)}
-        active
-        tid="BASKET.GO_TO_BASKET"
-      />
-    );
-  return (
-    <Popup
-      mobileRight
-      disableRelative
-      top={0}
-      content={(setVisible: Function) => (
-        <Content>
-          <FieldLayout>
-            <TextSecondary tid="Нажмите и выберите каждый параметр" />
-            <ProductSelect
-              name="Размер"
-              selectOptions={sizes}
-              handleChange={setSize}
-              isTooltip
-            />
-            <ProductSelect
-              name="Цвет"
-              selectOptions={colors}
-              handleChange={setColor}
-            />
-            <ProductSelect
-              name="Программа"
-              selectOptions={programs}
-              handleChange={setProgram}
-            />
-          </FieldLayout>
-          <CardPrice price={size.price || program.price || 0} />
-          <FieldLayout>
-            <ButtonSecondary
-              disabled={disabled()}
-              tid="BASKET.ADD_TO_BASKET"
-              onClick={() => {
-                setVisible(false);
-                onCartCard();
-              }}
-            />
-            <ButtonPrimary
-              tid="OTHER.CANCEL"
-              onClick={() => setVisible(false)}
-            />
-          </FieldLayout>
-        </Content>
-      )}
-      children={<Button tid="BASKET.ADD_TO_BASKET" />}
-    />
-  );
-}
-
-const Button = styled(ButtonPrimary)<{ active?: boolean }>`
-  ${(p) =>
-    p.active &&
-    css`
-      background-color: ${THEME_COLOR.DARK_GRAY};
-    `}
-`;
 export function DeleteButton(props: CardActionTypeProps) {
   const { id, admin, onDelete } = props;
   if (!admin || !onDelete) return null;
@@ -161,6 +70,13 @@ export function DeleteButton(props: CardActionTypeProps) {
     />
   );
 }
+const Button = styled(ButtonPrimary)<{ active?: boolean }>`
+  ${(p) =>
+    p.active &&
+    css`
+      background-color: ${THEME_COLOR.DARK_GRAY};
+    `}
+`;
 const Content = styled.div`
   display: flex;
   flex-direction: column;
