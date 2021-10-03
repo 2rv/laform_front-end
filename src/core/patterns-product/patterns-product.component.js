@@ -37,9 +37,9 @@ export function PatternsProductComponent(props) {
         <ReactEditor data={productData.materials} enableReInitialize readOnly />
       </SectionLayout>
       <CardListBlock
-        onSetCart={addToCart}
-        title="Рекомендации"
         items={productData.recommendations}
+        onCart={addToCart}
+        title="Рекомендации"
       />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>

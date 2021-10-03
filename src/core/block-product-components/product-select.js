@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 export function ProductSelect(props) {
   const { name, selectOptions, handleChange, isTooltip } = props;
-  if (Boolean(selectOptions.length <= 0) || !selectOptions) return null;
+  if (!selectOptions || selectOptions.length === 0) return null;
 
   const [value, setValue] = useState(0);
   useEffect(() => {
@@ -28,7 +28,12 @@ export function ProductSelect(props) {
           </Button>
         )}
       </Line>
-      <FieldSelect options={selectOptions} value={value} onChange={onChange} />
+      <FieldSelect
+        options={selectOptions}
+        value={value}
+        onChange={onChange}
+        onBlur={onChange}
+      />
     </Container>
   );
 }
@@ -44,6 +49,10 @@ const Container = styled.div`
   align-items: center;
   grid-template-columns: 100px 1fr;
   width: 100%;
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr;
+    gap: ${spacing(2)};
+  }
 `;
 const Button = styled(IconButton)`
   padding: 0;

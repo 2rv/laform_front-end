@@ -6,15 +6,21 @@ import { PopupPropsType } from './popup.type';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
 export function Popup(props: PopupPropsType) {
-  const { content, children, top = 45, middleLeft, mobileRight } = props;
-  const [visible, setVisible] = useState(false);
+  const {
+    content,
+    children,
+    top = 45,
+    middleLeft,
+    mobileRight,
+    disableRelative,
+  } = props;
+  const [visible, setVisible]: [boolean, Function] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (e: MouseEvent) => {
     if (modalRef?.current?.contains(e.target as Node)) return;
     setVisible(false);
   };
-
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
     return () => {
@@ -23,10 +29,11 @@ export function Popup(props: PopupPropsType) {
   }, [modalRef]);
 
   return (
-    <PopupContainer ref={modalRef}>
+    <PopupContainer ref={modalRef} disableRelative={disableRelative}>
       {visible && (
         <PopupContent
           top={top}
+          disableRelative={disableRelative}
           middleLeft={middleLeft}
           mobileRight={mobileRight}
         >
@@ -38,8 +45,13 @@ export function Popup(props: PopupPropsType) {
   );
 }
 
-const PopupContainer = styled.div`
+const PopupContainer = styled.div<any>`
   position: relative;
+  ${(p) =>
+    p.disableRelative &&
+    css`
+      display: contents;
+    `}
 `;
 
 const PopupContent = styled.div<any>`
@@ -65,7 +77,15 @@ const PopupContent = styled.div<any>`
           `}
   }
   display: flex;
-  width: max-content;
+  ${(p) =>
+    p.disableRelative
+      ? css`
+          height: 100%;
+          width: 100%;
+        `
+      : css`
+          width: max-content;
+        `}
   background: ${THEME_COLOR.WHITE};
   box-shadow: ${THEME_COLOR.SHADOW.MODAL};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};

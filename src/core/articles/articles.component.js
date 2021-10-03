@@ -6,7 +6,7 @@ import { TextSecondary } from 'src/lib/element/text';
 import { CenteredSpinner } from 'src/lib/element/spinner';
 
 export function ArticlesComponent(props) {
-  const { listItems, filterOptions, handleFilter } = props;
+  const { listItems, filterOptions, handleFilter, onDelete, isAdmin } = props;
 
   return (
     <SectionLayout>
@@ -16,7 +16,12 @@ export function ArticlesComponent(props) {
         filterOptions={filterOptions}
         handleFilter={handleFilter}
       />
-      <BasicCardList items={listItems} />
+      <BasicCardList
+        items={listItems}
+        onDelete={onDelete}
+        admin={isAdmin}
+        emptyText="Список пустой"
+      />
     </SectionLayout>
   );
 }

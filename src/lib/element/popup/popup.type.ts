@@ -5,5 +5,6 @@ export interface PopupPropsType {
   children: ReactNode;
   top?: number;
   middleLeft?: boolean;
-  mobileRight: boolean;
+  mobileRight?: boolean;
+  disableRelative?: boolean;
 }

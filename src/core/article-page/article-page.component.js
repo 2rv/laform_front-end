@@ -36,9 +36,9 @@ export function ArticlePageComponent(props) {
       </HeaderCase>
       <ReactEditor data={postArticle} enableReInitialize readOnly />
       <CardListBlock
-        onSetCart={addToCart}
         title="Рекомендации"
         items={recommendations}
+        onCart={addToCart}
       />
       <BlockComment onSetCart={addToCart} type={type} id={id} />
     </SectionLayout>
