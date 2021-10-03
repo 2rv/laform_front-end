@@ -7,8 +7,8 @@ export function ProductCartSkeleton(props: ProductCartSkeletonPropsType) {
   const { quantity = 9 } = props;
   return (
     <SkeletonContainer>
-      {[...Array(quantity).keys()].map((_, key) => (
-        <SectionLayout key={key} type="SMALL">
+      {[...Array(quantity).keys()].map((_, i) => (
+        <SectionLayout type="SMALL" key={i}>
           <Image />
           <LineTitle />
           <Container>

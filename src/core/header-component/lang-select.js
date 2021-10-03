@@ -13,6 +13,13 @@ export function LangSelect(props) {
   const { currentLang } = props;
   const dispatch = useDispatch();
 
+  const updateLanguageHandler = (lang) => {
+    dispatch(langUpdateLanguage(lang));
+    if (currentLang.toUpperCase() !== lang) {
+      window.location.reload();
+    }
+  };
+
   return (
     <Popup
       top={20}
@@ -23,7 +30,7 @@ export function LangSelect(props) {
             <Button
               key={index}
               tid={`HEADER_LOGO.LANG.${lang}.FULL`}
-              onClick={() => dispatch(langUpdateLanguage(lang))}
+              onClick={() => updateLanguageHandler(lang)}
             />
           ))}
         </Container>

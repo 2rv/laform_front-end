@@ -24,6 +24,13 @@ export function basketUploadData(values, bascketState, isAuth) {
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
         data: data,
       });
+      if (isAuth) {
+        await httpRequest({
+          method: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.TYPE,
+          url: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.ENDPOINT,
+          data,
+        });
+      }
       if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
         await basketUpdateUserInfodData(values);
       }
