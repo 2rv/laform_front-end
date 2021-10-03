@@ -43,13 +43,14 @@ export const convertPromoCodeForCheck = (promocode) => ({
   [ORDER_DATA_NAME.PROMO_CODE]: promocode,
 });
 
-export function convertAddToCart(product, data) {
+export function convertAddToCart(product, data, indexId = 0) {
   if (data.type === 0) {
     return {
       id: product.id,
       type: data.type,
       masterClass: product,
       program: data.program ? data.program : product.programs[0].id,
+      indexId: indexId,
     };
   }
   if (data.type === 1 || data.type === 2) {
@@ -58,6 +59,7 @@ export function convertAddToCart(product, data) {
       type: data.type,
       patternProduct: product,
       size: data.size ? data.size : product.sizes[0].id,
+      indexId: indexId,
     };
   }
   if (data.type === 3) {
@@ -68,6 +70,7 @@ export function convertAddToCart(product, data) {
       size: data.size ? data.size : product.sizes[0].id,
       color: data.color ? data.color : product.colors[0].id,
       count: data.count ?? 1,
+      indexId: indexId,
     };
   }
 }
@@ -103,6 +106,7 @@ const constructorMasterClassItem = (data) => {
   const totalPrice = calcTotalPrice(program.price, data.masterClass.discount);
   return {
     id: data.masterClass.id,
+    indexId: data.indexId,
     path: MASTER_CLASS_PRODUCT_ROUTE_PATH,
     pathConfig: { dynamic: true, params: { id: data.masterClass.id } },
     image: data.masterClass.images[0].fileUrl,
@@ -134,6 +138,7 @@ const constructorSewingGoodsItem = (data) => {
 
   return {
     id: data.sewingProduct.id,
+    indexId: data.indexId,
     path: SEWING_GOODS_PRODUCT_ROUTE_PATH,
     pathConfig: { dynamic: true, params: { id: data.sewingProduct.id } },
     image: data.sewingProduct.images[0].fileUrl,
@@ -168,6 +173,7 @@ const constructorPatternItem = (data) => {
 
   return {
     id: data.patternProduct.id,
+    indexId: data.indexId,
     path: PATTERNS_PRODUCT_ROUTE_PATH,
     pathConfig: { dynamic: true, params: { id: data.patternProduct.id } },
     image: data.patternProduct.images[0].fileUrl,

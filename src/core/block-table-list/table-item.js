@@ -13,6 +13,7 @@ export function TableItem(props) {
   const { data, changeItem, deleteItem } = props;
   const {
     id,
+    indexId,
     name,
     image,
     totalPrice,
@@ -47,10 +48,16 @@ export function TableItem(props) {
       <CommentTd comment={comment} />
       <ParamsTd params={params} />
       <ParamsTd params={otherParams} />
-      <CounterTd changeItem={changeItem} id={id} count={count} />
+      <CounterTd
+        indexId={indexId}
+        changeItem={changeItem}
+        id={id}
+        count={count}
+      />
       <PriceTd isLast={status} totalPrice={totalPrice} />
       <StatusTd status={status} />
       <ButtonTd
+        indexId={indexId}
         filePDF={filePDF}
         id={id}
         changeItem={changeItem}

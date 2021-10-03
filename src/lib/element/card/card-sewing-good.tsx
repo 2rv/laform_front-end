@@ -6,11 +6,11 @@ import { CardSewingGoodTypeProps } from './card.type';
 import {
   CardPrice,
   CardName,
-  CartButton,
   DeleteButton,
   LikeButton,
   SelectButton,
 } from './card.components';
+import { CartButton } from './card.cart-button';
 
 export function CardSewingGood(props: CardSewingGoodTypeProps) {
   const {
@@ -30,7 +30,6 @@ export function CardSewingGood(props: CardSewingGoodTypeProps) {
     sizes,
     colors,
   } = props;
-
   return (
     <Container>
       <CardImage
@@ -67,6 +66,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: ${spacing(3)};
   position: relative;
+  overflow: hidden;
 `;
 const Content = styled.div`
   display: flex;
