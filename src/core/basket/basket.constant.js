@@ -10,6 +10,10 @@ export const BASKET_API = {
     },
     TYPE: 'POST',
   },
+  SEND_PURCHASED_PRODUCTS_INFO: {
+    ENDPOINT: 'mail/send-purchased-products-info',
+    TYPE: 'POST',
+  },
   LOAD_USER_INFO: {
     ENDPOINT: 'user/info/get',
     TYPE: 'GET',
