@@ -1,41 +1,27 @@
 import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
-import { FormFilter } from '../../lib/element/form-filter';
+import { SearchFilter } from '../../lib/common/search-filter';
 import { TextSecondary } from 'src/lib/element/text';
+import { CenteredSpinner } from 'src/lib/element/spinner';
 
 export function ArticlesComponent(props) {
-  const {
-    listItems,
-    //-----
-    filterOptions,
-    filterSelectName,
-    findFieldName,
-    setFilter,
-    initialValue,
-    //-----
-    pending,
-    success,
-    error,
-    errorMessage,
-  } = props;
+  const { listItems, filterOptions, handleFilter, onDelete, isAdmin } = props;
 
   return (
     <SectionLayout>
       <TitlePrimary tid="ARTICLES.ARTICLES.TITLE" />
-      <FormFilter
-        findPlaceholderTid={'ARTICLES.ARTICLES.FIELD.FIND_ARTICLES'}
+      <SearchFilter
+        findPlaceholderTid="ARTICLES.ARTICLES.FIELD.FIND_ARTICLES"
         filterOptions={filterOptions}
-        filterSelectName={filterSelectName}
-        findFieldName={findFieldName}
-        initialValue={initialValue}
-        setFilter={setFilter}
+        handleFilter={handleFilter}
       />
-      {!listItems || listItems.length === 0 ? (
-        <TextSecondary tid="Список пуст" />
-      ) : (
-        <BasicCardList items={listItems} />
-      )}
+      <BasicCardList
+        items={listItems}
+        onDelete={onDelete}
+        admin={isAdmin}
+        emptyText="Список пустой"
+      />
     </SectionLayout>
   );
 }

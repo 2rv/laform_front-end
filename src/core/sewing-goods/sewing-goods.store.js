@@ -4,7 +4,6 @@ import {
   setRequestPending,
   setRequestSuccess,
 } from '../../main/store/store.service';
-
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
 const initialState = {

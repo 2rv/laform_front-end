@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestData,
@@ -10,14 +10,11 @@ import {
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { articlesUploadData } from './articles.action';
 import { ARTICLES_STORE_NAME } from './articles.constant';
-import { ARTICLES_FIELD_NAME } from './articles.type';
 import { ArticlesComponent } from './articles.component';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { sorterItemsByParams } from '../../lib/common/filter-list-card';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function ArticlesContainer() {
-  const dispatch = useDispatch();
   const { articlesState, pageLoading, currentLang, isAuth } = useSelector(
     (state) => ({
       articlesState: state[ARTICLES_STORE_NAME].articlesState,
@@ -27,28 +24,25 @@ export function ArticlesContainer() {
     }),
   );
 
-  useEffect(() => dispatch(articlesUploadData(currentLang, isAuth)), []);
-  //---------------------------------------------------
-  const filterInitialValue = () => ({
-    [ARTICLES_FIELD_NAME.FILTER]: 0,
-    [ARTICLES_FIELD_NAME.FIND]: '',
-  });
-  const [filter, setFilter] = useState(filterInitialValue());
-
+  const dispatch = useDispatch();
+  const [filter, setFilter] = useState({ where: null, sort: null, by: null });
+  const handleFilter = ({ where, sort, by }) => {
+    const copy = { ...filter };
+    copy.where = where;
+    copy.sort = sort;
+    copy.by = by;
+    setFilter(copy);
+    dispatch(articlesUploadData(isAuth, { currentLang, ...copy }));
+  };
+  useEffect(
+    () => dispatch(articlesUploadData(isAuth, { currentLang, ...filter })),
+    [],
+  );
   return (
     <ArticlesComponent
-      listItems={sorterItemsByParams(
-        getRequestData(articlesState, []),
-        filter[ARTICLES_FIELD_NAME.FIND],
-        Number(filter[ARTICLES_FIELD_NAME.FILTER]),
-      )}
-      //-----
+      listItems={getRequestData(articlesState, [])}
       filterOptions={filterOptionss}
-      initialValue={filterInitialValue()}
-      setFilter={setFilter}
-      filterSelectName={ARTICLES_FIELD_NAME.FILTER}
-      findFieldName={ARTICLES_FIELD_NAME.FIND}
-      //-----
+      handleFilter={handleFilter}
       pageLoading={pageLoading}
       isPending={isRequestPending(articlesState)}
       isError={isRequestError(articlesState)}
@@ -62,13 +56,31 @@ export const filterOptionss = [
   {
     id: 0,
     tid: 'ARTICLES.FILTER_OPTIONS.ALL',
+    sort: null,
+    by: null,
   },
   {
-    id: 5,
+    id: 1,
     tid: 'ARTICLES.FILTER_OPTIONS.NEW',
+    sort: 'date',
+    by: 'ASC',
   },
   {
-    id: 6,
+    id: 2,
     tid: 'ARTICLES.FILTER_OPTIONS.OLD',
+    sort: 'date',
+    by: 'DESC',
+  },
+  {
+    id: 3,
+    tid: 'По алфавиту от а до я',
+    sort: 'title',
+    by: 'ASC',
+  },
+  {
+    id: 4,
+    tid: 'По алфавиту от я до а',
+    sort: 'title',
+    by: 'DESC',
   },
 ];

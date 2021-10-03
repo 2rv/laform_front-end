@@ -52,12 +52,12 @@ export function BasketContainer() {
   const { itemsGoods, itemsMaster, itemsPatterns, price } =
     reduceBascketState(bascketState);
 
-  const changeItem = (id, values) => {
-    dispatch(changeItemAction(id, values, bascketState));
+  const changeItem = (values) => {
+    dispatch(changeItemAction(values, bascketState));
   };
 
-  const deleteItem = (id) => {
-    dispatch(deleteItemAction(id, bascketState));
+  const deleteItem = (indexId, id) => {
+    dispatch(deleteItemAction(indexId, id, bascketState));
   };
 
   const checkPromoCode = (promocode) => {

@@ -29,7 +29,7 @@ export function PatternsProductContainer() {
 
   useEffect(() => {
     dispatch(patternProductUploadData(currentLang, patternId, logged));
-  }, []);
+  }, [patternId]);
 
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 

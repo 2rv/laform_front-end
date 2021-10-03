@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import {
   getRequestData,
   getRequestErrorMessage,
@@ -9,21 +8,17 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import {
-  filterByType,
-  sorterItemsByParams,
-} from '../../lib/common/filter-list-card';
 import { patternsUploadData, patternsUpdateData } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
 import { PatternsComponent } from './patterns.component';
-import { PATTERNS_FIELD_NAME } from './patterns.type';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
+import { redirect } from 'src/main/navigation';
+import { PATTERNS_ROUTE_PATH } from '.';
+import { useRouter } from 'next/router';
 
 export function PatternsContainer() {
-  const router = useRouter();
-  const dispatch = useDispatch();
   const { patternsState, pageLoading, currentLang, user, isAuth } = useSelector(
     (state) => ({
       patternsState: state[PATTERNS_STORE_NAME].patternsState,
@@ -33,98 +28,65 @@ export function PatternsContainer() {
       isAuth: state[AUTH_STORE_NAME].logged,
     }),
   );
-  const [activeTab, setActiveTab] = useState(
-    router.query.type === 'all'
-      ? 9
-      : router.query.type === 'printed'
-      ? 2
-      : router.query.type === 'electronic'
-      ? 1
-      : 0,
-  );
+  const dispatch = useDispatch();
+  const patternType = useRouter().query.type;
+  const [filter, setFilter] = useState({
+    where: null,
+    sort: null,
+    by: null,
+    type: patternType,
+  });
 
   useEffect(() => {
-    dispatch(patternsUploadData(currentLang, isAuth));
+    dispatch(patternsUploadData(isAuth, { currentLang, ...filter }));
+  }, []);
 
-    if (!['all', 'printed', 'electronic'].includes(router.query.type)) {
-      router.push(
-        '/patterns?type=all',
-        { query: { type: 'all' } },
-        { shallow: true },
-      );
-      setActiveTab(9);
-    }
-
-    if (activeTab === 9) {
-      router.push(
-        '/patterns?type=all',
-        { query: { type: 'all' } },
-        { shallow: true },
-      );
-    } else if (activeTab === 2) {
-      router.push(
-        '/patterns?type=printed',
-        { query: { type: 'printed' } },
-        { shallow: true },
-      );
-    } else if (activeTab === 1) {
-      router.push(
-        '/patterns?type=electronic',
-        { query: { type: 'electronic' } },
-        { shallow: true },
-      );
-    }
-  }, [activeTab, router.query.type]);
-  const filterInitialValue = () => ({
-    [PATTERNS_FIELD_NAME.FILTER]: 0,
-    [PATTERNS_FIELD_NAME.FIND]: '',
-  });
-  //---------------------------------------------------
-  const [filter, setFilter] = useState(filterInitialValue());
-
+  const handleFilter = ({ where, sort, by }) => {
+    const copy = { ...filter };
+    copy.where = where;
+    copy.sort = sort;
+    copy.by = by;
+    setFilter(copy);
+    dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
+  };
   const onDeleteProduct = (id, body) => {
     dispatch(patternsUpdateData(currentLang, id, body));
   };
-
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
-
+  const setActiveTab = (value) => {
+    const copy = { ...filter, type: value };
+    setFilter(copy);
+    dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
+    if (value) {
+      redirect(PATTERNS_ROUTE_PATH, { query: { type: value } });
+    } else {
+      redirect(PATTERNS_ROUTE_PATH);
+    }
+  };
   return (
     <PatternsComponent
+      onDeleteProduct={onDeleteProduct}
+      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
       addToCart={addToCart}
-      activeTab={activeTab}
+      listItems={getRequestData(patternsState, [])}
+      filterOptions={filterOptionss}
+      handleFilter={handleFilter}
+      activeTab={patternType}
       setActiveTab={setActiveTab}
       tabItems={tabItems}
-      //-----
-      listItems={filterByType(
-        sorterItemsByParams(
-          getRequestData(patternsState, []),
-          filter[PATTERNS_FIELD_NAME.FIND],
-          Number(filter[PATTERNS_FIELD_NAME.FILTER]),
-        ),
-        activeTab,
-      )}
-      //-----
-      filterOptions={filterOptionss}
-      initialValue={filterInitialValue()}
-      setFilter={setFilter}
-      filterSelectName={PATTERNS_FIELD_NAME.FILTER}
-      findFieldName={PATTERNS_FIELD_NAME.FIND}
-      //-----
       pageLoading={pageLoading}
       isPending={isRequestPending(patternsState)}
       isError={isRequestError(patternsState)}
       isSuccess={isRequestSuccess(patternsState)}
       errorMessage={getRequestErrorMessage(patternsState)}
-      onDeleteProduct={onDeleteProduct}
-      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
     />
   );
 }
 
 export const tabItems = [
-  { name: 'PATTERNS.PATTERNS.MENU.ALL', type: 9 },
-  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 2 },
-  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 1 },
+  { name: 'PATTERNS.PATTERNS.MENU.ALL', type: null },
+  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 'printed' },
+  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 'electronic' },
 ];
 export const filterOptionss = [
   {
@@ -133,14 +95,14 @@ export const filterOptionss = [
   },
   {
     id: 1,
-    tid: 'PATTERNS.FILTER_OPTIONS.STOCK',
+    tid: 'По алфавиту от а до я',
+    sort: 'title',
+    by: 'ASC',
   },
   {
-    id: 3,
-    tid: 'PATTERNS.FILTER_OPTIONS.ASCENDING',
-  },
-  {
-    id: 4,
-    tid: 'PATTERNS.FILTER_OPTIONS.DESCENDING',
+    id: 2,
+    tid: 'По алфавиту от я до а',
+    sort: 'title',
+    by: 'DESC',
   },
 ];

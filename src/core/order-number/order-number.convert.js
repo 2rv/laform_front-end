@@ -18,9 +18,10 @@ export const convertUsersOrderData = (rowData) => {
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,
     },
     purchaseProducts: rowData.purchaseProducts.map((item) => {
+      const count = Boolean(item?.totalCount) && Number(item.totalCount);
       const price = Number(item.totalPrice);
       const discount = Number(item.totalDiscount);
-      const totalPrice = price - price * (discount / 100);
+      const totalPrice = Boolean(count) ? (price - price * (discount / 100)) * count : (price - price * (discount / 100));
       const product =
         item.masterClassId || item.sewingProductId || item.patternProductId;
       return {
@@ -30,7 +31,7 @@ export const convertUsersOrderData = (rowData) => {
         type: product.type,
         name: product.titleRu,
         image: product.images?.[0]?.fileUrl,
-        totalPrice: totalPrice,
+        totalPrice: totalPrice.toFixed(2),
         vendorCode:
           (Boolean(item?.program) && item.program.vendorCode) ||
           (Boolean(item?.size) && item.size.vendorCode),
@@ -47,7 +48,7 @@ export const convertUsersOrderData = (rowData) => {
             id: item.size.id,
             value: item.size.size,
           },
-          count: Boolean(item?.totalCount) && Number(item.totalCount),
+          count,
           complexity: Boolean(product?.complexity) && item.complexity,
         },
       };

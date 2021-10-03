@@ -68,7 +68,11 @@ export function RecomendationComponent(props) {
               initialValue={filterInitialValue}
               setFilter={setFilter}
             />
-            <BasicCardList items={listItems} onSetSelect={onSelect} />
+            <BasicCardList
+              items={listItems}
+              onSelect={onSelect}
+              emptyText="Список пустой"
+            />
           </Wrapper>
         </Case>
       </ModalFull>

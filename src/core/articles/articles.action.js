@@ -3,7 +3,7 @@ import { ARTICLES_API } from './articles.constant';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
 import { convertArticleProducts } from 'src/lib/common/product-converters';
 
-export function articlesUploadData(currentLang, isAuth) {
+export function articlesUploadData(isAuth, query) {
   return async (dispatch) => {
     dispatch({
       type: ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_PENDING,
@@ -13,11 +13,11 @@ export function articlesUploadData(currentLang, isAuth) {
       const response = isAuth
         ? await httpRequest({
             method: ARTICLES_API.ARTICLES_UPLOAD_AUTH.TYPE,
-            url: ARTICLES_API.ARTICLES_UPLOAD_AUTH.ENDPOINT(currentLang),
+            url: ARTICLES_API.ARTICLES_UPLOAD_AUTH.ENDPOINT(query),
           })
         : await httpRequest({
             method: ARTICLES_API.ARTICLES_UPLOAD.TYPE,
-            url: ARTICLES_API.ARTICLES_UPLOAD.ENDPOINT(currentLang),
+            url: ARTICLES_API.ARTICLES_UPLOAD.ENDPOINT(query),
           });
       dispatch({
         type: ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS,

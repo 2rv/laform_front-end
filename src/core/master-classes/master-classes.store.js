@@ -4,7 +4,6 @@ import {
   setRequestPending,
   setRequestSuccess,
 } from '../../main/store/store.service';
-
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 
 const initialState = {
@@ -34,6 +33,7 @@ export function masterClassesStore(state = initialState, action) {
           action.errorMessage,
         ),
       };
+
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_PENDING:
       return {
         ...state,

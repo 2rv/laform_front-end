@@ -1,49 +1,34 @@
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
-import { BasicCardList } from '../../lib/element/card-list';
-import { FormFilter } from '../../lib/element/form-filter';
-import { TextSecondary } from 'src/lib/element/text';
+import { PaginationContainer } from '../../lib/common/block-pagination';
+import { SearchFilter } from '../../lib/common/search-filter';
+import { BasicCardList } from 'src/lib/element/card-list';
 
 export function MasterClassesComponent(props) {
   const {
-    addToCart,
     listItems,
+    addToCart,
     onDeleteProduct,
-    isAdmin,
-    //-----
     filterOptions,
-    filterSelectName,
-    findFieldName,
-    setFilter,
-    initialValue,
-    //-----
-    pending,
-    success,
-    error,
-    errorMessage,
+    handleFilter,
+    isAdmin,
   } = props;
 
   return (
     <SectionLayout>
       <TitlePrimary tid="MASTER_CLASSES.MASTER_CLASSES.TITLE" />
-      <FormFilter
+      <SearchFilter
         findPlaceholderTid="MASTER_CLASSES.MASTER_CLASSES.FIELD.FIND_MASTER_CLASSES"
         filterOptions={filterOptions}
-        filterSelectName={filterSelectName}
-        findFieldName={findFieldName}
-        initialValue={initialValue}
-        setFilter={setFilter}
+        handleFilter={handleFilter}
       />
-      {!listItems || listItems.length === 0 ? (
-        <TextSecondary tid="Список пуст" />
-      ) : (
-        <BasicCardList
-          onSetCart={addToCart}
-          items={listItems}
-          onDeleteProduct={onDeleteProduct}
-          isAdmin={isAdmin}
-        />
-      )}
+      <BasicCardList
+        items={listItems}
+        onCart={addToCart}
+        onDelete={onDeleteProduct}
+        admin={isAdmin}
+        emptyText="Список пустой"
+      />
     </SectionLayout>
   );
 }

@@ -1,9 +1,10 @@
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
-import { FilterTabs } from '../../lib/element/filter-tabs';
-import { FormFilter } from '../../lib/element/form-filter';
 import { TextSecondary } from 'src/lib/element/text';
+import { CenteredSpinner } from 'src/lib/element/spinner';
+import { SearchFilter } from 'src/lib/common/search-filter';
+import { TabFilter } from '../../lib/common/tab-filter';
 
 export function PatternsComponent(props) {
   const {
@@ -11,49 +12,35 @@ export function PatternsComponent(props) {
     onDeleteProduct,
     isAdmin,
     addToCart,
-    //-----
     activeTab,
     setActiveTab,
     tabItems,
-    //-----
     filterOptions,
-    filterSelectName,
-    findFieldName,
-    setFilter,
-    initialValue,
-    //-----
-    pending,
-    success,
-    error,
-    errorMessage,
+    handleFilter,
+    isPending,
   } = props;
 
   return (
     <SectionLayout>
       <TitlePrimary tid="PATTERNS.PATTERNS.TITLE" />
-      <FilterTabs
+      <TabFilter
+        isPending={isPending}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        handleFilter={setActiveTab}
         tabItems={tabItems}
       />
-      <FormFilter
-        findPlaceholderTid={'PATTERNS.PATTERNS.FIELD.FIND_PATTERNS'}
+      <SearchFilter
+        findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
         filterOptions={filterOptions}
-        filterSelectName={filterSelectName}
-        findFieldName={findFieldName}
-        initialValue={initialValue}
-        setFilter={setFilter}
+        handleFilter={handleFilter}
       />
-      {!listItems || listItems.length === 0 ? (
-        <TextSecondary tid="Список пуст" />
-      ) : (
-        <BasicCardList
-          onSetCart={addToCart}
-          items={listItems}
-          onDeleteProduct={onDeleteProduct}
-          isAdmin={isAdmin}
-        />
-      )}
+      <BasicCardList
+        items={listItems}
+        onCart={addToCart}
+        onDelete={onDeleteProduct}
+        admin={isAdmin}
+        emptyText="Список пустой"
+      />
     </SectionLayout>
   );
 }

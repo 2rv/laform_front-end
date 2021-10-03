@@ -24,6 +24,7 @@ export function SewingGoodsProductComponent(props) {
 
   return (
     <SectionLayout type="MEDIUM">
+      {isPending && <LoaderPrimary />}
       <SectionLayout>
         <Content>
           <ProductImages items={productData.images} />
@@ -31,9 +32,9 @@ export function SewingGoodsProductComponent(props) {
         </Content>
       </SectionLayout>
       <CardListBlock
-        onSetCart={addToCart}
-        title="Рекомендации"
         items={productData.recommendations}
+        onCart={addToCart}
+        title="Рекомендации"
       />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>

@@ -21,3 +21,14 @@ export const Spinner = styled.div`
     }
   }
 `;
+
+export const CenteredSpinner = (props) => {
+  const { isPending } = props;
+  if (!isPending) return null;
+  return <SpinnerCentered />;
+};
+
+const SpinnerCentered = styled(Spinner)`
+  display: flex;
+  justify-self: center;
+`;

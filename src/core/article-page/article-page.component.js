@@ -7,6 +7,7 @@ import { TitlePrimary } from '../../lib/element/title';
 import { BlockComment } from '../block-comment';
 import { ReactEditor } from '../block-react-editor';
 import { ConvertTime } from 'src/lib/common/time-convert';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function ArticlePageComponent(props) {
   const {
@@ -30,15 +31,16 @@ export function ArticlePageComponent(props) {
   } = productInfo;
   return (
     <SectionLayout>
+      {isPending && <LoaderPrimary />}
       <HeaderCase>
         <Title tid={name} />
         <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
       <ReactEditor data={postArticle} enableReInitialize readOnly />
       <CardListBlock
-        onSetCart={addToCart}
         title="Рекомендации"
         items={recommendations}
+        onCart={addToCart}
       />
       <BlockComment onSetCart={addToCart} type={type} id={id} />
     </SectionLayout>

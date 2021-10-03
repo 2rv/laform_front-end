@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   getRequestErrorMessage,
   getRequestData,
@@ -8,20 +7,18 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
+import { addToBasket } from '../basket';
+import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
+import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 import {
   masterClassesUploadData,
   masterClassesUpdateData,
 } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
-import { MASTER_CLASSES_FIELD_NAME } from './master-classes.type';
-import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
-import { sorterItemsByParams } from '../../lib/common/filter-list-card';
-import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
-import { addToBasket } from '../basket';
 
 export function MasterClassesContainer() {
-  const dispatch = useDispatch();
   const { masterClassState, pageLoading, currentLang, user, isAuth } =
     useSelector((state) => ({
       masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
@@ -30,15 +27,22 @@ export function MasterClassesContainer() {
       user: state[AUTH_STORE_NAME].user,
       isAuth: state[AUTH_STORE_NAME].logged,
     }));
+  const dispatch = useDispatch();
+  const [filter, setFilter] = useState({ where: null, sort: null, by: null });
+  const totalItems = masterClassState?.additional?.totalCount || 0;
 
-  useEffect(() => dispatch(masterClassesUploadData(currentLang, isAuth)), []);
+  useEffect(() => {
+    dispatch(masterClassesUploadData(isAuth, { currentLang, ...filter }));
+  }, []);
 
-  const filterInitialValue = () => ({
-    [MASTER_CLASSES_FIELD_NAME.FILTER]: 0,
-    [MASTER_CLASSES_FIELD_NAME.FIND]: '',
-  });
-
-  const [filter, setFilter] = useState(filterInitialValue());
+  const handleFilter = ({ where, sort, by }) => {
+    const copy = { ...filter };
+    copy.where = where;
+    copy.sort = sort;
+    copy.by = by;
+    setFilter(copy);
+    dispatch(masterClassesUploadData(isAuth, { currentLang, ...copy }));
+  };
 
   const onDeleteProduct = (id, body) => {
     dispatch(masterClassesUpdateData(currentLang, id, body));
@@ -48,45 +52,33 @@ export function MasterClassesContainer() {
 
   return (
     <MasterClassesComponent
+      listItems={getRequestData(masterClassState, [])}
       addToCart={addToCart}
-      listItems={sorterItemsByParams(
-        getRequestData(masterClassState, []),
-        filter[MASTER_CLASSES_FIELD_NAME.FIND],
-        Number(filter[MASTER_CLASSES_FIELD_NAME.FILTER]),
-      )}
-      //-----
-      filterOptions={filterOptionss}
-      initialValue={filterInitialValue()}
-      setFilter={setFilter}
-      filterSelectName={MASTER_CLASSES_FIELD_NAME.FILTER}
-      findFieldName={MASTER_CLASSES_FIELD_NAME.FIND}
-      //-----
-      pageLoading={pageLoading}
-      isPending={isRequestPending(masterClassState)}
-      isError={isRequestError(masterClassState)}
-      isSuccess={isRequestSuccess(masterClassState)}
-      errorMessage={getRequestErrorMessage(masterClassState)}
       onDeleteProduct={onDeleteProduct}
+      filterOptions={filterOptions}
+      handleFilter={handleFilter}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
     />
   );
 }
 
-export const filterOptionss = [
+export const filterOptions = [
   {
     id: 0,
     tid: 'MASTER_CLASSES.FILTER_OPTIONS.ALL',
+    sort: null,
+    by: null,
   },
   {
     id: 1,
-    tid: 'MASTER_CLASSES.FILTER_OPTIONS.STOCK',
+    tid: 'По алфавиту от а до я',
+    sort: 'title',
+    by: 'ASC',
   },
   {
-    id: 3,
-    tid: 'MASTER_CLASSES.FILTER_OPTIONS.ASCENDING',
-  },
-  {
-    id: 4,
-    tid: 'MASTER_CLASSES.FILTER_OPTIONS.DESCENDING',
+    id: 2,
+    tid: 'По алфавиту от я до а',
+    sort: 'title',
+    by: 'DESC',
   },
 ];

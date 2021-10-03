@@ -4,7 +4,7 @@ import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 import { BASKET_STORE_NAME } from '../basket';
 import { convertSewingGoodProducts } from 'src/lib/common/product-converters';
 
-export function sewingGoodsUploadData(currentLang, isAuth) {
+export function sewingGoodsUploadData(isAuth, query) {
   return async (dispatch, getState) => {
     dispatch({
       type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_PENDING,
@@ -14,13 +14,11 @@ export function sewingGoodsUploadData(currentLang, isAuth) {
       const response = isAuth
         ? await httpRequest({
             method: SEWING_GOODS_API.SEWING_GOODS_UPLOAD_AUTH.TYPE,
-            url: SEWING_GOODS_API.SEWING_GOODS_UPLOAD_AUTH.ENDPOINT(
-              currentLang,
-            ),
+            url: SEWING_GOODS_API.SEWING_GOODS_UPLOAD_AUTH.ENDPOINT(query),
           })
         : await httpRequest({
             method: SEWING_GOODS_API.SEWING_GOODS_UPLOAD.TYPE,
-            url: SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT(currentLang),
+            url: SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT(query),
           });
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
@@ -39,7 +37,6 @@ export function sewingGoodsUploadData(currentLang, isAuth) {
     }
   };
 }
-
 export function sewingGoodsUpdateData(currentLang, id, body) {
   return async (dispatch) => {
     dispatch({

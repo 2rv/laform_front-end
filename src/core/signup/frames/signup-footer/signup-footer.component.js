@@ -1,7 +1,6 @@
 import { TextSecondary } from '../../../../lib/element/text';
 import { LinkPrimary } from '../../../../lib/element/link';
-
-import { SIGNUP_FORM_ALREADY_REGISTERED_PATH } from '../../signup.constant';
+import { LOGIN_ROUTE_PATH } from '../../../login';
 
 export function SignupFooterComponent() {
   return (
@@ -10,7 +9,7 @@ export function SignupFooterComponent() {
       &nbsp;
       <LinkPrimary
         tid="SIGNUP.FOOTER.LOGIN"
-        path={SIGNUP_FORM_ALREADY_REGISTERED_PATH}
+        path={LOGIN_ROUTE_PATH}
       />
     </div>
   );
