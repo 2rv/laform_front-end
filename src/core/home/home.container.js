@@ -18,6 +18,9 @@ import {
 import { HOME_STORE_NAME } from './home.constant';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
+import { PATTERNS_ROUTE_PATH } from '../patterns/patterns.constant';
+import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes/master-classes.constant';
+import { SEWING_GOODS_ROUTE_PATH } from '../sewing-goods/sewing-goods.constant';
 
 export function HomeContainer() {
   const dispatch = useDispatch();
@@ -77,26 +80,26 @@ export const catalogListItems = [
     title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
     backgroundImage: '/static/image/catalog-list-1.png',
-    path: '/patterns',
+    path: PATTERNS_ROUTE_PATH,
     pathConfig: { query: { type: 'electronic' } },
   },
   {
     title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
     backgroundImage: '/static/image/catalog-list-2.png',
-    path: '/patterns',
+    path: PATTERNS_ROUTE_PATH,
     pathConfig: { query: { type: 'printed' } },
   },
   {
     title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
     description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
     backgroundImage: '/static/image/catalog-list-3.png',
-    path: '/master-classes',
+    path: MASTER_CLASSES_ROUTE_PATH,
   },
   {
     title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
     description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
     backgroundImage: '/static/image/catalog-list-4.png',
-    path: '/sewing-goods',
+    path: SEWING_GOODS_ROUTE_PATH,
   },
 ];
