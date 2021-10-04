@@ -21,7 +21,9 @@ export const convertUsersOrderData = (rowData) => {
       const count = Boolean(item?.totalCount) && Number(item.totalCount);
       const price = Number(item.totalPrice);
       const discount = Number(item.totalDiscount);
-      const totalPrice = Boolean(count) ? (price - price * (discount / 100)) * count : (price - price * (discount / 100));
+      const totalPrice = Boolean(count)
+        ? (price - price * (discount / 100)) * count
+        : (price - price * (discount / 100));
       const product =
         item.masterClassId || item.sewingProductId || item.patternProductId;
       return {
@@ -31,7 +33,7 @@ export const convertUsersOrderData = (rowData) => {
         type: product.type,
         name: product.titleRu,
         image: product.images?.[0]?.fileUrl,
-        totalPrice: totalPrice.toFixed(2),
+        totalPrice: totalPrice,
         vendorCode:
           (Boolean(item?.program) && item.program.vendorCode) ||
           (Boolean(item?.size) && item.size.vendorCode),
