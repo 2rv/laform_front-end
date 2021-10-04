@@ -50,7 +50,7 @@ export function convertAddToCart(product, data, indexId = 0) {
       type: data.type,
       masterClass: product,
       program: data.program ? data.program : product.programs[0].id,
-      indexId: indexId,
+      indexId: product.id + indexId,
     };
   }
   if (data.type === 1 || data.type === 2) {
@@ -59,7 +59,7 @@ export function convertAddToCart(product, data, indexId = 0) {
       type: data.type,
       patternProduct: product,
       size: data.size ? data.size : product.sizes[0].id,
-      indexId: indexId,
+      indexId: product.id + indexId,
     };
   }
   if (data.type === 3) {
@@ -70,7 +70,7 @@ export function convertAddToCart(product, data, indexId = 0) {
       size: data.size ? data.size : product.sizes[0].id,
       color: data.color ? data.color : product.colors[0].id,
       count: data.count ?? 1,
-      indexId: indexId,
+      indexId: product.id + indexId,
     };
   }
 }
