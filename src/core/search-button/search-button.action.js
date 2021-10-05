@@ -1,7 +1,6 @@
 import { httpRequest } from '../../main/http';
 import { SEARCH_BUTTON_API } from './search-button.constant';
 import { SEARCH_BUTTON_ACTION_TYPE } from './search-button.type';
-// import { BASKET_STORE_NAME } from '../basket';
 import {
   convertArticleProducts,
   convertMasterClassProducts,
@@ -21,10 +20,6 @@ export function masterClassUploadData(currentLang, filter) {
       });
       dispatch({
         type: SEARCH_BUTTON_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
-        // data: convertMasterClassProducts(
-        //   response.data,
-        //   getState()[BASKET_STORE_NAME].basket,
-        // ),
         payload: convertMasterClassProducts(response.data),
       });
     } catch (err) {
@@ -49,10 +44,6 @@ export function sewingGoodsUploadData(currentLang, filter) {
       });
       dispatch({
         type: SEARCH_BUTTON_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
-        // data: convertSewingGoodProducts(
-        //   response.data,
-        //   getState()[BASKET_STORE_NAME].basket,
-        // ),
         payload: convertSewingGoodProducts(response.data),
       });
     } catch (err) {
@@ -77,7 +68,6 @@ export function articleUploadData(currentLang, filter) {
       });
       dispatch({
         type: SEARCH_BUTTON_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS,
-        // data: convertArticleProducts(response.data),
         payload: convertArticleProducts(response.data),
       });
     } catch (err) {
@@ -103,10 +93,6 @@ export function patternsUploadData(currentLang, filter) {
       });
       dispatch({
         type: SEARCH_BUTTON_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS,
-        // data: convertPatternProducts(
-        //   response.data,
-        //   getState()[BASKET_STORE_NAME].basket,
-        // ),
         payload: convertPatternProducts(response.data),
       });
     } catch (err) {
