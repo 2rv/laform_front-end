@@ -27,21 +27,6 @@ export function aboutStore(state = initialState, action) {
         ...state,
         about: setRequestError(state.about, action.errorMessage),
       };
-    case ABOUT_ACTION_TYPE.ABOUT_DATA_LOAD_PENDING:
-      return {
-        ...state,
-        about: setRequestPending(state.about),
-      };
-    case ABOUT_ACTION_TYPE.ABOUT_DATA_LOAD_SUCCESS:
-      return {
-        ...state,
-        about: setRequestSuccess(state.about),
-      };
-    case ABOUT_ACTION_TYPE.ABOUT_DATA_LOAD_ERROR:
-      return {
-        ...state,
-        about: setRequestError(state.about, action.errorMessage),
-      };
     default:
       return state;
   }

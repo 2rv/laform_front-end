@@ -16,6 +16,7 @@ export function AboutContainer() {
     user: state[AUTH_STORE_NAME].user,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
+  const about = getRequestData(state)?.about;
 
   useEffect(() => {
     dispatch(aboutUsLoadData());
@@ -29,5 +30,5 @@ export function AboutContainer() {
     return <Spinner />;
   }
 
-  return <AboutComponent aboutUsText={getRequestData(state).about} user={user} />;
+  return <AboutComponent about={about} user={user} />;
 }

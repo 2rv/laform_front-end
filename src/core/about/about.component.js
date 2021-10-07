@@ -9,11 +9,9 @@ import { USER_ROLE } from '../../lib/common/auth';
 import { ReactEditor } from '../block-react-editor';
 import { aboutUsLoadData, aboutUsUploadData } from './about.action';
 
-export function AboutComponent({ aboutUsText, user }) {
+export function AboutComponent({ about, user }) {
   const dispatch = useDispatch();
-  const [editorData, setEditorData] = useState(aboutUsText);
-  console.log('aboutUsText: ', aboutUsText);
-  console.log('editorData: ', editorData);
+  const [editorData, setEditorData] = useState(about);
 
   const aboutUsUploadDataHandler = () => {
     dispatch(aboutUsUploadData({ about: editorData }));
@@ -27,12 +25,12 @@ export function AboutComponent({ aboutUsText, user }) {
           <ReactEditor
             handleChange={(value) => setEditorData(value)}
             values={editorData}
-            data={aboutUsText}
+            data={about}
           />
           <ButtonSecondary tid="OTHER.SAVE" onClick={aboutUsUploadDataHandler} />
         </>
       ) : (
-        <ReactEditor data={aboutUsText} enableReInitialize readOnly />
+        <ReactEditor data={about} enableReInitialize readOnly />
       )}
     </SectionLayout>
   );
