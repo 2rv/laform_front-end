@@ -111,6 +111,10 @@ import {
   purchaseProductsRouter,
   PURCHASE_PRODUCTS_ROUTE_PATH,
 } from '../../core/purchase-products';
+import {
+  aboutRouter,
+  ABOUT_ROUTE_PATH,
+} from '../../core/about';
 
 export const routes = {
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
@@ -151,6 +155,7 @@ export const routes = {
   [USERS_ROUTE_PATH]: usersStore,
   [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
   [PURCHASE_PRODUCTS_ROUTE_PATH]: purchaseProductsRouter,
+  [ABOUT_ROUTE_PATH]: aboutRouter,
 };
 
 export const Router = routesInit(routes);
