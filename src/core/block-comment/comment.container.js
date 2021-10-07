@@ -29,10 +29,11 @@ export function CommentContainer(props) {
     return <TextPrimary tid="Отсутствуют отзывы" />;
 
   const dispatch = useDispatch();
-  const { comments, create, user } = useSelector((state) => ({
+  const { comments, create, user, isAuth } = useSelector((state) => ({
     comments: state[COMMENT_STORE_NAME].commentState,
     create: state[COMMENT_STORE_NAME].createState,
     user: state[AUTH_STORE_NAME].user,
+    isAuth: state[AUTH_STORE_NAME].logged,
   }));
   useEffect(() => {
     if (type !== false && id !== false) {
@@ -107,6 +108,7 @@ export function CommentContainer(props) {
   return (
     <CommentComponent
       user={user}
+      isAuth={isAuth}
       comments={getRequestData(comments, [])}
       //--------------------------------------------------------------------
       onSubmit={onSubmit}
