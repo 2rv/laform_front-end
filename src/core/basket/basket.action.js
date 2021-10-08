@@ -130,6 +130,7 @@ export function addToBasket(data, currentLang) {
       } else {
         localStorage.setItem('basket', JSON.stringify([convertedData]));
       }
+      console.log(convertedData);
       dispatch({
         type: BASKET_ACTION_TYPE.ADD_TO_BASKET,
         data: convertedData,

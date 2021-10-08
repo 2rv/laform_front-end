@@ -57,7 +57,7 @@ export function BasketContainer() {
   };
 
   const deleteItem = (indexId, id) => {
-    dispatch(deleteItemAction(indexId, id, bascketState));
+    dispatch(deleteItemAction(indexId, bascketState));
   };
 
   const checkPromoCode = (promocode) => {

@@ -12,7 +12,7 @@ export function PriceTd(props) {
   return (
     <Td last={isLast}>
       <Case>
-        <Price tid={totalPrice} />
+        <Price price={totalPrice} />
         &nbsp;
         <Valute tid="PRODUCT_PRICE.CURRENCY" />
       </Case>
@@ -36,7 +36,7 @@ const Td = styled.td`
 const Case = styled.div`
   line-height: 1.5;
 `;
-const Price = styled(TextPrimary)`
+const Price = styled(TextCurrency)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
