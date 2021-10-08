@@ -21,5 +21,6 @@ export interface ModalPopupProps {
 
 export interface ModalFullProps {
   onOpen: boolean;
+  className?: string;
   children: React.ReactElement<any | null>;
 }

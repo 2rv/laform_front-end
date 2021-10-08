@@ -157,6 +157,8 @@ import {
   purchaseProductsStore,
   PURCHASE_PRODUCTS_STORE_NAME,
 } from '../../core/purchase-products';
+import { searchButtonStore } from '../../core/search-button/search-button.store';
+import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
 import {
   aboutStore,
   ABOUT_STORE_NAME,
@@ -217,6 +219,7 @@ export const reducers = combineReducers({
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
   [PURCHASE_PRODUCTS_STORE_NAME]: purchaseProductsStore,
+  [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
   [ABOUT_STORE_NAME]: aboutStore,
 });
 

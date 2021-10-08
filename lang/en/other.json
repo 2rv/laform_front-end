@@ -11,6 +11,8 @@
 	"CANCEL": "Cancel",
 	"USERS_LIST": "Users",
 	"LIST_IS_EMPTY": "List is empty",
+	"NOTHING_FOUND": "Nothing found",
+	"ENTER_YOUR_SEARCH_DATA": "Enter your search data",
 	"SAVE": "Save",
 	"VENDOR_CODE": "Vendor code:",
 	"GET_PURCHASES_HISTORY": "To gain access to the purchase history, you must: login or register",
