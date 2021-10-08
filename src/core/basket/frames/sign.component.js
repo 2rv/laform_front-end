@@ -6,16 +6,16 @@ import { LinkPrimary } from 'src/lib/element/link';
 import { LOGIN_ROUTE_PATH } from 'src/core/login';
 import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
 
-export function SignComponent() {
+export function SignComponent({ title }) {
   return (
     <SectionLayout type="SMALL">
-      <Text tid="BASKET.FORM.FOOTER.INFO" />
+      <Text tid={title} />
       <FieldLayout type="double" adaptive>
         <LinkPrimary path={SIGNUP_ROUTE_PATH}>
-          <ButtonSecondary tid="BASKET.FORM.FOOTER.SIGN_UP" />
+          <ButtonSecondary tid="OTHER.SIGN_UP" />
         </LinkPrimary>
         <LinkPrimary path={LOGIN_ROUTE_PATH}>
-          <ButtonBasic tid="BASKET.FORM.FOOTER.SIGN_IN" />
+          <ButtonBasic tid="OTHER.SIGN_IN" />
         </LinkPrimary>
       </FieldLayout>
     </SectionLayout>

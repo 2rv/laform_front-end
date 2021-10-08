@@ -101,7 +101,7 @@ export function BasketComponent(props) {
           />
         </>
       )}
-      {!isAuth && <SignComponent />}
+      {!isAuth && <SignComponent title="OTHER.GET_PURCHASES_HISTORY" />}
     </SectionLayout>
   );
 }
