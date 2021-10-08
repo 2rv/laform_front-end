@@ -12,5 +12,10 @@
 	"USERS_LIST": "Список пользователей",
 	"LIST_IS_EMPTY": "Список пуст",
 	"SAVE": "Сохранить",
-	"VENDOR_CODE": "Артикул:"
+	"VENDOR_CODE": "Артикул:",
+	"CARD": {
+		"SIZE_COLOR_PRICE": "Размер: {{size}}, Цвет: {{color}}, Цена: {{price}}",
+		"SIZE_PRICE": "Размер: {{size}}, Цена: {{price}}",
+		"PRODUCT_PRICE": "Цена товара: "
+	}
 }

@@ -11,26 +11,19 @@ import {
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
 import { ProductPrice } from '../../block-product-create-components';
-import {
-  dynamicFieldsMinPrice,
-  numberValue,
-} from '../../../lib/common/create-product-helpers';
+import { numberValue } from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
-import { DynamicFields } from './dynamic-fields';
+import { BlockCategories } from 'src/core/block-categories';
+import { ReactEditor } from 'src/core/block-react-editor';
 
 export function FormComponent(props) {
-  const {
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    setFieldValue,
-    programsInit,
-  } = props;
-
+  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
+    props;
+  console.log(values);
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
+  const setEditorData = (name) => (editorData) =>
+    setFieldValue(name, editorData);
 
   //----------------------------
 
@@ -57,15 +50,7 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
         </FieldLayout>
-        <MultiField
-          items={values[CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]}
-          setItems={(data) =>
-            setFieldValue(CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES, data)
-          }
-          error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES)}
-          titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.TAG"
-          placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
-        />
+        <BlockCategories values={values} handleBlur={handleBlur} />
         <TextareaField
           titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
           placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
@@ -77,19 +62,15 @@ export function FormComponent(props) {
           minHeight={100}
         />
       </SectionLayout>
-      <DynamicFields
-        initialData={programsInit}
-        title="DYNAMIC_FIELDS.PROGRAM.TITLE"
-        fieldTitle="DYNAMIC_FIELDS.PROGRAM.FIELD_TITLE"
-        fieldPlaceholder="DYNAMIC_FIELDS.PROGRAM.FIELD_PLACEHOLDER"
-        buttonText="DYNAMIC_FIELDS.PROGRAM.BUTTON_TEXT"
-        errors={errors}
-        touched={touched}
-        values={values}
-        setFieldValue={setFieldValue}
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-      />
+      <SectionLayout type="SMALL">
+        <Title tid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE" />
+        <ReactEditor
+          handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE)}
+          values={values[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]}
+          name={CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE}
+          minHeight={100}
+        />
+      </SectionLayout>
       <SectionLayout type="SMALL">
         <Title tid="MASTER_CLASSES.CREATE.FORM.PRICE" />
         <FieldLayout type="double" adaptive>
@@ -102,12 +83,18 @@ export function FormComponent(props) {
             onChange={setNumber(CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT)}
             onBlur={handleBlur}
           />
+          <BasicField
+            placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.INDICATE_PRICE"
+            titleTid="MASTER_CLASSES.CREATE.FORM.PRICE"
+            name={CREATE_MASTER_CLASS_FIELD_NAME.PRICE}
+            value={values[CREATE_MASTER_CLASS_FIELD_NAME.PRICE]}
+            error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.PRICE)}
+            onChange={setNumber(CREATE_MASTER_CLASS_FIELD_NAME.PRICE)}
+            onBlur={handleBlur}
+          />
           <ProductPrice
             discount={values[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]}
-            price={dynamicFieldsMinPrice(
-              values[CREATE_MASTER_CLASS_FIELD_NAME.PROGRAMS],
-              CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_PRICE,
-            )}
+            price={values[CREATE_MASTER_CLASS_FIELD_NAME.PRICE]}
           />
         </FieldLayout>
         <RecomendationBlock

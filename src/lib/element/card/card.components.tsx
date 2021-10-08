@@ -1,21 +1,66 @@
 import styled, { css } from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { THEME_SIZE, THEME_COLOR, spacing } from '../../theme';
-import { CardActionTypeProps, CardPriceTypeProps } from './card.type';
+import { CardActionProps, CardPriceProps } from './card.type';
 import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
 import { LikeButton as LikeAction } from 'src/core/block-like';
 import { ReactComponent as DeleteIcon } from '../../../asset/svg/delete-cancel-icon.svg';
 import { TextCurrency, TextSecondary } from '../text';
 import { Popup } from '../popup';
 import { FieldLayout } from '../layout';
+import { BASKET_ROUTE_PATH, BASKET_STORE_NAME } from 'src/core/basket';
+import { redirect } from 'src/main/navigation';
+import { useSelector } from 'react-redux';
+import { isRequestPending } from 'src/main/store/store.service';
 
-export function LikeButton(props: CardActionTypeProps) {
+export function CartButton(props: CardActionProps) {
+  const { id, type = false, onCart } = props;
+  if (!id || type === false || !onCart) return null;
+  const { bascketState, basketAction } = useSelector((state: any) => ({
+    bascketState: state[BASKET_STORE_NAME].basket,
+    basketAction: state[BASKET_STORE_NAME].basketAction,
+  }));
+  const isPending = isRequestPending(basketAction);
+
+  const [isCart, setCart] = useState(false);
+
+  useEffect(() => {
+    const result = bascketState.find((item: any) => {
+      if (type === 0) return item.id === id;
+    });
+    setCart(Boolean(result));
+  }, [bascketState]);
+
+  const addToCart = () => () => {
+    if (isCart) return redirect(BASKET_ROUTE_PATH);
+    onCart({
+      id,
+      type,
+    });
+  };
+
+  return (
+    <Button
+      disabled={isPending}
+      active={isCart}
+      onClick={addToCart}
+      tid={
+        isPending
+          ? 'Подождите'
+          : isCart
+          ? 'BASKET.GO_TO_BASKET'
+          : 'BASKET.ADD_TO_BASKET'
+      }
+    />
+  );
+}
+export function LikeButton(props: CardActionProps) {
   const { id, type, like = null } = props;
   if (like === null) return null;
 
   return <LikeAction id={id} type={type} like={like} />;
 }
-export function SelectButton(props: CardActionTypeProps) {
+export function SelectButton(props: CardActionProps) {
   const { id, type, onSelect } = props;
 
   if (!onSelect) return null;
@@ -35,7 +80,7 @@ export function SelectButton(props: CardActionTypeProps) {
     />
   );
 }
-export function DeleteButton(props: CardActionTypeProps) {
+export function DeleteButton(props: CardActionProps) {
   const { id, admin, onDelete } = props;
   if (!admin || !onDelete) return null;
 
@@ -138,10 +183,12 @@ export const CardName = styled(TextSecondary)`
   word-break: break-word;
 `;
 
-export function CardPrice(props: CardPriceTypeProps) {
+export function CardPrice(props: CardPriceProps) {
   const { price = 0, discount = 0 } = props;
   return (
     <div>
+      <TextSecondary tid="OTHER.CARD.PRODUCT_PRICE" />
+      &nbsp;
       {Boolean(discount) ? (
         <>
           <Text price={price - (price / 100) * discount} />

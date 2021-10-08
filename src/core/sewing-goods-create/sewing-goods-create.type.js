@@ -10,22 +10,15 @@ export const CREATE_SEWING_GOODS__ACTION_TYPE = {
 export const SEWING_GOODS_FIELD_NAME = {
   NAME: 'titleRu',
   DESCRIPTION: 'descriptionRu',
-  TYPE: 'type',
-  MODIFIER: 'modifier',
-  DISCOUNT: 'discount',
+  MODIFIER: 'modifierRu',
   IMAGES: 'images',
   IMAGE: 'image',
   RECOMMENDATIONS: 'recommendation',
   CATEGORIES: 'categories',
-  CATEGORY: 'textRu',
 
-  COUNT: 'count',
-
-  SIZES: 'sizes',
-  SIZE_NAME: 'size',
-  SIZE_PRICE: 'price',
-
-  COLORS: 'colors',
-  COLOR_NAME: 'color',
-  COLOR_PRICE: 'price',
+  OPTIONS: 'options',
+  OPTION_SIZE: 'size',
+  OPTION_COLOR: 'colorRu',
+  OPTION_PRICE: 'price',
+  OPTION_DISCOUNT: 'discount',
 };

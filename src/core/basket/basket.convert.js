@@ -49,7 +49,6 @@ export function convertAddToCart(product, data, indexId = 0) {
       id: product.id,
       type: data.type,
       masterClass: product,
-      program: data.program ? data.program : product.programs[0].id,
       indexId: product.id + indexId,
     };
   }
@@ -58,7 +57,7 @@ export function convertAddToCart(product, data, indexId = 0) {
       id: product.id,
       type: data.type,
       patternProduct: product,
-      size: data.size ? data.size : product.sizes[0].id,
+      option: data.option.id,
       indexId: product.id + indexId,
     };
   }
@@ -67,8 +66,7 @@ export function convertAddToCart(product, data, indexId = 0) {
       id: product.id,
       type: data.type,
       sewingProduct: product,
-      size: data.size ? data.size : product.sizes[0].id,
-      color: data.color ? data.color : product.colors[0].id,
+      option: data.option.id,
       count: data.count ?? 1,
       indexId: product.id + indexId,
     };

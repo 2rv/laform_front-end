@@ -1,38 +1,39 @@
-export interface ParamsType {
-  id: string;
+export interface OptionType {
+  id: number;
+  optionId: string;
+  price: number;
+  tvalue: { color?: string; size: string; price: number };
+  discount?: number;
   tid: string;
-  price?: number;
-  vendorCode?: string;
+  vendorCode: string;
 }
-export interface CardImageTypeProps {
+export interface CardImageProps {
   image: string;
   modifier?: string;
   discount?: number;
   path: string | Function;
   pathConfig: object;
 }
-export interface CardActionTypeProps {
+export interface CardActionProps {
   id: string;
   type: number;
   like?: boolean;
   admin?: boolean;
-  sizes?: ParamsType[];
-  colors?: ParamsType[];
-  programs?: ParamsType[];
+  options?: OptionType[];
   onSelect?: Function;
   onCart?: Function;
   onDelete?: Function;
 }
-export interface CardPriceTypeProps {
+export interface CardPriceProps {
   price?: number;
   discount?: number;
 }
 
-export interface CardArticleTypeProps {
+export interface CardArticleType {
   id: string;
   type: number;
   image: string;
-  name: string | undefined;
+  name?: string;
   modifier?: string;
   createdDate: string;
   like?: boolean;
@@ -40,7 +41,7 @@ export interface CardArticleTypeProps {
   onSelect?: Function;
   onDelete?: Function;
 }
-export interface CardSewingGoodTypeProps {
+export interface CardSewingGoodType {
   id: string;
   type: number;
   image: string;
@@ -50,13 +51,12 @@ export interface CardSewingGoodTypeProps {
   price: number;
   like?: boolean;
   admin?: boolean;
-  sizes?: ParamsType[];
-  colors?: ParamsType[];
+  options: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
   onCart?: Function;
 }
-export interface CardPatternTypeProps {
+export interface CardPatternType {
   id: string;
   type: number;
   image: string;
@@ -67,12 +67,12 @@ export interface CardPatternTypeProps {
   price: number;
   like?: boolean;
   admin?: boolean;
-  sizes?: ParamsType[];
+  options: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
   onCart?: Function;
 }
-export interface CardMasterClassTypeProps {
+export interface CardMasterClassType {
   id: string;
   type: number;
   image: string;
@@ -80,9 +80,9 @@ export interface CardMasterClassTypeProps {
   modifier?: string;
   discount?: number;
   price: number;
+  vendorCode: string;
   like?: boolean;
   admin?: boolean;
-  programs?: ParamsType[];
   onSelect?: Function;
   onDelete?: Function;
   onCart?: Function;

@@ -1,25 +1,17 @@
-export interface BasicProgram {
+export interface BasicOptionType {
   id: string;
   price: number;
-  programNameRu?: string;
-  programNameEn?: string;
+  discount?: number;
+  size: string;
   vendorCode: string;
+  colorRu?: string;
+  colorEn?: string;
 }
-export interface BasicSize {
-  id: string;
-  price: number;
-  size?: string;
-  vendorCode: string;
-}
-export interface BasicColor {
-  id: string;
-  color?: string;
-}
-interface BasicImage {
+interface BasicImageType {
   id: string;
   fileUrl: string;
 }
-interface BasicLike {
+interface BasicLikeType {
   id: string;
   userId: string;
   postId: string;
@@ -29,50 +21,53 @@ interface BasicLike {
 }
 export interface BasicMasterClassType {
   id: string;
-  images: BasicImage[];
-  programs: BasicProgram[];
-  like?: BasicLike[];
+  type: 0;
+  createdDate: string;
+  vendorCode: string;
+  images: BasicImageType[];
+  like?: BasicLikeType[];
   titleRu?: string;
   titleEn?: string;
-  modifier?: string;
+  modifierRu?: string;
+  modifierEn?: string;
   discount?: number;
-  type: 0;
+  price: number;
+  pinned?: boolean;
+}
+export interface BasicArticleType {
+  id: string;
+  type: 4;
+  createdDate: string;
+  image: BasicImageType;
+  like?: BasicLikeType[];
+  titleRu?: string;
+  titleEn?: string;
+  modifierRu?: string;
+  modifierEn?: string;
   pinned?: boolean;
 }
 export interface BasicPatternType {
   id: string;
-  images: BasicImage[];
-  sizes: BasicSize[];
-  like?: BasicLike[];
+  type: 1 | 2;
+  images: BasicImageType[];
+  options: BasicOptionType[];
+  like?: BasicLikeType[];
   titleRu?: string;
   titleEn?: string;
-  discount?: number;
-  modifier?: string;
-  type: 1 | 2;
+  modifierRu?: string;
+  modifierEn?: string;
   complexity: number;
   pinned?: boolean;
 }
 export interface BasicSewingGoodType {
   id: string;
-  sizes: BasicSize[];
-  colors: BasicColor[];
-  images: BasicImage[];
-  like?: BasicLike[];
-  titleRu?: string;
-  titleEn?: string;
-  modifier?: string;
   type: 3;
-  discount?: number;
-  pinned?: boolean;
-}
-export interface BasicArticleType {
-  id: string;
-  createdDate: string;
-  image: BasicImage;
-  like?: BasicLike[];
+  options: BasicOptionType[];
+  images: BasicImageType[];
+  like?: BasicLikeType[];
   titleRu?: string;
-  modifier?: string;
   titleEn?: string;
-  type: 4;
+  modifierRu?: string;
+  modifierEn?: string;
   pinned?: boolean;
 }

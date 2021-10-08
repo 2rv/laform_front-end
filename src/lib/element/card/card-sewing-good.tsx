@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { CardImage } from './card.image';
 import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-product';
-import { CardSewingGoodTypeProps } from './card.type';
+import { CardSewingGoodType } from './card.type';
 import {
   CardPrice,
   CardName,
@@ -12,7 +12,7 @@ import {
 } from './card.components';
 import { CartButton } from './card.cart-button';
 
-export function CardSewingGood(props: CardSewingGoodTypeProps) {
+export function CardSewingGood(props: CardSewingGoodType) {
   const {
     id,
     type,
@@ -26,8 +26,7 @@ export function CardSewingGood(props: CardSewingGoodTypeProps) {
     onSelect,
     onDelete,
     admin,
-    sizes,
-    colors,
+    options,
   } = props;
   return (
     <Container>
@@ -44,13 +43,7 @@ export function CardSewingGood(props: CardSewingGoodTypeProps) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton
-          id={id}
-          type={type}
-          onCart={onCart}
-          sizes={sizes}
-          colors={colors}
-        />
+        <CartButton id={id} type={type} onCart={onCart} options={options} />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />

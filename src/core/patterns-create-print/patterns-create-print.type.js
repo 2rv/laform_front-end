@@ -8,23 +8,18 @@ export const CREATE_PRINT_PATTERN_ACTION_TYPE = {
 };
 
 export const PRINT_PATTERN_FIELD_NAME = {
+  TYPE: 'type',
   NAME: 'titleRu',
   DESCRIPTION: 'descriptionRu',
-  TYPE: 'type',
-  MODIFIER: 'modifier',
-  DISCOUNT: 'discount',
+  MODIFIER: 'modifierRu',
+  MATERIAL: 'materialRu',
   IMAGES: 'images',
   IMAGE: 'image',
-
-  MATERIAL: 'materialRu',
   COMPLEXITY: 'complexity',
-
-  CATEGORIES: 'categories',
-  CATEGORY: 'textRu',
-
   RECOMMENDATIONS: 'recommendation',
-
-  SIZES: 'sizes',
-  SIZE_NAME: 'size',
-  SIZE_PRICE: 'price',
+  CATEGORIES: 'categories',
+  OPTIONS: 'options',
+  OPTION_SIZE: 'size',
+  OPTION_PRICE: 'price',
+  OPTION_DISCOUNT: 'discount',
 };

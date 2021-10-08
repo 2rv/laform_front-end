@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { CardImage } from './card.image';
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../../../core/master-class-product';
-import { CardMasterClassTypeProps } from './card.type';
+import { CardMasterClassType } from './card.type';
 import {
   CardName,
   CardPrice,
@@ -10,9 +10,9 @@ import {
   LikeButton,
   SelectButton,
 } from './card.components';
-import { CartButton } from './card.cart-button';
+import { CartButton } from './card.components';
 
-export function CardMasterClass(props: CardMasterClassTypeProps) {
+export function CardMasterClass(props: CardMasterClassType) {
   const {
     id,
     type,
@@ -26,7 +26,6 @@ export function CardMasterClass(props: CardMasterClassTypeProps) {
     onSelect,
     onDelete,
     onCart,
-    programs,
   } = props;
 
   return (
@@ -44,7 +43,7 @@ export function CardMasterClass(props: CardMasterClassTypeProps) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton id={id} type={type} onCart={onCart} programs={programs} />
+        <CartButton id={id} type={type} onCart={onCart} />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />

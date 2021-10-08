@@ -10,21 +10,15 @@ export const CREATE_MASTER_CLASS_ACTION_TYPE = {
 export const CREATE_MASTER_CLASS_FIELD_NAME = {
   NAME: 'titleRu',
   DESCRIPTION: 'descriptionRu',
-  TYPE: 'type',
-  MODIFIER: 'modifier',
+  MODIFIER: 'modifierRu',
   DISCOUNT: 'discount',
+  PRICE: 'price',
 
   IMAGES: 'images',
   IMAGE: 'image',
 
-  CATEGORIES: 'categories',
-  CATEGORY: 'textRu',
-
   RECOMMENDATIONS: 'recommendation',
+  CATEGORIES: 'categories',
 
-  PROGRAMS: 'programs',
-  PROGRAM_NAME: 'programNameRu',
-  PROGRAM_PRICE: 'price',
-
-  MASTER_CLASS: 'articleText',
+  ARTICLE: 'articleRu',
 };

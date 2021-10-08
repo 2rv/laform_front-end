@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { LinkPrimary } from '../link';
-import { CardImageTypeProps } from './card.type';
+import { CardImageProps } from './card.type';
 
-export function CardImage(props: CardImageTypeProps) {
+export function CardImage(props: CardImageProps) {
   const { image, modifier, discount, path, pathConfig } = props;
   const [imageLoaded, setimageLoaded] = useState(false);
   return (

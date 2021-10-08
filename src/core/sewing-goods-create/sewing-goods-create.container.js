@@ -25,23 +25,19 @@ export function CreateSewingGoodsContainer() {
 
   const initialValues = () => ({
     [SEWING_GOODS_FIELD_NAME.NAME]: '',
-    [SEWING_GOODS_FIELD_NAME.DESCRIPTION]: '',
-    [SEWING_GOODS_FIELD_NAME.TYPE]: 0,
     [SEWING_GOODS_FIELD_NAME.MODIFIER]: '',
-    [SEWING_GOODS_FIELD_NAME.DISCOUNT]: 0,
     [SEWING_GOODS_FIELD_NAME.CATEGORIES]: [],
+    [SEWING_GOODS_FIELD_NAME.DESCRIPTION]: '',
     [SEWING_GOODS_FIELD_NAME.IMAGES]: [],
-    [SEWING_GOODS_FIELD_NAME.SIZES]: [initialSizes],
-    [SEWING_GOODS_FIELD_NAME.COLORS]: [initialColors],
+    [SEWING_GOODS_FIELD_NAME.OPTIONS]: [productOption],
     [SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS]: [],
   });
 
-  const initialSizes = {
-    [SEWING_GOODS_FIELD_NAME.SIZE_NAME]: '',
-    [SEWING_GOODS_FIELD_NAME.SIZE_PRICE]: 0,
-  };
-  const initialColors = {
-    [SEWING_GOODS_FIELD_NAME.COLOR_NAME]: '',
+  const productOption = {
+    [SEWING_GOODS_FIELD_NAME.OPTION_COLOR]: '',
+    [SEWING_GOODS_FIELD_NAME.OPTION_SIZE]: '',
+    [SEWING_GOODS_FIELD_NAME.OPTION_PRICE]: 0,
+    [SEWING_GOODS_FIELD_NAME.OPTION_DISCOUNT]: 0,
   };
 
   return (
@@ -51,8 +47,7 @@ export function CreateSewingGoodsContainer() {
       isError={isRequestError(state)}
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
-      initialSizes={initialSizes}
-      initialColors={initialColors}
+      productOption={productOption}
       initialValues={initialValues()}
       onSubmit={onSubmit}
       validation={formValidation}

@@ -157,9 +157,13 @@ import {
   purchaseProductsStore,
   PURCHASE_PRODUCTS_STORE_NAME,
 } from '../../core/purchase-products';
-export const PERSISTED_CART = 'PERSISTED_CART';
+import {
+  categoriesStore,
+  CATEGORIES_STORE_NAME,
+} from '../../core/block-categories';
 
 export const reducers = combineReducers({
+  [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,

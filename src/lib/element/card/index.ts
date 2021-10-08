@@ -5,9 +5,9 @@ export { CardArticle } from './card.article';
 export { ComplexityDots } from './card.components';
 
 export type {
-  CardArticleTypeProps,
-  CardSewingGoodTypeProps,
-  CardPatternTypeProps,
-  CardMasterClassTypeProps,
-  ParamsType,
+  CardArticleType,
+  CardSewingGoodType,
+  CardPatternType,
+  CardMasterClassType,
+  OptionType,
 } from './card.type';

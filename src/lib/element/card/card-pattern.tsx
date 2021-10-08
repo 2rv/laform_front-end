@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { CardImage } from './card.image';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../../../core/patterns-product';
-import { CardPatternTypeProps } from './card.type';
+import { CardPatternType } from './card.type';
 import {
   CardPrice,
   CardName,
@@ -13,7 +13,7 @@ import {
 } from './card.components';
 import { CartButton } from './card.cart-button';
 
-export function CardPattern(props: CardPatternTypeProps) {
+export function CardPattern(props: CardPatternType) {
   const {
     id,
     type,
@@ -28,7 +28,7 @@ export function CardPattern(props: CardPatternTypeProps) {
     onSelect,
     onDelete,
     admin,
-    sizes,
+    options,
   } = props;
 
   return (
@@ -49,7 +49,7 @@ export function CardPattern(props: CardPatternTypeProps) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton id={id} type={type} onCart={onCart} sizes={sizes} />
+        <CartButton id={id} type={type} onCart={onCart} options={options} />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
