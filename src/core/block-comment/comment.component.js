@@ -11,10 +11,12 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
 import { useEffect, useRef } from 'react';
 import { TextPrimary, TextSecondary } from 'src/lib/element/text';
+import { SignComponent } from '../basket/frames';
 
 export function CommentComponent(props) {
   const {
     user,
+    isAuth,
     comments,
     //------------------------------
     onSubmit,
@@ -70,24 +72,28 @@ export function CommentComponent(props) {
           <Spinner />
         </SpinnerCase>
       ) : (
-        <ListComment>
-          {comments?.map((data, index) => (
-            <CommentItem
-              handleDeleteComment={handleDeleteComment}
-              handleDeleteSubComment={handleDeleteSubComment}
-              handleEditComment={handleEditComment}
-              cancelEditing={cancelEditing}
-              setSubUser={setSubUser}
-              key={data?.id}
-              data={data}
-              handleSetSubUser={handleSetSubUser}
-              user={user}
-            />
-          ))}
-          <div ref={messageRef} />
-        </ListComment>
+        Boolean(comments.length > 0) ? (
+          <ListComment>
+            {comments?.map((data, index) => (
+              <CommentItem
+                handleDeleteComment={handleDeleteComment}
+                handleDeleteSubComment={handleDeleteSubComment}
+                handleEditComment={handleEditComment}
+                cancelEditing={cancelEditing}
+                setSubUser={setSubUser}
+                key={data?.id}
+                data={data}
+                handleSetSubUser={handleSetSubUser}
+                user={user}
+              />
+            ))}
+            <div ref={messageRef} />
+          </ListComment>
+        ) : (
+          <TextSecondary tid="COMMENTS.NO_REVIEWS" />
+        )
       )}
-      {Boolean(user !== null) && (
+      {isAuth ? (
         <SectionLayout type="SMALL">
           <HeaderCase>
             <Title tid="COMMENTS.WRITE_REVIEW" />
@@ -128,6 +134,8 @@ export function CommentComponent(props) {
             </TextareaActionButtons>
           </Content>
         </SectionLayout>
+      ) : (
+        <SignComponent title="OTHER.LEAVE_REVIEW" />
       )}
     </SectionLayout>
   );

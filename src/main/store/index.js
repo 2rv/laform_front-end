@@ -159,6 +159,10 @@ import {
 } from '../../core/purchase-products';
 import { searchButtonStore } from '../../core/search-button/search-button.store';
 import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
+import {
+  aboutStore,
+  ABOUT_STORE_NAME,
+} from '../../core/about';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -216,6 +220,7 @@ export const reducers = combineReducers({
   [ALL_LIKES_STORE_NAME]: allLikesStore,
   [PURCHASE_PRODUCTS_STORE_NAME]: purchaseProductsStore,
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
+  [ABOUT_STORE_NAME]: aboutStore,
 });
 
 export { initStore } from './store.core';
