@@ -157,6 +157,10 @@ import {
   purchaseProductsStore,
   PURCHASE_PRODUCTS_STORE_NAME,
 } from '../../core/purchase-products';
+import {
+  aboutStore,
+  ABOUT_STORE_NAME,
+} from '../../core/about';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -213,6 +217,7 @@ export const reducers = combineReducers({
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
   [PURCHASE_PRODUCTS_STORE_NAME]: purchaseProductsStore,
+  [ABOUT_STORE_NAME]: aboutStore,
 });
 
 export { initStore } from './store.core';
