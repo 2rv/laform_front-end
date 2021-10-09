@@ -36,7 +36,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
       dispatch(initializeBasketStore());
       window.addEventListener('resize', handleWindowSizeChange);
     }
-  }, []);
+  }, [width]);
 
   return (
     <Container>
