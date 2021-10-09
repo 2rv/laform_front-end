@@ -9,7 +9,7 @@ import {
   LogoMobile,
   EmailConfirmed,
 } from '../header-component';
-import { SearchButton } from '../search-button/search-button';
+import { SearchButtonContainer } from '../search-button/search-button.container';
 
 export function HeaderMenuComponent(props) {
   const {
@@ -46,7 +46,7 @@ export function HeaderMenuComponent(props) {
           />
         )}
         {!isAuth && !isMobile && <AuthLinks />}
-        <SearchButton />
+        <SearchButtonContainer />
         <CartButton cartCount={cartCount} isTablet={isTablet} />
       </Case>
     </Container>
