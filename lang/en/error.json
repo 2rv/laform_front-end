@@ -4,7 +4,7 @@
   "USER_VERIFICATION_EMAIL_CODE_DOESNT_EXISTS": "Verification code does not exist.",
   "PROMO_CODE_NOT_EXISTS": "Promo code does not exist or is not active",
   "LOGIN_UNCORRECT_PASSWORD_OR_LOGIN": "Incorrect username or password.",
-  "LOGIN_COULDNT_FOUND_USER": "User with this username was not found.",
+  "LOGIN_COULDNT_FOUND_USER": "User with this login or email was not found.",
   "USER_ALREADY_EXISTS": "User already exists.",
   "PLEASE_UPLOAD_IMAGE": "Please upload an image.",
   "USER_NOT_CONFIRMED": "You haven't verified your email address yet",
