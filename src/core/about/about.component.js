@@ -9,7 +9,7 @@ import { USER_ROLE } from '../../lib/common/auth';
 import { ReactEditor } from '../block-react-editor';
 import { aboutUsLoadData, aboutUsUploadData } from './about.action';
 
-export function AboutComponent({ about, user }) {
+export function AboutComponent({ about, user, isAuth }) {
   const dispatch = useDispatch();
   const [editorData, setEditorData] = useState(about);
 
@@ -20,7 +20,7 @@ export function AboutComponent({ about, user }) {
   return (
     <SectionLayout>
       <TitlePrimary tid="HEADER.MENU_ITEMS.ABOUT_US" />
-      {user.role === USER_ROLE.ADMIN ? (
+      {isAuth && user.role === USER_ROLE.ADMIN ? (
         <>
           <ReactEditor
             handleChange={(value) => setEditorData(value)}
