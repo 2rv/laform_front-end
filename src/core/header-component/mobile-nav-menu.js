@@ -41,20 +41,20 @@ export function MobileNavMenu(props) {
         />
       </Button>
 
-      <Button onClick={setLinkRedirect(BASKET_ROUTE_PATH)}>
-        <CartStyledIcon
-          active={
-            activePath?.startsWith(BASKET_ROUTE_PATH) ? 'true' : undefined
-          }
-        />
-      </Button>
-
       <Button onClick={setLinkRedirect(isAuth ? PURCHASE_PRODUCTS_ROUTE_PATH : SIGNUP_ROUTE_PATH)}>
         <UserStyledIcon
           active={
             activePath?.startsWith(PURCHASE_PRODUCTS_ROUTE_PATH)
               ? 'true'
               : undefined
+          }
+        />
+      </Button>
+
+      <Button onClick={setLinkRedirect(BASKET_ROUTE_PATH)}>
+        <CartStyledIcon
+          active={
+            activePath?.startsWith(BASKET_ROUTE_PATH) ? 'true' : undefined
           }
         />
       </Button>

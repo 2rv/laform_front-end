@@ -11,9 +11,10 @@ import { ABOUT_STORE_NAME } from './about.constant';
 
 export function AboutContainer() {
   const dispatch = useDispatch();
-  const { state, user, pageLoading } = useSelector((state) => ({
+  const { state, user, isAuth, pageLoading } = useSelector((state) => ({
     state: state[ABOUT_STORE_NAME].about,
     user: state[AUTH_STORE_NAME].user,
+    isAuth: state[AUTH_STORE_NAME].logged,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
   const about = getRequestData(state)?.about;
@@ -30,5 +31,5 @@ export function AboutContainer() {
     return <Spinner />;
   }
 
-  return <AboutComponent about={about} user={user} />;
+  return <AboutComponent about={about} user={user} isAuth={isAuth} />;
 }

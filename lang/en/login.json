@@ -3,7 +3,7 @@
   "LOGIN_FORM": {
     "FIELD": {
       "LOGIN": {
-        "TITLE": "Login",
+        "TITLE": "Login or Email",
         "PLACEHOLDER": "La Forme"
       },
       "PASSWORD": {
