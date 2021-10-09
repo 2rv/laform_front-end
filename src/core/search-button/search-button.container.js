@@ -15,7 +15,7 @@ import {
 export function SearchButtonContainer() {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState('');
-  const debounce = useDebounce(searchInput, 1000);
+  const debounce = useDebounce(searchInput, 300);
 
   const {
     masterClassState,
