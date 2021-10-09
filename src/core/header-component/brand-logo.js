@@ -10,7 +10,7 @@ export function BrandLogo() {
       <div>
         <Text tid="HEADER_LOGO.HEADING_TEXT" />
         &nbsp;
-        <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
+        <BrandText tid="La`forme Patterns" />
       </div>
     </Container>
   );

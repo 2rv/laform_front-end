@@ -18,5 +18,6 @@
 	"GET_PURCHASES_HISTORY": "To gain access to the purchase history, you must: login or register",
 	"LEAVE_REVIEW": "To leave a review, you must: login or register",
 	"SIGN_UP": "Sign up",
-	"SIGN_IN": "Log in"
+	"SIGN_IN": "Log in",
+	"EMAIL_NOT_CONFIRMED": "Email not confirmed"
 }

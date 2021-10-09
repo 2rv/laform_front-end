@@ -15,7 +15,7 @@ export function EmailConfirmed(props) {
           <Icon />
         </Button>
       ) : (
-        <InfoAlert isMobile={isMobile} tid="Почта не подтверждена" />
+        <InfoAlert isMobile={isMobile} tid="OTHER.EMAIL_NOT_CONFIRMED" />
       )}
     </LinkPrimary>
   );
