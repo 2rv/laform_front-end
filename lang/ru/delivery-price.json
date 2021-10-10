@@ -1,0 +1,18 @@
+{
+  "TITLE": "Создать способ доставки",
+  "FORM": {
+    "FIELDS": {
+      "LABELS": {
+        "DELIVERY_TYPE": "Способ доставки",
+        "DELIVERY_TYPE_PRICE": "Цена способа доставки"
+      },
+      "PLACEHOLDERS": {
+        "DELIVERY_TYPE": "Напишите способ доставки",
+        "DELIVERY_TYPE_PRICE": "Напишите цену способа доставки"
+      }
+    },
+    "BUTTON": {
+      "TITLE": "Создать"
+    }
+  }
+}

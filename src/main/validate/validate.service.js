@@ -61,6 +61,10 @@ const NAME_EXP = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 export const name = (value) =>
   !NAME_EXP.test(value) ? getError('VALIDATION.NAME') : null;
 
+const ONLY_NUMBER_EXP = /^[0-9]*$/;
+export const onlyNumber = (value) =>
+  !ONLY_NUMBER_EXP.test(value) ? getError('VALIDATION.NUMBER') : null;
+
 export const number = (value) => {
   // eslint-disable-next-line no-restricted-globals
   if (isNaN(parseFloat(value))) {

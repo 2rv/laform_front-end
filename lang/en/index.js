@@ -39,6 +39,7 @@ import BLOCK_TABLE_LIST from './block-table-list.json';
 import PROMOCODE from './promocode.json';
 import ALL_LIKES from './all-likes.json';
 import PURCHASED_PRODUCTS from './purchase-products.json';
+import DELIVERY_PRICE from './delivery-price.json';
 
 export const EN = {
   translation: {
@@ -83,5 +84,6 @@ export const EN = {
     PROMOCODE,
     ALL_LIKES,
     PURCHASED_PRODUCTS,
+    DELIVERY_PRICE,
   },
 };

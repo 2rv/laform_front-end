@@ -1,0 +1,18 @@
+{
+  "TITLE": "Create delivery type",
+  "FORM": {
+    "FIELDS": {
+      "LABELS": {
+        "DELIVERY_TYPE": "Delivery type",
+        "DELIVERY_TYPE_PRICE": "Price of delivery type"
+      },
+      "PLACEHOLDERS": {
+        "DELIVERY_TYPE": "Write delivery type",
+        "DELIVERY_TYPE_PRICE": "Write price of delivery type"
+      }
+    },
+    "BUTTON": {
+      "TITLE": "Create"
+    }
+  }
+}

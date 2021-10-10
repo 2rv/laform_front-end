@@ -19,5 +19,7 @@
 	"SIGN_UP": "Sign up",
 	"SIGN_IN": "Log in",
 	"EMAIL_NOT_CONFIRMED": "Email not confirmed",
-	"SEARCH_PRODUCT": "Search product"
+	"SEARCH_PRODUCT": "Search product",
+	"DELIVERY_TYPE": "Delivery type:",
+	"DELIVERY_TYPE_PRICE": "Price:"
 }

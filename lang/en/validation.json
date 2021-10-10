@@ -7,5 +7,6 @@
   "PASSWORD_REPEAT": "Password mismatch",
   "PASSWORD": "",
   "NOT_PHONE": "Invalid phone number",
-  "PROMOCODE_DISCOUNT_RANGE": "Please enter a number in the range 1-99."
+  "PROMOCODE_DISCOUNT_RANGE": "Please enter a number in the range 1-99.",
+  "NUMBER": "Write only number"
 }
