@@ -6,6 +6,8 @@ import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { ReactComponent as CommentIcon } from '../../asset/svg/arrow-for-comment.svg';
 import { ReactComponent as DeleteIcon } from '../../asset/svg/delete-cancel-icon.svg';
 import { ReactComponent as EditIcon } from '../../asset/svg/edit-icon.svg';
+import { ReactComponent as ArrowDownOutlined } from '../../asset/svg/arrow-down-outlined.svg';
+import { ReactComponent as ArrowUpOutlined } from '../../asset/svg/arrow-up-outlined.svg';
 import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
 import { useState } from 'react';
@@ -32,10 +34,9 @@ export function SubComment(props) {
   if (subComment.length === 0) return null;
   return (
     <List>
-      <ButtonText
-        onClick={() => setView(!view)}
-        tid={view ? 'COMMENTS.CLOSE' : 'COMMENTS.OPEN'}
-      />
+      <ButtonText onClick={() => setView(!view)}>
+        {view ? <ArrowDownOutlined /> : <ArrowUpOutlined />}
+      </ButtonText>
       {view &&
         subComment.map((data, index) => {
           const { id, text, createDate, userId } = data;
@@ -88,9 +89,10 @@ const List = styled.div`
   gap: ${spacing(3)};
   width: 100%;
 `;
-const ButtonText = styled(TextButton)`
+const ButtonText = styled.div`
   width: fit-content;
   padding: 0;
+  cursor: pointer;
 `;
 const Container = styled.div`
   display: flex;
