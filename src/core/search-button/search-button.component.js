@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from 'src/asset/svg/search.svg';
+import { ReactComponent as FindIcon } from 'src/asset/svg/find-icon.svg';
 import { ReactComponent as CloseIcon } from  'src/asset/svg/delete-cancel-icon.svg';
 import { TitlePrimary } from 'src/lib/element/title';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
@@ -30,12 +31,25 @@ export function SearchButtonComponent(props) {
       <ModalFullCenter onOpen={modalVisibility}>
         <ModalContent>
           <HeaderCase>
-            <TitlePrimary tid="OTHER.ENTER_YOUR_SEARCH_DATA" />
-            <CloseModalButton tid="BLOCK_TEXT.CLOSE" onClick={() => setModalVisibility(false)} />
-          </HeaderCase>
-          <HeaderCase>
-            <BasicField value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
-            <ButtonIcon onClick={() => setSearchInput('')}>
+            <InputBox>
+              <BasicField
+                placeholderTid="OTHER.SEARCH_PRODUCT"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <IconBox>
+                {Boolean(searchInput.length > 0) ? (
+                  <ButtonIcon onClick={() => setSearchInput('')}>
+                    <CloseIcon />
+                  </ButtonIcon>
+                ) : (
+                  <ButtonIcon>
+                    <FindIcon />
+                  </ButtonIcon>
+                )}
+              </IconBox>
+            </InputBox>
+            <ButtonIcon onClick={() => setModalVisibility(false)}>
               <CloseIcon />
             </ButtonIcon>
           </HeaderCase>
@@ -68,12 +82,20 @@ const ModalFullCenter = styled(ModalFull)`
   justify-content: center;
 `;
 
-const ButtonIcon = styled(IconButton)`
-  padding: 0;
+const InputBox = styled.div`
+  position: relative;
+  width: 100%;
 `;
 
-const CloseModalButton = styled(ButtonBasic)`
-  width: auto;
+const IconBox = styled.div`
+  position: absolute;
+  right: 1px;
+  top: 1px;
+`;
+
+const ButtonIcon = styled(IconButton)`
+  padding: 0;
+  height: 44px;
 `;
 
 const HeaderCase = styled.div`
