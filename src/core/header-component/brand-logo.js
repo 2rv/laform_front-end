@@ -6,7 +6,7 @@ import { setLinkRedirect } from 'src/main/navigation';
 export function BrandLogo() {
   return (
     <Container onClick={setLinkRedirect('/')}>
-      <img src={'https://i.ibb.co/VJGKXFQ/la.png'} alt="Logo" width="68" height="66" />
+      <img src={'/static/image/laforme-header-logo.png'} alt="Logo" />
       <div>
         <Text tid="HEADER_LOGO.HEADING_TEXT" />
         &nbsp;

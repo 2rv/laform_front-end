@@ -1,4 +1,5 @@
 import App from 'next/app';
+import Head from 'next/head';
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
@@ -46,6 +47,12 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props;
     return (
       <ReduxProvider store={store}>
+        <Head>
+          <title>La'forme Patterns</title>
+          <link rel="icon" type="image/x-icon" href="/static/image/favicon.ico" />
+          <link rel="icon" type="image/png" sizes="64x64" href="/static/image/laforme-favicon-logo-64x64.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/static/image/laforme-favicon-logo-32x32.png" />
+        </Head>
         <NavigationObserver />
         <Component {...pageProps} />
       </ReduxProvider>

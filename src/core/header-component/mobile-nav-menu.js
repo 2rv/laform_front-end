@@ -23,20 +23,20 @@ export function MobileNavMenu(props) {
 
   return (
     <Container>
-      <Button onClick={setLinkRedirect(PATTERNS_ROUTE_PATH)}>
-        <TShirtStyledIcon
-          active={
-            activePath?.startsWith(PATTERNS_ROUTE_PATH) ? 'true' : undefined
-          }
-        />
-      </Button>
-
       <Button onClick={setLinkRedirect(MASTER_CLASSES_ROUTE_PATH)}>
         <MasterClassStyledIcon
           active={
             activePath?.startsWith(MASTER_CLASSES_ROUTE_PATH)
               ? 'true'
               : undefined
+          }
+        />
+      </Button>
+
+      <Button onClick={setLinkRedirect(PATTERNS_ROUTE_PATH)}>
+        <TShirtStyledIcon
+          active={
+            activePath?.startsWith(PATTERNS_ROUTE_PATH) ? 'true' : undefined
           }
         />
       </Button>
