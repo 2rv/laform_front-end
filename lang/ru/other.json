@@ -19,5 +19,7 @@
 	"SIGN_UP": "Регистрация",
 	"SIGN_IN": "Войти",
 	"EMAIL_NOT_CONFIRMED": "Почта не подтверждена",
-	"SEARCH_PRODUCT": "Найти товар"
+	"SEARCH_PRODUCT": "Найти товар",
+	"DELIVERY_TYPE": "Способ доставки:",
+	"DELIVERY_TYPE_PRICE": "Цена:"
 }

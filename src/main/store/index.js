@@ -163,6 +163,10 @@ import {
   aboutStore,
   ABOUT_STORE_NAME,
 } from '../../core/about';
+import {
+  deliveryPricePageStore,
+  DELIVERY_PRICE_PAGE_STORE_NAME,
+} from '../../core/delivery-price-page';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -221,6 +225,7 @@ export const reducers = combineReducers({
   [PURCHASE_PRODUCTS_STORE_NAME]: purchaseProductsStore,
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
   [ABOUT_STORE_NAME]: aboutStore,
+  [DELIVERY_PRICE_PAGE_STORE_NAME]: deliveryPricePageStore,
 });
 
 export { initStore } from './store.core';
