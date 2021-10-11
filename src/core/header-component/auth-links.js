@@ -6,9 +6,9 @@ import { LOGIN_ROUTE_PATH } from '../login';
 import { SIGNUP_ROUTE_PATH } from '../signup';
 
 export function AuthLinks(props) {
-  const { modile } = props;
+  const { mobile } = props;
   return (
-    <Container modile={modile}>
+    <Container mobile={mobile}>
       <Link tid="HEADER_LOGO.MOBILE.LOGIN" path={LOGIN_ROUTE_PATH} />
       &nbsp;
       <Text tid="HEADER_LOGO.MOBILE.OR" />
