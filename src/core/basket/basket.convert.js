@@ -24,6 +24,11 @@ export const convertForCreateOrder = (data, bascketState) => ({
   }),
 });
 
+export const convertSettingsDeliveryTypesData = (data) => ({
+  id: data.id,
+  tid: data.deliveryType,
+});
+
 export const performUserInfoData = (rowData) => ({
   [ORDER_FIELD_NAME.FULL_NAME]: rowData[USER_INFO_DATA_NAME.FULL_NAME],
   [ORDER_FIELD_NAME.CITY]: rowData[USER_INFO_DATA_NAME.CITY],

@@ -67,6 +67,7 @@ export function FormComponent(props) {
           onChange={handleChange}
           onBlur={handleBlur}
           error={getFieldError(ORDER_FIELD_NAME.DELIVERY_METHOD)}
+          textValue
         />
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.CONTACT_PHONE_NUMBER"

@@ -10,6 +10,10 @@ export const SETTINGS_CHANGE_DELIVERY_INFO_API = {
     ENDPOINT: '/user/info/update',
     METHOD: 'PATCH',
   },
+  GET_DELIVERY_TYPES: {
+    ENDPOINT: '/delivery-price/get',
+    METHOD: 'GET',
+  },
 };
 
 export const SETTINGS_CHANGE_DELIVERY_INFO_DELIVERY_TYPE_OPTIONS = [
