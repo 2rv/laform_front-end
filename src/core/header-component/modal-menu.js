@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ReactComponent as UserIcon } from '../../asset/svg/user.svg';
 import { spacing, THEME_SIZE } from '../../lib/theme';
 import { TextPrimary } from '../../lib/element/text';
@@ -8,30 +8,47 @@ import { LinkPrimary } from '../../lib/element/link';
 import { Divider } from '../../lib/element/divider';
 
 export function ModalMenu(props) {
-  const { currentLang, modalMenuItems, userName } = props;
+  const { currentLang, modalMenuItems, userName, mobile } = props;
 
   return (
-    <Popup
-      top={30}
-      content={(setVisible) => (
-        <Container onClick={() => setVisible(false)}>
-          {modalMenuItems.map(({ path, tid, divider }, index) => (
+    <ContainerCase mobile={mobile}>
+      <Popup
+        top={30}
+        content={(setVisible) => (
+          <Container onClick={() => setVisible(false)}>
+            {modalMenuItems.map(({ path, tid, divider }, index) => (
               <React.Fragment key={index}>
                 {divider ? <Divider /> : <Link tid={tid} path={path} />}
               </React.Fragment>
-            )
-          )}
-        </Container>
-      )}
-    >
-      <Content>
-        <UserIcon />
-        <Text>{userName}</Text>
-      </Content>
-    </Popup>
+            ))}
+          </Container>
+        )}
+      >
+        <Content>
+          <UserIcon />
+          <Text>{userName}</Text>
+        </Content>
+      </Popup>
+    </ContainerCase>
   );
 }
-
+const ContainerCase = styled.div`
+  ${(p) => {
+    return p.mobile
+      ? css`
+          display: none;
+          @media screen and (max-width: 720px) {
+            display: block;
+          }
+        `
+      : css`
+          display: block;
+          @media screen and (max-width: 720px) {
+            display: none;
+          }
+        `;
+  }}
+`;
 const Content = styled.div`
   display: flex;
   align-items: center;

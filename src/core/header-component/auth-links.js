@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { LinkPrimary } from '../../lib/element/link';
 import { TextSecondary } from '../../lib/element/text';
@@ -6,21 +6,35 @@ import { LOGIN_ROUTE_PATH } from '../login';
 import { SIGNUP_ROUTE_PATH } from '../signup';
 
 export function AuthLinks(props) {
+  const { modile } = props;
   return (
-    <div>
+    <Container modile={modile}>
       <Link tid="HEADER_LOGO.MOBILE.LOGIN" path={LOGIN_ROUTE_PATH} />
       &nbsp;
       <Text tid="HEADER_LOGO.MOBILE.OR" />
       &nbsp;
       <Link tid="HEADER_LOGO.MOBILE.SIGNUP" path={SIGNUP_ROUTE_PATH} />
-    </div>
+    </Container>
   );
 }
 
-// tid="HEADER.MENU_ACTION.LOGIN"
-// tid="HEADER.MENU_ACTION.OR"
-// tid="HEADER.MENU_ACTION.SIGNUP"
-
+const Container = styled.div`
+  ${(p) => {
+    return p.mobile
+      ? css`
+          display: none;
+          @media screen and (max-width: 720px) {
+            display: block;
+          }
+        `
+      : css`
+          display: block;
+          @media screen and (max-width: 720px) {
+            display: none;
+          }
+        `;
+  }}
+`;
 const Text = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
   color: ${THEME_COLOR.TEXT.LIGHT};

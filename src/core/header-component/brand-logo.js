@@ -22,6 +22,9 @@ const Container = styled.div`
   align-items: center;
   cursor: pointer;
   user-select: none;
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 `;
 
 const Text = styled(TextPrimary)`

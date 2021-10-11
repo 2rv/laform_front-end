@@ -5,19 +5,16 @@ import { IconButton } from '../../lib/element/button';
 import { setLinkRedirect } from 'src/main/navigation';
 
 export function CartButton(props) {
-  const { isTablet, cartCount } = props;
+  const { cartCount } = props;
   return (
     <Container onClick={setLinkRedirect('/basket')}>
-      {isTablet ? (
-        <BadgeButton>
-          <CartIcon />
-          <Badge>{cartCount}</Badge>
-        </BadgeButton>
-      ) : (
-        <BadgeDark badgeContent={cartCount}>
-          <CartIcon />
-        </BadgeDark>
-      )}
+      <BadgeButton>
+        <CartIcon />
+        <Badge>{cartCount}</Badge>
+      </BadgeButton>
+      <BadgeDark badgeContent={cartCount}>
+        <CartIcon />
+      </BadgeDark>
     </Container>
   );
 }
@@ -28,10 +25,13 @@ const Container = styled.div`
   padding-right: 5px;
 `;
 const BadgeButton = styled(IconButton)`
-  display: flex;
+  display: none;
   position: relative;
   background-color: ${THEME_COLOR.WHITE};
   padding: 0;
+  @media screen and (max-width: 1070px) {
+    display: flex;
+  }
 `;
 const Badge = styled.span`
   position: absolute;
@@ -66,6 +66,9 @@ function BadgeDark(props) {
 const Container2 = styled.div`
   position: relative;
   cursor: pointer;
+  @media screen and (max-width: 1070px) {
+    display: none;
+  }
 `;
 
 const Badge2 = styled.span`

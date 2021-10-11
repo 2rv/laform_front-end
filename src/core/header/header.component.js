@@ -14,8 +14,6 @@ export function HeaderComponent(props) {
     currentLang,
     navMenuItems,
     modalMenuItems,
-    isMobile,
-    isTablet,
     setSidebarOpen,
     sidebarIsOpen,
     emailConfirmed,
@@ -29,7 +27,6 @@ export function HeaderComponent(props) {
           userName={userName}
           modalMenuItems={modalMenuItems}
           currentLang={currentLang}
-          isMobile={isMobile}
         />
       </HeaderLogoCase>
       <HeaderMenuCase>
@@ -44,15 +41,12 @@ export function HeaderComponent(props) {
           currentLang={currentLang}
           navMenuItems={navMenuItems}
           modalMenuItems={modalMenuItems}
-          isMobile={isMobile}
-          isTablet={isTablet}
         />
       </HeaderMenuCase>
-      {isMobile && <MobileNavMenu activePath={activePath} />}
+      <MobileNavMenu activePath={activePath} />
     </Container>
   );
 }
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
