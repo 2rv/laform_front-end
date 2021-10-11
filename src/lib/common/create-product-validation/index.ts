@@ -24,6 +24,7 @@ interface validateOption {
   isFilePdf?: boolean;
 }
 export function findMinPriceAndDiscount(values: optionType[]) {
+  if (!values || values.length === 0) return { price: 0, discount: 0 };
   return values.reduce(
     (acc, item) => {
       if (acc.price > item.price) {

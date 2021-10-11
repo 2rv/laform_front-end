@@ -15,7 +15,7 @@ export function CreateSewingGoodsComponent(props) {
     isError,
     errorMessage,
     //--------
-    productOption,
+    initialOption,
     initialValues,
     onSubmit,
     validation,
@@ -41,7 +41,7 @@ export function CreateSewingGoodsComponent(props) {
                     imageFieldName={SEWING_GOODS_FIELD_NAME.IMAGE}
                     title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent {...formProps} productOption={productOption} />
+                  <FormComponent {...formProps} initialOption={initialOption} />
                 </SectionLayout>
               </form>
             );

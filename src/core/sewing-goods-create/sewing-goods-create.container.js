@@ -29,13 +29,16 @@ export function CreateSewingGoodsContainer() {
     [SEWING_GOODS_FIELD_NAME.CATEGORIES]: [],
     [SEWING_GOODS_FIELD_NAME.DESCRIPTION]: '',
     [SEWING_GOODS_FIELD_NAME.IMAGES]: [],
-    [SEWING_GOODS_FIELD_NAME.OPTIONS]: [productOption],
+    [SEWING_GOODS_FIELD_NAME.PRICE]: 0,
+    [SEWING_GOODS_FIELD_NAME.DISCOUNT]: 0,
+    [SEWING_GOODS_FIELD_NAME.OPTIONS]: [],
+    [SEWING_GOODS_FIELD_NAME.OPTION_TYPE]: 0,
     [SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS]: [],
   });
 
-  const productOption = {
-    [SEWING_GOODS_FIELD_NAME.OPTION_COLOR]: '',
+  const initialOption = {
     [SEWING_GOODS_FIELD_NAME.OPTION_SIZE]: '',
+    [SEWING_GOODS_FIELD_NAME.OPTION_COLOR]: '',
     [SEWING_GOODS_FIELD_NAME.OPTION_PRICE]: 0,
     [SEWING_GOODS_FIELD_NAME.OPTION_DISCOUNT]: 0,
   };
@@ -47,7 +50,7 @@ export function CreateSewingGoodsContainer() {
       isError={isRequestError(state)}
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
-      productOption={productOption}
+      initialOption={initialOption}
       initialValues={initialValues()}
       onSubmit={onSubmit}
       validation={formValidation}

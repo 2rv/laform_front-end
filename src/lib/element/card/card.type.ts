@@ -1,10 +1,16 @@
 export interface OptionType {
   id: number;
   optionId: string;
-  price: number;
-  tvalue: { color?: string; size: string; price: number };
-  discount?: number;
   tid: string;
+  tvalue: {
+    color?: string;
+    size?: string;
+    price?: number;
+  };
+  size?: string;
+  color?: string;
+  price?: number;
+  discount?: number;
   vendorCode: string;
 }
 export interface CardImageProps {
@@ -48,10 +54,10 @@ export interface CardSewingGoodType {
   name: string | undefined;
   modifier?: string;
   discount?: number;
-  price: number;
+  price?: number;
   like?: boolean;
   admin?: boolean;
-  options: OptionType[];
+  options?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
   onCart?: Function;
@@ -64,10 +70,10 @@ export interface CardPatternType {
   complexity: number;
   modifier?: string;
   discount?: number;
-  price: number;
+  price?: number;
   like?: boolean;
   admin?: boolean;
-  options: OptionType[];
+  options?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
   onCart?: Function;

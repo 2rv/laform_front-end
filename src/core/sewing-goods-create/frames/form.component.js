@@ -5,15 +5,21 @@ import { TitlePrimary } from '../../../lib/element/title';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import { BasicField, TextareaField } from '../../../lib/element/field';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
-import { ProductPrice } from '../../block-product-create-components';
 import { RecomendationBlock } from '../../block-recomendation';
-import { ProductOptions } from './product-options';
 import { Divider } from 'src/lib/element/divider';
 import { BlockCategories } from 'src/core/block-categories';
-import {
-  findMinPriceAndDiscount,
-  numberValue,
-} from 'src/lib/common/create-product-validation';
+import { numberValue } from 'src/lib/common/create-product-validation';
+import { ProductPrice } from '../../block-product-create-components';
+import { ProductOptions } from '../../block-product-options';
+import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
+
+{
+  /* <RecomendationBlock
+			onSetRecomendation={(data) =>
+			  setFieldValue(SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS, data)
+			}
+		  /> */
+}
 
 export function FormComponent(props) {
   const {
@@ -24,8 +30,9 @@ export function FormComponent(props) {
     handleBlur,
     handleReset,
     setFieldValue,
-    productOption,
+    initialOption,
   } = props;
+
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
 
@@ -51,9 +58,7 @@ export function FormComponent(props) {
           onBlur={handleBlur}
         />
       </FieldLayout>
-
       <BlockCategories values={values} />
-
       <TextareaField
         titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
         placeholderTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
@@ -64,27 +69,31 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         minHeight={100}
       />
-
       <ProductOptions
-        productOption={productOption}
-        handleChange={handleChange}
-        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
         setFieldValue={setFieldValue}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
+        productPriceName={SEWING_GOODS_FIELD_NAME.PRICE}
+        productDiscountName={SEWING_GOODS_FIELD_NAME.DISCOUNT}
+        initialOption={initialOption}
+        fieldArrayName={SEWING_GOODS_FIELD_NAME.OPTIONS}
+        optionTypeName={SEWING_GOODS_FIELD_NAME.OPTION_TYPE}
+        optionSizeName={SEWING_GOODS_FIELD_NAME.OPTION_SIZE}
+        optionColorName={SEWING_GOODS_FIELD_NAME.OPTION_COLOR}
+        optionPriceName={SEWING_GOODS_FIELD_NAME.OPTION_PRICE}
+        optionDiscountName={SEWING_GOODS_FIELD_NAME.OPTION_DISCOUNT}
       />
 
-      {/* <RecomendationBlock
-          onSetRecomendation={(data) =>
-            setFieldValue(SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS, data)
-          }
-        /> */}
       <Divider />
 
       <ProductPrice
-        priceAndDiscount={findMinPriceAndDiscount(
+        priceAndDiscount={checkMinPriceAndDiscount(
           values[SEWING_GOODS_FIELD_NAME.OPTIONS],
+          values[SEWING_GOODS_FIELD_NAME.PRICE],
+          values[SEWING_GOODS_FIELD_NAME.DISCOUNT],
         )}
       />
       <FieldLayout type="double" adaptive>

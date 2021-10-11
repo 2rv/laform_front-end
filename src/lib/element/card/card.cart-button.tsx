@@ -14,7 +14,7 @@ import { isRequestPending } from 'src/main/store/store.service';
 import { useFormik } from 'formik';
 import { FieldSelect } from '../field';
 
-export function CartButton(props: CardActionProps) {
+export function CartButtonWithParams(props: CardActionProps) {
   const { id, type = false, onCart, options = [] } = props;
   if (!id || type === false || !onCart) return null;
 

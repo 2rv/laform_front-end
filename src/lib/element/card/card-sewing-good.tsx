@@ -5,12 +5,13 @@ import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-prod
 import { CardSewingGoodType } from './card.type';
 import {
   CardPrice,
+  CartButton,
   CardName,
   DeleteButton,
   LikeButton,
   SelectButton,
 } from './card.components';
-import { CartButton } from './card.cart-button';
+import { CartButtonWithParams } from './card.cart-button';
 
 export function CardSewingGood(props: CardSewingGoodType) {
   const {
@@ -28,6 +29,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
     admin,
     options,
   } = props;
+
   return (
     <Container>
       <CardImage
@@ -43,7 +45,17 @@ export function CardSewingGood(props: CardSewingGoodType) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton id={id} type={type} onCart={onCart} options={options} />
+        <SelectButton id={id} type={type} onSelect={onSelect} />
+        {options?.length === 0 ? (
+          <CartButton id={id} type={type} onCart={onCart} />
+        ) : (
+          <CartButtonWithParams
+            id={id}
+            type={type}
+            onCart={onCart}
+            options={options}
+          />
+        )}
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />

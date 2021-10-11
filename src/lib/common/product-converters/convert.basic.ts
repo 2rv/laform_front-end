@@ -45,7 +45,11 @@ export function convertArticleItemConverter(
 export function convertPatternItemConverter(
   item: BasicPatternType,
 ): CardPatternType {
-  const { price, discount } = checkMinPriceAndDiscount(item.options);
+  const { price, discount } = checkMinPriceAndDiscount(
+    item.options,
+    // item.price,
+    // item.discount,
+  );
   return {
     id: item.id,
     name: item.titleRu || item.titleEn,
@@ -63,7 +67,12 @@ export function convertPatternItemConverter(
 export function convertSewingGoodItemConverter(
   item: BasicSewingGoodType,
 ): CardSewingGoodType {
-  const { price, discount } = checkMinPriceAndDiscount(item.options);
+  const { price, discount } = checkMinPriceAndDiscount(
+    item.options,
+    item.price,
+    item.discount,
+  );
+  console.log(item.options);
   return {
     id: item.id,
     type: item.type,

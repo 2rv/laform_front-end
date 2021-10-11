@@ -16,6 +16,10 @@ export const SEWING_GOODS_FIELD_NAME = {
   RECOMMENDATIONS: 'recommendation',
   CATEGORIES: 'categories',
 
+  PRICE: 'price',
+  DISCOUNT: 'discount',
+  OPTION_TYPE: 'optionType',
+
   OPTIONS: 'options',
   OPTION_SIZE: 'size',
   OPTION_COLOR: 'colorRu',

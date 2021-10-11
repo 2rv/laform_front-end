@@ -1,11 +1,11 @@
 export interface BasicOptionType {
   id: string;
-  price: number;
-  discount?: number;
-  size: string;
   vendorCode: string;
+  size?: string;
   colorRu?: string;
   colorEn?: string;
+  price?: number;
+  discount?: number;
 }
 interface BasicImageType {
   id: string;
@@ -62,6 +62,7 @@ export interface BasicPatternType {
 export interface BasicSewingGoodType {
   id: string;
   type: 3;
+  optionType: 0 | 1 | 2 | 3;
   options: BasicOptionType[];
   images: BasicImageType[];
   like?: BasicLikeType[];
@@ -69,5 +70,7 @@ export interface BasicSewingGoodType {
   titleEn?: string;
   modifierRu?: string;
   modifierEn?: string;
+  price?: number;
+  discount?: number;
   pinned?: boolean;
 }
