@@ -13,7 +13,7 @@ export function SidebarMenu(props) {
     return 0;
   };
   return (
-    <Container open={isOpen} scrolled={scrolled()}>
+    <Container open={isOpen} scrolled={scrolled}>
       <Content>
         {NAVIGATION_MENU.map((data, index) => (
           <SidebarMenuListItem key={index} data={data} />
@@ -44,14 +44,14 @@ const Container = styled.div`
   top: 0;
   left: 0;
   max-width: ${(p) => (p.open ? `350px` : 0)};
-  overflow: hidden;
+  overflow: auto;
   background-color: ${THEME_COLOR.WHITE};
   z-index: 10;
   transition: 0.4s;
-  height: calc(100vh - 180px + ${(scrolled = 0) => scrolled + 'px'});
+  height: calc(100vh - 180px + ${(p) => p.scrolled() + 'px'});
   @media screen and (max-width: 720px) {
     width: 100vw;
     max-width: ${(p) => (p.open ? `100vw` : 0)};
-    height: calc(100vh - 120px + ${(scrolled = 0) => scrolled + 'px'});
+    height: calc(100vh - 120px + ${(p) => p.scrolled() + 'px'});
   }
 `;
