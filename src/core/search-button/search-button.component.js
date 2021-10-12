@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { ReactComponent as SearchIcon } from 'src/asset/svg/search.svg';
 import { ReactComponent as FindIcon } from 'src/asset/svg/find-icon.svg';
 import { ReactComponent as CloseIcon } from  'src/asset/svg/delete-cancel-icon.svg';
 import { TitlePrimary } from 'src/lib/element/title';
-import { spacing, THEME_SIZE } from 'src/lib/theme';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { ButtonBasic, IconButton } from 'src/lib/element/button';
 import { ModalFull } from 'src/lib/element/modal';
 import { BasicCardList } from 'src/lib/element/card-list';
@@ -24,9 +23,9 @@ export function SearchButtonComponent(props) {
   return (
     <>
       <Container onClick={() => setModalVisibility(true)}>
-        <ButtonIcon>
-          <SearchIcon />
-        </ButtonIcon>
+        <SearchButtonIcon>
+          <FindIcon />
+        </SearchButtonIcon>
       </Container>
       <ModalFullCenter onOpen={modalVisibility}>
         <ModalContent>
@@ -91,6 +90,14 @@ const IconBox = styled.div`
   position: absolute;
   right: 1px;
   top: 1px;
+`;
+
+const SearchButtonIcon = styled(IconButton)`
+  padding: 0;
+  background-color: none;
+  @media screen and (max-width: 1070px) {
+    background-color: ${THEME_COLOR.WHITE};
+  }
 `;
 
 const ButtonIcon = styled(IconButton)`
