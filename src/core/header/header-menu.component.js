@@ -29,7 +29,7 @@ export function HeaderMenuComponent(props) {
     <Container>
       <MiddleCase>
         <MenuButton open={sidebarIsOpen} setOpen={setSidebarOpen} />
-        <MobileLogo />
+        <LogoMobile />
       </MiddleCase>
       <NavMenu items={navMenuItems} activePath={activePath} />
       <Case>
@@ -78,12 +78,5 @@ const MiddleCase = styled(Case)`
   display: none;
   @media screen and (max-width: 1070px) {
     display: flex;
-  }
-`;
-
-const MobileLogo = styled(LogoMobile)`
-  display: flex;
-  @media screen and (max-width: 720px) {
-    display: block;
   }
 `;
