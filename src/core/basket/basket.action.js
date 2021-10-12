@@ -8,6 +8,7 @@ import {
   convertForCreateOrder,
   performUserInfoData,
   convertUserInfoData,
+  convertSettingsDeliveryTypesData,
 } from './basket.convert';
 import { redirect } from 'src/main/navigation';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
@@ -45,6 +46,33 @@ export function basketUploadData(values, bascketState, isAuth) {
       if (err.response) {
         dispatch({
           type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function getDeliveryTypes() {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: BASKET_API.GET_DELIVERY_TYPES.METHOD,
+        url: BASKET_API.GET_DELIVERY_TYPES.ENDPOINT,
+      });
+
+      dispatch({
+        type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_SUCCESS,
+        payload: response.data.map(convertSettingsDeliveryTypesData),
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_ERROR,
           errorMessage: err.response.data.message,
         });
       }

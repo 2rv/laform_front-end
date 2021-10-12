@@ -55,6 +55,7 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               value={values[fieldDeliveryType]}
               onChange={handleChange}
               onBlur={handleBlur}
+              textValue
             />
             <BasicField
               titleTid="SETTINGS.CHANGE_DELIVERY_INFO.LOCATION.TITLE"

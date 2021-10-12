@@ -77,7 +77,7 @@ export function FormContainer(props) {
                 {...formProps}
               />
               <SectionLayout type="SMALL">
-                <CartPrice values={formProps.values} />
+                <CartPrice values={formProps.values} deliveryOptions={diliveryOptions} />
                 <FieldLayout type="double" adaptive>
                   <ButtonPrimary
                     tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"

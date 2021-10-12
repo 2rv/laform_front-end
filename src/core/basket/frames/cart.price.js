@@ -1,17 +1,19 @@
-import { TextSecondary } from '../../../lib/element/text';
+import { TextSecondary, TextCurrency } from '../../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
 import styled from 'styled-components';
 import { ORDER_FIELD_NAME } from '../basket.type';
 
 export function CartPrice(props) {
-  const { values } = props;
+  const { values, deliveryOptions } = props;
 
   const price = values[ORDER_FIELD_NAME.PRICE];
   const promoDiscount = values[ORDER_FIELD_NAME.PROMO_DISCOUNT];
-  const diliveryPrice = values[ORDER_FIELD_NAME.DILIVERY_PRICE];
+  const deliveryMethod = values[ORDER_FIELD_NAME.DELIVERY_METHOD];
+  const deliveryPrice = deliveryOptions.find((method) => method.tid === deliveryMethod)?.price;
 
   const discountPrice = price - (price / 100) * promoDiscount;
-  const totalPrice = discountPrice + diliveryPrice;
+  const totalPrice = Number(discountPrice) + Number(deliveryPrice) + Number(price);
+
   return (
     <Container>
       <Content>
@@ -23,7 +25,7 @@ export function CartPrice(props) {
           }
         />
         <div>
-          <TextBold tid={discountPrice} />
+          <Price price={discountPrice} />
           &nbsp;
           <TextLight tid="OTHER.VALUTE" />
           &nbsp;
@@ -33,7 +35,7 @@ export function CartPrice(props) {
       <Content>
         <TextLight tid="BASKET.FORM.FOOTER.SHIPPING_PRICE" />
         <div>
-          <TextBold tid={diliveryPrice} />
+          <Price price={deliveryPrice} />
           &nbsp;
           <TextLight tid="OTHER.VALUTE" />
         </div>
@@ -42,7 +44,7 @@ export function CartPrice(props) {
       <Content>
         <TextLight tid="BASKET.FORM.FOOTER.TOTAL_ORDER_PRICE" />
         <div>
-          <TextBold fontSize={THEME_SIZE.FONT.LARGE} tid={totalPrice} />
+          <TitlePrice price={totalPrice} />
           &nbsp;
           <TextLight tid="OTHER.VALUTE" />
         </div>
@@ -82,6 +84,13 @@ const TextDiscount = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   color: ${THEME_COLOR.TEXT.SUCCESS};
+`;
+const Price = styled(TextCurrency)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
+const TitlePrice = styled(TextCurrency)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
 
 const VerticalDivider = styled.div`

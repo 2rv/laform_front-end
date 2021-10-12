@@ -13,6 +13,7 @@ export const convertUsersOrderData = (rowData) => {
       [ABOUT_ORDER_FIELD_NAME.ID]: rowData.id,
       [ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER]: rowData.orderNumber,
       [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: rowData.phoneNumber,
+      [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]: rowData.typeOfDelivery,
       [ABOUT_ORDER_FIELD_NAME.PRICE]: rowData.price,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: rowData.promoCode,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,

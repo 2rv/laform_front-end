@@ -20,6 +20,7 @@ import {
   checkPromoCodeAction,
   LoadUserInfoAction,
   basketUploadData,
+  getDeliveryTypes,
 } from './basket.action';
 
 export function BasketContainer() {
@@ -30,6 +31,7 @@ export function BasketContainer() {
     promoCodeState,
     orderState,
     userInfoState,
+    deliveryTypes,
     pageLoading,
     isAuth,
     email,
@@ -38,6 +40,7 @@ export function BasketContainer() {
     promoCodeState: state[BASKET_STORE_NAME].promoCode,
     orderState: state[BASKET_STORE_NAME].order,
     userInfoState: state[BASKET_STORE_NAME].userInfo,
+    deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     isAuth: state[AUTH_STORE_NAME].logged,
     email: state[AUTH_STORE_NAME].user?.email,
@@ -46,8 +49,15 @@ export function BasketContainer() {
   const isEmpty = bascketState ? bascketState.length === 0 : true;
 
   const userInfo = getRequestData(userInfoState, false);
+  const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
 
-  useEffect(() => isAuth && dispatch(LoadUserInfoAction()), []);
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(LoadUserInfoAction());
+    }
+
+    dispatch(getDeliveryTypes());
+  }, []);
 
   const { itemsGoods, itemsMaster, itemsPatterns, price } =
     reduceBascketState(bascketState);
@@ -77,7 +87,7 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.PAYMENT_METHOD]:
         userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD] || 0,
       [ORDER_FIELD_NAME.DELIVERY_METHOD]:
-        userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD] || 0,
+        userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD] || deliveryTypeOptions[0]?.tid,
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
@@ -122,7 +132,7 @@ export function BasketContainer() {
       onSubmit={onSubmit}
       initialValues={initialValues()}
       validation={formValidation}
-      diliveryOptions={diliveryOptions}
+      diliveryOptions={deliveryTypeOptions}
       paymentMethodOptions={paymentMethodOptions}
       //--------------
       changeItem={changeItem}

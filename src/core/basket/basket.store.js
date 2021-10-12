@@ -13,6 +13,7 @@ const initialState = {
   promoCode: initRequestState(),
   order: initRequestState(),
   userInfo: initRequestState(),
+  deliveryTypes: initRequestState(),
 };
 
 export function basketStore(state = initialState, action) {
@@ -38,6 +39,22 @@ export function basketStore(state = initialState, action) {
       return {
         ...state,
         basketAction: setRequestError(state.basketAction, action.errorMessage),
+      };
+
+    case BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_PENDING:
+      return {
+        ...state,
+        deliveryTypes: setRequestPending(state.deliveryTypes),
+      };
+    case BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_SUCCESS:
+      return {
+        ...state,
+        deliveryTypes: setRequestSuccess(state.deliveryTypes, action.payload),
+      };
+    case BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_ERROR:
+      return {
+        ...state,
+        deliveryTypes: setRequestError(state.deliveryTypes, action.errorMessage),
       };
 
     case BASKET_ACTION_TYPE.INIT_BASKET:

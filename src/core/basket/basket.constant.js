@@ -10,6 +10,10 @@ export const BASKET_API = {
     },
     TYPE: 'POST',
   },
+  GET_DELIVERY_TYPES: {
+    ENDPOINT: '/delivery-price/get',
+    METHOD: 'GET',
+  },
   SEND_PURCHASED_PRODUCTS_INFO: {
     ENDPOINT: 'mail/send-purchased-products-info',
     TYPE: 'POST',
