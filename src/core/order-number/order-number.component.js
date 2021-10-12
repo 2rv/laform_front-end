@@ -16,6 +16,7 @@ export function OrderNumberComponent(props) {
     orderNumberTitle,
     purchaseProducts,
     statusOrderSelect,
+    deliveryTypeOptions,
   } = props;
 
   return isPending ? (
@@ -33,6 +34,7 @@ export function OrderNumberComponent(props) {
         initialValue={initialValue}
         validate={validate}
         statusOrderSelect={statusOrderSelect}
+        deliveryTypeOptions={deliveryTypeOptions}
       />
     </SectionLayout>
   );

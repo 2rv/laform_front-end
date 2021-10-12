@@ -2,10 +2,20 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextCurrency, TextSecondary } from '../../../lib/element/text';
 import { SectionLayout } from '../../../lib/element/layout';
+import { ABOUT_ORDER_FIELD_NAME } from '../order-number.type';
 
 export function AboutOrderPrice(props) {
-  const { discount = 0, dilivery = 0, price = 0 } = props;
+  const {
+    discount = 0,
+    price = 0,
+    deliveryMethod,
+    deliveryTypeOptions,
+  } = props;
+
   const discountPrice = price - price * (discount / 100);
+  const deliveryPrice = deliveryTypeOptions.find((method) => method.tid === deliveryMethod)?.price;
+  const totalPrice = Number(discountPrice) + Number(deliveryPrice) + Number(price);
+
   return (
     <Container>
       <SectionLayout type="TEXT">
@@ -21,7 +31,7 @@ export function AboutOrderPrice(props) {
       <SectionLayout type="TEXT">
         <Text tid="PRODUCT_PRICE.DELIVERY_PRICE" />
         <div>
-          <Price price={dilivery} />
+          <Price price={deliveryPrice} />
           &nbsp;
           <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
         </div>
@@ -30,7 +40,7 @@ export function AboutOrderPrice(props) {
       <SectionLayout type="TEXT">
         <Text tid="PRODUCT_PRICE.TOTAL_ORDER_PRICE" />
         <div>
-          <TitlePrice price={price} />
+          <TitlePrice price={totalPrice} />
           &nbsp;
           <TextLight tid={'PRODUCT_PRICE.CURRENCY'} />
         </div>

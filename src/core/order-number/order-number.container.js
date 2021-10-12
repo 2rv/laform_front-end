@@ -13,12 +13,15 @@ import { orderNumberUploadData } from './order-number.action';
 import { ORDER_NUMBER_STORE_NAME } from './order-number.constant';
 import { OrderNumberComponent } from './order-number.component';
 import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
+import { getDeliveryTypes } from '../basket/basket.action';
+import { BASKET_STORE_NAME } from '../basket';
 
 export function OrderNumberContainer() {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const { orderState, pageLoading } = useSelector((state) => ({
+  const { orderState, deliveryTypes, pageLoading } = useSelector((state) => ({
     orderState: state[ORDER_NUMBER_STORE_NAME].order,
+    deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
 
@@ -27,7 +30,12 @@ export function OrderNumberContainer() {
     purchaseProducts: null,
   });
 
-  useEffect(() => dispatch(orderNumberUploadData(query.id)), []);
+  const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
+
+  useEffect(() => {
+    dispatch(orderNumberUploadData(query.id));
+    dispatch(getDeliveryTypes());
+  }, []);
 
   const onSubmit = (values) => {
     console.log('Values: ', values);
@@ -56,7 +64,7 @@ export function OrderNumberContainer() {
     [ABOUT_ORDER_FIELD_NAME.ID]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ID] ?? null,
     [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]:
-      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD] ?? '',
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD] ?? deliveryTypeOptions[0]?.tid,
     [ABOUT_ORDER_FIELD_NAME.PAYMENT_METHOD]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PAYMENT_METHOD] ?? '',
   });
@@ -76,6 +84,7 @@ export function OrderNumberContainer() {
       }
       purchaseProducts={purchaseProducts}
       statusOrderSelect={statusOrderSelect}
+      deliveryTypeOptions={deliveryTypeOptions}
     />
   );
 }
