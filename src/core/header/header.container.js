@@ -12,7 +12,7 @@ import { USER_ROLE } from '../../lib/common/auth';
 import { BASKET_STORE_NAME } from '../basket';
 
 export function HeaderContainer(props) {
-  const { setSidebarOpen, sidebarIsOpen, width } = props;
+  const { setSidebarOpen, sidebarIsOpen } = props;
   const { activePath, auth, currentLang, cartCount } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
     auth: state[AUTH_STORE_NAME],
@@ -32,8 +32,6 @@ export function HeaderContainer(props) {
       cartCount={cartCount}
       setSidebarOpen={setSidebarOpen}
       sidebarIsOpen={sidebarIsOpen}
-      isMobile={width < 720}
-      isTablet={width < 1070}
       activePath={activePath}
       isAuth={auth.logged}
       emailConfirmed={auth.emailConfirmed}

@@ -6,11 +6,11 @@ import { setLinkRedirect } from 'src/main/navigation';
 export function BrandLogo() {
   return (
     <Container onClick={setLinkRedirect('/')}>
-      <img src={'https://i.ibb.co/VJGKXFQ/la.png'} alt="Logo" width="68" height="66" />
+      <img src={'/static/image/laforme-header-logo.png'} alt="Logo" />
       <div>
         <Text tid="HEADER_LOGO.HEADING_TEXT" />
         &nbsp;
-        <BrandText tid="HEADER_LOGO.BRAND_TEXT" />
+        <BrandText tid="La`forme Patterns" />
       </div>
     </Container>
   );
@@ -22,6 +22,9 @@ const Container = styled.div`
   align-items: center;
   cursor: pointer;
   user-select: none;
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 `;
 
 const Text = styled(TextPrimary)`

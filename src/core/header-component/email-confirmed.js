@@ -7,16 +7,12 @@ import { THEME_COLOR } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
 
 export function EmailConfirmed(props) {
-  const { isMobile } = props;
   return (
     <LinkPrimary path={AUTH_VERIFICATE_EMAIL_ROUTE_PATH}>
-      {isMobile ? (
-        <Button>
-          <Icon />
-        </Button>
-      ) : (
-        <InfoAlert isMobile={isMobile} tid="Почта не подтверждена" />
-      )}
+      <Button>
+        <Icon />
+      </Button>
+      <AlertInfo tid="OTHER.EMAIL_NOT_CONFIRMED" />
     </LinkPrimary>
   );
 }
@@ -27,4 +23,14 @@ const Icon = styled(AlertIcon)`
 const Button = styled(IconButton)`
   padding: 0;
   background-color: ${THEME_COLOR.WHITE};
+  display: none;
+  @media screen and (max-width: 720px) {
+    display: flex;
+  }
+`;
+const AlertInfo = styled(InfoAlert)`
+  display: flex;
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 `;

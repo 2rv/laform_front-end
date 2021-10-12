@@ -14,7 +14,6 @@ export function PageWrapper(props: PageWrapperPropsType) {
   const { children } = props;
   const dispatch = useDispatch();
   const [sidebarIsOpen, setSidebarOpen] = useState(false);
-  const [width, setwidth] = useState(1280);
 
   useEffect(() => {
     if (sidebarIsOpen) {
@@ -24,31 +23,17 @@ export function PageWrapper(props: PageWrapperPropsType) {
     }
   }, [sidebarIsOpen]);
 
-  const handleWindowSizeChange = () => {
-    if (typeof window !== 'undefined') {
-      setwidth(window.innerWidth);
-    }
-  };
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setwidth(window.innerWidth);
       dispatch(initializeBasketStore());
-      window.addEventListener('resize', handleWindowSizeChange);
     }
   }, []);
 
   return (
     <Container>
-      <Header
-        width={width}
-        setSidebarOpen={setSidebarOpen}
-        sidebarIsOpen={sidebarIsOpen}
-      />
+      <Header setSidebarOpen={setSidebarOpen} sidebarIsOpen={sidebarIsOpen} />
       <Relative>
-        {width < 1071 && (
-          <SidebarMenu setOpen={setSidebarOpen} isOpen={sidebarIsOpen} />
-        )}
+        <SidebarMenu setOpen={setSidebarOpen} isOpen={sidebarIsOpen} />
         <Content type="LARGE">
           <MainCase>
             <Main>{children}</Main>

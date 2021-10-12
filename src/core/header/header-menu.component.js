@@ -20,35 +20,30 @@ export function HeaderMenuComponent(props) {
     currentLang,
     navMenuItems,
     modalMenuItems,
-    isMobile,
-    isTablet,
     setSidebarOpen,
     sidebarIsOpen,
     emailConfirmed,
   } = props;
+
   return (
     <Container>
-      {isTablet ? (
-        <Case>
-          <MenuButton open={sidebarIsOpen} setOpen={setSidebarOpen} />
-          {isMobile && <LogoMobile />}
-        </Case>
-      ) : (
-        <NavMenu items={navMenuItems} activePath={activePath} />
-      )}
-
+      <MiddleCase>
+        <MenuButton open={sidebarIsOpen} setOpen={setSidebarOpen} />
+        <MobileLogo />
+      </MiddleCase>
+      <NavMenu items={navMenuItems} activePath={activePath} />
       <Case>
-        {isAuth && emailConfirmed && <EmailConfirmed isMobile={isMobile} />}
-        {!isMobile && isAuth && (
-          <ModalMenu
+        {isAuth && emailConfirmed && <EmailConfirmed />}
+        {isAuth && (
+          <MenuModal
             currentLang={currentLang}
             modalMenuItems={modalMenuItems}
             userName={userName}
           />
         )}
-        {!isAuth && !isMobile && <AuthLinks />}
+        {!isAuth && <LinksAuth />}
         <SearchButtonContainer />
-        <CartButton cartCount={cartCount} isTablet={isTablet} />
+        <CartButton cartCount={cartCount} />
       </Case>
     </Container>
   );
@@ -66,4 +61,29 @@ const Case = styled.div`
   display: flex;
   gap: ${spacing(3)};
   align-items: center;
+`;
+const LinksAuth = styled(AuthLinks)`
+  display: block;
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+`;
+const MenuModal = styled(ModalMenu)`
+  display: flex;
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+`;
+const MiddleCase = styled(Case)`
+  display: none;
+  @media screen and (max-width: 1070px) {
+    display: flex;
+  }
+`;
+
+const MobileLogo = styled(LogoMobile)`
+  display: flex;
+  @media screen and (max-width: 720px) {
+    display: block;
+  }
 `;

@@ -31,6 +31,7 @@
     "ORDERS_lIST": "Список заказов",
     "BEST_PRODUCTS": "Лучшие товары",
     "SLIDER": "Слайдер",
-    "PROMOCODES": "Промокоды"
+    "PROMOCODES": "Промокоды",
+    "CREATE_DELIVERY_TYPE": "Создать способ доставки"
   }
 }

@@ -115,6 +115,10 @@ import {
   aboutRouter,
   ABOUT_ROUTE_PATH,
 } from '../../core/about';
+import {
+  deliveryPricePageRouter,
+  DELIVERY_PRICE_PAGE_ROUTE_PATH,
+} from '../../core/delivery-price-page';
 
 export const routes = {
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
@@ -156,6 +160,7 @@ export const routes = {
   [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
   [PURCHASE_PRODUCTS_ROUTE_PATH]: purchaseProductsRouter,
   [ABOUT_ROUTE_PATH]: aboutRouter,
+  [DELIVERY_PRICE_PAGE_ROUTE_PATH]: deliveryPricePageRouter,
 };
 
 export const Router = routesInit(routes);

@@ -12,11 +12,14 @@
 	"USERS_LIST": "Users",
 	"LIST_IS_EMPTY": "List is empty",
 	"NOTHING_FOUND": "Nothing found",
-	"ENTER_YOUR_SEARCH_DATA": "Enter your search data",
 	"SAVE": "Save",
 	"VENDOR_CODE": "Vendor code:",
 	"GET_PURCHASES_HISTORY": "To gain access to the purchase history, you must: login or register",
 	"LEAVE_REVIEW": "To leave a review, you must: login or register",
 	"SIGN_UP": "Sign up",
-	"SIGN_IN": "Log in"
+	"SIGN_IN": "Log in",
+	"EMAIL_NOT_CONFIRMED": "Email not confirmed",
+	"SEARCH_PRODUCT": "Search product",
+	"DELIVERY_TYPE": "Delivery type:",
+	"DELIVERY_TYPE_PRICE": "Price:"
 }

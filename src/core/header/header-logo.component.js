@@ -9,29 +9,20 @@ import {
 } from '../header-component';
 
 export function HeaderLogoComponent(props) {
-  const {
-    activePath,
-    isAuth,
-    currentLang,
-    modalMenuItems,
-    isMobile,
-    userName,
-  } = props;
+  const { activePath, isAuth, currentLang, modalMenuItems, userName } = props;
   return (
     <Container>
-      {isMobile ? (
-        isAuth ? (
-          <ModalMenu
-            currentLang={currentLang}
-            modalMenuItems={modalMenuItems}
-            userName={userName}
-          />
-        ) : (
-          <AuthLinks />
-        )
+      {isAuth ? (
+        <ModalMenu
+          mobile
+          currentLang={currentLang}
+          modalMenuItems={modalMenuItems}
+          userName={userName}
+        />
       ) : (
-        <BrandLogo />
+        <AuthLinks mobile />
       )}
+      <BrandLogo />
       <LangSelect currentLang={currentLang} />
     </Container>
   );

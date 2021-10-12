@@ -5,7 +5,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { TextSecondary } from '../../lib/element/text';
 import { ReactComponent as SizeIcon } from '../../asset/svg/size.svg';
-import { ReactComponent as DownloadIcon } from '../../asset/svg/arrow-down.svg';
+import { ReactComponent as DownloadIcon } from '../../asset/svg/arrow-down-download.svg';
 import { ReactComponent as PaperIcon } from '../../asset/svg/paper.svg';
 import { LinkSecondary } from 'src/lib/element/link';
 import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';

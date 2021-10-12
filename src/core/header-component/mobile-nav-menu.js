@@ -23,14 +23,6 @@ export function MobileNavMenu(props) {
 
   return (
     <Container>
-      <Button onClick={setLinkRedirect(PATTERNS_ROUTE_PATH)}>
-        <TShirtStyledIcon
-          active={
-            activePath?.startsWith(PATTERNS_ROUTE_PATH) ? 'true' : undefined
-          }
-        />
-      </Button>
-
       <Button onClick={setLinkRedirect(MASTER_CLASSES_ROUTE_PATH)}>
         <MasterClassStyledIcon
           active={
@@ -41,7 +33,19 @@ export function MobileNavMenu(props) {
         />
       </Button>
 
-      <Button onClick={setLinkRedirect(isAuth ? PURCHASE_PRODUCTS_ROUTE_PATH : SIGNUP_ROUTE_PATH)}>
+      <Button onClick={setLinkRedirect(PATTERNS_ROUTE_PATH)}>
+        <TShirtStyledIcon
+          active={
+            activePath?.startsWith(PATTERNS_ROUTE_PATH) ? 'true' : undefined
+          }
+        />
+      </Button>
+
+      <Button
+        onClick={setLinkRedirect(
+          isAuth ? PURCHASE_PRODUCTS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+        )}
+      >
         <UserStyledIcon
           active={
             activePath?.startsWith(PURCHASE_PRODUCTS_ROUTE_PATH)
@@ -68,12 +72,15 @@ const Container = styled.div`
   z-index: 2;
   width: 100%;
   left: 0;
-  display: flex;
+  display: none;
   gap: ${spacing(6)};
   align-items: center;
   height: 55px;
   justify-content: space-evenly;
   background-color: ${THEME_COLOR.GRAY};
+  @media screen and (max-width: 720px) {
+    display: flex;
+  }
 `;
 const Button = styled(IconButton)`
   padding: 0;
