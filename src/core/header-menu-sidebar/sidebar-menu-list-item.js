@@ -51,7 +51,6 @@ const Button = styled(ButtonBasic)`
   justify-content: space-between;
 `;
 const Arrow = styled(ArrowDown)`
-  transition: 0.8s;
   ${(p) =>
     p.open &&
     css`
@@ -69,7 +68,6 @@ const Content = styled.div`
   width: 100%;
   overflow: hidden;
   gap: ${spacing(2)};
-  transition: max-height 0.5s;
   max-height: 0;
   ${(p) =>
     p.open &&

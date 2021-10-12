@@ -44,7 +44,8 @@ const Container = styled.div`
   top: 0;
   left: 0;
   max-width: ${(p) => (p.open ? `350px` : 0)};
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: ${THEME_COLOR.WHITE};
   z-index: 10;
   transition: 0.4s;
