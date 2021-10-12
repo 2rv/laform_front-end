@@ -27,6 +27,7 @@ export const convertForCreateOrder = (data, bascketState) => ({
 export const convertSettingsDeliveryTypesData = (data) => ({
   id: data.id,
   tid: data.deliveryType,
+  price: data.deliveryTypePrice,
 });
 
 export const performUserInfoData = (rowData) => ({

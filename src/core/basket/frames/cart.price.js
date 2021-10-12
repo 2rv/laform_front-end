@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import { ORDER_FIELD_NAME } from '../basket.type';
 
 export function CartPrice(props) {
-  const { values } = props;
+  const { values, deliveryOptions } = props;
 
   const price = values[ORDER_FIELD_NAME.PRICE];
   const promoDiscount = values[ORDER_FIELD_NAME.PROMO_DISCOUNT];
-  const diliveryPrice = values[ORDER_FIELD_NAME.DILIVERY_PRICE];
+  const deliveryMethod = values[ORDER_FIELD_NAME.DELIVERY_METHOD];
+  const deliveryPrice = deliveryOptions.find((method) => method.tid === deliveryMethod)?.price;
 
   const discountPrice = price - (price / 100) * promoDiscount;
-  const totalPrice = discountPrice + diliveryPrice;
+  const totalPrice = discountPrice + deliveryPrice;
   return (
     <Container>
       <Content>
@@ -33,7 +34,7 @@ export function CartPrice(props) {
       <Content>
         <TextLight tid="BASKET.FORM.FOOTER.SHIPPING_PRICE" />
         <div>
-          <TextBold tid={diliveryPrice} />
+          <TextBold tid={deliveryPrice} />
           &nbsp;
           <TextLight tid="OTHER.VALUTE" />
         </div>
