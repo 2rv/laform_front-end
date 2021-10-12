@@ -13,13 +13,13 @@ import {
 import { redirect } from 'src/main/navigation';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 
-export function basketUploadData(values, bascketState, isAuth) {
+export function basketUploadData(values, bascketState, isAuth, purchaseTotalPrice = 0) {
   return async (dispatch) => {
     dispatch({
       type: BASKET_ACTION_TYPE.CREATE_ORDER_PENDING,
     });
     try {
-      const data = convertForCreateOrder(values, bascketState);
+      const data = convertForCreateOrder(values, bascketState, purchaseTotalPrice);
       const responst = await httpRequest({
         method: BASKET_API.CREATE_ORDER.TYPE,
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),

@@ -15,7 +15,7 @@ export const BASKET_API = {
     METHOD: 'GET',
   },
   SEND_PURCHASED_PRODUCTS_INFO: {
-    ENDPOINT: 'mail/send-purchased-products-info',
+    ENDPOINT: 'mail/send-purchase-info',
     TYPE: 'POST',
   },
   LOAD_USER_INFO: {

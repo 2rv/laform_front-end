@@ -2,9 +2,10 @@ import { TextSecondary, TextCurrency } from '../../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
 import styled from 'styled-components';
 import { ORDER_FIELD_NAME } from '../basket.type';
+import { useEffect } from 'react';
 
 export function CartPrice(props) {
-  const { values, deliveryOptions } = props;
+  const { values, deliveryOptions, setPurchaseTotalPrice } = props;
 
   const price = values[ORDER_FIELD_NAME.PRICE];
   const promoDiscount = values[ORDER_FIELD_NAME.PROMO_DISCOUNT];
@@ -12,7 +13,11 @@ export function CartPrice(props) {
   const deliveryPrice = Boolean(deliveryOptions.length > 0) ? deliveryOptions.find((method) => method.tid === deliveryMethod)?.price : 0;
 
   const discountPrice = price - (price / 100) * promoDiscount;
-  const totalPrice = Number(discountPrice) + Number(deliveryPrice) + Number(price);
+  const totalPrice = Number(discountPrice) + Number(deliveryPrice);
+
+  useEffect(() => {
+    setPurchaseTotalPrice(totalPrice);
+  }, [totalPrice]);
 
   return (
     <Container>

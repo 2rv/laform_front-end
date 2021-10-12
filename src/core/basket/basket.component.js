@@ -37,6 +37,7 @@ export function BasketComponent(props) {
     validation,
     diliveryOptions,
     paymentMethodOptions,
+    setPurchaseTotalPrice,
     //--------------
     changeItem,
     deleteItem,
@@ -90,6 +91,7 @@ export function BasketComponent(props) {
             orderSuccess={orderSuccess}
             diliveryOptions={diliveryOptions}
             paymentMethodOptions={paymentMethodOptions}
+            setPurchaseTotalPrice={setPurchaseTotalPrice}
             onSubmit={onSubmit}
             checkPromoCode={checkPromoCode}
             initialValues={initialValues}
