@@ -38,10 +38,10 @@ export function basketUploadData(values, bascketState, isAuth) {
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
-      // dispatch(clearBasketAction());
-      // if (isAuth) {
-      //   redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
-      // }
+      dispatch(clearBasketAction());
+      if (isAuth) {
+        redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+      }
     } catch (err) {
       if (err.response) {
         dispatch({
