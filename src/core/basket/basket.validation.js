@@ -15,6 +15,7 @@ const config = {
   [ORDER_FIELD_NAME.PROMO_DISCOUNT]: [],
   [ORDER_FIELD_NAME.PROMO_CODE]: [],
   [ORDER_FIELD_NAME.DILIVERY_PRICE]: [],
+  [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: [required],
 };
 
 export const formValidation = (values) => validate(values, config);

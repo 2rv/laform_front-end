@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 export function FormContainer(props) {
   const {
     //--------------
+    isAuth,
     promocode,
     discount,
     price,
@@ -40,6 +41,15 @@ export function FormContainer(props) {
     promoCodeError,
     promoCodePending,
     promoCodeSuccess,
+    //--------------
+    sendEmailCodePending,
+    sendEmailCodeSuccess,
+    //--------------
+    emailConfirmedState,
+    confirmEmailForOrderErrorMessage,
+    confirmEmailForOrderError,
+    confirmEmailForOrderPending,
+    confirmEmailForOrderSuccess,
   } = props;
   return (
     <Formik
@@ -74,16 +84,26 @@ export function FormContainer(props) {
                 paymentMethodOptions={paymentMethodOptions}
                 checkPromoCode={checkPromoCode}
                 promoCodePending={promoCodePending}
+                sendEmailCodePending={sendEmailCodePending}
+                sendEmailCodeSuccess={sendEmailCodeSuccess}
+                emailConfirmedState={emailConfirmedState}
+                confirmEmailForOrderErrorMessage={confirmEmailForOrderErrorMessage}
+                confirmEmailForOrderError={confirmEmailForOrderError}
+                confirmEmailForOrderPending={confirmEmailForOrderPending}
+                confirmEmailForOrderSuccess={confirmEmailForOrderSuccess}
+                isAuth={isAuth}
                 {...formProps}
               />
               <SectionLayout type="SMALL">
                 <CartPrice values={formProps.values} deliveryOptions={diliveryOptions} />
                 <FieldLayout type="double" adaptive>
-                  <ButtonPrimary
-                    tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
-                    disabled={pageLoading || orderPending || promoCodePending}
-                    type="submit"
-                  />
+                  {(isAuth || emailConfirmedState === true) && (
+                    <ButtonPrimary
+                      tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
+                      disabled={pageLoading || orderPending || promoCodePending}
+                      type="submit"
+                    />
+                  )}
 
                   {promoCodeSuccess && (
                     <SuccessAlert

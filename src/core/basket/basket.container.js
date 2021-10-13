@@ -32,6 +32,8 @@ export function BasketContainer() {
     orderState,
     userInfoState,
     deliveryTypes,
+    sendEmailCodeState,
+    confirmEmailForOrderState,
     pageLoading,
     isAuth,
     email,
@@ -41,6 +43,8 @@ export function BasketContainer() {
     orderState: state[BASKET_STORE_NAME].order,
     userInfoState: state[BASKET_STORE_NAME].userInfo,
     deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
+    sendEmailCodeState: state[BASKET_STORE_NAME].sendEmailCode,
+    confirmEmailForOrderState: state[BASKET_STORE_NAME].confirmEmailForOrder,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     isAuth: state[AUTH_STORE_NAME].logged,
     email: state[AUTH_STORE_NAME].user?.email,
@@ -50,6 +54,7 @@ export function BasketContainer() {
 
   const userInfo = getRequestData(userInfoState, false);
   const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
+  const emailConfirmedState = getRequestData(confirmEmailForOrderState, false)
 
   useEffect(() => {
     if (isAuth) {
@@ -94,6 +99,7 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
       [ORDER_FIELD_NAME.DILIVERY_PRICE]: 0,
       [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
+      [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: '',
     };
   };
 
@@ -128,6 +134,15 @@ export function BasketContainer() {
       orderError={isRequestError(orderState)}
       orderPending={isRequestPending(orderState)}
       orderSuccess={isRequestSuccess(orderState)}
+      //--------------
+      sendEmailCodePending={isRequestPending(sendEmailCodeState)}
+      sendEmailCodeSuccess={isRequestSuccess(sendEmailCodeState)}
+      //-----------------
+      emailConfirmedState={emailConfirmedState}
+      confirmEmailForOrderErrorMessage={getRequestErrorMessage(confirmEmailForOrderState)}
+      confirmEmailForOrderError={isRequestError(confirmEmailForOrderState)}
+      confirmEmailForOrderPending={isRequestPending(confirmEmailForOrderState)}
+      confirmEmailForOrderSuccess={isRequestSuccess(confirmEmailForOrderState)}
       //--------------
       onSubmit={onSubmit}
       initialValues={initialValues()}

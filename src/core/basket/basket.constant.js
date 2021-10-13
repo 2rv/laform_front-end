@@ -14,6 +14,14 @@ export const BASKET_API = {
     ENDPOINT: '/delivery-price/get',
     METHOD: 'GET',
   },
+  SEND_EMAIL_CODE: {
+    ENDPOINT: '/mail/send-email-code',
+    METHOD: 'POST',
+  },
+  CONFIRM_EMAIL_FOR_ORDER: {
+    ENDPOINT: (code) => `/purchase/confirm-email-for-order/${code}`,
+    METHOD: 'POST',
+  },
   SEND_PURCHASED_PRODUCTS_INFO: {
     ENDPOINT: 'mail/send-purchased-products-info',
     TYPE: 'POST',
