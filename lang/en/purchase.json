@@ -26,5 +26,8 @@
   "TAB": {
     "MASTER_CLASSES": "Master-classes",
     "ARTICLES": "Articles"
+  },
+  "HINT_BLOCK": {
+    "TITLE": "Your purchases are categorized according to their respective categories"
   }
 }

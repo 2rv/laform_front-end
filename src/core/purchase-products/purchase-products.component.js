@@ -4,6 +4,7 @@ import { LoaderPrimary } from '../../lib/element/loader';
 import { TextSecondary } from '../../lib/element/text';
 import { TableList } from '../block-table-list';
 import { FilterTabs } from '../../lib/element/filter-tabs';
+import { HintBlockComponent } from './frame/hint-block.component';
 
 export function PurchaseProductsComponent(props) {
   const {
@@ -19,6 +20,7 @@ export function PurchaseProductsComponent(props) {
       {(pageLoading || isPending) && <LoaderPrimary />}
       <SectionLayout>
         <TitlePrimary tid="PURCHASED_PRODUCTS.TITLE" />
+        <HintBlockComponent />
         <FilterTabs
           activeTab={activeTab}
           setActiveTab={setActiveTab}
