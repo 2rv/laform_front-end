@@ -2,7 +2,7 @@ import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ButtonPrimary } from '../../../lib/element/button';
 import { BasicField } from '../../../lib/element/field';
 import { CREATE_NOTIFICATION_FIELD_NAME } from '../create-notification.type';
-import { BlockEditor } from '../../block-editor';
+import { ReactEditor } from '../../block-react-editor';
 
 export function FormComponent(props) {
   const {
@@ -42,11 +42,10 @@ export function FormComponent(props) {
           />
         </FieldLayout>
       </SectionLayout>
-      <BlockEditor
-        notification={true}
-        formikOnChange={setEditorData(
-          CREATE_NOTIFICATION_FIELD_NAME.NOTIFICATION,
-        )}
+      <ReactEditor
+        handleChange={setEditorData(CREATE_NOTIFICATION_FIELD_NAME.NOTIFICATION)}
+        values={values[CREATE_NOTIFICATION_FIELD_NAME.NOTIFICATION]}
+        name={CREATE_NOTIFICATION_FIELD_NAME.NOTIFICATION}
       />
       <FieldLayout type="double" adaptive>
         <ButtonPrimary
