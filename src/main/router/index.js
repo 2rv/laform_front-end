@@ -119,6 +119,10 @@ import {
   deliveryPricePageRouter,
   DELIVERY_PRICE_PAGE_ROUTE_PATH,
 } from '../../core/delivery-price-page';
+import {
+  unsubscribeNotificationRouter,
+  UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH,
+} from '../../core/unsubscribe-notification';
 
 export const routes = {
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
@@ -161,6 +165,7 @@ export const routes = {
   [PURCHASE_PRODUCTS_ROUTE_PATH]: purchaseProductsRouter,
   [ABOUT_ROUTE_PATH]: aboutRouter,
   [DELIVERY_PRICE_PAGE_ROUTE_PATH]: deliveryPricePageRouter,
+  [UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH]: unsubscribeNotificationRouter,
 };
 
 export const Router = routesInit(routes);

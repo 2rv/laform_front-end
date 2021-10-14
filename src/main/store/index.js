@@ -167,6 +167,10 @@ import {
   deliveryPricePageStore,
   DELIVERY_PRICE_PAGE_STORE_NAME,
 } from '../../core/delivery-price-page';
+import {
+  unsubscribeNotificationStore,
+  UNSUBSCRIBE_NOTIFICATION_STORE_NAME,
+} from '../../core/unsubscribe-notification';
 export const PERSISTED_CART = 'PERSISTED_CART';
 
 export const reducers = combineReducers({
@@ -226,6 +230,7 @@ export const reducers = combineReducers({
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
   [ABOUT_STORE_NAME]: aboutStore,
   [DELIVERY_PRICE_PAGE_STORE_NAME]: deliveryPricePageStore,
+  [UNSUBSCRIBE_NOTIFICATION_STORE_NAME]: unsubscribeNotificationStore,
 });
 
 export { initStore } from './store.core';
