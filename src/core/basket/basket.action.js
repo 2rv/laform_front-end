@@ -80,6 +80,60 @@ export function getDeliveryTypes() {
   };
 }
 
+export function sendEmailCode(data) {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: BASKET_API.SEND_EMAIL_CODE.METHOD,
+        url: BASKET_API.SEND_EMAIL_CODE.ENDPOINT,
+        data,
+      });
+
+      dispatch({
+        type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_SUCCESS,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function confirmEmailForOrder(code) {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: BASKET_API.CONFIRM_EMAIL_FOR_ORDER.METHOD,
+        url: BASKET_API.CONFIRM_EMAIL_FOR_ORDER.ENDPOINT(code),
+      });
+
+      dispatch({
+        type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_SUCCESS,
+        payload: response.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
 async function basketUpdateUserInfodData(values) {
   const response = await httpRequest({
     method: BASKET_API.UPDATE_USER_INFO.TYPE,

@@ -32,6 +32,15 @@ export function BasketComponent(props) {
     promoCodePending,
     promoCodeSuccess,
     //--------------
+    sendEmailCodePending,
+    sendEmailCodeSuccess,
+    //--------------
+    emailConfirmedState,
+    confirmEmailForOrderErrorMessage,
+    confirmEmailForOrderError,
+    confirmEmailForOrderPending,
+    confirmEmailForOrderSuccess,
+    //--------------
     onSubmit,
     initialValues,
     validation,
@@ -78,6 +87,7 @@ export function BasketComponent(props) {
             items={itemsMaster}
           />
           <FormContainer
+            isAuth={isAuth}
             promocode={promocode}
             discount={discount}
             price={price}
@@ -89,6 +99,13 @@ export function BasketComponent(props) {
             orderError={orderError}
             orderPending={orderPending}
             orderSuccess={orderSuccess}
+            sendEmailCodePending={sendEmailCodePending}
+            sendEmailCodeSuccess={sendEmailCodeSuccess}
+            emailConfirmedState={emailConfirmedState}
+            confirmEmailForOrderErrorMessage={confirmEmailForOrderErrorMessage}
+            confirmEmailForOrderError={confirmEmailForOrderError}
+            confirmEmailForOrderPending={confirmEmailForOrderPending}
+            confirmEmailForOrderSuccess={confirmEmailForOrderSuccess}
             diliveryOptions={diliveryOptions}
             paymentMethodOptions={paymentMethodOptions}
             setPurchaseTotalPrice={setPurchaseTotalPrice}

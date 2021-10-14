@@ -14,6 +14,8 @@ const initialState = {
   order: initRequestState(),
   userInfo: initRequestState(),
   deliveryTypes: initRequestState(),
+  sendEmailCode: initRequestState(),
+  confirmEmailForOrder: initRequestState(),
 };
 
 export function basketStore(state = initialState, action) {
@@ -55,6 +57,38 @@ export function basketStore(state = initialState, action) {
       return {
         ...state,
         deliveryTypes: setRequestError(state.deliveryTypes, action.errorMessage),
+      };
+
+    case BASKET_ACTION_TYPE.SEND_EMAIL_CODE_PENDING:
+      return {
+        ...state,
+        sendEmailCode: setRequestPending(state.sendEmailCode),
+      };
+    case BASKET_ACTION_TYPE.SEND_EMAIL_CODE_SUCCESS:
+      return {
+        ...state,
+        sendEmailCode: setRequestSuccess(state.sendEmailCode),
+      };
+    case BASKET_ACTION_TYPE.SEND_EMAIL_CODE_ERROR:
+      return {
+        ...state,
+        sendEmailCode: setRequestError(state.sendEmailCode, action.errorMessage),
+      };
+
+    case BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_PENDING:
+      return {
+        ...state,
+        confirmEmailForOrder: setRequestPending(state.confirmEmailForOrder),
+      };
+    case BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_SUCCESS:
+      return {
+        ...state,
+        confirmEmailForOrder: setRequestSuccess(state.confirmEmailForOrder, action.payload),
+      };
+    case BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_ERROR:
+      return {
+        ...state,
+        confirmEmailForOrder: setRequestError(state.confirmEmailForOrder, action.errorMessage),
       };
 
     case BASKET_ACTION_TYPE.INIT_BASKET:
