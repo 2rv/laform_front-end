@@ -14,7 +14,7 @@ export function AboutOrderPrice(props) {
 
   const discountPrice = price - price * (discount / 100);
   const deliveryPrice = deliveryTypeOptions.find((method) => method.tid === deliveryMethod)?.price;
-  const totalPrice = Number(discountPrice) + Number(deliveryPrice) + Number(price);
+  const totalPrice = Number(discountPrice) + Number(deliveryPrice);
 
   return (
     <Container>

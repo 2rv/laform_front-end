@@ -7,8 +7,9 @@ import {
   USER_INFO_DATA_NAME,
 } from './basket.type';
 
-export const convertForCreateOrder = (data, bascketState) => ({
+export const convertForCreateOrder = (data, bascketState, purchaseTotalPrice) => ({
   purchase: data,
+  totalPrice: purchaseTotalPrice,
   purchaseProducts: bascketState.map((item) => {
     return {
       masterClassId: item.type === 0 ? item.id : undefined,

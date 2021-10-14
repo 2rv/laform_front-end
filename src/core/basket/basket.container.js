@@ -46,6 +46,7 @@ export function BasketContainer() {
     email: state[AUTH_STORE_NAME].user?.email,
   }));
 
+  const [purchaseTotalPrice, setPurchaseTotalPrice] = useState(0);
   const isEmpty = bascketState ? bascketState.length === 0 : true;
 
   const userInfo = getRequestData(userInfoState, false);
@@ -75,7 +76,7 @@ export function BasketContainer() {
   };
 
   const onSubmit = (values) => {
-    dispatch(basketUploadData(values, bascketState, isAuth));
+    dispatch(basketUploadData(values, bascketState, isAuth, purchaseTotalPrice));
   };
 
   const initialValues = () => {
@@ -134,6 +135,7 @@ export function BasketContainer() {
       validation={formValidation}
       diliveryOptions={deliveryTypeOptions}
       paymentMethodOptions={paymentMethodOptions}
+      setPurchaseTotalPrice={setPurchaseTotalPrice}
       //--------------
       changeItem={changeItem}
       deleteItem={deleteItem}

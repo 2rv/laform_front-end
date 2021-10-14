@@ -24,6 +24,7 @@ export function FormContainer(props) {
     //--------------
     diliveryOptions,
     paymentMethodOptions,
+    setPurchaseTotalPrice,
     checkPromoCode,
     //--------------
     userInfoErrorMessage,
@@ -77,7 +78,11 @@ export function FormContainer(props) {
                 {...formProps}
               />
               <SectionLayout type="SMALL">
-                <CartPrice values={formProps.values} deliveryOptions={diliveryOptions} />
+                <CartPrice
+                  values={formProps.values}
+                  deliveryOptions={diliveryOptions}
+                  setPurchaseTotalPrice={setPurchaseTotalPrice}
+                />
                 <FieldLayout type="double" adaptive>
                   <ButtonPrimary
                     tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
