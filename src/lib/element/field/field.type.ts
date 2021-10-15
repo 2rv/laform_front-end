@@ -1,7 +1,7 @@
 export interface FieldPropsType {
   className?: string;
   titleTid?: string;
-  placeholderTid: string;
+  placeholderTid?: string;
   name?: string;
   type?: string;
   value: string;
@@ -39,7 +39,12 @@ export interface SelectPropsType {
   titleTid?: string;
   name?: string;
   value?: any;
-  options: { id: number; tid: string; tvalue?: any; hidden?: boolean }[];
+  options: {
+    id: number | string;
+    tid: string;
+    tvalue?: any;
+    hidden?: boolean;
+  }[];
   onChange: any;
   onBlur?: any;
   width?: number;
@@ -47,6 +52,7 @@ export interface SelectPropsType {
   adaptive?: boolean;
   textValue?: boolean;
   multiple?: boolean;
+  defaultTid?: string;
 }
 export interface TextAreaPropsType {
   titleTid?: string;
@@ -71,6 +77,7 @@ export interface FilefieldPropsType {
   value: any;
   error?: string;
   onChange: any;
+  accept: any;
   onBlur: any;
   width?: number;
   disabled?: boolean;

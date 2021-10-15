@@ -37,7 +37,7 @@ export function sewingGoodsUploadData(isAuth, query) {
     }
   };
 }
-export function sewingGoodsUpdateData(currentLang, id, body) {
+export function sewingGoodsUpdateData(isAuth, query, id, body) {
   return async (dispatch) => {
     dispatch({
       type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_PENDING,
@@ -45,15 +45,15 @@ export function sewingGoodsUpdateData(currentLang, id, body) {
 
     try {
       const response = await httpRequest({
-        method: SEWING_GOODS_API.SEWING_GOODS_UPDATE.TYPE,
-        url: SEWING_GOODS_API.SEWING_GOODS_UPDATE.ENDPOINT(id),
+        method: SEWING_GOODS_API.SEWING_GOODS_DELETE.TYPE,
+        url: SEWING_GOODS_API.SEWING_GOODS_DELETE.ENDPOINT(id),
         data: { sewingProduct: body },
       });
 
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_SUCCESS,
       });
-      dispatch(sewingGoodsUploadData(currentLang));
+      dispatch(sewingGoodsUploadData(isAuth, query));
     } catch (err) {
       if (err.response) {
         dispatch({

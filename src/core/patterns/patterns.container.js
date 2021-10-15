@@ -50,7 +50,7 @@ export function PatternsContainer() {
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
   };
   const onDeleteProduct = (id, body) => {
-    dispatch(patternsUpdateData(currentLang, id, body));
+    dispatch(patternsUpdateData(isAuth, { currentLang }, id, body));
   };
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
   const setActiveTab = (value) => {

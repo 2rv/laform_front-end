@@ -16,7 +16,7 @@ export function ComplexityField(props: ComplexityFieldProps) {
             <FieldRadio
               type="radio"
               name={name}
-              value={value}
+              value={rate}
               onChange={onChange}
             />
           </ComplexityDot>

@@ -1,7 +1,12 @@
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 import { THEME_SIZE, THEME_COLOR, spacing } from '../../theme';
-import { CardActionProps, CardPriceProps } from './card.type';
+import {
+  CardActionProps,
+  CardCountProps,
+  CardLengthProps,
+  CardPriceProps,
+} from './card.type';
 import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
 import { LikeButton as LikeAction } from 'src/core/block-like';
 import { ReactComponent as DeleteIcon } from '../../../asset/svg/delete-cancel-icon.svg';
@@ -191,7 +196,7 @@ export function CardPrice(props: CardPriceProps) {
       &nbsp;
       {Boolean(discount) ? (
         <>
-          <Text price={price - (price / 100) * discount} />
+          <Text price={(price - (price / 100) * discount).toFixed(2)} />
           &nbsp;
           <ThroughText price={price} />
         </>
@@ -215,3 +220,27 @@ const ThroughText = styled(TextCurrency)`
   text-decoration: line-through;
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
+export function CardCount(props: CardCountProps) {
+  const { count = 0 } = props;
+  return (
+    <div>
+      <TextSecondary tid="Всего - " />
+      &nbsp;
+      <Text price={count} />
+      &nbsp;
+      <LightText tid="Шт." />
+    </div>
+  );
+}
+export function CardLength(props: CardLengthProps) {
+  const { length = 0 } = props;
+  return (
+    <div>
+      <TextSecondary tid="Всего - " />
+      &nbsp;
+      <Text price={length} />
+      &nbsp;
+      <LightText tid="метров" />
+    </div>
+  );
+}

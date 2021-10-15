@@ -5,29 +5,32 @@ import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-prod
 import { CardSewingGoodType } from './card.type';
 import {
   CardPrice,
-  CartButton,
   CardName,
   DeleteButton,
   LikeButton,
   SelectButton,
 } from './card.components';
-import { CartButtonWithParams } from './card.cart-button';
+import { CartModalButton } from '../../common/cart-modal-button';
 
 export function CardSewingGood(props: CardSewingGoodType) {
   const {
     id,
+    like,
+    admin,
     type,
     image,
     name,
     modifier,
     price,
     discount,
-    like,
-    onCart,
+    count,
+    length,
+    options,
+    colors,
+    sizes,
     onSelect,
     onDelete,
-    admin,
-    options,
+    onCart,
   } = props;
 
   return (
@@ -45,17 +48,18 @@ export function CardSewingGood(props: CardSewingGoodType) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <SelectButton id={id} type={type} onSelect={onSelect} />
-        {options?.length === 0 ? (
-          <CartButton id={id} type={type} onCart={onCart} />
-        ) : (
-          <CartButtonWithParams
-            id={id}
-            type={type}
-            onCart={onCart}
-            options={options}
-          />
-        )}
+        <CartModalButton
+          id={id}
+          type={type}
+          price={price}
+          discount={discount}
+          count={count}
+          length={length}
+          onCart={onCart}
+          options={options}
+          colors={colors}
+          sizes={sizes}
+        />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />

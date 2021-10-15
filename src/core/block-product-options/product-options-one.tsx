@@ -15,14 +15,20 @@ export function ProductOptionsOne(props: ProductOptionsOneProps) {
     isFirst,
     handleChange,
     handleBlur,
-    getFieldError,
     setNumber,
+    setTwoDigit,
+    setToHundred,
+    getFieldError,
     remove,
     fieldArrayName,
     optionSizeName,
     optionColorName,
     optionPriceName,
     optionDiscountName,
+    optionCountName,
+    optionLengthName,
+    isCount,
+    isLength,
   } = props;
 
   return (
@@ -57,19 +63,45 @@ export function ProductOptionsOne(props: ProductOptionsOneProps) {
           placeholderTid="Введите цену (руб.)"
           name={`${fieldArrayName}.${index}.${optionPriceName}`}
           value={value[optionPriceName]}
+          type="number"
           error={getFieldError(optionPriceName, index)}
-          onChange={setNumber(optionPriceName, index)}
+          onChange={setTwoDigit(optionPriceName, index)}
           onBlur={handleBlur}
         />
         <BasicField
           titleTid="Введите скидку (%)"
           placeholderTid="0"
+          type="number"
           name={`${fieldArrayName}.${index}.${optionDiscountName}`}
           value={value[optionDiscountName]}
           error={getFieldError(optionDiscountName, index)}
-          onChange={setNumber(optionDiscountName, index)}
+          onChange={setToHundred(optionDiscountName, index)}
           onBlur={handleBlur}
         />
+        {isCount && (
+          <BasicField
+            titleTid="Введите количество (Шт.)"
+            placeholderTid="0"
+            type="number"
+            name={optionCountName}
+            value={value[optionCountName]}
+            error={getFieldError(optionCountName)}
+            onChange={setNumber(optionCountName, index)}
+            onBlur={handleBlur}
+          />
+        )}
+        {isLength && (
+          <BasicField
+            titleTid="Введите длинну (Метр)"
+            placeholderTid="0"
+            type="number"
+            name={optionLengthName}
+            value={value[optionLengthName]}
+            error={getFieldError(optionLengthName)}
+            onChange={setTwoDigit(optionLengthName, index)}
+            onBlur={handleBlur}
+          />
+        )}
       </FieldLayout>
       {isFirst && <Divider />}
     </React.Fragment>

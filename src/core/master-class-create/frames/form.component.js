@@ -19,7 +19,6 @@ import { ReactEditor } from 'src/core/block-react-editor';
 export function FormComponent(props) {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
     props;
-  console.log(values);
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
   const setEditorData = (name) => (editorData) =>
@@ -93,15 +92,17 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <ProductPrice
-            discount={values[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]}
-            price={values[CREATE_MASTER_CLASS_FIELD_NAME.PRICE]}
+            priceAndDiscount={{
+              discount: values[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT],
+              price: values[CREATE_MASTER_CLASS_FIELD_NAME.PRICE],
+            }}
           />
         </FieldLayout>
-        <RecomendationBlock
+        {/* <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS, data)
           }
-        />
+        /> */}
         <FieldLayout type="double" adaptive>
           <ButtonPrimary
             type="submit"

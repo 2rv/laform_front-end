@@ -3,7 +3,11 @@ import { THEME_SIZE } from '../../../lib/theme';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { TitlePrimary } from '../../../lib/element/title';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
-import { BasicField, TextareaField } from '../../../lib/element/field';
+import {
+  BasicField,
+  TextareaField,
+  FieldCheckbox,
+} from '../../../lib/element/field';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
 import { RecomendationBlock } from '../../block-recomendation';
 import { Divider } from 'src/lib/element/divider';
@@ -35,7 +39,36 @@ export function FormComponent(props) {
 
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
-
+  const setCount = (e) => {
+    setFieldValue(SEWING_GOODS_FIELD_NAME.IS_LENGTH, false);
+    const newOptions = (values[SEWING_GOODS_FIELD_NAME.OPTIONS] || []).map(
+      (item) => {
+        item[SEWING_GOODS_FIELD_NAME.COUNT] = 0;
+        item[SEWING_GOODS_FIELD_NAME.LENGTH] = undefined;
+        return item;
+      },
+    );
+    setFieldValue(SEWING_GOODS_FIELD_NAME.OPTIONS, newOptions);
+    setFieldValue(
+      SEWING_GOODS_FIELD_NAME.IS_COUNT,
+      !values[SEWING_GOODS_FIELD_NAME.IS_COUNT],
+    );
+  };
+  const setLength = (e) => {
+    setFieldValue(SEWING_GOODS_FIELD_NAME.IS_COUNT, false);
+    const newOptions = (values[SEWING_GOODS_FIELD_NAME.OPTIONS] || []).map(
+      (item) => {
+        item[SEWING_GOODS_FIELD_NAME.COUNT] = undefined;
+        item[SEWING_GOODS_FIELD_NAME.LENGTH] = 0;
+        return item;
+      },
+    );
+    setFieldValue(SEWING_GOODS_FIELD_NAME.OPTIONS, newOptions);
+    setFieldValue(
+      SEWING_GOODS_FIELD_NAME.IS_LENGTH,
+      !values[SEWING_GOODS_FIELD_NAME.IS_LENGTH],
+    );
+  };
   return (
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
@@ -69,6 +102,27 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         minHeight={100}
       />
+      <FieldLayout type="double" adaptive>
+        <FieldCheckbox
+          titleTid="Количество"
+          labelTid="Наличие количества"
+          name={SEWING_GOODS_FIELD_NAME.IS_COUNT}
+          value={values[SEWING_GOODS_FIELD_NAME.IS_COUNT]}
+          onBlur={handleBlur}
+          checked={values[SEWING_GOODS_FIELD_NAME.IS_COUNT]}
+          onClick={setCount}
+        />
+        <FieldCheckbox
+          titleTid="Длинна"
+          labelTid="Наличие длинны"
+          name={SEWING_GOODS_FIELD_NAME.IS_LENGTH}
+          value={values[SEWING_GOODS_FIELD_NAME.IS_LENGTH]}
+          onBlur={handleBlur}
+          checked={values[SEWING_GOODS_FIELD_NAME.IS_LENGTH]}
+          onClick={setLength}
+        />
+      </FieldLayout>
+
       <ProductOptions
         errors={errors}
         touched={touched}
@@ -85,6 +139,12 @@ export function FormComponent(props) {
         optionColorName={SEWING_GOODS_FIELD_NAME.OPTION_COLOR}
         optionPriceName={SEWING_GOODS_FIELD_NAME.OPTION_PRICE}
         optionDiscountName={SEWING_GOODS_FIELD_NAME.OPTION_DISCOUNT}
+        productCountName={SEWING_GOODS_FIELD_NAME.COUNT}
+        productLengthName={SEWING_GOODS_FIELD_NAME.LENGTH}
+        isCount={values[SEWING_GOODS_FIELD_NAME.IS_COUNT]}
+        isLength={values[SEWING_GOODS_FIELD_NAME.IS_LENGTH]}
+        optionCountName={SEWING_GOODS_FIELD_NAME.OPTION_COUNT}
+        optionLengthName={SEWING_GOODS_FIELD_NAME.OPTION_LENGTH}
       />
 
       <Divider />

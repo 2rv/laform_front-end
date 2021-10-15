@@ -5,31 +5,31 @@ import { PATTERNS_PRODUCT_ROUTE_PATH } from '../../../core/patterns-product';
 import { CardPatternType } from './card.type';
 import {
   CardPrice,
-  CartButton,
   CardName,
   ComplexityDots,
   DeleteButton,
   LikeButton,
   SelectButton,
 } from './card.components';
-import { CartButtonWithParams } from './card.cart-button';
+import { CartModalButton } from '../../common/cart-modal-button';
 
 export function CardPattern(props: CardPatternType) {
   const {
     id,
+    like,
+    admin,
     type,
-    name,
     image,
-    complexity,
+    name,
     modifier,
     price,
     discount,
-    like,
-    onCart,
+    count,
+    complexity,
+    sizes,
     onSelect,
     onDelete,
-    admin,
-    options,
+    onCart,
   } = props;
 
   return (
@@ -50,17 +50,15 @@ export function CardPattern(props: CardPatternType) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        {options?.length === 0 ? (
-          <CartButton id={id} type={type} onCart={onCart} />
-        ) : (
-          <CartButtonWithParams
-            id={id}
-            type={type}
-            onCart={onCart}
-            options={options}
-          />
-        )}
-
+        <CartModalButton
+          id={id}
+          type={type}
+          price={price}
+          discount={discount}
+          count={count}
+          onCart={onCart}
+          sizes={sizes}
+        />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />

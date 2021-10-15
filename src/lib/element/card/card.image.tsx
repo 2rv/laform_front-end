@@ -24,7 +24,8 @@ const Image = styled.img`
   height: 100%;
   min-height: 260px;
   max-height: 260px;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: ${THEME_COLOR.WHITE};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Container = styled(LinkPrimary)<any>`

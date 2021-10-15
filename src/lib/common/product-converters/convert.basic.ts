@@ -47,20 +47,21 @@ export function convertPatternItemConverter(
 ): CardPatternType {
   const { price, discount } = checkMinPriceAndDiscount(
     item.options,
-    // item.price,
-    // item.discount,
+    item.price,
+    item.discount,
   );
   return {
     id: item.id,
+    type: item.type,
     name: item.titleRu || item.titleEn,
     image: item.images?.[0]?.fileUrl,
-    type: item.type,
+    like: item.like && item.like.length > 0,
     modifier: item.modifierRu || item.modifierEn,
     complexity: item.complexity,
-    like: item.like && item.like.length > 0,
+    sizes: convertOptions(item.options, item.optionType, 2),
     price: price,
     discount: discount,
-    options: convertOptions(item?.options),
+    count: item.count,
   };
 }
 
@@ -72,7 +73,6 @@ export function convertSewingGoodItemConverter(
     item.price,
     item.discount,
   );
-  console.log(item.options);
   return {
     id: item.id,
     type: item.type,
@@ -80,8 +80,12 @@ export function convertSewingGoodItemConverter(
     image: item.images?.[0]?.fileUrl,
     like: item.like && item.like.length > 0,
     modifier: item.modifierRu || item.modifierEn,
+    colors: convertOptions(item.options, item.optionType, 3),
+    sizes: convertOptions(item.options, item.optionType, 2),
+    options: convertOptions(item.options, item.optionType, 1),
+    count: item.count,
+    length: item.length,
     price: price,
-    options: convertOptions(item.options),
     discount: discount,
   };
 }

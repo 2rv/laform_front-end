@@ -46,29 +46,32 @@ export const convertPromoCodeForCheck = (promocode) => ({
 export function convertAddToCart(product, data, indexId = 0) {
   if (data.type === 0) {
     return {
+      indexId: product.id + indexId,
       id: product.id,
       type: data.type,
       masterClass: product,
-      indexId: product.id + indexId,
     };
   }
-  if (data.type === 1 || data.type === 2) {
+  if (product.type === 1 || product.type === 2) {
     return {
+      indexId: product.id + indexId,
       id: product.id,
       type: data.type,
       patternProduct: product,
-      option: data.option.id,
-      indexId: product.id + indexId,
+      optionId: data.optionId,
+      count: data.count,
+      length: data.length,
     };
   }
-  if (data.type === 3) {
+  if (product.type === 3) {
     return {
-      id: product.id,
-      type: data.type,
-      sewingProduct: product,
-      option: data.option.id,
-      count: data.count ?? 1,
       indexId: product.id + indexId,
+      id: product.id,
+      type: product.type,
+      sewingProduct: product,
+      optionId: data.optionId,
+      count: data.count,
+      length: data.length,
     };
   }
 }

@@ -161,8 +161,13 @@ import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
 } from '../../core/block-categories';
+import {
+  createPatternStore,
+  CREATE_PATTERN_STORE_NAME,
+} from '../../core/pattern-create';
 
 export const reducers = combineReducers({
+  [CREATE_PATTERN_STORE_NAME]: createPatternStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,

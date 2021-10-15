@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { IconButton } from '../../lib/element/button';
-import { BasicField, FieldSelect } from '../../lib/element/field';
+import { BasicField } from '../../lib/element/field';
 import { FieldLayout } from '../../lib/element/layout';
 import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
@@ -12,10 +12,12 @@ export function ProductOptionsThree(props: ProductOptionsThreeProps) {
   const {
     handleChange,
     handleBlur,
+    setNumber,
+    setTwoDigit,
+    setToHundred,
     isFirst,
     value,
     index,
-    optionTypeName,
     fieldArrayName,
     optionSizeName,
     optionSizePriceName,
@@ -23,9 +25,11 @@ export function ProductOptionsThree(props: ProductOptionsThreeProps) {
     optionColorPriceName,
     optionDiscountName,
     getFieldError,
-    setNumber,
     remove,
-    handleType,
+    optionCountName,
+    optionLengthName,
+    isCount,
+    isLength,
   } = props;
 
   return (
@@ -47,7 +51,8 @@ export function ProductOptionsThree(props: ProductOptionsThreeProps) {
             name={`${fieldArrayName}.${index}.${optionSizePriceName}`}
             value={value[optionSizePriceName]}
             error={getFieldError(optionSizePriceName, index)}
-            onChange={setNumber(optionSizePriceName, index)}
+            type="number"
+            onChange={setTwoDigit(optionSizePriceName, index)}
             onBlur={handleBlur}
           />
           <Button onClick={() => remove(index)}>
@@ -70,14 +75,9 @@ export function ProductOptionsThree(props: ProductOptionsThreeProps) {
           name={`${fieldArrayName}.${index}.${optionColorPriceName}`}
           value={value[optionColorPriceName]}
           error={getFieldError(optionColorPriceName, index)}
-          onChange={setNumber(optionColorPriceName, index)}
+          type="number"
+          onChange={setTwoDigit(optionSizePriceName, index)}
           onBlur={handleBlur}
-        />
-        <FieldSelect
-          titleTid="Сменить тип параметра"
-          options={optionSelectType}
-          value={value[optionTypeName]}
-          onChange={handleType(index)}
         />
         <BasicField
           titleTid="Введите скидку (%)"
@@ -85,9 +85,34 @@ export function ProductOptionsThree(props: ProductOptionsThreeProps) {
           name={`${fieldArrayName}.${index}.${optionDiscountName}`}
           value={value[optionDiscountName]}
           error={getFieldError(optionDiscountName, index)}
-          onChange={setNumber(optionDiscountName, index)}
+          type="number"
+          onChange={setToHundred(optionDiscountName, index)}
           onBlur={handleBlur}
         />
+        {isCount && (
+          <BasicField
+            titleTid="Введите количество (Шт.)"
+            placeholderTid="0"
+            name={optionCountName}
+            value={value[optionCountName]}
+            error={getFieldError(optionCountName)}
+            type="number"
+            onChange={setNumber(optionCountName, index)}
+            onBlur={handleBlur}
+          />
+        )}
+        {isLength && (
+          <BasicField
+            titleTid="Введите длинну (Метр)"
+            placeholderTid="0"
+            name={optionLengthName}
+            value={value[optionLengthName]}
+            error={getFieldError(optionLengthName)}
+            type="number"
+            onChange={setTwoDigit(optionLengthName, index)}
+            onBlur={handleBlur}
+          />
+        )}
       </FieldLayout>
       {isFirst && <Divider />}
     </React.Fragment>
@@ -101,9 +126,3 @@ const Line = styled.div`
 const Button = styled(IconButton)`
   margin-top: 19px;
 `;
-const optionSelectType = [
-  { id: 1, tid: 'Размер, Цвет, Цена' },
-  { id: 2, tid: 'Размер, Цена за размер' },
-  { id: 3, tid: 'Цвет, Цена за цвет' },
-  { id: 4, tid: 'Размер, Цена за размер, Цвет, Цена за цвет' },
-];

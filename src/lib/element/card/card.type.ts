@@ -12,6 +12,8 @@ export interface OptionType {
   price?: number;
   discount?: number;
   vendorCode: string;
+  count?: number;
+  length?: number;
 }
 export interface CardImageProps {
   image: string;
@@ -25,7 +27,13 @@ export interface CardActionProps {
   type: number;
   like?: boolean;
   admin?: boolean;
+  price?: number;
+  discount?: number;
+  count?: number;
+  length?: number;
   options?: OptionType[];
+  colors?: OptionType[];
+  sizes?: OptionType[];
   onSelect?: Function;
   onCart?: Function;
   onDelete?: Function;
@@ -33,6 +41,12 @@ export interface CardActionProps {
 export interface CardPriceProps {
   price?: number;
   discount?: number;
+}
+export interface CardCountProps {
+  count?: number;
+}
+export interface CardLengthProps {
+  length?: number;
 }
 
 export interface CardArticleType {
@@ -49,31 +63,36 @@ export interface CardArticleType {
 }
 export interface CardSewingGoodType {
   id: string;
-  type: number;
-  image: string;
-  name: string | undefined;
-  modifier?: string;
-  discount?: number;
-  price?: number;
   like?: boolean;
   admin?: boolean;
+  type: number;
+  image: string;
+  name?: string;
+  modifier?: string;
+  price?: number;
+  discount?: number;
+  count?: number;
+  length?: number;
   options?: OptionType[];
+  colors?: OptionType[];
+  sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
   onCart?: Function;
 }
 export interface CardPatternType {
   id: string;
+  like?: boolean;
+  admin?: boolean;
   type: number;
   image: string;
   name: string | undefined;
-  complexity: number;
   modifier?: string;
-  discount?: number;
   price?: number;
-  like?: boolean;
-  admin?: boolean;
-  options?: OptionType[];
+  discount?: number;
+  count?: number;
+  complexity: number;
+  sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
   onCart?: Function;

@@ -18,6 +18,10 @@ export const SEWING_GOODS_FIELD_NAME = {
 
   PRICE: 'price',
   DISCOUNT: 'discount',
+  COUNT: 'count',
+  LENGTH: 'length',
+  IS_COUNT: 'isCount',
+  IS_LENGTH: 'isLength',
   OPTION_TYPE: 'optionType',
 
   OPTIONS: 'options',
@@ -25,4 +29,6 @@ export const SEWING_GOODS_FIELD_NAME = {
   OPTION_COLOR: 'colorRu',
   OPTION_PRICE: 'price',
   OPTION_DISCOUNT: 'discount',
+  OPTION_COUNT: 'count',
+  OPTION_LENGTH: 'length',
 };

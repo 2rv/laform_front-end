@@ -6,12 +6,6 @@ import {
   numberPositiveMin,
   numberPositiveMax,
 } from '../../../main/validate/validate.service';
-
-export function numberValue(e: SyntheticEvent<HTMLInputElement>) {
-  const value = Number(e.currentTarget.value);
-  if (isNaN(value)) return 0;
-  return value;
-}
 interface optionType {
   price: number;
   discount: number;
@@ -23,6 +17,37 @@ interface validateOption {
   IsColor?: boolean;
   isFilePdf?: boolean;
 }
+function otherFunc(value: number = 0): number {
+  if (value.toString().includes('.')) {
+    //@ts-ignore
+    return value.toString().split('.').pop().length;
+  } else {
+    return 0;
+  }
+}
+
+export function numberValue(e: SyntheticEvent<HTMLInputElement>) {
+  if (e.currentTarget.value === '') return e.currentTarget.value;
+  const value: number = Number(e.currentTarget.value);
+  if (isNaN(value)) return 0;
+  return Number(value.toFixed());
+}
+export function numberToHundred(e: SyntheticEvent<HTMLInputElement>) {
+  if (e.currentTarget.value === '') return e.currentTarget.value;
+  const value = Number(e.currentTarget.value);
+  if (isNaN(value)) return 0;
+  if (value < 0) return 0;
+  if (value > 100) return 100;
+  return Math.floor(value);
+}
+export function numberTwoDigit(e: SyntheticEvent<HTMLInputElement>) {
+  if (e.currentTarget.value === '') return e.currentTarget.value;
+  const value = parseFloat(e.currentTarget.value);
+  if (isNaN(value)) return 0;
+  if (otherFunc(value) > 2) return Number(value.toFixed(2));
+  return value;
+}
+
 export function findMinPriceAndDiscount(values: optionType[]) {
   if (!values || values.length === 0) return { price: 0, discount: 0 };
   return values.reduce(

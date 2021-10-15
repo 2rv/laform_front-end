@@ -8,7 +8,13 @@ export interface ProductOptionsProps {
 
   productPriceName: string;
   productDiscountName: string;
-
+  productCountName?: string;
+  productLengthName?: string;
+  productFileName?: string;
+  isFile?: boolean;
+  isPattern?: boolean;
+  isCount?: boolean;
+  isLength?: boolean;
   initialOption: any;
 
   fieldArrayName: string;
@@ -17,67 +23,97 @@ export interface ProductOptionsProps {
   optionColorName: string;
   optionPriceName: string;
   optionDiscountName: string;
+  optionCountName?: string;
+  optionLengthName?: string;
+  optionFileName?: string;
 }
 
 export interface ProductOptionsOneProps {
   value: any;
   index: number;
   isFirst: boolean;
+  isCount: boolean;
+  isLength: boolean;
   handleChange: Function;
   handleBlur: Function;
   getFieldError: Function;
-  setNumber: Function;
   remove: Function;
+  setNumber: Function;
+  setTwoDigit: Function;
+  setToHundred: Function;
   fieldArrayName: string;
   optionSizeName: string;
   optionColorName: string;
   optionPriceName: string;
   optionDiscountName: string;
+  optionCountName: string;
+  optionLengthName: string;
 }
 
 export interface ProductOptionsTwoProps {
   index: number;
   value: any;
+
+  isFile?: boolean;
   isFirst: boolean;
+  isCount: boolean;
+  isLength: boolean;
   handleChange: Function;
   handleBlur: Function;
   getFieldError: Function;
-  setNumber: Function;
   remove: Function;
+  setNumber: Function;
+  setTwoDigit: Function;
+  setToHundred: Function;
+  setPdfFile: Function;
   fieldTitle: string;
   fieldPlaceholder: string;
   optionName: string;
   fieldArrayName: string;
   optionPriceName: string;
   optionDiscountName: string;
+  optionCountName: string;
+  optionLengthName: string;
+  optionFileName?: string;
 }
-export interface ProductOptionsNoneProps {
-  values: any;
-  errors: any;
-  touched: any;
-  productPriceName: string;
-  productDiscountName: string;
-  handleBlur: Function;
-  setFieldValue: Function;
-}
-
 export interface ProductOptionsThreeProps {
   isFirst: boolean;
   value: any;
   index: number;
-  fieldArrayName: string;
+  getFieldError: Function;
+  remove: Function;
+  handleChange: Function;
+  handleBlur: Function;
+  setNumber: Function;
+  setTwoDigit: Function;
+  setToHundred: Function;
 
+  isLength: boolean;
+  isCount: boolean;
+  fieldArrayName: string;
   optionTypeName: string;
   optionSizeName: string;
   optionSizePriceName: number;
   optionColorName: string;
   optionColorPriceName: number;
-
   optionDiscountName: string;
+  optionCountName: string;
+  optionLengthName: string;
+}
 
-  getFieldError: Function;
-  setNumber: Function;
-  remove: Function;
-  handleChange: Function;
+export interface ProductOptionsNoneProps {
+  values: any;
+  errors: any;
+  touched: any;
+  isFile: boolean;
+  isLength: boolean;
+  isCount: boolean;
+  productPriceName: string;
+  productDiscountName: string;
+  productCountName: string;
+  productLengthName: string;
+  productFileName: string;
   handleBlur: Function;
+  setFieldValue: Function;
+  handleChange: Function;
 }
