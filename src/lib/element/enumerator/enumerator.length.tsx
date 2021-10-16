@@ -8,7 +8,13 @@ import { TextSecondary } from '../text';
 // import { numberTwoDigit } from 'src/lib/common/create-product-validation';
 
 export function EnumeratorLength(props: EnumeratorLengthProps) {
-  const { length = 0, onChange, minLength = 0.1, maxLength = Infinity } = props;
+  const {
+    titleTid,
+    length = 0,
+    onChange,
+    minLength = 0.1,
+    maxLength = Infinity,
+  } = props;
 
   const increment = () => {
     onChange((Number(length) + 0.1).toFixed(2));
@@ -28,7 +34,7 @@ export function EnumeratorLength(props: EnumeratorLengthProps) {
 
   return (
     <Container>
-      <Title tid="Длинна" />
+      {titleTid && <Title tid={titleTid} />}
       <Content>
         <Button
           disabled={Math.floor(length * 100) === Math.floor(maxLength * 100)}

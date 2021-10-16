@@ -5,7 +5,11 @@ export function ProductCategories(props) {
   const { categories } = props;
   if (!categories || categories.length === 0) return null;
   return (
-    <Text tid={categories.map((category) => category.textRu).join(', ')} />
+    <Text
+      tid={categories
+        .map((category) => category.categoryNameRu || category.categoryNameEn)
+        .join(', ')}
+    />
   );
 }
 const Text = styled(TextSecondary)`

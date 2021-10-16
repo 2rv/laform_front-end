@@ -122,19 +122,10 @@ export function updatePinned(id, compilationName, currentLang, body) {
     });
 
     try {
-      let data;
-      if (compilationName === 'sewing-product') {
-        data = { sewingProduct: body };
-      } else if (compilationName === 'master-class') {
-        data = { masterClass: body };
-      } else if (compilationName === 'post') {
-        data = body;
-      }
-
       await httpRequest({
         method: EDIT_COMPILATION_API.UPDATE_PINNED.TYPE,
         url: EDIT_COMPILATION_API.UPDATE_PINNED.ENDPOINT(compilationName, id),
-        data,
+        data: body,
       });
 
       dispatch({

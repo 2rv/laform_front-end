@@ -3,10 +3,12 @@ export interface EnumeratorCountProps {
   count: any;
   minNumber?: number;
   maxNumber?: number;
+  titleTid?: string;
 }
 export interface EnumeratorLengthProps {
   onChange: Function;
   length: any;
   minLength?: number;
   maxLength?: number;
+  titleTid?: string;
 }

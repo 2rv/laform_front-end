@@ -47,7 +47,7 @@ export function sewingGoodsUpdateData(isAuth, query, id, body) {
       const response = await httpRequest({
         method: SEWING_GOODS_API.SEWING_GOODS_DELETE.TYPE,
         url: SEWING_GOODS_API.SEWING_GOODS_DELETE.ENDPOINT(id),
-        data: { sewingProduct: body },
+        data: body,
       });
 
       dispatch({

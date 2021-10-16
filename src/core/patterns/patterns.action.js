@@ -48,7 +48,7 @@ export function patternsUpdateData(isAuth, query, id, body) {
       const response = await httpRequest({
         method: PATTERNS_API.PATTERNS_DELETE.TYPE,
         url: PATTERNS_API.PATTERNS_DELETE.ENDPOINT(id),
-        data: { patternProduct: body },
+        data: body,
       });
 
       dispatch({

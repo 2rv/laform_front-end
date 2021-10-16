@@ -48,6 +48,9 @@ export interface CardCountProps {
 export interface CardLengthProps {
   length?: number;
 }
+export interface ProductVendorCodeProps {
+  vendorCode?: string;
+}
 
 export interface CardArticleType {
   id: string;

@@ -4,8 +4,7 @@ import { SEWING_GOODS_ROUTE_PATH } from '../sewing-goods';
 import { ARTICLES_ROUTE_PATH } from '../articles';
 import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
 import { CREATE_MASTER_CLASS_ROUTE_PATH } from '../master-class-create';
-import { CREATE_PRINT_PATTERN_ROUTE_PATH } from '../patterns-create-print';
-import { ELECTRONIC_PATTERN_ROUTE_PATH } from '../patterns-create-electronic';
+import { CREATE_PATTERN_ROUTE_PATH } from '../pattern-create';
 import { CREATE_SEWING_GOODS_ROUTE_PATH } from '../sewing-goods-create';
 import { CREATE_ARTICLE_ROUTE_PATH } from '../article-create';
 import { USERS_ROUTE_PATH } from '../users';
@@ -38,12 +37,8 @@ export const ADMIN_MENU_ITEMS = [
     tid: 'HEADER.ADMIN_MENU.MASTER_CLASS_ARTICLE_CREATING',
   },
   {
-    path: CREATE_PRINT_PATTERN_ROUTE_PATH,
-    tid: 'HEADER.ADMIN_MENU.PRINTED_PATTERN_CREATING',
-  },
-  {
-    path: ELECTRONIC_PATTERN_ROUTE_PATH,
-    tid: 'HEADER.ADMIN_MENU.ELECTRONIC_PATTERNS_CREATING',
+    tid: 'Создать  выкройку',
+    path: CREATE_PATTERN_ROUTE_PATH,
   },
   {
     path: CREATE_SEWING_GOODS_ROUTE_PATH,

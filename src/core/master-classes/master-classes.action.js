@@ -5,7 +5,6 @@ import { BASKET_STORE_NAME } from '../basket';
 import { convertMasterClassProducts } from '../../lib/common/product-converters';
 
 export function masterClassesUploadData(isAuth, query) {
-  console.log(query);
   return async (dispatch, getState) => {
     dispatch({
       type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING,
@@ -40,7 +39,7 @@ export function masterClassesUploadData(isAuth, query) {
     }
   };
 }
-export function masterClassesUpdateData(currentLang, id, body) {
+export function masterClassesUpdateData(isAuth, query, id, body) {
   return async (dispatch) => {
     dispatch({
       type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_PENDING,
@@ -48,15 +47,15 @@ export function masterClassesUpdateData(currentLang, id, body) {
 
     try {
       const response = await httpRequest({
-        method: MASTER_CLASSES_API.MASTER_CLASSES_UPDATE.TYPE,
-        url: MASTER_CLASSES_API.MASTER_CLASSES_UPDATE.ENDPOINT(id),
-        data: { masterClass: body },
+        method: MASTER_CLASSES_API.MASTER_CLASSES_DELETE.TYPE,
+        url: MASTER_CLASSES_API.MASTER_CLASSES_DELETE.ENDPOINT(id),
+        data: body,
       });
 
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPDATE_SUCCESS,
       });
-      dispatch(masterClassesUploadData(currentLang));
+      dispatch(masterClassesUploadData(isAuth, query));
     } catch (err) {
       if (err.response) {
         dispatch({

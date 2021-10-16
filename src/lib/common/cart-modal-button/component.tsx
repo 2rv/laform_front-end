@@ -103,6 +103,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
             )}
             {Boolean(isCount) && (
               <EnumeratorCount
+                titleTid="Количество"
                 maxNumber={count}
                 minNumber={0}
                 count={values[CART_MODAL_FIELD_NAME.COUNT]}
@@ -111,6 +112,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
             )}
             {Boolean(isLength) && (
               <EnumeratorLength
+                titleTid="Длинна"
                 maxLength={length}
                 minLength={0}
                 length={values[CART_MODAL_FIELD_NAME.LENGTH]}

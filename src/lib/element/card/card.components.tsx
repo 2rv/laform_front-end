@@ -6,6 +6,7 @@ import {
   CardCountProps,
   CardLengthProps,
   CardPriceProps,
+  ProductVendorCodeProps,
 } from './card.type';
 import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
 import { LikeButton as LikeAction } from 'src/core/block-like';
@@ -244,3 +245,19 @@ export function CardLength(props: CardLengthProps) {
     </div>
   );
 }
+export function ProductVendorCode(props: ProductVendorCodeProps) {
+  const { vendorCode } = props;
+  if (!vendorCode) return null;
+  return (
+    <div>
+      <TextSecondary tid="OTHER.VENDOR_CODE" />
+      &nbsp;
+      <TextString>{vendorCode}</TextString>
+    </div>
+  );
+}
+const TextString = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+  color: ${THEME_COLOR.SECONDARY_DARK};
+`;

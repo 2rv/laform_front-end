@@ -7,7 +7,13 @@ import { SyntheticEvent } from 'react';
 import { TextSecondary } from '../text';
 
 export function EnumeratorCount(props: EnumeratorCountProps) {
-  const { count, onChange, minNumber = 1, maxNumber = Infinity } = props;
+  const {
+    titleTid,
+    count,
+    onChange,
+    minNumber = 1,
+    maxNumber = Infinity,
+  } = props;
 
   const increment = () => {
     onChange(Number(count) + 1);
@@ -24,7 +30,7 @@ export function EnumeratorCount(props: EnumeratorCountProps) {
 
   return (
     <Container>
-      <Title tid="Количество" />
+      {titleTid && <Title tid={titleTid} />}
       <Content>
         <Button
           disabled={Number(count) >= Number(maxNumber)}
