@@ -1,3 +1,0 @@
-export const NOTIFICATION_FORM_FIELD_KEY = {
-  EMAIL: 'EMAIL',
-};
