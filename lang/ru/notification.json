@@ -1,7 +1,7 @@
 {
   "PRE_CTA": "Не пропустите,",
   "CTA": "оформите подписку!",
-  "FIELD_PLACEHOLDER": "Введите свой Email",
-  "BUTTON_TEXT": "Подписаться",
+  "BUTTON_TEXT_SUBSCRIBE": "Подписаться",
+  "BUTTON_TEXT_UNSUBSCRIBE": "Отписаться",
   "SUCCESS": "Вы успешно подписались"
 }

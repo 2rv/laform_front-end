@@ -1,7 +1,7 @@
 import { SETTINGS_FORM_CHANGE_NOTIFICATION_FIELD_KEY } from './frames/settings-form-change-notification';
 
 export const SETTINGS_CHANGE_NOTIFICATION_FIELD_NAME = {
-  NOTIFICATION: 'notification',
+  NOTIFICATION: 'notificationEmail',
 };
 
 export const SETTINGS_CHANGE_NOTIFICATION_FORM_FIELD_NAME = {

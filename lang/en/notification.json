@@ -1,7 +1,7 @@
 {
   "PRE_CTA": "Do not miss,",
   "CTA": "subscribe!",
-  "FIELD_PLACEHOLDER": "Enter your Email",
-  "BUTTON_TEXT": "Subscribe to",
+  "BUTTON_TEXT_SUBSCRIBE": "Subscribe",
+  "BUTTON_TEXT_UNSUBSCRIBE": "Unsubscribe",
   "SUCCESS": "You have successfully subscribed"
 }

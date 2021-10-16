@@ -2,11 +2,11 @@ export const NOTIFICATION_STORE_NAME = 'NOTIFICATION';
 
 export const NOTIFICATION_API = {
   NOTIFICATION_FORM_UPLOAD: {
-    ENDPOINT: 'notification/subscribe-unauthorized',
-    METHOD: 'POST',
+    ENDPOINT: (userId) => `user/update/${userId}`,
+    METHOD: 'PUT',
   },
-  NOTIFICATION_LOAD_EMAIL: {
-    ENDPOINT: 'user/settings/email',
+  LOAD_NOTIFICATION: {
+    ENDPOINT: 'user/notification-email',
     METHOD: 'GET',
   },
 };
