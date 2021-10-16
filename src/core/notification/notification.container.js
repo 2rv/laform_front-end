@@ -19,7 +19,9 @@ export function NotificationContainer() {
   const notificationEmailStatus = getRequestData(state.notificationStatus);
 
   useEffect(() => {
-    dispatch(getUserNotificationEmailStatus());
+    if (isAuth) {
+      dispatch(getUserNotificationEmailStatus());
+    }
   }, []);
 
   const updateNotificationEmailStatusHandler = () => {
