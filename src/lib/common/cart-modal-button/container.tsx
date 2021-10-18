@@ -48,14 +48,6 @@ export function CartButtonContainer(props: CartModalContainerProps) {
   const dispatch = useDispatch();
   const isPending = isRequestPending(basketAction);
   const [isCart, setCart] = useState(false);
-
-  useEffect(() => {
-    const result = bascketState.find((item: any) => {
-      return checkCart(item.id, item.optionId);
-    });
-    setCart(Boolean(result));
-  }, [bascketState]);
-
   const formik = useFormik({
     initialValues: {
       [CART_MODAL_FIELD_NAME.OPTION]: '',
@@ -73,6 +65,13 @@ export function CartButtonContainer(props: CartModalContainerProps) {
     },
     onSubmit: () => {},
   });
+
+  useEffect(() => {
+    const result = bascketState.find((item: any) => {
+      return checkCart(item.id, item.optionId);
+    });
+    setCart(Boolean(result));
+  }, [bascketState, formik.values]);
 
   const handleBasket = () => {
     if (isCart) return redirect(BASKET_ROUTE_PATH);

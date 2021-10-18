@@ -49,7 +49,8 @@ export function convertAddToCart(product, data, indexId = 0) {
       indexId: product.id + indexId,
       id: product.id,
       type: data.type,
-      masterClass: product,
+      masterProduct: product,
+      count: data.count || 1,
     };
   }
   if (product.type === 1 || product.type === 2) {
@@ -59,8 +60,7 @@ export function convertAddToCart(product, data, indexId = 0) {
       type: data.type,
       patternProduct: product,
       optionId: data.optionId,
-      count: data.count,
-      length: data.length,
+      count: data.count || 1,
     };
   }
   if (product.type === 3) {
@@ -70,7 +70,7 @@ export function convertAddToCart(product, data, indexId = 0) {
       type: product.type,
       sewingProduct: product,
       optionId: data.optionId,
-      count: data.count,
+      count: data.count || 1,
       length: data.length,
     };
   }

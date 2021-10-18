@@ -59,10 +59,17 @@ export function CardPattern(props: CardPatternType) {
           onCart={onCart}
           sizes={sizes}
         />
-        <ActionCase>
-          <LikeButton id={id} type={type} like={like} />
-          <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
-        </ActionCase>
+        {(like || admin) && (
+          <ActionCase>
+            <LikeButton id={id} type={type} like={like} />
+            <DeleteButton
+              id={id}
+              type={type}
+              admin={admin}
+              onDelete={onDelete}
+            />
+          </ActionCase>
+        )}
       </ActionCase>
     </Container>
   );

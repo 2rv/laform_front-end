@@ -37,7 +37,7 @@ export function EnumeratorCount(props: EnumeratorCountProps) {
           tid="+"
           onClick={increment}
         />
-        <BasicField
+        <Field
           value={count}
           placeholderTid="Количество ед."
           type="number"
@@ -52,6 +52,11 @@ export function EnumeratorCount(props: EnumeratorCountProps) {
     </Container>
   );
 }
+const Field = styled(BasicField)`
+  padding: 0;
+  min-width: 46px;
+  text-align: center;
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;

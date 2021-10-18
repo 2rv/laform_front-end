@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { THEME_SIZE } from '../../lib/theme';
-import { TableList } from '../block-table-list';
 import { TextSecondary } from '../../lib/element/text';
 import { SignComponent, FormContainer } from './frames';
+import { Table } from 'src/lib/common/block-table';
 
 export function BasketComponent(props) {
   const {
@@ -46,9 +46,9 @@ export function BasketComponent(props) {
     headersMaster,
     headersPatterns,
     //--------------
-    itemsGoods,
-    itemsMaster,
-    itemsPatterns,
+    sewingProducts,
+    masterProducts,
+    patternProducts,
   } = props;
 
   return (
@@ -58,23 +58,23 @@ export function BasketComponent(props) {
         <TextSecondary tid="BASKET.CART_IS_EMPTY" />
       ) : (
         <>
-          <TableList
+          <Table
             changeItem={changeItem}
             deleteItem={deleteItem}
             headers={headersGoods}
-            items={itemsGoods}
+            items={sewingProducts}
           />
-          <TableList
+          <Table
             changeItem={changeItem}
             deleteItem={deleteItem}
             headers={headersPatterns}
-            items={itemsPatterns}
+            items={patternProducts}
           />
-          <TableList
+          <Table
             changeItem={changeItem}
             deleteItem={deleteItem}
             headers={headersMaster}
-            items={itemsMaster}
+            items={masterProducts}
           />
           <FormContainer
             promocode={promocode}

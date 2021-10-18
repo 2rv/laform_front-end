@@ -2,15 +2,14 @@ import { httpRequest } from '../../main/http';
 import { BASKET_API } from './basket.constant';
 import { BASKET_ACTION_TYPE, ORDER_FIELD_NAME } from './basket.type';
 import {
-  convertAddToCart,
   convertPromoCodeForCheck,
   performPromoCode,
-  convertForCreateOrder,
   performUserInfoData,
   convertUserInfoData,
 } from './basket.convert';
 import { redirect } from 'src/main/navigation';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
+import { convertAddToCart, convertCreateOrder } from './basket.util';
 
 export function basketUploadData(values, bascketState, isAuth) {
   return async (dispatch) => {
@@ -18,7 +17,7 @@ export function basketUploadData(values, bascketState, isAuth) {
       type: BASKET_ACTION_TYPE.CREATE_ORDER_PENDING,
     });
     try {
-      const data = convertForCreateOrder(values, bascketState);
+      const data = convertCreateOrder(values, bascketState);
       const responst = await httpRequest({
         method: BASKET_API.CREATE_ORDER.TYPE,
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
@@ -40,6 +39,8 @@ export function basketUploadData(values, bascketState, isAuth) {
       dispatch(clearBasketAction());
       if (isAuth) {
         redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+      } else {
+        alert('Для просмотра списка покупок необходима авторизация');
       }
     } catch (err) {
       if (err.response) {
@@ -166,19 +167,10 @@ export function changeItemAction(values, bascketState) {
 export function deleteItemAction(params, bascketState) {
   return async (dispatch) => {
     try {
-      const { indexId, id, sizeId, colorId, programId } = params;
-      const changedState = bascketState.filter((item) => {
-        if (item.indexId === indexId) {
-          if (item.type === 0) return item.program !== programId;
-          if (item.type === 1) return item.size !== sizeId;
-          if (item.type === 2) return item.size !== sizeId;
-          if (item.type === 3) {
-            const isSize = item.size === sizeId;
-            const isColor = item.color === colorId;
-            return isSize && isColor ? false : true;
-          }
-        } else return true;
-      });
+      const { indexId, optionId } = params;
+      const changedState = bascketState.filter(
+        (item) => item.indexId !== indexId,
+      );
       dispatch({
         type: BASKET_ACTION_TYPE.CHANGE_BASKET,
         data: changedState,

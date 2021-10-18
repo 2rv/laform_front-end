@@ -71,6 +71,7 @@ const Modifier = styled(TextSecondary)<{ alt?: boolean }>`
   }
   padding: ${spacing(2)};
   align-items: center;
+  text-align: center;
   justify-content: center;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

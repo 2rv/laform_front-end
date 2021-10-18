@@ -10,7 +10,7 @@ import {
   LikeButton,
   SelectButton,
 } from './card.components';
-import { CartButton } from './card.components';
+import { CartModalButton } from 'src/lib/common/cart-modal-button';
 
 export function CardMasterClass(props: CardMasterClassType) {
   const {
@@ -43,7 +43,13 @@ export function CardMasterClass(props: CardMasterClassType) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton id={id} type={type} onCart={onCart} />
+        <CartModalButton
+          id={id}
+          type={type}
+          price={price}
+          discount={discount}
+          onCart={onCart}
+        />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
