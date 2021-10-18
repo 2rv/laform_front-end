@@ -1,27 +1,25 @@
-import { convertMultiProducts } from 'src/lib/common/product-converters';
+import {
+  convertMultiProducts,
+  convertOptions,
+} from 'src/lib/common/product-converters';
 
 export function performPatternProductData(rowData, basket) {
   return {
     id: rowData.id,
     type: rowData.type,
-    modifier: rowData?.modifier,
-    discount: rowData?.discount,
-    name: rowData.titleRu,
-    description: rowData.descriptionRu,
+    optionType: rowData.optionType,
+    modifier: rowData.modifierRu || rowData.modifierEn,
+    name: rowData.titleRu || rowData.titleEn,
+    description: rowData.descriptionRu || rowData.descriptionEn,
+    materials: rowData.materialRu || rowData.materialEn,
+    complexity: rowData.complexity,
+    vendorCode: rowData.vendorCode,
+    price: rowData.price,
+    discount: rowData.discount,
+    count: rowData.count,
     categories: rowData.categories,
     images: rowData.images.map((item) => item.fileUrl),
-    cart: Boolean(
-      basket?.find((bItem) => bItem?.patternProduct?.id === rowData.id),
-    ),
-    sizes: rowData.sizes.map((item, index) => ({
-      id: item.id,
-      tid: item.size,
-      price: item.price,
-      vendorCode: item.vendorCode,
-    })),
-    materials: rowData.materialRu,
-    complexity: rowData.complexity,
-    filePdf: rowData.filePdf,
+    sizes: convertOptions(rowData.options, rowData.optionType, 2),
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,

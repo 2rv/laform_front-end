@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { CardImage } from './card.image';
 import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../../../core/sewing-goods-product';
-import { CardSewingGoodTypeProps } from './card.type';
+import { CardSewingGoodType } from './card.type';
 import {
   CardPrice,
   CardName,
@@ -10,25 +10,29 @@ import {
   LikeButton,
   SelectButton,
 } from './card.components';
-import { CartButton } from './card.cart-button';
+import { CartModalButton } from '../../common/cart-modal-button';
 
-export function CardSewingGood(props: CardSewingGoodTypeProps) {
+export function CardSewingGood(props: CardSewingGoodType) {
   const {
     id,
+    like,
+    admin,
     type,
     image,
     name,
     modifier,
     price,
     discount,
-    like,
-    onCart,
+    count,
+    length,
+    options,
+    colors,
+    sizes,
     onSelect,
     onDelete,
-    admin,
-    sizes,
-    colors,
+    onCart,
   } = props;
+
   return (
     <Container>
       <CardImage
@@ -44,12 +48,17 @@ export function CardSewingGood(props: CardSewingGoodTypeProps) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton
+        <CartModalButton
           id={id}
           type={type}
+          price={price}
+          discount={discount}
+          count={count}
+          length={length}
           onCart={onCart}
-          sizes={sizes}
+          options={options}
           colors={colors}
+          sizes={sizes}
         />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />

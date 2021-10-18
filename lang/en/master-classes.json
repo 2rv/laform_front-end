@@ -23,7 +23,7 @@
 		"TITLE": "Creation of a master class",
 		"PRODUCT_SUCCESSFULLY_CREATED": "The master class has been successfully created",
 		"FORM": {
-			"PRICE": "Price",
+			"PRICE": "Price Rub.",
 			"MASTER_CLASS_ARTICLE": "Master-class article",
 			"FIELDS": {
 				"TITLE": {
@@ -37,7 +37,8 @@
 					"NAME": "Enter the title",
 					"DICE_OF_GOODS": "For example - Hit",
 					"TAG": "Enter the tag and press Enter",
-					"DESCRIPTION": "Describe the master class"
+					"DESCRIPTION": "Describe the master class",
+					"INDICATE_PRICE": "Indicate the price"
 				}
 			},
 			"BUTTON": {

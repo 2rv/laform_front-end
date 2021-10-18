@@ -1,8 +1,8 @@
 export interface LinkPropsType {
   className?: string;
-  tid: string;
+  tid?: string;
   tvalue?: object;
-  path: string;
+  path: any;
   pathConfig?: any;
   children?: any;
 }

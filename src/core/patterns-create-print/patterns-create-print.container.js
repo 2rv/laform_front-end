@@ -25,22 +25,19 @@ export function CreatePrintPatternContainer() {
 
   const initialValues = () => ({
     [PRINT_PATTERN_FIELD_NAME.NAME]: '',
-    [PRINT_PATTERN_FIELD_NAME.DESCRIPTION]: '',
-    [PRINT_PATTERN_FIELD_NAME.TYPE]: 0,
     [PRINT_PATTERN_FIELD_NAME.MODIFIER]: '',
-    [PRINT_PATTERN_FIELD_NAME.DISCOUNT]: 0,
-
     [PRINT_PATTERN_FIELD_NAME.MATERIAL]: '',
     [PRINT_PATTERN_FIELD_NAME.COMPLEXITY]: 1,
-
     [PRINT_PATTERN_FIELD_NAME.CATEGORIES]: [],
+    [PRINT_PATTERN_FIELD_NAME.DESCRIPTION]: '',
     [PRINT_PATTERN_FIELD_NAME.IMAGES]: [],
-    [PRINT_PATTERN_FIELD_NAME.SIZES]: [sizesInit],
+    [PRINT_PATTERN_FIELD_NAME.OPTIONS]: [productOption],
     [PRINT_PATTERN_FIELD_NAME.RECOMMENDATIONS]: [],
   });
-  const sizesInit = {
-    [PRINT_PATTERN_FIELD_NAME.SIZE_NAME]: '',
-    [PRINT_PATTERN_FIELD_NAME.SIZE_PRICE]: 0,
+  const productOption = {
+    [PRINT_PATTERN_FIELD_NAME.OPTION_SIZE]: '',
+    [PRINT_PATTERN_FIELD_NAME.OPTION_PRICE]: 0,
+    [PRINT_PATTERN_FIELD_NAME.OPTION_DISCOUNT]: 0,
   };
   //--------------------------------------------------------------------------
 
@@ -52,7 +49,7 @@ export function CreatePrintPatternContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       //-------------
-      sizesInit={sizesInit}
+      productOption={productOption}
       //-------------
       initialValues={initialValues()}
       onSubmit={onSubmit}

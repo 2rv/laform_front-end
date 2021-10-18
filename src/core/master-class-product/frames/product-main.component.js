@@ -1,36 +1,27 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 import { spacing } from '../../../lib/theme';
 import { Divider } from '../../../lib/element/divider';
 import {
-  ProductActions,
-  ProductCategories,
-  ProductDescription,
-  ProductPrice,
-  ProductVendorCode,
-  ProductSelect,
   ProducName,
+  ProductDescription,
+  ProductCategories,
 } from 'src/core/block-product-components';
+import { ProductSelect } from 'src/lib/common/block-select-options';
 
 export function ProductMainComponent(props) {
   const {
     id,
+    type,
+    vendorCode,
+    modifier,
     name,
     description,
-    modifier,
+    price,
     discount,
-    type,
-    comment,
-    images,
     categories,
-    programs,
-    cart,
     like,
-    addToCart,
+    recommendations,
   } = props;
-
-  const [program, setProgram] = useState({ id: undefined, price: null });
-  const handleAddToCart = () => addToCart({ id, type, program: program.id });
 
   return (
     <Container>
@@ -38,38 +29,17 @@ export function ProductMainComponent(props) {
       <ProductCategories categories={categories} />
       <Divider />
       <ProductDescription text={description} />
-      {programs?.length > 1 && <Divider />}
       <ProductSelect
-        name="Программа"
-        selectOptions={programs}
-        handleChange={setProgram}
+        id={id}
+        type={type}
+        like={like}
+        vendorCode={vendorCode}
+        price={price}
+        discount={discount}
       />
-      <Divider />
-      <FooterCase>
-        <ProductPrice price={program?.price} discount={discount} />
-        <ProductActions
-          id={id}
-          type={type}
-          like={like}
-          program={program}
-          onCart={handleAddToCart}
-        />
-      </FooterCase>
-      <ProductVendorCode vendorCode={program.vendorCode} />
     </Container>
   );
 }
-const FooterCase = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
-  gap: ${spacing(3)};
-  @media screen and (max-width: 720px) {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-`;
 const Container = styled.div`
   gap: ${spacing(3)};
   display: flex;

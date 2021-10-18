@@ -12,16 +12,20 @@ import {
   TextareaField,
 } from '../../../lib/element/field';
 import { PRINT_PATTERN_FIELD_NAME } from '../patterns-create-print.type';
-import {
-  DynamicFields,
-  ProductPrice,
-} from '../../block-product-create-components';
-import {
-  dynamicFieldsMinPrice,
-  numberValue,
-} from '../../../lib/common/create-product-helpers';
 import { RecomendationBlock } from '../../block-recomendation';
 import { ReactEditor } from 'src/core/block-react-editor';
+import { ProductOptions } from './product-options';
+import { BlockCategories } from 'src/core/block-categories';
+import {
+  ProductPrice,
+  ComplexityField,
+} from '../../block-product-create-components';
+import {
+  findMinPriceAndDiscount,
+  numberValue,
+} from 'src/lib/common/create-product-validation';
+import { Divider } from 'src/lib/element/divider';
+import { ErrorField } from 'src/lib/element/error';
 
 export function FormComponent(props) {
   const {
@@ -33,7 +37,7 @@ export function FormComponent(props) {
     handleBlur,
     setFieldValue,
     //----------------------------
-    sizesInit,
+    productOption,
   } = props;
 
   //----------------------------
@@ -44,157 +48,89 @@ export function FormComponent(props) {
   //----------------------------
 
   return (
-    <SectionLayout>
-      <SectionLayout type="TEXT">
-        <FieldLayout type="double" adaptive>
-          <BasicField
-            titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.NAME"
-            placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
-            name={PRINT_PATTERN_FIELD_NAME.NAME}
-            value={values[PRINT_PATTERN_FIELD_NAME.NAME]}
-            error={getFieldError(PRINT_PATTERN_FIELD_NAME.NAME)}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <BasicField
-            titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DICE_OF_GOODS"
-            placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.DICE_OF_GOODS"
-            name={PRINT_PATTERN_FIELD_NAME.MODIFIER}
-            value={values[PRINT_PATTERN_FIELD_NAME.MODIFIER]}
-            error={getFieldError(PRINT_PATTERN_FIELD_NAME.MODIFIER)}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </FieldLayout>
-        <MultiField
-          items={values[PRINT_PATTERN_FIELD_NAME.CATEGORIES]}
-          setItems={(data) =>
-            setFieldValue(PRINT_PATTERN_FIELD_NAME.CATEGORIES, data)
-          }
-          error={getFieldError(PRINT_PATTERN_FIELD_NAME.CATEGORIES)}
-          titleTid={'PATTERNS.CREATE.FORM.FIELDS.TITLE.PRODUCT_CATEGORIES'}
-          placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.PRODUCT_CATEGORIES"
-        />
-        <TextareaField
-          titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
-          placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
-          name={PRINT_PATTERN_FIELD_NAME.DESCRIPTION}
-          value={values[PRINT_PATTERN_FIELD_NAME.DESCRIPTION]}
-          error={getFieldError(PRINT_PATTERN_FIELD_NAME.DESCRIPTION)}
+    <SectionLayout type="SMALL">
+      <FieldLayout type="double" adaptive>
+        <BasicField
+          titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.NAME"
+          placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
+          name={PRINT_PATTERN_FIELD_NAME.NAME}
+          value={values[PRINT_PATTERN_FIELD_NAME.NAME]}
+          error={getFieldError(PRINT_PATTERN_FIELD_NAME.NAME)}
           onChange={handleChange}
           onBlur={handleBlur}
-          minHeight={100}
         />
-        <SectionLayout type="TEXT_SMALL">
-          <SmallTitle tid="PATTERNS.CREATE.FORM.MATERIALS" />
-          <ReactEditor
-            handleChange={setEditorData(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
-            values={values[PRINT_PATTERN_FIELD_NAME.MATERIAL]}
-            name={PRINT_PATTERN_FIELD_NAME.MATERIAL}
-          />
-        </SectionLayout>
-      </SectionLayout>
-      <Complexity>
-        <SmallTitle tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
-        <FieldComplexity>
-          {[1, 2, 3, 4, 5].map((value, index) => (
-            <ComplexityDot
-              key={index}
-              act={value <= values[PRINT_PATTERN_FIELD_NAME.COMPLEXITY] ? 1 : 0}
-            >
-              <FieldRadio
-                type="radio"
-                name={PRINT_PATTERN_FIELD_NAME.COMPLEXITY}
-                value={value}
-                onChange={setNumber(PRINT_PATTERN_FIELD_NAME.COMPLEXITY)}
-              />
-            </ComplexityDot>
-          ))}
-        </FieldComplexity>
-      </Complexity>
+        <BasicField
+          titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DICE_OF_GOODS"
+          placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.DICE_OF_GOODS"
+          name={PRINT_PATTERN_FIELD_NAME.MODIFIER}
+          value={values[PRINT_PATTERN_FIELD_NAME.MODIFIER]}
+          error={getFieldError(PRINT_PATTERN_FIELD_NAME.MODIFIER)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </FieldLayout>
 
-      <DynamicFields
-        nameFieldArray={PRINT_PATTERN_FIELD_NAME.SIZES}
-        namePosition={PRINT_PATTERN_FIELD_NAME.SIZE_NAME}
-        pricePosition={PRINT_PATTERN_FIELD_NAME.SIZE_PRICE}
-        initialData={sizesInit}
-        title="DYNAMIC_FIELDS.SIZE.TITLE"
-        fieldTitle="DYNAMIC_FIELDS.SIZE.FIELD_TITLE"
-        fieldPlaceholder="DYNAMIC_FIELDS.SIZE.FIELD_PLACEHOLDER"
-        buttonText="DYNAMIC_FIELDS.SIZE.BUTTON_TEXT"
+      <BlockCategories values={values} />
+
+      <TextareaField
+        titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
+        placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
+        name={PRINT_PATTERN_FIELD_NAME.DESCRIPTION}
+        value={values[PRINT_PATTERN_FIELD_NAME.DESCRIPTION]}
+        error={getFieldError(PRINT_PATTERN_FIELD_NAME.DESCRIPTION)}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        minHeight={100}
+      />
+
+      <SectionLayout type="TEXT_SMALL">
+        <SmallTitle tid="PATTERNS.CREATE.FORM.MATERIALS" />
+        <ReactEditor
+          handleChange={setEditorData(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
+          values={values[PRINT_PATTERN_FIELD_NAME.MATERIAL]}
+          name={PRINT_PATTERN_FIELD_NAME.MATERIAL}
+        />
+        {getFieldError(PRINT_PATTERN_FIELD_NAME.MATERIAL) && (
+          <ErrorField
+            errorTid={getFieldError(PRINT_PATTERN_FIELD_NAME.MATERIAL)}
+          />
+        )}
+      </SectionLayout>
+      <ComplexityField
+        title="PATTERNS.CREATE.FORM.COMPLEXITY"
+        value={values[PRINT_PATTERN_FIELD_NAME.COMPLEXITY]}
+        onChange={setNumber(PRINT_PATTERN_FIELD_NAME.COMPLEXITY)}
+      />
+      <ProductOptions
+        productOption={productOption}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
         errors={errors}
         touched={touched}
         values={values}
         setFieldValue={setFieldValue}
       />
-
-      <SectionLayout type="SMALL">
-        <Title tid="PATTERNS.CREATE.FORM.PRICE" />
-        <FieldLayout type="double" adaptive>
-          <BasicField
-            placeholderTid="0"
-            titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DISCOUNT"
-            name={PRINT_PATTERN_FIELD_NAME.DISCOUNT}
-            value={values[PRINT_PATTERN_FIELD_NAME.DISCOUNT]}
-            error={getFieldError(PRINT_PATTERN_FIELD_NAME.DISCOUNT)}
-            onChange={setNumber(PRINT_PATTERN_FIELD_NAME.DISCOUNT)}
-            onBlur={handleBlur}
-          />
-          <ProductPrice
-            discount={values[PRINT_PATTERN_FIELD_NAME.DISCOUNT]}
-            price={dynamicFieldsMinPrice(
-              values[PRINT_PATTERN_FIELD_NAME.SIZES],
-              PRINT_PATTERN_FIELD_NAME.SIZE_PRICE,
-            )}
-          />
-        </FieldLayout>
-        <RecomendationBlock
+      <Divider />
+      <ProductPrice
+        priceAndDiscount={findMinPriceAndDiscount(
+          values[PRINT_PATTERN_FIELD_NAME.OPTIONS],
+        )}
+      />
+      {/* <RecomendationBlock
           onSetRecomendation={(data) =>
             setFieldValue(PRINT_PATTERN_FIELD_NAME.RECOMMENDATIONS, data)
           }
+        /> */}
+      <FieldLayout type="double" adaptive>
+        <ButtonPrimary
+          type="submit"
+          tid="PATTERNS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
         />
-        <FieldLayout type="double" adaptive>
-          <ButtonPrimary
-            type="submit"
-            tid="PATTERNS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
-          />
-          <ButtonSecondary tid="PATTERNS.CREATE.FORM.BUTTON.CANCEL" />
-        </FieldLayout>
-      </SectionLayout>
+        <ButtonSecondary tid="PATTERNS.CREATE.FORM.BUTTON.CANCEL" />
+      </FieldLayout>
     </SectionLayout>
   );
 }
-
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-`;
 const SmallTitle = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
-`;
-const Complexity = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${spacing(1)};
-`;
-const FieldComplexity = styled.div`
-  display: flex;
-  padding: ${spacing(3)};
-  gap: ${spacing(1)};
-  background-color: ${THEME_COLOR.GRAY};
-  height: 46px;
-  align-items: center;
-  width: 100%;
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-`;
-const FieldRadio = styled(Field)`
-  display: none;
-`;
-const ComplexityDot = styled.label`
-  width: 16px;
-  min-width: 16px;
-  height: 16px;
-  cursor: pointer;
-  border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  background-color: ${(p) =>
-    p.act ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;

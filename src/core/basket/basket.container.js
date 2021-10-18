@@ -22,6 +22,7 @@ import {
   basketUploadData,
   getDeliveryTypes,
 } from './basket.action';
+import { convertForTable } from './basket.util';
 
 export function BasketContainer() {
   const dispatch = useDispatch();
@@ -65,21 +66,17 @@ export function BasketContainer() {
     dispatch(getDeliveryTypes());
   }, []);
 
-  const { itemsGoods, itemsMaster, itemsPatterns, price } =
-    reduceBascketState(bascketState);
-
+  const { masterProducts, patternProducts, sewingProducts, basketPrice } =
+    convertForTable(bascketState);
   const changeItem = (values) => {
     dispatch(changeItemAction(values, bascketState));
   };
-
   const deleteItem = (indexId, id) => {
     dispatch(deleteItemAction(indexId, bascketState));
   };
-
   const checkPromoCode = (promocode) => {
     dispatch(checkPromoCodeAction(promocode));
   };
-
   const onSubmit = (values) => {
     dispatch(basketUploadData(values, bascketState, isAuth, purchaseTotalPrice));
   };
@@ -117,7 +114,7 @@ export function BasketContainer() {
       //-----------------
       promocode={promocode}
       discount={discount}
-      price={price}
+      price={parseFloat(basketPrice.toFixed(2))}
       //-----------------
       checkPromoCode={checkPromoCode}
       //-----------------
@@ -159,9 +156,9 @@ export function BasketContainer() {
       headersMaster={headersMaster}
       headersPatterns={headersPatterns}
       //--------------
-      itemsGoods={itemsGoods}
-      itemsMaster={itemsMaster}
-      itemsPatterns={itemsPatterns}
+      sewingProducts={sewingProducts}
+      masterProducts={masterProducts}
+      patternProducts={patternProducts}
     />
   );
 }
@@ -179,6 +176,7 @@ const headersMaster = [
 const headersPatterns = [
   'BASKET.HEADERS_PATTERNS.PATTERNS',
   'BASKET.HEADERS_PATTERNS.PARAMETERS',
+  'BASKET.HEADERS_GOODS.QUANTITY',
   'BASKET.HEADERS_PATTERNS.TOTAL_PRICE',
 ];
 const diliveryOptions = [

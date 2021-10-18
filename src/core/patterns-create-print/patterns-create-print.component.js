@@ -14,8 +14,7 @@ export function CreatePrintPatternComponent(props) {
     isSuccess,
     isError,
     errorMessage,
-
-    sizesInit,
+    productOption,
     initialValues,
     onSubmit,
     validation,
@@ -41,7 +40,7 @@ export function CreatePrintPatternComponent(props) {
                     imageFieldName={PRINT_PATTERN_FIELD_NAME.IMAGE}
                     title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent {...formProps} sizesInit={sizesInit} />
+                  <FormComponent {...formProps} productOption={productOption} />
                 </SectionLayout>
               </form>
             );

@@ -19,4 +19,12 @@ export const ARTICLES_API = {
       }${Boolean(by) ? `&by=${by}` : ''}`,
     TYPE: 'GET',
   },
+  ARTICLE_UPDATE: {
+    ENDPOINT: (id) => `/post/update/${id}`,
+    TYPE: 'PUT',
+  },
+  ARTICLE_DELETE: {
+    ENDPOINT: (id) => `/post/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };

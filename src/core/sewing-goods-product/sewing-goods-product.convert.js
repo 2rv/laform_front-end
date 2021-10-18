@@ -1,28 +1,25 @@
-import { convertMultiProducts } from 'src/lib/common/product-converters';
+import {
+  convertMultiProducts,
+  convertOptions,
+} from 'src/lib/common/product-converters';
 
 export function performSewingGoodsProductData(rowData, basket) {
   return {
     id: rowData.id,
     type: rowData.type,
-    modifier: rowData?.modifier,
-    discount: rowData?.discount,
-    name: rowData.titleRu,
+    name: rowData.titleRu || rowData.titleEn,
+    modifier: rowData.modifierRu || rowData.modifierEn,
+    price: rowData.price,
+    discount: rowData.discount,
+    count: rowData.count,
+    length: rowData.length,
+    vendorCode: rowData.vendorCode,
     categories: rowData.categories,
-    cart: Boolean(
-      basket?.find((bItem) => bItem?.sewingProduct?.id === rowData.id),
-    ),
-    description: rowData.descriptionRu,
+    description: rowData.descriptionRu || rowData.descriptionEn,
     images: rowData.images.map((item) => item.fileUrl),
-    sizes: rowData.sizes.map((item, index) => ({
-      id: item.id,
-      tid: item.size,
-      price: item.price,
-      vendorCode: item.vendorCode,
-    })),
-    colors: rowData.colors.map((item, index) => ({
-      id: item.id,
-      tid: item.color,
-    })),
+    options: convertOptions(rowData.options, rowData.optionType, 1),
+    sizes: convertOptions(rowData.options, rowData.optionType, 2),
+    colors: convertOptions(rowData.options, rowData.optionType, 3),
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,

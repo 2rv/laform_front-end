@@ -28,4 +28,8 @@ export const PATTERNS_API = {
     ENDPOINT: (id) => `/pattern-product/update/${id}`,
     TYPE: 'PUT',
   },
+  PATTERNS_DELETE: {
+    ENDPOINT: (id) => `/pattern-product/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };

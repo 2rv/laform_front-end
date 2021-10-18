@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE } from '../../lib/theme';
+import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
-import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
@@ -17,9 +16,7 @@ export function PatternsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-
     productData,
-    addToCart,
   } = props;
 
   if (!productData) return <LoaderPrimary />;
@@ -30,18 +27,14 @@ export function PatternsProductComponent(props) {
       <SectionLayout>
         <Content>
           <ProductImages items={productData.images} />
-          <ProductMainComponent addToCart={addToCart} {...productData} />
+          <ProductMainComponent {...productData} />
         </Content>
       </SectionLayout>
       <SectionLayout type="TEXT_SMALL">
         <TitlePrimary tid="PATTERNS.MATERIALS" />
         <ReactEditor data={productData.materials} enableReInitialize readOnly />
       </SectionLayout>
-      <CardListBlock
-        items={productData.recommendations}
-        onCart={addToCart}
-        title="Рекомендации"
-      />
+      <CardListBlock items={productData.recommendations} title="Рекомендации" />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );

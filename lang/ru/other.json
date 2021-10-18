@@ -22,5 +22,11 @@
 	"SEARCH_PRODUCT": "Найти товар",
 	"DELIVERY_TYPE": "Способ доставки:",
 	"DELIVERY_TYPE_PRICE": "Цена:",
-	"UNSUBSCRIBE_NOTIFICATION_TEXT": "Вы успешно отменили рассылку."
+	"UNSUBSCRIBE_NOTIFICATION_TEXT": "Вы успешно отменили рассылку.",
+	"CARD": {
+		"SIZE_COLOR_PRICE": "Размер: {{size}}, Цвет: {{color}}, Цена: {{price}}",
+		"SIZE_PRICE": "Размер: {{size}}, Цена: {{price}}",
+		"COLOR_PRICE": "Цвет: {{color}}, Цена: {{price}}",
+		"PRODUCT_PRICE": "Цена товара: "
+	}
 }

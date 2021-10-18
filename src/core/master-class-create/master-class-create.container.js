@@ -25,20 +25,14 @@ export function CreateMasterClassContainer() {
 
   const initialValues = () => ({
     [CREATE_MASTER_CLASS_FIELD_NAME.NAME]: '',
-    [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]: '',
-    [CREATE_MASTER_CLASS_FIELD_NAME.TYPE]: 0,
     [CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER]: '',
-    [CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]: 0,
-    [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: [],
     [CREATE_MASTER_CLASS_FIELD_NAME.IMAGES]: [],
+    [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]: '',
+    [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: [],
+    [CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]: 0,
+    [CREATE_MASTER_CLASS_FIELD_NAME.PRICE]: 0,
     [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: [],
-    [CREATE_MASTER_CLASS_FIELD_NAME.PROGRAMS]: [programsInit],
   });
-
-  const programsInit = {
-    [CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_NAME]: '',
-    [CREATE_MASTER_CLASS_FIELD_NAME.PROGRAM_PRICE]: 0,
-  };
 
   return (
     <CreateMasterClassComponent
@@ -47,8 +41,6 @@ export function CreateMasterClassContainer() {
       isError={isRequestError(state)}
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
-      //-------------
-      programsInit={programsInit}
       //-------------
       initialValues={initialValues()}
       onSubmit={onSubmit}

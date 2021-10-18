@@ -111,10 +111,7 @@ import {
   purchaseProductsRouter,
   PURCHASE_PRODUCTS_ROUTE_PATH,
 } from '../../core/purchase-products';
-import {
-  aboutRouter,
-  ABOUT_ROUTE_PATH,
-} from '../../core/about';
+import { aboutRouter, ABOUT_ROUTE_PATH } from '../../core/about';
 import {
   deliveryPricePageRouter,
   DELIVERY_PRICE_PAGE_ROUTE_PATH,
@@ -123,8 +120,13 @@ import {
   unsubscribeNotificationRouter,
   UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH,
 } from '../../core/unsubscribe-notification';
+import {
+  createPatternRouter,
+  CREATE_PATTERN_ROUTE_PATH,
+} from '../../core/pattern-create';
 
 export const routes = {
+  [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,

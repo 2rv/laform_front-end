@@ -6,14 +6,14 @@ import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
 export const convertUsersOrderData = (rowData) => {
   return {
     purchaseInfo: {
-      [ABOUT_ORDER_FIELD_NAME.CITY]: rowData.city,
-      [ABOUT_ORDER_FIELD_NAME.COMMENT]: rowData.comment,
-      [ABOUT_ORDER_FIELD_NAME.EMAIL]: rowData.email,
-      [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: rowData.fullName,
       [ABOUT_ORDER_FIELD_NAME.ID]: rowData.id,
       [ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER]: rowData.orderNumber,
+      [ABOUT_ORDER_FIELD_NAME.EMAIL]: rowData.email,
+      [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: rowData.fullName,
+      [ABOUT_ORDER_FIELD_NAME.CITY]: rowData.city,
       [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: rowData.phoneNumber,
       [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]: rowData.typeOfDelivery,
+      [ABOUT_ORDER_FIELD_NAME.COMMENT]: rowData.comment,
       [ABOUT_ORDER_FIELD_NAME.PRICE]: rowData.price,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: rowData.promoCode,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,
@@ -24,7 +24,7 @@ export const convertUsersOrderData = (rowData) => {
       const discount = Number(item.totalDiscount);
       const totalPrice = Boolean(count)
         ? (price - price * (discount / 100)) * count
-        : (price - price * (discount / 100));
+        : price - price * (discount / 100);
       const product =
         item.masterClassId || item.sewingProductId || item.patternProductId;
       return {

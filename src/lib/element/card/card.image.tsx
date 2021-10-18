@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { LinkPrimary } from '../link';
-import { CardImageTypeProps } from './card.type';
+import { CardImageProps } from './card.type';
 
-export function CardImage(props: CardImageTypeProps) {
+export function CardImage(props: CardImageProps) {
   const { image, modifier, discount, path, pathConfig } = props;
   const [imageLoaded, setimageLoaded] = useState(false);
   return (
@@ -24,7 +24,8 @@ const Image = styled.img`
   height: 100%;
   min-height: 260px;
   max-height: 260px;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: ${THEME_COLOR.WHITE};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Container = styled(LinkPrimary)<any>`
@@ -70,6 +71,7 @@ const Modifier = styled(TextSecondary)<{ alt?: boolean }>`
   }
   padding: ${spacing(2)};
   align-items: center;
+  text-align: center;
   justify-content: center;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;

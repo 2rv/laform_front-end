@@ -44,7 +44,7 @@ export function SewingGoodsContainer() {
     dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...copy }));
   };
   const onDeleteProduct = (id, body) => {
-    dispatch(sewingGoodsUpdateData(currentLang, id, body));
+    dispatch(sewingGoodsUpdateData(isAuth, { currentLang }, id, body));
   };
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 

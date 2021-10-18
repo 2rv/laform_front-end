@@ -2,9 +2,9 @@ import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { LoaderPrimary } from '../../lib/element/loader';
 import { TextSecondary } from '../../lib/element/text';
-import { TableList } from '../block-table-list';
 import { FilterTabs } from '../../lib/element/filter-tabs';
 import { HintBlockComponent } from './frame/hint-block.component';
+import { Table } from 'src/lib/common/block-table';
 
 export function PurchaseProductsComponent(props) {
   const {
@@ -27,7 +27,7 @@ export function PurchaseProductsComponent(props) {
           tabItems={tabItems}
         />
         {Boolean(products.purchasedProducts?.length > 0) ? (
-          <TableList
+          <Table
             items={products.purchasedProducts}
             headers={products.headers}
           />

@@ -20,8 +20,7 @@ import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
 import { ORDERS_ROUTE_PATH } from '../orders';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
-import { ELECTRONIC_PATTERN_ROUTE_PATH } from '../patterns-create-electronic';
-import { CREATE_PRINT_PATTERN_ROUTE_PATH } from '../patterns-create-print';
+import { CREATE_PATTERN_ROUTE_PATH } from '../pattern-create';
 import { PATTERNS_PAGE_ROUTE_PATH } from '../patterns-page';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../patterns-product';
 import { PROMOCODES_ROUTE_PATH } from '../promocodes';
@@ -81,12 +80,8 @@ export const NAVIGATION_MENU = [
         pathname: CREATE_MASTER_CLASS_ROUTE_PATH,
       },
       {
-        title: 'Создать электронную выкройку',
-        pathname: ELECTRONIC_PATTERN_ROUTE_PATH,
-      },
-      {
-        title: 'Создать печатную выкройку',
-        pathname: CREATE_PRINT_PATTERN_ROUTE_PATH,
+        title: 'Создать  выкройку',
+        pathname: CREATE_PATTERN_ROUTE_PATH,
       },
       {
         title: 'Создать товар для шитья',
