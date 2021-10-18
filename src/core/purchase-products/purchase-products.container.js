@@ -27,17 +27,23 @@ export function PurchaseProductsContainer() {
   const getTabAppropriateData = (activeTab) => {
     switch (activeTab) {
       case 0:
-        return { purchasedProducts: data?.sewingGoods, headers: headersGoods };
+        return {
+          purchasedProducts: data?.sewingProduct,
+          headers: headersGoods,
+        };
       case 1:
-        return { purchasedProducts: data?.masterClass, headers: headersMaster };
+        return {
+          purchasedProducts: data?.masterProduct,
+          headers: headersMaster,
+        };
       case 2:
         return {
-          purchasedProducts: data?.patternAnalogue,
+          purchasedProducts: data?.patternPrintProduct,
           headers: headersPatternsAnalogue,
         };
       case 3:
         return {
-          purchasedProducts: data?.patternDigital,
+          purchasedProducts: data?.patternElectronicProduct,
           headers: headersPatternsDigital,
         };
       default:

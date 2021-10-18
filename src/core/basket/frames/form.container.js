@@ -60,6 +60,7 @@ export function FormContainer(props) {
       enableReinitialize={true}
     >
       {(formProps) => {
+        console.log(formProps.errors);
         useEffect(
           () => formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, promocode),
           [promocode],
@@ -88,7 +89,9 @@ export function FormContainer(props) {
                 sendEmailCodePending={sendEmailCodePending}
                 sendEmailCodeSuccess={sendEmailCodeSuccess}
                 emailConfirmedState={emailConfirmedState}
-                confirmEmailForOrderErrorMessage={confirmEmailForOrderErrorMessage}
+                confirmEmailForOrderErrorMessage={
+                  confirmEmailForOrderErrorMessage
+                }
                 confirmEmailForOrderError={confirmEmailForOrderError}
                 confirmEmailForOrderPending={confirmEmailForOrderPending}
                 confirmEmailForOrderSuccess={confirmEmailForOrderSuccess}

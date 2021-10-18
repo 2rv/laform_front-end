@@ -8,6 +8,7 @@ export interface BasicOptionType {
   count?: number;
   length?: number;
   discount?: number;
+  filePdf?: { fileUrl?: any };
 }
 interface BasicImageType {
   id: string;
