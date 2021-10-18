@@ -1,16 +1,16 @@
 import {
-  CardArticleTypeProps,
-  CardMasterClassTypeProps,
-  CardPatternTypeProps,
-  CardSewingGoodTypeProps,
+  CardArticleType,
+  CardSewingGoodType,
+  CardPatternType,
+  CardMasterClassType,
 } from '../card';
 
 export interface BasicCardListTypeProps {
   items:
-    | CardArticleTypeProps[]
-    | CardSewingGoodTypeProps[]
-    | CardPatternTypeProps[]
-    | CardMasterClassTypeProps[];
+    | CardArticleType[]
+    | CardSewingGoodType[]
+    | CardPatternType[]
+    | CardMasterClassType[];
   onCart?: Function;
   onSelect?: Function;
   onDelete?: Function;
