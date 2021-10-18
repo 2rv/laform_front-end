@@ -5,6 +5,7 @@ import { THEME_SIZE } from '../../lib/theme';
 import { AboutOrderFormContainer } from './frames';
 import { TableList } from '../block-table-list';
 import { Spinner } from 'src/lib/element/spinner';
+import { Table } from 'src/lib/common/block-table';
 
 export function OrderNumberComponent(props) {
   const {
@@ -27,7 +28,7 @@ export function OrderNumberComponent(props) {
         &nbsp;
         <BoldTitle tid={orderNumberTitle} />
       </div>
-      <TableList items={purchaseProducts} headers={headersTable} />
+      <Table items={purchaseProducts} headers={headersTable} />
       <AboutOrderFormContainer
         onSubmit={onSubmit}
         initialValue={initialValue}

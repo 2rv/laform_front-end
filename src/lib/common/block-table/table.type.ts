@@ -10,9 +10,9 @@ export interface dataType {
   name?: string;
   vendorCode?: string;
   totalPrice?: number;
-  params?: any;
+  params?: TableParamsProps;
   status?: string;
-  otherParams?: any;
+  otherParams?: TableParamsProps;
   count?: number;
   length?: number;
   options?: OptionType[];

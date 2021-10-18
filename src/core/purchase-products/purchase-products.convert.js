@@ -9,6 +9,7 @@ const getPrice = (price = 0, discount = 0, count = 1) => {
 };
 
 export function performPurchaseProduct(row) {
+  console.log(row);
   const purchaseProducts = row.reduce((acc, purchase) => {
     purchase.purchaseProducts.forEach((purchaseProduct) => {
       purchaseProduct.status = purchase?.orderStatus ?? 'Неизвестно';

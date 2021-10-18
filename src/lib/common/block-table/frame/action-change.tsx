@@ -56,7 +56,13 @@ export function ActionChange(props: props) {
       indexId,
       id,
       optionId: getOptionId(),
-      count: isCount ? (maxCount !== 0 ? 1 : 0) : undefined,
+      count: isCount
+        ? maxCount !== 0
+          ? 1
+          : 0
+        : !isCount && !isLength
+        ? 1
+        : undefined,
       length: isLength ? (maxLength !== 0 ? 1 : 0) : undefined,
     };
     changeItem(result);

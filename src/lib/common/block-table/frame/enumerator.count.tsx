@@ -26,8 +26,8 @@ export function TableEnumeratorCount(props: props) {
   } = props;
   if (!id || typeof changeItem !== 'function') return null;
   if (!isCount && type === 0) return null;
-  if (!isCount && (type === 1 || type === 2)) return <div />;
-  if (!isCount && !isLength && type === 3) return <div />;
+  if (!isCount && (type === 1 || type === 2)) return <td />;
+  if (!isCount && !isLength && type === 3) return <td />;
   if (!isCount && type === 3) return null;
 
   const handleChange = (value: number) => {

@@ -18,11 +18,13 @@ export function basketUploadData(values, bascketState, isAuth) {
     });
     try {
       const data = convertCreateOrder(values, bascketState);
-      const responst = await httpRequest({
+      console.log(data);
+      const response = await httpRequest({
         method: BASKET_API.CREATE_ORDER.TYPE,
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
         data: data,
       });
+      console.log(response.data);
       if (isAuth) {
         await httpRequest({
           method: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.TYPE,
@@ -36,13 +38,14 @@ export function basketUploadData(values, bascketState, isAuth) {
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
-      dispatch(clearBasketAction());
+      //   dispatch(clearBasketAction());
       if (isAuth) {
-        redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+        // redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
       } else {
         alert('Для просмотра списка покупок необходима авторизация');
       }
     } catch (err) {
+      console.log(err);
       if (err.response) {
         dispatch({
           type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,

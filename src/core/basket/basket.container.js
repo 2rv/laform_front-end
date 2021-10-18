@@ -97,7 +97,7 @@ export function BasketContainer() {
       //-----------------
       promocode={promocode}
       discount={discount}
-      price={basketPrice.toFixed(2)}
+      price={parseFloat(basketPrice.toFixed(2))}
       //-----------------
       checkPromoCode={checkPromoCode}
       //-----------------

@@ -265,6 +265,7 @@ export const convertCreateOrder = (
       type: item.type,
       optionId: item.optionId,
       totalCount: item.count,
+      totalLength: item.length,
     };
   }),
 });
