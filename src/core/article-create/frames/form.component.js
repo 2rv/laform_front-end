@@ -7,6 +7,7 @@ import { RecomendationBlock } from '../../block-recomendation';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
 import { ReactEditor } from 'src/core/block-react-editor';
+import { BlockCategories } from 'src/core/block-categories';
 
 export function FormComponent(props) {
   const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
@@ -39,18 +40,9 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
         </FieldLayout>
-
-        <MultiField
-          items={values[ARTICLE_FIELD_NAME.CATEGORIES]}
-          setItems={(data) =>
-            setFieldValue(ARTICLE_FIELD_NAME.CATEGORIES, data)
-          }
-          error={getFieldError(ARTICLE_FIELD_NAME.CATEGORIES)}
-          titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.TAGS"
-          placeholderTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.WRITE_TAG"
-        />
+        <BlockCategories values={values} handleBlur={handleBlur} />
         <SectionLayout type="SMALL">
-          <Title tid="ARTICLE_CREATE_FORM.MASTER_CLASS_ARTICLE" />
+          <Title tid="Статья" />
           <ReactEditor
             handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
             values={values[ARTICLE_FIELD_NAME.ARTICLE]}

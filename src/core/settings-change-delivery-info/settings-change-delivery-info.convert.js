@@ -11,11 +11,11 @@ export const convertSettingsChangeDeliveryInfoFormData = (data) => ({
   [SETTINGS_CHANGE_DELIVERY_INFO_DATA_NAME.LOCATION]:
     data[SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.LOCATION] || null,
   [SETTINGS_CHANGE_DELIVERY_INFO_DATA_NAME.DELIVERY_TYPE]:
-    parseInt(data[SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.DELIVERY_TYPE]) ||
+    data[SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.DELIVERY_TYPE] ||
     null,
 });
 
-export const performSettingsChangeDeliveryInfoFormData = (data) => ({
+export const performSettingsChangeDeliveryInfoFormData = (data, deliveryType) => ({
   [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.FULLNAME]:
     data[SETTINGS_CHANGE_DELIVERY_INFO_DATA_NAME.FULLNAME] || '',
   [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.PHONE]:
@@ -23,5 +23,10 @@ export const performSettingsChangeDeliveryInfoFormData = (data) => ({
   [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.LOCATION]:
     data[SETTINGS_CHANGE_DELIVERY_INFO_DATA_NAME.LOCATION] || '',
   [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.DELIVERY_TYPE]:
-    data[SETTINGS_CHANGE_DELIVERY_INFO_DATA_NAME.DELIVERY_TYPE],
+    data[SETTINGS_CHANGE_DELIVERY_INFO_DATA_NAME.DELIVERY_TYPE] || deliveryType,
+});
+
+export const convertSettingsDeliveryTypesData = (data) => ({
+  id: data.id,
+  tid: data.deliveryType,
 });

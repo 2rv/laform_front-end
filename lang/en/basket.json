@@ -70,7 +70,8 @@
 				"CURRENT_CITY": "San francisko",
 				"CONTACT_PHONE_NUMBER": "+7 000 000 00 00",
 				"ORDER_NOTE": "Product wishes",
-				"PROMO_CODE": "Your promo"
+				"PROMO_CODE": "Your promo",
+				"WRITE_CODE": "Write code"
 			},
 			"SELECT_OPTIONS": {
 				"CONVENIET_DELIVERY_METHOD": {
@@ -81,6 +82,10 @@
 				}
 			}
 		},
+		"BUTTON": {
+			"SEND_VERIFICATION_CODE_TO_EMAIL": "Send verification code to email",
+			"VERIFICATION_EMAIL": "Verificate email"
+		},
 		"FOOTER": {
 			"PRICE": "Price",
 			"DISCOUNT_PRICE": "Discount price",
@@ -89,6 +94,8 @@
 			"CONFIRM_ORDER": "Confirm order"
 		},
 		"PROMO_CODE_SUCCESS": "Promo code {{discount}}% successfully applied",
-		"FORM_SEND_SUCCESS": "Order has been successfully completed"
+		"FORM_SEND_SUCCESS": "Order has been successfully completed",
+		"EMAIL_CODE_SENT_SUCCESS": "The code was sent successfully. You can resend the code.",
+		"EMAIL_CONFIRMED_SUCCESS": "Email confirmed successfully"
 	}
 }

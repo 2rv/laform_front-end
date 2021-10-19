@@ -1,25 +1,20 @@
-export interface BasicProgram {
+export interface BasicOptionType {
   id: string;
-  price: number;
-  programNameRu?: string;
-  programNameEn?: string;
   vendorCode: string;
-}
-export interface BasicSize {
-  id: string;
-  price: number;
   size?: string;
-  vendorCode: string;
+  colorRu?: string;
+  colorEn?: string;
+  price?: number;
+  count?: number;
+  length?: number;
+  discount?: number;
+  filePdf?: { fileUrl?: any };
 }
-export interface BasicColor {
-  id: string;
-  color?: string;
-}
-interface BasicImage {
+interface BasicImageType {
   id: string;
   fileUrl: string;
 }
-interface BasicLike {
+interface BasicLikeType {
   id: string;
   userId: string;
   postId: string;
@@ -29,50 +24,63 @@ interface BasicLike {
 }
 export interface BasicMasterClassType {
   id: string;
-  images: BasicImage[];
-  programs: BasicProgram[];
-  like?: BasicLike[];
-  titleRu?: string;
-  titleEn?: string;
-  modifier?: string;
-  discount?: number;
   type: 0;
-  pinned?: boolean;
-}
-export interface BasicPatternType {
-  id: string;
-  images: BasicImage[];
-  sizes: BasicSize[];
-  like?: BasicLike[];
+  createdDate: string;
+  vendorCode: string;
+  images: BasicImageType[];
+  like?: BasicLikeType[];
   titleRu?: string;
   titleEn?: string;
+  modifierRu?: string;
+  modifierEn?: string;
   discount?: number;
-  modifier?: string;
-  type: 1 | 2;
-  complexity: number;
-  pinned?: boolean;
-}
-export interface BasicSewingGoodType {
-  id: string;
-  sizes: BasicSize[];
-  colors: BasicColor[];
-  images: BasicImage[];
-  like?: BasicLike[];
-  titleRu?: string;
-  titleEn?: string;
-  modifier?: string;
-  type: 3;
-  discount?: number;
+  price: number;
   pinned?: boolean;
 }
 export interface BasicArticleType {
   id: string;
-  createdDate: string;
-  image: BasicImage;
-  like?: BasicLike[];
-  titleRu?: string;
-  modifier?: string;
-  titleEn?: string;
   type: 4;
+  createdDate: string;
+  image: BasicImageType;
+  like?: BasicLikeType[];
+  titleRu?: string;
+  titleEn?: string;
+  modifierRu?: string;
+  modifierEn?: string;
+  pinned?: boolean;
+}
+export interface BasicPatternType {
+  id: string;
+  type: 1 | 2;
+  optionType: 0 | 2;
+  options: BasicOptionType[];
+  images: BasicImageType[];
+  like?: BasicLikeType[];
+  titleRu?: string;
+  titleEn?: string;
+  modifierRu?: string;
+  modifierEn?: string;
+  complexity: number;
+  price?: number;
+  discount?: number;
+  count?: number;
+  length?: number;
+  pinned?: boolean;
+}
+export interface BasicSewingGoodType {
+  id: string;
+  type: 3;
+  optionType: 0 | 1 | 2 | 3;
+  options: BasicOptionType[];
+  images: BasicImageType[];
+  like?: BasicLikeType[];
+  titleRu?: string;
+  titleEn?: string;
+  modifierRu?: string;
+  modifierEn?: string;
+  price?: number;
+  discount?: number;
+  count?: number;
+  length?: number;
   pinned?: boolean;
 }

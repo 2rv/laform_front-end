@@ -9,12 +9,10 @@ export const CREATE_ARTICLE_ACTION_TYPE = {
 
 export const ARTICLE_FIELD_NAME = {
   NAME: 'titleRu',
-  MODIFIER: 'modifier',
+  MODIFIER: 'modifierRu',
   IMAGES: 'images',
   IMAGE: 'image',
   CATEGORIES: 'categories',
-  CATEGORY: 'textRu',
-  ARTICLE: 'articleText',
+  ARTICLE: 'articleRu',
   RECOMMENDATIONS: 'recommendation',
-  TYPE: 'type',
 };

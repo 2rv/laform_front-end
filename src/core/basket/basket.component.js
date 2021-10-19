@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { THEME_SIZE } from '../../lib/theme';
-import { TableList } from '../block-table-list';
 import { TextSecondary } from '../../lib/element/text';
 import { SignComponent, FormContainer } from './frames';
+import { Table } from 'src/lib/common/block-table';
 
 export function BasketComponent(props) {
   const {
@@ -32,11 +32,21 @@ export function BasketComponent(props) {
     promoCodePending,
     promoCodeSuccess,
     //--------------
+    sendEmailCodePending,
+    sendEmailCodeSuccess,
+    //--------------
+    emailConfirmedState,
+    confirmEmailForOrderErrorMessage,
+    confirmEmailForOrderError,
+    confirmEmailForOrderPending,
+    confirmEmailForOrderSuccess,
+    //--------------
     onSubmit,
     initialValues,
     validation,
     diliveryOptions,
     paymentMethodOptions,
+    setPurchaseTotalPrice,
     //--------------
     changeItem,
     deleteItem,
@@ -46,9 +56,9 @@ export function BasketComponent(props) {
     headersMaster,
     headersPatterns,
     //--------------
-    itemsGoods,
-    itemsMaster,
-    itemsPatterns,
+    sewingProducts,
+    masterProducts,
+    patternProducts,
   } = props;
 
   return (
@@ -58,25 +68,26 @@ export function BasketComponent(props) {
         <TextSecondary tid="BASKET.CART_IS_EMPTY" />
       ) : (
         <>
-          <TableList
+          <Table
             changeItem={changeItem}
             deleteItem={deleteItem}
             headers={headersGoods}
-            items={itemsGoods}
+            items={sewingProducts}
           />
-          <TableList
+          <Table
             changeItem={changeItem}
             deleteItem={deleteItem}
             headers={headersPatterns}
-            items={itemsPatterns}
+            items={patternProducts}
           />
-          <TableList
+          <Table
             changeItem={changeItem}
             deleteItem={deleteItem}
             headers={headersMaster}
-            items={itemsMaster}
+            items={masterProducts}
           />
           <FormContainer
+            isAuth={isAuth}
             promocode={promocode}
             discount={discount}
             price={price}
@@ -88,8 +99,16 @@ export function BasketComponent(props) {
             orderError={orderError}
             orderPending={orderPending}
             orderSuccess={orderSuccess}
+            sendEmailCodePending={sendEmailCodePending}
+            sendEmailCodeSuccess={sendEmailCodeSuccess}
+            emailConfirmedState={emailConfirmedState}
+            confirmEmailForOrderErrorMessage={confirmEmailForOrderErrorMessage}
+            confirmEmailForOrderError={confirmEmailForOrderError}
+            confirmEmailForOrderPending={confirmEmailForOrderPending}
+            confirmEmailForOrderSuccess={confirmEmailForOrderSuccess}
             diliveryOptions={diliveryOptions}
             paymentMethodOptions={paymentMethodOptions}
+            setPurchaseTotalPrice={setPurchaseTotalPrice}
             onSubmit={onSubmit}
             checkPromoCode={checkPromoCode}
             initialValues={initialValues}

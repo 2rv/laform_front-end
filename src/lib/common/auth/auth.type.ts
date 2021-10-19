@@ -4,6 +4,7 @@ export enum AUTH_USER_DATA {
   EMAIL = 'email',
   ROLE = 'role',
   EMAIL_CONFIRMED = 'emailConfirmed',
+  NOTIFICATION_EMAIL = 'notificationEmail',
 }
 
 export enum USER_ROLE {
@@ -17,6 +18,7 @@ export interface AuthUserDto {
   login: string;
   email: string;
   emailConfirmed: boolean;
+  notificationEmail: boolean;
   role: USER_ROLE;
 }
 

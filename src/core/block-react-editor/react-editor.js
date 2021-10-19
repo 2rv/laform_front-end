@@ -4,7 +4,14 @@ import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../lib/theme';
 import styled, { css } from 'styled-components';
 
 const ReactEditor = (props) => {
-  const { handleChange, name, enableReInitialize, readOnly, data } = props;
+  const {
+    handleChange,
+    name,
+    enableReInitialize,
+    readOnly,
+    data,
+    minHeight = 100,
+  } = props;
 
   const onChange = (_, data) => {
     handleChange(data);
@@ -12,7 +19,7 @@ const ReactEditor = (props) => {
   return (
     <Container readOnly={readOnly}>
       <EditorJs
-        minHeight={0}
+        minHeight={minHeight}
         enableReInitialize={enableReInitialize}
         readOnly={readOnly}
         i18n={i18n}

@@ -20,6 +20,7 @@ export function FieldSelect(props: SelectPropsType) {
     disabled,
     adaptive,
     textValue,
+    defaultTid,
   } = props;
 
   return (
@@ -33,6 +34,11 @@ export function FieldSelect(props: SelectPropsType) {
           onChange={onChange}
           onBlur={onBlur}
         >
+          {defaultTid && (
+            <option value="" selected disabled>
+              {defaultTid}
+            </option>
+          )}
           {options.map(({ id, tid, tvalue, hidden }) => (
             <option key={id} value={textValue ? tid : id} hidden={hidden}>
               {text(tid, tvalue)}

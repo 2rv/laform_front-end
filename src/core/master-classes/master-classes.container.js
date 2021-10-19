@@ -45,7 +45,7 @@ export function MasterClassesContainer() {
   };
 
   const onDeleteProduct = (id, body) => {
-    dispatch(masterClassesUpdateData(currentLang, id, body));
+    dispatch(masterClassesUpdateData(isAuth, { currentLang }, id, body));
   };
 
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));

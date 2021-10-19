@@ -159,17 +159,28 @@ import {
 } from '../../core/purchase-products';
 import { searchButtonStore } from '../../core/search-button/search-button.store';
 import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
-import {
-  aboutStore,
-  ABOUT_STORE_NAME,
-} from '../../core/about';
+import { aboutStore, ABOUT_STORE_NAME } from '../../core/about';
 import {
   deliveryPricePageStore,
   DELIVERY_PRICE_PAGE_STORE_NAME,
 } from '../../core/delivery-price-page';
+import {
+  unsubscribeNotificationStore,
+  UNSUBSCRIBE_NOTIFICATION_STORE_NAME,
+} from '../../core/unsubscribe-notification';
 export const PERSISTED_CART = 'PERSISTED_CART';
+import {
+  categoriesStore,
+  CATEGORIES_STORE_NAME,
+} from '../../core/block-categories';
+import {
+  createPatternStore,
+  CREATE_PATTERN_STORE_NAME,
+} from '../../core/pattern-create';
 
 export const reducers = combineReducers({
+  [CREATE_PATTERN_STORE_NAME]: createPatternStore,
+  [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
@@ -226,6 +237,7 @@ export const reducers = combineReducers({
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
   [ABOUT_STORE_NAME]: aboutStore,
   [DELIVERY_PRICE_PAGE_STORE_NAME]: deliveryPricePageStore,
+  [UNSUBSCRIBE_NOTIFICATION_STORE_NAME]: unsubscribeNotificationStore,
 });
 
 export { initStore } from './store.core';

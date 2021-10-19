@@ -23,7 +23,7 @@
 		"TITLE": "Создание мастер-класса",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Мастер-класс успешно создан",
 		"FORM": {
-			"PRICE": "Цена",
+			"PRICE": "Цена Руб.",
 			"MASTER_CLASS_ARTICLE": "Статья мастер-класса",
 			"FIELDS": {
 				"TITLE": {
@@ -37,7 +37,8 @@
 					"NAME": "Введите название",
 					"DICE_OF_GOODS": "Например - Хит",
 					"TAG": "Введите тег и нажмите Enter",
-					"DESCRIPTION": "Опишите мастер-класс"
+					"DESCRIPTION": "Опишите мастер-класс",
+					"INDICATE_PRICE": "Укажите цену"
 				}
 			},
 			"BUTTON": {

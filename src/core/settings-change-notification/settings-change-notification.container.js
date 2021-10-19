@@ -23,12 +23,14 @@ import {
   settingsChangeNotificationLoad,
 } from './settings-change-notification.action';
 import { convertSettingsChangeNotificationFormData } from './settings-change-notification.convert';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function SettingsChangeNotificationContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, changeEmailSuccess } = useSelector((state) => ({
+  const { state, pageLoading, user, changeEmailSuccess } = useSelector((state) => ({
     state: state[SETTINGS_CHANGE_NOTIFICATION_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    user: state[AUTH_STORE_NAME].user,
     changeEmailSuccess:
       state[SETTINGS_CHANGE_EMAIL_STORE_NAME].settingsChangeEmailUploadForm
         .success,
@@ -42,7 +44,7 @@ export function SettingsChangeNotificationContainer() {
     { setSubmitting },
   ) => {
     const data = convertSettingsChangeNotificationFormData(values);
-    dispatch(settingsChangeNotificationFormUploadData(data, setSubmitting));
+    dispatch(settingsChangeNotificationFormUploadData(data, setSubmitting, user.id));
   };
 
   const settingsChangeNotificationFormGetInitialValue = () => ({

@@ -23,4 +23,8 @@ export const SEWING_GOODS_API = {
     ENDPOINT: (id) => `/sewing-product/update/${id}`,
     TYPE: 'PUT',
   },
+  SEWING_GOODS_DELETE: {
+    ENDPOINT: (id) => `/sewing-product/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };

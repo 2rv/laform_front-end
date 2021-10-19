@@ -7,8 +7,9 @@ import {
   USER_INFO_DATA_NAME,
 } from './basket.type';
 
-export const convertForCreateOrder = (data, bascketState) => ({
+export const convertForCreateOrder = (data, bascketState, purchaseTotalPrice) => ({
   purchase: data,
+  totalPrice: purchaseTotalPrice,
   purchaseProducts: bascketState.map((item) => {
     return {
       masterClassId: item.type === 0 ? item.id : undefined,
@@ -22,6 +23,12 @@ export const convertForCreateOrder = (data, bascketState) => ({
       totalCount: item.count ?? 1,
     };
   }),
+});
+
+export const convertSettingsDeliveryTypesData = (data) => ({
+  id: data.id,
+  tid: data.deliveryType,
+  price: data.deliveryTypePrice,
 });
 
 export const performUserInfoData = (rowData) => ({
@@ -46,31 +53,32 @@ export const convertPromoCodeForCheck = (promocode) => ({
 export function convertAddToCart(product, data, indexId = 0) {
   if (data.type === 0) {
     return {
+      indexId: product.id + indexId,
       id: product.id,
       type: data.type,
-      masterClass: product,
-      program: data.program ? data.program : product.programs[0].id,
-      indexId: product.id + indexId,
+      masterProduct: product,
+      count: data.count || 1,
     };
   }
-  if (data.type === 1 || data.type === 2) {
+  if (product.type === 1 || product.type === 2) {
     return {
+      indexId: product.id + indexId,
       id: product.id,
       type: data.type,
       patternProduct: product,
-      size: data.size ? data.size : product.sizes[0].id,
-      indexId: product.id + indexId,
+      optionId: data.optionId,
+      count: data.count || 1,
     };
   }
-  if (data.type === 3) {
+  if (product.type === 3) {
     return {
-      id: product.id,
-      type: data.type,
-      sewingProduct: product,
-      size: data.size ? data.size : product.sizes[0].id,
-      color: data.color ? data.color : product.colors[0].id,
-      count: data.count ?? 1,
       indexId: product.id + indexId,
+      id: product.id,
+      type: product.type,
+      sewingProduct: product,
+      optionId: data.optionId,
+      count: data.count || 1,
+      length: data.length,
     };
   }
 }

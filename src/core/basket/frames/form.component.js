@@ -9,6 +9,9 @@ import {
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ORDER_FIELD_NAME } from '../basket.type';
 import { ButtonBasic, ButtonSecondary } from 'src/lib/element/button';
+import { useDispatch } from 'react-redux';
+import { sendEmailCode, confirmEmailForOrder } from '../basket.action';
+import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 
 export function FormComponent(props) {
   const {
@@ -24,7 +27,25 @@ export function FormComponent(props) {
     paymentMethodOptions = [],
     checkPromoCode,
     promoCodePending,
+    sendEmailCodePending,
+    sendEmailCodeSuccess,
+    emailConfirmedState,
+    confirmEmailForOrderErrorMessage,
+    confirmEmailForOrderError,
+    confirmEmailForOrderPending,
+    confirmEmailForOrderSuccess,
+    isAuth,
   } = props;
+
+  const dispatch = useDispatch();
+
+  const sendEmailCodeHandler = () => {
+    dispatch(sendEmailCode({ email: values[ORDER_FIELD_NAME.EMAIL] }));
+  };
+
+  const confirmEmailForOrderHandler = () => {
+    dispatch(confirmEmailForOrder(values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]));
+  };
 
   const getFieldError = (name) => {
     return errors[name] && touched[name] && errors[name];
@@ -67,6 +88,7 @@ export function FormComponent(props) {
           onChange={handleChange}
           onBlur={handleBlur}
           error={getFieldError(ORDER_FIELD_NAME.DELIVERY_METHOD)}
+          textValue
         />
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.CONTACT_PHONE_NUMBER"
@@ -126,6 +148,41 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         error={getFieldError(ORDER_FIELD_NAME.DESCRIPTION)}
       />
+      {(!isAuth && emailConfirmedState !== true) && (
+        <>
+          <FieldLayout type="double" adaptive>
+            <ButtonSecondary
+              tid="BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL"
+              onClick={sendEmailCodeHandler}
+              disabled={sendEmailCodePending || errors[ORDER_FIELD_NAME.EMAIL]}
+            />
+            {sendEmailCodeSuccess && (
+              <SuccessAlert tid="BASKET.FORM.EMAIL_CODE_SENT_SUCCESS" />
+            )}
+          </FieldLayout>
+          <FieldLayout type="double" adaptive>
+            <BasicField
+              placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.WRITE_CODE"
+              name={ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE}
+              value={values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE)}
+            />
+            <ButtonSecondary
+              tid="BASKET.FORM.BUTTON.VERIFICATION_EMAIL"
+              onClick={confirmEmailForOrderHandler}
+              disabled={confirmEmailForOrderPending || errors[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
+            />
+          </FieldLayout>
+          {confirmEmailForOrderSuccess && (
+            <SuccessAlert tid="BASKET.FORM.EMAIL_VERIFICATED_SUCCESS" />
+          )}
+          {confirmEmailForOrderError && (
+            <ErrorAlert tid={confirmEmailForOrderErrorMessage} />
+          )}
+        </>
+      )}
     </SectionLayout>
   );
 }

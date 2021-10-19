@@ -1,7 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { ORDER_NUMBER_API } from './order-number.constant';
 import { ORDER_NUMBER_ACTION_TYPE } from './order-number.type';
-import { convertUsersOrderData } from './order-number.convert';
+import { convertPurchaseData } from './order-number.ts.convert';
 
 export function orderNumberUploadData(orderId) {
   return async (dispatch) => {
@@ -17,9 +17,10 @@ export function orderNumberUploadData(orderId) {
 
       dispatch({
         type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_SUCCESS,
-        data: convertUsersOrderData(response.data),
+        data: convertPurchaseData(response.data),
       });
     } catch (err) {
+      console.log(err);
       if (err.response) {
         dispatch({
           type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_ERROR,

@@ -3,7 +3,7 @@ import { SETTINGS_CHANGE_NOTIFICATION_API } from './settings-change-notification
 import { SETTINGS_CHANGE_NOTIFICATION_ACTION_TYPE } from './settings-change-notification.type';
 import { performSettingsChangeNotificationLoadData } from './settings-change-notification.convert';
 
-export function settingsChangeNotificationFormUploadData(data, setSubmitting) {
+export function settingsChangeNotificationFormUploadData(data, setSubmitting, userId) {
   return async (dispatch) => {
     dispatch({
       type: SETTINGS_CHANGE_NOTIFICATION_ACTION_TYPE.SETTINGS_CHANGE_NOTIFICATION_FORM_UPLOAD_PENDING,
@@ -11,8 +11,8 @@ export function settingsChangeNotificationFormUploadData(data, setSubmitting) {
 
     try {
       await httpRequest({
-        method: SETTINGS_CHANGE_NOTIFICATION_API.UPLOAD_FORM.METHOD,
-        url: SETTINGS_CHANGE_NOTIFICATION_API.UPLOAD_FORM.ENDPOINT,
+        method: SETTINGS_CHANGE_NOTIFICATION_API.USER_UPDATE_DATA.METHOD,
+        url: SETTINGS_CHANGE_NOTIFICATION_API.USER_UPDATE_DATA.ENDPOINT(userId),
         data,
       });
 

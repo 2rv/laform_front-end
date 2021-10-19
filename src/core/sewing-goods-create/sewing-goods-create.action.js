@@ -10,7 +10,6 @@ export function createSewingGoodsUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
     try {
       const data = convertForUpload(imagesUrls, formValues);
-
       const response = await httpRequest({
         method: CREATE_SEWING_GOODS_API.SEWING_GOODS_UPLOAD.TYPE,
         url: CREATE_SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT,

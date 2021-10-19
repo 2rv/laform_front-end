@@ -7,79 +7,150 @@ import { Divider } from 'src/lib/element/divider';
 export function ProductParams(props) {
   const { params } = props;
   if (!params) return null;
+  const {
+    option,
+    format,
+    color,
+    size,
+    program,
+    category,
+    count,
+    length,
+    complexity,
+    fullName,
+    userId,
+    diliveryInfo,
+    city,
+    diliveryMethod,
+    paymentMethod,
+    phoneNumber,
+    email,
+    createdDate,
+  } = params;
   return (
     <>
       <Divider />
       <Container>
-        {Boolean(params.program) && (
+        {Boolean(option) && (
           <div>
-            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PROGRAM" />
+            <TextSecondary tid="Опция" />
             &nbsp;
-            <TextPrimary tid={params.program} />
+            <TextPrimary tid={option} />
           </div>
         )}
-        {Boolean(params.color) && (
+        {Boolean(color) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.COLOR" />
             &nbsp;
-            <TextPrimary tid={params.color} />
+            <TextPrimary tid={color} />
           </div>
         )}
-        {Boolean(params.size) && (
+        {Boolean(size) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.SIZE" />
             &nbsp;
-            <TextPrimary tid={params.size} />
+            <TextPrimary tid={size} />
           </div>
         )}
-        {Boolean(params.format) && (
+        {Boolean(program) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PROGRAM" />
+            &nbsp;
+            <TextPrimary tid={program} />
+          </div>
+        )}
+        {Boolean(format) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FORMAT" />
             &nbsp;
-            <TextPrimary tid={params.format} />
+            <TextPrimary tid={format} />
           </div>
         )}
-        {Boolean(params.count) && (
+        {Boolean(category) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CATEGORY" />
+            &nbsp;
+            <TextPrimary tid={category} />
+          </div>
+        )}
+        {Boolean(count) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.QUANTITY" />
             &nbsp;
-            <TextPrimary tid={params.count} />
+            <TextPrimary tid={count} />
           </div>
         )}
-        {Boolean(params.diliveryAdress) && (
+        {Boolean(length) && (
           <div>
-            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DILIVERY_INFO" />
+            <TextSecondary tid="Длинна" />
             &nbsp;
-            <TextPrimary tid={params.diliveryAdress} />
+            <TextPrimary tid={length} />
           </div>
         )}
-        {Boolean(params.diliveryMethod) && (
+        {Boolean(complexity) && (
           <div>
-            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_METHOD" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.COMPLEXITY" />
             &nbsp;
-            <TextPrimary tid={params.diliveryMethod} />
+            <TextPrimary tid={String(complexity)} />
           </div>
         )}
-        {Boolean(params.paymentMethod) && (
+        {Boolean(fullName) && (
           <div>
-            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PAYMENT_METHOD" />
-            <TextPrimary tid={params.paymentMethod} />
-          </div>
-        )}
-        {Boolean(params.createdDate) && (
-          <div>
-            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CREATED_DATE" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.FULL_NAME" />
             &nbsp;
-            <TextPrimary
-              tid={ConvertDate(params.createdDate, 'MMMM DD, YYYY')}
+            <FullNameText
+              tid={fullName}
+              path={ABOUT_ACCOUNT_ROUTE_PATH}
+              pathConfig={{ dynamic: true, params: { id: userId } }}
             />
           </div>
         )}
-        {Boolean(params.status) && (
+        {Boolean(diliveryInfo) && (
           <div>
-            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.STATUS" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DILIVERY_INFO" />
             &nbsp;
-            <TextPrimary tid={params.status} />
+            <TextPrimary tid={diliveryInfo} />
+          </div>
+        )}
+        {Boolean(city) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CITY" />
+            &nbsp;
+            <TextPrimary tid={city} />
+          </div>
+        )}
+        {Boolean(diliveryMethod) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_METHOD" />
+            &nbsp;
+            <TextPrimary tid={diliveryMethod} />
+          </div>
+        )}
+        {Boolean(paymentMethod) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PAYMENT_METHOD" />
+            <TextPrimary tid={paymentMethod} />
+          </div>
+        )}
+        {Boolean(phoneNumber) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PHONE" />
+            &nbsp;
+            <TextPrimary tid={phoneNumber} />
+          </div>
+        )}
+        {Boolean(email) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.EMAIL" />
+            &nbsp;
+            <TextPrimary tid={email} />
+          </div>
+        )}
+        {Boolean(createdDate) && (
+          <div>
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CREATED_DATE" />
+            &nbsp;
+            <TextPrimary tid={ConvertDate(createdDate, 'MMMM DD, YYYY')} />
           </div>
         )}
       </Container>

@@ -19,6 +19,7 @@ import {
 import {
   settingsChangeDeliveryInfoLoadData,
   settingsChangeDeliveryInfoFormUploadData,
+  settingsGetDeliveryTypesLoadData,
 } from './settings-change-delivery-info.action';
 import { settingsChangeDeliveryInfoFormValidation } from './settings-change-delivery-info.validation';
 import {
@@ -28,16 +29,19 @@ import {
 
 export function SettingsChangeDeliveryInfoContainer() {
   const dispatch = useDispatch();
-  const { changeDeliveryInfo, formChangeDeliveryInfo } = useSelector(
+  const { changeDeliveryInfo, formChangeDeliveryInfo, deliveryTypes } = useSelector(
     (state) => ({
       changeDeliveryInfo:
         state[SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME].changeDeliveryInfo,
       formChangeDeliveryInfo:
         state[SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME].formChangeDeliveryInfo,
+      deliveryTypes:
+        state[SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME].deliveryTypes,
     }),
   );
 
   const changeDeliveryInfoData = getRequestData(changeDeliveryInfo);
+  const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
 
   const settingsChangeDeliveryInfoFormSendData = (
     values,
@@ -55,21 +59,21 @@ export function SettingsChangeDeliveryInfoContainer() {
         [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.FULLNAME]: changeDeliveryInfoData?.fullName ?? '',
         [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.PHONE]: changeDeliveryInfoData?.phone ?? '',
         [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.LOCATION]: changeDeliveryInfoData?.location ?? '',
-        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.DELIVERY_TYPE]: changeDeliveryInfoData?.deliveryType ??
-          SETTINGS_CHANGE_DELIVERY_INFO_DELIVERY_TYPE_OPTIONS[0].id,
+        [SETTINGS_CHANGE_DELIVERY_INFO_FIELD_NAME.DELIVERY_TYPE]: deliveryTypeOptions?.deliveryType ?? deliveryTypeOptions[0]?.tid,
       };
     }
 
-    return performSettingsChangeDeliveryInfoFormData(rawData);
+    return performSettingsChangeDeliveryInfoFormData(rawData, deliveryTypeOptions[0]?.tid);
   };
 
   useEffect(() => {
     dispatch(settingsChangeDeliveryInfoLoadData());
+    dispatch(settingsGetDeliveryTypesLoadData());
   }, []);
 
   return (
     <SettingsFormChangeDeliveryInfoContainer
-      deliveryTypeOptions={SETTINGS_CHANGE_DELIVERY_INFO_DELIVERY_TYPE_OPTIONS}
+      deliveryTypeOptions={deliveryTypeOptions}
       dataPending={isRequestPending(changeDeliveryInfo)}
       formPending={isRequestPending(formChangeDeliveryInfo)}
       formSuccess={isRequestSuccess(formChangeDeliveryInfo)}

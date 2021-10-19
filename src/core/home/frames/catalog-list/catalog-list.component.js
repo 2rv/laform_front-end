@@ -69,9 +69,6 @@ const Content = styled.div`
   gap: ${spacing(3)};
   background-color: rgba(47, 42, 44, 0.75);
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  @media only screen and (max-width: 720px) {
-    align-items: center;
-  }
 `;
 const TitleText = styled(TitlePrimary)`
   color: ${THEME_COLOR.WHITE};

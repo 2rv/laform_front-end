@@ -1,62 +1,44 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {
-  getRequestErrorMessage,
-  isRequestError,
-  isRequestPending,
-  isRequestSuccess,
-} from '../../main/store/store.service';
-import {
-  NOTIFICATION_FIELD_NAME,
-  NOTIFICATION_FORM_FIELD_NAME,
-  NOTIFICATION_DATA_KEY,
-} from './notification.type';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRequestData, isRequestPending } from 'src/main/store/store.service';
+import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import { updateNotificationEmailStatus, getUserNotificationEmailStatus } from './notification.action';
 import { NOTIFICATION_STORE_NAME } from './notification.constant';
 import { NotificationComponent } from './notification.component';
-import { notificationFormValidation } from './notification.validation';
-import { convertNotificationFormData } from './notification.convert';
-import {
-  notificationFormUploadData,
-  notificationLoadEmail,
-} from './notification.action';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 
 export function NotificationContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading, email } = useSelector((state) => ({
+  const { state, pageLoading, user, isAuth } = useSelector((state) => ({
     state: state[NOTIFICATION_STORE_NAME],
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    email:
-      state[NOTIFICATION_STORE_NAME].notificationLoadEmail.data?.[
-        NOTIFICATION_DATA_KEY.EMAIL
-      ],
+    user: state[AUTH_STORE_NAME].user,
+    isAuth: state[AUTH_STORE_NAME].logged,
   }));
 
-  const notificationFormSendData = (values, { setSubmitting }) => {
-    const data = convertNotificationFormData(values);
-    dispatch(notificationFormUploadData(data, setSubmitting));
+  const notificationEmailStatus = getRequestData(state.notificationStatus);
+
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getUserNotificationEmailStatus());
+    }
+  }, []);
+
+  const updateNotificationEmailStatusHandler = () => {
+    dispatch(updateNotificationEmailStatus(
+      user.id,
+      { notificationEmail: Boolean(notificationEmailStatus.notificationEmail === true) ? false : true },
+    ));
   };
-
-  const notificationFormGetInitialValue = () => ({
-    [NOTIFICATION_FIELD_NAME.EMAIL]: email ? email : '',
-  });
-
-  // useEffect(() => {
-  //   dispatch(notificationLoadEmail());
-  // }, []);
 
   return (
     <NotificationComponent
-      isFormPending={isRequestPending(state.notificationForm)}
-      isFormSuccess={isRequestSuccess(state.notificationForm)}
-      isFormError={isRequestError(state.notificationForm)}
-      formErrorMessage={getRequestErrorMessage(state.notificationForm)}
-      loadEmailPending={isRequestPending(state.notificationLoadEmail)}
+      isNotificationChangePending={isRequestPending(state.notificationChange)}
+      isNotificationStatusPending={isRequestPending(state.notificationStatus)}
+      notificationEmailStatus={notificationEmailStatus.notificationEmail}
+      updateNotificationEmailStatusHandler={updateNotificationEmailStatusHandler}
       pageLoading={pageLoading}
-      initialValue={notificationFormGetInitialValue()}
-      validation={notificationFormValidation}
-      onSubmitForm={notificationFormSendData}
-      fieldName={NOTIFICATION_FORM_FIELD_NAME}
+      isAuth={isAuth}
     />
   );
 }

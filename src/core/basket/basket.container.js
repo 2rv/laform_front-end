@@ -20,7 +20,9 @@ import {
   checkPromoCodeAction,
   LoadUserInfoAction,
   basketUploadData,
+  getDeliveryTypes,
 } from './basket.action';
+import { convertForTable } from './basket.util';
 
 export function BasketContainer() {
   const dispatch = useDispatch();
@@ -30,6 +32,9 @@ export function BasketContainer() {
     promoCodeState,
     orderState,
     userInfoState,
+    deliveryTypes,
+    sendEmailCodeState,
+    confirmEmailForOrderState,
     pageLoading,
     isAuth,
     email,
@@ -38,34 +43,42 @@ export function BasketContainer() {
     promoCodeState: state[BASKET_STORE_NAME].promoCode,
     orderState: state[BASKET_STORE_NAME].order,
     userInfoState: state[BASKET_STORE_NAME].userInfo,
+    deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
+    sendEmailCodeState: state[BASKET_STORE_NAME].sendEmailCode,
+    confirmEmailForOrderState: state[BASKET_STORE_NAME].confirmEmailForOrder,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     isAuth: state[AUTH_STORE_NAME].logged,
     email: state[AUTH_STORE_NAME].user?.email,
   }));
 
+  const [purchaseTotalPrice, setPurchaseTotalPrice] = useState(0);
   const isEmpty = bascketState ? bascketState.length === 0 : true;
 
   const userInfo = getRequestData(userInfoState, false);
+  const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
+  const emailConfirmedState = getRequestData(confirmEmailForOrderState, false)
 
-  useEffect(() => isAuth && dispatch(LoadUserInfoAction()), []);
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(LoadUserInfoAction());
+    }
 
-  const { itemsGoods, itemsMaster, itemsPatterns, price } =
-    reduceBascketState(bascketState);
+    dispatch(getDeliveryTypes());
+  }, []);
 
+  const { masterProducts, patternProducts, sewingProducts, basketPrice } =
+    convertForTable(bascketState);
   const changeItem = (values) => {
     dispatch(changeItemAction(values, bascketState));
   };
-
   const deleteItem = (indexId, id) => {
     dispatch(deleteItemAction(indexId, bascketState));
   };
-
   const checkPromoCode = (promocode) => {
     dispatch(checkPromoCodeAction(promocode));
   };
-
   const onSubmit = (values) => {
-    dispatch(basketUploadData(values, bascketState, isAuth));
+    dispatch(basketUploadData(values, bascketState, isAuth, purchaseTotalPrice));
   };
 
   const initialValues = () => {
@@ -77,13 +90,14 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.PAYMENT_METHOD]:
         userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD] || 0,
       [ORDER_FIELD_NAME.DELIVERY_METHOD]:
-        userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD] || 0,
+        userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD] || deliveryTypeOptions[0]?.tid,
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
       [ORDER_FIELD_NAME.DILIVERY_PRICE]: 0,
       [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
+      [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: '',
     };
   };
 
@@ -100,7 +114,7 @@ export function BasketContainer() {
       //-----------------
       promocode={promocode}
       discount={discount}
-      price={price}
+      price={parseFloat(basketPrice.toFixed(2))}
       //-----------------
       checkPromoCode={checkPromoCode}
       //-----------------
@@ -119,11 +133,21 @@ export function BasketContainer() {
       orderPending={isRequestPending(orderState)}
       orderSuccess={isRequestSuccess(orderState)}
       //--------------
+      sendEmailCodePending={isRequestPending(sendEmailCodeState)}
+      sendEmailCodeSuccess={isRequestSuccess(sendEmailCodeState)}
+      //-----------------
+      emailConfirmedState={emailConfirmedState}
+      confirmEmailForOrderErrorMessage={getRequestErrorMessage(confirmEmailForOrderState)}
+      confirmEmailForOrderError={isRequestError(confirmEmailForOrderState)}
+      confirmEmailForOrderPending={isRequestPending(confirmEmailForOrderState)}
+      confirmEmailForOrderSuccess={isRequestSuccess(confirmEmailForOrderState)}
+      //--------------
       onSubmit={onSubmit}
       initialValues={initialValues()}
       validation={formValidation}
-      diliveryOptions={diliveryOptions}
+      diliveryOptions={deliveryTypeOptions}
       paymentMethodOptions={paymentMethodOptions}
+      setPurchaseTotalPrice={setPurchaseTotalPrice}
       //--------------
       changeItem={changeItem}
       deleteItem={deleteItem}
@@ -132,9 +156,9 @@ export function BasketContainer() {
       headersMaster={headersMaster}
       headersPatterns={headersPatterns}
       //--------------
-      itemsGoods={itemsGoods}
-      itemsMaster={itemsMaster}
-      itemsPatterns={itemsPatterns}
+      sewingProducts={sewingProducts}
+      masterProducts={masterProducts}
+      patternProducts={patternProducts}
     />
   );
 }
@@ -152,6 +176,7 @@ const headersMaster = [
 const headersPatterns = [
   'BASKET.HEADERS_PATTERNS.PATTERNS',
   'BASKET.HEADERS_PATTERNS.PARAMETERS',
+  'BASKET.HEADERS_GOODS.QUANTITY',
   'BASKET.HEADERS_PATTERNS.TOTAL_PRICE',
 ];
 const diliveryOptions = [

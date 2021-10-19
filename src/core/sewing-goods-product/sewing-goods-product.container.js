@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestData,
@@ -13,7 +13,6 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.co
 import { sewingGoodsProductUploadData } from './sewing-goods-product.action';
 import { SEWING_GOODS_PRODUCT_STORE_NAME } from './sewing-goods-product.constant';
 import { SewingGoodsProductComponent } from './sewing-goods-product.component';
-import { addToBasket } from '../basket';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function SewingGoodsProductContainer() {
@@ -33,8 +32,6 @@ export function SewingGoodsProductContainer() {
     );
   }, [sewingGoodsProductId]);
 
-  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
-
   return (
     <SewingGoodsProductComponent
       isPending={isRequestPending(state)}
@@ -43,7 +40,6 @@ export function SewingGoodsProductContainer() {
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
       productData={getRequestData(state, false)}
-      addToCart={addToCart}
     />
   );
 }

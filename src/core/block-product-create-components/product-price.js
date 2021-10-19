@@ -3,7 +3,7 @@ import { TextSecondary, TextCurrency } from '../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 
 export function ProductPrice(props) {
-  const { price, discount } = props;
+  const { price = 0, discount = 0 } = props.priceAndDiscount;
 
   const priceWithDiscount = ((price / 100) * discount).toFixed(2);
   const totalPrice = (price - priceWithDiscount).toFixed(2);

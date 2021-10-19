@@ -38,7 +38,7 @@ export function patternsUploadData(isAuth, query) {
   };
 }
 
-export function patternsUpdateData(currentLang, id, body) {
+export function patternsUpdateData(isAuth, query, id, body) {
   return async (dispatch) => {
     dispatch({
       type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_PENDING,
@@ -46,15 +46,15 @@ export function patternsUpdateData(currentLang, id, body) {
 
     try {
       const response = await httpRequest({
-        method: PATTERNS_API.PATTERNS_UPDATE.TYPE,
-        url: PATTERNS_API.PATTERNS_UPDATE.ENDPOINT(id),
-        data: { patternProduct: body },
+        method: PATTERNS_API.PATTERNS_DELETE.TYPE,
+        url: PATTERNS_API.PATTERNS_DELETE.ENDPOINT(id),
+        data: body,
       });
 
       dispatch({
         type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_SUCCESS,
       });
-      dispatch(patternsUploadData(currentLang));
+      dispatch(patternsUploadData(isAuth, query));
     } catch (err) {
       if (err.response) {
         dispatch({

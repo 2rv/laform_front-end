@@ -4,7 +4,7 @@ import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
 import { ConvertTime } from 'src/lib/common/time-convert';
-import { CardArticleTypeProps } from './card.type';
+import { CardArticleType } from './card.type';
 import {
   DeleteButton,
   SelectButton,
@@ -12,7 +12,7 @@ import {
   CardName,
 } from './card.components';
 
-export function CardArticle(props: CardArticleTypeProps) {
+export function CardArticle(props: CardArticleType) {
   const {
     id,
     image,

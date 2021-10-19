@@ -10,6 +10,7 @@ import { SETTINGS_CHANGE_DELIVERY_INFO_ACTION_TYPE } from './settings-change-del
 const initialState = {
   changeDeliveryInfo: initRequestState(),
   formChangeDeliveryInfo: initRequestState(),
+  deliveryTypes: initRequestState(),
 };
 
 export function settingsChangeDeliveryInfoStore(state = initialState, action) {
@@ -51,6 +52,25 @@ export function settingsChangeDeliveryInfoStore(state = initialState, action) {
         ...state,
         formChangeDeliveryInfo: setRequestError(
           state.formChangeDeliveryInfo,
+          action.errorMessage,
+        ),
+      };
+
+    case SETTINGS_CHANGE_DELIVERY_INFO_ACTION_TYPE.SETTINGS_GET_DELIVERY_TYPES_LOAD_PENDING:
+      return {
+        ...state,
+        deliveryTypes: setRequestPending(state.deliveryTypes),
+      };
+    case SETTINGS_CHANGE_DELIVERY_INFO_ACTION_TYPE.SETTINGS_GET_DELIVERY_TYPES_LOAD_SUCCESS:
+      return {
+        ...state,
+        deliveryTypes: setRequestSuccess(state.deliveryTypes, action.payload),
+      };
+    case SETTINGS_CHANGE_DELIVERY_INFO_ACTION_TYPE.SETTINGS_GET_DELIVERY_TYPES_LOAD_ERROR:
+      return {
+        ...state,
+        deliveryTypes: setRequestError(
+          state.deliveryTypes,
           action.errorMessage,
         ),
       };

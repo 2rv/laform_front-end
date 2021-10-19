@@ -8,8 +8,8 @@ import {
 import { NOTIFICATION_ACTION_TYPE } from './notification.type';
 
 const initialState = {
-  notificationForm: initRequestState(),
-  notificationLoadEmail: initRequestState(),
+  notificationChange: initRequestState(),
+  notificationStatus: initRequestState(),
 };
 
 export function notificationStore(state = initialState, action) {
@@ -17,48 +17,34 @@ export function notificationStore(state = initialState, action) {
     case NOTIFICATION_ACTION_TYPE.NOTIFICATION_FORM_UPLOAD_PENDING:
       return {
         ...state,
-        notificationForm: setRequestPending(state.notificationForm),
+        notificationChange: setRequestPending(state.notificationChange),
       };
-
     case NOTIFICATION_ACTION_TYPE.NOTIFICATION_FORM_UPLOAD_SUCCESS:
       return {
         ...state,
-        notificationForm: setRequestSuccess(state.notificationForm),
+        notificationChange: setRequestSuccess(state.notificationChange),
       };
-
     case NOTIFICATION_ACTION_TYPE.NOTIFICATION_FORM_UPLOAD_ERROR:
       return {
         ...state,
-        notificationForm: setRequestError(
-          state.notificationForm,
-          action.errorMessage,
-        ),
+        notificationChange: setRequestError(state.notificationChange, action.errorMessage),
       };
 
-    case NOTIFICATION_ACTION_TYPE.NOTIFICATION_LOAD_EMAIL_PENDING:
+    case NOTIFICATION_ACTION_TYPE.GET_NOTIFICATION_STATUS_PENDING:
       return {
         ...state,
-        notificationLoadEmail: setRequestPending(state.notificationLoadEmail),
+        notificationStatus: setRequestPending(state.notificationStatus),
       };
-
-    case NOTIFICATION_ACTION_TYPE.NOTIFICATION_LOAD_EMAIL_SUCCESS:
+    case NOTIFICATION_ACTION_TYPE.GET_NOTIFICATION_STATUS_SUCCESS:
       return {
         ...state,
-        notificationLoadEmail: setRequestSuccess(
-          state.notificationLoadEmail,
-          action.data,
-        ),
+        notificationStatus: setRequestSuccess(state.notificationStatus, action.payload),
       };
-
-    case NOTIFICATION_ACTION_TYPE.NOTIFICATION_LOAD_EMAIL_ERROR:
+    case NOTIFICATION_ACTION_TYPE.GET_NOTIFICATION_STATUS_ERROR:
       return {
         ...state,
-        notificationLoadEmail: setRequestError(
-          state.notificationLoadEmail,
-          action.errorMessage,
-        ),
+        notificationStatus: setRequestError(state.notificationStatus, action.errorMessage),
       };
-
     default:
       return state;
   }

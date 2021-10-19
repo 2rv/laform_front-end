@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
-import { TextSecondary } from '../../lib/element/text';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
 import { ProductMainComponent } from './frames';
@@ -15,9 +14,7 @@ export function SewingGoodsProductComponent(props) {
     isSuccess,
     errorMessage,
     pageLoading,
-
     productData,
-    addToCart,
   } = props;
 
   if (!productData) return <LoaderPrimary />;
@@ -28,14 +25,10 @@ export function SewingGoodsProductComponent(props) {
       <SectionLayout>
         <Content>
           <ProductImages items={productData.images} />
-          <ProductMainComponent addToCart={addToCart} {...productData} />
+          <ProductMainComponent {...productData} />
         </Content>
       </SectionLayout>
-      <CardListBlock
-        items={productData.recommendations}
-        onCart={addToCart}
-        title="Рекомендации"
-      />
+      <CardListBlock items={productData.recommendations} title="Рекомендации" />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );

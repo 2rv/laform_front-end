@@ -15,8 +15,7 @@ export function CreateSewingGoodsComponent(props) {
     isError,
     errorMessage,
     //--------
-    initialSizes,
-    initialColors,
+    initialOption,
     initialValues,
     onSubmit,
     validation,
@@ -42,11 +41,7 @@ export function CreateSewingGoodsComponent(props) {
                     imageFieldName={SEWING_GOODS_FIELD_NAME.IMAGE}
                     title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent
-                    {...formProps}
-                    initialColors={initialColors}
-                    initialSizes={initialSizes}
-                  />
+                  <FormComponent {...formProps} initialOption={initialOption} />
                 </SectionLayout>
               </form>
             );

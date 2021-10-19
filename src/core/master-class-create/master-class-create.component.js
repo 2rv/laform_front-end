@@ -18,8 +18,6 @@ export function CreateMasterClassComponent(props) {
     isSuccess,
     isError,
     errorMessage,
-    //--------
-    programsInit,
   } = props;
   return (
     <>
@@ -33,6 +31,7 @@ export function CreateMasterClassComponent(props) {
           enableReinitialize={true}
         >
           {(formProps) => {
+            console.log(formProps.values);
             return (
               <form onSubmit={formProps.handleSubmit}>
                 <SectionLayout>
@@ -42,7 +41,7 @@ export function CreateMasterClassComponent(props) {
                     imageFieldName={CREATE_MASTER_CLASS_FIELD_NAME.IMAGE}
                     title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent {...formProps} programsInit={programsInit} />
+                  <FormComponent {...formProps} />
                 </SectionLayout>
               </form>
             );

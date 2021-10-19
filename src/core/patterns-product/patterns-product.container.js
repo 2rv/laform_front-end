@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestData,
@@ -13,7 +13,6 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.co
 import { patternProductUploadData } from './patterns-product.action';
 import { PATTERNS_PRODUCT_STORE_NAME } from './patterns-product.constant';
 import { PatternsProductComponent } from './patterns-product.component';
-import { addToBasket } from '../basket';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function PatternsProductContainer() {
@@ -31,8 +30,6 @@ export function PatternsProductContainer() {
     dispatch(patternProductUploadData(currentLang, patternId, logged));
   }, [patternId]);
 
-  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
-
   return (
     <PatternsProductComponent
       isPending={isRequestPending(state)}
@@ -41,7 +38,6 @@ export function PatternsProductContainer() {
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
       productData={getRequestData(state, false)}
-      addToCart={addToCart}
     />
   );
 }

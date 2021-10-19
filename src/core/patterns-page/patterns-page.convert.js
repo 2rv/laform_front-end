@@ -3,19 +3,24 @@ export const convertPatternData = (data) => {
     id: data.id,
     type: data.patternProductId?.type,
     images: data.patternProductId?.images.map((image) => image.fileUrl),
-    title: data.patternProductId?.titleRu,
+    title: data.patternProductId?.titleRu || data.patternProductId?.titleEn,
     categories: data.patternProductId?.categories,
-    description: data.patternProductId?.descriptionRu,
-    materials: data.patternProductId.materialRu,
-
+    description:
+      data.patternProductId?.descriptionRu ||
+      data.patternProductId?.descriptionEn,
+    materials:
+      data.patternProductId.materialRu || data.patternProductId.materialEn,
     price: Number(data.totalPrice),
     discount: Number(data.totalDiscount),
     diliveryPrice: Number(data?.deliveryPrice || 0),
-
-    filePdf: data.size?.filePdf?.fileUrl,
-    vendorCode: data.size?.vendorCode,
+    count: Number(data.totalCount),
+    filePdf:
+      data.optionId?.filePdf?.fileUrl ||
+      data.patternProductId?.filePdf?.fileUrl,
+    vendorCode: data.optionId?.vendorCode || data.patternProductId?.vendorCode,
     params: {
-      size: data.size.size,
+      size: data.optionId.size,
+      count: data.totalCount,
     },
     otherParams: {
       paymentMethod: data.purchase.paymentMethod,

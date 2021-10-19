@@ -16,7 +16,7 @@ export function FileField(props: FilefieldPropsType) {
     value,
     error,
     disabled,
-
+    accept,
     onChange,
     onBlur,
     ...restProps
@@ -28,6 +28,7 @@ export function FileField(props: FilefieldPropsType) {
       <Content error={!!error}>
         {placeholderTid && <Text tid={placeholderTid} />}
         <Input
+          accept={accept}
           {...restProps}
           disabled={disabled}
           onChange={onChange}

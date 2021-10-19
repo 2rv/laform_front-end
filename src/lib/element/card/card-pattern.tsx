@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { CardImage } from './card.image';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../../../core/patterns-product';
-import { CardPatternTypeProps } from './card.type';
+import { CardPatternType } from './card.type';
 import {
   CardPrice,
   CardName,
@@ -11,24 +11,25 @@ import {
   LikeButton,
   SelectButton,
 } from './card.components';
-import { CartButton } from './card.cart-button';
+import { CartModalButton } from '../../common/cart-modal-button';
 
-export function CardPattern(props: CardPatternTypeProps) {
+export function CardPattern(props: CardPatternType) {
   const {
     id,
+    like,
+    admin,
     type,
-    name,
     image,
-    complexity,
+    name,
     modifier,
     price,
     discount,
-    like,
-    onCart,
+    count,
+    complexity,
+    sizes,
     onSelect,
     onDelete,
-    admin,
-    sizes,
+    onCart,
   } = props;
 
   return (
@@ -49,11 +50,26 @@ export function CardPattern(props: CardPatternTypeProps) {
       </Content>
       <ActionCase>
         <SelectButton id={id} type={type} onSelect={onSelect} />
-        <CartButton id={id} type={type} onCart={onCart} sizes={sizes} />
-        <ActionCase>
-          <LikeButton id={id} type={type} like={like} />
-          <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
-        </ActionCase>
+        <CartModalButton
+          id={id}
+          type={type}
+          price={price}
+          discount={discount}
+          count={count}
+          onCart={onCart}
+          sizes={sizes}
+        />
+        {(like || admin) && (
+          <ActionCase>
+            <LikeButton id={id} type={type} like={like} />
+            <DeleteButton
+              id={id}
+              type={type}
+              admin={admin}
+              onDelete={onDelete}
+            />
+          </ActionCase>
+        )}
       </ActionCase>
     </Container>
   );

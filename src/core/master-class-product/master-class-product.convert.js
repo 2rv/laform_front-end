@@ -4,21 +4,14 @@ export function performMasterClassProductData(rowData, basket) {
   return {
     id: rowData.id,
     type: rowData.type,
-    modifier: rowData?.modifier,
+    vendorCode: rowData.vendorCode,
+    modifier: rowData.modifierRu || rowData.modifierEn,
+    name: rowData.titleRu || rowData.titleEn,
+    description: rowData.descriptionRu || rowData.descriptionEn,
+    price: rowData.price,
     discount: rowData?.discount,
-    name: rowData.titleRu,
     categories: rowData.categories,
-    cart: Boolean(
-      basket?.find((bItem) => bItem?.masterClass?.id === rowData.id),
-    ),
-    description: rowData.descriptionRu,
     images: rowData.images.map((item) => item.fileUrl),
-    programs: rowData.programs.map((item, index) => ({
-      id: item.id,
-      tid: item.programNameRu,
-      price: item.price,
-      vendorCode: item.vendorCode,
-    })),
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
