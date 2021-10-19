@@ -19,6 +19,7 @@ export function ProductMainComponent(props) {
     price,
     discount,
     count,
+    length,
     diliveryPrice,
     vendorCode,
     status,
@@ -41,6 +42,7 @@ export function ProductMainComponent(props) {
         price={price}
         discount={discount}
         count={count}
+        length={length}
       />
       <ProductParams params={otherParams} />
       <Divider />

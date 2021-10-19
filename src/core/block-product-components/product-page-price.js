@@ -4,12 +4,11 @@ import { TextCurrency, TextSecondary } from '../../lib/element/text';
 import { SectionLayout } from '../../lib/element/layout';
 
 export function ProductPagePrice(props) {
-  const { discount = 0, diliveryPrice = 0, price = 0, count = 1 } = props;
+  const { discount = 0, diliveryPrice = 0, price = 0, count, length } = props;
 
-  const discountPrice = price - price * (discount / 100);
-
-  const totalPrice = discountPrice + diliveryPrice * count;
-
+  const discountPrice =
+    (price - price * (discount / 100)) * (length || count || 1);
+  const totalPrice = discountPrice + diliveryPrice;
   return (
     <Container>
       <SectionLayout type="TEXT">

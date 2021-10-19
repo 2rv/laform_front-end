@@ -22,6 +22,7 @@ export function ProductMainComponent(props) {
     materials,
     price,
     discount,
+    count,
     diliveryPrice,
     filePdf,
     params,
@@ -45,9 +46,15 @@ export function ProductMainComponent(props) {
         diliveryPrice={diliveryPrice}
         price={price}
         discount={discount}
+        count={count}
       />
       <ProductParams params={otherParams} />
-      <FilePdfActions title={title} filePdf={filePdf} isPdfPending={isPdfPending} isPdfSuccess={isPdfSuccess} />
+      <FilePdfActions
+        title={title}
+        filePdf={filePdf}
+        isPdfPending={isPdfPending}
+        isPdfSuccess={isPdfSuccess}
+      />
       <Divider />
       <ProductVendorCode vendorCode={vendorCode} />
     </Container>
