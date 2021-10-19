@@ -9,25 +9,26 @@ import {
   THEME_SIZE,
   THEME_VALUE,
 } from '../../../../lib/theme';
-import { TextPrimary } from '../../../../lib/element/text';
+import { TextPrimary, TextSecondary } from '../../../../lib/element/text';
 
 export function FaqItemComponent(props) {
   const { titleTid, contentTid } = props;
   const [isOpen, setOpen] = useState(false);
 
   const onTitleClick = () => setOpen(!isOpen);
-
+  {
+    /* <TitleContainer onClick={onTitleClick}>
+        <Icon active={isOpen} />
+      </TitleContainer> */
+  }
   return (
     <Container>
-      <TitleContainer onClick={onTitleClick}>
-        <Icon active={isOpen} />
-        <Title tid={titleTid} />
-      </TitleContainer>
-      {isOpen && <Markdown>{text(contentTid)}</Markdown>}
+      <Title tid={titleTid} />
+      <Text>{text(contentTid)}</Text>
     </Container>
   );
 }
-const Markdown = styled(ReactMarkdown)`
+const Text = styled(TextSecondary)`
   line-height: 1.5;
   font-size: ${THEME_SIZE.FONT.DEFAULT};
   color: ${THEME_COLOR.TEXT.LIGHT};
