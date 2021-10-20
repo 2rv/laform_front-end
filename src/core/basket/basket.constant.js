@@ -15,11 +15,11 @@ export const BASKET_API = {
     METHOD: 'GET',
   },
   SEND_EMAIL_CODE: {
-    ENDPOINT: '/mail/send-email-code',
+    ENDPOINT: '/mail/send/verification-code',
     METHOD: 'POST',
   },
   CONFIRM_EMAIL_FOR_ORDER: {
-    ENDPOINT: (code) => `/purchase/confirm-email-for-order/${code}`,
+    ENDPOINT: `/auth/verify/code`,
     METHOD: 'POST',
   },
   SEND_PURCHASED_PRODUCTS_INFO: {

@@ -2,17 +2,149 @@ import { httpRequest } from '../../main/http';
 import { BASKET_API } from './basket.constant';
 import { BASKET_ACTION_TYPE, ORDER_FIELD_NAME } from './basket.type';
 import {
-  convertPromoCodeForCheck,
-  performPromoCode,
-  performUserInfoData,
-  convertUserInfoData,
-  convertSettingsDeliveryTypesData,
+  performDiliveryInfo,
+  performUserInfo,
+  convertPromoCode,
+  convertUserInfo,
+  convertForAuth,
 } from './basket.convert';
 import { redirect } from 'src/main/navigation';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 import { convertAddToCart, convertCreateOrder } from './basket.util';
 
-export function basketUploadData(
+export function getUserInfoAction() {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.LOAD_USER_INFO_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: BASKET_API.LOAD_USER_INFO.TYPE,
+        url: BASKET_API.LOAD_USER_INFO.ENDPOINT,
+      });
+      dispatch({
+        type: BASKET_ACTION_TYPE.LOAD_USER_INFO_SUCCESS,
+        data: performUserInfo(response.data),
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.LOAD_USER_INFO_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+export function getDeliveryInfoAction() {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: BASKET_API.GET_DELIVERY_TYPES.METHOD,
+        url: BASKET_API.GET_DELIVERY_TYPES.ENDPOINT,
+      });
+
+      dispatch({
+        type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_SUCCESS,
+        payload: performDiliveryInfo(response.data),
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function sendEmailCodeAction(data) {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: BASKET_API.SEND_EMAIL_CODE.METHOD,
+        url: BASKET_API.SEND_EMAIL_CODE.ENDPOINT,
+        data: { email: data },
+      });
+
+      dispatch({
+        type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_SUCCESS,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+export function confirmEmailCodeAction(data) {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: BASKET_API.CONFIRM_EMAIL_FOR_ORDER.METHOD,
+        url: BASKET_API.CONFIRM_EMAIL_FOR_ORDER.ENDPOINT,
+        data: convertForAuth(data),
+      });
+
+      dispatch({
+        type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_SUCCESS,
+        payload: response.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+export function confirmPromoCodeAction(promocode) {
+  return async (dispatch) => {
+    dispatch({
+      type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_PENDING,
+    });
+    const data = convertPromoCode(promocode);
+    try {
+      const res = await httpRequest({
+        method: BASKET_API.CHECK_PROMO_CODE.TYPE,
+        url: BASKET_API.CHECK_PROMO_CODE.ENDPOINT,
+        data,
+      });
+      dispatch({
+        type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_SUCCESS,
+        data: res.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function createOrderAction(
   values,
   bascketState,
   isAuth,
@@ -38,14 +170,14 @@ export function basketUploadData(
         });
       }
       if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
-        await basketUpdateUserInfodData(values);
+        await updateUserInfoAction(values);
       }
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
       //   dispatch(clearBasketAction());
       if (isAuth) {
-        // redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+        redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
       } else {
         alert('Для просмотра списка покупок необходима авторизация');
       }
@@ -60,122 +192,13 @@ export function basketUploadData(
     }
   };
 }
-
-export function getDeliveryTypes() {
-  return async (dispatch) => {
-    dispatch({
-      type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: BASKET_API.GET_DELIVERY_TYPES.METHOD,
-        url: BASKET_API.GET_DELIVERY_TYPES.ENDPOINT,
-      });
-
-      dispatch({
-        type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_SUCCESS,
-        payload: response.data.map(convertSettingsDeliveryTypesData),
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
-export function sendEmailCode(data) {
-  return async (dispatch) => {
-    dispatch({
-      type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_PENDING,
-    });
-
-    try {
-      await httpRequest({
-        method: BASKET_API.SEND_EMAIL_CODE.METHOD,
-        url: BASKET_API.SEND_EMAIL_CODE.ENDPOINT,
-        data,
-      });
-
-      dispatch({
-        type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_SUCCESS,
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: BASKET_ACTION_TYPE.SEND_EMAIL_CODE_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
-export function confirmEmailForOrder(code) {
-  return async (dispatch) => {
-    dispatch({
-      type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: BASKET_API.CONFIRM_EMAIL_FOR_ORDER.METHOD,
-        url: BASKET_API.CONFIRM_EMAIL_FOR_ORDER.ENDPOINT(code),
-      });
-
-      dispatch({
-        type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_SUCCESS,
-        payload: response.data,
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
-async function basketUpdateUserInfodData(values) {
+async function updateUserInfoAction(values) {
   const response = await httpRequest({
     method: BASKET_API.UPDATE_USER_INFO.TYPE,
     url: BASKET_API.UPDATE_USER_INFO.ENDPOINT,
-    data: convertUserInfoData(values),
+    data: convertUserInfo(values),
   });
   return response;
-}
-
-export function LoadUserInfoAction() {
-  return async (dispatch) => {
-    dispatch({
-      type: BASKET_ACTION_TYPE.LOAD_USER_INFO_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: BASKET_API.LOAD_USER_INFO.TYPE,
-        url: BASKET_API.LOAD_USER_INFO.ENDPOINT,
-      });
-      const data = performUserInfoData(response.data);
-      dispatch({
-        type: BASKET_ACTION_TYPE.LOAD_USER_INFO_SUCCESS,
-        data: data,
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: BASKET_ACTION_TYPE.LOAD_USER_INFO_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
 }
 
 export function initializeBasketStore() {
@@ -193,7 +216,6 @@ export function initializeBasketStore() {
     }
   };
 }
-
 export function addToBasket(data, currentLang) {
   return async (dispatch) => {
     dispatch({
@@ -229,7 +251,6 @@ export function addToBasket(data, currentLang) {
     }
   };
 }
-
 export function changeItemAction(values, bascketState) {
   return async (dispatch) => {
     try {
@@ -252,7 +273,6 @@ export function changeItemAction(values, bascketState) {
     }
   };
 }
-
 export function deleteItemAction(params, bascketState) {
   return async (dispatch) => {
     try {
@@ -270,34 +290,6 @@ export function deleteItemAction(params, bascketState) {
     }
   };
 }
-
-export function checkPromoCodeAction(promocode) {
-  return async (dispatch) => {
-    dispatch({
-      type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_PENDING,
-    });
-    const data = convertPromoCodeForCheck(promocode);
-    try {
-      const res = await httpRequest({
-        method: BASKET_API.CHECK_PROMO_CODE.TYPE,
-        url: BASKET_API.CHECK_PROMO_CODE.ENDPOINT,
-        data,
-      });
-      dispatch({
-        type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_SUCCESS,
-        data: res.data,
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: BASKET_ACTION_TYPE.PROMOCODE_CHECK_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
 export function clearBasketAction() {
   return async (dispatch) => {
     try {
