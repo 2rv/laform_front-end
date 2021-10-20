@@ -5,18 +5,28 @@ import {
   SearchFilterComponentPropsType,
   SEARCH_FILTER_FIELD_NAME,
 } from './search-filter.type';
+import { FieldLayout } from 'src/lib/element/layout';
 
 export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
-  const { findPlaceholderTid, filterOptions, values, handleChange } = props;
+  const { findPlaceholderTid, filterOptions, categories, values, handleChange } = props;
 
   return (
     <Container>
-      <FieldSelect
-        options={filterOptions}
-        value={values[SEARCH_FILTER_FIELD_NAME.FILTER] || 0}
-        onChange={handleChange(SEARCH_FILTER_FIELD_NAME.FILTER)}
-        width={200}
-      />
+      <FieldLayout type="double">
+        <FieldSelect
+          options={filterOptions}
+          value={values[SEARCH_FILTER_FIELD_NAME.FILTER] || 0}
+          onChange={handleChange(SEARCH_FILTER_FIELD_NAME.FILTER)}
+          width={200}
+        />
+        <FieldSelect
+          options={categories}
+          value={values[SEARCH_FILTER_FIELD_NAME.CATEGORY] || 0}
+          onChange={handleChange(SEARCH_FILTER_FIELD_NAME.CATEGORY)}
+          width={200}
+          textValue
+        />
+      </FieldLayout>
       <BasicField
         placeholderTid={findPlaceholderTid}
         value={values[SEARCH_FILTER_FIELD_NAME.FIND] || ''}

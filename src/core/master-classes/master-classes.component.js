@@ -10,6 +10,7 @@ export function MasterClassesComponent(props) {
     addToCart,
     onDeleteProduct,
     filterOptions,
+    categories,
     handleFilter,
     isAdmin,
   } = props;
@@ -20,6 +21,7 @@ export function MasterClassesComponent(props) {
       <SearchFilter
         findPlaceholderTid="MASTER_CLASSES.MASTER_CLASSES.FIELD.FIND_MASTER_CLASSES"
         filterOptions={filterOptions}
+        categories={categories}
         handleFilter={handleFilter}
       />
       <BasicCardList

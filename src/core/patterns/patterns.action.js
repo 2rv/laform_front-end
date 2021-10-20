@@ -65,3 +65,32 @@ export function patternsUpdateData(isAuth, query, id, body) {
     }
   };
 }
+
+export function fetchCategories(currentLang, type) {
+  return async (dispatch) => {
+    dispatch({
+      type: PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING,
+    });
+    try {
+      const response = await httpRequest({
+        method: PATTERNS_API.CATEGORIES_UPLOAD_DATA.TYPE,
+        url: PATTERNS_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang, type),
+      });
+      const convertedCategories = response.data.map((category) => ({
+        id: category.id,
+        tid: category.categoryNameRu,
+      }));
+      dispatch({
+        type: PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
+        data: convertedCategories,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}

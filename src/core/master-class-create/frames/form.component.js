@@ -49,7 +49,7 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
         </FieldLayout>
-        <BlockCategories values={values} handleBlur={handleBlur} />
+        <BlockCategories values={values} handleBlur={handleBlur} type={0} />
         <TextareaField
           titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
           placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"

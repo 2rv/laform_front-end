@@ -15,13 +15,15 @@ import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 import {
   masterClassesUploadData,
   masterClassesUpdateData,
+  fetchCategories,
 } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
 
 export function MasterClassesContainer() {
-  const { masterClassState, pageLoading, currentLang, user, isAuth } =
+  const { masterClassState, categories, pageLoading, currentLang, user, isAuth } =
     useSelector((state) => ({
       masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
+      categories: state[MASTER_CLASSES_STORE_NAME].categories,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       user: state[AUTH_STORE_NAME].user,
@@ -31,15 +33,22 @@ export function MasterClassesContainer() {
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
   const totalItems = masterClassState?.additional?.totalCount || 0;
 
+  const productCategories = [
+    { id: -999, tid: 'Выберите категорию', hidden: true },
+    ...getRequestData(categories, []),
+  ];
+
   useEffect(() => {
     dispatch(masterClassesUploadData(isAuth, { currentLang, ...filter }));
+    dispatch(fetchCategories(currentLang, 0));
   }, []);
 
-  const handleFilter = ({ where, sort, by }) => {
+  const handleFilter = ({ where, sort, by, category }) => {
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
+    copy.category = category;
     setFilter(copy);
     dispatch(masterClassesUploadData(isAuth, { currentLang, ...copy }));
   };
@@ -56,6 +65,7 @@ export function MasterClassesContainer() {
       addToCart={addToCart}
       onDeleteProduct={onDeleteProduct}
       filterOptions={filterOptions}
+      categories={productCategories}
       handleFilter={handleFilter}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
     />

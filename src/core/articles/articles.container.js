@@ -8,16 +8,17 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { articlesUploadData } from './articles.action';
+import { articlesUploadData, fetchCategories } from './articles.action';
 import { ARTICLES_STORE_NAME } from './articles.constant';
 import { ArticlesComponent } from './articles.component';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 
 export function ArticlesContainer() {
-  const { articlesState, pageLoading, currentLang, isAuth } = useSelector(
+  const { articlesState, categories, pageLoading, currentLang, isAuth } = useSelector(
     (state) => ({
       articlesState: state[ARTICLES_STORE_NAME].articlesState,
+      categories: state[ARTICLES_STORE_NAME].categories,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       isAuth: state[AUTH_STORE_NAME].logged,
@@ -26,22 +27,30 @@ export function ArticlesContainer() {
 
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
-  const handleFilter = ({ where, sort, by }) => {
+
+  const productCategories = [
+    { id: -999, tid: 'Выберите категорию', hidden: true },
+    ...getRequestData(categories, []),
+  ];
+
+  const handleFilter = ({ where, sort, by, category }) => {
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
+    copy.category = category;
     setFilter(copy);
     dispatch(articlesUploadData(isAuth, { currentLang, ...copy }));
   };
-  useEffect(
-    () => dispatch(articlesUploadData(isAuth, { currentLang, ...filter })),
-    [],
-  );
+  useEffect(() => {
+    dispatch(articlesUploadData(isAuth, { currentLang, ...filter }));
+    dispatch(fetchCategories(currentLang, 4));
+  }, []);
   return (
     <ArticlesComponent
       listItems={getRequestData(articlesState, [])}
       filterOptions={filterOptionss}
+      categories={productCategories}
       handleFilter={handleFilter}
       pageLoading={pageLoading}
       isPending={isRequestPending(articlesState)}
