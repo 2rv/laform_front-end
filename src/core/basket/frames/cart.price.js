@@ -1,23 +1,17 @@
+import styled from 'styled-components';
 import { TextSecondary, TextCurrency } from '../../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
-import styled from 'styled-components';
 import { ORDER_FIELD_NAME } from '../basket.type';
-import { useEffect } from 'react';
 
 export function CartPrice(props) {
-  const { values, deliveryOptions, setPurchaseTotalPrice } = props;
+  const { values } = props;
 
   const price = values[ORDER_FIELD_NAME.PRICE];
   const promoDiscount = values[ORDER_FIELD_NAME.PROMO_DISCOUNT];
-  const deliveryMethod = values[ORDER_FIELD_NAME.DELIVERY_METHOD];
-  const deliveryPrice = Boolean(deliveryOptions.length > 0) ? deliveryOptions.find((method) => method.tid === deliveryMethod)?.price : 0;
+  const deliveryPrice = values[ORDER_FIELD_NAME.DELIVERY_PRICE];
 
   const discountPrice = price - (price / 100) * promoDiscount;
   const totalPrice = Number(discountPrice) + Number(deliveryPrice);
-
-  useEffect(() => {
-    setPurchaseTotalPrice(totalPrice);
-  }, [totalPrice]);
 
   return (
     <Container>

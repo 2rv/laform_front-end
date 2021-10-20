@@ -12,12 +12,14 @@ import {
 function getTotalPrice(
   optionPrice?: number,
   optionDiscount?: number,
-  productPrice?: number,
-  productDiscount?: number,
+  productPrice: number = 0,
+  productDiscount: number = 0,
+  count?: number,
+  length?: number,
 ): number {
-  const price = optionPrice || productPrice || 0;
-  const discount = optionDiscount || productDiscount || 0;
-  return price - price * (discount / 100);
+  const price = optionPrice || productPrice;
+  const discount = optionDiscount || productDiscount;
+  return (price - price * (discount / 100)) * (length || count || 1);
 }
 function isCountUtil(props: any): boolean {
   const { options = [], option, count = 0 } = props;
@@ -81,7 +83,6 @@ const masterItemConvert = (data: basketStateType): masterItemType => {
     totalPrice: Number(totalPrice.toFixed(2)),
     params: {
       program: 'Удаленная',
-      category: 'Поправить',
     },
   };
 };
@@ -93,13 +94,13 @@ const patternItemConvert = (data: basketStateType): patternItemType => {
     (i) => i.id === data.optionId,
   );
 
-  const totalPrice =
-    getTotalPrice(
-      option?.price,
-      option?.discount,
-      data.patternProduct.price,
-      data.patternProduct.discount,
-    ) * (data?.count || data?.length || 0);
+  const totalPrice = getTotalPrice(
+    option?.price,
+    option?.discount,
+    data.patternProduct.price,
+    data.patternProduct.discount,
+    data.count,
+  );
 
   return {
     id: data.patternProduct.id,
@@ -126,7 +127,6 @@ const patternItemConvert = (data: basketStateType): patternItemType => {
           ? 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC'
           : 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
       complexity: data.patternProduct.complexity,
-      category: data.patternProduct.categories[0]?.textRu,
     },
     isCount: data.isCount,
   };
@@ -136,13 +136,14 @@ const sewingItemConvert = (data: basketStateType): sewingItemType => {
   const optionId = data.sewingProduct.options.findIndex(
     (i) => i.id === data.optionId,
   );
-  const totalPrice =
-    getTotalPrice(
-      option?.price,
-      option?.discount,
-      data.sewingProduct.price,
-      data.sewingProduct.discount,
-    ) * (data?.count || data?.length || 0);
+  const totalPrice = getTotalPrice(
+    option?.price,
+    option?.discount,
+    data.sewingProduct.price,
+    data.sewingProduct.discount,
+    data?.count,
+    data?.length,
+  );
 
   return {
     id: data.sewingProduct.id,
@@ -162,7 +163,6 @@ const sewingItemConvert = (data: basketStateType): sewingItemType => {
     params: {
       size: option?.size,
       color: option?.colorEn || option?.colorRu,
-      category: data.sewingProduct.categories[0]?.textRu,
     },
     isCount: data.isCount,
     isLength: data.isLength,
@@ -215,7 +215,7 @@ export function convertAddToCart(product: any, data: any, index = 0) {
       indexId: product.id + index,
       patternProduct: product,
       optionId: data.optionId,
-      count: data.count || 0,
+      count: data.count,
       isCount: isCountUtil({
         options: product?.options,
         option: (product?.options || []).findIndex(
@@ -232,7 +232,7 @@ export function convertAddToCart(product: any, data: any, index = 0) {
       indexId: product.id + index,
       sewingProduct: product,
       optionId: data.optionId,
-      count: data.count || 0,
+      count: data.count,
       length: data.length,
       isCount: isCountUtil({
         options: product?.options,

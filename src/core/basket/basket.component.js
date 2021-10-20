@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { THEME_SIZE } from '../../lib/theme';
@@ -9,44 +8,8 @@ import { Table } from 'src/lib/common/block-table';
 
 export function BasketComponent(props) {
   const {
-    pageLoading,
-    IsEmpty,
+    isEmpty,
     isAuth,
-    //--------------
-    promocode,
-    discount,
-    price,
-    //--------------
-    userInfoErrorMessage,
-    userInfoError,
-    userInfoPending,
-    userInfoSuccess,
-    //--------------
-    orderErrorMessage,
-    orderError,
-    orderPending,
-    orderSuccess,
-    //--------------
-    promoCodeErrorMessage,
-    promoCodeError,
-    promoCodePending,
-    promoCodeSuccess,
-    //--------------
-    sendEmailCodePending,
-    sendEmailCodeSuccess,
-    //--------------
-    emailConfirmedState,
-    confirmEmailForOrderErrorMessage,
-    confirmEmailForOrderError,
-    confirmEmailForOrderPending,
-    confirmEmailForOrderSuccess,
-    //--------------
-    onSubmit,
-    initialValues,
-    validation,
-    diliveryOptions,
-    paymentMethodOptions,
-    setPurchaseTotalPrice,
     //--------------
     changeItem,
     deleteItem,
@@ -59,12 +22,12 @@ export function BasketComponent(props) {
     sewingProducts,
     masterProducts,
     patternProducts,
+    ...formProps
   } = props;
-
   return (
     <SectionLayout>
       <Title tid="BASKET.TITLE" />
-      {IsEmpty ? (
+      {isEmpty ? (
         <TextSecondary tid="BASKET.CART_IS_EMPTY" />
       ) : (
         <>
@@ -86,38 +49,7 @@ export function BasketComponent(props) {
             headers={headersMaster}
             items={masterProducts}
           />
-          <FormContainer
-            isAuth={isAuth}
-            promocode={promocode}
-            discount={discount}
-            price={price}
-            userInfoErrorMessage={userInfoErrorMessage}
-            userInfoError={userInfoError}
-            userInfoPending={userInfoPending}
-            userInfoSuccess={userInfoSuccess}
-            orderErrorMessage={orderErrorMessage}
-            orderError={orderError}
-            orderPending={orderPending}
-            orderSuccess={orderSuccess}
-            sendEmailCodePending={sendEmailCodePending}
-            sendEmailCodeSuccess={sendEmailCodeSuccess}
-            emailConfirmedState={emailConfirmedState}
-            confirmEmailForOrderErrorMessage={confirmEmailForOrderErrorMessage}
-            confirmEmailForOrderError={confirmEmailForOrderError}
-            confirmEmailForOrderPending={confirmEmailForOrderPending}
-            confirmEmailForOrderSuccess={confirmEmailForOrderSuccess}
-            diliveryOptions={diliveryOptions}
-            paymentMethodOptions={paymentMethodOptions}
-            setPurchaseTotalPrice={setPurchaseTotalPrice}
-            onSubmit={onSubmit}
-            checkPromoCode={checkPromoCode}
-            initialValues={initialValues}
-            validation={validation}
-            promoCodeErrorMessage={promoCodeErrorMessage}
-            promoCodeError={promoCodeError}
-            promoCodePending={promoCodePending}
-            promoCodeSuccess={promoCodeSuccess}
-          />
+          <FormContainer isAuth={isAuth} {...formProps} />
         </>
       )}
       {!isAuth && <SignComponent title="OTHER.GET_PURCHASES_HISTORY" />}

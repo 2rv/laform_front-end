@@ -8,11 +8,14 @@ import { ORDER_FIELD_NAME } from '../basket.type';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { useEffect } from 'react';
+import { CartAlert } from './cart.alert';
+import { CartActions } from './cart.actions';
 
 export function FormContainer(props) {
   const {
     //--------------
     isAuth,
+    emailConfirmed,
     promocode,
     discount,
     price,
@@ -25,32 +28,34 @@ export function FormContainer(props) {
     //--------------
     diliveryOptions,
     paymentMethodOptions,
-    setPurchaseTotalPrice,
-    checkPromoCode,
     //--------------
-    userInfoErrorMessage,
     userInfoError,
-    userInfoPending,
+    userInfoErrorMessage,
     userInfoSuccess,
+    userInfoPending,
     //--------------
-    orderErrorMessage,
     orderError,
-    orderPending,
+    orderErrorMessage,
     orderSuccess,
+    orderPending,
     //--------------
-    promoCodeErrorMessage,
     promoCodeError,
-    promoCodePending,
+    promoCodeErrorMessage,
     promoCodeSuccess,
+    promoCodePending,
+    handleConfirmPromoCode,
     //--------------
-    sendEmailCodePending,
+    handleSendEmailCode,
+    sendEmailCodeError,
+    sendEmailCodeErrorMessage,
     sendEmailCodeSuccess,
+    sendEmailCodePending,
     //--------------
-    emailConfirmedState,
-    confirmEmailForOrderErrorMessage,
-    confirmEmailForOrderError,
-    confirmEmailForOrderPending,
-    confirmEmailForOrderSuccess,
+    handleConfirmEmailCode,
+    confirmEmailCodeError,
+    confirmEmailCodeErrorMessage,
+    confirmEmailCodeSuccess,
+    confirmEmailCodePending,
   } = props;
   return (
     <Formik
@@ -60,7 +65,6 @@ export function FormContainer(props) {
       enableReinitialize={true}
     >
       {(formProps) => {
-        console.log(formProps.errors);
         useEffect(
           () => formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, promocode),
           [promocode],
@@ -72,79 +76,72 @@ export function FormContainer(props) {
         );
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PRICE, price);
+          const diliveryId = formProps.values[ORDER_FIELD_NAME.DELIVERY_METHOD];
+          const method = diliveryOptions.find((p) => p.id === diliveryId);
+          formProps.setFieldValue(
+            ORDER_FIELD_NAME.DELIVERY_PRICE,
+            method?.price || 0,
+          );
         }, [price, formProps.values]);
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, '');
           formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_DISCOUNT, 0);
         }, [promoCodeError]);
+
+        const isPending =
+          pageLoading ||
+          userInfoPending ||
+          orderPending ||
+          promoCodePending ||
+          sendEmailCodePending ||
+          confirmEmailCodePending;
         return (
           <form onSubmit={formProps.handleSubmit}>
             <SectionLayout>
               <TitlePrimary tid="BASKET.FORM.TITLE" />
               <FormComponent
+                isAuth={isAuth}
                 diliveryOptions={diliveryOptions}
                 paymentMethodOptions={paymentMethodOptions}
-                checkPromoCode={checkPromoCode}
+                handleConfirmPromoCode={handleConfirmPromoCode}
                 promoCodePending={promoCodePending}
-                sendEmailCodePending={sendEmailCodePending}
-                sendEmailCodeSuccess={sendEmailCodeSuccess}
-                emailConfirmedState={emailConfirmedState}
-                confirmEmailForOrderErrorMessage={
-                  confirmEmailForOrderErrorMessage
-                }
-                confirmEmailForOrderError={confirmEmailForOrderError}
-                confirmEmailForOrderPending={confirmEmailForOrderPending}
-                confirmEmailForOrderSuccess={confirmEmailForOrderSuccess}
-                isAuth={isAuth}
                 {...formProps}
               />
               <SectionLayout type="SMALL">
-                <CartPrice
-                  values={formProps.values}
-                  deliveryOptions={diliveryOptions}
-                  setPurchaseTotalPrice={setPurchaseTotalPrice}
+                <CartPrice values={formProps.values} />
+                <CartActions
+                  {...formProps}
+                  emailConfirmed={emailConfirmed}
+                  isPending={isPending}
+                  handleSendEmailCode={handleSendEmailCode}
+                  handleConfirmEmailCode={handleConfirmEmailCode}
+                  sendEmailCodePending={sendEmailCodePending}
+                  confirmEmailCodePending={confirmEmailCodePending}
                 />
-                <FieldLayout type="double" adaptive>
-                  {(isAuth || emailConfirmedState === true) && (
-                    <ButtonPrimary
-                      tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
-                      disabled={pageLoading || orderPending || promoCodePending}
-                      type="submit"
-                    />
-                  )}
-
-                  {promoCodeSuccess && (
-                    <SuccessAlert
-                      tid="BASKET.FORM.PROMO_CODE_SUCCESS"
-                      tvalue={{
-                        discount:
-                          formProps.values[ORDER_FIELD_NAME.PROMO_DISCOUNT],
-                      }}
-                    />
-                  )}
-                  {orderSuccess && (
-                    <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />
-                  )}
-
-                  {(orderError ||
-                    userInfoError ||
-                    promoCodeErrorMessage ||
-                    userInfoErrorMessage ||
-                    promoCodeError) && (
-                    <ErrorAlert
-                      tid={
-                        promoCodeErrorMessage ||
-                        promoCodeErrorMessage ||
-                        userInfoErrorMessage
-                      }
-                    />
-                  )}
-                </FieldLayout>
+                <CartAlert
+                  discount={formProps.values[ORDER_FIELD_NAME.PROMO_DISCOUNT]}
+                  diliveryMethodError={
+                    formProps.touched[ORDER_FIELD_NAME.DELIVERY_METHOD] &&
+                    formProps.errors[ORDER_FIELD_NAME.DELIVERY_METHOD]
+                  }
+                  userInfoError={userInfoError}
+                  userInfoErrorMessage={userInfoErrorMessage}
+                  userInfoSuccess={userInfoSuccess}
+                  orderError={orderError}
+                  orderErrorMessage={orderErrorMessage}
+                  orderSuccess={orderSuccess}
+                  promoCodeError={promoCodeError}
+                  promoCodeErrorMessage={promoCodeErrorMessage}
+                  promoCodeSuccess={promoCodeSuccess}
+                  sendEmailCodeError={sendEmailCodeError}
+                  sendEmailCodeErrorMessage={sendEmailCodeErrorMessage}
+                  sendEmailCodeSuccess={sendEmailCodeSuccess}
+                  confirmEmailCodeError={confirmEmailCodeError}
+                  confirmEmailCodeErrorMessage={confirmEmailCodeErrorMessage}
+                  confirmEmailCodeSuccess={confirmEmailCodeSuccess}
+                />
               </SectionLayout>
-              {(orderPending ||
-                pageLoading ||
-                promoCodePending ||
-                userInfoPending) && <LoaderPrimary />}
+              {isPending && <LoaderPrimary />}
             </SectionLayout>
           </form>
         );
