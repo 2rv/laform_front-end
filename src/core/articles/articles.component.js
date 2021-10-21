@@ -6,7 +6,7 @@ import { TextSecondary } from 'src/lib/element/text';
 import { CenteredSpinner } from 'src/lib/element/spinner';
 
 export function ArticlesComponent(props) {
-  const { listItems, filterOptions, handleFilter, onDelete, isAdmin } = props;
+  const { listItems, filterOptions, categories, handleFilter, onDelete, isAdmin } = props;
 
   return (
     <SectionLayout>
@@ -14,6 +14,7 @@ export function ArticlesComponent(props) {
       <SearchFilter
         findPlaceholderTid="ARTICLES.ARTICLES.FIELD.FIND_ARTICLES"
         filterOptions={filterOptions}
+        categories={categories}
         handleFilter={handleFilter}
       />
       <BasicCardList

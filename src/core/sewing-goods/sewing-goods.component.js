@@ -10,6 +10,7 @@ export function SewingGoodsComponent(props) {
     isAdmin,
     addToCart,
     filterOptions,
+    categories,
     handleFilter,
   } = props;
 
@@ -19,6 +20,7 @@ export function SewingGoodsComponent(props) {
       <SearchFilter
         findPlaceholderTid="SEWING_GOODS.FIELD.FIND_SEWING_GOODS"
         filterOptions={filterOptions}
+        categories={categories}
         handleFilter={handleFilter}
       />
       <BasicCardList

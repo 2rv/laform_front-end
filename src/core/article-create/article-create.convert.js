@@ -7,9 +7,9 @@ export function convertForUpload(imageUrls, formValues) {
     [ARTICLE_FIELD_NAME.IMAGE]: imageUrls,
     [ARTICLE_FIELD_NAME.CATEGORIES]: formValues[
       ARTICLE_FIELD_NAME.CATEGORIES
-    ].map((item) => {
-      id: item.basicId;
-    }),
+    ].map((item) => ({
+      id: item.basicId,
+    })),
     [ARTICLE_FIELD_NAME.RECOMMENDATIONS]: {
       recommendationProducts: formValues[ARTICLE_FIELD_NAME.RECOMMENDATIONS],
     },

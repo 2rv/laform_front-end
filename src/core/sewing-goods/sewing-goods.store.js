@@ -8,6 +8,7 @@ import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
 const initialState = {
   sewingGoodsState: initRequestState(),
+  categories: initRequestState(),
 };
 
 export function sewingGoodsStore(state = initialState, action) {
@@ -48,6 +49,27 @@ export function sewingGoodsStore(state = initialState, action) {
         ...state,
         sewingGoodsState: setRequestError(
           state.sewingGoodsState,
+          action.errorMessage,
+        ),
+      };
+    case SEWING_GOODS_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING:
+      return {
+        ...state,
+        categories: setRequestPending(state.categories),
+      };
+    case SEWING_GOODS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS:
+      return {
+        ...state,
+        categories: setRequestSuccess(
+          state.categories,
+          action.data,
+        ),
+      };
+    case SEWING_GOODS_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR:
+      return {
+        ...state,
+        categories: setRequestError(
+          state.categories,
           action.errorMessage,
         ),
       };

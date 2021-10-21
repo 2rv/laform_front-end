@@ -3,7 +3,7 @@ import { BasicCategoryType, CATEGORIES_ACTION_TYPE } from './categories.type';
 import { CATEGORIES_API } from './categories.constant';
 import { convertForCreate } from './categories.convert';
 
-export function uploadCategoriesAction(currentLang: 'ru' | 'en') {
+export function uploadCategoriesAction(currentLang: 'ru' | 'en', type: number) {
   return async (dispatch: Function) => {
     dispatch({
       type: CATEGORIES_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING,
@@ -12,7 +12,7 @@ export function uploadCategoriesAction(currentLang: 'ru' | 'en') {
       // @ts-ignore
       const response = await httpRequest({
         method: CATEGORIES_API.CATEGORIES_UPLOAD_DATA.TYPE,
-        url: CATEGORIES_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang),
+        url: CATEGORIES_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang, type),
       });
       dispatch({
         type: CATEGORIES_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
@@ -29,13 +29,13 @@ export function uploadCategoriesAction(currentLang: 'ru' | 'en') {
   };
 }
 
-export function createCategoryAction(value: string) {
+export function createCategoryAction(value: string, type: number) {
   return async (dispatch: Function) => {
     dispatch({
       type: CATEGORIES_ACTION_TYPE.CATEGORIES_CREATE_PENDING,
     });
     try {
-      const convertedData = convertForCreate(value);
+      const convertedData = convertForCreate(value, type);
       // @ts-ignore
       const response = await httpRequest({
         method: CATEGORIES_API.CATEGORIES_CREATE.TYPE,

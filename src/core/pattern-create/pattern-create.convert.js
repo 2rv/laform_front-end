@@ -9,9 +9,9 @@ export function convertForUpload(imageUrls, pdfFileUrls, formValues) {
 
     [CREATE_PATTERN_FIELD_NAME.CATEGORIES]: formValues[
       CREATE_PATTERN_FIELD_NAME.CATEGORIES
-    ].map((item) => {
-      id: item.basicId;
-    }),
+    ].map((item) => ({
+      id: item.basicId,
+    })),
     [CREATE_PATTERN_FIELD_NAME.DESCRIPTION]:
       formValues[CREATE_PATTERN_FIELD_NAME.DESCRIPTION],
     [CREATE_PATTERN_FIELD_NAME.IMAGES]: imageUrls,

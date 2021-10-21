@@ -64,3 +64,32 @@ export function sewingGoodsUpdateData(isAuth, query, id, body) {
     }
   };
 }
+
+export function fetchCategories(currentLang, type) {
+  return async (dispatch) => {
+    dispatch({
+      type: SEWING_GOODS_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING,
+    });
+    try {
+      const response = await httpRequest({
+        method: SEWING_GOODS_API.CATEGORIES_UPLOAD_DATA.TYPE,
+        url: SEWING_GOODS_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang, type),
+      });
+      const convertedCategories = response.data.map((category) => ({
+        id: category.id,
+        tid: category.categoryNameRu,
+      }));
+      dispatch({
+        type: SEWING_GOODS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
+        data: convertedCategories,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: SEWING_GOODS_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
