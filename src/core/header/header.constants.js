@@ -41,7 +41,7 @@ export const ADMIN_MENU_ITEMS = [
     tid: 'HEADER.ADMIN_MENU.MASTER_CLASS_ARTICLE_CREATING',
   },
   {
-    tid: 'Создать  выкройку',
+    tid: 'Создать выкройку',
     path: CREATE_PATTERN_ROUTE_PATH,
   },
   {

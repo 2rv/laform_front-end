@@ -18,7 +18,7 @@ import { performData } from './categories.convert';
 import { CategoriesContainerProps } from './categories.type';
 
 export function CategoriesContainer(props: CategoriesContainerProps) {
-  const { values } = props;
+  const { values, type } = props;
   const dispatch = useDispatch();
 
   const { uploadCategories, createCategory, deleteCategory, currentLang } =
@@ -30,11 +30,11 @@ export function CategoriesContainer(props: CategoriesContainerProps) {
     }));
 
   useEffect(() => {
-    dispatch(uploadCategoriesAction(currentLang));
+    dispatch(uploadCategoriesAction(currentLang, type));
   }, []);
 
   const handleCreateCategory = (value: string) => {
-    dispatch(createCategoryAction(value));
+    dispatch(createCategoryAction(value, type));
   };
   const handleDeleteCategory = (id: string) => {
     dispatch(deleteCategotyAction(id, getRequestData(uploadCategories, [])));

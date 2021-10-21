@@ -16,6 +16,7 @@ export function PatternsComponent(props) {
     setActiveTab,
     tabItems,
     filterOptions,
+    categories,
     handleFilter,
     isPending,
   } = props;
@@ -32,6 +33,7 @@ export function PatternsComponent(props) {
       <SearchFilter
         findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
         filterOptions={filterOptions}
+        categories={categories}
         handleFilter={handleFilter}
       />
       <BasicCardList

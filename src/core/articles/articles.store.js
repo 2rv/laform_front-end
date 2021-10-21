@@ -8,6 +8,7 @@ import { ARTICLES_ACTION_TYPE } from './articles.type';
 
 const initialState = {
   articlesState: initRequestState(),
+  categories: initRequestState(),
 };
 
 export function articlesStore(state = initialState, action) {
@@ -27,6 +28,27 @@ export function articlesStore(state = initialState, action) {
         ...state,
         articlesState: setRequestError(
           state.articlesState,
+          action.errorMessage,
+        ),
+      };
+    case ARTICLES_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING:
+      return {
+        ...state,
+        categories: setRequestPending(state.categories),
+      };
+    case ARTICLES_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS:
+      return {
+        ...state,
+        categories: setRequestSuccess(
+          state.categories,
+          action.data,
+        ),
+      };
+    case ARTICLES_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR:
+      return {
+        ...state,
+        categories: setRequestError(
+          state.categories,
           action.errorMessage,
         ),
       };

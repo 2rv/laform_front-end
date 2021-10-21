@@ -8,6 +8,7 @@ import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
 const initialState = {
   patternsState: initRequestState(),
+  categories: initRequestState(),
 };
 
 export function patternsStore(state = initialState, action) {
@@ -45,6 +46,27 @@ export function patternsStore(state = initialState, action) {
         ...state,
         patternsState: setRequestError(
           state.patternsState,
+          action.errorMessage,
+        ),
+      };
+    case PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING:
+      return {
+        ...state,
+        categories: setRequestPending(state.categories),
+      };
+    case PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS:
+      return {
+        ...state,
+        categories: setRequestSuccess(
+          state.categories,
+          action.data,
+        ),
+      };
+    case PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR:
+      return {
+        ...state,
+        categories: setRequestError(
+          state.categories,
           action.errorMessage,
         ),
       };

@@ -8,6 +8,9 @@ export function performData(rowData: BasicCategoryType[]): CategoryType[] {
   }));
 }
 
-export function convertForCreate(value: string) {
-  return { categoryNameRu: value };
+export function convertForCreate(value: string, type: number) {
+  return {
+    categoryNameRu: value,
+    type,
+  };
 }
