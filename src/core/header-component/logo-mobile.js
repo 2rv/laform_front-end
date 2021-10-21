@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ReactComponent as LogoIcon } from '../../asset/svg/logo-mobile.svg';
 
 export function LogoMobile() {
-  return <LogoImage src="/static/image/laforme-header-logo.png" />;
+  return <LogoImage src="/static/image/logo-header-mobile.png" />;
 }
 const LogoImage = styled.img`
   display: none;

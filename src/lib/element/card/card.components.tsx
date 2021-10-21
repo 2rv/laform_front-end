@@ -18,6 +18,7 @@ import { BASKET_ROUTE_PATH, BASKET_STORE_NAME } from 'src/core/basket';
 import { redirect } from 'src/main/navigation';
 import { useSelector } from 'react-redux';
 import { isRequestPending } from 'src/main/store/store.service';
+import { ReactComponent as GalochkaIcon } from '../../../asset/svg/galochka.svg';
 
 export function CartButton(props: CardActionProps) {
   const { id, type = false, onCart } = props;
@@ -166,12 +167,12 @@ const ComplexityCase = styled.div`
   display: flex;
   gap: ${spacing(2)};
 `;
-const ComplexityDot = styled.div<{ active: boolean }>`
-  width: 16px;
+const ComplexityDot = styled(GalochkaIcon)<{ active: boolean }>`
+  /* width: 16px;
   min-width: 16px;
   height: 16px;
-  border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  background-color: ${(p) =>
+  border-radius: ${THEME_SIZE.RADIUS.CIRCLE}; */
+  fill: ${(p) =>
     p.active ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;
 const ComplexityText = styled(TextSecondary)`
@@ -193,7 +194,7 @@ export function CardPrice(props: CardPriceProps) {
   const { price = 0, discount = 0 } = props;
   return (
     <div>
-      <TextSecondary tid="OTHER.CARD.PRODUCT_PRICE" />
+      {/* <TextSecondary tid="OTHER.CARD.PRODUCT_PRICE" /> */}
       &nbsp;
       {Boolean(discount) ? (
         <>
