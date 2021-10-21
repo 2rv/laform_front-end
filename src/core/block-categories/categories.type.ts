@@ -1,5 +1,6 @@
 export interface CategoriesContainerProps {
   values: any;
+  type: number;
 }
 
 export interface CategoriesComponentProps {

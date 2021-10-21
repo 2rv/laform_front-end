@@ -4,7 +4,7 @@ import { SearchFilterComponent } from './search-filter.component';
 import { SearchFilterContainerPropsType } from './search-filter.type';
 
 export function SearchFilter(props: SearchFilterContainerPropsType) {
-  const { findPlaceholderTid, filterOptions, handleFilter } = props;
+  const { findPlaceholderTid, filterOptions, categories = [], handleFilter } = props;
 
   const [values, setValues] = useState({});
 
@@ -15,9 +15,10 @@ export function SearchFilter(props: SearchFilterContainerPropsType) {
         const where = values[SEARCH_FILTER_FIELD_NAME.FIND];
         //@ts-ignore
         const filter = values[SEARCH_FILTER_FIELD_NAME.FILTER];
+        const category = values[SEARCH_FILTER_FIELD_NAME.CATEGORY];
         const sort = filterOptions[filter]?.sort;
         const by = filterOptions[filter]?.by;
-        handleFilter({ where, sort, by });
+        handleFilter({ where, sort, by, category });
       }
     }, 1000);
     return () => {
@@ -35,6 +36,7 @@ export function SearchFilter(props: SearchFilterContainerPropsType) {
     <SearchFilterComponent
       findPlaceholderTid={findPlaceholderTid}
       filterOptions={filterOptions}
+      categories={categories}
       values={values}
       handleChange={handleChange}
     />

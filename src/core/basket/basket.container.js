@@ -14,15 +14,18 @@ import { AUTH_STORE_NAME } from '../../lib/common/auth';
 import { reduceBascketState } from './basket.convert';
 import { ORDER_FIELD_NAME } from './basket.type';
 import { formValidation } from './basket.validation';
+import { convertForTable } from './basket.util';
 import {
+  getUserInfoAction,
+  getDeliveryInfoAction,
+  sendEmailCodeAction,
+  confirmEmailCodeAction,
+  confirmPromoCodeAction,
+  createOrderAction,
+  updateUserInfoAction,
   changeItemAction,
   deleteItemAction,
-  checkPromoCodeAction,
-  LoadUserInfoAction,
-  basketUploadData,
-  getDeliveryTypes,
 } from './basket.action';
-import { convertForTable } from './basket.util';
 
 export function BasketContainer() {
   const dispatch = useDispatch();
@@ -51,34 +54,36 @@ export function BasketContainer() {
     email: state[AUTH_STORE_NAME].user?.email,
   }));
 
-  const [purchaseTotalPrice, setPurchaseTotalPrice] = useState(0);
-  const isEmpty = bascketState ? bascketState.length === 0 : true;
-
   const userInfo = getRequestData(userInfoState, false);
-  const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
-  const emailConfirmedState = getRequestData(confirmEmailForOrderState, false)
+  const deliveryTypeOptions = getRequestData(deliveryTypes, []);
 
   useEffect(() => {
-    if (isAuth) {
-      dispatch(LoadUserInfoAction());
-    }
-
-    dispatch(getDeliveryTypes());
+    if (isAuth) dispatch(getUserInfoAction());
+    dispatch(getDeliveryInfoAction());
   }, []);
 
   const { masterProducts, patternProducts, sewingProducts, basketPrice } =
     convertForTable(bascketState);
+
   const changeItem = (values) => {
     dispatch(changeItemAction(values, bascketState));
   };
   const deleteItem = (indexId, id) => {
     dispatch(deleteItemAction(indexId, bascketState));
   };
-  const checkPromoCode = (promocode) => {
-    dispatch(checkPromoCodeAction(promocode));
+
+  const handleConfirmPromoCode = (promocode) => {
+    dispatch(confirmPromoCodeAction(promocode));
   };
+  const handleSendEmailCode = (value) => {
+    dispatch(sendEmailCodeAction(value));
+  };
+  const handleConfirmEmailCode = (value) => {
+    dispatch(confirmEmailCodeAction(value));
+  };
+
   const onSubmit = (values) => {
-    dispatch(basketUploadData(values, bascketState, isAuth, purchaseTotalPrice));
+    dispatch(createOrderAction(values, bascketState, isAuth));
   };
 
   const initialValues = () => {
@@ -87,15 +92,14 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.FULL_NAME]: userInfo[ORDER_FIELD_NAME.FULL_NAME] || '',
       [ORDER_FIELD_NAME.CITY]: userInfo[ORDER_FIELD_NAME.CITY] || '',
       [ORDER_FIELD_NAME.PHONE]: userInfo[ORDER_FIELD_NAME.PHONE] || '',
-      [ORDER_FIELD_NAME.PAYMENT_METHOD]:
-        userInfo[ORDER_FIELD_NAME.PAYMENT_METHOD] || 0,
-      [ORDER_FIELD_NAME.DELIVERY_METHOD]:
-        userInfo[ORDER_FIELD_NAME.DELIVERY_METHOD] || deliveryTypeOptions[0]?.tid,
+      [ORDER_FIELD_NAME.PAYMENT_METHOD]: 0,
+      [ORDER_FIELD_NAME.DELIVERY_METHOD]: '',
+      [ORDER_FIELD_NAME.DELIVERY_PRICE]: 0,
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
-      [ORDER_FIELD_NAME.DILIVERY_PRICE]: 0,
+      [ORDER_FIELD_NAME.DELIVERY_PRICE]: 0,
       [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
       [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: '',
     };
@@ -105,50 +109,53 @@ export function BasketContainer() {
     promocode: '',
     discount: 0,
   });
-
   return (
     <BasketComponent
-      pageLoading={pageLoading}
-      IsEmpty={isEmpty}
       isAuth={isAuth}
-      //-----------------
+      emailConfirmed={getRequestData(confirmEmailForOrderState, isAuth)}
       promocode={promocode}
       discount={discount}
       price={parseFloat(basketPrice.toFixed(2))}
-      //-----------------
-      checkPromoCode={checkPromoCode}
-      //-----------------
-      promoCodeErrorMessage={getRequestErrorMessage(promoCodeState)}
-      promoCodeError={isRequestError(promoCodeState)}
-      promoCodePending={isRequestPending(promoCodeState)}
-      promoCodeSuccess={isRequestSuccess(promoCodeState)}
-      //-----------------
-      userInfoErrorMessage={getRequestErrorMessage(userInfoState)}
-      userInfoError={isRequestError(userInfoState)}
-      userInfoPending={isRequestPending(userInfoState)}
-      userInfoSuccess={isRequestSuccess(userInfoState)}
-      //-----------------
-      orderErrorMessage={getRequestErrorMessage(orderState)}
-      orderError={isRequestError(orderState)}
-      orderPending={isRequestPending(orderState)}
-      orderSuccess={isRequestSuccess(orderState)}
-      //--------------
-      sendEmailCodePending={isRequestPending(sendEmailCodeState)}
-      sendEmailCodeSuccess={isRequestSuccess(sendEmailCodeState)}
-      //-----------------
-      emailConfirmedState={emailConfirmedState}
-      confirmEmailForOrderErrorMessage={getRequestErrorMessage(confirmEmailForOrderState)}
-      confirmEmailForOrderError={isRequestError(confirmEmailForOrderState)}
-      confirmEmailForOrderPending={isRequestPending(confirmEmailForOrderState)}
-      confirmEmailForOrderSuccess={isRequestSuccess(confirmEmailForOrderState)}
       //--------------
       onSubmit={onSubmit}
       initialValues={initialValues()}
       validation={formValidation}
+      //--------------
+      pageLoading={pageLoading}
+      //--------------
       diliveryOptions={deliveryTypeOptions}
       paymentMethodOptions={paymentMethodOptions}
-      setPurchaseTotalPrice={setPurchaseTotalPrice}
       //--------------
+      userInfoError={isRequestError(userInfoState)}
+      userInfoErrorMessage={getRequestErrorMessage(userInfoState)}
+      userInfoSuccess={isRequestSuccess(userInfoState)}
+      userInfoPending={isRequestPending(userInfoState)}
+      //--------------
+      orderError={isRequestError(orderState)}
+      orderErrorMessage={getRequestErrorMessage(orderState)}
+      orderSuccess={isRequestSuccess(orderState)}
+      orderPending={isRequestPending(orderState)}
+      //--------------
+      handleConfirmPromoCode={handleConfirmPromoCode}
+      promoCodeError={isRequestError(promoCodeState)}
+      promoCodeErrorMessage={getRequestErrorMessage(promoCodeState)}
+      promoCodeSuccess={isRequestSuccess(promoCodeState)}
+      promoCodePending={isRequestPending(promoCodeState)}
+      //--------------
+      handleSendEmailCode={handleSendEmailCode}
+      sendEmailCodeError={isRequestError(sendEmailCodeState)}
+      sendEmailCodeErrorMessage={getRequestErrorMessage(sendEmailCodeState)}
+      sendEmailCodeSuccess={isRequestSuccess(sendEmailCodeState)}
+      sendEmailCodePending={isRequestPending(sendEmailCodeState)}
+      //--------------
+      handleConfirmEmailCode={handleConfirmEmailCode}
+      confirmEmailCodeError={isRequestError(confirmEmailForOrderState)}
+      confirmEmailCodeErrorMessage={getRequestErrorMessage(
+        confirmEmailForOrderState,
+      )}
+      confirmEmailCodeSuccess={isRequestSuccess(confirmEmailForOrderState)}
+      confirmEmailCodePending={isRequestPending(confirmEmailForOrderState)}
+      isEmpty={!Boolean(bascketState.length)}
       changeItem={changeItem}
       deleteItem={deleteItem}
       //--------------
@@ -178,12 +185,6 @@ const headersPatterns = [
   'BASKET.HEADERS_PATTERNS.PARAMETERS',
   'BASKET.HEADERS_GOODS.QUANTITY',
   'BASKET.HEADERS_PATTERNS.TOTAL_PRICE',
-];
-const diliveryOptions = [
-  {
-    id: 1,
-    tid: 'BASKET.FORM.FIELDS.SELECT_OPTIONS.CONVENIET_DELIVERY_METHOD.MAIL',
-  },
 ];
 const paymentMethodOptions = [
   {

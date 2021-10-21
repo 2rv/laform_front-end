@@ -40,7 +40,7 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
         </FieldLayout>
-        <BlockCategories values={values} handleBlur={handleBlur} />
+        <BlockCategories values={values} handleBlur={handleBlur} type={4} />
         <SectionLayout type="SMALL">
           <Title tid="Статья" />
           <ReactEditor

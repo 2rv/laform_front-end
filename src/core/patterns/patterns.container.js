@@ -8,7 +8,7 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { patternsUploadData, patternsUpdateData } from './patterns.action';
+import { patternsUploadData, patternsUpdateData, fetchCategories } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
 import { PatternsComponent } from './patterns.component';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
@@ -19,9 +19,10 @@ import { PATTERNS_ROUTE_PATH } from '.';
 import { useRouter } from 'next/router';
 
 export function PatternsContainer() {
-  const { patternsState, pageLoading, currentLang, user, isAuth } = useSelector(
+  const { patternsState, categories, pageLoading, currentLang, user, isAuth } = useSelector(
     (state) => ({
       patternsState: state[PATTERNS_STORE_NAME].patternsState,
+      categories: state[PATTERNS_STORE_NAME].categories,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
@@ -37,15 +38,22 @@ export function PatternsContainer() {
     type: patternType,
   });
 
+  const productCategories = [
+    { id: -999, tid: 'Выберите категорию', hidden: true },
+    ...getRequestData(categories, []),
+  ];
+
   useEffect(() => {
     dispatch(patternsUploadData(isAuth, { currentLang, ...filter }));
+    dispatch(fetchCategories(currentLang, 2));
   }, []);
 
-  const handleFilter = ({ where, sort, by }) => {
+  const handleFilter = ({ where, sort, by, category }) => {
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
+    copy.category = category;
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
   };
@@ -70,6 +78,7 @@ export function PatternsContainer() {
       addToCart={addToCart}
       listItems={getRequestData(patternsState, [])}
       filterOptions={filterOptionss}
+      categories={productCategories}
       handleFilter={handleFilter}
       activeTab={patternType}
       setActiveTab={setActiveTab}

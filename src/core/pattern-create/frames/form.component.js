@@ -115,7 +115,7 @@ export function FormComponent(props) {
         />
       </FieldLayout>
 
-      <BlockCategories values={values} />
+      <BlockCategories values={values} type={2} />
 
       <TextareaField
         titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"

@@ -8,44 +8,22 @@ import {
 } from 'src/lib/element/field';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ORDER_FIELD_NAME } from '../basket.type';
-import { ButtonBasic, ButtonSecondary } from 'src/lib/element/button';
-import { useDispatch } from 'react-redux';
-import { sendEmailCode, confirmEmailForOrder } from '../basket.action';
-import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { ButtonSecondary } from 'src/lib/element/button';
 
 export function FormComponent(props) {
   const {
+    isAuth,
     errors,
     touched,
     values,
     handleChange,
     handleBlur,
     setFieldValue,
-    pageLoading,
-    isPending,
-    diliveryOptions = [],
-    paymentMethodOptions = [],
-    checkPromoCode,
+    diliveryOptions,
+    paymentMethodOptions,
+    handleConfirmPromoCode,
     promoCodePending,
-    sendEmailCodePending,
-    sendEmailCodeSuccess,
-    emailConfirmedState,
-    confirmEmailForOrderErrorMessage,
-    confirmEmailForOrderError,
-    confirmEmailForOrderPending,
-    confirmEmailForOrderSuccess,
-    isAuth,
   } = props;
-
-  const dispatch = useDispatch();
-
-  const sendEmailCodeHandler = () => {
-    dispatch(sendEmailCode({ email: values[ORDER_FIELD_NAME.EMAIL] }));
-  };
-
-  const confirmEmailForOrderHandler = () => {
-    dispatch(confirmEmailForOrder(values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]));
-  };
 
   const getFieldError = (name) => {
     return errors[name] && touched[name] && errors[name];
@@ -82,13 +60,13 @@ export function FormComponent(props) {
         />
         <FieldSelect
           titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_DELIVERY_METHOD"
+          defaultTid="Выберите метод доставки"
           options={diliveryOptions}
           name={ORDER_FIELD_NAME.DELIVERY_METHOD}
           value={values[ORDER_FIELD_NAME.DELIVERY_METHOD]}
           onChange={handleChange}
           onBlur={handleBlur}
           error={getFieldError(ORDER_FIELD_NAME.DELIVERY_METHOD)}
-          textValue
         />
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.CONTACT_PHONE_NUMBER"
@@ -121,23 +99,27 @@ export function FormComponent(props) {
           <Button
             tid="BASKET.FORM.ACTIVATE"
             disabled={promoCodePending}
-            onClick={() => checkPromoCode(values[ORDER_FIELD_NAME.PROMO_CODE])}
+            onClick={() =>
+              handleConfirmPromoCode(values[ORDER_FIELD_NAME.PROMO_CODE])
+            }
           />
         </FieldLayout>
-        <FieldCheckbox
-          titleTid="Сохранение данных"
-          labelTid="Cохранить данные"
-          name={ORDER_FIELD_NAME.SAVE_USER_INFO}
-          value={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
-          onBlur={handleBlur}
-          checked={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
-          onClick={(e) =>
-            setFieldValue(
-              ORDER_FIELD_NAME.SAVE_USER_INFO,
-              !values[ORDER_FIELD_NAME.SAVE_USER_INFO],
-            )
-          }
-        />
+        {isAuth && (
+          <FieldCheckbox
+            titleTid="Сохранение данных"
+            labelTid="Cохранить данные"
+            name={ORDER_FIELD_NAME.SAVE_USER_INFO}
+            value={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
+            onBlur={handleBlur}
+            checked={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
+            onClick={(e) =>
+              setFieldValue(
+                ORDER_FIELD_NAME.SAVE_USER_INFO,
+                !values[ORDER_FIELD_NAME.SAVE_USER_INFO],
+              )
+            }
+          />
+        )}
       </FieldLayout>
       <TextareaField
         titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"
@@ -148,41 +130,6 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         error={getFieldError(ORDER_FIELD_NAME.DESCRIPTION)}
       />
-      {(!isAuth && emailConfirmedState !== true) && (
-        <>
-          <FieldLayout type="double" adaptive>
-            <ButtonSecondary
-              tid="BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL"
-              onClick={sendEmailCodeHandler}
-              disabled={sendEmailCodePending || errors[ORDER_FIELD_NAME.EMAIL]}
-            />
-            {sendEmailCodeSuccess && (
-              <SuccessAlert tid="BASKET.FORM.EMAIL_CODE_SENT_SUCCESS" />
-            )}
-          </FieldLayout>
-          <FieldLayout type="double" adaptive>
-            <BasicField
-              placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.WRITE_CODE"
-              name={ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE}
-              value={values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE)}
-            />
-            <ButtonSecondary
-              tid="BASKET.FORM.BUTTON.VERIFICATION_EMAIL"
-              onClick={confirmEmailForOrderHandler}
-              disabled={confirmEmailForOrderPending || errors[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
-            />
-          </FieldLayout>
-          {confirmEmailForOrderSuccess && (
-            <SuccessAlert tid="BASKET.FORM.EMAIL_VERIFICATED_SUCCESS" />
-          )}
-          {confirmEmailForOrderError && (
-            <ErrorAlert tid={confirmEmailForOrderErrorMessage} />
-          )}
-        </>
-      )}
     </SectionLayout>
   );
 }

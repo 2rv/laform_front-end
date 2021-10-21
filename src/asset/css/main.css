@@ -551,3 +551,11 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: inherit;
 }
+
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+  -webkit-tap-highlight-color: transparent;
+}

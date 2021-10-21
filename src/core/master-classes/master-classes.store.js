@@ -8,6 +8,7 @@ import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 
 const initialState = {
   masterClassState: initRequestState(),
+  categories: initRequestState(),
 };
 
 export function masterClassesStore(state = initialState, action) {
@@ -49,6 +50,28 @@ export function masterClassesStore(state = initialState, action) {
         ...state,
         masterClassState: setRequestError(
           state.masterClassState,
+          action.errorMessage,
+        ),
+      };
+
+    case MASTER_CLASSES_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING:
+      return {
+        ...state,
+        categories: setRequestPending(state.categories),
+      };
+    case MASTER_CLASSES_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS:
+      return {
+        ...state,
+        categories: setRequestSuccess(
+          state.categories,
+          action.data,
+        ),
+      };
+    case MASTER_CLASSES_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR:
+      return {
+        ...state,
+        categories: setRequestError(
+          state.categories,
           action.errorMessage,
         ),
       };

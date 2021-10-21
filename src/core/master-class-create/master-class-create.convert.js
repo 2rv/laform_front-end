@@ -9,9 +9,9 @@ export function convertForUpload(imageUrls, formValues) {
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER],
     [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: formValues[
       CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES
-    ].map((item) => {
-      id: item.basicId;
-    }),
+    ].map((item) => ({
+      id: item.basicId,
+    })),
     [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]:
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION],
     [CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]:
