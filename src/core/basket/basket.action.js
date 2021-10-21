@@ -177,7 +177,7 @@ export function createOrderAction(
       });
       //   dispatch(clearBasketAction());
       if (isAuth) {
-        redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+        // redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
       } else {
         alert('Для просмотра списка покупок необходима авторизация');
       }
