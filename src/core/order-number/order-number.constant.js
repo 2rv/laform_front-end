@@ -7,4 +7,8 @@ export const ORDER_NUMBER_API = {
     ENDPOINT: (id) => `purchase/get/${id}`,
     TYPE: 'GET',
   },
+  UPDATE_PURCHASE: {
+    ENDPOINT: (id) => `purchase/update/${id}`,
+    TYPE: 'PUT',
+  },
 };
