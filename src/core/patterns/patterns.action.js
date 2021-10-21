@@ -9,7 +9,6 @@ export function patternsUploadData(isAuth, query) {
     dispatch({
       type: PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_PENDING,
     });
-
     try {
       const response = isAuth
         ? await httpRequest({

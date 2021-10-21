@@ -6,7 +6,7 @@ import { setLinkRedirect } from 'src/main/navigation';
 export function BrandLogo() {
   return (
     <Container onClick={setLinkRedirect('/')}>
-      <img src={'/static/image/laforme-header-logo.png'} alt="Logo" />
+      <LogoType src={'/static/image/laforme-header-logo.png'} alt="Logo" />
       <div>
         <Text tid="HEADER_LOGO.HEADING_TEXT" />
         &nbsp;
@@ -15,6 +15,12 @@ export function BrandLogo() {
     </Container>
   );
 }
+const LogoType = styled.img`
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  user-select: none;
+`;
 
 const Container = styled.div`
   display: flex;

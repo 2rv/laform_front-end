@@ -15,7 +15,7 @@ import { ConvertTime } from 'src/lib/common/time-convert';
 import { USER_ROLE } from 'src/lib/common/auth';
 
 export function SubComment(props) {
-  const [view, setView] = useState(false);
+  const [view, setView] = useState(true);
   const {
     subComment,
     createSubComment,
@@ -34,9 +34,9 @@ export function SubComment(props) {
   if (subComment.length === 0) return null;
   return (
     <List>
-      <ButtonText onClick={() => setView(!view)}>
+      {/* <ButtonText onClick={() => setView(!view)}>
         {view ? <ArrowDownOutlined /> : <ArrowUpOutlined />}
-      </ButtonText>
+      </ButtonText> */}
       {view &&
         subComment.map((data, index) => {
           const { id, text, createDate, userId } = data;
@@ -58,7 +58,8 @@ export function SubComment(props) {
                 </Content>
               </Container>
               <ActionsCase>
-                {(userId?.id === user?.id || user?.role === USER_ROLE.ADMIN) && (
+                {(userId?.id === user?.id ||
+                  user?.role === USER_ROLE.ADMIN) && (
                   <Button onClick={() => handleDeleteSubComment(id)}>
                     <DeleteIcon />
                   </Button>

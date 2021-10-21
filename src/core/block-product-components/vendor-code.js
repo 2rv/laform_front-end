@@ -8,6 +8,7 @@ export const ProductVendorCode = (props) => {
   return (
     <Container>
       <TextSecondary tid="OTHER.VENDOR_CODE" />
+      &nbsp;
       <Text>{vendorCode}</Text>
     </Container>
   );

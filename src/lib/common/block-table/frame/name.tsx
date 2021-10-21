@@ -41,6 +41,7 @@ export function TableName(props: props) {
           {name && (
             <LinkSecondary tid={name} pathConfig={pathConfig} path={path} />
           )}
+          &nbsp;
           {vendorCode && (
             <LinkSecondary
               tid={vendorCode}
