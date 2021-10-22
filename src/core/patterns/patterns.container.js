@@ -18,6 +18,8 @@ import { redirect } from 'src/main/navigation';
 import { PATTERNS_ROUTE_PATH } from '.';
 import { useRouter } from 'next/router';
 
+const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+
 export function PatternsContainer() {
   const { patternsState, categories, pageLoading, currentLang, user, isAuth } = useSelector(
     (state) => ({
@@ -39,7 +41,7 @@ export function PatternsContainer() {
   });
 
   const productCategories = [
-    { id: -999, tid: 'Выберите категорию', hidden: true },
+    { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
     ...getRequestData(categories, []),
   ];
 
@@ -53,7 +55,7 @@ export function PatternsContainer() {
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
-    copy.category = category;
+    copy.category = category === PRODUCT_CATEGORY_FIRST_OPTION ? '' : category;
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
   };
