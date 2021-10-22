@@ -71,6 +71,7 @@ const Container = styled.div`
   position: relative;
   height: 100%;
   min-width: 100%;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Content = styled.div`
   position: absolute;
