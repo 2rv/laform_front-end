@@ -22,8 +22,9 @@ import { BASKET_STORE_NAME } from '../basket';
 export function OrderNumberContainer() {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const { orderState, deliveryTypes, pageLoading } = useSelector((state) => ({
+  const { orderState, orderNumberState, deliveryTypes, pageLoading } = useSelector((state) => ({
     orderState: state[ORDER_NUMBER_STORE_NAME].order,
+    orderNumberState: state[ORDER_NUMBER_STORE_NAME].orderUpdate,
     deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
@@ -94,6 +95,8 @@ export function OrderNumberContainer() {
       isError={isRequestError(orderState)}
       isSuccess={isRequestSuccess(orderState)}
       errorMessage={getRequestErrorMessage(orderState)}
+      isOrderNumberChangePending={isRequestPending(orderNumberState)}
+      isOrderNumberChangeSuccess={isRequestSuccess(orderNumberState)}
       pageLoading={pageLoading}
       headersTable={headersTable}
       onSubmit={onSubmit}

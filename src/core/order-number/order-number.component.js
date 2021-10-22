@@ -18,6 +18,8 @@ export function OrderNumberComponent(props) {
     purchaseProducts,
     statusOrderSelect,
     deliveryTypeOptions,
+    isOrderNumberChangePending,
+    isOrderNumberChangeSuccess,
   } = props;
 
   return isPending ? (
@@ -36,6 +38,8 @@ export function OrderNumberComponent(props) {
         validate={validate}
         statusOrderSelect={statusOrderSelect}
         deliveryTypeOptions={deliveryTypeOptions}
+        isOrderNumberChangePending={isOrderNumberChangePending}
+        isOrderNumberChangeSuccess={isOrderNumberChangeSuccess}
       />
     </SectionLayout>
   );

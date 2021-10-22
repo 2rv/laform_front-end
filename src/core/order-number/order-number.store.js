@@ -9,6 +9,7 @@ import { ORDER_NUMBER_ACTION_TYPE } from './order-number.type';
 
 const initialState = {
   order: initRequestState(),
+  orderUpdate: initRequestState(),
 };
 
 export function orderNumberStore(state = initialState, action) {
@@ -27,6 +28,21 @@ export function orderNumberStore(state = initialState, action) {
       return {
         ...state,
         order: setRequestError(state.order, action.errorMessage),
+      };
+    case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_PENDING:
+      return {
+        ...state,
+        orderUpdate: setRequestPending(state.orderUpdate),
+      };
+    case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_SUCCESS:
+      return {
+        ...state,
+        orderUpdate: setRequestSuccess(state.orderUpdate),
+      };
+    case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_ERROR:
+      return {
+        ...state,
+        orderUpdate: setRequestError(state.orderUpdate, action.errorMessage),
       };
     default:
       return state;
