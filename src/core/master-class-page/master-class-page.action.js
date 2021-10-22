@@ -14,7 +14,6 @@ export function purchasedMasterClassUploadData(id) {
         method: MASTER_CLASS_PAGE_API.MASTER_CLASS_DATA_UPLOAD.TYPE,
         url: MASTER_CLASS_PAGE_API.MASTER_CLASS_DATA_UPLOAD.ENDPOINT(id),
       });
-
       dispatch({
         type: MASTER_CLASS_PAGE_ACTION_TYPE.MASTER_CLASS_DATA_UPLOAD_SUCCESS,
         data: convertPurchasedMasterClassData(response.data),
