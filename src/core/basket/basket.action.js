@@ -175,14 +175,13 @@ export function createOrderAction(
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
-      //   dispatch(clearBasketAction());
+      dispatch(clearBasketAction());
       if (isAuth) {
-        // redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+        redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
       } else {
         alert('Для просмотра списка покупок необходима авторизация');
       }
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,

@@ -47,8 +47,6 @@ export function createCategoryAction(value: string, type: number) {
         data: response.data,
       });
     } catch (err: any) {
-      console.log(err);
-
       if (err.response) {
         dispatch({
           type: CATEGORIES_ACTION_TYPE.CATEGORIES_CREATE_ERROR,

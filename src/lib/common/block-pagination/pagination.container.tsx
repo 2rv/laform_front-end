@@ -31,7 +31,6 @@ export function PaginationContainer(props: PaginationContainerProps) {
     document.addEventListener('scroll', togglePagination);
     return () => document.removeEventListener('scroll', togglePagination);
   }, []);
-  console.log(pending);
 
   return (
     <div ref={containerRef}>

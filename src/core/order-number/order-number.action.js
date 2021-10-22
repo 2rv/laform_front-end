@@ -20,7 +20,6 @@ export function orderNumberUploadData(orderId) {
         data: convertPurchaseData(response.data),
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_ERROR,

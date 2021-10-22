@@ -9,7 +9,10 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { orderNumberUploadData, updatePurchaseOrderStatus } from './order-number.action';
+import {
+  orderNumberUploadData,
+  updatePurchaseOrderStatus,
+} from './order-number.action';
 import { ORDER_NUMBER_STORE_NAME } from './order-number.constant';
 import { OrderNumberComponent } from './order-number.component';
 import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
@@ -46,12 +49,13 @@ export function OrderNumberContainer() {
   }, []);
 
   const onSubmit = (values) => {
-    console.log('Values: ', values);
-    dispatch(updatePurchaseOrderStatus(
-      query.id,
-      values,
-      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER],
-    ));
+    dispatch(
+      updatePurchaseOrderStatus(
+        query.id,
+        values,
+        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER],
+      ),
+    );
   };
 
   const initialValue = () => ({
@@ -68,7 +72,8 @@ export function OrderNumberContainer() {
     [ABOUT_ORDER_FIELD_NAME.COMMENT]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.COMMENT] ?? '',
     [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]:
-      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS] ?? statusOrderSelect[0].tid,
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS] ??
+      statusOrderSelect[0].tid,
     [ABOUT_ORDER_FIELD_NAME.PRICE]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PRICE] ?? 0,
     [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]:
