@@ -20,6 +20,7 @@ export function patternsPageUploadData(id) {
         payload: convertPatternData(response.data),
       });
     } catch (err) {
+      console.log(err);
       if (err.response) {
         dispatch({
           type: PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PAGE_UPLOAD_ERROR,
