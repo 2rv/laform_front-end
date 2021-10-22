@@ -10,8 +10,8 @@ export const ABOUT_ORDER_FIELD_NAME = {
   PROMO_CODE: 'promoCode',
   COMMENT: 'comment',
   PROMO_CODE_DISCOUNT: 'promoCodeDiscount',
-  DELIVERY_METHOD: 'convenientDeliveryMethod',
-  PAYMENT_METHOD: 'convenientPaymentMethod',
+  DELIVERY_METHOD: 'typeOfDelivery',
+  // PAYMENT_METHOD: 'paymentMethod',
 };
 
 export const ORDER_NUMBER_ACTION_TYPE = {

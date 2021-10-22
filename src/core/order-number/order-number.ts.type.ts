@@ -4,6 +4,7 @@ import { BasicOptionType } from 'src/lib/common/product-converters/convert.type'
 export interface baseOrderDataType {
   id: string;
   orderNumber: string;
+  orderStatus: string;
   email: string;
   fullName: string;
   city: string;
