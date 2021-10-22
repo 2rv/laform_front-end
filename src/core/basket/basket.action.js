@@ -162,13 +162,13 @@ export function createOrderAction(
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
         data: data,
       });
-      if (isAuth) {
-        await httpRequest({
-          method: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.TYPE,
-          url: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.ENDPOINT,
-          data,
-        });
-      }
+      //   if (isAuth) {
+      //     await httpRequest({
+      //       method: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.TYPE,
+      //       url: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.ENDPOINT,
+      //       data,
+      //     });
+      //   }
       if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
         await updateUserInfoAction(values);
       }
@@ -182,7 +182,6 @@ export function createOrderAction(
         alert('Для просмотра списка покупок необходима авторизация');
       }
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,

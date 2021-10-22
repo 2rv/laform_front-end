@@ -20,7 +20,25 @@ export function orderNumberUploadData(orderId) {
         data: convertPurchaseData(response.data),
       });
     } catch (err) {
-      console.log(err);
+      if (err.response) {
+        dispatch({
+          type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function updatePurchaseOrderStatus(orderId, data, orderNumber) {
+  return async (dispatch) => {
+    try {
+      await httpRequest({
+        method: ORDER_NUMBER_API.UPDATE_PURCHASE.TYPE,
+        url: ORDER_NUMBER_API.UPDATE_PURCHASE.ENDPOINT(orderId),
+        data: { ...data, orderNumber },
+      });
+    } catch (err) {
       if (err.response) {
         dispatch({
           type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_ERROR,

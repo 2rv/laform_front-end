@@ -31,7 +31,6 @@ export function CreateMasterClassComponent(props) {
           enableReinitialize={true}
         >
           {(formProps) => {
-            console.log(formProps.values);
             return (
               <form onSubmit={formProps.handleSubmit}>
                 <SectionLayout>

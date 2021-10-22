@@ -19,7 +19,7 @@ export const convertPatternData = (data) => {
       data.patternProductId?.filePdf?.fileUrl,
     vendorCode: data.optionId?.vendorCode || data.patternProductId?.vendorCode,
     params: {
-      size: data.optionId.size,
+      size: data.optionId?.size,
       count: data.totalCount,
     },
     otherParams: {

@@ -82,7 +82,6 @@ export function FormContainer(props) {
             ORDER_FIELD_NAME.DELIVERY_PRICE,
             method?.price || 0,
           );
-          console.log(method);
         }, [price, formProps.values]);
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, '');

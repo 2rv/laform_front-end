@@ -42,8 +42,6 @@ export function CategoriesModal(props: CategoriesModalProps) {
   };
 
   const handleDelete = (item: CategoryType) => {
-    console.log(item);
-
     deleteCategory(item.basicId);
   };
 
