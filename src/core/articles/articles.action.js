@@ -62,3 +62,30 @@ export function fetchCategories(currentLang, type) {
     }
   };
 }
+
+export function fetchPostRemove(isAuth, query, id, body) {
+  return async (dispatch) => {
+    dispatch({
+      type: ARTICLES_ACTION_TYPE.REMOVE_ARTICLE_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: ARTICLES_API.ARTICLE_DELETE.TYPE,
+        url: ARTICLES_API.ARTICLE_DELETE.ENDPOINT(id),
+      });
+
+      dispatch({
+        type: ARTICLES_ACTION_TYPE.REMOVE_ARTICLE_SUCCESS,
+      });
+      dispatch(articlesUploadData(isAuth, query));
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: ARTICLES_ACTION_TYPE.REMOVE_ARTICLE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
