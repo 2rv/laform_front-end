@@ -208,7 +208,7 @@ export function FormComponent(props) {
           type="submit"
           tid="PATTERNS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
         />
-        <ButtonSecondary onClick={handleReset} tid="Сбросить" />
+        <ButtonSecondary onClick={handleReset} tid="PATTERNS.CREATE.FORM.BUTTON.RESET" />
       </FieldLayout>
     </SectionLayout>
   );

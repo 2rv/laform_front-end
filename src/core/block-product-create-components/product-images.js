@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FieldArray } from 'formik';
 import { ReactComponent as ImageIcon } from '../../asset/svg/image.svg';
 import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
@@ -14,6 +14,7 @@ export function ProductImages(props) {
   const {
     errors,
     setFieldValue,
+    images,
     imagesArrayName,
     imageFieldName,
     maxImages = 6,
@@ -21,6 +22,12 @@ export function ProductImages(props) {
   } = props;
 
   const [priviewImages, setPreviewImage] = useState([]);
+
+  useEffect(() => {
+    if (images && images.length === 0) {
+      setPreviewImage([]);
+    }
+  }, [images]);
 
   const setPreview = (push) => (event) => {
     const file = event.currentTarget?.files?.[0];
