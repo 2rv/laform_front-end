@@ -1,6 +1,6 @@
 import { httpRequest } from '../../main/http';
 import { CREATE_SEWING_GOODS_API } from './sewing-goods-create.constant';
-import { convertForUpload } from './sewing-goods-create.convert';
+import { convertForUpload } from './sewing-goods-create.ts.convert';
 import {
   CREATE_SEWING_GOODS__ACTION_TYPE,
   SEWING_GOODS_FIELD_NAME,
@@ -15,7 +15,6 @@ export function createSewingGoodsUploadData(imagesUrls, formValues) {
         url: CREATE_SEWING_GOODS_API.SEWING_GOODS_UPLOAD.ENDPOINT,
         data: data,
       });
-
       dispatch({
         type: CREATE_SEWING_GOODS__ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_SUCCESS,
       });

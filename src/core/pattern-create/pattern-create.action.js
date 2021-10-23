@@ -3,7 +3,7 @@ import { CREATE_PATTERN_API } from './pattern-create.constant';
 import {
   convertForUpload,
   convertForPreUploadPDFFiles,
-} from './pattern-create.convert';
+} from './pattern-create.ts.convert';
 import {
   CREATE_PATTERN_ACTION_TYPE,
   CREATE_PATTERN_FIELD_NAME,
@@ -13,7 +13,6 @@ export function createPatternUploadData(imagesUrls, pdfFileUrls, formValues) {
   return async (dispatch) => {
     try {
       const data = convertForUpload(imagesUrls, pdfFileUrls, formValues);
-
       const response = await httpRequest({
         method: CREATE_PATTERN_API.PATTERN_UPLOAD.TYPE,
         url: CREATE_PATTERN_API.PATTERN_UPLOAD.ENDPOINT,

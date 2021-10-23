@@ -17,14 +17,6 @@ import { ProductPrice } from '../../block-product-create-components';
 import { ProductOptions } from '../../block-product-options';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 
-{
-  /* <RecomendationBlock
-			onSetRecomendation={(data) =>
-			  setFieldValue(SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS, data)
-			}
-		  /> */
-}
-
 export function FormComponent(props) {
   const {
     values,
@@ -146,8 +138,13 @@ export function FormComponent(props) {
         optionCountName={SEWING_GOODS_FIELD_NAME.OPTION_COUNT}
         optionLengthName={SEWING_GOODS_FIELD_NAME.OPTION_LENGTH}
       />
-
       <Divider />
+
+      <RecomendationBlock
+        onSetRecomendation={(data) =>
+          setFieldValue(SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS, data)
+        }
+      />
 
       <ProductPrice
         priceAndDiscount={checkMinPriceAndDiscount(
