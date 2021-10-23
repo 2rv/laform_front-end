@@ -42,7 +42,7 @@ export function AuthVerificateEmailComponent(props) {
             <LightText tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
             &nbsp;
             <LinkPrimary
-              path={FAQ_ROUTE}
+              path={FAQ_ROUTE_PATH}
               tid="AUTH.VERIFICATE_EMAIL.HELP"
             />
           </div>
