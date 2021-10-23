@@ -161,7 +161,7 @@ export function FormComponent(props) {
           type="submit"
           tid="SEWING_GOODS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
         />
-        <ButtonSecondary onClick={handleReset} tid="Сбросить" />
+        <ButtonSecondary onClick={handleReset} tid="SEWING_GOODS.CREATE.FORM.BUTTON.RESET" />
       </FieldLayout>
     </SectionLayout>
   );
