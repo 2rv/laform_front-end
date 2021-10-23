@@ -34,7 +34,8 @@
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Create product",
-				"CANCEL": "Cancel"
+				"CANCEL": "Cancel",
+				"RESET": "Reset"
 			}
 		}
 	}

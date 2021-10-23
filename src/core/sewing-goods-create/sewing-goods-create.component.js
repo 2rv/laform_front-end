@@ -37,6 +37,7 @@ export function CreateSewingGoodsComponent(props) {
                 <SectionLayout>
                   <ProductImages
                     {...formProps}
+                    images={formProps.values[SEWING_GOODS_FIELD_NAME.IMAGES]}
                     imagesArrayName={SEWING_GOODS_FIELD_NAME.IMAGES}
                     imageFieldName={SEWING_GOODS_FIELD_NAME.IMAGE}
                     title="PRODUCT_IMAGES.TITLE"

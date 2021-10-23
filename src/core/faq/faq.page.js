@@ -1,11 +1,10 @@
 import { PageWrapper } from '../../lib/common/page-wrapper';
-
-import { FaqPageContainer } from './faq-page.container';
+import { FaqContainer } from './faq.container';
 
 export function FaqPage() {
   return (
     <PageWrapper>
-      <FaqPageContainer />
+      <FaqContainer />
     </PageWrapper>
   );
 }

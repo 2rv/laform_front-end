@@ -36,6 +36,7 @@ export function CreatePatternComponent(props) {
                 <SectionLayout>
                   <ProductImages
                     {...formProps}
+                    images={formProps.values[CREATE_PATTERN_FIELD_NAME.IMAGES]}
                     imagesArrayName={CREATE_PATTERN_FIELD_NAME.IMAGES}
                     imageFieldName={CREATE_PATTERN_FIELD_NAME.IMAGE}
                     title="PRODUCT_IMAGES.TITLE"
