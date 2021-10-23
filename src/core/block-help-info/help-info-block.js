@@ -8,7 +8,7 @@ import { ReactComponent as SizeIcon } from '../../asset/svg/size.svg';
 import { ReactComponent as DownloadIcon } from '../../asset/svg/arrow-down-download.svg';
 import { ReactComponent as PaperIcon } from '../../asset/svg/paper.svg';
 import { LinkSecondary } from 'src/lib/element/link';
-import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
+import { FAQ_ROUTE_PATH } from '../faq';
 
 export function HelpInfoBlock(props) {
   const { viewAll } = props;
@@ -17,7 +17,7 @@ export function HelpInfoBlock(props) {
       <Case>
         <TitlePrimary tid="INFORMATION_DIRECTORY_LIST.TITLE" />
         {viewAll && (
-          <LinkSecondary tid="HOME.VIEW_ALL" path={FAQ_PAGE_ROUTE_PATH} />
+          <LinkSecondary tid="HOME.VIEW_ALL" path={FAQ_ROUTE_PATH} />
         )}
       </Case>
       <List>

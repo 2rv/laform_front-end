@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { SIGNUP_ROUTE_PATH } from 'src/lib/common/signup/signup.constant';
 import { ABOUT_ROUTE_PATH } from '../about';
-import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
+import { FAQ_ROUTE_PATH } from '../faq';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
@@ -45,7 +45,7 @@ export function FooterContainer() {
     items: [
       {
         tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE',
-        path: FAQ_PAGE_ROUTE_PATH,
+        path: FAQ_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
@@ -53,7 +53,7 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION2.QNA',
-        path: FAQ_PAGE_ROUTE_PATH,
+        path: FAQ_ROUTE_PATH,
       },
     ],
   };
