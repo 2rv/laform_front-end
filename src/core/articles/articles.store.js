@@ -52,6 +52,24 @@ export function articlesStore(state = initialState, action) {
           action.errorMessage,
         ),
       };
+    case ARTICLES_ACTION_TYPE.REMOVE_ARTICLE_PENDING:
+      return {
+        ...state,
+        articlesState: setRequestPending(state.articlesState),
+      };
+    case ARTICLES_ACTION_TYPE.REMOVE_ARTICLE_SUCCESS:
+      return {
+        ...state,
+        articlesState: setRequestSuccess(state.articlesState),
+      };
+    case ARTICLES_ACTION_TYPE.REMOVE_ARTICLE_ERROR:
+      return {
+        ...state,
+        articlesState: setRequestError(
+          state.articlesState,
+          action.errorMessage,
+        ),
+      };
     default:
       return state;
   }
