@@ -122,14 +122,6 @@ import {
   RECOMENDATION_STORE_NAME,
 } from '../../core/block-recomendation';
 import {
-  createElectronicPatternStore,
-  ELECTRONIC_PATTERN_STORE_NAME,
-} from '../../core/patterns-create-electronic';
-import {
-  createPrintPatternStore,
-  CREATE_PRINT_PATTERN_STORE_NAME,
-} from '../../core/patterns-create-print';
-import {
   createSewingGoodsStore,
   CREATE_SEWING_GOODS_STORE_NAME,
 } from '../../core/sewing-goods-create';
@@ -185,8 +177,6 @@ export const reducers = combineReducers({
   [COMMENT_STORE_NAME]: commentStore,
   [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
   [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
-  [CREATE_PRINT_PATTERN_STORE_NAME]: createPrintPatternStore,
-  [ELECTRONIC_PATTERN_STORE_NAME]: createElectronicPatternStore,
   [RECOMENDATION_STORE_NAME]: recomendationStore,
   [CREATE_MASTER_CLASS_STORE_NAME]: createMasterClassStore,
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME]:

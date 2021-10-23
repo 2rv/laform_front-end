@@ -82,14 +82,6 @@ import {
   CREATE_MASTER_CLASS_ROUTE_PATH,
 } from '../../core/master-class-create';
 import {
-  createElectronicPatternRouter,
-  ELECTRONIC_PATTERN_ROUTE_PATH,
-} from '../../core/patterns-create-electronic';
-import {
-  createPrintPatternRouter,
-  CREATE_PRINT_PATTERN_ROUTE_PATH,
-} from '../../core/patterns-create-print';
-import {
   createSewingGoodsRouter,
   CREATE_SEWING_GOODS_ROUTE_PATH,
 } from '../../core/sewing-goods-create';
@@ -130,8 +122,6 @@ export const routes = {
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
-  [CREATE_PRINT_PATTERN_ROUTE_PATH]: createPrintPatternRouter,
-  [ELECTRONIC_PATTERN_ROUTE_PATH]: createElectronicPatternRouter,
   [CREATE_MASTER_CLASS_ROUTE_PATH]: createMasterClassRouter,
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH]:
     authVerificateEmailRecoveryAccountRouter,

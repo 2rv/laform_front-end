@@ -8,7 +8,8 @@ import { TextSecondary } from 'src/lib/element/text';
 import { ConvertTime } from 'src/lib/common/time-convert';
 import { convertCommentsData } from '../about-account.convert';
 
-export function CommentsComponent({ comments }) {
+export function CommentsComponent(props) {
+  const { comments = [] } = props;
   return (
     <SectionLayout type="SMALL">
       <Title tid="PROFILE.COMMENTS" />

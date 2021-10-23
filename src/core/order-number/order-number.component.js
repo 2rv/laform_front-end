@@ -3,7 +3,6 @@ import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { THEME_SIZE } from '../../lib/theme';
 import { AboutOrderFormContainer } from './frames';
-import { TableList } from '../block-table-list';
 import { Spinner } from 'src/lib/element/spinner';
 import { Table } from 'src/lib/common/block-table';
 

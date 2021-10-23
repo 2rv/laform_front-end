@@ -6,15 +6,16 @@ import { Divider } from 'src/lib/element/divider';
 import { THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 import { convertUsersOrderData } from 'src/core/orders/orders.convert';
-import { TableList } from 'src/core/block-table-list';
+import { Table } from 'src/lib/common/block-table';
 
-export function PurchasesComponent({ purchases }) {
+export function PurchasesComponent(props) {
+  const { purchases = [] } = props;
   return (
     <SectionLayout type="SMALL">
       <Title tid="PROFILE.PURCHASES" />
       <Divider />
-      {Boolean(purchases?.length > 0) ? (
-        <TableList items={purchases.map(convertUsersOrderData)} />
+      {Boolean(purchases.length) ? (
+        <Table items={purchases.map(convertUsersOrderData)} />
       ) : (
         <TextSecondary tid="PROFILE.NOT_HAVE_PURCHASES" />
       )}
