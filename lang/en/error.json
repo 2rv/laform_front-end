@@ -12,5 +12,6 @@
   "EMAIL_ALREADY_IN_USE": "This email already exists",
   "USER_NOT_VERIFIED": "You not confirmed your email",
   "YOUR_EMAIL_IS_WRONG": "Your old email is incorrect",
-  "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Verification code payload has wrong email"
+  "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Verification code payload has wrong email",
+  "CATEGORY_ALREADY_EXISTS": "Category already exists"
 }

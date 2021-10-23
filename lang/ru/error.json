@@ -12,5 +12,6 @@
   "EMAIL_ALREADY_IN_USE": "Данный адрес электронной почты уже используется",
   "USER_NOT_VERIFIED": "Адрес электронной почты не подтверждён",
   "YOUR_EMAIL_IS_WRONG": "Ваш старый Email некорректен",
-  "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Код верификации имеет не правильный Email"
+  "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Код верификации имеет не правильный Email",
+  "CATEGORY_ALREADY_EXISTS": "Данная категория уже существует"
 }
