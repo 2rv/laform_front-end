@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { ButtonSecondary } from 'src/lib/element/button';
 import { USER_ROLE } from 'src/lib/common/auth';
 import { ReactEditor } from 'src/block-react-editor';
-import { faqUploadData } from './faq.action';
+import { faqUploadData } from '../faq.action';
 
 export function FaqEditorComponent({ faq, user, isAuth }) {
   const dispatch = useDispatch();
