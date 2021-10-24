@@ -65,8 +65,6 @@ export function PatternsContainer() {
       && Number(patternsState.data?.products?.length) < Number(patternsState.data?.totalRecords)
       && !isRequestPending(patternsState)
     ) {
-      console.log('product length', patternsState.data?.products?.length);
-      console.log('is pending', isRequestPending(patternsState));
       setCurrentPage((prevPage) => prevPage + 1);
     }
   };
