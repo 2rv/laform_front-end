@@ -19,6 +19,8 @@ import {
 } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
 
+const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+
 export function MasterClassesContainer() {
   const { masterClassState, categories, pageLoading, currentLang, user, isAuth } =
     useSelector((state) => ({
@@ -34,7 +36,7 @@ export function MasterClassesContainer() {
   const totalItems = masterClassState?.additional?.totalCount || 0;
 
   const productCategories = [
-    { id: -999, tid: 'Выберите категорию', hidden: true },
+    { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
     ...getRequestData(categories, []),
   ];
 
@@ -48,7 +50,7 @@ export function MasterClassesContainer() {
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
-    copy.category = category;
+    copy.category = category === PRODUCT_CATEGORY_FIRST_OPTION ? '' : category;
     setFilter(copy);
     dispatch(masterClassesUploadData(isAuth, { currentLang, ...copy }));
   };
