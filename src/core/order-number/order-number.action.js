@@ -30,23 +30,23 @@ export function orderNumberUploadData(orderId) {
   };
 }
 
-export function updatePurchaseOrderStatus(orderId, data, orderNumber) {
+export function updatePurchaseOrderStatus(orderId, data) {
   return async (dispatch) => {
     dispatch({
       type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_PENDING,
     });
-
     try {
       await httpRequest({
-        method: ORDER_NUMBER_API.UPDATE_PURCHASE.TYPE,
-        url: ORDER_NUMBER_API.UPDATE_PURCHASE.ENDPOINT(orderId),
-        data: { ...data, orderNumber },
+        method: ORDER_NUMBER_API.UPDATE_PURCHASE_STATUS.TYPE,
+        url: ORDER_NUMBER_API.UPDATE_PURCHASE_STATUS.ENDPOINT(orderId),
+        data,
       });
 
       dispatch({
         type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_SUCCESS,
       });
     } catch (err) {
+      console.log(err);
       if (err.response) {
         dispatch({
           type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_ERROR,

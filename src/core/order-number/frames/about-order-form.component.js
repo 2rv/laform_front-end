@@ -119,7 +119,6 @@ export function AboutOrderFormComponent(props) {
               value={values[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]}
               onChange={handleChange}
               onBlur={handleBlur}
-              textValue
             />
             <Button
               type="submit"

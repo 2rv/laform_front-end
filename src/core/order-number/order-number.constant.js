@@ -11,4 +11,8 @@ export const ORDER_NUMBER_API = {
     ENDPOINT: (id) => `purchase/update/${id}`,
     TYPE: 'PUT',
   },
+  UPDATE_PURCHASE_STATUS: {
+    ENDPOINT: (id) => `purchase/update-status/${id}`,
+    TYPE: 'PUT',
+  },
 };
