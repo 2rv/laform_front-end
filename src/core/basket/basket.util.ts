@@ -21,22 +21,6 @@ function getTotalPrice(
   const discount = optionDiscount || productDiscount;
   return (price - price * (discount / 100)) * (length || count || 1);
 }
-function isCountUtil(props: any): boolean {
-  const { options = [], option, count = 0 } = props;
-  if (Boolean(options.length)) {
-    if (option === '') return false;
-    return Boolean(options[Number(option)].count);
-  }
-  return Boolean(count);
-}
-function isLengthUtil(props: any): boolean {
-  const { options = [], option, length } = props;
-  if (Boolean(options.length)) {
-    if (option === '') return false;
-    return Boolean(options[Number(option)].length);
-  }
-  return Boolean(length);
-}
 
 export function convertForTable(basketState: basketStateType[]) {
   return basketState.reduce(
@@ -216,13 +200,8 @@ export function convertAddToCart(product: any, data: any, index = 0) {
       patternProduct: product,
       optionId: data.optionId,
       count: data.count,
-      isCount: isCountUtil({
-        options: product?.options,
-        option: (product?.options || []).findIndex(
-          (i: any) => i.id === data.optionId,
-        ),
-        count: product?.count,
-      }),
+      isCount: product.isCount,
+      isLength: false,
     };
   }
   if (product.type === 3) {
@@ -234,23 +213,12 @@ export function convertAddToCart(product: any, data: any, index = 0) {
       optionId: data.optionId,
       count: data.count,
       length: data.length,
-      isCount: isCountUtil({
-        options: product?.options,
-        option: (product?.options || []).findIndex(
-          (i: any) => i.id === data.optionId,
-        ),
-        count: product?.count,
-      }),
-      isLength: isLengthUtil({
-        options: product?.options,
-        option: (product?.options || []).findIndex(
-          (i: any) => i.id === data.optionId,
-        ),
-        length: product?.length,
-      }),
+      isCount: product.isCount,
+      isLength: product.isLength,
     };
   }
 }
+
 export const convertCreateOrder = (
   data: any,
   bascketState: basketStateType[],

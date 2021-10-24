@@ -31,6 +31,7 @@ export function TableEnumeratorLength(props: props) {
         length={length}
         maxLength={maxLength}
         onChange={handleChange}
+        minLength={0.1}
       />
     </Td>
   );

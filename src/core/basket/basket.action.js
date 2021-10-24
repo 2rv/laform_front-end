@@ -144,31 +144,18 @@ export function confirmPromoCodeAction(promocode) {
   };
 }
 
-export function createOrderAction(
-  values,
-  bascketState,
-  isAuth,
-  purchaseTotalPrice = 0,
-) {
+export function createOrderAction(values, bascketState, isAuth) {
   return async (dispatch) => {
     dispatch({
       type: BASKET_ACTION_TYPE.CREATE_ORDER_PENDING,
     });
     try {
       const data = convertCreateOrder(values, bascketState);
-
       const response = await httpRequest({
         method: BASKET_API.CREATE_ORDER.TYPE,
         url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
         data: data,
       });
-      //   if (isAuth) {
-      //     await httpRequest({
-      //       method: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.TYPE,
-      //       url: BASKET_API.SEND_PURCHASED_PRODUCTS_INFO.ENDPOINT,
-      //       data,
-      //     });
-      //   }
       if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
         await updateUserInfoAction(values);
       }

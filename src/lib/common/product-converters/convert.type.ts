@@ -56,6 +56,7 @@ export interface BasicPatternType {
   options: BasicOptionType[];
   images: BasicImageType[];
   like?: BasicLikeType[];
+  isCount: boolean;
   titleRu?: string;
   titleEn?: string;
   modifierRu?: string;
@@ -83,4 +84,6 @@ export interface BasicSewingGoodType {
   count?: number;
   length?: number;
   pinned?: boolean;
+  isCount: boolean;
+  isLength: boolean;
 }
