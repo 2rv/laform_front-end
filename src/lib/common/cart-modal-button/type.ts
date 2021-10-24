@@ -30,6 +30,8 @@ export interface CartModalContainerProps {
   discount?: number;
   count?: number;
   length?: number;
+  isCount?: boolean;
+  isLength?: boolean;
   options?: OptionType[];
   colors?: OptionType[];
   sizes?: OptionType[];

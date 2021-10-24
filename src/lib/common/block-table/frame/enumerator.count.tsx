@@ -44,7 +44,7 @@ export function TableEnumeratorCount(props: props) {
         count={count}
         maxNumber={maxCount}
         onChange={handleChange}
-        minNumber={0}
+        minNumber={1}
       />
     </Td>
   );

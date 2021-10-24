@@ -20,6 +20,7 @@ export function CardArticle(props: CardArticleType) {
     modifier,
     createdDate,
     like,
+    admin,
     type,
     onSelect,
     onDelete,
@@ -33,16 +34,18 @@ export function CardArticle(props: CardArticleType) {
         image={image}
         modifier={modifier}
       />
-      <Content>
-        <ColumnCase>
-          <CardName tid={name} />
-          <Date tid={ConvertTime(createdDate)} />
-        </ColumnCase>
-        <LikeButton id={id} type={type} like={like} />
-      </Content>
       <ActionCase>
-        <SelectButton id={id} type={type} onSelect={onSelect} />
-        <DeleteButton id={id} type={type} onDelete={onDelete} />
+        <Content>
+          <ColumnCase>
+            <CardName tid={name} />
+            <Date tid={ConvertTime(createdDate)} />
+          </ColumnCase>
+          <LikeButton id={id} type={type} like={like} />
+        </Content>
+        <ActionCase>
+          <SelectButton id={id} type={type} onSelect={onSelect} />
+          <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
+        </ActionCase>
       </ActionCase>
     </Container>
   );
@@ -57,6 +60,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing(3)};
+  position: relative;
   overflow: hidden;
 `;
 const Content = styled.div`
@@ -64,6 +68,7 @@ const Content = styled.div`
   gap: ${spacing(3)};
   flex: 1;
   justify-content: space-between;
+  align-items: center;
 `;
 const ActionCase = styled.div`
   display: flex;

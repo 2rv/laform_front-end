@@ -3,7 +3,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { LoaderPrimary } from '../../lib/element/loader';
 import { Spinner } from '../../lib/element/spinner';
 import { TextSecondary } from '../../lib/element/text';
-import { TableList } from '../block-table-list';
+import { Table } from 'src/lib/common/block-table';
 
 export function OrdersComponent(props) {
   const { pageLoading, isPending, headersTable, products } = props;
@@ -16,7 +16,7 @@ export function OrdersComponent(props) {
         {isPending ? (
           <Spinner />
         ) : Boolean(products?.length > 0) ? (
-          <TableList items={products} headers={headersTable} />
+          <Table headers={headersTable} items={products} />
         ) : (
           <TextSecondary tid="ORDERS.LIST_IS_EMPTY" />
         )}

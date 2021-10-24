@@ -23,7 +23,7 @@ export function TableParams(props: { params?: TableParamsProps }) {
     userId,
     diliveryInfo,
     city,
-    diliveryMethod,
+    deliveryMethod,
     paymentMethod,
     phoneNumber,
     email,
@@ -120,11 +120,11 @@ export function TableParams(props: { params?: TableParamsProps }) {
             <TextPrimary tid={city} />
           </div>
         )}
-        {Boolean(diliveryMethod) && (
+        {Boolean(deliveryMethod) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.DELIVERY_METHOD" />
             &nbsp;
-            <TextPrimary tid={diliveryMethod} />
+            <TextPrimary tid={deliveryMethod} />
           </div>
         )}
         {Boolean(paymentMethod) && (

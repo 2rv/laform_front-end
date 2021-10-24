@@ -62,6 +62,7 @@ export function convertPatternItemConverter(
     price: price,
     discount: discount,
     count: item.count,
+    isCount: item.isCount,
   };
 }
 
@@ -87,5 +88,7 @@ export function convertSewingGoodItemConverter(
     length: item.length,
     price: price,
     discount: discount,
+    isCount: item.isCount,
+    isLength: item.isLength,
   };
 }

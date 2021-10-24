@@ -47,7 +47,7 @@ export interface TableParamsProps {
   userId?: string;
   diliveryInfo?: string;
   city?: string;
-  diliveryMethod?: string;
+  deliveryMethod?: string;
   paymentMethod?: string;
   phoneNumber?: string;
   email?: string;

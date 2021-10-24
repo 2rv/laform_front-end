@@ -30,6 +30,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
     values,
   } = props;
   const [open, setOpen] = useState(false);
+  const [categoryExists, setCategoryExists] = useState('');
 
   return (
     <SectionLayout type="TEXT">
@@ -38,9 +39,19 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
       <FieldArray name={CATEGORIES_TYPE.CATEGORIES}>
         {({ remove, push }) => {
           const handleAdd = (e: SyntheticEvent<HTMLInputElement>) => {
-            const value = Number(e.currentTarget.value);
+            const value: number = Number(e.currentTarget.value);
+            const isCategoryExists: boolean = values[CATEGORIES_TYPE.CATEGORIES].some((category: any) => {
+              return category.tid === categories[value].tid;
+            });
+
+            if (isCategoryExists) {
+              setCategoryExists('ERROR.CATEGORY_ALREADY_EXISTS');
+              return;
+            }
+
             if (value === 999999 || value === NaN) return;
             push(categories[value]);
+            setCategoryExists('');
           };
           return (
             <FieldLayout type="double" adaptive>
@@ -71,6 +82,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
           );
         }}
       </FieldArray>
+      {Boolean(categoryExists.length > 0) && <CategoryExistsText tid={categoryExists} />}
       <CategoriesModal
         categories={categories}
         createPending={createPending}
@@ -115,4 +127,8 @@ const StyledPlusIcon = styled(PlusIcon)`
   fill: ${THEME_COLOR.WHITE};
   width: 18;
   height: 18;
+`;
+
+const CategoryExistsText = styled(TextSecondary)`
+color: ${THEME_COLOR.TEXT.DANGER};
 `;

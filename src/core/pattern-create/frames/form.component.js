@@ -21,13 +21,6 @@ import {
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 import { CREATE_PATTERN_FIELD_NAME } from '../pattern-create.type';
-{
-  /* <RecomendationBlock
-          onSetRecomendation={(data) =>
-            setFieldValue(CREATE_PATTERN_FIELD_NAME.RECOMMENDATIONS, data)
-          }
-        /> */
-}
 
 export function FormComponent(props) {
   const {
@@ -196,6 +189,12 @@ export function FormComponent(props) {
 
       <Divider />
 
+      <RecomendationBlock
+        onSetRecomendation={(data) =>
+          setFieldValue(CREATE_PATTERN_FIELD_NAME.RECOMMENDATIONS, data)
+        }
+      />
+
       <ProductPrice
         priceAndDiscount={checkMinPriceAndDiscount(
           values[CREATE_PATTERN_FIELD_NAME.OPTIONS],
@@ -208,7 +207,7 @@ export function FormComponent(props) {
           type="submit"
           tid="PATTERNS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
         />
-        <ButtonSecondary onClick={handleReset} tid="Сбросить" />
+        <ButtonSecondary onClick={handleReset} tid="PATTERNS.CREATE.FORM.BUTTON.RESET" />
       </FieldLayout>
     </SectionLayout>
   );

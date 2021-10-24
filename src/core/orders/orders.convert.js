@@ -1,28 +1,29 @@
 import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
 
+function getPrice(price = 0, discount = 0) {
+  return price - price * (discount / 100);
+}
+
 export const convertUsersOrderData = (data) => {
   return {
     id: data.id,
-    name: data?.orderNumber,
+    name: data.orderNumber,
     path: ORDER_NUMBER_ROUTE_PATH,
     pathConfig: { dynamic: true, params: { id: data?.id } },
-    totalPrice: Boolean(data?.promoCodeDiscount)
-      ? Number(data?.price) * (Number(data?.promoCodeDiscount) / 100)
-      : data?.price,
-    status: data?.orderStatus ?? 'Неизвестно',
-    isOrder: true,
+    totalPrice: getPrice(data.price, data.promoCodeDiscount),
+    status: data.orderStatus,
     params: {
-      count: data?.purchaseProductsCount,
-      createdDate: data?.createdDate,
+      count: data.purchaseProductsCount,
+      createdDate: data.createdDate,
+      deliveryMethod: data.typeOfDelivery,
+      paymentMethod: data.paymentMethod,
     },
     otherParams: {
-      paymentMethod: data?.paymentMethod,
-      deliveryMethod: data?.deliveryMethod,
-      email: data?.email,
-      fullName: data?.fullName,
-      city: data?.city,
-      phoneNumber: data?.phoneNumber,
-      userId: data?.userId?.id,
+      email: data.email,
+      fullName: data.fullName,
+      city: data.city,
+      phoneNumber: data.phoneNumber,
+      userId: data.userId?.id,
     },
   };
 };

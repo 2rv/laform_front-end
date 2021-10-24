@@ -10,7 +10,7 @@ import { TextSecondary } from '../../lib/element/text';
 import { LinkPrimary } from '../../lib/element/link';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../lib/theme';
 import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from './auth-verificate-email.constant';
-import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
+import { FAQ_ROUTE_PATH } from '../faq';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { ErrorAlert } from '../../lib/element/alert';
 
@@ -42,7 +42,7 @@ export function AuthVerificateEmailComponent(props) {
             <LightText tid="AUTH.VERIFICATE_EMAIL.CODE_DIDNT_ARRIVED" />
             &nbsp;
             <LinkPrimary
-              path={FAQ_PAGE_ROUTE_PATH}
+              path={FAQ_ROUTE_PATH}
               tid="AUTH.VERIFICATE_EMAIL.HELP"
             />
           </div>

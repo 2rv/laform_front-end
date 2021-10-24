@@ -5,9 +5,9 @@ import { TextSecondary } from 'src/lib/element/text';
 import { TitlePrimary as Title } from 'src/lib/element/title';
 import { SectionLayout } from 'src/lib/element/layout';
 import { ConvertDate } from 'src/lib/common/time-convert';
-// import { ButtonBasic } from 'src/lib/element/button';
 
-export function AboutAccountInfoComponent({ user }) {
+export function AboutAccountInfoComponent(props) {
+  const { user } = props;
   return (
     <SectionLayout>
       {user?.userSettingId?.fullName && (

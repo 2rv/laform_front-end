@@ -16,8 +16,6 @@ import {
   getInfoUtil,
   getLengthUtil,
   getPriceUtil,
-  isCountUtil,
-  isLengthUtil,
   isCartUtil,
 } from './utils';
 import { LANG_STORE_NAME } from '../lang';
@@ -33,6 +31,8 @@ export function CartButtonContainer(props: CartModalContainerProps) {
     options = [],
     colors = [],
     sizes = [],
+    isCount = false,
+    isLength = false,
     onCart,
   } = props;
   if (!id || type === false || !onCart) return null;
@@ -107,8 +107,8 @@ export function CartButtonContainer(props: CartModalContainerProps) {
       count: Number(formik.values.count),
       length: Number(formik.values.length),
       price: price,
-      isCount: isCount(),
-      isLength: isLength(),
+      isCount: isCount,
+      isLength: isLength,
     });
   };
   const getDiscount = (): number => {
@@ -156,30 +156,8 @@ export function CartButtonContainer(props: CartModalContainerProps) {
       color: formik.values.color,
       count: Number(formik.values.count),
       length: Number(formik.values.length),
-      isCount: isCount(),
-      isLength: isLength(),
-    });
-  };
-  const isCount = (): boolean => {
-    return isCountUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      count: count,
-    });
-  };
-  const isLength = (): boolean => {
-    return isLengthUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      length: length,
+      isCount: isCount,
+      isLength: isLength,
     });
   };
   const isDisabled = (): boolean => {
@@ -209,8 +187,8 @@ export function CartButtonContainer(props: CartModalContainerProps) {
       isOptions={Boolean(options.length)}
       isSizes={Boolean(sizes.length)}
       isColors={Boolean(colors.length)}
-      isCount={isCount()}
-      isLength={isLength()}
+      isCount={isCount}
+      isLength={isLength}
       isDisabled={isDisabled()}
       price={Number(getPrice())}
       discount={Number(getDiscount())}

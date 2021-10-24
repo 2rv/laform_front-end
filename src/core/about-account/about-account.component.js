@@ -9,7 +9,8 @@ import {
   CommentsComponent,
 } from './frames';
 
-export function AboutAccountComponent({ pageLoading, isPending, user }) {
+export function AboutAccountComponent(props) {
+  const { pageLoading, isPending, user } = props;
   return (
     <>
       {pageLoading && <LoaderPrimary />}
@@ -18,9 +19,9 @@ export function AboutAccountComponent({ pageLoading, isPending, user }) {
       ) : (
         <SectionLayout>
           <AboutAccountInfoComponent user={user} />
-          <PurchasesComponent purchases={user.purchase ?? []} />
-          <LikesComponent likes={user.like ?? []} />
-          <CommentsComponent comments={user.comment ?? []} />
+          <PurchasesComponent purchases={user.purchase} />
+          <LikesComponent likes={user.like} />
+          <CommentsComponent comments={user.comment} />
         </SectionLayout>
       )}
     </>

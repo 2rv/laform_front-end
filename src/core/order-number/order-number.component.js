@@ -3,7 +3,6 @@ import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { THEME_SIZE } from '../../lib/theme';
 import { AboutOrderFormContainer } from './frames';
-import { TableList } from '../block-table-list';
 import { Spinner } from 'src/lib/element/spinner';
 import { Table } from 'src/lib/common/block-table';
 
@@ -18,6 +17,8 @@ export function OrderNumberComponent(props) {
     purchaseProducts,
     statusOrderSelect,
     deliveryTypeOptions,
+    isOrderNumberChangePending,
+    isOrderNumberChangeSuccess,
   } = props;
 
   return isPending ? (
@@ -36,6 +37,8 @@ export function OrderNumberComponent(props) {
         validate={validate}
         statusOrderSelect={statusOrderSelect}
         deliveryTypeOptions={deliveryTypeOptions}
+        isOrderNumberChangePending={isOrderNumberChangePending}
+        isOrderNumberChangeSuccess={isOrderNumberChangeSuccess}
       />
     </SectionLayout>
   );

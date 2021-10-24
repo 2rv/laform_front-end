@@ -12,6 +12,7 @@ import {
 } from '../../../lib/element/field';
 import { ABOUT_ORDER_FIELD_NAME } from '../order-number.type';
 import { AboutOrderPrice } from './about-order-price';
+import { SuccessAlert } from 'src/lib/element/alert';
 
 export function AboutOrderFormComponent(props) {
   const {
@@ -23,6 +24,8 @@ export function AboutOrderFormComponent(props) {
     touched,
     handleBlur,
     deliveryTypeOptions,
+    isOrderNumberChangePending,
+    isOrderNumberChangeSuccess,
   } = props;
 
   return (
@@ -107,7 +110,7 @@ export function AboutOrderFormComponent(props) {
         <Divider />
 
         <SectionLayout type="SMALL">
-          <Title tid="Данные " />
+          <Title tid="ORDER_NUMBER.FORM.DATA" />
           <FieldLayout type="double" adaptive>
             <FieldSelect
               titleTid="ORDER_NUMBER.FORM.ORDER_STATUS"
@@ -118,8 +121,15 @@ export function AboutOrderFormComponent(props) {
               onBlur={handleBlur}
               textValue
             />
-            <Button type="submit" tid="ORDER_NUMBER.FORM.SAVE_DATA" />
+            <Button
+              type="submit"
+              tid="ORDER_NUMBER.FORM.SAVE_DATA"
+              disabled={isOrderNumberChangePending}
+            />
           </FieldLayout>
+          {isOrderNumberChangeSuccess && (
+            <SuccessAlert tid="ORDER_NUMBER.FORM.ORDER_STATUS_CHANGE_SUCCESS_MESSAGE" />
+          )}
         </SectionLayout>
       </SectionLayout>
     </form>

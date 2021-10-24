@@ -31,6 +31,8 @@ export function CardSewingGood(props: CardSewingGoodType) {
     onSelect,
     onDelete,
     onCart,
+    isCount,
+    isLength,
   } = props;
 
   return (
@@ -59,6 +61,8 @@ export function CardSewingGood(props: CardSewingGoodType) {
           options={options}
           colors={colors}
           sizes={sizes}
+          isCount={isCount}
+          isLength={isLength}
         />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />

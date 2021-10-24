@@ -48,6 +48,8 @@
         }
       }
     },
+    "DATA": "Data",
+    "ORDER_STATUS_CHANGE_SUCCESS_MESSAGE": "Order number has been successfully changed.",
     "FOOTER": {
       "DISCOUNT_PRICE": "Discount price",
       "SHIPPING_PRICE": "Shipping price",

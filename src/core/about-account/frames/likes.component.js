@@ -7,12 +7,13 @@ import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 import { convertLikesData } from '../about-account.convert';
 
-export function LikesComponent({ likes }) {
+export function LikesComponent(props) {
+  const { likes = [] } = props;
   return (
     <SectionLayout type="SMALL">
       <Title tid="PROFILE.LIKES" />
       <Divider />
-      {Boolean(likes?.length > 0) ? (
+      {Boolean(likes.length) ? (
         <Container>
           {convertLikesData(likes).map((like) => (
             <Content key={like.id}>

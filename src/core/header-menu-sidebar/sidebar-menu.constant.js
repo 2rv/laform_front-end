@@ -9,7 +9,7 @@ import { AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH } from '../auth-verificate-ema
 import { AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH } from '../auth-verificate-email-recovery-account';
 import { BASKET_ROUTE_PATH } from '../basket';
 import { EDIT_COMPILATION_ROUTE_PATH } from '../edit-compilation';
-import { FAQ_PAGE_ROUTE_PATH } from '../faq-page';
+import { FAQ_ROUTE_PATH } from '../faq';
 import { HOME_ROUTE_PATH } from '../home';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { LOGIN_ROUTE_PATH } from '../login';
@@ -94,7 +94,7 @@ export const NAVIGATION_MENU = [
     title: 'Разное',
     items: [
       { title: 'Ошибка', pathname: '/error' },
-      { title: 'Помощь', pathname: FAQ_PAGE_ROUTE_PATH },
+      { title: 'Помощь', pathname: FAQ_ROUTE_PATH },
       { title: 'Настройки', pathname: SETTINGS_ROUTE_PATH },
       { title: 'Корзина', pathname: BASKET_ROUTE_PATH },
       {

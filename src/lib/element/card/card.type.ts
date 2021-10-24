@@ -76,6 +76,8 @@ export interface CardSewingGoodType {
   discount?: number;
   count?: number;
   length?: number;
+  isCount: boolean;
+  isLength: boolean;
   options?: OptionType[];
   colors?: OptionType[];
   sizes?: OptionType[];
@@ -94,6 +96,7 @@ export interface CardPatternType {
   price?: number;
   discount?: number;
   count?: number;
+  isCount: boolean;
   complexity: number;
   sizes?: OptionType[];
   onSelect?: Function;

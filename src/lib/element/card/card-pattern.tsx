@@ -30,6 +30,7 @@ export function CardPattern(props: CardPatternType) {
     onSelect,
     onDelete,
     onCart,
+    isCount,
   } = props;
 
   return (
@@ -58,6 +59,7 @@ export function CardPattern(props: CardPatternType) {
           count={count}
           onCart={onCart}
           sizes={sizes}
+          isCount={isCount}
         />
         {(like || admin) && (
           <ActionCase>

@@ -30,7 +30,7 @@ import {
 } from '../../core/auth-verificate-email-confirm';
 import { settingsRouter, SETTINGS_ROUTE_PATH } from '../../core/settings';
 import { ordersRouter, ORDERS_ROUTE_PATH } from '../../core/orders';
-import { faqPageRouter, FAQ_PAGE_ROUTE_PATH } from '../../core/faq-page';
+import { faqRouter, FAQ_ROUTE_PATH } from '../../core/faq';
 import {
   editCompilationRouter,
   EDIT_COMPILATION_ROUTE_PATH,
@@ -82,14 +82,6 @@ import {
   CREATE_MASTER_CLASS_ROUTE_PATH,
 } from '../../core/master-class-create';
 import {
-  createElectronicPatternRouter,
-  ELECTRONIC_PATTERN_ROUTE_PATH,
-} from '../../core/patterns-create-electronic';
-import {
-  createPrintPatternRouter,
-  CREATE_PRINT_PATTERN_ROUTE_PATH,
-} from '../../core/patterns-create-print';
-import {
   createSewingGoodsRouter,
   CREATE_SEWING_GOODS_ROUTE_PATH,
 } from '../../core/sewing-goods-create';
@@ -130,8 +122,6 @@ export const routes = {
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
   [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
-  [CREATE_PRINT_PATTERN_ROUTE_PATH]: createPrintPatternRouter,
-  [ELECTRONIC_PATTERN_ROUTE_PATH]: createElectronicPatternRouter,
   [CREATE_MASTER_CLASS_ROUTE_PATH]: createMasterClassRouter,
   [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH]:
     authVerificateEmailRecoveryAccountRouter,
@@ -153,7 +143,7 @@ export const routes = {
   [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
-  [FAQ_PAGE_ROUTE_PATH]: faqPageRouter,
+  [FAQ_ROUTE_PATH]: faqRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
   [ABOUT_ACCOUNT_ROUTE_PATH]: aboutAccountRouter,
