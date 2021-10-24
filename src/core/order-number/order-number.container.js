@@ -22,12 +22,13 @@ import { BASKET_STORE_NAME } from '../basket';
 export function OrderNumberContainer() {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const { orderState, orderNumberState, deliveryTypes, pageLoading } = useSelector((state) => ({
-    orderState: state[ORDER_NUMBER_STORE_NAME].order,
-    orderNumberState: state[ORDER_NUMBER_STORE_NAME].orderUpdate,
-    deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
+  const { orderState, orderNumberState, deliveryTypes, pageLoading } =
+    useSelector((state) => ({
+      orderState: state[ORDER_NUMBER_STORE_NAME].order,
+      orderNumberState: state[ORDER_NUMBER_STORE_NAME].orderUpdate,
+      deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }));
 
   const { purchaseInfo, purchaseProducts } = getRequestData(orderState, {
     purchaseInfo: null,
@@ -36,14 +37,6 @@ export function OrderNumberContainer() {
 
   const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
 
-  const statusOrderSelect = [
-    { id: 0, tid: 'Оформлено' },
-    { id: 1, tid: 'В пути' },
-    { id: 2, tid: 'Ожидает доставки' },
-    { id: 3, tid: 'Доставлен' },
-    { id: 4, tid: 'Отменен' },
-  ];
-
   useEffect(() => {
     dispatch(orderNumberUploadData(query.id));
     dispatch(getDeliveryInfoAction());
@@ -51,11 +44,11 @@ export function OrderNumberContainer() {
 
   const onSubmit = (values) => {
     dispatch(
-      updatePurchaseOrderStatus(
-        query.id,
-        values,
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER],
-      ),
+      updatePurchaseOrderStatus(query.id, {
+        [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: Number(
+          values[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS],
+        ),
+      }),
     );
   };
 
@@ -73,8 +66,7 @@ export function OrderNumberContainer() {
     [ABOUT_ORDER_FIELD_NAME.COMMENT]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.COMMENT] ?? '',
     [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]:
-      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS] ??
-      statusOrderSelect[0].tid,
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS] ?? 0,
     [ABOUT_ORDER_FIELD_NAME.PRICE]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PRICE] ?? 0,
     [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]:
@@ -112,3 +104,15 @@ export function OrderNumberContainer() {
 }
 
 const headersTable = ['Товары заказа', 'Параметры', 'Итоговая цена'];
+
+const statusOrderSelect = [
+  { id: 0, tid: 'Сформирован' },
+  { id: 1, tid: 'Ожидает оплаты' },
+  { id: 2, tid: 'Оплачено' },
+  { id: 3, tid: 'Ожидает отправки' },
+  { id: 4, tid: 'Отправлено' },
+  { id: 5, tid: 'Получено' },
+  { id: 6, tid: 'Отменено' },
+  { id: 7, tid: 'Вовращен отправителю' },
+  { id: 8, tid: 'Возвращен по гарантии' },
+];

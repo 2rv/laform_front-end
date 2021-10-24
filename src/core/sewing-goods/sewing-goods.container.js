@@ -19,6 +19,8 @@ import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
 
+const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+
 export function SewingGoodsContainer() {
   const { sewingGoodsState, categories, pageLoading, currentLang, user, isAuth } =
     useSelector((state) => ({
@@ -34,7 +36,7 @@ export function SewingGoodsContainer() {
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
 
   const productCategories = [
-    { id: -999, tid: 'Выберите категорию', hidden: true },
+    { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
     ...getRequestData(categories, []),
   ];
 
@@ -48,7 +50,7 @@ export function SewingGoodsContainer() {
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
-    copy.category = category;
+    copy.category = category === PRODUCT_CATEGORY_FIRST_OPTION ? '' : category;
     setFilter(copy);
     dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...copy }));
   };
