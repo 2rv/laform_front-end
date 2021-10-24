@@ -19,9 +19,15 @@ export function patternsStore(state = initialState, action) {
         patternsState: setRequestPending(state.patternsState),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS:
+      const oldProducts = state.patternsState?.data?.products || [];
+      const newProducts = action.data.products || [];
+      const totalRecords = action.data.totalRecords || 0;
       return {
         ...state,
-        patternsState: setRequestSuccess(state.patternsState, action.data),
+        patternsState: setRequestSuccess(
+          state.patternsState,
+          { products: [...oldProducts, ...newProducts], totalRecords },
+        ),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_ERROR:
       return {
