@@ -14,6 +14,8 @@ import { ArticlesComponent } from './articles.component';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 
+const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+
 export function ArticlesContainer() {
   const { articlesState, categories, pageLoading, currentLang, user, isAuth } = useSelector(
     (state) => ({
@@ -30,7 +32,7 @@ export function ArticlesContainer() {
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
 
   const productCategories = [
-    { id: -999, tid: 'Выберите категорию', hidden: true },
+    { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
     ...getRequestData(categories, []),
   ];
 
@@ -39,7 +41,7 @@ export function ArticlesContainer() {
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
-    copy.category = category;
+    copy.category = category === PRODUCT_CATEGORY_FIRST_OPTION ? '' : category;
     setFilter(copy);
     dispatch(articlesUploadData(isAuth, { currentLang, ...copy }));
   };
