@@ -61,7 +61,7 @@ export function SewingGoodsContainer() {
 
   return (
     <SewingGoodsComponent
-      listItems={getRequestData(sewingGoodsState, [])}
+      listItems={getRequestData(sewingGoodsState, {}).products}
       addToCart={addToCart}
       handleFilter={handleFilter}
       filterOptions={filterOptionss}
@@ -73,6 +73,8 @@ export function SewingGoodsContainer() {
       isError={isRequestError(sewingGoodsState)}
       isSuccess={isRequestSuccess(sewingGoodsState)}
       errorMessage={getRequestErrorMessage(sewingGoodsState)}
+      fetchData={() => dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...filter, page: sewingGoodsState.data?.currentPage }))}
+      hasMore={Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalRecords)}
     />
   );
 }
