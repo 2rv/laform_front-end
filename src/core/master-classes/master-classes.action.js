@@ -24,10 +24,13 @@ export function masterClassesUploadData(isAuth, query) {
           });
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
-        data: convertMasterClassProducts(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: {
+          products: convertMasterClassProducts(
+            response.data[0],
+            getState()[BASKET_STORE_NAME].basket,
+          ),
+          totalRecords: response.data[1],
+        }
       });
     } catch (err) {
       if (err.response) {
