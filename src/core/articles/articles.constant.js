@@ -5,7 +5,7 @@ export const ARTICLES_API = {
     ENDPOINT: ({ currentLang, page, where, sort, by, category }) =>
       `/post/get?lang=${currentLang}${Boolean(page) ? `&page=${page}` : ''}${
         Boolean(where) ? `&where=${where}` : ''
-      }${Boolean(sort) ? `&sort=${sort}` : ''}${
+      }${Boolean(sort) ? `&sort=${sort}` : '&sort=date'}${
         Boolean(by) ? `&by=${by}` : ''
       }${Boolean(category) ? `&category=${category}` : ''}`,
     TYPE: 'GET',
@@ -15,7 +15,7 @@ export const ARTICLES_API = {
       `/post/auth/get?lang=${currentLang}${
         Boolean(page) ? `&page=${page}` : ''
       }${Boolean(where) ? `&where=${where}` : ''}${
-        Boolean(sort) ? `&sort=${sort}` : ''
+        Boolean(sort) ? `&sort=${sort}` : '&sort=date'
       }${Boolean(by) ? `&by=${by}` : ''}${
         Boolean(category) ? `&category=${category}` : ''
       }`,

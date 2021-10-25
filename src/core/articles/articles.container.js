@@ -56,7 +56,7 @@ export function ArticlesContainer() {
 
   return (
     <ArticlesComponent
-      listItems={getRequestData(articlesState, [])}
+      listItems={getRequestData(articlesState, {}).products}
       filterOptions={filterOptionss}
       categories={productCategories}
       handleFilter={handleFilter}
@@ -67,6 +67,8 @@ export function ArticlesContainer() {
       errorMessage={getRequestErrorMessage(articlesState)}
       onDelete={onDeleteProduct}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
+      fetchData={() => dispatch(articlesUploadData(isAuth, { currentLang, ...filter, page: articlesState.data?.currentPage }))}
+      hasMore={Number(articlesState.data?.products?.length) < Number(articlesState.data?.totalRecords)}
     />
   );
 }

@@ -21,7 +21,10 @@ export function articlesUploadData(isAuth, query) {
           });
       dispatch({
         type: ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS,
-        data: convertArticleProducts(response.data),
+        data: {
+          products: convertArticleProducts(response.data[0]),
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {
