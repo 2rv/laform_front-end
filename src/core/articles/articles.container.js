@@ -13,6 +13,7 @@ import { ARTICLES_STORE_NAME } from './articles.constant';
 import { ArticlesComponent } from './articles.component';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { ARTICLES_ACTION_TYPE } from './articles.type';
 
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
@@ -37,6 +38,7 @@ export function ArticlesContainer() {
   ];
 
   const handleFilter = ({ where, sort, by, category }) => {
+    dispatch({ type: ARTICLES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;

@@ -6,17 +6,24 @@ import {
 } from '../../main/store/store.service';
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 
+const initialProductData = {
+  products: [],
+  currentPage: 1,
+  totalRecords: 0,
+};
+
 const initialState = {
-  masterClassState: initRequestState({
-    products: [],
-    currentPage: 1,
-    totalRecords: 0,
-  }),
+  masterClassState: initRequestState(initialProductData),
   categories: initRequestState(),
 };
 
 export function masterClassesStore(state = initialState, action) {
   switch (action.type) {
+    case MASTER_CLASSES_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return {
+        ...state,
+        masterClassState: initRequestState(initialProductData),
+      };
     case MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING:
       return {
         ...state,

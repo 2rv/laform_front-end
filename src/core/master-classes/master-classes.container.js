@@ -18,6 +18,7 @@ import {
   fetchCategories,
 } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
+import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
@@ -45,6 +46,7 @@ export function MasterClassesContainer() {
   }, []);
 
   const handleFilter = ({ where, sort, by, category }) => {
+    dispatch({ type: MASTER_CLASSES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;

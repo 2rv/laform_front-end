@@ -1,22 +1,30 @@
 import {
   initRequestState,
+  resetRequestStatus,
   setRequestError,
   setRequestPending,
   setRequestSuccess,
 } from '../../main/store/store.service';
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
+const initialProductData = {
+  products: [],
+  currentPage: 1,
+  totalRecords: 0,
+};
+
 const initialState = {
-  sewingGoodsState: initRequestState({
-    products: [],
-    currentPage: 1,
-    totalRecords: 0,
-  }),
+  sewingGoodsState: initRequestState(initialProductData),
   categories: initRequestState(),
 };
 
 export function sewingGoodsStore(state = initialState, action) {
   switch (action.type) {
+    case SEWING_GOODS_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return {
+        ...state,
+        sewingGoodsState: initRequestState(initialProductData),
+      };
     case SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_PENDING:
       return {
         ...state,

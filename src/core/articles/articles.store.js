@@ -6,17 +6,24 @@ import {
 } from '../../main/store/store.service';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
 
+const initialProductData = {
+  products: [],
+  currentPage: 1,
+  totalRecords: 0,
+};
+
 const initialState = {
-  articlesState: initRequestState({
-    products: [],
-    currentPage: 1,
-    totalRecords: 0,
-  }),
+  articlesState: initRequestState(initialProductData),
   categories: initRequestState(),
 };
 
 export function articlesStore(state = initialState, action) {
   switch (action.type) {
+    case ARTICLES_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return {
+        ...state,
+        articlesState: initRequestState(initialProductData),
+      };
     case ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_PENDING:
       return {
         ...state,

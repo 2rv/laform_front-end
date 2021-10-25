@@ -32,10 +32,10 @@ export function SewingGoodsComponent(props) {
         hasMore={hasMore}
       >
         <BasicCardList
-        items={listItems}
-        onCart={addToCart}
-        onDelete={onDeleteProduct}
-        admin={isAdmin}
+          items={listItems}
+          onCart={addToCart}
+          onDelete={onDeleteProduct}
+          admin={isAdmin}
           emptyText="Список пустой" //TODO: change to tid
         />
       </InfiniteScroll>
