@@ -7,7 +7,11 @@ import {
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
 const initialState = {
-  patternsState: initRequestState(),
+  patternsState: initRequestState({
+    products: [],
+    currentPage: 1,
+    totalRecords: 0,
+  }),
   categories: initRequestState(),
 };
 
@@ -19,14 +23,19 @@ export function patternsStore(state = initialState, action) {
         patternsState: setRequestPending(state.patternsState),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS:
-      const oldProducts = state.patternsState?.data?.products || [];
-      const newProducts = action.data.products || [];
-      const totalRecords = action.data.totalRecords || 0;
+      const oldProducts = state.patternsState.data.products;
+      const newProducts = action.data.products;
+      const totalRecords = action.data.totalRecords;
+      const prevCurrentPage = state.patternsState.data.currentPage;
       return {
         ...state,
         patternsState: setRequestSuccess(
           state.patternsState,
-          { products: [...oldProducts, ...newProducts], totalRecords },
+          {
+            products: [...oldProducts, ...newProducts],
+            currentPage: prevCurrentPage + 1,
+            totalRecords,
+          },
         ),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_ERROR:

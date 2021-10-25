@@ -2,9 +2,9 @@ import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { BasicCardList } from '../../lib/element/card-list';
 import { TextSecondary } from 'src/lib/element/text';
-import { CenteredSpinner } from 'src/lib/element/spinner';
 import { SearchFilter } from 'src/lib/common/search-filter';
 import { TabFilter } from '../../lib/common/tab-filter';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function PatternsComponent(props) {
   const {
@@ -19,6 +19,8 @@ export function PatternsComponent(props) {
     categories,
     handleFilter,
     isPending,
+    fetchData,
+    hasMore,
   } = props;
 
   return (
@@ -36,13 +38,19 @@ export function PatternsComponent(props) {
         categories={categories}
         handleFilter={handleFilter}
       />
-      <BasicCardList
-        items={listItems}
-        onCart={addToCart}
-        onDelete={onDeleteProduct}
-        admin={isAdmin}
-        emptyText="Список пустой"
-      />
+      <InfiniteScroll
+        dataLength={listItems?.length ?? 0}
+        next={fetchData}
+        hasMore={hasMore}
+      >
+        <BasicCardList
+          items={listItems}
+          onCart={addToCart}
+          onDelete={onDeleteProduct}
+          admin={isAdmin}
+          emptyText="Список пустой" //TODO: change to tid
+        />
+      </InfiniteScroll>
     </SectionLayout>
   );
 }

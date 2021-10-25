@@ -33,6 +33,7 @@ export function PatternsContainer() {
   );
   const dispatch = useDispatch();
   const patternType = useRouter().query.type;
+  const containerRef = useRef(null);
   const [filter, setFilter] = useState({
     where: null,
     sort: null,
@@ -40,34 +41,15 @@ export function PatternsContainer() {
     type: patternType,
   });
 
-  const containerRef = useRef(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const patterns = getRequestData(patternsState, []);
-
   const productCategories = [
     { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
     ...getRequestData(categories, []),
   ];
 
   useEffect(() => {
+    dispatch(patternsUploadData(isAuth, { currentLang, ...filter }));
     dispatch(fetchCategories(currentLang, 2));
-    document.addEventListener('scroll', scrollHandler);
-    return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
-
-  useEffect(() => {
-    dispatch(patternsUploadData(isAuth, { currentLang, ...filter, page: currentPage }));
-  }, [currentPage]);
-
-  const scrollHandler = () => {
-    if (
-      containerRef.current.getBoundingClientRect().bottom < window.innerHeight - 100
-      && Number(patternsState.data?.products?.length) < Number(patternsState.data?.totalRecords)
-      && !isRequestPending(patternsState)
-    ) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
 
   const handleFilter = ({ where, sort, by, category }) => {
     const copy = { ...filter };
@@ -92,26 +74,27 @@ export function PatternsContainer() {
       redirect(PATTERNS_ROUTE_PATH);
     }
   };
+
   return (
-    <div ref={containerRef}>
-      <PatternsComponent
-        onDeleteProduct={onDeleteProduct}
-        isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
-        addToCart={addToCart}
-        listItems={patterns.products}
-        filterOptions={filterOptionss}
-        categories={productCategories}
-        handleFilter={handleFilter}
-        activeTab={patternType}
-        setActiveTab={setActiveTab}
-        tabItems={tabItems}
-        pageLoading={pageLoading}
-        isPending={isRequestPending(patternsState)}
-        isError={isRequestError(patternsState)}
-        isSuccess={isRequestSuccess(patternsState)}
-        errorMessage={getRequestErrorMessage(patternsState)}
-      />
-    </div>
+    <PatternsComponent
+      onDeleteProduct={onDeleteProduct}
+      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
+      addToCart={addToCart}
+      listItems={getRequestData(patternsState, {}).products}
+      filterOptions={filterOptionss}
+      categories={productCategories}
+      handleFilter={handleFilter}
+      fetchData={() => dispatch(patternsUploadData(isAuth, { currentLang, ...filter, page: patternsState.data?.currentPage }))}
+      hasMore={Number(patternsState.data?.products?.length) < Number(patternsState.data?.totalRecords)}
+      activeTab={patternType}
+      setActiveTab={setActiveTab}
+      tabItems={tabItems}
+      pageLoading={pageLoading}
+      isPending={isRequestPending(patternsState)}
+      isError={isRequestError(patternsState)}
+      isSuccess={isRequestSuccess(patternsState)}
+      errorMessage={getRequestErrorMessage(patternsState)}
+    />
   );
 }
 
