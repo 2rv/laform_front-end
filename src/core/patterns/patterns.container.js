@@ -17,6 +17,7 @@ import { addToBasket } from '../basket';
 import { redirect } from 'src/main/navigation';
 import { PATTERNS_ROUTE_PATH } from '.';
 import { useRouter } from 'next/router';
+import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
@@ -51,6 +52,7 @@ export function PatternsContainer() {
   }, []);
 
   const handleFilter = ({ where, sort, by, category }) => {
+    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;
@@ -64,6 +66,7 @@ export function PatternsContainer() {
   };
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
   const setActiveTab = (value) => {
+    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter, type: value };
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
