@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestData,
@@ -33,6 +33,7 @@ export function PatternsContainer() {
   );
   const dispatch = useDispatch();
   const patternType = useRouter().query.type;
+  const containerRef = useRef(null);
   const [filter, setFilter] = useState({
     where: null,
     sort: null,
@@ -73,15 +74,18 @@ export function PatternsContainer() {
       redirect(PATTERNS_ROUTE_PATH);
     }
   };
+
   return (
     <PatternsComponent
       onDeleteProduct={onDeleteProduct}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
       addToCart={addToCart}
-      listItems={getRequestData(patternsState, [])}
+      listItems={getRequestData(patternsState, {}).products}
       filterOptions={filterOptionss}
       categories={productCategories}
       handleFilter={handleFilter}
+      fetchData={() => dispatch(patternsUploadData(isAuth, { currentLang, ...filter, page: patternsState.data?.currentPage }))}
+      hasMore={Number(patternsState.data?.products?.length) < Number(patternsState.data?.totalRecords)}
       activeTab={patternType}
       setActiveTab={setActiveTab}
       tabItems={tabItems}

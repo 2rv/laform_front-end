@@ -21,10 +21,13 @@ export function patternsUploadData(isAuth, query) {
           });
       dispatch({
         type: PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS,
-        data: convertPatternProducts(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: {
+          products: convertPatternProducts(
+            response.data[0],
+            getState()[BASKET_STORE_NAME].basket,
+          ),
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {
