@@ -33,7 +33,6 @@ export function MasterClassesContainer() {
     }));
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
-  const totalItems = masterClassState?.additional?.totalCount || 0;
 
   const productCategories = [
     { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
@@ -63,13 +62,15 @@ export function MasterClassesContainer() {
 
   return (
     <MasterClassesComponent
-      listItems={getRequestData(masterClassState, [])}
+      listItems={getRequestData(masterClassState, {}).products}
       addToCart={addToCart}
       onDeleteProduct={onDeleteProduct}
       filterOptions={filterOptions}
       categories={productCategories}
       handleFilter={handleFilter}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
+      fetchData={() => dispatch(masterClassesUploadData(isAuth, { currentLang, ...filter, page: masterClassState.data?.currentPage }))}
+      hasMore={Number(masterClassState.data?.products?.length) < Number(masterClassState.data?.totalRecords)}
     />
   );
 }

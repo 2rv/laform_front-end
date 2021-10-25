@@ -6,7 +6,7 @@ export const MASTER_CLASSES_API = {
       `/master-class/get?lang=${currentLang}${
         Boolean(page) ? `&page=${page}` : ''
       }${Boolean(where) ? `&where=${where}` : ''}${
-        Boolean(sort) ? `&sort=${sort}` : ''
+        Boolean(sort) ? `&sort=${sort}` : '&sort=date'
       }${Boolean(by) ? `&by=${by}` : ''}${
         Boolean(category) ? `&category=${category}` : ''
       }`,
@@ -17,7 +17,7 @@ export const MASTER_CLASSES_API = {
       `/master-class/auth/get?lang=${currentLang}${
         Boolean(page) ? `&page=${page}` : ''
       }${Boolean(where) ? `&where=${where}` : ''}${
-        Boolean(sort) ? `&sort=${sort}` : ''
+        Boolean(sort) ? `&sort=${sort}` : '&sort=date'
       }${Boolean(by) ? `&by=${by}` : ''}${
         Boolean(category) ? `&category=${category}` : ''
       }`,

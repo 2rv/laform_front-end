@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getRequestData,
@@ -33,7 +33,6 @@ export function PatternsContainer() {
   );
   const dispatch = useDispatch();
   const patternType = useRouter().query.type;
-  const containerRef = useRef(null);
   const [filter, setFilter] = useState({
     where: null,
     sort: null,
