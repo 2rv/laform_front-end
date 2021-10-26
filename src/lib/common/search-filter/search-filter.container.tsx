@@ -34,6 +34,11 @@ export function SearchFilter(props: SearchFilterContainerPropsType) {
 
   const handleChange = (name: string) => (event: SyntheticEvent) => {
     const copy: any = { ...values };
+    // When we change the search and category filter, we reset their value, because they do not work together.
+    if ([SEARCH_FILTER_FIELD_NAME.FIND, SEARCH_FILTER_FIELD_NAME.CATEGORY].includes(name)) {
+      delete copy[SEARCH_FILTER_FIELD_NAME.FIND];
+      delete copy[SEARCH_FILTER_FIELD_NAME.CATEGORY];
+    }
     copy[name] = (event.target as HTMLInputElement).value;
     setValues(copy);
   };
