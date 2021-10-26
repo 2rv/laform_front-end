@@ -29,8 +29,10 @@ export function UsersContainer() {
       isError={isRequestError(usersState)}
       isSuccess={isRequestSuccess(usersState)}
       errorMessage={getRequestErrorMessage(usersState)}
-      users={getRequestData(usersState, [])}
       pageLoading={pageLoading}
+      users={getRequestData(usersState, {}).users}
+      fetchData={() => dispatch(usersLoadData(usersState.data.currentPage))}
+      hasMore={Number(usersState.data?.users?.length) < Number(usersState.data?.totalRecords)}
     />
   );
 }
