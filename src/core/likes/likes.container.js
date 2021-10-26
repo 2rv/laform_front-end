@@ -19,6 +19,7 @@ import { PatternsComponent } from './likes.component';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { addToBasket } from '../basket';
 import { LIKE_STORE_NAME } from '../block-like';
+import { LIKES_ACTION_TYPE } from './likes.type';
 
 export function LikesContainer() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export function LikesContainer() {
   const [activeTabText, setActiveTabText] = useState('');
 
   useEffect(() => {
+    dispatch({ type: LIKES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     if (activeTab === 3) {
       dispatch(likeSewingProductUploadData(currentLang));
       setActiveTabText('ALL_LIKES.TABS.SEWING_PRODUCT');
@@ -47,7 +49,20 @@ export function LikesContainer() {
       dispatch(likePostUploadData(currentLang));
       setActiveTabText('ALL_LIKES.TABS.POST');
     };
+    console.log('data:', likes.data.products);
   }, [activeTab, updated]);
+
+  const fetchData = () => {
+    if (activeTab === 3) {
+      dispatch(likeSewingProductUploadData(currentLang, likes.data.currentPage));
+    } else if (activeTab === 2) {
+      dispatch(likeMasterClassUploadData(currentLang, likes.data.currentPage));
+    } else if (activeTab === 1) {
+      dispatch(likePatternProductUploadData(currentLang, likes.data.currentPage));
+    } else if (activeTab === 0) {
+      dispatch(likePostUploadData(currentLang, likes.data.currentPage));
+    };
+  };
 
   return (
     <PatternsComponent
@@ -55,9 +70,11 @@ export function LikesContainer() {
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       tabItems={tabs}
-      listItems={getRequestData(likes, null)}
+      listItems={getRequestData(likes, {}).products}
       pageLoading={pageLoading}
       isPending={isRequestPending(likes)}
+      fetchData={fetchData}
+      hasMore={Number(likes.data?.products?.length) < Number(likes.data?.totalRecords)}
     />
   );
 }
