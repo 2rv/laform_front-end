@@ -54,16 +54,19 @@ export function SearchButtonComponent(props) {
               <CloseIcon />
             </ButtonIcon>
           </HeaderCase>
-          <InfiniteScroll
-            dataLength={listItems.length}
-            next={fetchData}
-            hasMore={hasMore}
-          >
-            <BasicCardList
-              items={listItems}
-              emptyText="OTHER.NOTHING_FOUND"
-            />
-          </InfiniteScroll>
+          <div id="scrollableDiv" style={{ height: '100vh', overflow: 'auto' }}>
+            <InfiniteScroll
+              dataLength={listItems.length}
+              next={fetchData}
+              hasMore={hasMore}
+              scrollableTarget="scrollableDiv"
+            >
+              <BasicCardList
+                items={listItems}
+                emptyText="OTHER.NOTHING_FOUND"
+              />
+            </InfiniteScroll>
+          </div>
         </ModalContent>
       </ModalFullCenter>
     </>
@@ -87,6 +90,8 @@ const ModalContent = styled.div`
 
 const ModalFullCenter = styled(ModalFull)`
   justify-content: center;
+  overflow: hidden !important;
+  height: auto !important;
 `;
 
 const InputBox = styled.div`

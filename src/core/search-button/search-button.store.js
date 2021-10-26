@@ -8,7 +8,7 @@ import { SEARCH_BUTTON_ACTION_TYPE } from './search-button.type';
 
 const initialProductData = {
   products: [],
-  currentPage: 0,
+  currentPage: 1,
   totalRecords: 0,
 };
 

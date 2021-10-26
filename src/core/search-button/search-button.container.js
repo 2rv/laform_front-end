@@ -18,8 +18,6 @@ export function SearchButtonContainer() {
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  console.log('prod:', productsState);
-
   useEffect(() => {
     dispatch(fetchProducts(currentLang, searchInput));
   }, [debounce]);
@@ -30,7 +28,6 @@ export function SearchButtonContainer() {
   };
 
   const fetchData = () => {
-    console.log('fetch curr page:', productsState.data.currentPage);
     dispatch(fetchProducts(currentLang, searchInput, productsState.data.currentPage));
   };
 
