@@ -8,16 +8,18 @@ import { ButtonBasic, IconButton } from 'src/lib/element/button';
 import { ModalFull } from 'src/lib/element/modal';
 import { BasicCardList } from 'src/lib/element/card-list';
 import { BasicField } from 'src/lib/element/field';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function SearchButtonComponent(props) {
   const {
     searchInput,
     setSearchInput,
-    masterClasses,
-    patterns,
-    sewingGoods,
-    articles,
+    onChange,
+    listItems,
+    fetchData,
+    hasMore,
   } = props;
+
   const [modalVisibility, setModalVisibility] = useState(false);
 
   return (
@@ -34,7 +36,7 @@ export function SearchButtonComponent(props) {
               <BasicField
                 placeholderTid="OTHER.SEARCH_PRODUCT"
                 value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
+                onChange={(e) => onChange(e.target.value)}
               />
               <IconBox>
                 {Boolean(searchInput.length > 0) ? (
@@ -52,10 +54,16 @@ export function SearchButtonComponent(props) {
               <CloseIcon />
             </ButtonIcon>
           </HeaderCase>
-          <BasicCardList
-            items={[].concat(masterClasses, patterns, sewingGoods, articles)}
-            emptyText="OTHER.NOTHING_FOUND"
-          />
+          <InfiniteScroll
+            dataLength={listItems.length}
+            next={fetchData}
+            hasMore={hasMore}
+          >
+            <BasicCardList
+              items={listItems}
+              emptyText="OTHER.NOTHING_FOUND"
+            />
+          </InfiniteScroll>
         </ModalContent>
       </ModalFullCenter>
     </>
