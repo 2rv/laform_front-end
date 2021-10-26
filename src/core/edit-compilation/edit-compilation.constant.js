@@ -15,8 +15,8 @@ export const EDIT_COMPILATION_API = {
     TYPE: 'GET',
   },
   PRODUCTS_LOAD_DATA: {
-    ENDPOINT: (compilationName, currentLang) =>
-      `${compilationName}/get?lang=${currentLang}`,
+    ENDPOINT: (compilationName, currentLang, page = 1) =>
+      `${compilationName}/get?lang=${currentLang}&page=${page}`,
     TYPE: 'GET',
   },
   UPDATE_PINNED: {

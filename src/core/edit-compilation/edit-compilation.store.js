@@ -10,7 +10,11 @@ const initialState = {
   bestArticles: initRequestState(),
   bestMasterClasses: initRequestState(),
   bestProducts: initRequestState(),
-  products: initRequestState(),
+  products: initRequestState({
+    products: [],
+    currentPage: 1,
+    totalRecords: 0,
+  }),
 };
 
 export function editCompilationStore(state = initialState, action) {
@@ -42,9 +46,20 @@ export function editCompilationStore(state = initialState, action) {
         products: setRequestPending(state.products),
       };
     case EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_SUCCESS:
+      const oldProducts = state.products.data.products;
+      const newProducts = action.data.products;
+      const totalRecords = action.data.totalRecords;
+      const prevCurrentPage = state.products.data.currentPage;
       return {
         ...state,
-        products: setRequestSuccess(state.products, action.products),
+        products: setRequestSuccess(
+          state.products,
+          {
+            products: [...oldProducts, ...newProducts],
+            currentPage: prevCurrentPage + 1,
+            totalRecords,
+          },
+        ),
       };
     case EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_ERROR:
       return {

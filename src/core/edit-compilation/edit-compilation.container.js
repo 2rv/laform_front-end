@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
@@ -25,6 +25,7 @@ import {
   bestProductsLoadData,
   productsLoadData,
 } from './edit-compilation.action';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function EditCompilationContainer() {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export function EditCompilationContainer() {
   }));
   const [compilationName, setCompilationName] = useState('');
   const [modalVisibilty, setModalVisibility] = useState(false);
-  const products = getRequestData(state.products, []);
+  const products = getRequestData(state.products, {}).products;
 
   useEffect(() => {
     dispatch(bestArticlesLoadData(currentLang));
@@ -60,6 +61,14 @@ export function EditCompilationContainer() {
     }
   };
 
+  const fetchData = () => {
+    dispatch(productsLoadData(compilationName, currentLang, state.products.data.currentPage));
+  };
+
+  const hasMore = Number(state.products.data.products?.length) < Number(state.products.data.totalRecords)
+  const modalContentRef = useRef();
+  console.log('modalContentRef:', modalContentRef.current);
+
   return (
     <>
       {pageLoading && <LoaderPrimary />}
@@ -74,19 +83,23 @@ export function EditCompilationContainer() {
           currentLang={currentLang}
         />
       </PageWrapper>
-      <ModalPopup
+      <MyModal
         modalVisibilty={modalVisibilty}
         onClose={() => setModalVisibility(false)}
       >
-        {isRequestPending(state.products) ? (
-          <Spinner />
-        ) : (
-          <ModalContent>
-            {Boolean(products.length > 0) ? (
-              products.filter(({ pinned }) => pinned).length >= 3 ? (
-                <TextSecondary tid="COMPILATION.MAX_BEST_PRODUCTS" />
-              ) : (
-                products.map((product) => (
+        <ModalContent id="scrollableDiv" style={{ height: '400px', overflow: 'auto' }}>
+          {Boolean(products.length > 0) ? (
+            products.filter(({ pinned }) => pinned).length >= 3 ? (
+              <TextSecondary tid="COMPILATION.MAX_BEST_PRODUCTS" />
+            ) : (
+              <InfiniteScroll
+                dataLength={products?.length ?? 0}
+                next={fetchData}
+                hasMore={hasMore}
+                style={{ display: 'grid', gap: '15px' }}
+                scrollableTarget="scrollableDiv"
+              >
+                {products.map((product) => (
                   <SelectCompilationComponent
                     key={product.id}
                     id={product.id}
@@ -99,17 +112,21 @@ export function EditCompilationContainer() {
                     currentLang={currentLang}
                     setModalVisibility={setModalVisibility}
                   />
-                ))
-              )
-            ) : (
-              <TextSecondary tid="COMPILATION.LIST_IS_EMPTY" />
-            )}
-          </ModalContent>
-        )}
-      </ModalPopup>
+                ))}
+              </InfiniteScroll>
+            )
+          ) : (
+            <TextSecondary tid="COMPILATION.LIST_IS_EMPTY" />
+          )}
+        </ModalContent>
+      </MyModal>
     </>
   );
 }
+
+const MyModal = styled(ModalPopup)`
+  overflow: hidden;
+`;
 
 const ModalContent = styled.div`
   display: flex;
