@@ -49,7 +49,6 @@ export function usersStore(state = initialState, action) {
       };
     case USERS_ACTION_TYPE.USER_UPDATE_UPLOAD_SUCCESS:
       const users = state.users.data.users;
-      console.log('users:', users);
       return {
         ...state,
         users: setRequestSuccess(

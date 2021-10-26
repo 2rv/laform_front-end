@@ -8,7 +8,11 @@ import {
 import { PURCHASE_PRODUCTS_ACTION_TYPE } from './purchase-products.type';
 
 const initialState = {
-  purchaseProductsLoadData: initRequestState(),
+  purchaseProductsLoadData: initRequestState({
+    orders: [],
+    currentPage: 1,
+    totalRecords: 0,
+  }),
 };
 
 export function purchaseProductsStore(state = initialState, action) {
@@ -22,11 +26,15 @@ export function purchaseProductsStore(state = initialState, action) {
       };
 
     case PURCHASE_PRODUCTS_ACTION_TYPE.PURCHASE_PRODUCTS_DATA_LOAD_SUCCESS:
+      // const oldOrders = state.purchaseProductsLoadData.data.orders;
+      // const newOrders = action.data.orders;
+      // const totalRecords = action.data.totalRecords;
+      // const prevCurrentPage = state.purchaseProductsLoadData.data.currentPage;
       return {
         ...state,
         purchaseProductsLoadData: setRequestSuccess(
           state.purchaseProductsLoadData,
-          action.data,
+          action.data
         ),
       };
 
