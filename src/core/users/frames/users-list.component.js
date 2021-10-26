@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { ReactComponent as UserIcon } from '../../../asset/svg/user.svg';
 import { Divider } from '../../../lib/element/divider';
-import { Spinner } from '../../../lib/element/spinner';
 import { TextPrimary, TextSecondary } from '../../../lib/element/text';
 import { LinkSecondary } from '../../../lib/element/link';
 import { ButtonBasic, ButtonPrimary } from '../../../lib/element/button';
@@ -28,8 +27,6 @@ export function UsersListComponent({ isPending, users }) {
     dispatch(updateUserData(userId, { role: Number(userRole) }));
     setVisible(false);
   };
-
-  if (isPending) return <Spinner />;
 
   return (
     <Container>
