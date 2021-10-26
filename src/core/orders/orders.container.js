@@ -32,7 +32,9 @@ export function OrdersContainer() {
       errorMessage={getRequestErrorMessage(ordersState)}
       pageLoading={pageLoading}
       headersTable={headersTable}
-      products={getRequestData(ordersState, [])}
+      products={getRequestData(ordersState, {}).orders}
+      fetchData={() => dispatch(ordersLoadData(ordersState.data.currentPage))}
+      hasMore={Number(ordersState.data?.orders?.length) < Number(ordersState.data?.totalRecords)}
     />
   );
 }

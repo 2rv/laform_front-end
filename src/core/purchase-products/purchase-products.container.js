@@ -12,6 +12,7 @@ import { purchaseProductLoadData } from './purchase-products.action';
 import { PURCHASE_PRODUCTS_STORE_NAME } from './purchase-products.constant';
 
 import { PurchaseProductsComponent } from './purchase-products.component';
+import { PURCHASE_PRODUCTS_ACTION_TYPE } from './purchase-products.type';
 
 export function PurchaseProductsContainer() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export function PurchaseProductsContainer() {
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
   useEffect(() => dispatch(purchaseProductLoadData()), []);
-  const data = getRequestData(purchaseProductsLoadData, null);
+  const data = getRequestData(purchaseProductsLoadData, {}).orders;
 
   const getTabAppropriateData = (activeTab) => {
     switch (activeTab) {
@@ -59,6 +60,8 @@ export function PurchaseProductsContainer() {
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       pageLoading={pageLoading}
+      // fetchData={() => dispatch(purchaseProductLoadData(purchaseProductsLoadData.data.currentPage))}
+      // hasMore={Number(purchaseProductsLoadData.data?.orders?.length) < Number(purchaseProductsLoadData.data?.totalRecords)}
     />
   );
 }
