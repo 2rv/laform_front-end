@@ -46,6 +46,7 @@ export function ProductImages(props: ProductImagesProps) {
       reader.onload = () => {
         if (reader.result) {
           const copy = [...priviewImages];
+          //@ts-ignore
           copy.push(reader.result);
           setPreviewImage(copy);
           push({ [imageFieldName]: file });
@@ -73,6 +74,7 @@ export function ProductImages(props: ProductImagesProps) {
       reader.onload = () => {
         if (reader?.result) {
           const copy = [...priviewImages];
+          //@ts-ignore
           copy.splice(index, 1, reader.result);
           setPreviewImage(copy);
           setFieldValue(`${imagesArrayName}.${index}.${imageFieldName}`, file);
