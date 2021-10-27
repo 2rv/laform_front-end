@@ -37,9 +37,9 @@ export function productsUploadData(currentLang: string) {
       });
 
       const patternData: any = convertPatternProducts(patternRes.data[0]);
-      const articleData: any = convertArticleProducts(articleRes.data);
-      const sewingData: any = convertSewingGoodProducts(sewingRes.data);
-      const masterData: any = convertMasterClassProducts(masterRes.data);
+      const articleData: any = convertArticleProducts(articleRes.data[0]);
+      const sewingData: any = convertSewingGoodProducts(sewingRes.data[0]);
+      const masterData: any = convertMasterClassProducts(masterRes.data[0]);
 
       const data = [].concat(patternData, sewingData, masterData, articleData);
 

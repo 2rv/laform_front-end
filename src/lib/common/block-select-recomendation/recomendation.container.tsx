@@ -54,22 +54,29 @@ export function RecomendationContainer(props: recommendationContainerProps) {
 
   function checkOnSelect() {
     const result = listItems.filter((item: any) => {
-      if (item.type === 0)
-        return Boolean(values.find((i: any) => i.masterClassId.id === item.id));
-      if (item.type === 1)
+      if (item.type === 0) {
         return Boolean(
-          values.find((i: any) => i.patternProductId.id === item.id),
+          values.find((i: any) => i.masterClassId?.id === item.id),
         );
-      if (item.type === 2)
+      }
+      if (item.type === 1) {
         return Boolean(
-          values.find((i: any) => i.patternProductId.id === item.id),
+          values.find((i: any) => i.patternProductId?.id === item.id),
         );
-      if (item.type === 3)
+      }
+      if (item.type === 2) {
         return Boolean(
-          values.find((i: any) => i.sewingProductId.id === item.id),
+          values.find((i: any) => i.patternProductId?.id === item.id),
         );
-      if (item.type === 4)
-        return Boolean(values.find((i: any) => i.postId.id === item.id));
+      }
+      if (item.type === 3) {
+        return Boolean(
+          values.find((i: any) => i.sewingProductId?.id === item.id),
+        );
+      }
+      if (item.type === 4) {
+        return Boolean(values.find((i: any) => i.postId?.id === item.id));
+      }
     });
 
     return result;
