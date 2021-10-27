@@ -4,8 +4,8 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-create-components';
 import { CREATE_PATTERN_FIELD_NAME } from './pattern-create.type';
+import { SelectImageBlock } from 'src/lib/common/block-select-image';
 
 export function CreatePatternComponent(props) {
   const {
@@ -18,10 +18,15 @@ export function CreatePatternComponent(props) {
     initialValues,
     onSubmit,
     validation,
+    isEdit,
+    updateIsPending,
+    updateIsError,
+    updateIsSuccess,
+    updateErrorMessage,
   } = props;
   return (
     <>
-      {(pageLoading || isPending) && <LoaderPrimary />}
+      {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
       <SectionLayout>
         <TitlePrimary tid="Создание выкройки" />
         <Formik
@@ -34,14 +39,16 @@ export function CreatePatternComponent(props) {
             return (
               <form onSubmit={formProps.handleSubmit}>
                 <SectionLayout>
-                  <ProductImages
+                  <SelectImageBlock
+                    titleTid="PRODUCT_IMAGES.TITLE"
+                    name={CREATE_PATTERN_FIELD_NAME.IMAGES}
                     {...formProps}
-                    images={formProps.values[CREATE_PATTERN_FIELD_NAME.IMAGES]}
-                    imagesArrayName={CREATE_PATTERN_FIELD_NAME.IMAGES}
-                    imageFieldName={CREATE_PATTERN_FIELD_NAME.IMAGE}
-                    title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent {...formProps} initialOption={initialOption} />
+                  <FormComponent
+                    {...formProps}
+                    isEdit={isEdit}
+                    initialOption={initialOption}
+                  />
                 </SectionLayout>
               </form>
             );
@@ -50,7 +57,9 @@ export function CreatePatternComponent(props) {
         {isSuccess && (
           <SuccessAlert tid="PATTERNS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
         )}
+        {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
         {isError && <ErrorAlert tid={errorMessage} />}
+        {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
       </SectionLayout>
     </>
   );

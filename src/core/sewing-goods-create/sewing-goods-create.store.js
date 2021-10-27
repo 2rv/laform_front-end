@@ -4,29 +4,66 @@ import {
   setRequestPending,
   setRequestSuccess,
 } from '../../main/store/store.service';
-import { CREATE_SEWING_GOODS__ACTION_TYPE } from './sewing-goods-create.type';
+import { CREATE_SEWING_GOODS_ACTION_TYPE } from './sewing-goods-create.type';
 
 const initialState = {
   createSewingGoods: initRequestState(),
+  updateSewingGoods: initRequestState(),
+  product: initRequestState(),
 };
 
 export function createSewingGoodsStore(state = initialState, action) {
   switch (action.type) {
-    case CREATE_SEWING_GOODS__ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_PENDING:
+    case CREATE_SEWING_GOODS_ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_PENDING:
       return {
         ...state,
         createSewingGoods: setRequestPending(state.createSewingGoods),
       };
-    case CREATE_SEWING_GOODS__ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_SUCCESS:
+    case CREATE_SEWING_GOODS_ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_SUCCESS:
       return {
         ...state,
         createSewingGoods: setRequestSuccess(state.createSewingGoods),
       };
-    case CREATE_SEWING_GOODS__ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_ERROR:
+    case CREATE_SEWING_GOODS_ACTION_TYPE.CREATE_SEWING_GOODS_UPLOAD_ERROR:
       return {
         ...state,
         createSewingGoods: setRequestError(
           state.createSewingGoods,
+          action.errorMessage,
+        ),
+      };
+
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_LOAD_PENDING:
+      return {
+        ...state,
+        product: setRequestPending(state.product),
+      };
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_LOAD_SUCCESS:
+      return {
+        ...state,
+        product: setRequestSuccess(state.product, action.data),
+      };
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_LOAD_ERROR:
+      return {
+        ...state,
+        product: setRequestError(state.product, action.errorMessage),
+      };
+
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_UPDATE_PENDING:
+      return {
+        ...state,
+        updateSewingGoods: setRequestPending(state.updateSewingGoods),
+      };
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_UPDATE_SUCCESS:
+      return {
+        ...state,
+        updateSewingGoods: setRequestSuccess(state.updateSewingGoods),
+      };
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_UPDATE_ERROR:
+      return {
+        ...state,
+        updateSewingGoods: setRequestError(
+          state.updateSewingGoods,
           action.errorMessage,
         ),
       };

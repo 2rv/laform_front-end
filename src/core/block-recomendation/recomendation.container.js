@@ -25,12 +25,12 @@ import {
 import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function RecomendationContainer(props) {
-  const { listItems, onSetRecomendation } = props;
+  const { listItems, onSetRecomendation, values } = props;
   const filterInitialValue = {
     [RECOMENDATION_FILTER.FILTER]: 0,
     [RECOMENDATION_FILTER.FIND]: '',
   };
-
+  //   console.log(values);
   const [activeTab, setActiveTab] = useState(9);
   const [filter, setFilter] = useState(filterInitialValue);
   const [products, setProduct] = useState(listItems);
@@ -130,7 +130,7 @@ const filterOptions = [
 ];
 
 export function RecomendationBlock(props) {
-  const { onSetRecomendation } = props;
+  const { onSetRecomendation, values } = props;
   const dispatch = useDispatch();
 
   const {
@@ -189,6 +189,7 @@ export function RecomendationBlock(props) {
   ) {
     return (
       <RecomendationContainer
+        values={values}
         listItems={[].concat(masterClasses, patterns, sewingGoods, articles)}
         onSetRecomendation={onSetRecomendation}
       />
