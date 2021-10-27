@@ -8,18 +8,26 @@ import {
 import { FieldLayout } from 'src/lib/element/layout';
 
 export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
-  const { findPlaceholderTid, filterOptions, categories, values, handleChange } = props;
+  const {
+    findPlaceholderTid,
+    filterOptions,
+    categories,
+    values,
+    handleChange,
+  } = props;
 
   return (
     <Container>
-      <FieldLayout type="double">
+      <FieldLayout type="double" adaptive>
         <FieldSelect
+          adaptive
           options={filterOptions}
           value={values[SEARCH_FILTER_FIELD_NAME.FILTER] || 0}
           onChange={handleChange(SEARCH_FILTER_FIELD_NAME.FILTER)}
           width={200}
         />
         <FieldSelect
+          adaptive
           options={categories}
           value={values[SEARCH_FILTER_FIELD_NAME.CATEGORY] || 0}
           onChange={handleChange(SEARCH_FILTER_FIELD_NAME.CATEGORY)}
@@ -31,8 +39,9 @@ export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
         placeholderTid={findPlaceholderTid}
         value={values[SEARCH_FILTER_FIELD_NAME.FIND] || ''}
         onChange={handleChange(SEARCH_FILTER_FIELD_NAME.FIND)}
-        isFindInput
         width={250}
+        adaptive
+        isFindInput
       />
     </Container>
   );

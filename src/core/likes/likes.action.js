@@ -9,7 +9,7 @@ import {
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
 
-export function likeSewingProductUploadData(currentLang) {
+export function likeSewingProductUploadData(currentLang, page) {
   return async (dispatch, getState) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
@@ -18,14 +18,17 @@ export function likeSewingProductUploadData(currentLang) {
     try {
       const response = await httpRequest({
         method: LIKES_API.SEWING_PRODUCT_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.SEWING_PRODUCT_LIKES_UPLOAD.ENDPOINT(currentLang),
+        url: LIKES_API.SEWING_PRODUCT_LIKES_UPLOAD.ENDPOINT(currentLang, page),
       });
       dispatch({
         type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: convertSewingGoodProducts(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: {
+          products: convertSewingGoodProducts(
+            response.data[0],
+            getState()[BASKET_STORE_NAME].basket,
+          ),
+          totalRecords: response.data[1],
+        }
       });
     } catch (err) {
       if (err.response) {
@@ -38,7 +41,7 @@ export function likeSewingProductUploadData(currentLang) {
   };
 }
 
-export function likeMasterClassUploadData(currentLang) {
+export function likeMasterClassUploadData(currentLang, page) {
   return async (dispatch, getState) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
@@ -47,14 +50,17 @@ export function likeMasterClassUploadData(currentLang) {
     try {
       const response = await httpRequest({
         method: LIKES_API.MASTER_CLASS_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.MASTER_CLASS_LIKES_UPLOAD.ENDPOINT(currentLang),
+        url: LIKES_API.MASTER_CLASS_LIKES_UPLOAD.ENDPOINT(currentLang, page),
       });
       dispatch({
         type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: convertMasterClassProducts(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: {
+          products: convertMasterClassProducts(
+            response.data[0],
+            getState()[BASKET_STORE_NAME].basket,
+          ),
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {
@@ -67,7 +73,7 @@ export function likeMasterClassUploadData(currentLang) {
   };
 }
 
-export function likePatternProductUploadData(currentLang) {
+export function likePatternProductUploadData(currentLang, page) {
   return async (dispatch, getState) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
@@ -76,14 +82,17 @@ export function likePatternProductUploadData(currentLang) {
     try {
       const response = await httpRequest({
         method: LIKES_API.PATTERN_PRODUCT_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.PATTERN_PRODUCT_LIKES_UPLOAD.ENDPOINT(currentLang),
+        url: LIKES_API.PATTERN_PRODUCT_LIKES_UPLOAD.ENDPOINT(currentLang, page),
       });
       dispatch({
         type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: convertPatternProducts(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: {
+          products: convertPatternProducts(
+            response.data[0],
+            getState()[BASKET_STORE_NAME].basket,
+          ),
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {
@@ -96,7 +105,7 @@ export function likePatternProductUploadData(currentLang) {
   };
 }
 
-export function likePostUploadData(currentLang) {
+export function likePostUploadData(currentLang, page) {
   return async (dispatch, getState) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
@@ -105,11 +114,14 @@ export function likePostUploadData(currentLang) {
     try {
       const response = await httpRequest({
         method: LIKES_API.POST_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.POST_LIKES_UPLOAD.ENDPOINT(currentLang),
+        url: LIKES_API.POST_LIKES_UPLOAD.ENDPOINT(currentLang, page),
       });
       dispatch({
         type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: convertArticleProducts(response.data),
+        data: {
+          products: convertArticleProducts(response.data[0]),
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {

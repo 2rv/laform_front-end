@@ -3,7 +3,7 @@ import { USERS_API } from './users.constant';
 import { USERS_ACTION_TYPE } from './users.type';
 import { convertUsersOrderData } from './users.convert';
 
-export function usersLoadData() {
+export function usersLoadData(page) {
   return async (dispatch) => {
     dispatch({
       type: USERS_ACTION_TYPE.USERS_UPLOAD_PENDING,
@@ -12,12 +12,15 @@ export function usersLoadData() {
     try {
       const response = await httpRequest({
         method: USERS_API.USERS_LOAD.TYPE,
-        url: USERS_API.USERS_LOAD.ENDPOINT,
+        url: USERS_API.USERS_LOAD.ENDPOINT(page),
       });
 
       dispatch({
         type: USERS_ACTION_TYPE.USERS_UPLOAD_SUCCESS,
-        payload: response.data.map(convertUsersOrderData),
+        payload: {
+          users: response.data[0].map(convertUsersOrderData),
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {
@@ -33,7 +36,7 @@ export function usersLoadData() {
 export function updateUserData(userId, data) {
   return async (dispatch) => {
     dispatch({
-      type: USERS_ACTION_TYPE.USERS_UPLOAD_PENDING,
+      type: USERS_ACTION_TYPE.USER_UPDATE_UPLOAD_PENDING,
     });
 
     try {
@@ -44,13 +47,13 @@ export function updateUserData(userId, data) {
       });
 
       dispatch({
-        type: USERS_ACTION_TYPE.USERS_UPLOAD_SUCCESS,
+        type: USERS_ACTION_TYPE.USER_UPDATE_UPLOAD_SUCCESS,
+        payload: { userId, role: data.role },
       });
-      dispatch(usersLoadData());
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: USERS_ACTION_TYPE.USERS_UPLOAD_ERROR,
+          type: USERS_ACTION_TYPE.USER_UPDATE_UPLOAD_ERROR,
           errorMessage: err.response.data.message,
         });
       }

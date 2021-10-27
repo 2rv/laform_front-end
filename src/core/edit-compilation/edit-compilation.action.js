@@ -85,7 +85,7 @@ export function bestArticlesLoadData(currentLang) {
   };
 }
 
-export function productsLoadData(compilationName, currentLang) {
+export function productsLoadData(compilationName, currentLang, page) {
   return async (dispatch) => {
     dispatch({
       type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_PENDING,
@@ -97,12 +97,16 @@ export function productsLoadData(compilationName, currentLang) {
         url: EDIT_COMPILATION_API.PRODUCTS_LOAD_DATA.ENDPOINT(
           compilationName,
           currentLang,
+          page,
         ),
       });
 
       dispatch({
         type: EDIT_COMPILATION_ACTION_TYPE.PRODUCTS_UPLOAD_SUCCESS,
-        products: response.data,
+        data: {
+          products: response.data[0],
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {

@@ -6,22 +6,44 @@ import {
 } from '../../main/store/store.service';
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
+const initialProductData = {
+  products: [],
+  currentPage: 1,
+  totalRecords: 0,
+};
+
 const initialState = {
-  patternsState: initRequestState(),
+  patternsState: initRequestState(initialProductData),
   categories: initRequestState(),
 };
 
 export function patternsStore(state = initialState, action) {
   switch (action.type) {
+    case PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return {
+        ...state,
+        patternsState: initRequestState(initialProductData),
+      };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_PENDING:
       return {
         ...state,
         patternsState: setRequestPending(state.patternsState),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS:
+      const oldProducts = state.patternsState.data.products;
+      const newProducts = action.data.products;
+      const totalRecords = action.data.totalRecords;
+      const prevCurrentPage = state.patternsState.data.currentPage;
       return {
         ...state,
-        patternsState: setRequestSuccess(state.patternsState, action.data),
+        patternsState: setRequestSuccess(
+          state.patternsState,
+          {
+            products: [...oldProducts, ...newProducts],
+            currentPage: prevCurrentPage + 1,
+            totalRecords,
+          },
+        ),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_ERROR:
       return {

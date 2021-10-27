@@ -1,5 +1,6 @@
 interface categoryType {
   id: string;
+  categoryNameRu?: string;
 }
 interface imageType {
   id: string;
@@ -38,6 +39,7 @@ interface dataValueType {
 }
 interface categoryValueType {
   basicId: string;
+  tid?: string;
 }
 interface formValueType {
   titleRu: string;
@@ -45,14 +47,15 @@ interface formValueType {
   modifierRu: string;
   recommendation: recommendationProductType[];
   categories: categoryValueType[];
-  price: number;
-  discount: number;
-  count: number;
-  length: number;
+  price?: number;
+  discount?: number;
+  count?: number;
+  length?: number;
   isCount: boolean;
   isLength: boolean;
   optionType: 0 | 1 | 2 | 3;
   options: optionType[];
+  images?: any;
 }
 
 export function convertForUpload(
@@ -63,12 +66,14 @@ export function convertForUpload(
     titleRu: values.titleRu,
     descriptionRu: values.descriptionRu,
     modifierRu: values.modifierRu,
-    images: images,
+    images: images.map((item) => ({
+      id: item.id,
+    })),
     recommendation: { recommendationProducts: values.recommendation },
     categories: values.categories.map((i) => ({ id: i.basicId })),
     price:
       values.optionType === 0
-        ? Number(values.price.toFixed(2)) || 0
+        ? Number(Number(values.price).toFixed(2)) || 0
         : undefined,
     discount:
       values.optionType === 0
@@ -81,9 +86,7 @@ export function convertForUpload(
         ? Number(values.count)
         : undefined,
     length:
-      values.isLength && values.optionType === 0
-        ? Number(values.length.toFixed(2))
-        : undefined,
+      values.isLength && values.optionType === 0 ? values.length : undefined,
     isCount: values.isCount,
     isLength: values.isLength,
     optionType: values.optionType,
@@ -107,10 +110,64 @@ function convertOptions(
     return {
       size: type === 1 || type === 2 ? item.size : undefined,
       colorRu: type === 1 || type === 3 ? item.colorRu : undefined,
-      price: Number(item.price?.toFixed(2)),
+      price: Number(Number(item.price)?.toFixed(2)),
       discount: Number(item.discount) ? item.discount : undefined,
       count: isCount ? Number(item.count) : undefined,
       length: isLength ? Number(item.length?.toFixed(2)) : undefined,
     };
+  });
+}
+
+export function convertForChange(rowData: dataValueType): formValueType {
+  return {
+    titleRu: rowData.titleRu,
+    descriptionRu: rowData.descriptionRu,
+    modifierRu: rowData.modifierRu,
+    images: rowData.images,
+    recommendation: convertRecommendations(
+      rowData.recommendation.recommendationProducts,
+    ),
+    categories: rowData.categories.map((i) => ({
+      basicId: i.id,
+      tid: i.categoryNameRu,
+    })),
+    price: Number(rowData.price),
+    discount: rowData.discount,
+    count: rowData.count,
+    length: rowData.length,
+    isCount: rowData.isCount,
+    isLength: rowData.isLength,
+    optionType: rowData.optionType,
+    options: rowData.options,
+  };
+}
+
+function convertRecommendations(recommendation: any) {
+  return recommendation.map((item: any) => {
+    return {
+      masterClassId: item.masterClassId,
+      patternProductId: item.patternProductId,
+      postId: item.postId,
+      sewingProductId: item.sewingProductId,
+      type:
+        item.masterClassId?.type ||
+        item.patternProductId?.type ||
+        item.postId?.type ||
+        item.sewingProductId?.type,
+    };
+  });
+}
+
+export function convertForUpdateImage(
+  newImages: any = [],
+  formValues: formValueType,
+) {
+  let indexImage = 0;
+  return formValues.images.map((item: any) => {
+    if (!Boolean(item.id) && indexImage < newImages.length) {
+      item.id = newImages[indexImage].id;
+      indexImage = indexImage + 1;
+    }
+    return item;
   });
 }

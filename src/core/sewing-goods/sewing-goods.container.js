@@ -18,6 +18,7 @@ import { SewingGoodsComponent } from './sewing-goods.component';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { addToBasket } from '../basket';
+import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
@@ -46,6 +47,7 @@ export function SewingGoodsContainer() {
   }, []);
 
   const handleFilter = ({ where, sort, by, category }) => {
+    dispatch({ type: SEWING_GOODS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;
@@ -61,7 +63,7 @@ export function SewingGoodsContainer() {
 
   return (
     <SewingGoodsComponent
-      listItems={getRequestData(sewingGoodsState, [])}
+      listItems={getRequestData(sewingGoodsState, {}).products}
       addToCart={addToCart}
       handleFilter={handleFilter}
       filterOptions={filterOptionss}
@@ -73,6 +75,8 @@ export function SewingGoodsContainer() {
       isError={isRequestError(sewingGoodsState)}
       isSuccess={isRequestSuccess(sewingGoodsState)}
       errorMessage={getRequestErrorMessage(sewingGoodsState)}
+      fetchData={() => dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...filter, page: sewingGoodsState.data?.currentPage }))}
+      hasMore={Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalRecords)}
     />
   );
 }

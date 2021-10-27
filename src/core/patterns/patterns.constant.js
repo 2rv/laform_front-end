@@ -6,7 +6,7 @@ export const PATTERNS_API = {
       `/pattern-product/get?lang=${currentLang}${
         Boolean(page) ? `&page=${page}` : ''
       }${Boolean(where) ? `&where=${where}` : ''}${
-        Boolean(sort) ? `&sort=${sort}` : ''
+        Boolean(sort) ? `&sort=${sort}` : '&sort=date'
       }${Boolean(by) ? `&by=${by}` : ''}${
         Boolean(type) ? `&type=${type}` : ''
       }${Boolean(category) ? `&category=${category}` : ''}`,
@@ -18,7 +18,7 @@ export const PATTERNS_API = {
       `/pattern-product/auth/get?lang=${currentLang}${
         Boolean(page) ? `&page=${page}` : ''
       }${Boolean(where) ? `&where=${where}` : ''}${
-        Boolean(sort) ? `&sort=${sort}` : ''
+        Boolean(sort) ? `&sort=${sort}` : '&sort=date'
       }${Boolean(by) ? `&by=${by}` : ''}${
         Boolean(type) ? `&type=${type}` : ''
       }${Boolean(category) ? `&category=${category}` : ''}`,

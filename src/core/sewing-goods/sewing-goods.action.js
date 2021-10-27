@@ -22,10 +22,13 @@ export function sewingGoodsUploadData(isAuth, query) {
           });
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
-        data: convertSewingGoodProducts(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: {
+          products: convertSewingGoodProducts(
+            response.data[0],
+            getState()[BASKET_STORE_NAME].basket,
+          ),
+          totalRecords: response.data[1],
+        },
       });
     } catch (err) {
       if (err.response) {

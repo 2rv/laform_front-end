@@ -9,4 +9,12 @@ export const CREATE_SEWING_GOODS_API = {
     TYPE: 'POST',
     ENDPOINT: '/file/create-many',
   },
+  SEWING_GOODS_LOAD: {
+    ENDPOINT: (id) => `/sewing-product/get/${id}/?lang=ru`,
+    TYPE: 'GET',
+  },
+  SEWING_GOODS_CHANGE: {
+    ENDPOINT: (id) => `/sewing-product/update/${id}/?lang=ru`,
+    TYPE: 'PUT',
+  },
 };

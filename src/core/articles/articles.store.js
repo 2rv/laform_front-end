@@ -6,22 +6,44 @@ import {
 } from '../../main/store/store.service';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
 
+const initialProductData = {
+  products: [],
+  currentPage: 1,
+  totalRecords: 0,
+};
+
 const initialState = {
-  articlesState: initRequestState(),
+  articlesState: initRequestState(initialProductData),
   categories: initRequestState(),
 };
 
 export function articlesStore(state = initialState, action) {
   switch (action.type) {
+    case ARTICLES_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return {
+        ...state,
+        articlesState: initRequestState(initialProductData),
+      };
     case ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_PENDING:
       return {
         ...state,
         articlesState: setRequestPending(state.articlesState),
       };
     case ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS:
+      const oldProducts = state.articlesState.data.products;
+      const newProducts = action.data.products;
+      const totalRecords = action.data.totalRecords;
+      const prevCurrentPage = state.articlesState.data.currentPage;
       return {
         ...state,
-        articlesState: setRequestSuccess(state.articlesState, action.data),
+        articlesState: setRequestSuccess(
+          state.articlesState,
+          {
+            products: [...oldProducts, ...newProducts],
+            currentPage: prevCurrentPage + 1,
+            totalRecords,
+          },
+        ),
       };
     case ARTICLES_ACTION_TYPE.ARTICLES_UPLOAD_ERROR:
       return {

@@ -8,97 +8,48 @@ import {
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
 
-export function masterClassUploadData(currentLang, filter) {
+export function fetchProducts(currentLang, filter, page) {
   return async (dispatch) => {
     dispatch({
-      type: SEARCH_BUTTON_ACTION_TYPE.MASTER_CLASSES_UPLOAD_PENDING,
+      type: SEARCH_BUTTON_ACTION_TYPE.PRODUCTS_UPLOAD_PENDING,
     });
     try {
-      const response = await httpRequest({
+      const masterClasses = await httpRequest({
         method: SEARCH_BUTTON_API.MASTER_CLASS_UPLOAD_DATA.TYPE,
-        url: SEARCH_BUTTON_API.MASTER_CLASS_UPLOAD_DATA.ENDPOINT(currentLang, filter),
+        url: SEARCH_BUTTON_API.MASTER_CLASS_UPLOAD_DATA.ENDPOINT(currentLang, filter, page),
       });
-      dispatch({
-        type: SEARCH_BUTTON_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
-        payload: convertMasterClassProducts(response.data),
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: SEARCH_BUTTON_ACTION_TYPE.MASTER_CLASSES_UPLOAD_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-export function sewingGoodsUploadData(currentLang, filter) {
-  return async (dispatch) => {
-    dispatch({
-      type: SEARCH_BUTTON_ACTION_TYPE.SEWING_GOODS_UPLOAD_PENDING,
-    });
-    try {
-      const response = await httpRequest({
+      const sewingGoods = await httpRequest({
         method: SEARCH_BUTTON_API.SEWING_GOODS_UPLOAD_DATA.TYPE,
-        url: SEARCH_BUTTON_API.SEWING_GOODS_UPLOAD_DATA.ENDPOINT(currentLang, filter),
+        url: SEARCH_BUTTON_API.SEWING_GOODS_UPLOAD_DATA.ENDPOINT(currentLang, filter, page),
       });
-      dispatch({
-        type: SEARCH_BUTTON_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
-        payload: convertSewingGoodProducts(response.data),
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: SEARCH_BUTTON_ACTION_TYPE.SEWING_GOODS_UPLOAD_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-export function articleUploadData(currentLang, filter) {
-  return async (dispatch) => {
-    dispatch({
-      type: SEARCH_BUTTON_ACTION_TYPE.ARTICLES_UPLOAD_PENDING,
-    });
-    try {
-      const response = await httpRequest({
-        method: SEARCH_BUTTON_API.ARTICLE_UPLOAD_DATA.TYPE,
-        url: SEARCH_BUTTON_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang, filter),
-      });
-      dispatch({
-        type: SEARCH_BUTTON_ACTION_TYPE.ARTICLES_UPLOAD_SUCCESS,
-        payload: convertArticleProducts(response.data),
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: SEARCH_BUTTON_ACTION_TYPE.ARTICLES_UPLOAD_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-export function patternsUploadData(currentLang, filter) {
-  return async (dispatch) => {
-    dispatch({
-      type: SEARCH_BUTTON_ACTION_TYPE.PATTERNS_UPLOAD_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
+      const patterns = await httpRequest({
         method: SEARCH_BUTTON_API.PATTERNS_UPLOAD.TYPE,
-        url: SEARCH_BUTTON_API.PATTERNS_UPLOAD.ENDPOINT(currentLang, filter),
+        url: SEARCH_BUTTON_API.PATTERNS_UPLOAD.ENDPOINT(currentLang, filter, page),
       });
+      const articles = await httpRequest({
+        method: SEARCH_BUTTON_API.ARTICLE_UPLOAD_DATA.TYPE,
+        url: SEARCH_BUTTON_API.ARTICLE_UPLOAD_DATA.ENDPOINT(currentLang, filter, page),
+      });
+
+      const products = [
+        ...convertMasterClassProducts(masterClasses.data[0]),
+        ...convertSewingGoodProducts(sewingGoods.data[0]),
+        ...convertPatternProducts(patterns.data[0]),
+        ...convertArticleProducts(articles.data[0]),
+      ];
+
+      const totalRecords = masterClasses.data[1] + sewingGoods.data[1] + patterns.data[1] + articles.data[1]
+
       dispatch({
-        type: SEARCH_BUTTON_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS,
-        payload: convertPatternProducts(response.data),
+        type: SEARCH_BUTTON_ACTION_TYPE.PRODUCTS_UPLOAD_SUCCESS,
+        data: {
+          products, totalRecords,
+        },
       });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: SEARCH_BUTTON_ACTION_TYPE.PATTERNS_UPLOAD_ERROR,
+          type: SEARCH_BUTTON_ACTION_TYPE.PRODUCTS_UPLOAD_ERROR,
           errorMessage: err.response.data.message,
         });
       }

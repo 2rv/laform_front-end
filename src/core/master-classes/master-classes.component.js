@@ -3,6 +3,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { PaginationContainer } from '../../lib/common/block-pagination';
 import { SearchFilter } from '../../lib/common/search-filter';
 import { BasicCardList } from 'src/lib/element/card-list';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function MasterClassesComponent(props) {
   const {
@@ -13,6 +14,8 @@ export function MasterClassesComponent(props) {
     categories,
     handleFilter,
     isAdmin,
+    fetchData,
+    hasMore,
   } = props;
 
   return (
@@ -24,13 +27,19 @@ export function MasterClassesComponent(props) {
         categories={categories}
         handleFilter={handleFilter}
       />
-      <BasicCardList
-        items={listItems}
-        onCart={addToCart}
-        onDelete={onDeleteProduct}
-        admin={isAdmin}
-        emptyText="Список пустой"
-      />
+      <InfiniteScroll
+        dataLength={listItems?.length ?? 0}
+        next={fetchData}
+        hasMore={hasMore}
+      >
+        <BasicCardList
+          items={listItems}
+          onCart={addToCart}
+          onDelete={onDeleteProduct}
+          admin={isAdmin}
+          emptyText="Список пустой" //TODO: change to tid
+        />
+      </InfiniteScroll>
     </SectionLayout>
   );
 }

@@ -10,7 +10,7 @@ import {
   FieldCheckbox,
   TextareaField,
 } from '../../../lib/element/field';
-import { RecomendationBlock } from '../../block-recomendation';
+import { RecomendationBlock } from '../../../lib/common/block-select-recomendation';
 import { ReactEditor } from 'src/core/block-react-editor';
 import { ProductOptions } from '../../block-product-options';
 import { BlockCategories } from 'src/core/block-categories';
@@ -24,6 +24,7 @@ import { CREATE_PATTERN_FIELD_NAME } from '../pattern-create.type';
 
 export function FormComponent(props) {
   const {
+    isEdit,
     values,
     errors,
     touched,
@@ -33,7 +34,7 @@ export function FormComponent(props) {
     setFieldValue,
     initialOption,
   } = props;
-
+  console.log(values);
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
   const setEditorData = (name) => (data) => setFieldValue(name, data);
@@ -125,8 +126,9 @@ export function FormComponent(props) {
         <SmallTitle tid="PATTERNS.CREATE.FORM.MATERIALS" />
         <ReactEditor
           handleChange={setEditorData(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
-          values={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
+          data={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
           name={CREATE_PATTERN_FIELD_NAME.MATERIAL}
+          enableReInitialize
         />
         {getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL) && (
           <ErrorField
@@ -190,9 +192,9 @@ export function FormComponent(props) {
       <Divider />
 
       <RecomendationBlock
-        onSetRecomendation={(data) =>
-          setFieldValue(CREATE_PATTERN_FIELD_NAME.RECOMMENDATIONS, data)
-        }
+        values={values[CREATE_PATTERN_FIELD_NAME.RECOMMENDATIONS]}
+        name={CREATE_PATTERN_FIELD_NAME.RECOMMENDATIONS}
+        setFieldValue={setFieldValue}
       />
 
       <ProductPrice
@@ -203,11 +205,18 @@ export function FormComponent(props) {
         )}
       />
       <FieldLayout type="double" adaptive>
-        <ButtonPrimary
-          type="submit"
-          tid="PATTERNS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+        {isEdit ? (
+          <ButtonPrimary type="submit" tid="Сохранить" />
+        ) : (
+          <ButtonPrimary
+            type="submit"
+            tid="PATTERNS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+          />
+        )}
+        <ButtonSecondary
+          onClick={handleReset}
+          tid="PATTERNS.CREATE.FORM.BUTTON.RESET"
         />
-        <ButtonSecondary onClick={handleReset} tid="PATTERNS.CREATE.FORM.BUTTON.RESET" />
       </FieldLayout>
     </SectionLayout>
   );

@@ -1,5 +1,6 @@
 interface categoryType {
   id: string;
+  categoryNameRu?: string;
 }
 interface imageType {
   id: string;
@@ -49,13 +50,14 @@ interface formValueType {
   recommendation: recommendationProductType[];
   categories: categoryValueType[];
   complexity: number;
-  price: number;
-  filePdf: any;
-  discount: number;
-  count: number;
+  price?: number;
+  filePdf?: any;
+  discount?: number;
+  count?: number;
   isCount: boolean;
   optionType: 0 | 2;
   options: optionType[];
+  images?: any;
 }
 
 export function convertForUpload(
@@ -69,7 +71,9 @@ export function convertForUpload(
     descriptionRu: values.descriptionRu,
     modifierRu: values.modifierRu,
     materialRu: values.materialRu,
-    images: images,
+    images: images.map((item) => ({
+      id: item.id,
+    })),
     recommendation: { recommendationProducts: values.recommendation },
     categories: values.categories.map((i) => ({ id: i.basicId })),
     complexity: values.complexity,
@@ -77,7 +81,7 @@ export function convertForUpload(
       values.optionType === 0 && values.type === 1 ? filePdf[0] : undefined,
     price:
       values.optionType === 0
-        ? Number(values.price.toFixed(2)) || 0
+        ? Number(Number(values.price).toFixed(2)) || 0
         : undefined,
     discount:
       values.optionType === 0
@@ -121,4 +125,60 @@ export function convertForPreUploadPDFFiles(formValues: formValueType) {
   if (formValues.type === 2) return [];
   else if (formValues.optionType === 0) return [formValues.filePdf];
   else return formValues.options.map((item) => item.filePdf);
+}
+
+export function convertForChange(rowData: dataValueType): formValueType {
+  return {
+    titleRu: rowData.titleRu,
+    type: rowData.type,
+    descriptionRu: rowData.descriptionRu,
+    modifierRu: rowData.modifierRu,
+    images: rowData.images,
+    recommendation: convertRecommendations(
+      rowData.recommendation.recommendationProducts,
+    ),
+    categories: rowData.categories.map((i) => ({
+      basicId: i.id,
+      tid: i.categoryNameRu,
+    })),
+    price: Number(rowData.price),
+    filePdf: rowData.filePdf,
+    discount: rowData.discount,
+    count: rowData.count,
+    isCount: rowData.isCount,
+    optionType: rowData.optionType,
+    options: rowData.options,
+    complexity: rowData.complexity,
+    materialRu: rowData.materialRu,
+  };
+}
+
+function convertRecommendations(recommendation: any) {
+  return recommendation.map((item: any) => {
+    return {
+      masterClassId: item.masterClassId,
+      patternProductId: item.patternProductId,
+      postId: item.postId,
+      sewingProductId: item.sewingProductId,
+      type:
+        item.masterClassId?.type ||
+        item.patternProductId?.type ||
+        item.postId?.type ||
+        item.sewingProductId?.type,
+    };
+  });
+}
+
+export function convertForUpdateImage(
+  newImages: any = [],
+  formValues: formValueType,
+) {
+  let indexImage = 0;
+  return formValues.images.map((item: any) => {
+    if (!Boolean(item.id) && indexImage < newImages.length) {
+      item.id = newImages[indexImage].id;
+      indexImage = indexImage + 1;
+    }
+    return item;
+  });
 }

@@ -6,7 +6,7 @@ export const SEWING_GOODS_API = {
       `/sewing-product/get?lang=${currentLang}${
         Boolean(page) ? `&page=${page}` : ''
       }${Boolean(where) ? `&where=${where}` : ''}${
-        Boolean(sort) ? `&sort=${sort}` : ''
+        Boolean(sort) ? `&sort=${sort}` : '&sort=date'
       }${Boolean(by) ? `&by=${by}` : ''}${
         Boolean(category) ? `&category=${category}` : ''
       }`,
@@ -17,7 +17,7 @@ export const SEWING_GOODS_API = {
       `/sewing-product/auth/get?lang=${currentLang}${
         Boolean(page) ? `&page=${page}` : ''
       }${Boolean(where) ? `&where=${where}` : ''}${
-        Boolean(sort) ? `&sort=${sort}` : ''
+        Boolean(sort) ? `&sort=${sort}` : '&sort=date'
       }${Boolean(by) ? `&by=${by}` : ''}${
         Boolean(category) ? `&category=${category}` : ''
       }`,

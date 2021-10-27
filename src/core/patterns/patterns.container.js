@@ -17,6 +17,7 @@ import { addToBasket } from '../basket';
 import { redirect } from 'src/main/navigation';
 import { PATTERNS_ROUTE_PATH } from '.';
 import { useRouter } from 'next/router';
+import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
@@ -51,6 +52,7 @@ export function PatternsContainer() {
   }, []);
 
   const handleFilter = ({ where, sort, by, category }) => {
+    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;
@@ -64,6 +66,7 @@ export function PatternsContainer() {
   };
   const addToCart = (values) => dispatch(addToBasket(values, currentLang));
   const setActiveTab = (value) => {
+    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter, type: value };
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
@@ -73,15 +76,18 @@ export function PatternsContainer() {
       redirect(PATTERNS_ROUTE_PATH);
     }
   };
+
   return (
     <PatternsComponent
       onDeleteProduct={onDeleteProduct}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
       addToCart={addToCart}
-      listItems={getRequestData(patternsState, [])}
+      listItems={getRequestData(patternsState, {}).products}
       filterOptions={filterOptionss}
       categories={productCategories}
       handleFilter={handleFilter}
+      fetchData={() => dispatch(patternsUploadData(isAuth, { currentLang, ...filter, page: patternsState.data?.currentPage }))}
+      hasMore={Number(patternsState.data?.products?.length) < Number(patternsState.data?.totalRecords)}
       activeTab={patternType}
       setActiveTab={setActiveTab}
       tabItems={tabItems}

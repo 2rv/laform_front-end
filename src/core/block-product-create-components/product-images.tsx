@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, SyntheticEvent } from 'react';
 import { FieldArray } from 'formik';
 import { ReactComponent as ImageIcon } from '../../asset/svg/image.svg';
 import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
@@ -9,18 +9,24 @@ import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { IconButton } from '../../lib/element/button';
 import { ErrorField } from '../../lib/element/error';
+import { ProductImagesProps } from './components.type';
 
-export function ProductImages(props) {
+export function ProductImages(props: ProductImagesProps) {
   const {
     errors,
+
     setFieldValue,
+
     images,
+
     imagesArrayName,
+
     imageFieldName,
+
     maxImages = 6,
+
     title,
   } = props;
-
   const [priviewImages, setPreviewImage] = useState([]);
 
   useEffect(() => {
@@ -29,49 +35,53 @@ export function ProductImages(props) {
     }
   }, [images]);
 
-  const setPreview = (push) => (event) => {
-    const file = event.currentTarget?.files?.[0];
-    if (file?.type.split('/')[0] !== 'image' || !file) {
-      alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader?.result) {
-        const copy = [...priviewImages];
-        copy.push(reader.result);
-        setPreviewImage(copy);
-        push({ [imageFieldName]: file });
+  const setPreview =
+    (push: Function) => (event: SyntheticEvent<HTMLInputElement>) => {
+      const file = event.currentTarget?.files?.[0];
+      if (file?.type.split('/')[0] !== 'image' || !file) {
+        alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
+        return;
       }
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.result) {
+          const copy = [...priviewImages];
+          //@ts-ignore
+          copy.push(reader.result);
+          setPreviewImage(copy);
+          push({ [imageFieldName]: file });
+        }
+      };
+      reader.readAsDataURL(file);
     };
-    reader.readAsDataURL(file);
-  };
 
-  const removePreview = (remove, index) => {
+  const removePreview = (remove: Function, index: number) => {
     const copy = [...priviewImages];
     copy.splice(index, 1);
     setPreviewImage(copy);
     remove(index);
   };
 
-  const changePreview = (index) => (event) => {
-    const file = event.currentTarget?.files?.[0];
+  const changePreview =
+    (index: number) => (event: SyntheticEvent<HTMLInputElement>) => {
+      const file = event.currentTarget?.files?.[0];
 
-    if (file?.type.split('/')[0] !== 'image' || !file) {
-      alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader?.result) {
-        const copy = [...priviewImages];
-        copy.splice(index, 1, reader.result);
-        setPreviewImage(copy);
-        setFieldValue(`${imagesArrayName}.${index}.${imageFieldName}`, file);
+      if (file?.type.split('/')[0] !== 'image' || !file) {
+        alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
+        return;
       }
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader?.result) {
+          const copy = [...priviewImages];
+          //@ts-ignore
+          copy.splice(index, 1, reader.result);
+          setPreviewImage(copy);
+          setFieldValue(`${imagesArrayName}.${index}.${imageFieldName}`, file);
+        }
+      };
+      reader.readAsDataURL(file);
     };
-    reader.readAsDataURL(file);
-  };
 
   return (
     <SectionLayout type="SMALL">
@@ -86,7 +96,11 @@ export function ProductImages(props) {
                   <PositionContainer>
                     <Button>
                       <Icon />
-                      <File type="file" onChange={changePreview(index)} />
+                      <File
+                        type="file"
+                        accept="image/*"
+                        onChange={changePreview(index)}
+                      />
                     </Button>
                     <IconButton onClick={() => removePreview(remove, index)}>
                       <RemoveIcon />
@@ -99,7 +113,11 @@ export function ProductImages(props) {
               <ImageContainer>
                 <AddImage>
                   <Icon />
-                  <File type="file" onChange={setPreview(push)} />
+                  <File
+                    type="file"
+                    accept="image/*"
+                    onChange={setPreview(push)}
+                  />
                   <Text tid="PRODUCT_IMAGES.ADD_PHOTO" />
                 </AddImage>
               </ImageContainer>
@@ -114,9 +132,9 @@ export function ProductImages(props) {
   );
 }
 const Icon = styled(ImageIcon)`
-width: 20px;
-height: 20px;
-`
+  width: 20px;
+  height: 20px;
+`;
 const Button = styled.label`
   display: flex;
   width: 46px;
