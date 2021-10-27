@@ -23,7 +23,7 @@ export function PurchaseProductsContainer() {
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
   useEffect(() => dispatch(purchaseProductLoadData()), []);
-  const data = getRequestData(purchaseProductsLoadData, {}).orders;
+  const data = getRequestData(purchaseProductsLoadData, {});
 
   const getTabAppropriateData = (activeTab) => {
     switch (activeTab) {
@@ -60,8 +60,6 @@ export function PurchaseProductsContainer() {
       activeTab={activeTab}
       setActiveTab={setActiveTab}
       pageLoading={pageLoading}
-      // fetchData={() => dispatch(purchaseProductLoadData(purchaseProductsLoadData.data.currentPage))}
-      // hasMore={Number(purchaseProductsLoadData.data?.orders?.length) < Number(purchaseProductsLoadData.data?.totalRecords)}
     />
   );
 }

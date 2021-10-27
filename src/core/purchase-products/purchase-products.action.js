@@ -4,8 +4,8 @@ import { PURCHASE_PRODUCTS_ACTION_TYPE } from './purchase-products.type';
 import { convertForTable } from './purchase-products.ts.convert';
 import { PURCHASE_PRODUCTS_STORE_NAME } from './purchase-products.constant';
 
-export function purchaseProductLoadData(data, page) {
-  return async (dispatch, getState) => {
+export function purchaseProductLoadData() {
+  return async (dispatch) => {
     dispatch({
       type: PURCHASE_PRODUCTS_ACTION_TYPE.PURCHASE_PRODUCTS_DATA_LOAD_PENDING,
     });
@@ -13,18 +13,12 @@ export function purchaseProductLoadData(data, page) {
     try {
       const res = await httpRequest({
         method: PURCHASE_PRODUCTS_API.LOAD_DATA.METHOD,
-        url: PURCHASE_PRODUCTS_API.LOAD_DATA.ENDPOINT(page),
-        data,
+        url: PURCHASE_PRODUCTS_API.LOAD_DATA.ENDPOINT,
       });
-
-      console.log('getState:', getState()[PURCHASE_PRODUCTS_STORE_NAME].purchaseProductsLoadData.orders);
 
       dispatch({
         type: PURCHASE_PRODUCTS_ACTION_TYPE.PURCHASE_PRODUCTS_DATA_LOAD_SUCCESS,
-        data: {
-          orders: convertForTable(res.data[0]),
-          totalRecords: res.data[1],
-        },
+        data: convertForTable(res.data[0]),
       });
     } catch (err) {
       if (err.response) {

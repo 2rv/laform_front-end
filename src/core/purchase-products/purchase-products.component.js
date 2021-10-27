@@ -5,7 +5,6 @@ import { TextSecondary } from '../../lib/element/text';
 import { FilterTabs } from '../../lib/element/filter-tabs';
 import { HintBlockComponent } from './frame/hint-block.component';
 import { Table } from 'src/lib/common/block-table';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function PurchaseProductsComponent(props) {
   const {
@@ -15,8 +14,6 @@ export function PurchaseProductsComponent(props) {
     activeTab,
     setActiveTab,
     tabItems,
-    // fetchData,
-    // hasMore,
   } = props;
   return (
     <>
@@ -30,16 +27,10 @@ export function PurchaseProductsComponent(props) {
           tabItems={tabItems}
         />
         {Boolean(products.purchasedProducts?.length > 0) ? (
-          // <InfiniteScroll
-          //   dataLength={products.purchasedProducts?.length ?? 0}
-          //   next={fetchData}
-          //   hasMore={hasMore}
-          // >
-            <Table
-              items={products.purchasedProducts}
-              headers={products.headers}
-            />
-          // </InfiniteScroll>
+          <Table
+            items={products.purchasedProducts}
+            headers={products.headers}
+          />
         ) : (
           <TextSecondary tid="PURCHASED_PRODUCTS.EMPTY" />
         )}

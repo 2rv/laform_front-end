@@ -49,7 +49,6 @@ export function LikesContainer() {
       dispatch(likePostUploadData(currentLang));
       setActiveTabText('ALL_LIKES.TABS.POST');
     };
-    console.log('data:', likes.data.products);
   }, [activeTab, updated]);
 
   const fetchData = () => {
