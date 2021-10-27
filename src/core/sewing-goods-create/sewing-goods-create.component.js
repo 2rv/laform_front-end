@@ -1,19 +1,24 @@
 import { Formik } from 'formik';
+import { SelectImageBlock } from 'src/lib/common/block-select-image';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-create-components';
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods-create.type';
 
 export function CreateSewingGoodsComponent(props) {
   const {
     pageLoading,
+    isEdit,
     isPending,
     isSuccess,
     isError,
     errorMessage,
+    updateIsPending,
+    updateIsError,
+    updateIsSuccess,
+    updateErrorMessage,
     //--------
     initialOption,
     initialValues,
@@ -22,7 +27,7 @@ export function CreateSewingGoodsComponent(props) {
   } = props;
   return (
     <>
-      {(pageLoading || isPending) && <LoaderPrimary />}
+      {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
       <SectionLayout>
         <TitlePrimary tid="SEWING_GOODS.CREATE.TITLE" />
         <Formik
@@ -35,14 +40,16 @@ export function CreateSewingGoodsComponent(props) {
             return (
               <form onSubmit={formProps.handleSubmit}>
                 <SectionLayout>
-                  <ProductImages
+                  <SelectImageBlock
+                    titleTid="PRODUCT_IMAGES.TITLE"
+                    name={SEWING_GOODS_FIELD_NAME.IMAGES}
                     {...formProps}
-                    images={formProps.values[SEWING_GOODS_FIELD_NAME.IMAGES]}
-                    imagesArrayName={SEWING_GOODS_FIELD_NAME.IMAGES}
-                    imageFieldName={SEWING_GOODS_FIELD_NAME.IMAGE}
-                    title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent {...formProps} initialOption={initialOption} />
+                  <FormComponent
+                    {...formProps}
+                    isEdit={isEdit}
+                    initialOption={initialOption}
+                  />
                 </SectionLayout>
               </form>
             );
@@ -51,7 +58,9 @@ export function CreateSewingGoodsComponent(props) {
         {isSuccess && (
           <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
         )}
+        {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
         {isError && <ErrorAlert tid={errorMessage} />}
+        {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
       </SectionLayout>
     </>
   );

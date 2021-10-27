@@ -9,7 +9,7 @@ import {
   FieldCheckbox,
 } from '../../../lib/element/field';
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
-import { RecomendationBlock } from '../../block-recomendation';
+import { RecomendationBlock } from '../../../lib/common/block-select-recomendation';
 import { Divider } from 'src/lib/element/divider';
 import { BlockCategories } from 'src/core/block-categories';
 import { numberValue } from 'src/lib/common/create-product-validation';
@@ -19,6 +19,7 @@ import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/conv
 
 export function FormComponent(props) {
   const {
+    isEdit,
     values,
     errors,
     touched,
@@ -141,9 +142,9 @@ export function FormComponent(props) {
       <Divider />
 
       <RecomendationBlock
-        onSetRecomendation={(data) =>
-          setFieldValue(SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS, data)
-        }
+        values={values[SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS]}
+        name={SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS}
+        setFieldValue={setFieldValue}
       />
 
       <ProductPrice
@@ -154,11 +155,19 @@ export function FormComponent(props) {
         )}
       />
       <FieldLayout type="double" adaptive>
-        <ButtonPrimary
-          type="submit"
-          tid="SEWING_GOODS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+        {isEdit ? (
+          <ButtonPrimary type="submit" tid="Сохранить" />
+        ) : (
+          <ButtonPrimary
+            type="submit"
+            tid="SEWING_GOODS.CREATE.FORM.BUTTON.CREATE_PRODUCT"
+          />
+        )}
+
+        <ButtonSecondary
+          onClick={handleReset}
+          tid="SEWING_GOODS.CREATE.FORM.BUTTON.RESET"
         />
-        <ButtonSecondary onClick={handleReset} tid="SEWING_GOODS.CREATE.FORM.BUTTON.RESET" />
       </FieldLayout>
     </SectionLayout>
   );

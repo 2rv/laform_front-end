@@ -8,6 +8,8 @@ import { CREATE_PATTERN_ACTION_TYPE } from './pattern-create.type';
 
 const initialState = {
   createPattern: initRequestState(),
+  updatePattern: initRequestState(),
+  product: initRequestState(),
 };
 
 export function createPatternStore(state = initialState, action) {
@@ -27,6 +29,41 @@ export function createPatternStore(state = initialState, action) {
         ...state,
         createPattern: setRequestError(
           state.createPattern,
+          action.errorMessage,
+        ),
+      };
+
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_LOAD_PENDING:
+      return {
+        ...state,
+        product: setRequestPending(state.product),
+      };
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_LOAD_SUCCESS:
+      return {
+        ...state,
+        product: setRequestSuccess(state.product, action.data),
+      };
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_LOAD_ERROR:
+      return {
+        ...state,
+        product: setRequestError(state.product, action.errorMessage),
+      };
+
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_UPDATE_PENDING:
+      return {
+        ...state,
+        updatePattern: setRequestPending(state.updatePattern),
+      };
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_UPDATE_SUCCESS:
+      return {
+        ...state,
+        updatePattern: setRequestSuccess(state.updatePattern),
+      };
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_UPDATE_ERROR:
+      return {
+        ...state,
+        updatePattern: setRequestError(
+          state.updatePattern,
           action.errorMessage,
         ),
       };

@@ -13,3 +13,11 @@ export interface ComplexityFieldProps extends FormikProps {
   value: number;
   title: string;
 }
+
+export interface ProductImagesProps extends FormikProps {
+  images: any;
+  imagesArrayName: string;
+  imageFieldName: string;
+  maxImages: string;
+  title: string;
+}

@@ -120,7 +120,7 @@ import {
 import {
   recomendationStore,
   RECOMENDATION_STORE_NAME,
-} from '../../core/block-recomendation';
+} from '../../lib/common/block-select-recomendation';
 import {
   createSewingGoodsStore,
   CREATE_SEWING_GOODS_STORE_NAME,

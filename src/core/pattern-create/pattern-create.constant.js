@@ -13,4 +13,12 @@ export const CREATE_PATTERN_API = {
     TYPE: 'POST',
     ENDPOINT: '/file/create-many',
   },
+  PATTERN_LOAD: {
+    ENDPOINT: (id) => `/pattern-product/get/${id}/?lang=ru`,
+    TYPE: 'GET',
+  },
+  PATTERN_CHANGE: {
+    ENDPOINT: (id) => `/pattern-product/update/${id}/?lang=ru`,
+    TYPE: 'PUT',
+  },
 };
