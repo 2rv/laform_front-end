@@ -126,9 +126,8 @@ export function FormComponent(props) {
         <SmallTitle tid="PATTERNS.CREATE.FORM.MATERIALS" />
         <ReactEditor
           handleChange={setEditorData(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
-          data={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
+          values={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
           name={CREATE_PATTERN_FIELD_NAME.MATERIAL}
-          enableReInitialize
         />
         {getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL) && (
           <ErrorField
