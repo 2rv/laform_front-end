@@ -30,7 +30,6 @@ export function RecomendationContainer(props) {
     [RECOMENDATION_FILTER.FILTER]: 0,
     [RECOMENDATION_FILTER.FIND]: '',
   };
-  //   console.log(values);
   const [activeTab, setActiveTab] = useState(9);
   const [filter, setFilter] = useState(filterInitialValue);
   const [products, setProduct] = useState(listItems);

@@ -3,8 +3,8 @@ import {
   numberTwoDigit,
   numberValue,
 } from 'src/lib/common/create-product-validation';
-import { BasicField, FileField } from '../../lib/element/field';
-import { FieldLayout } from '../../lib/element/layout';
+import { BasicField, FileField } from '../../element/field';
+import { FieldLayout } from '../../element/layout';
 import { ProductOptionsNoneProps } from './components.type';
 import { SyntheticEvent } from 'react';
 

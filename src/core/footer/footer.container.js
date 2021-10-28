@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { SIGNUP_ROUTE_PATH } from 'src/lib/common/signup/signup.constant';
+import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
 import { ABOUT_ROUTE_PATH } from '../about';
 import { FAQ_ROUTE_PATH } from '../faq';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';

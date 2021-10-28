@@ -9,4 +9,12 @@ export const CREATE_MASTER_CLASS_API = {
     TYPE: 'POST',
     ENDPOINT: '/file/create-many',
   },
+  MASTER_CLASS_LOAD: {
+    ENDPOINT: (id) => `/master-class/get/for-update/${id}/?lang=ru`,
+    TYPE: 'GET',
+  },
+  MASTER_CLASS_CHANGE: {
+    ENDPOINT: (id) => `/master-class/update/${id}/?lang=ru`,
+    TYPE: 'PUT',
+  },
 };

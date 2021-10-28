@@ -3,15 +3,22 @@ import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import { BasicField, MultiField } from '../../../lib/element/field';
 import { ARTICLE_FIELD_NAME } from '../article-create.type';
-import { RecomendationBlock } from '../../block-recomendation';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
-import { ReactEditor } from 'src/core/block-react-editor';
-import { BlockCategories } from 'src/core/block-categories';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { BlockCategories } from 'src/lib/common/block-categories';
+import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
 
 export function FormComponent(props) {
-  const { values, errors, touched, handleChange, handleBlur, setFieldValue } =
-    props;
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    setFieldValue,
+    isEdit,
+  } = props;
 
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setEditorData = (name) => (editorData) =>
@@ -41,30 +48,30 @@ export function FormComponent(props) {
           />
         </FieldLayout>
         <BlockCategories values={values} handleBlur={handleBlur} type={4} />
-        <SectionLayout type="SMALL">
-          <Title tid="Статья" />
-          <ReactEditor
-            handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
-            values={values[ARTICLE_FIELD_NAME.ARTICLE]}
-            name={ARTICLE_FIELD_NAME.ARTICLE}
-          />
-        </SectionLayout>
+        <ReactEditorBlock
+          titleTid="Статья"
+          handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
+          data={isEdit && values[ARTICLE_FIELD_NAME.ARTICLE]}
+          minHeight={100}
+          enableIsEdit={isEdit}
+        />
         <RecomendationBlock
-          onSetRecomendation={(data) =>
-            setFieldValue(ARTICLE_FIELD_NAME.RECOMMENDATIONS, data)
-          }
+          values={values[ARTICLE_FIELD_NAME.RECOMMENDATIONS]}
+          name={ARTICLE_FIELD_NAME.RECOMMENDATIONS}
+          setFieldValue={setFieldValue}
         />
         <FieldLayout type="double" adaptive>
-          <ButtonPrimary
-            type="submit"
-            tid="ARTICLE_CREATE_FORM.BUTTON.CREATE_ARTICLE"
-          />
+          {isEdit ? (
+            <ButtonPrimary type="submit" tid="Сохранить" />
+          ) : (
+            <ButtonPrimary
+              type="submit"
+              tid="ARTICLE_CREATE_FORM.BUTTON.CREATE_ARTICLE"
+            />
+          )}
           <ButtonSecondary tid="ARTICLE_CREATE_FORM.BUTTON.CANCEL" />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>
   );
 }
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-`;

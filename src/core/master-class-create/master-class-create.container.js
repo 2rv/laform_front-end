@@ -1,4 +1,5 @@
 import {
+  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -9,38 +10,69 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from './master-class-create.type';
 import { CREATE_MASTER_CLASS_STORE_NAME } from './master-class-create.constant';
 import { CreateMasterClassComponent } from './master-class-create.component';
-import { createMasterClassPreUploadData } from './master-class-create.action';
 import { formValidation } from './master-class-create.validation';
+import {
+  createMasterClassPreUploadData,
+  masterClassLoadData,
+  updateMasterClassPreUpload,
+} from './master-class-create.action';
+import { getQuery } from 'src/main/navigation';
+import { useEffect } from 'react';
 
 export function CreateMasterClassContainer() {
   const dispatch = useDispatch();
-  const { state, pageLoading } = useSelector((state) => ({
-    state: state[CREATE_MASTER_CLASS_STORE_NAME].createMasterClass,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
+  const masterClassId = getQuery('id');
+
+  const { state, pageLoading, productState, updateMasterClassState } =
+    useSelector((state) => ({
+      state: state[CREATE_MASTER_CLASS_STORE_NAME].createMasterClass,
+      productState: state[CREATE_MASTER_CLASS_STORE_NAME].product,
+      updateMasterClassState:
+        state[CREATE_MASTER_CLASS_STORE_NAME].updateMasterClass,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }));
+
+  useEffect(() => {
+    if (Boolean(masterClassId)) {
+      dispatch(masterClassLoadData(masterClassId));
+    }
+  }, [masterClassId]);
 
   const onSubmit = (formValues) => {
-    dispatch(createMasterClassPreUploadData(formValues));
+    if (Boolean(masterClassId)) {
+      dispatch(updateMasterClassPreUpload(masterClassId, formValues));
+    } else {
+      dispatch(createMasterClassPreUploadData(formValues));
+    }
   };
 
-  const initialValues = () => ({
-    [CREATE_MASTER_CLASS_FIELD_NAME.NAME]: '',
-    [CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER]: '',
-    [CREATE_MASTER_CLASS_FIELD_NAME.IMAGES]: [],
-    [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]: '',
-    [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: [],
-    [CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]: 0,
-    [CREATE_MASTER_CLASS_FIELD_NAME.PRICE]: 0,
-    [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: [],
-  });
-
+  const initialValues = () => {
+    const data = getRequestData(productState, {
+      [CREATE_MASTER_CLASS_FIELD_NAME.NAME]: '',
+      [CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER]: '',
+      [CREATE_MASTER_CLASS_FIELD_NAME.IMAGES]: [],
+      [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]: '',
+      [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: [],
+      [CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]: 0,
+      [CREATE_MASTER_CLASS_FIELD_NAME.PRICE]: 0,
+      [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: [],
+      [CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]: null,
+    });
+    return data;
+  };
   return (
     <CreateMasterClassComponent
       pageLoading={pageLoading}
+      isEdit={Boolean(masterClassId)}
       isPending={isRequestPending(state)}
       isError={isRequestError(state)}
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
+      //-------------
+      updateIsPending={isRequestPending(updateMasterClassState)}
+      updateIsError={isRequestError(updateMasterClassState)}
+      updateIsSuccess={isRequestSuccess(updateMasterClassState)}
+      updateErrorMessage={getRequestErrorMessage(updateMasterClassState)}
       //-------------
       initialValues={initialValues()}
       onSubmit={onSubmit}

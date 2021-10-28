@@ -11,7 +11,6 @@ export function PatternsComponent(props) {
     listItems,
     onDeleteProduct,
     isAdmin,
-    addToCart,
     activeTab,
     setActiveTab,
     tabItems,
@@ -45,7 +44,6 @@ export function PatternsComponent(props) {
       >
         <BasicCardList
           items={listItems}
-          onCart={addToCart}
           onDelete={onDeleteProduct}
           admin={isAdmin}
           emptyText="Список пустой" //TODO: change to tid

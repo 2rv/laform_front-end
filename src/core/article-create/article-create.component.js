@@ -5,7 +5,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { ARTICLE_FIELD_NAME } from './article-create.type';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-create-components';
+import { SelectImageBlock } from 'src/lib/common/block-select-image';
 
 export function CreateArticleComponent(props) {
   const {
@@ -18,10 +18,16 @@ export function CreateArticleComponent(props) {
     initialValues,
     onSubmit,
     validation,
+
+    isEdit,
+    updateIsPending,
+    updateIsError,
+    updateIsSuccess,
+    updateErrorMessage,
   } = props;
   return (
     <>
-      {(pageLoading || isPending) && <LoaderPrimary />}
+      {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
       <SectionLayout>
         <TitlePrimary tid="ARTICLE_CREATE_FORM.CREATING_AN_ARTICLE" />
         <Formik
@@ -34,14 +40,12 @@ export function CreateArticleComponent(props) {
             return (
               <form onSubmit={formProps.handleSubmit}>
                 <SectionLayout>
-                  <ProductImages
+                  <SelectImageBlock
+                    titleTid="PRODUCT_IMAGES.TITLE"
+                    name={ARTICLE_FIELD_NAME.IMAGES}
                     {...formProps}
-                    maxImages={1}
-                    imagesArrayName={ARTICLE_FIELD_NAME.IMAGES}
-                    imageFieldName={ARTICLE_FIELD_NAME.IMAGE}
-                    title="ARTICLE_CREATE_FORM.PHOTO_ARTICLE"
                   />
-                  <FormComponent {...formProps} />
+                  <FormComponent isEdit={isEdit} {...formProps} />
                 </SectionLayout>
               </form>
             );
@@ -51,6 +55,8 @@ export function CreateArticleComponent(props) {
           <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_CREATED" />
         )}
         {isError && <ErrorAlert tid={errorMessage} />}
+        {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
+        {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
       </SectionLayout>
     </>
   );

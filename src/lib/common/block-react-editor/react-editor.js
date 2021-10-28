@@ -1,17 +1,21 @@
 import EditorJs from 'react-editor-js';
 import { tools, i18n } from './options';
-import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../lib/theme';
+import { THEME_SIZE, THEME_COLOR } from '../../theme';
 import styled, { css } from 'styled-components';
 
 const ReactEditor = (props) => {
   const {
     handleChange,
-    name,
     enableReInitialize,
     readOnly,
     data,
     minHeight = 100,
+    enableIsEdit = false,
   } = props;
+
+  if (enableIsEdit && !data) {
+    return null;
+  }
 
   const onChange = (_, data) => {
     handleChange(data);

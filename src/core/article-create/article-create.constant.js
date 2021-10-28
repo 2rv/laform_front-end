@@ -9,4 +9,12 @@ export const CREATE_ARTICLE_API = {
     TYPE: 'POST',
     ENDPOINT: '/file/create',
   },
+  ARTICLE_LOAD: {
+    ENDPOINT: (id) => `/post/get/${id}/?lang=ru`,
+    TYPE: 'GET',
+  },
+  ARTICLE_CHANGE: {
+    ENDPOINT: (id) => `/post/update/${id}/?lang=ru`,
+    TYPE: 'PUT',
+  },
 };

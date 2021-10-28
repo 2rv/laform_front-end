@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import { ReactEditor } from '../block-react-editor';
+import { ReactEditorBlock } from '../../lib/common/block-react-editor';
 import { ProductMainComponent } from './frames';
 import { ProductImages } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';
@@ -24,12 +24,18 @@ export function PatternsPageComponent(props) {
     <SectionLayout type="MEDIUM">
       <Content>
         <ProductImages items={productData.images} />
-        <ProductMainComponent {...productData} isPdfPending={isPdfPending} isPdfSuccess={isPdfSuccess} />
+        <ProductMainComponent
+          {...productData}
+          isPdfPending={isPdfPending}
+          isPdfSuccess={isPdfSuccess}
+        />
       </Content>
-      <SectionLayout type="TEXT">
-        <TitlePrimary tid="PATTERNS.CREATE.FORM.COMPLEXITY" />
-        <ReactEditor data={productData.materials} enableReInitialize readOnly />
-      </SectionLayout>
+      <ReactEditorBlock
+        titleTid="PATTERNS.CREATE.FORM.COMPLEXITY"
+        data={productData.materials}
+        enableReInitialize
+        readOnly
+      />
     </SectionLayout>
   );
 }

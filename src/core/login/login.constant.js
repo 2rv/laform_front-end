@@ -1,9 +1,7 @@
-export { LOGIN_ROUTE_PATH } from '../../lib/common/login/login.constant';
-
-import { SIGNUP_ROUTE_PATH } from '../signup';
-
+export const LOGIN_ROUTE_PATH = '/login';
 export const LOGIN_STORE_NAME = 'LOGIN';
 
+import { SIGNUP_ROUTE_PATH } from '../signup';
 import { AUTH_RECOVERY_ACCOUNT_ROUTE_PATH } from '../auth-recovery-account';
 
 export const LOGIN_API = {

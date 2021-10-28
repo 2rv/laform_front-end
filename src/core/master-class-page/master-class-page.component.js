@@ -3,7 +3,7 @@ import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
-import { ReactEditor } from '../block-react-editor';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { ConvertTime } from 'src/lib/common/time-convert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
@@ -17,7 +17,11 @@ export function MasterClassPageComponent(props) {
         <Title tid={productInfo.name} />
         <TextLight tid={ConvertTime(productInfo.createdDate)} />
       </HeaderCase>
-      <ReactEditor data={productInfo.articleText} enableReInitialize readOnly />
+      <ReactEditorBlock
+        data={productInfo.articleText}
+        enableReInitialize
+        readOnly
+      />
     </SectionLayout>
   );
 }

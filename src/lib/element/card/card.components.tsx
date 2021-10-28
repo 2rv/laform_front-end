@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { THEME_SIZE, THEME_COLOR, spacing } from '../../theme';
 import {
   CardActionProps,
@@ -14,53 +14,8 @@ import { ReactComponent as DeleteIcon } from '../../../asset/svg/delete-cancel-i
 import { TextCurrency, TextSecondary } from '../text';
 import { Popup } from '../popup';
 import { FieldLayout } from '../layout';
-import { BASKET_ROUTE_PATH, BASKET_STORE_NAME } from 'src/core/basket';
-import { redirect } from 'src/main/navigation';
-import { useSelector } from 'react-redux';
-import { isRequestPending } from 'src/main/store/store.service';
 import { ReactComponent as GalochkaIcon } from '../../../asset/svg/galochka.svg';
 
-export function CartButton(props: CardActionProps) {
-  const { id, type = false, onCart } = props;
-  if (!id || type === false || !onCart) return null;
-  const { bascketState, basketAction } = useSelector((state: any) => ({
-    bascketState: state[BASKET_STORE_NAME].basket,
-    basketAction: state[BASKET_STORE_NAME].basketAction,
-  }));
-  const isPending = isRequestPending(basketAction);
-
-  const [isCart, setCart] = useState(false);
-
-  useEffect(() => {
-    const result = bascketState.find((item: any) => {
-      if (type === 0) return item.id === id;
-    });
-    setCart(Boolean(result));
-  }, [bascketState]);
-
-  const addToCart = () => () => {
-    if (isCart) return redirect(BASKET_ROUTE_PATH);
-    onCart({
-      id,
-      type,
-    });
-  };
-
-  return (
-    <Button
-      disabled={isPending}
-      active={isCart}
-      onClick={addToCart}
-      tid={
-        isPending
-          ? 'Подождите'
-          : isCart
-          ? 'BASKET.GO_TO_BASKET'
-          : 'BASKET.ADD_TO_BASKET'
-      }
-    />
-  );
-}
 export function LikeButton(props: CardActionProps) {
   const { id, type, like = null } = props;
   if (like === null) return null;

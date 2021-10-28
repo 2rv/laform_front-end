@@ -6,7 +6,7 @@ import {
   IconButton,
   TextButton,
 } from 'src/lib/element/button';
-import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
+import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { ModalFull } from 'src/lib/element/modal';
 import { TitlePrimary } from 'src/lib/element/title';
 import { useState, SyntheticEvent } from 'react';

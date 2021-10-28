@@ -25,7 +25,6 @@ export function CardMasterClass(props: CardMasterClassType) {
     admin,
     onSelect,
     onDelete,
-    onCart,
   } = props;
 
   return (
@@ -48,7 +47,7 @@ export function CardMasterClass(props: CardMasterClassType) {
           type={type}
           price={price}
           discount={discount}
-          onCart={onCart}
+          thisIsCart={Boolean(onSelect)}
         />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />

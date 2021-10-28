@@ -1,4 +1,3 @@
-import { dynamicFieldsValidation } from 'src/lib/common/create-product-helpers';
 import { validate } from '../../main/validate/validate.core';
 import {
   required,

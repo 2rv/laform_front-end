@@ -5,7 +5,7 @@ import { TextSecondary } from '../../lib/element/text';
 import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { BlockComment } from '../block-comment';
-import { ReactEditor } from '../block-react-editor';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { ConvertTime } from 'src/lib/common/time-convert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
@@ -17,8 +17,8 @@ export function ArticlePageComponent(props) {
     errorMessage,
     pageLoading,
     productInfo,
-    addToCart,
   } = props;
+
   const {
     id,
     type,
@@ -29,6 +29,7 @@ export function ArticlePageComponent(props) {
     createdDate,
     recommendations,
   } = productInfo;
+
   return (
     <SectionLayout>
       {isPending && <LoaderPrimary />}
@@ -36,13 +37,9 @@ export function ArticlePageComponent(props) {
         <Title tid={name} />
         <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
-      <ReactEditor data={postArticle} enableReInitialize readOnly />
-      <CardListBlock
-        title="Рекомендации"
-        items={recommendations}
-        onCart={addToCart}
-      />
-      <BlockComment onSetCart={addToCart} type={type} id={id} />
+      <ReactEditorBlock data={postArticle} enableReInitialize readOnly />
+      <CardListBlock title="Рекомендации" items={recommendations} />
+      <BlockComment type={type} id={id} />
     </SectionLayout>
   );
 }

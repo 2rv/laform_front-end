@@ -8,6 +8,8 @@ import { CREATE_MASTER_CLASS_ACTION_TYPE } from './master-class-create.type';
 
 const initialState = {
   createMasterClass: initRequestState(),
+  product: initRequestState(),
+  updateMasterClass: initRequestState(),
 };
 
 export function createMasterClassStore(state = initialState, action) {
@@ -27,6 +29,41 @@ export function createMasterClassStore(state = initialState, action) {
         ...state,
         createMasterClass: setRequestError(
           state.createMasterClass,
+          action.errorMessage,
+        ),
+      };
+
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_LOAD_PENDING:
+      return {
+        ...state,
+        product: setRequestPending(state.product),
+      };
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_LOAD_SUCCESS:
+      return {
+        ...state,
+        product: setRequestSuccess(state.product, action.data),
+      };
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_LOAD_ERROR:
+      return {
+        ...state,
+        product: setRequestError(state.product, action.errorMessage),
+      };
+
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_UPDATE_PENDING:
+      return {
+        ...state,
+        updateMasterClass: setRequestPending(state.updateMasterClass),
+      };
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_UPDATE_SUCCESS:
+      return {
+        ...state,
+        updateMasterClass: setRequestSuccess(state.updateMasterClass),
+      };
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_UPDATE_ERROR:
+      return {
+        ...state,
+        updateMasterClass: setRequestError(
+          state.updateMasterClass,
           action.errorMessage,
         ),
       };
