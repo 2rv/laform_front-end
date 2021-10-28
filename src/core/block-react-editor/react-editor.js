@@ -11,7 +11,12 @@ const ReactEditor = (props) => {
     readOnly,
     data,
     minHeight = 100,
+    enableIsEdit = false,
   } = props;
+
+  if (enableIsEdit && !data) {
+    return null;
+  }
 
   const onChange = (_, data) => {
     handleChange(data);

@@ -1,15 +1,15 @@
 import { httpRequest } from '../../main/http';
-import { CREATE_ARTICLE_API } from './article-create.constant';
-import { convertForUpload } from './article-create.convert';
 import {
   CREATE_ARTICLE_ACTION_TYPE,
   ARTICLE_FIELD_NAME,
 } from './article-create.type';
+import { CREATE_ARTICLE_API } from './article-create.constant';
+import { convertForUpload, convertForChange } from './article-create.convert';
 
-export function createArticleUploadData(imagesUrls, formValues) {
+export function createArticleUploadData(imagesUrl, formValues) {
   return async (dispatch) => {
     try {
-      const data = convertForUpload(imagesUrls, formValues);
+      const data = convertForUpload(imagesUrl, formValues);
 
       //----------------------------------------------------------------------
 
@@ -42,10 +42,7 @@ export function createArticlePreUploadData(formValues) {
     });
     try {
       const formData = new FormData();
-      formData.append(
-        'file',
-        formValues[ARTICLE_FIELD_NAME.IMAGES][0][ARTICLE_FIELD_NAME.IMAGE],
-      );
+      formData.append('file', formValues[ARTICLE_FIELD_NAME.IMAGES][0].file);
       const response = await httpRequest({
         method: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.TYPE,
         url: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.ENDPOINT,
@@ -56,6 +53,89 @@ export function createArticlePreUploadData(formValues) {
       if (err.response) {
         dispatch({
           type: CREATE_ARTICLE_ACTION_TYPE.CREATE_ARTICLE_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function ArticleLoadData(id) {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_LOAD_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: CREATE_ARTICLE_API.ARTICLE_LOAD.TYPE,
+        url: CREATE_ARTICLE_API.ARTICLE_LOAD.ENDPOINT(id),
+      });
+      dispatch({
+        type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_LOAD_SUCCESS,
+        data: convertForChange(response.data),
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_LOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function updateArticle(id, newImage, formValues) {
+  return async (dispatch) => {
+    try {
+      const data = convertForUpload(newImage, formValues);
+      const response = await httpRequest({
+        method: CREATE_ARTICLE_API.ARTICLE_CHANGE.TYPE,
+        url: CREATE_ARTICLE_API.ARTICLE_CHANGE.ENDPOINT(id),
+        data: data,
+      });
+      dispatch({
+        type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_UPDATE_SUCCESS,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function updateArticlePreUpload(id, formValues) {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_UPDATE_PENDING,
+    });
+    try {
+      if (!formValues[ARTICLE_FIELD_NAME.IMAGES][0].file) {
+        return dispatch(
+          updateArticle(
+            id,
+            formValues[ARTICLE_FIELD_NAME.IMAGES][0],
+            formValues,
+          ),
+        );
+      }
+      const formData = new FormData();
+      formData.append('file', formValues[ARTICLE_FIELD_NAME.IMAGES][0].file);
+      const response = await httpRequest({
+        method: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.TYPE,
+        url: CREATE_ARTICLE_API.CREATE_ARTICLE_IMAGE_UPLOAD.ENDPOINT,
+        data: formData,
+      });
+      dispatch(updateArticle(id, response.data, formValues));
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_UPDATE_ERROR,
           errorMessage: err.response.data.message,
         });
       }

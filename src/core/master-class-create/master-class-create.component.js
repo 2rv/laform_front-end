@@ -4,16 +4,22 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { FormComponent } from './frames';
-import { ProductImages } from '../block-product-create-components';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from './master-class-create.type';
+import { SelectImageBlock } from 'src/lib/common/block-select-image';
 
 export function CreateMasterClassComponent(props) {
   const {
     initialValues,
     onSubmit,
     validation,
-    //--------
     pageLoading,
+    isEdit,
+    //--------
+    updateIsPending,
+    updateIsError,
+    updateIsSuccess,
+    updateErrorMessage,
+    //--------
     isPending,
     isSuccess,
     isError,
@@ -21,7 +27,7 @@ export function CreateMasterClassComponent(props) {
   } = props;
   return (
     <>
-      {(pageLoading || isPending) && <LoaderPrimary />}
+      {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
       <SectionLayout>
         <TitlePrimary tid="MASTER_CLASSES.CREATE.TITLE" />
         <Formik
@@ -34,13 +40,12 @@ export function CreateMasterClassComponent(props) {
             return (
               <form onSubmit={formProps.handleSubmit}>
                 <SectionLayout>
-                  <ProductImages
+                  <SelectImageBlock
+                    titleTid="PRODUCT_IMAGES.TITLE"
+                    name={CREATE_MASTER_CLASS_FIELD_NAME.IMAGES}
                     {...formProps}
-                    imagesArrayName={CREATE_MASTER_CLASS_FIELD_NAME.IMAGES}
-                    imageFieldName={CREATE_MASTER_CLASS_FIELD_NAME.IMAGE}
-                    title="PRODUCT_IMAGES.TITLE"
                   />
-                  <FormComponent {...formProps} />
+                  <FormComponent isEdit={isEdit} {...formProps} />
                 </SectionLayout>
               </form>
             );
@@ -50,6 +55,8 @@ export function CreateMasterClassComponent(props) {
           <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
         )}
         {isError && <ErrorAlert tid={errorMessage} />}
+        {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
+        {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
       </SectionLayout>
     </>
   );

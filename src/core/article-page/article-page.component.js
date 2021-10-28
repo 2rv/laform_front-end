@@ -19,6 +19,7 @@ export function ArticlePageComponent(props) {
     productInfo,
     addToCart,
   } = props;
+
   const {
     id,
     type,
@@ -29,6 +30,7 @@ export function ArticlePageComponent(props) {
     createdDate,
     recommendations,
   } = productInfo;
+
   return (
     <SectionLayout>
       {isPending && <LoaderPrimary />}
