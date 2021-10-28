@@ -30,7 +30,6 @@ export function CardSewingGood(props: CardSewingGoodType) {
     sizes,
     onSelect,
     onDelete,
-    onCart,
     isCount,
     isLength,
   } = props;
@@ -57,7 +56,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
           discount={discount}
           count={count}
           length={length}
-          onCart={onCart}
+          thisIsCart={Boolean(onSelect)}
           options={options}
           colors={colors}
           sizes={sizes}

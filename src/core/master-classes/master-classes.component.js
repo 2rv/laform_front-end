@@ -1,6 +1,5 @@
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
-import { PaginationContainer } from '../../lib/common/block-pagination';
 import { SearchFilter } from '../../lib/common/search-filter';
 import { BasicCardList } from 'src/lib/element/card-list';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -8,7 +7,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 export function MasterClassesComponent(props) {
   const {
     listItems,
-    addToCart,
     onDeleteProduct,
     filterOptions,
     categories,
@@ -34,7 +32,6 @@ export function MasterClassesComponent(props) {
       >
         <BasicCardList
           items={listItems}
-          onCart={addToCart}
           onDelete={onDeleteProduct}
           admin={isAdmin}
           emptyText="Список пустой" //TODO: change to tid

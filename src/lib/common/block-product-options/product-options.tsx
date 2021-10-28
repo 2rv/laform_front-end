@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { FieldArray } from 'formik';
-import { THEME_SIZE } from '../../lib/theme';
-import { ButtonSecondary } from '../../lib/element/button';
-import { SectionLayout, FieldLayout } from '../../lib/element/layout';
-import { TitlePrimary } from '../../lib/element/title';
+import { THEME_SIZE } from '../../theme';
+import { ButtonSecondary } from '../../element/button';
+import { SectionLayout, FieldLayout } from '../../element/layout';
+import { TitlePrimary } from '../../element/title';
 import { ProductOptionsProps } from './components.type';
 import { ProductOptionsOne } from './product-options-one';
 import { ProductOptionsTwo } from './product-options-two';

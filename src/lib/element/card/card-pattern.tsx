@@ -29,7 +29,6 @@ export function CardPattern(props: CardPatternType) {
     sizes,
     onSelect,
     onDelete,
-    onCart,
     isCount,
   } = props;
 
@@ -57,9 +56,9 @@ export function CardPattern(props: CardPatternType) {
           price={price}
           discount={discount}
           count={count}
-          onCart={onCart}
           sizes={sizes}
           isCount={isCount}
+          thisIsCart={Boolean(onSelect)}
         />
         {(like || admin) && (
           <ActionCase>

@@ -10,8 +10,7 @@ import { BasicCardListTypeProps } from './card-list.type';
 import { TextSecondary } from '../text';
 
 export function BasicCardList(props: BasicCardListTypeProps) {
-  const { items, onCart, onSelect, onDelete, admin, emptyText, emptyTvalue } =
-    props;
+  const { items, onSelect, onDelete, admin, emptyText, emptyTvalue } = props;
 
   if (!items || items.length === 0) {
     return <TextSecondary tid={emptyText} tvalue={emptyTvalue} />;
@@ -25,7 +24,6 @@ export function BasicCardList(props: BasicCardListTypeProps) {
           <CardItem
             key={data?.id || index}
             {...data}
-            onCart={onCart}
             onSelect={onSelect}
             onDelete={onDelete}
             admin={admin}

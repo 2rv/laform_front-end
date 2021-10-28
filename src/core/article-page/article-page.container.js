@@ -14,7 +14,6 @@ import { articlePageUploadData } from './article-page.action';
 import { ArticlePageComponent } from './article-page.component';
 import { ARTICLE_PAGE_STORE_NAME } from './article-page.constant';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { addToBasket } from '../basket';
 
 export function ArticlePageContainer() {
   const dispatch = useDispatch();
@@ -30,8 +29,6 @@ export function ArticlePageContainer() {
     dispatch(articlePageUploadData(currentLang, articleProductId, isAuth));
   }, [articleProductId]);
 
-  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
-
   return (
     <ArticlePageComponent
       isPending={isRequestPending(state)}
@@ -40,7 +37,6 @@ export function ArticlePageContainer() {
       errorMessage={getRequestErrorMessage(state)}
       productInfo={getRequestData(state)}
       pageLoading={pageLoading}
-      addToCart={addToCart}
     />
   );
 }

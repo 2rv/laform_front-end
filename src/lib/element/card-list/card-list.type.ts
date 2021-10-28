@@ -11,7 +11,6 @@ export interface BasicCardListTypeProps {
     | CardSewingGoodType[]
     | CardPatternType[]
     | CardMasterClassType[];
-  onCart?: Function;
   onSelect?: Function;
   onDelete?: Function;
   admin?: boolean;

@@ -9,7 +9,6 @@ export function SewingGoodsComponent(props) {
     listItems,
     onDeleteProduct,
     isAdmin,
-    addToCart,
     filterOptions,
     categories,
     handleFilter,
@@ -33,7 +32,6 @@ export function SewingGoodsComponent(props) {
       >
         <BasicCardList
           items={listItems}
-          onCart={addToCart}
           onDelete={onDeleteProduct}
           admin={isAdmin}
           emptyText="Список пустой" //TODO: change to tid

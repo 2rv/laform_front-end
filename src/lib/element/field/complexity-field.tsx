@@ -1,8 +1,8 @@
 import { Field } from 'formik';
 import styled from 'styled-components';
-import { TextSecondary } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { ComplexityFieldProps } from './components.type';
+import { TextSecondary } from '../text';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
+import { ComplexityFieldProps } from './field.type';
 
 export function ComplexityField(props: ComplexityFieldProps) {
   const { title, name, value, onChange } = props;

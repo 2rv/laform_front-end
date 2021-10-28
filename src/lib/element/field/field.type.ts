@@ -98,3 +98,9 @@ export interface MultiFieldPropsType {
   adaptive?: boolean;
   setItems: any;
 }
+export interface ComplexityFieldProps {
+  name: string;
+  value: number;
+  title: string;
+  onChange: Function;
+}

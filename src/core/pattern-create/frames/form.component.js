@@ -3,24 +3,21 @@ import { THEME_SIZE } from '../../../lib/theme';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { TextSecondary } from '../../../lib/element/text';
 import { Divider } from 'src/lib/element/divider';
-import { ErrorField } from 'src/lib/element/error';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import {
   BasicField,
   FieldCheckbox,
   TextareaField,
+  ComplexityField,
 } from '../../../lib/element/field';
 import { RecomendationBlock } from '../../../lib/common/block-select-recomendation';
-import { ReactEditor } from 'src/core/block-react-editor';
-import { ProductOptions } from '../../block-product-options';
-import { BlockCategories } from 'src/core/block-categories';
-import {
-  ProductPrice,
-  ComplexityField,
-} from '../../block-product-create-components';
+import { ProductOptions } from '../../../lib/common/block-product-options';
+import { BlockCategories } from 'src/lib/common/block-categories';
+import { ProductPrice } from '../../block-product-create-components';
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 import { CREATE_PATTERN_FIELD_NAME } from '../pattern-create.type';
+import { ReactEditorBlock } from '../../../lib/common/block-react-editor';
 
 export function FormComponent(props) {
   const {
@@ -34,7 +31,6 @@ export function FormComponent(props) {
     setFieldValue,
     initialOption,
   } = props;
-  console.log(values);
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
   const setEditorData = (name) => (data) => setFieldValue(name, data);
@@ -121,21 +117,13 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         minHeight={100}
       />
-
-      <SectionLayout type="TEXT_SMALL">
-        <SmallTitle tid="PATTERNS.CREATE.FORM.MATERIALS" />
-        <ReactEditor
-          handleChange={setEditorData(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
-          values={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
-          name={CREATE_PATTERN_FIELD_NAME.MATERIAL}
-        />
-        {getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL) && (
-          <ErrorField
-            errorTid={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
-          />
-        )}
-      </SectionLayout>
-
+      <ReactEditorBlock
+        titleTid="PATTERNS.CREATE.FORM.MATERIALS"
+        handleChange={setEditorData(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
+        values={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
+        error={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
+        errorMessage={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
+      />
       <FieldLayout type="double" adaptive>
         <ComplexityField
           title="PATTERNS.CREATE.FORM.COMPLEXITY"

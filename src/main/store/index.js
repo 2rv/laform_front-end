@@ -164,7 +164,7 @@ export const PERSISTED_CART = 'PERSISTED_CART';
 import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
-} from '../../core/block-categories';
+} from '../../lib/common/block-categories';
 import {
   createPatternStore,
   CREATE_PATTERN_STORE_NAME,

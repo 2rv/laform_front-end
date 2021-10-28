@@ -5,7 +5,6 @@ import Embed from '@editorjs/embed';
 import Table from '@editorjs/table';
 import Marker from '@editorjs/marker';
 import Delimiter from '@editorjs/delimiter';
-import SimpleImage from '@editorjs/simple-image';
 import ImageTool from '@editorjs/image';
 import { httpRequest } from 'src/main/http';
 

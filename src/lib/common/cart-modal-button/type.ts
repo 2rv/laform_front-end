@@ -35,7 +35,7 @@ export interface CartModalContainerProps {
   options?: OptionType[];
   colors?: OptionType[];
   sizes?: OptionType[];
-  onCart?: Function;
+  thisIsCart?: boolean;
 }
 export interface CartModalComponentProps {
   isOptions: boolean;

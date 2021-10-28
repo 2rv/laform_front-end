@@ -7,7 +7,6 @@ import {
   isRequestPending,
   isRequestSuccess,
 } from '../../main/store/store.service';
-import { addToBasket } from '../basket';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
@@ -23,15 +22,21 @@ import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
 export function MasterClassesContainer() {
-  const { masterClassState, categories, pageLoading, currentLang, user, isAuth } =
-    useSelector((state) => ({
-      masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
-      categories: state[MASTER_CLASSES_STORE_NAME].categories,
-      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-      user: state[AUTH_STORE_NAME].user,
-      isAuth: state[AUTH_STORE_NAME].logged,
-    }));
+  const {
+    masterClassState,
+    categories,
+    pageLoading,
+    currentLang,
+    user,
+    isAuth,
+  } = useSelector((state) => ({
+    masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
+    categories: state[MASTER_CLASSES_STORE_NAME].categories,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    user: state[AUTH_STORE_NAME].user,
+    isAuth: state[AUTH_STORE_NAME].logged,
+  }));
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
 
@@ -60,19 +65,27 @@ export function MasterClassesContainer() {
     dispatch(masterClassesUpdateData(isAuth, { currentLang }, id, body));
   };
 
-  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
-
   return (
     <MasterClassesComponent
       listItems={getRequestData(masterClassState, {}).products}
-      addToCart={addToCart}
       onDeleteProduct={onDeleteProduct}
       filterOptions={filterOptions}
       categories={productCategories}
       handleFilter={handleFilter}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
-      fetchData={() => dispatch(masterClassesUploadData(isAuth, { currentLang, ...filter, page: masterClassState.data?.currentPage }))}
-      hasMore={Number(masterClassState.data?.products?.length) < Number(masterClassState.data?.totalRecords)}
+      fetchData={() =>
+        dispatch(
+          masterClassesUploadData(isAuth, {
+            currentLang,
+            ...filter,
+            page: masterClassState.data?.currentPage,
+          }),
+        )
+      }
+      hasMore={
+        Number(masterClassState.data?.products?.length) <
+        Number(masterClassState.data?.totalRecords)
+      }
     />
   );
 }

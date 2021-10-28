@@ -3,7 +3,7 @@ import {
   setRequestError,
   setRequestPending,
   setRequestSuccess,
-} from '../../main/store/store.service';
+} from '../../../main/store/store.service';
 import { CATEGORIES_ACTION_TYPE } from './categories.type';
 
 const initialState = {

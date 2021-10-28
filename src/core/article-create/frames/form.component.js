@@ -5,8 +5,8 @@ import { BasicField, MultiField } from '../../../lib/element/field';
 import { ARTICLE_FIELD_NAME } from '../article-create.type';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
-import { ReactEditor } from 'src/core/block-react-editor';
-import { BlockCategories } from 'src/core/block-categories';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { BlockCategories } from 'src/lib/common/block-categories';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
 
 export function FormComponent(props) {
@@ -48,16 +48,13 @@ export function FormComponent(props) {
           />
         </FieldLayout>
         <BlockCategories values={values} handleBlur={handleBlur} type={4} />
-        <SectionLayout type="SMALL">
-          <Title tid="Статья" />
-          <ReactEditor
-            handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
-            data={isEdit && values[ARTICLE_FIELD_NAME.ARTICLE]}
-            name={ARTICLE_FIELD_NAME.ARTICLE}
-            minHeight={100}
-            enableIsEdit={isEdit}
-          />
-        </SectionLayout>
+        <ReactEditorBlock
+          titleTid="Статья"
+          handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
+          data={isEdit && values[ARTICLE_FIELD_NAME.ARTICLE]}
+          minHeight={100}
+          enableIsEdit={isEdit}
+        />
         <RecomendationBlock
           values={values[ARTICLE_FIELD_NAME.RECOMMENDATIONS]}
           name={ARTICLE_FIELD_NAME.RECOMMENDATIONS}
@@ -78,6 +75,3 @@ export function FormComponent(props) {
     </SectionLayout>
   );
 }
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-`;

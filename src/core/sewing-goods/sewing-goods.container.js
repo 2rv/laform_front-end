@@ -17,21 +17,26 @@ import { SEWING_GOODS_STORE_NAME } from './sewing-goods.constant';
 import { SewingGoodsComponent } from './sewing-goods.component';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
-import { addToBasket } from '../basket';
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
 export function SewingGoodsContainer() {
-  const { sewingGoodsState, categories, pageLoading, currentLang, user, isAuth } =
-    useSelector((state) => ({
-      sewingGoodsState: state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
-      categories: state[SEWING_GOODS_STORE_NAME].categories,
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-      user: state[AUTH_STORE_NAME].user,
-      isAuth: state[AUTH_STORE_NAME].logged,
-    }));
+  const {
+    sewingGoodsState,
+    categories,
+    pageLoading,
+    currentLang,
+    user,
+    isAuth,
+  } = useSelector((state) => ({
+    sewingGoodsState: state[SEWING_GOODS_STORE_NAME].sewingGoodsState,
+    categories: state[SEWING_GOODS_STORE_NAME].categories,
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    user: state[AUTH_STORE_NAME].user,
+    isAuth: state[AUTH_STORE_NAME].logged,
+  }));
 
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
@@ -59,12 +64,10 @@ export function SewingGoodsContainer() {
   const onDeleteProduct = (id, body) => {
     dispatch(sewingGoodsUpdateData(isAuth, { currentLang }, id, body));
   };
-  const addToCart = (values) => dispatch(addToBasket(values, currentLang));
 
   return (
     <SewingGoodsComponent
       listItems={getRequestData(sewingGoodsState, {}).products}
-      addToCart={addToCart}
       handleFilter={handleFilter}
       filterOptions={filterOptionss}
       categories={productCategories}
@@ -75,8 +78,19 @@ export function SewingGoodsContainer() {
       isError={isRequestError(sewingGoodsState)}
       isSuccess={isRequestSuccess(sewingGoodsState)}
       errorMessage={getRequestErrorMessage(sewingGoodsState)}
-      fetchData={() => dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...filter, page: sewingGoodsState.data?.currentPage }))}
-      hasMore={Number(sewingGoodsState.data?.products?.length) < Number(sewingGoodsState.data?.totalRecords)}
+      fetchData={() =>
+        dispatch(
+          sewingGoodsUploadData(isAuth, {
+            currentLang,
+            ...filter,
+            page: sewingGoodsState.data?.currentPage,
+          }),
+        )
+      }
+      hasMore={
+        Number(sewingGoodsState.data?.products?.length) <
+        Number(sewingGoodsState.data?.totalRecords)
+      }
     />
   );
 }

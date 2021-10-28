@@ -35,7 +35,6 @@ export interface CardActionProps {
   colors?: OptionType[];
   sizes?: OptionType[];
   onSelect?: Function;
-  onCart?: Function;
   onDelete?: Function;
 }
 export interface CardPriceProps {
@@ -83,7 +82,6 @@ export interface CardSewingGoodType {
   sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
-  onCart?: Function;
 }
 export interface CardPatternType {
   id: string;
@@ -101,7 +99,6 @@ export interface CardPatternType {
   sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
-  onCart?: Function;
 }
 export interface CardMasterClassType {
   id: string;
@@ -116,5 +113,4 @@ export interface CardMasterClassType {
   admin?: boolean;
   onSelect?: Function;
   onDelete?: Function;
-  onCart?: Function;
 }

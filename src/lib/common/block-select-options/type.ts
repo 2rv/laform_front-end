@@ -35,7 +35,6 @@ export interface CartModalContainerProps {
   options?: OptionType[];
   colors?: OptionType[];
   sizes?: OptionType[];
-  onCart?: Function;
 }
 export interface CartModalComponentProps {
   id: string;
