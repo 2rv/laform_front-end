@@ -6,7 +6,7 @@ import { TitlePrimary } from '../../lib/element/title';
 import { ButtonSecondary } from '../../lib/element/button';
 import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { USER_ROLE } from '../../lib/common/auth';
-import { ReactEditor } from '../block-react-editor';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { aboutUsLoadData, aboutUsUploadData } from './about.action';
 
 export function AboutComponent({ about, user, isAuth }) {
@@ -22,15 +22,18 @@ export function AboutComponent({ about, user, isAuth }) {
       <TitlePrimary tid="HEADER.MENU_ITEMS.ABOUT_US" />
       {isAuth && user.role === USER_ROLE.ADMIN ? (
         <>
-          <ReactEditor
+          <ReactEditorBlock
             handleChange={(value) => setEditorData(value)}
             values={editorData}
             data={about}
           />
-          <ButtonSecondary tid="OTHER.SAVE" onClick={aboutUsUploadDataHandler} />
+          <ButtonSecondary
+            tid="OTHER.SAVE"
+            onClick={aboutUsUploadDataHandler}
+          />
         </>
       ) : (
-        <ReactEditor data={about} enableReInitialize readOnly />
+        <ReactEditorBlock data={about} enableReInitialize readOnly />
       )}
     </SectionLayout>
   );

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { spacing } from '../../lib/theme';
-import { IconButton } from '../../lib/element/button';
-import { BasicField, FileField } from '../../lib/element/field';
-import { FieldLayout } from '../../lib/element/layout';
-import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
+import { spacing } from '../../theme';
+import { IconButton } from '../../element/button';
+import { BasicField, FileField } from '../../element/field';
+import { FieldLayout } from '../../element/layout';
+import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
 import React from 'react';
 import { ProductOptionsTwoProps } from './components.type';

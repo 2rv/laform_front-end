@@ -4,7 +4,7 @@ import { ButtonSecondary } from 'src/lib/element/button';
 import { SectionLayout } from 'src/lib/element/layout';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { setLinkRedirect } from 'src/main/navigation';
-import { LOGIN_ROUTE_PATH } from 'src/lib/common/login/login.constant';
+import { LOGIN_ROUTE_PATH } from 'src/core/login';
 
 export function NotificationComponent(props) {
   const {
@@ -14,7 +14,7 @@ export function NotificationComponent(props) {
     pageLoading,
     notificationEmailStatus,
     isAuth,
-  } = props
+  } = props;
 
   return (
     <Container type="SMALL">
@@ -23,13 +23,23 @@ export function NotificationComponent(props) {
         <BoldTitle tid="NOTIFICATION.CTA" />
       </div>
       <ButtonSecondary
-        tid={!isAuth
-          ? 'NOTIFICATION.BUTTON_TEXT_SUBSCRIBE'
-          : Boolean(notificationEmailStatus === true)
-          ? 'NOTIFICATION.BUTTON_TEXT_UNSUBSCRIBE'
-          : 'NOTIFICATION.BUTTON_TEXT_SUBSCRIBE'}
-        onClick={isAuth ? updateNotificationEmailStatusHandler : setLinkRedirect(LOGIN_ROUTE_PATH)}
-        disabled={pageLoading || isNotificationChangePending || isNotificationStatusPending}
+        tid={
+          !isAuth
+            ? 'NOTIFICATION.BUTTON_TEXT_SUBSCRIBE'
+            : Boolean(notificationEmailStatus === true)
+            ? 'NOTIFICATION.BUTTON_TEXT_UNSUBSCRIBE'
+            : 'NOTIFICATION.BUTTON_TEXT_SUBSCRIBE'
+        }
+        onClick={
+          isAuth
+            ? updateNotificationEmailStatusHandler
+            : setLinkRedirect(LOGIN_ROUTE_PATH)
+        }
+        disabled={
+          pageLoading ||
+          isNotificationChangePending ||
+          isNotificationStatusPending
+        }
       />
     </Container>
   );

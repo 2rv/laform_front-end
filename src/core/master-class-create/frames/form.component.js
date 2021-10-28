@@ -11,10 +11,10 @@ import {
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
 import { ProductPrice } from '../../block-product-create-components';
-import { numberValue } from '../../../lib/common/create-product-helpers';
-import { BlockCategories } from 'src/core/block-categories';
-import { ReactEditor } from 'src/core/block-react-editor';
+import { BlockCategories } from 'src/lib/common/block-categories';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
+import { numberValue } from 'src/lib/common/create-product-validation';
 
 export function FormComponent(props) {
   const {
@@ -68,16 +68,15 @@ export function FormComponent(props) {
           minHeight={100}
         />
       </SectionLayout>
-      <SectionLayout type="SMALL">
-        <Title tid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE" />
-        <ReactEditor
-          handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE)}
-          data={isEdit && values[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]}
-          name={CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE}
-          minHeight={100}
-          enableIsEdit={isEdit}
-        />
-      </SectionLayout>
+
+      <ReactEditorBlock
+        titleTid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE"
+        handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE)}
+        data={isEdit && values[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]}
+        minHeight={100}
+        enableIsEdit={isEdit}
+      />
+
       <SectionLayout type="SMALL">
         <Title tid="MASTER_CLASSES.CREATE.FORM.PRICE" />
         <FieldLayout type="double" adaptive>

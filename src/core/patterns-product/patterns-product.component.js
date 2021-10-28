@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
-import { TitlePrimary } from '../../lib/element/title';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
-import { ReactEditor } from '../block-react-editor';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { ProductMainComponent } from './frames';
 import { ProductImages } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';
@@ -30,10 +29,12 @@ export function PatternsProductComponent(props) {
           <ProductMainComponent {...productData} />
         </Content>
       </SectionLayout>
-      <SectionLayout type="TEXT_SMALL">
-        <TitlePrimary tid="PATTERNS.MATERIALS" />
-        <ReactEditor data={productData.materials} enableReInitialize readOnly />
-      </SectionLayout>
+      <ReactEditorBlock
+        titleTid="PATTERNS.MATERIALS"
+        data={productData.materials}
+        enableReInitialize
+        readOnly
+      />
       <CardListBlock items={productData.recommendations} title="Рекомендации" />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>

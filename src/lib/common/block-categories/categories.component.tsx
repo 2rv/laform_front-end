@@ -1,14 +1,14 @@
 import { FieldArray } from 'formik';
 import styled from 'styled-components';
 import { SyntheticEvent, useState } from 'react';
-import { FieldLayout, SectionLayout } from '../../lib/element/layout';
+import { FieldLayout, SectionLayout } from '../../element/layout';
 import { CategoriesComponentProps, CATEGORIES_TYPE } from './categories.type';
 import { FieldSelect } from 'src/lib/element/field';
 import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
-import { ReactComponent as RemoveIcon } from '../../asset/svg/remove.svg';
-import { ReactComponent as PlusIcon } from '../../asset/svg/plus-icon.svg';
+import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
+import { ReactComponent as PlusIcon } from '../../../asset/svg/plus-icon.svg';
 import { CategoriesModal } from './categories.modal';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { ErrorAlert } from 'src/lib/element/alert';
@@ -40,7 +40,9 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
         {({ remove, push }) => {
           const handleAdd = (e: SyntheticEvent<HTMLInputElement>) => {
             const value: number = Number(e.currentTarget.value);
-            const isCategoryExists: boolean = values[CATEGORIES_TYPE.CATEGORIES].some((category: any) => {
+            const isCategoryExists: boolean = values[
+              CATEGORIES_TYPE.CATEGORIES
+            ].some((category: any) => {
               return category.tid === categories[value].tid;
             });
 
@@ -82,7 +84,9 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
           );
         }}
       </FieldArray>
-      {Boolean(categoryExists.length > 0) && <CategoryExistsText tid={categoryExists} />}
+      {Boolean(categoryExists.length > 0) && (
+        <CategoryExistsText tid={categoryExists} />
+      )}
       <CategoriesModal
         categories={categories}
         createPending={createPending}
@@ -130,5 +134,5 @@ const StyledPlusIcon = styled(PlusIcon)`
 `;
 
 const CategoryExistsText = styled(TextSecondary)`
-color: ${THEME_COLOR.TEXT.DANGER};
+  color: ${THEME_COLOR.TEXT.DANGER};
 `;

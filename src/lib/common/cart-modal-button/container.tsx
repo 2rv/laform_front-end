@@ -33,9 +33,9 @@ export function CartButtonContainer(props: CartModalContainerProps) {
     sizes = [],
     isCount = false,
     isLength = false,
-    onCart,
+    thisIsCart = false,
   } = props;
-  if (!id || type === false || !onCart) return null;
+  if (!id || type === false || thisIsCart) return null;
 
   const { bascketState, basketAction, currentLang } = useSelector(
     (state: any) => ({

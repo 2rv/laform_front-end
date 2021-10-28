@@ -11,10 +11,10 @@ import {
 import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
 import { RecomendationBlock } from '../../../lib/common/block-select-recomendation';
 import { Divider } from 'src/lib/element/divider';
-import { BlockCategories } from 'src/core/block-categories';
+import { BlockCategories } from 'src/lib/common/block-categories';
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { ProductPrice } from '../../block-product-create-components';
-import { ProductOptions } from '../../block-product-options';
+import { ProductOptions } from '../../../lib/common/block-product-options';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 
 export function FormComponent(props) {
