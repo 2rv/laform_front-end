@@ -87,7 +87,6 @@ export function masterClassLoadData(id) {
         data: convertForChange(response.data),
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_LOAD_ERROR,

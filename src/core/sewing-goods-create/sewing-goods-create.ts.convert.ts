@@ -10,9 +10,6 @@ interface recommendationProductType {
   patternProductId?: string;
   sewingProductId?: string;
 }
-interface recommendationType {
-  recommendationProducts: recommendationProductType[];
-}
 interface optionType {
   size?: string;
   colorRu?: string;
@@ -26,7 +23,7 @@ interface dataValueType {
   descriptionRu: string;
   modifierRu: string;
   images: imageType[];
-  recommendation: recommendationType;
+  recommendation: any;
   categories: categoryType[];
   price?: number;
   discount?: number;
@@ -69,7 +66,10 @@ export function convertForUpload(
     images: images.map((item) => ({
       id: item.id,
     })),
-    recommendation: { recommendationProducts: values.recommendation },
+    recommendation: Boolean(values.recommendation.length)
+      ? { recommendationProducts: values.recommendation }
+      : null,
+
     categories: values.categories.map((i) => ({ id: i.basicId })),
     price:
       values.optionType === 0
@@ -125,7 +125,7 @@ export function convertForChange(rowData: dataValueType): formValueType {
     modifierRu: rowData.modifierRu,
     images: rowData.images,
     recommendation: convertRecommendations(
-      rowData.recommendation.recommendationProducts,
+      rowData.recommendation?.recommendationProducts,
     ),
     categories: rowData.categories.map((i) => ({
       basicId: i.id,
@@ -142,7 +142,7 @@ export function convertForChange(rowData: dataValueType): formValueType {
   };
 }
 
-function convertRecommendations(recommendation: any) {
+function convertRecommendations(recommendation: any = []) {
   return recommendation.map((item: any) => {
     return {
       masterClassId: item.masterClassId,
