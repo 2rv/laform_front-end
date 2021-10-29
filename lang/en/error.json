@@ -6,6 +6,7 @@
   "LOGIN_UNCORRECT_PASSWORD_OR_LOGIN": "Incorrect username or password.",
   "LOGIN_COULDNT_FOUND_USER": "User with this login or email was not found.",
   "USER_ALREADY_EXISTS": "User already exists.",
+  "USER_NOT_FOUND": "User not found.",
   "PLEASE_UPLOAD_IMAGE": "Please upload an image.",
   "USER_NOT_CONFIRMED": "You haven't verified your email address yet",
   "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Email address already verified",
