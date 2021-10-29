@@ -14,6 +14,7 @@ import { EDIT_COMPILATION_ROUTE_PATH } from '../edit-compilation';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
 import { PROMOCODES_ROUTE_PATH } from '../promocodes';
 import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
+import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { DELIVERY_PRICE_PAGE_ROUTE_PATH } from '../delivery-price-page';
@@ -30,6 +31,7 @@ export const NAV_MENU_ITEMS = [
 
 export const USER_MENU_ITEMS = [
   { path: PURCHASE_PRODUCTS_ROUTE_PATH, tid: 'HEADER.USER_MENU.MY_PURCHASES' },
+  { path: USER_ORDERS_ROUTE_PATH, tid: 'HEADER.USER_MENU.MY_ORDERS' },
   { path: ALL_LIKES_ROUTE_PATH, tid: 'HEADER.USER_MENU.FAVORITE' },
   { path: SETTINGS_ROUTE_PATH, tid: 'HEADER.USER_MENU.SETTINGS' },
 ];

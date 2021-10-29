@@ -6,6 +6,7 @@
   "LOGIN_UNCORRECT_PASSWORD_OR_LOGIN": "Не корректный логин или пароль.",
   "LOGIN_COULDNT_FOUND_USER": "Пользователь с таким логином или почтой не найден.",
   "USER_ALREADY_EXISTS": "Пользователь уже существует.",
+  "USER_NOT_FOUND": "Пользователь не найден.",
   "PLEASE_UPLOAD_IMAGE": "Пожалуйста, загрузите изображение.",
   "USER_NOT_CONFIRMED": "Вы еще не подтвердили адрес электронной почты",
   "USER_VERIFICATION_EMAIL_ALREADY_CONFIRMED": "Адрес электронной почты уже подтвержден",
