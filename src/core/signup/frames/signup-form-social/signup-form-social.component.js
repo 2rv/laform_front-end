@@ -19,7 +19,7 @@ export function SignupFormSocialComponent() {
     <SectionLayout type="TEXT">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />
       <ButtonContainer>
-        <Button>
+        <Button onClick={setLinkRedirect(`${BASE_URL_SLASH_END}auth/apple`)}>
           <AppleIcon />
           <SecondaryIconContainer>
             <AppleText />
