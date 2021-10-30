@@ -48,6 +48,7 @@ export function ArticlesContainer() {
     dispatch(articlesUploadData(isAuth, { currentLang, ...copy }));
   };
   useEffect(() => {
+    dispatch({ type: ARTICLES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(articlesUploadData(isAuth, { currentLang, ...filter }));
     dispatch(fetchCategories(currentLang, 4));
   }, []);

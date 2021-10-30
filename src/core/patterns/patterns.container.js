@@ -50,6 +50,7 @@ export function PatternsContainer() {
   ];
 
   useEffect(() => {
+    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(patternsUploadData(isAuth, { currentLang, ...filter }));
     dispatch(fetchCategories(currentLang, 2));
   }, []);
