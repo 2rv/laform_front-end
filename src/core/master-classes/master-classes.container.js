@@ -62,6 +62,7 @@ export function MasterClassesContainer() {
   };
 
   const onDeleteProduct = (id, body) => {
+    dispatch({ type: MASTER_CLASSES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(masterClassesUpdateData(isAuth, { currentLang }, id, body));
   };
 

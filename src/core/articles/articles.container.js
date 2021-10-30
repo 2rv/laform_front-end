@@ -53,6 +53,7 @@ export function ArticlesContainer() {
   }, []);
 
   const onDeleteProduct = (id, body) => {
+    dispatch({ type: ARTICLES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(fetchPostRemove(isAuth, { currentLang }, id, body));
   };
 

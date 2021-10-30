@@ -62,6 +62,7 @@ export function SewingGoodsContainer() {
     dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...copy }));
   };
   const onDeleteProduct = (id, body) => {
+    dispatch({ type: SEWING_GOODS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(sewingGoodsUpdateData(isAuth, { currentLang }, id, body));
   };
 
