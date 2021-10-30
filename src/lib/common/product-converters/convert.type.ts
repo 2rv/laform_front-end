@@ -29,6 +29,7 @@ export interface BasicMasterClassType {
   vendorCode: string;
   images: BasicImageType[];
   like?: BasicLikeType[];
+  deleted?: boolean;
   titleRu?: string;
   titleEn?: string;
   modifierRu?: string;
@@ -43,6 +44,7 @@ export interface BasicArticleType {
   createdDate: string;
   image: BasicImageType;
   like?: BasicLikeType[];
+  deleted?: boolean;
   titleRu?: string;
   titleEn?: string;
   modifierRu?: string;
@@ -56,6 +58,7 @@ export interface BasicPatternType {
   options: BasicOptionType[];
   images: BasicImageType[];
   like?: BasicLikeType[];
+  deleted?: boolean;
   isCount: boolean;
   titleRu?: string;
   titleEn?: string;
@@ -75,6 +78,7 @@ export interface BasicSewingGoodType {
   options: BasicOptionType[];
   images: BasicImageType[];
   like?: BasicLikeType[];
+  deleted?: boolean;
   titleRu?: string;
   titleEn?: string;
   modifierRu?: string;

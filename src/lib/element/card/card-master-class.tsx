@@ -22,6 +22,7 @@ export function CardMasterClass(props: CardMasterClassType) {
     discount,
     price,
     like,
+    deleted,
     admin,
     onSelect,
     onDelete,
@@ -34,6 +35,7 @@ export function CardMasterClass(props: CardMasterClassType) {
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}
+        deleted={deleted}
         discount={discount}
       />
       <Content>
@@ -51,7 +53,7 @@ export function CardMasterClass(props: CardMasterClassType) {
         />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
-          <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
+          {Boolean(deleted === false) && <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />}
         </ActionCase>
       </ActionCase>
     </Container>

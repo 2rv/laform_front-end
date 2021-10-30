@@ -118,6 +118,10 @@ import {
   createPatternRouter,
   CREATE_PATTERN_ROUTE_PATH,
 } from '../../core/pattern-create';
+import {
+  allProductsRouter,
+  ALL_PRODUCTS_ROUTE_PATH,
+} from '../../core/all-products';
 
 export const routes = {
   [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
@@ -162,6 +166,7 @@ export const routes = {
   [ABOUT_ROUTE_PATH]: aboutRouter,
   [DELIVERY_PRICE_PAGE_ROUTE_PATH]: deliveryPricePageRouter,
   [UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH]: unsubscribeNotificationRouter,
+  [ALL_PRODUCTS_ROUTE_PATH]: allProductsRouter,
 };
 
 export const Router = routesInit(routes);

@@ -9,5 +9,6 @@
 	"FREE": "Free",
 	"STOCK": "Stock",
 	"SIZE": "Size",
-	"COLOR": "Color"
+	"COLOR": "Color",
+	"DELETED": "Deleted"
 }
