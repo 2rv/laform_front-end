@@ -46,6 +46,7 @@ export function MasterClassesContainer() {
   ];
 
   useEffect(() => {
+    dispatch({ type: MASTER_CLASSES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(masterClassesUploadData(isAuth, { currentLang, ...filter }));
     dispatch(fetchCategories(currentLang, 0));
   }, []);
@@ -62,6 +63,7 @@ export function MasterClassesContainer() {
   };
 
   const onDeleteProduct = (id, body) => {
+    dispatch({ type: MASTER_CLASSES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(masterClassesUpdateData(isAuth, { currentLang }, id, body));
   };
 

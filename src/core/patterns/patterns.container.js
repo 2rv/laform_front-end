@@ -50,6 +50,7 @@ export function PatternsContainer() {
   ];
 
   useEffect(() => {
+    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(patternsUploadData(isAuth, { currentLang, ...filter }));
     dispatch(fetchCategories(currentLang, 2));
   }, []);
@@ -65,6 +66,7 @@ export function PatternsContainer() {
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
   };
   const onDeleteProduct = (id, body) => {
+    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(patternsUpdateData(isAuth, { currentLang }, id, body));
   };
   const setActiveTab = (value) => {
