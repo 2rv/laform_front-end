@@ -148,7 +148,6 @@ export function updatePatternProduct(id, newImages, pdfFileUrls, formValues) {
         type: CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_UPDATE_SUCCESS,
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_UPDATE_ERROR,
