@@ -120,9 +120,10 @@ export function FormComponent(props) {
       <ReactEditorBlock
         titleTid="PATTERNS.CREATE.FORM.MATERIALS"
         handleChange={setEditorData(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
-        values={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
+        data={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
         error={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
         errorMessage={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
+        enableIsEdit={isEdit}
       />
       <FieldLayout type="double" adaptive>
         <ComplexityField
@@ -162,7 +163,6 @@ export function FormComponent(props) {
         handleBlur={handleBlur}
         productPriceName={CREATE_PATTERN_FIELD_NAME.PRICE}
         productDiscountName={CREATE_PATTERN_FIELD_NAME.DISCOUNT}
-        productFileName={CREATE_PATTERN_FIELD_NAME.FILE}
         initialOption={initialOption}
         fieldArrayName={CREATE_PATTERN_FIELD_NAME.OPTIONS}
         optionTypeName={CREATE_PATTERN_FIELD_NAME.OPTION_TYPE}
@@ -172,8 +172,11 @@ export function FormComponent(props) {
         productCountName={CREATE_PATTERN_FIELD_NAME.COUNT}
         isCount={values[CREATE_PATTERN_FIELD_NAME.IS_COUNT]}
         optionCountName={CREATE_PATTERN_FIELD_NAME.OPTION_COUNT}
-        optionFileName={CREATE_PATTERN_FIELD_NAME.OPTION_FILE}
         isFile={values[CREATE_PATTERN_FIELD_NAME.TYPE] === 1}
+        optionFileName={CREATE_PATTERN_FIELD_NAME.OPTION_FILE}
+        optionFilesName={CREATE_PATTERN_FIELD_NAME.OPTION_FILES}
+        productFileName={CREATE_PATTERN_FIELD_NAME.FILE}
+        productFilesName={CREATE_PATTERN_FIELD_NAME.FILES}
       />
 
       <Divider />

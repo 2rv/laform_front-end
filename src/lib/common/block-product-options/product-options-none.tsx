@@ -3,10 +3,11 @@ import {
   numberTwoDigit,
   numberValue,
 } from 'src/lib/common/create-product-validation';
-import { BasicField, FileField } from '../../element/field';
+import { BasicField } from '../../element/field';
 import { FieldLayout } from '../../element/layout';
 import { ProductOptionsNoneProps } from './components.type';
 import { SyntheticEvent } from 'react';
+import { MultiFilesBlock } from '../multi-files';
 
 export function ProductOptionsNone(props: ProductOptionsNoneProps) {
   const {
@@ -17,12 +18,14 @@ export function ProductOptionsNone(props: ProductOptionsNoneProps) {
     productDiscountName,
     productCountName,
     productLengthName,
-    productFileName,
     handleBlur,
     setFieldValue,
     isCount,
     isLength,
     isFile,
+
+    productFileName,
+    productFilesName,
   } = props;
 
   const getFieldError = (name: string) =>
@@ -93,15 +96,12 @@ export function ProductOptionsNone(props: ProductOptionsNoneProps) {
         />
       )}
       {isFile && (
-        <FileField
-          titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.FILE_UPLOAD"
-          placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.FILE_UPLOAD"
-          accept="application/pdf"
-          name={productFileName}
-          value={values[productFileName]}
-          error={getFieldError(productFileName)}
-          onChange={setPdfFile(productFileName)}
-          onBlur={handleBlur}
+        <MultiFilesBlock
+          handleChange={setPdfFile}
+          fileName={productFileName}
+          filesName={productFilesName}
+          values={values[productFilesName]}
+          handleBlur={handleBlur}
         />
       )}
     </FieldLayout>

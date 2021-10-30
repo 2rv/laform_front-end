@@ -25,6 +25,7 @@ import { PATTERNS_ACTION_TYPE } from './patterns.type';
 const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
 
 export function PatternsContainer() {
+  const patternType = useRouter().pathname.split('/')?.[2];
   const { patternsState, categories, pageLoading, currentLang, user, isAuth } =
     useSelector((state) => ({
       patternsState: state[PATTERNS_STORE_NAME].patternsState,
@@ -35,7 +36,7 @@ export function PatternsContainer() {
       isAuth: state[AUTH_STORE_NAME].logged,
     }));
   const dispatch = useDispatch();
-  const patternType = useRouter().query.type;
+
   const [filter, setFilter] = useState({
     where: null,
     sort: null,
@@ -72,7 +73,7 @@ export function PatternsContainer() {
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
     if (value) {
-      redirect(PATTERNS_ROUTE_PATH, { query: { type: value } });
+      redirect(PATTERNS_ROUTE_PATH + value);
     } else {
       redirect(PATTERNS_ROUTE_PATH);
     }

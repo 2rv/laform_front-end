@@ -59,8 +59,8 @@ export function CreatePatternContainer() {
       [CREATE_PATTERN_FIELD_NAME.RECOMMENDATIONS]: [],
       [CREATE_PATTERN_FIELD_NAME.COUNT]: '',
       [CREATE_PATTERN_FIELD_NAME.IS_COUNT]: false,
-      [CREATE_PATTERN_FIELD_NAME.FILE]: undefined,
-      [CREATE_PATTERN_FIELD_NAME.TYPE]: 2,
+      [CREATE_PATTERN_FIELD_NAME.FILES]: [],
+      [CREATE_PATTERN_FIELD_NAME.TYPE]: 1,
       [CREATE_PATTERN_FIELD_NAME.PRICE]: '',
       [CREATE_PATTERN_FIELD_NAME.DISCOUNT]: '',
       [CREATE_PATTERN_FIELD_NAME.OPTION_TYPE]: 0,
@@ -73,7 +73,7 @@ export function CreatePatternContainer() {
     [CREATE_PATTERN_FIELD_NAME.OPTION_PRICE]: '',
     [CREATE_PATTERN_FIELD_NAME.OPTION_DISCOUNT]: '',
     [CREATE_PATTERN_FIELD_NAME.OPTION_COUNT]: '',
-    [CREATE_PATTERN_FIELD_NAME.OPTION_FILE]: undefined,
+    [CREATE_PATTERN_FIELD_NAME.OPTION_FILES]: [],
   };
   //--------------------------------------------------------------------------
 

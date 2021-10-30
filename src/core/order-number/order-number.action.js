@@ -46,7 +46,6 @@ export function updatePurchaseOrderStatus(orderId, data) {
         type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_SUCCESS,
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_ERROR,

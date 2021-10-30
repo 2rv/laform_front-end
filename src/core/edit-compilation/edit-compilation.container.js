@@ -62,12 +62,19 @@ export function EditCompilationContainer() {
   };
 
   const fetchData = () => {
-    dispatch(productsLoadData(compilationName, currentLang, state.products.data.currentPage));
+    dispatch(
+      productsLoadData(
+        compilationName,
+        currentLang,
+        state.products.data.currentPage,
+      ),
+    );
   };
 
-  const hasMore = Number(state.products.data.products?.length) < Number(state.products.data.totalRecords)
+  const hasMore =
+    Number(state.products.data.products?.length) <
+    Number(state.products.data.totalRecords);
   const modalContentRef = useRef();
-  console.log('modalContentRef:', modalContentRef.current);
 
   return (
     <>
@@ -87,7 +94,10 @@ export function EditCompilationContainer() {
         modalVisibilty={modalVisibilty}
         onClose={() => setModalVisibility(false)}
       >
-        <ModalContent id="scrollableDiv" style={{ height: '400px', overflow: 'auto' }}>
+        <ModalContent
+          id="scrollableDiv"
+          style={{ height: '400px', overflow: 'auto' }}
+        >
           {Boolean(products.length > 0) ? (
             products.filter(({ pinned }) => pinned).length >= 3 ? (
               <TextSecondary tid="COMPILATION.MAX_BEST_PRODUCTS" />

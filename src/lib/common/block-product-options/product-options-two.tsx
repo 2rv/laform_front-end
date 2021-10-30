@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { IconButton } from '../../element/button';
-import { BasicField, FileField } from '../../element/field';
+import { BasicField } from '../../element/field';
 import { FieldLayout } from '../../element/layout';
 import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
 import React from 'react';
 import { ProductOptionsTwoProps } from './components.type';
+import { MultiFilesBlock } from '../multi-files';
 
 export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
   const {
@@ -29,7 +30,8 @@ export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
     optionDiscountName,
     optionCountName,
     optionLengthName,
-    optionFileName = '',
+    optionFileName,
+    optionFilesName,
     isFile,
     isCount,
     isLength,
@@ -98,15 +100,12 @@ export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
           />
         )}
         {isFile && (
-          <FileField
-            titleTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.TITLE.FILE_UPLOAD"
-            placeholderTid="PATTERNS.CREATE_ELECTRONIC.FORM.FIELDS.PLACEHOLDER.FILE_UPLOAD"
-            accept="application/pdf"
-            name={`${fieldArrayName}.${index}.${optionFileName}`}
-            value={value[optionFileName]}
-            error={getFieldError(optionFileName, index)}
-            onChange={setPdfFile(optionFileName, index)}
-            onBlur={handleBlur}
+          <MultiFilesBlock
+            handleChange={setPdfFile}
+            fileName={optionFileName}
+            filesName={`${fieldArrayName}.${index}.${optionFilesName}`}
+            values={value[optionFilesName]}
+            handleBlur={handleBlur}
           />
         )}
       </FieldLayout>

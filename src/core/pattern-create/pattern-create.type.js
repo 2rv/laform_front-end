@@ -32,7 +32,6 @@ export const CREATE_PATTERN_FIELD_NAME = {
   RECOMMENDATIONS: 'recommendation',
   CATEGORIES: 'categories',
   TYPE: 'type',
-  FILE: 'filePdf',
 
   PRICE: 'price',
   DISCOUNT: 'discount',
@@ -45,5 +44,10 @@ export const CREATE_PATTERN_FIELD_NAME = {
   OPTION_PRICE: 'price',
   OPTION_DISCOUNT: 'discount',
   OPTION_COUNT: 'count',
-  OPTION_FILE: 'filePdf',
+
+  OPTION_FILES: 'filesPdf',
+  OPTION_FILE: 'optionFilePdf',
+
+  FILES: 'filesPdf',
+  FILE: 'productFilePdf',
 };

@@ -29,7 +29,7 @@ export function ProductOptions(props: ProductOptionsProps) {
     productDiscountName,
     productCountName = '',
     productLengthName = '',
-    productFileName = '',
+
     initialOption,
     fieldArrayName,
     optionTypeName,
@@ -39,11 +39,15 @@ export function ProductOptions(props: ProductOptionsProps) {
     optionLengthName = '',
     optionPriceName,
     optionDiscountName,
-    optionFileName = '',
     isFile = false,
     isCount = false,
     isLength = false,
     isPattern = false,
+
+    optionFilesName = '',
+    optionFileName = '',
+    productFileName = '',
+    productFilesName = '',
   } = props;
   const getFieldError = (name: string, index: number) =>
     errors?.[fieldArrayName]?.[index]?.[name] &&
@@ -103,14 +107,16 @@ export function ProductOptions(props: ProductOptionsProps) {
 
   const setToHundred = (name: string, index: number) => (e: any) =>
     setFieldValue(`${fieldArrayName}.${index}.${name}`, numberToHundred(e));
-  const setPdfFile =
-    (name: string, index: number) => (e: SyntheticEvent<HTMLInputElement>) => {
+
+  function setPdfFile(name: string) {
+    return (e: SyntheticEvent<HTMLInputElement>) => {
       const file = e.currentTarget?.files?.[0];
       if (!file || file.type.split('/')[1] !== 'pdf') {
         alert('PATTERNS.CREATE_ELECTRONIC.FORM.NEED_PDF');
-        setFieldValue(`${fieldArrayName}.${index}.${name}`, undefined);
-      } else setFieldValue(`${fieldArrayName}.${index}.${name}`, file);
+        setFieldValue(name, undefined);
+      } else setFieldValue(name, file);
     };
+  }
 
   return (
     <SectionLayout type="SMALL">
@@ -183,6 +189,7 @@ export function ProductOptions(props: ProductOptionsProps) {
                     optionCountName={optionCountName}
                     optionLengthName={optionLengthName}
                     optionFileName={optionFileName}
+                    optionFilesName={optionFilesName}
                     isFile={isFile}
                     isCount={isCount}
                     isLength={isLength}
@@ -211,6 +218,8 @@ export function ProductOptions(props: ProductOptionsProps) {
                     optionDiscountName={optionDiscountName}
                     optionCountName={optionCountName}
                     optionLengthName={optionLengthName}
+                    optionFileName={optionFileName}
+                    optionFilesName={optionFilesName}
                     isCount={isCount}
                     isLength={isLength}
                   />
@@ -233,6 +242,7 @@ export function ProductOptions(props: ProductOptionsProps) {
                 isLength={isLength}
                 isFile={isFile}
                 productFileName={productFileName}
+                productFilesName={productFilesName}
               />
             )}
             <ButtonSecondary
