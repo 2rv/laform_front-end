@@ -73,7 +73,7 @@ export function PatternsContainer() {
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
     if (value) {
-      redirect(PATTERNS_ROUTE_PATH + value);
+      redirect(PATTERNS_ROUTE_PATH + '/' + value);
     } else {
       redirect(PATTERNS_ROUTE_PATH);
     }
