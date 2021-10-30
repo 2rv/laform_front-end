@@ -22,10 +22,6 @@ export const BASKET_API = {
     ENDPOINT: `/auth/verify/code`,
     METHOD: 'POST',
   },
-  SEND_PURCHASED_PRODUCTS_INFO: {
-    ENDPOINT: 'mail/send-purchase-info',
-    TYPE: 'POST',
-  },
   LOAD_USER_INFO: {
     ENDPOINT: 'user/info/get',
     TYPE: 'GET',
