@@ -14,7 +14,7 @@ import { ModalPopup } from 'src/lib/element/modal';
 import { patternProductSendPdfToMail } from '../patterns-page.action';
 
 export function FilePdfActions(props) {
-  const { title, filePdf, isPdfPending, isPdfSuccess } = props;
+  const { title, filesPdf, isPdfPending, isPdfSuccess } = props;
   const dispatch = useDispatch();
   const [modalVisibilty, setModalVisibility] = useState(false);
   const isPdfSending = isPdfPending === true && isPdfSuccess === false;
@@ -30,13 +30,13 @@ export function FilePdfActions(props) {
     dispatch(
       patternProductSendPdfToMail({
         productName: title,
-        productPdfUrl: filePdf,
+        filesPdf,
       }),
     );
   };
 
   const redirectToPdfLink = () => {
-    window.open(filePdf, '_blank');
+    window.open(filesPdf, '_blank');
   };
 
   return (

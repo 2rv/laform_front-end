@@ -14,9 +14,7 @@ export const convertPatternData = (data) => {
     discount: Number(data.totalDiscount),
     diliveryPrice: Number(data?.deliveryPrice || 0),
     count: Number(data.totalCount),
-    filePdf:
-      data.optionId?.filePdf?.fileUrl ||
-      data.patternProductId?.filePdf?.fileUrl,
+    filesPdf: data.patternProductId?.filesPdf,
     vendorCode: data.optionId?.vendorCode || data.patternProductId?.vendorCode,
     params: {
       size: data.optionId?.size,
