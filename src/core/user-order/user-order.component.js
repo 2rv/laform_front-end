@@ -24,7 +24,7 @@ export function UserOrderComponent(props) {
   ) : (
     <SectionLayout>
       <div>
-        <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />
+        <TitlePrimary tid="ORDER_NUMBER.TABLE.MY_PURCHASE" />
         &nbsp;
         <BoldTitle tid={userOrderTitle} />
       </div>

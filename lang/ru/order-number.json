@@ -1,6 +1,7 @@
 {
   "TABLE": {
     "TITLE": "Заказ номер",
+    "MY_PURCHASE": "Моя покупка",
     "HEADER": {
       "ORDER_ITEMS": "Товары заказа",
       "PARAMETERS": "Параметры",
