@@ -6,13 +6,14 @@ import { LinkPrimary } from '../link';
 import { CardImageProps } from './card.type';
 
 export function CardImage(props: CardImageProps) {
-  const { image, modifier, discount, path, pathConfig } = props;
+  const { image, modifier, discount, deleted, path, pathConfig } = props;
   const [imageLoaded, setimageLoaded] = useState(false);
   return (
     <Container path={path} pathConfig={pathConfig}>
       {!imageLoaded && <SkeletonImage />}
       <Image onLoad={() => setimageLoaded(true)} src={image} />
       <Case>
+        {Boolean(deleted) && <Modifier tid="PRODUCT_PRICE.DELETED" />}
         {Boolean(discount) && <Modifier tid="PRODUCT_PRICE.STOCK" />}
         {Boolean(modifier) && <Modifier alt tid={modifier} />}
       </Case>

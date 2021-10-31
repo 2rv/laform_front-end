@@ -20,6 +20,7 @@ export function CardArticle(props: CardArticleType) {
     modifier,
     createdDate,
     like,
+    deleted,
     admin,
     type,
     onSelect,
@@ -33,6 +34,7 @@ export function CardArticle(props: CardArticleType) {
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}
+        deleted={deleted}
       />
       <ActionCase>
         <Content>
@@ -44,7 +46,7 @@ export function CardArticle(props: CardArticleType) {
         </Content>
         <ActionCase>
           <SelectButton id={id} type={type} onSelect={onSelect} />
-          <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
+          {Boolean(deleted === false) && <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />}
         </ActionCase>
       </ActionCase>
     </Container>

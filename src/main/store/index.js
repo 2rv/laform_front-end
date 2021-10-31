@@ -171,6 +171,10 @@ import {
   createPatternStore,
   CREATE_PATTERN_STORE_NAME,
 } from '../../core/pattern-create';
+import {
+  allProductsStore,
+  ALL_PRODUCTS_STORE_NAME,
+} from '../../core/all-products';
 
 export const reducers = combineReducers({
   [CREATE_PATTERN_STORE_NAME]: createPatternStore,
@@ -232,6 +236,7 @@ export const reducers = combineReducers({
   [ABOUT_STORE_NAME]: aboutStore,
   [DELIVERY_PRICE_PAGE_STORE_NAME]: deliveryPricePageStore,
   [UNSUBSCRIBE_NOTIFICATION_STORE_NAME]: unsubscribeNotificationStore,
+  [ALL_PRODUCTS_STORE_NAME]: allProductsStore,
 });
 
 export { initStore } from './store.core';

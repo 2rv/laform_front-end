@@ -16,6 +16,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
   const {
     id,
     like,
+    deleted,
     admin,
     type,
     image,
@@ -41,6 +42,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}
+        deleted={deleted}
         discount={discount}
       />
       <Content>
@@ -65,7 +67,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
         />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
-          <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />
+          {Boolean(deleted === false) && <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />}
         </ActionCase>
       </ActionCase>
     </Container>

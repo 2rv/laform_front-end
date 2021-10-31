@@ -18,6 +18,7 @@ export interface OptionType {
 export interface CardImageProps {
   image: string;
   modifier?: string;
+  deleted?: boolean;
   discount?: number;
   path: string | Function;
   pathConfig: object;
@@ -59,6 +60,7 @@ export interface CardArticleType {
   modifier?: string;
   createdDate: string;
   like?: boolean;
+  deleted?: boolean;
   admin?: boolean;
   onSelect?: Function;
   onDelete?: Function;
@@ -66,6 +68,7 @@ export interface CardArticleType {
 export interface CardSewingGoodType {
   id: string;
   like?: boolean;
+  deleted?: boolean;
   admin?: boolean;
   type: number;
   image: string;
@@ -86,6 +89,7 @@ export interface CardSewingGoodType {
 export interface CardPatternType {
   id: string;
   like?: boolean;
+  deleted?: boolean;
   admin?: boolean;
   type: number;
   image: string;
@@ -110,6 +114,7 @@ export interface CardMasterClassType {
   price: number;
   vendorCode: string;
   like?: boolean;
+  deleted?: boolean;
   admin?: boolean;
   onSelect?: Function;
   onDelete?: Function;
