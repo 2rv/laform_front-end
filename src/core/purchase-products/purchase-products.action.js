@@ -2,7 +2,6 @@ import { httpRequest } from '../../main/http';
 import { PURCHASE_PRODUCTS_API } from './purchase-products.constant';
 import { PURCHASE_PRODUCTS_ACTION_TYPE } from './purchase-products.type';
 import { convertForTable } from './purchase-products.ts.convert';
-import { PURCHASE_PRODUCTS_STORE_NAME } from './purchase-products.constant';
 
 export function purchaseProductLoadData() {
   return async (dispatch) => {

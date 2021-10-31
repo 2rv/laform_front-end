@@ -32,7 +32,7 @@ import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
 import { SIGNUP_ROUTE_PATH } from '../signup';
 import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
-import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
+import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 
 export const NAVIGATION_MENU = [
   { title: 'Домашняя', pathname: HOME_ROUTE_PATH },
@@ -101,7 +101,7 @@ export const NAVIGATION_MENU = [
         title: 'Товар',
         items: [
           { title: 'Мои лайки', pathname: ALL_LIKES_ROUTE_PATH },
-          { title: 'Мои покупки', pathname: PURCHASE_PRODUCTS_ROUTE_PATH },
+          { title: 'Мои покупки', pathname: USER_ORDERS_ROUTE_PATH },
           { title: 'Заказ', pathname: ORDER_NUMBER_ROUTE_PATH },
         ],
       },

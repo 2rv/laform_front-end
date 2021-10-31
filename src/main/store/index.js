@@ -56,7 +56,10 @@ import {
 } from '../../core/sewing-goods';
 import { patternsStore, PATTERNS_STORE_NAME } from '../../core/patterns';
 import { ordersStore, ORDERS_STORE_NAME } from '../../core/orders';
-import { userOrdersStore, USER_ORDERS_STORE_NAME } from '../../core/user-orders';
+import {
+  userOrdersStore,
+  USER_ORDERS_STORE_NAME,
+} from '../../core/user-orders';
 import { userOrderStore, USER_ORDER_STORE_NAME } from '../../core/user-order';
 import { faqStore, FAQ_STORE_NAME } from '../../core/faq';
 import {
@@ -147,10 +150,6 @@ import {
 } from '../../core/master-class-page';
 import { usersStore, USERS_STORE_NAME } from '../../core/users';
 import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
-import {
-  purchaseProductsStore,
-  PURCHASE_PRODUCTS_STORE_NAME,
-} from '../../core/purchase-products';
 import { searchButtonStore } from '../../core/search-button/search-button.store';
 import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
 import { aboutStore, ABOUT_STORE_NAME } from '../../core/about';
@@ -231,7 +230,6 @@ export const reducers = combineReducers({
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
-  [PURCHASE_PRODUCTS_STORE_NAME]: purchaseProductsStore,
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
   [ABOUT_STORE_NAME]: aboutStore,
   [DELIVERY_PRICE_PAGE_STORE_NAME]: deliveryPricePageStore,
