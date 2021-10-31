@@ -22,6 +22,7 @@ export function FormComponent(props) {
     errors,
     touched,
     handleChange,
+    handleReset,
     handleBlur,
     setFieldValue,
     isEdit,
@@ -120,7 +121,10 @@ export function FormComponent(props) {
             />
           )}
 
-          <ButtonSecondary tid="MASTER_CLASSES.CREATE.FORM.BUTTON.CANCEL" />
+          <ButtonSecondary
+            onClick={handleReset}
+            tid="MASTER_CLASSES.CREATE.FORM.BUTTON.RESET"
+          />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>
