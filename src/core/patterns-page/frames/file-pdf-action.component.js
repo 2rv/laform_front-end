@@ -12,6 +12,7 @@ import { Divider } from 'src/lib/element/divider';
 import { TextSecondary } from 'src/lib/element/text';
 import { ModalPopup } from 'src/lib/element/modal';
 import { patternProductSendPdfToMail } from '../patterns-page.action';
+import { Popup } from 'src/lib/element/popup';
 
 export function FilePdfActions(props) {
   const { title, filesPdf, isPdfPending, isPdfSuccess } = props;
@@ -35,19 +36,40 @@ export function FilePdfActions(props) {
     );
   };
 
-  const redirectToPdfLink = () => {
-    window.open(filesPdf, '_blank');
-  };
-
   return (
     <>
       <Divider />
       <Container>
         <ButtonSecondary tid="PATTERNS.SEND_TO_EMAIL" disabled={isPdfSending} onClick={sendPdfToMail} />
-        <ButtonPrimary tid="PATTERNS.DOWNLOAD" onClick={redirectToPdfLink} />
-        <Button>
-          <QuestionIcon />
-        </Button>
+        <Popup
+          content={
+            <DownloadContainer>
+              {filesPdf.map(({ id, fileUrl }) => {
+                const file = fileUrl
+                  .split('.com/')[1]
+                  .replaceAll('%20', ' ')
+                  .replaceAll('%2C', ',')
+                  .replaceAll('%28', '(')
+                  .replaceAll('%29', ')')
+                return (
+                  <PdfText
+                    key={id}
+                    onClick={() => window.open(fileUrl, '_blank')}
+                  >
+                    {file}
+                  </PdfText>
+                )
+              })}
+            </DownloadContainer>
+          }
+        >
+          <DownloadButtonCase>
+            <ButtonPrimary tid="PATTERNS.DOWNLOAD" />
+            <Button>
+              <QuestionIcon />
+            </Button>
+          </DownloadButtonCase>
+        </Popup>
       </Container>
       <ModalPopup
         modalVisibilty={modalVisibilty}
@@ -59,13 +81,31 @@ export function FilePdfActions(props) {
   );
 }
 const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: ${spacing(3)};
+`;
+const DownloadContainer = styled.div`
+  display: grid;
+  gap: ${spacing(3)};
+  width: 628px;
+`;
+const DownloadButtonCase = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing(3)};
+  gap: ${spacing(2)};
 `;
 const Button = styled(IconButton)`
   padding: 0;
   border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
   height: 25px;
   width: 25px;
+`;
+const PdfText = styled(TextSecondary)`
+  line-height: 22px;
+  &:hover {
+    color: #2D9CDB;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
