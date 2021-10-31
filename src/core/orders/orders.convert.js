@@ -1,4 +1,5 @@
 import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
+import { PURCHASE_STATUS_INFO } from './orders.constant';
 
 function getPrice(price = 0, discount = 0) {
   return price - price * (discount / 100);
@@ -11,7 +12,7 @@ export const convertUsersOrderData = (data) => {
     path: ORDER_NUMBER_ROUTE_PATH,
     pathConfig: { dynamic: true, params: { id: data?.id } },
     totalPrice: getPrice(data.price, data.promoCodeDiscount),
-    status: data.orderStatus,
+    status: PURCHASE_STATUS_INFO[data.orderStatus],
     params: {
       count: data.purchaseProductsCount,
       createdDate: data.createdDate,

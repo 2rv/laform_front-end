@@ -17,6 +17,7 @@ export function CardPattern(props: CardPatternType) {
   const {
     id,
     like,
+    deleted,
     admin,
     type,
     image,
@@ -39,6 +40,7 @@ export function CardPattern(props: CardPatternType) {
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}
+        deleted={deleted}
         discount={discount}
       />
       <Content>
@@ -63,12 +65,12 @@ export function CardPattern(props: CardPatternType) {
         {(like || admin) && (
           <ActionCase>
             <LikeButton id={id} type={type} like={like} />
-            <DeleteButton
+            {Boolean(deleted === false) && <DeleteButton
               id={id}
               type={type}
               admin={admin}
               onDelete={onDelete}
-            />
+            />}
           </ActionCase>
         )}
       </ActionCase>

@@ -14,6 +14,7 @@
   },
   "USER_MENU": {
     "MY_PURCHASES": "My purchases",
+    "MY_ORDERS": "My orders",
     "FAVORITE": "Favorites list",
     "PURCHASED_PATTERNS": "Purchased patterns",
     "ORDERS_lIST": "Order list",
@@ -33,6 +34,7 @@
     "BEST_PRODUCTS": "Best products",
     "SLIDER": "Slider",
     "PROMOCODES": "Promocodes",
-    "CREATE_DELIVERY_TYPE": "Create delivery type"
+    "CREATE_DELIVERY_TYPE": "Create delivery type",
+    "ALL_PRODUCTS": "All products"
   }
 }

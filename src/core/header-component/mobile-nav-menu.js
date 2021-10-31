@@ -10,10 +10,10 @@ import { setLinkRedirect } from 'src/main/navigation';
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { BASKET_ROUTE_PATH } from '../basket';
-import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { useSelector } from 'react-redux';
+import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 
 export function MobileNavMenu(props) {
   const { activePath } = props;
@@ -43,14 +43,12 @@ export function MobileNavMenu(props) {
 
       <Button
         onClick={setLinkRedirect(
-          isAuth ? PURCHASE_PRODUCTS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+          isAuth ? USER_ORDERS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
         )}
       >
         <UserStyledIcon
           active={
-            activePath?.startsWith(PURCHASE_PRODUCTS_ROUTE_PATH)
-              ? 'true'
-              : undefined
+            activePath?.startsWith(USER_ORDERS_ROUTE_PATH) ? 'true' : undefined
           }
         />
       </Button>

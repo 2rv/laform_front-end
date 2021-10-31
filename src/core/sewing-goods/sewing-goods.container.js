@@ -47,6 +47,7 @@ export function SewingGoodsContainer() {
   ];
 
   useEffect(() => {
+    dispatch({ type: SEWING_GOODS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...filter }));
     dispatch(fetchCategories(currentLang, 3));
   }, []);
@@ -62,6 +63,7 @@ export function SewingGoodsContainer() {
     dispatch(sewingGoodsUploadData(isAuth, { currentLang, ...copy }));
   };
   const onDeleteProduct = (id, body) => {
+    dispatch({ type: SEWING_GOODS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(sewingGoodsUpdateData(isAuth, { currentLang }, id, body));
   };
 

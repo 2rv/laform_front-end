@@ -10,7 +10,6 @@ export interface ProductOptionsProps {
   productDiscountName: string;
   productCountName?: string;
   productLengthName?: string;
-  productFileName?: string;
   isFile?: boolean;
   isPattern?: boolean;
   isCount?: boolean;
@@ -25,7 +24,12 @@ export interface ProductOptionsProps {
   optionDiscountName: string;
   optionCountName?: string;
   optionLengthName?: string;
+
   optionFileName?: string;
+  productFileName?: string;
+
+  optionFilesName?: string;
+  productFilesName?: string;
 }
 
 export interface ProductOptionsOneProps {
@@ -74,7 +78,8 @@ export interface ProductOptionsTwoProps {
   optionDiscountName: string;
   optionCountName: string;
   optionLengthName: string;
-  optionFileName?: string;
+  optionFileName: string;
+  optionFilesName: string;
 }
 export interface ProductOptionsThreeProps {
   isFirst: boolean;
@@ -112,8 +117,10 @@ export interface ProductOptionsNoneProps {
   productDiscountName: string;
   productCountName: string;
   productLengthName: string;
-  productFileName: string;
   handleBlur: Function;
   setFieldValue: Function;
   handleChange: Function;
+
+  productFileName: string;
+  productFilesName: string;
 }

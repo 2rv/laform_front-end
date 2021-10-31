@@ -1,4 +1,4 @@
-export const PATTERNS_ROUTE_PATH = '/patterns';
+export const PATTERNS_ROUTE_PATH = `/patterns`;
 export const PATTERNS_STORE_NAME = 'PATTERNS_STORE';
 export const PATTERNS_API = {
   PATTERNS_UPLOAD: {
@@ -33,7 +33,8 @@ export const PATTERNS_API = {
     TYPE: 'DELETE',
   },
   CATEGORIES_UPLOAD_DATA: {
-    ENDPOINT: (currentLang, type) => `/category/get?lang=${currentLang}&type=${type}`,
+    ENDPOINT: (currentLang, type) =>
+      `/category/get?lang=${currentLang}&type=${type}`,
     TYPE: 'GET',
   },
 };

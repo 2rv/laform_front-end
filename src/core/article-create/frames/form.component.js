@@ -15,6 +15,7 @@ export function FormComponent(props) {
     errors,
     touched,
     handleChange,
+    handleReset,
     handleBlur,
     setFieldValue,
     isEdit,
@@ -69,7 +70,10 @@ export function FormComponent(props) {
               tid="ARTICLE_CREATE_FORM.BUTTON.CREATE_ARTICLE"
             />
           )}
-          <ButtonSecondary tid="ARTICLE_CREATE_FORM.BUTTON.CANCEL" />
+          <ButtonSecondary
+            onClick={handleReset}
+            tid="ARTICLE_CREATE_FORM.BUTTON.RESET"
+          />
         </FieldLayout>
       </SectionLayout>
     </SectionLayout>

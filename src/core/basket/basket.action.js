@@ -9,8 +9,8 @@ import {
   convertForAuth,
 } from './basket.convert';
 import { redirect } from 'src/main/navigation';
-import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 import { convertAddToCart, convertCreateOrder } from './basket.util';
+import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 
 export function getUserInfoAction() {
   return async (dispatch) => {
@@ -164,7 +164,7 @@ export function createOrderAction(values, bascketState, isAuth) {
       });
       dispatch(clearBasketAction());
       if (isAuth) {
-        redirect(PURCHASE_PRODUCTS_ROUTE_PATH);
+        redirect(USER_ORDERS_ROUTE_PATH);
       } else {
         alert('Для просмотра списка покупок необходима авторизация');
       }

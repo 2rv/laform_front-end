@@ -30,6 +30,11 @@ import {
 } from '../../core/auth-verificate-email-confirm';
 import { settingsRouter, SETTINGS_ROUTE_PATH } from '../../core/settings';
 import { ordersRouter, ORDERS_ROUTE_PATH } from '../../core/orders';
+import {
+  userOrdersRouter,
+  USER_ORDERS_ROUTE_PATH,
+} from '../../core/user-orders';
+import { userOrderRouter, USER_ORDER_ROUTE_PATH } from '../../core/user-order';
 import { faqRouter, FAQ_ROUTE_PATH } from '../../core/faq';
 import {
   editCompilationRouter,
@@ -99,10 +104,6 @@ import {
 } from '../../core/master-class-page';
 import { usersStore, USERS_ROUTE_PATH } from '../../core/users';
 import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
-import {
-  purchaseProductsRouter,
-  PURCHASE_PRODUCTS_ROUTE_PATH,
-} from '../../core/purchase-products';
 import { aboutRouter, ABOUT_ROUTE_PATH } from '../../core/about';
 import {
   deliveryPricePageRouter,
@@ -116,6 +117,10 @@ import {
   createPatternRouter,
   CREATE_PATTERN_ROUTE_PATH,
 } from '../../core/pattern-create';
+import {
+  allProductsRouter,
+  ALL_PRODUCTS_ROUTE_PATH,
+} from '../../core/all-products';
 
 export const routes = {
   [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
@@ -143,6 +148,8 @@ export const routes = {
   [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
+  [USER_ORDERS_ROUTE_PATH]: userOrdersRouter,
+  [USER_ORDER_ROUTE_PATH]: userOrderRouter,
   [FAQ_ROUTE_PATH]: faqRouter,
   [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
@@ -154,10 +161,10 @@ export const routes = {
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
   [USERS_ROUTE_PATH]: usersStore,
   [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
-  [PURCHASE_PRODUCTS_ROUTE_PATH]: purchaseProductsRouter,
   [ABOUT_ROUTE_PATH]: aboutRouter,
   [DELIVERY_PRICE_PAGE_ROUTE_PATH]: deliveryPricePageRouter,
   [UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH]: unsubscribeNotificationRouter,
+  [ALL_PRODUCTS_ROUTE_PATH]: allProductsRouter,
 };
 
 export const Router = routesInit(routes);

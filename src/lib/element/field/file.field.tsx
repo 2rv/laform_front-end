@@ -54,6 +54,7 @@ const Container = styled.div<{
 }>`
   display: flex;
   flex-direction: column;
+  gap: 5px;
   width: ${(p) => {
     if (p.width) return p.width + 'px';
     return '100%';

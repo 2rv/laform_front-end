@@ -5,9 +5,9 @@ import { ABOUT_ROUTE_PATH } from '../about';
 import { FAQ_ROUTE_PATH } from '../faq';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
-import { PURCHASE_PRODUCTS_ROUTE_PATH } from '../purchase-products';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { FooterComponent } from './footer.component';
+import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({
@@ -19,11 +19,11 @@ export function FooterContainer() {
     items: [
       {
         tid: 'FOOTER.MENU.SECTION1.MY_ACCOUNT',
-        path: isAuth ? PURCHASE_PRODUCTS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+        path: isAuth ? USER_ORDERS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.MY_PURCHASES',
-        path: isAuth ? PURCHASE_PRODUCTS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+        path: isAuth ? USER_ORDERS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.WISH_LIST',

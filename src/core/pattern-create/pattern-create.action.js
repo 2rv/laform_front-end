@@ -5,6 +5,7 @@ import {
   convertForPreUploadPDFFiles,
   convertForChange,
   convertForUpdateImage,
+  convertForUpdateFilesPdf,
 } from './pattern-create.ts.convert';
 import {
   CREATE_PATTERN_ACTION_TYPE,
@@ -39,17 +40,25 @@ export function createPatternPreUploadPDFFiles(imageUrls, formValues) {
   return async (dispatch) => {
     try {
       const files = convertForPreUploadPDFFiles(formValues);
-      const formData = new FormData();
-      for (const file of files) {
-        formData.append('files', file);
-      }
+      const result = await Promise.all(
+        files.map(async (files) => {
+          const formData = new FormData();
+          for (const file of files) {
+            formData.append(
+              'files',
+              file?.productFilePdf || file?.optionFilePdf,
+            );
+          }
 
-      const response = await httpRequest({
-        method: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.TYPE,
-        url: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.ENDPOINT,
-        data: formData,
-      });
-      dispatch(createPatternUploadData(imageUrls, response.data, formValues));
+          const response = await httpRequest({
+            method: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.TYPE,
+            url: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.ENDPOINT,
+            data: formData,
+          });
+          return response.data;
+        }),
+      );
+      dispatch(createPatternUploadData(imageUrls, result, formValues));
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -81,7 +90,6 @@ export function createPatternPreUploadData(formValues) {
       });
       dispatch(createPatternPreUploadPDFFiles(response.data, formValues));
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: CREATE_PATTERN_ACTION_TYPE.CREATE_PATTERN_UPLOAD_ERROR,
@@ -122,9 +130,13 @@ export function updatePatternProduct(id, newImages, pdfFileUrls, formValues) {
   return async (dispatch) => {
     try {
       const updatedImagesArray = convertForUpdateImage(newImages, formValues);
+      const updatedPdfFilesArray = convertForUpdateFilesPdf(
+        pdfFileUrls,
+        formValues,
+      );
       const data = convertForUpload(
         updatedImagesArray,
-        pdfFileUrls,
+        updatedPdfFilesArray,
         formValues,
       );
       const response = await httpRequest({
@@ -149,20 +161,24 @@ export function updatePatternProduct(id, newImages, pdfFileUrls, formValues) {
 export function updatePatternPreUploadPDFFiles(id, imageUrls, formValues) {
   return async (dispatch) => {
     try {
-      const files = convertForPreUploadPDFFiles(formValues);
-      const formData = new FormData();
-      for (const file of files) {
-        formData.append('files', file);
-      }
+      const filesArray = convertForPreUploadPDFFiles(formValues);
 
-      const response = await httpRequest({
-        method: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.TYPE,
-        url: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.ENDPOINT,
-        data: formData,
-      });
-      dispatch(
-        createPatternUploadData(id, imageUrls, response.data, formValues),
+      const result = await Promise.all(
+        filesArray.map(async (files) => {
+          const formData = new FormData();
+          for (const file of files) {
+            formData.append('files', file.productFilePdf || file.optionFilePdf);
+          }
+
+          const response = await httpRequest({
+            method: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.TYPE,
+            url: CREATE_PATTERN_API.PATTERN_PDF_UPLOAD.ENDPOINT,
+            data: formData,
+          });
+          return response.data;
+        }),
       );
+      dispatch(updatePatternProduct(id, imageUrls, result, formValues));
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -181,10 +197,10 @@ export function updatePatternProductPreUpload(id, formValues) {
     });
     try {
       const formData = new FormData();
-      for (const key in formValues[PATTERN_FIELD_NAME.IMAGES]) {
+      for (const key in formValues[CREATE_PATTERN_FIELD_NAME.IMAGES]) {
         formData.append(
           'files',
-          formValues[PATTERN_FIELD_NAME.IMAGES][key].file,
+          formValues[CREATE_PATTERN_FIELD_NAME.IMAGES][key].file,
         );
       }
 
@@ -204,3 +220,4 @@ export function updatePatternProductPreUpload(id, formValues) {
     }
   };
 }
+async function uploadPdfFiles(data) {}

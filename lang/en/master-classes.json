@@ -43,7 +43,7 @@
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Create a master class",
-				"CANCEL": "Cancel"
+				"RESET": "Reset"
 			}
 		}
 	}

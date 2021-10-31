@@ -14,7 +14,7 @@ export const CREATE_PATTERN_API = {
     ENDPOINT: '/file/create-many',
   },
   PATTERN_LOAD: {
-    ENDPOINT: (id) => `/pattern-product/get/${id}/?lang=ru`,
+    ENDPOINT: (id) => `/pattern-product/get/for-update/${id}/?lang=ru`,
     TYPE: 'GET',
   },
   PATTERN_CHANGE: {

@@ -1,6 +1,7 @@
 {
   "TABLE": {
     "TITLE": "Order number",
+    "MY_PURCHASE": "My purchase",
     "HEADER": {
       "ORDER_ITEMS": "Orders product",
       "PARAMETERS": "Parameters",
