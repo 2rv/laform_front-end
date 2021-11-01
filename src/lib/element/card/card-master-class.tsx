@@ -53,7 +53,14 @@ export function CardMasterClass(props: CardMasterClassType) {
         />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
-          {Boolean(deleted === false) && <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />}
+          {Boolean(deleted === false) && (
+            <DeleteButton
+              id={id}
+              type={type}
+              admin={admin}
+              onDelete={onDelete}
+            />
+          )}
         </ActionCase>
       </ActionCase>
     </Container>
@@ -70,7 +77,6 @@ const Container = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   justify-content: space-between;
   gap: ${spacing(1)};
 `;

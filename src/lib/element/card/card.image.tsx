@@ -12,6 +12,7 @@ export function CardImage(props: CardImageProps) {
     <Container path={path} pathConfig={pathConfig}>
       {!imageLoaded && <SkeletonImage />}
       <Image onLoad={() => setimageLoaded(true)} src={image} />
+
       <Case>
         {Boolean(deleted) && <Modifier tid="PRODUCT_PRICE.DELETED" />}
         {Boolean(discount) && <Modifier tid="PRODUCT_PRICE.STOCK" />}
@@ -20,13 +21,13 @@ export function CardImage(props: CardImageProps) {
     </Container>
   );
 }
+
 const Image = styled.img`
   width: 100%;
   height: 100%;
   min-height: 260px;
-  max-height: 260px;
+  max-height: 500px;
   object-fit: contain;
-  background-color: ${THEME_COLOR.WHITE};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Container = styled(LinkPrimary)<any>`
