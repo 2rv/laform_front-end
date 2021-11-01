@@ -9,6 +9,9 @@ import {
   ReferenceArea,
   ResponsiveContainer,
 } from 'recharts';
+import { TextButton } from 'src/lib/element/button';
+import { spacing } from 'src/lib/theme';
+import styled from 'styled-components';
 
 const initialData = [
   { name: 1, cost: 4.11, impression: 100 },
@@ -132,18 +135,7 @@ export default class Example extends PureComponent {
     } = this.state;
 
     return (
-      <div
-        className="highlight-bar-charts"
-        style={{ userSelect: 'none', width: '100%' }}
-      >
-        <button
-          type="button"
-          className="btn update"
-          onClick={this.zoomOut.bind(this)}
-        >
-          Zoom Out
-        </button>
-
+      <Container>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart
             width={800}
@@ -203,7 +195,16 @@ export default class Example extends PureComponent {
             ) : null}
           </LineChart>
         </ResponsiveContainer>
-      </div>
+        <Button tid="Сбросить увелечение" onClick={this.zoomOut.bind(this)} />
+      </Container>
     );
   }
 }
+const Container = styled.div`
+  user-select: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing(3)};
+`;
+const Button = styled(TextButton)``;

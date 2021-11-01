@@ -56,7 +56,7 @@ const BackgroundImage = styled.img`
   position: absolute;
   top: 0;
   left: 0;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Content = styled.div`

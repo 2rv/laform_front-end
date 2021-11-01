@@ -43,9 +43,8 @@ export function StatisticstComponent(props) {
       {activeTab === 'sewing-good' && (
         <SewingGoodStats statistics={statistics} />
       )}
-      <ChartOne />
       <ChartTwo />
-      <ChartThree />
+      <ChartOne />
     </SectionLayout>
   );
 }
