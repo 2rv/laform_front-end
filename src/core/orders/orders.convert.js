@@ -1,17 +1,18 @@
 import { ORDER_NUMBER_ROUTE_PATH } from '../order-number';
 import { PURCHASE_STATUS_INFO } from './orders.constant';
 
-function getPrice(price = 0, discount = 0) {
-  return price - price * (discount / 100);
+function getPrice(price = 0, discount = 0, shippingPrice = 0) {
+  return (price - price * (discount / 100)) + shippingPrice;
 }
 
 export const convertUsersOrderData = (data) => {
   return {
     id: data.id,
+    image: '/static/image/orders-image.jpg',
     name: data.orderNumber,
     path: ORDER_NUMBER_ROUTE_PATH,
     pathConfig: { dynamic: true, params: { id: data?.id } },
-    totalPrice: getPrice(data.price, data.promoCodeDiscount),
+    totalPrice: getPrice(data.price, data.promoCodeDiscount, Number(data.shippingPrice)),
     status: PURCHASE_STATUS_INFO[data.orderStatus],
     params: {
       count: data.purchaseProductsCount,

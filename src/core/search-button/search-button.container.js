@@ -19,6 +19,7 @@ export function SearchButtonContainer() {
   }));
 
   useEffect(() => {
+    dispatch({ type: SEARCH_BUTTON_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(fetchProducts(currentLang, searchInput));
   }, [debounce]);
 

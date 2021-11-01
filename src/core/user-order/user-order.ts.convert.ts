@@ -1,6 +1,6 @@
-import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
-import { PATTERNS_PRODUCT_ROUTE_PATH } from '../patterns-product';
-import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
+import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
+import { PATTERNS_PAGE_ROUTE_PATH } from '../patterns-page';
+import { SEWING_GOODS_PAGE_ROUTE_PATH } from '../sewing-goods-page';
 import { baseOrderDataType, orderDataType } from './user-order.ts.type';
 import { ABOUT_ORDER_FIELD_NAME } from './user-order.type';
 
@@ -49,7 +49,7 @@ export const convertPurchaseData = (
       return {
         id: product.id,
         path: typePathProduct(product.type),
-        pathConfig: { dynamic: true, params: { id: product.id } },
+        pathConfig: { dynamic: true, params: { id: item.id } },
         type: product.type,
         name: product.titleRu,
         image: product.images?.[0].fileUrl,
@@ -68,7 +68,7 @@ export const convertPurchaseData = (
 };
 
 const typePathProduct = (type: number) => {
-  if (type === 0) return MASTER_CLASS_PRODUCT_ROUTE_PATH;
-  if (type === 1 || type === 2) return PATTERNS_PRODUCT_ROUTE_PATH;
-  if (type === 3) return SEWING_GOODS_PRODUCT_ROUTE_PATH;
+  if (type === 0) return MASTER_CLASS_PAGE_ROUTE_PATH;
+  if (type === 1 || type === 2) return PATTERNS_PAGE_ROUTE_PATH;
+  if (type === 3) return SEWING_GOODS_PAGE_ROUTE_PATH;
 };

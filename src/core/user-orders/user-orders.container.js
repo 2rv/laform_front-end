@@ -11,6 +11,7 @@ import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { fetchUserOrders } from './user-orders.action';
 import { UserOrdersComponent } from './user-orders.component';
 import { USER_ORDERS_STORE_NAME } from './user-orders.constant';
+import { USER_ORDERS_ACTION_TYPE } from './user-orders.type';
 
 export function UserOrdersContainer() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export function UserOrdersContainer() {
   }));
 
   useEffect(() => {
+    dispatch({ type: USER_ORDERS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(fetchUserOrders());
   }, []);
 
