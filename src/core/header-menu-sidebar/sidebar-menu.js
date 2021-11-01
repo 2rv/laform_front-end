@@ -1,21 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import styled, { css } from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { SidebarMenuListItem } from './sidebar-menu-list-item';
 import { NAVIGATION_MENU } from './sidebar-menu.constant';
 
 export function SidebarMenu(props) {
-  const { items, setOpen, isOpen } = props;
+  const { setOpen, isOpen } = props;
+  const { activePath, isAuth } = useSelector((state) => ({
+    activePath: state[NAVIGATION_STORE_NAME].activePath,
+    isAuth: state[AUTH_STORE_NAME].logged,
+  }));
+
   const scrolled = () => {
     if (typeof window !== 'undefined') {
       return window.pageYOffset;
     }
     return 0;
   };
+
   return (
     <Container open={isOpen} scrolled={scrolled}>
       <Content>
-        {NAVIGATION_MENU.map((data, index) => (
+        {NAVIGATION_MENU(isAuth).map((data, index) => (
           <SidebarMenuListItem key={index} data={data} />
         ))}
       </Content>
