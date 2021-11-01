@@ -15,6 +15,9 @@ import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { useSelector } from 'react-redux';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 
+import { ReactComponent as GStoreIcon } from '../../asset/svg/google-store.svg';
+import { ReactComponent as AppStoreIcon } from '../../asset/svg/app-store.svg';
+
 export function MobileNavMenu(props) {
   const { activePath } = props;
   const { isAuth } = useSelector((state) => ({
