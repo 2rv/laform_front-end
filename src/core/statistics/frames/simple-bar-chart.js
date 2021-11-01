@@ -9,6 +9,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import { spacing } from 'src/lib/theme';
+import styled from 'styled-components';
 
 const data = [
   {
@@ -57,26 +59,26 @@ const data = [
 
 export default function ChartTwo() {
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <BarChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="pv" fill="#8884d8" />
-        <Bar dataKey="uv" fill="#82ca9d" />
-      </BarChart>
-    </ResponsiveContainer>
+    <Container>
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart width={500} height={300} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="pv" fill="#8884d8" />
+          <Bar dataKey="uv" fill="#82ca9d" />
+        </BarChart>
+      </ResponsiveContainer>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  user-select: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing(3)};
+`;
