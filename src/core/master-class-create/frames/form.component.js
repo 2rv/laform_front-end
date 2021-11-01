@@ -22,7 +22,6 @@ export function FormComponent(props) {
     errors,
     touched,
     handleChange,
-    handleReset,
     handleBlur,
     setFieldValue,
     isEdit,
@@ -122,7 +121,7 @@ export function FormComponent(props) {
           )}
 
           <ButtonSecondary
-            onClick={handleReset}
+            onClick={() => window.location.reload()}
             tid="MASTER_CLASSES.CREATE.FORM.BUTTON.RESET"
           />
         </FieldLayout>
