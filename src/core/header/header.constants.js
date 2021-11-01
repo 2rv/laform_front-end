@@ -39,10 +39,6 @@ export const USER_MENU_ITEMS = [
 export const ADMIN_MENU_ITEMS = [
   { divider: true },
   {
-    path: STATISTICS_ROUTE_PATH,
-    tid: 'Статистика',
-  },
-  {
     path: CREATE_MASTER_CLASS_ROUTE_PATH,
     tid: 'HEADER.ADMIN_MENU.MASTER_CLASS_ARTICLE_CREATING',
   },
@@ -72,4 +68,8 @@ export const ADMIN_MENU_ITEMS = [
     tid: 'HEADER.ADMIN_MENU.CREATE_DELIVERY_TYPE',
   },
   { path: ALL_PRODUCTS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.ALL_PRODUCTS' },
+  {
+    path: STATISTICS_ROUTE_PATH,
+    tid: 'Статистика',
+  },
 ];
