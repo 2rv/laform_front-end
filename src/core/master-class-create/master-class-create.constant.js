@@ -1,4 +1,8 @@
 export const CREATE_MASTER_CLASS_ROUTE_PATH = '/master-class/create';
+
+export const CREATE_MASTER_CLASS_DYNAMIC_ROUTE_PATH = (
+  { id } = { id: '[id]' },
+) => `/master-class/create/${id}`;
 export const CREATE_MASTER_CLASS_STORE_NAME = 'CREATE_MASTER_CLASS';
 export const CREATE_MASTER_CLASS_API = {
   CREATE_MASTER_CLASS_UPLOAD: {

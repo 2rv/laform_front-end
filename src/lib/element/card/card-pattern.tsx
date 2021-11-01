@@ -12,6 +12,7 @@ import {
   SelectButton,
 } from './card.components';
 import { CartModalButton } from '../../common/cart-modal-button';
+import { CREATE_PATTERN_DYNAMIC_ROUTE_PATH } from 'src/core/pattern-create';
 
 export function CardPattern(props: CardPatternType) {
   const {
@@ -31,12 +32,17 @@ export function CardPattern(props: CardPatternType) {
     onSelect,
     onDelete,
     isCount,
+    isCreateList,
   } = props;
 
   return (
     <Container>
       <CardImage
-        path={PATTERNS_PRODUCT_ROUTE_PATH}
+        path={
+          isCreateList
+            ? CREATE_PATTERN_DYNAMIC_ROUTE_PATH
+            : PATTERNS_PRODUCT_ROUTE_PATH
+        }
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}

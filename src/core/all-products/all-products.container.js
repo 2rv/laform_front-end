@@ -35,7 +35,7 @@ export function AllProductsContainer() {
       user: state[AUTH_STORE_NAME].user,
     }));
 
-  const [activeTab, setActiveTab] = useState(MASTER_CLASS_TYPE);
+  const [activeTab, setActiveTab] = useState(SEWING_GOOD_TYPE);
   const [activeTabText, setActiveTabText] = useState('ALL_PRODUCTS.TABS.SEWING_PRODUCT');
   const [filter, setFilter] = useState({
     where: null,

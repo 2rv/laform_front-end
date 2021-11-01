@@ -11,6 +11,7 @@ import {
   LikeButton,
   CardName,
 } from './card.components';
+import { CREATE_ARTICLE_DYNAMIC_ROUTE_PATH } from 'src/core/article-create';
 
 export function CardArticle(props: CardArticleType) {
   const {
@@ -25,12 +26,17 @@ export function CardArticle(props: CardArticleType) {
     type,
     onSelect,
     onDelete,
+    isCreateList,
   } = props;
 
   return (
     <Container>
       <CardImage
-        path={ARTICLE_PAGE_ROUTE_PATH}
+        path={
+          isCreateList
+            ? CREATE_ARTICLE_DYNAMIC_ROUTE_PATH
+            : ARTICLE_PAGE_ROUTE_PATH
+        }
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}

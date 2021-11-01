@@ -25,7 +25,6 @@ export function FormComponent(props) {
     touched,
     handleChange,
     handleBlur,
-    handleReset,
     setFieldValue,
     initialOption,
   } = props;
@@ -165,7 +164,7 @@ export function FormComponent(props) {
         )}
 
         <ButtonSecondary
-          onClick={handleReset}
+          onClick={() => window.location.reload()}
           tid="SEWING_GOODS.CREATE.FORM.BUTTON.RESET"
         />
       </FieldLayout>

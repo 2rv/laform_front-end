@@ -11,6 +11,7 @@ import {
   SelectButton,
 } from './card.components';
 import { CartModalButton } from '../../common/cart-modal-button';
+import { CREATE_SEWING_GOODS_DYNAMIC_ROUTE_PATH } from 'src/core/sewing-goods-create';
 
 export function CardSewingGood(props: CardSewingGoodType) {
   const {
@@ -33,12 +34,17 @@ export function CardSewingGood(props: CardSewingGoodType) {
     onDelete,
     isCount,
     isLength,
+    isCreateList,
   } = props;
 
   return (
     <Container>
       <CardImage
-        path={SEWING_GOODS_PRODUCT_ROUTE_PATH}
+        path={
+          isCreateList
+            ? CREATE_SEWING_GOODS_DYNAMIC_ROUTE_PATH
+            : SEWING_GOODS_PRODUCT_ROUTE_PATH
+        }
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}

@@ -10,7 +10,15 @@ import { BasicCardListTypeProps } from './card-list.type';
 import { TextSecondary } from '../text';
 
 export function BasicCardList(props: BasicCardListTypeProps) {
-  const { items, onSelect, onDelete, admin, emptyText, emptyTvalue } = props;
+  const {
+    items,
+    onSelect,
+    onDelete,
+    admin,
+    emptyText,
+    emptyTvalue,
+    isCreateList,
+  } = props;
 
   if (!items || items.length === 0) {
     return <TextSecondary tid={emptyText} tvalue={emptyTvalue} />;
@@ -22,6 +30,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
         const CardItem = isCardType(data.type);
         return (
           <CardItem
+            isCreateList={isCreateList}
             key={data?.id || index}
             {...data}
             onSelect={onSelect}

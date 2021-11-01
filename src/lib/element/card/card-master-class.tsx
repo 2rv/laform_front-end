@@ -11,6 +11,7 @@ import {
   SelectButton,
 } from './card.components';
 import { CartModalButton } from 'src/lib/common/cart-modal-button';
+import { CREATE_MASTER_CLASS_DYNAMIC_ROUTE_PATH } from 'src/core/master-class-create';
 
 export function CardMasterClass(props: CardMasterClassType) {
   const {
@@ -26,12 +27,17 @@ export function CardMasterClass(props: CardMasterClassType) {
     admin,
     onSelect,
     onDelete,
+    isCreateList,
   } = props;
 
   return (
     <Container>
       <CardImage
-        path={MASTER_CLASS_PRODUCT_ROUTE_PATH}
+        path={
+          isCreateList
+            ? CREATE_MASTER_CLASS_DYNAMIC_ROUTE_PATH
+            : MASTER_CLASS_PRODUCT_ROUTE_PATH
+        }
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}
