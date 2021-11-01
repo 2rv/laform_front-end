@@ -121,8 +121,9 @@ import {
   allProductsRouter,
   ALL_PRODUCTS_ROUTE_PATH,
 } from '../../core/all-products';
-
+import { statisticsRouter, STATISTICS_ROUTE_PATH } from '../../core/statistics';
 export const routes = {
+  [STATISTICS_ROUTE_PATH]: statisticsRouter,
   [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,

@@ -46,7 +46,14 @@ export function CardArticle(props: CardArticleType) {
         </Content>
         <ActionCase>
           <SelectButton id={id} type={type} onSelect={onSelect} />
-          {Boolean(deleted === false) && <DeleteButton id={id} type={type} admin={admin} onDelete={onDelete} />}
+          {Boolean(deleted === false) && (
+            <DeleteButton
+              id={id}
+              type={type}
+              admin={admin}
+              onDelete={onDelete}
+            />
+          )}
         </ActionCase>
       </ActionCase>
     </Container>
@@ -68,7 +75,6 @@ const Container = styled.div`
 const Content = styled.div`
   display: flex;
   gap: ${spacing(3)};
-  flex: 1;
   justify-content: space-between;
   align-items: center;
 `;

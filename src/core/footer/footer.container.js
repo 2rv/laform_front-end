@@ -4,7 +4,6 @@ import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
 import { ABOUT_ROUTE_PATH } from '../about';
 import { FAQ_ROUTE_PATH } from '../faq';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
-import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { FooterComponent } from './footer.component';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
@@ -31,7 +30,7 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',
-        path: PATTERNS_ROUTE_PATH,
+        path: ABOUT_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO',
@@ -49,7 +48,7 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
-        path: isAuth ? SETTINGS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+        path: FAQ_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION2.QNA',

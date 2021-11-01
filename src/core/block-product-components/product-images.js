@@ -90,7 +90,7 @@ const ImageCase = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   overflow: hidden;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
   ${(p) =>
@@ -109,7 +109,7 @@ const Content = styled.div`
 `;
 const MainImage = styled.img`
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: 100%;
 `;

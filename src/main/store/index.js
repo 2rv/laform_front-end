@@ -174,8 +174,9 @@ import {
   allProductsStore,
   ALL_PRODUCTS_STORE_NAME,
 } from '../../core/all-products';
-
+import { statisticsStore, STATISTICS_STORE_NAME } from '../../core/statistics';
 export const reducers = combineReducers({
+  [STATISTICS_STORE_NAME]: statisticsStore,
   [CREATE_PATTERN_STORE_NAME]: createPatternStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,

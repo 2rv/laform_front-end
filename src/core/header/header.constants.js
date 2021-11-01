@@ -19,6 +19,7 @@ import { SETTINGS_ROUTE_PATH } from '../settings';
 import { DELIVERY_PRICE_PAGE_ROUTE_PATH } from '../delivery-price-page';
 import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
 import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
+import { STATISTICS_ROUTE_PATH } from '../statistics';
 
 export const NAV_MENU_ITEMS = [
   { name: 'HEADER.MENU_ITEMS.PATTERNS', path: PATTERNS_ROUTE_PATH },
@@ -37,6 +38,10 @@ export const USER_MENU_ITEMS = [
 
 export const ADMIN_MENU_ITEMS = [
   { divider: true },
+  {
+    path: STATISTICS_ROUTE_PATH,
+    tid: 'Статистика',
+  },
   {
     path: CREATE_MASTER_CLASS_ROUTE_PATH,
     tid: 'HEADER.ADMIN_MENU.MASTER_CLASS_ARTICLE_CREATING',
