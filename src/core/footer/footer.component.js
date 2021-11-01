@@ -3,6 +3,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { FooterLinkList, FooterSocialLink } from './frames';
 import { NotificationContainer } from '../notification';
 import { TextSecondary } from 'src/lib/element/text';
+import { DownloadLinks } from '../header-component';
 
 export function FooterComponent(props) {
   const { laFormeLinkItems, faqLinkItems, contactLinkItems } = props;
@@ -25,6 +26,7 @@ export function FooterComponent(props) {
           </div>
           <FooterSocialLink />
         </CopyrightCase>
+        <DownloadLinks />
       </Content>
     </Container>
   );
