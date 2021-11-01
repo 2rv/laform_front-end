@@ -64,7 +64,7 @@ export interface CardArticleType {
   admin?: boolean;
   onSelect?: Function;
   onDelete?: Function;
-  isCreateList: boolean;
+  isCreateList?: boolean;
 }
 export interface CardSewingGoodType {
   id: string;
@@ -86,7 +86,7 @@ export interface CardSewingGoodType {
   sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
-  isCreateList: boolean;
+  isCreateList?: boolean;
 }
 export interface CardPatternType {
   id: string;
@@ -105,7 +105,7 @@ export interface CardPatternType {
   sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
-  isCreateList: boolean;
+  isCreateList?: boolean;
 }
 export interface CardMasterClassType {
   id: string;
@@ -121,5 +121,5 @@ export interface CardMasterClassType {
   admin?: boolean;
   onSelect?: Function;
   onDelete?: Function;
-  isCreateList: boolean;
+  isCreateList?: boolean;
 }
