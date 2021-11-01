@@ -26,6 +26,7 @@ import {
   productsLoadData,
 } from './edit-compilation.action';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { ORDERS_ACTION_TYPE } from '../orders/orders.type';
 
 export function EditCompilationContainer() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ export function EditCompilationContainer() {
         : value === '3'
         ? 'post'
         : '';
+    dispatch({ type: ORDERS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     setCompilationName(compName);
     dispatch(productsLoadData(compName, currentLang));
 

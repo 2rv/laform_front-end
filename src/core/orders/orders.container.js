@@ -12,6 +12,7 @@ import { useDebounce } from '../../lib/common/hooks';
 import { ordersLoadData } from './orders.action';
 import { OrdersComponent } from './orders.component';
 import { ORDERS_STORE_NAME } from './orders.constant';
+import { ORDERS_ACTION_TYPE } from './orders.type';
 
 export function OrdersContainer() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export function OrdersContainer() {
   }));
 
   useEffect(() => {
+    dispatch({ type: ORDERS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(ordersLoadData());
   }, []);
 

@@ -20,7 +20,7 @@ export const EDIT_COMPILATION_API = {
     TYPE: 'GET',
   },
   UPDATE_PINNED: {
-    ENDPOINT: (compilationName, id) => `${compilationName}/update/${id}`,
+    ENDPOINT: (compilationName, id) => `${compilationName}/update-pinned/${id}`,
     TYPE: 'PUT',
   },
 };

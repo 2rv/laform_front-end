@@ -6,19 +6,26 @@ import {
 } from '../../main/store/store.service';
 import { EDIT_COMPILATION_ACTION_TYPE } from './edit-compilation.type';
 
+const initialProductData = {
+  products: [],
+  currentPage: 1,
+  totalRecords: 0,
+};
+
 const initialState = {
   bestArticles: initRequestState(),
   bestMasterClasses: initRequestState(),
   bestProducts: initRequestState(),
-  products: initRequestState({
-    products: [],
-    currentPage: 1,
-    totalRecords: 0,
-  }),
+  products: initRequestState(initialProductData),
 };
 
 export function editCompilationStore(state = initialState, action) {
   switch (action.type) {
+    case EDIT_COMPILATION_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return {
+        ...state,
+        products: initRequestState(initialProductData),
+      };
     case EDIT_COMPILATION_ACTION_TYPE.EDIT_COMPILATION_UPLOAD_PENDING:
       return {
         ...state,
