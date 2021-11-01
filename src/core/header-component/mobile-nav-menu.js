@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { LinkSecondary } from '../../lib/element/link';
 import { IconButton } from '../../lib/element/button';
-import { ReactComponent as CartIcon } from '../../asset/svg/mobile-cart.svg';
 import { ReactComponent as TShirtIcon } from '../../asset/svg/tee-shirt.svg';
 import { ReactComponent as MasterClassIcon } from '../../asset/svg/mobile-master-class.svg';
-import { ReactComponent as UserIcon } from '../../asset/svg/user.svg';
+import { ReactComponent as UserIcon } from '../../asset/svg/mobile-user.svg';
+import { ReactComponent as CartIcon } from '../../asset/svg/mobile-cart.svg';
 import { setLinkRedirect } from 'src/main/navigation';
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
@@ -99,11 +99,11 @@ const TShirtStyledIcon = styled(TShirtIcon)`
     p.active
       ? css`
           fill: ${THEME_COLOR.SECONDARY_DARK};
-          stroke: ${THEME_COLOR.SECONDARY_DARK};
+          /* stroke: ${THEME_COLOR.SECONDARY_DARK}; */
         `
       : css`
           fill: ${THEME_COLOR.TEXT.LIGHT};
-          stroke: ${THEME_COLOR.TEXT.LIGHT};
+          /* stroke: ${THEME_COLOR.TEXT.LIGHT}; */
         `}
 `;
 
