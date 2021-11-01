@@ -55,6 +55,7 @@ export function AllProductsComponent(props) {
             admin={isAdmin}
             items={products}
             emptyText="ALL_PRODUCTS.CATEGORY_EMPTY"
+            isCreateList
           />
         </InfiniteScroll>
       </SectionLayout>

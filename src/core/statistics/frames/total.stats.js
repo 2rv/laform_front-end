@@ -44,7 +44,7 @@ export function TotalStats(props) {
           </LineCase>
         </Case>
       </Content>
-      <ChartComponent initialData={statistics.chartOrders} />
+      {/* <ChartComponent initialData={statistics.chartOrders} /> */}
     </SectionLayout>
   );
 }

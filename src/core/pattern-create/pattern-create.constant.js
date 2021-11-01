@@ -1,4 +1,8 @@
 export const CREATE_PATTERN_ROUTE_PATH = '/patterns/create';
+
+export const CREATE_PATTERN_DYNAMIC_ROUTE_PATH = ({ id } = { id: '[id]' }) =>
+  `/patterns/create/${id}`;
+
 export const CREATE_PATTERN_STORE_NAME = 'CREATE_PATTERN';
 export const CREATE_PATTERN_API = {
   PATTERN_UPLOAD: {
