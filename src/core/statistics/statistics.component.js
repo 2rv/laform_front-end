@@ -13,9 +13,8 @@ import {
   PatternElectronicStats,
   SewingGoodStats,
 } from './frames';
-import ChartOne from './frames/highlight-zoom-chart';
-import ChartTwo from './frames/simple-bar-chart';
-import ChartThree from './frames/circle-chart';
+import VictoryLine from './frames/victory-line';
+
 export function StatisticstComponent(props) {
   const {
     pending,
@@ -43,8 +42,7 @@ export function StatisticstComponent(props) {
       {activeTab === 'sewing-good' && (
         <SewingGoodStats statistics={statistics} />
       )}
-      <ChartTwo />
-      <ChartOne />
+      <VictoryLine data={statistics.chartOrders} />
     </SectionLayout>
   );
 }

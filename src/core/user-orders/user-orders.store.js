@@ -6,16 +6,23 @@ import {
 } from '../../main/store/store.service';
 import { USER_ORDERS_ACTION_TYPE } from './user-orders.type';
 
+const initialProductData = {
+  userOrders: [],
+  currentPage: 1,
+  totalRecords: 0,
+};
+
 const initialState = {
-  userOrders: initRequestState({
-    userOrders: [],
-    currentPage: 1,
-    totalRecords: 0,
-  }),
+  userOrders: initRequestState(initialProductData),
 };
 
 export function userOrdersStore(state = initialState, action) {
   switch (action.type) {
+    case USER_ORDERS_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return {
+        ...state,
+        userOrders: initRequestState(initialProductData),
+      };
     case USER_ORDERS_ACTION_TYPE.USER_ORDERS_UPLOAD_PENDING:
       return {
         ...state,

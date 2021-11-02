@@ -1,6 +1,6 @@
-import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
-import { PATTERNS_PRODUCT_ROUTE_PATH } from '../patterns-product';
-import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
+import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
+import { PATTERNS_PAGE_ROUTE_PATH } from '../patterns-page';
+import { SEWING_GOODS_PAGE_ROUTE_PATH } from '../sewing-goods-page';
 import { ABOUT_ORDER_FIELD_NAME } from './user-order.type';
 
 export const convertUsersOrderData = (rowData) => {
@@ -60,7 +60,7 @@ export const convertUsersOrderData = (rowData) => {
 };
 
 const typePathProduct = (type) => {
-  if (type === 0) return MASTER_CLASS_PRODUCT_ROUTE_PATH;
-  if (type === 1 || type === 2) return PATTERNS_PRODUCT_ROUTE_PATH;
-  if (type === 3) return SEWING_GOODS_PRODUCT_ROUTE_PATH;
+  if (type === 0) return MASTER_CLASS_PAGE_ROUTE_PATH;
+  if (type === 1 || type === 2) return PATTERNS_PAGE_ROUTE_PATH;
+  if (type === 3) return SEWING_GOODS_PAGE_ROUTE_PATH;
 };

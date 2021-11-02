@@ -1,4 +1,7 @@
-import React, { PureComponent } from 'react';
+import { TextButton } from 'src/lib/element/button';
+import { spacing } from 'src/lib/theme';
+import styled from 'styled-components';
+import React, { useState } from 'react';
 import {
   LineChart,
   Line,
@@ -9,9 +12,6 @@ import {
   ReferenceArea,
   ResponsiveContainer,
 } from 'recharts';
-import { TextButton } from 'src/lib/element/button';
-import { spacing } from 'src/lib/theme';
-import styled from 'styled-components';
 
 const initialData = [
   { name: 1, cost: 4.11, impression: 100 },
@@ -60,23 +60,30 @@ const initialState = {
   animation: true,
 };
 
-export default class Example extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/highlight-zomm-line-chart-v77bt';
+function Chart() {
+  const [state, setState] = useState(initialState);
+  const {
+    data,
+    left,
+    right,
+    refAreaLeft,
+    refAreaRight,
+    top,
+    bottom,
+    top2,
+    bottom2,
+  } = state;
 
-  constructor(props) {
-    super(props);
-    this.state = initialState;
-  }
-
-  zoom() {
-    let { refAreaLeft, refAreaRight } = this.state;
-    const { data } = this.state;
+  function zoom() {
+    let { refAreaLeft, refAreaRight } = state;
+    const { data } = state;
 
     if (refAreaLeft === refAreaRight || refAreaRight === '') {
-      this.setState(() => ({
+      setState({
+        ...state,
         refAreaLeft: '',
         refAreaRight: '',
-      }));
+      });
       return;
     }
 
@@ -93,7 +100,7 @@ export default class Example extends PureComponent {
       50,
     );
 
-    this.setState(() => ({
+    setState({
       refAreaLeft: '',
       refAreaRight: '',
       data: data.slice(),
@@ -103,13 +110,12 @@ export default class Example extends PureComponent {
       top,
       bottom2,
       top2,
-    }));
+    });
   }
 
-  zoomOut() {
-    const { data } = this.state;
-    this.setState(() => ({
-      data: data.slice(),
+  function zoomOut() {
+    setState({
+      data: state.data.slice(),
       refAreaLeft: '',
       refAreaRight: '',
       left: 'dataMin',
@@ -118,88 +124,80 @@ export default class Example extends PureComponent {
       bottom: 'dataMin',
       top2: 'dataMax+50',
       bottom2: 'dataMin+50',
-    }));
+    });
   }
 
-  render() {
-    const {
-      data,
-      left,
-      right,
-      refAreaLeft,
-      refAreaRight,
-      top,
-      bottom,
-      top2,
-      bottom2,
-    } = this.state;
-
-    return (
-      <Container>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart
-            width={800}
-            height={400}
-            data={data}
-            onMouseDown={(e) => this.setState({ refAreaLeft: e.activeLabel })}
-            onMouseMove={(e) =>
-              this.state.refAreaLeft &&
-              this.setState({ refAreaRight: e.activeLabel })
-            }
-            // eslint-disable-next-line react/jsx-no-bind
-            onMouseUp={this.zoom.bind(this)}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-              allowDataOverflow
-              dataKey="name"
-              domain={[left, right]}
-              type="number"
-            />
-            <YAxis
-              allowDataOverflow
-              domain={[bottom, top]}
-              type="number"
-              yAxisId="1"
-            />
-            <YAxis
-              orientation="right"
-              allowDataOverflow
-              domain={[bottom2, top2]}
-              type="number"
-              yAxisId="2"
-            />
-            <Tooltip />
-            <Line
-              yAxisId="1"
-              type="natural"
-              dataKey="cost"
-              stroke="#8884d8"
-              animationDuration={300}
-            />
-            <Line
-              yAxisId="2"
-              type="natural"
-              dataKey="impression"
-              stroke="#82ca9d"
-              animationDuration={300}
-            />
-
-            {refAreaLeft && refAreaRight ? (
-              <ReferenceArea
-                yAxisId="1"
-                x1={refAreaLeft}
-                x2={refAreaRight}
-                strokeOpacity={0.3}
-              />
-            ) : null}
-          </LineChart>
-        </ResponsiveContainer>
-        <Button tid="Сбросить увелечение" onClick={this.zoomOut.bind(this)} />
-      </Container>
-    );
+  function areaLeft(e) {
+    setState({ ...state, refAreaLeft: e.activeLabel });
   }
+  function areaRight(e) {
+    if (state.refAreaLeft) {
+      setState({ ...state, refAreaRight: e.activeLabel ?? '' });
+    }
+  }
+  return (
+    <Container>
+      <ResponsiveContainer width="100%" height={400}>
+        <LineChart
+          width={800}
+          height={400}
+          data={data}
+          onMouseDown={areaLeft}
+          onMouseMove={areaRight}
+          onMouseUp={zoom}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            allowDataOverflow
+            dataKey="name"
+            domain={[left, right]}
+            type="number"
+          />
+          <YAxis
+            allowDataOverflow
+            domain={[bottom, top]}
+            // type="number"
+            yAxisId="1"
+          />
+          <YAxis
+            orientation="right"
+            allowDataOverflow
+            domain={[bottom2, top2]}
+            type="number"
+            yAxisId="2"
+          />
+
+          <Line
+            yAxisId="1"
+            type="natural"
+            dataKey="cost"
+            stroke="#8884d8"
+            animationDuration={300}
+          />
+          <Line
+            yAxisId="2"
+            type="natural"
+            dataKey="impression"
+            stroke="#82ca9d"
+            animationDuration={300}
+          />
+
+          {refAreaLeft && refAreaRight ? (
+            <ReferenceArea
+              yAxisId="1"
+              x1={refAreaLeft}
+              x2={refAreaRight}
+              strokeOpacity={0.3}
+            />
+          ) : null}
+          <Tooltip />
+        </LineChart>
+      </ResponsiveContainer>
+      <Button tid="Сбросить увелечение" onClick={zoomOut} />
+    </Container>
+  );
 }
+
 const Container = styled.div`
   user-select: none;
   width: 100%;
@@ -208,3 +206,5 @@ const Container = styled.div`
   gap: ${spacing(3)};
 `;
 const Button = styled(TextButton)``;
+
+export default Chart;
