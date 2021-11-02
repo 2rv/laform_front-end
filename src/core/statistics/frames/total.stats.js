@@ -3,7 +3,6 @@ import { TextCurrency, TextSecondary } from 'src/lib/element/text';
 import { TitlePrimary } from 'src/lib/element/title';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import styled from 'styled-components';
-import { ChartComponent } from './chart';
 
 export function TotalStats(props) {
   const { statistics } = props;
@@ -44,7 +43,6 @@ export function TotalStats(props) {
           </LineCase>
         </Case>
       </Content>
-      {/* <ChartComponent initialData={statistics.chartOrders} /> */}
     </SectionLayout>
   );
 }
