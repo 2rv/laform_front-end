@@ -36,6 +36,8 @@ const Container = styled(LinkPrimary)<any>`
   height: 100%;
   width: 100%;
   flex: 1 0;
+  background-color: ${THEME_COLOR.GRAY};
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Case = styled.div`
   display: flex;

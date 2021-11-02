@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from 'src/lib/theme';
 import styled from 'styled-components';
 import {
   VictoryAxis,
@@ -8,18 +9,10 @@ import {
   VictoryTooltip,
   VictoryZoomContainer,
   createContainer,
+  VictoryBar,
+  VictoryVoronoiContainer,
 } from 'victory';
 
-const initialData = [
-  { x: new Date(1982, 1, 1), y: 125 },
-  { x: new Date(1987, 1, 1), y: 257 },
-  { x: new Date(1993, 1, 1), y: 345 },
-  { x: new Date(1997, 1, 1), y: 515 },
-  { x: new Date(2001, 1, 1), y: 132 },
-  { x: new Date(2005, 1, 1), y: 305 },
-  { x: new Date(2011, 1, 1), y: 270 },
-  { x: new Date(2015, 1, 1), y: 470 },
-];
 const month = [
   'Январь',
   'Февраль',
@@ -38,42 +31,23 @@ const styleData = {
   data: { stroke: 'tomato' },
 };
 const VictoryUtils = createContainer('voronoi', 'zoom');
-
-function Component(props) {
+export function ChartPrice(props) {
   const { data } = props;
 
   const [state, setState] = useState({});
 
-  function handleZoom(domain) {
-    setState({ selectedDomain: domain });
-  }
-
   function handleBrush(domain) {
     setState({ zoomDomain: domain });
   }
-  function tickFormatHours(x) {
-    return `${new Date(x).toLocaleString('default', {
-      minute: 'numeric',
-      hour: '2-digit',
-      day: 'numeric',
-      month: 'short',
-    })}`;
-  }
-  function tickFormatDays(x) {
-    return `${new Date(x).toLocaleString('default', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })}`;
-  }
-  function labelsFn({ datum }) {
-    return datum.y;
+  function handleZoom(domain) {
+    setState({ selectedDomain: domain });
   }
   return (
     <Container>
       <VictoryChart
-        width={500}
-        height={220}
+        width={1140}
+        height={400}
+        padding={{ left: 100, top: 50, right: 50, bottom: 50 }}
         scale={{ x: 'time' }}
         containerComponent={
           <VictoryUtils
@@ -83,39 +57,174 @@ function Component(props) {
           />
         }
       >
-        <VictoryLine
-          style={styleData}
+        <VictoryBar
+          x="date"
+          y="price"
+          style={{ data: { fill: '#219653' } }}
           data={data}
-          labels={labelsFn}
+          barRatio={0.9}
+          labels={({ datum }) => datum.price}
           labelComponent={<VictoryTooltip />}
         />
-        <VictoryAxis tickFormat={tickFormatHours} crossAxis />
-        <VictoryAxis dependentAxis crossAxis />
+        <VictoryAxis
+          style={{
+            axisLabel: {
+              padding: 50,
+              fontFamily: THEME_VALUE.FONT_NAME.PRIMARY,
+              fontSize: THEME_SIZE.FONT.MEDIUM,
+            },
+          }}
+          label="Заказов"
+          dependentAxis
+          crossAxis
+        />
+        <VictoryAxis
+          style={{
+            axisLabel: {
+              padding: 30,
+              fontFamily: THEME_VALUE.FONT_NAME.PRIMARY,
+              fontSize: THEME_SIZE.FONT.MEDIUM,
+            },
+          }}
+          crossAxis
+          label="День"
+          tickFormat={(x) => new Date(x).toLocaleDateString()}
+        />
       </VictoryChart>
 
       <VictoryChart
-        width={500}
-        height={100}
+        width={1140}
+        height={200}
         scale={{ x: 'time' }}
-        padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
         containerComponent={
-          <VictoryBrushContainer
-            brushDimension="x"
-            brushDomain={state.selectedDomain}
-            onBrushDomainChange={handleBrush}
+          <VictoryUtils
+            zoomDimension="x"
+            zoomDomain={state.zoomDomain}
+            onZoomDomainChange={handleZoom}
+            labels={({ datum }) => datum.price}
+            labelComponent={<VictoryTooltip />}
           />
         }
       >
         <VictoryAxis
-          //   tickValues={[
-          //     new Date(2015, 1, 1),
-          //     new Date(2016, 1, 1),
-          //     new Date(2017, 1, 1),
-          //     new Date(2018, 1, 1),
-          //   ]}
-          tickFormat={tickFormatDays}
+          tickValues={[
+            new Date(2021, 1, 1),
+            new Date(2021, 2, 1),
+            new Date(2021, 3, 1),
+            new Date(2021, 4, 1),
+            new Date(2021, 5, 1),
+            new Date(2021, 6, 1),
+            new Date(2021, 7, 1),
+          ]}
+          tickFormat={(x) => new Date(x).getFullYear()}
         />
-        <VictoryLine style={styleData} data={data} />
+        <VictoryLine
+          x="date"
+          y="price"
+          style={{
+            data: { stroke: '#219653', strokeWidth: '3px' },
+          }}
+          data={data}
+        />
+      </VictoryChart>
+    </Container>
+  );
+}
+
+export function ChartOrders(props) {
+  const { data } = props;
+  const [state, setState] = useState({});
+
+  function handleBrush(domain) {
+    setState({ zoomDomain: domain });
+  }
+  function handleZoom(domain) {
+    setState({ selectedDomain: domain });
+  }
+  return (
+    <Container>
+      <VictoryChart
+        width={1140}
+        height={400}
+        padding={{ left: 100, top: 50, right: 50, bottom: 50 }}
+        scale={{ x: 'time' }}
+        containerComponent={
+          <VictoryUtils
+            zoomDimension="x"
+            zoomDomain={state.zoomDomain}
+            onZoomDomainChange={handleZoom}
+          />
+        }
+      >
+        <VictoryBar
+          x="date"
+          y="orders"
+          style={{ data: { fill: '#219653' } }}
+          data={data}
+          barRatio={0.9}
+          labels={({ datum }) => datum.orders}
+          labelComponent={<VictoryTooltip />}
+        />
+        <VictoryAxis
+          style={{
+            axisLabel: {
+              padding: 50,
+              fontFamily: THEME_VALUE.FONT_NAME.PRIMARY,
+              fontSize: THEME_SIZE.FONT.MEDIUM,
+            },
+          }}
+          label="Заказов"
+          dependentAxis
+          crossAxis
+        />
+        <VictoryAxis
+          style={{
+            axisLabel: {
+              padding: 30,
+              fontFamily: THEME_VALUE.FONT_NAME.PRIMARY,
+              fontSize: THEME_SIZE.FONT.MEDIUM,
+            },
+          }}
+          crossAxis
+          label="День"
+          tickFormat={(x) => new Date(x).toLocaleDateString()}
+        />
+      </VictoryChart>
+
+      <VictoryChart
+        width={1140}
+        height={200}
+        scale={{ x: 'time' }}
+        containerComponent={
+          <VictoryUtils
+            zoomDimension="x"
+            zoomDomain={state.zoomDomain}
+            onZoomDomainChange={handleZoom}
+            labels={({ datum }) => datum.orders}
+            labelComponent={<VictoryTooltip />}
+          />
+        }
+      >
+        <VictoryAxis
+          tickValues={[
+            new Date(2021, 1, 1),
+            new Date(2021, 2, 1),
+            new Date(2021, 3, 1),
+            new Date(2021, 4, 1),
+            new Date(2021, 5, 1),
+            new Date(2021, 6, 1),
+            new Date(2021, 7, 1),
+          ]}
+          tickFormat={(x) => new Date(x).getFullYear()}
+        />
+        <VictoryLine
+          x="date"
+          y="orders"
+          style={{
+            data: { stroke: '#219653', strokeWidth: '3px' },
+          }}
+          data={data}
+        />
       </VictoryChart>
     </Container>
   );
@@ -123,5 +232,5 @@ function Component(props) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: ${spacing(3)};
 `;
-export default Component;
