@@ -75,27 +75,27 @@ export const catalogListItems = [
   {
     title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
-    backgroundImage: '/static/image/catalog-list-1.png',
+    backgroundImage: '/static/image/catalog-image-1.png',
     path: PATTERNS_ROUTE_PATH,
     pathConfig: { query: { type: 'electronic' } },
   },
   {
     title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
-    backgroundImage: '/static/image/catalog-list-2.png',
+    backgroundImage: '/static/image/catalog-image-2.png',
     path: PATTERNS_ROUTE_PATH,
     pathConfig: { query: { type: 'printed' } },
   },
   {
     title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
     description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
-    backgroundImage: '/static/image/catalog-list-3.png',
+    backgroundImage: '/static/image/catalog-image-3.png',
     path: MASTER_CLASSES_ROUTE_PATH,
   },
   {
     title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
     description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
-    backgroundImage: '/static/image/catalog-list-4.png',
+    backgroundImage: '/static/image/catalog-image-4.png',
     path: SEWING_GOODS_ROUTE_PATH,
   },
 ];

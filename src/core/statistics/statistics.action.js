@@ -1,6 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { STATISTICS_API } from './statistics.constant';
 import { STATISTICS_ACTION_TYPE } from './statistics.type';
+import { convertForChart } from './statistics.convert';
 
 export function LoadDataAction() {
   return async (dispatch) => {
@@ -16,7 +17,7 @@ export function LoadDataAction() {
 
       dispatch({
         type: STATISTICS_ACTION_TYPE.LOAD_DATA_SUCCESS,
-        data: response.data,
+        data: convertForChart(response.data),
       });
     } catch (err) {
       if (err.response) {
