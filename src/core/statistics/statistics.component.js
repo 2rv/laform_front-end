@@ -13,7 +13,7 @@ import {
   PatternElectronicStats,
   SewingGoodStats,
 } from './frames';
-import VictoryLine from './frames/victory-line';
+import { ChartPrice, ChartOrders } from './frames/victory-line';
 
 export function StatisticstComponent(props) {
   const {
@@ -42,7 +42,8 @@ export function StatisticstComponent(props) {
       {activeTab === 'sewing-good' && (
         <SewingGoodStats statistics={statistics} />
       )}
-      <VictoryLine data={statistics.chartOrders} />
+      <ChartPrice data={statistics.chartOrders} />
+      <ChartOrders data={statistics.chartOrders} />
     </SectionLayout>
   );
 }

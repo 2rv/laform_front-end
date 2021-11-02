@@ -17,7 +17,7 @@ export function LoadDataAction() {
 
       dispatch({
         type: STATISTICS_ACTION_TYPE.LOAD_DATA_SUCCESS,
-        data: convertForChart(response.data),
+        data: response.data,
       });
     } catch (err) {
       if (err.response) {
