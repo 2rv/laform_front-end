@@ -25,6 +25,7 @@
 	"UNSUBSCRIBE_NOTIFICATION_TEXT": "You successfully unsubscribe notification.",
 	"PRIVACY_POLICY": "Privacy Policy",
 	"LEGAL_INFORMATION": "Legal information",
+	"TERMS_OF_USE": "Terms of use",
 	"CARD": {
 		"SIZE_COLOR_PRICE": "Size: {{size}}, Color: {{color}}, Price: {{price}}",
 		"SIZE_PRICE": "Size: {{size}}, Price: {{price}}",

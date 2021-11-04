@@ -9,6 +9,7 @@ import { FooterComponent } from './footer.component';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { LEGAL_INFORMATION_ROUTE_PATH } from '../legal-information';
 import { PRIVACY_POLICY_ROUTE_PATH } from '../privacy-policy';
+import { TERMS_OF_USE_ROUTE_PATH } from '../terms-of-use';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({
@@ -69,6 +70,10 @@ export function FooterContainer() {
       {
         tid: 'FOOTER.MENU.SECTION3.PRIVACY_POLICY',
         path: PRIVACY_POLICY_ROUTE_PATH,
+      },
+      {
+        tid: 'FOOTER.MENU.SECTION3.TERMS_OF_USE',
+        path: TERMS_OF_USE_ROUTE_PATH,
       },
     ],
   };
