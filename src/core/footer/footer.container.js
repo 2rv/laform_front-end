@@ -7,6 +7,7 @@ import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { FooterComponent } from './footer.component';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
+import { PRIVACY_POLICY_ROUTE_PATH } from '../privacy-policy';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({
@@ -66,7 +67,7 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION3.PRIVACY_POLICY',
-        path: ABOUT_ROUTE_PATH,
+        path: PRIVACY_POLICY_ROUTE_PATH,
       },
     ],
   };
