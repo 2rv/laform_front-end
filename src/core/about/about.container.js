@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
 import { getRequestData, isRequestPending } from 'src/main/store/store.service';
-import { aboutUsLoadData } from './about.action';
+import { aboutUsLoadData, aboutUsUploadData } from './about.action';
 import { AboutComponent } from './about.component';
 import { ABOUT_STORE_NAME } from './about.constant';
 
@@ -17,11 +17,19 @@ export function AboutContainer() {
     isAuth: state[AUTH_STORE_NAME].logged,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
-  const about = getRequestData(state)?.about;
+  const [editorData, setEditorData] = useState(null);
 
   useEffect(() => {
     dispatch(aboutUsLoadData());
   }, []);
+
+  const aboutUsUploadDataHandler = () => {
+    dispatch(aboutUsUploadData({ about: editorData }));
+  };
+
+  const handleChangeEditorValue = (value) => {
+    setEditorData(value);
+  };
 
   if (pageLoading) {
     return <LoaderPrimary />;
@@ -31,5 +39,13 @@ export function AboutContainer() {
     return <Spinner />;
   }
 
-  return <AboutComponent about={about} user={user} isAuth={isAuth} />;
+  return (
+    <AboutComponent
+      aboutUsUploadDataHandler={aboutUsUploadDataHandler}
+      about={getRequestData(state)?.about}
+      handleChangeEditorValue={handleChangeEditorValue}
+      user={user}
+      isAuth={isAuth}
+    />
+  );
 }

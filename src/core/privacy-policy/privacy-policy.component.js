@@ -10,11 +10,10 @@ export function PrivacyPolicyComponent(props) {
   const {
     privacyPolicyUploadDataHandler,
     privacyPolicy,
-    editorData,
     handleChangeEditorValue,
     user,
     isAuth,
-  } = props
+  } = props;
 
   return (
     <SectionLayout>
@@ -23,7 +22,6 @@ export function PrivacyPolicyComponent(props) {
         <>
           <ReactEditorBlock
             handleChange={handleChangeEditorValue}
-            values={editorData}
             data={privacyPolicy}
           />
           <ButtonSecondary

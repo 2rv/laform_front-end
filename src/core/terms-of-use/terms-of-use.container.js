@@ -4,7 +4,7 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
-import { getRequestData } from 'src/main/store/store.service';
+import { getRequestData, isRequestPending } from 'src/main/store/store.service';
 import { termsOfUseLoadData, termsOfUseUploadData } from './terms-of-use.action';
 import { TermsOfUseComponent } from './terms-of-use.component';
 import { TERMS_OF_USE_STORE_NAME } from './terms-of-use.constant';
@@ -17,18 +17,11 @@ export function TermsOfUseContainer() {
     isAuth: state[AUTH_STORE_NAME].logged,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
-  const termsOfUse = getRequestData(state)?.termsOfUse;
-  const [editorData, setEditorData] = useState();
-  console.log('editorData:', editorData);
-  console.log('termsOfUse:', termsOfUse);
+  const [editorData, setEditorData] = useState(null);
 
   useEffect(() => {
     dispatch(termsOfUseLoadData());
   }, []);
-
-  useEffect(() => {
-    setEditorData(termsOfUse);
-  }, [termsOfUse]);
 
   const termsOfUseUploadDataHandler = () => {
     dispatch(termsOfUseUploadData({ termsOfUse: editorData }));
@@ -38,15 +31,18 @@ export function TermsOfUseContainer() {
     setEditorData(value);
   };
 
-  if (pageLoading) {
+  if (isRequestPending(state)) {
     return <LoaderPrimary />;
+  }
+
+  if (isRequestPending(state)) {
+    return <Spinner />;
   }
 
   return (
     <TermsOfUseComponent
       termsOfUseUploadDataHandler={termsOfUseUploadDataHandler}
-      termsOfUse={termsOfUse}
-      editorData={editorData}
+      termsOfUse={getRequestData(state)?.termsOfUse}
       handleChangeEditorValue={handleChangeEditorValue}
       user={user}
       isAuth={isAuth}

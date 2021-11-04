@@ -10,11 +10,10 @@ export function LegalInformationComponent(props) {
   const {
     legalInformationUploadDataHandler,
     legalInformation,
-    editorData,
     handleChangeEditorValue,
     user,
     isAuth,
-  } = props
+  } = props;
 
   return (
     <SectionLayout>
@@ -23,7 +22,6 @@ export function LegalInformationComponent(props) {
         <>
           <ReactEditorBlock
             handleChange={handleChangeEditorValue}
-            values={editorData}
             data={legalInformation}
           />
           <ButtonSecondary

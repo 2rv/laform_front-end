@@ -10,11 +10,10 @@ export function TermsOfUseComponent(props) {
   const {
     termsOfUseUploadDataHandler,
     termsOfUse,
-    editorData,
     handleChangeEditorValue,
     user,
     isAuth,
-  } = props
+  } = props;
 
   return (
     <SectionLayout>
@@ -23,7 +22,6 @@ export function TermsOfUseComponent(props) {
         <>
           <ReactEditorBlock
             handleChange={handleChangeEditorValue}
-            values={editorData}
             data={termsOfUse}
           />
           <ButtonSecondary

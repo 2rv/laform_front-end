@@ -4,7 +4,7 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
-import { getRequestData } from 'src/main/store/store.service';
+import { getRequestData, isRequestPending } from 'src/main/store/store.service';
 import { legalInformationLoadData, legalInformationUploadData } from './legal-information.action';
 import { LegalInformationComponent } from './legal-information.component';
 import { LEGAL_INFORMATION_STORE_NAME } from './legal-information.constant';
@@ -17,16 +17,11 @@ export function LegalInformationContainer() {
     isAuth: state[AUTH_STORE_NAME].logged,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
-  const legalInformation = getRequestData(state)?.legalInformation;
-  const [editorData, setEditorData] = useState();
+  const [editorData, setEditorData] = useState(null);
 
   useEffect(() => {
     dispatch(legalInformationLoadData());
   }, []);
-
-  useEffect(() => {
-    setEditorData(legalInformation);
-  }, [legalInformation]);
 
   const legalInformationUploadDataHandler = () => {
     dispatch(legalInformationUploadData({ legalInformation: editorData }));
@@ -40,11 +35,14 @@ export function LegalInformationContainer() {
     return <LoaderPrimary />;
   }
 
+  if (isRequestPending(state)) {
+    return <Spinner />;
+  }
+
   return (
     <LegalInformationComponent
       legalInformationUploadDataHandler={legalInformationUploadDataHandler}
-      legalInformation={legalInformation}
-      editorData={editorData}
+      legalInformation={getRequestData(state)?.legalInformation}
       handleChangeEditorValue={handleChangeEditorValue}
       user={user}
       isAuth={isAuth}

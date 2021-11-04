@@ -4,19 +4,11 @@ import { TERMS_OF_USE_ACTION_TYPE } from './terms-of-use.type';
 
 export function termsOfUseUploadData(data) {
   return async (dispatch) => {
-    dispatch({
-      type: TERMS_OF_USE_ACTION_TYPE.TERMS_OF_USE_DATA_UPLOAD_PENDING,
-    });
-
     try {
       await httpRequest({
         method: TERMS_OF_USE_API.TERMS_OF_USE_DATA_UPLOAD.TYPE,
         url: TERMS_OF_USE_API.TERMS_OF_USE_DATA_UPLOAD.ENDPOINT,
         data,
-      });
-
-      dispatch({
-        type: TERMS_OF_USE_ACTION_TYPE.TERMS_OF_USE_DATA_UPLOAD_SUCCESS,
       });
     } catch (err) {
       if (err.response) {
