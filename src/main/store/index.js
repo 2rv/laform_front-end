@@ -175,12 +175,17 @@ import {
   ALL_PRODUCTS_STORE_NAME,
 } from '../../core/all-products';
 import {
+  legalInformationStore,
+  LEGAL_INFORMATION_STORE_NAME,
+} from '../../core/legal-information';
+import {
   privacyPolicyStore,
   PRIVACY_POLICY_STORE_NAME,
 } from '../../core/privacy-policy';
 import { statisticsStore, STATISTICS_STORE_NAME } from '../../core/statistics';
 export const reducers = combineReducers({
   [STATISTICS_STORE_NAME]: statisticsStore,
+  [LEGAL_INFORMATION_STORE_NAME]: legalInformationStore,
   [PRIVACY_POLICY_STORE_NAME]: privacyPolicyStore,
   [CREATE_PATTERN_STORE_NAME]: createPatternStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
