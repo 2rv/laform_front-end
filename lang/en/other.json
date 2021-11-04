@@ -22,5 +22,14 @@
 	"SEARCH_PRODUCT": "Search product",
 	"DELIVERY_TYPE": "Delivery type:",
 	"DELIVERY_TYPE_PRICE": "Price:",
-	"UNSUBSCRIBE_NOTIFICATION_TEXT": "You successfully unsubscribe notification."
+	"UNSUBSCRIBE_NOTIFICATION_TEXT": "You successfully unsubscribe notification.",
+	"PRIVACY_POLICY": "Privacy Policy",
+	"LEGAL_INFORMATION": "Legal information",
+	"TERMS_OF_USE": "Terms of use",
+	"CARD": {
+		"SIZE_COLOR_PRICE": "Size: {{size}}, Color: {{color}}, Price: {{price}}",
+		"SIZE_PRICE": "Size: {{size}}, Price: {{price}}",
+		"COLOR_PRICE": "Color: {{color}}, Price: {{price}}",
+		"PRODUCT_PRICE": "Price товара: "
+	}
 }

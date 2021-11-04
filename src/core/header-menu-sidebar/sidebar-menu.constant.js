@@ -31,7 +31,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
     { title: 'Товары для шитья', pathname: SEWING_GOODS_ROUTE_PATH },
     { title: 'Выкройки', pathname: PATTERNS_ROUTE_PATH },
     { title: 'Мастер-классы', pathname: MASTER_CLASSES_ROUTE_PATH },
-    { title: 'Статьи', pathname: ARTICLES_ROUTE_PATH },
+    { title: 'Блог', pathname: ARTICLES_ROUTE_PATH },
   ];
   const adminLinks = [
     {

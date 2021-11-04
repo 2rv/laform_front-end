@@ -1,21 +1,19 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
 import { ButtonSecondary } from '../../lib/element/button';
-import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
+import { THEME_SIZE } from '../../lib/theme';
 import { USER_ROLE } from '../../lib/common/auth';
 import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
-import { aboutUsLoadData, aboutUsUploadData } from './about.action';
 
-export function AboutComponent({ about, user, isAuth }) {
-  const dispatch = useDispatch();
-  const [editorData, setEditorData] = useState(about);
-
-  const aboutUsUploadDataHandler = () => {
-    dispatch(aboutUsUploadData({ about: editorData }));
-  };
+export function AboutComponent(props) {
+  const {
+    aboutUsUploadDataHandler,
+    about,
+    handleChangeEditorValue,
+    user,
+    isAuth,
+  } = props;
 
   return (
     <SectionLayout>
@@ -23,8 +21,7 @@ export function AboutComponent({ about, user, isAuth }) {
       {isAuth && user.role === USER_ROLE.ADMIN ? (
         <>
           <ReactEditorBlock
-            handleChange={(value) => setEditorData(value)}
-            values={editorData}
+            handleChange={handleChangeEditorValue}
             data={about}
           />
           <ButtonSecondary

@@ -1,22 +1,22 @@
 {
-  "CREATING_AN_ARTICLE": "Creating an article",
-  "PHOTO_ARTICLE": "Photo article",
-  "ARTICLE_SUCCESFULLY_CREATED": "The article was successfully created.",
+  "CREATING_AN_ARTICLE": "Creating an post",
+  "PHOTO_ARTICLE": "Post photo",
+  "ARTICLE_SUCCESFULLY_CREATED": "Post successfully created.",
   "MASTER_CLASS_ARTICLE": "Master class article",
   "FIELDS": {
     "TITLE": {
-      "ARTICLE_NAME": "Article title",
+      "ARTICLE_NAME": "Post title",
       "DIE": "Die",
       "TAGS": "Tags"
     },
     "PLACEHOLDER": {
-      "WRITE_ARTICLE_NAME": "Enter the title of the article",
+      "WRITE_ARTICLE_NAME": "Enter post title",
       "EXAMPLE_HIT": "For example - hit",
       "WRITE_TAG": "Enter the tag"
     }
   },
   "BUTTON": {
-    "CREATE_ARTICLE": "Create article",
+    "CREATE_ARTICLE": "Create post",
     "RESET": "Reset"
   },
   "RECOMENDATIONS": {
@@ -38,7 +38,7 @@
       "PATTERNS_ELECTRONIC": "Patterns-electronic",
       "PATTERNS_PRINTED": "Patterns-printed",
       "SEWING_GOODS": "Sewing goods",
-      "ARTICLES": "Articles"
+      "ARTICLES": "Posts"
     }
   }
 }

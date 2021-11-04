@@ -1,8 +1,8 @@
 {
 	"ARTICLES": {
-		"TITLE": "Publications",
+		"TITLE": "Blog",
 		"FIELD": {
-			"FIND_ARTICLES": "Find publications"
+			"FIND_ARTICLES": "Find post"
 		}
 	},
 	"FILTER_OPTIONS": {
