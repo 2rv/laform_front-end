@@ -129,11 +129,16 @@ import {
   privacyPolicyRouter,
   PRIVACY_POLICY_ROUTE_PATH,
 } from '../../core/privacy-policy';
+import {
+  termsOfUseRouter,
+  TERMS_OF_USE_ROUTE_PATH,
+} from '../../core/terms-of-use';
 import { statisticsRouter, STATISTICS_ROUTE_PATH } from '../../core/statistics';
 export const routes = {
   [STATISTICS_ROUTE_PATH]: statisticsRouter,
   [LEGAL_INFORMATION_ROUTE_PATH]: legalInformationRouter,
   [PRIVACY_POLICY_ROUTE_PATH]: privacyPolicyRouter,
+  [TERMS_OF_USE_ROUTE_PATH]: termsOfUseRouter,
   [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
