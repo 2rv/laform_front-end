@@ -49,7 +49,7 @@ export function FormComponent(props) {
         </FieldLayout>
         <BlockCategories values={values} handleBlur={handleBlur} type={4} />
         <ReactEditorBlock
-          titleTid="Статья"
+          titleTid="Пост"
           handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
           data={isEdit && values[ARTICLE_FIELD_NAME.ARTICLE]}
           minHeight={100}

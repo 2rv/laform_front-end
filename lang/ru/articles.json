@@ -1,8 +1,8 @@
 {
 	"ARTICLES": {
-		"TITLE": "Публикации",
+		"TITLE": "Блог",
 		"FIELD": {
-			"FIND_ARTICLES": "Найти публикации"
+			"FIND_ARTICLES": "Найти пост"
 		}
 	},
 	"FILTER_OPTIONS": {
