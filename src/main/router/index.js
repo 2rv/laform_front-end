@@ -121,9 +121,14 @@ import {
   allProductsRouter,
   ALL_PRODUCTS_ROUTE_PATH,
 } from '../../core/all-products';
+import {
+  privacyPolicyRouter,
+  PRIVACY_POLICY_ROUTE_PATH,
+} from '../../core/privacy-policy';
 import { statisticsRouter, STATISTICS_ROUTE_PATH } from '../../core/statistics';
 export const routes = {
   [STATISTICS_ROUTE_PATH]: statisticsRouter,
+  [PRIVACY_POLICY_ROUTE_PATH]: privacyPolicyRouter,
   [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageStore,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,

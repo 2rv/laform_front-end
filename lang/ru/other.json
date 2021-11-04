@@ -23,6 +23,7 @@
 	"DELIVERY_TYPE": "Способ доставки:",
 	"DELIVERY_TYPE_PRICE": "Цена:",
 	"UNSUBSCRIBE_NOTIFICATION_TEXT": "Вы успешно отменили рассылку.",
+	"PRIVACY_POLICY": "Политика конфиденциальности",
 	"CARD": {
 		"SIZE_COLOR_PRICE": "Размер: {{size}}, Цвет: {{color}}, Цена: {{price}}",
 		"SIZE_PRICE": "Размер: {{size}}, Цена: {{price}}",

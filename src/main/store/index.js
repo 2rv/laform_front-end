@@ -174,9 +174,14 @@ import {
   allProductsStore,
   ALL_PRODUCTS_STORE_NAME,
 } from '../../core/all-products';
+import {
+  privacyPolicyStore,
+  PRIVACY_POLICY_STORE_NAME,
+} from '../../core/privacy-policy';
 import { statisticsStore, STATISTICS_STORE_NAME } from '../../core/statistics';
 export const reducers = combineReducers({
   [STATISTICS_STORE_NAME]: statisticsStore,
+  [PRIVACY_POLICY_STORE_NAME]: privacyPolicyStore,
   [CREATE_PATTERN_STORE_NAME]: createPatternStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
