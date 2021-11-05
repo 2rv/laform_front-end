@@ -11,6 +11,7 @@ import { ARTICLE_PAGE_ROUTE_PATH } from '../article-page';
 import { LEGAL_INFORMATION_ROUTE_PATH } from '../legal-information';
 import { PRIVACY_POLICY_ROUTE_PATH } from '../privacy-policy';
 import { TERMS_OF_USE_ROUTE_PATH } from '../terms-of-use';
+import { FEEDBACK_ROUTE_PATH } from '../feedback';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({
@@ -78,6 +79,10 @@ export function FooterContainer() {
       {
         tid: 'FOOTER.MENU.SECTION3.TERMS_OF_USE',
         path: TERMS_OF_USE_ROUTE_PATH,
+      },
+      {
+        tid: 'FOOTER.MENU.SECTION3.FEEDBACK',
+        path: FEEDBACK_ROUTE_PATH,
       },
     ],
   };
