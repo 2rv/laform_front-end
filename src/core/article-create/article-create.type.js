@@ -18,9 +18,11 @@ export const CREATE_ARTICLE_ACTION_TYPE = {
 export const ARTICLE_FIELD_NAME = {
   NAME: 'titleRu',
   MODIFIER: 'modifierRu',
+  COLOR_MODIFIER: 'modifierColor',
   IMAGES: 'images',
   IMAGE: 'image',
   CATEGORIES: 'categories',
   ARTICLE: 'articleRu',
   RECOMMENDATIONS: 'recommendation',
+  DELETED: 'deleted',
 };

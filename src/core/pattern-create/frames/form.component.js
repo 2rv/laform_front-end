@@ -13,11 +13,11 @@ import {
 import { RecomendationBlock } from '../../../lib/common/block-select-recomendation';
 import { ProductOptions } from '../../../lib/common/block-product-options';
 import { BlockCategories } from 'src/lib/common/block-categories';
-import { ProductPrice } from '../../block-product-create-components';
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 import { CREATE_PATTERN_FIELD_NAME } from '../pattern-create.type';
 import { ReactEditorBlock } from '../../../lib/common/block-react-editor';
+import { CreatePriceBlock } from 'src/lib/common/block-create-price';
 
 export function FormComponent(props) {
   const {
@@ -34,6 +34,13 @@ export function FormComponent(props) {
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
   const setEditorData = (name) => (data) => setFieldValue(name, data);
 
+  const setVisible = () => {
+    setFieldValue(
+      CREATE_PATTERN_FIELD_NAME.DELETED,
+      !values[CREATE_PATTERN_FIELD_NAME.DELETED],
+    );
+  };
+
   const setCount = () => {
     if (values[CREATE_PATTERN_FIELD_NAME.TYPE] === 2) {
       setFieldValue(CREATE_PATTERN_FIELD_NAME.COUNT, 0);
@@ -44,7 +51,6 @@ export function FormComponent(props) {
       (item) => {
         if (values[CREATE_PATTERN_FIELD_NAME.TYPE] === 1) {
           item[CREATE_PATTERN_FIELD_NAME.OPTION_COUNT] = 0;
-          item[CREATE_PATTERN_FIELD_NAME.OPTION_FILE] = undefined;
         } else {
           item[CREATE_PATTERN_FIELD_NAME.OPTION_COUNT] = undefined;
         }
@@ -65,7 +71,6 @@ export function FormComponent(props) {
       (item) => {
         if (values[CREATE_PATTERN_FIELD_NAME.TYPE] === 1) {
           item[CREATE_PATTERN_FIELD_NAME.OPTION_COUNT] = 0;
-          item[CREATE_PATTERN_FIELD_NAME.OPTION_FILE] = undefined;
         } else {
           item[CREATE_PATTERN_FIELD_NAME.OPTION_COUNT] = undefined;
         }
@@ -76,7 +81,6 @@ export function FormComponent(props) {
     if (values[CREATE_PATTERN_FIELD_NAME.TYPE] === 1) {
       setFieldValue(CREATE_PATTERN_FIELD_NAME.TYPE, 2);
       setFieldValue(CREATE_PATTERN_FIELD_NAME.COUNT, 0);
-      setFieldValue(CREATE_PATTERN_FIELD_NAME.FILE, undefined);
     } else {
       setFieldValue(CREATE_PATTERN_FIELD_NAME.TYPE, 1);
     }
@@ -171,7 +175,7 @@ export function FormComponent(props) {
         productCountName={CREATE_PATTERN_FIELD_NAME.COUNT}
         isCount={values[CREATE_PATTERN_FIELD_NAME.IS_COUNT]}
         optionCountName={CREATE_PATTERN_FIELD_NAME.OPTION_COUNT}
-        isFile={values[CREATE_PATTERN_FIELD_NAME.TYPE] === 1}
+        isFile
         optionFileName={CREATE_PATTERN_FIELD_NAME.OPTION_FILE}
         optionFilesName={CREATE_PATTERN_FIELD_NAME.OPTION_FILES}
         productFileName={CREATE_PATTERN_FIELD_NAME.FILE}
@@ -186,7 +190,17 @@ export function FormComponent(props) {
         setFieldValue={setFieldValue}
       />
 
-      <ProductPrice
+      <FieldCheckbox
+        titleTid="Видимость выкройки"
+        labelTid="Не показан в списке"
+        name={CREATE_PATTERN_FIELD_NAME.DELETED}
+        value={values[CREATE_PATTERN_FIELD_NAME.DELETED]}
+        checked={values[CREATE_PATTERN_FIELD_NAME.DELETED]}
+        onClick={setVisible}
+        onBlur={handleBlur}
+      />
+
+      <CreatePriceBlock
         priceAndDiscount={checkMinPriceAndDiscount(
           values[CREATE_PATTERN_FIELD_NAME.OPTIONS],
           values[CREATE_PATTERN_FIELD_NAME.PRICE],

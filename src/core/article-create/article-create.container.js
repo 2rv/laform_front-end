@@ -50,9 +50,11 @@ export function CreateArticleContainer() {
     const data = getRequestData(productState, {
       [ARTICLE_FIELD_NAME.NAME]: '',
       [ARTICLE_FIELD_NAME.MODIFIER]: '',
+      [ARTICLE_FIELD_NAME.COLOR_MODIFIER]: '#fff',
       [ARTICLE_FIELD_NAME.CATEGORIES]: [],
       [ARTICLE_FIELD_NAME.IMAGES]: [],
       [ARTICLE_FIELD_NAME.RECOMMENDATIONS]: [],
+      [ARTICLE_FIELD_NAME.DELETED]: false,
     });
     return data;
   };

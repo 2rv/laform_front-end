@@ -1,12 +1,15 @@
 import styled from 'styled-components';
-import { TextSecondary, TextCurrency } from '../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { TextSecondary, TextCurrency } from '../../element/text';
+import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
+import { CreatePriceProps } from './type';
 
-export function ProductPrice(props) {
+export function CreatePriceBlock(props: CreatePriceProps) {
   const { price = 0, discount = 0 } = props.priceAndDiscount;
 
-  const priceWithDiscount = ((price / 100) * discount).toFixed(2);
-  const totalPrice = (price - priceWithDiscount).toFixed(2);
+  const priceWithDiscount: number = Number(
+    ((price / 100) * discount).toFixed(2),
+  );
+  const totalPrice: number = Number((price - priceWithDiscount).toFixed(2));
 
   return (
     <Container>

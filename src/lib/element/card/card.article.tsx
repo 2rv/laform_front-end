@@ -19,6 +19,7 @@ export function CardArticle(props: CardArticleType) {
     image,
     name,
     modifier,
+    modifierColor,
     createdDate,
     like,
     deleted,
@@ -40,18 +41,16 @@ export function CardArticle(props: CardArticleType) {
         pathConfig={{ dynamic: true, params: { id: id } }}
         image={image}
         modifier={modifier}
+        modifierColor={modifierColor}
         deleted={deleted}
       />
-      <ActionCase>
-        <Content>
-          <ColumnCase>
-            <CardName tid={name} />
-            <Date tid={ConvertTime(createdDate)} />
-          </ColumnCase>
-          <LikeButton id={id} type={type} like={like} />
-        </Content>
+      <Content>
+        <ColumnCase>
+          <CardName tid={name} />
+          <Date tid={ConvertTime(createdDate)} />
+        </ColumnCase>
         <ActionCase>
-          <SelectButton id={id} type={type} onSelect={onSelect} />
+          <LikeButton id={id} type={type} like={like} />
           {Boolean(deleted === false) && (
             <DeleteButton
               id={id}
@@ -61,7 +60,8 @@ export function CardArticle(props: CardArticleType) {
             />
           )}
         </ActionCase>
-      </ActionCase>
+      </Content>
+      <SelectButton id={id} type={type} onSelect={onSelect} />
     </Container>
   );
 }
@@ -80,6 +80,7 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   display: flex;
+  width: 100%;
   gap: ${spacing(3)};
   justify-content: space-between;
   align-items: center;

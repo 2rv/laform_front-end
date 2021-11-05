@@ -50,4 +50,5 @@ export const CREATE_PATTERN_FIELD_NAME = {
 
   FILES: 'filesPdf',
   FILE: 'productFilePdf',
+  DELETED: 'deleted',
 };

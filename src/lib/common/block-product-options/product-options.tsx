@@ -49,6 +49,7 @@ export function ProductOptions(props: ProductOptionsProps) {
     productFileName = '',
     productFilesName = '',
   } = props;
+
   const getFieldError = (name: string, index: number) =>
     errors?.[fieldArrayName]?.[index]?.[name] &&
     touched?.[fieldArrayName]?.[index]?.[name] &&
@@ -59,6 +60,7 @@ export function ProductOptions(props: ProductOptionsProps) {
     if (newType === 0) {
       setFieldValue(productPriceName, '');
       setFieldValue(productDiscountName, 0);
+      if (isFile) setFieldValue(productFilesName, []);
       if (isCount) setFieldValue(productCountName, 0);
       if (isLength) setFieldValue(productLengthName, '');
       setFieldValue(fieldArrayName, []);
@@ -87,12 +89,11 @@ export function ProductOptions(props: ProductOptionsProps) {
         if (!isCount) item[optionCountName] = undefined;
         if (isLength) item[optionLengthName] = item[optionLengthName] || '';
         if (!isLength) item[optionLengthName] = undefined;
-
         return item;
       });
       setFieldValue(productPriceName, undefined);
       setFieldValue(productDiscountName, undefined);
-      if (isFile) setFieldValue(productFileName, undefined);
+      if (isFile) setFieldValue(productFilesName, undefined);
       setFieldValue(fieldArrayName, newOptions);
     }
 

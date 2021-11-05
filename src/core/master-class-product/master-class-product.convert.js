@@ -1,6 +1,6 @@
 import { convertMultiProducts } from '../../lib/common/product-converters';
 
-export function performMasterClassProductData(rowData, basket) {
+export function performMasterClassProductData(rowData) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -15,7 +15,6 @@ export function performMasterClassProductData(rowData, basket) {
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
-      basket,
     ),
   };
 }

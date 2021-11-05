@@ -34,6 +34,7 @@ export interface BasicMasterClassType {
   titleEn?: string;
   modifierRu?: string;
   modifierEn?: string;
+  modifierColor?: string;
   discount?: number;
   price: number;
   pinned?: boolean;
@@ -49,6 +50,7 @@ export interface BasicArticleType {
   titleEn?: string;
   modifierRu?: string;
   modifierEn?: string;
+  modifierColor?: string;
   pinned?: boolean;
 }
 export interface BasicPatternType {
@@ -64,6 +66,7 @@ export interface BasicPatternType {
   titleEn?: string;
   modifierRu?: string;
   modifierEn?: string;
+  modifierColor?: string;
   complexity: number;
   price?: number;
   discount?: number;
@@ -83,6 +86,7 @@ export interface BasicSewingGoodType {
   titleEn?: string;
   modifierRu?: string;
   modifierEn?: string;
+  modifierColor?: string;
   price?: number;
   discount?: number;
   count?: number;

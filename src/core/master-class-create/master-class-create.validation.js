@@ -31,6 +31,7 @@ const config = {
     numberPositive,
     numberPositiveMin(0),
   ],
+  [CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]: [required],
 };
 
 export const formValidation = (values) => validate(values, config);

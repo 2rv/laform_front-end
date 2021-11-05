@@ -6,10 +6,9 @@ import {
   convertMasterClassProducts,
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
-import { BASKET_STORE_NAME } from '../basket';
 
 export function masterClassUploadData(currentLang, logged) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: HOME_ACTION_TYPE.HOME_MASTER_CLASS_PENDING,
     });
@@ -24,10 +23,7 @@ export function masterClassUploadData(currentLang, logged) {
             url: HOME_API.MASTER_CLASS_UPLOAD_DATA.ENDPOINT(currentLang),
           });
 
-      const data = convertMasterClassProducts(
-        response.data,
-        getState()[BASKET_STORE_NAME].basket,
-      );
+      const data = convertMasterClassProducts(response.data);
       dispatch({
         type: HOME_ACTION_TYPE.HOME_MASTER_CLASS_SUCCESS,
         data: data,
@@ -43,7 +39,7 @@ export function masterClassUploadData(currentLang, logged) {
   };
 }
 export function sewingGoodsUploadData(currentLang, logged) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: HOME_ACTION_TYPE.HOME_SEWING_GOODS_ERROR,
     });
@@ -59,10 +55,7 @@ export function sewingGoodsUploadData(currentLang, logged) {
           });
       dispatch({
         type: HOME_ACTION_TYPE.HOME_SEWING_GOODS_SUCCESS,
-        data: convertSewingGoodProducts(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: convertSewingGoodProducts(response.data),
       });
     } catch (err) {
       if (err.response) {

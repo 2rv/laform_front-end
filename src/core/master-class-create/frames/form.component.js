@@ -7,14 +7,15 @@ import {
   BasicField,
   MultiField,
   TextareaField,
+  FieldCheckbox,
 } from '../../../lib/element/field';
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
-import { ProductPrice } from '../../block-product-create-components';
 import { BlockCategories } from 'src/lib/common/block-categories';
 import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
 import { numberValue } from 'src/lib/common/create-product-validation';
+import { CreatePriceBlock } from 'src/lib/common/block-create-price';
 
 export function FormComponent(props) {
   const {
@@ -30,7 +31,12 @@ export function FormComponent(props) {
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
   const setEditorData = (name) => (editorData) =>
     setFieldValue(name, editorData);
-
+  const setVisible = () => {
+    setFieldValue(
+      CREATE_MASTER_CLASS_FIELD_NAME.DELETED,
+      !values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED],
+    );
+  };
   //----------------------------
 
   return (
@@ -67,12 +73,20 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           minHeight={100}
         />
+        <ReactEditorBlock
+          titleTid="PATTERNS.CREATE.FORM.MATERIALS"
+          handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
+          data={values[CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]}
+          error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
+          errorMessage={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
+          enableIsEdit={isEdit}
+        />
       </SectionLayout>
 
       <ReactEditorBlock
         titleTid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE"
         handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE)}
-        data={isEdit && values[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]}
+        data={values[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]}
         minHeight={100}
         enableIsEdit={isEdit}
       />
@@ -98,7 +112,7 @@ export function FormComponent(props) {
             onChange={setNumber(CREATE_MASTER_CLASS_FIELD_NAME.PRICE)}
             onBlur={handleBlur}
           />
-          <ProductPrice
+          <CreatePriceBlock
             priceAndDiscount={{
               discount: values[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT],
               price: values[CREATE_MASTER_CLASS_FIELD_NAME.PRICE],
@@ -109,6 +123,16 @@ export function FormComponent(props) {
           values={values[CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]}
           name={CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS}
           setFieldValue={setFieldValue}
+        />
+
+        <FieldCheckbox
+          titleTid="Видимость мастер-класса"
+          labelTid="Не показан в списке"
+          name={CREATE_MASTER_CLASS_FIELD_NAME.DELETED}
+          value={values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
+          checked={values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
+          onClick={setVisible}
+          onBlur={handleBlur}
         />
         <FieldLayout type="double" adaptive>
           {isEdit ? (

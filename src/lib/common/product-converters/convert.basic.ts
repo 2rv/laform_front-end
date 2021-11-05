@@ -23,6 +23,7 @@ export function masterClassItemConverter(
     type: item.type || 0,
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
+    modifierColor: item.modifierColor,
     price: item.price,
     discount: item.discount,
     vendorCode: item.vendorCode,
@@ -40,6 +41,7 @@ export function convertArticleItemConverter(
     like: item.like && item.like.length > 0,
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
+    modifierColor: item.modifierColor,
     createdDate: item.createdDate,
   };
 }
@@ -60,6 +62,7 @@ export function convertPatternItemConverter(
     like: item.like && item.like.length > 0,
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
+    modifierColor: item.modifierColor,
     complexity: item.complexity,
     sizes: convertOptions(item.options, item.optionType, 2),
     price: price,
@@ -85,6 +88,7 @@ export function convertSewingGoodItemConverter(
     like: item.like && item.like.length > 0,
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
+    modifierColor: item.modifierColor,
     colors: convertOptions(item.options, item.optionType, 3),
     sizes: convertOptions(item.options, item.optionType, 2),
     options: convertOptions(item.options, item.optionType, 1),

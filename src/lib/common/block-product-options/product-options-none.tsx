@@ -4,7 +4,7 @@ import {
   numberValue,
 } from 'src/lib/common/create-product-validation';
 import { BasicField } from '../../element/field';
-import { FieldLayout } from '../../element/layout';
+import { FieldLayout, SectionLayout } from '../../element/layout';
 import { ProductOptionsNoneProps } from './components.type';
 import { SyntheticEvent } from 'react';
 import { MultiFilesBlock } from '../multi-files';
@@ -50,50 +50,56 @@ export function ProductOptionsNone(props: ProductOptionsNoneProps) {
     };
 
   return (
-    <FieldLayout type="double" adaptive>
-      <BasicField
-        titleTid="Цена"
-        type="number"
-        placeholderTid="Введите цену (руб.)"
-        name={productPriceName}
-        value={values[productPriceName]}
-        error={getFieldError(productPriceName)}
-        onChange={setTwoDigit(productPriceName)}
-        onBlur={handleBlur}
-      />
-      <BasicField
-        titleTid="Введите скидку (%)"
-        placeholderTid="0"
-        type="number"
-        name={productDiscountName}
-        value={values[productDiscountName]}
-        error={getFieldError(productDiscountName)}
-        onChange={setToHundred(productDiscountName)}
-        onBlur={handleBlur}
-      />
-      {isCount && (
+    <SectionLayout type="SMALL">
+      <FieldLayout type="double" adaptive>
         <BasicField
-          titleTid="Введите количество (Шт.)"
-          placeholderTid="0"
+          titleTid="Цена"
           type="number"
-          name={productCountName}
-          value={values[productCountName]}
-          error={getFieldError(productCountName)}
-          onChange={setNumber(productCountName)}
+          placeholderTid="Введите цену (руб.)"
+          name={productPriceName}
+          value={values[productPriceName]}
+          error={getFieldError(productPriceName)}
+          onChange={setTwoDigit(productPriceName)}
           onBlur={handleBlur}
         />
-      )}
-      {isLength && (
         <BasicField
-          titleTid="Введите длинну (Метр) 0,00"
+          titleTid="Введите скидку (%)"
           placeholderTid="0"
-          name={productLengthName}
-          value={values[productLengthName]}
           type="number"
-          error={getFieldError(productLengthName)}
-          onChange={setTwoDigit(productLengthName)}
+          name={productDiscountName}
+          value={values[productDiscountName]}
+          error={getFieldError(productDiscountName)}
+          onChange={setToHundred(productDiscountName)}
           onBlur={handleBlur}
         />
+      </FieldLayout>
+      {(isCount || isLength) && (
+        <FieldLayout type="double" adaptive>
+          {isCount && (
+            <BasicField
+              titleTid="Введите количество (Шт.)"
+              placeholderTid="0"
+              type="number"
+              name={productCountName}
+              value={values[productCountName]}
+              error={getFieldError(productCountName)}
+              onChange={setNumber(productCountName)}
+              onBlur={handleBlur}
+            />
+          )}
+          {isLength && (
+            <BasicField
+              titleTid="Введите длинну (Метр) 0,00"
+              placeholderTid="0"
+              name={productLengthName}
+              value={values[productLengthName]}
+              type="number"
+              error={getFieldError(productLengthName)}
+              onChange={setTwoDigit(productLengthName)}
+              onBlur={handleBlur}
+            />
+          )}
+        </FieldLayout>
       )}
       {isFile && (
         <MultiFilesBlock
@@ -104,6 +110,6 @@ export function ProductOptionsNone(props: ProductOptionsNoneProps) {
           handleBlur={handleBlur}
         />
       )}
-    </FieldLayout>
+    </SectionLayout>
   );
 }

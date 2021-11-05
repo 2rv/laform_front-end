@@ -1,7 +1,6 @@
 import { httpRequest } from '../../main/http';
 import { SEWING_GOODS_API } from './sewing-goods.constant';
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
-import { BASKET_STORE_NAME } from '../basket';
 import { convertSewingGoodProducts } from 'src/lib/common/product-converters';
 
 export function sewingGoodsUploadData(isAuth, query) {
@@ -23,10 +22,7 @@ export function sewingGoodsUploadData(isAuth, query) {
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPLOAD_SUCCESS,
         data: {
-          products: convertSewingGoodProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertSewingGoodProducts(response.data[0]),
           totalRecords: response.data[1],
         },
       });
@@ -76,7 +72,10 @@ export function fetchCategories(currentLang, type) {
     try {
       const response = await httpRequest({
         method: SEWING_GOODS_API.CATEGORIES_UPLOAD_DATA.TYPE,
-        url: SEWING_GOODS_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang, type),
+        url: SEWING_GOODS_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(
+          currentLang,
+          type,
+        ),
       });
       const convertedCategories = response.data.map((category) => ({
         id: category.id,

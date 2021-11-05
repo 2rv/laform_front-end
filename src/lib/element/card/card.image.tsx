@@ -6,7 +6,16 @@ import { LinkPrimary } from '../link';
 import { CardImageProps } from './card.type';
 
 export function CardImage(props: CardImageProps) {
-  const { image, modifier, discount, deleted, path, pathConfig } = props;
+  const {
+    image,
+    modifier,
+    discount,
+    deleted,
+    path,
+    pathConfig,
+    modifierColor = 'fff',
+  } = props;
+
   const [imageLoaded, setimageLoaded] = useState(false);
   return (
     <Container path={path} pathConfig={pathConfig}>
@@ -16,7 +25,7 @@ export function CardImage(props: CardImageProps) {
       <Case>
         {Boolean(deleted) && <Modifier tid="PRODUCT_PRICE.DELETED" />}
         {Boolean(discount) && <Modifier tid="PRODUCT_PRICE.STOCK" />}
-        {Boolean(modifier) && <Modifier alt tid={modifier} />}
+        {Boolean(modifier) && <Modifier color={modifierColor} tid={modifier} />}
       </Case>
     </Container>
   );
@@ -66,9 +75,8 @@ const SkeletonImage = styled.div`
   background-color: #ccc;
   animation: ${animation} 1.6s infinite linear;
 `;
-const Modifier = styled(TextSecondary)<{ alt?: boolean }>`
-  background-color: ${(p) =>
-    p.alt ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.PRIMARY_DARK};
+const Modifier = styled(TextSecondary)<{ color?: string }>`
+  background-color: ${(p) => (p.color ? p.color : THEME_COLOR.PRIMARY_DARK)};
   color: ${THEME_COLOR.WHITE};
   ::first-letter {
     text-transform: uppercase;

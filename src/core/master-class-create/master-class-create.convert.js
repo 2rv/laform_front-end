@@ -14,6 +14,8 @@ export function convertForUpload(imageUrls, formValues) {
     })),
     [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]:
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION],
+    [CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]:
+      formValues[CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL],
     [CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]:
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE],
     [CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]:
@@ -27,6 +29,8 @@ export function convertForUpload(imageUrls, formValues) {
             recommendationProducts:
               formValues[CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS],
           },
+    [CREATE_MASTER_CLASS_FIELD_NAME.DELETED]:
+      formValues[CREATE_MASTER_CLASS_FIELD_NAME.DELETED],
   };
 }
 export function convertForChange(rowData) {
@@ -39,6 +43,10 @@ export function convertForChange(rowData) {
       rowData[CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER],
     [CREATE_MASTER_CLASS_FIELD_NAME.IMAGES]:
       rowData[CREATE_MASTER_CLASS_FIELD_NAME.IMAGES],
+    [CREATE_MASTER_CLASS_FIELD_NAME.DELETED]:
+      rowData[CREATE_MASTER_CLASS_FIELD_NAME.DELETED],
+    [CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]:
+      rowData[CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL] || [],
     [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: convertRecommendations(
       rowData.recommendation?.recommendationProducts,
     ),
@@ -54,7 +62,7 @@ export function convertForChange(rowData) {
     [CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]:
       rowData[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT],
     [CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]:
-      rowData[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE],
+      rowData[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE] || [],
   };
 }
 

@@ -15,12 +15,10 @@ export function SelectImageContainer(props: SelectImageProps) {
 
   function handleAdd(event: SyntheticEvent<HTMLInputElement>, push: Function) {
     const file = event.currentTarget?.files?.[0];
-
     if (file?.type.split('/')[0] !== 'image' || !file) {
       alert('PRODUCT_IMAGES.SELECT_ONLY_IMAGE');
       return;
     }
-
     const reader = new FileReader();
     reader.onload = () => push({ fileUrl: reader.result, file: file });
     reader.readAsDataURL(file);

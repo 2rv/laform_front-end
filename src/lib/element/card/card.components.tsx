@@ -123,10 +123,6 @@ const ComplexityCase = styled.div`
   gap: ${spacing(2)};
 `;
 const ComplexityDot = styled(GalochkaIcon)<{ active: boolean }>`
-  /* width: 16px;
-  min-width: 16px;
-  height: 16px;
-  border-radius: ${THEME_SIZE.RADIUS.CIRCLE}; */
   fill: ${(p) =>
     p.active ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;

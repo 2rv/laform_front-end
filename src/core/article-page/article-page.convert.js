@@ -1,6 +1,6 @@
 import { convertMultiProducts } from 'src/lib/common/product-converters';
 
-export function performArticleProductData(rowData, basket) {
+export function performArticleProductData(rowData) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -11,7 +11,6 @@ export function performArticleProductData(rowData, basket) {
     createdDate: rowData.createdDate,
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
-      basket,
     ),
   };
 }

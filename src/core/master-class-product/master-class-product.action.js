@@ -2,7 +2,6 @@ import { httpRequest } from '../../main/http';
 import { MASTER_CLASS_PRODUCT_API } from './master-class-product.constant';
 import { MASTER_CLASS_PRODUCT_ACTION_TYPE } from './master-class-product.type';
 import { performMasterClassProductData } from './master-class-product.convert';
-import { BASKET_STORE_NAME } from '../basket';
 
 export function masterClassProductUploadData(currentLang, id, logged) {
   return async (dispatch, getState) => {
@@ -27,14 +26,9 @@ export function masterClassProductUploadData(currentLang, id, logged) {
               id,
             ),
           });
-
-      const data = performMasterClassProductData(
-        response.data,
-        getState()[BASKET_STORE_NAME].basket,
-      );
       dispatch({
         type: MASTER_CLASS_PRODUCT_ACTION_TYPE.MASTER_CLASS_PRODUCT_UPLOAD_SUCCESS,
-        data: data,
+        data: performMasterClassProductData(response.data),
       });
     } catch (err) {
       if (err.response) {

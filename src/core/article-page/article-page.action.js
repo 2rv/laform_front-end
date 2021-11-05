@@ -2,10 +2,9 @@ import { httpRequest } from '../../main/http';
 import { ARTICLE_PAGE_API } from './article-page.constant';
 import { ARTICLE_PAGE_ACTION_TYPE } from './article-page.type';
 import { performArticleProductData } from './article-page.convert';
-import { BASKET_STORE_NAME } from '../basket';
 
 export function articlePageUploadData(currentLang, id, logged) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: ARTICLE_PAGE_ACTION_TYPE.ARTICLE_PAGE_UPLOAD_PENDING,
     });
@@ -24,10 +23,7 @@ export function articlePageUploadData(currentLang, id, logged) {
           });
       dispatch({
         type: ARTICLE_PAGE_ACTION_TYPE.ARTICLE_PAGE_UPLOAD_SUCCESS,
-        data: performArticleProductData(
-          response.data,
-          getState()[BASKET_STORE_NAME].basket,
-        ),
+        data: performArticleProductData(response.data),
       });
     } catch (err) {
       if (err.response) {
