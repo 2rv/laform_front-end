@@ -11,6 +11,6 @@ export function performData(rowData: BasicCategoryType[]): CategoryType[] {
 export function convertForCreate(value: string, type: number) {
   return {
     categoryNameRu: value,
-    type,
+    type: String(type),
   };
 }
