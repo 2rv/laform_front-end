@@ -80,7 +80,6 @@ export function sewingGoodsLoadData(id) {
         data: convertForChange(response.data),
       });
     } catch (err) {
-      console.log(err);
       if (err.response) {
         dispatch({
           type: CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_LOAD_ERROR,

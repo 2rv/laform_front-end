@@ -29,7 +29,6 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
     deleteErrorMessage,
     values,
   } = props;
-  console.log(values[CATEGORIES_TYPE.CATEGORIES]);
 
   const [open, setOpen] = useState(false);
   const [categoryExists, setCategoryExists] = useState('');
@@ -59,7 +58,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
           };
           return (
             <FieldLayout type="double" adaptive>
-              {(values[CATEGORIES_TYPE.CATEGORIES] || []).map(
+              {values[CATEGORIES_TYPE.CATEGORIES].map(
                 (value: any, index: number) => (
                   <LineCase key={index}>
                     <CategoryText tid={value.tid} />

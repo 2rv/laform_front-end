@@ -132,7 +132,7 @@ export function convertForChange(rowData: dataValueType): formValueType {
     recommendation: convertRecommendations(
       rowData.recommendation?.recommendationProducts,
     ),
-    categories: rowData.categories?.map((i) => ({
+    categories: rowData.categories.map((i) => ({
       basicId: i.id,
       tid: i.categoryNameRu,
     })),
