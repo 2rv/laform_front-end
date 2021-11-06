@@ -13,7 +13,7 @@ export function CardImage(props: CardImageProps) {
     deleted,
     path,
     pathConfig,
-    modifierColor = 'fff',
+    modifierColor = THEME_COLOR.PRIMARY,
   } = props;
 
   const [imageLoaded, setimageLoaded] = useState(false);
