@@ -73,6 +73,7 @@ const Image = styled.img`
   width: 75px;
   height: 75px;
   min-width: 75px;
+  object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Case = styled.div`
