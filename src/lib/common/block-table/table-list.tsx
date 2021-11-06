@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { TableItem } from './table-item';
 import { TableHeader, TableDivider } from './frame';
-import { dataType } from './table.type';
+import { TableItemType } from './table.type';
 
 export function TableList(props: any) {
   const { headers = [], items = [], changeItem, deleteItem } = props;
@@ -21,7 +21,7 @@ export function TableList(props: any) {
         </thead>
       )}
       <tbody>
-        {items.map((data: dataType, i: number) => (
+        {items.map((data: TableItemType, i: number) => (
           <React.Fragment key={data.id + i}>
             <TableItem
               data={data}

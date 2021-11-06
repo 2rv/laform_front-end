@@ -8,17 +8,20 @@ import { Table } from 'src/lib/common/block-table';
 
 export function OrderNumberComponent(props) {
   const {
-    headersTable,
     onSubmit,
     initialValue,
     validate,
     isPending,
     orderNumberTitle,
-    purchaseProducts,
     statusOrderSelect,
     deliveryTypeOptions,
     isOrderNumberChangePending,
     isOrderNumberChangeSuccess,
+
+    headersTable,
+    purchaseProducts,
+    changeItem,
+    deleteItem,
   } = props;
 
   return isPending ? (
@@ -30,7 +33,12 @@ export function OrderNumberComponent(props) {
         &nbsp;
         <BoldTitle tid={orderNumberTitle} />
       </div>
-      <Table items={purchaseProducts} headers={headersTable} />
+      <Table
+        changeItem={changeItem}
+        deleteItem={deleteItem}
+        items={purchaseProducts}
+        headers={headersTable}
+      />
       <AboutOrderFormContainer
         onSubmit={onSubmit}
         initialValue={initialValue}

@@ -1,5 +1,5 @@
-import { dataType } from 'src/lib/common/block-table/table.type';
-import { BasicOptionType } from 'src/lib/common/product-converters/convert.type';
+import { TableItemType } from 'src/lib/common/block-table/table.type';
+import { BasicOptionType } from 'src/lib/basic-types';
 
 export interface baseOrderDataType {
   id: string;
@@ -10,7 +10,7 @@ export interface baseOrderDataType {
   city: string;
   phoneNumber: string;
   comment?: string;
-  price: number;
+  price: string;
   promoCode?: string;
   promoCodeDiscount?: number;
   purchaseProducts: basicOrderPurchaseProductsData[];
@@ -18,17 +18,17 @@ export interface baseOrderDataType {
 export interface basicOrderPurchaseProductsData {
   id: string;
   type: number;
-  createdDate: string;
+  createdDate: Date;
   masterClassId: any;
   patternProductId: any;
   sewingProductId: any;
   optionId: BasicOptionType;
-  totalCount: string;
+  totalCount: number;
   totalLength?: string;
-  totalPrice: number;
+  totalPrice: string;
   totalDiscount?: number;
 }
 export interface orderDataType {
   purchaseInfo: any;
-  purchaseProducts: dataType[];
+  purchaseProducts: TableItemType[];
 }
