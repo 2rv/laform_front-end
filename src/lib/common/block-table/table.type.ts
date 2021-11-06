@@ -1,6 +1,6 @@
 import { OptionType } from 'src/lib/element/card';
 
-export interface dataType {
+export interface TableItemType {
   id: string;
   type: number;
   indexId?: string;
@@ -22,13 +22,13 @@ export interface dataType {
   maxLength?: number;
   comment?: string;
   filePDF?: string;
-  optionId?: string;
-  isCount?: boolean;
-  isLength?: boolean;
+  optionIndex?: number;
+  isCount?: true | false;
+  isLength?: true | false;
 }
 
 export interface TableItemProps {
-  data: dataType;
+  data: TableItemType;
   changeItem?: Function;
   deleteItem?: Function;
 }
@@ -39,10 +39,9 @@ export interface TableParamsProps {
   program?: string;
   format?: string;
   category?: string;
-  count?: string;
-  length?: string;
+  count?: number;
+  length?: number;
   complexity?: number;
-
   fullName?: string;
   userId?: string;
   diliveryInfo?: string;
@@ -51,5 +50,5 @@ export interface TableParamsProps {
   paymentMethod?: string;
   phoneNumber?: string;
   email?: string;
-  createdDate?: string;
+  createdDate?: Date;
 }

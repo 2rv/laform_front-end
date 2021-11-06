@@ -60,7 +60,7 @@ export interface CardArticleType {
   name?: string;
   modifier?: string;
   modifierColor?: string;
-  createdDate: string;
+  createdDate: Date;
   like?: boolean;
   deleted?: boolean;
   admin?: boolean;

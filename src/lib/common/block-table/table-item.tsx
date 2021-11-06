@@ -33,7 +33,7 @@ export function TableItem(props: TableItemProps) {
     id,
     type,
     vendorCode,
-    optionId,
+    optionIndex,
     sizes,
     colors,
     options,
@@ -83,7 +83,7 @@ export function TableItem(props: TableItemProps) {
         changeItem={changeItem}
         deleteItem={deleteItem}
         filePDF={filePDF}
-        optionId={optionId}
+        optionIndex={optionIndex}
         options={options}
         sizes={sizes}
         colors={colors}

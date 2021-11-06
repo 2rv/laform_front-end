@@ -38,12 +38,6 @@ export interface CategoryType {
   tid: string;
 }
 
-export interface BasicCategoryType {
-  id: string;
-  categoryNameRu: string;
-  categoryNameEn?: string;
-}
-
 export const CATEGORIES_TYPE = {
   CATEGORIES: 'categories',
   CATEGORY_NAME: 'categoryNameRu',

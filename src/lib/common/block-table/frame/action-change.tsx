@@ -11,7 +11,7 @@ interface props {
   id: string;
   indexId?: string;
   changeItem?: Function;
-  optionId?: string;
+  optionIndex?: number;
   sizes?: OptionType[];
   colors?: OptionType[];
   options?: OptionType[];
@@ -26,7 +26,7 @@ export function ActionChange(props: props) {
     id,
     indexId,
     changeItem,
-    optionId,
+    optionIndex,
     sizes = [],
     colors = [],
     options = [],
@@ -35,6 +35,7 @@ export function ActionChange(props: props) {
     isCount,
     isLength,
   } = props;
+
   if (!id || typeof changeItem !== 'function') return null;
   if (sizes.length < 2 && colors.length < 2 && options.length < 2) {
     return null;
@@ -70,9 +71,9 @@ export function ActionChange(props: props) {
   return (
     <Formik
       initialValues={{
-        size: Boolean(sizes.length) ? optionId : undefined,
-        color: Boolean(colors.length) ? optionId : undefined,
-        option: Boolean(options.length) ? optionId : undefined,
+        size: Boolean(sizes.length) ? optionIndex : undefined,
+        color: Boolean(colors.length) ? optionIndex : undefined,
+        option: Boolean(options.length) ? optionIndex : undefined,
       }}
       onSubmit={onSubmit}
     >

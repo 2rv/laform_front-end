@@ -1,23 +1,9 @@
+import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
 import { PATTERNS_PAGE_ROUTE_PATH } from '../patterns-page';
 import { SEWING_GOODS_PAGE_ROUTE_PATH } from '../sewing-goods-page';
 import { baseOrderDataType, orderDataType } from './user-order.ts.type';
 import { ABOUT_ORDER_FIELD_NAME } from './user-order.type';
-
-function getPrice(
-  price = 0,
-  discount = 0,
-  count: any,
-  length: any = null,
-): number {
-  if (count) {
-    return (price - price * (discount / 100)) * count;
-  }
-  if (length) {
-    return (price - price * (discount / 100)) * length;
-  }
-  return (price - price * (discount / 100)) * 1;
-}
 
 export const convertPurchaseData = (
   rowData: baseOrderDataType,
@@ -37,12 +23,13 @@ export const convertPurchaseData = (
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,
     },
     purchaseProducts: rowData.purchaseProducts.map((item) => {
-      const totalPrice = getPrice(
-        item.totalPrice,
-        item.totalDiscount,
-        item.totalCount,
-        item.totalLength,
-      );
+      const totalPrice = getPrice({
+        price: item.totalPrice,
+        discount: item.totalDiscount,
+        count: item.totalCount,
+        length: item.totalLength,
+      });
+
       const product =
         item.masterClassId || item.sewingProductId || item.patternProductId;
 

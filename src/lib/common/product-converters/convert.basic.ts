@@ -4,13 +4,19 @@ import {
   CardPatternType,
   CardMasterClassType,
 } from '../../element/card';
+
 import {
+  BasicArticleType,
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
-  BasicArticleType,
-} from './convert.type';
-import { convertOptions, checkMinPriceAndDiscount } from './convert.utils';
+} from 'src/lib/basic-types';
+
+import {
+  convertOptions,
+  checkMinPriceAndDiscount,
+  getPrice,
+} from './convert.utils';
 
 export function masterClassItemConverter(
   item: BasicMasterClassType,
@@ -23,8 +29,7 @@ export function masterClassItemConverter(
     type: item.type || 0,
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
-    modifierColor: item.modifierColor,
-    price: item.price,
+    price: getPrice({ price: item.price }),
     discount: item.discount,
     vendorCode: item.vendorCode,
   };
@@ -62,7 +67,6 @@ export function convertPatternItemConverter(
     like: item.like && item.like.length > 0,
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
-    modifierColor: item.modifierColor,
     complexity: item.complexity,
     sizes: convertOptions(item.options, item.optionType, 2),
     price: price,
@@ -88,12 +92,11 @@ export function convertSewingGoodItemConverter(
     like: item.like && item.like.length > 0,
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
-    modifierColor: item.modifierColor,
     colors: convertOptions(item.options, item.optionType, 3),
     sizes: convertOptions(item.options, item.optionType, 2),
     options: convertOptions(item.options, item.optionType, 1),
     count: item.count,
-    length: item.length,
+    length: getPrice({ price: item.length }),
     price: price,
     discount: discount,
     isCount: item.isCount,

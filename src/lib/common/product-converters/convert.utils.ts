@@ -1,5 +1,5 @@
 import { OptionType } from '../../element/card';
-import { BasicOptionType } from './convert.type';
+import { BasicOptionType } from 'src/lib/basic-types';
 
 export const convertOptions = (
   options: BasicOptionType[],
@@ -13,25 +13,19 @@ export const convertOptions = (
     return options.map((item, index) => ({
       id: index,
       optionId: item.id,
-
       vendorCode: item.vendorCode,
       tid: 'OTHER.CARD.SIZE_COLOR_PRICE',
       tvalue: {
         color: item.colorRu || item.colorEn,
         size: item.size,
-        price: Number(
-          (
-            (item.price || 0) -
-            (item.price || 0) * ((item.discount || 0) / 100)
-          ).toFixed(2),
-        ),
+        price: getPrice({ price: item.price, discount: item.discount }),
       },
       size: item.size,
       color: item.colorRu || item.colorEn,
-      price: item.price,
+      price: getPrice({ price: item.price, discount: item.discount }),
       discount: item.discount || 0,
       count: item.count,
-      length: item.length,
+      length: getPrice({ price: item.length }),
     }));
   } else if (type === 2 && selectedType === type) {
     return options.map((item, index) => ({
@@ -41,18 +35,13 @@ export const convertOptions = (
       tid: 'OTHER.CARD.SIZE_PRICE',
       tvalue: {
         size: item.size,
-        price: Number(
-          (
-            (item.price || 0) -
-            (item.price || 0) * ((item.discount || 0) / 100)
-          ).toFixed(2),
-        ),
+        price: getPrice({ price: item.price, discount: item.discount }),
       },
       size: item.size,
-      price: item.price,
+      price: getPrice({ price: item.price, discount: item.discount }),
       discount: item.discount || 0,
       count: item.count,
-      length: item.length,
+      length: getPrice({ price: item.length }),
     }));
   } else if (type === 3 && selectedType === type) {
     return options.map((item, index) => ({
@@ -62,42 +51,65 @@ export const convertOptions = (
       tid: 'OTHER.CARD.COLOR_PRICE',
       tvalue: {
         color: item.colorRu || item.colorEn,
-        price: Number(
-          (
-            (item.price || 0) -
-            (item.price || 0) * ((item.discount || 0) / 100)
-          ).toFixed(2),
-        ),
+        price: getPrice({ price: item.price, discount: item.discount }),
       },
       color: item.colorRu || item.colorEn,
-      price: item.price,
+      price: getPrice({ price: item.price, discount: item.discount }),
       discount: item.discount || 0,
       count: item.count,
-      length: item.length,
+      length: getPrice({ price: item.length }),
     }));
   }
 };
 
 export function checkMinPriceAndDiscount(
   values: BasicOptionType[],
-  price?: number,
+  price?: string,
   discount?: number,
-) {
+): { price: number; discount?: number } {
   if (!values || values.length === 0) {
-    return { price: price, discount: discount };
+    return { price: getPrice({ price: price }), discount: discount };
   }
 
-  return values.reduce(
+  const result = values.reduce(
     (acc, item) => {
-      if (acc.price > (item.price ?? 0)) {
-        acc.price = item.price ?? 0;
+      const dPrice = getPrice({ price: item.price });
+      if (acc.price > dPrice) {
+        acc.price = dPrice;
         acc.discount = item.discount ?? 0;
       }
       return acc;
     },
     {
-      price: values[0]?.price || 0,
-      discount: values[0]?.discount || 0,
+      price: 0,
+      discount: 0,
     },
   );
+  return {
+    price: result.price,
+    discount: result.discount,
+  };
+}
+
+interface getPriceProps {
+  price?: string;
+  discount?: number;
+  count?: number;
+  length?: string;
+  shippingPrice?: string;
+}
+export function getPrice(props: getPriceProps): number {
+  const {
+    price = '0',
+    discount = 0,
+    count = 1,
+    length = false,
+    shippingPrice = '0',
+  } = props;
+  const dPrice: number = parseFloat(price);
+  const dLength: number = Number(length);
+  const dShippingPrice = parseFloat(shippingPrice);
+  const result =
+    (dPrice - dPrice * (discount / 100)) * (dLength || count) + dShippingPrice;
+  return parseFloat(result.toFixed(2));
 }
