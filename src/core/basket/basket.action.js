@@ -11,6 +11,7 @@ import {
 import { redirect } from 'src/main/navigation';
 import { convertAddToCart, convertCreateOrder } from './basket.util';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
+import { LOGIN_ROUTE_PATH } from '../login';
 
 export function getUserInfoAction() {
   return async (dispatch) => {
@@ -163,10 +164,12 @@ export function createOrderAction(values, bascketState, isAuth) {
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
       dispatch(clearBasketAction());
-      if (isAuth) {
+      if (response.data.userExist) {
+        redirect(LOGIN_ROUTE_PATH);
+      } else if (isAuth) {
         redirect(USER_ORDERS_ROUTE_PATH);
       } else {
-        alert('Для просмотра списка покупок необходима авторизация');
+        alert('Для просмотра списка покупок необходима авторизация, ваш пароль был отправлен на почту');
       }
     } catch (err) {
       if (err.response) {
