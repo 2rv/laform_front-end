@@ -1,7 +1,7 @@
-import { basicCategoryType } from 'src/lib/basic-types';
+import { BasicCategoryType } from 'src/lib/basic-types';
 import { CategoryType } from './categories.type';
 
-export function performData(rowData: basicCategoryType[]): CategoryType[] {
+export function performData(rowData: BasicCategoryType[]): CategoryType[] {
   return rowData.map((item, index) => ({
     id: index,
     basicId: item.id,

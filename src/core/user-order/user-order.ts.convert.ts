@@ -22,6 +22,7 @@ export const convertPurchaseData = (
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: rowData.promoCode,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,
     },
+    //@ts-ignore
     purchaseProducts: rowData.purchaseProducts.map((item) => {
       const totalPrice = getPrice({
         price: item.totalPrice,

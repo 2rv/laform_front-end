@@ -2,7 +2,7 @@ import { httpRequest } from 'src/main/http';
 import { CATEGORIES_ACTION_TYPE } from './categories.type';
 import { CATEGORIES_API } from './categories.constant';
 import { convertForCreate } from './categories.convert';
-import { basicCategoryType } from 'src/lib/basic-types';
+import { BasicCategoryType } from 'src/lib/basic-types';
 
 export function uploadCategoriesAction(currentLang: 'ru' | 'en', type: number) {
   return async (dispatch: Function) => {
@@ -60,7 +60,7 @@ export function createCategoryAction(value: string, type: number) {
 
 export function deleteCategotyAction(
   id: string,
-  categories: basicCategoryType[],
+  categories: BasicCategoryType[],
 ) {
   return async (dispatch: Function) => {
     dispatch({

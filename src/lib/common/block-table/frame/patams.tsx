@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { TextSecondary, TextPrimary } from 'src/lib/element/text';
-import { spacing, THEME_SIZE } from 'src/lib/theme';
+import { TextSecondary, TextPrimary, TextCurrency } from 'src/lib/element/text';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { ConvertDate } from 'src/lib/common/time-convert';
 import { LinkPrimary } from 'src/lib/element/link';
 import { ABOUT_ACCOUNT_ROUTE_PATH } from 'src/core/about-account';
@@ -78,14 +78,14 @@ export function TableParams(props: { params?: TableParamsProps }) {
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.QUANTITY" />
             &nbsp;
-            <TextPrimary tid={count} />
+            <NumberText price={count || 0} />
           </div>
         )}
         {Boolean(length) && (
           <div>
             <TextSecondary tid="Длинна" />
             &nbsp;
-            <TextPrimary tid={length} />
+            <NumberText price={length || 0} />
           </div>
         )}
         {Boolean(complexity) && (
@@ -177,4 +177,7 @@ const Case = styled.div`
 `;
 const FullNameText = styled(LinkPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
+const NumberText = styled(TextCurrency)`
+  color: ${THEME_COLOR.SECONDARY_DARK};
 `;
