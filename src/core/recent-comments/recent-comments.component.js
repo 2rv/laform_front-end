@@ -6,7 +6,7 @@ import { CommentsComponent } from '../../lib/common/comments-list/comments-list.
 export function RecentCommentsComponent({ comments, fetchData, hasMore }) {
   return (
     <SectionLayout>
-      <TitlePrimary tid="Недавние комментарии" />
+      <TitlePrimary tid="OTHER.RECENT_COMMENTS" />
       <InfiniteScroll
         dataLength={comments?.length ?? 0}
         next={fetchData}
