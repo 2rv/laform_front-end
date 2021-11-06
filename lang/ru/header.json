@@ -35,6 +35,8 @@
     "SLIDER": "Слайдер",
     "PROMOCODES": "Промокоды",
     "CREATE_DELIVERY_TYPE": "Создать способ доставки",
-    "ALL_PRODUCTS": "Все продукты"
+    "ALL_PRODUCTS": "Все продукты",
+    "STATISTICS": "Статистика",
+    "RECENT_COMMENTS": "Недавние комментарии"
   }
 }

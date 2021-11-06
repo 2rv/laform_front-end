@@ -13,21 +13,6 @@ export const convertLikesData = (data) => {
   });
 };
 
-export const convertCommentsData = (data) => {
-  return data?.map((n) => {
-    const { fetchedProduct, productName } = getProduct(n);
-
-    return {
-      id: n.id,
-      text: n.text,
-      createDate: n.createDate,
-      productId: fetchedProduct.id,
-      image: (fetchedProduct?.images ? fetchedProduct?.images[0] : fetchedProduct?.imageUrl)?.fileUrl,
-      productName,
-    };
-  });
-};
-
 const getProduct = (product) => {
   const fetchedProduct = (
     product.masterClassId
@@ -43,7 +28,7 @@ const getProduct = (product) => {
     productName = 'master-class';
     productCategory = 'PROFILE.CATEGORIES.MASTER_CLASS';
   } else if (product.patternProductId) {
-    productName = 'pattern';
+    productName = 'patterns';
     if (product.patternProductId.type === 1) {
       productCategory = 'PROFILE.CATEGORIES.ELECTRONIC_PATTERN';
     } else if (product.patternProductId.type === 2) {

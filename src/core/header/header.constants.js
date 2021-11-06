@@ -20,6 +20,7 @@ import { DELIVERY_PRICE_PAGE_ROUTE_PATH } from '../delivery-price-page';
 import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
 import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
 import { STATISTICS_ROUTE_PATH } from '../statistics';
+import { RECENT_COMMENTS_ROUTE_PATH } from '../recent-comments';
 
 export const NAV_MENU_ITEMS = [
   { name: 'HEADER.MENU_ITEMS.PATTERNS', path: PATTERNS_ROUTE_PATH },
@@ -70,6 +71,10 @@ export const ADMIN_MENU_ITEMS = [
   { path: ALL_PRODUCTS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.ALL_PRODUCTS' },
   {
     path: STATISTICS_ROUTE_PATH,
-    tid: 'Статистика',
+    tid: 'HEADER.ADMIN_MENU.STATISTICS',
+  },
+  {
+    path: RECENT_COMMENTS_ROUTE_PATH,
+    tid: 'HEADER.ADMIN_MENU.RECENT_COMMENTS',
   },
 ];

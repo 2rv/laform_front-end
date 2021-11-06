@@ -35,6 +35,8 @@
     "SLIDER": "Slider",
     "PROMOCODES": "Promocodes",
     "CREATE_DELIVERY_TYPE": "Create delivery type",
-    "ALL_PRODUCTS": "All products"
+    "ALL_PRODUCTS": "All products",
+    "STATISTICS": "Statistics",
+    "RECENT_COMMENTS": "Recent comments"
   }
 }

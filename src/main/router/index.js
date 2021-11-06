@@ -133,8 +133,13 @@ import {
   termsOfUseRouter,
   TERMS_OF_USE_ROUTE_PATH,
 } from '../../core/terms-of-use';
+import {
+  recentCommentsRouter,
+  RECENT_COMMENTS_ROUTE_PATH,
+} from '../../core/recent-comments';
 import { statisticsRouter, STATISTICS_ROUTE_PATH } from '../../core/statistics';
 export const routes = {
+  [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
   [STATISTICS_ROUTE_PATH]: statisticsRouter,
   [LEGAL_INFORMATION_ROUTE_PATH]: legalInformationRouter,
   [PRIVACY_POLICY_ROUTE_PATH]: privacyPolicyRouter,
