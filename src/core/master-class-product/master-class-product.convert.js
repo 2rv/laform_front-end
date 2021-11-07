@@ -8,6 +8,7 @@ export function performMasterClassProductData(rowData) {
     modifier: rowData.modifierRu || rowData.modifierEn,
     name: rowData.titleRu || rowData.titleEn,
     description: rowData.descriptionRu || rowData.descriptionEn,
+    materials: rowData.materialRu || rowData.materialEn,
     price: rowData.price,
     discount: rowData?.discount,
     categories: rowData.categories,

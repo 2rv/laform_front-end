@@ -6,6 +6,7 @@ import { BlockComment } from '../block-comment';
 import { ProductMainComponent } from './frames';
 import { ProductImages } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';
+import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 
 export function MasterClassProductComponent(props) {
   const {
@@ -28,6 +29,12 @@ export function MasterClassProductComponent(props) {
           <ProductMainComponent {...productData} />
         </Content>
       </SectionLayout>
+      <ReactEditorBlock
+        titleTid="PATTERNS.MATERIALS"
+        data={productData.materials}
+        enableReInitialize
+        readOnly
+      />
       <CardListBlock items={productData.recommendations} title="Рекомендации" />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
