@@ -59,14 +59,13 @@ export function CardMasterClass(props: CardMasterClassType) {
         />
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
-          {Boolean(deleted === false) && (
-            <DeleteButton
-              id={id}
-              type={type}
-              admin={admin}
-              onDelete={onDelete}
-            />
-          )}
+          <DeleteButton
+            id={id}
+            type={type}
+            admin={admin}
+            onDelete={onDelete}
+            deleted={deleted}
+          />
         </ActionCase>
       </ActionCase>
     </Container>

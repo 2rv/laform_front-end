@@ -14,7 +14,7 @@ import {
   fetchPatternProducts,
   fetchPosts,
   fetchCategories,
-  deleteProduct,
+  disableProduct,
 } from './all-products.action';
 import { ALL_PRODUCTS_STORE_NAME } from './all-products.constant';
 import { AllProductsComponent } from './all-products.component';
@@ -88,17 +88,17 @@ export function AllProductsContainer() {
     }
   };
 
-  const onDeleteProduct = (id, body) => {
+  const onDeleteProduct = (id, deleted) => {
     if (activeTab === SEWING_GOOD_TYPE) {
-      dispatch(deleteProduct(currentLang, '/sewing-product', id, body));
+      dispatch(disableProduct(currentLang, '/sewing-product', id, deleted));
     } else if (activeTab === MASTER_CLASS_TYPE) {
-      dispatch(deleteProduct(currentLang, '/master-class', id, body));
+      dispatch(disableProduct(currentLang, '/master-class', id, deleted));
     } else if (activeTab === ELECTRONIC_PATTERN_TYPE) {
-      dispatch(deleteProduct(currentLang, '/pattern-product', id, body));
+      dispatch(disableProduct(currentLang, '/pattern-product', id, deleted));
     } else if (activeTab === PRINTED_PATTERN_TYPE) {
-      dispatch(deleteProduct(currentLang, '/pattern-product', id, body));
+      dispatch(disableProduct(currentLang, '/pattern-product', id, deleted));
     } else if (activeTab === POST_TYPE) {
-      dispatch(deleteProduct(currentLang, '/post', id, body));
+      dispatch(disableProduct(currentLang, '/post', id, deleted));
     }
   };
 
