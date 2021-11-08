@@ -186,12 +186,14 @@ import {
   termsOfUseStore,
   TERMS_OF_USE_STORE_NAME,
 } from '../../core/terms-of-use';
+import { feedbackStore, FEEDBACK_STORE_NAME } from '../../core/feedback';
 import {
-  feedbackStore,
-  FEEDBACK_STORE_NAME,
-} from '../../core/feedback';
+  recentCommentsStore,
+  RECENT_COMMENTS_STORE_NAME,
+} from '../../core/recent-comments';
 import { statisticsStore, STATISTICS_STORE_NAME } from '../../core/statistics';
 export const reducers = combineReducers({
+  [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,
   [LEGAL_INFORMATION_STORE_NAME]: legalInformationStore,
   [PRIVACY_POLICY_STORE_NAME]: privacyPolicyStore,

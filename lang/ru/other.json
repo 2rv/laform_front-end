@@ -26,6 +26,7 @@
 	"PRIVACY_POLICY": "Политика конфиденциальности",
 	"LEGAL_INFORMATION": "Юридическая информация",
 	"TERMS_OF_USE": "Пользовательское соглашение",
+	"RECENT_COMMENTS": "Недавние комментарии",
 	"CARD": {
 		"SIZE_COLOR_PRICE": "Размер: {{size}}, Цвет: {{color}}, Цена: {{price}}",
 		"SIZE_PRICE": "Размер: {{size}}, Цена: {{price}}",

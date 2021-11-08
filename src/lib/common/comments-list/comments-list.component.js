@@ -6,10 +6,11 @@ import { Divider } from 'src/lib/element/divider';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 import { ConvertTime } from 'src/lib/common/time-convert';
-import { convertCommentsData } from '../about-account.convert';
+import { convertCommentsData } from './comments-list.convert';
 
 export function CommentsComponent(props) {
   const { comments = [] } = props;
+
   return (
     <SectionLayout type="SMALL">
       <Title tid="PROFILE.COMMENTS" />
@@ -68,5 +69,6 @@ const Image = styled.img`
   width: 75px;
   height: 75px;
   min-width: 75px;
+  object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
