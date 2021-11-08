@@ -1,25 +1,32 @@
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../patterns-product';
 import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
-import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
 import { TableItemType } from 'src/lib/common/block-table/table.type';
-import { BasicPurchaseProductType } from 'src/lib/basic-types';
+import {
+  BasicPurchaseProductType,
+  BasicPurchaseType,
+} from 'src/lib/basic-types';
 import { convertOptions } from 'src/lib/common/product-converters';
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
+import { OrderPurchaseType } from './order-number.ts.type';
 
-export function convertPurchaseInfo(rowData: any) {
+export function convertPurchaseInfo(
+  rowData: BasicPurchaseType,
+): OrderPurchaseType {
   return {
-    [ABOUT_ORDER_FIELD_NAME.ID]: rowData.id,
-    [ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER]: rowData.orderNumber,
-    [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: rowData.orderStatus,
-    [ABOUT_ORDER_FIELD_NAME.EMAIL]: rowData.email,
-    [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: rowData.fullName,
-    [ABOUT_ORDER_FIELD_NAME.CITY]: rowData.city,
-    [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: rowData.phoneNumber,
-    [ABOUT_ORDER_FIELD_NAME.COMMENT]: rowData.comment,
-    [ABOUT_ORDER_FIELD_NAME.PRICE]: rowData.price,
-    [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: rowData.promoCode,
-    [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,
+    id: rowData.id,
+    orderNumber: rowData.orderNumber,
+    createdDate: rowData.createdDate,
+    orderStatus: rowData.orderStatus,
+    email: rowData.email,
+    fullName: rowData.fullName,
+    city: rowData.city,
+    phoneNumber: rowData.phoneNumber,
+    comment: rowData.comment,
+    price: rowData.price,
+    promoCode: rowData.promoCode,
+    promoCodeDiscount: rowData.promoCodeDiscount,
+    typeOfDelivery: rowData.typeOfDelivery,
   };
 }
 export function convertPurchaseProducts(
@@ -186,15 +193,35 @@ export function convertChangePurchaseProducts(
   });
 }
 
+export function convertForUpdatePurchaseProducts(
+  purchaseProducts: BasicPurchaseProductType[],
+) {
+  return purchaseProducts.map((item) => {
+    return {
+      id: item.id,
+      masterClassId: item.masterClassId?.id,
+      patternProductId: item.patternProductId?.id,
+      sewingProductId: item.sewingProductId?.id,
+      optionId: item.optionId?.id,
+      type: item.type,
+      totalCount: item.totalCount || undefined,
+      totalLength: item.totalLength || undefined,
+    };
+  });
+}
+
 export function convertForUpdate(
-  values: any,
+  values: OrderPurchaseType,
   products: BasicPurchaseProductType[],
 ) {
-  console.log(values, products);
-
   return {
-    [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: Number(
-      values[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS],
-    ),
+    orderStatus: Number(values.orderStatus),
+    email: values.email,
+    fullName: values.fullName,
+    city: values.city,
+    phoneNumber: values.phoneNumber,
+    comment: values.comment,
+    purchaseProducts: convertForUpdatePurchaseProducts(products),
+    typeOfDelivery: values.typeOfDelivery,
   };
 }

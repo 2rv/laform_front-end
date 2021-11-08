@@ -13,13 +13,13 @@ import {
 import { ABOUT_ORDER_FIELD_NAME } from '../order-number.type';
 import { AboutOrderPrice } from './about-order-price';
 import { SuccessAlert } from 'src/lib/element/alert';
+import { PURCHASE_STATUS_SELECT } from 'src/lib/basic-types';
 
 export function AboutOrderFormComponent(props) {
   const {
     values,
     handleSubmit,
     handleChange,
-    statusOrderSelect,
     errors,
     touched,
     handleBlur,
@@ -114,7 +114,7 @@ export function AboutOrderFormComponent(props) {
           <FieldLayout type="double" adaptive>
             <FieldSelect
               titleTid="ORDER_NUMBER.FORM.ORDER_STATUS"
-              options={statusOrderSelect}
+              options={PURCHASE_STATUS_SELECT}
               name={ABOUT_ORDER_FIELD_NAME.ORDER_STATUS}
               value={values[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]}
               onChange={handleChange}
@@ -145,20 +145,3 @@ const SelectTitle = styled(TextSecondary)`
 const Button = styled(ButtonSecondary)`
   margin-top: 19px;
 `;
-{
-  /* 
-<FieldSelect
-titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PAYMENT_METHOD"
-options={[{ id: 0, tid: orderNumberDetails?.typeOfPayment }]}
-name={fieldConvenientPaymentMethod}
-value={values[fieldConvenientPaymentMethod]}
-onChange={handleChange}
-/>
-<FieldSelect
-titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.DELIVERY_METHOD"
-options={[{ id: 0, tid: orderNumberDetails?.typeOfDelivery }]}
-name={ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD}
-value={values[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]}
-onChange={handleChange}
-/>  */
-}

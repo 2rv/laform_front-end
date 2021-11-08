@@ -5,6 +5,7 @@ import { THEME_SIZE } from '../../lib/theme';
 import { AboutOrderFormContainer } from './frames';
 import { Spinner } from 'src/lib/element/spinner';
 import { Table } from 'src/lib/common/block-table';
+import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
 
 export function OrderNumberComponent(props) {
   const {
@@ -12,8 +13,6 @@ export function OrderNumberComponent(props) {
     initialValue,
     validate,
     isPending,
-    orderNumberTitle,
-    statusOrderSelect,
     deliveryTypeOptions,
     isOrderNumberChangePending,
     isOrderNumberChangeSuccess,
@@ -31,7 +30,7 @@ export function OrderNumberComponent(props) {
       <div>
         <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />
         &nbsp;
-        <BoldTitle tid={orderNumberTitle} />
+        <BoldTitle tid={initialValue[ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER]} />
       </div>
       <Table
         changeItem={changeItem}
@@ -43,7 +42,6 @@ export function OrderNumberComponent(props) {
         onSubmit={onSubmit}
         initialValue={initialValue}
         validate={validate}
-        statusOrderSelect={statusOrderSelect}
         deliveryTypeOptions={deliveryTypeOptions}
         isOrderNumberChangePending={isOrderNumberChangePending}
         isOrderNumberChangeSuccess={isOrderNumberChangeSuccess}

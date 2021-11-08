@@ -5,7 +5,6 @@ import { CreatePriceProps } from './type';
 
 export function CreatePriceBlock(props: CreatePriceProps) {
   const { price = 0, discount = 0 } = props.priceAndDiscount;
-
   const priceWithDiscount: number = Number(
     ((price / 100) * discount).toFixed(2),
   );

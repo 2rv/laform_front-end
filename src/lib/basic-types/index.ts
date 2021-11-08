@@ -154,7 +154,7 @@ export interface BasicPurchaseType {
   promoCode: string;
   typeOfDelivery: string;
   shippingPrice: number;
-  price: number;
+  price: string;
   promoCodeDiscount: number;
 }
 export interface BasicPurchaseProductType {
@@ -194,3 +194,14 @@ export const PURCHASE_STATUS_INFO = {
   7: 'Вовращен отправителю',
   8: 'Возвращен по гарантии',
 };
+export const PURCHASE_STATUS_SELECT = [
+  { id: 0, tid: 'Сформирован' },
+  { id: 1, tid: 'Ожидает оплаты' },
+  { id: 2, tid: 'Оплачено' },
+  { id: 3, tid: 'Ожидает отправки' },
+  { id: 4, tid: 'Отправлено' },
+  { id: 5, tid: 'Получено' },
+  { id: 6, tid: 'Отменено' },
+  { id: 7, tid: 'Вовращен отправителю' },
+  { id: 8, tid: 'Возвращен по гарантии' },
+];

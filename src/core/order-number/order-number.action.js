@@ -45,17 +45,18 @@ export function updatePurchaseOrderStatus(orderId, values, products) {
       type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_PENDING,
     });
     try {
-      convertForUpdate(values, products);
-      //   await httpRequest({
-      //     method: ORDER_NUMBER_API.UPDATE_PURCHASE_STATUS.TYPE,
-      //     url: ORDER_NUMBER_API.UPDATE_PURCHASE_STATUS.ENDPOINT(orderId),
-      //     data: ,
-      //   });
+      const result = convertForUpdate(values, products);
+      await httpRequest({
+        method: ORDER_NUMBER_API.UPDATE_PURCHASE.TYPE,
+        url: ORDER_NUMBER_API.UPDATE_PURCHASE.ENDPOINT(orderId),
+        data: result,
+      });
 
       dispatch({
         type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_SUCCESS,
       });
     } catch (err) {
+      console.log(err);
       if (err.response) {
         dispatch({
           type: ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_ERROR,

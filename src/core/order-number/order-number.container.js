@@ -37,9 +37,7 @@ export function OrderNumberContainer() {
     deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
-  const purchaseInfo = getRequestData(purchaseInfoState, {
-    purchaseInfo: null,
-  });
+
   const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
 
   useEffect(() => {
@@ -58,30 +56,23 @@ export function OrderNumberContainer() {
   };
 
   function initialValue() {
-    return {
-      [ABOUT_ORDER_FIELD_NAME.CITY]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.CITY] ?? '',
-      [ABOUT_ORDER_FIELD_NAME.EMAIL]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.EMAIL] ?? '',
-      [ABOUT_ORDER_FIELD_NAME.FULL_NAME]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.FULL_NAME] ?? '',
-      [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER] ?? '',
-      [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PROMO_CODE] ?? '',
-      [ABOUT_ORDER_FIELD_NAME.COMMENT]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.COMMENT] ?? '',
-      [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS] ?? 0,
-      [ABOUT_ORDER_FIELD_NAME.PRICE]: purchaseProducts[2],
-      [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT] ?? 0,
-      [ABOUT_ORDER_FIELD_NAME.ID]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ID] ?? null,
-      [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]:
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD] ??
-        deliveryTypeOptions[0]?.tid,
-    };
+    const purchaseInfo = getRequestData(purchaseInfoState, {
+      [ABOUT_ORDER_FIELD_NAME.CITY]: '',
+      [ABOUT_ORDER_FIELD_NAME.EMAIL]: '',
+      [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: '',
+      [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: '',
+      [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: '',
+      [ABOUT_ORDER_FIELD_NAME.COMMENT]: '',
+      [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: 0,
+      [ABOUT_ORDER_FIELD_NAME.PRICE]: 0,
+      [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: 0,
+      [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]: '',
+    });
+    purchaseInfo.price = purchaseProducts[2];
+    if (!Boolean(purchaseInfo.typeOfDelivery)) {
+      purchaseInfo.typeOfDelivery = deliveryTypeOptions[0]?.tid;
+    }
+    return purchaseInfo;
   }
 
   return (
@@ -95,14 +86,10 @@ export function OrderNumberContainer() {
       pageLoading={pageLoading}
       onSubmit={onSubmit}
       initialValue={initialValue()}
-      orderNumberTitle={
-        purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER] || 0
-      }
       purchaseProducts={purchaseProducts[0]}
       headersTable={headersTable}
       changeItem={changeItem}
       deleteItem={deleteItem}
-      statusOrderSelect={statusOrderSelect}
       deliveryTypeOptions={deliveryTypeOptions}
     />
   );
@@ -113,16 +100,4 @@ const headersTable = [
   'Параметры',
   'Количество',
   'Итоговая цена',
-];
-
-const statusOrderSelect = [
-  { id: 0, tid: 'Сформирован' },
-  { id: 1, tid: 'Ожидает оплаты' },
-  { id: 2, tid: 'Оплачено' },
-  { id: 3, tid: 'Ожидает отправки' },
-  { id: 4, tid: 'Отправлено' },
-  { id: 5, tid: 'Получено' },
-  { id: 6, tid: 'Отменено' },
-  { id: 7, tid: 'Вовращен отправителю' },
-  { id: 8, tid: 'Возвращен по гарантии' },
 ];

@@ -169,7 +169,9 @@ export function createOrderAction(values, bascketState, isAuth) {
       } else if (isAuth) {
         redirect(USER_ORDERS_ROUTE_PATH);
       } else {
-        alert('Для просмотра списка покупок необходима авторизация, ваш пароль был отправлен на почту');
+        alert(
+          'Для просмотра списка покупок необходима авторизация, ваш пароль был отправлен на почту',
+        );
       }
     } catch (err) {
       if (err.response) {
