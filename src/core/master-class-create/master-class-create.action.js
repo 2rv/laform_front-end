@@ -9,6 +9,8 @@ import {
   convertForChange,
   convertForUpdateImage,
 } from './master-class-create.convert';
+import { redirect } from 'src/main/navigation';
+import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
 
 export function createMasterClassUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
@@ -147,6 +149,34 @@ export function updateMasterClassPreUpload(id, formValues) {
       if (err.response) {
         dispatch({
           type: CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function masterClassDelete(id) {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_DELETE_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: CREATE_MASTER_CLASS_API.MASTER_CLASS_DELETE.TYPE,
+        url: CREATE_MASTER_CLASS_API.MASTER_CLASS_DELETE.ENDPOINT(id),
+      });
+
+      dispatch({
+        type: CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_DELETE_SUCCESS,
+      });
+
+      redirect(ALL_PRODUCTS_ROUTE_PATH);
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_DELETE_ERROR,
           errorMessage: err.response.data.message,
         });
       }

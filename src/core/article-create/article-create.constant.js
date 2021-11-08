@@ -21,4 +21,8 @@ export const CREATE_ARTICLE_API = {
     ENDPOINT: (id) => `/post/update/${id}/?lang=ru`,
     TYPE: 'PUT',
   },
+  ARTICLE_DELETE: {
+    ENDPOINT: (id) => `/post/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };

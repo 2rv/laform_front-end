@@ -10,6 +10,7 @@ const initialState = {
   createArticle: initRequestState(),
   product: initRequestState(),
   updateArticle: initRequestState(),
+  deleteArticle: initRequestState(),
 };
 
 export function createArticleStore(state = initialState, action) {
@@ -66,6 +67,22 @@ export function createArticleStore(state = initialState, action) {
           state.updateArticle,
           action.errorMessage,
         ),
+      };
+
+    case CREATE_ARTICLE_ACTION_TYPE.ARTICLE_DELETE_PENDING:
+      return {
+        ...state,
+        deleteArticle: setRequestPending(state.deleteArticle),
+      };
+    case CREATE_ARTICLE_ACTION_TYPE.ARTICLE_DELETE_SUCCESS:
+      return {
+        ...state,
+        deleteArticle: setRequestSuccess(state.deleteArticle),
+      };
+    case CREATE_ARTICLE_ACTION_TYPE.ARTICLE_DELETE_ERROR:
+      return {
+        ...state,
+        deleteArticle: setRequestError(state.deleteArticle, action.errorMessage),
       };
     default:
       return state;

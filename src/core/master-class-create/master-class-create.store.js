@@ -10,6 +10,7 @@ const initialState = {
   createMasterClass: initRequestState(),
   product: initRequestState(),
   updateMasterClass: initRequestState(),
+  deleteMasterClass: initRequestState(),
 };
 
 export function createMasterClassStore(state = initialState, action) {
@@ -66,6 +67,22 @@ export function createMasterClassStore(state = initialState, action) {
           state.updateMasterClass,
           action.errorMessage,
         ),
+      };
+
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_DELETE_PENDING:
+      return {
+        ...state,
+        deleteMasterClass: setRequestPending(state.deleteMasterClass),
+      };
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_DELETE_SUCCESS:
+      return {
+        ...state,
+        deleteMasterClass: setRequestSuccess(state.deleteMasterClass),
+      };
+    case CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_DELETE_ERROR:
+      return {
+        ...state,
+        deleteMasterClass: setRequestError(state.deleteMasterClass, action.errorMessage),
       };
     default:
       return state;

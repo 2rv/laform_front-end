@@ -5,6 +5,8 @@ import {
 } from './article-create.type';
 import { CREATE_ARTICLE_API } from './article-create.constant';
 import { convertForUpload, convertForChange } from './article-create.convert';
+import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
+import { redirect } from 'src/main/navigation';
 
 export function createArticleUploadData(imagesUrl, formValues) {
   return async (dispatch) => {
@@ -136,6 +138,34 @@ export function updateArticlePreUpload(id, formValues) {
       if (err.response) {
         dispatch({
           type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function articleDelete(id) {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_DELETE_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: CREATE_ARTICLE_API.ARTICLE_DELETE.TYPE,
+        url: CREATE_ARTICLE_API.ARTICLE_DELETE.ENDPOINT(id),
+      });
+
+      dispatch({
+        type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_DELETE_SUCCESS,
+      });
+
+      redirect(ALL_PRODUCTS_ROUTE_PATH);
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_DELETE_ERROR,
           errorMessage: err.response.data.message,
         });
       }

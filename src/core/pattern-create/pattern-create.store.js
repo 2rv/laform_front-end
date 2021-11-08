@@ -9,6 +9,7 @@ import { CREATE_PATTERN_ACTION_TYPE } from './pattern-create.type';
 const initialState = {
   createPattern: initRequestState(),
   updatePattern: initRequestState(),
+  deletePattern: initRequestState(),
   product: initRequestState(),
 };
 
@@ -66,6 +67,22 @@ export function createPatternStore(state = initialState, action) {
           state.updatePattern,
           action.errorMessage,
         ),
+      };
+
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_PENDING:
+      return {
+        ...state,
+        deletePattern: setRequestPending(state.deletePattern),
+      };
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_SUCCESS:
+      return {
+        ...state,
+        deletePattern: setRequestSuccess(state.deletePattern),
+      };
+    case CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_ERROR:
+      return {
+        ...state,
+        deletePattern: setRequestError(state.deletePattern, action.errorMessage),
       };
     default:
       return state;

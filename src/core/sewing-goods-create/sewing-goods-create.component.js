@@ -1,10 +1,11 @@
 import { Formik } from 'formik';
 import { SelectImageBlock } from 'src/lib/common/block-select-image';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { Divider } from 'src/lib/element/divider';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import { FormComponent } from './frames';
+import { FormComponent, DeleteProductComponent } from './frames';
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods-create.type';
 
 export function CreateSewingGoodsComponent(props) {
@@ -19,6 +20,10 @@ export function CreateSewingGoodsComponent(props) {
     updateIsError,
     updateIsSuccess,
     updateErrorMessage,
+    deleteProduct,
+    deleteIsPending,
+    deleteIsError,
+    deleteErrorMessage,
     //--------
     initialOption,
     initialValues,
@@ -61,6 +66,14 @@ export function CreateSewingGoodsComponent(props) {
         {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
         {isError && <ErrorAlert tid={errorMessage} />}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
+        <Divider />
+        <DeleteProductComponent
+          isEdit={isEdit}
+          deleteProduct={deleteProduct}
+          deleteIsPending={deleteIsPending}
+          deleteIsError={deleteIsError}
+          deleteErrorMessage={deleteErrorMessage}
+        />
       </SectionLayout>
     </>
   );

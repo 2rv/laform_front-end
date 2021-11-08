@@ -12,6 +12,7 @@ export function Popup(props: PopupPropsType) {
     top = 45,
     middleLeft,
     mobileRight,
+    onLeft,
     disableRelative,
   } = props;
   const [visible, setVisible]: [boolean, Function] = useState(false);
@@ -36,6 +37,7 @@ export function Popup(props: PopupPropsType) {
           disableRelative={disableRelative}
           middleLeft={middleLeft}
           mobileRight={mobileRight}
+          onLeft={onLeft}
         >
           {content instanceof Function ? content(setVisible) : content}
         </PopupContent>
@@ -58,7 +60,7 @@ const PopupContent = styled.div<any>`
   position: absolute;
   z-index: 11;
   top: ${(p) => p.top}px;
-  right: 0;
+  ${(p) => p.onLeft ? 'left: 0' : 'right: 0'};
   ${(p) =>
     p.middleLeft &&
     css`
