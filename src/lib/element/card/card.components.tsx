@@ -10,11 +10,12 @@ import {
 } from './card.type';
 import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
 import { LikeButton as LikeAction } from 'src/core/block-like';
-import { ReactComponent as DeleteIcon } from '../../../asset/svg/delete-cancel-icon.svg';
 import { TextCurrency, TextSecondary } from '../text';
 import { Popup } from '../popup';
 import { FieldLayout } from '../layout';
 import { ReactComponent as GalochkaIcon } from '../../../asset/svg/galochka.svg';
+import { ReactComponent as PowerOffIcon } from '../../../asset/svg/power-off.svg';
+import { ReactComponent as PowerOnIcon } from '../../../asset/svg/power-on.svg';
 
 export function LikeButton(props: CardActionProps) {
   const { id, type, like = null } = props;
@@ -43,22 +44,26 @@ export function SelectButton(props: CardActionProps) {
   );
 }
 export function DeleteButton(props: CardActionProps) {
-  const { id, admin, onDelete } = props;
+  const { id, admin, onDelete, deleted } = props;
   if (!admin || !onDelete) return null;
 
-  return (
+  return deleted ? (
+    <ButtonIcon onClick={() => onDelete(id, deleted ? 'true' : 'false')}>
+      <PowerOnIcon />
+    </ButtonIcon>
+  ) : (
     <Popup
       mobileRight
       disableRelative
       top={0}
       content={(setVisible: Function) => (
         <Content>
-          <TextSecondary tid="OTHER.ARE_YOU_SURE_TO_DELETE_PRODUCT" />
+          <TextSecondary tid="OTHER.ARE_YOU_SURE_TO_DISABLE_PRODUCT" />
           <FieldLayout>
             <ButtonSecondary
               tid="OTHER.YES"
               onClick={() => {
-                onDelete(id, { deleted: true });
+                onDelete(id, deleted ? 'true' : 'false');
                 setVisible(false);
               }}
             />
@@ -71,7 +76,7 @@ export function DeleteButton(props: CardActionProps) {
       )}
       children={
         <ButtonIcon>
-          <DeleteIcon />
+          <PowerOffIcon />
         </ButtonIcon>
       }
     />
@@ -123,10 +128,6 @@ const ComplexityCase = styled.div`
   gap: ${spacing(2)};
 `;
 const ComplexityDot = styled(GalochkaIcon)<{ active: boolean }>`
-  /* width: 16px;
-  min-width: 16px;
-  height: 16px;
-  border-radius: ${THEME_SIZE.RADIUS.CIRCLE}; */
   fill: ${(p) =>
     p.active ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;

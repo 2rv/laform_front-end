@@ -17,7 +17,7 @@ function convertOptions(
       price: Number(Number(item.price).toFixed(2)),
       discount: Number(item.discount) ? item.discount : undefined,
       count: isCount && type === 2 ? Number(item.count) : undefined,
-      filesPdf: type === 1 ? filesPdf[index] : undefined,
+      filesPdf: filesPdf?.[index],
     };
   });
 }
@@ -85,7 +85,6 @@ export function convertForUpload(
   filesPdf: FileType[][],
   values: formValueType,
 ): dataValueType {
-  const isElectronic = values.optionType === 0 && values.type === 1;
   const noneParams = values.optionType === 0;
   const isPrintAndCount =
     values.isCount && values.optionType === 0 && values.type === 2;
@@ -103,7 +102,7 @@ export function convertForUpload(
       : null,
     categories: values.categories.map((i) => ({ id: i.basicId })),
     complexity: values.complexity,
-    filesPdf: isElectronic ? filesPdf[0] : null,
+    filesPdf: noneParams ? filesPdf[0] : null,
     price: noneParams
       ? Number(Number(values.price).toFixed(2)) || 0
       : undefined,
@@ -121,13 +120,13 @@ export function convertForUpload(
       values.type,
       filesPdf,
     ),
+    deleted: values.deleted,
   };
 }
 
 export function convertForPreUploadPDFFiles(formValues: formValueType) {
-  if (formValues.type === 2) return [];
-  else if (formValues.optionType === 0) return [formValues.filesPdf];
-  else return formValues.options.map((item) => item.filesPdf);
+  if (formValues.optionType === 0) return [formValues.filesPdf];
+  return formValues.options.map((item) => item.filesPdf);
 }
 
 export function convertForChange(rowData: dataValueType): formValueType {
@@ -152,6 +151,7 @@ export function convertForChange(rowData: dataValueType): formValueType {
     optionType: rowData.optionType,
     options: rowData.options,
     complexity: rowData.complexity,
-    materialRu: rowData.materialRu,
+    materialRu: rowData.materialRu || [],
+    deleted: rowData.deleted,
   };
 }

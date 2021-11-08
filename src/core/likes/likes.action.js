@@ -1,7 +1,6 @@
 import { httpRequest } from '../../main/http';
 import { LIKES_API } from './likes.constant';
 import { LIKES_ACTION_TYPE } from './likes.type';
-import { BASKET_STORE_NAME } from '../basket';
 import {
   convertArticleProducts,
   convertMasterClassProducts,
@@ -10,7 +9,7 @@ import {
 } from 'src/lib/common/product-converters';
 
 export function likeSewingProductUploadData(currentLang, page) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
     });
@@ -23,12 +22,9 @@ export function likeSewingProductUploadData(currentLang, page) {
       dispatch({
         type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
         data: {
-          products: convertSewingGoodProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertSewingGoodProducts(response.data[0]),
           totalRecords: response.data[1],
-        }
+        },
       });
     } catch (err) {
       if (err.response) {
@@ -42,7 +38,7 @@ export function likeSewingProductUploadData(currentLang, page) {
 }
 
 export function likeMasterClassUploadData(currentLang, page) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
     });
@@ -55,10 +51,7 @@ export function likeMasterClassUploadData(currentLang, page) {
       dispatch({
         type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
         data: {
-          products: convertMasterClassProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertMasterClassProducts(response.data[0]),
           totalRecords: response.data[1],
         },
       });
@@ -74,7 +67,7 @@ export function likeMasterClassUploadData(currentLang, page) {
 }
 
 export function likePatternProductUploadData(currentLang, page) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
     });
@@ -87,10 +80,7 @@ export function likePatternProductUploadData(currentLang, page) {
       dispatch({
         type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
         data: {
-          products: convertPatternProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertPatternProducts(response.data[0]),
           totalRecords: response.data[1],
         },
       });
@@ -106,7 +96,7 @@ export function likePatternProductUploadData(currentLang, page) {
 }
 
 export function likePostUploadData(currentLang, page) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
     });

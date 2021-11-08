@@ -174,9 +174,31 @@ import {
   allProductsStore,
   ALL_PRODUCTS_STORE_NAME,
 } from '../../core/all-products';
+import {
+  legalInformationStore,
+  LEGAL_INFORMATION_STORE_NAME,
+} from '../../core/legal-information';
+import {
+  privacyPolicyStore,
+  PRIVACY_POLICY_STORE_NAME,
+} from '../../core/privacy-policy';
+import {
+  termsOfUseStore,
+  TERMS_OF_USE_STORE_NAME,
+} from '../../core/terms-of-use';
+import { feedbackStore, FEEDBACK_STORE_NAME } from '../../core/feedback';
+import {
+  recentCommentsStore,
+  RECENT_COMMENTS_STORE_NAME,
+} from '../../core/recent-comments';
 import { statisticsStore, STATISTICS_STORE_NAME } from '../../core/statistics';
 export const reducers = combineReducers({
+  [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,
+  [LEGAL_INFORMATION_STORE_NAME]: legalInformationStore,
+  [PRIVACY_POLICY_STORE_NAME]: privacyPolicyStore,
+  [TERMS_OF_USE_STORE_NAME]: termsOfUseStore,
+  [FEEDBACK_STORE_NAME]: feedbackStore,
   [CREATE_PATTERN_STORE_NAME]: createPatternStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,

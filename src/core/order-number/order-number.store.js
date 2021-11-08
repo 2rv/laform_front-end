@@ -8,7 +8,8 @@ import {
 import { ORDER_NUMBER_ACTION_TYPE } from './order-number.type';
 
 const initialState = {
-  order: initRequestState(),
+  purchaseInfo: initRequestState(),
+  purchaseProducts: [[], []],
   orderUpdate: initRequestState(),
 };
 
@@ -17,18 +18,19 @@ export function orderNumberStore(state = initialState, action) {
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_PENDING:
       return {
         ...state,
-        order: setRequestPending(state.order),
+        purchaseInfo: setRequestPending(state.purchaseInfo),
       };
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_SUCCESS:
       return {
         ...state,
-        order: setRequestSuccess(state.order, action.data),
+        purchaseInfo: setRequestSuccess(state.purchaseInfo, action.data),
       };
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPLOAD_ERROR:
       return {
         ...state,
-        order: setRequestError(state.order, action.errorMessage),
+        purchaseInfo: setRequestError(state.purchaseInfo, action.errorMessage),
       };
+
     case ORDER_NUMBER_ACTION_TYPE.ORDER_NUMBER_UPDATE_PENDING:
       return {
         ...state,
@@ -44,6 +46,23 @@ export function orderNumberStore(state = initialState, action) {
         ...state,
         orderUpdate: setRequestError(state.orderUpdate, action.errorMessage),
       };
+
+    case ORDER_NUMBER_ACTION_TYPE.ORDER_PRODUCT_INIT:
+      return {
+        ...state,
+        purchaseProducts: action.data,
+      };
+    case ORDER_NUMBER_ACTION_TYPE.ORDER_PRODUCT_CHANGE:
+      return {
+        ...state,
+        purchaseProducts: action.data,
+      };
+    case ORDER_NUMBER_ACTION_TYPE.ORDER_PRODUCT_DELETE:
+      return {
+        ...state,
+        purchaseProducts: action.data,
+      };
+
     default:
       return state;
   }

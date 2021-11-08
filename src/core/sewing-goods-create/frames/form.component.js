@@ -13,9 +13,9 @@ import { RecomendationBlock } from '../../../lib/common/block-select-recomendati
 import { Divider } from 'src/lib/element/divider';
 import { BlockCategories } from 'src/lib/common/block-categories';
 import { numberValue } from 'src/lib/common/create-product-validation';
-import { ProductPrice } from '../../block-product-create-components';
 import { ProductOptions } from '../../../lib/common/block-product-options';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
+import { CreatePriceBlock } from 'src/lib/common/block-create-price';
 
 export function FormComponent(props) {
   const {
@@ -28,6 +28,13 @@ export function FormComponent(props) {
     setFieldValue,
     initialOption,
   } = props;
+
+  const setVisible = () => {
+    setFieldValue(
+      SEWING_GOODS_FIELD_NAME.DELETED,
+      !values[SEWING_GOODS_FIELD_NAME.DELETED],
+    );
+  };
 
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setNumber = (name) => (e) => setFieldValue(name, numberValue(e));
@@ -146,7 +153,17 @@ export function FormComponent(props) {
         setFieldValue={setFieldValue}
       />
 
-      <ProductPrice
+      <FieldCheckbox
+        titleTid="Видимость товара"
+        labelTid="Не показан в списке"
+        name={SEWING_GOODS_FIELD_NAME.DELETED}
+        value={values[SEWING_GOODS_FIELD_NAME.DELETED]}
+        checked={values[SEWING_GOODS_FIELD_NAME.DELETED]}
+        onClick={setVisible}
+        onBlur={handleBlur}
+      />
+
+      <CreatePriceBlock
         priceAndDiscount={checkMinPriceAndDiscount(
           values[SEWING_GOODS_FIELD_NAME.OPTIONS],
           values[SEWING_GOODS_FIELD_NAME.PRICE],

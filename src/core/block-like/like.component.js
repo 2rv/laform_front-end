@@ -43,8 +43,7 @@ const DeleteIcon = styled.div`
 
 const ButtonAllLikes = styled(IconButton)`
   fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${(p) =>
-    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
+  background-color: ${THEME_COLOR.GRAY};
   &:hover ${DeleteIcon} {
     display: inline;
   }
@@ -55,6 +54,5 @@ const ButtonAllLikes = styled(IconButton)`
 
 const Button = styled(IconButton)`
   fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
-  background-color: ${(p) =>
-    p.like ? THEME_COLOR.DARK_GRAY : THEME_COLOR.GRAY};
+  background-color: ${THEME_COLOR.GRAY};
 `;

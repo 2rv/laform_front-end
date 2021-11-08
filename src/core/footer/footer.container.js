@@ -7,6 +7,11 @@ import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { FooterComponent } from './footer.component';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
+import { ARTICLE_PAGE_ROUTE_PATH } from '../article-page';
+import { LEGAL_INFORMATION_ROUTE_PATH } from '../legal-information';
+import { PRIVACY_POLICY_ROUTE_PATH } from '../privacy-policy';
+import { TERMS_OF_USE_ROUTE_PATH } from '../terms-of-use';
+import { FEEDBACK_ROUTE_PATH } from '../feedback';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({
@@ -44,11 +49,15 @@ export function FooterContainer() {
     items: [
       {
         tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE',
-        path: FAQ_ROUTE_PATH,
+        path: ARTICLE_PAGE_ROUTE_PATH({
+          id: 'ebffe327-ad16-4d44-b00a-15972d01d085',
+        }),
       },
       {
         tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
-        path: FAQ_ROUTE_PATH,
+        path: ARTICLE_PAGE_ROUTE_PATH({
+          id: '9ce5b9be-1a72-4b62-9eab-9a3c0091b775',
+        }),
       },
       {
         tid: 'FOOTER.MENU.SECTION2.QNA',
@@ -56,17 +65,24 @@ export function FooterContainer() {
       },
     ],
   };
-
   const contactLinkItems = {
     title: 'FOOTER.MENU.SECTION3.TITLE',
     items: [
       {
         tid: 'FOOTER.MENU.SECTION3.LEGAL_INFO',
-        path: ABOUT_ROUTE_PATH,
+        path: LEGAL_INFORMATION_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION3.PRIVACY_POLICY',
-        path: ABOUT_ROUTE_PATH,
+        path: PRIVACY_POLICY_ROUTE_PATH,
+      },
+      {
+        tid: 'FOOTER.MENU.SECTION3.TERMS_OF_USE',
+        path: TERMS_OF_USE_ROUTE_PATH,
+      },
+      {
+        tid: 'FOOTER.MENU.SECTION3.FEEDBACK',
+        path: FEEDBACK_ROUTE_PATH,
       },
     ],
   };

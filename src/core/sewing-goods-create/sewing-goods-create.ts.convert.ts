@@ -33,6 +33,7 @@ interface dataValueType {
   isLength: boolean;
   optionType: 0 | 1 | 2 | 3;
   options: optionType[];
+  deleted?: boolean;
 }
 interface categoryValueType {
   basicId: string;
@@ -53,6 +54,7 @@ interface formValueType {
   optionType: 0 | 1 | 2 | 3;
   options: optionType[];
   images?: any;
+  deleted?: boolean;
 }
 
 export function convertForUpload(
@@ -96,6 +98,7 @@ export function convertForUpload(
       values.isLength,
       values.optionType,
     ),
+    deleted: values.deleted,
   };
 }
 
@@ -113,7 +116,9 @@ function convertOptions(
       price: Number(Number(item.price)?.toFixed(2)),
       discount: Number(item.discount) ? item.discount : undefined,
       count: isCount ? Number(item.count) : undefined,
-      length: isLength ? Number(item.length?.toFixed(2)) : undefined,
+      length: isLength
+        ? Number(Number(item.length).toFixed(2)) || 0
+        : undefined,
     };
   });
 }
@@ -139,6 +144,7 @@ export function convertForChange(rowData: dataValueType): formValueType {
     isLength: rowData.isLength,
     optionType: rowData.optionType,
     options: rowData.options,
+    deleted: rowData.deleted,
   };
 }
 

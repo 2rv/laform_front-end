@@ -1,4 +1,5 @@
-import { BasicCategoryType, CategoryType } from './categories.type';
+import { BasicCategoryType } from 'src/lib/basic-types';
+import { CategoryType } from './categories.type';
 
 export function performData(rowData: BasicCategoryType[]): CategoryType[] {
   return rowData.map((item, index) => ({
@@ -11,6 +12,6 @@ export function performData(rowData: BasicCategoryType[]): CategoryType[] {
 export function convertForCreate(value: string, type: number) {
   return {
     categoryNameRu: value,
-    type,
+    type: String(type),
   };
 }

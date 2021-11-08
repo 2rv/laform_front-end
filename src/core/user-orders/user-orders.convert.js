@@ -1,9 +1,6 @@
+import { PURCHASE_STATUS_INFO } from 'src/lib/basic-types';
+import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 import { USER_ORDER_ROUTE_PATH } from '../user-order';
-import { PURCHASE_STATUS_INFO } from './user-orders.constant';
-
-function getPrice(price = 0, discount = 0, shippingPrice = 0) {
-  return (price - price * (discount / 100)) + shippingPrice;
-}
 
 export const convertUsersOrderData = (data) => {
   return {
@@ -12,7 +9,11 @@ export const convertUsersOrderData = (data) => {
     name: data.orderNumber,
     path: USER_ORDER_ROUTE_PATH,
     pathConfig: { dynamic: true, params: { id: data?.id } },
-    totalPrice: getPrice(data.price, data.promoCodeDiscount, Number(data.shippingPrice)),
+    totalPrice: getPrice({
+      price: data.price,
+      discount: data.promoCodeDiscount,
+      shippingPrice: data.shippingPrice,
+    }),
     status: PURCHASE_STATUS_INFO[data.orderStatus],
     params: {
       count: data.purchaseProductsCount,

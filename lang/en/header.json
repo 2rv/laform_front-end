@@ -3,7 +3,7 @@
     "PATTERNS": "Patterns",
     "SEWING_GOODS": "Sewing goods",
     "MASTER_CLASSES": "Master classes",
-    "ARTICLES": "Articles",
+    "ARTICLES": "Blog",
     "HELP": "Help",
     "ABOUT_US": "About us"
   },
@@ -26,7 +26,7 @@
     "PRINTED_PATTERN_CREATING": "Creating a printed pattern",
     "ELECTRONIC_PATTERNS_CREATING": "Creating a electronic pattern",
     "SEWING_GOODS_CREATING": "Creating a sewing goods",
-    "ARTICLE_CREATING": "Creating an article pattern",
+    "ARTICLE_CREATING": "Creating an post",
     "NOTIFICATION_CREATING": "Creating a notification",
     "USERS_LIST": "Users list",
     "ORDERS_TABLE": "Order table",
@@ -35,6 +35,8 @@
     "SLIDER": "Slider",
     "PROMOCODES": "Promocodes",
     "CREATE_DELIVERY_TYPE": "Create delivery type",
-    "ALL_PRODUCTS": "All products"
+    "ALL_PRODUCTS": "All products",
+    "STATISTICS": "Statistics",
+    "RECENT_COMMENTS": "Recent comments"
   }
 }

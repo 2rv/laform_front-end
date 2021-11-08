@@ -15,15 +15,15 @@ export function ReactEditorBlock(props) {
     data,
     minHeight,
     enableIsEdit,
-    titileTid,
+    titleTid,
     enableReInitialize,
     readOnly,
     error,
     errorMessage,
   } = props;
   return (
-    <SectionLayout type="TEXT_SMALL">
-      {titileTid && <Title tid={titileTid} />}
+    <SectionLayout type="SMALL">
+      {titleTid && <Title tid={titleTid} />}
       <ReactEditor
         handleChange={handleChange}
         data={data}

@@ -1,6 +1,6 @@
 import { convertMultiProducts } from '../../lib/common/product-converters';
 
-export function performMasterClassProductData(rowData, basket) {
+export function performMasterClassProductData(rowData) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -8,6 +8,7 @@ export function performMasterClassProductData(rowData, basket) {
     modifier: rowData.modifierRu || rowData.modifierEn,
     name: rowData.titleRu || rowData.titleEn,
     description: rowData.descriptionRu || rowData.descriptionEn,
+    materials: rowData.materialRu || rowData.materialEn,
     price: rowData.price,
     discount: rowData?.discount,
     categories: rowData.categories,
@@ -15,7 +16,6 @@ export function performMasterClassProductData(rowData, basket) {
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
-      basket,
     ),
   };
 }

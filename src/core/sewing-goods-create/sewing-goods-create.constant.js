@@ -15,7 +15,7 @@ export const CREATE_SEWING_GOODS_API = {
     ENDPOINT: '/file/create-many',
   },
   SEWING_GOODS_LOAD: {
-    ENDPOINT: (id) => `/sewing-product/get/${id}/?lang=ru`,
+    ENDPOINT: (id) => `/sewing-product/get/for-update/${id}/?lang=ru`,
     TYPE: 'GET',
   },
   SEWING_GOODS_CHANGE: {

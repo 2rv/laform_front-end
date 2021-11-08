@@ -6,7 +6,6 @@ export function AboutOrderFormContainer(props) {
     onSubmit,
     initialValue,
     validate,
-    statusOrderSelect,
     deliveryTypeOptions,
     isOrderNumberChangePending,
     isOrderNumberChangeSuccess,
@@ -21,7 +20,6 @@ export function AboutOrderFormContainer(props) {
     >
       {(formProps) => (
         <AboutOrderFormComponent
-          statusOrderSelect={statusOrderSelect}
           deliveryTypeOptions={deliveryTypeOptions}
           isOrderNumberChangePending={isOrderNumberChangePending}
           isOrderNumberChangeSuccess={isOrderNumberChangeSuccess}

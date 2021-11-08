@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
-import { BasicField, MultiField } from '../../../lib/element/field';
+import {
+  BasicField,
+  MultiField,
+  FieldCheckbox,
+} from '../../../lib/element/field';
 import { ARTICLE_FIELD_NAME } from '../article-create.type';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
 import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { BlockCategories } from 'src/lib/common/block-categories';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
+import { ModifierBlock } from 'src/lib/common/block-modifier';
 
 export function FormComponent(props) {
   const {
@@ -23,7 +28,12 @@ export function FormComponent(props) {
   const getFieldError = (name) => errors[name] && touched[name] && errors[name];
   const setEditorData = (name) => (editorData) =>
     setFieldValue(name, editorData);
-
+  const setVisible = () => {
+    setFieldValue(
+      ARTICLE_FIELD_NAME.DELETED,
+      !values[ARTICLE_FIELD_NAME.DELETED],
+    );
+  };
   return (
     <SectionLayout>
       <SectionLayout type="TEXT">
@@ -37,19 +47,22 @@ export function FormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <BasicField
+          <ModifierBlock
+            colorTitleTid="Цвет плашки"
             titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.DIE"
             placeholderTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.EXAMPLE_HIT"
+            values={values}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
             name={ARTICLE_FIELD_NAME.MODIFIER}
-            value={values[ARTICLE_FIELD_NAME.MODIFIER]}
-            error={getFieldError(ARTICLE_FIELD_NAME.MODIFIER)}
-            onChange={handleChange}
-            onBlur={handleBlur}
+            colorName={ARTICLE_FIELD_NAME.COLOR_MODIFIER}
           />
         </FieldLayout>
         <BlockCategories values={values} handleBlur={handleBlur} type={4} />
         <ReactEditorBlock
-          titleTid="Статья"
+          titleTid="Пост"
           handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
           data={isEdit && values[ARTICLE_FIELD_NAME.ARTICLE]}
           minHeight={100}
@@ -59,6 +72,16 @@ export function FormComponent(props) {
           values={values[ARTICLE_FIELD_NAME.RECOMMENDATIONS]}
           name={ARTICLE_FIELD_NAME.RECOMMENDATIONS}
           setFieldValue={setFieldValue}
+        />
+
+        <FieldCheckbox
+          titleTid="Видимость статьи"
+          labelTid="Не показан в списке"
+          name={ARTICLE_FIELD_NAME.DELETED}
+          value={values[ARTICLE_FIELD_NAME.DELETED]}
+          checked={values[ARTICLE_FIELD_NAME.DELETED]}
+          onClick={setVisible}
+          onBlur={handleBlur}
         />
         <FieldLayout type="double" adaptive>
           {isEdit ? (

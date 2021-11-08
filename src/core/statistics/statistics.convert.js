@@ -1,5 +1,4 @@
 export const convertForChart = (rowData) => {
-  console.log(rowData);
   return {
     ...rowData,
     chartOrders: rowData.chartOrders.map((item, index) => {

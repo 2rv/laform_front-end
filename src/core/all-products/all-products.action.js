@@ -1,7 +1,6 @@
 import { httpRequest } from '../../main/http';
 import { ALL_PRODUCTS_API } from './all-products.constant';
 import { ALL_PRODUCTS_ACTION_TYPE } from './all-products.type';
-import { BASKET_STORE_NAME } from '../basket';
 import {
   convertArticleProducts,
   convertMasterClassProducts,
@@ -10,7 +9,7 @@ import {
 } from 'src/lib/common/product-converters';
 
 export function fetchSewingGoods(query) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_PENDING,
     });
@@ -23,12 +22,9 @@ export function fetchSewingGoods(query) {
       dispatch({
         type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_SUCCESS,
         data: {
-          products: convertSewingGoodProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertSewingGoodProducts(response.data[0]),
           totalRecords: response.data[1],
-        }
+        },
       });
     } catch (err) {
       if (err.response) {
@@ -42,7 +38,7 @@ export function fetchSewingGoods(query) {
 }
 
 export function fetchMasterClasses(query) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_PENDING,
     });
@@ -55,10 +51,7 @@ export function fetchMasterClasses(query) {
       dispatch({
         type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_SUCCESS,
         data: {
-          products: convertMasterClassProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertMasterClassProducts(response.data[0]),
           totalRecords: response.data[1],
         },
       });
@@ -74,7 +67,7 @@ export function fetchMasterClasses(query) {
 }
 
 export function fetchPatternProducts(query) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_PENDING,
     });
@@ -87,10 +80,7 @@ export function fetchPatternProducts(query) {
       dispatch({
         type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_SUCCESS,
         data: {
-          products: convertPatternProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertPatternProducts(response.data[0]),
           totalRecords: response.data[1],
         },
       });
@@ -106,7 +96,7 @@ export function fetchPatternProducts(query) {
 }
 
 export function fetchPosts(query) {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_PENDING,
     });
@@ -165,7 +155,7 @@ export function fetchCategories(currentLang, type) {
   };
 }
 
-export function deleteProduct(currentLang, product, id, body) {
+export function disableProduct(currentLang, product, id, deleted) {
   return async (dispatch) => {
     dispatch({
       type: ALL_PRODUCTS_ACTION_TYPE.DELETE_PRODUCT_PENDING,
@@ -175,12 +165,15 @@ export function deleteProduct(currentLang, product, id, body) {
       await httpRequest({
         method: ALL_PRODUCTS_API.DELETE_PRODUCT.TYPE,
         url: ALL_PRODUCTS_API.DELETE_PRODUCT.ENDPOINT(product, id),
-        data: body,
+        data: { deleted: deleted === 'true' ? false : true },
       });
 
       dispatch({
         type: ALL_PRODUCTS_ACTION_TYPE.DELETE_PRODUCT_SUCCESS,
-        payload: { productId: id },
+        payload: {
+          productId: id,
+          deleted: deleted === 'true' ? false : true,
+        },
       });
     } catch (err) {
       if (err.response) {

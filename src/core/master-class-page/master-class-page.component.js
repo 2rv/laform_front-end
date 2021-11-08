@@ -18,6 +18,13 @@ export function MasterClassPageComponent(props) {
         <TextLight tid={ConvertTime(productInfo.createdDate)} />
       </HeaderCase>
       <ReactEditorBlock
+        titleTid="PATTERNS.MATERIALS"
+        data={productInfo.materials}
+        enableReInitialize
+        readOnly
+      />
+      <ReactEditorBlock
+        titleTid="Пост"
         data={productInfo.articleText}
         enableReInitialize
         readOnly

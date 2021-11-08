@@ -65,6 +65,7 @@ export function CreatePatternContainer() {
       [CREATE_PATTERN_FIELD_NAME.DISCOUNT]: '',
       [CREATE_PATTERN_FIELD_NAME.OPTION_TYPE]: 0,
       [CREATE_PATTERN_FIELD_NAME.OPTIONS]: [],
+      [CREATE_PATTERN_FIELD_NAME.DELETED]: false,
     });
     return data;
   };

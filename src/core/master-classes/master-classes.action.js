@@ -1,7 +1,6 @@
 import { httpRequest } from '../../main/http';
 import { MASTER_CLASSES_API } from './master-classes.constant';
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
-import { BASKET_STORE_NAME } from '../basket';
 import { convertMasterClassProducts } from '../../lib/common/product-converters';
 
 export function masterClassesUploadData(isAuth, query) {
@@ -25,12 +24,9 @@ export function masterClassesUploadData(isAuth, query) {
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.MASTER_CLASSES_UPLOAD_SUCCESS,
         data: {
-          products: convertMasterClassProducts(
-            response.data[0],
-            getState()[BASKET_STORE_NAME].basket,
-          ),
+          products: convertMasterClassProducts(response.data[0]),
           totalRecords: response.data[1],
-        }
+        },
       });
     } catch (err) {
       if (err.response) {
@@ -78,7 +74,10 @@ export function fetchCategories(currentLang, type) {
     try {
       const response = await httpRequest({
         method: MASTER_CLASSES_API.CATEGORIES_UPLOAD_DATA.TYPE,
-        url: MASTER_CLASSES_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang, type),
+        url: MASTER_CLASSES_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(
+          currentLang,
+          type,
+        ),
       });
       const convertedCategories = response.data.map((category) => ({
         id: category.id,

@@ -3,7 +3,7 @@ import {
   convertOptions,
 } from 'src/lib/common/product-converters';
 
-export function performSewingGoodsProductData(rowData, basket) {
+export function performSewingGoodsProductData(rowData) {
   return {
     id: rowData.id,
     type: rowData.type,
@@ -23,7 +23,6 @@ export function performSewingGoodsProductData(rowData, basket) {
     like: rowData?.like ? (rowData.like?.length ? true : false) : null,
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
-      basket,
     ),
   };
 }

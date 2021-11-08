@@ -2,8 +2,11 @@ import { ARTICLE_FIELD_NAME } from './article-create.type';
 
 export function convertForUpload(imageUrl, formValues) {
   return {
+    [ARTICLE_FIELD_NAME.DELETED]: formValues[ARTICLE_FIELD_NAME.DELETED],
     [ARTICLE_FIELD_NAME.NAME]: formValues[ARTICLE_FIELD_NAME.NAME],
     [ARTICLE_FIELD_NAME.MODIFIER]: formValues[ARTICLE_FIELD_NAME.MODIFIER],
+    [ARTICLE_FIELD_NAME.COLOR_MODIFIER]:
+      formValues[ARTICLE_FIELD_NAME.COLOR_MODIFIER],
     [ARTICLE_FIELD_NAME.IMAGE]: imageUrl,
     [ARTICLE_FIELD_NAME.CATEGORIES]: formValues[
       ARTICLE_FIELD_NAME.CATEGORIES
@@ -23,8 +26,11 @@ export function convertForUpload(imageUrl, formValues) {
 }
 export function convertForChange(rowData) {
   return {
+    [ARTICLE_FIELD_NAME.DELETED]: rowData[ARTICLE_FIELD_NAME.DELETED],
     [ARTICLE_FIELD_NAME.NAME]: rowData[ARTICLE_FIELD_NAME.NAME],
     [ARTICLE_FIELD_NAME.MODIFIER]: rowData[ARTICLE_FIELD_NAME.MODIFIER],
+    [ARTICLE_FIELD_NAME.COLOR_MODIFIER]:
+      rowData[ARTICLE_FIELD_NAME.COLOR_MODIFIER],
     [ARTICLE_FIELD_NAME.IMAGES]: [rowData[ARTICLE_FIELD_NAME.IMAGE]],
     [ARTICLE_FIELD_NAME.RECOMMENDATIONS]: convertRecommendations(
       rowData.recommendation?.recommendationProducts,

@@ -6,11 +6,11 @@ import {
 } from './convert.basic';
 
 import {
+  BasicArticleType,
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
-  BasicArticleType,
-} from './convert.type';
+} from 'src/lib/basic-types';
 
 export const convertMasterClassProducts = (data: BasicMasterClassType[]) => {
   return data.map((item) => masterClassItemConverter(item));

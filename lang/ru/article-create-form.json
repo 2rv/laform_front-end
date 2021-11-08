@@ -1,22 +1,22 @@
 {
-  "CREATING_AN_ARTICLE": "Создание статьи",
-  "PHOTO_ARTICLE": "Фотография статьи",
-  "ARTICLE_SUCCESFULLY_CREATED": "Статья успешно создана",
+  "CREATING_AN_ARTICLE": "Создание поста",
+  "PHOTO_ARTICLE": "Фотография поста",
+  "ARTICLE_SUCCESFULLY_CREATED": "Пост успешно создан",
   "MASTER_CLASS_ARTICLE": "Статья мастер-класса",
   "FIELDS": {
     "TITLE": {
-      "ARTICLE_NAME": "Название статьи",
+      "ARTICLE_NAME": "Название поста",
       "DIE": "Плашка",
       "TAGS": "Теги"
     },
     "PLACEHOLDER": {
-      "WRITE_ARTICLE_NAME": "Введите название статьи",
+      "WRITE_ARTICLE_NAME": "Введите название поста",
       "EXAMPLE_HIT": "Например - хит",
       "WRITE_TAG": "Введите тег"
     }
   },
   "BUTTON": {
-    "CREATE_ARTICLE": "Создать статью",
+    "CREATE_ARTICLE": "Создать пост",
     "RESET": "Сбросить"
   },
   "RECOMENDATIONS": {
@@ -38,7 +38,7 @@
       "PATTERNS_ELECTRONIC": "Выкройки-электронные",
       "PATTERNS_PRINTED": "Выкройки-печатные",
       "SEWING_GOODS": "Товары для шитья",
-      "ARTICLES": "Статьи"
+      "ARTICLES": "Посты"
     }
   }
 }

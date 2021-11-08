@@ -57,6 +57,7 @@ export function CreateMasterClassContainer() {
       [CREATE_MASTER_CLASS_FIELD_NAME.PRICE]: 0,
       [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: [],
       [CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]: null,
+      [CREATE_MASTER_CLASS_FIELD_NAME.DELETED]: false,
     });
     return data;
   };

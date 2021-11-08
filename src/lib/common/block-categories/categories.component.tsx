@@ -29,6 +29,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
     deleteErrorMessage,
     values,
   } = props;
+
   const [open, setOpen] = useState(false);
   const [categoryExists, setCategoryExists] = useState('');
 

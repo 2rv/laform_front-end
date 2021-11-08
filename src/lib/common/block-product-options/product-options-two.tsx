@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { IconButton } from '../../element/button';
 import { BasicField } from '../../element/field';
-import { FieldLayout } from '../../element/layout';
+import { FieldLayout, SectionLayout } from '../../element/layout';
 import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
 import React from 'react';
@@ -38,67 +38,69 @@ export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
   } = props;
 
   return (
-    <React.Fragment key={index}>
-      <FieldLayout type="double" adaptive key={index}>
-        <BasicField
-          titleTid={fieldTitle}
-          placeholderTid={fieldPlaceholder}
-          name={`${fieldArrayName}.${index}.${optionName}`}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(optionName, index)}
-          value={value[optionName]}
-        />
-        <Line>
+    <React.Fragment>
+      <SectionLayout>
+        <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Цена"
-            placeholderTid="Введите цену (руб.)"
-            name={`${fieldArrayName}.${index}.${optionPriceName}`}
-            value={value[optionPriceName]}
-            error={getFieldError(optionPriceName, index)}
-            type="number"
-            onChange={setTwoDigit(optionPriceName, index)}
+            titleTid={fieldTitle}
+            placeholderTid={fieldPlaceholder}
+            name={`${fieldArrayName}.${index}.${optionName}`}
+            onChange={handleChange}
             onBlur={handleBlur}
+            error={getFieldError(optionName, index)}
+            value={value[optionName]}
           />
-          <Button onClick={() => remove(index)}>
-            <RemoveIcon />
-          </Button>
-        </Line>
+          <Line>
+            <BasicField
+              titleTid="Цена"
+              placeholderTid="Введите цену (руб.)"
+              name={`${fieldArrayName}.${index}.${optionPriceName}`}
+              value={value[optionPriceName]}
+              error={getFieldError(optionPriceName, index)}
+              type="number"
+              onChange={setTwoDigit(optionPriceName, index)}
+              onBlur={handleBlur}
+            />
+            <Button onClick={() => remove(index)}>
+              <RemoveIcon />
+            </Button>
+          </Line>
 
-        <BasicField
-          titleTid="Введите скидку (%)"
-          placeholderTid="0"
-          name={`${fieldArrayName}.${index}.${optionDiscountName}`}
-          value={value[optionDiscountName]}
-          error={getFieldError(optionDiscountName, index)}
-          type="number"
-          onChange={setToHundred(optionDiscountName, index)}
-          onBlur={handleBlur}
-        />
-        {isCount && (
           <BasicField
-            titleTid="Введите количество (Шт.)"
+            titleTid="Введите скидку (%)"
             placeholderTid="0"
-            name={`${fieldArrayName}.${index}.${optionCountName}`}
-            value={value[optionCountName]}
-            error={getFieldError(optionCountName, index)}
+            name={`${fieldArrayName}.${index}.${optionDiscountName}`}
+            value={value[optionDiscountName]}
+            error={getFieldError(optionDiscountName, index)}
             type="number"
-            onChange={setNumber(optionCountName, index)}
+            onChange={setToHundred(optionDiscountName, index)}
             onBlur={handleBlur}
           />
-        )}
-        {isLength && (
-          <BasicField
-            titleTid="Введите длинну (Метр)"
-            placeholderTid="0"
-            name={`${fieldArrayName}.${index}.${optionLengthName}`}
-            value={value[optionLengthName]}
-            error={getFieldError(optionLengthName, index)}
-            type="number"
-            onChange={setTwoDigit(optionLengthName, index)}
-            onBlur={handleBlur}
-          />
-        )}
+          {isCount && (
+            <BasicField
+              titleTid="Введите количество (Шт.)"
+              placeholderTid="0"
+              name={`${fieldArrayName}.${index}.${optionCountName}`}
+              value={value[optionCountName]}
+              error={getFieldError(optionCountName, index)}
+              type="number"
+              onChange={setNumber(optionCountName, index)}
+              onBlur={handleBlur}
+            />
+          )}
+          {isLength && (
+            <BasicField
+              titleTid="Введите длинну (Метр)"
+              placeholderTid="0"
+              name={`${fieldArrayName}.${index}.${optionLengthName}`}
+              value={value[optionLengthName]}
+              error={getFieldError(optionLengthName, index)}
+              type="number"
+              onChange={setTwoDigit(optionLengthName, index)}
+              onBlur={handleBlur}
+            />
+          )}
+        </FieldLayout>
         {isFile && (
           <MultiFilesBlock
             handleChange={setPdfFile}
@@ -108,7 +110,7 @@ export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
             handleBlur={handleBlur}
           />
         )}
-      </FieldLayout>
+      </SectionLayout>
       {isFirst && <Divider />}
     </React.Fragment>
   );

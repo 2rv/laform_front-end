@@ -11,7 +11,7 @@ interface props {
   changeItem?: Function;
   deleteItem?: Function;
   filePDF?: string;
-  optionId?: string;
+  optionIndex?: number;
   options?: OptionType[];
   sizes?: OptionType[];
   colors?: OptionType[];
@@ -29,7 +29,7 @@ export function TableActions(props: props) {
     deleteItem,
     filePDF,
     //-------
-    optionId,
+    optionIndex,
     sizes,
     colors,
     options,
@@ -48,7 +48,7 @@ export function TableActions(props: props) {
           id={id}
           indexId={indexId}
           changeItem={changeItem}
-          optionId={optionId}
+          optionIndex={optionIndex}
           sizes={sizes}
           colors={colors}
           options={options}
