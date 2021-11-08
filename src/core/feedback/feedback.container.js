@@ -21,7 +21,6 @@ export function FeedbackContainer() {
 
   const initialValues = () => ({
     [SEWING_GOODS_FIELD_NAME.DESCRIPTION]: '',
-    [SEWING_GOODS_FIELD_NAME.IMAGES]: [],
   });
 
   if (pageLoading) {

@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-import { SelectImageBlock } from 'src/lib/common/block-select-image';
 import { SuccessAlert } from 'src/lib/element/alert';
 import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
@@ -27,11 +26,6 @@ export function FeedbackComponent(props) {
           return (
             <form onSubmit={formProps.handleSubmit}>
               <SectionLayout>
-                <SelectImageBlock
-                  titleTid="FEEDBACK.PHOTOS"
-                  name={SEWING_GOODS_FIELD_NAME.IMAGES}
-                  {...formProps}
-                />
                 <FeedbackFormComponent {...formProps} />
               </SectionLayout>
             </form>
