@@ -33,6 +33,7 @@ export function CardPattern(props: CardPatternType) {
     onDelete,
     isCount,
     isCreateList,
+    isAllProductsPage,
   } = props;
 
   return (
@@ -48,6 +49,7 @@ export function CardPattern(props: CardPatternType) {
         modifier={modifier}
         deleted={deleted}
         discount={discount}
+        isAllProductsPage={isAllProductsPage}
       />
       <Content>
         <CardName tid={name} />

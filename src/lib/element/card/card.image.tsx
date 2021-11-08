@@ -13,6 +13,7 @@ export function CardImage(props: CardImageProps) {
     deleted,
     path,
     pathConfig,
+    isAllProductsPage,
     modifierColor = THEME_COLOR.PRIMARY,
   } = props;
 
@@ -23,10 +24,12 @@ export function CardImage(props: CardImageProps) {
       <Image onLoad={() => setimageLoaded(true)} src={image} />
 
       <Case>
-        {Boolean(deleted) ? (
-          <Modifier bgColor={THEME_COLOR.BACKGROUND.DANGER} color={THEME_COLOR.TEXT.DANGER} tid="PRODUCT_PRICE.DISABLED" />
-        ) : (
-          <Modifier bgColor={THEME_COLOR.BACKGROUND.SUCCESS} color={THEME_COLOR.TEXT.SUCCESS} tid="PRODUCT_PRICE.ENABLED" />
+        {Boolean(isAllProductsPage) && (
+          Boolean(deleted) ? (
+            <Modifier bgColor={THEME_COLOR.BACKGROUND.DANGER} color={THEME_COLOR.TEXT.DANGER} tid="PRODUCT_PRICE.DISABLED" />
+          ) : (
+            <Modifier bgColor={THEME_COLOR.BACKGROUND.SUCCESS} color={THEME_COLOR.TEXT.SUCCESS} tid="PRODUCT_PRICE.ENABLED" />
+          )
         )}
         {Boolean(discount) && <Modifier tid="PRODUCT_PRICE.STOCK" />}
         {Boolean(modifier) && <Modifier bgColor={modifierColor} tid={modifier} />}

@@ -56,6 +56,7 @@ export function AllProductsComponent(props) {
             items={products}
             emptyText="ALL_PRODUCTS.CATEGORY_EMPTY"
             isCreateList
+            isAllProductsPage
           />
         </InfiniteScroll>
       </SectionLayout>

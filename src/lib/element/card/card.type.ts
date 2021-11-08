@@ -19,6 +19,7 @@ export interface CardImageProps {
   image: string;
   modifier?: string;
   deleted?: boolean;
+  isAllProductsPage?: boolean;
   discount?: number;
   path: string | Function;
   modifierColor?: string;
@@ -68,6 +69,7 @@ export interface CardArticleType {
   onSelect?: Function;
   onDelete?: Function;
   isCreateList?: boolean;
+  isAllProductsPage?: boolean;
 }
 export interface CardSewingGoodType {
   id: string;
@@ -91,6 +93,7 @@ export interface CardSewingGoodType {
   onSelect?: Function;
   onDelete?: Function;
   isCreateList?: boolean;
+  isAllProductsPage?: boolean;
 }
 export interface CardPatternType {
   id: string;
@@ -111,6 +114,7 @@ export interface CardPatternType {
   onSelect?: Function;
   onDelete?: Function;
   isCreateList?: boolean;
+  isAllProductsPage?: boolean;
 }
 export interface CardMasterClassType {
   id: string;
@@ -128,4 +132,5 @@ export interface CardMasterClassType {
   onSelect?: Function;
   onDelete?: Function;
   isCreateList?: boolean;
+  isAllProductsPage?: boolean;
 }

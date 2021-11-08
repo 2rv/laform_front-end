@@ -28,6 +28,7 @@ export function CardMasterClass(props: CardMasterClassType) {
     onSelect,
     onDelete,
     isCreateList,
+    isAllProductsPage,
   } = props;
 
   return (
@@ -43,6 +44,7 @@ export function CardMasterClass(props: CardMasterClassType) {
         modifier={modifier}
         deleted={deleted}
         discount={discount}
+        isAllProductsPage={isAllProductsPage}
       />
       <Content>
         <CardName tid={name} />
