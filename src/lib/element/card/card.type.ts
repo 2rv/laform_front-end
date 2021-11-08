@@ -29,6 +29,7 @@ export interface CardActionProps {
   type: number;
   like?: boolean;
   admin?: boolean;
+  deleted?: boolean;
   price?: number;
   discount?: number;
   count?: number;

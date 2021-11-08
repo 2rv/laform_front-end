@@ -41,6 +41,7 @@ import ALL_LIKES from './all-likes.json';
 import PURCHASED_PRODUCTS from './purchase-products.json';
 import DELIVERY_PRICE from './delivery-price.json';
 import ALL_PRODUCTS from './all-products.json';
+import FEEDBACK from './feedback.json';
 
 export const EN = {
   translation: {
@@ -87,5 +88,6 @@ export const EN = {
     PURCHASED_PRODUCTS,
     DELIVERY_PRICE,
     ALL_PRODUCTS,
+    FEEDBACK,
   },
 };

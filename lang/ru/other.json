@@ -5,7 +5,7 @@
 	"VALUTE": "руб.",
 	"PURCHASED": "Куплено",
 	"NO_INFORMATION_ABOUT_PARAMETERS": "Нету сведений о параметрах товара",
-	"ARE_YOU_SURE_TO_DELETE_PRODUCT": "Вы точно хотите удалить данный товар? Если продукт был куплен, то он полностью не будет удалятся. Это действие нельзя отменить",
+	"ARE_YOU_SURE_TO_DISABLE_PRODUCT": "Вы точно хотите отключить данный товар?",
 	"YES": "Да",
 	"NO": "Нет",
 	"CANCEL": "Отмена",
@@ -28,6 +28,7 @@
 	"TERMS_OF_USE": "Пользовательское соглашение",
 	"DELETE_THIS_PRODUCT": "Удалить данный товар",
 	"ARE_YOU_SURE_TO_DELETE_THIS_PRODUCT": "Вы точно хотите удалить данный товар? Это действие нельзя отменить",
+	"RECENT_COMMENTS": "Недавние комментарии",
 	"CARD": {
 		"SIZE_COLOR_PRICE": "Размер: {{size}}, Цвет: {{color}}, Цена: {{price}}",
 		"SIZE_PRICE": "Размер: {{size}}, Цена: {{price}}",
