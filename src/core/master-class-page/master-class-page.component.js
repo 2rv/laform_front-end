@@ -17,12 +17,14 @@ export function MasterClassPageComponent(props) {
         <Title tid={productInfo.name} />
         <TextLight tid={ConvertTime(productInfo.createdDate)} />
       </HeaderCase>
-      <ReactEditorBlock
-        titleTid="PATTERNS.MATERIALS"
-        data={productInfo.materials}
-        enableReInitialize
-        readOnly
-      />
+      {productInfo.materials && (
+        <ReactEditorBlock
+          titleTid="PATTERNS.MATERIALS"
+          data={productInfo.materials}
+          enableReInitialize
+          readOnly
+        />
+      )}
       <ReactEditorBlock
         titleTid="Пост"
         data={productInfo.articleText}

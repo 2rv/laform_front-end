@@ -29,12 +29,14 @@ export function PatternsProductComponent(props) {
           <ProductMainComponent {...productData} />
         </Content>
       </SectionLayout>
-      <ReactEditorBlock
-        titleTid="PATTERNS.MATERIALS"
-        data={productData.materials}
-        enableReInitialize
-        readOnly
-      />
+      {productData.materials && (
+        <ReactEditorBlock
+          titleTid="PATTERNS.MATERIALS"
+          data={productData.materials}
+          enableReInitialize
+          readOnly
+        />
+      )}
       <CardListBlock items={productData.recommendations} title="Рекомендации" />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
