@@ -10,5 +10,6 @@
 	"STOCK": "Stock",
 	"SIZE": "Size",
 	"COLOR": "Color",
-	"DELETED": "Deleted"
+	"ENABLED": "Enabled",
+	"DISABLED": "Disabled"
 }

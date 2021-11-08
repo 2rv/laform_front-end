@@ -51,7 +51,7 @@ export const ALL_PRODUCTS_API = {
     TYPE: 'GET',
   },
   DELETE_PRODUCT: {
-    ENDPOINT: (product, id) => `${product}/delete/${id}`,
-    TYPE: 'DELETE',
+    ENDPOINT: (product, id) => `${product}/disable/${id}`,
+    TYPE: 'PUT',
   },
 };

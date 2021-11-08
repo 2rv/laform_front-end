@@ -64,7 +64,7 @@ export function allProductsStore(state = initialState, action) {
             ...state.products.data,
             products: state.products.data.products.map((product) => {
               if (product.id === action.payload.productId) {
-                product.deleted = true;
+                product.deleted = action.payload.deleted;
               }
 
               return product;

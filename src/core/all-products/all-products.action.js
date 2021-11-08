@@ -155,7 +155,7 @@ export function fetchCategories(currentLang, type) {
   };
 }
 
-export function deleteProduct(currentLang, product, id, body) {
+export function disableProduct(currentLang, product, id, deleted) {
   return async (dispatch) => {
     dispatch({
       type: ALL_PRODUCTS_ACTION_TYPE.DELETE_PRODUCT_PENDING,
@@ -165,12 +165,15 @@ export function deleteProduct(currentLang, product, id, body) {
       await httpRequest({
         method: ALL_PRODUCTS_API.DELETE_PRODUCT.TYPE,
         url: ALL_PRODUCTS_API.DELETE_PRODUCT.ENDPOINT(product, id),
-        data: body,
+        data: { deleted: deleted === 'true' ? false : true },
       });
 
       dispatch({
         type: ALL_PRODUCTS_ACTION_TYPE.DELETE_PRODUCT_SUCCESS,
-        payload: { productId: id },
+        payload: {
+          productId: id,
+          deleted: deleted === 'true' ? false : true,
+        },
       });
     } catch (err) {
       if (err.response) {
