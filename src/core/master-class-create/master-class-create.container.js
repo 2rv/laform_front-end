@@ -13,6 +13,7 @@ import { CreateMasterClassComponent } from './master-class-create.component';
 import { formValidation } from './master-class-create.validation';
 import {
   createMasterClassPreUploadData,
+  masterClassDelete,
   masterClassLoadData,
   updateMasterClassPreUpload,
 } from './master-class-create.action';
@@ -23,12 +24,14 @@ export function CreateMasterClassContainer() {
   const dispatch = useDispatch();
   const masterClassId = getQuery('id');
 
-  const { state, pageLoading, productState, updateMasterClassState } =
+  const { state, pageLoading, productState, updateMasterClassState, deleteMasterClassState } =
     useSelector((state) => ({
       state: state[CREATE_MASTER_CLASS_STORE_NAME].createMasterClass,
       productState: state[CREATE_MASTER_CLASS_STORE_NAME].product,
       updateMasterClassState:
         state[CREATE_MASTER_CLASS_STORE_NAME].updateMasterClass,
+      deleteMasterClassState:
+        state[CREATE_MASTER_CLASS_STORE_NAME].deleteMasterClass,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     }));
 
@@ -44,6 +47,10 @@ export function CreateMasterClassContainer() {
     } else {
       dispatch(createMasterClassPreUploadData(formValues));
     }
+  };
+
+  const deleteProduct = () => {
+    dispatch(masterClassDelete(masterClassId));
   };
 
   const initialValues = () => {
@@ -74,6 +81,11 @@ export function CreateMasterClassContainer() {
       updateIsError={isRequestError(updateMasterClassState)}
       updateIsSuccess={isRequestSuccess(updateMasterClassState)}
       updateErrorMessage={getRequestErrorMessage(updateMasterClassState)}
+      //-------------
+      deleteProduct={deleteProduct}
+      deleteIsPending={isRequestPending(deleteMasterClassState)}
+      deleteIsError={isRequestError(deleteMasterClassState)}
+      deleteErrorMessage={getRequestErrorMessage(deleteMasterClassState)}
       //-------------
       initialValues={initialValues()}
       onSubmit={onSubmit}

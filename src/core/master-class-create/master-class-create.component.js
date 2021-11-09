@@ -3,12 +3,14 @@ import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import { FormComponent } from './frames';
+import { FormComponent, DeleteProductComponent } from './frames';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from './master-class-create.type';
 import { SelectImageBlock } from 'src/lib/common/block-select-image';
+import { Divider } from 'src/lib/element/divider';
 
 export function CreateMasterClassComponent(props) {
   const {
+    deleteProduct,
     initialValues,
     onSubmit,
     validation,
@@ -19,6 +21,10 @@ export function CreateMasterClassComponent(props) {
     updateIsError,
     updateIsSuccess,
     updateErrorMessage,
+    //--------
+    deleteIsPending,
+    deleteIsError,
+    deleteErrorMessage,
     //--------
     isPending,
     isSuccess,
@@ -57,6 +63,14 @@ export function CreateMasterClassComponent(props) {
         {isError && <ErrorAlert tid={errorMessage} />}
         {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
+        <Divider />
+        <DeleteProductComponent
+          isEdit={isEdit}
+          deleteProduct={deleteProduct}
+          deleteIsPending={deleteIsPending}
+          deleteIsError={deleteIsError}
+          deleteErrorMessage={deleteErrorMessage}
+        />
       </SectionLayout>
     </>
   );

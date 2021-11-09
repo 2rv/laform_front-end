@@ -28,6 +28,7 @@ export function CardArticle(props: CardArticleType) {
     onSelect,
     onDelete,
     isCreateList,
+    isAllProductsPage,
   } = props;
 
   return (
@@ -43,6 +44,7 @@ export function CardArticle(props: CardArticleType) {
         modifier={modifier}
         modifierColor={modifierColor}
         deleted={deleted}
+        isAllProductsPage={isAllProductsPage}
       />
       <Content>
         <ColumnCase>

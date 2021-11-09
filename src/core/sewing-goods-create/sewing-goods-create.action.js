@@ -1,4 +1,6 @@
+import { redirect } from 'src/main/navigation';
 import { httpRequest } from '../../main/http';
+import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
 import { CREATE_SEWING_GOODS_API } from './sewing-goods-create.constant';
 import {
   convertForUpload,
@@ -138,6 +140,34 @@ export function updateSewingProduct(id, newImages, formValues) {
       if (err.response) {
         dispatch({
           type: CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_PRODUCT_UPDATE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function sewingGoodsDelete(id) {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_DELETE_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: CREATE_SEWING_GOODS_API.SEWING_GOODS_DELETE.TYPE,
+        url: CREATE_SEWING_GOODS_API.SEWING_GOODS_DELETE.ENDPOINT(id),
+      });
+
+      dispatch({
+        type: CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_DELETE_SUCCESS,
+      });
+
+      redirect(ALL_PRODUCTS_ROUTE_PATH);
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_DELETE_ERROR,
           errorMessage: err.response.data.message,
         });
       }

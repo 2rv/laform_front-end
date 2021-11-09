@@ -22,4 +22,8 @@ export const CREATE_SEWING_GOODS_API = {
     ENDPOINT: (id) => `/sewing-product/update/${id}/?lang=ru`,
     TYPE: 'PUT',
   },
+  SEWING_GOODS_DELETE: {
+    ENDPOINT: (id) => `/sewing-product/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };

@@ -17,6 +17,7 @@ export interface BasicCardListTypeProps {
   emptyText?: string;
   emptyTvalue?: object;
   isCreateList?: boolean;
+  isAllProductsPage?: boolean;
 }
 export interface CardListTypeProps extends BasicCardListTypeProps {
   path: string;

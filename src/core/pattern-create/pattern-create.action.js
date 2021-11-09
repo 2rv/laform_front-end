@@ -1,4 +1,6 @@
+import { redirect } from 'src/main/navigation';
 import { httpRequest } from '../../main/http';
+import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
 import { CREATE_PATTERN_API } from './pattern-create.constant';
 import {
   convertForUpload,
@@ -220,4 +222,33 @@ export function updatePatternProductPreUpload(id, formValues) {
     }
   };
 }
+
+export function patternDelete(id) {
+  return async (dispatch) => {
+    dispatch({
+      type: CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_PENDING,
+    });
+
+    try {
+      await httpRequest({
+        method: CREATE_PATTERN_API.PATTERN_DELETE.TYPE,
+        url: CREATE_PATTERN_API.PATTERN_DELETE.ENDPOINT(id),
+      });
+
+      dispatch({
+        type: CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_SUCCESS,
+      });
+
+      redirect(ALL_PRODUCTS_ROUTE_PATH);
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
 async function uploadPdfFiles(data) {}

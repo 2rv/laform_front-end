@@ -30,12 +30,14 @@ export function PatternsPageComponent(props) {
           isPdfSuccess={isPdfSuccess}
         />
       </Content>
-      <ReactEditorBlock
-        titleTid="PATTERNS.CREATE.FORM.COMPLEXITY"
-        data={productData.materials}
-        enableReInitialize
-        readOnly
-      />
+      {productData.materials && (
+        <ReactEditorBlock
+          titleTid="PATTERNS.CREATE.FORM.COMPLEXITY"
+          data={productData.materials}
+          enableReInitialize
+          readOnly
+        />
+      )}
     </SectionLayout>
   );
 }

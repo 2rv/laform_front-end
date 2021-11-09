@@ -18,6 +18,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
     emptyText,
     emptyTvalue,
     isCreateList,
+    isAllProductsPage,
   } = props;
 
   if (!items || items.length === 0) {
@@ -31,6 +32,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
         return (
           <CardItem
             isCreateList={isCreateList}
+            isAllProductsPage={isAllProductsPage}
             key={data?.id || index}
             {...data}
             onSelect={onSelect}

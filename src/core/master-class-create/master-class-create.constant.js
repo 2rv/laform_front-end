@@ -21,4 +21,8 @@ export const CREATE_MASTER_CLASS_API = {
     ENDPOINT: (id) => `/master-class/update/${id}/?lang=ru`,
     TYPE: 'PUT',
   },
+  MASTER_CLASS_DELETE: {
+    ENDPOINT: (id) => `/master-class/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };

@@ -11,6 +11,7 @@ import {
   createArticlePreUploadData,
   updateArticlePreUpload,
   ArticleLoadData,
+  articleDelete,
 } from './article-create.action';
 import { CreateArticleComponent } from './article-create.component';
 import { CREATE_ARTICLE_STORE_NAME } from './article-create.constant';
@@ -23,12 +24,13 @@ export function CreateArticleContainer() {
   const dispatch = useDispatch();
   const ArticleId = getQuery('id');
 
-  const { state, pageLoading, productState, updateArticleState } = useSelector(
+  const { state, pageLoading, productState, updateArticleState, deleteArticleState } = useSelector(
     (state) => ({
       state: state[CREATE_ARTICLE_STORE_NAME].createArticle,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       productState: state[CREATE_ARTICLE_STORE_NAME].product,
       updateArticleState: state[CREATE_ARTICLE_STORE_NAME].updateArticle,
+      deleteArticleState: state[CREATE_ARTICLE_STORE_NAME].deleteArticle,
     }),
   );
 
@@ -44,6 +46,10 @@ export function CreateArticleContainer() {
     } else {
       dispatch(createArticlePreUploadData(formValues));
     }
+  };
+
+  const deleteProduct = () => {
+    dispatch(articleDelete(ArticleId));
   };
 
   const initialValues = () => {
@@ -75,6 +81,10 @@ export function CreateArticleContainer() {
       updateIsError={isRequestError(updateArticleState)}
       updateIsSuccess={isRequestSuccess(updateArticleState)}
       updateErrorMessage={getRequestErrorMessage(updateArticleState)}
+      deleteProduct={deleteProduct}
+      deleteIsPending={isRequestPending(deleteArticleState)}
+      deleteIsError={isRequestError(deleteArticleState)}
+      deleteErrorMessage={getRequestErrorMessage(deleteArticleState)}
     />
   );
 }
