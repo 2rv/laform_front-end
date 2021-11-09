@@ -3,9 +3,10 @@ import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import { FormComponent } from './frames';
+import { FormComponent, DeleteProductComponent } from './frames';
 import { CREATE_PATTERN_FIELD_NAME } from './pattern-create.type';
 import { SelectImageBlock } from 'src/lib/common/block-select-image';
+import { Divider } from 'src/lib/element/divider';
 
 export function CreatePatternComponent(props) {
   const {
@@ -23,6 +24,10 @@ export function CreatePatternComponent(props) {
     updateIsError,
     updateIsSuccess,
     updateErrorMessage,
+    deleteProduct,
+    deleteIsPending,
+    deleteIsError,
+    deleteErrorMessage,
   } = props;
   return (
     <>
@@ -60,6 +65,14 @@ export function CreatePatternComponent(props) {
         {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
         {isError && <ErrorAlert tid={errorMessage} />}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
+        <Divider />
+        <DeleteProductComponent
+          isEdit={isEdit}
+          deleteProduct={deleteProduct}
+          deleteIsPending={deleteIsPending}
+          deleteIsError={deleteIsError}
+          deleteErrorMessage={deleteErrorMessage}
+        />
       </SectionLayout>
     </>
   );

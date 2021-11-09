@@ -9,6 +9,7 @@ import { CREATE_SEWING_GOODS_ACTION_TYPE } from './sewing-goods-create.type';
 const initialState = {
   createSewingGoods: initRequestState(),
   updateSewingGoods: initRequestState(),
+  deleteSewingGoods: initRequestState(),
   product: initRequestState(),
 };
 
@@ -66,6 +67,22 @@ export function createSewingGoodsStore(state = initialState, action) {
           state.updateSewingGoods,
           action.errorMessage,
         ),
+      };
+
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_DELETE_PENDING:
+      return {
+        ...state,
+        deleteSewingGoods: setRequestPending(state.deleteSewingGoods),
+      };
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_DELETE_SUCCESS:
+      return {
+        ...state,
+        deleteSewingGoods: setRequestSuccess(state.deleteSewingGoods),
+      };
+    case CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_DELETE_ERROR:
+      return {
+        ...state,
+        deleteSewingGoods: setRequestError(state.deleteSewingGoods, action.errorMessage),
       };
     default:
       return state;

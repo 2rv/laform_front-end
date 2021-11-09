@@ -25,4 +25,8 @@ export const CREATE_PATTERN_API = {
     ENDPOINT: (id) => `/pattern-product/update/${id}/?lang=ru`,
     TYPE: 'PUT',
   },
+  PATTERN_DELETE: {
+    ENDPOINT: (id) => `/pattern-product/delete/${id}`,
+    TYPE: 'DELETE',
+  },
 };

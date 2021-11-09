@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
   createSewingGoodsPreUploadData,
+  sewingGoodsDelete,
   sewingGoodsLoadData,
   updateSewingProductPreUpload,
 } from './sewing-goods-create.action';
@@ -23,13 +24,15 @@ export function CreateSewingGoodsContainer() {
   const dispatch = useDispatch();
   const sewingProductId = getQuery('id');
 
-  const { state, productState, pageLoading, updateSewingGoodsState } =
+  const { state, productState, pageLoading, updateSewingGoodsState, deleteSewingGoodsState } =
     useSelector((state) => ({
       state: state[CREATE_SEWING_GOODS_STORE_NAME].createSewingGoods,
       productState: state[CREATE_SEWING_GOODS_STORE_NAME].product,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       updateSewingGoodsState:
         state[CREATE_SEWING_GOODS_STORE_NAME].updateSewingGoods,
+      deleteSewingGoodsState:
+        state[CREATE_SEWING_GOODS_STORE_NAME].deleteSewingGoods,
     }));
 
   useEffect(() => {
@@ -45,6 +48,11 @@ export function CreateSewingGoodsContainer() {
       dispatch(createSewingGoodsPreUploadData(formValues));
     }
   };
+
+  const deleteProduct = () => {
+    dispatch(sewingGoodsDelete(sewingProductId));
+  };
+
   const initialValues = () => {
     const data = getRequestData(productState, {
       [SEWING_GOODS_FIELD_NAME.NAME]: '',
@@ -87,6 +95,10 @@ export function CreateSewingGoodsContainer() {
       updateIsError={isRequestError(updateSewingGoodsState)}
       updateIsSuccess={isRequestSuccess(updateSewingGoodsState)}
       updateErrorMessage={getRequestErrorMessage(updateSewingGoodsState)}
+      deleteProduct={deleteProduct}
+      deleteIsPending={isRequestPending(deleteSewingGoodsState)}
+      deleteIsError={isRequestError(deleteSewingGoodsState)}
+      deleteErrorMessage={getRequestErrorMessage(deleteSewingGoodsState)}
       initialOption={initialOption}
       initialValues={initialValues()}
       onSubmit={onSubmit}

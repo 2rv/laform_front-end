@@ -26,6 +26,8 @@
 	"PRIVACY_POLICY": "Политика конфиденциальности",
 	"LEGAL_INFORMATION": "Юридическая информация",
 	"TERMS_OF_USE": "Пользовательское соглашение",
+	"DELETE_THIS_PRODUCT": "Удалить данный товар",
+	"ARE_YOU_SURE_TO_DELETE_THIS_PRODUCT": "Вы точно хотите удалить данный товар? Это действие нельзя отменить",
 	"RECENT_COMMENTS": "Недавние комментарии",
 	"CARD": {
 		"SIZE_COLOR_PRICE": "Размер: {{size}}, Цвет: {{color}}, Цена: {{price}}",

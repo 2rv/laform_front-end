@@ -12,6 +12,7 @@ import {
   createPatternPreUploadData,
   updatePatternProductPreUpload,
   patternLoadData,
+  patternDelete,
 } from './pattern-create.action';
 import { CreatePatternComponent } from './pattern-create.component';
 import { CREATE_PATTERN_STORE_NAME } from './pattern-create.constant';
@@ -24,12 +25,13 @@ export function CreatePatternContainer() {
 
   const patternProductId = getQuery('id');
 
-  const { state, pageLoading, productState, updatePatternState } = useSelector(
+  const { state, pageLoading, productState, updatePatternState, deletePatternState } = useSelector(
     (state) => ({
       state: state[CREATE_PATTERN_STORE_NAME].createPattern,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       productState: state[CREATE_PATTERN_STORE_NAME].product,
       updatePatternState: state[CREATE_PATTERN_STORE_NAME].updatePattern,
+      deletePatternState: state[CREATE_PATTERN_STORE_NAME].deletePattern,
     }),
   );
 
@@ -45,6 +47,10 @@ export function CreatePatternContainer() {
     } else {
       dispatch(createPatternPreUploadData(formValues));
     }
+  };
+
+  const deleteProduct = () => {
+    dispatch(patternDelete(patternProductId));
   };
 
   const initialValues = () => {
@@ -94,6 +100,10 @@ export function CreatePatternContainer() {
       updateIsError={isRequestError(updatePatternState)}
       updateIsSuccess={isRequestSuccess(updatePatternState)}
       updateErrorMessage={getRequestErrorMessage(updatePatternState)}
+      deleteProduct={deleteProduct}
+      deleteIsPending={isRequestPending(deletePatternState)}
+      deleteIsError={isRequestError(deletePatternState)}
+      deleteErrorMessage={getRequestErrorMessage(deletePatternState)}
     />
   );
 }
