@@ -41,6 +41,10 @@ export interface CardActionProps {
   onSelect?: Function;
   onDelete?: Function;
 }
+export interface RemoveButtonProps {
+  id: string;
+  onRemove?: Function;
+}
 export interface CardPriceProps {
   price?: number;
   discount?: number;
@@ -68,6 +72,7 @@ export interface CardArticleType {
   admin?: boolean;
   onSelect?: Function;
   onDelete?: Function;
+  onRemove?: Function;
   isCreateList?: boolean;
   isAllProductsPage?: boolean;
 }
@@ -92,6 +97,7 @@ export interface CardSewingGoodType {
   sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
+  onRemove?: Function;
   isCreateList?: boolean;
   isAllProductsPage?: boolean;
 }
@@ -113,6 +119,7 @@ export interface CardPatternType {
   sizes?: OptionType[];
   onSelect?: Function;
   onDelete?: Function;
+  onRemove?: Function;
   isCreateList?: boolean;
   isAllProductsPage?: boolean;
 }
@@ -131,6 +138,13 @@ export interface CardMasterClassType {
   admin?: boolean;
   onSelect?: Function;
   onDelete?: Function;
+  onRemove?: Function;
   isCreateList?: boolean;
   isAllProductsPage?: boolean;
 }
+export type CardMultiType =
+  | CardArticleType
+  | CardSewingGoodType
+  | CardPatternType
+  | CardMasterClassType
+  | undefined;

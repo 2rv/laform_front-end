@@ -14,6 +14,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
     items,
     onSelect,
     onDelete,
+    onRemove,
     admin,
     emptyText,
     emptyTvalue,
@@ -21,7 +22,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
     isAllProductsPage,
   } = props;
 
-  if (!items || items.length === 0) {
+  if (!items || !Boolean(items.length)) {
     return <TextSecondary tid={emptyText} tvalue={emptyTvalue} />;
   }
 
@@ -37,6 +38,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
             {...data}
             onSelect={onSelect}
             onDelete={onDelete}
+            onRemove={onRemove}
             admin={admin}
           />
         );

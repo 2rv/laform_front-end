@@ -10,6 +10,7 @@ import {
   SelectButton,
   LikeButton,
   CardName,
+  RemoveButton,
 } from './card.components';
 import { CREATE_ARTICLE_DYNAMIC_ROUTE_PATH } from 'src/core/article-create';
 
@@ -27,6 +28,7 @@ export function CardArticle(props: CardArticleType) {
     type,
     onSelect,
     onDelete,
+    onRemove,
     isCreateList,
     isAllProductsPage,
   } = props;
@@ -60,6 +62,7 @@ export function CardArticle(props: CardArticleType) {
             onDelete={onDelete}
             deleted={deleted}
           />
+          <RemoveButton id={id} onRemove={onRemove} />
         </ActionCase>
       </Content>
       <SelectButton id={id} type={type} onSelect={onSelect} />

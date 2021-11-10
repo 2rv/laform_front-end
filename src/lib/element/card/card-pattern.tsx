@@ -10,6 +10,7 @@ import {
   DeleteButton,
   LikeButton,
   SelectButton,
+  RemoveButton,
 } from './card.components';
 import { CartModalButton } from '../../common/cart-modal-button';
 import { CREATE_PATTERN_DYNAMIC_ROUTE_PATH } from 'src/core/pattern-create';
@@ -31,6 +32,7 @@ export function CardPattern(props: CardPatternType) {
     sizes,
     onSelect,
     onDelete,
+    onRemove,
     isCount,
     isCreateList,
     isAllProductsPage,
@@ -80,6 +82,7 @@ export function CardPattern(props: CardPatternType) {
               onDelete={onDelete}
               deleted={deleted}
             />
+            <RemoveButton id={id} onRemove={onRemove} />
           </ActionCase>
         )}
       </ActionCase>

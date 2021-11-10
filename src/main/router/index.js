@@ -139,7 +139,13 @@ import {
   RECENT_COMMENTS_ROUTE_PATH,
 } from '../../core/recent-comments';
 import { statisticsRouter, STATISTICS_ROUTE_PATH } from '../../core/statistics';
+import {
+  productSelectionsRouter,
+  PRODUCT_SELECTIONS_ROUTE_PATH,
+} from '../../core/product-selections';
+
 export const routes = {
+  [PRODUCT_SELECTIONS_ROUTE_PATH]: productSelectionsRouter,
   [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
   [STATISTICS_ROUTE_PATH]: statisticsRouter,
   [LEGAL_INFORMATION_ROUTE_PATH]: legalInformationRouter,

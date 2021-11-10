@@ -7,6 +7,7 @@ import {
   CardLengthProps,
   CardPriceProps,
   ProductVendorCodeProps,
+  RemoveButtonProps,
 } from './card.type';
 import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
 import { LikeButton as LikeAction } from 'src/core/block-like';
@@ -16,6 +17,7 @@ import { FieldLayout } from '../layout';
 import { ReactComponent as GalochkaIcon } from '../../../asset/svg/galochka.svg';
 import { ReactComponent as PowerOffIcon } from '../../../asset/svg/power-off.svg';
 import { ReactComponent as PowerOnIcon } from '../../../asset/svg/power-on.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 
 export function LikeButton(props: CardActionProps) {
   const { id, type, like = null } = props;
@@ -80,6 +82,15 @@ export function DeleteButton(props: CardActionProps) {
         </ButtonIcon>
       }
     />
+  );
+}
+export function RemoveButton(props: RemoveButtonProps) {
+  const { id, onRemove } = props;
+  if (typeof onRemove !== 'function') return null;
+  return (
+    <ButtonIcon onClick={() => onRemove(id)}>
+      <RemoveIcon />
+    </ButtonIcon>
   );
 }
 const Button = styled(ButtonPrimary)<{ active?: boolean }>`
