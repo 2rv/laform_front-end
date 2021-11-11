@@ -1,5 +1,5 @@
-export const PRODUCT_SELECTIONS_STORE_NAME = 'PRODUCT_SELECTIONS';
-export const PRODUCT_SELECTIONS_ROUTE_PATH = '/product-selections';
+export const PRODUCT_SELECTIONS_STORE_NAME = 'COMPILATION';
+export const PRODUCT_SELECTIONS_ROUTE_PATH = '/compilation';
 
 export const PRODUCT_SELECTIONS_API = {
   MASTER_CLASS_LOAD_DATA: {
@@ -23,11 +23,15 @@ export const PRODUCT_SELECTIONS_API = {
   },
 
   COMPILATION_LOAD: {
-    ENDPOINT: `/compilation`,
+    ENDPOINT: `/compilation/get`,
     TYPE: 'GET',
   },
   COMPILATION_UPLOAD: {
-    ENDPOINT: `/compilation`,
+    ENDPOINT: `/compilation/create`,
     TYPE: 'POST',
+  },
+  COMPILATION_DELETE: {
+    ENDPOINT: (id: string) => `/compilation/delete/${id}`,
+    TYPE: 'DELETE',
   },
 };

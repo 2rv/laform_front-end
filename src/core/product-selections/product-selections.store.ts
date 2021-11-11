@@ -9,6 +9,7 @@ import { PRODUCT_SELECTIONS_ACTION_TYPE } from './product-selections.type';
 const initialState = {
   productsState: initRequestState(),
   compilationUpload: initRequestState(),
+  compilationDelete: initRequestState(),
 };
 
 export function productSelectionsStore(state = initialState, action: any) {
@@ -50,6 +51,25 @@ export function productSelectionsStore(state = initialState, action: any) {
         ...state,
         compilationUpload: setRequestError(
           state.compilationUpload,
+          action.errorMessage,
+        ),
+      };
+
+    case PRODUCT_SELECTIONS_ACTION_TYPE.DELETE_PENDING:
+      return {
+        ...state,
+        compilationDelete: setRequestPending(state.compilationDelete),
+      };
+    case PRODUCT_SELECTIONS_ACTION_TYPE.DELETE_SUCCESS:
+      return {
+        ...state,
+        compilationDelete: setRequestSuccess(state.compilationDelete),
+      };
+    case PRODUCT_SELECTIONS_ACTION_TYPE.DELETE_ERROR:
+      return {
+        ...state,
+        compilationDelete: setRequestError(
+          state.compilationDelete,
           action.errorMessage,
         ),
       };

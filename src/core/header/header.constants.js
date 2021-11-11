@@ -10,7 +10,6 @@ import { CREATE_SEWING_GOODS_ROUTE_PATH } from '../sewing-goods-create';
 import { CREATE_ARTICLE_ROUTE_PATH } from '../article-create';
 import { USERS_ROUTE_PATH } from '../users';
 import { ORDERS_ROUTE_PATH } from '../orders';
-import { EDIT_COMPILATION_ROUTE_PATH } from '../edit-compilation';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
 import { PROMOCODES_ROUTE_PATH } from '../promocodes';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
@@ -21,6 +20,7 @@ import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
 import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
 import { STATISTICS_ROUTE_PATH } from '../statistics';
 import { RECENT_COMMENTS_ROUTE_PATH } from '../recent-comments';
+import { PRODUCT_SELECTIONS_ROUTE_PATH } from '../product-selections';
 
 export const NAV_MENU_ITEMS = [
   { name: 'HEADER.MENU_ITEMS.PATTERNS', path: PATTERNS_ROUTE_PATH },
@@ -61,7 +61,10 @@ export const ADMIN_MENU_ITEMS = [
   },
   { path: USERS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.USERS_LIST' },
   { path: ORDERS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.ORDERS_TABLE' },
-  { path: EDIT_COMPILATION_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.BEST_PRODUCTS' },
+  {
+    path: PRODUCT_SELECTIONS_ROUTE_PATH,
+    tid: 'HEADER.ADMIN_MENU.BEST_PRODUCTS',
+  },
   { path: SLIDER_LIST_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.SLIDER' },
   { path: PROMOCODES_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.PROMOCODES' },
   {

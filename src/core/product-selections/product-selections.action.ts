@@ -1,18 +1,6 @@
-import {
-  convertArticleProducts,
-  convertMasterClassProducts,
-  convertPatternProducts,
-  convertSewingGoodProducts,
-} from 'src/lib/common/product-converters';
-import {
-  CardMasterClassType,
-  CardMultiType,
-  CardArticleType,
-  CardSewingGoodType,
-  CardPatternType,
-} from 'src/lib/element/card';
 import { httpRequest } from '../../main/http';
 import { PRODUCT_SELECTIONS_API } from './product-selections.constant';
+import { compilationsPerform } from './product-selections.convert';
 import {
   productSelectionFormValues,
   PRODUCT_SELECTIONS_ACTION_TYPE,
@@ -49,30 +37,23 @@ export function productsLoadData(currentLang: string) {
           currentLang,
         ),
       });
+      //@ts-ignore
+      const compilationRes = await httpRequest({
+        method: PRODUCT_SELECTIONS_API.COMPILATION_LOAD.TYPE,
+        url: PRODUCT_SELECTIONS_API.COMPILATION_LOAD.ENDPOINT,
+      });
 
-      const patternData: CardPatternType[] = convertPatternProducts(
-        patternRes.data[0],
-      );
-      const articleData: CardArticleType[] = convertArticleProducts(
-        articleRes.data[0],
-      );
-      const sewingData: CardSewingGoodType[] = convertSewingGoodProducts(
-        sewingRes.data[0],
-      );
-      const masterData: CardMasterClassType[] = convertMasterClassProducts(
-        masterRes.data[0],
-      );
-      const baseArray: CardMultiType[] = [];
-      const data: CardMultiType[] = baseArray.concat(
-        patternData,
-        sewingData,
-        masterData,
-        articleData,
-      );
+      const result = compilationsPerform({
+        compilationRes: compilationRes.data,
+        patternRes: patternRes.data[0],
+        articleRes: articleRes.data[0],
+        sewingRes: sewingRes.data[0],
+        masterRes: masterRes.data[0],
+      });
 
       dispatch({
         type: PRODUCT_SELECTIONS_ACTION_TYPE.PRODUCTS_LOAD_SUCCESS,
-        data: data,
+        data: result,
       });
     } catch (err: any) {
       if (err.response) {
@@ -93,8 +74,9 @@ export function productsUploadData(values: productSelectionFormValues) {
     try {
       const data = values.products.map((block) => {
         return {
+          id: block.id,
           title: block.title,
-          items: block.items.map((item: any) => {
+          compilationProducts: block.compilationProducts.map((item: any) => {
             if (item.type === 0) return { masterClassId: { id: item.id } };
             if (item.type === 1) return { patternProductId: { id: item.id } };
             if (item.type === 2) return { patternProductId: { id: item.id } };
@@ -103,21 +85,45 @@ export function productsUploadData(values: productSelectionFormValues) {
           }),
         };
       });
-      console.log(data);
       //@ts-ignore
-      //   const result = await httpRequest({
-      //     method: PRODUCT_SELECTIONS_API.COMPILATION_UPLOAD.TYPE,
-      //     url: PRODUCT_SELECTIONS_API.COMPILATION_UPLOAD.ENDPOINT,
-      // 	data: data
-      //   });
+      const response = await httpRequest({
+        method: PRODUCT_SELECTIONS_API.COMPILATION_UPLOAD.TYPE,
+        url: PRODUCT_SELECTIONS_API.COMPILATION_UPLOAD.ENDPOINT,
+        data: data,
+      });
       dispatch({
         type: PRODUCT_SELECTIONS_ACTION_TYPE.PRODUCTS_UPLOAD_SUCCESS,
-        data: data,
+        data: response.data,
       });
     } catch (err: any) {
       if (err.response) {
         dispatch({
           type: PRODUCT_SELECTIONS_ACTION_TYPE.PRODUCTS_UPLOAD_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function deleteOneBlock(id: string) {
+  return async (dispatch: Function) => {
+    dispatch({
+      type: PRODUCT_SELECTIONS_ACTION_TYPE.DELETE_PENDING,
+    });
+    try {
+      //@ts-ignore
+      const response = await httpRequest({
+        method: PRODUCT_SELECTIONS_API.COMPILATION_DELETE.TYPE,
+        url: PRODUCT_SELECTIONS_API.COMPILATION_DELETE.ENDPOINT(id),
+      });
+      dispatch({
+        type: PRODUCT_SELECTIONS_ACTION_TYPE.DELETE_SUCCESS,
+      });
+    } catch (err: any) {
+      if (err.response) {
+        dispatch({
+          type: PRODUCT_SELECTIONS_ACTION_TYPE.DELETE_ERROR,
           errorMessage: err.response.data.message,
         });
       }

@@ -10,13 +10,14 @@ export function CompilationArray(props: CompilationArrayProps) {
     listItems,
     formik: { values },
     initialBlock,
+    compilationDelete,
   } = props;
 
   return (
     <FieldArray name={formNames.productBlockArray}>
       {({ remove, push }) => (
         <SectionLayout type="SMALL">
-          {values.products.map((value, index: number) => {
+          {values[formNames.productBlockArray].map((value, index: number) => {
             return (
               <CompilationBlock
                 listItems={listItems}
@@ -25,6 +26,7 @@ export function CompilationArray(props: CompilationArrayProps) {
                 value={value}
                 formik={formik}
                 remove={remove}
+                compilationDelete={compilationDelete}
               />
             );
           })}

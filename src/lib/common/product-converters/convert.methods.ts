@@ -10,6 +10,7 @@ import {
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
+  BasicRecommendationProducsType,
 } from 'src/lib/basic-types';
 
 import {
@@ -41,7 +42,9 @@ export const convertArticleProducts = (
   return data.map(convertArticleItemConverter);
 };
 
-export const convertMultiProducts = (rowData = []): CardMultiType[] => {
+export const convertMultiProducts = (
+  rowData: BasicRecommendationProducsType[] = [],
+): CardMultiType[] => {
   return rowData.map((item) => {
     const { masterClassId, patternProductId, sewingProductId, postId } = item;
     if (masterClassId) return masterClassItemConverter(masterClassId);

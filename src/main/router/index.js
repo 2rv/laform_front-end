@@ -36,10 +36,6 @@ import {
 } from '../../core/user-orders';
 import { userOrderRouter, USER_ORDER_ROUTE_PATH } from '../../core/user-order';
 import { faqRouter, FAQ_ROUTE_PATH } from '../../core/faq';
-import {
-  editCompilationRouter,
-  EDIT_COMPILATION_ROUTE_PATH,
-} from '../../core/edit-compilation';
 import { basketRouter, BASKET_ROUTE_PATH } from '../../core/basket';
 import {
   aboutAccountRouter,
@@ -180,7 +176,6 @@ export const routes = {
   [USER_ORDERS_ROUTE_PATH]: userOrdersRouter,
   [USER_ORDER_ROUTE_PATH]: userOrderRouter,
   [FAQ_ROUTE_PATH]: faqRouter,
-  [EDIT_COMPILATION_ROUTE_PATH]: editCompilationRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
   [ABOUT_ACCOUNT_ROUTE_PATH]: aboutAccountRouter,
   [ORDER_NUMBER_ROUTE_PATH]: orderNumberRouter,

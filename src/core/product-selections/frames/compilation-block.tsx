@@ -8,6 +8,7 @@ import {
   CompilationBlockProps,
   getIndexName,
   getIndexItems,
+  formNames,
 } from '../product-selections.type';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { IconButton } from 'src/lib/element/button';
@@ -15,11 +16,12 @@ import { CompilationModal } from './compilation-modal';
 
 export function CompilationBlock(props: CompilationBlockProps) {
   const {
-    value: { title, items },
+    value,
     index,
     listItems,
     remove,
     formik: { handleBlur, handleChange, setFieldValue },
+    compilationDelete,
   } = props;
 
   function handleAdd(id: string, _: any, status: boolean) {
@@ -29,8 +31,8 @@ export function CompilationBlock(props: CompilationBlockProps) {
       return false;
     }
     if (status) {
-      items.push(result);
-      setFieldValue(getIndexItems(index), items);
+      value[formNames.blockItems].push(result);
+      setFieldValue(getIndexItems(index), value[formNames.blockItems]);
     } else {
       handleRemove(id);
     }
@@ -38,26 +40,33 @@ export function CompilationBlock(props: CompilationBlockProps) {
   }
 
   function handleRemove(id: string) {
-    const newItems = items.filter((item) => item?.id !== id);
+    const newItems = value[formNames.blockItems].filter(
+      (item) => item?.id !== id,
+    );
     setFieldValue(getIndexItems(index), newItems);
+  }
+
+  function handleRemoveBlock() {
+    compilationDelete(value.id);
+    remove(index);
   }
 
   return (
     <SectionLayout>
       <HeaderCase>
-        <Title tid={title} />
+        <Title tid={value[formNames.blockName]} />
         <FieldLayout type="double" adaptive>
           <BasicField
             titleTid="Название"
             placeholderTid="Название блока"
             name={getIndexName(index)}
-            value={title}
+            value={value[formNames.blockName]}
             onChange={handleChange}
             onBlur={handleBlur}
           />
           <LineCase>
             <CompilationModal handleAdd={handleAdd} listItems={listItems} />
-            <Button onClick={() => remove(index)}>
+            <Button onClick={handleRemoveBlock}>
               <RemoveIcon />
             </Button>
           </LineCase>
@@ -65,8 +74,8 @@ export function CompilationBlock(props: CompilationBlockProps) {
       </HeaderCase>
       <BasicCardList
         onRemove={handleRemove}
-        emptyText="Добавьте товары в список"
-        items={items}
+        emptyText="Добавьте товары в блок"
+        items={value[formNames.blockItems]}
         admin
       />
     </SectionLayout>
