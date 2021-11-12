@@ -1,18 +1,10 @@
-import {
-  CardArticleType,
-  CardSewingGoodType,
-  CardPatternType,
-  CardMasterClassType,
-} from '../card';
+import { CardMultiType } from '../card';
 
 export interface BasicCardListTypeProps {
-  items:
-    | CardArticleType[]
-    | CardSewingGoodType[]
-    | CardPatternType[]
-    | CardMasterClassType[];
+  items: CardMultiType[];
   onSelect?: Function;
   onDelete?: Function;
+  onRemove?: Function;
   admin?: boolean;
   emptyText?: string;
   emptyTvalue?: object;
@@ -20,6 +12,7 @@ export interface BasicCardListTypeProps {
   isAllProductsPage?: boolean;
 }
 export interface CardListTypeProps extends BasicCardListTypeProps {
-  path: string;
-  title: string;
+  path?: string;
+  title?: string;
+  isSliced: boolean;
 }

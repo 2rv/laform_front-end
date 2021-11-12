@@ -9,6 +9,7 @@ import {
   DeleteButton,
   LikeButton,
   SelectButton,
+  RemoveButton,
 } from './card.components';
 import { CartModalButton } from '../../common/cart-modal-button';
 import { CREATE_SEWING_GOODS_DYNAMIC_ROUTE_PATH } from 'src/core/sewing-goods-create';
@@ -32,6 +33,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
     sizes,
     onSelect,
     onDelete,
+    onRemove,
     isCount,
     isLength,
     isCreateList,
@@ -82,6 +84,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
             onDelete={onDelete}
             deleted={deleted}
           />
+          <RemoveButton id={id} onRemove={onRemove} />
         </ActionCase>
       </ActionCase>
     </Container>

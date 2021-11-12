@@ -62,10 +62,6 @@ import {
 } from '../../core/user-orders';
 import { userOrderStore, USER_ORDER_STORE_NAME } from '../../core/user-order';
 import { faqStore, FAQ_STORE_NAME } from '../../core/faq';
-import {
-  editCompilationStore,
-  EDIT_COMPILATION_STORE_NAME,
-} from '../../core/edit-compilation';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import { articlesStore, ARTICLES_STORE_NAME } from '../../core/articles';
 import {
@@ -192,7 +188,12 @@ import {
   RECENT_COMMENTS_STORE_NAME,
 } from '../../core/recent-comments';
 import { statisticsStore, STATISTICS_STORE_NAME } from '../../core/statistics';
+import {
+  productSelectionsStore,
+  PRODUCT_SELECTIONS_STORE_NAME,
+} from '../../core/product-selections';
 export const reducers = combineReducers({
+  [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,
   [LEGAL_INFORMATION_STORE_NAME]: legalInformationStore,
@@ -240,7 +241,6 @@ export const reducers = combineReducers({
   [USER_ORDERS_STORE_NAME]: userOrdersStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
   [FAQ_STORE_NAME]: faqStore,
-  [EDIT_COMPILATION_STORE_NAME]: editCompilationStore,
   [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
