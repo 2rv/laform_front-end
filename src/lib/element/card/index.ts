@@ -10,4 +10,5 @@ export type {
   CardPatternType,
   CardMasterClassType,
   OptionType,
+  CardMultiType,
 } from './card.type';

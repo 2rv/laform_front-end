@@ -8,6 +8,7 @@ import {
   CardPrice,
   DeleteButton,
   LikeButton,
+  RemoveButton,
   SelectButton,
 } from './card.components';
 import { CartModalButton } from 'src/lib/common/cart-modal-button';
@@ -27,6 +28,7 @@ export function CardMasterClass(props: CardMasterClassType) {
     admin,
     onSelect,
     onDelete,
+    onRemove,
     isCreateList,
     isAllProductsPage,
   } = props;
@@ -59,6 +61,7 @@ export function CardMasterClass(props: CardMasterClassType) {
           discount={discount}
           thisIsCart={Boolean(onSelect)}
         />
+
         <ActionCase>
           <LikeButton id={id} type={type} like={like} />
           <DeleteButton
@@ -68,6 +71,7 @@ export function CardMasterClass(props: CardMasterClassType) {
             onDelete={onDelete}
             deleted={deleted}
           />
+          <RemoveButton id={id} onRemove={onRemove} />
         </ActionCase>
       </ActionCase>
     </Container>

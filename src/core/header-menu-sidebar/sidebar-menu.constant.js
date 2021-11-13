@@ -1,6 +1,5 @@
 import { CREATE_ARTICLE_ROUTE_PATH } from '../article-create';
 import { ARTICLES_ROUTE_PATH } from '../articles';
-import { EDIT_COMPILATION_ROUTE_PATH } from '../edit-compilation';
 import { FAQ_ROUTE_PATH } from '../faq';
 import { HOME_ROUTE_PATH } from '../home';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
@@ -20,6 +19,7 @@ import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
 import { USERS_ROUTE_PATH } from '../users';
 import { DELIVERY_PRICE_PAGE_ROUTE_PATH } from '../delivery-price-page';
 import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
+import { PRODUCT_SELECTIONS_ROUTE_PATH } from '../product-selections';
 
 export const NAVIGATION_MENU = (isAuth = false) => {
   const userLinks = [
@@ -63,7 +63,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
           title: 'HEADER.ADMIN_MENU.ORDERS_TABLE',
         },
         {
-          pathname: EDIT_COMPILATION_ROUTE_PATH,
+          pathname: PRODUCT_SELECTIONS_ROUTE_PATH,
           title: 'HEADER.ADMIN_MENU.BEST_PRODUCTS',
         },
         { pathname: SLIDER_LIST_ROUTE_PATH, title: 'HEADER.ADMIN_MENU.SLIDER' },
