@@ -6,6 +6,7 @@ export interface FieldPropsType {
   type?: string;
   value: string;
   error?: string;
+  list?: any;
   onChange: any;
   onBlur?: any;
   isFindInput?: boolean;
