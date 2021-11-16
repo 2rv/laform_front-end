@@ -35,7 +35,7 @@ export const BASKET_API = {
     TYPE: 'POST',
   },
   PAYMENT_CREATE: {
-    ENDPOINT: 'http://localhost:4000/payment',
+    ENDPOINT: 'payment',
     TYPE: 'POST',
   },
   ADD_BACKET_LOAD_ITEM_INFO: {
