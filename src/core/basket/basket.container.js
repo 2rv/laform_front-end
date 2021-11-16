@@ -25,6 +25,7 @@ import {
   updateUserInfoAction,
   changeItemAction,
   deleteItemAction,
+  createPaymentAction,
 } from './basket.action';
 
 export function BasketContainer() {
@@ -84,6 +85,9 @@ export function BasketContainer() {
 
   const onSubmit = (values) => {
     dispatch(createOrderAction(values, bascketState, isAuth));
+  };
+  const createPayment = () => {
+    dispatch(createPaymentAction());
   };
 
   const initialValues = () => {
@@ -166,6 +170,7 @@ export function BasketContainer() {
       sewingProducts={sewingProducts}
       masterProducts={masterProducts}
       patternProducts={patternProducts}
+      createPayment={createPayment}
     />
   );
 }

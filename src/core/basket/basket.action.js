@@ -294,3 +294,24 @@ export function clearBasketAction() {
     }
   };
 }
+
+export function createPaymentAction(values, bascketState, isAuth) {
+  return async (dispatch) => {
+    try {
+      const response = await httpRequest({
+        method: BASKET_API.PAYMENT_CREATE.TYPE,
+        url: BASKET_API.PAYMENT_CREATE.ENDPOINT,
+        data: {
+          amount: '10000.00',
+          orderNumber: 1,
+          currency: 'RUB',
+          testMode: 1,
+        },
+      });
+      console.log('res');
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

@@ -34,6 +34,10 @@ export const BASKET_API = {
     ENDPOINT: 'promo-code/check',
     TYPE: 'POST',
   },
+  PAYMENT_CREATE: {
+    ENDPOINT: 'http://localhost:4000/payment',
+    TYPE: 'POST',
+  },
   ADD_BACKET_LOAD_ITEM_INFO: {
     ENDPOINT: (type, id, currentLang) => {
       if (type === 0) return `/master-class/get/${id}/?lang=${currentLang}`;
