@@ -20,7 +20,7 @@ export function BasicField(props: FieldPropsType) {
     value,
     error,
     disabled,
-
+    list,
     onChange,
     onBlur,
     isFindInput,
@@ -31,6 +31,7 @@ export function BasicField(props: FieldPropsType) {
       {titleTid && <Title tid={titleTid} />}
       <Content>
         <Input
+          list={list}
           disabled={disabled}
           className={className}
           onChange={onChange}

@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-
 import { authStore, AUTH_STORE_NAME } from '../../lib/common/auth';
 import { langStore, LANG_STORE_NAME } from '../../lib/common/lang';
 import {
@@ -10,7 +9,6 @@ import {
   paymentMethodStore,
   PAYMENT_METHOD_STORE_NAME,
 } from '../../lib/common/payment-method';
-
 import { signupStore, SIGNUP_STORE_NAME } from '../../core/signup';
 import { loginStore, LOGIN_STORE_NAME } from '../../core/login';
 import {
@@ -157,7 +155,6 @@ import {
   unsubscribeNotificationStore,
   UNSUBSCRIBE_NOTIFICATION_STORE_NAME,
 } from '../../core/unsubscribe-notification';
-export const PERSISTED_CART = 'PERSISTED_CART';
 import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
@@ -192,7 +189,13 @@ import {
   productSelectionsStore,
   PRODUCT_SELECTIONS_STORE_NAME,
 } from '../../core/product-selections';
+import {
+  findAdressStore,
+  FIND_ADRESS_STORE_NAME,
+} from '../../lib/common/block-find-adress';
+
 export const reducers = combineReducers({
+  [FIND_ADRESS_STORE_NAME]: findAdressStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,

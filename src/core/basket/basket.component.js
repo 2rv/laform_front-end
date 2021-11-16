@@ -5,6 +5,7 @@ import { THEME_SIZE } from '../../lib/theme';
 import { TextSecondary } from '../../lib/element/text';
 import { SignComponent, FormContainer } from './frames';
 import { Table } from 'src/lib/common/block-table';
+import { ButtonPrimary } from 'src/lib/element/button';
 
 export function BasketComponent(props) {
   const {
@@ -22,10 +23,12 @@ export function BasketComponent(props) {
     sewingProducts,
     masterProducts,
     patternProducts,
+    createPayment,
     ...formProps
   } = props;
   return (
     <SectionLayout>
+      <ButtonPrimary tid="Купить" onClick={createPayment} />
       <Title tid="BASKET.TITLE" />
       {isEmpty ? (
         <TextSecondary tid="BASKET.CART_IS_EMPTY" />

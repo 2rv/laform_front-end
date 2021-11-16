@@ -9,6 +9,7 @@ import {
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ORDER_FIELD_NAME } from '../basket.type';
 import { ButtonSecondary } from 'src/lib/element/button';
+import { BlockFindAdress } from 'src/lib/common/block-find-adress';
 
 export function FormComponent(props) {
   const {
@@ -58,6 +59,7 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           error={getFieldError(ORDER_FIELD_NAME.CITY)}
         />
+        <BlockFindAdress />
         <FieldSelect
           titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_DELIVERY_METHOD"
           defaultTid="Выберите метод доставки"
