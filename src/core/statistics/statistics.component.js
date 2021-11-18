@@ -22,6 +22,8 @@ export function StatisticstComponent(props) {
     error,
     errorMessage,
     statistics,
+    ordersCount,
+    price,
     pageLoading,
     activeTab,
   } = props;
@@ -42,8 +44,8 @@ export function StatisticstComponent(props) {
       {activeTab === 'sewing-good' && (
         <SewingGoodStats statistics={statistics} />
       )}
-      <ChartPrice data={statistics.chartOrders} />
-      <ChartOrders data={statistics.chartOrders} />
+      <ChartPrice data={price.data} />
+      <ChartOrders data={ordersCount.data} />
     </SectionLayout>
   );
 }
