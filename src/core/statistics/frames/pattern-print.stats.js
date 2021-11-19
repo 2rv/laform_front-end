@@ -13,15 +13,7 @@ export function PatternPrintStats(props) {
         <Case>
           <TextTitle tid="Общая прибыль" />
           <LineCase>
-            <Price price={statistics.patternPrintPrice} />
-            &nbsp;
-            <LigthText tid="Руб." />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="Средняя стоимость за товар" />
-          <LineCase>
-            <Price price={statistics.patternPrintProducts} />
+            <Price price={statistics.totalPurchasedProductPrice} />
             &nbsp;
             <LigthText tid="Руб." />
           </LineCase>
@@ -29,7 +21,7 @@ export function PatternPrintStats(props) {
         <Case>
           <TextTitle tid="Всего товаров продано" />
           <LineCase>
-            <Price price={statistics.patternPrintMean} />
+            <Price price={statistics.productsCount} />
             &nbsp;
             <LigthText tid="Шт." />
           </LineCase>

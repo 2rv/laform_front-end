@@ -13,15 +13,7 @@ export function PatternElectronicStats(props) {
         <Case>
           <TextTitle tid="Общая прибыль" />
           <LineCase>
-            <Price price={statistics.patternElectronicPrice} />
-            &nbsp;
-            <LigthText tid="Руб." />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="Средняя стоимость за товар" />
-          <LineCase>
-            <Price price={statistics.patternElectronicProducts} />
+            <Price price={statistics.totalPurchasedProductPrice} />
             &nbsp;
             <LigthText tid="Руб." />
           </LineCase>
@@ -29,7 +21,7 @@ export function PatternElectronicStats(props) {
         <Case>
           <TextTitle tid="Всего товаров продано" />
           <LineCase>
-            <Price price={statistics.patternElectronicMean} />
+            <Price price={statistics.productsCount} />
             &nbsp;
             <LigthText tid="Шт." />
           </LineCase>

@@ -11,9 +11,41 @@ export function TotalStats(props) {
       <Title tid="Статистика общая" />
       <Content>
         <Case>
+          <TextTitle tid="Всего купленно товаров" />
+          <LineCase>
+            <Price price={statistics.purchasedProductsCount} />
+            &nbsp;
+            <LigthText tid="Шт." />
+          </LineCase>
+        </Case>
+        <Case>
+          <TextTitle tid="Всего оформлено заказов" />
+          <LineCase>
+            <Price price={statistics.allPurchasesCount} />
+            &nbsp;
+            <LigthText tid="Шт." />
+          </LineCase>
+        </Case>
+        <Case>
+          <TextTitle tid="Всего продано физических товаров" />
+          <LineCase>
+            <Price price={statistics.physicalPurchasedProductsCount} />
+            &nbsp;
+            <LigthText tid="Шт." />
+          </LineCase>
+        </Case>
+        <Case>
+          <TextTitle tid="Всего продано электронных товаров" />
+          <LineCase>
+            <Price price={statistics.electronicPurchasedProductsCount} />
+            &nbsp;
+            <LigthText tid="Шт." />
+          </LineCase>
+        </Case>
+        <Case>
           <TextTitle tid="Общая прибыль" />
           <LineCase>
-            <Price price={statistics.totalPrice} />
+            <Price price={statistics.totalPurchasesPrice} />
             &nbsp;
             <LigthText tid="Руб." />
           </LineCase>
@@ -21,25 +53,9 @@ export function TotalStats(props) {
         <Case>
           <TextTitle tid="Средняя стоимость за заказ" />
           <LineCase>
-            <Price price={statistics.arithmeticMeanOrders} />
+            <Price price={statistics.purchasesAverageCost} />
             &nbsp;
             <LigthText tid="Руб." />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="Всего заказов" />
-          <LineCase>
-            <Price price={statistics.totalOrders} />
-            &nbsp;
-            <LigthText tid="Шт." />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="Всего товаров продано" />
-          <LineCase>
-            <Price price={statistics.totalProducts} />
-            &nbsp;
-            <LigthText tid="Шт." />
           </LineCase>
         </Case>
       </Content>
