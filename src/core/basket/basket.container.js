@@ -94,16 +94,23 @@ export function BasketContainer() {
     return {
       [ORDER_FIELD_NAME.EMAIL]: Boolean(email) ? email.toString() : '',
       [ORDER_FIELD_NAME.FULL_NAME]: userInfo[ORDER_FIELD_NAME.FULL_NAME] || '',
-      [ORDER_FIELD_NAME.CITY]: userInfo[ORDER_FIELD_NAME.CITY] || '',
       [ORDER_FIELD_NAME.PHONE]: userInfo[ORDER_FIELD_NAME.PHONE] || '',
-      [ORDER_FIELD_NAME.PAYMENT_METHOD]: 0,
-      [ORDER_FIELD_NAME.DELIVERY_METHOD]: '',
-      [ORDER_FIELD_NAME.DELIVERY_PRICE]: 0,
+      //   [ORDER_FIELD_NAME.PAYMENT_METHOD]: 0,
+      //   [ORDER_FIELD_NAME.DELIVERY_METHOD]: '',
+      //   [ORDER_FIELD_NAME.DELIVERY_PRICE]: 0,
+      // Поля для поиска адресса
+      [ORDER_FIELD_NAME.COUNTRY]: '',
+      [ORDER_FIELD_NAME.REGION]: '',
+      [ORDER_FIELD_NAME.CITY]: '',
+      [ORDER_FIELD_NAME.AREA]: '',
+      [ORDER_FIELD_NAME.SETTLEMENT]: '',
+      [ORDER_FIELD_NAME.STREET]: '',
+      [ORDER_FIELD_NAME.HOUSE]: '',
+      // Поля для поиска адресса
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
-      [ORDER_FIELD_NAME.DELIVERY_PRICE]: 0,
       [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
       [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: '',
     };

@@ -76,12 +76,9 @@ export function FormContainer(props) {
         );
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PRICE, price);
-          const diliveryId = formProps.values[ORDER_FIELD_NAME.DELIVERY_METHOD];
-          const method = diliveryOptions.find((p) => p.id === diliveryId);
-          formProps.setFieldValue(
-            ORDER_FIELD_NAME.DELIVERY_PRICE,
-            method?.price || 0,
-          );
+          //   const diliveryId = formProps.values[ORDER_FIELD_NAME.DELIVERY_METHOD];
+          //   const method = diliveryOptions.find((p) => p.id === diliveryId);
+          //   formProps.setFieldValue( ORDER_FIELD_NAME.DELIVERY_PRICE, method?.price || 0,);
         }, [price, formProps.values]);
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, '');
@@ -120,10 +117,10 @@ export function FormContainer(props) {
                 />
                 <CartAlert
                   discount={formProps.values[ORDER_FIELD_NAME.PROMO_DISCOUNT]}
-                  diliveryMethodError={
-                    formProps.touched[ORDER_FIELD_NAME.DELIVERY_METHOD] &&
-                    formProps.errors[ORDER_FIELD_NAME.DELIVERY_METHOD]
-                  }
+                  //   diliveryMethodError={
+                  //     formProps.touched[ORDER_FIELD_NAME.DELIVERY_METHOD] &&
+                  //     formProps.errors[ORDER_FIELD_NAME.DELIVERY_METHOD]
+                  //   }
                   userInfoError={userInfoError}
                   userInfoErrorMessage={userInfoErrorMessage}
                   userInfoSuccess={userInfoSuccess}

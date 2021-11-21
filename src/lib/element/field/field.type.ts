@@ -14,6 +14,17 @@ export interface FieldPropsType {
   disabled?: boolean;
   adaptive?: boolean;
 }
+export interface DataListFieldProps {
+  titleTid?: string;
+  placeholderTid?: string;
+  name?: string;
+  value: string;
+  error?: string;
+  onChange: Function;
+  onBlur?: Function;
+  hints: string[];
+}
+
 export interface InputPropsType {
   className?: string;
   placeholder: string;

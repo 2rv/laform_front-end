@@ -28,7 +28,7 @@ export function BasketComponent(props) {
   } = props;
   return (
     <SectionLayout>
-      <ButtonPrimary tid="Купить" onClick={createPayment} />
+      {/* <ButtonPrimary tid="Купить" onClick={createPayment} /> */}
       <Title tid="BASKET.TITLE" />
       {isEmpty ? (
         <TextSecondary tid="BASKET.CART_IS_EMPTY" />
