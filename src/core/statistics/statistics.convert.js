@@ -12,21 +12,17 @@ export const convertForChart = (rowData) => {
 };
 
 export const convertOrdersCount = (data) => {
-  return data.map(({ date, count }) => {
-    return {
-      date: formatDate(date),
-      count,
-    };
-  });
+  return data.map(({ date, count }) => ({
+    date: formatDate(date),
+    count,
+  }));
 };
 
 export const convertPrice = (data) => {
-  return data.map(({ date, price }) => {
-    return {
-      date: formatDate(date),
-      price,
-    };
-  });
+  return data.map(({ date, price }) => ({
+    date: formatDate(date),
+    price,
+  }));
 };
 
 const formatDate = (date) => {

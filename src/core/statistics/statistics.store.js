@@ -8,12 +8,31 @@ import {
 import { STATISTICS_ACTION_TYPE } from './statistics.type';
 
 const initialState = {
+  purchasedProductsCountAndPrice: initRequestState(),
   ordersCount: initRequestState(),
   price: initRequestState(),
 };
 
 export function statisticsStore(state = initialState, action) {
   switch (action.type) {
+    case STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_PENDING:
+      return {
+        ...state,
+        purchasedProductsCountAndPrice: setRequestPending(state.purchasedProductsCountAndPrice),
+      };
+    case STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_SUCCESS:
+      return {
+        ...state,
+        purchasedProductsCountAndPrice: setRequestSuccess(
+          state.purchasedProductsCountAndPrice,
+          action.payload,
+        ),
+      };
+    case STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_ERROR:
+      return {
+        ...state,
+        purchasedProductsCountAndPrice: setRequestError(state.purchasedProductsCountAndPrice, action.errorMessage),
+      };
     case STATISTICS_ACTION_TYPE.ORDERS_COUNT_PENDING:
       return {
         ...state,

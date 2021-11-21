@@ -9,4 +9,8 @@ export const STATISTICS_API = {
     ENDPOINT: ({ type, from, to }) => `/statistics/price/get?type=${type}&from=${from}&to=${to}`,
     TYPE: 'GET',
   },
+  PURCHASED_PRODUCTS_COUNT_AND_PRICE: {
+    ENDPOINT: ({ type }) => `/statistics/count-and-price/get?type=${type}`,
+    TYPE: 'GET',
+  },
 };

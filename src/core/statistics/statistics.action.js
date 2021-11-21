@@ -60,3 +60,30 @@ export function fetchPrice(query) {
     }
   };
 }
+
+export function fetchPurchasedProductsCountAndPrice(query) {
+  return async (dispatch) => {
+    dispatch({
+      type: STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: STATISTICS_API.PURCHASED_PRODUCTS_COUNT_AND_PRICE.TYPE,
+        url: STATISTICS_API.PURCHASED_PRODUCTS_COUNT_AND_PRICE.ENDPOINT(query),
+      });
+
+      dispatch({
+        type: STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_SUCCESS,
+        payload: response.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
