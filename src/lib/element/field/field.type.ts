@@ -14,15 +14,18 @@ export interface FieldPropsType {
   disabled?: boolean;
   adaptive?: boolean;
 }
-export interface DataListFieldProps {
+interface ReactSelectOptions {
+  value: string;
+  label: string;
+}
+export interface ReactSelectFieldProps {
   titleTid?: string;
   placeholderTid?: string;
-  name?: string;
-  value: string;
+  value: ReactSelectOptions;
   error?: string;
-  onChange: Function;
-  onBlur?: Function;
-  hints: string[];
+  onChange: any;
+  noResults?: any;
+  options: ReactSelectOptions[];
 }
 
 export interface InputPropsType {

@@ -28,30 +28,25 @@ export const FIND_ADRESS_ACTION_TYPE = {
   FIND_HOUSE_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_HOUSE_ERROR',
 };
 export interface FindAdreccContainerProps {
-  values: {
-    country: string;
-    region: string;
-    city: string;
-    area: string;
-    settlement: string;
-    street: string;
-    house: string;
-  };
-  handleChange: Function;
-  handleBlur: Function;
+  values: any;
+  changePostalCode: Function;
   setFieldValue: Function;
+  handleBlur: Function;
 }
 export interface FindAdreccComponentProps {
+  values: any;
   handleChange: Function;
+  findCountry: Function;
+  findCity: Function;
+  findStreet: Function;
+  findHouse: Function;
+  changePostalCode: Function;
   handleBlur: Function;
-  setFieldValue: Function;
 }
-export enum FIND_ADRESS_FIELD_NAME {
-  COUNTRY = 'country',
-  REGION = 'region',
-  CITY = 'city',
-  AREA = 'area',
-  SETTLEMENT = 'settlement',
-  STREET = 'street',
-  HOUSE = 'house',
-}
+export const FIND_ADRESS_FIELD_NAME = {
+  COUNTRY: 'country',
+  CITY: 'city',
+  STREET: 'street',
+  HOUSE: 'house',
+  POSTAL_CODE: 'postal_code',
+};

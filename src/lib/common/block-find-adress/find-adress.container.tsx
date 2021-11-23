@@ -1,109 +1,39 @@
-import { getRequestData } from 'src/main/store/store.service';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
-import { useDispatch, useSelector } from 'react-redux';
-import { FIND_ADRESS_STORE_NAME } from './find-adress.constant';
+import { useSelector } from 'react-redux';
 import { FindAdressComponent } from './find-adress.component';
-import React, { useState, useEffect } from 'react';
 import { FindAdreccContainerProps } from './find-adress.type';
-import { getCountry, getRegion } from './find-adress.action';
+import { getCountry, getCity, getStreet, getHouse } from './find-adress.action';
+import { FIND_ADRESS_FIELD_NAME } from '.';
 
 export function FindAdressContainer(props: FindAdreccContainerProps) {
-  //   const { handleChange, handleBlur } = props;
-  const dispatch = useDispatch();
-  const {
-    currentLang,
-    country,
-    region,
-    city,
-    area,
-    settlement,
-    street,
-    house,
-  } = useSelector((state: any) => ({
-    country: state[FIND_ADRESS_STORE_NAME].country,
-    region: state[FIND_ADRESS_STORE_NAME].region,
-    city: state[FIND_ADRESS_STORE_NAME].city,
-    area: state[FIND_ADRESS_STORE_NAME].area,
-    settlement: state[FIND_ADRESS_STORE_NAME].settlement,
-    street: state[FIND_ADRESS_STORE_NAME].street,
-    house: state[FIND_ADRESS_STORE_NAME].house,
+  const { setFieldValue, values, changePostalCode, handleBlur } = props;
+
+  const { currentLang } = useSelector((state: any) => ({
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  const [values, setState] = useState({
-    country: {
-      value: '',
-    },
-    region: {
-      value: '',
-    },
-    city: {
-      value: '',
-    },
-    area: {
-      value: '',
-    },
-    settlement: {
-      value: '',
-    },
-    street: {
-      value: '',
-    },
-    house: {
-      value: '',
-    },
-  });
+  const findCountry = (value: string) => getCountry(value, currentLang);
+  const findCity = (value: string) => getCity(value, values, currentLang);
+  const findStreet = (value: string) => getStreet(value, values, currentLang);
+  const findHouse = (value: string) => getHouse(value, values, currentLang);
 
-  useEffect(() => {
-    let time = setTimeout(() => {
-      if (values.country.value) {
-        dispatch(getCountry(values.country.value, currentLang));
-      }
-    }, 300);
-    return () => clearTimeout(time);
-  }, [values.country.value]);
-
-  useEffect(() => {
-    let time = setTimeout(() => {
-      if (values.region.value) {
-        dispatch(
-          getRegion(values.region.value, values.country.value, currentLang),
-        );
-      }
-    }, 300);
-    return () => clearTimeout(time);
-  }, [values.region.value]);
-
-  useEffect(() => {
-    let time = setTimeout(() => {
-      if (values.region.value) {
-        dispatch(
-          getRegion(values.region.value, values.country.value, currentLang),
-        );
-      }
-    }, 300);
-    return () => clearTimeout(time);
-  }, [values.region.value]);
-
-  function onChange(name: string) {
-    return (e: React.SyntheticEvent<HTMLInputElement>) => {
-      const copy: any = { ...values };
-      copy[name].value = e.currentTarget.value;
-      setState(copy);
-    };
-  }
+  const handleChange = (name: string) => (value: any) => {
+    if (value.postal_code) {
+      setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, value.postal_code);
+    }
+    setFieldValue(name, value);
+  };
 
   return (
     <FindAdressComponent
-      countryHints={getRequestData(country, [])}
-      regionHints={getRequestData(region, [])}
-      cityHints={getRequestData(city, [])}
-      areaHints={getRequestData(area, [])}
-      settlementHints={getRequestData(settlement, [])}
-      streetHints={getRequestData(street, [])}
-      houseHints={getRequestData(house, [])}
+      handleChange={handleChange}
       values={values}
-      handleChange={onChange}
+      findCountry={findCountry}
+      findCity={findCity}
+      findStreet={findStreet}
+      findHouse={findHouse}
+      changePostalCode={changePostalCode}
+      handleBlur={handleBlur}
     />
   );
 }

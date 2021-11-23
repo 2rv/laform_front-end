@@ -59,20 +59,7 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           error={getFieldError(ORDER_FIELD_NAME.PHONE)}
         />
-        <BlockFindAdress
-          values={{
-            country: values[ORDER_FIELD_NAME.COUNTRY],
-            region: values[ORDER_FIELD_NAME.REGION],
-            city: values[ORDER_FIELD_NAME.CITY],
-            area: values[ORDER_FIELD_NAME.AREA],
-            settlement: values[ORDER_FIELD_NAME.SETTLEMENT],
-            street: values[ORDER_FIELD_NAME.STREET],
-            house: values[ORDER_FIELD_NAME.HOUSE],
-          }}
-          handleChange={handleChange}
-          handleBlur={handleBlur}
-          setFieldValue={setFieldValue}
-        />
+        <BlockFindAdress values={values} setFieldValue={setFieldValue} />
         <FieldLayout type="double" adaptive>
           <BasicField
             titleTid="BASKET.FORM.FIELDS.TITLES.PROMO_CODE"

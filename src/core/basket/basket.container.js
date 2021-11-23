@@ -100,12 +100,10 @@ export function BasketContainer() {
       //   [ORDER_FIELD_NAME.DELIVERY_PRICE]: 0,
       // Поля для поиска адресса
       [ORDER_FIELD_NAME.COUNTRY]: '',
-      [ORDER_FIELD_NAME.REGION]: '',
       [ORDER_FIELD_NAME.CITY]: '',
-      [ORDER_FIELD_NAME.AREA]: '',
-      [ORDER_FIELD_NAME.SETTLEMENT]: '',
       [ORDER_FIELD_NAME.STREET]: '',
       [ORDER_FIELD_NAME.HOUSE]: '',
+      [ORDER_FIELD_NAME.POSTAL_CODE]: '',
       // Поля для поиска адресса
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,

@@ -5,4 +5,5 @@ export { TextareaField } from './textarea.field';
 export { MultiField } from './multi.field';
 export { FileField } from './file.field';
 export { ComplexityField } from './complexity-field';
-export { DataListField } from './data-list-field';
+export { ReactSelectField } from './search-select';
+export { AsyncReactSelect } from './async-select';

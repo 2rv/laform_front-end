@@ -1,77 +1,57 @@
-import { DataListField } from 'src/lib/element/field';
+import { AsyncReactSelect, BasicField } from 'src/lib/element/field';
 import React from 'react';
-import { FIND_ADRESS_FIELD_NAME } from './find-adress.type';
+import { FIND_ADRESS_FIELD_NAME } from '.';
+import { FindAdreccComponentProps } from './find-adress.type';
 
-export function FindAdressComponent(props: any) {
+export function FindAdressComponent(props: FindAdreccComponentProps) {
   const {
-    countryHints,
-    regionHints,
-    cityHints,
-    areaHints,
-    settlementHints,
-    streetHints,
-    houseHints,
-    values,
     handleChange,
+    values,
+    findCountry,
+    findCity,
+    findStreet,
+    findHouse,
+    changePostalCode,
+    handleBlur,
   } = props;
 
   return (
     <React.Fragment>
-      <DataListField
+      <AsyncReactSelect
         titleTid="Страна"
         placeholderTid="Выберите страну"
-        hints={countryHints}
-        value={values.country.value}
+        value={values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
         onChange={handleChange(FIND_ADRESS_FIELD_NAME.COUNTRY)}
-        name={FIND_ADRESS_FIELD_NAME.COUNTRY}
+        loadOptions={findCountry}
       />
-      <DataListField
-        titleTid="Регион"
-        placeholderTid="Выберите регион"
-        hints={regionHints}
-        value={values.region.value}
-        onChange={handleChange(FIND_ADRESS_FIELD_NAME.REGION)}
-        name={FIND_ADRESS_FIELD_NAME.REGION}
-      />
-      <DataListField
+      <AsyncReactSelect
         titleTid="Город"
         placeholderTid="Выберите город"
-        hints={cityHints}
-        value={values.city.value}
+        value={values[FIND_ADRESS_FIELD_NAME.CITY]}
         onChange={handleChange(FIND_ADRESS_FIELD_NAME.CITY)}
-        name={FIND_ADRESS_FIELD_NAME.CITY}
+        loadOptions={findCity}
       />
-      <DataListField
-        titleTid="Район региона"
-        placeholderTid="Выберите район региона"
-        hints={areaHints}
-        value={values.area.value}
-        onChange={handleChange(FIND_ADRESS_FIELD_NAME.AREA)}
-        name={FIND_ADRESS_FIELD_NAME.AREA}
-      />
-      <DataListField
-        titleTid="Населенный пункт"
-        placeholderTid="Выберите населенный пункт"
-        hints={settlementHints}
-        value={values.settlement.value}
-        onChange={handleChange(FIND_ADRESS_FIELD_NAME.SETTLEMENT)}
-        name={FIND_ADRESS_FIELD_NAME.SETTLEMENT}
-      />
-      <DataListField
+      <AsyncReactSelect
         titleTid="Улица"
         placeholderTid="Выберите улицу"
-        hints={streetHints}
-        value={values.street.value}
+        value={values[FIND_ADRESS_FIELD_NAME.STREET]}
         onChange={handleChange(FIND_ADRESS_FIELD_NAME.STREET)}
-        name={FIND_ADRESS_FIELD_NAME.STREET}
+        loadOptions={findStreet}
       />
-      <DataListField
+      <AsyncReactSelect
         titleTid="Дом"
         placeholderTid="Выберите дом"
-        hints={houseHints}
-        value={values.house.value}
+        value={values[FIND_ADRESS_FIELD_NAME.HOUSE]}
         onChange={handleChange(FIND_ADRESS_FIELD_NAME.HOUSE)}
-        name={FIND_ADRESS_FIELD_NAME.HOUSE}
+        loadOptions={findHouse}
+      />
+      <BasicField
+        titleTid="Почтовый индекс"
+        placeholderTid="Введите почтовый индекс"
+        name={FIND_ADRESS_FIELD_NAME.POSTAL_CODE}
+        value={values[FIND_ADRESS_FIELD_NAME.POSTAL_CODE]}
+        onChange={changePostalCode}
+        onBlur={handleBlur}
       />
     </React.Fragment>
   );

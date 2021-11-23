@@ -1,117 +1,119 @@
 import { httpRequest } from 'src/main/http';
-import { FIND_ADRESS_ACTION_TYPE } from './find-adress.type';
 import { FIND_ADRESS_API } from './find-adress.constant';
-
-export function getCountry(value: string, currentLang: string) {
-  return async (dispatch: Function) => {
-    dispatch({
-      type: FIND_ADRESS_ACTION_TYPE.FIND_COUNTRY_PENDING,
-    });
-    try {
-      const response = await httpRequest({
-        url: FIND_ADRESS_API.URL,
-        method: FIND_ADRESS_API.TYPE,
-        data: {
-          query: value,
-          count: 20,
-          language: currentLang,
-          from_bound: { value: 'country' },
-          to_bound: { value: 'country' },
-          locations: [
-            {
-              country_iso_code: '*',
-            },
-          ],
+import { FIND_ADRESS_FIELD_NAME } from './find-adress.type';
+export async function getCountry(value: string, currentLang: string) {
+  const response = await httpRequest({
+    url: FIND_ADRESS_API.URL,
+    method: FIND_ADRESS_API.TYPE,
+    data: {
+      query: value,
+      count: 20,
+      language: currentLang,
+      from_bound: { value: 'country' },
+      to_bound: { value: 'country' },
+      locations: [
+        {
+          country_iso_code: '*',
         },
-      });
-      dispatch({
-        type: FIND_ADRESS_ACTION_TYPE.FIND_COUNTRY_SUCCESS,
-        data: response.data.suggestions,
-      });
-    } catch (err: any) {
-      if (err.response) {
-        dispatch({
-          type: FIND_ADRESS_ACTION_TYPE.FIND_COUNTRY_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
+      ],
+    },
+  });
+  return response.data.suggestions.map((item: any) => ({
+    country: item.data.country,
+    label: item.value,
+  }));
 }
+export async function getCity(value: string, values: any, currentLang: string) {
+  const { country } = values[FIND_ADRESS_FIELD_NAME.COUNTRY];
 
-export function getRegion(value: string, country: string, currentLang: string) {
-  return async (dispatch: Function) => {
-    dispatch({
-      type: FIND_ADRESS_ACTION_TYPE.FIND_REGION_PENDING,
-    });
-    try {
-      const response = await httpRequest({
-        url: FIND_ADRESS_API.URL,
-        method: FIND_ADRESS_API.TYPE,
-        data: {
-          query: value,
-          count: 20,
-          language: currentLang,
-          from_bound: { value: 'region' },
-          to_bound: { value: 'region' },
-          locations: [
-            {
-              country: country,
-            },
-          ],
+  const response = await httpRequest({
+    url: FIND_ADRESS_API.URL,
+    method: FIND_ADRESS_API.TYPE,
+    data: {
+      query: value,
+      count: 20,
+      language: currentLang,
+      from_bound: { value: 'city' },
+      to_bound: { value: 'settlement' },
+      locations: [
+        {
+          country: country,
         },
-      });
-      dispatch({
-        type: FIND_ADRESS_ACTION_TYPE.FIND_REGION_SUCCESS,
-        data: response.data.suggestions,
-      });
-    } catch (err: any) {
-      if (err.response) {
-        dispatch({
-          type: FIND_ADRESS_ACTION_TYPE.FIND_REGION_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
+      ],
+    },
+  });
+  return response.data.suggestions.map((item: any) => ({
+    label: item.value,
+    city: item.data.city,
+    postal_code: item.data.postal_code,
+    city_fias_id: item.data.city_fias_id,
+    settlement: item.data.settlement,
+    settlement_fias_id: item.data.settlement_fias_id,
+    fullData: item,
+  }));
 }
+export async function getStreet(
+  value: string,
+  values: any,
+  currentLang: string,
+) {
+  const { city_fias_id, settlement_fias_id } =
+    values[FIND_ADRESS_FIELD_NAME.CITY];
 
-export function getCity(value: string, country: string, currentLang: string) {
-  return async (dispatch: Function) => {
-    dispatch({
-      type: FIND_ADRESS_ACTION_TYPE.FIND_REGION_PENDING,
-    });
-    try {
-      const response = await httpRequest({
-        url: FIND_ADRESS_API.URL,
-        method: FIND_ADRESS_API.TYPE,
-        data: {
-          query: 'Ле',
-          locations: [
-            {
-              region_fias_id: 'c2deb16a-0330-4f05-821f-1d09c93331e6',
-            },
-          ],
-          from_bound: {
-            value: 'city',
-          },
-          to_bound: {
-            value: 'city',
-          },
-          restrict_value: true,
+  const response = await httpRequest({
+    url: FIND_ADRESS_API.URL,
+    method: FIND_ADRESS_API.TYPE,
+    data: {
+      query: value,
+      count: 20,
+      language: currentLang,
+      from_bound: { value: 'street' },
+      to_bound: { value: 'street' },
+      locations: [
+        {
+          settlement_fias_id: settlement_fias_id,
         },
-      });
-      dispatch({
-        type: FIND_ADRESS_ACTION_TYPE.FIND_REGION_SUCCESS,
-        data: response.data.suggestions,
-      });
-    } catch (err: any) {
-      if (err.response) {
-        dispatch({
-          type: FIND_ADRESS_ACTION_TYPE.FIND_REGION_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
+        {
+          city_fias_id: city_fias_id,
+        },
+      ],
+    },
+  });
+  return response.data.suggestions.map((item: any) => ({
+    label: item.data.street,
+    postal_code: item.data.postal_code,
+    street: item.data.street,
+    street_fias_id: item.data.street_fias_id,
+    fullData: item,
+  }));
+}
+export async function getHouse(
+  value: string,
+  values: any,
+  currentLang: string,
+) {
+  const { street_fias_id } = values[FIND_ADRESS_FIELD_NAME.STREET];
+  const response = await httpRequest({
+    url: FIND_ADRESS_API.URL,
+    method: FIND_ADRESS_API.TYPE,
+    data: {
+      query: value,
+      count: 20,
+      language: currentLang,
+      from_bound: { value: 'house' },
+      to_bound: { value: 'house' },
+      locations: [
+        {
+          street_fias_id: street_fias_id,
+        },
+      ],
+    },
+  });
+  return response.data.suggestions.map((item: any) => ({
+    label: item.data.house,
+    postal_code: item.data.postal_code,
+    house: item.data.house,
+    house_fias_id: item.data.house_fias_id,
+    fullData: item,
+  }));
 }
