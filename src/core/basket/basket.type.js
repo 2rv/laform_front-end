@@ -1,10 +1,8 @@
+import { FIND_ADRESS_FIELD_NAME } from 'src/lib/common/block-find-adress';
+
 export const ORDER_FIELD_NAME = {
   FULL_NAME: 'fullName',
   EMAIL: 'email',
-  CITY: 'city',
-  DELIVERY_METHOD: 'typeOfDelivery',
-  DELIVERY_PRICE: 'deliveryPrice',
-  PAYMENT_METHOD: 'typeOfPayment',
   PHONE: 'phoneNumber',
   DESCRIPTION: 'comment',
   PROMO_CODE: 'promoCode',
@@ -12,6 +10,7 @@ export const ORDER_FIELD_NAME = {
   PRICE: 'price',
   SAVE_USER_INFO: 'saveUserInfo',
   EMAIL_CONFIRM_CODE: 'emailConfirmCode',
+  ...FIND_ADRESS_FIELD_NAME,
 };
 
 export const ORDER_DATA_NAME = {

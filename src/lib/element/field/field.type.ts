@@ -14,6 +14,20 @@ export interface FieldPropsType {
   disabled?: boolean;
   adaptive?: boolean;
 }
+interface ReactSelectOptions {
+  value: string;
+  label: string;
+}
+export interface ReactSelectFieldProps {
+  titleTid?: string;
+  placeholderTid?: string;
+  value: ReactSelectOptions;
+  error?: string;
+  onChange: any;
+  noResults?: any;
+  options: ReactSelectOptions[];
+}
+
 export interface InputPropsType {
   className?: string;
   placeholder: string;

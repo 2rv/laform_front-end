@@ -1,20 +1,58 @@
-import { BasicField } from 'src/lib/element/field';
+import { AsyncReactSelect, BasicField } from 'src/lib/element/field';
+import React from 'react';
+import { FIND_ADRESS_FIELD_NAME } from '.';
+import { FindAdreccComponentProps } from './find-adress.type';
 
-export function FindAdressComponent(props: any) {
-  const { hints, value, handleChange } = props;
+export function FindAdressComponent(props: FindAdreccComponentProps) {
+  const {
+    handleChange,
+    values,
+    findCountry,
+    findCity,
+    findStreet,
+    findHouse,
+    changePostalCode,
+    handleBlur,
+  } = props;
+
   return (
-    <div>
-      <BasicField
-        list="data"
-        titleTid="Адрес"
-        value={value}
-        onChange={handleChange}
+    <React.Fragment>
+      <AsyncReactSelect
+        titleTid="Страна"
+        placeholderTid="Выберите страну"
+        value={values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
+        onChange={handleChange(FIND_ADRESS_FIELD_NAME.COUNTRY)}
+        loadOptions={findCountry}
       />
-      <datalist id="data">
-        {hints.map((item: string, key: number) => (
-          <option value={item} key={key} />
-        ))}
-      </datalist>
-    </div>
+      <AsyncReactSelect
+        titleTid="Город"
+        placeholderTid="Выберите город"
+        value={values[FIND_ADRESS_FIELD_NAME.CITY]}
+        onChange={handleChange(FIND_ADRESS_FIELD_NAME.CITY)}
+        loadOptions={findCity}
+      />
+      <AsyncReactSelect
+        titleTid="Улица"
+        placeholderTid="Выберите улицу"
+        value={values[FIND_ADRESS_FIELD_NAME.STREET]}
+        onChange={handleChange(FIND_ADRESS_FIELD_NAME.STREET)}
+        loadOptions={findStreet}
+      />
+      <AsyncReactSelect
+        titleTid="Дом"
+        placeholderTid="Выберите дом"
+        value={values[FIND_ADRESS_FIELD_NAME.HOUSE]}
+        onChange={handleChange(FIND_ADRESS_FIELD_NAME.HOUSE)}
+        loadOptions={findHouse}
+      />
+      <BasicField
+        titleTid="Почтовый индекс"
+        placeholderTid="Введите почтовый индекс"
+        name={FIND_ADRESS_FIELD_NAME.POSTAL_CODE}
+        value={values[FIND_ADRESS_FIELD_NAME.POSTAL_CODE]}
+        onChange={changePostalCode}
+        onBlur={handleBlur}
+      />
+    </React.Fragment>
   );
 }

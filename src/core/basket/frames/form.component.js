@@ -51,26 +51,6 @@ export function FormComponent(props) {
           error={getFieldError(ORDER_FIELD_NAME.FULL_NAME)}
         />
         <BasicField
-          titleTid="BASKET.FORM.FIELDS.TITLES.CURRENT_CITY"
-          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.CURRENT_CITY"
-          name={ORDER_FIELD_NAME.CITY}
-          value={values[ORDER_FIELD_NAME.CITY]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.CITY)}
-        />
-        <BlockFindAdress />
-        <FieldSelect
-          titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_DELIVERY_METHOD"
-          defaultTid="Выберите метод доставки"
-          options={diliveryOptions}
-          name={ORDER_FIELD_NAME.DELIVERY_METHOD}
-          value={values[ORDER_FIELD_NAME.DELIVERY_METHOD]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.DELIVERY_METHOD)}
-        />
-        <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.CONTACT_PHONE_NUMBER"
           placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.CONTACT_PHONE_NUMBER"
           name={ORDER_FIELD_NAME.PHONE}
@@ -79,15 +59,7 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           error={getFieldError(ORDER_FIELD_NAME.PHONE)}
         />
-        <FieldSelect
-          titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_PAYMENT_METHOD"
-          options={paymentMethodOptions}
-          name={ORDER_FIELD_NAME.PAYMENT_METHOD}
-          value={values[ORDER_FIELD_NAME.PAYMENT_METHOD]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.PAYMENT_METHOD)}
-        />
+        <BlockFindAdress values={values} setFieldValue={setFieldValue} />
         <FieldLayout type="double" adaptive>
           <BasicField
             titleTid="BASKET.FORM.FIELDS.TITLES.PROMO_CODE"
@@ -138,3 +110,14 @@ export function FormComponent(props) {
 const Button = styled(ButtonSecondary)`
   margin-top: 19px;
 `;
+{
+  /* <FieldSelect
+          titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_PAYMENT_METHOD"
+          options={paymentMethodOptions}
+          name={ORDER_FIELD_NAME.PAYMENT_METHOD}
+          value={values[ORDER_FIELD_NAME.PAYMENT_METHOD]}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={getFieldError(ORDER_FIELD_NAME.PAYMENT_METHOD)}
+        /> */
+}

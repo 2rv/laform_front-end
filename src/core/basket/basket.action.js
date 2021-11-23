@@ -8,10 +8,10 @@ import {
   convertUserInfo,
   convertForAuth,
 } from './basket.convert';
-import { redirect } from 'src/main/navigation';
 import { convertAddToCart, convertCreateOrder } from './basket.util';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { LOGIN_ROUTE_PATH } from '../login';
+import { redirect } from 'src/main/navigation';
 
 export function getUserInfoAction() {
   return async (dispatch) => {
@@ -152,27 +152,27 @@ export function createOrderAction(values, bascketState, isAuth) {
     });
     try {
       const data = convertCreateOrder(values, bascketState);
-      const response = await httpRequest({
-        method: BASKET_API.CREATE_ORDER.TYPE,
-        url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
-        data: data,
-      });
-      if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
-        await updateUserInfoAction(values);
-      }
+      //   const response = await httpRequest({
+      //     method: BASKET_API.CREATE_ORDER.TYPE,
+      //     url: BASKET_API.CREATE_ORDER.ENDPOINT(isAuth),
+      //     data: data,
+      //   });
+      //   if (values[ORDER_FIELD_NAME.SAVE_USER_INFO] && isAuth) {
+      //     await updateUserInfoAction(values);
+      //   }
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
-      dispatch(clearBasketAction());
-      if (response.data.userExist) {
-        redirect(LOGIN_ROUTE_PATH);
-      } else if (isAuth) {
-        redirect(USER_ORDERS_ROUTE_PATH);
-      } else {
-        alert(
-          'Для просмотра списка покупок необходима авторизация, ваш пароль был отправлен на почту',
-        );
-      }
+      //   dispatch(clearBasketAction());
+      //   if (response.data.userExist) {
+      //     redirect(LOGIN_ROUTE_PATH);
+      //   } else if (isAuth) {
+      //     redirect(USER_ORDERS_ROUTE_PATH);
+      //   } else {
+      //     alert(
+      //       'Для просмотра списка покупок необходима авторизация, ваш пароль был отправлен на почту',
+      //     );
+      //   }
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -308,8 +308,7 @@ export function createPaymentAction(values, bascketState, isAuth) {
           testMode: 1,
         },
       });
-      console.log('res');
-      console.log(response);
+      window.location.href = response.data;
     } catch (error) {
       console.log(error);
     }
