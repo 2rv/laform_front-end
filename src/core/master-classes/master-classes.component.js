@@ -34,7 +34,7 @@ export function MasterClassesComponent(props) {
           items={listItems}
           onDelete={onDeleteProduct}
           admin={isAdmin}
-          emptyText="Список пустой" //TODO: change to tid
+          emptyText="OTHER.LIST_IS_EMPTY"
         />
       </InfiniteScroll>
     </SectionLayout>

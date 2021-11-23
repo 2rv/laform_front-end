@@ -26,7 +26,7 @@ export function CommentContainer(props) {
   const { id = false, type = false } = props;
 
   if (!id || type === false || type === null || type === undefined)
-    return <TextPrimary tid="Отсутствуют отзывы" />;
+    return <TextPrimary tid="COMMENTS.EMPTY_REVIEW" />;
 
   const dispatch = useDispatch();
   const { comments, create, user, isAuth } = useSelector((state) => ({

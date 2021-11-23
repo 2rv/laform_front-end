@@ -37,7 +37,10 @@ export function MasterClassProductComponent(props) {
           readOnly
         />
       )}
-      <CardListBlock items={productData.recommendations} title="Рекомендации" />
+      <CardListBlock
+        items={productData.recommendations}
+        title="MASTER_CLASSES.MASTER_CLASSES.RECOMMENDATIONS"
+      />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );

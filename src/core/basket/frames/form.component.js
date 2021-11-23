@@ -10,20 +10,30 @@ import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ORDER_FIELD_NAME } from '../basket.type';
 import { ButtonSecondary } from 'src/lib/element/button';
 import { BlockFindAdress } from 'src/lib/common/block-find-adress';
+import { TitlePrimary } from 'src/lib/element/title';
+import { TextSecondary } from 'src/lib/element/text';
+import { CartEmail } from './cart.email';
 
 export function FormComponent(props) {
   const {
-    isAuth,
     errors,
     touched,
     values,
     handleChange,
     handleBlur,
     setFieldValue,
+    //-------
+    isAuth,
     diliveryOptions,
     paymentMethodOptions,
     handleConfirmPromoCode,
     promoCodePending,
+    emailConfirmed,
+    isPending,
+    handleSendEmailCode,
+    handleConfirmEmailCode,
+    sendEmailCodePending,
+    confirmEmailCodePending,
   } = props;
 
   const getFieldError = (name) => {
@@ -31,16 +41,22 @@ export function FormComponent(props) {
   };
   return (
     <SectionLayout type="SMALL">
+      <TitlePrimary tid="BASKET.FORM.FIELDS.TITLES.CONTACT_DETAILS" />
+      <CartEmail
+        values={values}
+        errors={errors}
+        touched={touched}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
+        emailConfirmed={emailConfirmed}
+        isPending={isPending}
+        handleSendEmailCode={handleSendEmailCode}
+        handleConfirmEmailCode={handleConfirmEmailCode}
+        sendEmailCodePending={sendEmailCodePending}
+        confirmEmailCodePending={confirmEmailCodePending}
+      />
+
       <FieldLayout type="double" adaptive>
-        <BasicField
-          titleTid="BASKET.FORM.FIELDS.TITLES.EMAIL"
-          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.EMAIL"
-          name={ORDER_FIELD_NAME.EMAIL}
-          value={values[ORDER_FIELD_NAME.EMAIL]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.EMAIL)}
-        />
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.FULL_NAME"
           placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.FULL_NAME"
@@ -59,29 +75,44 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           error={getFieldError(ORDER_FIELD_NAME.PHONE)}
         />
-        <BlockFindAdress values={values} setFieldValue={setFieldValue} />
-        <FieldLayout type="double" adaptive>
-          <BasicField
-            titleTid="BASKET.FORM.FIELDS.TITLES.PROMO_CODE"
-            placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.PROMO_CODE"
-            name={ORDER_FIELD_NAME.PROMO_CODE}
-            value={values[ORDER_FIELD_NAME.PROMO_CODE]}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={getFieldError(ORDER_FIELD_NAME.PROMO_CODE)}
-          />
-          <Button
-            tid="BASKET.FORM.ACTIVATE"
-            disabled={promoCodePending}
-            onClick={() =>
-              handleConfirmPromoCode(values[ORDER_FIELD_NAME.PROMO_CODE])
-            }
-          />
-        </FieldLayout>
+      </FieldLayout>
+
+      <TitlePrimary tid="BASKET.FORM.FIELDS.TITLES.DELIVERY_DATA" />
+      <TextSecondary tid="Не нашли свой адресс? - введите его в примечаниях к заказу. (Стоит продумать)" />
+      <BlockFindAdress values={values} setFieldValue={setFieldValue} />
+      <TitlePrimary tid="BASKET.FORM.FIELDS.TITLES.ADDITIONAL" />
+
+      <TextareaField
+        titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"
+        placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
+        name={ORDER_FIELD_NAME.DESCRIPTION}
+        value={values[ORDER_FIELD_NAME.DESCRIPTION]}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={getFieldError(ORDER_FIELD_NAME.DESCRIPTION)}
+      />
+
+      <FieldLayout type="double" adaptive>
+        <BasicField
+          titleTid="BASKET.FORM.FIELDS.TITLES.PROMO_CODE"
+          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.PROMO_CODE"
+          name={ORDER_FIELD_NAME.PROMO_CODE}
+          value={values[ORDER_FIELD_NAME.PROMO_CODE]}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={getFieldError(ORDER_FIELD_NAME.PROMO_CODE)}
+        />
+        <Button
+          tid="BASKET.FORM.ACTIVATE"
+          disabled={promoCodePending}
+          onClick={() =>
+            handleConfirmPromoCode(values[ORDER_FIELD_NAME.PROMO_CODE])
+          }
+        />
         {isAuth && (
           <FieldCheckbox
-            titleTid="Сохранение данных"
-            labelTid="Cохранить данные"
+            titleTid="BASKET.FORM.FIELDS.TITLES.SAVE_DATA"
+            labelTid="BASKET.FORM.FIELDS.TITLES.SAVE_DATA"
             name={ORDER_FIELD_NAME.SAVE_USER_INFO}
             value={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
             onBlur={handleBlur}
@@ -95,29 +126,9 @@ export function FormComponent(props) {
           />
         )}
       </FieldLayout>
-      <TextareaField
-        titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"
-        placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
-        name={ORDER_FIELD_NAME.DESCRIPTION}
-        value={values[ORDER_FIELD_NAME.DESCRIPTION]}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={getFieldError(ORDER_FIELD_NAME.DESCRIPTION)}
-      />
     </SectionLayout>
   );
 }
 const Button = styled(ButtonSecondary)`
   margin-top: 19px;
 `;
-{
-  /* <FieldSelect
-          titleTid="BASKET.FORM.FIELDS.TITLES.CONVENIET_PAYMENT_METHOD"
-          options={paymentMethodOptions}
-          name={ORDER_FIELD_NAME.PAYMENT_METHOD}
-          value={values[ORDER_FIELD_NAME.PAYMENT_METHOD]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.PAYMENT_METHOD)}
-        /> */
-}

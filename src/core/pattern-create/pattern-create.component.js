@@ -33,7 +33,7 @@ export function CreatePatternComponent(props) {
     <>
       {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
       <SectionLayout>
-        <TitlePrimary tid="Создание выкройки" />
+        <TitlePrimary tid="PATTERNS.CREATE.TITLE" />
         <Formik
           initialValues={initialValues}
           validate={validation}

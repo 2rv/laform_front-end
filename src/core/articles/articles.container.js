@@ -8,26 +8,29 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { articlesUploadData, fetchCategories, fetchPostRemove } from './articles.action';
+import {
+  articlesUploadData,
+  fetchCategories,
+  fetchPostRemove,
+} from './articles.action';
 import { ARTICLES_STORE_NAME } from './articles.constant';
 import { ArticlesComponent } from './articles.component';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
 
-const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 
 export function ArticlesContainer() {
-  const { articlesState, categories, pageLoading, currentLang, user, isAuth } = useSelector(
-    (state) => ({
+  const { articlesState, categories, pageLoading, currentLang, user, isAuth } =
+    useSelector((state) => ({
       articlesState: state[ARTICLES_STORE_NAME].articlesState,
       categories: state[ARTICLES_STORE_NAME].categories,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
       isAuth: state[AUTH_STORE_NAME].logged,
-    }),
-  );
+    }));
 
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
@@ -71,8 +74,19 @@ export function ArticlesContainer() {
       errorMessage={getRequestErrorMessage(articlesState)}
       onDelete={onDeleteProduct}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
-      fetchData={() => dispatch(articlesUploadData(isAuth, { currentLang, ...filter, page: articlesState.data?.currentPage }))}
-      hasMore={Number(articlesState.data?.products?.length) < Number(articlesState.data?.totalRecords)}
+      fetchData={() =>
+        dispatch(
+          articlesUploadData(isAuth, {
+            currentLang,
+            ...filter,
+            page: articlesState.data?.currentPage,
+          }),
+        )
+      }
+      hasMore={
+        Number(articlesState.data?.products?.length) <
+        Number(articlesState.data?.totalRecords)
+      }
     />
   );
 }
@@ -98,13 +112,13 @@ export const filterOptionss = [
   },
   {
     id: 3,
-    tid: 'По алфавиту от а до я',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_A_TO_Z',
     sort: 'title',
     by: 'ASC',
   },
   {
     id: 4,
-    tid: 'По алфавиту от я до а',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
     sort: 'title',
     by: 'DESC',
   },

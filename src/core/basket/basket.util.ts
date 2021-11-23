@@ -64,7 +64,7 @@ const masterItemConvert = (data: basketStateType): TableItemType => {
     vendorCode: data.masterClassId.vendorCode,
     totalPrice: totalPrice,
     params: {
-      program: 'Удаленная',
+      program: 'BASKET.TABLE.PARAMETERS.REMOTE',
     },
   };
 };

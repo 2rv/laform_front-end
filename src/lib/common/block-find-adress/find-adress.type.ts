@@ -29,9 +29,7 @@ export const FIND_ADRESS_ACTION_TYPE = {
 };
 export interface FindAdreccContainerProps {
   values: any;
-  changePostalCode: Function;
   setFieldValue: Function;
-  handleBlur: Function;
 }
 export interface FindAdreccComponentProps {
   values: any;
@@ -40,8 +38,15 @@ export interface FindAdreccComponentProps {
   findCity: Function;
   findStreet: Function;
   findHouse: Function;
-  changePostalCode: Function;
-  handleBlur: Function;
+  findIndex: Function;
+}
+export interface adressValueType {
+  postal_code?: string;
+  house?: string;
+  street?: string;
+  city?: string;
+  settlement?: string;
+  country?: string;
 }
 export const FIND_ADRESS_FIELD_NAME = {
   COUNTRY: 'country',
@@ -49,4 +54,5 @@ export const FIND_ADRESS_FIELD_NAME = {
   STREET: 'street',
   HOUSE: 'house',
   POSTAL_CODE: 'postal_code',
+  FULL_ADRESS: 'fullAddress',
 };

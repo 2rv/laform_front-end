@@ -56,13 +56,18 @@
 		"FIELDS": {
 			"TITLES": {
 				"EMAIL": "Email",
+				"CONTACT_DETAILS": "Контактные данные",
+				"DELIVERY_DATA": "Данные для доставки",
+				"ADDITIONAL": "Дополнительное",
+				"CONFIRM_CODE": "Код подтверждения",
 				"FULL_NAME": "Укажите ваше ФИО",
 				"CURRENT_CITY": "Укажите адрес доставки",
 				"CONVENIET_DELIVERY_METHOD": "Укажите удобный способ доставки",
 				"CONTACT_PHONE_NUMBER": "Укажите контактный телефон",
 				"ORDER_NOTE": "Примечание к заказу",
 				"CONVENIET_PAYMENT_METHOD": "Укажите удобный способ оплаты",
-				"PROMO_CODE": "Промокод"
+				"PROMO_CODE": "Промокод",
+				"SAVE_DATA": "Сохранить данные"
 			},
 			"PLACEHOLDER": {
 				"EMAIL": "Укажите Email",

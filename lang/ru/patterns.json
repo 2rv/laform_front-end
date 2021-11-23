@@ -27,11 +27,12 @@
 		"DESCENDING": "По убыванию"
 	},
 	"MATERIALS": "Материалы",
+	"RECOMMENDATIONS": "Рекомендации",
 	"SEND_TO_EMAIL": "Отправить на Email",
 	"DOWNLOAD": "Скачать",
 	"FILE_HAS_ALREADY_BEN_SENT": "Файл уже был отправлен. Ожидайте.",
 	"CREATE": {
-		"TITLE": "Создание печатной выкройки",
+		"TITLE": "Создание выкройки",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Товар успешно создан",
 		"FORM": {
 			"PRICE": "Цена",

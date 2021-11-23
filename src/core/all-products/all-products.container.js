@@ -26,17 +26,20 @@ import { PATTERNS_STORE_NAME } from '../patterns';
 
 export function AllProductsContainer() {
   const dispatch = useDispatch();
-  const { products, categories, pageLoading, currentLang, user } =
-    useSelector((state) => ({
+  const { products, categories, pageLoading, currentLang, user } = useSelector(
+    (state) => ({
       products: state[ALL_PRODUCTS_STORE_NAME].products,
       categories: state[ALL_PRODUCTS_STORE_NAME].categories,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
       user: state[AUTH_STORE_NAME].user,
-    }));
+    }),
+  );
 
   const [activeTab, setActiveTab] = useState(SEWING_GOOD_TYPE);
-  const [activeTabText, setActiveTabText] = useState('ALL_PRODUCTS.TABS.SEWING_PRODUCT');
+  const [activeTabText, setActiveTabText] = useState(
+    'ALL_PRODUCTS.TABS.SEWING_PRODUCT',
+  );
   const [filter, setFilter] = useState({
     where: null,
     sort: null,
@@ -76,15 +79,43 @@ export function AllProductsContainer() {
 
   const fetchData = () => {
     if (activeTab === SEWING_GOOD_TYPE) {
-      dispatch(fetchSewingGoods({ currentLang, ...filter, page: products.data.currentPage }));
+      dispatch(
+        fetchSewingGoods({
+          currentLang,
+          ...filter,
+          page: products.data.currentPage,
+        }),
+      );
     } else if (activeTab === MASTER_CLASS_TYPE) {
-      dispatch(fetchMasterClasses({ currentLang, ...filter, page: products.data.currentPage }));
+      dispatch(
+        fetchMasterClasses({
+          currentLang,
+          ...filter,
+          page: products.data.currentPage,
+        }),
+      );
     } else if (activeTab === ELECTRONIC_PATTERN_TYPE) {
-      dispatch(fetchPatternProducts({ currentLang, ...filter, page: products.data.currentPage, type: 'electronic' }));
+      dispatch(
+        fetchPatternProducts({
+          currentLang,
+          ...filter,
+          page: products.data.currentPage,
+          type: 'electronic',
+        }),
+      );
     } else if (activeTab === PRINTED_PATTERN_TYPE) {
-      dispatch(fetchPatternProducts({ currentLang, ...filter, page: products.data.currentPage, type: 'printed' }));
+      dispatch(
+        fetchPatternProducts({
+          currentLang,
+          ...filter,
+          page: products.data.currentPage,
+          type: 'printed',
+        }),
+      );
     } else if (activeTab === POST_TYPE) {
-      dispatch(fetchPosts({ currentLang, ...filter, page: products.data.currentPage }));
+      dispatch(
+        fetchPosts({ currentLang, ...filter, page: products.data.currentPage }),
+      );
     }
   };
 
@@ -138,7 +169,10 @@ export function AllProductsContainer() {
       onDeleteProduct={onDeleteProduct}
       isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
       fetchData={fetchData}
-      hasMore={Number(products.data?.products?.length) < Number(products.data?.totalRecords)}
+      hasMore={
+        Number(products.data?.products?.length) <
+        Number(products.data?.totalRecords)
+      }
     />
   );
 }
@@ -149,30 +183,36 @@ const PRINTED_PATTERN_TYPE = 2;
 const SEWING_GOOD_TYPE = 3;
 const POST_TYPE = 4;
 
-const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+const PRODUCT_CATEGORY_FIRST_OPTION = 'ALL_PRODUCTS.SELECT_CATEGORY_ALL';
 
 export const tabs = [
   { name: 'ALL_PRODUCTS.TABS.SEWING_PRODUCT', type: SEWING_GOOD_TYPE },
   { name: 'ALL_PRODUCTS.TABS.MASTER_CLASS', type: MASTER_CLASS_TYPE },
-  { name: 'ALL_PRODUCTS.TABS.ELECTRONIC_PATTERN_PRODUCT', type: ELECTRONIC_PATTERN_TYPE },
-  { name: 'ALL_PRODUCTS.TABS.PRINTED_PATTERN_PRODUCT', type: PRINTED_PATTERN_TYPE },
+  {
+    name: 'ALL_PRODUCTS.TABS.ELECTRONIC_PATTERN_PRODUCT',
+    type: ELECTRONIC_PATTERN_TYPE,
+  },
+  {
+    name: 'ALL_PRODUCTS.TABS.PRINTED_PATTERN_PRODUCT',
+    type: PRINTED_PATTERN_TYPE,
+  },
   { name: 'ALL_PRODUCTS.TABS.POST', type: POST_TYPE },
 ];
 
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'PATTERNS.FILTER_OPTIONS.ALL',
+    tid: 'OTHERRS.CATEGORY_FILTER.ALL',
   },
   {
     id: 1,
-    tid: 'По алфавиту от а до я',
+    tid: 'OTHERRS.CATEGORY_FILTER.FROM_A_TO_Z',
     sort: 'title',
     by: 'ASC',
   },
   {
     id: 2,
-    tid: 'По алфавиту от я до а',
+    tid: 'OTHERRS.CATEGORY_FILTER.FROM_Z_TO_A',
     sort: 'title',
     by: 'DESC',
   },

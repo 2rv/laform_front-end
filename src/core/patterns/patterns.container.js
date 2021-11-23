@@ -22,7 +22,7 @@ import { PATTERNS_ROUTE_PATH } from '.';
 import { useRouter } from 'next/router';
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
-const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 
 export function PatternsContainer() {
   const patternType = useRouter().pathname.split('/')?.[2];
@@ -126,13 +126,13 @@ export const filterOptionss = [
   },
   {
     id: 1,
-    tid: 'По алфавиту от а до я',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_A_TO_Z',
     sort: 'title',
     by: 'ASC',
   },
   {
     id: 2,
-    tid: 'По алфавиту от я до а',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
     sort: 'title',
     by: 'DESC',
   },

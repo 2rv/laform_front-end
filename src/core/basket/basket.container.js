@@ -104,6 +104,7 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.STREET]: '',
       [ORDER_FIELD_NAME.HOUSE]: '',
       [ORDER_FIELD_NAME.POSTAL_CODE]: '',
+      [ORDER_FIELD_NAME.FULL_ADRESS]: {},
       // Поля для поиска адресса
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
       [ORDER_FIELD_NAME.PRICE]: 0,

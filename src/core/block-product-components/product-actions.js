@@ -50,7 +50,7 @@ export function ProductActions(props) {
         disabled={disabled()}
         tid={
           isPending
-            ? 'Подождите'
+            ? 'OTHER.WAIT'
             : isCart
             ? 'BASKET.GO_TO_BASKET'
             : 'BASKET.ADD_TO_BASKET'

@@ -1,58 +1,84 @@
-import { AsyncReactSelect, BasicField } from 'src/lib/element/field';
 import React from 'react';
+import { AsyncReactSelect } from 'src/lib/element/field';
 import { FIND_ADRESS_FIELD_NAME } from '.';
 import { FindAdreccComponentProps } from './find-adress.type';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
+import { TextPrimary } from 'src/lib/element/text';
+import styled from 'styled-components';
+import { TitlePrimary } from 'src/lib/element/title';
+import { THEME_SIZE } from 'src/lib/theme';
 
 export function FindAdressComponent(props: FindAdreccComponentProps) {
   const {
-    handleChange,
     values,
+    handleChange,
     findCountry,
     findCity,
     findStreet,
     findHouse,
-    changePostalCode,
-    handleBlur,
+    findIndex,
   } = props;
-
+  const { country, city, street, house, postal_code } =
+    values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS];
   return (
-    <React.Fragment>
-      <AsyncReactSelect
-        titleTid="Страна"
-        placeholderTid="Выберите страну"
-        value={values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
-        onChange={handleChange(FIND_ADRESS_FIELD_NAME.COUNTRY)}
-        loadOptions={findCountry}
-      />
-      <AsyncReactSelect
-        titleTid="Город"
-        placeholderTid="Выберите город"
-        value={values[FIND_ADRESS_FIELD_NAME.CITY]}
-        onChange={handleChange(FIND_ADRESS_FIELD_NAME.CITY)}
-        loadOptions={findCity}
-      />
-      <AsyncReactSelect
-        titleTid="Улица"
-        placeholderTid="Выберите улицу"
-        value={values[FIND_ADRESS_FIELD_NAME.STREET]}
-        onChange={handleChange(FIND_ADRESS_FIELD_NAME.STREET)}
-        loadOptions={findStreet}
-      />
-      <AsyncReactSelect
-        titleTid="Дом"
-        placeholderTid="Выберите дом"
-        value={values[FIND_ADRESS_FIELD_NAME.HOUSE]}
-        onChange={handleChange(FIND_ADRESS_FIELD_NAME.HOUSE)}
-        loadOptions={findHouse}
-      />
-      <BasicField
-        titleTid="Почтовый индекс"
-        placeholderTid="Введите почтовый индекс"
-        name={FIND_ADRESS_FIELD_NAME.POSTAL_CODE}
-        value={values[FIND_ADRESS_FIELD_NAME.POSTAL_CODE]}
-        onChange={changePostalCode}
-        onBlur={handleBlur}
-      />
-    </React.Fragment>
+    <SectionLayout type="SMALL">
+      <FieldLayout type="double" adaptive>
+        <AsyncReactSelect
+          titleTid="Страна"
+          placeholderTid="Выберите страну"
+          value={values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
+          onChange={handleChange(FIND_ADRESS_FIELD_NAME.COUNTRY)}
+          loadOptions={findCountry}
+        />
+        <AsyncReactSelect
+          titleTid="Город"
+          placeholderTid="Выберите город"
+          value={values[FIND_ADRESS_FIELD_NAME.CITY]}
+          onChange={handleChange(FIND_ADRESS_FIELD_NAME.CITY)}
+          loadOptions={findCity}
+          cacheOptions={false}
+        />
+        <AsyncReactSelect
+          titleTid="Улица"
+          placeholderTid="Выберите улицу"
+          value={values[FIND_ADRESS_FIELD_NAME.STREET]}
+          onChange={handleChange(FIND_ADRESS_FIELD_NAME.STREET)}
+          loadOptions={findStreet}
+          cacheOptions={false}
+        />
+        <AsyncReactSelect
+          titleTid="Дом"
+          placeholderTid="Выберите дом"
+          value={values[FIND_ADRESS_FIELD_NAME.HOUSE]}
+          onChange={handleChange(FIND_ADRESS_FIELD_NAME.HOUSE)}
+          loadOptions={findHouse}
+          cacheOptions={false}
+        />
+        <AsyncReactSelect
+          titleTid="Почтовый индекс"
+          placeholderTid="Введите город или индекс"
+          value={values[FIND_ADRESS_FIELD_NAME.POSTAL_CODE]}
+          onChange={handleChange(FIND_ADRESS_FIELD_NAME.POSTAL_CODE)}
+          loadOptions={findIndex}
+          cacheOptions={false}
+        />
+      </FieldLayout>
+      <div>
+        <TextPrimary tid="Полный адрес -" />
+        <SmallTitle
+          tid={`
+		${country ? country + ', ' : ''}
+		${city ? city + ', ' : ''}
+		${street ? street + ', ' : ''}
+		${house ? house + ', ' : ''}
+		${postal_code ? postal_code + '.' : '.'}
+		`}
+        />
+      </div>
+    </SectionLayout>
   );
 }
+
+const SmallTitle = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;

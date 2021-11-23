@@ -19,7 +19,7 @@ import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 
-const PRODUCT_CATEGORY_FIRST_OPTION = 'Все';
+const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 
 export function SewingGoodsContainer() {
   const {
@@ -104,13 +104,13 @@ export const filterOptionss = [
   },
   {
     id: 1,
-    tid: 'По алфавиту от а до я',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_A_TO_Z',
     sort: 'title',
     by: 'ASC',
   },
   {
     id: 2,
-    tid: 'По алфавиту от я до а',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
     sort: 'title',
     by: 'DESC',
   },

@@ -1,44 +1,49 @@
 {
-  "CREATING_AN_ARTICLE": "Creating an post",
-  "PHOTO_ARTICLE": "Post photo",
-  "ARTICLE_SUCCESFULLY_CREATED": "Post successfully created.",
-  "MASTER_CLASS_ARTICLE": "Master class article",
-  "FIELDS": {
-    "TITLE": {
-      "ARTICLE_NAME": "Post title",
-      "DIE": "Die",
-      "TAGS": "Tags"
-    },
-    "PLACEHOLDER": {
-      "WRITE_ARTICLE_NAME": "Enter post title",
-      "EXAMPLE_HIT": "For example - hit",
-      "WRITE_TAG": "Enter the tag"
-    }
-  },
-  "BUTTON": {
-    "CREATE_ARTICLE": "Create post",
-    "RESET": "Reset"
-  },
-  "RECOMENDATIONS": {
-    "TITLE": "Recommendations",
-    "ADD_RECOMENDATIONS": "Add recommendations",
-    "SELECT_RECOMENDATION": "Selection of recommendations",
-    "SEARCH_PRODUCT": "Find a product",
-    "FILTER_OPTIONS": {
-      "ALL": "All",
-      "STOCK": "Stock",
-      "HIT": "Hit",
-      "ASCENDING": "Ascending",
-      "DESCENDING": "Descending"
-    },
-    "TAB_ITEMS": {
-      "ALL": "All",
-      "SELECTED": "Selected",
-      "MASTER_CLASSES": "Master classes",
-      "PATTERNS_ELECTRONIC": "Patterns-electronic",
-      "PATTERNS_PRINTED": "Patterns-printed",
-      "SEWING_GOODS": "Sewing goods",
-      "ARTICLES": "Posts"
-    }
-  }
+	"CREATING_AN_ARTICLE": "Creating an post",
+	"PHOTO_ARTICLE": "Post photo",
+	"ARTICLE_SUCCESFULLY_CREATED": "Post successfully created.",
+	"ARTICLE_SUCCESFULLY_UPDATED": "Post successfully updated.",
+	"MASTER_CLASS_ARTICLE": "Master class article",
+	"FIELDS": {
+		"TITLE": {
+			"PLATE_COLOR": "Plate color",
+			"ARTICLE_NAME": "Post title",
+			"DIE": "Die",
+			"TAGS": "Tags"
+		},
+		"PLACEHOLDER": {
+			"WRITE_ARTICLE_NAME": "Enter post title",
+			"EXAMPLE_HIT": "For example - hit",
+			"WRITE_TAG": "Enter the tag"
+		}
+	},
+	"BUTTON": {
+		"CREATE_ARTICLE": "Create post",
+		"RESET": "Reset",
+		"SAVE_ARTICLE": "Save",
+		"VISIBLE": "Visibility",
+		"NOT_VISIBLE": "Not shown in the list"
+	},
+	"RECOMENDATIONS": {
+		"TITLE": "Recommendations",
+		"ADD_RECOMENDATIONS": "Add recommendations",
+		"SELECT_RECOMENDATION": "Selection of recommendations",
+		"SEARCH_PRODUCT": "Find a product",
+		"FILTER_OPTIONS": {
+			"ALL": "All",
+			"STOCK": "Stock",
+			"HIT": "Hit",
+			"ASCENDING": "Ascending",
+			"DESCENDING": "Descending"
+		},
+		"TAB_ITEMS": {
+			"ALL": "All",
+			"SELECTED": "Selected",
+			"MASTER_CLASSES": "Master classes",
+			"PATTERNS_ELECTRONIC": "Patterns-electronic",
+			"PATTERNS_PRINTED": "Patterns-printed",
+			"SEWING_GOODS": "Sewing goods",
+			"ARTICLES": "Posts"
+		}
+	}
 }

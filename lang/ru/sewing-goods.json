@@ -10,6 +10,7 @@
 	"FIELD": {
 		"FIND_SEWING_GOODS": "Найти товары для шитья"
 	},
+	"RECOMMENDATIONS": "Рекомендации",
 	"CREATE": {
 		"TITLE": "Создание товара для шитья",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Товар успешно создан",

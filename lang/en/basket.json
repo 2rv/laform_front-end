@@ -56,13 +56,18 @@
 		"FIELDS": {
 			"TITLES": {
 				"EMAIL": "Email",
+				"CONFIRM_CODE": "Confirm code",
+				"CONTACT_DETAILS": "Contact details",
+				"DELIVERY_DATA": "Delivery data",
+				"ADDITIONAL": "Additional",
 				"FULL_NAME": "Your full name",
 				"CURRENT_CITY": "Enter delivery address",
 				"CONVENIET_DELIVERY_METHOD": "Specify a convenient delivery method",
 				"CONTACT_PHONE_NUMBER": "Enter your contact phone number",
 				"ORDER_NOTE": "Order note",
 				"CONVENIET_PAYMENT_METHOD": "Specify a convenient payment method",
-				"PROMO_CODE": "Promocode"
+				"PROMO_CODE": "Promocode",
+				"SAVE_DATA": "Save data"
 			},
 			"PLACEHOLDER": {
 				"EMAIL": "Your Email",

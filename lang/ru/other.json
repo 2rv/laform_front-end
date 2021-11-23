@@ -34,5 +34,11 @@
 		"SIZE_PRICE": "Размер: {{size}}, Цена: {{price}}",
 		"COLOR_PRICE": "Цвет: {{color}}, Цена: {{price}}",
 		"PRODUCT_PRICE": "Цена товара: "
-	}
+	},
+	"CATEGORY_FILTER": {
+		"ALL": "Все",
+		"FROM_A_TO_Z": "От а до я",
+		"FROM_Z_TO_A": "От я до а"
+	},
+	"WAIT": "Подождите"
 }

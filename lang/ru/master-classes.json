@@ -3,7 +3,8 @@
 		"TITLE": "Мастер-классы",
 		"FIELD": {
 			"FIND_MASTER_CLASSES": "Найти мастер-классы"
-		}
+		},
+		"RECOMMENDATIONS": "Рекомендации"
 	},
 	"MY_MASTER_CLASSES": {
 		"TITLE": "Мои мастер-классы",
@@ -22,11 +23,14 @@
 	"CREATE": {
 		"TITLE": "Создание мастер-класса",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Мастер-класс успешно создан",
+		"PRODUCT_SUCCESSFULLY_UPDATED": "Мастер-класс успешно обновлён",
 		"FORM": {
 			"PRICE": "Цена Руб.",
 			"MASTER_CLASS_ARTICLE": "Статья мастер-класса",
 			"FIELDS": {
 				"TITLE": {
+					"VISIBILITY": "Видимость мастер-класса",
+					"NOT_VISIBILITY": "Не показан в списке",
 					"NAME": "Название товара",
 					"DICE_OF_GOODS": "Плашка",
 					"TAG": "Теги",
@@ -43,7 +47,8 @@
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Создать мастер-класс",
-				"RESET": "Сбросить"
+				"RESET": "Сбросить",
+				"SAVE": "Сохранить"
 			}
 		}
 	}

@@ -1,9 +1,10 @@
 {
-  "TABS": {
-    "SEWING_PRODUCT": "Sewing goods",
-    "MASTER_CLASS": "Master-classes",
-    "PATTERN_PRODUCT": "Patterns",
-    "POST": "Posts"
-  },
-  "CATEGORY_EMPTY": "List is empty"
+	"TABS": {
+		"SEWING_PRODUCT": "Sewing goods",
+		"MASTER_CLASS": "Master-classes",
+		"PATTERN_PRODUCT": "Patterns",
+		"POST": "Posts"
+	},
+	"SELECT_CATEGORY_ALL": "All",
+	"CATEGORY_EMPTY": "List is empty"
 }

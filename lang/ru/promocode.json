@@ -1,4 +1,5 @@
 {
-  "WRITE_PROMOCODE": "Введите промокод",
-  "ADD_PROMOCODE": "Добавить"
+	"WRITE_PROMOCODE": "Введите промокод",
+	"ADD_PROMOCODE": "Добавить",
+	"PROMOCODES": "Промокоды"
 }

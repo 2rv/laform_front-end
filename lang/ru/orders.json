@@ -1,27 +1,27 @@
 {
-  "TITLE": "Список заказов",
-  "ORDERS": "Заказы",
-  "SEARCH_BY_NUMBER": "Искать по номеру",
-  "LIST_IS_EMPTY": "Список пуст",
-  "TABLE": {
-    "HEADER": {
-      "ORDER": "Заказ",
-      "DETAILS": "Подробности",
-      "DELIVERY_DATA": "Данные доставки",
-      "TOTAL": "Итого",
-      "STATE": "Состояние"
-    },
-    "BODY": {
-      "COLOR": "Цвет",
-      "SIZE": "Размер",
-      "CATEGORY": "Категория",
-      "QUANTITY": "Количество",
-      "FORMAT": "Формат",
-      "PROGRAM": "Программа",
-      "FULL_NAME": "ФИО",
-      "CITY_AND_EXACT_DELIVERY_ADDRESS": "Город и точный адрес доставки",
-      "PAYMENT_METHOD": "Способ оплаты",
-      "PHONE": "Контактный телефон"
-    }
-  }
+	"TITLE": "Список заказов",
+	"ORDERS": "Заказы",
+	"SEARCH_BY_NUMBER": "Искать по номеру",
+	"LIST_IS_EMPTY": "Список пуст",
+	"TABLE": {
+		"HEADER": {
+			"ORDER": "Заказ",
+			"DETAILS": "Подробности",
+			"DELIVERY_DATA": "Данные доставки",
+			"TOTAL": "Итого",
+			"STATE": "Состояние"
+		},
+		"BODY": {
+			"COLOR": "Цвет",
+			"SIZE": "Размер",
+			"CATEGORY": "Категория",
+			"QUANTITY": "Количество",
+			"FORMAT": "Формат",
+			"PROGRAM": "Программа",
+			"FULL_NAME": "ФИО",
+			"CITY_AND_EXACT_DELIVERY_ADDRESS": "Город и точный адрес доставки",
+			"PAYMENT_METHOD": "Способ оплаты",
+			"PHONE": "Контактный телефон"
+		}
+	}
 }

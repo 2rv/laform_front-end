@@ -8,7 +8,7 @@ export function CartAlert(props) {
 
     userInfoError,
     userInfoErrorMessage,
-    userInfoSuccess, // нет нужды
+    userInfoSuccess,
 
     orderError,
     orderErrorMessage,

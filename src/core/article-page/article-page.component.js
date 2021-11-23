@@ -38,7 +38,10 @@ export function ArticlePageComponent(props) {
         <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
       <ReactEditorBlock data={postArticle} enableReInitialize readOnly />
-      <CardListBlock title="Рекомендации" items={recommendations} />
+      <CardListBlock
+        title="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE"
+        items={recommendations}
+      />
       <BlockComment type={type} id={id} />
     </SectionLayout>
   );

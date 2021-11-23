@@ -10,6 +10,7 @@
 	"FIELD": {
 		"FIND_SEWING_GOODS": "Find Sewing goods"
 	},
+	"RECOMMENDATIONS": "Recommendations",
 	"CREATE": {
 		"TITLE": "Creating a sewing goods",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Product successfully created",

@@ -40,12 +40,13 @@ export function AsyncReactSelect(props: any) {
     onChange,
     error,
     loadOptions,
+    cacheOptions = true,
   } = props;
   return (
     <Container>
       {titleTid && <Title tid={titleTid} />}
       <AsyncSelect
-        cacheOptions
+        cacheOptions={cacheOptions}
         styles={styles}
         value={value}
         onChange={onChange}

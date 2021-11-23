@@ -60,7 +60,9 @@ export function CreateArticleComponent(props) {
           <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_CREATED" />
         )}
         {isError && <ErrorAlert tid={errorMessage} />}
-        {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
+        {updateIsSuccess && (
+          <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_UPDATED" />
+        )}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
         <Divider />
         <DeleteProductComponent
