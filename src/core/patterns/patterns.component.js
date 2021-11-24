@@ -9,8 +9,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 export function PatternsComponent(props) {
   const {
     listItems,
-    onDeleteProduct,
-    isAdmin,
     activeTab,
     setActiveTab,
     tabItems,
@@ -42,12 +40,7 @@ export function PatternsComponent(props) {
         next={fetchData}
         hasMore={hasMore}
       >
-        <BasicCardList
-          items={listItems}
-          onDelete={onDeleteProduct}
-          admin={isAdmin}
-          emptyText="OTHER.LIST_IS_EMPTY"
-        />
+        <BasicCardList items={listItems} emptyText="OTHER.LIST_IS_EMPTY" />
       </InfiniteScroll>
     </SectionLayout>
   );

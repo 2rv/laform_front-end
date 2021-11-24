@@ -35,35 +35,6 @@ export function patternsUploadData(isAuth, query) {
     }
   };
 }
-
-export function patternsUpdateData(isAuth, query, id, body) {
-  return async (dispatch) => {
-    dispatch({
-      type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: PATTERNS_API.PATTERNS_DELETE.TYPE,
-        url: PATTERNS_API.PATTERNS_DELETE.ENDPOINT(id),
-        data: body,
-      });
-
-      dispatch({
-        type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_SUCCESS,
-      });
-      dispatch(patternsUploadData(isAuth, query));
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
 export function fetchCategories(currentLang, type) {
   return async (dispatch) => {
     dispatch({

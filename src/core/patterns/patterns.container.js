@@ -8,31 +8,24 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import {
-  patternsUploadData,
-  patternsUpdateData,
-  fetchCategories,
-} from './patterns.action';
+import { patternsUploadData, fetchCategories } from './patterns.action';
 import { PATTERNS_STORE_NAME } from './patterns.constant';
 import { PatternsComponent } from './patterns.component';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
-import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { redirect } from 'src/main/navigation';
 import { PATTERNS_ROUTE_PATH } from '.';
 import { useRouter } from 'next/router';
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
-const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
-
 export function PatternsContainer() {
   const patternType = useRouter().pathname.split('/')?.[2];
-  const { patternsState, categories, pageLoading, currentLang, user, isAuth } =
+  const { patternsState, categories, pageLoading, currentLang, isAuth } =
     useSelector((state) => ({
       patternsState: state[PATTERNS_STORE_NAME].patternsState,
       categories: state[PATTERNS_STORE_NAME].categories,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-      user: state[AUTH_STORE_NAME].user,
       isAuth: state[AUTH_STORE_NAME].logged,
     }));
   const dispatch = useDispatch();
@@ -65,10 +58,6 @@ export function PatternsContainer() {
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
   };
-  const onDeleteProduct = (id, body) => {
-    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
-    dispatch(patternsUpdateData(isAuth, { currentLang }, id, body));
-  };
   const setActiveTab = (value) => {
     dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter, type: value };
@@ -81,23 +70,23 @@ export function PatternsContainer() {
     }
   };
 
+  const onPaginationList = () => {
+    dispatch(
+      patternsUploadData(isAuth, {
+        currentLang,
+        ...filter,
+        page: patternsState.data?.currentPage,
+      }),
+    );
+  };
+
   return (
     <PatternsComponent
-      onDeleteProduct={onDeleteProduct}
-      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
       listItems={getRequestData(patternsState, {}).products}
       filterOptions={filterOptionss}
       categories={productCategories}
       handleFilter={handleFilter}
-      fetchData={() =>
-        dispatch(
-          patternsUploadData(isAuth, {
-            currentLang,
-            ...filter,
-            page: patternsState.data?.currentPage,
-          }),
-        )
-      }
+      fetchData={onPaginationList}
       hasMore={
         Number(patternsState.data?.products?.length) <
         Number(patternsState.data?.totalRecords)
@@ -114,6 +103,7 @@ export function PatternsContainer() {
   );
 }
 
+const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 export const tabItems = [
   { name: 'PATTERNS.PATTERNS.MENU.ALL', type: null },
   { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 'printed' },

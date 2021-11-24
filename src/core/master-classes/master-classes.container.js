@@ -9,34 +9,24 @@ import {
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { MASTER_CLASSES_STORE_NAME } from './master-classes.constant';
 import {
   masterClassesUploadData,
-  masterClassesUpdateData,
   fetchCategories,
 } from './master-classes.action';
 import { MasterClassesComponent } from './master-classes.component';
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 
-const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
-
 export function MasterClassesContainer() {
-  const {
-    masterClassState,
-    categories,
-    pageLoading,
-    currentLang,
-    user,
-    isAuth,
-  } = useSelector((state) => ({
-    masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
-    categories: state[MASTER_CLASSES_STORE_NAME].categories,
-    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    user: state[AUTH_STORE_NAME].user,
-    isAuth: state[AUTH_STORE_NAME].logged,
-  }));
+  const { masterClassState, categories, pageLoading, currentLang, isAuth } =
+    useSelector((state) => ({
+      masterClassState: state[MASTER_CLASSES_STORE_NAME].masterClassState,
+      categories: state[MASTER_CLASSES_STORE_NAME].categories,
+      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+      isAuth: state[AUTH_STORE_NAME].logged,
+    }));
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
 
@@ -62,28 +52,23 @@ export function MasterClassesContainer() {
     dispatch(masterClassesUploadData(isAuth, { currentLang, ...copy }));
   };
 
-  const onDeleteProduct = (id, body) => {
-    dispatch({ type: MASTER_CLASSES_ACTION_TYPE.RESET_PRODUCTS_STATE });
-    dispatch(masterClassesUpdateData(isAuth, { currentLang }, id, body));
+  const onPaginationList = () => {
+    dispatch(
+      masterClassesUploadData(isAuth, {
+        currentLang,
+        ...filter,
+        page: masterClassState.data?.currentPage,
+      }),
+    );
   };
 
   return (
     <MasterClassesComponent
       listItems={getRequestData(masterClassState, {}).products}
-      onDeleteProduct={onDeleteProduct}
       filterOptions={filterOptions}
       categories={productCategories}
       handleFilter={handleFilter}
-      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
-      fetchData={() =>
-        dispatch(
-          masterClassesUploadData(isAuth, {
-            currentLang,
-            ...filter,
-            page: masterClassState.data?.currentPage,
-          }),
-        )
-      }
+      fetchData={onPaginationList}
       hasMore={
         Number(masterClassState.data?.products?.length) <
         Number(masterClassState.data?.totalRecords)
@@ -92,6 +77,7 @@ export function MasterClassesContainer() {
   );
 }
 
+const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 export const filterOptions = [
   {
     id: 0,

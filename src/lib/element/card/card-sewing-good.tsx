@@ -75,17 +75,19 @@ export function CardSewingGood(props: CardSewingGoodType) {
           isCount={isCount}
           isLength={isLength}
         />
-        <ActionCase>
-          <LikeButton id={id} type={type} like={like} />
-          <DeleteButton
-            id={id}
-            type={type}
-            admin={admin}
-            onDelete={onDelete}
-            deleted={deleted}
-          />
-          <RemoveButton id={id} onRemove={onRemove} />
-        </ActionCase>
+        {(like === false || like === true || admin) && (
+          <ActionCase>
+            <LikeButton id={id} type={type} like={like} />
+            <DeleteButton
+              id={id}
+              type={type}
+              admin={admin}
+              onDelete={onDelete}
+              deleted={deleted}
+            />
+            <RemoveButton id={id} onRemove={onRemove} />
+          </ActionCase>
+        )}
       </ActionCase>
     </Container>
   );

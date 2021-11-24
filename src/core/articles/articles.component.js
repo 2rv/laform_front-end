@@ -12,8 +12,6 @@ export function ArticlesComponent(props) {
     filterOptions,
     categories,
     handleFilter,
-    onDelete,
-    isAdmin,
     fetchData,
     hasMore,
   } = props;
@@ -32,12 +30,7 @@ export function ArticlesComponent(props) {
         next={fetchData}
         hasMore={hasMore}
       >
-        <BasicCardList
-          items={listItems}
-          onDelete={onDelete}
-          admin={isAdmin}
-          emptyText="OTHER.LIST_IS_EMPTY"
-        />
+        <BasicCardList items={listItems} emptyText="OTHER.LIST_IS_EMPTY" />
       </InfiniteScroll>
     </SectionLayout>
   );

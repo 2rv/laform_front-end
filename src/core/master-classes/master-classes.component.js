@@ -7,11 +7,9 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 export function MasterClassesComponent(props) {
   const {
     listItems,
-    onDeleteProduct,
     filterOptions,
     categories,
     handleFilter,
-    isAdmin,
     fetchData,
     hasMore,
   } = props;
@@ -30,12 +28,7 @@ export function MasterClassesComponent(props) {
         next={fetchData}
         hasMore={hasMore}
       >
-        <BasicCardList
-          items={listItems}
-          onDelete={onDeleteProduct}
-          admin={isAdmin}
-          emptyText="OTHER.LIST_IS_EMPTY"
-        />
+        <BasicCardList items={listItems} emptyText="OTHER.LIST_IS_EMPTY" />
       </InfiniteScroll>
     </SectionLayout>
   );

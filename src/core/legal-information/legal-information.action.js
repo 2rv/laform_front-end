@@ -4,16 +4,24 @@ import { LEGAL_INFORMATION_ACTION_TYPE } from './legal-information.type';
 
 export function legalInformationUploadData(data) {
   return async (dispatch) => {
+    dispatch({
+      type: LEGAL_INFORMATION_ACTION_TYPE.LEGAL_INFORMATION_DATA_SAVE_PENDING,
+    });
+
     try {
       await httpRequest({
         method: LEGAL_INFORMATION_API.LEGAL_INFORMATION_DATA_UPLOAD.TYPE,
         url: LEGAL_INFORMATION_API.LEGAL_INFORMATION_DATA_UPLOAD.ENDPOINT,
         data,
       });
+
+      dispatch({
+        type: LEGAL_INFORMATION_ACTION_TYPE.LEGAL_INFORMATION_DATA_SAVE_SUCCESS,
+      });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: LEGAL_INFORMATION_ACTION_TYPE.LEGAL_INFORMATION_DATA_UPLOAD_ERROR,
+          type: LEGAL_INFORMATION_ACTION_TYPE.LEGAL_INFORMATION_DATA_SAVE_ERROR,
           errorMessage: err.response.data.message,
         });
       }

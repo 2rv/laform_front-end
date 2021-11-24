@@ -72,7 +72,7 @@ export function CardPattern(props: CardPatternType) {
           isCount={isCount}
           thisIsCart={Boolean(onSelect)}
         />
-        {(like || admin) && (
+        {(like === false || like === true || admin) && (
           <ActionCase>
             <LikeButton id={id} type={type} like={like} />
             <DeleteButton

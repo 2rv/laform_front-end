@@ -36,34 +36,6 @@ export function sewingGoodsUploadData(isAuth, query) {
     }
   };
 }
-export function sewingGoodsUpdateData(isAuth, query, id, body) {
-  return async (dispatch) => {
-    dispatch({
-      type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: SEWING_GOODS_API.SEWING_GOODS_DELETE.TYPE,
-        url: SEWING_GOODS_API.SEWING_GOODS_DELETE.ENDPOINT(id),
-        data: body,
-      });
-
-      dispatch({
-        type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_SUCCESS,
-      });
-      dispatch(sewingGoodsUploadData(isAuth, query));
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_UPDATE_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
 export function fetchCategories(currentLang, type) {
   return async (dispatch) => {
     dispatch({

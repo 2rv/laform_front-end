@@ -4,19 +4,28 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
-import { getRequestData, isRequestPending } from 'src/main/store/store.service';
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from '../../main/store/store.service';
 import { faqUploadData, fetchFaqData } from './faq.action';
 import { FaqComponent } from './faq.component';
 import { FAQ_STORE_NAME } from './faq.constant';
 
 export function FaqContainer() {
   const dispatch = useDispatch();
-  const { state, user, isAuth, pageLoading } = useSelector((state) => ({
-    state: state[FAQ_STORE_NAME].faq,
-    user: state[AUTH_STORE_NAME].user,
-    isAuth: state[AUTH_STORE_NAME].logged,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
+  const { state, saveState, user, isAuth, pageLoading } = useSelector(
+    (state) => ({
+      state: state[FAQ_STORE_NAME].faq,
+      saveState: state[FAQ_STORE_NAME].save,
+      user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }),
+  );
   const [editorData, setEditorData] = useState(null);
 
   useEffect(() => {
@@ -41,6 +50,10 @@ export function FaqContainer() {
 
   return (
     <FaqComponent
+      saveIsPending={isRequestPending(saveState)}
+      saveIsSuccess={isRequestSuccess(saveState)}
+      saveIsError={isRequestError(saveState)}
+      saveErrorMessage={getRequestErrorMessage(saveState)}
       faqUsUploadDataHandler={faqUsUploadDataHandler}
       faq={getRequestData(state)?.faq}
       handleChangeEditorValue={handleChangeEditorValue}

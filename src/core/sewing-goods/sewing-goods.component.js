@@ -7,8 +7,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 export function SewingGoodsComponent(props) {
   const {
     listItems,
-    onDeleteProduct,
-    isAdmin,
     filterOptions,
     categories,
     handleFilter,
@@ -30,12 +28,7 @@ export function SewingGoodsComponent(props) {
         next={fetchData}
         hasMore={hasMore}
       >
-        <BasicCardList
-          items={listItems}
-          onDelete={onDeleteProduct}
-          admin={isAdmin}
-          emptyText="OTHER.LIST_IS_EMPTY"
-        />
+        <BasicCardList items={listItems} emptyText="OTHER.LIST_IS_EMPTY" />
       </InfiniteScroll>
     </SectionLayout>
   );
