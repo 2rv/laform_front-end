@@ -1,28 +1,86 @@
 import { httpRequest } from '../../main/http';
 import { STATISTICS_API } from './statistics.constant';
 import { STATISTICS_ACTION_TYPE } from './statistics.type';
-import { convertForChart } from './statistics.convert';
+import { convertOrdersCount, convertPrice } from './statistics.convert';
 
-export function LoadDataAction() {
+export function fetchOrdersCount(query) {
   return async (dispatch) => {
     dispatch({
-      type: STATISTICS_ACTION_TYPE.LOAD_DATA_PENDING,
+      type: STATISTICS_ACTION_TYPE.ORDERS_COUNT_PENDING,
     });
 
     try {
       const response = await httpRequest({
-        method: STATISTICS_API.LOAD_DATA.TYPE,
-        url: STATISTICS_API.LOAD_DATA.ENDPOINT,
+        method: STATISTICS_API.ORDERS_COUNT.TYPE,
+        url: STATISTICS_API.ORDERS_COUNT.ENDPOINT(query),
       });
 
       dispatch({
-        type: STATISTICS_ACTION_TYPE.LOAD_DATA_SUCCESS,
-        data: response.data,
+        type: STATISTICS_ACTION_TYPE.ORDERS_COUNT_SUCCESS,
+        payload: {
+          data: convertOrdersCount(response.data[0].data),
+        },
       });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: STATISTICS_ACTION_TYPE.LOAD_DATA_ERROR,
+          type: STATISTICS_ACTION_TYPE.ORDERS_COUNT_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function fetchPrice(query) {
+  return async (dispatch) => {
+    dispatch({
+      type: STATISTICS_ACTION_TYPE.PRICE_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: STATISTICS_API.PRICE.TYPE,
+        url: STATISTICS_API.PRICE.ENDPOINT(query),
+      });
+
+      dispatch({
+        type: STATISTICS_ACTION_TYPE.PRICE_SUCCESS,
+        payload: {
+          data: convertPrice(response.data[0].data),
+        },
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: STATISTICS_ACTION_TYPE.PRICE_ERROR,
+          errorMessage: err.response.data.message,
+        });
+      }
+    }
+  };
+}
+
+export function fetchPurchasedProductsCountAndPrice(query) {
+  return async (dispatch) => {
+    dispatch({
+      type: STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_PENDING,
+    });
+
+    try {
+      const response = await httpRequest({
+        method: STATISTICS_API.PURCHASED_PRODUCTS_COUNT_AND_PRICE.TYPE,
+        url: STATISTICS_API.PURCHASED_PRODUCTS_COUNT_AND_PRICE.ENDPOINT(query),
+      });
+
+      dispatch({
+        type: STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_SUCCESS,
+        payload: response.data,
+      });
+    } catch (err) {
+      if (err.response) {
+        dispatch({
+          type: STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_ERROR,
           errorMessage: err.response.data.message,
         });
       }

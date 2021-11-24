@@ -8,30 +8,22 @@ export function SewingGoodStats(props) {
   const { statistics } = props;
   return (
     <SectionLayout>
-      <Title tid="Статистика по Товарам для шитья" />
+      <Title tid="STATISTICS.TITLES.SEWING_GOODS" />
       <Content>
         <Case>
-          <TextTitle tid="Общая прибыль" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_PROFIT" />
           <LineCase>
-            <Price price={statistics.sewingProductPrice} />
+            <Price price={statistics.totalPurchasedProductPrice} />
             &nbsp;
-            <LigthText tid="Руб." />
+            <LigthText tid="OTHER.VALUTE" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Средняя стоимость за товар" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD" />
           <LineCase>
-            <Price price={statistics.sewingProductProducts} />
+            <Price price={statistics.productsCount} />
             &nbsp;
-            <LigthText tid="Руб." />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="Всего товаров продано" />
-          <LineCase>
-            <Price price={statistics.sewingProductMean} />
-            &nbsp;
-            <LigthText tid="Шт." />
+            <LigthText tid="OTHER.AMOUNT" />
           </LineCase>
         </Case>
       </Content>

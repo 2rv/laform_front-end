@@ -8,30 +8,22 @@ export function PatternElectronicStats(props) {
   const { statistics } = props;
   return (
     <SectionLayout>
-      <Title tid="Статистика по Электронным выкройкам" />
+      <Title tid="STATISTICS.TITLES.ELECTRONIC_PATTERNS" />
       <Content>
         <Case>
-          <TextTitle tid="Общая прибыль" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_PROFIT" />
           <LineCase>
-            <Price price={statistics.patternElectronicPrice} />
+            <Price price={statistics.totalPurchasedProductPrice} />
             &nbsp;
-            <LigthText tid="Руб." />
+            <LigthText tid="OTHER.VALUTE" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Средняя стоимость за товар" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD" />
           <LineCase>
-            <Price price={statistics.patternElectronicProducts} />
+            <Price price={statistics.productsCount} />
             &nbsp;
-            <LigthText tid="Руб." />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="Всего товаров продано" />
-          <LineCase>
-            <Price price={statistics.patternElectronicMean} />
-            &nbsp;
-            <LigthText tid="Шт." />
+            <LigthText tid="OTHER.AMOUNT" />
           </LineCase>
         </Case>
       </Content>

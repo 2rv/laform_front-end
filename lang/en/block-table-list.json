@@ -16,6 +16,8 @@
 		"STATUS": "Status:",
 		"DELIVERY_METHOD": "Delivery method:",
 		"PAYMENT_METHOD": "Payment method:",
-		"PHONE": "Contact phone:"
+		"PHONE": "Contact phone:",
+		"OPTION": "Option:",
+		"LENGTH": "Length:"
 	}
 }

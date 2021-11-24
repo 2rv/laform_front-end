@@ -8,7 +8,7 @@ export function CartPrice(props) {
 
   const price = values[ORDER_FIELD_NAME.PRICE];
   const promoDiscount = values[ORDER_FIELD_NAME.PROMO_DISCOUNT];
-  const deliveryPrice = values[ORDER_FIELD_NAME.DELIVERY_PRICE];
+  const deliveryPrice = 0;
 
   const discountPrice = price - (price / 100) * promoDiscount;
   const totalPrice = Number(discountPrice) + Number(deliveryPrice);

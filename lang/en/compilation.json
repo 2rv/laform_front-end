@@ -1,25 +1,12 @@
 {
 	"TITLE": "Compilations",
-	"SUB_MENU": {
-		"BEST_GOODS": "Best products",
-		"BEST_MASTER_CLASSES": "Best master-classes",
-		"BEST_ARTICLES": "Best articles"
-	},
-	"SELECT": {
-		"TITLE": "Add compilation",
-		"PRODUCT": "Product",
-		"MASTER_CLASS": "Master-class",
-		"ARTICLE": "Article"
-	},
-	"EDIT_PRODUCT": {
-		"FIELD": {
-			"TITLE": "Name",
-			"PLACEHOLDER": "Change name"
-		},
-		"BUTTON_TITLE": "Change"
-	},
-	"MAX_BEST_PRODUCTS": "The list should contain a maximum of 3 selections of this category",
-	"ALREADY_ADDED_ON_BEST_PRODUCTS": "Already added to the best selections",
-	"ADD_TO_BEST_PRODUCT": "Add to top picks",
-	"LIST_IS_EMPTY": "The list is empty"
+	"LIST_IS_EMPTY": "List is empty",
+	"ADD_BLOCK": "Add block",
+	"ADD_PRODUCTS_IN_BLOCK": "Add products to the block",
+	"SAVE": "Save",
+	"COMPILATIONS_SUCCESSFULLY_SAVED": "Collections saved successfully",
+	"COMPILATIONS_BLOCK_SUCCESSFULLY_REMOVED": "Block successfully removed",
+	"BLOCK_NAME_TITLE": "Name",
+	"BLOCK_NAME_PLACEHOLDER": "Enter block name",
+	"ERROR_ALERT": "An error occured item not added"
 }

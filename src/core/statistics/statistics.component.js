@@ -21,7 +21,10 @@ export function StatisticstComponent(props) {
     success,
     error,
     errorMessage,
+    purchasedProductsCountAndPrice,
     statistics,
+    ordersCount,
+    price,
     pageLoading,
     activeTab,
   } = props;
@@ -29,21 +32,21 @@ export function StatisticstComponent(props) {
     <SectionLayout>
       {pageLoading && <LoaderPrimary />}
       <StatisticsTabs pageLoading={pageLoading} activeTab={activeTab} />
-      {activeTab === null && <TotalStats statistics={statistics} />}
+      {activeTab === null && <TotalStats statistics={purchasedProductsCountAndPrice} />}
       {activeTab === 'master-class' && (
-        <MasterClassStats statistics={statistics} />
+        <MasterClassStats statistics={purchasedProductsCountAndPrice} />
       )}
       {activeTab === 'pattern-print' && (
-        <PatternPrintStats statistics={statistics} />
+        <PatternPrintStats statistics={purchasedProductsCountAndPrice} />
       )}
       {activeTab === 'pattern-electronic' && (
-        <PatternElectronicStats statistics={statistics} />
+        <PatternElectronicStats statistics={purchasedProductsCountAndPrice} />
       )}
       {activeTab === 'sewing-good' && (
-        <SewingGoodStats statistics={statistics} />
+        <SewingGoodStats statistics={purchasedProductsCountAndPrice} />
       )}
-      <ChartPrice data={statistics.chartOrders} />
-      <ChartOrders data={statistics.chartOrders} />
+      <ChartPrice data={price.data} />
+      <ChartOrders data={ordersCount.data} />
     </SectionLayout>
   );
 }

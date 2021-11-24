@@ -3,6 +3,7 @@
 	"CART_IS_EMPTY": "В вашей корзинов ещё ничего нет",
 	"GO_TO_BASKET": "Зайти в корзину",
 	"ADD_TO_BASKET": "Добавить в корзину",
+	"ALERT": "Для просмотра списка покупок необходима авторизация, ваш пароль был отправлен на почту",
 	"HEADERS_GOODS": {
 		"SEWING_GOODS": "Товары для шитья",
 		"PARAMETERS": "Параметры",
@@ -56,13 +57,18 @@
 		"FIELDS": {
 			"TITLES": {
 				"EMAIL": "Email",
+				"CONTACT_DETAILS": "Контактные данные",
+				"DELIVERY_DATA": "Данные для доставки",
+				"ADDITIONAL": "Дополнительное",
+				"CONFIRM_CODE": "Код подтверждения",
 				"FULL_NAME": "Укажите ваше ФИО",
 				"CURRENT_CITY": "Укажите адрес доставки",
 				"CONVENIET_DELIVERY_METHOD": "Укажите удобный способ доставки",
 				"CONTACT_PHONE_NUMBER": "Укажите контактный телефон",
 				"ORDER_NOTE": "Примечание к заказу",
 				"CONVENIET_PAYMENT_METHOD": "Укажите удобный способ оплаты",
-				"PROMO_CODE": "Промокод"
+				"PROMO_CODE": "Промокод",
+				"SAVE_DATA": "Сохранить данные"
 			},
 			"PLACEHOLDER": {
 				"EMAIL": "Укажите Email",
@@ -96,6 +102,7 @@
 		"PROMO_CODE_SUCCESS": "Промокод на {{discount}}% успешно применён",
 		"FORM_SEND_SUCCESS": "Заказ успешно сформирован",
 		"EMAIL_CODE_SENT_SUCCESS": "Код успешно отправлен. Вы можете заново отправить код.",
-		"EMAIL_VERIFICATED_SUCCESS": "Почта успешно подтверждена"
+		"EMAIL_VERIFICATED_SUCCESS": "Почта успешно подтверждена",
+		"SELECT_DELIVERY_METHOD": "Необходимо выбрать способ доставки"
 	}
 }

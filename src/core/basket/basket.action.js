@@ -8,10 +8,11 @@ import {
   convertUserInfo,
   convertForAuth,
 } from './basket.convert';
-import { redirect } from 'src/main/navigation';
 import { convertAddToCart, convertCreateOrder } from './basket.util';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { LOGIN_ROUTE_PATH } from '../login';
+import { redirect } from 'src/main/navigation';
+import { text } from 'src/lib/common/text';
 
 export function getUserInfoAction() {
   return async (dispatch) => {
@@ -169,9 +170,7 @@ export function createOrderAction(values, bascketState, isAuth) {
       } else if (isAuth) {
         redirect(USER_ORDERS_ROUTE_PATH);
       } else {
-        alert(
-          'Для просмотра списка покупок необходима авторизация, ваш пароль был отправлен на почту',
-        );
+        alert(text('BASKET.ALERT'));
       }
     } catch (err) {
       if (err.response) {
@@ -308,8 +307,7 @@ export function createPaymentAction(values, bascketState, isAuth) {
           testMode: 1,
         },
       });
-      console.log('res');
-      console.log(response);
+      window.location.href = response.data;
     } catch (error) {
       console.log(error);
     }

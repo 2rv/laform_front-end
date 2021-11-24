@@ -126,8 +126,8 @@ export function FormComponent(props) {
         />
 
         <FieldCheckbox
-          titleTid="Видимость мастер-класса"
-          labelTid="Не показан в списке"
+          titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
+          labelTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.NOT_VISIBILITY"
           name={CREATE_MASTER_CLASS_FIELD_NAME.DELETED}
           value={values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
           checked={values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
@@ -136,7 +136,10 @@ export function FormComponent(props) {
         />
         <FieldLayout type="double" adaptive>
           {isEdit ? (
-            <ButtonPrimary type="submit" tid="Сохранить" />
+            <ButtonPrimary
+              type="submit"
+              tid="MASTER_CLASSES.CREATE.FORM.BUTTON.SAVE"
+            />
           ) : (
             <ButtonPrimary
               type="submit"

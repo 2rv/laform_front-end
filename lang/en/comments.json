@@ -1,11 +1,12 @@
 {
-  "REVIEWS": "Reviews",
-  "WRITE_REVIEW": "Write review",
-  "REPLY_USER": "Reply user -",
-  "CANCEL": "Cancel",
-  "WRITE_YOUR_REVIEW": "Write your review",
-  "NO_REVIEWS": "No reviews",
-  "WRITE_MESSAGE": "Write message",
-  "CLOSE": "Close",
-  "OPEN": "Open"
+	"REVIEWS": "Reviews",
+	"WRITE_REVIEW": "Write review",
+	"REPLY_USER": "Reply user -",
+	"CANCEL": "Cancel",
+	"WRITE_YOUR_REVIEW": "Write your review",
+	"NO_REVIEWS": "No reviews",
+	"WRITE_MESSAGE": "Write message",
+	"CLOSE": "Close",
+	"OPEN": "Open",
+	"EMPTY_REVIEW": "Empty review"
 }

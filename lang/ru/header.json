@@ -1,42 +1,44 @@
 {
-  "MENU_ITEMS": {
-    "PATTERNS": "Выкройки",
-    "SEWING_GOODS": "Товары для шитья",
-    "MASTER_CLASSES": "Мастер-классы",
-    "ARTICLES": "Блог",
-    "HELP": "Помощь",
-    "ABOUT_US": "О нас"
-  },
-  "MENU_ACTION": {
-    "LOGIN": "Вход",
-    "OR": "или",
-    "SIGNUP": "регистрация"
-  },
-  "USER_MENU": {
-    "MY_PURCHASES": "Мои покупки",
-    "MY_ORDERS": "Мои заказы",
-    "FAVORITE": "Список избранного",
-    "PURCHASED_PATTERNS": "Купленные выкройки",
-    "ORDERS_lIST": "Список заказов",
-    "PURCHASE_HISTORY": "История покупок",
-    "SETTINGS": "Настройки"
-  },
-  "ADMIN_MENU": {
-    "MASTER_CLASS_ARTICLE_CREATING": "Создание мастер-класса",
-    "PRINTED_PATTERN_CREATING": "Создание печатной выкройки",
-    "ELECTRONIC_PATTERNS_CREATING": "Создание электронной выкройки",
-    "SEWING_GOODS_CREATING": "Создание товара для шитья",
-    "ARTICLE_CREATING": "Создание поста",
-    "NOTIFICATION_CREATING": "Создание уведомления",
-    "USERS_LIST": "Список пользователей",
-    "ORDERS_TABLE": "Таблица заказов",
-    "ORDERS_lIST": "Список заказов",
-    "BEST_PRODUCTS": "Лучшие товары",
-    "SLIDER": "Слайдер",
-    "PROMOCODES": "Промокоды",
-    "CREATE_DELIVERY_TYPE": "Создать способ доставки",
-    "ALL_PRODUCTS": "Все продукты",
-    "STATISTICS": "Статистика",
-    "RECENT_COMMENTS": "Недавние комментарии"
-  }
+	"MENU_ITEMS": {
+		"PATTERNS": "Выкройки",
+		"SEWING_GOODS": "Товары для шитья",
+		"MASTER_CLASSES": "Мастер-классы",
+		"ARTICLES": "Блог",
+		"HELP": "Помощь",
+		"ABOUT_US": "О нас"
+	},
+	"MENU_ACTION": {
+		"LOGIN": "Вход",
+		"OR": "или",
+		"SIGNUP": "регистрация"
+	},
+	"USER_MENU": {
+		"HOME": "Домашняя",
+		"HELP": "Помощь",
+		"MY_PURCHASES": "Мои покупки",
+		"MY_ORDERS": "Мои заказы",
+		"FAVORITE": "Список избранного",
+		"PURCHASED_PATTERNS": "Купленные выкройки",
+		"ORDERS_lIST": "Список заказов",
+		"PURCHASE_HISTORY": "История покупок",
+		"SETTINGS": "Настройки"
+	},
+	"ADMIN_MENU": {
+		"TITLE": "Панель администратора",
+		"MASTER_CLASS_ARTICLE_CREATING": "Создание мастер-класса",
+		"PATTERN_CREATING": "Создание выкройки",
+		"SEWING_GOODS_CREATING": "Создание товара для шитья",
+		"ARTICLE_CREATING": "Создание поста",
+		"NOTIFICATION_CREATING": "Создание уведомления",
+		"USERS_LIST": "Список пользователей",
+		"ORDERS_TABLE": "Таблица заказов",
+		"ORDERS_lIST": "Список заказов",
+		"BEST_PRODUCTS": "Лучшие товары",
+		"SLIDER": "Слайдер",
+		"PROMOCODES": "Промокоды",
+		"CREATE_DELIVERY_TYPE": "Создать способ доставки",
+		"ALL_PRODUCTS": "Все продукты",
+		"STATISTICS": "Статистика",
+		"RECENT_COMMENTS": "Недавние комментарии"
+	}
 }

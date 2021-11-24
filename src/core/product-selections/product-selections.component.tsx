@@ -46,9 +46,13 @@ export function ProductSelectionsComponent(
         }}
       </Formik>
       {(uploadPending || deletePending) && <LoaderPrimary />}
-      {uploadSuccess && <SuccessAlert tid="Подборки успешно сохранены" />}
+      {uploadSuccess && (
+        <SuccessAlert tid="COMPILATION.COMPILATIONS_SUCCESSFULLY_SAVED" />
+      )}
       {uploadError && <ErrorAlert tid={uploadErrorMessage} />}
-      {deleteSuccess && <SuccessAlert tid="Блок успешно удалён" />}
+      {deleteSuccess && (
+        <SuccessAlert tid="COMPILATION.COMPILATIONS_BLOCK_SUCCESSFULLY_REMOVED" />
+      )}
       {deleteError && <ErrorAlert tid={deleteErrorMessage} />}
     </SectionLayout>
   );

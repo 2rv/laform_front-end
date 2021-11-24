@@ -1,27 +1,27 @@
 {
-  "TITLE": "Orders list",
-  "ORDERS": "Orders",
-  "SEARCH_BY_NUMBER": "Search by order number",
-  "LIST_IS_EMPTY": "The list is empty",
-  "TABLE": {
-    "HEADER": {
-      "ORDER": "Order",
-      "DETAILS": "Details",
-      "DELIVERY_DATA": "Delivery data",
-      "TOTAL": "Total",
-      "STATE": "State"
-    },
-    "BODY": {
-      "COLOR": "Color",
-      "SIZE": "Size",
-      "CATEGORY": "Category",
-      "QUANTITY": "Quantity",
-      "FORMAT": "Format",
-      "PROGRAM": "Program",
-      "FULL_NAME": "Full name",
-      "CITY_AND_EXACT_DELIVERY_ADDRESS": "City and exact delivery address",
-      "PAYMENT_METHOD": "Payment method",
-      "PHONE": "Contact phone"
-    }
-  }
+	"TITLE": "Orders list",
+	"ORDERS": "Orders",
+	"SEARCH_BY_NUMBER": "Search by order number",
+	"LIST_IS_EMPTY": "The list is empty",
+	"TABLE": {
+		"HEADER": {
+			"ORDER": "Order",
+			"DETAILS": "Details",
+			"DELIVERY_DATA": "Delivery data",
+			"TOTAL": "Total",
+			"STATE": "State"
+		},
+		"BODY": {
+			"COLOR": "Color",
+			"SIZE": "Size",
+			"CATEGORY": "Category",
+			"QUANTITY": "Quantity",
+			"FORMAT": "Format",
+			"PROGRAM": "Program",
+			"FULL_NAME": "Full name",
+			"CITY_AND_EXACT_DELIVERY_ADDRESS": "City and exact delivery address",
+			"PAYMENT_METHOD": "Payment method",
+			"PHONE": "Contact phone"
+		}
+	}
 }

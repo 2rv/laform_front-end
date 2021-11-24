@@ -61,7 +61,9 @@ export function CreateMasterClassComponent(props) {
           <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
         )}
         {isError && <ErrorAlert tid={errorMessage} />}
-        {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
+        {updateIsSuccess && (
+          <SuccessAlert tid="MASTER_CLASSES.CREATE.SUCCESSFULLY_UPDATED" />
+        )}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
         <Divider />
         <DeleteProductComponent

@@ -8,7 +8,7 @@ export function CartAlert(props) {
 
     userInfoError,
     userInfoErrorMessage,
-    userInfoSuccess, // нет нужды
+    userInfoSuccess,
 
     orderError,
     orderErrorMessage,
@@ -42,7 +42,7 @@ export function CartAlert(props) {
         />
       )}
       {diliveryMethodError && (
-        <ErrorAlert tid="Необходимо выбрать способ доставки" />
+        <ErrorAlert tid="BASKET.FORM.SELECT_DELIVERY_METHOD" />
       )}
       {sendEmailCodeError && <ErrorAlert tid={sendEmailCodeErrorMessage} />}
       {sendEmailCodeSuccess && (

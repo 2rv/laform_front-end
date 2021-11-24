@@ -48,7 +48,7 @@ export function FormComponent(props) {
             onBlur={handleBlur}
           />
           <ModifierBlock
-            colorTitleTid="Цвет плашки"
+            colorTitleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.PLATE_COLOR"
             titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.DIE"
             placeholderTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.EXAMPLE_HIT"
             values={values}
@@ -62,7 +62,7 @@ export function FormComponent(props) {
         </FieldLayout>
         <BlockCategories values={values} handleBlur={handleBlur} type={4} />
         <ReactEditorBlock
-          titleTid="Пост"
+          titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.POST"
           handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
           data={isEdit && values[ARTICLE_FIELD_NAME.ARTICLE]}
           minHeight={100}
@@ -75,8 +75,8 @@ export function FormComponent(props) {
         />
 
         <FieldCheckbox
-          titleTid="Видимость статьи"
-          labelTid="Не показан в списке"
+          titleTid="ARTICLE_CREATE_FORM.BUTTON.VISIBLE"
+          labelTid="ARTICLE_CREATE_FORM.BUTTON.NOT_VISIBLE"
           name={ARTICLE_FIELD_NAME.DELETED}
           value={values[ARTICLE_FIELD_NAME.DELETED]}
           checked={values[ARTICLE_FIELD_NAME.DELETED]}
@@ -85,7 +85,10 @@ export function FormComponent(props) {
         />
         <FieldLayout type="double" adaptive>
           {isEdit ? (
-            <ButtonPrimary type="submit" tid="Сохранить" />
+            <ButtonPrimary
+              type="submit"
+              tid="ARTICLE_CREATE_FORM.BUTTON.SAVE_ARTICLE"
+            />
           ) : (
             <ButtonPrimary
               type="submit"

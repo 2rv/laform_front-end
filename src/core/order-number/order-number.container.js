@@ -96,8 +96,8 @@ export function OrderNumberContainer() {
 }
 
 const headersTable = [
-  'Товары заказа',
-  'Параметры',
-  'Количество',
-  'Итоговая цена',
+  'ORDER_NUMBER.TABLE.HEADER.ORDER_ITEMS',
+  'ORDER_NUMBER.TABLE.HEADER.PARAMETERS',
+  'ORDER_NUMBER.TABLE.HEADER.QUANTITY',
+  'ORDER_NUMBER.TABLE.HEADER.TOTAL_PRICE',
 ];

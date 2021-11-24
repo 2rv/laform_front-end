@@ -37,7 +37,10 @@ export function PatternsProductComponent(props) {
           readOnly
         />
       )}
-      <CardListBlock items={productData.recommendations} title="Рекомендации" />
+      <CardListBlock
+        items={productData.recommendations}
+        title="PATTERNS.RECOMMENDATIONS"
+      />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );

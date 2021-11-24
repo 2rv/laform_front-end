@@ -27,12 +27,14 @@
 		"DESCENDING": "По убыванию"
 	},
 	"MATERIALS": "Материалы",
+	"RECOMMENDATIONS": "Рекомендации",
 	"SEND_TO_EMAIL": "Отправить на Email",
 	"DOWNLOAD": "Скачать",
 	"FILE_HAS_ALREADY_BEN_SENT": "Файл уже был отправлен. Ожидайте.",
 	"CREATE": {
-		"TITLE": "Создание печатной выкройки",
+		"TITLE": "Создание выкройки",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Товар успешно создан",
+		"PRODUCT_SUCCESSFULLY_UPDATED": "Товар успешно изменен",
 		"FORM": {
 			"PRICE": "Цена",
 			"MATERIALS": "Материалы",
@@ -44,20 +46,25 @@
 					"PRODUCT_CATEGORIES": "Категории товара",
 					"DESCRIPTION": "Описание товара",
 					"PRODUCT_QUANTITY": "Количество товара (единиц)",
-					"DISCOUNT": "Скидка (%)"
+					"DISCOUNT": "Скидка (%)",
+					"TYPE": "Тип выкройки",
+					"VISIBILITY": "Видимость"
 				},
 				"PLACEHOLDER": {
 					"NAME": "Введите название товара",
 					"DICE_OF_GOODS": "Введите плашку товара",
 					"PRODUCT_CATEGORIES": "Введите категории товара",
 					"DESCRIPTION": "Полное описание товара",
-					"PRODUCT_QUANTITY": "Введите количество товара"
+					"PRODUCT_QUANTITY": "Введите количество товара",
+					"TYPE": "Электронный",
+					"VISIBILITY": "Показан в списке"
 				}
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Создать товар",
 				"CANCEL": "Отменить",
-				"RESET": "Сбросить"
+				"RESET": "Сбросить",
+				"SAVE": "Сохранить"
 			}
 		}
 	},

@@ -32,10 +32,10 @@ export function CompilationArray(props: CompilationArrayProps) {
           })}
           <FieldLayout type="double" adaptive>
             <ButtonSecondary
-              tid="Добавить блок"
+              tid="COMPILATION.ADD_BLOCK"
               onClick={() => push(initialBlock)}
             />
-            <ButtonPrimary tid="Сохранить" type="submit" />
+            <ButtonPrimary tid="COMPILATION.SAVE" type="submit" />
           </FieldLayout>
         </SectionLayout>
       )}

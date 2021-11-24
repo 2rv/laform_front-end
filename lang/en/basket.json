@@ -3,6 +3,7 @@
 	"CART_IS_EMPTY": "There is nothing in your shopping cart yet.",
 	"GO_TO_BASKET": "Go to Basket",
 	"ADD_TO_BASKET": "Add to Basket",
+	"ALERT": "To view the list of purchases, authorization is required, your password has been sent to the mail",
 	"HEADERS_GOODS": {
 		"SEWING_GOODS": "Sewing goods",
 		"PARAMETERS": "Parameters",
@@ -56,13 +57,18 @@
 		"FIELDS": {
 			"TITLES": {
 				"EMAIL": "Email",
+				"CONFIRM_CODE": "Confirm code",
+				"CONTACT_DETAILS": "Contact details",
+				"DELIVERY_DATA": "Delivery data",
+				"ADDITIONAL": "Additional",
 				"FULL_NAME": "Your full name",
 				"CURRENT_CITY": "Enter delivery address",
 				"CONVENIET_DELIVERY_METHOD": "Specify a convenient delivery method",
 				"CONTACT_PHONE_NUMBER": "Enter your contact phone number",
 				"ORDER_NOTE": "Order note",
 				"CONVENIET_PAYMENT_METHOD": "Specify a convenient payment method",
-				"PROMO_CODE": "Promocode"
+				"PROMO_CODE": "Promocode",
+				"SAVE_DATA": "Save data"
 			},
 			"PLACEHOLDER": {
 				"EMAIL": "Your Email",
@@ -96,6 +102,7 @@
 		"PROMO_CODE_SUCCESS": "Promo code {{discount}}% successfully applied",
 		"FORM_SEND_SUCCESS": "Order has been successfully completed",
 		"EMAIL_CODE_SENT_SUCCESS": "The code was sent successfully. You can resend the code.",
-		"EMAIL_CONFIRMED_SUCCESS": "Email confirmed successfully"
+		"EMAIL_CONFIRMED_SUCCESS": "Email confirmed successfully",
+		"SELECT_DELIVERY_METHOD": "You must select a delivery method"
 	}
 }

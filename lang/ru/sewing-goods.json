@@ -10,9 +10,11 @@
 	"FIELD": {
 		"FIND_SEWING_GOODS": "Найти товары для шитья"
 	},
+	"RECOMMENDATIONS": "Рекомендации",
 	"CREATE": {
 		"TITLE": "Создание товара для шитья",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Товар успешно создан",
+		"PRODUCT_SUCCESSFULLY_UPDATED": "Товар успешно обновлён",
 		"FORM": {
 			"PRICE": "Цена",
 			"FIELDS": {
@@ -22,20 +24,27 @@
 					"PRODUCT_CATEGORIES": "Категории товара",
 					"DESCRIPTION": "Описание товара",
 					"PRODUCT_QUANTITY": "Количество товара (единиц)",
-					"DISCOUNT": "Скидка (%)"
+					"DISCOUNT": "Скидка (%)",
+					"QUANTITY": "Количество",
+					"LENGTH": "Длинна",
+					"VISIBILITY": "Видимость товара"
 				},
 				"PLACEHOLDER": {
 					"NAME": "Введите название товара",
 					"DICE_OF_GOODS": "Введите плашку товара",
 					"PRODUCT_CATEGORIES": "Введите категории товара",
 					"DESCRIPTION": "Полное описание товара",
-					"PRODUCT_QUANTITY": "Введите количество товара"
+					"PRODUCT_QUANTITY": "Введите количество товара",
+					"QUANTITY": "Наличие количества",
+					"LENGTH": "Наличие длины",
+					"VISIBILITY": "Не показан в списке"
 				}
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Создать товар",
 				"CANCEL": "Отменить",
-				"RESET": "Сбросить"
+				"RESET": "Сбросить",
+				"SAVE": "Сохранить"
 			}
 		}
 	}

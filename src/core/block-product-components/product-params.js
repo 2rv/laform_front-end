@@ -33,7 +33,7 @@ export function ProductParams(props) {
       <Container>
         {Boolean(option) && (
           <div>
-            <TextSecondary tid="Опция" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.OPTION" />
             &nbsp;
             <TextPrimary tid={option} />
           </div>
@@ -82,7 +82,7 @@ export function ProductParams(props) {
         )}
         {Boolean(length) && (
           <div>
-            <TextSecondary tid="Длинна" />
+            <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.LENGTH" />
             &nbsp;
             <TextPrimary tid={length} />
           </div>

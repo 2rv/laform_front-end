@@ -3,6 +3,7 @@
 	"SELECT": "Select",
 	"SELECTED": "Selected",
 	"VALUTE": "rub.",
+	"AMOUNT": "Amount",
 	"PURCHASED": "Purchased",
 	"NO_INFORMATION_ABOUT_PARAMETERS": "There is no information about the parameters of the product",
 	"ARE_YOU_SURE_TO_DISABLE_PRODUCT": "Are you sure you want to disable this produkt?",
@@ -34,5 +35,11 @@
 		"SIZE_PRICE": "Size: {{size}}, Price: {{price}}",
 		"COLOR_PRICE": "Color: {{color}}, Price: {{price}}",
 		"PRODUCT_PRICE": "Price товара: "
-	}
+	},
+	"CATEGORY_FILTER": {
+		"ALL": "All",
+		"FROM_A_TO_Z": "From a to z",
+		"FROM_Z_TO_A": "From z to a"
+	},
+	"WAIT": "Wait"
 }

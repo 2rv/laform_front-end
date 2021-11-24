@@ -28,7 +28,10 @@ export function SewingGoodsProductComponent(props) {
           <ProductMainComponent {...productData} />
         </Content>
       </SectionLayout>
-      <CardListBlock items={productData.recommendations} title="Рекомендации" />
+      <CardListBlock
+        items={productData.recommendations}
+        title="SEWING_GOODS.RECOMMENDATIONS"
+      />
       <BlockComment type={productData.type} id={productData.id} />
     </SectionLayout>
   );

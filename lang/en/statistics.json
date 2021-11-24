@@ -1,0 +1,24 @@
+{
+	"TITLES": {
+		"TOTAL": "Total stats",
+		"MASTER_CLASS": "Statistics master classes",
+		"ELECTRONIC_PATTERNS": "Statistics electronic sewing patterns",
+		"PRINT_PATTERNS": "Statistics of printed patterns",
+		"SEWING_GOODS": "Sewing products statistics"
+	},
+	"PARAMETERS": {
+		"TOTAL_PROFIT": "Total profit",
+		"TOTAL_ITEM_SOLD": "Total items sold",
+		"AVERAGE_COST_PER_ORDER": "Average cost per order",
+		"TOTAL_ORDERS": "Total orders",
+		"TOTAL_ELECTRONIC_GOODS_SOLD": "Total electronic goods sold",
+		"TOTAL_SOLD_MATERIAL_GOODS": "Total printed items sold"
+	},
+	"TABS": {
+		"TOTAL": "General",
+		"MASTER_CLASS": "Master classes",
+		"ELECTRONIC_PATTERNS": "Electronic patterns",
+		"PRINT_PATTERNS": "Printed patterns",
+		"SEWING_GOODS": "Sewing supplies"
+	}
+}

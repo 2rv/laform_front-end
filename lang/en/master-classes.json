@@ -3,7 +3,8 @@
 		"TITLE": "Master-classes",
 		"FIELD": {
 			"FIND_MASTER_CLASSES": "Find Master-class"
-		}
+		},
+		"RECOMMENDATIONS": "Recommendations"
 	},
 	"MY_MASTER_CLASSES": {
 		"TITLE": "My Master-classes",
@@ -22,11 +23,14 @@
 	"CREATE": {
 		"TITLE": "Creation of a master class",
 		"PRODUCT_SUCCESSFULLY_CREATED": "The master class has been successfully created",
+		"PRODUCT_SUCCESSFULLY_UPDATED": "The master class has been successfully updates",
 		"FORM": {
 			"PRICE": "Price Rub.",
 			"MASTER_CLASS_ARTICLE": "Master-class article",
 			"FIELDS": {
 				"TITLE": {
+					"VISIBILITY": "Visibility",
+					"NOT_VISIBILITY": "Not shown in the list",
 					"NAME": "Product name",
 					"DICE_OF_GOODS": "Dice of goods",
 					"TAG": "Tags",
@@ -43,7 +47,8 @@
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Create a master class",
-				"RESET": "Reset"
+				"RESET": "Reset",
+				"SAVE": "Save"
 			}
 		}
 	}

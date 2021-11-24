@@ -31,7 +31,7 @@ export function CompilationModal(props: CompilationModalProps) {
             <BasicCardList
               items={listItems}
               onSelect={handleAdd}
-              emptyText="Список пустой"
+              emptyText="COMPILATION.LIST_IS_EMPTY"
             />
           </Wrapper>
         </Case>

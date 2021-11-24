@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
 import { SectionLayout, FieldLayout } from '../../../lib/element/layout';
-import { TitlePrimary } from '../../../lib/element/title';
 import { ButtonPrimary } from '../../../lib/element/button';
 import { FormComponent } from './form.component';
 import { CartPrice } from './cart.price';
@@ -9,7 +8,6 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { useEffect } from 'react';
 import { CartAlert } from './cart.alert';
-import { CartActions } from './cart.actions';
 
 export function FormContainer(props) {
   const {
@@ -76,12 +74,9 @@ export function FormContainer(props) {
         );
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PRICE, price);
-          const diliveryId = formProps.values[ORDER_FIELD_NAME.DELIVERY_METHOD];
-          const method = diliveryOptions.find((p) => p.id === diliveryId);
-          formProps.setFieldValue(
-            ORDER_FIELD_NAME.DELIVERY_PRICE,
-            method?.price || 0,
-          );
+          //   const diliveryId = formProps.values[ORDER_FIELD_NAME.DELIVERY_METHOD];
+          //   const method = diliveryOptions.find((p) => p.id === diliveryId);
+          //   formProps.setFieldValue( ORDER_FIELD_NAME.DELIVERY_PRICE, method?.price || 0,);
         }, [price, formProps.values]);
         useEffect(() => {
           formProps.setFieldValue(ORDER_FIELD_NAME.PROMO_CODE, '');
@@ -98,32 +93,33 @@ export function FormContainer(props) {
         return (
           <form onSubmit={formProps.handleSubmit}>
             <SectionLayout>
-              <TitlePrimary tid="BASKET.FORM.TITLE" />
               <FormComponent
                 isAuth={isAuth}
                 diliveryOptions={diliveryOptions}
                 paymentMethodOptions={paymentMethodOptions}
                 handleConfirmPromoCode={handleConfirmPromoCode}
                 promoCodePending={promoCodePending}
+                emailConfirmed={emailConfirmed}
+                isPending={isPending}
+                handleSendEmailCode={handleSendEmailCode}
+                handleConfirmEmailCode={handleConfirmEmailCode}
+                sendEmailCodePending={sendEmailCodePending}
+                confirmEmailCodePending={confirmEmailCodePending}
                 {...formProps}
               />
               <SectionLayout type="SMALL">
                 <CartPrice values={formProps.values} />
-                <CartActions
-                  {...formProps}
-                  emailConfirmed={emailConfirmed}
-                  isPending={isPending}
-                  handleSendEmailCode={handleSendEmailCode}
-                  handleConfirmEmailCode={handleConfirmEmailCode}
-                  sendEmailCodePending={sendEmailCodePending}
-                  confirmEmailCodePending={confirmEmailCodePending}
-                />
+                <FieldLayout type="double" adaptive>
+                  {emailConfirmed && (
+                    <ButtonPrimary
+                      tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
+                      disabled={isPending}
+                      type="submit"
+                    />
+                  )}
+                </FieldLayout>
                 <CartAlert
                   discount={formProps.values[ORDER_FIELD_NAME.PROMO_DISCOUNT]}
-                  diliveryMethodError={
-                    formProps.touched[ORDER_FIELD_NAME.DELIVERY_METHOD] &&
-                    formProps.errors[ORDER_FIELD_NAME.DELIVERY_METHOD]
-                  }
                   userInfoError={userInfoError}
                   userInfoErrorMessage={userInfoErrorMessage}
                   userInfoSuccess={userInfoSuccess}

@@ -8,7 +8,6 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { useDebounce } from '../../lib/common/hooks';
 import { ordersLoadData } from './orders.action';
 import { OrdersComponent } from './orders.component';
 import { ORDERS_STORE_NAME } from './orders.constant';
@@ -36,7 +35,10 @@ export function OrdersContainer() {
       headersTable={headersTable}
       products={getRequestData(ordersState, {}).orders}
       fetchData={() => dispatch(ordersLoadData(ordersState.data.currentPage))}
-      hasMore={Number(ordersState.data?.orders?.length) < Number(ordersState.data?.totalRecords)}
+      hasMore={
+        Number(ordersState.data?.orders?.length) <
+        Number(ordersState.data?.totalRecords)
+      }
     />
   );
 }

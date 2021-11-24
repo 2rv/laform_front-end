@@ -2,8 +2,9 @@ import { ButtonPrimary, ButtonSecondary } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
 import { FieldLayout } from 'src/lib/element/layout';
 import { ORDER_FIELD_NAME } from '../basket.type';
+import React from 'react';
 
-export function CartActions(props) {
+export function CartEmail(props) {
   const {
     values,
     errors,
@@ -13,7 +14,6 @@ export function CartActions(props) {
 
     emailConfirmed,
     isPending,
-
     handleSendEmailCode,
     handleConfirmEmailCode,
     sendEmailCodePending,
@@ -26,15 +26,19 @@ export function CartActions(props) {
 
   return (
     <FieldLayout type="double" adaptive>
-      {emailConfirmed ? (
-        <ButtonPrimary
-          tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
-          disabled={isPending}
-          type="submit"
-        />
-      ) : (
-        <>
+      <BasicField
+        titleTid="BASKET.FORM.FIELDS.TITLES.EMAIL"
+        placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.EMAIL"
+        name={ORDER_FIELD_NAME.EMAIL}
+        value={values[ORDER_FIELD_NAME.EMAIL]}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={getFieldError(ORDER_FIELD_NAME.EMAIL)}
+      />
+      {!emailConfirmed && (
+        <React.Fragment>
           <BasicField
+            titleTid="BASKET.FORM.FIELDS.TITLES.CONFIRM_CODE"
             placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.WRITE_CODE"
             name={ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE}
             value={values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
@@ -52,7 +56,7 @@ export function CartActions(props) {
             onClick={() => handleConfirmEmailCode(values)}
             disabled={confirmEmailCodePending}
           />
-        </>
+        </React.Fragment>
       )}
     </FieldLayout>
   );

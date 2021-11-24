@@ -42,6 +42,7 @@ import PURCHASED_PRODUCTS from './purchase-products.json';
 import DELIVERY_PRICE from './delivery-price.json';
 import ALL_PRODUCTS from './all-products.json';
 import FEEDBACK from './feedback.json';
+import STATISTICS from './statistics.json';
 
 export const RU = {
   translation: {
@@ -89,5 +90,6 @@ export const RU = {
     DELIVERY_PRICE,
     ALL_PRODUCTS,
     FEEDBACK,
+    STATISTICS,
   },
 };
