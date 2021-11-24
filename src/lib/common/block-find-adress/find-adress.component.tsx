@@ -29,6 +29,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           value={values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
           onChange={handleChange(FIND_ADRESS_FIELD_NAME.COUNTRY)}
           loadOptions={findCountry}
+          noResults={() => 'Нет результатов'}
         />
         <AsyncReactSelect
           titleTid="Город"
@@ -37,6 +38,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           onChange={handleChange(FIND_ADRESS_FIELD_NAME.CITY)}
           loadOptions={findCity}
           cacheOptions={false}
+          noResults={() => 'Нет результатов'}
         />
         <AsyncReactSelect
           titleTid="Улица"
@@ -45,6 +47,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           onChange={handleChange(FIND_ADRESS_FIELD_NAME.STREET)}
           loadOptions={findStreet}
           cacheOptions={false}
+          noResults={() => 'Нет результатов'}
         />
         <AsyncReactSelect
           titleTid="Дом"
@@ -53,6 +56,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           onChange={handleChange(FIND_ADRESS_FIELD_NAME.HOUSE)}
           loadOptions={findHouse}
           cacheOptions={false}
+          noResults={() => 'Нет результатов'}
         />
         <AsyncReactSelect
           titleTid="Почтовый индекс"
@@ -61,6 +65,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           onChange={handleChange(FIND_ADRESS_FIELD_NAME.POSTAL_CODE)}
           loadOptions={findIndex}
           cacheOptions={false}
+          noResults={() => 'Нет результатов'}
         />
       </FieldLayout>
       <div>

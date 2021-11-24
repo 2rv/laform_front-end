@@ -50,7 +50,7 @@ export function AsyncReactSelect(props: any) {
         styles={styles}
         value={value}
         onChange={onChange}
-        // noOptionsMessage={noResults}
+        noOptionsMessage={noResults}
         placeholder={text(placeholderTid)}
         loadOptions={loadOptions}
       />
