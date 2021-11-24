@@ -62,7 +62,9 @@ export function CreatePatternComponent(props) {
         {isSuccess && (
           <SuccessAlert tid="PATTERNS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
         )}
-        {updateIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
+        {updateIsSuccess && (
+          <SuccessAlert tid="PATTERNS.CREATE.PRODUCT_SUCCESSFULLY_UPDATED" />
+        )}
         {isError && <ErrorAlert tid={errorMessage} />}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
         <Divider />

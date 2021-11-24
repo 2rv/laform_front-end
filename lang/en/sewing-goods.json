@@ -14,6 +14,7 @@
 	"CREATE": {
 		"TITLE": "Creating a sewing goods",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Product successfully created",
+		"PRODUCT_SUCCESSFULLY_UPDATED": "Product successfully updated",
 		"FORM": {
 			"PRICE": "Price",
 			"FIELDS": {
@@ -23,20 +24,27 @@
 					"PRODUCT_CATEGORIES": "Product categories",
 					"DESCRIPTION": "Description",
 					"PRODUCT_QUANTITY": "Product quantity",
-					"DISCOUNT": "Discount (%)"
+					"DISCOUNT": "Discount (%)",
+					"QUANTITY": "Quantity",
+					"LENGTH": "Length",
+					"VISIBILITY": "Product visibility"
 				},
 				"PLACEHOLDER": {
 					"NAME": "Write Product name",
 					"DICE_OF_GOODS": "Write Dice of goods",
 					"PRODUCT_CATEGORIES": "Write Product category",
 					"DESCRIPTION": "Full product description",
-					"PRODUCT_QUANTITY": "Enter the quantity of goods"
+					"PRODUCT_QUANTITY": "Enter the quantity of goods",
+					"QUANTITY": "Quantity availability",
+					"LENGTH": "Length availability",
+					"VISIBILITY": "Not shown in the list"
 				}
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Create product",
 				"CANCEL": "Cancel",
-				"RESET": "Reset"
+				"RESET": "Reset",
+				"SAVE": "Save"
 			}
 		}
 	}

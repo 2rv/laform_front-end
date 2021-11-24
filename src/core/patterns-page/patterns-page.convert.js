@@ -24,7 +24,7 @@ export const convertPatternData = (data) => {
       paymentMethod: data.purchase.paymentMethod,
       diliveryMethod: data.purchase.diliveryMethod,
       diliveryAdress: data.purchase.city,
-      status: data.purchase.status ?? 'Не известно',
+      status: data.purchase.status,
     },
   };
 };

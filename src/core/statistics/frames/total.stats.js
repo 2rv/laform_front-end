@@ -8,54 +8,54 @@ export function TotalStats(props) {
   const { statistics } = props;
   return (
     <SectionLayout>
-      <Title tid="Статистика общая" />
+      <Title tid="STATISTICS.TITLES.TOTAL" />
       <Content>
         <Case>
-          <TextTitle tid="Всего купленно товаров" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD" />
           <LineCase>
             <Price price={statistics.purchasedProductsCount} />
             &nbsp;
-            <LigthText tid="Шт." />
+            <LigthText tid="OTHER.AMOUNT" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Всего оформлено заказов" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ORDERS" />
           <LineCase>
             <Price price={statistics.allPurchasesCount} />
             &nbsp;
-            <LigthText tid="Шт." />
+            <LigthText tid="OTHER.AMOUNT" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Всего продано физических товаров" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_SOLD_MATERIAL_GOODS" />
           <LineCase>
             <Price price={statistics.physicalPurchasedProductsCount} />
             &nbsp;
-            <LigthText tid="Шт." />
+            <LigthText tid="OTHER.AMOUNT" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Всего продано электронных товаров" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ELECTRONIC_GOODS_SOLD" />
           <LineCase>
             <Price price={statistics.electronicPurchasedProductsCount} />
             &nbsp;
-            <LigthText tid="Шт." />
+            <LigthText tid="OTHER.AMOUNT" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Общая прибыль" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_PROFIT" />
           <LineCase>
             <Price price={statistics.totalPurchasesPrice} />
             &nbsp;
-            <LigthText tid="Руб." />
+            <LigthText tid="OTHER.VALUTE" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Средняя стоимость за заказ" />
+          <TextTitle tid="STATISTICS.PARAMETERS.AVERAGE_COST_PER_ORDER" />
           <LineCase>
             <Price price={statistics.purchasesAverageCost} />
             &nbsp;
-            <LigthText tid="Руб." />
+            <LigthText tid="OTHER.VALUTE" />
           </LineCase>
         </Case>
       </Content>

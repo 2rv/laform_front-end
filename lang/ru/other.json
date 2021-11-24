@@ -3,6 +3,7 @@
 	"SELECT": "Выбрать",
 	"SELECTED": "Выбрано",
 	"VALUTE": "руб.",
+	"AMOUNT": "Шт.",
 	"PURCHASED": "Куплено",
 	"NO_INFORMATION_ABOUT_PARAMETERS": "Нету сведений о параметрах товара",
 	"ARE_YOU_SURE_TO_DISABLE_PRODUCT": "Вы точно хотите отключить данный товар?",

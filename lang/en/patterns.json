@@ -34,6 +34,7 @@
 	"CREATE": {
 		"TITLE": "Create pattern",
 		"PRODUCT_SUCCESSFULLY_CREATED": "Product successfully created",
+		"PRODUCT_SUCCESSFULLY_UPDATED": "Product successfully updated",
 		"FORM": {
 			"PRICE": "Price",
 			"MATERIALS": "Materials",
@@ -45,14 +46,18 @@
 					"PRODUCT_CATEGORIES": "Product categories",
 					"DESCRIPTION": "Product description",
 					"PRODUCT_QUANTITY": "Quantity of goods (units)",
-					"DISCOUNT": "Discount (%)"
+					"DISCOUNT": "Discount (%)",
+					"TYPE": "Pattern type",
+					"VISIBILITY": "Visibility"
 				},
 				"PLACEHOLDER": {
 					"NAME": "Write Product name",
 					"DICE_OF_GOODS": "Write Dice of goods",
 					"PRODUCT_CATEGORIES": "Write Product categories",
 					"DESCRIPTION": "Full product description",
-					"PRODUCT_QUANTITY": "Enter the quantity of goods"
+					"PRODUCT_QUANTITY": "Enter the quantity of goods",
+					"TYPE": "Electronic",
+					"VISIBILITY": "Shown in the list"
 				}
 			},
 			"BUTTON": {
@@ -91,7 +96,9 @@
 			},
 			"BUTTON": {
 				"CREATE_PRODUCT": "Create an electronic pattern",
-				"CANCEL": "Cancel"
+				"CANCEL": "Cancel",
+				"RESET": "Reset",
+				"SAVE": "Save"
 			}
 		}
 	}

@@ -103,8 +103,8 @@ export function FormComponent(props) {
       />
       <FieldLayout type="double" adaptive>
         <FieldCheckbox
-          titleTid="Количество"
-          labelTid="Наличие количества"
+          titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.LENGTH"
+          labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.LENGTH"
           name={SEWING_GOODS_FIELD_NAME.IS_COUNT}
           value={values[SEWING_GOODS_FIELD_NAME.IS_COUNT]}
           onBlur={handleBlur}
@@ -112,8 +112,8 @@ export function FormComponent(props) {
           onClick={setCount}
         />
         <FieldCheckbox
-          titleTid="Длинна"
-          labelTid="Наличие длинны"
+          titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.LENGTH"
+          labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.LENGTH"
           name={SEWING_GOODS_FIELD_NAME.IS_LENGTH}
           value={values[SEWING_GOODS_FIELD_NAME.IS_LENGTH]}
           onBlur={handleBlur}
@@ -154,8 +154,8 @@ export function FormComponent(props) {
       />
 
       <FieldCheckbox
-        titleTid="Видимость товара"
-        labelTid="Не показан в списке"
+        titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
+        labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
         name={SEWING_GOODS_FIELD_NAME.DELETED}
         value={values[SEWING_GOODS_FIELD_NAME.DELETED]}
         checked={values[SEWING_GOODS_FIELD_NAME.DELETED]}
@@ -172,7 +172,10 @@ export function FormComponent(props) {
       />
       <FieldLayout type="double" adaptive>
         {isEdit ? (
-          <ButtonPrimary type="submit" tid="Сохранить" />
+          <ButtonPrimary
+            type="submit"
+            tid="SEWING_GOODS.CREATE.FORM.BUTTON.SAVE"
+          />
         ) : (
           <ButtonPrimary
             type="submit"

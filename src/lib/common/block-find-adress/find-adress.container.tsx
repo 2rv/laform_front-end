@@ -22,7 +22,7 @@ export function FindAdressContainer(props: FindAdreccContainerProps) {
   const findCity = (value: string) => getCity(value, values, currentLang);
   const findStreet = (value: string) => getStreet(value, values, currentLang);
   const findHouse = (value: string) => getHouse(value, values, currentLang);
-  const findIndex = (value: string) => getPostalIndex(value, values);
+  const findIndex = (value: string) => getPostalIndex(value);
   const handleChange = (name: string) => (value: adressValueType) => {
     const fullAdress = {
       ...values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS],

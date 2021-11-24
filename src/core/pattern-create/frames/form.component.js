@@ -135,8 +135,8 @@ export function FormComponent(props) {
           onChange={setNumber(CREATE_PATTERN_FIELD_NAME.COMPLEXITY)}
         />
         <FieldCheckbox
-          titleTid="Тип выкройки"
-          labelTid="Электронный"
+          titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.TYPE"
+          labelTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.TYPE"
           name={CREATE_PATTERN_FIELD_NAME.TYPE}
           value={values[CREATE_PATTERN_FIELD_NAME.TYPE]}
           onBlur={handleBlur}
@@ -145,8 +145,8 @@ export function FormComponent(props) {
         />
         {values[CREATE_PATTERN_FIELD_NAME.TYPE] === 2 && (
           <FieldCheckbox
-            titleTid="Количество"
-            labelTid="Наличие количества"
+            titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.PRODUCT_QUANTITY"
+            labelTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.PRODUCT_QUANTITY"
             name={CREATE_PATTERN_FIELD_NAME.IS_COUNT}
             value={values[CREATE_PATTERN_FIELD_NAME.IS_COUNT]}
             onBlur={handleBlur}
@@ -191,8 +191,8 @@ export function FormComponent(props) {
       />
 
       <FieldCheckbox
-        titleTid="Видимость выкройки"
-        labelTid="Не показан в списке"
+        titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
+        labelTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
         name={CREATE_PATTERN_FIELD_NAME.DELETED}
         value={values[CREATE_PATTERN_FIELD_NAME.DELETED]}
         checked={values[CREATE_PATTERN_FIELD_NAME.DELETED]}
@@ -209,7 +209,7 @@ export function FormComponent(props) {
       />
       <FieldLayout type="double" adaptive>
         {isEdit ? (
-          <ButtonPrimary type="submit" tid="Сохранить" />
+          <ButtonPrimary type="submit" tid="PATTERNS.CREATE.FORM.BUTTON.SAVE" />
         ) : (
           <ButtonPrimary
             type="submit"

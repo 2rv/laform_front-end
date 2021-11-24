@@ -23,19 +23,28 @@ import { PRODUCT_SELECTIONS_ROUTE_PATH } from '../product-selections';
 
 export const NAVIGATION_MENU = (isAuth = false) => {
   const userLinks = [
-    { title: 'Домашняя', pathname: HOME_ROUTE_PATH },
-    { title: 'Помощь', pathname: FAQ_ROUTE_PATH },
-    { title: 'Настройки', pathname: SETTINGS_ROUTE_PATH },
-    { title: 'Мои лайки', pathname: ALL_LIKES_ROUTE_PATH },
-    { title: 'Мои покупки', pathname: USER_ORDERS_ROUTE_PATH },
-    { title: 'Товары для шитья', pathname: SEWING_GOODS_ROUTE_PATH },
-    { title: 'Выкройки', pathname: PATTERNS_ROUTE_PATH },
-    { title: 'Мастер-классы', pathname: MASTER_CLASSES_ROUTE_PATH },
-    { title: 'Блог', pathname: ARTICLES_ROUTE_PATH },
+    { title: 'HEADER.USER_MENU.HOME', pathname: HOME_ROUTE_PATH },
+    { title: 'HEADER.USER_MENU.HELP', pathname: FAQ_ROUTE_PATH },
+    { title: 'HEADER.USER_MENU.SETTINGS', pathname: SETTINGS_ROUTE_PATH },
+    { title: 'HEADER.USER_MENU.FAVORITE', pathname: ALL_LIKES_ROUTE_PATH },
+    {
+      title: 'HEADER.USER_MENU.MY_PURCHASES',
+      pathname: USER_ORDERS_ROUTE_PATH,
+    },
+    {
+      title: 'HEADER.MENU_ITEMS.SEWING_GOODS',
+      pathname: SEWING_GOODS_ROUTE_PATH,
+    },
+    { title: 'HEADER.MENU_ITEMS.PATTERNS', pathname: PATTERNS_ROUTE_PATH },
+    {
+      title: 'HEADER.MENU_ITEMS.MASTER_CLASSES',
+      pathname: MASTER_CLASSES_ROUTE_PATH,
+    },
+    { title: 'HEADER.MENU_ITEMS.ARTICLES', pathname: ARTICLES_ROUTE_PATH },
   ];
   const adminLinks = [
     {
-      title: 'Админка',
+      title: 'HEADER.ADMIN_MENU.TITLE',
       items: [
         {
           pathname: CREATE_MASTER_CLASS_ROUTE_PATH,
@@ -43,7 +52,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
         },
         {
           pathname: CREATE_PATTERN_ROUTE_PATH,
-          title: 'Создать выкройку',
+          title: 'HEADER.ADMIN_MENU.PATTERN_CREATING',
         },
         {
           pathname: CREATE_SEWING_GOODS_ROUTE_PATH,
@@ -81,30 +90,11 @@ export const NAVIGATION_MENU = (isAuth = false) => {
         },
         {
           pathname: STATISTICS_ROUTE_PATH,
-          title: 'Статистика',
+          title: 'HEADER.ADMIN_MENU.STATISTICS',
         },
       ],
     },
   ];
-  if (isAuth) {
-    return userLinks.concat(adminLinks);
-  }
+  if (isAuth) return userLinks.concat(adminLinks);
   return userLinks;
 };
-
-// const test = [
-//   {
-//     title: 'Название',
-//     items: [
-//       { title: 'Под название', pathname: 'путь обязателен' },
-//       {
-//         title: 'Под под название',
-//         pathname: 'путь обязателен',
-//       },
-//       {
-//         title: 'Под под название',
-//         items: [{ tid: 'Под под под название', pathname: 'путь обязателен' }],
-//       },
-//     ],
-//   },
-// ];

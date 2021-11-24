@@ -27,11 +27,11 @@ export function StatisticsTabs(props) {
   );
 }
 const tabItems = [
-  { name: 'Общая', type: null },
-  { name: 'Мастер-классы', type: 'master-class' },
-  { name: 'Выкройки печатные', type: 'pattern-print' },
-  { name: 'Выкройки электронные', type: 'pattern-electronic' },
-  { name: 'Товары для шитья', type: 'sewing-good' },
+  { name: 'TABS.TOTAL', type: null },
+  { name: 'TABS.MASTER_CLASS', type: 'master-class' },
+  { name: 'TABS.PRINT_PATTERNS', type: 'pattern-print' },
+  { name: 'TABS.ELECTRONIC_PATTERNS', type: 'pattern-electronic' },
+  { name: 'TABS.SEWING_GOODS', type: 'sewing-good' },
 ];
 const Container = styled.div`
   display: flex;

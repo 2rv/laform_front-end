@@ -8,22 +8,22 @@ export function MasterClassStats(props) {
   const { statistics } = props;
   return (
     <SectionLayout>
-      <Title tid="Статистика по Мастер-классам" />
+      <Title tid="STATISTICS.TITLES.MASTER_CLASS" />
       <Content>
         <Case>
-          <TextTitle tid="Общая прибыль" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_PROFIT" />
           <LineCase>
             <Price price={statistics.totalPurchasedProductPrice} />
             &nbsp;
-            <LigthText tid="Руб." />
+            <LigthText tid="OTHER.VALUTE" />
           </LineCase>
         </Case>
         <Case>
-          <TextTitle tid="Всего товаров продано" />
+          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD" />
           <LineCase>
             <Price price={statistics.productsCount} />
             &nbsp;
-            <LigthText tid="Шт." />
+            <LigthText tid="OTHER.AMOUNT" />
           </LineCase>
         </Case>
       </Content>

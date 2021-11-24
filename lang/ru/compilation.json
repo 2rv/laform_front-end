@@ -1,25 +1,12 @@
 {
 	"TITLE": "Подборки",
-	"SUB_MENU": {
-		"BEST_GOODS": "Лучшие товары",
-		"BEST_MASTER_CLASSES": "Лучшие мастер-классы",
-		"BEST_ARTICLES": "Лучшие полезные статьи"
-	},
-	"SELECT": {
-		"TITLE": "Добавить подборку",
-		"PRODUCT": "Товар",
-		"MASTER_CLASS": "Мастер-класс",
-		"ARTICLE": "Полезную статью"
-	},
-	"EDIT_PRODUCT": {
-		"FIELD": {
-			"TITLE": "Название",
-			"PLACEHOLDER": "Изменить название"
-		},
-		"BUTTON_TITLE": "Заменить"
-	},
-	"MAX_BEST_PRODUCTS": "В списке должно быть максимум 3 подборки данной категории",
-	"ALREADY_ADDED_ON_BEST_PRODUCTS": "Уже добавлен в лучшие подборки",
-	"ADD_TO_BEST_PRODUCT": "Добавить в лучшие подборки",
-	"LIST_IS_EMPTY": "Список пуст"
+	"LIST_IS_EMPTY": "Список пуст",
+	"ADD_BLOCK": "Добавить блок",
+	"ADD_PRODUCTS_IN_BLOCK": "Добавить товары в блок",
+	"SAVE": "Сохранить",
+	"COMPILATIONS_SUCCESSFULLY_SAVED": "Подборки успешно сохранены",
+	"COMPILATIONS_BLOCK_SUCCESSFULLY_REMOVED": "Блок успешно удалён",
+	"BLOCK_NAME_TITLE": "Название",
+	"BLOCK_NAME_PLACEHOLDER": "Введите название блока",
+	"ERROR_ALERT": "Произошла ошибка товар не добавлен"
 }

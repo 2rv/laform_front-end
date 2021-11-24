@@ -1,0 +1,24 @@
+{
+	"TITLES": {
+		"TOTAL": "Общая статистика",
+		"MASTER_CLASS": "Статистика мастер-классы",
+		"ELECTRONIC_PATTERNS": "Статистика электронные выкройки",
+		"PRINT_PATTERNS": "Статистика печатные выкройки",
+		"SEWING_GOODS": "Статистика товары для шитья"
+	},
+	"PARAMETERS": {
+		"TOTAL_PROFIT": "Общая прибыль",
+		"TOTAL_ITEM_SOLD": "Всего продано товаров",
+		"AVERAGE_COST_PER_ORDER": "Средняя стоимость за заказ",
+		"TOTAL_ORDERS": "Всего заказов",
+		"TOTAL_ELECTRONIC_GOODS_SOLD": "Всего продано электронных товаров",
+		"TOTAL_SOLD_MATERIAL_GOODS": "Всего продано электронных товаров"
+	},
+	"TABS": {
+		"TOTAL": "Общая",
+		"MASTER_CLASS": "Мастер-классы",
+		"ELECTRONIC_PATTERNS": "Электронные выкройки",
+		"PRINT_PATTERNS": "Печатные выкройки",
+		"SEWING_GOODS": "Товары для шитья"
+	}
+}

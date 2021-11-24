@@ -30,12 +30,12 @@ export function AboutOrderFormComponent(props) {
     <form onSubmit={handleSubmit}>
       <SectionLayout>
         <SectionLayout type="SMALL">
-          <Title tid="Информация о заказе" />
+          <Title tid="ORDER_NUMBER.FORM.TITLE" />
           <SectionLayout type="TEXT">
             <FieldLayout type="double" adaptive>
               <BasicField
                 titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.FULL_NAME"
-                placeholderTid="ФИО покупателя"
+                placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.FULL_NAME"
                 name={ABOUT_ORDER_FIELD_NAME.FULL_NAME}
                 value={values[ABOUT_ORDER_FIELD_NAME.FULL_NAME]}
                 onChange={handleChange}
@@ -43,8 +43,8 @@ export function AboutOrderFormComponent(props) {
                 disabled={true}
               />
               <BasicField
-                titleTid="Почта"
-                placeholderTid="Почта покупателя"
+                titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.EMAIL"
+                placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.EMAIL"
                 name={ABOUT_ORDER_FIELD_NAME.EMAIL}
                 value={values[ABOUT_ORDER_FIELD_NAME.EMAIL]}
                 onChange={handleChange}
@@ -71,7 +71,7 @@ export function AboutOrderFormComponent(props) {
               />
               <BasicField
                 titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PROMO_CODE"
-                placeholderTid="Нету промокода"
+                placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.ENTER_PROMO"
                 name={ABOUT_ORDER_FIELD_NAME.PROMO_CODE}
                 value={values[ABOUT_ORDER_FIELD_NAME.PROMO_CODE]}
                 onChange={handleChange}

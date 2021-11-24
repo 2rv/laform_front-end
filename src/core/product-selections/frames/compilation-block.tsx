@@ -13,6 +13,7 @@ import {
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { IconButton } from 'src/lib/element/button';
 import { CompilationModal } from './compilation-modal';
+import { text } from 'src/lib/common/text';
 
 export function CompilationBlock(props: CompilationBlockProps) {
   const {
@@ -27,7 +28,7 @@ export function CompilationBlock(props: CompilationBlockProps) {
   function handleAdd(id: string, _: any, status: boolean) {
     const result: any = listItems.find((item) => item?.id === id);
     if (result === -1) {
-      alert('Произошла ошибка товар не добавлен');
+      alert(text('COMPILATION.ERROR_ALERT'));
       return false;
     }
     if (status) {
@@ -57,8 +58,8 @@ export function CompilationBlock(props: CompilationBlockProps) {
         <Title tid={value[formNames.blockName]} />
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="Название"
-            placeholderTid="Название блока"
+            titleTid="COMPILATION.BLOCK_NAME_TITLE"
+            placeholderTid="COMPILATION.BLOCK_NAME_PLACEHOLDER"
             name={getIndexName(index)}
             value={value[formNames.blockName]}
             onChange={handleChange}
@@ -74,7 +75,7 @@ export function CompilationBlock(props: CompilationBlockProps) {
       </HeaderCase>
       <BasicCardList
         onRemove={handleRemove}
-        emptyText="Добавьте товары в блок"
+        emptyText="COMPILATION.ADD_PRODUCTS_IN_BLOCK"
         items={value[formNames.blockItems]}
         admin
       />
