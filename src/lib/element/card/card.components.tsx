@@ -22,7 +22,6 @@ import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 export function LikeButton(props: CardActionProps) {
   const { id, type, like = null } = props;
   if (like === null) return null;
-
   return <LikeAction id={id} type={type} like={like} />;
 }
 export function SelectButton(props: CardActionProps) {

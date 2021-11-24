@@ -4,19 +4,31 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
-import { getRequestData, isRequestPending } from 'src/main/store/store.service';
-import { legalInformationLoadData, legalInformationUploadData } from './legal-information.action';
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from 'src/main/store/store.service';
+import {
+  legalInformationLoadData,
+  legalInformationUploadData,
+} from './legal-information.action';
 import { LegalInformationComponent } from './legal-information.component';
 import { LEGAL_INFORMATION_STORE_NAME } from './legal-information.constant';
 
 export function LegalInformationContainer() {
   const dispatch = useDispatch();
-  const { state, user, isAuth, pageLoading } = useSelector((state) => ({
-    state: state[LEGAL_INFORMATION_STORE_NAME].legalInformation,
-    user: state[AUTH_STORE_NAME].user,
-    isAuth: state[AUTH_STORE_NAME].logged,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
+  const { state, user, saveState, isAuth, pageLoading } = useSelector(
+    (state) => ({
+      state: state[LEGAL_INFORMATION_STORE_NAME].legalInformation,
+      saveState: state[LEGAL_INFORMATION_STORE_NAME].save,
+      user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }),
+  );
   const [editorData, setEditorData] = useState(null);
 
   useEffect(() => {
@@ -41,6 +53,10 @@ export function LegalInformationContainer() {
 
   return (
     <LegalInformationComponent
+      saveIsPending={isRequestPending(saveState)}
+      saveIsSuccess={isRequestSuccess(saveState)}
+      saveIsError={isRequestError(saveState)}
+      saveErrorMessage={getRequestErrorMessage(saveState)}
       legalInformationUploadDataHandler={legalInformationUploadDataHandler}
       legalInformation={getRequestData(state)?.legalInformation}
       handleChangeEditorValue={handleChangeEditorValue}

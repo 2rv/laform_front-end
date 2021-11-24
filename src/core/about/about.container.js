@@ -4,19 +4,28 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
-import { getRequestData, isRequestPending } from 'src/main/store/store.service';
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from 'src/main/store/store.service';
 import { aboutUsLoadData, aboutUsUploadData } from './about.action';
 import { AboutComponent } from './about.component';
 import { ABOUT_STORE_NAME } from './about.constant';
 
 export function AboutContainer() {
   const dispatch = useDispatch();
-  const { state, user, isAuth, pageLoading } = useSelector((state) => ({
-    state: state[ABOUT_STORE_NAME].about,
-    user: state[AUTH_STORE_NAME].user,
-    isAuth: state[AUTH_STORE_NAME].logged,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
+  const { state, saveState, user, isAuth, pageLoading } = useSelector(
+    (state) => ({
+      state: state[ABOUT_STORE_NAME].about,
+      saveState: state[ABOUT_STORE_NAME].save,
+      user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }),
+  );
   const [editorData, setEditorData] = useState(null);
 
   useEffect(() => {
@@ -41,6 +50,10 @@ export function AboutContainer() {
 
   return (
     <AboutComponent
+      saveIsPending={isRequestPending(saveState)}
+      saveIsSuccess={isRequestSuccess(saveState)}
+      saveIsError={isRequestError(saveState)}
+      saveErrorMessage={getRequestErrorMessage(saveState)}
       aboutUsUploadDataHandler={aboutUsUploadDataHandler}
       about={getRequestData(state)?.about}
       handleChangeEditorValue={handleChangeEditorValue}

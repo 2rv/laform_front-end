@@ -53,17 +53,19 @@ export function CardArticle(props: CardArticleType) {
           <CardName tid={name} />
           <Date tid={ConvertTime(createdDate)} />
         </ColumnCase>
-        <ActionCase>
-          <LikeButton id={id} type={type} like={like} />
-          <DeleteButton
-            id={id}
-            type={type}
-            admin={admin}
-            onDelete={onDelete}
-            deleted={deleted}
-          />
-          <RemoveButton id={id} onRemove={onRemove} />
-        </ActionCase>
+        {(like === false || like === true || admin) && (
+          <ActionCase>
+            <LikeButton id={id} type={type} like={like} />
+            <DeleteButton
+              id={id}
+              type={type}
+              admin={admin}
+              onDelete={onDelete}
+              deleted={deleted}
+            />
+            <RemoveButton id={id} onRemove={onRemove} />
+          </ActionCase>
+        )}
       </Content>
       <SelectButton id={id} type={type} onSelect={onSelect} />
     </Container>

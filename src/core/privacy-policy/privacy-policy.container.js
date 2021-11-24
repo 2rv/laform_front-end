@@ -4,19 +4,31 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
-import { getRequestData, isRequestPending } from 'src/main/store/store.service';
-import { privacyPolicyLoadData, privacyPolicyUploadData } from './privacy-policy.action';
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from 'src/main/store/store.service';
+import {
+  privacyPolicyLoadData,
+  privacyPolicyUploadData,
+} from './privacy-policy.action';
 import { PrivacyPolicyComponent } from './privacy-policy.component';
 import { PRIVACY_POLICY_STORE_NAME } from './privacy-policy.constant';
 
 export function PrivacyPolicyContainer() {
   const dispatch = useDispatch();
-  const { state, user, isAuth, pageLoading } = useSelector((state) => ({
-    state: state[PRIVACY_POLICY_STORE_NAME].privacyPolicy,
-    user: state[AUTH_STORE_NAME].user,
-    isAuth: state[AUTH_STORE_NAME].logged,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
+  const { state, user, saveState, isAuth, pageLoading } = useSelector(
+    (state) => ({
+      state: state[PRIVACY_POLICY_STORE_NAME].privacyPolicy,
+      saveState: state[PRIVACY_POLICY_STORE_NAME].save,
+      user: state[AUTH_STORE_NAME].user,
+      isAuth: state[AUTH_STORE_NAME].logged,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }),
+  );
   const [editorData, setEditorData] = useState(null);
 
   useEffect(() => {
@@ -41,6 +53,10 @@ export function PrivacyPolicyContainer() {
 
   return (
     <PrivacyPolicyComponent
+      saveIsPending={isRequestPending(saveState)}
+      saveIsSuccess={isRequestSuccess(saveState)}
+      saveIsError={isRequestError(saveState)}
+      saveErrorMessage={getRequestErrorMessage(saveState)}
       privacyPolicyUploadDataHandler={privacyPolicyUploadDataHandler}
       privacyPolicy={getRequestData(state)?.privacyPolicy}
       handleChangeEditorValue={handleChangeEditorValue}

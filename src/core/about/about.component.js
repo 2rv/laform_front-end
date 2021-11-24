@@ -5,9 +5,16 @@ import { ButtonSecondary } from '../../lib/element/button';
 import { THEME_SIZE } from '../../lib/theme';
 import { USER_ROLE } from '../../lib/common/auth';
 import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function AboutComponent(props) {
   const {
+    saveIsPending,
+    saveIsSuccess,
+    saveIsError,
+    saveErrorMessage,
+
     aboutUsUploadDataHandler,
     about,
     handleChangeEditorValue,
@@ -32,6 +39,9 @@ export function AboutComponent(props) {
       ) : (
         <ReactEditorBlock data={about} enableReInitialize readOnly />
       )}
+      {saveIsPending && <LoaderPrimary />}
+      {saveIsError && <ErrorAlert tid={saveErrorMessage} />}
+      {saveIsSuccess && <SuccessAlert tid="Успешно обновлено" />}
     </SectionLayout>
   );
 }

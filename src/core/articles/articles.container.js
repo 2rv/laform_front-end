@@ -8,27 +8,20 @@ import {
   isRequestSuccess,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import {
-  articlesUploadData,
-  fetchCategories,
-  fetchPostRemove,
-} from './articles.action';
+import { articlesUploadData, fetchCategories } from './articles.action';
 import { ARTICLES_STORE_NAME } from './articles.constant';
 import { ArticlesComponent } from './articles.component';
 import { LANG_STORE_NAME } from '../../lib/common/lang';
-import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
 
-const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
-
 export function ArticlesContainer() {
-  const { articlesState, categories, pageLoading, currentLang, user, isAuth } =
+  const { articlesState, categories, pageLoading, currentLang, isAuth } =
     useSelector((state) => ({
       articlesState: state[ARTICLES_STORE_NAME].articlesState,
       categories: state[ARTICLES_STORE_NAME].categories,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
       currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-      user: state[AUTH_STORE_NAME].user,
       isAuth: state[AUTH_STORE_NAME].logged,
     }));
 
@@ -56,9 +49,14 @@ export function ArticlesContainer() {
     dispatch(fetchCategories(currentLang, 4));
   }, []);
 
-  const onDeleteProduct = (id, body) => {
-    dispatch({ type: ARTICLES_ACTION_TYPE.RESET_PRODUCTS_STATE });
-    dispatch(fetchPostRemove(isAuth, { currentLang }, id, body));
+  const onPaginationList = () => {
+    dispatch(
+      articlesUploadData(isAuth, {
+        currentLang,
+        ...filter,
+        page: articlesState.data?.currentPage,
+      }),
+    );
   };
 
   return (
@@ -72,17 +70,7 @@ export function ArticlesContainer() {
       isError={isRequestError(articlesState)}
       isSuccess={isRequestSuccess(articlesState)}
       errorMessage={getRequestErrorMessage(articlesState)}
-      onDelete={onDeleteProduct}
-      isAdmin={Boolean(user?.role === USER_ROLE.ADMIN)}
-      fetchData={() =>
-        dispatch(
-          articlesUploadData(isAuth, {
-            currentLang,
-            ...filter,
-            page: articlesState.data?.currentPage,
-          }),
-        )
-      }
+      fetchData={onPaginationList}
       hasMore={
         Number(articlesState.data?.products?.length) <
         Number(articlesState.data?.totalRecords)
@@ -91,6 +79,7 @@ export function ArticlesContainer() {
   );
 }
 
+const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 export const filterOptionss = [
   {
     id: 0,

@@ -4,16 +4,24 @@ import { PRIVACY_POLICY_ACTION_TYPE } from './privacy-policy.type';
 
 export function privacyPolicyUploadData(data) {
   return async (dispatch) => {
+    dispatch({
+      type: PRIVACY_POLICY_ACTION_TYPE.PRIVACY_POLICY_DATA_SAVE_PENDING,
+    });
+
     try {
       await httpRequest({
         method: PRIVACY_POLICY_API.PRIVACY_POLICY_DATA_UPLOAD.TYPE,
         url: PRIVACY_POLICY_API.PRIVACY_POLICY_DATA_UPLOAD.ENDPOINT,
         data,
       });
+
+      dispatch({
+        type: PRIVACY_POLICY_ACTION_TYPE.PRIVACY_POLICY_DATA_SAVE_SUCCESS,
+      });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: PRIVACY_POLICY_ACTION_TYPE.PRIVACY_POLICY_DATA_UPLOAD_ERROR,
+          type: PRIVACY_POLICY_ACTION_TYPE.PRIVACY_POLICY_DATA_SAVE_ERROR,
           errorMessage: err.response.data.message,
         });
       }
