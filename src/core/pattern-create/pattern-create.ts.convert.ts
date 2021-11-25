@@ -91,6 +91,7 @@ export function convertForUpload(
   return {
     type: values.type,
     titleRu: values.titleRu,
+    vendorCode: values.vendorCode,
     descriptionRu: values.descriptionRu,
     modifierRu: values.modifierRu,
     materialRu: values.materialRu,
@@ -132,6 +133,7 @@ export function convertForPreUploadPDFFiles(formValues: formValueType) {
 export function convertForChange(rowData: dataValueType): formValueType {
   return {
     titleRu: rowData.titleRu,
+    vendorCode: rowData.vendorCode,
     type: rowData.type,
     descriptionRu: rowData.descriptionRu,
     modifierRu: rowData.modifierRu,

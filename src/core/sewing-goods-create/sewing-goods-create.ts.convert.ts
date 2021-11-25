@@ -20,6 +20,7 @@ interface optionType {
 }
 interface dataValueType {
   titleRu: string;
+  vendorCode?: string;
   descriptionRu: string;
   modifierRu: string;
   images: imageType[];
@@ -41,6 +42,7 @@ interface categoryValueType {
 }
 interface formValueType {
   titleRu: string;
+  vendorCode?: string;
   descriptionRu: string;
   modifierRu: string;
   recommendation: recommendationProductType[];
@@ -63,6 +65,7 @@ export function convertForUpload(
 ): dataValueType {
   return {
     titleRu: values.titleRu,
+    vendorCode: values.vendorCode,
     descriptionRu: values.descriptionRu,
     modifierRu: values.modifierRu,
     images: images.map((item) => ({
@@ -126,6 +129,7 @@ function convertOptions(
 export function convertForChange(rowData: dataValueType): formValueType {
   return {
     titleRu: rowData.titleRu,
+    vendorCode: rowData.vendorCode,
     descriptionRu: rowData.descriptionRu,
     modifierRu: rowData.modifierRu,
     images: rowData.images,

@@ -89,6 +89,15 @@ export function FormComponent(props) {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        <BasicField
+          titleTid="Артикул"
+          placeholderTid="Введите артикул"
+          name={SEWING_GOODS_FIELD_NAME.VENDOR_CODE}
+          value={values[SEWING_GOODS_FIELD_NAME.VENDOR_CODE]}
+          error={getFieldError(SEWING_GOODS_FIELD_NAME.VENDOR_CODE)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
       </FieldLayout>
       <BlockCategories values={values} type={3} />
       <TextareaField

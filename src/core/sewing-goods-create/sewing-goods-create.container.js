@@ -24,16 +24,21 @@ export function CreateSewingGoodsContainer() {
   const dispatch = useDispatch();
   const sewingProductId = getQuery('id');
 
-  const { state, productState, pageLoading, updateSewingGoodsState, deleteSewingGoodsState } =
-    useSelector((state) => ({
-      state: state[CREATE_SEWING_GOODS_STORE_NAME].createSewingGoods,
-      productState: state[CREATE_SEWING_GOODS_STORE_NAME].product,
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-      updateSewingGoodsState:
-        state[CREATE_SEWING_GOODS_STORE_NAME].updateSewingGoods,
-      deleteSewingGoodsState:
-        state[CREATE_SEWING_GOODS_STORE_NAME].deleteSewingGoods,
-    }));
+  const {
+    state,
+    productState,
+    pageLoading,
+    updateSewingGoodsState,
+    deleteSewingGoodsState,
+  } = useSelector((state) => ({
+    state: state[CREATE_SEWING_GOODS_STORE_NAME].createSewingGoods,
+    productState: state[CREATE_SEWING_GOODS_STORE_NAME].product,
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    updateSewingGoodsState:
+      state[CREATE_SEWING_GOODS_STORE_NAME].updateSewingGoods,
+    deleteSewingGoodsState:
+      state[CREATE_SEWING_GOODS_STORE_NAME].deleteSewingGoods,
+  }));
 
   useEffect(() => {
     if (Boolean(sewingProductId)) {
@@ -56,6 +61,7 @@ export function CreateSewingGoodsContainer() {
   const initialValues = () => {
     const data = getRequestData(productState, {
       [SEWING_GOODS_FIELD_NAME.NAME]: '',
+      [SEWING_GOODS_FIELD_NAME.VENDOR_CODE]: '',
       [SEWING_GOODS_FIELD_NAME.MODIFIER]: '',
       [SEWING_GOODS_FIELD_NAME.CATEGORIES]: [],
       [SEWING_GOODS_FIELD_NAME.DESCRIPTION]: '',

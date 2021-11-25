@@ -30,6 +30,7 @@ export const CREATE_SEWING_GOODS_ACTION_TYPE = {
 
 export const SEWING_GOODS_FIELD_NAME = {
   NAME: 'titleRu',
+  VENDOR_CODE: 'vendorCode',
   DESCRIPTION: 'descriptionRu',
   MODIFIER: 'modifierRu',
   IMAGES: 'images',
