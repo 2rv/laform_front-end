@@ -15,7 +15,6 @@ import { PROMOCODES_ROUTE_PATH } from '../promocodes';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
-import { DELIVERY_PRICE_PAGE_ROUTE_PATH } from '../delivery-price-page';
 import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
 import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
 import { STATISTICS_ROUTE_PATH } from '../statistics';
@@ -67,10 +66,6 @@ export const ADMIN_MENU_ITEMS = [
   },
   { path: SLIDER_LIST_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.SLIDER' },
   { path: PROMOCODES_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.PROMOCODES' },
-  {
-    path: DELIVERY_PRICE_PAGE_ROUTE_PATH,
-    tid: 'HEADER.ADMIN_MENU.CREATE_DELIVERY_TYPE',
-  },
   { path: ALL_PRODUCTS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.ALL_PRODUCTS' },
   {
     path: STATISTICS_ROUTE_PATH,

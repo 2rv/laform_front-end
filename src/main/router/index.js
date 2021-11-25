@@ -102,10 +102,6 @@ import { usersStore, USERS_ROUTE_PATH } from '../../core/users';
 import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
 import { aboutRouter, ABOUT_ROUTE_PATH } from '../../core/about';
 import {
-  deliveryPricePageRouter,
-  DELIVERY_PRICE_PAGE_ROUTE_PATH,
-} from '../../core/delivery-price-page';
-import {
   unsubscribeNotificationRouter,
   UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH,
 } from '../../core/unsubscribe-notification';
@@ -186,7 +182,6 @@ export const routes = {
   [USERS_ROUTE_PATH]: usersStore,
   [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
   [ABOUT_ROUTE_PATH]: aboutRouter,
-  [DELIVERY_PRICE_PAGE_ROUTE_PATH]: deliveryPricePageRouter,
   [UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH]: unsubscribeNotificationRouter,
   [ALL_PRODUCTS_ROUTE_PATH]: allProductsRouter,
 };

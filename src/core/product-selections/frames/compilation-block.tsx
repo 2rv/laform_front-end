@@ -9,6 +9,7 @@ import {
   getIndexName,
   getIndexItems,
   formNames,
+  getIndexPath,
 } from '../product-selections.type';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { IconButton } from 'src/lib/element/button';
@@ -54,25 +55,35 @@ export function CompilationBlock(props: CompilationBlockProps) {
 
   return (
     <SectionLayout>
-      <HeaderCase>
+      <FieldLayout type="double" adaptive>
         <Title tid={value[formNames.blockName]} />
-        <FieldLayout type="double" adaptive>
-          <BasicField
-            titleTid="COMPILATION.BLOCK_NAME_TITLE"
-            placeholderTid="COMPILATION.BLOCK_NAME_PLACEHOLDER"
-            name={getIndexName(index)}
-            value={value[formNames.blockName]}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <LineCase>
-            <CompilationModal handleAdd={handleAdd} listItems={listItems} />
-            <Button onClick={handleRemoveBlock}>
-              <RemoveIcon />
-            </Button>
-          </LineCase>
-        </FieldLayout>
-      </HeaderCase>
+        <BasicField
+          titleTid="Ссылка"
+          placeholderTid="Ссылка на раздел"
+          name={getIndexPath(index)}
+          value={value[formNames.blockPath]}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </FieldLayout>
+
+      <FieldLayout type="double" adaptive>
+        <BasicField
+          titleTid="COMPILATION.BLOCK_NAME_TITLE"
+          placeholderTid="COMPILATION.BLOCK_NAME_PLACEHOLDER"
+          name={getIndexName(index)}
+          value={value[formNames.blockName]}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+        <LineCase>
+          <CompilationModal handleAdd={handleAdd} listItems={listItems} />
+          <Button onClick={handleRemoveBlock}>
+            <RemoveIcon />
+          </Button>
+        </LineCase>
+      </FieldLayout>
+
       <BasicCardList
         onRemove={handleRemove}
         emptyText="COMPILATION.ADD_PRODUCTS_IN_BLOCK"
@@ -85,15 +96,12 @@ export function CompilationBlock(props: CompilationBlockProps) {
 
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
+  height: fit-content;
+  margin-top: 19px;
+  align-self: center;
 `;
 const Button = styled(IconButton)`
   margin-top: 19px;
-`;
-const HeaderCase = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: ${spacing(3)};
-  align-items: center;
 `;
 const LineCase = styled.div`
   display: flex;

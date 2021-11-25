@@ -50,6 +50,7 @@ export function productsLoadData(currentLang: string) {
         sewingRes: sewingRes.data[0],
         masterRes: masterRes.data[0],
       });
+      console.log(compilationRes.data);
 
       dispatch({
         type: PRODUCT_SELECTIONS_ACTION_TYPE.PRODUCTS_LOAD_SUCCESS,
@@ -71,11 +72,13 @@ export function productsUploadData(values: productSelectionFormValues) {
     dispatch({
       type: PRODUCT_SELECTIONS_ACTION_TYPE.PRODUCTS_UPLOAD_PENDING,
     });
+
     try {
       const data = values.products.map((block) => {
         return {
           id: block.id,
           title: block.title,
+          path: block.path,
           compilationProducts: block.compilationProducts.map((item: any) => {
             if (item.type === 0) return { masterClassId: { id: item.id } };
             if (item.type === 1) return { patternProductId: { id: item.id } };

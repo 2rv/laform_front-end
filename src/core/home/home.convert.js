@@ -5,6 +5,7 @@ export function compilationsPerform(rowData) {
     return {
       id: item.id,
       title: item.title,
+      path: item.path,
       compilationProducts: convertMultiProducts(item.compilationProducts),
     };
   });

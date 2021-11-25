@@ -28,6 +28,7 @@ export function compilationsPerform(props: CompilationsPerformProps) {
       return {
         id: item.id,
         title: item.title,
+        path: item.path,
         compilationProducts: compilationProducts,
       };
     },

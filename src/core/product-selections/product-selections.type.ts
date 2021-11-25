@@ -31,6 +31,7 @@ export interface CompilationsPerformProps {
   compilationRes: {
     id: string;
     title: string;
+    path: string;
     compilationProducts: BasicRecommendationProducsType[];
   }[];
   patternRes: BasicPatternType[];
@@ -42,6 +43,7 @@ export interface CompilationsPerformProps {
 export interface productSelectionBlock {
   id?: string;
   title: string;
+  path: string;
   compilationProducts: CardMultiType[];
 }
 export interface productSelectionFormValues {
@@ -89,10 +91,14 @@ export interface CompilationModalProps {
 export enum formNames {
   productBlockArray = 'products',
   blockName = 'title',
+  blockPath = 'path',
   blockItems = 'compilationProducts',
 }
 export function getIndexName(index: number) {
   return `${formNames.productBlockArray}.${index}.${formNames.blockName}`;
+}
+export function getIndexPath(index: number) {
+  return `${formNames.productBlockArray}.${index}.${formNames.blockPath}`;
 }
 export function getIndexItems(index: number) {
   return `${formNames.productBlockArray}.${index}.${formNames.blockItems}`;
