@@ -221,9 +221,32 @@ export function convertAddToCart(
   }
 }
 
-export function convertCreateOrder(data: any, bascketState: basketStateType[]) {
+export interface FormValuesInfo {
+  email: string;
+  emailConfirmCode?: string;
+  fullName: string;
+  phoneNumber: string;
+  price: number;
+  promoCode?: string;
+  promoCodeDiscount: number;
+  saveUserInfo: boolean;
+}
+
+export function convertCreateOrder(
+  data: FormValuesInfo,
+  bascketState: basketStateType[],
+) {
   return {
-    purchase: data,
+    purchase: {
+      email: data.email,
+      emailConfirmCode: data.emailConfirmCode,
+      fullName: data.fullName,
+      phoneNumber: data.phoneNumber,
+      price: data.price,
+      promoCode: data.promoCode,
+      promoCodeDiscount: data.promoCodeDiscount,
+      saveUserInfo: data.saveUserInfo,
+    },
     purchaseProducts: bascketState.map((item) => {
       return {
         masterClassId: item.type === 0 ? item.id : undefined,

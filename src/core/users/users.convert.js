@@ -4,6 +4,7 @@ export const convertUsersOrderData = (data) => {
     login: data.login,
     emailConfirmed: data.emailConfirmed,
     notificationEmail: data.notificationEmail,
+    receivesNewOrders: data.receivesNewOrders,
     role: data.role,
   };
 };
