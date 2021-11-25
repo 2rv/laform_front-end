@@ -24,16 +24,21 @@ export function CreateMasterClassContainer() {
   const dispatch = useDispatch();
   const masterClassId = getQuery('id');
 
-  const { state, pageLoading, productState, updateMasterClassState, deleteMasterClassState } =
-    useSelector((state) => ({
-      state: state[CREATE_MASTER_CLASS_STORE_NAME].createMasterClass,
-      productState: state[CREATE_MASTER_CLASS_STORE_NAME].product,
-      updateMasterClassState:
-        state[CREATE_MASTER_CLASS_STORE_NAME].updateMasterClass,
-      deleteMasterClassState:
-        state[CREATE_MASTER_CLASS_STORE_NAME].deleteMasterClass,
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    }));
+  const {
+    state,
+    pageLoading,
+    productState,
+    updateMasterClassState,
+    deleteMasterClassState,
+  } = useSelector((state) => ({
+    state: state[CREATE_MASTER_CLASS_STORE_NAME].createMasterClass,
+    productState: state[CREATE_MASTER_CLASS_STORE_NAME].product,
+    updateMasterClassState:
+      state[CREATE_MASTER_CLASS_STORE_NAME].updateMasterClass,
+    deleteMasterClassState:
+      state[CREATE_MASTER_CLASS_STORE_NAME].deleteMasterClass,
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+  }));
 
   useEffect(() => {
     if (Boolean(masterClassId)) {
@@ -57,6 +62,7 @@ export function CreateMasterClassContainer() {
     const data = getRequestData(productState, {
       [CREATE_MASTER_CLASS_FIELD_NAME.NAME]: '',
       [CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER]: '',
+      [CREATE_MASTER_CLASS_FIELD_NAME.VENDOR_CODE]: '',
       [CREATE_MASTER_CLASS_FIELD_NAME.IMAGES]: [],
       [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]: '',
       [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: [],

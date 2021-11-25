@@ -202,17 +202,17 @@ export const tabs = [
 export const filterOptionss = [
   {
     id: 0,
-    tid: 'OTHERRS.CATEGORY_FILTER.ALL',
+    tid: 'OTHER.CATEGORY_FILTER.ALL',
   },
   {
     id: 1,
-    tid: 'OTHERRS.CATEGORY_FILTER.FROM_A_TO_Z',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_A_TO_Z',
     sort: 'title',
     by: 'ASC',
   },
   {
     id: 2,
-    tid: 'OTHERRS.CATEGORY_FILTER.FROM_Z_TO_A',
+    tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
     sort: 'title',
     by: 'DESC',
   },

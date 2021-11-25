@@ -25,15 +25,19 @@ export function CreatePatternContainer() {
 
   const patternProductId = getQuery('id');
 
-  const { state, pageLoading, productState, updatePatternState, deletePatternState } = useSelector(
-    (state) => ({
-      state: state[CREATE_PATTERN_STORE_NAME].createPattern,
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-      productState: state[CREATE_PATTERN_STORE_NAME].product,
-      updatePatternState: state[CREATE_PATTERN_STORE_NAME].updatePattern,
-      deletePatternState: state[CREATE_PATTERN_STORE_NAME].deletePattern,
-    }),
-  );
+  const {
+    state,
+    pageLoading,
+    productState,
+    updatePatternState,
+    deletePatternState,
+  } = useSelector((state) => ({
+    state: state[CREATE_PATTERN_STORE_NAME].createPattern,
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    productState: state[CREATE_PATTERN_STORE_NAME].product,
+    updatePatternState: state[CREATE_PATTERN_STORE_NAME].updatePattern,
+    deletePatternState: state[CREATE_PATTERN_STORE_NAME].deletePattern,
+  }));
 
   useEffect(() => {
     if (Boolean(patternProductId)) {
@@ -56,6 +60,7 @@ export function CreatePatternContainer() {
   const initialValues = () => {
     const data = getRequestData(productState, {
       [CREATE_PATTERN_FIELD_NAME.NAME]: '',
+      [CREATE_PATTERN_FIELD_NAME.VENDOR_CODE]: '',
       [CREATE_PATTERN_FIELD_NAME.MODIFIER]: '',
       [CREATE_PATTERN_FIELD_NAME.MATERIAL]: '',
       [CREATE_PATTERN_FIELD_NAME.COMPLEXITY]: 1,

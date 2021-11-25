@@ -24,15 +24,19 @@ export function CreateArticleContainer() {
   const dispatch = useDispatch();
   const ArticleId = getQuery('id');
 
-  const { state, pageLoading, productState, updateArticleState, deleteArticleState } = useSelector(
-    (state) => ({
-      state: state[CREATE_ARTICLE_STORE_NAME].createArticle,
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-      productState: state[CREATE_ARTICLE_STORE_NAME].product,
-      updateArticleState: state[CREATE_ARTICLE_STORE_NAME].updateArticle,
-      deleteArticleState: state[CREATE_ARTICLE_STORE_NAME].deleteArticle,
-    }),
-  );
+  const {
+    state,
+    pageLoading,
+    productState,
+    updateArticleState,
+    deleteArticleState,
+  } = useSelector((state) => ({
+    state: state[CREATE_ARTICLE_STORE_NAME].createArticle,
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    productState: state[CREATE_ARTICLE_STORE_NAME].product,
+    updateArticleState: state[CREATE_ARTICLE_STORE_NAME].updateArticle,
+    deleteArticleState: state[CREATE_ARTICLE_STORE_NAME].deleteArticle,
+  }));
 
   useEffect(() => {
     if (Boolean(ArticleId)) {
@@ -56,7 +60,7 @@ export function CreateArticleContainer() {
     const data = getRequestData(productState, {
       [ARTICLE_FIELD_NAME.NAME]: '',
       [ARTICLE_FIELD_NAME.MODIFIER]: '',
-      [ARTICLE_FIELD_NAME.COLOR_MODIFIER]: '#fff',
+      [ARTICLE_FIELD_NAME.VENDOR_CODE]: '',
       [ARTICLE_FIELD_NAME.CATEGORIES]: [],
       [ARTICLE_FIELD_NAME.IMAGES]: [],
       [ARTICLE_FIELD_NAME.RECOMMENDATIONS]: [],

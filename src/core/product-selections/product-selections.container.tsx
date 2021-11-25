@@ -55,6 +55,7 @@ export function ProductSelectionsContainer() {
   const initialBlock = {
     [formNames.blockName]: 'Блок',
     [formNames.blockItems]: [],
+    [formNames.blockPath]: '',
   };
 
   function onSubmit(values: productSelectionFormValues) {

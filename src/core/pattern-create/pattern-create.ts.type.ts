@@ -37,6 +37,7 @@ export interface dataValueType {
   optionType: 0 | 2;
   options: optionType[];
   deleted?: boolean;
+  vendorCode?: string;
 }
 export interface formValueType {
   type: 1 | 2;
@@ -56,4 +57,5 @@ export interface formValueType {
   options: optionType[];
   images?: any;
   deleted?: boolean;
+  vendorCode?: string;
 }

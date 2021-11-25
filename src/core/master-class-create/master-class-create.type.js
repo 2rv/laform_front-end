@@ -30,6 +30,7 @@ export const CREATE_MASTER_CLASS_ACTION_TYPE = {
 
 export const CREATE_MASTER_CLASS_FIELD_NAME = {
   NAME: 'titleRu',
+  VENDOR_CODE: 'vendorCode',
   DESCRIPTION: 'descriptionRu',
   MODIFIER: 'modifierRu',
   DISCOUNT: 'discount',

@@ -19,6 +19,7 @@ export function HomeComponent(props) {
             key={index}
             isSliced={false}
             title={item.title}
+            path={item.path}
             items={item.compilationProducts}
           />
         ))

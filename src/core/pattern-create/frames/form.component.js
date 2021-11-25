@@ -106,6 +106,15 @@ export function FormComponent(props) {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        <BasicField
+          titleTid="Артикул"
+          placeholderTid="Введите артикул"
+          name={CREATE_PATTERN_FIELD_NAME.VENDOR_CODE}
+          value={values[CREATE_PATTERN_FIELD_NAME.VENDOR_CODE]}
+          error={getFieldError(CREATE_PATTERN_FIELD_NAME.VENDOR_CODE)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
       </FieldLayout>
 
       <BlockCategories values={values} type={2} />

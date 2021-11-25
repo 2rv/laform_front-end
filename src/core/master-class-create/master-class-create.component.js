@@ -62,7 +62,7 @@ export function CreateMasterClassComponent(props) {
         )}
         {isError && <ErrorAlert tid={errorMessage} />}
         {updateIsSuccess && (
-          <SuccessAlert tid="MASTER_CLASSES.CREATE.SUCCESSFULLY_UPDATED" />
+          <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_UPDATED" />
         )}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
         <Divider />

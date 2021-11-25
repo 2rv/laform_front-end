@@ -12,7 +12,6 @@ import { THEME_SIZE } from 'src/lib/theme';
 import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { BlockCategories } from 'src/lib/common/block-categories';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
-import { ModifierBlock } from 'src/lib/common/block-modifier';
 
 export function FormComponent(props) {
   const {
@@ -47,17 +46,23 @@ export function FormComponent(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          <ModifierBlock
-            colorTitleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.PLATE_COLOR"
+          <BasicField
             titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.DIE"
             placeholderTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.EXAMPLE_HIT"
-            values={values}
-            errors={errors}
-            touched={touched}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
             name={ARTICLE_FIELD_NAME.MODIFIER}
-            colorName={ARTICLE_FIELD_NAME.COLOR_MODIFIER}
+            value={values[ARTICLE_FIELD_NAME.MODIFIER]}
+            error={getFieldError(ARTICLE_FIELD_NAME.MODIFIER)}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <BasicField
+            titleTid="Артикул"
+            placeholderTid="Введите артикул"
+            name={ARTICLE_FIELD_NAME.VENDOR_CODE}
+            value={values[ARTICLE_FIELD_NAME.VENDOR_CODE]}
+            error={getFieldError(ARTICLE_FIELD_NAME.VENDOR_CODE)}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
         </FieldLayout>
         <BlockCategories values={values} handleBlur={handleBlur} type={4} />

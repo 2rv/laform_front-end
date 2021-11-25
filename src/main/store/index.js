@@ -148,10 +148,6 @@ import { searchButtonStore } from '../../core/search-button/search-button.store'
 import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
 import { aboutStore, ABOUT_STORE_NAME } from '../../core/about';
 import {
-  deliveryPricePageStore,
-  DELIVERY_PRICE_PAGE_STORE_NAME,
-} from '../../core/delivery-price-page';
-import {
   unsubscribeNotificationStore,
   UNSUBSCRIBE_NOTIFICATION_STORE_NAME,
 } from '../../core/unsubscribe-notification';
@@ -258,7 +254,6 @@ export const reducers = combineReducers({
   [ALL_LIKES_STORE_NAME]: allLikesStore,
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
   [ABOUT_STORE_NAME]: aboutStore,
-  [DELIVERY_PRICE_PAGE_STORE_NAME]: deliveryPricePageStore,
   [UNSUBSCRIBE_NOTIFICATION_STORE_NAME]: unsubscribeNotificationStore,
   [ALL_PRODUCTS_STORE_NAME]: allProductsStore,
 });
