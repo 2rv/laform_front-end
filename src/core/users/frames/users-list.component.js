@@ -19,19 +19,37 @@ const userRoles = [
   { id: USER_ROLE.ADMIN, tid: 'PROFILE.ROLE.ADMIN' },
 ];
 
+const receiveNewOrder = [
+  { id: 0, tid: 'Нет' },
+  { id: 1, tid: 'Да' },
+];
+
 export function UsersListComponent({ isPending, users }) {
   const dispatch = useDispatch();
   const [userRole, setUserRole] = useState('');
+  const [userReceive, setReceive] = useState(false);
 
   const updateUserRoleHandler = (userId, setVisible) => {
-    dispatch(updateUserData(userId, { role: Number(userRole) }));
+    dispatch(
+      updateUserData(userId, {
+        role: Number(userRole),
+        receivesNewOrders: Boolean(Number(userReceive)),
+      }),
+    );
     setVisible(false);
   };
 
   return (
     <Container>
       {users.map((item) => {
-        const { id, login, emailConfirmed, notificationEmail, role } = item;
+        const {
+          id,
+          login,
+          emailConfirmed,
+          notificationEmail,
+          role,
+          receivesNewOrders,
+        } = item;
         const currentUserRole =
           role === USER_ROLE.BLOCKED
             ? 'PROFILE.ROLE.BLOCKED'
@@ -70,6 +88,14 @@ export function UsersListComponent({ isPending, users }) {
                   />
                 </Case>
                 <Case>
+                  <TextSecondary tid="Получает уведомления о новых заказах" />
+                  &nbsp;
+                  <StatusInfo
+                    status={receivesNewOrders}
+                    tid={receivesNewOrders ? 'OTHER.YES' : 'OTHER.NO'}
+                  />
+                </Case>
+                <Case>
                   <TextSecondary tid="PROFILE.ROLE.TITLE" />
                   <TextPrimary tid={currentUserRole} />
                 </Case>
@@ -82,10 +108,16 @@ export function UsersListComponent({ isPending, users }) {
                       value={userRole}
                       onChange={(e) => setUserRole(e.target.value)}
                     />
+                    <FieldSelect
+                      titleTid="Получает уведомление о новых заказах"
+                      options={receiveNewOrder}
+                      value={userReceive}
+                      onChange={(e) => setReceive(e.target.value)}
+                    />
+
                     <ButtonPrimary
                       tid="OTHER.SAVE"
                       onClick={() => updateUserRoleHandler(id, setVisible)}
-                      disabled={Number(userRole) === role}
                     />
                   </ModalContent>
                 )}
@@ -134,7 +166,7 @@ const Case = styled.div`
 `;
 const ModalContent = styled.div`
   display: grid;
-  width: 250px;
+  width: 300px;
   gap: ${spacing(2)};
 `;
 const LoginText = styled(TextSecondary)`

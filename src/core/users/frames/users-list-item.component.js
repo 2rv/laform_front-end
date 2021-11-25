@@ -27,6 +27,7 @@ export function UsersListItemComponent(props) {
             tid={emailConfirmed ? 'PROFILE.VERIFIED' : 'PROFILE.NOT_VERIFIED'}
           />
         </div>
+
         <div>
           <TextSecondary tid="PROFILE.SUBSCRIBED_TO_MAILING_LISTS" />
           &nbsp;
