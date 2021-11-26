@@ -160,8 +160,8 @@ export function CardPrice(props: CardPriceProps) {
   const { price = 0, discount = 0 } = props;
   return (
     <div>
-      {/* <TextSecondary tid="OTHER.CARD.PRODUCT_PRICE" /> */}
-      &nbsp;
+      {/* <TextSecondary tid="OTHER.CARD.PRODUCT_PRICE" /> 
+       &nbsp; */}
       {Boolean(discount) ? (
         <>
           <Text price={(price - (price / 100) * discount).toFixed(2)} />

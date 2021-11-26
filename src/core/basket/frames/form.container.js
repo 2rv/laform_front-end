@@ -8,6 +8,8 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { useEffect } from 'react';
 import { CartAlert } from './cart.alert';
+import { TitlePrimary } from 'src/lib/element/title';
+import { Divider } from 'src/lib/element/divider';
 
 export function FormContainer(props) {
   const {
@@ -93,6 +95,7 @@ export function FormContainer(props) {
         return (
           <form onSubmit={formProps.handleSubmit}>
             <SectionLayout>
+              <TitlePrimary tid="Оформление заказа" />
               <FormComponent
                 isAuth={isAuth}
                 diliveryOptions={diliveryOptions}
@@ -107,6 +110,7 @@ export function FormContainer(props) {
                 confirmEmailCodePending={confirmEmailCodePending}
                 {...formProps}
               />
+              <Divider />
               <SectionLayout type="SMALL">
                 <CartPrice values={formProps.values} />
                 <FieldLayout type="double" adaptive>

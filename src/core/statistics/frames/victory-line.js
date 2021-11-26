@@ -11,6 +11,7 @@ import {
   createContainer,
   VictoryBar,
   VictoryVoronoiContainer,
+  VictoryScatter,
 } from 'victory';
 
 const MONTH = [
@@ -68,7 +69,7 @@ export function ChartPrice(props) {
           y="price"
           style={{ data: { fill: '#219653' } }}
           data={data}
-          barRatio={0.9}
+          barRatio={1}
           labels={({ datum }) => datum?.price}
           labelComponent={<VictoryTooltip />}
         />
@@ -136,7 +137,6 @@ export function ChartPrice(props) {
     </Container>
   );
 }
-
 export function ChartOrders(props) {
   const { data } = props;
   const [state, setState] = useState({});

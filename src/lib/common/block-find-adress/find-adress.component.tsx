@@ -39,6 +39,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           loadOptions={findCity}
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
+          isDisabled={!values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
         />
         <AsyncReactSelect
           titleTid="Улица"
@@ -48,6 +49,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           loadOptions={findStreet}
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
+          isDisabled={!values[FIND_ADRESS_FIELD_NAME.CITY]}
         />
         <AsyncReactSelect
           titleTid="Дом"
@@ -57,6 +59,7 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           loadOptions={findHouse}
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
+          isDisabled={!values[FIND_ADRESS_FIELD_NAME.STREET]}
         />
         <AsyncReactSelect
           titleTid="Почтовый индекс"
@@ -67,23 +70,30 @@ export function FindAdressComponent(props: FindAdreccComponentProps) {
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
         />
-      </FieldLayout>
-      <div>
-        <TextPrimary tid="Полный адрес -" />
-        <SmallTitle
-          tid={`
+        <TextCase>
+          <div>
+            <TextPrimary tid="Полный адрес -" />
+            <SmallTitle
+              tid={`
 		${country ? country + ', ' : ''}
 		${city ? city + ', ' : ''}
 		${street ? street + ', ' : ''}
 		${house ? house + ', ' : ''}
 		${postal_code ? postal_code + '.' : '.'}
 		`}
-        />
-      </div>
+            />
+          </div>
+        </TextCase>
+      </FieldLayout>
     </SectionLayout>
   );
 }
-
+const TextCase = styled.div`
+  margin-top: 19px;
+  display: flex;
+  align-items: center;
+`;
 const SmallTitle = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  font-size: ${THEME_SIZE.FONT.DEFAULT};
+  line-height: 1.5;
 `;

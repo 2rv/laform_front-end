@@ -13,6 +13,7 @@ import { BlockFindAdress } from 'src/lib/common/block-find-adress';
 import { TitlePrimary } from 'src/lib/element/title';
 import { TextSecondary } from 'src/lib/element/text';
 import { CartEmail } from './cart.email';
+import { Divider } from 'src/lib/element/divider';
 
 export function FormComponent(props) {
   const {
@@ -41,7 +42,7 @@ export function FormComponent(props) {
   };
   return (
     <SectionLayout type="SMALL">
-      <TitlePrimary tid="BASKET.FORM.FIELDS.TITLES.CONTACT_DETAILS" />
+      <Title tid="BASKET.FORM.FIELDS.TITLES.CONTACT_DETAILS" />
       <CartEmail
         values={values}
         errors={errors}
@@ -55,7 +56,6 @@ export function FormComponent(props) {
         sendEmailCodePending={sendEmailCodePending}
         confirmEmailCodePending={confirmEmailCodePending}
       />
-
       <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.FULL_NAME"
@@ -77,11 +77,15 @@ export function FormComponent(props) {
         />
       </FieldLayout>
 
-      <TitlePrimary tid="BASKET.FORM.FIELDS.TITLES.DELIVERY_DATA" />
-      <TextSecondary tid="Не нашли свой адресс? - введите его в примечаниях к заказу. (Стоит продумать)" />
-      <BlockFindAdress values={values} setFieldValue={setFieldValue} />
-      <TitlePrimary tid="BASKET.FORM.FIELDS.TITLES.ADDITIONAL" />
+      <Divider />
 
+      <Title tid="BASKET.FORM.FIELDS.TITLES.DELIVERY_DATA" />
+      <Text tid="Не нашли свой адресс? - введите его в примечаниях к заказу. (Стоит продумать)" />
+      <BlockFindAdress values={values} setFieldValue={setFieldValue} />
+
+      <Divider />
+
+      <Title tid="BASKET.FORM.FIELDS.TITLES.ADDITIONAL" />
       <TextareaField
         titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"
         placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
@@ -91,7 +95,6 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         error={getFieldError(ORDER_FIELD_NAME.DESCRIPTION)}
       />
-
       <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.PROMO_CODE"
@@ -131,4 +134,11 @@ export function FormComponent(props) {
 }
 const Button = styled(ButtonSecondary)`
   margin-top: 19px;
+`;
+const Title = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+const Text = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.SMALL};
+  line-height: 1.5;
 `;

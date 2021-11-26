@@ -70,6 +70,7 @@ export function FormComponent(props) {
   };
   return (
     <SectionLayout type="SMALL">
+      <Title tid="Основная информация" />
       <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.NAME"
@@ -110,10 +111,15 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         minHeight={100}
       />
+
+      <Divider />
+
+      <Title tid="Параметры товара" />
+
       <FieldLayout type="double" adaptive>
         <FieldCheckbox
-          titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.LENGTH"
-          labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.LENGTH"
+          titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.QUANTITY"
+          labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.QUANTITY"
           name={SEWING_GOODS_FIELD_NAME.IS_COUNT}
           value={values[SEWING_GOODS_FIELD_NAME.IS_COUNT]}
           onBlur={handleBlur}
@@ -154,6 +160,7 @@ export function FormComponent(props) {
         optionCountName={SEWING_GOODS_FIELD_NAME.OPTION_COUNT}
         optionLengthName={SEWING_GOODS_FIELD_NAME.OPTION_LENGTH}
       />
+
       <Divider />
 
       <RecomendationBlock
@@ -161,6 +168,18 @@ export function FormComponent(props) {
         name={SEWING_GOODS_FIELD_NAME.RECOMMENDATIONS}
         setFieldValue={setFieldValue}
       />
+
+      <Divider />
+
+      <CreatePriceBlock
+        priceAndDiscount={checkMinPriceAndDiscount(
+          values[SEWING_GOODS_FIELD_NAME.OPTIONS],
+          values[SEWING_GOODS_FIELD_NAME.PRICE],
+          values[SEWING_GOODS_FIELD_NAME.DISCOUNT],
+        )}
+      />
+
+      <Divider />
 
       <FieldCheckbox
         titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
@@ -172,13 +191,6 @@ export function FormComponent(props) {
         onBlur={handleBlur}
       />
 
-      <CreatePriceBlock
-        priceAndDiscount={checkMinPriceAndDiscount(
-          values[SEWING_GOODS_FIELD_NAME.OPTIONS],
-          values[SEWING_GOODS_FIELD_NAME.PRICE],
-          values[SEWING_GOODS_FIELD_NAME.DISCOUNT],
-        )}
-      />
       <FieldLayout type="double" adaptive>
         {isEdit ? (
           <ButtonPrimary

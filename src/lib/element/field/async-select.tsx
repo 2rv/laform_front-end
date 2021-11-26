@@ -41,6 +41,7 @@ export function AsyncReactSelect(props: any) {
     error,
     loadOptions,
     cacheOptions = true,
+    isDisabled = false,
   } = props;
   return (
     <Container>
@@ -53,6 +54,7 @@ export function AsyncReactSelect(props: any) {
         noOptionsMessage={noResults}
         placeholder={text(placeholderTid)}
         loadOptions={loadOptions}
+        isDisabled={isDisabled}
       />
       {error && <ErrorField errorTid={error} />}
     </Container>

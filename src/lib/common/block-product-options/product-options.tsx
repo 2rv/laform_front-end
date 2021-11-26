@@ -1,9 +1,6 @@
-import styled from 'styled-components';
 import { FieldArray } from 'formik';
-import { THEME_SIZE } from '../../theme';
 import { ButtonSecondary } from '../../element/button';
 import { SectionLayout, FieldLayout } from '../../element/layout';
-import { TitlePrimary } from '../../element/title';
 import { ProductOptionsProps } from './components.type';
 import { ProductOptionsOne } from './product-options-one';
 import { ProductOptionsTwo } from './product-options-two';
@@ -15,6 +12,7 @@ import {
   numberTwoDigit,
   numberValue,
 } from 'src/lib/common/create-product-validation';
+import { Divider } from 'src/lib/element/divider';
 
 export function ProductOptions(props: ProductOptionsProps) {
   const {
@@ -122,11 +120,6 @@ export function ProductOptions(props: ProductOptionsProps) {
   return (
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
-        <Title
-          tid={
-            values[optionTypeName] === 0 ? 'Без параметров' : 'Параметры товара'
-          }
-        />
         <FieldSelect
           titleTid="Выберите тип параметров"
           name={optionTypeName}
@@ -136,6 +129,9 @@ export function ProductOptions(props: ProductOptionsProps) {
           onBlur={handleBlur}
         />
       </FieldLayout>
+
+      <Divider />
+
       <FieldArray name={fieldArrayName}>
         {({ remove, push }) => (
           <SectionLayout type="SMALL">
@@ -257,12 +253,6 @@ export function ProductOptions(props: ProductOptionsProps) {
     </SectionLayout>
   );
 }
-
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  align-self: center;
-  justify-self: center;
-`;
 const optionPatternSelectType = [
   { id: 0, tid: 'Без параметров' },
   { id: 2, tid: 'Только размер' },

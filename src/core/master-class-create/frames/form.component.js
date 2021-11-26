@@ -16,6 +16,7 @@ import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { CreatePriceBlock } from 'src/lib/common/block-create-price';
+import { Divider } from 'src/lib/element/divider';
 
 export function FormComponent(props) {
   const {
@@ -42,6 +43,7 @@ export function FormComponent(props) {
   return (
     <SectionLayout>
       <SectionLayout type="TEXT">
+        <Title tid="Основная информация" />
         <FieldLayout type="double" adaptive>
           <BasicField
             titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.NAME"
@@ -82,15 +84,20 @@ export function FormComponent(props) {
           onBlur={handleBlur}
           minHeight={100}
         />
-        <ReactEditorBlock
-          titleTid="PATTERNS.CREATE.FORM.MATERIALS"
-          handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
-          data={values[CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]}
-          error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
-          errorMessage={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
-          enableIsEdit={isEdit}
-        />
       </SectionLayout>
+
+      <Divider />
+
+      <ReactEditorBlock
+        titleTid="PATTERNS.CREATE.FORM.MATERIALS"
+        handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
+        data={values[CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]}
+        error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
+        errorMessage={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
+        enableIsEdit={isEdit}
+      />
+
+      <Divider />
 
       <ReactEditorBlock
         titleTid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE"
@@ -99,6 +106,8 @@ export function FormComponent(props) {
         minHeight={100}
         enableIsEdit={isEdit}
       />
+
+      <Divider />
 
       <SectionLayout type="SMALL">
         <Title tid="MASTER_CLASSES.CREATE.FORM.PRICE" />
@@ -128,11 +137,16 @@ export function FormComponent(props) {
             }}
           />
         </FieldLayout>
+
+        <Divider />
+
         <RecomendationBlock
           values={values[CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]}
           name={CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS}
           setFieldValue={setFieldValue}
         />
+
+        <Divider />
 
         <FieldCheckbox
           titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.VISIBILITY"

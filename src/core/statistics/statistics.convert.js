@@ -1,35 +1,37 @@
-export const convertForChart = (rowData) => {
-  return {
-    ...rowData,
-    chartOrders: rowData.chartOrders.map((item, index) => {
-      return {
-        date: item.date,
-        orders: item.orders,
-        price: item.price,
-      };
-    }),
-  };
-};
-
 export const convertOrdersCount = (data) => {
-  return data.map(({ date, count }) => ({
-    date: formatDate(date),
-    count,
+  const filteredData = data.map(({ date, count }) => ({
+    x: new Date(date),
+    y: count,
   }));
+
+  const dataYears = filteredData
+    .reduce((years, { x }) => {
+      const year = x.getFullYear();
+      if (!years.includes(year)) {
+        years.push(year);
+      }
+      return years;
+    }, [])
+    .map((year) => ({ name: year }));
+
+  return { data: filteredData, dataYears };
 };
 
 export const convertPrice = (data) => {
-  return data.map(({ date, price }) => ({
-    date: formatDate(date),
-    price,
+  const filteredData = data.map(({ date, price }) => ({
+    x: new Date(date),
+    y: price,
   }));
-};
 
-const formatDate = (date) => {
-  const splittedDate = date.split('.');
-  const year = Number(splittedDate[2]);
-  const month = Number(splittedDate[1]) - 1;
-  const day = Number(splittedDate[0]);
+  const dataYears = filteredData
+    .reduce((years, { x }) => {
+      const year = x.getFullYear();
+      if (!years.includes(year)) {
+        years.push(year);
+      }
+      return years;
+    }, [])
+    .map((year) => ({ name: year }));
 
-  return new Date(year, month, day);
+  return { data: filteredData, dataYears };
 };

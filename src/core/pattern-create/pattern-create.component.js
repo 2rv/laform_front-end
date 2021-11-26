@@ -49,6 +49,7 @@ export function CreatePatternComponent(props) {
                     name={CREATE_PATTERN_FIELD_NAME.IMAGES}
                     {...formProps}
                   />
+                  <Divider />
                   <FormComponent
                     {...formProps}
                     isEdit={isEdit}
@@ -67,7 +68,7 @@ export function CreatePatternComponent(props) {
         )}
         {isError && <ErrorAlert tid={errorMessage} />}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
-        <Divider />
+        {isEdit && <Divider />}
         <DeleteProductComponent
           isEdit={isEdit}
           deleteProduct={deleteProduct}

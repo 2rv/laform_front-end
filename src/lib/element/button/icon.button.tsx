@@ -11,5 +11,6 @@ export function IconButton(props: ButtonPropsType) {
 
 const Button = styled(ButtonBasic)`
   width: 46px;
+  min-width: 46px;
   gap: ${spacing(3)};
 `;

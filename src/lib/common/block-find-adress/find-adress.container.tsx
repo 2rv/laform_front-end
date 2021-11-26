@@ -24,12 +24,61 @@ export function FindAdressContainer(props: FindAdreccContainerProps) {
   const findHouse = (value: string) => getHouse(value, values, currentLang);
   const findIndex = (value: string) => getPostalIndex(value);
   const handleChange = (name: string) => (value: adressValueType) => {
-    const fullAdress = {
-      ...values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS],
-      ...value,
-    };
+    if (name === FIND_ADRESS_FIELD_NAME.COUNTRY) {
+      setFieldValue(FIND_ADRESS_FIELD_NAME.CITY, '');
+      setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, '');
+      setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, '');
+      setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+
+      setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, {
+        ...value,
+      });
+    }
+    if (name === FIND_ADRESS_FIELD_NAME.CITY) {
+      setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, '');
+      setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, '');
+      setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+      const { country } = values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS];
+      setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, { country, ...value });
+    }
+    if (name === FIND_ADRESS_FIELD_NAME.STREET) {
+      setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, '');
+      setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+      const { country, city, settlement } =
+        values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS];
+      setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, {
+        country,
+        city,
+        settlement,
+        ...value,
+      });
+    }
+
+    if (name === FIND_ADRESS_FIELD_NAME.HOUSE) {
+      setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+      const { country, city, settlement, street } =
+        values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS];
+      setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, {
+        country,
+        city,
+        settlement,
+        street,
+        ...value,
+      });
+    }
+    if (name === FIND_ADRESS_FIELD_NAME.POSTAL_CODE) {
+      const { country, city, settlement, street, house } =
+        values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS];
+      setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, {
+        country,
+        city,
+        settlement,
+        street,
+        house,
+        ...value,
+      });
+    }
     setFieldValue(name, value);
-    setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, fullAdress);
   };
 
   return (

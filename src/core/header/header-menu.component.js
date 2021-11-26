@@ -24,7 +24,6 @@ export function HeaderMenuComponent(props) {
     sidebarIsOpen,
     emailConfirmed,
   } = props;
-
   return (
     <Container>
       <MiddleCase>
@@ -33,7 +32,7 @@ export function HeaderMenuComponent(props) {
       </MiddleCase>
       <NavMenu items={navMenuItems} activePath={activePath} />
       <Case>
-        {isAuth && emailConfirmed && <EmailConfirmed />}
+        {isAuth && !emailConfirmed && <EmailConfirmed />}
         {isAuth && (
           <MenuModal
             currentLang={currentLang}
@@ -59,7 +58,7 @@ const Container = styled.div`
 `;
 const Case = styled.div`
   display: flex;
-  gap: ${spacing(3)};
+  gap: ${spacing(1)};
   align-items: center;
 `;
 const LinksAuth = styled(AuthLinks)`
