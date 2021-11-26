@@ -51,6 +51,7 @@ export function CreateMasterClassComponent(props) {
                     name={CREATE_MASTER_CLASS_FIELD_NAME.IMAGES}
                     {...formProps}
                   />
+                  <Divider />
                   <FormComponent isEdit={isEdit} {...formProps} />
                 </SectionLayout>
               </form>

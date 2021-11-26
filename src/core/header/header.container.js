@@ -34,7 +34,7 @@ export function HeaderContainer(props) {
       sidebarIsOpen={sidebarIsOpen}
       activePath={activePath}
       isAuth={auth.logged}
-      emailConfirmed={auth.emailConfirmed}
+      emailConfirmed={auth?.user?.emailConfirmed}
       userName={auth?.user?.login}
       currentLang={currentLang}
       navMenuItems={NAV_MENU_ITEMS}

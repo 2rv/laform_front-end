@@ -50,6 +50,9 @@ export function CreateArticleComponent(props) {
                     name={ARTICLE_FIELD_NAME.IMAGES}
                     {...formProps}
                   />
+
+                  <Divider />
+
                   <FormComponent isEdit={isEdit} {...formProps} />
                 </SectionLayout>
               </form>
@@ -64,7 +67,7 @@ export function CreateArticleComponent(props) {
           <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_UPDATED" />
         )}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
-        <Divider />
+        {isEdit && <Divider />}
         <DeleteProductComponent
           isEdit={isEdit}
           deleteProduct={deleteProduct}

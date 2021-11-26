@@ -41,7 +41,6 @@ export async function getCity(value: string, values: any, currentLang: string) {
   });
   return response.data.suggestions.map((item: any) => ({
     label: item.value,
-    country: item.data.country,
     city: item.data.city_with_type,
     city_fias_id: item.data.city_fias_id,
     settlement: item.data.settlement_with_type,
@@ -67,11 +66,9 @@ export async function getStreet(
       locations: getLocations(cityData),
     },
   });
+
   return response.data.suggestions.map((item: any) => ({
     label: item.value,
-    country: item.data.country,
-    city: item.data.city_with_type,
-    settlement: item.data.settlement_with_type,
     street: item.data.street_with_type,
     street_fias_id: item.data.street_fias_id,
   }));
@@ -97,15 +94,9 @@ export async function getHouse(
       ),
     },
   });
-
+  console.log(response.data.suggestions);
   return response.data.suggestions.map((item: any) => ({
-    label: `${item.data.city}, ${
-      item.data.street_with_type || item.data.settlement_with_type
-    }, ${item.data.house}.`,
-    country: item.data.country,
-    city: item.data.city_with_type,
-    settlement: item.data.settlement_with_type,
-    street: item.data.street_with_type,
+    label: item.value,
     house: item.data.house,
     house_fias_id: item.data.house_fias_id,
   }));

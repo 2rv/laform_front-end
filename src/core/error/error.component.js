@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
 import { TextPrimary, TextSecondary } from '../../lib/element/text';
 import { LinkPrimary } from '../../lib/element/link';
-import { ReactComponent as ErrorImage } from '../../asset/svg/error-page-image.svg';
 
 export function ErrorComponent(props) {
-  const { titleTid, textTid, linkTid, linkPath } = props;
+  const { titleTid, textTid, linkTid, linkPath, image } = props;
+  const Image = image;
   return (
     <Container>
       <Image />
@@ -26,12 +26,7 @@ export function ErrorComponent(props) {
     </Container>
   );
 }
-const Image = styled(ErrorImage)`
-  width: 360px;
-  @media screen and (max-width: 500px) {
-    width: 100%;
-  }
-`;
+
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -44,7 +39,6 @@ const Container = styled.div`
     gap: ${spacing(3)};
   }
 `;
-
 const TextContainer = styled.div`
   display: grid;
   gap: ${spacing(2)};

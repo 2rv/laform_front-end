@@ -14,6 +14,7 @@ import {
   SewingGoodStats,
 } from './frames';
 import { ChartPrice, ChartOrders } from './frames/victory-line';
+import { CustomChart } from './frames/test-victory';
 
 export function StatisticstComponent(props) {
   const {
@@ -32,7 +33,9 @@ export function StatisticstComponent(props) {
     <SectionLayout>
       {pageLoading && <LoaderPrimary />}
       <StatisticsTabs pageLoading={pageLoading} activeTab={activeTab} />
-      {activeTab === null && <TotalStats statistics={purchasedProductsCountAndPrice} />}
+      {activeTab === null && (
+        <TotalStats statistics={purchasedProductsCountAndPrice} />
+      )}
       {activeTab === 'master-class' && (
         <MasterClassStats statistics={purchasedProductsCountAndPrice} />
       )}
@@ -45,8 +48,8 @@ export function StatisticstComponent(props) {
       {activeTab === 'sewing-good' && (
         <SewingGoodStats statistics={purchasedProductsCountAndPrice} />
       )}
-      <ChartPrice data={price.data} />
-      <ChartOrders data={ordersCount.data} />
+      <CustomChart data={price.data} />
+      <CustomChart data={ordersCount.data} />
     </SectionLayout>
   );
 }

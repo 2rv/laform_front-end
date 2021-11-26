@@ -18,6 +18,7 @@ import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/conv
 import { CREATE_PATTERN_FIELD_NAME } from '../pattern-create.type';
 import { ReactEditorBlock } from '../../../lib/common/block-react-editor';
 import { CreatePriceBlock } from 'src/lib/common/block-create-price';
+import { TitlePrimary } from 'src/lib/element/title';
 
 export function FormComponent(props) {
   const {
@@ -87,6 +88,7 @@ export function FormComponent(props) {
   };
   return (
     <SectionLayout type="SMALL">
+      <Title tid="Основная информация" />
       <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.NAME"
@@ -116,9 +118,7 @@ export function FormComponent(props) {
           onBlur={handleBlur}
         />
       </FieldLayout>
-
       <BlockCategories values={values} type={2} />
-
       <TextareaField
         titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
         placeholderTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
@@ -129,6 +129,9 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         minHeight={100}
       />
+
+      <Divider />
+
       <ReactEditorBlock
         titleTid="PATTERNS.CREATE.FORM.MATERIALS"
         handleChange={setEditorData(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
@@ -137,6 +140,10 @@ export function FormComponent(props) {
         errorMessage={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
         enableIsEdit={isEdit}
       />
+
+      <Divider />
+
+      <Title tid="Параметры товара" />
       <FieldLayout type="double" adaptive>
         <ComplexityField
           title="PATTERNS.CREATE.FORM.COMPLEXITY"
@@ -199,6 +206,18 @@ export function FormComponent(props) {
         setFieldValue={setFieldValue}
       />
 
+      <Divider />
+
+      <CreatePriceBlock
+        priceAndDiscount={checkMinPriceAndDiscount(
+          values[CREATE_PATTERN_FIELD_NAME.OPTIONS],
+          values[CREATE_PATTERN_FIELD_NAME.PRICE],
+          values[CREATE_PATTERN_FIELD_NAME.DISCOUNT],
+        )}
+      />
+
+      <Divider />
+
       <FieldCheckbox
         titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
         labelTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
@@ -209,13 +228,6 @@ export function FormComponent(props) {
         onBlur={handleBlur}
       />
 
-      <CreatePriceBlock
-        priceAndDiscount={checkMinPriceAndDiscount(
-          values[CREATE_PATTERN_FIELD_NAME.OPTIONS],
-          values[CREATE_PATTERN_FIELD_NAME.PRICE],
-          values[CREATE_PATTERN_FIELD_NAME.DISCOUNT],
-        )}
-      />
       <FieldLayout type="double" adaptive>
         {isEdit ? (
           <ButtonPrimary type="submit" tid="PATTERNS.CREATE.FORM.BUTTON.SAVE" />
@@ -235,4 +247,7 @@ export function FormComponent(props) {
 }
 const SmallTitle = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
+`;
+const Title = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.DEFAULT};
 `;

@@ -114,7 +114,7 @@ const Container = styled(SectionLayout)`
   }
 `;
 const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.DEFAULT};
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
 const ImageContainer = styled.div`
   background-color: ${THEME_COLOR.GRAY};

@@ -50,6 +50,7 @@ export function CreateSewingGoodsComponent(props) {
                     name={SEWING_GOODS_FIELD_NAME.IMAGES}
                     {...formProps}
                   />
+                  <Divider />
                   <FormComponent
                     {...formProps}
                     isEdit={isEdit}
@@ -68,7 +69,7 @@ export function CreateSewingGoodsComponent(props) {
         )}
         {isError && <ErrorAlert tid={errorMessage} />}
         {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
-        <Divider />
+        {isEdit && <Divider />}
         <DeleteProductComponent
           isEdit={isEdit}
           deleteProduct={deleteProduct}

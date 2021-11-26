@@ -27,11 +27,11 @@ export function StatisticsTabs(props) {
   );
 }
 const tabItems = [
-  { name: 'TABS.TOTAL', type: null },
-  { name: 'TABS.MASTER_CLASS', type: 'master-class' },
-  { name: 'TABS.PRINT_PATTERNS', type: 'pattern-print' },
-  { name: 'TABS.ELECTRONIC_PATTERNS', type: 'pattern-electronic' },
-  { name: 'TABS.SEWING_GOODS', type: 'sewing-good' },
+  { name: 'STATISTICS.TABS.TOTAL', type: null },
+  { name: 'STATISTICS.TABS.MASTER_CLASS', type: 'master-class' },
+  { name: 'STATISTICS.TABS.PRINT_PATTERNS', type: 'pattern-print' },
+  { name: 'STATISTICS.TABS.ELECTRONIC_PATTERNS', type: 'pattern-electronic' },
+  { name: 'STATISTICS.TABS.SEWING_GOODS', type: 'sewing-good' },
 ];
 const Container = styled.div`
   display: flex;
