@@ -150,12 +150,10 @@ export function FormComponent(props) {
 
         <FieldCheckbox
           titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
-          labelTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.NOT_VISIBILITY"
+          labelTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
           name={CREATE_MASTER_CLASS_FIELD_NAME.DELETED}
-          value={values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
-          checked={values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
+          checked={!values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
           onClick={setVisible}
-          onBlur={handleBlur}
         />
         <FieldLayout type="double" adaptive>
           {isEdit ? (

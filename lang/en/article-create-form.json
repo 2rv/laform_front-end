@@ -9,20 +9,20 @@
 			"PLATE_COLOR": "Plate color",
 			"ARTICLE_NAME": "Post title",
 			"DIE": "Die",
-			"TAGS": "Tags"
+			"TAGS": "Tags",
+			"VISIBILITY": "Visibility"
 		},
 		"PLACEHOLDER": {
 			"WRITE_ARTICLE_NAME": "Enter post title",
 			"EXAMPLE_HIT": "For example - hit",
-			"WRITE_TAG": "Enter the tag"
+			"WRITE_TAG": "Enter the tag",
+			"VISIBILITY": "Shown in the list"
 		}
 	},
 	"BUTTON": {
 		"CREATE_ARTICLE": "Create post",
 		"RESET": "Reset",
-		"SAVE_ARTICLE": "Save",
-		"VISIBLE": "Visibility",
-		"NOT_VISIBLE": "Not shown in the list"
+		"SAVE_ARTICLE": "Save"
 	},
 	"RECOMENDATIONS": {
 		"TITLE": "Recommendations",

@@ -89,13 +89,11 @@ export function FormComponent(props) {
       <Divider />
 
       <FieldCheckbox
-        titleTid="ARTICLE_CREATE_FORM.BUTTON.VISIBLE"
-        labelTid="ARTICLE_CREATE_FORM.BUTTON.NOT_VISIBLE"
+        titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.VISIBILITY"
+        labelTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.VISIBILITY"
         name={ARTICLE_FIELD_NAME.DELETED}
-        value={values[ARTICLE_FIELD_NAME.DELETED]}
-        checked={values[ARTICLE_FIELD_NAME.DELETED]}
+        checked={!values[ARTICLE_FIELD_NAME.DELETED]}
         onClick={setVisible}
-        onBlur={handleBlur}
       />
       <FieldLayout type="double" adaptive>
         {isEdit ? (
