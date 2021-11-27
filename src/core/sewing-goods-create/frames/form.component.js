@@ -159,6 +159,7 @@ export function FormComponent(props) {
         isLength={values[SEWING_GOODS_FIELD_NAME.IS_LENGTH]}
         optionCountName={SEWING_GOODS_FIELD_NAME.OPTION_COUNT}
         optionLengthName={SEWING_GOODS_FIELD_NAME.OPTION_LENGTH}
+        optionVisibilityName={SEWING_GOODS_FIELD_NAME.OPTION_VISIBILITY}
       />
 
       <Divider />

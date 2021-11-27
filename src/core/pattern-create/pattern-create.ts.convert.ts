@@ -18,6 +18,7 @@ function convertOptions(
       discount: Number(item.discount) ? item.discount : undefined,
       count: isCount && type === 2 ? Number(item.count) : undefined,
       filesPdf: filesPdf?.[index],
+      optionVisibility: item.optionVisibility,
     };
   });
 }

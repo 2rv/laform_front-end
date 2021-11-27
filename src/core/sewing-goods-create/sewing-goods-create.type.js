@@ -53,5 +53,7 @@ export const SEWING_GOODS_FIELD_NAME = {
   OPTION_DISCOUNT: 'discount',
   OPTION_COUNT: 'count',
   OPTION_LENGTH: 'length',
+  OPTION_VISIBILITY: 'optionVisibility',
+
   DELETED: 'deleted',
 };

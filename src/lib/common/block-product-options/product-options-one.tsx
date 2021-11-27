@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing } from '../../theme';
 import { IconButton } from '../../element/button';
-import { BasicField } from '../../element/field';
+import { BasicField, FieldCheckbox } from '../../element/field';
 import { FieldLayout } from '../../element/layout';
 import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
@@ -29,6 +29,8 @@ export function ProductOptionsOne(props: ProductOptionsOneProps) {
     optionLengthName,
     isCount,
     isLength,
+    optionVisibilityName,
+    setVisibility,
   } = props;
 
   return (
@@ -102,6 +104,17 @@ export function ProductOptionsOne(props: ProductOptionsOneProps) {
             onBlur={handleBlur}
           />
         )}
+        <FieldCheckbox
+          titleTid="Видимость опции"
+          labelTid="Опция видна в списке"
+          name={optionVisibilityName}
+          checked={value[optionVisibilityName]}
+          onClick={setVisibility(
+            optionVisibilityName,
+            index,
+            value[optionVisibilityName],
+          )}
+        />
       </FieldLayout>
       {isFirst && <Divider />}
     </React.Fragment>

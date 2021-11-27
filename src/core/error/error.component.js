@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
+import { spacing, THEME_SIZE } from '../../lib/theme';
 import { TextPrimary, TextSecondary } from '../../lib/element/text';
-import { LinkPrimary } from '../../lib/element/link';
+import { ButtonPrimary } from 'src/lib/element/button';
+import { SectionLayout } from 'src/lib/element/layout';
+import { setLinkRedirect } from 'src/main/navigation';
 
 export function ErrorComponent(props) {
   const { titleTid, textTid, linkTid, linkPath, image } = props;
@@ -11,22 +13,16 @@ export function ErrorComponent(props) {
       <Image />
       <TextContainer>
         <TitleText tid={titleTid} />
-        <div>
+        <SectionLayout type="SMALL">
           <ErrorText tid={textTid} />
           {linkTid && (
-            <>
-              &nbsp;
-              <LinkPrimary path={linkPath}>
-                <LinkText tid={linkTid} />
-              </LinkPrimary>
-            </>
+            <ButtonPrimary onClick={setLinkRedirect(linkPath)} tid={linkTid} />
           )}
-        </div>
+        </SectionLayout>
       </TextContainer>
     </Container>
   );
 }
-
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -42,6 +38,7 @@ const Container = styled.div`
 const TextContainer = styled.div`
   display: grid;
   gap: ${spacing(2)};
+  max-width: 540px;
 `;
 const TitleText = styled(TextPrimary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
@@ -50,11 +47,5 @@ const TitleText = styled(TextPrimary)`
 `;
 const ErrorText = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
-  line-height: 1.5;
-`;
-const LinkText = styled(TextPrimary)`
-  color: ${THEME_COLOR.PRIMARY};
-  font-size: ${THEME_SIZE.FONT.SMALL};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   line-height: 1.5;
 `;

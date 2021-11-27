@@ -87,6 +87,7 @@ export function CreateSewingGoodsContainer() {
     [SEWING_GOODS_FIELD_NAME.OPTION_DISCOUNT]: '',
     [SEWING_GOODS_FIELD_NAME.OPTION_COUNT]: '',
     [SEWING_GOODS_FIELD_NAME.OPTION_LENGTH]: '',
+    [SEWING_GOODS_FIELD_NAME.OPTION_VISIBILITY]: true,
   };
 
   return (

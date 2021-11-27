@@ -17,6 +17,7 @@ interface optionType {
   discount?: number;
   count?: number;
   length?: number;
+  optionVisibility?: boolean;
 }
 interface dataValueType {
   titleRu: string;
@@ -116,6 +117,7 @@ function convertOptions(
     return {
       size: type === 1 || type === 2 ? item.size : undefined,
       colorRu: type === 1 || type === 3 ? item.colorRu : undefined,
+      optionVisibility: item.optionVisibility,
       price: Number(Number(item.price)?.toFixed(2)),
       discount: Number(item.discount) ? item.discount : undefined,
       count: isCount ? Number(item.count) : undefined,
