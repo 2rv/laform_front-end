@@ -31,6 +31,7 @@ export const CREATE_PATTERN_ACTION_TYPE = {
 export const CREATE_PATTERN_FIELD_NAME = {
   NAME: 'titleRu',
   VENDOR_CODE: 'vendorCode',
+  OPTION_VISIBILITY: 'optionVisibility',
   DESCRIPTION: 'descriptionRu',
   MODIFIER: 'modifierRu',
   MATERIAL: 'materialRu',

@@ -30,6 +30,7 @@ export interface ProductOptionsProps {
 
   optionFilesName?: string;
   productFilesName?: string;
+  optionVisibilityName?: string;
 }
 
 export interface ProductOptionsOneProps {
@@ -52,6 +53,8 @@ export interface ProductOptionsOneProps {
   optionDiscountName: string;
   optionCountName: string;
   optionLengthName: string;
+  optionVisibilityName: string;
+  setVisibility: Function;
 }
 
 export interface ProductOptionsTwoProps {
@@ -80,6 +83,8 @@ export interface ProductOptionsTwoProps {
   optionLengthName: string;
   optionFileName: string;
   optionFilesName: string;
+  optionVisibilityName: string;
+  setVisibility: Function;
 }
 export interface ProductOptionsThreeProps {
   isFirst: boolean;
@@ -104,6 +109,8 @@ export interface ProductOptionsThreeProps {
   optionDiscountName: string;
   optionCountName: string;
   optionLengthName: string;
+  optionVisibilityName: string;
+  setVisibility: Function;
 }
 
 export interface ProductOptionsNoneProps {

@@ -18,6 +18,7 @@ export interface optionType {
   filesPdf?: FileType[];
   discount?: number;
   count?: number;
+  optionVisibility: boolean;
 }
 export interface dataValueType {
   type: 1 | 2;

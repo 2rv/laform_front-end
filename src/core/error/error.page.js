@@ -12,5 +12,7 @@ export function ErrorPage(props) {
 }
 
 export const Error401Page = () => <ErrorPage errorStatus={401} />;
-export const Error404Page = () => <ErrorPage errorStatus={404} />;
 export const Error500Page = () => <ErrorPage errorStatus={500} />;
+export const Error404Page = () => <ErrorPage errorStatus={404} />;
+export const ErrorNotPaidPage = () => <ErrorPage errorStatus={'NOT_PAID'} />;
+export const SuccessPaidPage = () => <ErrorPage errorStatus={'SUCCESS_PAID'} />;

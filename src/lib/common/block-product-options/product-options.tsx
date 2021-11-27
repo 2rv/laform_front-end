@@ -46,6 +46,7 @@ export function ProductOptions(props: ProductOptionsProps) {
     optionFileName = '',
     productFileName = '',
     productFilesName = '',
+    optionVisibilityName = '',
   } = props;
 
   const getFieldError = (name: string, index: number) =>
@@ -107,6 +108,11 @@ export function ProductOptions(props: ProductOptionsProps) {
   const setToHundred = (name: string, index: number) => (e: any) =>
     setFieldValue(`${fieldArrayName}.${index}.${name}`, numberToHundred(e));
 
+  const setVisibility =
+    (name: string, index: number, checked: boolean) => () => {
+      setFieldValue(`${fieldArrayName}.${index}.${name}`, !checked);
+    };
+
   function setPdfFile(name: string) {
     return (e: SyntheticEvent<HTMLInputElement>) => {
       const file = e.currentTarget?.files?.[0];
@@ -160,6 +166,8 @@ export function ProductOptions(props: ProductOptionsProps) {
                     optionLengthName={optionLengthName}
                     isCount={isCount}
                     isLength={isLength}
+                    optionVisibilityName={optionVisibilityName}
+                    setVisibility={setVisibility}
                   />
                 );
               } else if (values[optionTypeName] === 2) {
@@ -190,6 +198,8 @@ export function ProductOptions(props: ProductOptionsProps) {
                     isFile={isFile}
                     isCount={isCount}
                     isLength={isLength}
+                    optionVisibilityName={optionVisibilityName}
+                    setVisibility={setVisibility}
                   />
                 );
               } else if (values[optionTypeName] === 3) {
@@ -219,6 +229,8 @@ export function ProductOptions(props: ProductOptionsProps) {
                     optionFilesName={optionFilesName}
                     isCount={isCount}
                     isLength={isLength}
+                    optionVisibilityName={optionVisibilityName}
+                    setVisibility={setVisibility}
                   />
                 );
               }

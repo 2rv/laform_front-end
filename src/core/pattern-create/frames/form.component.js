@@ -196,6 +196,7 @@ export function FormComponent(props) {
         optionFilesName={CREATE_PATTERN_FIELD_NAME.OPTION_FILES}
         productFileName={CREATE_PATTERN_FIELD_NAME.FILE}
         productFilesName={CREATE_PATTERN_FIELD_NAME.FILES}
+        optionVisibilityName={CREATE_PATTERN_FIELD_NAME.OPTION_VISIBILITY}
       />
 
       <Divider />

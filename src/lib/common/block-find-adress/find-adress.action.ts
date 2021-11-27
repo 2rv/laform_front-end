@@ -94,7 +94,6 @@ export async function getHouse(
       ),
     },
   });
-  console.log(response.data.suggestions);
   return response.data.suggestions.map((item: any) => ({
     label: item.value,
     house: item.data.house,
