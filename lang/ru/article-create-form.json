@@ -10,20 +10,20 @@
 			"ARTICLE_NAME": "Название поста",
 			"DIE": "Плашка",
 			"TAGS": "Теги",
-			"POST": "Пост"
+			"POST": "Пост",
+			"VISIBILITY": "Видимость статьи"
 		},
 		"PLACEHOLDER": {
 			"WRITE_ARTICLE_NAME": "Введите название поста",
 			"EXAMPLE_HIT": "Например - хит",
-			"WRITE_TAG": "Введите тег"
+			"WRITE_TAG": "Введите тег",
+			"VISIBILITY": "Показан в списке"
 		}
 	},
 	"BUTTON": {
 		"CREATE_ARTICLE": "Создать пост",
 		"SAVE_ARTICLE": "Сохранить",
-		"RESET": "Сбросить",
-		"VISIBLE": "Видимость статьи",
-		"NOT_VISIBLE": "Не показан в списке"
+		"RESET": "Сбросить"
 	},
 	"RECOMENDATIONS": {
 		"TITLE": "Рекомендации",

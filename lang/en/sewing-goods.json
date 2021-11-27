@@ -37,7 +37,7 @@
 					"PRODUCT_QUANTITY": "Enter the quantity of goods",
 					"QUANTITY": "Quantity availability",
 					"LENGTH": "Length availability",
-					"VISIBILITY": "Not shown in the list"
+					"VISIBILITY": "Shown in the list"
 				}
 			},
 			"BUTTON": {

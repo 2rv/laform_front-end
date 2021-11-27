@@ -186,10 +186,8 @@ export function FormComponent(props) {
         titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
         labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
         name={SEWING_GOODS_FIELD_NAME.DELETED}
-        value={values[SEWING_GOODS_FIELD_NAME.DELETED]}
-        checked={values[SEWING_GOODS_FIELD_NAME.DELETED]}
+        checked={!values[SEWING_GOODS_FIELD_NAME.DELETED]}
         onClick={setVisible}
-        onBlur={handleBlur}
       />
 
       <FieldLayout type="double" adaptive>

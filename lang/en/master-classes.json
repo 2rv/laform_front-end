@@ -29,20 +29,20 @@
 			"MASTER_CLASS_ARTICLE": "Master-class article",
 			"FIELDS": {
 				"TITLE": {
-					"VISIBILITY": "Visibility",
-					"NOT_VISIBILITY": "Not shown in the list",
 					"NAME": "Product name",
 					"DICE_OF_GOODS": "Dice of goods",
 					"TAG": "Tags",
 					"DESCRIPTION": "Description",
-					"DISCOUNT": "Discount (%)"
+					"DISCOUNT": "Discount (%)",
+					"VISIBILITY": "Visibility"
 				},
 				"PLACEHOLDER": {
 					"NAME": "Enter the title",
 					"DICE_OF_GOODS": "For example - Hit",
 					"TAG": "Enter the tag and press Enter",
 					"DESCRIPTION": "Describe the master class",
-					"INDICATE_PRICE": "Indicate the price"
+					"INDICATE_PRICE": "Indicate the price",
+					"VISIBILITY": "Shown in the list"
 				}
 			},
 			"BUTTON": {

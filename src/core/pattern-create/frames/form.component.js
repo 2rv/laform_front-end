@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { THEME_SIZE } from '../../../lib/theme';
 import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
-import { TextSecondary } from '../../../lib/element/text';
 import { Divider } from 'src/lib/element/divider';
 import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
 import {
@@ -223,10 +222,8 @@ export function FormComponent(props) {
         titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
         labelTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
         name={CREATE_PATTERN_FIELD_NAME.DELETED}
-        value={values[CREATE_PATTERN_FIELD_NAME.DELETED]}
-        checked={values[CREATE_PATTERN_FIELD_NAME.DELETED]}
+        checked={!values[CREATE_PATTERN_FIELD_NAME.DELETED]}
         onClick={setVisible}
-        onBlur={handleBlur}
       />
 
       <FieldLayout type="double" adaptive>
@@ -246,9 +243,6 @@ export function FormComponent(props) {
     </SectionLayout>
   );
 }
-const SmallTitle = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.SMALL};
-`;
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
 `;
