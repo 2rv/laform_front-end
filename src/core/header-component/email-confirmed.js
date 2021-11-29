@@ -9,9 +9,11 @@ import { IconButton } from 'src/lib/element/button';
 export function EmailConfirmed({ isHide = true }) {
   return (
     <LinkPrimary path={AUTH_VERIFICATE_EMAIL_ROUTE_PATH}>
-      <Button>
-        <Icon />
-      </Button>
+      {isHide && (
+        <Button>
+          <Icon />
+        </Button>
+      )}
       <AlertWarnign hide={isHide} tid="OTHER.EMAIL_NOT_CONFIRMED" />
     </LinkPrimary>
   );
