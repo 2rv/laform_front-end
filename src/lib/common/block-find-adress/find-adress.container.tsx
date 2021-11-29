@@ -13,7 +13,6 @@ import {
 import { FIND_ADRESS_FIELD_NAME } from './find-adress.type';
 import { FIND_ADRESS_STORE_NAME } from './find-adress.constant';
 import { useFormik } from 'formik';
-import { getRequestData } from 'src/main/store/store.service';
 
 export function FindAdressContainer() {
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ export function FindAdressContainer() {
     onSubmit: () => {},
   });
 
-  const { currentLang, cityCode } = useSelector((state: any) => ({
+  const { currentLang } = useSelector((state: any) => ({
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
     cityCode: state[FIND_ADRESS_STORE_NAME].cityCode,
   }));
