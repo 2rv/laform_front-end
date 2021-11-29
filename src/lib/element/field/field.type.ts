@@ -5,7 +5,7 @@ export interface FieldPropsType {
   name?: string;
   type?: string;
   value: string;
-  error?: string;
+  error?: string | false;
   list?: any;
   onChange: any;
   onBlur?: any;
@@ -45,8 +45,6 @@ export interface CheckboxPropsType {
   name: string;
   checked: boolean;
   onClick?: any;
-  onBlur?: any;
-  disabled?: boolean;
   width?: number;
   adaptive?: boolean;
 }
@@ -76,13 +74,14 @@ export interface TextAreaPropsType {
   onBlur?: any;
   name?: string;
   rows?: number;
-  error?: string;
+  error?: string | false;
   children?: any;
+  value: string;
   isFile?: any;
   isSend?: any;
   minHeight?: number;
-  images: any;
-  setImages: any;
+  images?: any;
+  setImages?: any;
   maxHeight?: number;
 }
 export interface FilefieldPropsType {

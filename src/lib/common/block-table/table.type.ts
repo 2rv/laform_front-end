@@ -1,5 +1,10 @@
 import { OptionType } from 'src/lib/element/card';
-
+export interface TableProps {
+  headers?: string[];
+  items: TableItemType[];
+  changeItem?: Function;
+  deleteItem?: Function;
+}
 export interface TableItemType {
   id: string;
   type: number;

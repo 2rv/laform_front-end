@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { spacing, THEME_COLOR } from '../../lib/theme';
-import { addToBasket, BASKET_ROUTE_PATH, BASKET_STORE_NAME } from '../basket';
+import {
+  addToCartAction,
+  BASKET_ROUTE_PATH,
+  BASKET_STORE_NAME,
+} from '../basket';
 import { redirect } from '../../main/navigation';
 import { ButtonPrimary } from '../../lib/element/button';
 import { LikeButton } from 'src/lib/element/card/card.components';
@@ -35,7 +39,7 @@ export function ProductActions(props) {
 
   const addToCart = () => {
     if (isCart) return redirect(BASKET_ROUTE_PATH);
-    dispatch(addToBasket({ id, type }, currentLang));
+    dispatch(addToCartAction({ id, type }, currentLang));
   };
   const disabled = () => {
     if ((type === 1 || type === 2) && !size.id) return true;

@@ -1,58 +1,56 @@
-export const FIND_ADRESS_ACTION_TYPE = {
-  FIND_COUNTRY_PENDING: 'FIND_ADRESS_ACTION_TYPE.FIND_COUNTRY_PENDING',
-  FIND_COUNTRY_SUCCESS: 'FIND_ADRESS_ACTION_TYPE.FIND_COUNTRY_SUCCESS',
-  FIND_COUNTRY_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_COUNTRY_ERROR',
+import { FormikHandlers, FormikHelpers, FormikState } from 'formik';
 
-  FIND_REGION_PENDING: 'FIND_ADRESS_ACTION_TYPE.FIND_REGION_PENDING',
-  FIND_REGION_SUCCESS: 'FIND_ADRESS_ACTION_TYPE.FIND_REGION_SUCCESS',
-  FIND_REGION_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_REGION_ERROR',
-
-  FIND_CITY_PENDING: 'FIND_ADRESS_ACTION_TYPE.FIND_CITY_PENDING',
-  FIND_CITY_SUCCESS: 'FIND_ADRESS_ACTION_TYPE.FIND_CITY_SUCCESS',
-  FIND_CITY_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_CITY_ERROR',
-
-  FIND_AREA_PENDING: 'FIND_ADRESS_ACTION_TYPE.FIND_AREA_PENDING',
-  FIND_AREA_SUCCESS: 'FIND_ADRESS_ACTION_TYPE.FIND_AREA_SUCCESS',
-  FIND_AREA_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_AREA_ERROR',
-
-  FIND_SETTLEMENT_PENDING: 'FIND_ADRESS_ACTION_TYPE.FIND_SETTLEMENT_PENDING',
-  FIND_SETTLEMENT_SUCCESS: 'FIND_ADRESS_ACTION_TYPE.FIND_SETTLEMENT_SUCCESS',
-  FIND_SETTLEMENT_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_SETTLEMENT_ERROR',
-
-  FIND_STREET_PENDING: 'FIND_ADRESS_ACTION_TYPE.FIND_STREET_PENDING',
-  FIND_STREET_SUCCESS: 'FIND_ADRESS_ACTION_TYPE.FIND_STREET_SUCCESS',
-  FIND_STREET_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_STREET_ERROR',
-
-  FIND_HOUSE_PENDING: 'FIND_ADRESS_ACTION_TYPE.FIND_HOUSE_PENDING',
-  FIND_HOUSE_SUCCESS: 'FIND_ADRESS_ACTION_TYPE.FIND_HOUSE_SUCCESS',
-  FIND_HOUSE_ERROR: 'FIND_ADRESS_ACTION_TYPE.FIND_HOUSE_ERROR',
-};
-export interface FindAdreccContainerProps {
-  values: any;
-  setFieldValue: Function;
+export interface FindAdressValues {
+  country: string;
+  city: string;
+  street: string;
+  house: string;
+  postal_code: string;
 }
 export interface FindAdreccComponentProps {
-  values: any;
-  handleChange: Function;
-  findCountry: Function;
-  findCity: Function;
-  findStreet: Function;
-  findHouse: Function;
-  findIndex: Function;
+  formik: FormikHandlers &
+    FormikHelpers<FindAdressValues> &
+    FormikState<FindAdressValues>;
+  find: {
+    country: Function;
+    city: Function;
+    street: Function;
+    house: Function;
+    postal_code: Function;
+  };
+  change: {
+    country: Function;
+    city: Function;
+    street: Function;
+    house: Function;
+    postal_code: Function;
+  };
 }
 export interface adressValueType {
-  postal_code?: string;
-  house?: string;
-  street?: string;
-  city?: string;
-  settlement?: string;
-  country?: string;
+  country: string;
+  country_iso_code: string;
+  city: string;
+  city_fias_id: string;
+  settlement: string;
+  settlement_fias_id: string;
+  street: string;
+  street_fias_id: string;
+  house: string;
+  house_fias_id: string;
+  postal_code: string;
+  kladr_id: string;
 }
-export const FIND_ADRESS_FIELD_NAME = {
-  COUNTRY: 'country',
-  CITY: 'city',
-  STREET: 'street',
-  HOUSE: 'house',
-  POSTAL_CODE: 'postal_code',
-  FULL_ADRESS: 'fullAddress',
-};
+
+export enum FIND_ADRESS_FIELD_NAME {
+  COUNTRY = 'country',
+  CITY = 'city',
+  STREET = 'street',
+  HOUSE = 'house',
+  POSTAL_CODE = 'postal_code',
+}
+
+export enum FIND_ADRESS_ACTION_TYPE {
+  GET_CITY_CODE_PENDING = 'FIND_ADRESS_ACTION_TYPE.GET_CITY_CODE_PENDING',
+  GET_CITY_CODE_SUCCESS = 'FIND_ADRESS_ACTION_TYPE.GET_CITY_CODE_SUCCESS',
+  GET_CITY_CODE_ERROR = 'FIND_ADRESS_ACTION_TYPE.GET_CITY_CODE_ERROR',
+}

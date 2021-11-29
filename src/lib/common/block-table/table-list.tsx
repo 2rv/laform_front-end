@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { TableItem } from './table-item';
 import { TableHeader, TableDivider } from './frame';
-import { TableItemType } from './table.type';
+import { TableItemType, TableProps } from './table.type';
 
-export function TableList(props: any) {
-  const { headers = [], items = [], changeItem, deleteItem } = props;
+export function TableList(props: TableProps) {
+  const { headers = [], items, changeItem, deleteItem } = props;
   if (!Boolean(items) || Boolean(items.length <= 0)) return null;
 
   return (

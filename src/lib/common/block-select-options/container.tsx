@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {
   BASKET_STORE_NAME,
   BASKET_ROUTE_PATH,
-  addToBasket,
+  addToCartAction,
 } from 'src/core/basket';
 import { redirect } from 'src/main/navigation';
 import { useDispatch, useSelector } from 'react-redux';
@@ -78,7 +78,7 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
 
   const handleBasket = () => {
     if (isCart) return redirect(BASKET_ROUTE_PATH);
-    dispatch(addToBasket(getInfo(), currentLang));
+    dispatch(addToCartAction(getInfo(), currentLang));
   };
   const handleCount = (value: number) => {
     const countNum = getCount();

@@ -57,7 +57,7 @@ export const boolean = (value) =>
   !!value === false ? getError('VALIDATION.BOOLEAN') : null;
 
 // eslint-disable-next-line max-len
-const NAME_EXP = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+const NAME_EXP = /^[а-яА-Я]+(([',. -][а-яА-Я ])?[а-яА-Я]*)*$/;
 export const name = (value) =>
   !NAME_EXP.test(value) ? getError('VALIDATION.NAME') : null;
 

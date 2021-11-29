@@ -11,7 +11,7 @@ import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
 import { useEffect, useRef } from 'react';
 import { TextPrimary, TextSecondary } from 'src/lib/element/text';
-import { SignComponent } from '../basket/frames';
+import { SignComponent } from './comment.sign';
 
 export function CommentComponent(props) {
   const {
@@ -71,27 +71,25 @@ export function CommentComponent(props) {
         <SpinnerCase>
           <Spinner />
         </SpinnerCase>
+      ) : Boolean(comments.length > 0) ? (
+        <ListComment>
+          {comments?.map((data, index) => (
+            <CommentItem
+              handleDeleteComment={handleDeleteComment}
+              handleDeleteSubComment={handleDeleteSubComment}
+              handleEditComment={handleEditComment}
+              cancelEditing={cancelEditing}
+              setSubUser={setSubUser}
+              key={data?.id}
+              data={data}
+              handleSetSubUser={handleSetSubUser}
+              user={user}
+            />
+          ))}
+          <div ref={messageRef} />
+        </ListComment>
       ) : (
-        Boolean(comments.length > 0) ? (
-          <ListComment>
-            {comments?.map((data, index) => (
-              <CommentItem
-                handleDeleteComment={handleDeleteComment}
-                handleDeleteSubComment={handleDeleteSubComment}
-                handleEditComment={handleEditComment}
-                cancelEditing={cancelEditing}
-                setSubUser={setSubUser}
-                key={data?.id}
-                data={data}
-                handleSetSubUser={handleSetSubUser}
-                user={user}
-              />
-            ))}
-            <div ref={messageRef} />
-          </ListComment>
-        ) : (
-          <TextSecondary tid="COMMENTS.NO_REVIEWS" />
-        )
+        <TextSecondary tid="COMMENTS.NO_REVIEWS" />
       )}
       {isAuth ? (
         <SectionLayout type="SMALL">
@@ -135,7 +133,7 @@ export function CommentComponent(props) {
           </Content>
         </SectionLayout>
       ) : (
-        <SignComponent title="OTHER.LEAVE_REVIEW" />
+        <SignComponent />
       )}
     </SectionLayout>
   );

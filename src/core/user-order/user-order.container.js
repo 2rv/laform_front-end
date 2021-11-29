@@ -13,16 +13,14 @@ import { userOrderUploadData } from './user-order.action';
 import { USER_ORDER_STORE_NAME } from './user-order.constant';
 import { UserOrderComponent } from './user-order.component';
 import { ABOUT_ORDER_FIELD_NAME } from './user-order.type';
-import { getDeliveryInfoAction } from '../basket/basket.action';
-import { BASKET_STORE_NAME } from '../basket';
 import { PURCHASE_STATUS_SELECT } from 'src/lib/basic-types';
 
 export function UserOrderContainer() {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const { orderState, deliveryTypes, pageLoading } = useSelector((state) => ({
+  const { orderState, pageLoading } = useSelector((state) => ({
     orderState: state[USER_ORDER_STORE_NAME].order,
-    deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
+
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
   }));
 
@@ -31,11 +29,10 @@ export function UserOrderContainer() {
     purchaseProducts: null,
   });
 
-  const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
+  const deliveryTypeOptions = [];
 
   useEffect(() => {
     dispatch(userOrderUploadData(query.id));
-    dispatch(getDeliveryInfoAction());
   }, []);
 
   const onSubmit = (values) => {

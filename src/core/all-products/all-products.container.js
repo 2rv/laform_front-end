@@ -19,7 +19,6 @@ import {
 import { ALL_PRODUCTS_STORE_NAME } from './all-products.constant';
 import { AllProductsComponent } from './all-products.component';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
-import { addToBasket } from '../basket';
 import { ALL_PRODUCTS_ACTION_TYPE } from './all-products.type';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { PATTERNS_STORE_NAME } from '../patterns';

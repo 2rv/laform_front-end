@@ -1,61 +1,56 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
-import {
-  BasicField,
-  FieldCheckbox,
-  FieldSelect,
-  TextareaField,
-} from 'src/lib/element/field';
-import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
-import { ORDER_FIELD_NAME } from '../basket.type';
-import { ButtonSecondary } from 'src/lib/element/button';
+import { useEffect } from 'react';
+import { THEME_SIZE } from '../../../lib/theme';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { BlockFindAdress } from 'src/lib/common/block-find-adress';
 import { TitlePrimary } from 'src/lib/element/title';
 import { TextSecondary } from 'src/lib/element/text';
-import { CartEmail } from './cart.email';
 import { Divider } from 'src/lib/element/divider';
+import {
+  BasicField,
+  TextareaField,
+  FieldCheckbox,
+} from 'src/lib/element/field';
+import { ButtonPrimary } from 'src/lib/element/button';
+import { LoaderPrimary } from 'src/lib/element/loader';
+import { CartEmail } from './cart.email';
+import { CartPrice } from './cart.price';
+import { CartAlert } from './cart.alert';
+import { CartPromoCode } from './cart.promocode';
+import { BasketFormComponentProps, ORDER_FIELD_NAME } from '../basket.type';
 
-export function FormComponent(props) {
+export function FormComponent(props: BasketFormComponentProps) {
   const {
-    errors,
-    touched,
-    values,
-    handleChange,
-    handleBlur,
-    setFieldValue,
-    //-------
     isAuth,
-    diliveryOptions,
-    paymentMethodOptions,
-    handleConfirmPromoCode,
-    promoCodePending,
-    emailConfirmed,
     isPending,
-    handleSendEmailCode,
-    handleConfirmEmailCode,
-    sendEmailCodePending,
-    confirmEmailCodePending,
+    basketPrice,
+    formik: {
+      errors,
+      touched,
+      values,
+      handleChange,
+      handleBlur,
+      setFieldValue,
+    },
+    formik,
+
+    ...alertProps
   } = props;
 
-  const getFieldError = (name) => {
+  useEffect(() => {
+    setFieldValue(ORDER_FIELD_NAME.PRICE, basketPrice);
+  }, [basketPrice, values]);
+
+  const getFieldError = (name: ORDER_FIELD_NAME) => {
     return errors[name] && touched[name] && errors[name];
   };
+
   return (
     <SectionLayout type="SMALL">
+      {isPending && <LoaderPrimary />}
+      <TitlePrimary tid="Оформление заказа" />
+
       <Title tid="BASKET.FORM.FIELDS.TITLES.CONTACT_DETAILS" />
-      <CartEmail
-        values={values}
-        errors={errors}
-        touched={touched}
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        emailConfirmed={emailConfirmed}
-        isPending={isPending}
-        handleSendEmailCode={handleSendEmailCode}
-        handleConfirmEmailCode={handleConfirmEmailCode}
-        sendEmailCodePending={sendEmailCodePending}
-        confirmEmailCodePending={confirmEmailCodePending}
-      />
       <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.FULL_NAME"
@@ -77,11 +72,13 @@ export function FormComponent(props) {
         />
       </FieldLayout>
 
+      <CartEmail isAuth={isAuth} formik={formik} />
+
       <Divider />
 
       <Title tid="BASKET.FORM.FIELDS.TITLES.DELIVERY_DATA" />
       <Text tid="Не нашли свой адресс? - введите его в примечаниях к заказу. (Стоит продумать)" />
-      <BlockFindAdress values={values} setFieldValue={setFieldValue} />
+      <BlockFindAdress />
 
       <Divider />
 
@@ -95,50 +92,59 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         error={getFieldError(ORDER_FIELD_NAME.DESCRIPTION)}
       />
+
+      <Divider />
+
+      <CartPromoCode formik={formik} />
+
+      <Divider />
+
+      <CartPrice
+        price={values[ORDER_FIELD_NAME.PRICE]}
+        promoDiscount={values[ORDER_FIELD_NAME.PROMO_DISCOUNT]}
+        deliveryPrice={0}
+      />
+
+      <Divider />
       <FieldLayout type="double" adaptive>
-        <BasicField
-          titleTid="BASKET.FORM.FIELDS.TITLES.PROMO_CODE"
-          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.PROMO_CODE"
-          name={ORDER_FIELD_NAME.PROMO_CODE}
-          value={values[ORDER_FIELD_NAME.PROMO_CODE]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.PROMO_CODE)}
-        />
-        <Button
-          tid="BASKET.FORM.ACTIVATE"
-          disabled={promoCodePending}
-          onClick={() =>
-            handleConfirmPromoCode(values[ORDER_FIELD_NAME.PROMO_CODE])
-          }
-        />
+        {values[ORDER_FIELD_NAME.EMAIL_CONFIRMED] && (
+          <Button
+            tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
+            disabled={isPending}
+            type="submit"
+          />
+        )}
         {isAuth && (
           <FieldCheckbox
             titleTid="BASKET.FORM.FIELDS.TITLES.SAVE_DATA"
             labelTid="BASKET.FORM.FIELDS.TITLES.SAVE_DATA"
             name={ORDER_FIELD_NAME.SAVE_USER_INFO}
-            value={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
-            onBlur={handleBlur}
             checked={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
-            onClick={(e) =>
+            onClick={() => {
               setFieldValue(
                 ORDER_FIELD_NAME.SAVE_USER_INFO,
                 !values[ORDER_FIELD_NAME.SAVE_USER_INFO],
-              )
-            }
+              );
+            }}
           />
         )}
       </FieldLayout>
+
+      <CartAlert
+        emailConfirmedError={!!getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRMED)}
+        {...alertProps}
+      />
     </SectionLayout>
   );
 }
-const Button = styled(ButtonSecondary)`
-  margin-top: 19px;
-`;
+
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
 const Text = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
   line-height: 1.5;
+`;
+const Button = styled(ButtonPrimary)`
+  margin-top: 19px;
 `;

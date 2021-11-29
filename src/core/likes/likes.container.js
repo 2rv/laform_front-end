@@ -17,7 +17,6 @@ import {
 import { ALL_LIKES_STORE_NAME } from './likes.constant';
 import { PatternsComponent } from './likes.component';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
-import { addToBasket } from '../basket';
 import { LIKE_STORE_NAME } from '../block-like';
 import { LIKES_ACTION_TYPE } from './likes.type';
 
@@ -48,19 +47,23 @@ export function LikesContainer() {
     } else if (activeTab === 0) {
       dispatch(likePostUploadData(currentLang));
       setActiveTabText('ALL_LIKES.TABS.POST');
-    };
+    }
   }, [activeTab, updated]);
 
   const fetchData = () => {
     if (activeTab === 3) {
-      dispatch(likeSewingProductUploadData(currentLang, likes.data.currentPage));
+      dispatch(
+        likeSewingProductUploadData(currentLang, likes.data.currentPage),
+      );
     } else if (activeTab === 2) {
       dispatch(likeMasterClassUploadData(currentLang, likes.data.currentPage));
     } else if (activeTab === 1) {
-      dispatch(likePatternProductUploadData(currentLang, likes.data.currentPage));
+      dispatch(
+        likePatternProductUploadData(currentLang, likes.data.currentPage),
+      );
     } else if (activeTab === 0) {
       dispatch(likePostUploadData(currentLang, likes.data.currentPage));
-    };
+    }
   };
 
   return (
@@ -73,7 +76,9 @@ export function LikesContainer() {
       pageLoading={pageLoading}
       isPending={isRequestPending(likes)}
       fetchData={fetchData}
-      hasMore={Number(likes.data?.products?.length) < Number(likes.data?.totalRecords)}
+      hasMore={
+        Number(likes.data?.products?.length) < Number(likes.data?.totalRecords)
+      }
     />
   );
 }
