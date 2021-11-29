@@ -92,11 +92,11 @@ export function checkMinPriceAndDiscount(
 }
 
 interface getPriceProps {
-  price?: string;
+  price?: number | string;
   discount?: number;
-  count?: number;
-  length?: string;
-  shippingPrice?: string;
+  count?: number | string;
+  length?: number | string;
+  shippingPrice?: number | string;
 }
 export function getPrice(props: getPriceProps): number {
   const {
@@ -106,10 +106,13 @@ export function getPrice(props: getPriceProps): number {
     length = false,
     shippingPrice = '0',
   } = props;
-  const dPrice: number = parseFloat(price);
+
+  const dPrice: number = parseFloat(String(price));
   const dLength: number = Number(length);
-  const dShippingPrice = parseFloat(shippingPrice);
+  const dCount: number = Number(count);
+  const dShippingPrice = parseFloat(String(shippingPrice));
+
   const result =
-    (dPrice - dPrice * (discount / 100)) * (dLength || count) + dShippingPrice;
+    (dPrice - dPrice * (discount / 100)) * (dLength || dCount) + dShippingPrice;
   return parseFloat(result.toFixed(2));
 }

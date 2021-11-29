@@ -1,10 +1,10 @@
 import { PageWrapper } from '../../lib/common/page-wrapper';
 import { BasketContainer } from './basket.container';
 
-export function BasketPage({ token }) {
+export function BasketPage() {
   return (
     <PageWrapper>
-      <BasketContainer token={token} />
+      <BasketContainer />
     </PageWrapper>
   );
 }

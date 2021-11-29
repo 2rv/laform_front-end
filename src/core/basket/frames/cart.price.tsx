@@ -1,18 +1,12 @@
 import styled from 'styled-components';
 import { TextSecondary, TextCurrency } from '../../../lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
-import { ORDER_FIELD_NAME } from '../basket.type';
+import { CartPriceProps } from '../basket.type';
 
-export function CartPrice(props) {
-  const { values } = props;
-
-  const price = values[ORDER_FIELD_NAME.PRICE];
-  const promoDiscount = values[ORDER_FIELD_NAME.PROMO_DISCOUNT];
-  const deliveryPrice = 0;
-
+export function CartPrice(props: CartPriceProps) {
+  const { price, promoDiscount, deliveryPrice } = props;
   const discountPrice = price - (price / 100) * promoDiscount;
   const totalPrice = Number(discountPrice) + Number(deliveryPrice);
-
   return (
     <Container>
       <Content>
@@ -67,16 +61,9 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 const TextLight = styled(TextSecondary)`
   line-height: 1.5;
   color: ${THEME_COLOR.TEXT.LIGHT};
-`;
-const TextBold = styled(TextSecondary)`
-  line-height: 1.5;
-  font-size: ${(props) => props.fontSize ?? THEME_SIZE.FONT.MEDIUM};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-  color: ${THEME_COLOR.SECONDARY_DARK};
 `;
 const TextDiscount = styled(TextSecondary)`
   line-height: 1.5;

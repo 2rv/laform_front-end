@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { ReactComponent as CheckmarkIcon } from '../../../asset/svg/check-mark.svg';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
-
 import { CheckboxPropsType } from './field.type';
 
 export function FieldCheckbox(props: CheckboxPropsType) {

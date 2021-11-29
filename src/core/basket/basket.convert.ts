@@ -8,7 +8,12 @@ import {
 } from 'src/lib/basic-types';
 import { convertOptions } from 'src/lib/common/product-converters';
 import { TableItemType } from 'src/lib/common/block-table/table.type';
-import { basketStateType } from './basket.ts.type';
+import {
+  basketStateType,
+  addToCartDataType,
+  formikValues,
+  ORDER_FIELD_NAME,
+} from './basket.type';
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 
 interface ConvertAcc {
@@ -18,6 +23,60 @@ interface ConvertAcc {
   basketPrice: number;
 }
 
+export function convertAddToCart(
+  product: BasicMasterClassType | BasicPatternType | BasicSewingGoodType,
+  data: addToCartDataType,
+  index: number = 0,
+) {
+  if (data.type === 0) {
+    return {
+      id: product.id,
+      type: data.type,
+      indexId: product.id + index,
+      masterClassId: product,
+      count: 1,
+      isCount: false,
+      isLength: false,
+    };
+  }
+  if (product.type === 1) {
+    return {
+      id: product.id,
+      type: data.type,
+      indexId: product.id + index,
+      patternProductId: product,
+      optionId: data.optionId,
+      count: 1,
+      isCount: false,
+      isLength: false,
+    };
+  }
+  if (product.type === 2) {
+    return {
+      id: product.id,
+      type: data.type,
+      indexId: product.id + index,
+      patternProductId: product,
+      optionId: data.optionId,
+      count: data.count,
+      isCount: product.isCount,
+      isLength: false,
+    };
+  }
+  if (product.type === 3) {
+    return {
+      id: product.id,
+      type: product.type,
+      indexId: product.id + index,
+      sewingProductId: product,
+      optionId: data.optionId,
+      count: data.count,
+      length: data.length,
+      isCount: product.isCount,
+      isLength: product.isLength,
+    };
+  }
+}
 export function convertForTable(basketState: basketStateType[]) {
   return basketState.reduce(
     (acc: ConvertAcc, i) => {
@@ -46,7 +105,6 @@ export function convertForTable(basketState: basketStateType[]) {
     },
   );
 }
-
 const masterItemConvert = (data: basketStateType): TableItemType => {
   const totalPrice = getPrice({
     price: data.masterClassId.price,
@@ -165,75 +223,8 @@ const sewingItemConvert = (data: basketStateType): TableItemType => {
     ),
   };
 };
-
-export function convertAddToCart(
-  product: BasicMasterClassType | BasicPatternType | BasicSewingGoodType,
-  data: any,
-  index: number = 0,
-) {
-  if (data.type === 0) {
-    return {
-      id: product.id,
-      type: data.type,
-      indexId: product.id + index,
-      masterClassId: product,
-      count: 1,
-      isCount: false,
-      isLength: false,
-    };
-  }
-  if (product.type === 1) {
-    return {
-      id: product.id,
-      type: data.type,
-      indexId: product.id + index,
-      patternProductId: product,
-      optionId: data.optionId,
-      count: 1,
-      isCount: false,
-      isLength: false,
-    };
-  }
-  if (product.type === 2) {
-    return {
-      id: product.id,
-      type: data.type,
-      indexId: product.id + index,
-      patternProductId: product,
-      optionId: data.optionId,
-      count: data.count,
-      isCount: product.isCount,
-      isLength: false,
-    };
-  }
-  if (product.type === 3) {
-    return {
-      id: product.id,
-      type: product.type,
-      indexId: product.id + index,
-      sewingProductId: product,
-      optionId: data.optionId,
-      count: data.count,
-      length: data.length,
-      isCount: product.isCount,
-      isLength: product.isLength,
-    };
-  }
-}
-
-export interface FormValuesInfo {
-  email: string;
-  emailConfirmCode?: string;
-  fullName: string;
-  phoneNumber: string;
-  price: number;
-  promoCode?: string;
-  promoCodeDiscount: number;
-  saveUserInfo: boolean;
-}
-
 export function convertCreateOrder(
-  data: FormValuesInfo,
+  data: formikValues,
   bascketState: basketStateType[],
 ) {
   return {
@@ -241,11 +232,8 @@ export function convertCreateOrder(
       email: data.email,
       emailConfirmCode: data.emailConfirmCode,
       fullName: data.fullName,
-      phoneNumber: data.phoneNumber,
-      price: data.price,
+      phoneNumber: data.phone,
       promoCode: data.promoCode,
-      promoCodeDiscount: data.promoCodeDiscount,
-      saveUserInfo: data.saveUserInfo,
     },
     purchaseProducts: bascketState.map((item) => {
       return {
@@ -261,3 +249,10 @@ export function convertCreateOrder(
     }),
   };
 }
+
+export const convertUserInfo = (values: formikValues) => {
+  return {
+    [ORDER_FIELD_NAME.FULL_NAME]: values[ORDER_FIELD_NAME.FULL_NAME],
+    [ORDER_FIELD_NAME.PHONE]: values[ORDER_FIELD_NAME.PHONE],
+  };
+};

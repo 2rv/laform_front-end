@@ -18,31 +18,22 @@ import {
 import { ORDER_NUMBER_STORE_NAME } from './order-number.constant';
 import { OrderNumberComponent } from './order-number.component';
 import { ABOUT_ORDER_FIELD_NAME } from './order-number.type';
-import { getDeliveryInfoAction } from '../basket/basket.action';
-import { BASKET_STORE_NAME } from '../basket';
 
 export function OrderNumberContainer() {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const {
-    purchaseInfoState,
-    purchaseProducts,
-    orderNumberState,
-    deliveryTypes,
-    pageLoading,
-  } = useSelector((state) => ({
-    purchaseInfoState: state[ORDER_NUMBER_STORE_NAME].purchaseInfo,
-    purchaseProducts: state[ORDER_NUMBER_STORE_NAME].purchaseProducts,
-    orderNumberState: state[ORDER_NUMBER_STORE_NAME].orderUpdate,
-    deliveryTypes: state[BASKET_STORE_NAME].deliveryTypes,
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-  }));
+  const { purchaseInfoState, purchaseProducts, orderNumberState, pageLoading } =
+    useSelector((state) => ({
+      purchaseInfoState: state[ORDER_NUMBER_STORE_NAME].purchaseInfo,
+      purchaseProducts: state[ORDER_NUMBER_STORE_NAME].purchaseProducts,
+      orderNumberState: state[ORDER_NUMBER_STORE_NAME].orderUpdate,
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    }));
 
-  const deliveryTypeOptions = getRequestData(deliveryTypes, []) ?? [];
+  const deliveryTypeOptions = [];
 
   useEffect(() => {
     dispatch(orderNumberUploadData(query.id));
-    dispatch(getDeliveryInfoAction());
   }, []);
 
   const onSubmit = (values) => {

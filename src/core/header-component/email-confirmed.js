@@ -1,24 +1,24 @@
-import styled from 'styled-components';
-import { InfoAlert } from '../../lib/element/alert';
+import styled, { css } from 'styled-components';
+import { WarningAlert } from '../../lib/element/alert';
 import { LinkPrimary } from 'src/lib/element/link';
 import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from '../auth-verificate-email';
 import { ReactComponent as AlertIcon } from '../../asset/svg/info-alert.svg';
 import { THEME_COLOR } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
 
-export function EmailConfirmed(props) {
+export function EmailConfirmed({ isHide = true }) {
   return (
     <LinkPrimary path={AUTH_VERIFICATE_EMAIL_ROUTE_PATH}>
       <Button>
         <Icon />
       </Button>
-      <AlertInfo tid="OTHER.EMAIL_NOT_CONFIRMED" />
+      <AlertWarnign hide={isHide} tid="OTHER.EMAIL_NOT_CONFIRMED" />
     </LinkPrimary>
   );
 }
 
 const Icon = styled(AlertIcon)`
-  fill: ${THEME_COLOR.TEXT.INFO};
+  fill: ${THEME_COLOR.TEXT.WARNING};
 `;
 const Button = styled(IconButton)`
   padding: 0;
@@ -28,9 +28,13 @@ const Button = styled(IconButton)`
     display: flex;
   }
 `;
-const AlertInfo = styled(InfoAlert)`
+const AlertWarnign = styled(WarningAlert)`
   display: flex;
-  @media screen and (max-width: 720px) {
-    display: none;
-  }
+  ${({ hide }) =>
+    hide &&
+    css`
+      @media screen and (max-width: 720px) {
+        display: none;
+      }
+    `}
 `;

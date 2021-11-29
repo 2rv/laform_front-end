@@ -7,7 +7,8 @@ import { Table } from 'src/lib/common/block-table';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function UserOrdersComponent(props) {
-  const { pageLoading, isPending, headersTable, products, fetchData, hasMore } = props;
+  const { pageLoading, isPending, headersTable, products, fetchData, hasMore } =
+    props;
 
   return (
     <>
@@ -20,7 +21,7 @@ export function UserOrdersComponent(props) {
             next={fetchData}
             hasMore={hasMore}
           >
-            <Table headers={headersTable} items={products} />
+            <Table items={products} headers={headersTable} />
           </InfiniteScroll>
         ) : (
           <TextSecondary tid="ORDERS.LIST_IS_EMPTY" />

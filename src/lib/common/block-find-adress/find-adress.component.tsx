@@ -1,99 +1,97 @@
 import React from 'react';
 import { AsyncReactSelect } from 'src/lib/element/field';
-import { FIND_ADRESS_FIELD_NAME } from '.';
 import { FindAdreccComponentProps } from './find-adress.type';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
-import { TextPrimary } from 'src/lib/element/text';
-import styled from 'styled-components';
-import { TitlePrimary } from 'src/lib/element/title';
-import { THEME_SIZE } from 'src/lib/theme';
 
 export function FindAdressComponent(props: FindAdreccComponentProps) {
   const {
-    values,
-    handleChange,
-    findCountry,
-    findCity,
-    findStreet,
-    findHouse,
-    findIndex,
+    formik: { values },
+
+    find,
+    change,
   } = props;
-  const { country, city, street, house, postal_code } =
-    values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS];
+
   return (
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
         <AsyncReactSelect
           titleTid="Страна"
           placeholderTid="Выберите страну"
-          value={values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
-          onChange={handleChange(FIND_ADRESS_FIELD_NAME.COUNTRY)}
-          loadOptions={findCountry}
+          value={values.country}
+          onChange={change.country}
+          loadOptions={find.country}
           noResults={() => 'Нет результатов'}
         />
         <AsyncReactSelect
           titleTid="Город"
           placeholderTid="Выберите город"
-          value={values[FIND_ADRESS_FIELD_NAME.CITY]}
-          onChange={handleChange(FIND_ADRESS_FIELD_NAME.CITY)}
-          loadOptions={findCity}
+          value={values.city}
+          onChange={change.city}
+          loadOptions={find.city}
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
-          isDisabled={!values[FIND_ADRESS_FIELD_NAME.COUNTRY]}
+          isDisabled={!values.country}
         />
         <AsyncReactSelect
           titleTid="Улица"
           placeholderTid="Выберите улицу"
-          value={values[FIND_ADRESS_FIELD_NAME.STREET]}
-          onChange={handleChange(FIND_ADRESS_FIELD_NAME.STREET)}
-          loadOptions={findStreet}
+          value={values.street}
+          onChange={change.street}
+          loadOptions={find.street}
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
-          isDisabled={!values[FIND_ADRESS_FIELD_NAME.CITY]}
+          isDisabled={!values.city}
         />
         <AsyncReactSelect
           titleTid="Дом"
           placeholderTid="Выберите дом"
-          value={values[FIND_ADRESS_FIELD_NAME.HOUSE]}
-          onChange={handleChange(FIND_ADRESS_FIELD_NAME.HOUSE)}
-          loadOptions={findHouse}
+          value={values.house}
+          onChange={change.house}
+          loadOptions={find.house}
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
-          isDisabled={!values[FIND_ADRESS_FIELD_NAME.STREET]}
+          isDisabled={!values.street}
         />
         <AsyncReactSelect
           titleTid="Почтовый индекс"
           placeholderTid="Введите город или индекс"
-          value={values[FIND_ADRESS_FIELD_NAME.POSTAL_CODE]}
-          onChange={handleChange(FIND_ADRESS_FIELD_NAME.POSTAL_CODE)}
-          loadOptions={findIndex}
+          value={values.postal_code}
+          onChange={change.postal_code}
+          loadOptions={find.postal_code}
           cacheOptions={false}
           noResults={() => 'Нет результатов'}
         />
-        <TextCase>
-          <div>
-            <TextPrimary tid="Полный адрес -" />
-            <SmallTitle
-              tid={`
-		${country ? country + ', ' : ''}
-		${city ? city + ', ' : ''}
-		${street ? street + ', ' : ''}
-		${house ? house + ', ' : ''}
-		${postal_code ? postal_code + '.' : '.'}
-		`}
-            />
-          </div>
-        </TextCase>
       </FieldLayout>
     </SectionLayout>
   );
 }
-const TextCase = styled.div`
-  margin-top: 19px;
-  display: flex;
-  align-items: center;
-`;
-const SmallTitle = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.DEFAULT};
-  line-height: 1.5;
-`;
+
+// import { TextPrimary } from 'src/lib/element/text';
+// import styled from 'styled-components';
+// import { TitlePrimary } from 'src/lib/element/title';
+// import { THEME_SIZE } from 'src/lib/theme';
+// const { country, city, street, house, postal_code } =
+// values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS];
+// 	<TextCase>
+// 	  <div>
+// 		<TextPrimary tid="Полный адрес -" />
+// 		<SmallTitle
+// 		  tid={`
+// 	${country ? country + ', ' : ''}
+// 	${city ? city + ', ' : ''}
+// 	${street ? street + ', ' : ''}
+// 	${house ? house + ', ' : ''}
+// 	${postal_code ? postal_code + '.' : '.'}
+// 	`}
+// 		/>
+// 	  </div>
+// 	</TextCase>
+// const TextCase = styled.div`
+//   margin-top: 19px;
+//   display: flex;
+//   align-items: center;
+// `;
+// const SmallTitle = styled(TitlePrimary)`
+//   font-size: ${THEME_SIZE.FONT.DEFAULT};
+//   line-height: 1.5;
+// `;
