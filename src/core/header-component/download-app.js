@@ -31,6 +31,9 @@ const Container = styled.div`
   @media screen and (max-width: 500px) {
     order: -1;
   }
+  @media screen and (max-width: 380px) {
+    flex-direction: column;
+  }
 `;
 const Link = styled.a`
   &:hover {

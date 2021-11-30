@@ -232,7 +232,7 @@ export function convertCreateOrder(
       email: data.email,
       emailConfirmCode: data.emailConfirmCode,
       fullName: data.fullName,
-      phoneNumber: data.phone,
+      phone: data.phone,
       promoCode: data.promoCode,
     },
     purchaseProducts: bascketState.map((item) => {
