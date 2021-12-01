@@ -4,7 +4,7 @@ import { THEME_SIZE } from '../../../lib/theme';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { BlockFindAdress } from 'src/lib/common/block-find-adress';
 import { TitlePrimary } from 'src/lib/element/title';
-import { TextSecondary } from 'src/lib/element/text';
+import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 import { Divider } from 'src/lib/element/divider';
 import {
   BasicField,
@@ -18,6 +18,7 @@ import { CartPrice } from './cart.price';
 import { CartAlert } from './cart.alert';
 import { CartPromoCode } from './cart.promocode';
 import { BasketFormComponentProps, ORDER_FIELD_NAME } from '../basket.type';
+import { BlockSdekPoints } from 'src/lib/common/block-sdek-points';
 
 export function FormComponent(props: BasketFormComponentProps) {
   const {
@@ -44,6 +45,9 @@ export function FormComponent(props: BasketFormComponentProps) {
   const getFieldError = (name: ORDER_FIELD_NAME) => {
     return errors[name] && touched[name] && errors[name];
   };
+
+  const { country, city, street, house, postal_code } =
+    values[ORDER_FIELD_NAME.ADRESS];
 
   return (
     <SectionLayout type="SMALL">
@@ -78,7 +82,32 @@ export function FormComponent(props: BasketFormComponentProps) {
 
       <Title tid="BASKET.FORM.FIELDS.TITLES.DELIVERY_DATA" />
       <Text tid="Не нашли свой адресс? - введите его в примечаниях к заказу. (Стоит продумать)" />
-      <BlockFindAdress />
+      <BlockFindAdress
+        onChange={setFieldValue}
+        name={ORDER_FIELD_NAME.ADRESS}
+      />
+
+      <div>
+        <Title tid="Полный адрес -" />
+        <TextPrimary
+          tid={`
+				${Boolean(country) ? country + ', ' : ''}
+				${Boolean(city) ? city + ', ' : ''}
+				${Boolean(street) ? street + ', ' : ''}
+				${Boolean(house) ? house + ', ' : ''}
+				${Boolean(postal_code) ? postal_code + '.' : '.'}
+			`}
+        />
+      </div>
+
+      <Divider />
+
+      <BlockSdekPoints
+        data={values[ORDER_FIELD_NAME.ADRESS]}
+        value={values[ORDER_FIELD_NAME.SDEK_POINT]}
+        name={ORDER_FIELD_NAME.SDEK_POINT}
+        onChange={setFieldValue}
+      />
 
       <Divider />
 

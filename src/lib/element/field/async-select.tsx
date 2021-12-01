@@ -40,21 +40,26 @@ export function AsyncReactSelect(props: any) {
     onChange,
     error,
     loadOptions,
-    cacheOptions = true,
+    isClearable = true,
     isDisabled = false,
+    defaultOptions = false,
+    cacheOptions = false,
   } = props;
+
   return (
     <Container>
       {titleTid && <Title tid={titleTid} />}
       <AsyncSelect
-        cacheOptions={cacheOptions}
+        placeholder={text(placeholderTid)}
         styles={styles}
         value={value}
         onChange={onChange}
-        noOptionsMessage={noResults}
-        placeholder={text(placeholderTid)}
-        loadOptions={loadOptions}
         isDisabled={isDisabled}
+        noOptionsMessage={noResults}
+        loadOptions={loadOptions}
+        defaultOptions={defaultOptions}
+        cacheOptions={cacheOptions}
+        isClearable={isClearable}
       />
       {error && <ErrorField errorTid={error} />}
     </Container>

@@ -5,7 +5,7 @@ export interface FieldPropsType {
   name?: string;
   type?: string;
   value: string;
-  error?: string | false;
+  error?: any;
   list?: any;
   onChange: any;
   onBlur?: any;
@@ -14,18 +14,21 @@ export interface FieldPropsType {
   disabled?: boolean;
   adaptive?: boolean;
 }
-interface ReactSelectOptions {
-  value: string;
-  label: string;
-}
+
 export interface ReactSelectFieldProps {
   titleTid?: string;
   placeholderTid?: string;
-  value: ReactSelectOptions;
+  value: any;
   error?: string;
   onChange: any;
+  onInputChange?: any;
   noResults?: any;
-  options: ReactSelectOptions[];
+  options: {
+    label: string;
+  }[];
+  isClearable?: boolean;
+  isDisabled?: boolean;
+  components?: any;
 }
 
 export interface InputPropsType {
@@ -74,7 +77,7 @@ export interface TextAreaPropsType {
   onBlur?: any;
   name?: string;
   rows?: number;
-  error?: string | false;
+  error?: any;
   children?: any;
   value: string;
   isFile?: any;

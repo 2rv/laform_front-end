@@ -10,12 +10,8 @@ import { BASKET_ACTION_TYPE } from './basket.type';
 const initialState = {
   basket: [],
   basketAction: initRequestState(),
-  promoCode: initRequestState(),
   order: initRequestState(),
   userInfo: initRequestState(),
-  deliveryTypes: initRequestState(),
-  sendEmailCode: initRequestState(),
-  confirmEmailForOrder: initRequestState(),
 };
 
 export function basketStore(state = initialState, action: any) {
@@ -43,66 +39,6 @@ export function basketStore(state = initialState, action: any) {
         basketAction: setRequestError(state.basketAction, action.errorMessage),
       };
 
-    case BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_PENDING:
-      return {
-        ...state,
-        deliveryTypes: setRequestPending(state.deliveryTypes),
-      };
-    case BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_SUCCESS:
-      return {
-        ...state,
-        deliveryTypes: setRequestSuccess(state.deliveryTypes, action.payload),
-      };
-    case BASKET_ACTION_TYPE.GET_DELIVERY_TYPES_ERROR:
-      return {
-        ...state,
-        deliveryTypes: setRequestError(
-          state.deliveryTypes,
-          action.errorMessage,
-        ),
-      };
-
-    case BASKET_ACTION_TYPE.SEND_EMAIL_CODE_PENDING:
-      return {
-        ...state,
-        sendEmailCode: setRequestPending(state.sendEmailCode),
-      };
-    case BASKET_ACTION_TYPE.SEND_EMAIL_CODE_SUCCESS:
-      return {
-        ...state,
-        sendEmailCode: setRequestSuccess(state.sendEmailCode),
-      };
-    case BASKET_ACTION_TYPE.SEND_EMAIL_CODE_ERROR:
-      return {
-        ...state,
-        sendEmailCode: setRequestError(
-          state.sendEmailCode,
-          action.errorMessage,
-        ),
-      };
-
-    case BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_PENDING:
-      return {
-        ...state,
-        confirmEmailForOrder: setRequestPending(state.confirmEmailForOrder),
-      };
-    case BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_SUCCESS:
-      return {
-        ...state,
-        confirmEmailForOrder: setRequestSuccess(
-          state.confirmEmailForOrder,
-          action.payload,
-        ),
-      };
-    case BASKET_ACTION_TYPE.CONFIRM_EMAIL_FOR_ORDER_ERROR:
-      return {
-        ...state,
-        confirmEmailForOrder: setRequestError(
-          state.confirmEmailForOrder,
-          action.errorMessage,
-        ),
-      };
-
     case BASKET_ACTION_TYPE.INIT_BASKET:
       return {
         ...state,
@@ -112,21 +48,6 @@ export function basketStore(state = initialState, action: any) {
       return {
         ...state,
         basket: action.data,
-      };
-    case BASKET_ACTION_TYPE.PROMOCODE_CHECK_PENDING:
-      return {
-        ...state,
-        promoCode: setRequestPending(state.promoCode),
-      };
-    case BASKET_ACTION_TYPE.PROMOCODE_CHECK_SUCCESS:
-      return {
-        ...state,
-        promoCode: setRequestSuccess(state.promoCode, action.data),
-      };
-    case BASKET_ACTION_TYPE.PROMOCODE_CHECK_ERROR:
-      return {
-        ...state,
-        promoCode: setRequestError(state.promoCode, action.errorMessage),
       };
 
     case BASKET_ACTION_TYPE.CREATE_ORDER_PENDING:
