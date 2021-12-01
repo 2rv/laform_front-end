@@ -1,12 +1,6 @@
 import { FormikHandlers, FormikHelpers, FormikState } from 'formik';
+import { adressType } from 'src/core/basket/basket.type';
 
-export interface FindAdressValues {
-  country: string;
-  city: string;
-  street: string;
-  house: string;
-  postal_code: string;
-}
 export interface FindAdreccComponentProps {
   formik: FormikHandlers &
     FormikHelpers<FindAdressValues> &
@@ -47,10 +41,25 @@ export enum FIND_ADRESS_FIELD_NAME {
   STREET = 'street',
   HOUSE = 'house',
   POSTAL_CODE = 'postal_code',
+  FULL_ADRESS = 'full_adress',
 }
-
-export enum FIND_ADRESS_ACTION_TYPE {
-  GET_CITY_CODE_PENDING = 'FIND_ADRESS_ACTION_TYPE.GET_CITY_CODE_PENDING',
-  GET_CITY_CODE_SUCCESS = 'FIND_ADRESS_ACTION_TYPE.GET_CITY_CODE_SUCCESS',
-  GET_CITY_CODE_ERROR = 'FIND_ADRESS_ACTION_TYPE.GET_CITY_CODE_ERROR',
+export interface FindAdressValues {
+  [FIND_ADRESS_FIELD_NAME.COUNTRY]: string;
+  [FIND_ADRESS_FIELD_NAME.CITY]: string;
+  [FIND_ADRESS_FIELD_NAME.STREET]: string;
+  [FIND_ADRESS_FIELD_NAME.HOUSE]: string;
+  [FIND_ADRESS_FIELD_NAME.POSTAL_CODE]: string;
+  [FIND_ADRESS_FIELD_NAME.FULL_ADRESS]: adressType;
+}
+export interface locationsProps {
+  country?: string;
+  country_iso_code?: string;
+  city?: string;
+  city_fias_id?: string;
+  settlement?: string;
+  settlement_fias_id?: string;
+  street?: string;
+  street_fias_id?: string;
+  house?: string;
+  house_fias_id?: string;
 }

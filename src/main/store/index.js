@@ -186,12 +186,11 @@ import {
   PRODUCT_SELECTIONS_STORE_NAME,
 } from '../../core/product-selections';
 import {
-  findAdressStore,
-  FIND_ADRESS_STORE_NAME,
-} from '../../lib/common/block-find-adress';
-
+  sdekPointsStore,
+  SDEK_POINTS_STORE_NAME,
+} from '../../lib/common/block-sdek-points';
 export const reducers = combineReducers({
-  [FIND_ADRESS_STORE_NAME]: findAdressStore,
+  [SDEK_POINTS_STORE_NAME]: sdekPointsStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,

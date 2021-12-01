@@ -29,7 +29,7 @@ const styles = {
   },
   option: (provided: any, state: any) => ({
     ...provided,
-    backgroundColor: state.isSelected ? THEME_COLOR.SECONDARY : 'transparent',
+    backgroundColor: state.isSelected ? THEME_COLOR.WHITE : 'transparent',
   }),
 };
 
@@ -40,26 +40,28 @@ export function ReactSelectField(props: ReactSelectFieldProps) {
     noResults,
     value,
     onChange,
+    onInputChange,
     error,
     options,
+    isClearable = true,
+    isDisabled = false,
+    components,
   } = props;
-
-  //   const [text, setText] = useState();
-
-  //   const onChange = (selectedOption: any) => {
-  //     setText(selectedOption);
-  //   };
 
   return (
     <Container>
       {titleTid && <Title tid={titleTid} />}
       <Select
-        styles={styles}
-        options={options}
-        onChange={onChange}
-        value={value}
-        noOptionsMessage={noResults}
         placeholder={text(placeholderTid)}
+        styles={styles}
+        value={value}
+        onChange={onChange}
+        isDisabled={isDisabled}
+        isClearable={isClearable}
+        noOptionsMessage={noResults}
+        options={options}
+        onInputChange={onInputChange}
+        components={components}
       />
       {error && <ErrorField errorTid={error} />}
     </Container>
