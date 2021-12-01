@@ -10,6 +10,7 @@ import {
   BasicPatternType,
   BasicSewingGoodType,
 } from 'src/lib/basic-types';
+import { basicTariffType } from 'src/lib/common/block-sdek-tarifflist';
 
 export enum BASKET_ACTION_TYPE {
   PRODUCT_ADD_PENDING = 'BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING',
@@ -43,6 +44,7 @@ export enum ORDER_FIELD_NAME {
   ADRESS = 'adress',
 
   SDEK_POINT = 'sdekPoint',
+  SDEK_TARIFF = 'sdekTariff',
 
   SAVE_USER_INFO = 'saveUserInfo',
   PRICE = 'price',
@@ -73,6 +75,7 @@ export interface formikValues {
   [ORDER_FIELD_NAME.PRICE]: number;
   [ORDER_FIELD_NAME.ADRESS]: adressType;
   [ORDER_FIELD_NAME.SDEK_POINT]: any;
+  [ORDER_FIELD_NAME.SDEK_TARIFF]: any;
 }
 
 export interface addToCartDataType {
@@ -136,7 +139,7 @@ export interface CartPromoCodeProps {
 export interface CartPriceProps {
   price: number;
   promoDiscount: number;
-  deliveryPrice: number;
+  deliveryInfo: basicTariffType;
 }
 export interface BasketFormProps extends CartAlertProps {
   isAuth: boolean;

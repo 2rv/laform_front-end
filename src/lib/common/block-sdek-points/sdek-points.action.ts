@@ -1,6 +1,6 @@
 import { httpRequest } from 'src/main/http';
 import { GET_CITY_CODE } from './sdek-points.constant';
-import { sdekDataProps, SDEK_POINTS_ACTION_TYPE } from './sdek-points.type';
+import { basicSdekPoints, SDEK_POINTS_ACTION_TYPE } from './sdek-points.type';
 
 export function getPickUpPoint(kladr_id: string) {
   return async (dispatch: Function) => {
@@ -13,10 +13,12 @@ export function getPickUpPoint(kladr_id: string) {
         url: GET_CITY_CODE.URL + kladr_id,
       });
 
-      const result = response.data.map((item: sdekDataProps) => {
-        item.label = item.location.address_full;
-        return item;
-      });
+      const result: basicSdekPoints[] = response.data.map(
+        (item: basicSdekPoints) => {
+          item.label = item.location.address_full;
+          return item;
+        },
+      );
 
       dispatch({
         type: SDEK_POINTS_ACTION_TYPE.SUCCCESS,

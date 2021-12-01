@@ -1,14 +1,18 @@
 import { adressType } from 'src/core/basket/basket.type';
-import { sdekPointsType } from './sder-points.store';
 
+export interface sdekPointsType {
+  sdekPoints: basicSdekPoints[];
+  pending: true | false;
+  errorMessage?: string;
+}
 export interface SdekPointsComponentProps {
   store: sdekPointsType;
-  value: sdekDataProps;
+  value: basicSdekPoints;
   onChange: Function;
 }
 export interface SdekPointsContainerProps {
   data: adressType;
-  value: sdekDataProps;
+  value: basicSdekPoints;
   onChange: Function;
   name: string;
 }
@@ -18,7 +22,7 @@ export enum SDEK_POINTS_ACTION_TYPE {
   ERROR = 'SDEK_POINTS_ACTION_TYPE.ERROR',
 }
 
-export interface sdekDataProps {
+export interface basicSdekPoints {
   address_comment: string;
   allowed_cod: boolean;
   code: string;

@@ -19,6 +19,7 @@ import { CartAlert } from './cart.alert';
 import { CartPromoCode } from './cart.promocode';
 import { BasketFormComponentProps, ORDER_FIELD_NAME } from '../basket.type';
 import { BlockSdekPoints } from 'src/lib/common/block-sdek-points';
+import { BlockSdekTariffList } from 'src/lib/common/block-sdek-tarifflist';
 
 export function FormComponent(props: BasketFormComponentProps) {
   const {
@@ -111,6 +112,15 @@ export function FormComponent(props: BasketFormComponentProps) {
 
       <Divider />
 
+      <BlockSdekTariffList
+        data={values[ORDER_FIELD_NAME.SDEK_POINT]}
+        value={values[ORDER_FIELD_NAME.SDEK_TARIFF]}
+        name={ORDER_FIELD_NAME.SDEK_TARIFF}
+        onChange={setFieldValue}
+      />
+
+      <Divider />
+
       <Title tid="BASKET.FORM.FIELDS.TITLES.ADDITIONAL" />
       <TextareaField
         titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"
@@ -131,7 +141,7 @@ export function FormComponent(props: BasketFormComponentProps) {
       <CartPrice
         price={values[ORDER_FIELD_NAME.PRICE]}
         promoDiscount={values[ORDER_FIELD_NAME.PROMO_DISCOUNT]}
-        deliveryPrice={0}
+        deliveryInfo={values[ORDER_FIELD_NAME.SDEK_TARIFF]}
       />
 
       <Divider />
