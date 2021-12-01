@@ -1,10 +1,4 @@
-import { SDEK_POINTS_ACTION_TYPE } from './sdek-points.type';
-
-export interface sdekPointsType {
-  sdekPoints: any[];
-  pending: true | false;
-  errorMessage?: string;
-}
+import { sdekPointsType, SDEK_POINTS_ACTION_TYPE } from './sdek-points.type';
 
 const initialState: sdekPointsType = {
   sdekPoints: [],

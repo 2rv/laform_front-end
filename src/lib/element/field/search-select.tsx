@@ -45,6 +45,7 @@ export function ReactSelectField(props: ReactSelectFieldProps) {
     options,
     isClearable = true,
     isDisabled = false,
+    isLoading = undefined,
     components,
   } = props;
 
@@ -62,6 +63,7 @@ export function ReactSelectField(props: ReactSelectFieldProps) {
         options={options}
         onInputChange={onInputChange}
         components={components}
+        isLoading={isLoading}
       />
       {error && <ErrorField errorTid={error} />}
     </Container>

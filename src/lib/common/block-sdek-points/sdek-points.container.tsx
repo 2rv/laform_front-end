@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SdekPointsComponent } from './sdek-points.component';
 import { SDEK_POINTS_STORE_NAME } from './sdek-points.constant';
 import { getPickUpPoint } from './sdek-points.action';
-import { sdekPointsType } from './sder-points.store';
-import { sdekDataProps, SdekPointsContainerProps } from './sdek-points.type';
+import {
+  sdekPointsType,
+  SdekPointsContainerProps,
+  basicSdekPoints,
+} from './sdek-points.type';
 
 export function SdekPointsContainer(props: SdekPointsContainerProps) {
   const { data, value, onChange, name } = props;
@@ -16,9 +19,10 @@ export function SdekPointsContainer(props: SdekPointsContainerProps) {
     if (data.kladr_id) {
       dispatch(getPickUpPoint(data.kladr_id));
     }
+    onChange(name, '');
   }, [data.kladr_id]);
 
-  function handleChange(value: sdekDataProps) {
+  function handleChange(value: basicSdekPoints) {
     onChange(name, value);
   }
 

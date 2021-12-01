@@ -63,6 +63,8 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
 
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
+      [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
+
       [ORDER_FIELD_NAME.ADRESS]: {
         country: '',
         city: '',
@@ -73,7 +75,7 @@ export function BasketContainer() {
         kladr_id: '',
       },
       [ORDER_FIELD_NAME.SDEK_POINT]: '',
-      [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
+      [ORDER_FIELD_NAME.SDEK_TARIFF]: '',
 
       [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
       [ORDER_FIELD_NAME.PRICE]: 0,

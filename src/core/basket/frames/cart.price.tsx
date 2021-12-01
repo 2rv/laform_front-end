@@ -4,7 +4,8 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
 import { CartPriceProps } from '../basket.type';
 
 export function CartPrice(props: CartPriceProps) {
-  const { price, promoDiscount, deliveryPrice } = props;
+  const { price, promoDiscount, deliveryInfo } = props;
+  const deliveryPrice: number = deliveryInfo?.total_sum || 0;
   const discountPrice = price - (price / 100) * promoDiscount;
   const totalPrice = Number(discountPrice) + Number(deliveryPrice);
   return (

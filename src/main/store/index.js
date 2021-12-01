@@ -189,7 +189,14 @@ import {
   sdekPointsStore,
   SDEK_POINTS_STORE_NAME,
 } from '../../lib/common/block-sdek-points';
+
+import {
+  sdekTariffListStore,
+  SDEK_TARIFFLIST_STORE_NAME,
+} from '../../lib/common/block-sdek-tarifflist';
+
 export const reducers = combineReducers({
+  [SDEK_TARIFFLIST_STORE_NAME]: sdekTariffListStore,
   [SDEK_POINTS_STORE_NAME]: sdekPointsStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,

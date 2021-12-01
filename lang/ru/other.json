@@ -20,6 +20,7 @@
 	"SIGN_UP": "Регистрация",
 	"SIGN_IN": "Войти",
 	"EMAIL_NOT_CONFIRMED": "Подтвердите почту",
+	"INCORRECT_CODE": "Некорректный код",
 	"SEARCH_PRODUCT": "Найти товар",
 	"DELIVERY_TYPE": "Способ доставки:",
 	"DELIVERY_TYPE_PRICE": "Цена:",

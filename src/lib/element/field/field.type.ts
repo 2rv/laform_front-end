@@ -28,6 +28,7 @@ export interface ReactSelectFieldProps {
   }[];
   isClearable?: boolean;
   isDisabled?: boolean;
+  isLoading?: boolean;
   components?: any;
 }
 
