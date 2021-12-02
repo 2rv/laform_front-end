@@ -11,6 +11,7 @@ export interface SdekTariffListComponentProps {
   store: SdekTariffListType;
   value: basicTariffType;
   onChange: Function;
+  isDisabled: boolean;
 }
 export interface SdekTariffListContainerProps {
   data: basicSdekPoints;

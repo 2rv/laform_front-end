@@ -43,9 +43,9 @@ export function SettingsChangePasswordContainer() {
     [SETTINGS_CHANGE_PASSWORD_FIELD_NAME.PASSWORD_REPEAT]: '',
   });
 
-  if (Boolean(userInfoData?.googleId) || Boolean(userInfoData?.facebookId) || Boolean(userInfoData?.appleId)) {
-    return null;
-  }
+  //   if (Boolean(userInfoData?.googleId) || Boolean(userInfoData?.facebookId) || Boolean(userInfoData?.appleId)) {
+  //     return null;
+  //   }
 
   return (
     <SettingsFormChangePasswordContainer

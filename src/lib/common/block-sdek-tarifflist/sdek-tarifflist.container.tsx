@@ -35,6 +35,7 @@ export function SdekTariffListContainer(props: SdekTariffListContainerProps) {
       value={value}
       onChange={handleChange}
       store={store}
+      isDisabled={!data?.location}
     />
   );
 }

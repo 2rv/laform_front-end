@@ -27,6 +27,11 @@ export function SdekPointsContainer(props: SdekPointsContainerProps) {
   }
 
   return (
-    <SdekPointsComponent value={value} onChange={handleChange} store={store} />
+    <SdekPointsComponent
+      value={value}
+      onChange={handleChange}
+      store={store}
+      isDisabled={!data?.kladr_id}
+    />
   );
 }
