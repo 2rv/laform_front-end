@@ -5,7 +5,8 @@ import { components, OptionProps } from 'react-select';
 import { basicSdekPoints } from './sdek-points.type';
 import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
-import { spacing } from 'src/lib/theme';
+import { spacing, THEME_SIZE } from 'src/lib/theme';
+import { Divider } from 'src/lib/element/divider';
 
 const { Option } = components;
 
@@ -14,31 +15,36 @@ export function SdekPointsItem(props: OptionProps<basicSdekPoints>) {
 
   return (
     <Option {...props}>
-      <SectionLayout type="TEXT">
-        <TitlePrimary tid={data.location.address_full} />
-        <Container>
-          {data.office_image_list?.[0] && (
-            <Image src={data.office_image_list[0].url} />
+      <Container>
+        {data.office_image_list?.[0] && (
+          <Image src={data.office_image_list[0].url} />
+        )}
+        <SectionLayout type="TEXT">
+          <Title tid={data.location.address_full} />
+          {data.have_cash && <TextSecondary tid="Оплата наличными" />}
+          {data.have_cashless && <TextSecondary tid="Оплата картой" />}
+          {data.work_time && (
+            <TextSecondary tid={`График работы ${data.work_time}`} />
           )}
-          <SectionLayout type="TEXT">
-            {data.have_cash && <TextSecondary tid="Оплата наличными" />}
-            {data.have_cashless && <TextSecondary tid="Оплата картой" />}
-            {data.work_time && (
-              <TextSecondary tid={`График работы ${data.work_time}`} />
-            )}
-            {data.note && <TextSecondary tid={`Примечание ${data.note}`} />}
-          </SectionLayout>
-        </Container>
-      </SectionLayout>
+          {data.note && <TextSecondary tid={`Примечание ${data.note}`} />}
+        </SectionLayout>
+      </Container>
+      <DividerEl />
     </Option>
   );
 }
-
+const Title = styled(TitlePrimary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+const DividerEl = styled(Divider)`
+  margin: ${spacing(3)} 0;
+`;
 const Container = styled.div`
   display: flex;
   gap: ${spacing(3)};
 `;
 const Image = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
