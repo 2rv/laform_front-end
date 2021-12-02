@@ -4,17 +4,17 @@ import { SdekTariffItem } from './sdek-tarifflist.item';
 import { SdekTariffListComponentProps } from './sdek-tarifflist.type';
 
 export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
-  const { store, value, onChange } = props;
+  const { store, value, onChange, isDisabled } = props;
   return (
     <SectionLayout type="SMALL">
       <ReactSelectField
         value={value}
         onChange={onChange}
         options={store.sdekTariffList}
-        titleTid="Пункт выдачи заказа СДЭК"
-        placeholderTid="Выберите пункт ПВЗ СДЭК"
-        noResults={() => 'Пункты ПВЗ СДЭК не найдены в вашем городе'}
-        isDisabled={store.pending}
+        titleTid="Метод доставки"
+        placeholderTid="Выберите метод доставки"
+        noResults={() => 'Для этого офиса не найдены методы доставки'}
+        isDisabled={isDisabled || store.pending}
         error={store.errorMessage}
         components={{ Option: SdekTariffItem }}
         isLoading={store.pending}

@@ -53,9 +53,9 @@ export function SettingsChangeEmailContainer() {
     dispatch(settingsChangeEmailLoadEmail());
   }, []);
 
-  if (Boolean(userInfoData?.googleId) || Boolean(userInfoData?.facebookId) || Boolean(userInfoData?.appleId)) {
-    return null;
-  }
+  //   if (Boolean(userInfoData?.googleId) || Boolean(userInfoData?.facebookId) || Boolean(userInfoData?.appleId)) {
+  //     return null;
+  //   }
 
   return (
     <SettingsFormChangeEmailContainer

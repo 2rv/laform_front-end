@@ -9,6 +9,7 @@ export interface SdekPointsComponentProps {
   store: sdekPointsType;
   value: basicSdekPoints;
   onChange: Function;
+  isDisabled: boolean;
 }
 export interface SdekPointsContainerProps {
   data: adressType;

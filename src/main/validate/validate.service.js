@@ -125,8 +125,7 @@ const URL_EXP =
 export const url = (value) =>
   !URL_EXP.test(value) ? getError('VALIDATION.NOT_URL') : null;
 
-const PHONE_EXP =
-  /\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})?/;
+const PHONE_EXP = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
 export const phone = (value) =>
   value && !PHONE_EXP.test(value) ? getError('VALIDATION.NOT_PHONE') : null;
 

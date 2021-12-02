@@ -48,6 +48,16 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            <BasicField
+              titleTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.TITLE"
+              placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.PLACEHOLDER"
+              name={fieldPhone}
+              value={values[fieldPhone]}
+              error={getFieldError(fieldPhone)}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              full
+            />
             <FieldSelect
               titleTid="SETTINGS.CHANGE_DELIVERY_INFO.DELIVERY_TYPE.TITLE"
               options={deliveryTypeOptions}
@@ -65,16 +75,6 @@ export function SettingsFormChangeDeliveryInfoComponent(props) {
               error={getFieldError(fieldLocation)}
               onChange={handleChange}
               onBlur={handleBlur}
-            />
-            <BasicField
-              titleTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.TITLE"
-              placeholderTid="SETTINGS.CHANGE_DELIVERY_INFO.PHONE.PLACEHOLDER"
-              name={fieldPhone}
-              value={values[fieldPhone]}
-              error={getFieldError(fieldPhone)}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              full
             />
           </FieldLayout>
           <FieldLayout type="double" adaptive>
