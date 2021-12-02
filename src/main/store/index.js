@@ -35,10 +35,6 @@ import {
   settingsChangeEmailStore,
   SETTINGS_CHANGE_EMAIL_STORE_NAME,
 } from '../../core/settings-change-email';
-import {
-  settingsChangeDeliveryInfoStore,
-  SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME,
-} from '../../core/settings-change-delivery-info';
 import { sliderStore, SLIDER_STORE_NAME } from '../../core/slider';
 import {
   notificationStore,
@@ -194,8 +190,17 @@ import {
   sdekTariffListStore,
   SDEK_TARIFFLIST_STORE_NAME,
 } from '../../lib/common/block-sdek-tarifflist';
+import {
+  findAdressStore,
+  FIND_ADRESS_STORE_NAME,
+} from '../../core/block-find-adress';
+import {
+  settingsUserInfoStore,
+  SETTINGS_USER_INFO_STORE_NAME,
+} from '../../core/settings-user-info';
 
 export const reducers = combineReducers({
+  [FIND_ADRESS_STORE_NAME]: findAdressStore,
   [SDEK_TARIFFLIST_STORE_NAME]: sdekTariffListStore,
   [SDEK_POINTS_STORE_NAME]: sdekPointsStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
@@ -237,7 +242,7 @@ export const reducers = combineReducers({
   [AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME]: authVerificateEmailConfirmStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
-  [SETTINGS_CHANGE_DELIVERY_INFO_STORE_NAME]: settingsChangeDeliveryInfoStore,
+  [SETTINGS_USER_INFO_STORE_NAME]: settingsUserInfoStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
   [NOTIFICATION_STORE_NAME]: notificationStore,

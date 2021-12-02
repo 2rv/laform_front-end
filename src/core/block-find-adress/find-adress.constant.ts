@@ -6,3 +6,12 @@ export enum GET_POSTAL_CODE {
   URL = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/postal_office',
   TYPE = 'POST',
 }
+export enum LOAD_ADRESS_API {
+  URL = '',
+  TYPE = 'GET',
+}
+export enum SAVE_ADRESS_API {
+  URL = '',
+  TYPE = 'POST',
+}
+export const FIND_ADRESS_STORE_NAME = 'FIND_ADRESS';

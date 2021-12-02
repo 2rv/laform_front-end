@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import { THEME_SIZE } from '../../../lib/theme';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
-import { BlockFindAdress } from 'src/lib/common/block-find-adress';
+import { BlockFindAdress } from 'src/core/block-find-adress';
 import { TitlePrimary } from 'src/lib/element/title';
-import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 import { Divider } from 'src/lib/element/divider';
 import {
   BasicField,
@@ -47,9 +46,6 @@ export function FormComponent(props: BasketFormComponentProps) {
     return errors[name] && touched[name] && errors[name];
   };
 
-  const { country, city, street, house, postal_code } =
-    values[ORDER_FIELD_NAME.ADRESS];
-
   return (
     <SectionLayout type="SMALL">
       {isPending && <LoaderPrimary />}
@@ -81,25 +77,10 @@ export function FormComponent(props: BasketFormComponentProps) {
 
       <Divider />
 
-      <Title tid="BASKET.FORM.FIELDS.TITLES.DELIVERY_DATA" />
-      <Text tid="Не нашли свой адресс? - введите его в примечаниях к заказу. (Стоит продумать)" />
       <BlockFindAdress
         onChange={setFieldValue}
         name={ORDER_FIELD_NAME.ADRESS}
       />
-
-      <div>
-        <Title tid="Полный адрес -" />
-        <TextPrimary
-          tid={`
-				${Boolean(country) ? country + ', ' : ''}
-				${Boolean(city) ? city + ', ' : ''}
-				${Boolean(street) ? street + ', ' : ''}
-				${Boolean(house) ? house + ', ' : ''}
-				${Boolean(postal_code) ? postal_code + '.' : '.'}
-			`}
-        />
-      </div>
 
       <Divider />
 
@@ -180,10 +161,7 @@ export function FormComponent(props: BasketFormComponentProps) {
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
-const Text = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.SMALL};
-  line-height: 1.5;
-`;
+
 const Button = styled(ButtonPrimary)`
   margin-top: 19px;
 `;

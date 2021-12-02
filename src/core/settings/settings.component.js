@@ -6,13 +6,13 @@ import {
   ContentLayout,
 } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
-import { SettingsChangeDeliveryInfoContainer } from '../settings-change-delivery-info';
-import { SettingsChangePaymentMethodContainer } from '../settings-change-payment-method';
+import { SettingsUserInfo } from '../settings-user-info';
 import { SettingsChangePasswordContainer } from '../settings-change-password';
 import { SettingsChangeEmailContainer } from '../settings-change-email';
 import { SettingsChangeNotificationContainer } from '../settings-change-notification';
 import { SettingsLogutContainer } from '../settings-logout';
 import { SETTINGS_CHANGE_EMAIL_STORE_NAME } from '../settings-change-email';
+import { BlockFindAdress } from '../block-find-adress';
 
 export function SettingsComponent() {
   return (
@@ -21,8 +21,8 @@ export function SettingsComponent() {
         <SectionLayout>
           <TitlePrimary tid="SETTINGS.HEADER" />
           <SectionLayout>
-            <SettingsChangeDeliveryInfoContainer />
-            <SettingsChangePaymentMethodContainer />
+            <SettingsUserInfo />
+            <BlockFindAdress />
             <SettingsChangePasswordContainer />
             <SettingsChangeEmailContainer />
             <SettingsChangeNotificationContainer />

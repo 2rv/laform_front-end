@@ -16,6 +16,7 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
         placeholderTid="Выберите пункт ПВЗ СДЭК"
         noResults={() => 'Пункты ПВЗ СДЭК не найдены в вашем городе'}
         isDisabled={isDisabled || store.pending}
+        isLoading={store.pending}
         error={store.errorMessage}
         components={{ Option: SdekPointsItem }}
       />
