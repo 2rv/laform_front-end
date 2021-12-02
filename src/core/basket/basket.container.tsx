@@ -108,7 +108,3 @@ export function BasketContainer() {
     />
   );
 }
-//   GET_DELIVERY_TYPES: {
-//     ENDPOINT: '/delivery-price/get',
-//     METHOD: 'GET',
-//   },

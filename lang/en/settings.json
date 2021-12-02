@@ -1,7 +1,7 @@
 {
   "HEADER": "Settings",
-  "CHANGE_DELIVERY_INFO": {
-    "TITLE": "Convenient delivery",
+  "USER_INFO": {
+    "TITLE": "Basic information",
     "FULLNAME": {
       "TITLE": "Your full name",
       "PLACEHOLDER": "Full name"
@@ -9,15 +9,6 @@
     "PHONE": {
       "TITLE": "Contact phone number",
       "PLACEHOLDER": "+7 (000) 000 00 00"
-    },
-    "LOCATION": {
-      "TITLE": "City and exact delivery address",
-      "PLACEHOLDER": "Street, house"
-    },
-    "DELIVERY_TYPE": {
-      "TITLE": "Convenient delivery method",
-      "ON_THE_POINT": "At the point of issue",
-      "COURIER": "By courier"
     },
     "SUCCESS": "Data updated successfully",
     "SUBMIT": "Save"

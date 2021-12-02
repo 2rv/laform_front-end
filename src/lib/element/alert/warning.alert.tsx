@@ -27,11 +27,12 @@ const Message = styled.span`
 `;
 
 const Alert = styled.div`
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: ${THEME_COLOR.BACKGROUND.WARNING};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  padding: ${spacing(3)};
+  padding: 0 ${spacing(3)};
   line-height: 1.5;
 `;

@@ -1,29 +1,53 @@
+import { useFormik } from 'formik';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FindAdressComponent } from './find-adress.component';
-import { adressValueType } from './find-adress.type';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import {
+  getRequestData,
+  getRequestErrorMessage,
+  isRequestError,
+  isRequestPending,
+  isRequestSuccess,
+} from 'src/main/store/store.service';
+import { FIND_ADRESS_STORE_NAME } from './find-adress.constant';
+import { FIND_ADRESS_FIELD_NAME, adressValueType } from './find-adress.type';
 import {
   getCountry,
   getCity,
   getStreet,
   getHouse,
   getPostalCode,
+  saveAdressAction,
+  getAdressAction,
 } from './find-adress.action';
-import { FIND_ADRESS_FIELD_NAME } from './find-adress.type';
-import { useFormik } from 'formik';
 
 interface FindAdressContainer {
-  onChange: Function;
-  name: string;
+  onChange?: Function;
+  name?: string;
 }
 
 export function FindAdressContainer(props: FindAdressContainer) {
   const { onChange, name } = props;
+  const dispatch = useDispatch();
+  const { saveState, dataState, isAuth } = useSelector((store: any) => ({
+    saveState: store[FIND_ADRESS_STORE_NAME].save,
+    dataState: store[FIND_ADRESS_STORE_NAME].data,
+    isAuth: store[AUTH_STORE_NAME].logged,
+  }));
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getAdressAction());
+    }
+  }, []);
   const formik = useFormik({
-    initialValues: {
-      [FIND_ADRESS_FIELD_NAME.COUNTRY]: '',
-      [FIND_ADRESS_FIELD_NAME.CITY]: '',
-      [FIND_ADRESS_FIELD_NAME.STREET]: '',
-      [FIND_ADRESS_FIELD_NAME.HOUSE]: '',
-      [FIND_ADRESS_FIELD_NAME.POSTAL_CODE]: '',
+    enableReinitialize: true,
+    initialValues: getRequestData(dataState, {
+      [FIND_ADRESS_FIELD_NAME.COUNTRY]: {},
+      [FIND_ADRESS_FIELD_NAME.CITY]: {},
+      [FIND_ADRESS_FIELD_NAME.STREET]: {},
+      [FIND_ADRESS_FIELD_NAME.HOUSE]: {},
+      [FIND_ADRESS_FIELD_NAME.POSTAL_CODE]: {},
       [FIND_ADRESS_FIELD_NAME.FULL_ADRESS]: {
         country: '',
         city: '',
@@ -33,8 +57,10 @@ export function FindAdressContainer(props: FindAdressContainer) {
         house: '',
         postal_code: '',
       },
+    }),
+    onSubmit: (values) => {
+      dispatch(saveAdressAction(values));
     },
-    onSubmit: () => {},
   });
 
   const findMethods = {
@@ -56,13 +82,13 @@ export function FindAdressContainer(props: FindAdressContainer) {
         house: '',
         postal_code: '',
       };
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.CITY, '');
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, '');
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, '');
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.CITY, {});
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, {});
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, {});
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.COUNTRY, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      onChange(name, newValue);
+      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     city: (value: adressValueType) => {
       const newValue = {
@@ -74,12 +100,12 @@ export function FindAdressContainer(props: FindAdressContainer) {
         house: '',
         postal_code: '',
       };
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, '');
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, '');
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, {});
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, {});
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.CITY, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      onChange(name, newValue);
+      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     street: (value: adressValueType) => {
       const newValue = {
@@ -91,11 +117,11 @@ export function FindAdressContainer(props: FindAdressContainer) {
         house: '',
         postal_code: '',
       };
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, '');
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, {});
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      onChange(name, newValue);
+      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     house: (value: adressValueType) => {
       const newValue = {
@@ -107,10 +133,10 @@ export function FindAdressContainer(props: FindAdressContainer) {
         house: value?.house,
         postal_code: '',
       };
-      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, '');
+      formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      onChange(name, newValue);
+      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     postal_code: (value: adressValueType) => {
       const newValue = {
@@ -124,14 +150,19 @@ export function FindAdressContainer(props: FindAdressContainer) {
       };
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      onChange(name, newValue);
+      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
   };
   return (
     <FindAdressComponent
+      isAuth={isAuth}
       formik={formik}
       find={findMethods}
       change={changeMethods}
+      savePending={isRequestPending(saveState)}
+      saveSuccess={isRequestSuccess(saveState)}
+      saveError={isRequestError(saveState)}
+      saveErrorMessage={getRequestErrorMessage(saveState)}
     />
   );
 }

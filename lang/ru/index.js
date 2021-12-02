@@ -39,7 +39,6 @@ import BLOCK_TABLE_LIST from './block-table-list.json';
 import PROMOCODE from './promocode.json';
 import ALL_LIKES from './all-likes.json';
 import PURCHASED_PRODUCTS from './purchase-products.json';
-import DELIVERY_PRICE from './delivery-price.json';
 import ALL_PRODUCTS from './all-products.json';
 import FEEDBACK from './feedback.json';
 import STATISTICS from './statistics.json';
@@ -87,7 +86,6 @@ export const RU = {
     PROMOCODE,
     ALL_LIKES,
     PURCHASED_PRODUCTS,
-    DELIVERY_PRICE,
     ALL_PRODUCTS,
     FEEDBACK,
     STATISTICS,
