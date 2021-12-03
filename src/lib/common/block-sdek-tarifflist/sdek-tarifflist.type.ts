@@ -18,6 +18,7 @@ export interface SdekTariffListContainerProps {
   value: basicTariffType;
   onChange: Function;
   name: string;
+  basketCount: number;
 }
 export enum SDEK_TARIFFLIST_ACTION_TYPE {
   PENDING = 'SDEK_TARIFFLIST_ACTION_TYPE.PENDING',

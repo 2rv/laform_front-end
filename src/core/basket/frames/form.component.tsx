@@ -25,6 +25,7 @@ export function FormComponent(props: BasketFormComponentProps) {
     isAuth,
     isPending,
     basketPrice,
+    basketCount,
     formik: {
       errors,
       touched,
@@ -95,6 +96,7 @@ export function FormComponent(props: BasketFormComponentProps) {
 
       <BlockSdekTariffList
         data={values[ORDER_FIELD_NAME.SDEK_POINT]}
+        basketCount={basketCount}
         value={values[ORDER_FIELD_NAME.SDEK_TARIFF]}
         name={ORDER_FIELD_NAME.SDEK_TARIFF}
         onChange={setFieldValue}

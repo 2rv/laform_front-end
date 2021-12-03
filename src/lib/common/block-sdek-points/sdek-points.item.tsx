@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { TextSecondary } from 'src/lib/element/text';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { Divider } from 'src/lib/element/divider';
+import { text } from '../text';
 
 const { Option } = components;
 
@@ -21,12 +22,38 @@ export function SdekPointsItem(props: OptionProps<basicSdekPoints>) {
         )}
         <SectionLayout type="TEXT">
           <Title tid={data.location.address_full} />
-          {data.have_cash && <TextSecondary tid="Оплата наличными" />}
-          {data.have_cashless && <TextSecondary tid="Оплата картой" />}
-          {data.work_time && (
-            <TextSecondary tid={`График работы ${data.work_time}`} />
-          )}
-          {data.note && <TextSecondary tid={`Примечание ${data.note}`} />}
+          <TextSecondary
+            tid="SDEK_POINTS.OPTION.CASH_ACCEPT"
+            tvalue={{
+              have_cash: data.have_cash
+                ? text('SDEK_POINTS.OPTION.STATUS.YES')
+                : text('SDEK_POINTS.OPTION.STATUS.NO'),
+            }}
+          />
+          <TextSecondary
+            tid="SDEK_POINTS.OPTION.CARD_ACCEPT"
+            tvalue={{
+              have_cashless: data.have_cashless
+                ? text('SDEK_POINTS.OPTION.STATUS.YES')
+                : text('SDEK_POINTS.OPTION.STATUS.NO'),
+            }}
+          />
+          <TextSecondary
+            tid="SDEK_POINTS.OPTION.WORK_TIME"
+            tvalue={{
+              work_time: data.work_time
+                ? data.work_time
+                : text('SDEK_POINTS.OPTION.STATUS.NO_INFO'),
+            }}
+          />
+          <Text
+            tid="SDEK_POINTS.OPTION.NOTE"
+            tvalue={{
+              note: data.note
+                ? data.note
+                : text('SDEK_POINTS.OPTION.STATUS.NO_INFO'),
+            }}
+          />
         </SectionLayout>
       </Container>
       <DividerEl />
@@ -36,8 +63,11 @@ export function SdekPointsItem(props: OptionProps<basicSdekPoints>) {
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;
+const Text = styled(TextSecondary)`
+  line-height: 1.5;
+`;
 const DividerEl = styled(Divider)`
-  margin: ${spacing(3)} 0;
+  margin: ${spacing(3)} 0 0 0;
 `;
 const Container = styled.div`
   display: flex;

@@ -38,8 +38,14 @@ export function BasketContainer() {
   useEffect(() => {
     if (isAuth) dispatch(getUserInfoAction());
   }, []);
-  const { masterProducts, patternProducts, sewingProducts, basketPrice } =
-    convertForTable(bascketState);
+  const {
+    masterProducts,
+    patternProducts,
+    sewingProducts,
+    basketPrice,
+    basketCount,
+  } = convertForTable(bascketState);
+
   const changeItem = (data: changeCartataType) => {
     dispatch(changeProductCartAction(data, bascketState));
   };
@@ -88,6 +94,7 @@ export function BasketContainer() {
       }
       isAuth={isAuth}
       basketPrice={basketPrice}
+      basketCount={basketCount}
       isEmpty={!Boolean(bascketState.length)}
       changeItem={changeItem}
       deleteItem={deleteItem}
