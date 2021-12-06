@@ -11,7 +11,6 @@ import {
 
 export function SdekTariffListContainer(props: SdekTariffListContainerProps) {
   const { data, value, onChange, name, basketCount } = props;
-  console.log(basketCount);
 
   const dispatch = useDispatch();
   const store: SdekTariffListType = useSelector(

@@ -3,21 +3,29 @@ export const STATISTICS_STORE_NAME = 'STATISTICS';
 export const STATISTICS_API = {
   GET_COUNT: {
     ENDPOINT: ({ type, from, to }) =>
-      `/statistics/count/get?type=${convertType(type)}&from=${from}&to=${to}`,
+      `/statistics/count/get?type=${convertType(
+        type,
+      )}&from=${from.toISOString()}&to=${to.toISOString()}`,
     TYPE: 'GET',
   },
   GET_PRICE: {
     ENDPOINT: ({ type, from, to }) =>
-      `/statistics/price/get?type=${convertType(type)}&from=${from}&to=${to}`,
+      `/statistics/price/get?type=${convertType(
+        type,
+      )}&from=${from.toISOString()}&to=${to.toISOString()}`,
     TYPE: 'GET',
   },
   GET_GENERAL: {
     ENDPOINT: ({ type, from, to }) =>
-      `/statistics/general/get?type=${convertType(type)}&from=${from}&to=${to}`,
+      `/statistics/general/get?type=${convertType(
+        type,
+      )}&from=${from.toISOString()}&to=${to.toISOString()}`,
     TYPE: 'GET',
   },
   GET_USERS: {
-    ENDPOINT: ({ from, to }) => `/statistics/user/get?from=${from}&to=${to}`,
+    ENDPOINT: ({ from, to }) => {
+      return `/statistics/user/get?from=${from.toISOString()}&to=${to.toISOString()}`;
+    },
     TYPE: 'GET',
   },
 };

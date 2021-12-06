@@ -21,57 +21,51 @@ function StatsCard(props) {
 export function TotalStats(props) {
   const { general, activeTab } = props;
   return (
-    <SectionLayout>
-      <Title tid="STATISTICS.TITLES.TOTAL" />
-      <Content>
-        {activeTab ? (
+    <Content>
+      {activeTab ? (
+        <StatsCard
+          title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
+          value={general.totalCount}
+          valutTid="OTHER.AMOUNT"
+        />
+      ) : (
+        <>
           <StatsCard
             title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
             value={general.totalCount}
             valutTid="OTHER.AMOUNT"
           />
-        ) : (
-          <>
-            <StatsCard
-              title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
-              value={general.totalCount}
-              valutTid="OTHER.AMOUNT"
-            />
-            <StatsCard
-              title="STATISTICS.PARAMETERS.TOTAL_ORDERS"
-              value={general.totalOrders}
-              valutTid="OTHER.AMOUNT"
-            />
-            <StatsCard
-              title="STATISTICS.PARAMETERS.TOTAL_SOLD_MATERIAL_GOODS"
-              value={general.printCount}
-              valutTid="OTHER.AMOUNT"
-            />
-            <StatsCard
-              title="STATISTICS.PARAMETERS.TOTAL_ELECTRONIC_GOODS_SOLD"
-              value={general.electronicCount}
-              valutTid="OTHER.AMOUNT"
-            />
-            <StatsCard
-              title="STATISTICS.PARAMETERS.TOTAL_PROFIT"
-              value={general.totalPrice}
-              valutTid="OTHER.VALUTE"
-            />
-            <StatsCard
-              title="STATISTICS.PARAMETERS.AVERAGE_COST_PER_ORDER"
-              value={general.averagePrice}
-              valutTid="OTHER.VALUTE"
-            />
-          </>
-        )}
-      </Content>
-    </SectionLayout>
+          <StatsCard
+            title="STATISTICS.PARAMETERS.TOTAL_ORDERS"
+            value={general.totalOrders}
+            valutTid="OTHER.AMOUNT"
+          />
+          <StatsCard
+            title="STATISTICS.PARAMETERS.TOTAL_SOLD_MATERIAL_GOODS"
+            value={general.printCount}
+            valutTid="OTHER.AMOUNT"
+          />
+          <StatsCard
+            title="STATISTICS.PARAMETERS.TOTAL_ELECTRONIC_GOODS_SOLD"
+            value={general.electronicCount}
+            valutTid="OTHER.AMOUNT"
+          />
+          <StatsCard
+            title="STATISTICS.PARAMETERS.TOTAL_PROFIT"
+            value={general.totalPrice}
+            valutTid="OTHER.VALUTE"
+          />
+          <StatsCard
+            title="STATISTICS.PARAMETERS.AVERAGE_COST_PER_ORDER"
+            value={general.averagePrice}
+            valutTid="OTHER.VALUTE"
+          />
+        </>
+      )}
+    </Content>
   );
 }
 
-const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
-`;
 const Content = styled.div`
   display: grid;
   gap: ${spacing(3)};
