@@ -254,6 +254,15 @@ export function convertCreateOrder(
       fullName: data.fullName,
       phone: data.phone,
       promoCode: data.promoCode,
+      sdek: true,
+      //@ts-ignore
+      sdekTariffCode: data.sdekTariff.tariff_code,
+      sdekCityCode: data.sdekPoint.location.city_code,
+      address: `${data.adress.country}, ${
+        data.adress.city || data.adress.settlement
+      }, ${data.adress.street}, ${data.adress.house}, ${
+        data.adress.postal_code
+      }`,
     },
     purchaseProducts: bascketState.map((item) => {
       return {
