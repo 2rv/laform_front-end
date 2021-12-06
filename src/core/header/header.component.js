@@ -43,7 +43,7 @@ export function HeaderComponent(props) {
           modalMenuItems={modalMenuItems}
         />
       </HeaderMenuCase>
-      <MobileNavMenu activePath={activePath} />
+      {/* <MobileNavMenu activePath={activePath} /> */}
     </Container>
   );
 }
