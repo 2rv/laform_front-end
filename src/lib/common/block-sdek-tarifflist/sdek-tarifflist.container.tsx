@@ -10,7 +10,7 @@ import {
 } from './sdek-tarifflist.type';
 
 export function SdekTariffListContainer(props: SdekTariffListContainerProps) {
-  const { data, value, onChange, name, basketCount } = props;
+  const { data, value, onChange, name, basketCount, error } = props;
 
   const dispatch = useDispatch();
   const store: SdekTariffListType = useSelector(
@@ -33,6 +33,7 @@ export function SdekTariffListContainer(props: SdekTariffListContainerProps) {
 
   return (
     <SdekTariffListComponent
+      error={error}
       value={value}
       onChange={handleChange}
       store={store}

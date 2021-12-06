@@ -124,34 +124,28 @@ export function createOrderAction(
   values: formikValues,
   bascketState: basketStateType[],
   isAuth: boolean,
+  isSdek: boolean,
 ) {
   return async (dispatch: Function) => {
     dispatch({
       type: BASKET_ACTION_TYPE.CREATE_ORDER_PENDING,
     });
     try {
-      const data = convertCreateOrder(values, bascketState);
+      const data = convertCreateOrder(values, bascketState, isSdek);
 
       const response = await httpRequest({
         method: 'POST',
         url: BASKET_API.CREATE_ORDER(isAuth),
         data: data,
       });
-      window.location.href = response.data;
+      dispatch(clearCartAction());
       if (values.saveUserInfo && isAuth) {
         await updateUserInfoAction(values);
       }
+      window.location.href = response.data;
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });
-      //   dispatch(clearCartAction());
-      //   if (response.data.userExist) {
-      //     redirect(LOGIN_ROUTE_PATH);
-      //   } else if (isAuth) {
-      //     redirect(USER_ORDERS_ROUTE_PATH);
-      //   } else {
-      //     alert(text('BASKET.ALERT'));
-      //   }
     } catch (err: any) {
       if (err.response) {
         dispatch({

@@ -53,7 +53,9 @@ export function BasketContainer() {
     dispatch(deleteProuctCartAction(data, bascketState));
   };
   const onSubmit = (values: formikValues) => {
-    dispatch(createOrderAction(values, bascketState, isAuth));
+    dispatch(
+      createOrderAction(values, bascketState, isAuth, Boolean(basketCount)),
+    );
   };
   function initialValues(): formikValues {
     const userInfo = getRequestData(userInfoState, {
@@ -80,8 +82,8 @@ export function BasketContainer() {
         postal_code: '',
         kladr_id: '',
       },
-      [ORDER_FIELD_NAME.SDEK_POINT]: '',
-      [ORDER_FIELD_NAME.SDEK_TARIFF]: '',
+      [ORDER_FIELD_NAME.SDEK_POINT]: {},
+      [ORDER_FIELD_NAME.SDEK_TARIFF]: {},
 
       [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
       [ORDER_FIELD_NAME.PRICE]: 0,
@@ -104,7 +106,7 @@ export function BasketContainer() {
       patternProducts={patternProducts}
       //--------------
       initialValues={initialValues()}
-      validate={formValidation}
+      validate={formValidation(Boolean(basketCount))}
       onSubmit={onSubmit}
       //--------------
       userInfoError={isRequestError(userInfoState)}

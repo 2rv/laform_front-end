@@ -4,13 +4,14 @@ import { SdekPointsComponentProps } from './sdek-points.type';
 import { ReactSelectField } from 'src/lib/element/field';
 import { SdekPointsItem } from './sdek-points.item';
 import { text } from '../text';
+import { ErrorAlert } from 'src/lib/element/alert';
 
 export function SdekPointsComponent(props: SdekPointsComponentProps) {
-  const { store, value, onChange, isDisabled } = props;
+  const { store, value, onChange, isDisabled, error } = props;
   return (
     <SectionLayout type="SMALL">
       <ReactSelectField
-        value={value}
+        value={value?.label ? value : ''}
         onChange={onChange}
         options={store.sdekPoints}
         titleTid="SDEK_POINTS.TITLE"
@@ -21,6 +22,7 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
         error={store.errorMessage}
         components={{ Option: SdekPointsItem }}
       />
+      {error && <ErrorAlert tid={error} />}
     </SectionLayout>
   );
 }

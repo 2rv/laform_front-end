@@ -246,6 +246,7 @@ const sewingItemConvert = (data: basketStateType): TableItemType => {
 export function convertCreateOrder(
   data: formikValues,
   bascketState: basketStateType[],
+  isSdek: boolean,
 ) {
   return {
     purchase: {
@@ -254,10 +255,9 @@ export function convertCreateOrder(
       fullName: data.fullName,
       phone: data.phone,
       promoCode: data.promoCode,
-      sdek: true,
-      //@ts-ignore
-      sdekTariffCode: data.sdekTariff.tariff_code,
-      sdekCityCode: data.sdekPoint.location.city_code,
+      sdek: isSdek,
+      sdekTariffCode: data?.sdekTariff?.tariff_code,
+      sdekCityCode: data?.sdekPoint?.location?.city_code,
       address: `${data.adress.country}, ${
         data.adress.city || data.adress.settlement
       }, ${data.adress.street}, ${data.adress.house}, ${

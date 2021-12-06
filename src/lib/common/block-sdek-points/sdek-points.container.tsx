@@ -10,7 +10,7 @@ import {
 } from './sdek-points.type';
 
 export function SdekPointsContainer(props: SdekPointsContainerProps) {
-  const { data, value, onChange, name } = props;
+  const { data, value, onChange, name, error } = props;
   const dispatch = useDispatch();
   const store: sdekPointsType = useSelector(
     (state: any) => state[SDEK_POINTS_STORE_NAME],
@@ -28,6 +28,7 @@ export function SdekPointsContainer(props: SdekPointsContainerProps) {
 
   return (
     <SdekPointsComponent
+      error={error}
       value={value}
       onChange={handleChange}
       store={store}

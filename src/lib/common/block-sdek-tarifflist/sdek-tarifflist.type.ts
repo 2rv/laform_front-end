@@ -12,6 +12,7 @@ export interface SdekTariffListComponentProps {
   value: basicTariffType;
   onChange: Function;
   isDisabled: boolean;
+  error: any;
 }
 export interface SdekTariffListContainerProps {
   data: basicSdekPoints;
@@ -19,6 +20,7 @@ export interface SdekTariffListContainerProps {
   onChange: Function;
   name: string;
   basketCount: number;
+  error: any;
 }
 export enum SDEK_TARIFFLIST_ACTION_TYPE {
   PENDING = 'SDEK_TARIFFLIST_ACTION_TYPE.PENDING',
