@@ -137,8 +137,7 @@ export function createOrderAction(
         url: BASKET_API.CREATE_ORDER(isAuth),
         data: data,
       });
-      console.log(response.data);
-
+      window.location.href = response.data;
       if (values.saveUserInfo && isAuth) {
         await updateUserInfoAction(values);
       }
@@ -197,3 +196,26 @@ async function updateUserInfoAction(values: formikValues) {
   });
   return response;
 }
+
+// export function getShtrihCode() {
+//   return async () => {
+//     try {
+//       console.log('res');
+
+//       const response = await httpRequest({
+//         method: 'POST',
+//         url: '/sdek/order/create/pdf',
+//         data: {
+//           orders: [
+//             {
+//               order_uuid: '72753031-1b8f-4120-8ebc-73e3fc556710',
+//             },
+//           ],
+//         },
+//       });
+//       console.log(response.data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
