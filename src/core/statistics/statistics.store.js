@@ -8,60 +8,73 @@ import {
 import { STATISTICS_ACTION_TYPE } from './statistics.type';
 
 const initialState = {
-  purchasedProductsCountAndPrice: initRequestState(),
-  ordersCount: initRequestState(),
+  general: initRequestState(),
   price: initRequestState(),
+  count: initRequestState(),
+  users: initRequestState(),
 };
 
 export function statisticsStore(state = initialState, action) {
   switch (action.type) {
-    case STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_PENDING:
+    case STATISTICS_ACTION_TYPE.GET_GENERAL_PENDING:
       return {
         ...state,
-        purchasedProductsCountAndPrice: setRequestPending(state.purchasedProductsCountAndPrice),
+        general: setRequestPending(state.general),
       };
-    case STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_SUCCESS:
+    case STATISTICS_ACTION_TYPE.GET_GENERAL_SUCCESS:
       return {
         ...state,
-        purchasedProductsCountAndPrice: setRequestSuccess(
-          state.purchasedProductsCountAndPrice,
-          action.payload,
-        ),
+        general: setRequestSuccess(state.general, action.data),
       };
-    case STATISTICS_ACTION_TYPE.PURCHASED_PRODUCTS_COUNT_AND_PRICE_ERROR:
+    case STATISTICS_ACTION_TYPE.GET_GENERAL_ERROR:
       return {
         ...state,
-        purchasedProductsCountAndPrice: setRequestError(state.purchasedProductsCountAndPrice, action.errorMessage),
+        general: setRequestError(state.general, action.errorMessage),
       };
-    case STATISTICS_ACTION_TYPE.ORDERS_COUNT_PENDING:
-      return {
-        ...state,
-        ordersCount: setRequestPending(state.ordersCount),
-      };
-    case STATISTICS_ACTION_TYPE.ORDERS_COUNT_SUCCESS:
-      return {
-        ...state,
-        ordersCount: setRequestSuccess(state.ordersCount, action.payload),
-      };
-    case STATISTICS_ACTION_TYPE.ORDERS_COUNT_ERROR:
-      return {
-        ...state,
-        ordersCount: setRequestError(state.ordersCount, action.errorMessage),
-      };
-    case STATISTICS_ACTION_TYPE.PRICE_PENDING:
+    case STATISTICS_ACTION_TYPE.GET_PRICE_PENDING:
       return {
         ...state,
         price: setRequestPending(state.price),
       };
-    case STATISTICS_ACTION_TYPE.PRICE_SUCCESS:
+    case STATISTICS_ACTION_TYPE.GET_PRICE_SUCCESS:
       return {
         ...state,
-        price: setRequestSuccess(state.price, action.payload),
+        price: setRequestSuccess(state.price, action.data),
       };
-    case STATISTICS_ACTION_TYPE.PRICE_ERROR:
+    case STATISTICS_ACTION_TYPE.GET_PRICE_ERROR:
       return {
         ...state,
         price: setRequestError(state.price, action.errorMessage),
+      };
+    case STATISTICS_ACTION_TYPE.GET_COUNT_PENDING:
+      return {
+        ...state,
+        count: setRequestPending(state.count),
+      };
+    case STATISTICS_ACTION_TYPE.GET_COUNT_SUCCESS:
+      return {
+        ...state,
+        count: setRequestSuccess(state.count, action.data),
+      };
+    case STATISTICS_ACTION_TYPE.GET_COUNT_ERROR:
+      return {
+        ...state,
+        count: setRequestError(state.count, action.errorMessage),
+      };
+    case STATISTICS_ACTION_TYPE.GET_USERS_PENDING:
+      return {
+        ...state,
+        users: setRequestPending(state.users),
+      };
+    case STATISTICS_ACTION_TYPE.GET_USERS_SUCCESS:
+      return {
+        ...state,
+        users: setRequestSuccess(state.users, action.data),
+      };
+    case STATISTICS_ACTION_TYPE.GET_USERS_ERROR:
+      return {
+        ...state,
+        users: setRequestError(state.users, action.errorMessage),
       };
     default:
       return state;

@@ -1,3 +1,2 @@
-import { PrivacyPolicyPage } from '../../core/privacy-policy';
-
+import { PrivacyPolicyPage } from '../../core/faq-privacy-policy';
 export default PrivacyPolicyPage;

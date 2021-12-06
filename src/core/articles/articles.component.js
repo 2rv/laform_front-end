@@ -3,7 +3,6 @@ import { BasicCardList } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { SearchFilter } from '../../lib/common/search-filter';
 import { TextSecondary } from 'src/lib/element/text';
-import { CenteredSpinner } from 'src/lib/element/spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function ArticlesComponent(props) {

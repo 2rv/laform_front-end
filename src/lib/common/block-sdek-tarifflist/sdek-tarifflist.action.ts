@@ -25,6 +25,8 @@ export function getTariffList(city_code: number, productCount: number) {
           ],
         },
       });
+      console.log(productCount);
+
       const result: basicTariffType[] = (response.data?.tariff_codes || []).map(
         (item: basicTariffType) => {
           item.label = `${item.tariff_name}, стоимость ${item.delivery_sum} руб.`;
@@ -57,6 +59,7 @@ export function getTariff(
       type: SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_PENDING,
     });
     try {
+      console.log(productCount);
       const response = await httpRequest({
         method: GET_TARIFF.TYPE,
         url: GET_TARIFF.URL,

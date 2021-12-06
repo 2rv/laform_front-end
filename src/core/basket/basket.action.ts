@@ -131,13 +131,13 @@ export function createOrderAction(
     });
     try {
       const data = convertCreateOrder(values, bascketState);
-      console.log(data);
 
-      //   const response = await httpRequest({
-      //     method: 'POST',
-      //     url: BASKET_API.CREATE_ORDER(isAuth),
-      //     data: data,
-      //   });
+      const response = await httpRequest({
+        method: 'POST',
+        url: BASKET_API.CREATE_ORDER(isAuth),
+        data: data,
+      });
+      console.log(response.data);
 
       if (values.saveUserInfo && isAuth) {
         await updateUserInfoAction(values);

@@ -1,3 +1,2 @@
-import { TermsOfUsePage } from '../../core/terms-of-use';
-
+import { TermsOfUsePage } from '../../core/faq-terms-of-use';
 export default TermsOfUsePage;

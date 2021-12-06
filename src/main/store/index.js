@@ -142,7 +142,7 @@ import { usersStore, USERS_STORE_NAME } from '../../core/users';
 import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
 import { searchButtonStore } from '../../core/search-button/search-button.store';
 import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
-import { aboutStore, ABOUT_STORE_NAME } from '../../core/about';
+import { aboutStore, ABOUT_STORE_NAME } from '../../core/faq-about';
 import {
   unsubscribeNotificationStore,
   UNSUBSCRIBE_NOTIFICATION_STORE_NAME,
@@ -162,15 +162,15 @@ import {
 import {
   legalInformationStore,
   LEGAL_INFORMATION_STORE_NAME,
-} from '../../core/legal-information';
+} from '../../core/faq-legal-information';
 import {
   privacyPolicyStore,
   PRIVACY_POLICY_STORE_NAME,
-} from '../../core/privacy-policy';
+} from '../../core/faq-privacy-policy';
 import {
   termsOfUseStore,
   TERMS_OF_USE_STORE_NAME,
-} from '../../core/terms-of-use';
+} from '../../core/faq-terms-of-use';
 import { feedbackStore, FEEDBACK_STORE_NAME } from '../../core/feedback';
 import {
   recentCommentsStore,
@@ -198,8 +198,16 @@ import {
   settingsUserInfoStore,
   SETTINGS_USER_INFO_STORE_NAME,
 } from '../../core/settings-user-info';
+import { sizeStore, SIZE_STORE_NAME } from '../../core/faq-size';
+
+import {
+  deliveryPaymentStore,
+  DELIVERY_PAYMENT_STORE_NAME,
+} from '../../core/faq-dilivery-and-payment';
 
 export const reducers = combineReducers({
+  [DELIVERY_PAYMENT_STORE_NAME]: deliveryPaymentStore,
+  [SIZE_STORE_NAME]: sizeStore,
   [FIND_ADRESS_STORE_NAME]: findAdressStore,
   [SDEK_TARIFFLIST_STORE_NAME]: sdekTariffListStore,
   [SDEK_POINTS_STORE_NAME]: sdekPointsStore,
