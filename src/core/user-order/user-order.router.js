@@ -9,5 +9,4 @@ import { USER_ORDER_ROUTE_PATH } from './user-order.constant';
 export function userOrderRouter(ctx) {
   ctx.store.dispatch(setActivePath(USER_ORDER_ROUTE_PATH));
   authRedirectPrivated(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
-  authRedirectForNonAdminUser(ctx, HTTP_ERROR_ROUTER.NOT_FOUND);
 }
