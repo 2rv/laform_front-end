@@ -1,3 +1,4 @@
+import { ErrorAlert } from 'src/lib/element/alert';
 import { ReactSelectField } from 'src/lib/element/field';
 import { SectionLayout } from 'src/lib/element/layout';
 import { text } from '../text';
@@ -5,11 +6,11 @@ import { SdekTariffItem } from './sdek-tarifflist.item';
 import { SdekTariffListComponentProps } from './sdek-tarifflist.type';
 
 export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
-  const { store, value, onChange, isDisabled } = props;
+  const { store, value, onChange, isDisabled, error } = props;
   return (
     <SectionLayout type="SMALL">
       <ReactSelectField
-        value={value}
+        value={value?.label ? value : ''}
         onChange={onChange}
         options={store.sdekTariffList}
         titleTid="SDEK_TARIFFLIST.TITLE"
@@ -20,6 +21,7 @@ export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
         components={{ Option: SdekTariffItem }}
         isLoading={store.pending}
       />
+      {error && <ErrorAlert tid={error} />}
     </SectionLayout>
   );
 }

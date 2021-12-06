@@ -78,31 +78,37 @@ export function FormComponent(props: BasketFormComponentProps) {
 
       <Divider />
 
-      <BlockFindAdress
-        onChange={setFieldValue}
-        name={ORDER_FIELD_NAME.ADRESS}
-      />
+      {Boolean(basketCount) && (
+        <>
+          <BlockFindAdress
+            onChange={setFieldValue}
+            name={ORDER_FIELD_NAME.ADRESS}
+          />
 
-      <Divider />
+          <Divider />
 
-      <BlockSdekPoints
-        data={values[ORDER_FIELD_NAME.ADRESS]}
-        value={values[ORDER_FIELD_NAME.SDEK_POINT]}
-        name={ORDER_FIELD_NAME.SDEK_POINT}
-        onChange={setFieldValue}
-      />
+          <BlockSdekPoints
+            data={values[ORDER_FIELD_NAME.ADRESS]}
+            value={values[ORDER_FIELD_NAME.SDEK_POINT]}
+            name={ORDER_FIELD_NAME.SDEK_POINT}
+            onChange={setFieldValue}
+            error={getFieldError(ORDER_FIELD_NAME.SDEK_POINT)}
+          />
 
-      <Divider />
+          <Divider />
 
-      <BlockSdekTariffList
-        data={values[ORDER_FIELD_NAME.SDEK_POINT]}
-        basketCount={basketCount}
-        value={values[ORDER_FIELD_NAME.SDEK_TARIFF]}
-        name={ORDER_FIELD_NAME.SDEK_TARIFF}
-        onChange={setFieldValue}
-      />
+          <BlockSdekTariffList
+            data={values[ORDER_FIELD_NAME.SDEK_POINT]}
+            basketCount={basketCount}
+            value={values[ORDER_FIELD_NAME.SDEK_TARIFF]}
+            name={ORDER_FIELD_NAME.SDEK_TARIFF}
+            onChange={setFieldValue}
+            error={getFieldError(ORDER_FIELD_NAME.SDEK_TARIFF)}
+          />
 
-      <Divider />
+          <Divider />
+        </>
+      )}
 
       <Title tid="BASKET.FORM.FIELDS.TITLES.ADDITIONAL" />
       <TextareaField

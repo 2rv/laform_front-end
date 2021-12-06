@@ -10,12 +10,14 @@ export interface SdekPointsComponentProps {
   value: basicSdekPoints;
   onChange: Function;
   isDisabled: boolean;
+  error: any;
 }
 export interface SdekPointsContainerProps {
   data: adressType;
   value: basicSdekPoints;
   onChange: Function;
   name: string;
+  error: any;
 }
 export enum SDEK_POINTS_ACTION_TYPE {
   PEINDING = 'SDEK_POINTS_ACTION_TYPE.PEINDING',
