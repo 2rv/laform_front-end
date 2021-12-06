@@ -1,3 +1,3 @@
-import { AboutPage } from '../../core/about';
+import { AboutPage } from '../../core/faq-about';
 
 export default AboutPage;

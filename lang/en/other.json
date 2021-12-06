@@ -42,5 +42,8 @@
 		"FROM_A_TO_Z": "From a to z",
 		"FROM_Z_TO_A": "From z to a"
 	},
+	"FROM": "From",
+	"TO": "To",
+	"DAYS": "Days",
 	"WAIT": "Wait"
 }

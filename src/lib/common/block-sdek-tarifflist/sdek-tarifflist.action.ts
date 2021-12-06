@@ -5,7 +5,7 @@ import {
   SDEK_TARIFFLIST_ACTION_TYPE,
 } from './sdek-tarifflist.type';
 
-export function getTariffList(city_code: number) {
+export function getTariffList(city_code: number, productCount: number) {
   return async (dispatch: Function) => {
     dispatch({
       type: SDEK_TARIFFLIST_ACTION_TYPE.PENDING,
@@ -25,9 +25,12 @@ export function getTariffList(city_code: number) {
           ],
         },
       });
+      console.log(productCount);
+
       const result: basicTariffType[] = (response.data?.tariff_codes || []).map(
         (item: basicTariffType) => {
           item.label = `${item.tariff_name}, стоимость ${item.delivery_sum} руб.`;
+          item.delivery_sum = Number(item.delivery_sum) + 40;
           return item;
         },
       );
@@ -46,12 +49,17 @@ export function getTariffList(city_code: number) {
   };
 }
 
-export function getTariff(city_code: number, tariff: basicTariffType) {
+export function getTariff(
+  city_code: number,
+  tariff: basicTariffType,
+  productCount: number,
+) {
   return async (dispatch: Function) => {
     dispatch({
       type: SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_PENDING,
     });
     try {
+      console.log(productCount);
       const response = await httpRequest({
         method: GET_TARIFF.TYPE,
         url: GET_TARIFF.URL,
@@ -68,16 +76,18 @@ export function getTariff(city_code: number, tariff: basicTariffType) {
         },
       });
       const result: basicTariffType = {
-        label: `${tariff.tariff_name}, стоимость ${response.data?.total_sum} руб.`,
+        label: `${tariff.tariff_name}, стоимость ${
+          Number(response.data?.total_sum) + 40
+        } руб.`,
         delivery_mode: tariff.delivery_mode,
         tariff_code: tariff.tariff_code,
         tariff_description: tariff.tariff_description,
         tariff_name: tariff.tariff_name,
-        delivery_sum: response.data?.delivery_sum,
+        delivery_sum: Number(response.data?.delivery_sum) + 40,
         period_min: response.data?.period_min,
         period_max: response.data?.period_max,
         weight_calc: response.data?.weight_calc,
-        total_sum: response.data?.total_sum,
+        total_sum: Number(response.data?.total_sum) + 40,
         currency: response.data?.currency,
       };
       dispatch({

@@ -1,0 +1,16 @@
+{
+	"TITLE": "CDEK order pick-up point",
+	"PLACEHOLDER": "Select the CDEK pickup point",
+	"NO_RESULTS": "CDEK pickup points were not found in your city",
+	"OPTION": {
+		"CASH_ACCEPT": "Accepts cash: {{have_cash}}",
+		"CARD_ACCEPT": "Cashless payments: {{have_cashless}}",
+		"WORK_TIME": "Schedule: {{work_time}}",
+		"NOTE": "Note: {{note}}",
+		"STATUS": {
+			"YES": "Yes",
+			"NO": "No",
+			"NO_INFO": "No information"
+		}
+	}
+}

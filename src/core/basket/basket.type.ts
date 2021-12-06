@@ -145,6 +145,7 @@ export interface BasketFormProps extends CartAlertProps {
   isAuth: boolean;
   isPending: boolean;
   basketPrice: number;
+  basketCount: number;
 }
 export interface CartAlertProps {
   userInfoError: boolean;

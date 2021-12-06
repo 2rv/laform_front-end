@@ -10,14 +10,16 @@ import {
 } from './sdek-tarifflist.type';
 
 export function SdekTariffListContainer(props: SdekTariffListContainerProps) {
-  const { data, value, onChange, name } = props;
+  const { data, value, onChange, name, basketCount } = props;
+  console.log(basketCount);
+
   const dispatch = useDispatch();
   const store: SdekTariffListType = useSelector(
     (state: any) => state[SDEK_TARIFFLIST_STORE_NAME],
   );
   useEffect(() => {
     if (data?.location?.city_code) {
-      dispatch(getTariffList(data?.location?.city_code));
+      dispatch(getTariffList(data?.location?.city_code, basketCount));
     }
     onChange(name, '');
   }, [data?.location]);
@@ -27,7 +29,7 @@ export function SdekTariffListContainer(props: SdekTariffListContainerProps) {
   }, [store.sdekTariff]);
 
   function handleChange(value: basicTariffType) {
-    dispatch(getTariff(data?.location?.city_code, value));
+    dispatch(getTariff(data?.location?.city_code, value, basketCount));
   }
 
   return (

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { FieldSelect } from '../../element/field';
-import { spacing, THEME_SIZE } from '../../theme';
+import { spacing, THEME_SIZE, THEME_COLOR } from '../../theme';
 import { TextSecondary } from '../../element/text';
 import { ReactComponent as QuestionIcon } from '../../../asset/svg/question-mark.svg';
-import { IconButton } from '../../element/button';
 import { ProductSelectFieldProps } from './type';
+import { LinkSecondary } from 'src/lib/element/link';
+import { SIZE_ROUTE_PATH } from 'src/core/faq-size';
 
 export function ProductSelect(props: ProductSelectFieldProps) {
   const {
@@ -22,9 +23,9 @@ export function ProductSelect(props: ProductSelectFieldProps) {
       <Line>
         <TextSecondary tid={titleTid} />
         {isSize && (
-          <Button>
+          <Link path={SIZE_ROUTE_PATH}>
             <QuestionIcon />
-          </Button>
+          </Link>
         )}
       </Line>
       <FieldSelect
@@ -55,9 +56,14 @@ const Container = styled.div`
     gap: ${spacing(2)};
   }
 `;
-const Button = styled(IconButton)`
-  padding: 0;
+const Link = styled(LinkSecondary)`
   border-radius: ${THEME_SIZE.RADIUS.CIRCLE};
-  height: 25px;
-  width: 25px;
+  min-height: 25px;
+  min-width: 25px;
+  max-height: 25px;
+  max-width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${THEME_COLOR.GRAY};
 `;

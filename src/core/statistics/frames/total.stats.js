@@ -4,64 +4,71 @@ import { TitlePrimary } from 'src/lib/element/title';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import styled from 'styled-components';
 
+function StatsCard(props) {
+  const { title, value, valutTid } = props;
+  return (
+    <Case>
+      <TextTitle tid={title} />
+      <LineCase>
+        <Price price={value} />
+        &nbsp;
+        <LigthText tid={valutTid} />
+      </LineCase>
+    </Case>
+  );
+}
+
 export function TotalStats(props) {
-  const { statistics } = props;
+  const { general, activeTab } = props;
   return (
     <SectionLayout>
       <Title tid="STATISTICS.TITLES.TOTAL" />
       <Content>
-        <Case>
-          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD" />
-          <LineCase>
-            <Price price={statistics.purchasedProductsCount} />
-            &nbsp;
-            <LigthText tid="OTHER.AMOUNT" />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ORDERS" />
-          <LineCase>
-            <Price price={statistics.allPurchasesCount} />
-            &nbsp;
-            <LigthText tid="OTHER.AMOUNT" />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_SOLD_MATERIAL_GOODS" />
-          <LineCase>
-            <Price price={statistics.physicalPurchasedProductsCount} />
-            &nbsp;
-            <LigthText tid="OTHER.AMOUNT" />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_ELECTRONIC_GOODS_SOLD" />
-          <LineCase>
-            <Price price={statistics.electronicPurchasedProductsCount} />
-            &nbsp;
-            <LigthText tid="OTHER.AMOUNT" />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="STATISTICS.PARAMETERS.TOTAL_PROFIT" />
-          <LineCase>
-            <Price price={statistics.totalPurchasesPrice} />
-            &nbsp;
-            <LigthText tid="OTHER.VALUTE" />
-          </LineCase>
-        </Case>
-        <Case>
-          <TextTitle tid="STATISTICS.PARAMETERS.AVERAGE_COST_PER_ORDER" />
-          <LineCase>
-            <Price price={statistics.purchasesAverageCost} />
-            &nbsp;
-            <LigthText tid="OTHER.VALUTE" />
-          </LineCase>
-        </Case>
+        {activeTab ? (
+          <StatsCard
+            title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
+            value={general.totalCount}
+            valutTid="OTHER.AMOUNT"
+          />
+        ) : (
+          <>
+            <StatsCard
+              title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
+              value={general.totalCount}
+              valutTid="OTHER.AMOUNT"
+            />
+            <StatsCard
+              title="STATISTICS.PARAMETERS.TOTAL_ORDERS"
+              value={general.totalOrders}
+              valutTid="OTHER.AMOUNT"
+            />
+            <StatsCard
+              title="STATISTICS.PARAMETERS.TOTAL_SOLD_MATERIAL_GOODS"
+              value={general.printCount}
+              valutTid="OTHER.AMOUNT"
+            />
+            <StatsCard
+              title="STATISTICS.PARAMETERS.TOTAL_ELECTRONIC_GOODS_SOLD"
+              value={general.electronicCount}
+              valutTid="OTHER.AMOUNT"
+            />
+            <StatsCard
+              title="STATISTICS.PARAMETERS.TOTAL_PROFIT"
+              value={general.totalPrice}
+              valutTid="OTHER.VALUTE"
+            />
+            <StatsCard
+              title="STATISTICS.PARAMETERS.AVERAGE_COST_PER_ORDER"
+              value={general.averagePrice}
+              valutTid="OTHER.VALUTE"
+            />
+          </>
+        )}
       </Content>
     </SectionLayout>
   );
 }
+
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.LARGE};
 `;

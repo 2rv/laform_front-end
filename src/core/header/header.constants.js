@@ -3,7 +3,7 @@ import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { SEWING_GOODS_ROUTE_PATH } from '../sewing-goods';
 import { ARTICLES_ROUTE_PATH } from '../articles';
 import { FAQ_ROUTE_PATH } from '../faq';
-import { ABOUT_ROUTE_PATH } from '../about';
+import { ABOUT_ROUTE_PATH } from '../faq-about';
 import { CREATE_MASTER_CLASS_ROUTE_PATH } from '../master-class-create';
 import { CREATE_PATTERN_ROUTE_PATH } from '../pattern-create';
 import { CREATE_SEWING_GOODS_ROUTE_PATH } from '../sewing-goods-create';

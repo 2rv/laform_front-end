@@ -3,6 +3,7 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { SdekPointsComponentProps } from './sdek-points.type';
 import { ReactSelectField } from 'src/lib/element/field';
 import { SdekPointsItem } from './sdek-points.item';
+import { text } from '../text';
 
 export function SdekPointsComponent(props: SdekPointsComponentProps) {
   const { store, value, onChange, isDisabled } = props;
@@ -12,9 +13,9 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
         value={value}
         onChange={onChange}
         options={store.sdekPoints}
-        titleTid="Пункт выдачи заказа СДЭК"
-        placeholderTid="Выберите пункт ПВЗ СДЭК"
-        noResults={() => 'Пункты ПВЗ СДЭК не найдены в вашем городе'}
+        titleTid="SDEK_POINTS.TITLE"
+        placeholderTid="SDEK_POINTS.PLACEHOLDER"
+        noResults={() => text('SDEK_POINTS.NO_RESULTS')}
         isDisabled={isDisabled || store.pending}
         isLoading={store.pending}
         error={store.errorMessage}

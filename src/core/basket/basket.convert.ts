@@ -21,6 +21,7 @@ interface ConvertAcc {
   patternProducts: TableItemType[];
   sewingProducts: TableItemType[];
   basketPrice: number;
+  basketCount: number;
 }
 
 export function convertAddToCart(
@@ -85,14 +86,32 @@ export function convertForTable(basketState: basketStateType[]) {
         acc.masterProducts.push(item);
         acc.basketPrice = acc.basketPrice + (item.totalPrice || 0);
       }
-      if (i.type === 1 || i.type === 2) {
+      if (i.type === 1) {
         const item = patternItemConvert(i);
         acc.patternProducts.push(item);
+        acc.basketPrice = acc.basketPrice + (item.totalPrice || 0);
+      }
+      if (i.type === 2) {
+        const item = patternItemConvert(i);
+        acc.patternProducts.push(item);
+        if (item.isCount) {
+          acc.basketCount += item.count || 0;
+        } else {
+          acc.basketCount += 1;
+        }
         acc.basketPrice = acc.basketPrice + (item.totalPrice || 0);
       }
       if (i.type === 3) {
         const item = sewingItemConvert(i);
         acc.sewingProducts.push(item);
+
+        if (item.isCount) {
+          acc.basketCount += item.count || 0;
+        } else if (item.isLength) {
+          acc.basketCount += Math.ceil(item.length || 0);
+        } else {
+          acc.basketCount += 1;
+        }
         acc.basketPrice = acc.basketPrice + (item.totalPrice || 0);
       }
       return acc;
@@ -101,6 +120,7 @@ export function convertForTable(basketState: basketStateType[]) {
       masterProducts: [],
       patternProducts: [],
       sewingProducts: [],
+      basketCount: 0,
       basketPrice: 0,
     },
   );

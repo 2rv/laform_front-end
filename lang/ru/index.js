@@ -42,7 +42,8 @@ import PURCHASED_PRODUCTS from './purchase-products.json';
 import ALL_PRODUCTS from './all-products.json';
 import FEEDBACK from './feedback.json';
 import STATISTICS from './statistics.json';
-
+import SDEK_POINTS from './sdek-points.json';
+import SDEK_TARIFFLIST from './sdek-tarifflist.json';
 export const RU = {
   translation: {
     META,
@@ -89,5 +90,7 @@ export const RU = {
     ALL_PRODUCTS,
     FEEDBACK,
     STATISTICS,
+    SDEK_POINTS,
+    SDEK_TARIFFLIST,
   },
 };

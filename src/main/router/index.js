@@ -100,7 +100,7 @@ import {
 } from '../../core/master-class-page';
 import { usersStore, USERS_ROUTE_PATH } from '../../core/users';
 import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
-import { aboutRouter, ABOUT_ROUTE_PATH } from '../../core/about';
+import { aboutRouter, ABOUT_ROUTE_PATH } from '../../core/faq-about';
 import {
   unsubscribeNotificationRouter,
   UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH,
@@ -116,15 +116,15 @@ import {
 import {
   legalInformationRouter,
   LEGAL_INFORMATION_ROUTE_PATH,
-} from '../../core/legal-information';
+} from '../../core/faq-legal-information';
 import {
   privacyPolicyRouter,
   PRIVACY_POLICY_ROUTE_PATH,
-} from '../../core/privacy-policy';
+} from '../../core/faq-privacy-policy';
 import {
   termsOfUseRouter,
   TERMS_OF_USE_ROUTE_PATH,
-} from '../../core/terms-of-use';
+} from '../../core/faq-terms-of-use';
 import { feedbackRouter, FEEDBACK_ROUTE_PATH } from '../../core/feedback';
 import {
   recentCommentsRouter,
@@ -135,8 +135,15 @@ import {
   productSelectionsRouter,
   PRODUCT_SELECTIONS_ROUTE_PATH,
 } from '../../core/product-selections';
+import { sizeRouter, SIZE_ROUTE_PATH } from '../../core/faq-size';
+import {
+  deliveryPaymentRouter,
+  DELIVERY_PAYMENT_ROUTE_PATH,
+} from '../../core/faq-dilivery-and-payment';
 
 export const routes = {
+  [DELIVERY_PAYMENT_ROUTE_PATH]: deliveryPaymentRouter,
+  [SIZE_ROUTE_PATH]: sizeRouter,
   [PRODUCT_SELECTIONS_ROUTE_PATH]: productSelectionsRouter,
   [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
   [STATISTICS_ROUTE_PATH]: statisticsRouter,

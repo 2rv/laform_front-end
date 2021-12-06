@@ -1,0 +1,11 @@
+{
+	"TITLE": "Delivery method",
+	"PLACEHOLDER": "Choose a shipping method",
+	"NO_RESULTS": "No shipping methods found for this office",
+	"OPTION": {
+		"NAME": "Name:",
+		"DESCRIPTION": "Description:",
+		"DELIVERY_TIME": "Estimated delivery time: from",
+		"DELIVERY_PRICE": "Cost of delivery:"
+	}
+}

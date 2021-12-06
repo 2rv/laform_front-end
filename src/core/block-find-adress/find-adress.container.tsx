@@ -40,9 +40,9 @@ export function FindAdressContainer(props: FindAdressContainer) {
       dispatch(getAdressAction());
     }
   }, []);
-  const formik = useFormik({
-    enableReinitialize: true,
-    initialValues: getRequestData(dataState, {
+
+  const initialValues = () => {
+    return getRequestData(dataState, {
       [FIND_ADRESS_FIELD_NAME.COUNTRY]: {},
       [FIND_ADRESS_FIELD_NAME.CITY]: {},
       [FIND_ADRESS_FIELD_NAME.STREET]: {},
@@ -57,11 +57,21 @@ export function FindAdressContainer(props: FindAdressContainer) {
         house: '',
         postal_code: '',
       },
-    }),
+    });
+  };
+
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: initialValues(),
     onSubmit: (values) => {
       dispatch(saveAdressAction(values));
     },
   });
+
+  useEffect(() => {
+    typeof onChange === 'function' &&
+      onChange(name, formik.values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS]);
+  }, [formik.values[FIND_ADRESS_FIELD_NAME.FULL_ADRESS]]);
 
   const findMethods = {
     country: (querry: string) => getCountry(querry),
@@ -88,7 +98,6 @@ export function FindAdressContainer(props: FindAdressContainer) {
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.COUNTRY, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     city: (value: adressValueType) => {
       const newValue = {
@@ -105,7 +114,6 @@ export function FindAdressContainer(props: FindAdressContainer) {
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.CITY, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     street: (value: adressValueType) => {
       const newValue = {
@@ -121,7 +129,6 @@ export function FindAdressContainer(props: FindAdressContainer) {
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.STREET, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     house: (value: adressValueType) => {
       const newValue = {
@@ -136,7 +143,6 @@ export function FindAdressContainer(props: FindAdressContainer) {
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, {});
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.HOUSE, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
     postal_code: (value: adressValueType) => {
       const newValue = {
@@ -150,7 +156,6 @@ export function FindAdressContainer(props: FindAdressContainer) {
       };
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.POSTAL_CODE, value);
       formik.setFieldValue(FIND_ADRESS_FIELD_NAME.FULL_ADRESS, newValue);
-      isAuth && typeof onChange === 'function' && onChange(name, newValue);
     },
   };
   return (
