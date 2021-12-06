@@ -138,11 +138,20 @@ export function createOrderAction(
         url: BASKET_API.CREATE_ORDER(isAuth),
         data: data,
       });
-      dispatch(clearCartAction());
+
       if (values.saveUserInfo && isAuth) {
         await updateUserInfoAction(values);
       }
-      window.location.href = response.data;
+      if (response.data) {
+        dispatch(clearCartAction());
+        window.location.href = response.data;
+      } else {
+        dispatch({
+          type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,
+          errorMessage: 'Произошла ошибка',
+        });
+      }
+
       dispatch({
         type: BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS,
       });

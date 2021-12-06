@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import styled, { css } from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
@@ -8,9 +8,10 @@ import { NAVIGATION_MENU } from './sidebar-menu.constant';
 
 export function SidebarMenu(props) {
   const { setOpen, isOpen } = props;
-  const { activePath, isAuth } = useSelector((state) => ({
+  const { activePath, isAuth, isAdmin } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
-    isAuth: state[AUTH_STORE_NAME].logged,
+    isAuth: state[AUTH_STORE_NAME]?.logged,
+    isAdmin: state[AUTH_STORE_NAME]?.role === USER_ROLE.ADMIN,
   }));
 
   const scrolled = () => {
@@ -23,7 +24,7 @@ export function SidebarMenu(props) {
   return (
     <Container open={isOpen} scrolled={scrolled}>
       <Content>
-        {NAVIGATION_MENU(isAuth).map((data, index) => (
+        {NAVIGATION_MENU(isAuth && isAdmin).map((data, index) => (
           <SidebarMenuListItem key={index} data={data} />
         ))}
       </Content>

@@ -11,7 +11,7 @@ export const convertUsersOrderData = (data) => {
     pathConfig: { dynamic: true, params: { id: data?.id } },
     totalPrice: getPrice({
       discount: data.promoCodeDiscount,
-      shippingPrice: data.shippingPrice,
+      shippingPrice: data.shippingPrice || 0,
       price: data.price,
     }),
     status: PURCHASE_STATUS_INFO[data.orderStatus],

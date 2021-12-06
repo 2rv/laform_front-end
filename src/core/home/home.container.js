@@ -10,7 +10,10 @@ import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { compilationLoadData } from './home.action';
 import { HOME_STORE_NAME } from './home.constant';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { PATTERNS_ROUTE_PATH } from '../patterns';
+import {
+  PATTERNS_ELECTRONIC_ROUTE_PATH,
+  PATTERNS_PRINT_ROUTE_PATH,
+} from '../patterns';
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { SEWING_GOODS_ROUTE_PATH } from '../sewing-goods';
 
@@ -37,15 +40,13 @@ export const catalogListItems = [
     title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
     backgroundImage: '/static/image/catalog-image-1.jpg',
-    path: PATTERNS_ROUTE_PATH,
-    pathConfig: { query: { type: 'electronic' } },
+    path: PATTERNS_ELECTRONIC_ROUTE_PATH,
   },
   {
     title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
     description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
     backgroundImage: '/static/image/catalog-image-2.jpg',
-    path: PATTERNS_ROUTE_PATH,
-    pathConfig: { query: { type: 'printed' } },
+    path: PATTERNS_PRINT_ROUTE_PATH,
   },
   {
     title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',

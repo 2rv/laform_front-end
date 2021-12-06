@@ -3,6 +3,13 @@ import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 import { USER_ORDER_ROUTE_PATH } from '../user-order';
 
 export const convertUsersOrderData = (data) => {
+  console.log(
+    getPrice({
+      price: data.price,
+      discount: data.promoCodeDiscount,
+      shippingPrice: data.shippingPrice || 0,
+    }),
+  );
   return {
     id: data.id,
     image: '/static/image/orders-image.jpg',
@@ -12,7 +19,7 @@ export const convertUsersOrderData = (data) => {
     totalPrice: getPrice({
       price: data.price,
       discount: data.promoCodeDiscount,
-      shippingPrice: data.shippingPrice,
+      shippingPrice: data.shippingPrice || 0,
     }),
     status: PURCHASE_STATUS_INFO[data.orderStatus],
     params: {

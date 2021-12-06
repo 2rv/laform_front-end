@@ -19,14 +19,14 @@ export function MasterClassPageComponent(props) {
       </HeaderCase>
       {productInfo.materials && (
         <ReactEditorBlock
-          titleTid="PATTERNS.MATERIALS"
+          titleTid="Пост"
           data={productInfo.materials}
           enableReInitialize
           readOnly
         />
       )}
       <ReactEditorBlock
-        titleTid="Пост"
+        titleTid="PATTERNS.MATERIALS"
         data={productInfo.articleText}
         enableReInitialize
         readOnly

@@ -12,7 +12,9 @@ import { IconButton } from '../../../../lib/element/button';
 import { setLinkRedirect } from '../../../../main/navigation';
 import { BASE_URL } from '../../../../main/http';
 
-const BASE_URL_SLASH_END = BASE_URL.includes('localhost') ? BASE_URL : `${BASE_URL}/`;
+const BASE_URL_SLASH_END = BASE_URL.includes('localhost')
+  ? BASE_URL
+  : `${BASE_URL}/`;
 
 export function SignupFormSocialComponent() {
   return (
@@ -32,7 +34,7 @@ export function SignupFormSocialComponent() {
           </SecondaryIconContainer>
         </Button>
         <Button onClick={setLinkRedirect(`${BASE_URL_SLASH_END}auth/facebook`)}>
-          <FbIcon />
+          <FaceBookIcon />
           <SecondaryIconContainer>
             <FbText />
           </SecondaryIconContainer>
@@ -44,13 +46,16 @@ export function SignupFormSocialComponent() {
 const Button = styled(IconButton)`
   width: auto;
 `;
+const FaceBookIcon = styled(FbIcon)`
+  min-width: max-content;
+`;
 const ButtonContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${spacing(2)};
 `;
 const SecondaryIconContainer = styled.div`
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 500px) {
     display: none;
   }
 `;
