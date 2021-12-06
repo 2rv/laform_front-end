@@ -8,6 +8,7 @@ export function TabFilter(props: TabFilterPropsType) {
   const setActiveTab = (index: number) => {
     handleFilter(tabItems[index].type);
   };
+  console.log(activeTab);
 
   return (
     <Container>

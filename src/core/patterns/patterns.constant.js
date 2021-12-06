@@ -1,4 +1,6 @@
 export const PATTERNS_ROUTE_PATH = `/patterns`;
+export const PATTERNS_PRINT_ROUTE_PATH = `/patterns/printed`;
+export const PATTERNS_ELECTRONIC_ROUTE_PATH = `/patterns/electronic`;
 export const PATTERNS_STORE_NAME = 'PATTERNS_STORE';
 export const PATTERNS_API = {
   PATTERNS_UPLOAD: {
