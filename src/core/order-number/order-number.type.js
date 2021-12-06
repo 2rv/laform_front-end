@@ -1,6 +1,6 @@
 export const ABOUT_ORDER_FIELD_NAME = {
   ID: 'id',
-  CITY: 'city',
+  ADRESS: 'address',
   EMAIL: 'email',
   FULL_NAME: 'fullName',
   ORDER_NUMBER: 'orderNumber',

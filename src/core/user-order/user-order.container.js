@@ -46,8 +46,8 @@ export function UserOrderContainer() {
   };
 
   const initialValue = () => ({
-    [ABOUT_ORDER_FIELD_NAME.CITY]:
-      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.CITY] ?? '',
+    [ABOUT_ORDER_FIELD_NAME.ADRESS]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ADRESS] ?? '',
     [ABOUT_ORDER_FIELD_NAME.EMAIL]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.EMAIL] ?? '',
     [ABOUT_ORDER_FIELD_NAME.FULL_NAME]:

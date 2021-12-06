@@ -50,7 +50,7 @@ export interface TableParamsProps {
   fullName?: string;
   userId?: string;
   diliveryInfo?: string;
-  city?: string;
+  address?: string;
   deliveryMethod?: string;
   paymentMethod?: string;
   phoneNumber?: string;

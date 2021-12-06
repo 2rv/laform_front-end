@@ -48,7 +48,7 @@ export function OrderNumberContainer() {
 
   function initialValue() {
     const purchaseInfo = getRequestData(purchaseInfoState, {
-      [ABOUT_ORDER_FIELD_NAME.CITY]: '',
+      [ABOUT_ORDER_FIELD_NAME.ADRESS]: '',
       [ABOUT_ORDER_FIELD_NAME.EMAIL]: '',
       [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: '',
       [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: '',

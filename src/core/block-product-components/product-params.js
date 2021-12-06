@@ -20,7 +20,7 @@ export function ProductParams(props) {
     fullName,
     userId,
     diliveryInfo,
-    city,
+    address,
     diliveryMethod,
     paymentMethod,
     phoneNumber,
@@ -112,11 +112,11 @@ export function ProductParams(props) {
             <TextPrimary tid={diliveryInfo} />
           </div>
         )}
-        {Boolean(city) && (
+        {Boolean(address) && (
           <div>
             <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CITY" />
             &nbsp;
-            <TextPrimary tid={city} />
+            <TextPrimary tid={address} />
           </div>
         )}
         {Boolean(diliveryMethod) && (

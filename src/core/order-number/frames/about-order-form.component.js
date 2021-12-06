@@ -56,8 +56,8 @@ export function AboutOrderFormComponent(props) {
               <BasicField
                 titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CURRENT_CITY"
                 placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.MOSKVA"
-                name={ABOUT_ORDER_FIELD_NAME.CITY}
-                value={values[ABOUT_ORDER_FIELD_NAME.CITY]}
+                name={ABOUT_ORDER_FIELD_NAME.ADRESS}
+                value={values[ABOUT_ORDER_FIELD_NAME.ADRESS]}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={true}
