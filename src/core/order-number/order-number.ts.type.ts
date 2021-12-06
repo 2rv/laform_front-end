@@ -5,7 +5,7 @@ export interface OrderPurchaseType {
   orderStatus: number;
   email: string;
   fullName: string;
-  city: string;
+  address: string;
   phoneNumber: string;
   comment?: string;
   price: string;

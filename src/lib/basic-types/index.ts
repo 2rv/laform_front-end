@@ -147,7 +147,7 @@ export interface BasicPurchaseType {
   userId: any;
   email: string;
   fullName: string;
-  city: string;
+  address: string;
   phoneNumber: string;
   comment: string;
   purchaseProducts: BasicPurchaseProductType[];

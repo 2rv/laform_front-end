@@ -24,7 +24,7 @@ export const convertUsersOrderData = (data) => {
     otherParams: {
       email: data.email,
       fullName: data.fullName,
-      city: data.city,
+      address: data.address,
       phoneNumber: data.phoneNumber,
       userId: data.userId?.id,
     },

@@ -23,7 +23,7 @@ export const convertPatternData = (data) => {
     otherParams: {
       paymentMethod: data.purchase.paymentMethod,
       diliveryMethod: data.purchase.diliveryMethod,
-      diliveryAdress: data.purchase.city,
+      diliveryAdress: data.purchase.address,
       status: data.purchase.status,
     },
   };

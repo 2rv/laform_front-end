@@ -7,7 +7,7 @@ export interface baseOrderDataType {
   orderStatus: string;
   email: string;
   fullName: string;
-  city: string;
+  address: string;
   phoneNumber: string;
   comment?: string;
   price: string;

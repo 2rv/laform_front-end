@@ -10,7 +10,7 @@ export const convertUsersOrderData = (rowData) => {
       [ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER]: rowData.orderNumber,
       [ABOUT_ORDER_FIELD_NAME.EMAIL]: rowData.email,
       [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: rowData.fullName,
-      [ABOUT_ORDER_FIELD_NAME.CITY]: rowData.city,
+      [ABOUT_ORDER_FIELD_NAME.ADRESS]: rowData.address,
       [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: rowData.phoneNumber,
       [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]: rowData.typeOfDelivery,
       [ABOUT_ORDER_FIELD_NAME.COMMENT]: rowData.comment,
