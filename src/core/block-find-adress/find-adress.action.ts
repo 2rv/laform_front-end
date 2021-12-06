@@ -1,5 +1,10 @@
 import { httpRequest } from 'src/main/http';
-import { GET_ADRESS_API, GET_POSTAL_CODE } from './find-adress.constant';
+import {
+  GET_ADRESS_API,
+  GET_POSTAL_CODE,
+  LOAD_ADRESS_API,
+  SAVE_ADRESS_API,
+} from './find-adress.constant';
 import { performAdressData } from './find-adress.convert';
 import {
   FindAdressValues,
@@ -84,7 +89,6 @@ export async function getCountry(query: string) {
     country_iso_code: item.data.country_iso_code,
   }));
 }
-
 export async function getCity(query: string, values: FindAdressValues) {
   const countryData = values[FIND_ADRESS_FIELD_NAME.COUNTRY];
   const response = await httpRequest({
@@ -183,13 +187,11 @@ export function saveAdressAction(values: FindAdressValues) {
       type: FIND_ADRESS_ACTION_TYPE.SAVE_DATA_PENDING,
     });
     try {
-      console.log(values);
-
-      //   const response = await httpRequest({
-      //     method: SAVE_ADRESS_API.TYPE,
-      //     url: SAVE_ADRESS_API.URL,
-      //     data:
-      //   });
+      await httpRequest({
+        method: SAVE_ADRESS_API.TYPE,
+        url: SAVE_ADRESS_API.URL,
+        data: values,
+      });
       dispatch({
         type: FIND_ADRESS_ACTION_TYPE.SAVE_DATA_SUCCESS,
       });
@@ -203,50 +205,17 @@ export function saveAdressAction(values: FindAdressValues) {
     }
   };
 }
-const testData = {
-  country: {
-    country: 'Россия',
-    country_iso_code: 'RU',
-    label: 'Россия',
-  },
-  city: {
-    city: 'г Санкт-Петербург',
-    fias_id: 'c2deb16a-0330-4f05-821f-1d09c93331e6',
-    fias_level: '1',
-    kladr_id: '7800000000000',
-    label: 'г Санкт-Петербург',
-    settlement: null,
-  },
-  street: {
-    fias_id: '0d7c5456-4ecb-49ad-a8ae-12bc94244e44',
-    fias_level: '7',
-    label: 'г Санкт-Петербург, ул Бухарестская',
-    street: 'ул Бухарестская',
-  },
-  house: {
-    fias_id: '0d7c5456-4ecb-49ad-a8ae-12bc94244e44',
-    fias_level: '7',
-    house: 'д. 72 к. 2',
-    label: 'д. 72 к. 2',
-  },
-  postal_code: {
-    label: 'санкт-петербург, 199004.',
-    postal_code: '199004',
-  },
-};
+
 export function getAdressAction() {
   return async (dispatch: Function) => {
     dispatch({
       type: FIND_ADRESS_ACTION_TYPE.GET_DATA_PENDING,
     });
     try {
-      const response: any = await new Promise((resolve) => {
-        setTimeout(() => resolve({ data: testData }), 1000);
+      const response = await httpRequest({
+        method: LOAD_ADRESS_API.TYPE,
+        url: LOAD_ADRESS_API.URL,
       });
-      //   const response = await httpRequest({
-      //     method: LOAD_ADRESS_API.TYPE,
-      //     url: LOAD_ADRESS_API.URL,
-      //   });
       dispatch({
         type: FIND_ADRESS_ACTION_TYPE.GET_DATA_SUCCESS,
         data: performAdressData(response.data),

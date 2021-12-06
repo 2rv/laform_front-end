@@ -7,11 +7,11 @@ export enum GET_POSTAL_CODE {
   TYPE = 'POST',
 }
 export enum LOAD_ADRESS_API {
-  URL = '',
+  URL = '/user/info/get',
   TYPE = 'GET',
 }
 export enum SAVE_ADRESS_API {
-  URL = '',
-  TYPE = 'POST',
+  URL = '/user/info/update',
+  TYPE = 'PATCH',
 }
 export const FIND_ADRESS_STORE_NAME = 'FIND_ADRESS';

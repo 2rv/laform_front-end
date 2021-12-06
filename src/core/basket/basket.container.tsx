@@ -16,7 +16,6 @@ import {
   deleteProuctCartAction,
   createOrderAction,
   getUserInfoAction,
-  //   getShtrihCode,
 } from './basket.action';
 import { formValidation } from './basket.validation';
 import {
@@ -55,7 +54,6 @@ export function BasketContainer() {
   };
   const onSubmit = (values: formikValues) => {
     dispatch(createOrderAction(values, bascketState, isAuth));
-    // dispatch(getShtrihCode());
   };
   function initialValues(): formikValues {
     const userInfo = getRequestData(userInfoState, {

@@ -197,25 +197,26 @@ async function updateUserInfoAction(values: formikValues) {
   return response;
 }
 
-// export function getShtrihCode() {
-//   return async () => {
-//     try {
-//       console.log('res');
-
-//       const response = await httpRequest({
-//         method: 'POST',
-//         url: '/sdek/order/create/pdf',
-//         data: {
-//           orders: [
-//             {
-//               order_uuid: '72753031-1b8f-4120-8ebc-73e3fc556710',
-//             },
-//           ],
-//         },
-//       });
-//       console.log(response.data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// }
+export function getShtrihCode() {
+  return async () => {
+    try {
+      const response = await httpRequest({
+        method: 'POST',
+        url: '/sdek/order/create/pdf',
+        responseType: 'arraybuffer',
+        data: {
+          orders: [
+            {
+              order_uuid: '72753031-1b8f-4120-8ebc-73e3fc556710',
+            },
+          ],
+        },
+      });
+      let blob = new Blob([response.data], { type: 'application/pdf' }),
+        url = window.URL.createObjectURL(blob);
+      window.open(url);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
