@@ -1,8 +1,6 @@
 export const BASKET_ROUTE_PATH = '/basket';
 export const BASKET_STORE_NAME = 'BASKET';
 export const BASKET_API = {
-  LOAD_USER_INFO: 'user/info/get',
-  UPDATE_USER_INFO: '/user/info/update',
   CREATE_ORDER: (isAuth: boolean) => {
     if (isAuth) return 'purchase/create';
     else return 'purchase/not-auth/create';

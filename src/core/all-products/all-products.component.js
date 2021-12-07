@@ -2,58 +2,51 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { TitlePrimary } from 'src/lib/element/title';
 import { SectionLayout } from 'src/lib/element/layout';
 import { BasicCardList } from 'src/lib/element/card-list';
-import { FilterTabs } from 'src/lib/element/filter-tabs';
 import { LoaderPrimary } from 'src/lib/element/loader';
-import { SearchFilter } from 'src/lib/common/search-filter';
+import { SearchBlock } from 'src/lib/common/block-search';
+import { TabLinkBlock } from 'src/lib/element/tab-link';
+import { ALL_PRODUCTS_TABS } from './all-products.constant';
 
 export function AllProductsComponent(props) {
   const {
-    products,
-    activeTabText,
-    activeTab,
-    setActiveTab,
-    tabItems,
-    onDeleteProduct,
     isAdmin,
-    filterOptions,
-    categories,
-    handleFilter,
-
+    activePath,
     pageLoading,
+    total,
+    products,
+    categories,
     isPending,
-
-    fetchData,
-    hasMore,
+    onDisable,
+    onPagination,
+    onFilter,
+    filterOptions,
   } = props;
 
   return (
     <SectionLayout>
       {isPending && <LoaderPrimary />}
-      <TitlePrimary tid={activeTabText} />
-      <FilterTabs
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        tabItems={tabItems}
-        disabled={isPending}
+      <TabLinkBlock
+        activePath={activePath}
+        pathItems={ALL_PRODUCTS_TABS}
+        disabled={pageLoading || isPending}
       />
-      <SearchFilter
+      <SearchBlock
         findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
         filterOptions={filterOptions}
         categories={categories}
-        handleFilter={handleFilter}
+        handleFilter={onFilter}
       />
       <InfiniteScroll
-        dataLength={products?.length ?? 0}
-        next={fetchData}
-        hasMore={hasMore}
+        dataLength={products.length}
+        next={onPagination}
+        hasMore={products.length < +total}
       >
         <BasicCardList
-          onDelete={onDeleteProduct}
+          onDelete={onDisable}
           admin={isAdmin}
           items={products}
           emptyText="ALL_PRODUCTS.CATEGORY_EMPTY"
           isCreateList
-          isAllProductsPage
         />
       </InfiniteScroll>
     </SectionLayout>

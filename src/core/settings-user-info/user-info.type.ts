@@ -1,10 +1,21 @@
 import { FormikHandlers, FormikHelpers, FormikState } from 'formik';
-import { adressType } from 'src/core/basket/basket.type';
-
-export interface FindAdreccComponentProps {
+export interface FullAddressType {
+  country: string;
+  city: string;
+  settlement: string;
+  street: string;
+  house: string;
+  postal_code: string;
+  kladr_id: string;
+}
+export interface FormikObject
+  extends FormikHandlers,
+    FormikHelpers<userInfoValues>,
+    FormikState<userInfoValues> {}
+export interface UserInfoComponentProps {
   formik: FormikHandlers &
-    FormikHelpers<FindAdressValues> &
-    FormikState<FindAdressValues>;
+    FormikHelpers<userInfoValues> &
+    FormikState<userInfoValues>;
   find: {
     country: Function;
     city: Function;
@@ -25,8 +36,9 @@ export interface FindAdreccComponentProps {
   saveSuccess: boolean;
   saveError: boolean;
   saveErrorMessage: string;
+  children: any;
 }
-export interface adressValueType {
+export interface addressValueType {
   country: string;
   country_iso_code: string;
   city: string;
@@ -41,21 +53,25 @@ export interface adressValueType {
   kladr_id: string;
 }
 
-export enum FIND_ADRESS_FIELD_NAME {
+export enum USER_INFO_FIELD_NAME {
   COUNTRY = 'country',
   CITY = 'city',
   STREET = 'street',
   HOUSE = 'house',
   POSTAL_CODE = 'postal_code',
-  FULL_ADRESS = 'full_adress',
+  FULL_ADDRESS = 'address',
+  FULL_NAME = 'fullName',
+  PHONE = 'phone',
 }
-export interface FindAdressValues {
-  [FIND_ADRESS_FIELD_NAME.COUNTRY]: CountryType;
-  [FIND_ADRESS_FIELD_NAME.CITY]: CityType;
-  [FIND_ADRESS_FIELD_NAME.STREET]: StreetType;
-  [FIND_ADRESS_FIELD_NAME.HOUSE]: HouseType;
-  [FIND_ADRESS_FIELD_NAME.POSTAL_CODE]: PostalCodeType;
-  [FIND_ADRESS_FIELD_NAME.FULL_ADRESS]: adressType;
+export interface userInfoValues {
+  [USER_INFO_FIELD_NAME.COUNTRY]: CountryType;
+  [USER_INFO_FIELD_NAME.CITY]: CityType;
+  [USER_INFO_FIELD_NAME.STREET]: StreetType;
+  [USER_INFO_FIELD_NAME.HOUSE]: HouseType;
+  [USER_INFO_FIELD_NAME.POSTAL_CODE]: PostalCodeType;
+  [USER_INFO_FIELD_NAME.FULL_ADDRESS]: FullAddressType;
+  [USER_INFO_FIELD_NAME.FULL_NAME]: string;
+  [USER_INFO_FIELD_NAME.PHONE]: string;
 }
 export interface CountryType {
   label?: string;
@@ -93,12 +109,12 @@ export interface locationsProps
     StreetType,
     HouseType {}
 
-export enum FIND_ADRESS_ACTION_TYPE {
-  GET_DATA_PENDING = 'FIND_ADRESS_ACTION_TYPE.GET_DATA_PENDING',
-  GET_DATA_SUCCESS = 'FIND_ADRESS_ACTION_TYPE.GET_DATA_SUCCESS',
-  GET_DATA_ERROR = 'FIND_ADRESS_ACTION_TYPE.GET_DATA_ERROR',
+export enum USER_INFO_ACTION_TYPE {
+  GET_DATA_PENDING = 'USER_INFO_ACTION_TYPE.GET_DATA_PENDING',
+  GET_DATA_SUCCESS = 'USER_INFO_ACTION_TYPE.GET_DATA_SUCCESS',
+  GET_DATA_ERROR = 'USER_INFO_ACTION_TYPE.GET_DATA_ERROR',
 
-  SAVE_DATA_PENDING = 'FIND_ADRESS_ACTION_TYPE.SAVE_DATA_PENDING',
-  SAVE_DATA_SUCCESS = 'FIND_ADRESS_ACTION_TYPE.SAVE_DATA_SUCCESS',
-  SAVE_DATA_ERROR = 'FIND_ADRESS_ACTION_TYPE.SAVE_DATA_ERROR',
+  SAVE_DATA_PENDING = 'USER_INFO_ACTION_TYPE.SAVE_DATA_PENDING',
+  SAVE_DATA_SUCCESS = 'USER_INFO_ACTION_TYPE.SAVE_DATA_SUCCESS',
+  SAVE_DATA_ERROR = 'USER_INFO_ACTION_TYPE.SAVE_DATA_ERROR',
 }

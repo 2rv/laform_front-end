@@ -33,7 +33,6 @@ import SLIDER from './slider.json';
 import PRODUCT_IMAGES from './product-images.json';
 import PRODUCT_PRICE from './product-price.json';
 import DYNAMIC_FIELDS from './dynamic-fields.json';
-import FAVORITES from './favorites.json';
 import BLOCK_TEXT from './block-text.json';
 import BLOCK_TABLE_LIST from './block-table-list.json';
 import PROMOCODE from './promocode.json';
@@ -80,7 +79,6 @@ export const EN = {
     PRODUCT_IMAGES,
     PRODUCT_PRICE,
     DYNAMIC_FIELDS,
-    FAVORITES,
     COMMENTS,
     BLOCK_TEXT,
     BLOCK_TABLE_LIST,

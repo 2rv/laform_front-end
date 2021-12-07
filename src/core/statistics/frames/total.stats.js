@@ -5,7 +5,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import styled from 'styled-components';
 
 function StatsCard(props) {
-  const { title, value, valutTid } = props;
+  const { title, value = 0, valutTid } = props;
   return (
     <Case>
       <TextTitle tid={title} />
@@ -19,10 +19,10 @@ function StatsCard(props) {
 }
 
 export function TotalStats(props) {
-  const { general, activeTab } = props;
+  const { general, activePath } = props;
   return (
     <Content>
-      {activeTab ? (
+      {activePath ? (
         <StatsCard
           title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
           value={general.totalCount}

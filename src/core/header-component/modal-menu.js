@@ -16,9 +16,13 @@ export function ModalMenu(props) {
         top={30}
         content={(setVisible) => (
           <Container onClick={() => setVisible(false)}>
-            {modalMenuItems.map(({ path, tid, divider }, index) => (
+            {modalMenuItems.map(({ path, tid, divider, pathConfig }, index) => (
               <React.Fragment key={index}>
-                {divider ? <Divider /> : <Link tid={tid} path={path} />}
+                {divider ? (
+                  <Divider />
+                ) : (
+                  <Link tid={tid} path={path} pathConfig={pathConfig} />
+                )}
               </React.Fragment>
             ))}
           </Container>

@@ -6,14 +6,10 @@ import {
 } from '../../main/store/store.service';
 import { ALL_PRODUCTS_ACTION_TYPE } from './all-products.type';
 
-const initialProductData = {
-  products: [],
-  currentPage: 1,
-  totalRecords: 0,
-};
-
 const initialState = {
-  products: initRequestState(initialProductData),
+  page: 1,
+  total: 0,
+  products: initRequestState([]),
   categories: initRequestState(),
 };
 
@@ -22,61 +18,32 @@ export function allProductsStore(state = initialState, action) {
     case ALL_PRODUCTS_ACTION_TYPE.RESET_PRODUCTS_STATE:
       return {
         ...state,
-        products: initRequestState(initialProductData),
+        page: 1,
+        total: 0,
+        products: initRequestState([]),
       };
+
     case ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_PENDING:
       return {
         ...state,
         products: setRequestPending(state.products),
       };
     case ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_SUCCESS:
-      const oldProducts = state.products.data.products;
-      const newProducts = action.data.products;
-      const totalRecords = action.data.totalRecords;
-      const prevCurrentPage = state.products.data.currentPage;
       return {
         ...state,
         products: setRequestSuccess(
           state.products,
-          {
-            products: [...oldProducts, ...newProducts],
-            currentPage: prevCurrentPage + 1,
-            totalRecords,
-          },
+          state.products.data.concat(action.data),
         ),
+        page: state.page + 1,
+        total: action.total,
       };
     case ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_ERROR:
       return {
         ...state,
         products: setRequestError(state.products, action.errorMessage),
       };
-    case ALL_PRODUCTS_ACTION_TYPE.DELETE_PRODUCT_PENDING:
-      return {
-        ...state,
-        products: setRequestPending(state.products),
-      };
-    case ALL_PRODUCTS_ACTION_TYPE.DELETE_PRODUCT_SUCCESS:
-      return {
-        ...state,
-        products: setRequestSuccess(
-          state.products,
-          {
-            ...state.products.data,
-            products: state.products.data.products.map((product) => {
-              if (product.id === action.payload.productId) {
-                product.deleted = action.payload.deleted;
-              }
 
-              return product;
-            })
-          },
-        ),
-      };
-    case ALL_PRODUCTS_ACTION_TYPE.DELETE_PRODUCT_ERROR:
-      return {
-        ...state,
-        products: setRequestError(state.products, action.errorMessage),
-      };
     case ALL_PRODUCTS_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING:
       return {
         ...state,
@@ -85,12 +52,36 @@ export function allProductsStore(state = initialState, action) {
     case ALL_PRODUCTS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS:
       return {
         ...state,
-        categories: setRequestSuccess(state.categories, action.payload),
+        categories: setRequestSuccess(state.categories, action.data),
       };
     case ALL_PRODUCTS_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR:
       return {
         ...state,
         categories: setRequestError(state.categories, action.errorMessage),
+      };
+
+    case ALL_PRODUCTS_ACTION_TYPE.DISABLE_PRODUCT_PENDING:
+      return {
+        ...state,
+        products: setRequestPending(state.products),
+      };
+    case ALL_PRODUCTS_ACTION_TYPE.DISABLE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        products: setRequestSuccess(
+          state.products,
+          state.products.data.map((product) => {
+            if (product.id === action.id) {
+              product.deleted = action.deleted;
+            }
+            return product;
+          }),
+        ),
+      };
+    case ALL_PRODUCTS_ACTION_TYPE.DISABLE_PRODUCT_ERROR:
+      return {
+        ...state,
+        products: setRequestError(state.products, action.errorMessage),
       };
     default:
       return state;

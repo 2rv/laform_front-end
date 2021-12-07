@@ -1,9 +1,9 @@
-import { TitlePrimary } from '../../lib/element/title';
-import { SectionLayout } from '../../lib/element/layout';
-import { BasicCardList } from '../../lib/element/card-list';
+import { TitlePrimary } from 'src/lib/element/title';
+import { SectionLayout } from 'src/lib/element/layout';
+import { BasicCardList } from 'src/lib/element/card-list';
 import { TextSecondary } from 'src/lib/element/text';
-import { SearchFilter } from 'src/lib/common/search-filter';
-import { TabFilter } from '../../lib/common/tab-filter';
+import { SearchBlock } from 'src/lib/common/block-search';
+import { TabFilter } from 'src/lib/common/tab-filter';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function PatternsComponent(props) {
@@ -29,7 +29,7 @@ export function PatternsComponent(props) {
         handleFilter={setActiveTab}
         tabItems={tabItems}
       />
-      <SearchFilter
+      <SearchBlock
         findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
         filterOptions={filterOptions}
         categories={categories}

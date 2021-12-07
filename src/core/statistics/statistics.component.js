@@ -4,7 +4,10 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
-import { StatisticsTabs, TotalStats, TimeSelect } from './frames';
+import { TabLinkBlock } from 'src/lib/element/tab-link';
+import { TotalStats, TimeSelect } from './frames';
+import { STATISTICS_PERIODS, STATISTICS_TABS } from './statistics.constant';
+import { FieldSelect } from 'src/lib/element/field';
 
 export function StatisticstComponent(props) {
   const {
@@ -12,7 +15,7 @@ export function StatisticstComponent(props) {
     error,
     errorMessage,
     pageLoading,
-    activeTab,
+    activePath,
 
     general,
     price,
@@ -20,17 +23,25 @@ export function StatisticstComponent(props) {
     users,
     onChange,
     value,
-    options,
   } = props;
 
   return (
     <SectionLayout>
       {pageLoading && <LoaderPrimary />}
-      <StatisticsTabs pageLoading={pageLoading} activeTab={activeTab} />
+      <TabLinkBlock
+        activePath={activePath}
+        pathItems={STATISTICS_TABS}
+        disabled={pageLoading}
+      />
       <Title tid="STATISTICS.TITLES.TOTAL" />
-      <TimeSelect onChange={onChange} value={value} options={options} />
-      <TotalStats general={general} activeTab={activeTab} />
-      {!activeTab && <ChartBlock data={users} />}
+      <FieldSelect
+        onChange={onChange}
+        value={value}
+        tid="Период"
+        options={STATISTICS_PERIODS}
+      />
+      <TotalStats general={general} activePath={activePath} />
+      {!activePath && <ChartBlock data={users} />}
       <ChartBlock data={count} />
       <ChartBlock data={price} />
     </SectionLayout>

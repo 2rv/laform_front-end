@@ -37,11 +37,6 @@ export function PatternsContainer() {
     type: patternType,
   });
 
-  const productCategories = [
-    { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
-    ...getRequestData(categories, []),
-  ];
-
   useEffect(() => {
     dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(patternsUploadData(isAuth, { currentLang, ...filter }));
@@ -54,7 +49,7 @@ export function PatternsContainer() {
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
-    copy.category = category === PRODUCT_CATEGORY_FIRST_OPTION ? '' : category;
+    copy.category = category;
     setFilter(copy);
     dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
   };
@@ -84,7 +79,7 @@ export function PatternsContainer() {
     <PatternsComponent
       listItems={getRequestData(patternsState, {}).products}
       filterOptions={filterOptionss}
-      categories={productCategories}
+      categories={getRequestData(categories, [])}
       handleFilter={handleFilter}
       fetchData={onPaginationList}
       hasMore={
@@ -102,8 +97,6 @@ export function PatternsContainer() {
     />
   );
 }
-
-const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 export const tabItems = [
   { name: 'PATTERNS.PATTERNS.MENU.ALL', type: null },
   { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 'printed' },

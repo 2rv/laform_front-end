@@ -1,7 +1,7 @@
-import { SectionLayout } from '../../lib/element/layout';
-import { BasicCardList } from '../../lib/element/card-list';
-import { TitlePrimary } from '../../lib/element/title';
-import { SearchFilter } from 'src/lib/common/search-filter';
+import { SectionLayout } from 'src/lib/element/layout';
+import { BasicCardList } from 'src/lib/element/card-list';
+import { TitlePrimary } from 'src/lib/element/title';
+import { SearchBlock } from 'src/lib/common/block-search';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function SewingGoodsComponent(props) {
@@ -17,7 +17,7 @@ export function SewingGoodsComponent(props) {
   return (
     <SectionLayout>
       <TitlePrimary tid="SEWING_GOODS.TITLE" />
-      <SearchFilter
+      <SearchBlock
         findPlaceholderTid="SEWING_GOODS.FIELD.FIND_SEWING_GOODS"
         filterOptions={filterOptions}
         categories={categories}

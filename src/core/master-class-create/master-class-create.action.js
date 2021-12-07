@@ -1,4 +1,5 @@
-import { httpRequest } from '../../main/http';
+import { httpRequest } from 'src/main/http';
+import { redirect } from 'src/main/navigation';
 import {
   CREATE_MASTER_CLASS_ACTION_TYPE,
   CREATE_MASTER_CLASS_FIELD_NAME,
@@ -9,8 +10,11 @@ import {
   convertForChange,
   convertForUpdateImage,
 } from './master-class-create.convert';
-import { redirect } from 'src/main/navigation';
-import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
+
+import {
+  ALL_PRODUCTS_ROUTE_PATH,
+  ALL_PRODUCTS_TAB_TYPES,
+} from '../all-products';
 
 export function createMasterClassUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
@@ -172,7 +176,9 @@ export function masterClassDelete(id) {
         type: CREATE_MASTER_CLASS_ACTION_TYPE.MASTER_CLASS_DELETE_SUCCESS,
       });
 
-      redirect(ALL_PRODUCTS_ROUTE_PATH);
+      redirect(ALL_PRODUCTS_ROUTE_PATH, {
+        params: { type: ALL_PRODUCTS_TAB_TYPES[0] },
+      });
     } catch (err) {
       if (err.response) {
         dispatch({

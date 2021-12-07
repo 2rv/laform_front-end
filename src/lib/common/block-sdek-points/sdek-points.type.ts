@@ -1,4 +1,4 @@
-import { adressType } from 'src/core/basket/basket.type';
+import { FullAddressType } from 'src/core/settings-user-info';
 
 export interface sdekPointsType {
   sdekPoints: basicSdekPoints[];
@@ -13,7 +13,7 @@ export interface SdekPointsComponentProps {
   error: any;
 }
 export interface SdekPointsContainerProps {
-  data: adressType;
+  data: FullAddressType;
   value: basicSdekPoints;
   onChange: Function;
   name: string;

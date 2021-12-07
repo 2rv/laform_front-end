@@ -27,19 +27,13 @@ export function ArticlesContainer() {
 
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
-
-  const productCategories = [
-    { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
-    ...getRequestData(categories, []),
-  ];
-
   const handleFilter = ({ where, sort, by, category }) => {
     dispatch({ type: ARTICLES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     const copy = { ...filter };
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
-    copy.category = category === PRODUCT_CATEGORY_FIRST_OPTION ? '' : category;
+    copy.category = category;
     setFilter(copy);
     dispatch(articlesUploadData(isAuth, { currentLang, ...copy }));
   };
@@ -63,7 +57,7 @@ export function ArticlesContainer() {
     <ArticlesComponent
       listItems={getRequestData(articlesState, {}).products}
       filterOptions={filterOptionss}
-      categories={productCategories}
+      categories={getRequestData(categories, [])}
       handleFilter={handleFilter}
       pageLoading={pageLoading}
       isPending={isRequestPending(articlesState)}
@@ -78,8 +72,6 @@ export function ArticlesContainer() {
     />
   );
 }
-
-const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 export const filterOptionss = [
   {
     id: 0,

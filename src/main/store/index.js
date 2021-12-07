@@ -191,15 +191,10 @@ import {
   SDEK_TARIFFLIST_STORE_NAME,
 } from '../../lib/common/block-sdek-tarifflist';
 import {
-  findAdressStore,
-  FIND_ADRESS_STORE_NAME,
-} from '../../core/block-find-adress';
-import {
-  settingsUserInfoStore,
-  SETTINGS_USER_INFO_STORE_NAME,
+  userInfoStore,
+  USER_INFO_STORE_NAME,
 } from '../../core/settings-user-info';
 import { sizeStore, SIZE_STORE_NAME } from '../../core/faq-size';
-
 import {
   deliveryPaymentStore,
   DELIVERY_PAYMENT_STORE_NAME,
@@ -208,7 +203,7 @@ import {
 export const reducers = combineReducers({
   [DELIVERY_PAYMENT_STORE_NAME]: deliveryPaymentStore,
   [SIZE_STORE_NAME]: sizeStore,
-  [FIND_ADRESS_STORE_NAME]: findAdressStore,
+  [USER_INFO_STORE_NAME]: userInfoStore,
   [SDEK_TARIFFLIST_STORE_NAME]: sdekTariffListStore,
   [SDEK_POINTS_STORE_NAME]: sdekPointsStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
@@ -250,7 +245,6 @@ export const reducers = combineReducers({
   [AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME]: authVerificateEmailConfirmStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
-  [SETTINGS_USER_INFO_STORE_NAME]: settingsUserInfoStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
   [NOTIFICATION_STORE_NAME]: notificationStore,

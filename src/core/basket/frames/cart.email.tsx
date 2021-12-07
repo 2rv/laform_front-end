@@ -6,6 +6,7 @@ import React, { useState, useCallback } from 'react';
 import { httpRequest } from 'src/main/http';
 import { EmailConfirmed } from 'src/core/header-component';
 import styled from 'styled-components';
+import { Divider } from 'src/lib/element/divider';
 
 export function CartEmail(props: CartEmailProps) {
   const {
@@ -69,52 +70,55 @@ export function CartEmail(props: CartEmailProps) {
   );
 
   return (
-    <FieldLayout type="double" adaptive>
-      <BasicField
-        titleTid="BASKET.FORM.FIELDS.TITLES.EMAIL"
-        placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.EMAIL"
-        name={ORDER_FIELD_NAME.EMAIL}
-        value={values[ORDER_FIELD_NAME.EMAIL]}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={getFieldError(ORDER_FIELD_NAME.EMAIL)}
-        disabled={isAuth}
-      />
-      {!values[ORDER_FIELD_NAME.EMAIL_CONFIRMED] &&
-        (isAuth ? (
-          <Case>
-            <EmailConfirmed isHide={false} />
-          </Case>
-        ) : (
-          <React.Fragment>
-            <BasicField
-              titleTid="BASKET.FORM.FIELDS.TITLES.CONFIRM_CODE"
-              placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.WRITE_CODE"
-              name={ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE}
-              value={values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE)}
-            />
-            <ButtonSecondary
-              tid="BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL"
-              onClick={() => sendCode(values)}
-              disabled={isSending || !!errors[ORDER_FIELD_NAME.EMAIL]}
-            />
-            <ButtonSecondary
-              tid="BASKET.FORM.BUTTON.VERIFICATION_EMAIL"
-              onClick={() => confirmCode(values)}
-              disabled={
-                isSending ||
-                !values[ORDER_FIELD_NAME.EMAIL] ||
-                !!errors[ORDER_FIELD_NAME.EMAIL] ||
-                !values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE] ||
-                !!errors[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]
-              }
-            />
-          </React.Fragment>
-        ))}
-    </FieldLayout>
+    <React.Fragment>
+      <FieldLayout type="double" adaptive>
+        <BasicField
+          titleTid="BASKET.FORM.FIELDS.TITLES.EMAIL"
+          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.EMAIL"
+          name={ORDER_FIELD_NAME.EMAIL}
+          value={values[ORDER_FIELD_NAME.EMAIL]}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={getFieldError(ORDER_FIELD_NAME.EMAIL)}
+          disabled={isAuth}
+        />
+        {!values[ORDER_FIELD_NAME.EMAIL_CONFIRMED] &&
+          (isAuth ? (
+            <Case>
+              <EmailConfirmed isHide={false} />
+            </Case>
+          ) : (
+            <React.Fragment>
+              <BasicField
+                titleTid="BASKET.FORM.FIELDS.TITLES.CONFIRM_CODE"
+                placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.WRITE_CODE"
+                name={ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE}
+                value={values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE)}
+              />
+              <ButtonSecondary
+                tid="BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL"
+                onClick={() => sendCode(values)}
+                disabled={isSending || !!errors[ORDER_FIELD_NAME.EMAIL]}
+              />
+              <ButtonSecondary
+                tid="BASKET.FORM.BUTTON.VERIFICATION_EMAIL"
+                onClick={() => confirmCode(values)}
+                disabled={
+                  isSending ||
+                  !values[ORDER_FIELD_NAME.EMAIL] ||
+                  !!errors[ORDER_FIELD_NAME.EMAIL] ||
+                  !values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE] ||
+                  !!errors[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]
+                }
+              />
+            </React.Fragment>
+          ))}
+      </FieldLayout>
+      <Divider />
+    </React.Fragment>
   );
 }
 

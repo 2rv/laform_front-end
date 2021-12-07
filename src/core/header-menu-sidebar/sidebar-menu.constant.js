@@ -80,11 +80,11 @@ export const NAVIGATION_MENU = (isAuth = false) => {
           title: 'HEADER.ADMIN_MENU.PROMOCODES',
         },
         {
-          pathname: ALL_PRODUCTS_ROUTE_PATH,
+          pathname: ALL_PRODUCTS_ROUTE_PATH(),
           title: 'HEADER.ADMIN_MENU.ALL_PRODUCTS',
         },
         {
-          pathname: STATISTICS_ROUTE_PATH,
+          pathname: STATISTICS_ROUTE_PATH(),
           title: 'HEADER.ADMIN_MENU.STATISTICS',
         },
       ],

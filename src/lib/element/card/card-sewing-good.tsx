@@ -37,7 +37,6 @@ export function CardSewingGood(props: CardSewingGoodType) {
     isCount,
     isLength,
     isCreateList,
-    isAllProductsPage,
   } = props;
 
   return (
@@ -53,7 +52,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
         modifier={modifier}
         deleted={deleted}
         discount={discount}
-        isAllProductsPage={isAllProductsPage}
+        isCreateList={isCreateList}
       />
       <Content>
         <CardName tid={name} />
