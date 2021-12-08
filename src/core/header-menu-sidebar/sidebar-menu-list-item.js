@@ -12,9 +12,11 @@ export function SidebarMenuListItem(props) {
   const { title, items, pathname } = props.data;
   const [isOpen, setOpen] = useState(false);
   const click = (e) => {
+    console.log(items);
     if (items) {
       setOpen(!isOpen);
     } else {
+      console.log(pathname);
       e.preventDefault();
       redirect(pathname);
     }

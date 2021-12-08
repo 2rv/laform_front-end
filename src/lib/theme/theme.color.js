@@ -17,6 +17,7 @@ export const THEME_COLOR = {
 
   BACKGROUND_TRANSPARENT: {
     SECONDARY_DARK_75: 'rgba(47, 42, 44, 0.75)',
+    GRAY_50: 'rgba(240, 240, 240, 0.50)',
   },
 
   TEXT: {

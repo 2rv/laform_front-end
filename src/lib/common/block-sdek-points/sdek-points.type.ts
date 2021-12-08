@@ -8,7 +8,7 @@ export interface sdekPointsType {
 export interface SdekPointsComponentProps {
   store: sdekPointsType;
   value: basicSdekPoints;
-  onChange: Function;
+  onChange: (value: basicSdekPoints | {}) => void;
   isDisabled: boolean;
   error: any;
 }

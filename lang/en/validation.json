@@ -9,5 +9,7 @@
 	"NOT_PHONE": "Invalid phone number",
 	"PROMOCODE_DISCOUNT_RANGE": "Please enter a number in the range 1-99.",
 	"NUMBER": "Write only number",
-	"NAME": "Enter Surname, Name, Patronymic"
+	"NAME": "Enter Surname, Name, Patronymic",
+	"POINT": "You must select the point of issue of the order CDEK",
+	"REQUIRED_TARIFF": "You must select the CDEK tariff"
 }

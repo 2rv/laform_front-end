@@ -5,7 +5,6 @@ import {
   CREATE_NOTIFICATION_REDIRECT_ON_UPLOAD_PATH,
 } from './create-notification.constant';
 import { redirect } from '../../main/navigation';
-import { HOME_ROUTE_PATH } from '../home';
 
 export function createNotificationUpload(data) {
   return async (dispatch) => {
@@ -21,8 +20,6 @@ export function createNotificationUpload(data) {
       dispatch({
         type: CREATE_NOTIFICATION_ACTION_TYPE.CREATE_NOTIFICATION_UPLOAD_SUCCESS,
       });
-      //CLEAR LS
-      redirect(HOME_ROUTE_PATH);
     } catch (err) {
       if (err.response) {
         dispatch({

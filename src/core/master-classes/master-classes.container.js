@@ -30,11 +30,6 @@ export function MasterClassesContainer() {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({ where: null, sort: null, by: null });
 
-  const productCategories = [
-    { id: 0, tid: PRODUCT_CATEGORY_FIRST_OPTION },
-    ...getRequestData(categories, []),
-  ];
-
   useEffect(() => {
     dispatch({ type: MASTER_CLASSES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch(masterClassesUploadData(isAuth, { currentLang, ...filter }));

@@ -52,5 +52,6 @@ const Container = styled.div<any>`
 const Content = styled.div`
   display: flex;
   height: fit-content;
+  justify-content: center;
   width: 100%;
 `;

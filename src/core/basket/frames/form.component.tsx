@@ -113,7 +113,7 @@ export function FormComponent(props: BasketFormComponentProps) {
       </FieldLayout>
 
       <CartAlert
-        emailConfirmedError={!!getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRMED)}
+        emailConfirmedError={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRMED)}
         {...alertProps}
       />
     </SectionLayout>

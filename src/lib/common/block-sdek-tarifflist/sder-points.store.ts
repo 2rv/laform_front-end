@@ -5,7 +5,7 @@ import {
 
 const initialState: SdekTariffListType = {
   sdekTariffList: [],
-  sdekTariff: undefined,
+  sdekTariff: {},
   pending: false,
   errorMessage: undefined,
 };

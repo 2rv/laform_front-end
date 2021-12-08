@@ -30,12 +30,15 @@ export function SdekTariffListContainer(props: SdekTariffListContainerProps) {
   function handleChange(value: basicTariffType) {
     dispatch(getTariff(data?.location?.city_code, value, basketCount));
   }
-
+  function handleClear() {
+    onChange(name, {});
+  }
   return (
     <SdekTariffListComponent
       error={error}
       value={value}
       onChange={handleChange}
+      onClear={handleClear}
       store={store}
       isDisabled={!data?.location}
     />
