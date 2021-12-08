@@ -1,5 +1,5 @@
 import { FieldLayout } from 'src/lib/element/layout';
-import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { ErrorAlert, SuccessAlert, WarningAlert } from 'src/lib/element/alert';
 import { CartAlertProps } from '../basket.type';
 
 export function CartAlert(props: CartAlertProps) {
@@ -10,7 +10,7 @@ export function CartAlert(props: CartAlertProps) {
     <FieldLayout type="double" adaptive>
       {orderError && <ErrorAlert tid={orderErrorMessage} />}
       {orderSuccess && <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />}
-      {emailConfirmedError && <ErrorAlert tid="Необходимо подтердить почту" />}
+      {emailConfirmedError && <WarningAlert tid={emailConfirmedError} />}
     </FieldLayout>
   );
 }

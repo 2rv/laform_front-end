@@ -22,7 +22,7 @@ export function SdekPointsContainer(props: SdekPointsContainerProps) {
     onChange(name, '');
   }, [data.kladr_id]);
 
-  function handleChange(value: basicSdekPoints) {
+  function handleChange(value: basicSdekPoints | {}) {
     onChange(name, value);
   }
 

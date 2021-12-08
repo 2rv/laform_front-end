@@ -111,15 +111,20 @@ export interface CartPriceProps {
   promoDiscount: number;
   deliveryInfo: basicTariffType;
 }
-export interface BasketFormProps extends CartAlertProps {
+export interface BasketFormProps extends AlertProps {
   isAuth: boolean;
   isPending: boolean;
   basketPrice: number;
   basketCount: number;
-}
-export interface CartAlertProps {
   orderError: boolean;
   orderErrorMessage: string;
   orderSuccess: boolean;
-  emailConfirmedError?: boolean;
+}
+export interface CartAlertProps extends AlertProps {
+  emailConfirmedError: any;
+}
+export interface AlertProps {
+  orderError: boolean;
+  orderErrorMessage: string;
+  orderSuccess: boolean;
 }

@@ -144,3 +144,22 @@ export const emailRepeat = (field) => (value, values) => {
 
   return null;
 };
+
+export const requiredPoint = (value) => {
+  if (!Boolean(value?.label)) {
+    return getError('VALIDATION.POINT');
+  }
+  return null;
+};
+export const requiredTariff = (value) => {
+  if (!Boolean(value?.label)) {
+    return getError('VALIDATION.REQUIRED_TARIFF');
+  }
+  return null;
+};
+export const requiredEmail = (value) => {
+  if (!!value === false) {
+    return getError('VALIDATION.REQUIRED_CONFIRM_EMAIL');
+  }
+  return null;
+};

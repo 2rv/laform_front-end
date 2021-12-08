@@ -13,7 +13,7 @@ import { PATTERNS_PAGE_STORE_NAME } from './patterns-page.constant';
 import { PatternsPageComponent } from './patterns-page.component';
 import { getQuery, redirect } from 'src/main/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { HOME_ROUTE_PATH } from '../home';
+import { LOGIN_ROUTE_PATH } from '../login';
 
 export function PatternsPageContainer() {
   const dispatch = useDispatch();
@@ -25,11 +25,8 @@ export function PatternsPageContainer() {
   const id = getQuery('id');
 
   useEffect(() => {
-    if (isAuth) {
-      dispatch(patternsPageUploadData(id));
-    } else {
-      redirect(HOME_ROUTE_PATH);
-    }
+    if (isAuth) dispatch(patternsPageUploadData(id));
+    else redirect(LOGIN_ROUTE_PATH);
   }, []);
 
   return (

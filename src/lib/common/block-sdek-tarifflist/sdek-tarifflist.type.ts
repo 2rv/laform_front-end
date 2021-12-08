@@ -2,7 +2,7 @@ import { basicSdekPoints } from '../block-sdek-points';
 
 export interface SdekTariffListType {
   sdekTariffList: basicTariffType[];
-  sdekTariff?: basicTariffType;
+  sdekTariff: basicTariffType | {};
   pending: true | false;
   errorMessage?: string;
 }
@@ -10,7 +10,8 @@ export interface SdekTariffListType {
 export interface SdekTariffListComponentProps {
   store: SdekTariffListType;
   value: basicTariffType;
-  onChange: Function;
+  onChange: (value: basicTariffType) => void;
+  onClear: () => void;
   isDisabled: boolean;
   error: any;
 }

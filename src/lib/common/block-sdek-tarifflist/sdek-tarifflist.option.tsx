@@ -1,16 +1,16 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import { SdekPointItem } from './sdek-points.item';
-import { basicSdekPoints } from './sdek-points.type';
+import { SdekTariffItem } from './sdek-tarifflist.item';
+import { basicTariffType } from '.';
 
-interface SdekPointOptionProps {
-  data: basicSdekPoints;
-  onSelect: (value: basicSdekPoints) => void;
+interface SdekTariffListOptionProps {
+  data: basicTariffType;
+  onSelect: (value: basicTariffType) => void;
   onClose: (value: false) => void;
 }
 
-export function SdekPointOption(props: SdekPointOptionProps) {
+export function SdekTariffListOption(props: SdekTariffListOptionProps) {
   const { data, onSelect, onClose } = props;
   return (
     <Container
@@ -20,7 +20,7 @@ export function SdekPointOption(props: SdekPointOptionProps) {
         onClose(false);
       }}
     >
-      <SdekPointItem value={data} />
+      <SdekTariffItem value={data} />
     </Container>
   );
 }
