@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ModalMenuPropsType {
   active: boolean;
   role: any;
@@ -22,5 +24,5 @@ export interface ModalPopupProps {
 export interface ModalFullProps {
   onOpen: boolean;
   className?: string;
-  children: React.ReactElement<any | null>;
+  children: ReactNode;
 }

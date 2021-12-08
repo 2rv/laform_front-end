@@ -1,57 +1,56 @@
 import React from 'react';
-import { SectionLayout } from 'src/lib/element/layout';
-import { components, OptionProps } from 'react-select';
 import { basicTariffType } from './sdek-tarifflist.type';
 import { TextPrimary } from 'src/lib/element/text';
-import { Divider } from 'src/lib/element/divider';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import styled from 'styled-components';
 import { TitlePrimary } from 'src/lib/element/title';
 
-const { Option } = components;
-
-export function SdekTariffItem(props: OptionProps<basicTariffType>) {
-  const { data } = props;
-
-  return (
-    <Option {...props}>
-      <SectionLayout type="TEXT_SMALL">
-        <div>
-          <TextPrimary tid="SDEK_TARIFFLIST.OPTION.NAME" />
-          &nbsp;
-          <BoldText tid={data.tariff_name} />
-        </div>
-        <div>
-          <Text tid="SDEK_TARIFFLIST.OPTION.DESCRIPTION" />
-          &nbsp;
-          <BoldText tid={data.tariff_description} />
-        </div>
-        <div>
-          <TextPrimary tid="SDEK_TARIFFLIST.OPTION.DELIVERY_TIME" />
-          &nbsp;
-          <BoldText tid={String(data.period_min)} />
-          &nbsp;
-          <TextPrimary tid="OTHER.TO" />
-          &nbsp;
-          <BoldText tid={String(data.period_max)} />
-          &nbsp;
-          <TextPrimary tid="OTHER.DAYS" />
-        </div>
-        <div>
-          <TextPrimary tid={'SDEK_TARIFFLIST.OPTION.DELIVERY_PRICE'} />
-          &nbsp;
-          <BoldText tid={String(data.delivery_sum)} />
-          &nbsp;
-          <TextPrimary tid={'OTHER.VALUTE'} />
-        </div>
-      </SectionLayout>
-      <DividerEl />
-    </Option>
-  );
+interface SdekTariffItemProps {
+  value: basicTariffType;
 }
 
-const DividerEl = styled(Divider)`
-  margin: ${spacing(3)} 0 0 0;
+export function SdekTariffItem(props: SdekTariffItemProps) {
+  const { value } = props;
+
+  return (
+    <Container>
+      <div>
+        <TextPrimary tid="SDEK_TARIFFLIST.OPTION.NAME" />
+        &nbsp;
+        <BoldText tid={value.tariff_name} />
+      </div>
+      <div>
+        <Text tid="SDEK_TARIFFLIST.OPTION.DESCRIPTION" />
+        &nbsp;
+        <BoldText tid={value.tariff_description} />
+      </div>
+      <div>
+        <TextPrimary tid="SDEK_TARIFFLIST.OPTION.DELIVERY_TIME" />
+        &nbsp;
+        <BoldText tid={String(value.period_min)} />
+        &nbsp;
+        <TextPrimary tid="OTHER.TO" />
+        &nbsp;
+        <BoldText tid={String(value.period_max)} />
+        &nbsp;
+        <TextPrimary tid="OTHER.DAYS" />
+      </div>
+      <div>
+        <TextPrimary tid={'SDEK_TARIFFLIST.OPTION.DELIVERY_PRICE'} />
+        &nbsp;
+        <BoldText tid={String(value.delivery_sum)} />
+        &nbsp;
+        <TextPrimary tid={'OTHER.VALUTE'} />
+      </div>
+    </Container>
+  );
+}
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing(1)};
+  padding: 5px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Text = styled(TextPrimary)`
   line-height: 1.5;

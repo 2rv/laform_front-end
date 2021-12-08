@@ -9,6 +9,8 @@ interface props {
 export function TablePrice(props: props) {
   const { isLast, totalPrice } = props;
   if (typeof totalPrice !== 'number') return null;
+  if (isNaN(totalPrice)) return <td />;
+
   return (
     <Td last={isLast}>
       <Case>
