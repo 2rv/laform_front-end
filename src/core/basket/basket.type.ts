@@ -11,7 +11,7 @@ import {
   BasicSewingGoodType,
 } from 'src/lib/basic-types';
 import { basicTariffType } from 'src/lib/common/block-sdek-tarifflist';
-
+import { userInfoValues } from '../settings-user-info';
 export enum BASKET_ACTION_TYPE {
   PRODUCT_ADD_PENDING = 'BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING',
   PRODUCT_ADD_SUCCESS = 'BASKET_ACTION_TYPE.PRODUCT_ADD_SUCCESS',
@@ -21,59 +21,29 @@ export enum BASKET_ACTION_TYPE {
   CREATE_ORDER_SUCCESS = 'BASKET_ACTION_TYPE.CREATE_ORDER_SUCCESS',
   CREATE_ORDER_ERROR = 'BASKET_ACTION_TYPE.CREATE_ORDER_ERROR',
 
-  LOAD_USER_INFO_PENDING = 'BASKET_ACTION_TYPE.LOAD_USER_INFO_PENDING',
-  LOAD_USER_INFO_SUCCESS = 'BASKET_ACTION_TYPE.LOAD_USER_INFO_SUCCESS',
-  LOAD_USER_INFO_ERROR = 'BASKET_ACTION_TYPE.LOAD_USER_INFO_ERROR',
-
   CHANGE_BASKET = 'BASKET_ACTION_TYPE.CHANGE_BASKET',
   ADD_TO_BASKET = 'BASKET_ACTION_TYPE.ADD_TO_BASKET',
   INIT_BASKET = 'BASKET_ACTION_TYPE.INIT_BASKET',
 }
 export enum ORDER_FIELD_NAME {
   EMAIL = 'email',
-  PHONE = 'phone',
-  FULL_NAME = 'fullName',
   DESCRIPTION = 'comment',
-
   PROMO_CODE = 'promoCode',
   PROMO_DISCOUNT = 'promoCodeDiscount',
-
   EMAIL_CONFIRM_CODE = 'emailConfirmCode',
   EMAIL_CONFIRMED = 'emailConfirmed',
-
-  ADRESS = 'adress',
-
   SDEK_POINT = 'sdekPoint',
   SDEK_TARIFF = 'sdekTariff',
-
-  SAVE_USER_INFO = 'saveUserInfo',
   PRICE = 'price',
 }
-
-export interface adressType {
-  country: string;
-  city: string;
-  settlement: string;
-  street: string;
-  house: string;
-  postal_code: string;
-  kladr_id: string;
-}
-export interface formikValues {
+export interface formikValues extends userInfoValues {
   [ORDER_FIELD_NAME.EMAIL]: string;
-  [ORDER_FIELD_NAME.PHONE]: string;
-  [ORDER_FIELD_NAME.FULL_NAME]: string;
   [ORDER_FIELD_NAME.DESCRIPTION]: string;
-
   [ORDER_FIELD_NAME.PROMO_CODE]: string;
   [ORDER_FIELD_NAME.PROMO_DISCOUNT]: number;
-
   [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: string;
   [ORDER_FIELD_NAME.EMAIL_CONFIRMED]: boolean;
-
-  [ORDER_FIELD_NAME.SAVE_USER_INFO]: boolean;
   [ORDER_FIELD_NAME.PRICE]: number;
-  [ORDER_FIELD_NAME.ADRESS]: adressType;
   [ORDER_FIELD_NAME.SDEK_POINT]: any;
   [ORDER_FIELD_NAME.SDEK_TARIFF]: any;
 }
@@ -148,8 +118,6 @@ export interface BasketFormProps extends CartAlertProps {
   basketCount: number;
 }
 export interface CartAlertProps {
-  userInfoError: boolean;
-  userInfoErrorMessage: string;
   orderError: boolean;
   orderErrorMessage: string;
   orderSuccess: boolean;

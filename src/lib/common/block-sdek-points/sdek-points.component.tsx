@@ -20,7 +20,9 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
         isDisabled={isDisabled || store.pending}
         isLoading={store.pending}
         error={store.errorMessage}
-        components={{ Option: SdekPointsItem }}
+        components={{
+          Option: SdekPointsItem,
+        }}
       />
       {error && <ErrorAlert tid={error} />}
     </SectionLayout>

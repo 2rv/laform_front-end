@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
-import { THEME_SIZE } from '../../../lib/theme';
+import { THEME_SIZE } from 'src/lib/theme';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
-import { BlockFindAdress } from 'src/core/block-find-adress';
 import { TitlePrimary } from 'src/lib/element/title';
 import { Divider } from 'src/lib/element/divider';
-import {
-  BasicField,
-  TextareaField,
-  FieldCheckbox,
-} from 'src/lib/element/field';
+import { TextareaField } from 'src/lib/element/field';
 import { ButtonPrimary } from 'src/lib/element/button';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { CartEmail } from './cart.email';
@@ -19,6 +14,7 @@ import { CartPromoCode } from './cart.promocode';
 import { BasketFormComponentProps, ORDER_FIELD_NAME } from '../basket.type';
 import { BlockSdekPoints } from 'src/lib/common/block-sdek-points';
 import { BlockSdekTariffList } from 'src/lib/common/block-sdek-tarifflist';
+import { BlockUserInfo, USER_INFO_FIELD_NAME } from '../../settings-user-info';
 
 export function FormComponent(props: BasketFormComponentProps) {
   const {
@@ -35,7 +31,6 @@ export function FormComponent(props: BasketFormComponentProps) {
       setFieldValue,
     },
     formik,
-
     ...alertProps
   } = props;
 
@@ -52,43 +47,16 @@ export function FormComponent(props: BasketFormComponentProps) {
       {isPending && <LoaderPrimary />}
       <TitlePrimary tid="Оформление заказа" />
 
-      <Title tid="BASKET.FORM.FIELDS.TITLES.CONTACT_DETAILS" />
-      <FieldLayout type="double" adaptive>
-        <BasicField
-          titleTid="BASKET.FORM.FIELDS.TITLES.FULL_NAME"
-          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.FULL_NAME"
-          name={ORDER_FIELD_NAME.FULL_NAME}
-          value={values[ORDER_FIELD_NAME.FULL_NAME]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.FULL_NAME)}
-        />
-        <BasicField
-          titleTid="BASKET.FORM.FIELDS.TITLES.CONTACT_PHONE_NUMBER"
-          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.CONTACT_PHONE_NUMBER"
-          name={ORDER_FIELD_NAME.PHONE}
-          value={values[ORDER_FIELD_NAME.PHONE]}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={getFieldError(ORDER_FIELD_NAME.PHONE)}
-        />
-      </FieldLayout>
-
-      <CartEmail isAuth={isAuth} formik={formik} />
+      <BlockUserInfo onChange={setFieldValue}>
+        <CartEmail isAuth={isAuth} formik={formik} />
+      </BlockUserInfo>
 
       <Divider />
 
       {Boolean(basketCount) && (
         <>
-          <BlockFindAdress
-            onChange={setFieldValue}
-            name={ORDER_FIELD_NAME.ADRESS}
-          />
-
-          <Divider />
-
           <BlockSdekPoints
-            data={values[ORDER_FIELD_NAME.ADRESS]}
+            data={values[USER_INFO_FIELD_NAME.FULL_ADDRESS]}
             value={values[ORDER_FIELD_NAME.SDEK_POINT]}
             name={ORDER_FIELD_NAME.SDEK_POINT}
             onChange={setFieldValue}
@@ -140,20 +108,6 @@ export function FormComponent(props: BasketFormComponentProps) {
             tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
             disabled={isPending}
             type="submit"
-          />
-        )}
-        {isAuth && (
-          <FieldCheckbox
-            titleTid="BASKET.FORM.FIELDS.TITLES.SAVE_DATA"
-            labelTid="BASKET.FORM.FIELDS.TITLES.SAVE_DATA"
-            name={ORDER_FIELD_NAME.SAVE_USER_INFO}
-            checked={values[ORDER_FIELD_NAME.SAVE_USER_INFO]}
-            onClick={() => {
-              setFieldValue(
-                ORDER_FIELD_NAME.SAVE_USER_INFO,
-                !values[ORDER_FIELD_NAME.SAVE_USER_INFO],
-              );
-            }}
           />
         )}
       </FieldLayout>

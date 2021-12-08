@@ -1,3 +1,5 @@
+import { STATISTICS_PERIODS } from './statistics.constant';
+
 export const convertPrice = (data) => {
   return {
     labels: data.map((e) => e.date),
@@ -41,4 +43,27 @@ export const convertUsers = (data) => {
       },
     ],
   };
+};
+export const convertQuery = (query) => {
+  const { type, value } = query;
+
+  let from = new Date();
+  let to = new Date();
+  from.setDate(from.getDate() - STATISTICS_PERIODS[+value].value);
+  to.setDate(to.getDate() + 1);
+
+  if (!type) {
+    return `from=${from.toISOString()}&to=${to.toISOString()}`;
+  }
+  if (type === 'master-class') {
+    return `type=${0}&from=${from.toISOString()}&to=${to.toISOString()}`;
+  } else if (type === 'pattern-electronic') {
+    return `type=${1}&from=${from.toISOString()}&to=${to.toISOString()}`;
+  } else if (type === 'pattern-print') {
+    return `type=${2}&from=${from.toISOString()}&to=${to.toISOString()}`;
+  } else if (type === 'sewing-good') {
+    return `type=${3}&from=${from.toISOString()}&to=${to.toISOString()}`;
+  } else {
+    return `type=${9}&from=${from.toISOString()}&to=${to.toISOString()}`;
+  }
 };

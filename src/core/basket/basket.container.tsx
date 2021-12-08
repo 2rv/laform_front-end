@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { AUTH_STORE_NAME } from '../../lib/common/auth';
 import {
-  getRequestData,
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
@@ -15,7 +13,6 @@ import {
   changeProductCartAction,
   deleteProuctCartAction,
   createOrderAction,
-  getUserInfoAction,
 } from './basket.action';
 import { formValidation } from './basket.validation';
 import {
@@ -23,21 +20,18 @@ import {
   formikValues,
   ORDER_FIELD_NAME,
 } from './basket.type';
+import { USER_INFO_FIELD_NAME } from '../settings-user-info';
 
 export function BasketContainer() {
   const dispatch = useDispatch();
-  const { bascketState, user, isAuth, orderState, userInfoState } = useSelector(
+  const { bascketState, user, isAuth, orderState } = useSelector(
     (state: any) => ({
       bascketState: state[BASKET_STORE_NAME].basket,
       isAuth: state[AUTH_STORE_NAME].logged,
       user: state[AUTH_STORE_NAME].user,
       orderState: state[BASKET_STORE_NAME].order,
-      userInfoState: state[BASKET_STORE_NAME].userInfo,
     }),
   );
-  useEffect(() => {
-    if (isAuth) dispatch(getUserInfoAction());
-  }, []);
   const {
     masterProducts,
     patternProducts,
@@ -58,42 +52,39 @@ export function BasketContainer() {
     );
   };
   function initialValues(): formikValues {
-    const userInfo = getRequestData(userInfoState, {
-      [ORDER_FIELD_NAME.PHONE]: '',
-      [ORDER_FIELD_NAME.FULL_NAME]: '',
-    });
     return {
       [ORDER_FIELD_NAME.EMAIL]: user?.email || '',
       [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: '',
       [ORDER_FIELD_NAME.EMAIL_CONFIRMED]: user?.emailConfirmed || false,
-      [ORDER_FIELD_NAME.PHONE]: userInfo[ORDER_FIELD_NAME.PHONE],
-      [ORDER_FIELD_NAME.FULL_NAME]: userInfo[ORDER_FIELD_NAME.FULL_NAME],
       [ORDER_FIELD_NAME.DESCRIPTION]: '',
 
-      [ORDER_FIELD_NAME.PROMO_CODE]: '',
-      [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
-
-      [ORDER_FIELD_NAME.ADRESS]: {
+      [USER_INFO_FIELD_NAME.COUNTRY]: {},
+      [USER_INFO_FIELD_NAME.CITY]: {},
+      [USER_INFO_FIELD_NAME.STREET]: {},
+      [USER_INFO_FIELD_NAME.HOUSE]: {},
+      [USER_INFO_FIELD_NAME.POSTAL_CODE]: {},
+      [USER_INFO_FIELD_NAME.FULL_ADDRESS]: {
         country: '',
         city: '',
         settlement: '',
+        kladr_id: '',
         street: '',
         house: '',
         postal_code: '',
-        kladr_id: '',
       },
+      [USER_INFO_FIELD_NAME.PHONE]: '',
+      [USER_INFO_FIELD_NAME.FULL_NAME]: '',
+
+      [ORDER_FIELD_NAME.PROMO_CODE]: '',
+      [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
       [ORDER_FIELD_NAME.SDEK_POINT]: {},
       [ORDER_FIELD_NAME.SDEK_TARIFF]: {},
-
-      [ORDER_FIELD_NAME.SAVE_USER_INFO]: false,
       [ORDER_FIELD_NAME.PRICE]: 0,
     };
   }
   return (
     <BasketComponent
-      isPending={
-        isRequestPending(orderState) || isRequestPending(userInfoState)
-      }
+      isPending={isRequestPending(orderState)}
       isAuth={isAuth}
       basketPrice={basketPrice}
       basketCount={basketCount}
@@ -108,9 +99,7 @@ export function BasketContainer() {
       initialValues={initialValues()}
       validate={formValidation(Boolean(basketCount))}
       onSubmit={onSubmit}
-      //--------------
-      userInfoError={isRequestError(userInfoState)}
-      userInfoErrorMessage={getRequestErrorMessage(userInfoState)}
+      //-------------
       orderError={isRequestError(orderState)}
       orderErrorMessage={getRequestErrorMessage(orderState)}
       orderSuccess={isRequestSuccess(orderState)}

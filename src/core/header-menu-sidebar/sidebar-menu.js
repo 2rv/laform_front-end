@@ -11,7 +11,7 @@ export function SidebarMenu(props) {
   const { activePath, isAuth, isAdmin } = useSelector((state) => ({
     activePath: state[NAVIGATION_STORE_NAME].activePath,
     isAuth: state[AUTH_STORE_NAME]?.logged,
-    isAdmin: state[AUTH_STORE_NAME]?.role === USER_ROLE.ADMIN,
+    isAdmin: state[AUTH_STORE_NAME].user?.role === USER_ROLE.ADMIN,
   }));
 
   const scrolled = () => {
@@ -20,7 +20,6 @@ export function SidebarMenu(props) {
     }
     return 0;
   };
-
   return (
     <Container open={isOpen} scrolled={scrolled}>
       <Content>
@@ -48,6 +47,7 @@ const Content = styled.div`
 `;
 const Container = styled.div`
   position: absolute;
+  display: none;
   width: 350px;
   bottom: 0;
   top: 0;
@@ -59,6 +59,9 @@ const Container = styled.div`
   z-index: 10;
   transition: 0.4s;
   height: calc(100vh - 180px + ${(p) => p.scrolled() + 'px'});
+  @media screen and (max-width: 1070px) {
+    display: flex;
+  }
   @media screen and (max-width: 720px) {
     width: 100vw;
     max-width: ${(p) => (p.open ? `100vw` : 0)};

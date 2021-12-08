@@ -47,7 +47,7 @@ export function MasterClassesContainer() {
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
-    copy.category = category === PRODUCT_CATEGORY_FIRST_OPTION ? '' : category;
+    copy.category = category;
     setFilter(copy);
     dispatch(masterClassesUploadData(isAuth, { currentLang, ...copy }));
   };
@@ -66,7 +66,7 @@ export function MasterClassesContainer() {
     <MasterClassesComponent
       listItems={getRequestData(masterClassState, {}).products}
       filterOptions={filterOptions}
-      categories={productCategories}
+      categories={getRequestData(categories, [])}
       handleFilter={handleFilter}
       fetchData={onPaginationList}
       hasMore={
@@ -76,8 +76,6 @@ export function MasterClassesContainer() {
     />
   );
 }
-
-const PRODUCT_CATEGORY_FIRST_OPTION = 'OTHER.CATEGORY_FILTER.ALL';
 export const filterOptions = [
   {
     id: 0,

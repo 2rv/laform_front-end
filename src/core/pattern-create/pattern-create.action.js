@@ -1,6 +1,5 @@
 import { redirect } from 'src/main/navigation';
-import { httpRequest } from '../../main/http';
-import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
+import { httpRequest } from 'src/main/http';
 import { CREATE_PATTERN_API } from './pattern-create.constant';
 import {
   convertForUpload,
@@ -13,6 +12,10 @@ import {
   CREATE_PATTERN_ACTION_TYPE,
   CREATE_PATTERN_FIELD_NAME,
 } from './pattern-create.type';
+import {
+  ALL_PRODUCTS_ROUTE_PATH,
+  ALL_PRODUCTS_TAB_TYPES,
+} from '../all-products';
 
 export function createPatternUploadData(imagesUrls, pdfFileUrls, formValues) {
   return async (dispatch) => {
@@ -223,7 +226,7 @@ export function updatePatternProductPreUpload(id, formValues) {
   };
 }
 
-export function patternDelete(id) {
+export function patternDelete(id, type = 1) {
   return async (dispatch) => {
     dispatch({
       type: CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_PENDING,
@@ -239,7 +242,9 @@ export function patternDelete(id) {
         type: CREATE_PATTERN_ACTION_TYPE.PATTERN_PRODUCT_DELETE_SUCCESS,
       });
 
-      redirect(ALL_PRODUCTS_ROUTE_PATH);
+      redirect(ALL_PRODUCTS_ROUTE_PATH, {
+        params: { type: ALL_PRODUCTS_TAB_TYPES[type] },
+      });
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -250,5 +255,3 @@ export function patternDelete(id) {
     }
   };
 }
-
-async function uploadPdfFiles(data) {}

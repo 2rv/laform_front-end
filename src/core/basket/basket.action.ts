@@ -7,11 +7,7 @@ import {
   changeCartataType,
   formikValues,
 } from './basket.type';
-import {
-  convertAddToCart,
-  convertCreateOrder,
-  convertUserInfo,
-} from './basket.convert';
+import { convertAddToCart, convertCreateOrder } from './basket.convert';
 
 export function initializeBasketStore() {
   return async (dispatch: Function) => {
@@ -138,10 +134,6 @@ export function createOrderAction(
         url: BASKET_API.CREATE_ORDER(isAuth),
         data: data,
       });
-
-      if (values.saveUserInfo && isAuth) {
-        await updateUserInfoAction(values);
-      }
       if (response.data) {
         dispatch(clearCartAction());
         window.location.href = response.data;
@@ -165,41 +157,6 @@ export function createOrderAction(
     }
   };
 }
-
-export function getUserInfoAction() {
-  return async (dispatch: Function) => {
-    dispatch({
-      type: BASKET_ACTION_TYPE.LOAD_USER_INFO_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: 'GET',
-        url: BASKET_API.LOAD_USER_INFO,
-      });
-      dispatch({
-        type: BASKET_ACTION_TYPE.LOAD_USER_INFO_SUCCESS,
-        data: convertUserInfo(response.data),
-      });
-    } catch (err: any) {
-      if (err.response) {
-        dispatch({
-          type: BASKET_ACTION_TYPE.LOAD_USER_INFO_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-async function updateUserInfoAction(values: formikValues) {
-  const response = await httpRequest({
-    method: 'PATCH',
-    url: BASKET_API.UPDATE_USER_INFO,
-    data: convertUserInfo(values),
-  });
-  return response;
-}
-
 export function getShtrihCode() {
   return async () => {
     try {

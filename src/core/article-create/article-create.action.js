@@ -1,12 +1,15 @@
-import { httpRequest } from '../../main/http';
+import { httpRequest } from 'src/main/http';
+import { redirect } from 'src/main/navigation';
 import {
   CREATE_ARTICLE_ACTION_TYPE,
   ARTICLE_FIELD_NAME,
 } from './article-create.type';
 import { CREATE_ARTICLE_API } from './article-create.constant';
 import { convertForUpload, convertForChange } from './article-create.convert';
-import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
-import { redirect } from 'src/main/navigation';
+import {
+  ALL_PRODUCTS_ROUTE_PATH,
+  ALL_PRODUCTS_TAB_TYPES,
+} from '../all-products';
 
 export function createArticleUploadData(imagesUrl, formValues) {
   return async (dispatch) => {
@@ -161,7 +164,9 @@ export function articleDelete(id) {
         type: CREATE_ARTICLE_ACTION_TYPE.ARTICLE_DELETE_SUCCESS,
       });
 
-      redirect(ALL_PRODUCTS_ROUTE_PATH);
+      redirect(ALL_PRODUCTS_ROUTE_PATH, {
+        params: { type: ALL_PRODUCTS_TAB_TYPES[4] },
+      });
     } catch (err) {
       if (err.response) {
         dispatch({

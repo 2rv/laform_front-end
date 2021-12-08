@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
-import { getQuery } from 'src/main/navigation';
 import { useState } from 'react';
 import {
   getRequestData,
@@ -19,9 +18,10 @@ import {
   getUsersStatistics,
 } from './statistics.action';
 import { defaultData } from 'src/lib/common/block-chart/chart';
+import { getQuery } from 'src/main/navigation';
 
 export function StatisticstContainer() {
-  const activeTab = getQuery('type');
+  const activePath = getQuery('type')?.[0];
   const dispatch = useDispatch();
   const { generalState, priceState, countState, usersState, pageLoading } =
     useSelector((state) => ({
@@ -35,22 +35,16 @@ export function StatisticstContainer() {
   function onChange(e) {
     setValue(e.currentTarget.value);
   }
-
   useEffect(() => {
-    const period = {
-      from: new Date(),
-      to: new Date(),
-    };
-    period.from.setDate(period.from.getDate() - options[+value].value);
-    dispatch(getUsersStatistics({ ...period }));
-    dispatch(getGeneralStatistics({ ...period, type: activeTab }));
-    dispatch(getCountStatistics({ ...period, type: activeTab }));
-    dispatch(getPriceStatistics({ ...period, type: activeTab }));
-  }, [activeTab, value]);
+    dispatch(getUsersStatistics({ value }));
+    dispatch(getGeneralStatistics({ value, type: activePath }));
+    dispatch(getCountStatistics({ value, type: activePath }));
+    dispatch(getPriceStatistics({ value, type: activePath }));
+  }, [activePath, value]);
 
   return (
     <StatisticstComponent
-      activeTab={activeTab}
+      activePath={activePath}
       pending={isRequestPending(
         generalState || priceState || countState || usersState,
       )}
@@ -67,49 +61,6 @@ export function StatisticstContainer() {
       users={getRequestData(usersState, defaultData)}
       onChange={onChange}
       value={value}
-      options={options}
     />
   );
 }
-const options = [
-  {
-    id: 0,
-    tid: 'День',
-    value: 1,
-  },
-  {
-    id: 1,
-    tid: 'Неделя',
-    value: 7,
-  },
-  {
-    id: 2,
-    tid: '2 Недели',
-    value: 14,
-  },
-  {
-    id: 3,
-    tid: 'Месяц',
-    value: 30,
-  },
-  {
-    id: 4,
-    tid: 'Квартал',
-    value: 90,
-  },
-  {
-    id: 5,
-    tid: 'Пол года',
-    value: 182,
-  },
-  {
-    id: 6,
-    tid: 'Год',
-    value: 365,
-  },
-  {
-    id: 7,
-    tid: 'Всё время',
-    value: 7300,
-  },
-];

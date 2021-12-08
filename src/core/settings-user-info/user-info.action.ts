@@ -2,16 +2,16 @@ import { httpRequest } from 'src/main/http';
 import {
   GET_ADRESS_API,
   GET_POSTAL_CODE,
-  LOAD_ADRESS_API,
-  SAVE_ADRESS_API,
-} from './find-adress.constant';
-import { performAdressData } from './find-adress.convert';
+  GET_USER_INFO_API,
+  SAVE_USER_INFO_API,
+} from './user-info.constant';
+import { performAdressData } from './user-info.convert';
 import {
-  FindAdressValues,
+  userInfoValues,
   locationsProps,
-  FIND_ADRESS_FIELD_NAME,
-  FIND_ADRESS_ACTION_TYPE,
-} from './find-adress.type';
+  USER_INFO_FIELD_NAME,
+  USER_INFO_ACTION_TYPE,
+} from './user-info.type';
 
 const getLocations = (props: locationsProps) => {
   const {
@@ -65,7 +65,6 @@ const getLocations = (props: locationsProps) => {
 
   return locations;
 };
-
 export async function getCountry(query: string) {
   const response = await httpRequest({
     url: GET_ADRESS_API.URL,
@@ -89,8 +88,8 @@ export async function getCountry(query: string) {
     country_iso_code: item.data.country_iso_code,
   }));
 }
-export async function getCity(query: string, values: FindAdressValues) {
-  const countryData = values[FIND_ADRESS_FIELD_NAME.COUNTRY];
+export async function getCity(query: string, values: userInfoValues) {
+  const countryData = values[USER_INFO_FIELD_NAME.COUNTRY];
   const response = await httpRequest({
     url: GET_ADRESS_API.URL,
     method: GET_ADRESS_API.TYPE,
@@ -112,8 +111,8 @@ export async function getCity(query: string, values: FindAdressValues) {
     fias_level: item.data.fias_level,
   }));
 }
-export async function getStreet(query: string, values: FindAdressValues) {
-  const cityData = values[FIND_ADRESS_FIELD_NAME.CITY];
+export async function getStreet(query: string, values: userInfoValues) {
+  const cityData = values[USER_INFO_FIELD_NAME.CITY];
   const response = await httpRequest({
     url: GET_ADRESS_API.URL,
     method: GET_ADRESS_API.TYPE,
@@ -133,8 +132,8 @@ export async function getStreet(query: string, values: FindAdressValues) {
     fias_level: item.data.fias_level,
   }));
 }
-export async function getHouse(query: string, values: FindAdressValues) {
-  const streetData = values[FIND_ADRESS_FIELD_NAME.STREET];
+export async function getHouse(query: string, values: userInfoValues) {
+  const streetData = values[USER_INFO_FIELD_NAME.STREET];
   const response = await httpRequest({
     url: GET_ADRESS_API.URL,
     method: GET_ADRESS_API.TYPE,
@@ -180,50 +179,48 @@ export async function getPostalCode(query: string) {
     postal_code: item.data.index,
   }));
 }
-
-export function saveAdressAction(values: FindAdressValues) {
+export function getAdressAction() {
   return async (dispatch: Function) => {
     dispatch({
-      type: FIND_ADRESS_ACTION_TYPE.SAVE_DATA_PENDING,
+      type: USER_INFO_ACTION_TYPE.GET_DATA_PENDING,
     });
     try {
-      await httpRequest({
-        method: SAVE_ADRESS_API.TYPE,
-        url: SAVE_ADRESS_API.URL,
-        data: values,
+      const response = await httpRequest({
+        method: GET_USER_INFO_API.TYPE,
+        url: GET_USER_INFO_API.URL,
       });
       dispatch({
-        type: FIND_ADRESS_ACTION_TYPE.SAVE_DATA_SUCCESS,
+        type: USER_INFO_ACTION_TYPE.GET_DATA_SUCCESS,
+        data: performAdressData(response.data),
       });
     } catch (err: any) {
       if (err.response) {
         dispatch({
-          type: FIND_ADRESS_ACTION_TYPE.SAVE_DATA_ERROR,
+          type: USER_INFO_ACTION_TYPE.GET_DATA_ERROR,
           errorMessage: err.response.data.message,
         });
       }
     }
   };
 }
-
-export function getAdressAction() {
+export function saveAdressAction(values: userInfoValues) {
   return async (dispatch: Function) => {
     dispatch({
-      type: FIND_ADRESS_ACTION_TYPE.GET_DATA_PENDING,
+      type: USER_INFO_ACTION_TYPE.SAVE_DATA_PENDING,
     });
     try {
-      const response = await httpRequest({
-        method: LOAD_ADRESS_API.TYPE,
-        url: LOAD_ADRESS_API.URL,
+      await httpRequest({
+        method: SAVE_USER_INFO_API.TYPE,
+        url: SAVE_USER_INFO_API.URL,
+        data: values,
       });
       dispatch({
-        type: FIND_ADRESS_ACTION_TYPE.GET_DATA_SUCCESS,
-        data: performAdressData(response.data),
+        type: USER_INFO_ACTION_TYPE.SAVE_DATA_SUCCESS,
       });
     } catch (err: any) {
       if (err.response) {
         dispatch({
-          type: FIND_ADRESS_ACTION_TYPE.GET_DATA_ERROR,
+          type: USER_INFO_ACTION_TYPE.SAVE_DATA_ERROR,
           errorMessage: err.response.data.message,
         });
       }

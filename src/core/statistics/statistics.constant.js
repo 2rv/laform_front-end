@@ -1,45 +1,94 @@
-export const STATISTICS_ROUTE_PATH = '/statistics';
+import { convertQuery } from './statistics.convert';
+
+export const STATISTICS_ROUTE_PATH = ({ type } = { type: '[[...type]]' }) =>
+  `/statistics/${type}`;
+
 export const STATISTICS_STORE_NAME = 'STATISTICS';
+
 export const STATISTICS_API = {
   GET_COUNT: {
-    ENDPOINT: ({ type, from, to }) =>
-      `/statistics/count/get?type=${convertType(
-        type,
-      )}&from=${from.toISOString()}&to=${to.toISOString()}`,
+    ENDPOINT: (query) => `/statistics/count/get?${convertQuery(query)}`,
     TYPE: 'GET',
   },
   GET_PRICE: {
-    ENDPOINT: ({ type, from, to }) =>
-      `/statistics/price/get?type=${convertType(
-        type,
-      )}&from=${from.toISOString()}&to=${to.toISOString()}`,
+    ENDPOINT: (query) => `/statistics/price/get?${convertQuery(query)}`,
     TYPE: 'GET',
   },
   GET_GENERAL: {
-    ENDPOINT: ({ type, from, to }) =>
-      `/statistics/general/get?type=${convertType(
-        type,
-      )}&from=${from.toISOString()}&to=${to.toISOString()}`,
+    ENDPOINT: (query) => `/statistics/general/get?${convertQuery(query)}`,
     TYPE: 'GET',
   },
   GET_USERS: {
-    ENDPOINT: ({ from, to }) => {
-      return `/statistics/user/get?from=${from.toISOString()}&to=${to.toISOString()}`;
+    ENDPOINT: (query) => {
+      return `/statistics/user/get?${convertQuery(query)}`;
     },
     TYPE: 'GET',
   },
 };
 
-function convertType(type) {
-  if (type === null) {
-    return 9;
-  } else if (type === 'master-class') {
-    return 0;
-  } else if (type === 'pattern-electronic') {
-    return 1;
-  } else if (type === 'pattern-print') {
-    return 2;
-  } else if (type === 'sewing-good') {
-    return 3;
-  }
-}
+export const STATISTICS_TABS = [
+  { name: 'STATISTICS.TABS.TOTAL', path: STATISTICS_ROUTE_PATH() },
+  {
+    name: 'STATISTICS.TABS.MASTER_CLASS',
+    path: STATISTICS_ROUTE_PATH,
+    pathConfig: { params: { type: 'master-class' } },
+  },
+  {
+    name: 'STATISTICS.TABS.PRINT_PATTERNS',
+    path: STATISTICS_ROUTE_PATH,
+    pathConfig: { params: { type: 'pattern-print' } },
+  },
+  {
+    name: 'STATISTICS.TABS.ELECTRONIC_PATTERNS',
+    path: STATISTICS_ROUTE_PATH,
+    pathConfig: { params: { type: 'pattern-electronic' } },
+  },
+  {
+    name: 'STATISTICS.TABS.SEWING_GOODS',
+    path: STATISTICS_ROUTE_PATH,
+    pathConfig: { params: { type: 'sewing-good' } },
+  },
+];
+
+export const STATISTICS_PERIODS = [
+  {
+    id: 0,
+    tid: 'День',
+    value: 1,
+  },
+  {
+    id: 1,
+    tid: 'Неделя',
+    value: 7,
+  },
+  {
+    id: 2,
+    tid: '2 Недели',
+    value: 14,
+  },
+  {
+    id: 3,
+    tid: 'Месяц',
+    value: 30,
+  },
+  {
+    id: 4,
+    tid: 'Квартал',
+    value: 90,
+  },
+  {
+    id: 5,
+    tid: 'Пол года',
+    value: 182,
+  },
+  {
+    id: 6,
+    tid: 'Год',
+    value: 365,
+  },
+  {
+    id: 7,
+    tid: 'Всё время',
+    value: 7300,
+  },
+];

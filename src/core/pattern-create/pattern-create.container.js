@@ -54,7 +54,7 @@ export function CreatePatternContainer() {
   };
 
   const deleteProduct = () => {
-    dispatch(patternDelete(patternProductId));
+    dispatch(patternDelete(patternProductId, productState.type));
   };
 
   const initialValues = () => {

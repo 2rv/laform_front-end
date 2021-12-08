@@ -1,6 +1,5 @@
 import { redirect } from 'src/main/navigation';
-import { httpRequest } from '../../main/http';
-import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
+import { httpRequest } from 'src/main/http';
 import { CREATE_SEWING_GOODS_API } from './sewing-goods-create.constant';
 import {
   convertForUpload,
@@ -11,6 +10,10 @@ import {
   CREATE_SEWING_GOODS_ACTION_TYPE,
   SEWING_GOODS_FIELD_NAME,
 } from './sewing-goods-create.type';
+import {
+  ALL_PRODUCTS_ROUTE_PATH,
+  ALL_PRODUCTS_TAB_TYPES,
+} from '../all-products';
 
 export function createSewingGoodsUploadData(imagesUrls, formValues) {
   return async (dispatch) => {
@@ -163,7 +166,9 @@ export function sewingGoodsDelete(id) {
         type: CREATE_SEWING_GOODS_ACTION_TYPE.SEWING_GOODS_DELETE_SUCCESS,
       });
 
-      redirect(ALL_PRODUCTS_ROUTE_PATH);
+      redirect(ALL_PRODUCTS_ROUTE_PATH, {
+        params: { type: ALL_PRODUCTS_TAB_TYPES[3] },
+      });
     } catch (err) {
       if (err.response) {
         dispatch({

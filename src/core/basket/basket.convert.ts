@@ -12,7 +12,6 @@ import {
   basketStateType,
   addToCartDataType,
   formikValues,
-  ORDER_FIELD_NAME,
 } from './basket.type';
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 
@@ -258,10 +257,10 @@ export function convertCreateOrder(
       sdek: isSdek,
       sdekTariffCode: data?.sdekTariff?.tariff_code,
       sdekCityCode: data?.sdekPoint?.location?.city_code,
-      address: `${data.adress.country}, ${
-        data.adress.city || data.adress.settlement
-      }, ${data.adress.street}, ${data.adress.house}, ${
-        data.adress.postal_code
+      address: `${data.address.country}, ${
+        data.address.city || data.address.settlement
+      }, ${data.address.street}, ${data.address.house}, ${
+        data.address.postal_code
       }`,
     },
     purchaseProducts: bascketState.map((item) => {
@@ -278,10 +277,3 @@ export function convertCreateOrder(
     }),
   };
 }
-
-export const convertUserInfo = (values: formikValues) => {
-  return {
-    [ORDER_FIELD_NAME.FULL_NAME]: values[ORDER_FIELD_NAME.FULL_NAME],
-    [ORDER_FIELD_NAME.PHONE]: values[ORDER_FIELD_NAME.PHONE],
-  };
-};

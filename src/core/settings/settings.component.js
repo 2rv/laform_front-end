@@ -1,18 +1,14 @@
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import {
   SectionLayout,
   PageLayout,
   ContentLayout,
-} from '../../lib/element/layout';
-import { TitlePrimary } from '../../lib/element/title';
-import { SettingsUserInfo } from '../settings-user-info';
+} from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
 import { SettingsChangePasswordContainer } from '../settings-change-password';
 import { SettingsChangeEmailContainer } from '../settings-change-email';
 import { SettingsChangeNotificationContainer } from '../settings-change-notification';
 import { SettingsLogutContainer } from '../settings-logout';
-import { SETTINGS_CHANGE_EMAIL_STORE_NAME } from '../settings-change-email';
-import { BlockFindAdress } from '../block-find-adress';
+import { BlockUserInfo } from '../settings-user-info';
 
 export function SettingsComponent() {
   return (
@@ -21,8 +17,7 @@ export function SettingsComponent() {
         <SectionLayout>
           <TitlePrimary tid="SETTINGS.HEADER" />
           <SectionLayout>
-            <SettingsUserInfo />
-            <BlockFindAdress />
+            <BlockUserInfo />
             <SettingsChangePasswordContainer />
             <SettingsChangeEmailContainer />
             <SettingsChangeNotificationContainer />
