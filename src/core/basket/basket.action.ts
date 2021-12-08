@@ -134,9 +134,14 @@ export function createOrderAction(
         url: BASKET_API.CREATE_ORDER(isAuth),
         data: data,
       });
+
+      alert(
+        'Успешно заказ создан в Бд можно посмотреть в моих покупках и на почте',
+      );
+
       if (response.data) {
-        dispatch(clearCartAction());
-        window.location.href = response.data;
+        // dispatch(clearCartAction());
+        // window.location.href = response.data;
       } else {
         dispatch({
           type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,
