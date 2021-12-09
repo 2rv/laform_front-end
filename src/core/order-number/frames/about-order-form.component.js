@@ -23,7 +23,6 @@ export function AboutOrderFormComponent(props) {
     errors,
     touched,
     handleBlur,
-    deliveryTypeOptions,
     isOrderNumberChangePending,
     isOrderNumberChangeSuccess,
   } = props;
@@ -80,15 +79,6 @@ export function AboutOrderFormComponent(props) {
                 onBlur={handleBlur}
                 disabled={true}
               />
-              <FieldSelect
-                titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.DELIVERY_METHOD"
-                options={deliveryTypeOptions}
-                name={ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD}
-                value={values[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]}
-                onChange={handleChange}
-                disabled={true}
-                textValue
-              />
             </FieldLayout>
             <TextareaField
               titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.ORDER_NOTE"
@@ -102,8 +92,6 @@ export function AboutOrderFormComponent(props) {
           <AboutOrderPrice
             discount={values[ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]}
             price={values[ABOUT_ORDER_FIELD_NAME.PRICE]}
-            deliveryMethod={values[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]}
-            deliveryTypeOptions={deliveryTypeOptions}
           />
         </SectionLayout>
 

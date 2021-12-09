@@ -13,7 +13,6 @@ import { USER_INFO_STORE_NAME } from './user-info.constant';
 import {
   USER_INFO_FIELD_NAME,
   addressValueType,
-  FullAddressType,
   FormikObject,
 } from './user-info.type';
 import { UserInfoComponent } from './user-info.component';
@@ -26,6 +25,7 @@ import {
   saveAdressAction,
   getAdressAction,
 } from './user-info.action';
+import { BasicAddressType } from 'src/lib/basic-types';
 
 interface UserInfoContainerProps {
   onChange?: (name: USER_INFO_FIELD_NAME, value: any) => void;
@@ -123,7 +123,7 @@ export function UserInfoContainer(props: UserInfoContainerProps) {
 
   const changeMethods = {
     country: (value: addressValueType) => {
-      const newValue: FullAddressType = {
+      const newValue: BasicAddressType = {
         country: value?.country,
         city: '',
         settlement: '',
@@ -140,7 +140,7 @@ export function UserInfoContainer(props: UserInfoContainerProps) {
       formik.setFieldValue(USER_INFO_FIELD_NAME.FULL_ADDRESS, newValue);
     },
     city: (value: addressValueType) => {
-      const newValue: FullAddressType = {
+      const newValue: BasicAddressType = {
         country: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].country,
         city: value?.city,
         settlement: value?.settlement,
@@ -156,7 +156,7 @@ export function UserInfoContainer(props: UserInfoContainerProps) {
       formik.setFieldValue(USER_INFO_FIELD_NAME.FULL_ADDRESS, newValue);
     },
     street: (value: addressValueType) => {
-      const newValue: FullAddressType = {
+      const newValue: BasicAddressType = {
         country: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].country,
         city: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].city,
         settlement: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].settlement,
@@ -171,7 +171,7 @@ export function UserInfoContainer(props: UserInfoContainerProps) {
       formik.setFieldValue(USER_INFO_FIELD_NAME.FULL_ADDRESS, newValue);
     },
     house: (value: addressValueType) => {
-      const newValue: FullAddressType = {
+      const newValue: BasicAddressType = {
         country: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].country,
         city: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].city,
         settlement: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].settlement,
@@ -185,7 +185,7 @@ export function UserInfoContainer(props: UserInfoContainerProps) {
       formik.setFieldValue(USER_INFO_FIELD_NAME.FULL_ADDRESS, newValue);
     },
     postal_code: (value: addressValueType) => {
-      const newValue: FullAddressType = {
+      const newValue: BasicAddressType = {
         country: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].country,
         city: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].city,
         settlement: formik.values[USER_INFO_FIELD_NAME.FULL_ADDRESS].settlement,

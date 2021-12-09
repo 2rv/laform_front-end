@@ -9,7 +9,7 @@ export function TableComment(props: props) {
   if (!comment) return null;
   return (
     <Td>
-      <ProductDescription text={comment} />
+      <ProductDescription description={comment} />
     </Td>
   );
 }

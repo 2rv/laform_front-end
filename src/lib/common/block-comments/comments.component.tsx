@@ -6,27 +6,41 @@ import { Divider } from 'src/lib/element/divider';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 import { ConvertTime } from 'src/lib/common/time-convert';
-import { convertCommentsData } from './comments-list.convert';
 
-export function CommentsComponent(props) {
+export interface CommentsProps {
+  id: string;
+  name: string;
+  image: string;
+  text: string;
+  createDate: Date;
+  path: Function;
+  pathConfig: { params: { id: string } };
+}
+
+export function CommentsComponent(props: { comments: CommentsProps[] }) {
   const { comments = [] } = props;
 
   return (
     <SectionLayout type="SMALL">
       <Title tid="PROFILE.COMMENTS" />
       <Divider />
-      {Boolean(comments?.length > 0) ? (
-        <Container>
-          {convertCommentsData(comments).map((comment) => (
-            <Content key={comment.id}>
-              <Link path={`/${comment.productName}/${comment.productId}`}>
-                <Image src={comment.image} />
-                <TextSecondary tid={comment.text} />
-              </Link>
-              <Text>{ConvertTime(comment.createDate)}</Text>
-            </Content>
-          ))}
-        </Container>
+      {Boolean(comments.length > 0) ? (
+        comments.map((comment) => {
+          const { id, name, image, text, createDate, path, pathConfig } =
+            comment;
+          return (
+            <Container>
+              <Content key={id}>
+                <Link path={path} pathConfig={pathConfig}>
+                  <Image src={image} />
+                  <TextSecondary tid={name} />
+                  <TextSecondary tid={text} />
+                </Link>
+                <Text>{ConvertTime(createDate)}</Text>
+              </Content>
+            </Container>
+          );
+        })
       ) : (
         <TextSecondary tid="PROFILE.NOT_HAVE_COMMENTS" />
       )}

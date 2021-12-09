@@ -21,12 +21,11 @@ export function convertPurchaseInfo(
     email: rowData.email,
     fullName: rowData.fullName,
     address: rowData.address,
-    phoneNumber: rowData.phoneNumber,
+    phone: rowData.phone,
     comment: rowData.comment,
     price: rowData.price,
     promoCode: rowData.promoCode,
     promoCodeDiscount: rowData.promoCodeDiscount,
-    typeOfDelivery: rowData.typeOfDelivery,
   };
 }
 export function convertPurchaseProducts(
@@ -77,10 +76,10 @@ function masterItemConvert(data: BasicPurchaseProductType): TableItemType {
 }
 function patternItemConvert(data: BasicPurchaseProductType): TableItemType {
   const option = data.patternProductId?.options.find(
-    (i) => i.id === data.optionId.id,
+    (i) => i.id === data.optionId?.id,
   );
   const optionIndex = data.patternProductId?.options.findIndex(
-    (i) => i.id === data.optionId.id,
+    (i) => i.id === data.optionId?.id,
   );
   const totalPrice = getPrice({
     price: option?.price || data.totalPrice,
@@ -108,20 +107,17 @@ function patternItemConvert(data: BasicPurchaseProductType): TableItemType {
     maxCount: option?.count || data.patternProductId.count || 1,
     params: {
       size: option?.size,
-      format:
-        data.patternProductId.type === 1
-          ? 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC'
-          : 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
+      type: data.type,
       complexity: data.patternProductId.complexity,
     },
   };
 }
 function sewingItemConvert(data: BasicPurchaseProductType): TableItemType {
   const option = data.sewingProductId?.options.find(
-    (i) => i.id === data.optionId.id,
+    (i) => i.id === data.optionId?.id,
   );
   const optionIndex = data.sewingProductId?.options.findIndex(
-    (i) => i.id === data.optionId.id,
+    (i) => i.id === data.optionId?.id,
   );
   const totalPrice = getPrice({
     price: option?.price || data.totalPrice,
@@ -183,11 +179,11 @@ export function convertChangePurchaseProducts(
   purchaseProducts: BasicPurchaseProductType[],
   values: changeValues,
 ): BasicPurchaseProductType[] {
-  return purchaseProducts.map((item) => {
+  return purchaseProducts.map((item: any) => {
     if (item.id === values.id) {
       if (values.count) item.totalCount = values.count;
       if (values.length) item.totalLength = values.length;
-      if (values.optionId) item.optionId.id = values.optionId;
+      if (values.optionId) item.optionId = { id: values.optionId };
     }
     return item;
   });
@@ -219,9 +215,8 @@ export function convertForUpdate(
     email: values.email,
     fullName: values.fullName,
     address: values.address,
-    phoneNumber: values.phoneNumber,
+    phone: values.phone,
     comment: values.comment,
     purchaseProducts: convertForUpdatePurchaseProducts(products),
-    typeOfDelivery: values.typeOfDelivery,
   };
 }

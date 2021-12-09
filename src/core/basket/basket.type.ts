@@ -64,7 +64,7 @@ export interface changeCartataType {
 }
 export interface basketStateType {
   id: string;
-  type: number;
+  type: 0 | 1 | 2 | 3;
   indexId: string;
   optionId: string;
   count: number;
@@ -122,6 +122,8 @@ export interface BasketFormProps extends AlertProps {
 }
 export interface CartAlertProps extends AlertProps {
   emailConfirmedError: any;
+  fullNameError: any;
+  phoneError: any;
 }
 export interface AlertProps {
   orderError: boolean;

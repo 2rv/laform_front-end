@@ -1,4 +1,4 @@
-import { FullAddressType } from 'src/core/settings-user-info';
+import { BasicAddressType } from 'src/lib/basic-types';
 
 export interface sdekPointsType {
   sdekPoints: basicSdekPoints[];
@@ -13,7 +13,7 @@ export interface SdekPointsComponentProps {
   error: any;
 }
 export interface SdekPointsContainerProps {
-  data: FullAddressType;
+  data: BasicAddressType;
   value: basicSdekPoints;
   onChange: Function;
   name: string;

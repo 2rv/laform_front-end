@@ -1,6 +1,6 @@
 export { ProductVendorCode } from './vendor-code';
 export { ProductParams } from './product-params';
-export { ProductDescription } from './product-text';
+export { ProductDescription } from './product-description';
 export { ProductImages } from './product-images';
 export { ProductPrice } from './product-price';
 export { ProductCategories } from './product-categories';
@@ -9,4 +9,4 @@ export { ProductActions } from './product-actions';
 export { ProductPagePrice } from './product-page-price';
 export { ProducName } from './product-name';
 export { ProducCounter } from './product-counter';
-export { MaterialsOld } from './product-material-old';
+export { ProductMaterials } from './product.materials';

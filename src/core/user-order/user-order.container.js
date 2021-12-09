@@ -13,7 +13,6 @@ import { userOrderUploadData } from './user-order.action';
 import { USER_ORDER_STORE_NAME } from './user-order.constant';
 import { UserOrderComponent } from './user-order.component';
 import { ABOUT_ORDER_FIELD_NAME } from './user-order.type';
-import { PURCHASE_STATUS_SELECT } from 'src/lib/basic-types';
 
 export function UserOrderContainer() {
   const { query } = useRouter();
@@ -63,8 +62,8 @@ export function UserOrderContainer() {
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT] ?? 0,
     [ABOUT_ORDER_FIELD_NAME.ID]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ID] ?? null,
-    [ABOUT_ORDER_FIELD_NAME.DELIVERY_PRICE]:
-      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.DELIVERY_PRICE] ?? 0,
+    [ABOUT_ORDER_FIELD_NAME.SHIPPING_PRICE]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.SHIPPING_PRICE] ?? 0,
   });
 
   return (

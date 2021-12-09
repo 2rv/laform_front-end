@@ -1,21 +1,21 @@
 import styled, { css } from 'styled-components';
-import { THEME_SIZE } from '../../lib/theme';
-import { TextSecondary } from '../../lib/element/text';
-import { TextButton } from '../../lib/element/button';
 import { useState } from 'react';
+import { THEME_SIZE } from 'src/lib/theme';
+import { TextSecondary } from 'src/lib/element/text';
+import { TextButton } from 'src/lib/element/button';
 
 export function ProductDescription(props) {
   const [more, setMore] = useState(true);
-  const { text, textOld, limit = 200 } = props;
-  const firstText = text?.slice(0, limit);
-  const secondText = text?.slice(limit);
+  const { description, descriptionOld, limit = 200 } = props;
+  const firstText = description?.slice(0, limit);
+  const secondText = description?.slice(limit);
   return (
     <Container>
-      {text ? (
+      {description ? (
         <>
           <TextSecondary>{firstText}</TextSecondary>
           <Text more={more}>{secondText}</Text>
-          {Boolean(text?.length > limit) && (
+          {Boolean(description?.length > limit) && (
             <>
               <Text more={!more} tid="..." />
               <Button
@@ -26,7 +26,7 @@ export function ProductDescription(props) {
           )}
         </>
       ) : (
-        <div dangerouslySetInnerHTML={{ __html: textOld }} />
+        <div dangerouslySetInnerHTML={{ __html: descriptionOld }} />
       )}
     </Container>
   );
@@ -43,7 +43,6 @@ const Container = styled.div`
   line-height: 1.5;
   word-break: break-all;
 `;
-
 const Text = styled(TextSecondary)`
   display: inline;
   ${(p) =>

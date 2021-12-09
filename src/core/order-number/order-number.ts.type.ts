@@ -6,10 +6,9 @@ export interface OrderPurchaseType {
   email: string;
   fullName: string;
   address: string;
-  phoneNumber: string;
+  phone: string;
   comment?: string;
   price: string;
   promoCode?: string;
   promoCodeDiscount: number;
-  typeOfDelivery?: string;
 }

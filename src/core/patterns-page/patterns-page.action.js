@@ -17,7 +17,7 @@ export function patternsPageUploadData(id) {
 
       dispatch({
         type: PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PAGE_UPLOAD_SUCCESS,
-        payload: convertPatternData(response.data),
+        data: convertPatternData(response.data),
       });
     } catch (err) {
       if (err.response) {

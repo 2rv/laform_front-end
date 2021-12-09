@@ -37,7 +37,10 @@ export function ProductMainComponent(props) {
         title="PATTERNS.CREATE.FORM.COMPLEXITY"
       />
       <Divider />
-      <ProductDescription text={description} textOld={descriptionOld} />
+      <ProductDescription
+        description={description}
+        descriptionOld={descriptionOld}
+      />
       <Divider />
       <ProductSelect
         id={id}

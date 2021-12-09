@@ -1,3 +1,5 @@
+import { USER_ROLE } from '../common/auth';
+
 export interface BasicReactEditorType {
   blocks: [];
   time: number;
@@ -44,7 +46,29 @@ export interface BasicOptionType {
   length: string;
   filesPdf: BasicFileType[];
 }
-
+export interface BasicAddressType {
+  country: string;
+  city: string;
+  settlement: string;
+  street: string;
+  house: string;
+  postal_code: string;
+  kladr_id: string;
+}
+export interface BasicUserSettingType {
+  address: BasicAddressType;
+  fullName: string;
+  phone: string;
+}
+export interface BasicCommentProps {
+  createDate: Date;
+  id: string;
+  text: string;
+  masterClassId: BasicMasterClassType;
+  postId: BasicArticleType;
+  patternProductId: BasicPatternType;
+  sewingProductId: BasicSewingGoodType;
+}
 export interface BasicArticleType {
   id: string;
   vendorCode: string;
@@ -90,6 +114,7 @@ export interface BasicMasterClassType {
 }
 export interface BasicPatternType {
   id: string;
+  wpIdNew?: string;
   type: 1 | 2;
   optionType: 0 | 2;
   vendorCode: string;
@@ -104,8 +129,12 @@ export interface BasicPatternType {
   titleEn: string;
   materialRu: BasicReactEditorType;
   materialEn: BasicReactEditorType;
+  descriptionRu?: string;
+  descriptionEn?: string;
   modifierRu: string;
   modifierEn: string;
+  materialOld?: string;
+  descriptionOld?: string;
   complexity: 1 | 2 | 3 | 4 | 5;
   price: string;
   discount: number;
@@ -125,6 +154,8 @@ export interface BasicSewingGoodType {
   options: BasicOptionType[];
   recommendation: BasicRecommendationType;
   like: BasicLikeType[];
+  descriptionRu?: string;
+  descriptionEn?: string;
   price: string;
   discount: number;
   count: number;
@@ -147,15 +178,18 @@ export interface BasicPurchaseType {
   userId: any;
   email: string;
   fullName: string;
-  address: string;
-  phoneNumber: string;
+  phone: string;
   comment: string;
   purchaseProducts: BasicPurchaseProductType[];
-  promoCode: string;
-  typeOfDelivery: string;
+  sdek?: boolean;
+  sdekTariffCode?: number;
+  sdekCityCode?: number;
+  address: string;
   shippingPrice: number;
   price: string;
+  promoCode: string;
   promoCodeDiscount: number;
+  purchaseProductsCount: number;
 }
 export interface BasicPurchaseProductType {
   id: string;
@@ -164,12 +198,25 @@ export interface BasicPurchaseProductType {
   masterClassId: BasicMasterClassType;
   patternProductId: BasicPatternType;
   sewingProductId: BasicSewingGoodType;
-  optionId: BasicOptionType;
-  type: number;
+  optionId?: BasicOptionType;
+  type: 0 | 1 | 2 | 3;
   totalCount: number;
   totalLength: string;
   totalDiscount: number;
   totalPrice: string;
+}
+export interface BasicUserInfoType {
+  id: number;
+  createDate: Date;
+  login: string;
+  role: USER_ROLE;
+  email: string;
+  emailConfirmed: true | false;
+  notificationEmail: true | false;
+  purchase: BasicPurchaseType[];
+  userSettingId: BasicUserSettingType;
+  comment: BasicCommentProps[];
+  like: BasicRecommendationProducsType[];
 }
 
 export enum PURCHASE_STATUS {
@@ -183,17 +230,17 @@ export enum PURCHASE_STATUS {
   RETURNED = 7, // 'Вовращен отправителю',
   REFUSED_TO_BUY = 8, //'Возвращен по гарантии',
 }
-export const PURCHASE_STATUS_INFO = {
-  0: 'Сформирован',
-  1: 'Ожидает оплаты',
-  2: 'Оплачено',
-  3: 'Ожидает отправки',
-  4: 'Отправлено',
-  5: 'Получено',
-  6: 'Отменено',
-  7: 'Вовращен отправителю',
-  8: 'Возвращен по гарантии',
-};
+export enum PURCHASE_STATUS_INFO {
+  'Сформирован',
+  'Ожидает оплаты',
+  'Оплачено',
+  'Ожидает отправки',
+  'Отправлено',
+  'Получено',
+  'Отменено',
+  'Вовращен отправителю',
+  'Возвращен по гарантии',
+}
 export const PURCHASE_STATUS_SELECT = [
   { id: 0, tid: 'Сформирован' },
   { id: 1, tid: 'Ожидает оплаты' },

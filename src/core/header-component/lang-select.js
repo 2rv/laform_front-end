@@ -15,9 +15,9 @@ export function LangSelect(props) {
 
   const updateLanguageHandler = (lang) => {
     dispatch(langUpdateLanguage(lang));
-    if (currentLang.toUpperCase() !== lang) {
-      window.location.reload();
-    }
+    // if (currentLang.toUpperCase() !== lang) {
+    //   window.location.reload();
+    // }
   };
 
   return (

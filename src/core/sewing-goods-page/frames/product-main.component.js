@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { spacing } from '../../../lib/theme';
-import { TitlePrimary } from '../../../lib/element/title';
-import { Divider } from '../../../lib/element/divider';
+import { spacing } from 'src/lib/theme';
+import { TitlePrimary } from 'src/lib/element/title';
+import { Divider } from 'src/lib/element/divider';
 import {
   ProductPagePrice,
   ProductParams,
@@ -15,17 +15,17 @@ export function ProductMainComponent(props) {
     id,
     title,
     description,
+    images,
     categories,
     price,
     discount,
     count,
     length,
-    diliveryPrice,
+    shippingPrice,
     vendorCode,
-    status,
     params,
     otherParams,
-  } = props.data;
+  } = props;
 
   return (
     <Container>
@@ -34,11 +34,11 @@ export function ProductMainComponent(props) {
         <ProductCategories categories={categories} />
       </HeaderCase>
       <Divider />
-      <ProductDescription text={description} />
+      <ProductDescription description={description} />
       <ProductParams params={params} />
       <Divider />
       <ProductPagePrice
-        diliveryPrice={diliveryPrice}
+        shippingPrice={shippingPrice}
         price={price}
         discount={discount}
         count={count}

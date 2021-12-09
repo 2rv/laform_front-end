@@ -16,29 +16,29 @@ import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { LOGIN_ROUTE_PATH } from '../login';
 
 export function PatternsPageContainer() {
-  const dispatch = useDispatch();
-  const { state, pageLoading, isAuth } = useSelector((state) => ({
-    state: state[PATTERNS_PAGE_STORE_NAME],
-    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    isAuth: state[AUTH_STORE_NAME].logged,
-  }));
   const id = getQuery('id');
-
+  const dispatch = useDispatch();
+  const { pageLoading, isAuth, productState, sendMailState } = useSelector(
+    (state) => ({
+      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+      isAuth: state[AUTH_STORE_NAME].logged,
+      productState: state[PATTERNS_PAGE_STORE_NAME].product,
+      sendMailState: state[PATTERNS_PAGE_STORE_NAME].sendFilesToMail,
+    }),
+  );
   useEffect(() => {
     if (isAuth) dispatch(patternsPageUploadData(id));
     else redirect(LOGIN_ROUTE_PATH);
   }, []);
-
   return (
     <PatternsPageComponent
-      isPending={isRequestPending(state.product)}
-      isError={isRequestError(state.product)}
-      isSuccess={isRequestSuccess(state.product)}
-      errorMessage={getRequestErrorMessage(state.product)}
-      isPdfPending={isRequestPending(state.productPdf)}
-      isPdfSuccess={isRequestSuccess(state.productPdf)}
       pageLoading={pageLoading}
-      productData={getRequestData(state.product, false)}
+      pending={isRequestPending(productState)}
+      error={isRequestError(productState)}
+      errorMessage={getRequestErrorMessage(productState)}
+      productData={getRequestData(productState, false)}
+      mailPending={isRequestPending(sendMailState)}
+      mailSuccess={isRequestSuccess(sendMailState)}
     />
   );
 }

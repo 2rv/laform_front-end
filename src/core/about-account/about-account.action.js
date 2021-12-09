@@ -1,7 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { ABOUT_ACCOUNT_API } from './about-account.constant';
 import { ABOUT_ACCOUNT_ACTION_TYPE } from './about-account.type';
-import { convertLikesData } from './about-account.convert';
+import { convertUserInfo } from './about-account.convert';
 
 export function userLoadData(id) {
   return async (dispatch) => {
@@ -17,7 +17,7 @@ export function userLoadData(id) {
 
       dispatch({
         type: ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_SUCCESS,
-        user: response.data,
+        data: convertUserInfo(response.data),
       });
     } catch (err) {
       if (err.response) {

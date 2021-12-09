@@ -1,7 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { USER_ORDER_API } from './user-order.constant';
 import { USER_ORDER_ACTION_TYPE } from './user-order.type';
-import { convertPurchaseData } from './user-order.ts.convert';
+import { convertPurchaseData } from './user-order.convert';
 
 export function userOrderUploadData(orderId) {
   return async (dispatch) => {

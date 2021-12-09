@@ -5,7 +5,7 @@ import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
 import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { ProductMainComponent } from './frames';
-import { ProductImages, MaterialsOld } from '../block-product-components';
+import { ProductImages, ProductMaterials } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { TabBlocks } from 'src/lib/element/tab-blocks';
 
@@ -31,17 +31,12 @@ export function PatternsProductComponent(props) {
         </Content>
       </SectionLayout>
       <TabBlocks tabItems={['Материалы', 'Рекомендации', 'Отзывы']}>
-        {productData.materials ? (
-          <ReactEditorBlock
-            titleTid="PATTERNS.MATERIALS"
-            data={productData.materials}
-            enableReInitialize
-            readOnly
-            enableIsEdit
-          />
-        ) : (
-          <MaterialsOld textOld={productData.materialOld} />
-        )}
+        <ProductMaterials
+          data={productData.materials}
+          oldData={productData.materialOld}
+          pending={isPending}
+          titleTid="PATTERNS.MATERIALS"
+        />
         <CardListBlock
           items={productData.recommendations}
           title="PATTERNS.RECOMMENDATIONS"

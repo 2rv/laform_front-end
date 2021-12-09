@@ -180,10 +180,7 @@ const patternItemConvert = (data: basketStateType): TableItemType => {
     maxCount: option?.count || data.patternProductId.count || 1,
     params: {
       size: option?.size,
-      format:
-        data.type === 1
-          ? 'PATTERNS.MY_PATTERNS.DETAILS.ELECTRONIC'
-          : 'PATTERNS.MY_PATTERNS.DETAILS.PRINTED',
+      type: data.type,
       complexity: data.patternProductId.complexity,
     },
   };
