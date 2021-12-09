@@ -8,7 +8,7 @@ import {
 import { ABOUT_ACCOUNT_ACTION_TYPE } from './about-account.type';
 
 const initialState = {
-  user: initRequestState(),
+  data: initRequestState(),
 };
 
 export function aboutAccountStore(state = initialState, action) {
@@ -16,17 +16,17 @@ export function aboutAccountStore(state = initialState, action) {
     case ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_PENDING:
       return {
         ...state,
-        user: setRequestPending(state.user),
+        data: setRequestPending(state.data),
       };
     case ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_SUCCESS:
       return {
         ...state,
-        user: setRequestSuccess(state.user, action.user),
+        data: setRequestSuccess(state.data, action.data),
       };
-    case ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_ERROR:
+    case ABOUT_ACCOUNT_ACTION_TYPE.data_LOAD_DATA_ERROR:
       return {
         ...state,
-        user: setRequestError(state.user, action.errorMessage),
+        data: setRequestError(state.data, action.errorMessage),
       };
     default:
       return state;

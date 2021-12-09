@@ -7,7 +7,7 @@ export interface TableProps {
 }
 export interface TableItemType {
   id: string;
-  type: number;
+  type?: 0 | 1 | 2 | 3 | 4;
   indexId?: string;
   path?: any;
   pathConfig?: any;
@@ -42,18 +42,15 @@ export interface TableParamsProps {
   color?: string;
   size?: string;
   program?: string;
-  format?: string;
+  type?: 0 | 1 | 2 | 3;
   category?: string;
   count?: number;
   length?: number;
   complexity?: number;
   fullName?: string;
   userId?: string;
-  diliveryInfo?: string;
   address?: string;
-  deliveryMethod?: string;
-  paymentMethod?: string;
-  phoneNumber?: string;
+  phone?: string;
   email?: string;
   createdDate?: Date;
 }

@@ -38,7 +38,7 @@ export function SewingGoodsPageContainer() {
       isSuccess={isRequestSuccess(state)}
       errorMessage={getRequestErrorMessage(state)}
       pageLoading={pageLoading}
-      productData={getRequestData(state, false)}
+      productData={getRequestData(state)}
     />
   );
 }

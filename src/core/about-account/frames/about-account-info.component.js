@@ -7,13 +7,22 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { ConvertDate } from 'src/lib/common/time-convert';
 
 export function AboutAccountInfoComponent(props) {
-  const { user } = props;
+  const { user = {} } = props;
+  const {
+    address,
+    fullName,
+    purchaseCount,
+    emailConfirmed,
+    createDate,
+    email,
+  } = user;
+
   return (
     <SectionLayout>
-      {user?.userSettingId?.fullName && (
+      {fullName && (
         <LineCase>
           <UserIcon />
-          <UserTitle tid={user?.userSettingId?.fullName} />
+          <UserTitle tid={fullName} />
         </LineCase>
       )}
       <SectionLayout type="SMALL">
@@ -21,47 +30,31 @@ export function AboutAccountInfoComponent(props) {
         <LineSection>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.DATE_OF_REGISTRATION" />
-            <InfoText>{ConvertDate(user.createDate, 'MMMM DD, YYYY')}</InfoText>
+            <InfoText>{ConvertDate(createDate, 'MMMM DD, YYYY')}</InfoText>
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.EMAIL" />
-            <InfoText>{user.email}</InfoText>
+            <InfoText>{email}</InfoText>
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.STATUS" />
             <StatusInfo
-              status={user.emailConfirmed}
-              tid={
-                user.emailConfirmed
-                  ? 'PROFILE.VERIFIED'
-                  : 'PROFILE.NOT_VERIFIED'
-              }
+              status={emailConfirmed}
+              tid={emailConfirmed ? 'PROFILE.VERIFIED' : 'PROFILE.NOT_VERIFIED'}
             />
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.PURHCASES_QUANTITY" />
-            <InfoText tid={user?.purchase?.length} />
+            <InfoText tid={purchaseCount} />
           </SectionLayout>
         </LineSection>
       </SectionLayout>
       <SectionLayout type="SMALL">
         <TitlePrimary tid="PROFILE.SHIPPING_AND_PAYMENT" />
         <LineSection>
-          {user?.userSettingId?.location && (
-            <SectionLayout type="TEXT">
-              <InfoTitle tid="PROFILE.DELIVERY_ADDRESS" />
-              <InfoText tid={user?.userSettingId?.location} />
-            </SectionLayout>
-          )}
           <SectionLayout type="TEXT">
-            <InfoTitle tid="PROFILE.PAYMENT_METHOD" />
-            <InfoText
-              tid={
-                user?.userSettingId?.paymentType === 1
-                  ? 'PROFILE.ONLINE'
-                  : 'PROFILE.OTHER'
-              }
-            />
+            <InfoTitle tid="PROFILE.DELIVERY_ADDRESS" />
+            <InfoText tid={address} />
           </SectionLayout>
         </LineSection>
       </SectionLayout>
@@ -79,7 +72,6 @@ const LineCase = styled.div`
   align-items: center;
   gap: ${spacing(2)};
 `;
-
 const UserTitle = styled(Title)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
 `;

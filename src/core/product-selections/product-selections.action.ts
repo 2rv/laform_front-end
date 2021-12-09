@@ -42,7 +42,6 @@ export function productsLoadData(currentLang: string) {
         method: PRODUCT_SELECTIONS_API.COMPILATION_LOAD.TYPE,
         url: PRODUCT_SELECTIONS_API.COMPILATION_LOAD.ENDPOINT,
       });
-
       const result = compilationsPerform({
         compilationRes: compilationRes.data,
         patternRes: patternRes.data[0],
@@ -50,7 +49,6 @@ export function productsLoadData(currentLang: string) {
         sewingRes: sewingRes.data[0],
         masterRes: masterRes.data[0],
       });
-      console.log(compilationRes.data);
 
       dispatch({
         type: PRODUCT_SELECTIONS_ACTION_TYPE.PRODUCTS_LOAD_SUCCESS,

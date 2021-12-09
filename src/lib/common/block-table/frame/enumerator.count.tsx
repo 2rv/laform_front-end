@@ -4,7 +4,7 @@ import { EnumeratorCount } from 'src/lib/element/enumerator';
 
 interface props {
   id?: string;
-  type: number;
+  type?: number;
   indexId?: string;
   count?: number;
   maxCount?: number;

@@ -128,7 +128,6 @@ export function createOrderAction(
     });
     try {
       const data = convertCreateOrder(values, bascketState, isSdek);
-
       const response = await httpRequest({
         method: 'POST',
         url: BASKET_API.CREATE_ORDER(isAuth),

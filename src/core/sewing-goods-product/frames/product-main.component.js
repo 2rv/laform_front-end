@@ -32,7 +32,7 @@ export function ProductMainComponent(props) {
       <ProducName name={name} modifier={modifier} discount={discount} />
       <ProductCategories categories={categories} />
       <Divider />
-      <ProductDescription text={description} />
+      <ProductDescription description={description} />
       <Divider />
       <ProductSelect
         id={id}

@@ -1,7 +1,7 @@
 import { httpRequest } from '../../main/http';
 import { ORDERS_API } from './orders.constant';
 import { ORDERS_ACTION_TYPE } from './orders.type';
-import { convertUsersOrderData } from './orders.convert';
+import { convertOrdersData } from './orders.convert';
 
 export function ordersLoadData(page) {
   return async (dispatch) => {
@@ -18,7 +18,7 @@ export function ordersLoadData(page) {
       dispatch({
         type: ORDERS_ACTION_TYPE.ORDERS_UPLOAD_SUCCESS,
         payload: {
-          orders: response.data[0].map(convertUsersOrderData),
+          orders: response.data[0].map(convertOrdersData),
           totalRecords: response.data[1],
         },
       });

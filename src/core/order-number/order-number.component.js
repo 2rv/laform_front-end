@@ -13,7 +13,6 @@ export function OrderNumberComponent(props) {
     initialValue,
     validate,
     isPending,
-    deliveryTypeOptions,
     isOrderNumberChangePending,
     isOrderNumberChangeSuccess,
 
@@ -42,7 +41,6 @@ export function OrderNumberComponent(props) {
         onSubmit={onSubmit}
         initialValue={initialValue}
         validate={validate}
-        deliveryTypeOptions={deliveryTypeOptions}
         isOrderNumberChangePending={isOrderNumberChangePending}
         isOrderNumberChangeSuccess={isOrderNumberChangeSuccess}
       />

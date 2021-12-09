@@ -15,21 +15,21 @@ export function ProductMainComponent(props) {
   const {
     id,
     type,
-    images,
     title,
     categories,
     description,
-    materials,
+    descriptionOld,
     price,
     discount,
+    shippingPrice,
     count,
-    diliveryPrice,
     filesPdf,
+    vendorCode,
     params,
     otherParams,
-    vendorCode,
-    isPdfPending,
-    isPdfSuccess,
+
+    mailPending,
+    mailSuccess,
   } = props;
 
   return (
@@ -39,11 +39,14 @@ export function ProductMainComponent(props) {
         <ProductCategories categories={categories} />
       </HeaderCase>
       <Divider />
-      <ProductDescription text={description} />
+      <ProductDescription
+        description={description}
+        descriptionOld={descriptionOld}
+      />
       <ProductParams params={params} />
       <Divider />
       <ProductPagePrice
-        diliveryPrice={diliveryPrice}
+        shippingPrice={shippingPrice}
         price={price}
         discount={discount}
         count={count}
@@ -52,8 +55,8 @@ export function ProductMainComponent(props) {
       <FilePdfActions
         title={title}
         filesPdf={filesPdf}
-        isPdfPending={isPdfPending}
-        isPdfSuccess={isPdfSuccess}
+        isPdfPending={mailPending}
+        isPdfSuccess={mailSuccess}
       />
       <Divider />
       <ProductVendorCode vendorCode={vendorCode} />

@@ -38,7 +38,7 @@ export function FormComponent(props: BasketFormComponentProps) {
     setFieldValue(ORDER_FIELD_NAME.PRICE, basketPrice);
   }, [basketPrice, values]);
 
-  const getFieldError = (name: ORDER_FIELD_NAME) => {
+  const getFieldError = (name: ORDER_FIELD_NAME | USER_INFO_FIELD_NAME) => {
     return errors[name] && touched[name] && errors[name];
   };
 
@@ -114,6 +114,8 @@ export function FormComponent(props: BasketFormComponentProps) {
 
       <CartAlert
         emailConfirmedError={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRMED)}
+        fullNameError={getFieldError(USER_INFO_FIELD_NAME.FULL_NAME)}
+        phoneError={getFieldError(USER_INFO_FIELD_NAME.PHONE)}
         {...alertProps}
       />
     </SectionLayout>

@@ -1,13 +1,6 @@
 import { FormikHandlers, FormikHelpers, FormikState } from 'formik';
-export interface FullAddressType {
-  country: string;
-  city: string;
-  settlement: string;
-  street: string;
-  house: string;
-  postal_code: string;
-  kladr_id: string;
-}
+import { BasicAddressType } from 'src/lib/basic-types';
+
 export interface FormikObject
   extends FormikHandlers,
     FormikHelpers<userInfoValues>,
@@ -69,7 +62,7 @@ export interface userInfoValues {
   [USER_INFO_FIELD_NAME.STREET]: StreetType;
   [USER_INFO_FIELD_NAME.HOUSE]: HouseType;
   [USER_INFO_FIELD_NAME.POSTAL_CODE]: PostalCodeType;
-  [USER_INFO_FIELD_NAME.FULL_ADDRESS]: FullAddressType;
+  [USER_INFO_FIELD_NAME.FULL_ADDRESS]: BasicAddressType;
   [USER_INFO_FIELD_NAME.FULL_NAME]: string;
   [USER_INFO_FIELD_NAME.PHONE]: string;
 }

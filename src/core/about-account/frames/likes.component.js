@@ -5,7 +5,6 @@ import { LinkSecondary } from 'src/lib/element/link';
 import { Divider } from 'src/lib/element/divider';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { TextPrimary, TextSecondary } from 'src/lib/element/text';
-import { convertLikesData } from '../about-account.convert';
 
 export function LikesComponent(props) {
   const { likes = [] } = props;
@@ -15,19 +14,22 @@ export function LikesComponent(props) {
       <Divider />
       {Boolean(likes.length) ? (
         <Container>
-          {convertLikesData(likes).map((like) => (
-            <Content key={like.id}>
-              <Link path={`/${like.productName}/${like.productId}`}>
-                <Image src={like.image} />
-                <ProductTitle tid={like.text} />
-              </Link>
-              <Case>
-                <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CATEGORY" />
-                &nbsp;
-                <TextPrimary tid={like.category} />
-              </Case>
-            </Content>
-          ))}
+          {likes.map((like) => {
+            const { id, name, image, category, path, pathConfig } = like;
+            return (
+              <Content key={id}>
+                <Link path={path} pathConfig={pathConfig}>
+                  <Image src={image} />
+                  <ProductTitle tid={name} />
+                </Link>
+                <Case>
+                  <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CATEGORY" />
+                  &nbsp;
+                  <TextPrimary tid={category} />
+                </Case>
+              </Content>
+            );
+          })}
         </Container>
       ) : (
         <TextSecondary tid="PROFILE.NOT_HAVE_LIKES" />
@@ -61,7 +63,6 @@ const Case = styled.div`
     margin-left: 90px;
   }
 `;
-
 const Link = styled(LinkSecondary)`
   display: flex;
   align-items: center;

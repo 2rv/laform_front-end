@@ -1,43 +1,46 @@
 import styled from 'styled-components';
-import { spacing } from '../../lib/theme';
-import { SectionLayout } from '../../lib/element/layout';
-import { TitlePrimary } from '../../lib/element/title';
-import { ReactEditorBlock } from '../../lib/common/block-react-editor';
+import { spacing } from 'src/lib/theme';
+import { SectionLayout } from 'src/lib/element/layout';
 import { ProductMainComponent } from './frames';
-import { ProductImages } from '../block-product-components';
+import { ProductImages, ProductMaterials } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';
+import { CenteredSpinner } from 'src/lib/element/spinner';
 
 export function PatternsPageComponent(props) {
   const {
-    isPending,
-    isError,
-    isSuccess,
-    errorMessage,
     pageLoading,
+    pending,
+    error,
+    errorMessage,
     productData,
-    isPdfPending,
-    isPdfSuccess,
+    mailPending,
+    mailSuccess,
   } = props;
-  if (!productData) return <LoaderPrimary />;
 
+  if (pending) {
+    return (
+      <Container>
+        <CenteredSpinner />;
+      </Container>
+    );
+  }
   return (
     <SectionLayout type="MEDIUM">
+      {pageLoading && <LoaderPrimary />}
       <Content>
         <ProductImages items={productData.images} />
         <ProductMainComponent
           {...productData}
-          isPdfPending={isPdfPending}
-          isPdfSuccess={isPdfSuccess}
+          mailPending={mailPending}
+          mailSuccess={mailSuccess}
         />
       </Content>
-      {productData.materials && (
-        <ReactEditorBlock
-          titleTid="PATTERNS.CREATE.FORM.COMPLEXITY"
-          data={productData.materials}
-          enableReInitialize
-          readOnly
-        />
-      )}
+      <ProductMaterials
+        data={productData.materials}
+        oldData={productData.materialOld}
+        pending={pending}
+        titleTid="PATTERNS.MATERIALS"
+      />
     </SectionLayout>
   );
 }
@@ -51,4 +54,9 @@ const Content = styled.div`
     flex-direction: column;
     gap: ${spacing(3)};
   }
+`;
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;

@@ -29,9 +29,6 @@ export function OrderNumberContainer() {
       orderNumberState: state[ORDER_NUMBER_STORE_NAME].orderUpdate,
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     }));
-
-  const deliveryTypeOptions = [];
-
   useEffect(() => {
     dispatch(orderNumberUploadData(query.id));
   }, []);
@@ -60,9 +57,6 @@ export function OrderNumberContainer() {
       [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]: '',
     });
     purchaseInfo.price = purchaseProducts[2];
-    if (!Boolean(purchaseInfo.typeOfDelivery)) {
-      purchaseInfo.typeOfDelivery = deliveryTypeOptions[0]?.tid;
-    }
     return purchaseInfo;
   }
 
@@ -81,7 +75,6 @@ export function OrderNumberContainer() {
       headersTable={headersTable}
       changeItem={changeItem}
       deleteItem={deleteItem}
-      deliveryTypeOptions={deliveryTypeOptions}
     />
   );
 }

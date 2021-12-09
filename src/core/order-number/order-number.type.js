@@ -4,14 +4,12 @@ export const ABOUT_ORDER_FIELD_NAME = {
   EMAIL: 'email',
   FULL_NAME: 'fullName',
   ORDER_NUMBER: 'orderNumber',
-  PHONE_NUMBER: 'phoneNumber',
+  PHONE_NUMBER: 'phone',
   ORDER_STATUS: 'orderStatus',
   PRICE: 'price',
   PROMO_CODE: 'promoCode',
   COMMENT: 'comment',
   PROMO_CODE_DISCOUNT: 'promoCodeDiscount',
-  DELIVERY_METHOD: 'typeOfDelivery',
-  // PAYMENT_METHOD: 'paymentMethod',
 };
 
 export const ORDER_NUMBER_ACTION_TYPE = {

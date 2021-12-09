@@ -5,15 +5,9 @@ import { SectionLayout } from '../../../lib/element/layout';
 import { ABOUT_ORDER_FIELD_NAME } from '../order-number.type';
 
 export function AboutOrderPrice(props) {
-  const {
-    discount = 0,
-    price = 0,
-    deliveryMethod,
-    deliveryTypeOptions,
-  } = props;
+  const { discount = 0, price = 0, deliveryPrice = 0, deliveryMethod } = props;
 
   const discountPrice = price - price * (discount / 100);
-  const deliveryPrice = deliveryTypeOptions.find((method) => method.tid === deliveryMethod)?.price;
   const totalPrice = Number(discountPrice) + Number(deliveryPrice);
 
   return (

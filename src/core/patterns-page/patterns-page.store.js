@@ -8,7 +8,7 @@ import { PATTERNS_PAGE_ACTION_TYPE } from './patterns-page.type';
 
 const initialState = {
   product: initRequestState(),
-  productPdf: initRequestState(),
+  sendFilesToMail: initRequestState(),
 };
 
 export function patternsPageStore(state = initialState, action) {
@@ -21,27 +21,31 @@ export function patternsPageStore(state = initialState, action) {
     case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PAGE_UPLOAD_SUCCESS:
       return {
         ...state,
-        product: setRequestSuccess(state.product, action.payload),
+        product: setRequestSuccess(state.product, action.data),
       };
     case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PAGE_UPLOAD_ERROR:
       return {
         ...state,
         product: setRequestError(state.product, action.errorMessage),
       };
+
     case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_PENDING:
       return {
         ...state,
-        productPdf: setRequestPending(state.productPdf),
+        sendFilesToMail: setRequestPending(state.sendFilesToMail),
       };
     case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_SUCCESS:
       return {
         ...state,
-        productPdf: setRequestSuccess(state.productPdf),
+        sendFilesToMail: setRequestSuccess(state.sendFilesToMail),
       };
     case PATTERNS_PAGE_ACTION_TYPE.PATTERNS_PRODUCT_SEND_PDF_TO_MAIL_ERROR:
       return {
         ...state,
-        productPdf: setRequestError(state.productPdf, action.errorMessage),
+        sendFilesToMail: setRequestError(
+          state.sendFilesToMail,
+          action.errorMessage,
+        ),
       };
     default:
       return state;

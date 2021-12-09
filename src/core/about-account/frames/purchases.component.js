@@ -1,11 +1,9 @@
-import React from 'react';
 import styled from 'styled-components';
 import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { Divider } from 'src/lib/element/divider';
 import { THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
-import { convertUsersOrderData } from 'src/core/orders/orders.convert';
 import { Table } from 'src/lib/common/block-table';
 
 export function PurchasesComponent(props) {
@@ -15,7 +13,7 @@ export function PurchasesComponent(props) {
       <Title tid="PROFILE.PURCHASES" />
       <Divider />
       {Boolean(purchases.length) ? (
-        <Table items={purchases.map(convertUsersOrderData)} />
+        <Table items={purchases} />
       ) : (
         <TextSecondary tid="PROFILE.NOT_HAVE_PURCHASES" />
       )}
