@@ -5,8 +5,9 @@ import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
 import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { ProductMainComponent } from './frames';
-import { ProductImages } from '../block-product-components';
+import { ProductImages, MaterialsOld } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
 
 export function PatternsProductComponent(props) {
   const {
@@ -29,19 +30,24 @@ export function PatternsProductComponent(props) {
           <ProductMainComponent {...productData} />
         </Content>
       </SectionLayout>
-      {productData.materials && (
-        <ReactEditorBlock
-          titleTid="PATTERNS.MATERIALS"
-          data={productData.materials}
-          enableReInitialize
-          readOnly
+      <TabBlocks tabItems={['Материалы', 'Рекомендации', 'Отзывы']}>
+        {productData.materials ? (
+          <ReactEditorBlock
+            titleTid="PATTERNS.MATERIALS"
+            data={productData.materials}
+            enableReInitialize
+            readOnly
+            enableIsEdit
+          />
+        ) : (
+          <MaterialsOld textOld={productData.materialOld} />
+        )}
+        <CardListBlock
+          items={productData.recommendations}
+          title="PATTERNS.RECOMMENDATIONS"
         />
-      )}
-      <CardListBlock
-        items={productData.recommendations}
-        title="PATTERNS.RECOMMENDATIONS"
-      />
-      <BlockComment type={productData.type} id={productData.id} />
+        <BlockComment type={productData.type} id={productData.id} />
+      </TabBlocks>
     </SectionLayout>
   );
 }

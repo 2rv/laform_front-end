@@ -4,6 +4,7 @@ import {
 } from 'src/lib/common/product-converters';
 
 export function performPatternProductData(rowData) {
+  console.log(rowData.materialOld);
   return {
     id: rowData.id,
     type: rowData.type,
@@ -11,7 +12,11 @@ export function performPatternProductData(rowData) {
     modifier: rowData.modifierRu || rowData.modifierEn,
     name: rowData.titleRu || rowData.titleEn,
     description: rowData.descriptionRu || rowData.descriptionEn,
+    descriptionOld: rowData.descriptionOld.replaceAll(/\\n/g, '<br />'),
     materials: rowData.materialRu || rowData.materialEn,
+    materialOld: rowData.materialOld
+      .replaceAll(/\\n</g, '<')
+      .replaceAll(/\\n/g, '<br />'),
     complexity: rowData.complexity,
     vendorCode: rowData.vendorCode,
     price: rowData.price,
