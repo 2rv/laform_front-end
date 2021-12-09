@@ -11,6 +11,7 @@ export interface baseOrderDataType {
   phoneNumber: string;
   comment?: string;
   price: string;
+  shippingPrice?: string;
   promoCode?: string;
   promoCodeDiscount?: number;
   purchaseProducts: basicOrderPurchaseProductsData[];

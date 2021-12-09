@@ -2,13 +2,7 @@ import { Formik } from 'formik';
 import { AboutOrderFormComponent } from './about-order-form.component';
 
 export function AboutOrderFormContainer(props) {
-  const {
-    onSubmit,
-    initialValue,
-    validate,
-    statusOrderSelect,
-    deliveryTypeOptions,
-  } = props;
+  const { onSubmit, initialValue, validate } = props;
 
   return (
     <Formik
@@ -17,13 +11,7 @@ export function AboutOrderFormContainer(props) {
       onSubmit={onSubmit}
       enableReinitialize={true}
     >
-      {(formProps) => (
-        <AboutOrderFormComponent
-          statusOrderSelect={statusOrderSelect}
-          deliveryTypeOptions={deliveryTypeOptions}
-          {...formProps}
-        />
-      )}
+      {(formProps) => <AboutOrderFormComponent {...formProps} />}
     </Formik>
   );
 }

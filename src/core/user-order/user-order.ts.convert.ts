@@ -19,6 +19,7 @@ export const convertPurchaseData = (
       [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: rowData.phoneNumber,
       [ABOUT_ORDER_FIELD_NAME.COMMENT]: rowData.comment,
       [ABOUT_ORDER_FIELD_NAME.PRICE]: rowData.price,
+      [ABOUT_ORDER_FIELD_NAME.DELIVERY_PRICE]: rowData.shippingPrice,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: rowData.promoCode,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,
     },
