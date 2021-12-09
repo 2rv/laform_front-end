@@ -13,10 +13,9 @@ export function CardImage(props: CardImageProps) {
     deleted,
     path,
     pathConfig,
-    isCreateList,
+    isCreateList = false,
     modifierColor = THEME_COLOR.PRIMARY,
   } = props;
-
   const [imageLoaded, setimageLoaded] = useState(false);
   return (
     <Container path={path} pathConfig={pathConfig}>
@@ -24,19 +23,20 @@ export function CardImage(props: CardImageProps) {
       <Image onLoad={() => setimageLoaded(true)} src={image} />
 
       <Case>
-        {isCreateList && Boolean(deleted) ? (
-          <Modifier
-            bgColor={THEME_COLOR.BACKGROUND.DANGER}
-            color={THEME_COLOR.TEXT.DANGER}
-            tid="PRODUCT_PRICE.DISABLED"
-          />
-        ) : (
-          <Modifier
-            bgColor={THEME_COLOR.BACKGROUND.SUCCESS}
-            color={THEME_COLOR.TEXT.SUCCESS}
-            tid="PRODUCT_PRICE.ENABLED"
-          />
-        )}
+        {isCreateList &&
+          (deleted ? (
+            <Modifier
+              bgColor={THEME_COLOR.BACKGROUND.DANGER}
+              color={THEME_COLOR.TEXT.DANGER}
+              tid="PRODUCT_PRICE.DISABLED"
+            />
+          ) : (
+            <Modifier
+              bgColor={THEME_COLOR.BACKGROUND.SUCCESS}
+              color={THEME_COLOR.TEXT.SUCCESS}
+              tid="PRODUCT_PRICE.ENABLED"
+            />
+          ))}
         {Boolean(discount) && <Modifier tid="PRODUCT_PRICE.STOCK" />}
         {Boolean(modifier) && (
           <Modifier bgColor={modifierColor} tid={modifier} />

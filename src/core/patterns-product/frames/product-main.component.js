@@ -16,6 +16,7 @@ export function ProductMainComponent(props) {
     modifier,
     name,
     description,
+    descriptionOld,
     complexity,
     vendorCode,
     price,
@@ -36,7 +37,7 @@ export function ProductMainComponent(props) {
         title="PATTERNS.CREATE.FORM.COMPLEXITY"
       />
       <Divider />
-      <ProductDescription text={description} />
+      <ProductDescription text={description} textOld={descriptionOld} />
       <Divider />
       <ProductSelect
         id={id}

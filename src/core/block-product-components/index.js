@@ -9,3 +9,4 @@ export { ProductActions } from './product-actions';
 export { ProductPagePrice } from './product-page-price';
 export { ProducName } from './product-name';
 export { ProducCounter } from './product-counter';
+export { MaterialsOld } from './product-material-old';

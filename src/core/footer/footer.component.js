@@ -4,6 +4,7 @@ import { FooterLinkList, FooterSocialLink } from './frames';
 import { NotificationContainer } from '../notification';
 import { TextSecondary } from 'src/lib/element/text';
 import { DownloadLinks } from '../header-component';
+import { FooterPhoneComponent } from './footer.phone';
 
 export function FooterComponent(props) {
   const { laFormeLinkItems, faqLinkItems, contactLinkItems } = props;
@@ -27,6 +28,7 @@ export function FooterComponent(props) {
           <FooterSocialLink />
         </CopyrightCase>
         <DownloadLinks />
+        <FooterPhoneComponent />
       </Content>
     </Container>
   );

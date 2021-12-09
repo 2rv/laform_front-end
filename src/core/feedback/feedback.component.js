@@ -4,15 +4,11 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { FeedbackFormComponent } from './frames';
 import { SEWING_GOODS_FIELD_NAME } from './feedback.type';
+import { FooterPhone } from '../footer/footer.phone';
 
 export function FeedbackComponent(props) {
-  const {
-    isPending,
-    isSuccess,
-    initialValues,
-    validation,
-    onSubmit,
-  } = props;
+  const { isAdmin, isPending, isSuccess, initialValues, validation, onSubmit } =
+    props;
 
   return (
     <SectionLayout>
@@ -32,9 +28,8 @@ export function FeedbackComponent(props) {
           );
         }}
       </Formik>
-      {isSuccess && (
-        <SuccessAlert tid="FEEDBACK.SUCCESS_MESSAGE" />
-      )}
+      {isSuccess && <SuccessAlert tid="FEEDBACK.SUCCESS_MESSAGE" />}
+      {isAdmin && <FooterPhone />}
     </SectionLayout>
   );
 }
