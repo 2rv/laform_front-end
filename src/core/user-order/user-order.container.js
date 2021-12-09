@@ -29,20 +29,17 @@ export function UserOrderContainer() {
     purchaseProducts: null,
   });
 
-  const deliveryTypeOptions = [];
-
   useEffect(() => {
     dispatch(userOrderUploadData(query.id));
   }, []);
 
   const onSubmit = (values) => {
-    // dispatch(
-    //   updatePurchaseOrderStatus(query.id, {
-    //     [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: Number(
-    //       values[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS],
-    //     ),
-    //   }),
-    // );
+    dispatch(
+      updatePurchaseOrderStatus(query.id, {
+        [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]:
+          +values[ABOUT_ORDER_FIELD_NAME.ORDER_STATUS],
+      }),
+    );
   };
 
   const initialValue = () => ({
@@ -66,9 +63,8 @@ export function UserOrderContainer() {
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT] ?? 0,
     [ABOUT_ORDER_FIELD_NAME.ID]:
       purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ID] ?? null,
-    [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]:
-      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD] ??
-      deliveryTypeOptions[0]?.tid,
+    [ABOUT_ORDER_FIELD_NAME.DELIVERY_PRICE]:
+      purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.DELIVERY_PRICE] ?? 0,
   });
 
   return (
@@ -83,8 +79,6 @@ export function UserOrderContainer() {
       initialValue={initialValue()}
       userOrderTitle={purchaseInfo?.[ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER] || 0}
       purchaseProducts={purchaseProducts}
-      statusOrderSelect={PURCHASE_STATUS_SELECT}
-      deliveryTypeOptions={deliveryTypeOptions}
     />
   );
 }

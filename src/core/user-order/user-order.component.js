@@ -8,15 +8,13 @@ import { Table } from 'src/lib/common/block-table';
 
 export function UserOrderComponent(props) {
   const {
-    headersTable,
     onSubmit,
     initialValue,
     validate,
     isPending,
     userOrderTitle,
     purchaseProducts,
-    statusOrderSelect,
-    deliveryTypeOptions,
+    headersTable,
   } = props;
 
   return isPending ? (
@@ -33,8 +31,6 @@ export function UserOrderComponent(props) {
         onSubmit={onSubmit}
         initialValue={initialValue}
         validate={validate}
-        statusOrderSelect={statusOrderSelect}
-        deliveryTypeOptions={deliveryTypeOptions}
       />
     </SectionLayout>
   );

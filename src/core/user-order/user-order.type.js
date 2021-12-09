@@ -7,11 +7,10 @@ export const ABOUT_ORDER_FIELD_NAME = {
   PHONE_NUMBER: 'phoneNumber',
   ORDER_STATUS: 'orderStatus',
   PRICE: 'price',
+  DELIVERY_PRICE: 'shippingPrice',
   PROMO_CODE: 'promoCode',
   COMMENT: 'comment',
   PROMO_CODE_DISCOUNT: 'promoCodeDiscount',
-  DELIVERY_METHOD: 'typeOfDelivery',
-  // PAYMENT_METHOD: 'paymentMethod',
 };
 
 export const USER_ORDER_ACTION_TYPE = {
