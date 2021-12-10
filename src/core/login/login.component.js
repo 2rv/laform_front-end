@@ -1,15 +1,12 @@
 import styled from 'styled-components';
 import {
-  LoginFormContainer,
-  LoginFormSocialComponent,
-  LoginFooterComponent,
-} from './frames';
-import {
   SectionLayout,
   PageLayout,
   ContentLayout,
-} from '../../lib/element/layout';
-import { TitlePrimary } from '../../lib/element/title';
+} from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
+import { LoginFormContainer, LoginFooterComponent } from './frames';
+import { BlockSocialAuth } from '../social-auth';
 
 export function LoginComponent(props) {
   return (
@@ -18,7 +15,7 @@ export function LoginComponent(props) {
         <TitlePrimary tid="LOGIN.SECTION_TITLE" />
         <SectionLayout>
           <LoginFormContainer {...props} />
-          <LoginFormSocialComponent />
+          <BlockSocialAuth />
           <LoginFooterComponent />
         </SectionLayout>
       </SectionLayout>

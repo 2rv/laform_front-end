@@ -2,13 +2,10 @@ import {
   SectionLayout,
   PageLayout,
   ContentLayout,
-} from '../../lib/element/layout';
-import {
-  SignupFormContainer,
-  SignupFormSocialComponent,
-  SignupFooterComponent,
-} from './frames';
-import { TitlePrimary } from '../../lib/element/title';
+} from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
+import { SignupFormContainer, SignupFooterComponent } from './frames';
+import { BlockSocialAuth } from '../social-auth';
 
 export function SignupComponent(props) {
   return (
@@ -17,7 +14,7 @@ export function SignupComponent(props) {
         <TitlePrimary tid="SIGNUP.SECTION_TITLE" />
         <SectionLayout>
           <SignupFormContainer {...props} />
-          <SignupFormSocialComponent />
+          <BlockSocialAuth />
           <SignupFooterComponent />
         </SectionLayout>
       </SectionLayout>
