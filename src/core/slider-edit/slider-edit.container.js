@@ -103,7 +103,7 @@ export function SliderEditContainer() {
     }
   };
 
-  const formikObject = useFormik({
+  const formik = useFormik({
     enableReinitialize: true,
     validate: sliderEditFormValidation,
     initialValues,
@@ -122,41 +122,8 @@ export function SliderEditContainer() {
       removeSlider={removeSlider}
       isNewSlider={isNewSlider}
       sliderImage={sliderData.image?.fileUrl}
-      titleTextColorOptions={titleTextColorOptions}
-      buttonColorOptions={buttonColorOptions}
-      buttonTextColorOptions={buttonTextColorOptions}
-      formikObject={formikObject}
+      formik={formik}
       isImageUploadError={isImageUploadError}
     />
   );
 }
-
-const titleTextColorOptions = [
-  { id: 0, tid: 'Чёрный', color: '#2F2A2C' },
-  { id: 1, tid: 'Серый', color: '#5F5B5D' },
-  { id: 2, tid: 'Светло серый', color: '#8F8D8E' },
-  { id: 3, tid: 'Белый', color: '#FFFFFF' },
-  { id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
-  { id: 5, tid: 'Розовый основной', color: '#FF005A' },
-  { id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
-];
-
-const buttonColorOptions = [
-  { id: 0, tid: 'Чёрный', color: '#2F2A2C' },
-  { id: 1, tid: 'Серый', color: '#5F5B5D' },
-  { id: 2, tid: 'Светло серый', color: '#8F8D8E' },
-  { id: 3, tid: 'Белый', color: '#FFFFFF' },
-  { id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
-  { id: 5, tid: 'Розовый основной', color: '#FF005A' },
-  { id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
-];
-
-const buttonTextColorOptions = [
-  { id: 0, tid: 'Чёрный', color: '#2F2A2C' },
-  { id: 1, tid: 'Серый', color: '#5F5B5D' },
-  { id: 2, tid: 'Светло серый', color: '#8F8D8E' },
-  { id: 3, tid: 'Белый', color: '#FFFFFF' },
-  { id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
-  { id: 5, tid: 'Розовый основной', color: '#FF005A' },
-  { id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
-];

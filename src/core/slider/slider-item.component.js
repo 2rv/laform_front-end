@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { TextPrimary } from '../../lib/element/text';
-import { LinkPrimary } from '../../lib/element/link';
-import { text } from '../../lib/common/text';
-import { ButtonBasic } from '../../lib/element/button';
 import 'keen-slider/keen-slider.min.css';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TextPrimary } from 'src/lib/element/text';
+import { LinkPrimary } from 'src/lib/element/link';
+import { text } from 'src/lib/common/text';
+import { ButtonBasic } from 'src/lib/element/button';
+import { SLIDER_COLORS } from 'src/lib/basic-types';
 
 export function SliderItemComponent(props) {
   const {
@@ -19,33 +20,15 @@ export function SliderItemComponent(props) {
     image,
   } = props;
 
-  const sliderItemsColor = (item) => {
-    return item === '0'
-      ? '#2F2A2C'
-      : item === '1'
-      ? '#5F5B5D'
-      : item === '2'
-      ? '#8F8D8E'
-      : item === '3'
-      ? '#FFFFFF'
-      : item === '4'
-      ? '#F0F0F0'
-      : item === '5'
-      ? '#FF005A'
-      : item === '6'
-      ? '#7C1C3E'
-      : '';
-  };
-
   return (
     <Container className="keen-slider__slide">
       <Content>
-        <Title color={sliderItemsColor(titleTextColor)}>{titleText}</Title>
+        <Title color={SLIDER_COLORS[titleTextColor]}>{titleText}</Title>
         {isButton && (
           <LinkPrimary path={buttonPath}>
             <Button
-              bgcolor={sliderItemsColor(buttonColor)}
-              color={sliderItemsColor(buttonTextColor)}
+              bgcolor={SLIDER_COLORS[buttonColor]}
+              color={SLIDER_COLORS[buttonTextColor]}
             >
               {buttonText}
             </Button>
@@ -53,34 +36,36 @@ export function SliderItemComponent(props) {
         )}
       </Content>
       <Image src={image} />
-      <Blur />
     </Container>
   );
 }
-const Blur = styled.div`
-  position: absolute;
-  height: 100%;
-  width: 100%;
+
+const Container = styled.div`
+  display: grid;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  height: 350px;
+  > * {
+    grid-area: 1/-1;
+  }
+`;
+const Content = styled.div`
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
   filter: drop-shadow(0px 15px 75px rgba(0, 0, 0, 0.1));
 `;
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+const Image = styled.img`
+  width: 100%;
   height: 100%;
-  min-width: 100%;
+  min-height: 0;
+  object-fit: cover;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-`;
-const Content = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${spacing(6.3)};
-  margin: 0 36px;
-  z-index: 1;
+  user-select: none;
+  pointer-events: none;
 `;
 const Title = styled(TextPrimary)`
   text-align: center;
@@ -96,12 +81,4 @@ const Button = styled(ButtonBasic)`
   min-width: 200px;
   color: ${(p) => p.color};
   background-color: ${(p) => p.bgcolor};
-`;
-const Image = styled.img`
-  height: 350px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  user-select: none;
-  pointer-events: none;
 `;

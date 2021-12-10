@@ -252,3 +252,22 @@ export const PURCHASE_STATUS_SELECT = [
   { id: 7, tid: 'Вовращен отправителю' },
   { id: 8, tid: 'Возвращен по гарантии' },
 ];
+
+export const SLIDER_COLORS = [
+  '#2F2A2C',
+  '#5F5B5D',
+  '#8F8D8E',
+  '#FFFFFF',
+  '#F0F0F0',
+  '#FF005A',
+  '#7C1C3E',
+];
+// const SLIDER_COLORS = [
+// 	{ id: 0, tid: 'Чёрный', color: '#2F2A2C' },
+// 	{ id: 1, tid: 'Серый', color: '#5F5B5D' },
+// 	{ id: 2, tid: 'Светло серый', color: '#8F8D8E' },
+// 	{ id: 3, tid: 'Белый', color: '#FFFFFF' },
+// 	{ id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
+// 	{ id: 5, tid: 'Розовый основной', color: '#FF005A' },
+// 	{ id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
+//   ];
