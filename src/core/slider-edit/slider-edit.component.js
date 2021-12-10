@@ -9,12 +9,7 @@ export function SliderEditComponent(props) {
     pickImage,
     removeSlider,
     sliderImage,
-    titleTextColorOptions,
-    buttonColorOptions,
-    buttonTextColorOptions,
-
-    formikObject,
-
+    formik,
     isNewSlider,
     pageLoading,
     isPending,
@@ -38,18 +33,12 @@ export function SliderEditComponent(props) {
             <SliderEditPreviewComponent
               pickImage={pickImage}
               sliderImage={sliderImage}
-              values={formikObject.values}
-              titleTextColorOptions={titleTextColorOptions}
-              buttonColorOptions={buttonColorOptions}
-              buttonTextColorOptions={buttonTextColorOptions}
+              values={formik.values}
             />
             <SliderEditFormComponent
-              titleTextColorOptions={titleTextColorOptions}
-              buttonColorOptions={buttonColorOptions}
-              buttonTextColorOptions={buttonTextColorOptions}
               removeSlider={removeSlider}
               isPending={isPending}
-              formikObject={formikObject}
+              formik={formik}
               dataPending={dataPending}
               formPending={formPending}
               formSuccess={formSuccess}

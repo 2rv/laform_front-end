@@ -1,34 +1,15 @@
 import styled from 'styled-components';
-import { ReactComponent as UploadIcon } from '../../../../asset/svg/upload.svg';
-import {
-  THEME_SIZE,
-  spacing,
-  THEME_COLOR,
-  THEME_VALUE,
-} from '../../../../lib/theme';
-import { TitlePrimary } from '../../../../lib/element/title';
-import { LinkPrimary } from '../../../../lib/element/link';
-import { ButtonBasic } from '../../../../lib/element/button';
-import { SectionLayout } from '../../../../lib/element/layout';
+import { ReactComponent as UploadIcon } from 'src/asset/svg/upload.svg';
+import { THEME_SIZE, spacing, THEME_COLOR, THEME_VALUE } from 'src/lib/theme';
+import { TitlePrimary } from 'src/lib/element/title';
+import { LinkPrimary } from 'src/lib/element/link';
+import { ButtonBasic } from 'src/lib/element/button';
+import { SectionLayout } from 'src/lib/element/layout';
+import { SLIDER_COLORS } from 'src/lib/basic-types';
 import { SLIDER_EDIT_FIELD_NAME } from '../../slider-edit.type';
 
 export function SliderEditPreviewComponent(props) {
-  const {
-    pickImage,
-    sliderImage,
-    values,
-    titleTextColorOptions,
-    buttonColorOptions,
-    buttonTextColorOptions,
-  } = props;
-  const textColor =
-    titleTextColorOptions[values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]]
-      ?.color;
-  const buttonTextColor =
-    buttonTextColorOptions[values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]]
-      ?.color;
-  const buttonColor =
-    buttonColorOptions[values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]]?.color;
+  const { pickImage, sliderImage, values } = props;
   const isButton = values[SLIDER_EDIT_FIELD_NAME.IS_BUTTON];
   return (
     <SectionLayout type="SMALL">
@@ -44,14 +25,20 @@ export function SliderEditPreviewComponent(props) {
         <Content>
           <SlideText>
             <Text
-              color={textColor}
+              color={
+                SLIDER_COLORS[values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]]
+              }
               tid={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]}
             />
           </SlideText>
           {isButton && (
             <Button
-              color={buttonTextColor}
-              bgcolor={buttonColor}
+              color={
+                SLIDER_COLORS[values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]]
+              }
+              bgcolor={
+                SLIDER_COLORS[values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]]
+              }
               tid={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]}
             />
           )}
