@@ -13,11 +13,11 @@ import { AUTH_VERIFICATE_EMAIL_STORE_NAME } from './auth-verificate-email.consta
 import { getQuery } from 'src/main/navigation';
 
 export function AuthVerificateEmailContainer() {
+  const email = getQuery('data');
   const dispatch = useDispatch();
   const { state } = useSelector((state) => ({
     state: state[AUTH_VERIFICATE_EMAIL_STORE_NAME].authVerificateEmail,
   }));
-  const email = getQuery('data');
 
   const sendVerificationRequest = () => {
     dispatch(authVerificateEmailUploadData());

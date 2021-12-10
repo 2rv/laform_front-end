@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getQuery } from '../../main/navigation/navigation.core';
 import { unsubscribeNotification } from './unsubscribe-notification.action';
 import { TextSecondary } from '../../lib/element/text';
+import { THEME_SIZE } from '../../lib/theme';
 
 export function UnsubscribeNotificationContainer() {
   const dispatch = useDispatch();
@@ -13,9 +14,11 @@ export function UnsubscribeNotificationContainer() {
     dispatch(unsubscribeNotification(code));
   }, []);
 
-  return <UnsubscribeNotificationTitle tid="OTHER.UNSUBSCRIBE_NOTIFICATION_TEXT" />;
+  return (
+    <UnsubscribeNotificationTitle tid="OTHER.UNSUBSCRIBE_NOTIFICATION_TEXT" />
+  );
 }
 
 const UnsubscribeNotificationTitle = styled(TextSecondary)`
-  font-size: 20px;
+  font-size: ${THEME_SIZE.FONT.BIG};
 `;

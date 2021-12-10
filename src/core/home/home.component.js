@@ -1,9 +1,9 @@
 import { SectionLayout } from 'src/lib/element/layout';
-import { SliderContainer } from '../../core/slider';
+import { CardListBlock } from 'src/lib/element/card-list';
+import { ProductCartSkeleton } from 'src/lib/element/skeleton';
 import { CatalogListComponent, AdvantageInfoComponent } from './frames';
-import { HelpInfoBlock } from '../block-help-info';
-import { CardListBlock } from '../../lib/element/card-list';
-import { ProductCartSkeleton } from '../../lib/element/skeleton';
+import { BlockHelpLinks } from '../block-help-links';
+import { SliderContainer } from '../slider';
 
 export function HomeComponent(props) {
   const { catalogListItems, compilationPending, compilationBlock } = props;
@@ -24,7 +24,7 @@ export function HomeComponent(props) {
           />
         ))
       )}
-      <HelpInfoBlock viewAll />
+      <BlockHelpLinks viewAll />
       <AdvantageInfoComponent />
     </SectionLayout>
   );

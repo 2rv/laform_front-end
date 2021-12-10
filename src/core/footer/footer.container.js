@@ -30,14 +30,14 @@ export function FooterContainer() {
         tid: 'FOOTER.MENU.SECTION1.WISH_LIST',
         path: isAuth ? ALL_LIKES_ROUTE_PATH : SIGNUP_ROUTE_PATH,
       },
-      //   {
-      //     tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',
-      //     path: ABOUT_ROUTE_PATH,
-      //   },
-      //   {
-      //     tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO',
-      //     path: ABOUT_ROUTE_PATH,
-      //   },
+      {
+        tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',
+        path: ABOUT_ROUTE_PATH,
+      },
+      {
+        tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO',
+        path: ABOUT_ROUTE_PATH,
+      },
     ],
   };
 
@@ -54,6 +54,14 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION2.QNA',
+        path: FAQ_ROUTE_PATH,
+      },
+      {
+        tid: 'Как распечатать',
+        path: FAQ_ROUTE_PATH,
+      },
+      {
+        tid: 'Как склеить выкройку',
         path: FAQ_ROUTE_PATH,
       },
     ],

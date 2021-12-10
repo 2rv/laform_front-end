@@ -79,7 +79,7 @@ export function FilePdfActions(props) {
   );
 }
 const PdfLink = styled(TextSecondary)`
-  line-height: 22px;
+  line-height: 1.5;
   &:hover {
     color: #2d9cdb;
     text-decoration: underline;

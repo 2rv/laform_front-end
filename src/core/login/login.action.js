@@ -1,7 +1,6 @@
-import { httpRequest } from '../../main/http';
-import { redirect } from '../../main/navigation';
-import { authSetData } from '../../lib/common/auth';
-
+import { httpRequest } from 'src/main/http';
+import { redirect } from 'src/main/navigation';
+import { authSetData } from 'src/lib/common/auth';
 import { LOGIN_API } from './login.constant';
 import { LOGIN_ACTION_TYPE } from './login.type';
 import { HOME_ROUTE_PATH } from '../home';
@@ -16,15 +15,12 @@ export function loginFormUploadData(data) {
       const res = await httpRequest({
         method: LOGIN_API.LOGIN_FORM_UPLOAD.METHOD,
         url: LOGIN_API.LOGIN_FORM_UPLOAD.ENDPOINT,
-        data,
+        data: data,
       });
-
       dispatch(authSetData(res.data.accessToken));
-
       dispatch({
         type: LOGIN_ACTION_TYPE.LOGIN_FORM_UPLOAD_SUCCESS,
       });
-
       redirect(HOME_ROUTE_PATH);
     } catch (err) {
       if (err.response) {
