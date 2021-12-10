@@ -1,29 +1,25 @@
-import { httpRequest } from '../../main/http';
-
+import { httpRequest } from 'src/main/http';
 import { SETTINGS_CHANGE_EMAIL_API } from './settings-change-email.constant';
-import { SETTINGS_CHANGE_EMAIL_ACTION_TYPE } from './settings-change-email.type';
+import {
+  SETTINGS_CHANGE_EMAIL_ACTION_TYPE,
+  SETTINGS_CHANGE_EMAIL_FIELD_NAME,
+} from './settings-change-email.type';
 
-import { performSettingsChangeEmailLoadEmailData } from './settings-change-email.convert';
-import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from '../../core/auth-verificate-email';
-import { redirect } from '../../main/navigation';
-
-export function settingsChangeEmailFormUploadData(data) {
+export function settingsUpateEmailAction(data) {
   return async (dispatch) => {
     dispatch({
       type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_PENDING,
     });
 
     try {
-      await httpRequest({
+      const response = await httpRequest({
         method: SETTINGS_CHANGE_EMAIL_API.UPLOAD_FORM.METHOD,
         url: SETTINGS_CHANGE_EMAIL_API.UPLOAD_FORM.ENDPOINT,
-        data,
+        data: data,
       });
-
       dispatch({
         type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_SUCCESS,
       });
-      redirect(AUTH_VERIFICATE_EMAIL_ROUTE_PATH, { query: { data: data.email } });
     } catch (err) {
       if (err.response) {
         dispatch({
@@ -35,23 +31,19 @@ export function settingsChangeEmailFormUploadData(data) {
   };
 }
 
-export function settingsChangeEmailLoadEmail() {
+export function settingsLoadEmailAction() {
   return async (dispatch) => {
     dispatch({
       type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_PENDING,
     });
-
     try {
-      const { data } = await httpRequest({
+      const response = await httpRequest({
         method: SETTINGS_CHANGE_EMAIL_API.LOAD_EMAIL.METHOD,
         url: SETTINGS_CHANGE_EMAIL_API.LOAD_EMAIL.ENDPOINT,
       });
-
-      const performedData = performSettingsChangeEmailLoadEmailData(data);
-
       dispatch({
         type: SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_SUCCESS,
-        data: performedData,
+        data: response.data[SETTINGS_CHANGE_EMAIL_FIELD_NAME.EMAIL],
       });
     } catch (err) {
       if (err.response) {

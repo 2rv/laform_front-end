@@ -57,6 +57,10 @@ const Content = styled.div`
   text-align: center;
   background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
   filter: drop-shadow(0px 15px 75px rgba(0, 0, 0, 0.1));
+  gap: ${spacing(3)};
+  @media screen and (max-width: 500px) {
+    gap: ${spacing(2)};
+  }
 `;
 const Image = styled.img`
   width: 100%;
@@ -79,6 +83,13 @@ const Title = styled(TextPrimary)`
 `;
 const Button = styled(ButtonBasic)`
   min-width: 200px;
+  @media screen and (max-width: 500px) {
+    min-width: 160px;
+    padding: ${spacing(1)};
+    height: 30px;
+    font-size: ${THEME_SIZE.FONT.TINY};
+  }
+
   color: ${(p) => p.color};
   background-color: ${(p) => p.bgcolor};
 `;

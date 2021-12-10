@@ -26,6 +26,7 @@ export const THEME_SIZE = {
     DEFAULT: '16px',
     EXTRA_LARGE: '36px',
     LARGE: '24px',
+    BIG: '20px',
     MEDIUM: '18px',
     SMALL: '14px',
     TINY: '12px',

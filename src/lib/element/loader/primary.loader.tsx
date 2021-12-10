@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { hexToRgb, THEME_COLOR } from '../../theme';
+import { hexToRgb, THEME_COLOR, THEME_SIZE } from '../../theme';
 
 export function LoaderPrimary() {
   return <Loader />;
@@ -17,7 +17,7 @@ const Loader = styled.progress`
   height: 0.25em;
   color: ${THEME_COLOR.PRIMARY};
   background-color: rgba(${hexToRgb(THEME_COLOR.PRIMARY)}, 0.12);
-  font-size: 16px;
+  font-size: ${THEME_SIZE.FONT.DEFAULT};
 
   &::-webkit-progress-bar {
     background-color: transparent;

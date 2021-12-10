@@ -1,14 +1,12 @@
-import { FieldLayout, SectionLayout } from '../../../../lib/element/layout';
-import { BasicField } from '../../../../lib/element/field';
-import { ButtonPrimary } from '../../../../lib/element/button';
-import { ErrorAlert } from '../../../../lib/element/alert';
-import { LoaderPrimary } from '../../../../lib/element/loader';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
+import { BasicField } from 'src/lib/element/field';
+import { ButtonPrimary } from 'src/lib/element/button';
+import { ErrorAlert } from 'src/lib/element/alert';
+import { LoaderPrimary } from 'src/lib/element/loader';
+import { LOGIN_FIELD_NAME } from '../../login.type';
 
 export function LoginFormComponent(props) {
   const {
-    fieldLogin,
-    fieldPassword,
-
     values,
     errors,
     touched,
@@ -22,15 +20,9 @@ export function LoginFormComponent(props) {
     isError,
     errorMessage,
   } = props;
-
   const getFieldError = (name) => {
     return errors[name] && touched[name] && errors[name];
   };
-
-  const isSubmitDisabled = () => {
-    return isPending || isSuccess;
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <SectionLayout type="TEXT">
@@ -38,19 +30,19 @@ export function LoginFormComponent(props) {
           <BasicField
             titleTid="LOGIN.LOGIN_FORM.FIELD.LOGIN.TITLE"
             placeholderTid="LOGIN.LOGIN_FORM.FIELD.LOGIN.PLACEHOLDER"
-            name={fieldLogin}
-            value={values[fieldLogin]}
-            error={getFieldError(fieldLogin)}
+            name={LOGIN_FIELD_NAME.LOGIN}
+            value={values[LOGIN_FIELD_NAME.LOGIN]}
+            error={getFieldError(LOGIN_FIELD_NAME.LOGIN)}
             onChange={handleChange}
             onBlur={handleBlur}
           />
           <BasicField
             titleTid="LOGIN.LOGIN_FORM.FIELD.PASSWORD.TITLE"
             placeholderTid="LOGIN.LOGIN_FORM.FIELD.PASSWORD.PLACEHOLDER"
-            name={fieldPassword}
+            name={LOGIN_FIELD_NAME.PASSWORD}
             type="password"
-            value={values[fieldPassword]}
-            error={getFieldError(fieldPassword)}
+            value={values[LOGIN_FIELD_NAME.PASSWORD]}
+            error={getFieldError(LOGIN_FIELD_NAME.PASSWORD)}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -59,7 +51,7 @@ export function LoginFormComponent(props) {
         <ButtonPrimary
           tid="LOGIN.LOGIN_FORM.BUTTON.SUBMIT"
           type="submit"
-          disabled={isSubmitDisabled()}
+          disabled={isPending}
         />
         {isPending && <LoaderPrimary />}
       </SectionLayout>

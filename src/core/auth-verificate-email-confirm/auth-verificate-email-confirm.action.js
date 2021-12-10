@@ -15,9 +15,9 @@ export function authVerificateEmailConfirmUploadData(code) {
         method: AUTH_VERIFICATE_EMAIL_CONFIRM_API.METHOD,
         url: AUTH_VERIFICATE_EMAIL_CONFIRM_API.ENDPOINT(code),
       });
-      if (res.data === true) {
-        dispatch(authSetEmailConfirmed());
-      }
+      //   if (res.data === true) {
+      //     dispatch(authSetEmailConfirmed());
+      //   }
       dispatch({
         type: AUTH_VERIFICATE_EMAIL_CONFIRM_ACTION_TYPE.AUTH_VERIFICATE_EMAIL_CONFIRM_UPLOAD_SUCCESS,
       });

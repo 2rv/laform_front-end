@@ -53,11 +53,11 @@
     "TITLE": "Change email",
     "NEW_EMAIL": {
       "TITLE": "New email",
-      "PLACEHOLDER": "Newemail.com"
+      "PLACEHOLDER": "laforme@gmail.com"
     },
     "OLD_EMAIL": {
       "TITLE": "Old email",
-      "PLACEHOLDER": "Email.com"
+      "PLACEHOLDER": "oldlaforme.com"
     },
     "PASSWORD": {
       "TITLE": "Password",

@@ -1,5 +1,4 @@
 export const SETTINGS_CHANGE_EMAIL_STORE_NAME = 'SETTINGS_CHANGE_EMAIL';
-
 export const SETTINGS_CHANGE_EMAIL_API = {
   UPLOAD_FORM: {
     ENDPOINT: 'user/settings/email',

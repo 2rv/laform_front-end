@@ -1,27 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
-} from '../../main/store/store.service';
-
+} from 'src/main/store/store.service';
 import { LOGIN_STORE_NAME } from './login.constant';
-import { LOGIN_FIELD_NAME, LOGIN_FORM_FIELD_NAME } from './login.type';
+import { LOGIN_FIELD_NAME } from './login.type';
 import { LoginComponent } from './login.component';
 import { loginFormUploadData } from './login.action';
 import { loginFormValidation } from './login.validation';
-import { convertLoginFormData } from './login.convert';
 
 export function LoginContainer() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state[LOGIN_STORE_NAME]);
-
+  const state = useSelector((state) => state[LOGIN_STORE_NAME].loginForm);
   const loginFormSendData = (values) => {
-    const data = convertLoginFormData(values);
-
-    dispatch(loginFormUploadData(data));
+    dispatch(loginFormUploadData(values));
   };
 
   const loginFormGetInitialValue = () => ({
@@ -31,14 +25,13 @@ export function LoginContainer() {
 
   return (
     <LoginComponent
-      isPending={isRequestPending(state.loginForm)}
-      errorMessage={getRequestErrorMessage(state.loginForm)}
-      isSuccess={isRequestSuccess(state.loginForm)}
-      isError={isRequestError(state.loginForm)}
+      isPending={isRequestPending(state)}
+      errorMessage={getRequestErrorMessage(state)}
+      isSuccess={isRequestSuccess(state)}
+      isError={isRequestError(state)}
       initialValue={loginFormGetInitialValue()}
       validation={loginFormValidation}
       onSubmitForm={loginFormSendData}
-      fieldName={LOGIN_FORM_FIELD_NAME}
     />
   );
 }

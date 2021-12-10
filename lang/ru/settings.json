@@ -53,17 +53,17 @@
     "TITLE": "Сменить Email",
     "NEW_EMAIL": {
       "TITLE": "Новый Email",
-      "PLACEHOLDER": "Newemail.com"
+      "PLACEHOLDER": "laforme@gmail.com"
     },
     "OLD_EMAIL": {
       "TITLE": "Старый Email",
-      "PLACEHOLDER": "Email.com"
+      "PLACEHOLDER": "oldlaforme.com"
     },
     "PASSWORD": {
       "TITLE": "Пароль",
       "PLACEHOLDER": "Пароль"
     },
-    "SUCCESS": "Адрес электронной почты успешно изменен",
+    "SUCCESS": "A link to change has been sent to the mail",
     "SUBMIT": "Сменить"
   },
   "LOGOUT": {

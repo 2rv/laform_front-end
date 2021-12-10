@@ -3,13 +3,12 @@ import {
   setRequestError,
   setRequestPending,
   setRequestSuccess,
-} from '../../main/store/store.service';
-
+} from 'src/main/store/store.service';
 import { SETTINGS_CHANGE_EMAIL_ACTION_TYPE } from './settings-change-email.type';
 
 const initialState = {
-  settingsChangeEmailUploadForm: initRequestState(),
-  settingsChangeEmailLoadEmail: initRequestState(),
+  save: initRequestState(),
+  email: initRequestState(),
 };
 
 export function settingsChangeEmailStore(state = initialState, action) {
@@ -17,52 +16,33 @@ export function settingsChangeEmailStore(state = initialState, action) {
     case SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_PENDING:
       return {
         ...state,
-        settingsChangeEmailUploadForm: setRequestPending(
-          state.settingsChangeEmailUploadForm,
-        ),
+        save: setRequestPending(state.save),
       };
-
     case SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_SUCCESS:
       return {
         ...state,
-        settingsChangeEmailUploadForm: setRequestSuccess(
-          state.settingsChangeEmailUploadForm,
-        ),
+        save: setRequestSuccess(state.save),
       };
-
     case SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_FORM_UPLOAD_ERROR:
       return {
         ...state,
-        settingsChangeEmailUploadForm: setRequestError(
-          state.settingsChangeEmailUploadForm,
-          action.errorMessage,
-        ),
+        save: setRequestError(state.save, action.errorMessage),
       };
 
     case SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_PENDING:
       return {
         ...state,
-        settingsChangeEmailLoadEmail: setRequestPending(
-          state.settingsChangeEmailLoadEmail,
-        ),
+        email: setRequestPending(state.email),
       };
-
     case SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_SUCCESS:
       return {
         ...state,
-        settingsChangeEmailLoadEmail: setRequestSuccess(
-          state.settingsChangeEmailLoadEmail,
-          action.data,
-        ),
+        email: setRequestSuccess(state.email, action.data),
       };
-
     case SETTINGS_CHANGE_EMAIL_ACTION_TYPE.SETTINGS_CHANGE_EMAIL_LOAD_EMAIL_ERROR:
       return {
         ...state,
-        settingsChangeEmailLoadEmail: setRequestError(
-          state.settingsChangeEmailLoadEmail,
-          action.errorMessage,
-        ),
+        email: setRequestError(state.email, action.errorMessage),
       };
 
     default:

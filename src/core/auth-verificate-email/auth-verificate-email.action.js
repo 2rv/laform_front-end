@@ -1,9 +1,8 @@
 import { httpRequest } from '../../main/http';
-
 import { AUTH_VERIFICATE_EMAIL_API } from './auth-verificate-email.constant';
 import { AUTH_VERIFICATE_EMAIL_ACTION_TYPE } from './auth-verificate-email.type';
 
-export function authVerificateEmailUploadData(data) {
+export function authVerificateEmailUploadData() {
   return async (dispatch) => {
     dispatch({
       type: AUTH_VERIFICATE_EMAIL_ACTION_TYPE.AUTH_VERIFICATE_EMAIL_UPLOAD_PENDING,
@@ -13,7 +12,6 @@ export function authVerificateEmailUploadData(data) {
       await httpRequest({
         method: AUTH_VERIFICATE_EMAIL_API.METHOD,
         url: AUTH_VERIFICATE_EMAIL_API.ENDPOINT,
-        data,
       });
 
       dispatch({
