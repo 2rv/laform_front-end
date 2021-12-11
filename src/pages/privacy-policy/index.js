@@ -1,2 +1,2 @@
-import { PrivacyPolicyPage } from '../../core/faq-privacy-policy';
-export default PrivacyPolicyPage;
+import { FaqPrivacyPolicyPage } from '../../core/faq-article';
+export default FaqPrivacyPolicyPage;

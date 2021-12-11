@@ -10,10 +10,9 @@ import { TextSecondary } from '../../lib/element/text';
 import { LinkPrimary } from '../../lib/element/link';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../lib/theme';
 import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from './auth-verificate-email.constant';
-import { FAQ_ROUTE_PATH } from '../faq';
+import { FAQ_ROUTE_PATH } from '../faq-article';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { ErrorAlert } from '../../lib/element/alert';
-
 import { EmailConfirmedContainer } from '../../core/email-confirmed';
 
 export function AuthVerificateEmailComponent(props) {

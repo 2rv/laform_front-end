@@ -5,7 +5,7 @@ import { TextSecondary } from '../../element/text';
 import { ReactComponent as QuestionIcon } from '../../../asset/svg/question-mark.svg';
 import { ProductSelectFieldProps } from './type';
 import { LinkSecondary } from 'src/lib/element/link';
-import { SIZE_ROUTE_PATH } from 'src/core/faq-size';
+import { FAQ_SIZE_ROUTE_PATH } from 'src/core/faq-article';
 
 export function ProductSelect(props: ProductSelectFieldProps) {
   const {
@@ -23,7 +23,7 @@ export function ProductSelect(props: ProductSelectFieldProps) {
       <Line>
         <TextSecondary tid={titleTid} />
         {isSize && (
-          <Link path={SIZE_ROUTE_PATH}>
+          <Link path={FAQ_SIZE_ROUTE_PATH}>
             <QuestionIcon />
           </Link>
         )}

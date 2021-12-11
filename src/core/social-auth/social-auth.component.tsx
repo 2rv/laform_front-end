@@ -17,8 +17,6 @@ const BASE_URL_SLASH_END = BASE_URL?.includes('localhost')
   : `${BASE_URL}/`;
 
 export function SocialAuthComponent() {
-  console.log(BASE_URL);
-
   return (
     <SectionLayout type="TEXT">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />

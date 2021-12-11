@@ -3,6 +3,7 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { CenteredSpinner } from 'src/lib/element/spinner';
+import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 
 export function ProductMaterials(props) {
   const { data = false, oldData, pending, titleTid } = props;
@@ -13,12 +14,11 @@ export function ProductMaterials(props) {
 
   if (data) {
     return (
-      <ReactEditorBlock
+      <BlockReactEditor
         titleTid={titleTid}
         data={data}
         enableReInitialize
         readOnly
-        enableIsEdit
       />
     );
   } else {

@@ -1,2 +1,2 @@
-import { SizePage } from '../../core/faq-size';
-export default SizePage;
+import { FaqSizePage } from '../../core/faq-article';
+export default FaqSizePage;

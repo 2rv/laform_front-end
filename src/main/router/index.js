@@ -35,7 +35,6 @@ import {
   USER_ORDERS_ROUTE_PATH,
 } from '../../core/user-orders';
 import { userOrderRouter, USER_ORDER_ROUTE_PATH } from '../../core/user-order';
-import { faqRouter, FAQ_ROUTE_PATH } from '../../core/faq';
 import { basketRouter, BASKET_ROUTE_PATH } from '../../core/basket';
 import {
   aboutAccountRouter,
@@ -100,7 +99,6 @@ import {
 } from '../../core/master-class-page';
 import { usersRouter, USERS_ROUTE_PATH } from '../../core/users';
 import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
-import { aboutRouter, ABOUT_ROUTE_PATH } from '../../core/faq-about';
 import {
   unsubscribeNotificationRouter,
   UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH,
@@ -113,18 +111,6 @@ import {
   allProductsRouter,
   ALL_PRODUCTS_ROUTE_PATH,
 } from '../../core/all-products';
-import {
-  legalInformationRouter,
-  LEGAL_INFORMATION_ROUTE_PATH,
-} from '../../core/faq-legal-information';
-import {
-  privacyPolicyRouter,
-  PRIVACY_POLICY_ROUTE_PATH,
-} from '../../core/faq-privacy-policy';
-import {
-  termsOfUseRouter,
-  TERMS_OF_USE_ROUTE_PATH,
-} from '../../core/faq-terms-of-use';
 import { feedbackRouter, FEEDBACK_ROUTE_PATH } from '../../core/feedback';
 import {
   recentCommentsRouter,
@@ -135,13 +121,30 @@ import {
   productSelectionsRouter,
   PRODUCT_SELECTIONS_ROUTE_PATH,
 } from '../../core/product-selections';
-import { sizeRouter, SIZE_ROUTE_PATH } from '../../core/faq-size';
 import {
-  deliveryPaymentRouter,
-  DELIVERY_PAYMENT_ROUTE_PATH,
-} from '../../core/faq-dilivery-and-payment';
+  faqSizeRouter,
+  FAQ_SIZE_ROUTE_PATH,
+  faqDeliveryPaymentRouter,
+  FAQ_DELIVERY_PAYMENT_ROUTE_PATH,
+  faqLegalInformationRouter,
+  FAQ_LEGAL_INFORMATION_ROUTE_PATH,
+  faqPrivacyPolicyRouter,
+  FAQ_PRIVACY_POLICY_ROUTE_PATH,
+  faqTermsOfUseRouter,
+  FAQ_TERMS_OF_USE_ROUTE_PATH,
+  faqAboutUsRouter,
+  FAQ_ABOUT_US_ROUTE_PATH,
+  faqRouter,
+  FAQ_ROUTE_PATH,
+} from '../../core/faq-article';
 
 export const routes = {
+  [FAQ_SIZE_ROUTE_PATH]: faqSizeRouter,
+  [FAQ_DELIVERY_PAYMENT_ROUTE_PATH]: faqDeliveryPaymentRouter,
+  [FAQ_LEGAL_INFORMATION_ROUTE_PATH]: faqLegalInformationRouter,
+  [FAQ_PRIVACY_POLICY_ROUTE_PATH]: faqPrivacyPolicyRouter,
+  [FAQ_TERMS_OF_USE_ROUTE_PATH]: faqTermsOfUseRouter,
+  [FAQ_ABOUT_US_ROUTE_PATH]: faqAboutUsRouter,
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageRouter,
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
   [SEWING_GOODS_PRODUCT_ROUTE_PATH]: sewingGoodsProductRouter,
@@ -155,13 +158,8 @@ export const routes = {
   [STATISTICS_ROUTE_PATH]: statisticsRouter,
   [ALL_PRODUCTS_ROUTE_PATH]: allProductsRouter,
   [USERS_ROUTE_PATH]: usersRouter,
-  [DELIVERY_PAYMENT_ROUTE_PATH]: deliveryPaymentRouter,
-  [SIZE_ROUTE_PATH]: sizeRouter,
   [PRODUCT_SELECTIONS_ROUTE_PATH]: productSelectionsRouter,
   [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
-  [LEGAL_INFORMATION_ROUTE_PATH]: legalInformationRouter,
-  [PRIVACY_POLICY_ROUTE_PATH]: privacyPolicyRouter,
-  [TERMS_OF_USE_ROUTE_PATH]: termsOfUseRouter,
   [FEEDBACK_ROUTE_PATH]: feedbackRouter,
   [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
   [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
@@ -189,7 +187,6 @@ export const routes = {
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
   [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
-  [ABOUT_ROUTE_PATH]: aboutRouter,
   [UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH]: unsubscribeNotificationRouter,
 };
 

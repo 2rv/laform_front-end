@@ -3,7 +3,6 @@ import { spacing } from '../../lib/theme';
 import { SectionLayout } from '../../lib/element/layout';
 import { CardListBlock } from '../../lib/element/card-list';
 import { BlockComment } from '../block-comment';
-import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
 import { ProductMainComponent } from './frames';
 import { ProductImages, ProductMaterials } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';

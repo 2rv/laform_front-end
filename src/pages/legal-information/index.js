@@ -1,2 +1,2 @@
-import { LegalInformationPage } from '../../core/faq-legal-information';
-export default LegalInformationPage;
+import { FaqLegalInformationPage } from '../../core/faq-article';
+export default FaqLegalInformationPage;

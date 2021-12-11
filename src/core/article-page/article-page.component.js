@@ -5,7 +5,7 @@ import { TextSecondary } from '../../lib/element/text';
 import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { BlockComment } from '../block-comment';
-import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 import { ConvertTime } from 'src/lib/common/time-convert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
@@ -37,7 +37,7 @@ export function ArticlePageComponent(props) {
         <Title tid={name} />
         <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
-      <ReactEditorBlock data={postArticle} enableReInitialize readOnly />
+      <BlockReactEditor data={postArticle} enableReInitialize readOnly />
       <CardListBlock
         title="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE"
         items={recommendations}

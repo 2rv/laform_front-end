@@ -1,18 +1,20 @@
 import { useSelector } from 'react-redux';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
-import { ABOUT_ROUTE_PATH } from '../faq-about';
-import { FAQ_ROUTE_PATH } from '../faq';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { FooterComponent } from './footer.component';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
-import { LEGAL_INFORMATION_ROUTE_PATH } from '../faq-legal-information';
-import { PRIVACY_POLICY_ROUTE_PATH } from '../faq-privacy-policy';
-import { TERMS_OF_USE_ROUTE_PATH } from '../faq-terms-of-use';
 import { FEEDBACK_ROUTE_PATH } from '../feedback';
-import { SIZE_ROUTE_PATH } from '../faq-size';
-import { DELIVERY_PAYMENT_ROUTE_PATH } from '../faq-dilivery-and-payment';
+import {
+  FAQ_SIZE_ROUTE_PATH,
+  FAQ_DELIVERY_PAYMENT_ROUTE_PATH,
+  FAQ_LEGAL_INFORMATION_ROUTE_PATH,
+  FAQ_PRIVACY_POLICY_ROUTE_PATH,
+  FAQ_TERMS_OF_USE_ROUTE_PATH,
+  FAQ_ABOUT_US_ROUTE_PATH,
+  FAQ_ROUTE_PATH,
+} from '../faq-article';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({
@@ -32,11 +34,11 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',
-        path: ABOUT_ROUTE_PATH,
+        path: FAQ_ABOUT_US_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO',
-        path: ABOUT_ROUTE_PATH,
+        path: FAQ_ABOUT_US_ROUTE_PATH,
       },
     ],
   };
@@ -46,22 +48,22 @@ export function FooterContainer() {
     items: [
       {
         tid: 'FOOTER.MENU.SECTION2.HOW_TO_CHOOSE_SIZE',
-        path: SIZE_ROUTE_PATH,
-      },
-      {
-        tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
-        path: DELIVERY_PAYMENT_ROUTE_PATH,
-      },
-      {
-        tid: 'FOOTER.MENU.SECTION2.QNA',
-        path: FAQ_ROUTE_PATH,
+        path: FAQ_SIZE_ROUTE_PATH,
       },
       {
         tid: 'Как распечатать',
-        path: FAQ_ROUTE_PATH,
+        path: FAQ_SIZE_ROUTE_PATH,
       },
       {
         tid: 'Как склеить выкройку',
+        path: FAQ_SIZE_ROUTE_PATH,
+      },
+      {
+        tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',
+        path: FAQ_DELIVERY_PAYMENT_ROUTE_PATH,
+      },
+      {
+        tid: 'FOOTER.MENU.SECTION2.QNA',
         path: FAQ_ROUTE_PATH,
       },
     ],
@@ -71,15 +73,15 @@ export function FooterContainer() {
     items: [
       {
         tid: 'FOOTER.MENU.SECTION3.LEGAL_INFO',
-        path: LEGAL_INFORMATION_ROUTE_PATH,
+        path: FAQ_LEGAL_INFORMATION_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION3.PRIVACY_POLICY',
-        path: PRIVACY_POLICY_ROUTE_PATH,
+        path: FAQ_PRIVACY_POLICY_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION3.TERMS_OF_USE',
-        path: TERMS_OF_USE_ROUTE_PATH,
+        path: FAQ_TERMS_OF_USE_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION3.FEEDBACK',
