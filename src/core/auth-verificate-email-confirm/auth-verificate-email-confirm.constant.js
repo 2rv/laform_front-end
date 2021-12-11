@@ -6,5 +6,5 @@ export const AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME =
 
 export const AUTH_VERIFICATE_EMAIL_CONFIRM_API = {
   ENDPOINT: (code) => `/user/verification/email/${code}`,
-  METHOD: 'POST',
+  METHOD: 'GET',
 };

@@ -63,7 +63,7 @@
       "TITLE": "Пароль",
       "PLACEHOLDER": "Пароль"
     },
-    "SUCCESS": "A link to change has been sent to the mail",
+    "SUCCESS": "Коды для смены отправлены на новую и текущую почты",
     "SUBMIT": "Сменить"
   },
   "LOGOUT": {

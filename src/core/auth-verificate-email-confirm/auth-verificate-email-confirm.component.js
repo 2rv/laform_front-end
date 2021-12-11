@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { TitlePrimary } from '../../../../lib/element/title';
-import { ButtonPrimary } from '../../../../lib/element/button';
+import { TitlePrimary } from 'src/lib/element/title';
+import { ButtonPrimary } from 'src/lib/element/button';
+import { LoaderPrimary } from 'src/lib/element/loader';
+import { ErrorAlert } from 'src/lib/element/alert';
+import { TextSecondary } from 'src/lib/element/text';
+import { THEME_SIZE } from 'src/lib/theme';
 import {
   ContentLayout,
   SectionLayout,
   PageLayout,
-} from '../../../../lib/element/layout';
-import { LoaderPrimary } from '../../../../lib/element/loader';
-import { ErrorAlert } from '../../../../lib/element/alert';
-import { TextSecondary } from '../../../../lib/element/text';
-import { THEME_SIZE } from '../../../../lib/theme';
+} from 'src/lib/element/layout';
 
 export function AuthVerificateEmailConfirmComponent(props) {
   const { onButtonClick, isPending, isSuccess, isError, errorMessage } = props;

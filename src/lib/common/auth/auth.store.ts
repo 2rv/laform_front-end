@@ -23,7 +23,6 @@ export function authStore(
         ...state,
         user: Object.assign(state.user, { emailConfirmed: true }),
       };
-
     default:
       return state;
   }
