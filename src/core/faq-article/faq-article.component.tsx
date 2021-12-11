@@ -9,6 +9,7 @@ import { BlockHelpLinks } from '../block-help-links';
 interface FaqArticleComponentProps {
   pending: boolean;
   success: boolean;
+  successLoad: boolean;
   error: boolean;
   errorMessage: string;
   data: any;
@@ -23,6 +24,7 @@ export function FaqArticleComponent(props: FaqArticleComponentProps) {
   const {
     pending,
     success,
+    successLoad,
     error,
     errorMessage,
     data,
@@ -37,15 +39,19 @@ export function FaqArticleComponent(props: FaqArticleComponentProps) {
     <SectionLayout>
       {!titleTid && <BlockHelpLinks />}
       {pending && <CenteredSpinner />}
-      <BlockReactEditor
-        titleTid={titleTid}
-        data={data}
-        enableIsEdit={isAdmin}
-        readOnly={!isAdmin}
-        enableReInitialize={!isAdmin}
-        handleChange={handleChange}
-        error={error ? errorMessage : undefined}
-      />
+      {pageLoading && <LoaderPrimary />}
+      {pageLoading && successLoad ? null : (
+        <BlockReactEditor
+          titleTid={titleTid}
+          data={data}
+          enableIsEdit={isAdmin}
+          readOnly={!isAdmin}
+          enableReInitialize={!isAdmin}
+          handleChange={handleChange}
+          error={error ? errorMessage : undefined}
+        />
+      )}
+
       {isAdmin && (
         <ButtonSecondary
           tid="OTHER.SAVE"
@@ -54,7 +60,6 @@ export function FaqArticleComponent(props: FaqArticleComponentProps) {
         />
       )}
       {success && <SuccessAlert tid="Успешно обновлено" />}
-      {pageLoading && <LoaderPrimary />}
     </SectionLayout>
   );
 }

@@ -31,14 +31,10 @@ export function FaqArticleContainer(props: FaqArticleContainerProps) {
       pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     }),
   );
-  const [editorData, handleChange]: any = useState(false);
+  const [editorData, handleChange] = useState(false);
   useEffect(() => {
     dispatch(loadDataAction(name));
   }, [name]);
-
-  useEffect(() => {
-    handleChange(getRequestData(load, []));
-  }, [load.data]);
 
   const handleSave = () => {
     dispatch(saveDataAction(editorData, name));
@@ -56,8 +52,9 @@ export function FaqArticleContainer(props: FaqArticleContainerProps) {
       errorMessage={
         getRequestErrorMessage(load) || getRequestErrorMessage(save)
       }
+      successLoad={isRequestSuccess(load)}
       success={isRequestSuccess(save)}
-      data={editorData}
+      data={getRequestData(load, false)}
       disabled={!editorData}
       titleTid={titleTid}
     />
