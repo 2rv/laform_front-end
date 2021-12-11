@@ -4,7 +4,11 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { USER_ROLE } from 'src/lib/common/auth';
 import { FAQ_ARTICLE_STORE_NAME } from './faq-article.constant';
-import { saveDataAction, loadDataAction } from './faq-article.action';
+import {
+  saveDataAction,
+  loadDataAction,
+  reloadDataAction,
+} from './faq-article.action';
 import { FaqArticleComponent } from './faq-article.component';
 
 interface FaqArticleContainerProps {
@@ -26,6 +30,11 @@ export function FaqArticleContainer(props: FaqArticleContainerProps) {
   const [editorData, handleChange] = useState(false);
   useEffect(() => {
     dispatch(loadDataAction(name));
+    return () => {
+      console.log('reload');
+
+      dispatch(reloadDataAction());
+    };
   }, []);
 
   const handleSave = () => {

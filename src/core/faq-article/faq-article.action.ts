@@ -53,3 +53,11 @@ export function loadDataAction(name: string) {
     }
   };
 }
+
+export function reloadDataAction() {
+  return async (dispatch: Function) => {
+    dispatch({
+      type: FAQ_ARTICLE_ACTION_TYPE.REDATA_LOAD,
+    });
+  };
+}
