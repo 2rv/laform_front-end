@@ -25,36 +25,45 @@ function FaqArticlePage(props: FaqArticlePageProps) {
 }
 
 export const FaqSizePage = () => (
-  <FaqArticlePage titleTid="Как выбрать размер" name={FAQ_SIZE_ROUTE_PATH} />
+  <FaqArticlePage
+    titleTid="Как выбрать размер"
+    name={FAQ_SIZE_ROUTE_PATH}
+    key={FAQ_SIZE_ROUTE_PATH}
+  />
 );
 export const FaqDeliveryPaymentPage = () => (
   <FaqArticlePage
     titleTid="Доставка и оплата"
     name={FAQ_DELIVERY_PAYMENT_ROUTE_PATH}
+    key={FAQ_DELIVERY_PAYMENT_ROUTE_PATH}
   />
 );
 export const FaqLegalInformationPage = () => (
   <FaqArticlePage
     titleTid="OTHER.LEGAL_INFORMATION"
     name={FAQ_LEGAL_INFORMATION_ROUTE_PATH}
+    key={FAQ_LEGAL_INFORMATION_ROUTE_PATH}
   />
 );
 export const FaqPrivacyPolicyPage = () => (
   <FaqArticlePage
     titleTid="OTHER.PRIVACY_POLICY"
     name={FAQ_PRIVACY_POLICY_ROUTE_PATH}
+    key={FAQ_PRIVACY_POLICY_ROUTE_PATH}
   />
 );
 export const FaqTermsOfUsePage = () => (
   <FaqArticlePage
     titleTid="OTHER.TERMS_OF_USE"
     name={FAQ_TERMS_OF_USE_ROUTE_PATH}
+    key={FAQ_TERMS_OF_USE_ROUTE_PATH}
   />
 );
 export const FaqAboutUsPage = () => (
   <FaqArticlePage
     titleTid="HEADER.MENU_ITEMS.ABOUT_US"
     name={FAQ_ABOUT_US_ROUTE_PATH}
+    key={FAQ_ABOUT_US_ROUTE_PATH}
   />
 );
 export const FaqPage = () => <FaqArticlePage name={FAQ_ROUTE_PATH} />;

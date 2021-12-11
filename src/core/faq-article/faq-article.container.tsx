@@ -52,7 +52,6 @@ export function FaqArticleContainer(props: FaqArticleContainerProps) {
       errorMessage={
         getRequestErrorMessage(load) || getRequestErrorMessage(save)
       }
-      successLoad={isRequestSuccess(load)}
       success={isRequestSuccess(save)}
       data={getRequestData(load, false)}
       disabled={!editorData}
