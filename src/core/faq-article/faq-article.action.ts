@@ -31,6 +31,9 @@ export function saveDataAction(data: any, name: string) {
 export function loadDataAction(name: string) {
   return async (dispatch: Function) => {
     dispatch({
+      type: FAQ_ARTICLE_ACTION_TYPE.DATA_RELOAD,
+    });
+    dispatch({
       type: FAQ_ARTICLE_ACTION_TYPE.DATA_LOAD_PENDING,
     });
 
@@ -51,13 +54,5 @@ export function loadDataAction(name: string) {
         });
       }
     }
-  };
-}
-
-export function reloadDataAction() {
-  return async (dispatch: Function) => {
-    dispatch({
-      type: FAQ_ARTICLE_ACTION_TYPE.DATA_RELOAD,
-    });
   };
 }
