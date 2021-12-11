@@ -6,7 +6,7 @@ import { BlockComment } from '../block-comment';
 import { ProductMainComponent } from './frames';
 import { ProductImages } from '../block-product-components';
 import { LoaderPrimary } from 'src/lib/element/loader';
-import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 
 export function MasterClassProductComponent(props) {
   const {
@@ -30,7 +30,7 @@ export function MasterClassProductComponent(props) {
         </Content>
       </SectionLayout>
       {productData.materials && (
-        <ReactEditorBlock
+        <BlockReactEditor
           titleTid="PATTERNS.MATERIALS"
           data={productData.materials}
           enableReInitialize

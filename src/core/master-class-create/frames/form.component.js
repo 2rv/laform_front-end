@@ -12,7 +12,7 @@ import {
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
 import { BlockCategories } from 'src/lib/common/block-categories';
-import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { CreatePriceBlock } from 'src/lib/common/block-create-price';
@@ -88,18 +88,17 @@ export function FormComponent(props) {
 
       <Divider />
 
-      <ReactEditorBlock
+      <BlockReactEditor
         titleTid="PATTERNS.CREATE.FORM.MATERIALS"
         handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
         data={values[CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]}
         error={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
-        errorMessage={getFieldError(CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL)}
         enableIsEdit={isEdit}
       />
 
       <Divider />
 
-      <ReactEditorBlock
+      <BlockReactEditor
         titleTid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE"
         handleChange={setEditorData(CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE)}
         data={values[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]}

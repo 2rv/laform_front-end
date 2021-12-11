@@ -15,7 +15,7 @@ import { BlockCategories } from 'src/lib/common/block-categories';
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 import { CREATE_PATTERN_FIELD_NAME } from '../pattern-create.type';
-import { ReactEditorBlock } from '../../../lib/common/block-react-editor';
+import { BlockReactEditor } from '../../../lib/common/block-react-editor';
 import { CreatePriceBlock } from 'src/lib/common/block-create-price';
 import { TitlePrimary } from 'src/lib/element/title';
 
@@ -131,12 +131,11 @@ export function FormComponent(props) {
 
       <Divider />
 
-      <ReactEditorBlock
+      <BlockReactEditor
         titleTid="PATTERNS.CREATE.FORM.MATERIALS"
         handleChange={setEditorData(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
         data={values[CREATE_PATTERN_FIELD_NAME.MATERIAL]}
         error={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
-        errorMessage={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
         enableIsEdit={isEdit}
       />
 

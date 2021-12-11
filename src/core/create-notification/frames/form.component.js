@@ -2,7 +2,7 @@ import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
 import { ButtonPrimary } from '../../../lib/element/button';
 import { BasicField } from '../../../lib/element/field';
 import { CREATE_NOTIFICATION_FIELD_NAME } from '../create-notification.type';
-import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 
 export function FormComponent(props) {
   const {
@@ -42,7 +42,7 @@ export function FormComponent(props) {
           />
         </FieldLayout>
       </SectionLayout>
-      <ReactEditorBlock
+      <BlockReactEditor
         handleChange={setEditorData(
           CREATE_NOTIFICATION_FIELD_NAME.NOTIFICATION,
         )}

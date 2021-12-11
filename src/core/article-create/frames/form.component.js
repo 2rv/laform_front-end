@@ -9,7 +9,7 @@ import {
 import { ARTICLE_FIELD_NAME } from '../article-create.type';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
-import { ReactEditorBlock } from 'src/lib/common/block-react-editor';
+import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 import { BlockCategories } from 'src/lib/common/block-categories';
 import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
 import { Divider } from 'src/lib/element/divider';
@@ -70,11 +70,10 @@ export function FormComponent(props) {
 
       <Divider />
 
-      <ReactEditorBlock
+      <BlockReactEditor
         titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.POST"
         handleChange={setEditorData(ARTICLE_FIELD_NAME.ARTICLE)}
-        data={isEdit && values[ARTICLE_FIELD_NAME.ARTICLE]}
-        minHeight={100}
+        data={values[ARTICLE_FIELD_NAME.ARTICLE]}
         enableIsEdit={isEdit}
       />
 

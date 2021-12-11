@@ -8,10 +8,9 @@ import { ReactComponent as SizeIcon } from 'src/asset/svg/size.svg';
 import { ReactComponent as DownloadIcon } from 'src/asset/svg/arrow-down-download.svg';
 import { ReactComponent as PaperIcon } from 'src/asset/svg/paper.svg';
 import { LinkSecondary } from 'src/lib/element/link';
-import { FAQ_ROUTE_PATH } from '../faq';
-import { SIZE_ROUTE_PATH } from '../faq-size';
+import { FAQ_SIZE_ROUTE_PATH, FAQ_ROUTE_PATH } from '../faq-article';
 
-export function HelpLinksComponent(props: { viewAll: boolean }) {
+export function HelpLinksComponent(props: { viewAll?: boolean }) {
   const { viewAll } = props;
   return (
     <SectionLayout>
@@ -38,7 +37,7 @@ const INFO_BLOCK_ITEMS = [
   {
     icon: SizeIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.SIZING_INFO',
-    path: SIZE_ROUTE_PATH,
+    path: FAQ_SIZE_ROUTE_PATH,
   },
   {
     icon: DownloadIcon,

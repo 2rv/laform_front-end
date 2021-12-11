@@ -1,6 +1,6 @@
 import { CREATE_ARTICLE_ROUTE_PATH } from '../article-create';
 import { ARTICLES_ROUTE_PATH } from '../articles';
-import { FAQ_ROUTE_PATH } from '../faq';
+import { FAQ_ROUTE_PATH } from '../faq-article';
 import { HOME_ROUTE_PATH } from '../home';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { CREATE_MASTER_CLASS_ROUTE_PATH } from '../master-class-create';

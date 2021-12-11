@@ -55,7 +55,6 @@ import {
   USER_ORDERS_STORE_NAME,
 } from '../../core/user-orders';
 import { userOrderStore, USER_ORDER_STORE_NAME } from '../../core/user-order';
-import { faqStore, FAQ_STORE_NAME } from '../../core/faq';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import { articlesStore, ARTICLES_STORE_NAME } from '../../core/articles';
 import {
@@ -142,7 +141,6 @@ import { usersStore, USERS_STORE_NAME } from '../../core/users';
 import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
 import { searchButtonStore } from '../../core/search-button/search-button.store';
 import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
-import { aboutStore, ABOUT_STORE_NAME } from '../../core/faq-about';
 import {
   unsubscribeNotificationStore,
   UNSUBSCRIBE_NOTIFICATION_STORE_NAME,
@@ -159,18 +157,6 @@ import {
   allProductsStore,
   ALL_PRODUCTS_STORE_NAME,
 } from '../../core/all-products';
-import {
-  legalInformationStore,
-  LEGAL_INFORMATION_STORE_NAME,
-} from '../../core/faq-legal-information';
-import {
-  privacyPolicyStore,
-  PRIVACY_POLICY_STORE_NAME,
-} from '../../core/faq-privacy-policy';
-import {
-  termsOfUseStore,
-  TERMS_OF_USE_STORE_NAME,
-} from '../../core/faq-terms-of-use';
 import { feedbackStore, FEEDBACK_STORE_NAME } from '../../core/feedback';
 import {
   recentCommentsStore,
@@ -194,24 +180,18 @@ import {
   userInfoStore,
   USER_INFO_STORE_NAME,
 } from '../../core/settings-user-info';
-import { sizeStore, SIZE_STORE_NAME } from '../../core/faq-size';
 import {
-  deliveryPaymentStore,
-  DELIVERY_PAYMENT_STORE_NAME,
-} from '../../core/faq-dilivery-and-payment';
-
+  faqArticleStore,
+  FAQ_ARTICLE_STORE_NAME,
+} from '../../core/faq-article';
 export const reducers = combineReducers({
-  [DELIVERY_PAYMENT_STORE_NAME]: deliveryPaymentStore,
-  [SIZE_STORE_NAME]: sizeStore,
+  [FAQ_ARTICLE_STORE_NAME]: faqArticleStore,
   [USER_INFO_STORE_NAME]: userInfoStore,
   [SDEK_TARIFFLIST_STORE_NAME]: sdekTariffListStore,
   [SDEK_POINTS_STORE_NAME]: sdekPointsStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,
-  [LEGAL_INFORMATION_STORE_NAME]: legalInformationStore,
-  [PRIVACY_POLICY_STORE_NAME]: privacyPolicyStore,
-  [TERMS_OF_USE_STORE_NAME]: termsOfUseStore,
   [FEEDBACK_STORE_NAME]: feedbackStore,
   [CREATE_PATTERN_STORE_NAME]: createPatternStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
@@ -252,7 +232,6 @@ export const reducers = combineReducers({
   [ORDERS_STORE_NAME]: ordersStore,
   [USER_ORDERS_STORE_NAME]: userOrdersStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
-  [FAQ_STORE_NAME]: faqStore,
   [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
@@ -266,7 +245,6 @@ export const reducers = combineReducers({
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
-  [ABOUT_STORE_NAME]: aboutStore,
   [UNSUBSCRIBE_NOTIFICATION_STORE_NAME]: unsubscribeNotificationStore,
   [ALL_PRODUCTS_STORE_NAME]: allProductsStore,
 });

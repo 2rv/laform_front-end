@@ -1,2 +1,2 @@
-import { DeliveryPaymentPage } from '../../core/faq-dilivery-and-payment';
-export default DeliveryPaymentPage;
+import { FaqDeliveryPaymentPage } from '../../core/faq-article';
+export default FaqDeliveryPaymentPage;

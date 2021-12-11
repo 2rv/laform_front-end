@@ -1,2 +1,2 @@
-import { FaqPage } from '../../core/faq';
+import { FaqPage } from '../../core/faq-article';
 export default FaqPage;

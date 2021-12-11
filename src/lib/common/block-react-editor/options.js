@@ -1,14 +1,16 @@
 import Header from '@editorjs/header';
-import List from '@editorjs/list';
+import NestedList from '@editorjs/nested-list';
 import Paragraph from '@editorjs/paragraph';
 import Embed from '@editorjs/embed';
 import Table from '@editorjs/table';
 import Marker from '@editorjs/marker';
 import Delimiter from '@editorjs/delimiter';
 import ImageTool from '@editorjs/image';
+import RawTool from '@editorjs/raw';
 import { httpRequest } from 'src/main/http';
 
 export const tools = {
+  raw: RawTool,
   header: {
     class: Header,
     config: {
@@ -19,7 +21,7 @@ export const tools = {
     inlineToolbar: ['link', 'bold', 'italic'],
   },
   list: {
-    class: List,
+    class: NestedList,
     inlineToolbar: true,
   },
   paragraph: {
