@@ -13,6 +13,9 @@ const initialState = {
 
 export function faqArticleStore(state = initialState, action: any) {
   switch (action.type) {
+    case FAQ_ARTICLE_ACTION_TYPE.DATA_RELOAD:
+      return initialState;
+
     case FAQ_ARTICLE_ACTION_TYPE.DATA_LOAD_PENDING:
       return {
         ...state,
