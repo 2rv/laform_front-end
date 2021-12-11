@@ -8,7 +8,12 @@ import { ReactComponent as SizeIcon } from 'src/asset/svg/size.svg';
 import { ReactComponent as DownloadIcon } from 'src/asset/svg/arrow-down-download.svg';
 import { ReactComponent as PaperIcon } from 'src/asset/svg/paper.svg';
 import { LinkSecondary } from 'src/lib/element/link';
-import { FAQ_SIZE_ROUTE_PATH, FAQ_ROUTE_PATH } from '../faq-article';
+import {
+  FAQ_SIZE_ROUTE_PATH,
+  FAQ_HOW_PRINT_ROUTE_PATH,
+  FAQ_HOW_GLUE_ROUTE_PATH,
+  FAQ_ROUTE_PATH,
+} from '../faq-article';
 
 export function HelpLinksComponent(props: { viewAll?: boolean }) {
   const { viewAll } = props;
@@ -20,10 +25,7 @@ export function HelpLinksComponent(props: { viewAll?: boolean }) {
       </Case>
       <List>
         {INFO_BLOCK_ITEMS.map(({ icon: Icon, tid, path }, index) => (
-          <Content
-            key={index}
-            onClick={setLinkRedirect(viewAll ? FAQ_ROUTE_PATH : path)}
-          >
+          <Content key={index} onClick={setLinkRedirect(path)}>
             <Icon />
             <Text tid={tid} />
           </Content>
@@ -42,12 +44,12 @@ const INFO_BLOCK_ITEMS = [
   {
     icon: DownloadIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.DOWNLOAD_AND_PRINT_PATTERN_INFO',
-    path: FAQ_ROUTE_PATH,
+    path: FAQ_HOW_PRINT_ROUTE_PATH,
   },
   {
     icon: PaperIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.GLUE_PATTERN_INFO',
-    path: FAQ_ROUTE_PATH,
+    path: FAQ_HOW_GLUE_ROUTE_PATH,
   },
 ];
 const Case = styled.div`

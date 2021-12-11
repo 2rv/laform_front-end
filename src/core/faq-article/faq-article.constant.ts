@@ -14,3 +14,8 @@ export const FAQ_PRIVACY_POLICY_ROUTE_PATH = '/privacy-policy';
 export const FAQ_TERMS_OF_USE_ROUTE_PATH = '/terms-of-use';
 export const FAQ_ABOUT_US_ROUTE_PATH = '/about-us';
 export const FAQ_ROUTE_PATH = '/faq';
+
+export const FAQ_HOW_PRINT_ROUTE_PATH = '/how-to-print';
+export const FAQ_HOW_GLUE_ROUTE_PATH = '/how-to-glue-pattern';
+export const FAQ_LAFORME_PATTERNS_ROUTE_PATH = '/laforme-patterns';
+export const FAQ_LAFORME_STUDIO_ROUTE_PATH = '/laforme-studio';

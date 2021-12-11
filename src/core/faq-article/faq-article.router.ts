@@ -7,6 +7,10 @@ import {
   FAQ_TERMS_OF_USE_ROUTE_PATH,
   FAQ_ABOUT_US_ROUTE_PATH,
   FAQ_ROUTE_PATH,
+  FAQ_HOW_PRINT_ROUTE_PATH,
+  FAQ_HOW_GLUE_ROUTE_PATH,
+  FAQ_LAFORME_PATTERNS_ROUTE_PATH,
+  FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from './faq-article.constant';
 
 export function faqSizeRouter(ctx: any) {
@@ -29,4 +33,17 @@ export function faqAboutUsRouter(ctx: any) {
 }
 export function faqRouter(ctx: any) {
   ctx.store.dispatch(setActivePath(FAQ_ROUTE_PATH));
+}
+
+export function faqHowPrintRouter(ctx: any) {
+  ctx.store.dispatch(setActivePath(FAQ_HOW_PRINT_ROUTE_PATH));
+}
+export function faqHowGlueRouter(ctx: any) {
+  ctx.store.dispatch(setActivePath(FAQ_HOW_GLUE_ROUTE_PATH));
+}
+export function faqLaformePatternsRouter(ctx: any) {
+  ctx.store.dispatch(setActivePath(FAQ_LAFORME_PATTERNS_ROUTE_PATH));
+}
+export function faqLaformeStudioRouter(ctx: any) {
+  ctx.store.dispatch(setActivePath(FAQ_LAFORME_STUDIO_ROUTE_PATH));
 }

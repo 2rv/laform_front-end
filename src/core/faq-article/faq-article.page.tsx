@@ -8,6 +8,10 @@ import {
   FAQ_TERMS_OF_USE_ROUTE_PATH,
   FAQ_ABOUT_US_ROUTE_PATH,
   FAQ_ROUTE_PATH,
+  FAQ_HOW_PRINT_ROUTE_PATH,
+  FAQ_HOW_GLUE_ROUTE_PATH,
+  FAQ_LAFORME_PATTERNS_ROUTE_PATH,
+  FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from './faq-article.constant';
 
 interface FaqArticlePageProps {
@@ -67,3 +71,32 @@ export const FaqAboutUsPage = () => (
   />
 );
 export const FaqPage = () => <FaqArticlePage name={FAQ_ROUTE_PATH} />;
+
+export const FaqHowPrintPage = () => (
+  <FaqArticlePage
+    titleTid="Как распечатать выкройку"
+    name={FAQ_HOW_PRINT_ROUTE_PATH}
+    key={FAQ_HOW_PRINT_ROUTE_PATH}
+  />
+);
+export const FaqHowGluePage = () => (
+  <FaqArticlePage
+    titleTid="Как склеить выкройку"
+    name={FAQ_HOW_GLUE_ROUTE_PATH}
+    key={FAQ_HOW_GLUE_ROUTE_PATH}
+  />
+);
+export const FaqLaformePatternsPage = () => (
+  <FaqArticlePage
+    titleTid="LAFORME PATTERNS"
+    name={FAQ_LAFORME_PATTERNS_ROUTE_PATH}
+    key={FAQ_LAFORME_PATTERNS_ROUTE_PATH}
+  />
+);
+export const FaqLaformeStuioPage = () => (
+  <FaqArticlePage
+    titleTid="LAFORME STUDIO"
+    name={FAQ_LAFORME_STUDIO_ROUTE_PATH}
+    key={FAQ_LAFORME_STUDIO_ROUTE_PATH}
+  />
+);
