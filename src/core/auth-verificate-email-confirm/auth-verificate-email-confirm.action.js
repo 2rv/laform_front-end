@@ -1,6 +1,5 @@
 import { authSetEmailConfirmed } from 'src/lib/common/auth/auth.action';
-import { httpRequest } from '../../main/http';
-
+import { httpRequest } from 'src/main/http';
 import { AUTH_VERIFICATE_EMAIL_CONFIRM_API } from './auth-verificate-email-confirm.constant';
 import { AUTH_VERIFICATE_EMAIL_CONFIRM_ACTION_TYPE } from './auth-verificate-email-confirm.type';
 
@@ -11,13 +10,13 @@ export function authVerificateEmailConfirmUploadData(code) {
     });
 
     try {
-      const res = await httpRequest({
+      const response = await httpRequest({
         method: AUTH_VERIFICATE_EMAIL_CONFIRM_API.METHOD,
         url: AUTH_VERIFICATE_EMAIL_CONFIRM_API.ENDPOINT(code),
       });
-      //   if (res.data === true) {
-      //     dispatch(authSetEmailConfirmed());
-      //   }
+      if (response.data === true) {
+        dispatch(authSetEmailConfirmed());
+      }
       dispatch({
         type: AUTH_VERIFICATE_EMAIL_CONFIRM_ACTION_TYPE.AUTH_VERIFICATE_EMAIL_CONFIRM_UPLOAD_SUCCESS,
       });

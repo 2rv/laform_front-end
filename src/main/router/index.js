@@ -140,12 +140,8 @@ import {
   deliveryPaymentRouter,
   DELIVERY_PAYMENT_ROUTE_PATH,
 } from '../../core/faq-dilivery-and-payment';
-import {
-  authChangeEmailRouter,
-  AUTH_CHANGE_EMAIL_ROUTE_PATH,
-} from '../../core/auth-change-email-confirm';
+
 export const routes = {
-  [AUTH_CHANGE_EMAIL_ROUTE_PATH]: authChangeEmailRouter,
   [MASTER_CLASS_PAGE_ROUTE_PATH]: masterClassPageRouter,
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
   [SEWING_GOODS_PRODUCT_ROUTE_PATH]: sewingGoodsProductRouter,

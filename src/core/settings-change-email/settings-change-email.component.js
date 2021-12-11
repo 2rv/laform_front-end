@@ -8,6 +8,7 @@ import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SETTINGS_CHANGE_EMAIL_FIELD_NAME } from './settings-change-email.type';
+import { SettingsConfirmEmailComponent } from './settings-confirm-email.component';
 
 export function SettingsChangeEmailComponent(props) {
   const {
@@ -91,13 +92,14 @@ export function SettingsChangeEmailComponent(props) {
                     type="submit"
                     disabled={isSubmitDisabled()}
                   />
-                  {saveSuccess && (
-                    <SuccessAlert tid="SETTINGS.CHANGE_EMAIL.SUCCESS" />
-                  )}
-                  {(saveError || saveErrorMessage) && (
-                    <ErrorAlert tid={saveErrorMessage} />
-                  )}
                 </FieldLayout>
+                {saveSuccess && <SettingsConfirmEmailComponent />}
+                {saveSuccess && (
+                  <SuccessAlert tid="SETTINGS.CHANGE_EMAIL.SUCCESS" />
+                )}
+                {(saveError || saveErrorMessage) && (
+                  <ErrorAlert tid={saveErrorMessage} />
+                )}
               </SectionLayout>
             </SectionLayout>
           </form>

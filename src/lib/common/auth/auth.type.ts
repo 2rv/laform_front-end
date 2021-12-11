@@ -30,6 +30,7 @@ export interface AuthStoreState {
 
 export interface AuthStoreAction extends AuthStoreState {
   type: AUTH_ACTION_TYPE;
+  data?: any;
 }
 
 export enum AUTH_ACTION_TYPE {

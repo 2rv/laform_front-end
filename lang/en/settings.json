@@ -63,7 +63,7 @@
       "TITLE": "Password",
       "PLACEHOLDER": "Password"
     },
-    "SUCCESS": "Email address changed successfully",
+    "SUCCESS": "Change codes sent to new and current mail",
     "SUBMIT": "Change"
   },
   "LOGOUT": {

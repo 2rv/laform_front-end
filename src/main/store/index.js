@@ -199,12 +199,8 @@ import {
   deliveryPaymentStore,
   DELIVERY_PAYMENT_STORE_NAME,
 } from '../../core/faq-dilivery-and-payment';
-import {
-  authChangeEmailStore,
-  AUTH_CHANGE_EMAIL_STORE_NAME,
-} from '../../core/auth-change-email-confirm';
+
 export const reducers = combineReducers({
-  [AUTH_CHANGE_EMAIL_STORE_NAME]: authChangeEmailStore,
   [DELIVERY_PAYMENT_STORE_NAME]: deliveryPaymentStore,
   [SIZE_STORE_NAME]: sizeStore,
   [USER_INFO_STORE_NAME]: userInfoStore,
