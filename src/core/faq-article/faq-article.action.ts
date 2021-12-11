@@ -22,7 +22,7 @@ export function saveDataAction(data: any, name: string) {
       if (err.response) {
         dispatch({
           type: FAQ_ARTICLE_ACTION_TYPE.DATA_SAVE_ERROR,
-          errorMessage: err.response.data.message,
+          error: err.response.data.message,
         });
       }
     }
@@ -47,17 +47,9 @@ export function loadDataAction(name: string) {
       if (err.response) {
         dispatch({
           type: FAQ_ARTICLE_ACTION_TYPE.DATA_LOAD_ERROR,
-          errorMessage: err.response.data.message,
+          error: err.response.data.message,
         });
       }
     }
-  };
-}
-
-export function reloadDataAction() {
-  return async (dispatch: Function) => {
-    dispatch({
-      type: FAQ_ARTICLE_ACTION_TYPE.DATA_RELOAD,
-    });
   };
 }
