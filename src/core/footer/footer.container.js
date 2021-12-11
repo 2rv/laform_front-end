@@ -14,6 +14,10 @@ import {
   FAQ_TERMS_OF_USE_ROUTE_PATH,
   FAQ_ABOUT_US_ROUTE_PATH,
   FAQ_ROUTE_PATH,
+  FAQ_HOW_PRINT_ROUTE_PATH,
+  FAQ_HOW_GLUE_ROUTE_PATH,
+  FAQ_LAFORME_PATTERNS_ROUTE_PATH,
+  FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from '../faq-article';
 
 export function FooterContainer() {
@@ -34,15 +38,14 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',
-        path: FAQ_ABOUT_US_ROUTE_PATH,
+        path: FAQ_LAFORME_PATTERNS_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_STUDIO',
-        path: FAQ_ABOUT_US_ROUTE_PATH,
+        path: FAQ_LAFORME_STUDIO_ROUTE_PATH,
       },
     ],
   };
-
   const faqLinkItems = {
     title: 'FOOTER.MENU.SECTION2.TITLE',
     items: [
@@ -52,11 +55,11 @@ export function FooterContainer() {
       },
       {
         tid: 'Как распечатать',
-        path: FAQ_SIZE_ROUTE_PATH,
+        path: FAQ_HOW_PRINT_ROUTE_PATH,
       },
       {
         tid: 'Как склеить выкройку',
-        path: FAQ_SIZE_ROUTE_PATH,
+        path: FAQ_HOW_GLUE_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION2.DELIVERY_AND_PAYMENT',

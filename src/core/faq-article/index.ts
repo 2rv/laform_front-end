@@ -6,6 +6,10 @@ export {
   FaqTermsOfUsePage,
   FaqAboutUsPage,
   FaqPage,
+  FaqHowPrintPage,
+  FaqHowGluePage,
+  FaqLaformePatternsPage,
+  FaqLaformeStuioPage,
 } from './faq-article.page';
 export {
   faqSizeRouter,
@@ -15,6 +19,10 @@ export {
   faqTermsOfUseRouter,
   faqAboutUsRouter,
   faqRouter,
+  faqHowPrintRouter,
+  faqHowGlueRouter,
+  faqLaformePatternsRouter,
+  faqLaformeStudioRouter,
 } from './faq-article.router';
 export { faqArticleStore } from './faq-article.store';
 export {
@@ -26,4 +34,8 @@ export {
   FAQ_ABOUT_US_ROUTE_PATH,
   FAQ_ROUTE_PATH,
   FAQ_ARTICLE_STORE_NAME,
+  FAQ_HOW_PRINT_ROUTE_PATH,
+  FAQ_HOW_GLUE_ROUTE_PATH,
+  FAQ_LAFORME_PATTERNS_ROUTE_PATH,
+  FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from './faq-article.constant';

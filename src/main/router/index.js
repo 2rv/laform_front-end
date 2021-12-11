@@ -136,9 +136,21 @@ import {
   FAQ_ABOUT_US_ROUTE_PATH,
   faqRouter,
   FAQ_ROUTE_PATH,
+  faqHowPrintRouter,
+  FAQ_HOW_PRINT_ROUTE_PATH,
+  faqHowGlueRouter,
+  FAQ_HOW_GLUE_ROUTE_PATH,
+  faqLaformePatternsRouter,
+  FAQ_LAFORME_PATTERNS_ROUTE_PATH,
+  faqLaformeStudioRouter,
+  FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from '../../core/faq-article';
 
 export const routes = {
+  [FAQ_HOW_PRINT_ROUTE_PATH]: faqHowPrintRouter,
+  [FAQ_HOW_GLUE_ROUTE_PATH]: faqHowGlueRouter,
+  [FAQ_LAFORME_PATTERNS_ROUTE_PATH]: faqLaformePatternsRouter,
+  [FAQ_LAFORME_STUDIO_ROUTE_PATH]: faqLaformeStudioRouter,
   [FAQ_SIZE_ROUTE_PATH]: faqSizeRouter,
   [FAQ_DELIVERY_PAYMENT_ROUTE_PATH]: faqDeliveryPaymentRouter,
   [FAQ_LEGAL_INFORMATION_ROUTE_PATH]: faqLegalInformationRouter,
