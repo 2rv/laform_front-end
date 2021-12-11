@@ -51,6 +51,8 @@ export function faqArticleStore(state = initialState, action: any) {
         savePending: false,
         saveError: action.error,
       };
+    case FAQ_ARTICLE_ACTION_TYPE.REDATA_LOAD:
+      return initialState;
 
     default:
       return state;
