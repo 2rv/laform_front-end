@@ -37,11 +37,9 @@ export function FaqArticleContainer(props: FaqArticleContainerProps) {
   );
   const [editorData, handleChange] = useState(false);
   useEffect(() => {
+    dispatch(reloadDataAction());
     dispatch(loadDataAction(name));
-    return () => {
-      dispatch(reloadDataAction());
-    };
-  }, [name]);
+  }, []);
 
   const handleSave = () => {
     dispatch(saveDataAction(editorData, name));
