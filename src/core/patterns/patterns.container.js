@@ -1,108 +1,80 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getRequestData,
-  getRequestErrorMessage,
-  isRequestError,
-  isRequestPending,
-  isRequestSuccess,
-} from '../../main/store/store.service';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { patternsUploadData, fetchCategories } from './patterns.action';
-import { PATTERNS_STORE_NAME } from './patterns.constant';
-import { PatternsComponent } from './patterns.component';
+import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { redirect } from 'src/main/navigation';
-import { PATTERNS_ROUTE_PATH } from '.';
-import { useRouter } from 'next/router';
-import { PATTERNS_ACTION_TYPE } from './patterns.type';
+import { getQuery } from 'src/main/navigation';
+import { getRequestData, isRequestPending } from 'src/main/store/store.service';
+import {
+  getProductsAction,
+  paginateProductsAction,
+  getCategoriesAction,
+} from './patterns.action';
+import { PATTERNS_STORE_NAME } from './patterns.constant';
+import { PatternsComponent } from './patterns.component';
 
 export function PatternsContainer() {
-  const patternType = useRouter().pathname.split('/')?.[2];
-  const { patternsState, categories, pageLoading, currentLang, isAuth } =
-    useSelector((state) => ({
-      patternsState: state[PATTERNS_STORE_NAME].patternsState,
-      categories: state[PATTERNS_STORE_NAME].categories,
-      pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-      isAuth: state[AUTH_STORE_NAME].logged,
-    }));
+  const activePath = getQuery('type')?.[0];
   const dispatch = useDispatch();
+  const {
+    page,
+    total,
+    products,
+    categories,
+    pageLoading,
+    currentLang,
+    isAuth,
+  } = useSelector((state) => ({
+    page: state[PATTERNS_STORE_NAME].page,
+    total: state[PATTERNS_STORE_NAME].total,
+    products: state[PATTERNS_STORE_NAME].products,
+    categories: state[PATTERNS_STORE_NAME].categories,
+    pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
+    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+    isAuth: state[AUTH_STORE_NAME].logged,
+  }));
 
-  const [filter, setFilter] = useState({
+  const [query, setQuery] = useState({
     where: null,
     sort: null,
     by: null,
-    type: patternType,
+    category: null,
   });
-
-  useEffect(() => {
-    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
-    dispatch(patternsUploadData(isAuth, { currentLang, ...filter }));
-    dispatch(fetchCategories(currentLang, 2));
-  }, []);
-
-  const handleFilter = ({ where, sort, by, category }) => {
-    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
-    const copy = { ...filter };
+  const onFilter = (props) => {
+    const { where, sort, by, category } = props;
+    const copy = { ...query };
     copy.where = where;
     copy.sort = sort;
     copy.by = by;
     copy.category = category;
-    setFilter(copy);
-    dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
+    setQuery(copy);
   };
-  const setActiveTab = (value) => {
-    dispatch({ type: PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE });
-    const copy = { ...filter, type: value };
-    setFilter(copy);
-    dispatch(patternsUploadData(isAuth, { currentLang, ...copy }));
-    if (value) {
-      redirect(PATTERNS_ROUTE_PATH + '/' + value);
-    } else {
-      redirect(PATTERNS_ROUTE_PATH);
-    }
-  };
-
-  const onPaginationList = () => {
+  useEffect(() => {
+    dispatch(getCategoriesAction(currentLang, activePath));
+    dispatch(getProductsAction(activePath, currentLang, isAuth, query));
+  }, [activePath, query]);
+  const onPagination = () => {
     dispatch(
-      patternsUploadData(isAuth, {
-        currentLang,
-        ...filter,
-        page: patternsState.data?.currentPage,
-      }),
+      paginateProductsAction(activePath, currentLang, isAuth, page, query),
     );
   };
 
   return (
     <PatternsComponent
-      listItems={getRequestData(patternsState, {}).products}
-      filterOptions={filterOptionss}
-      categories={getRequestData(categories, [])}
-      handleFilter={handleFilter}
-      fetchData={onPaginationList}
-      hasMore={
-        Number(patternsState.data?.products?.length) <
-        Number(patternsState.data?.totalRecords)
-      }
-      activeTab={patternType}
-      setActiveTab={setActiveTab}
-      tabItems={tabItems}
+      activePath={activePath}
       pageLoading={pageLoading}
-      isPending={isRequestPending(patternsState)}
-      isError={isRequestError(patternsState)}
-      isSuccess={isRequestSuccess(patternsState)}
-      errorMessage={getRequestErrorMessage(patternsState)}
+      total={total}
+      products={getRequestData(products, [])}
+      categories={getRequestData(categories, [])}
+      isPending={isRequestPending(products)}
+      onFilter={onFilter}
+      onPagination={onPagination}
+      filterOptions={filterOptions}
     />
   );
 }
-export const tabItems = [
-  { name: 'PATTERNS.PATTERNS.MENU.ALL', type: null },
-  { name: 'PATTERNS.PATTERNS.MENU.PRINTED', type: 'printed' },
-  { name: 'PATTERNS.PATTERNS.MENU.ELECTRONIC', type: 'electronic' },
-];
-export const filterOptionss = [
+
+export const filterOptions = [
   {
     id: 0,
     tid: 'PATTERNS.FILTER_OPTIONS.ALL',
@@ -117,6 +89,12 @@ export const filterOptionss = [
     id: 2,
     tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
     sort: 'title',
+    by: 'DESC',
+  },
+  {
+    id: 3,
+    tid: 'По популярности',
+    sort: 'clicks',
     by: 'DESC',
   },
 ];

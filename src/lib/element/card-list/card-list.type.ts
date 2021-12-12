@@ -9,9 +9,13 @@ export interface BasicCardListTypeProps {
   emptyText?: string;
   emptyTvalue?: object;
   isCreateList?: boolean;
+  pending?: boolean;
 }
 export interface CardListTypeProps extends BasicCardListTypeProps {
   path?: string;
   title?: string;
   isSliced: boolean;
+}
+export interface CardListSkeletonProps {
+  quantity?: any;
 }

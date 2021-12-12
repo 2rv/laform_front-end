@@ -39,6 +39,7 @@ export function ArticlePageComponent(props) {
       </HeaderCase>
       <BlockReactEditor data={postArticle} enableReInitialize readOnly />
       <CardListBlock
+        pending={isPending}
         title="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE"
         items={recommendations}
       />

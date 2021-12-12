@@ -90,7 +90,6 @@ export function getUsersStatistics(query) {
         method: STATISTICS_API.GET_USERS.TYPE,
         url: STATISTICS_API.GET_USERS.ENDPOINT(query),
       });
-      console.log(STATISTICS_API.GET_USERS.ENDPOINT(query));
       dispatch({
         type: STATISTICS_ACTION_TYPE.GET_USERS_SUCCESS,
         data: convertUsers(response.data),

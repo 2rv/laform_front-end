@@ -14,6 +14,7 @@ export interface SearchFilterContainerPropsType {
   }[];
   categories: any;
   handleFilter: any;
+  disabled?: boolean;
 }
 
 export interface SearchFilterComponentPropsType {
@@ -22,4 +23,5 @@ export interface SearchFilterComponentPropsType {
   categories: any;
   handleChange: any;
   values: any;
+  disabled: boolean;
 }

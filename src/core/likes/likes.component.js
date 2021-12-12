@@ -38,7 +38,11 @@ export function PatternsComponent(props) {
           next={fetchData}
           hasMore={hasMore}
         >
-          <BasicCardList items={listItems} emptyText="ALL_LIKES.CATEGORY_EMPTY" />
+          <BasicCardList
+            pending={isPending}
+            items={listItems}
+            emptyText="ALL_LIKES.CATEGORY_EMPTY"
+          />
         </InfiniteScroll>
       </SectionLayout>
     </React.Fragment>

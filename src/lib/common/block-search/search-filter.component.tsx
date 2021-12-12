@@ -14,6 +14,7 @@ export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
     categories,
     values,
     handleChange,
+    disabled,
   } = props;
 
   return (
@@ -25,6 +26,7 @@ export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
           value={values[SEARCH_FILTER_FIELD_NAME.FILTER] || 0}
           onChange={handleChange(SEARCH_FILTER_FIELD_NAME.FILTER)}
           width={200}
+          disabled={disabled}
         />
         <FieldSelect
           adaptive
@@ -33,6 +35,7 @@ export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
           onChange={handleChange(SEARCH_FILTER_FIELD_NAME.CATEGORY)}
           width={200}
           textValue
+          disabled={disabled}
         />
       </FieldLayout>
       <BasicField
@@ -42,6 +45,7 @@ export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
         width={250}
         adaptive
         isFindInput
+        disabled={disabled}
       />
     </Container>
   );

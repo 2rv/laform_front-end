@@ -31,8 +31,6 @@ export function FaqArticleContainer(props: FaqArticleContainerProps) {
   useEffect(() => {
     dispatch(loadDataAction(name));
     return () => {
-      console.log('reload');
-
       dispatch(reloadDataAction());
     };
   }, []);

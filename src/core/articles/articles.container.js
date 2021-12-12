@@ -83,13 +83,13 @@ export const filterOptionss = [
     id: 1,
     tid: 'ARTICLES.FILTER_OPTIONS.NEW',
     sort: 'date',
-    by: 'ASC',
+    by: 'DESC',
   },
   {
     id: 2,
     tid: 'ARTICLES.FILTER_OPTIONS.OLD',
     sort: 'date',
-    by: 'DESC',
+    by: 'ASC',
   },
   {
     id: 3,
@@ -101,6 +101,12 @@ export const filterOptionss = [
     id: 4,
     tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
     sort: 'title',
+    by: 'DESC',
+  },
+  {
+    id: 3,
+    tid: 'По популярности',
+    sort: 'clicks',
     by: 'DESC',
   },
 ];

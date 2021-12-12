@@ -35,6 +35,7 @@ export function AllProductsComponent(props) {
         filterOptions={filterOptions}
         categories={categories}
         handleFilter={onFilter}
+        disabled={pageLoading || isPending}
       />
       <InfiniteScroll
         dataLength={products.length}
@@ -42,6 +43,7 @@ export function AllProductsComponent(props) {
         hasMore={products.length < +total}
       >
         <BasicCardList
+          pending={isPending}
           onDelete={onDisable}
           admin={isAdmin}
           items={products}

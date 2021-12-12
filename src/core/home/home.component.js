@@ -1,6 +1,5 @@
 import { SectionLayout } from 'src/lib/element/layout';
-import { CardListBlock } from 'src/lib/element/card-list';
-import { ProductCartSkeleton } from 'src/lib/element/skeleton';
+import { CardListBlock, CardListSkeleton } from 'src/lib/element/card-list';
 import { CatalogListComponent, AdvantageInfoComponent } from './frames';
 import { BlockHelpLinks } from '../block-help-links';
 import { SliderContainer } from '../slider';
@@ -12,7 +11,7 @@ export function HomeComponent(props) {
       <SliderContainer />
       <CatalogListComponent items={catalogListItems} />
       {compilationPending ? (
-        <ProductCartSkeleton quantity={3} />
+        <CardListSkeleton quantity={3} />
       ) : (
         compilationBlock.map((item, index) => (
           <CardListBlock

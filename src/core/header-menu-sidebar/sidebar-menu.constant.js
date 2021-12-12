@@ -34,7 +34,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
       title: 'HEADER.MENU_ITEMS.SEWING_GOODS',
       pathname: SEWING_GOODS_ROUTE_PATH,
     },
-    { title: 'HEADER.MENU_ITEMS.PATTERNS', pathname: PATTERNS_ROUTE_PATH },
+    { title: 'HEADER.MENU_ITEMS.PATTERNS', pathname: PATTERNS_ROUTE_PATH() },
     {
       title: 'HEADER.MENU_ITEMS.MASTER_CLASSES',
       pathname: MASTER_CLASSES_ROUTE_PATH,
@@ -50,7 +50,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
           title: 'HEADER.ADMIN_MENU.MASTER_CLASS_ARTICLE_CREATING',
         },
         {
-          pathname: CREATE_PATTERN_ROUTE_PATH,
+          pathname: CREATE_PATTERN_ROUTE_PATH(),
           title: 'HEADER.ADMIN_MENU.PATTERN_CREATING',
         },
         {

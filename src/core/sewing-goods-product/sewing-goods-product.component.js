@@ -29,6 +29,7 @@ export function SewingGoodsProductComponent(props) {
         </Content>
       </SectionLayout>
       <CardListBlock
+        pending={isPending}
         items={productData.recommendations}
         title="SEWING_GOODS.RECOMMENDATIONS"
       />

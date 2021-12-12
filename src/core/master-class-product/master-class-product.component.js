@@ -38,6 +38,7 @@ export function MasterClassProductComponent(props) {
         />
       )}
       <CardListBlock
+        pending={isPending}
         items={productData.recommendations}
         title="MASTER_CLASSES.MASTER_CLASSES.RECOMMENDATIONS"
       />

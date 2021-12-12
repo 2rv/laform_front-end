@@ -11,15 +11,7 @@ import { recommendationComponentProps } from './recomendation.type';
 import { RecomendationList } from './list-recomendation';
 
 export function RecomendationComponent(props: recommendationComponentProps) {
-  const {
-    // errorMessage,
-    // isError,
-    // isPending,
-    // isSuccess,
-    listItems,
-    handleChange,
-    selectedItems,
-  } = props;
+  const { isPending, listItems, handleChange, selectedItems } = props;
   const [modal, setModal] = useState(false);
 
   return (
@@ -46,6 +38,7 @@ export function RecomendationComponent(props: recommendationComponentProps) {
             </HeaderCase>
             <BasicCardList
               items={listItems}
+              pending={isPending}
               onSelect={handleChange}
               emptyText="Список пустой"
             />

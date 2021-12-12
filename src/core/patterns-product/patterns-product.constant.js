@@ -1,5 +1,5 @@
 export const PATTERNS_PRODUCT_ROUTE_PATH = ({ id } = { id: '[id]' }) =>
-  `/patterns/${id}`;
+  `/pattern/${id}`;
 
 export const PATTERNS_PRODUCT_STORE_NAME = 'PATTERN_PRODUCT';
 

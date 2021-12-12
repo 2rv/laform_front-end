@@ -37,6 +37,7 @@ export function PatternsProductComponent(props) {
           titleTid="PATTERNS.MATERIALS"
         />
         <CardListBlock
+          pending={isPending}
           items={productData.recommendations}
           title="PATTERNS.RECOMMENDATIONS"
         />

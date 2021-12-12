@@ -90,4 +90,10 @@ export const filterOptions = [
     sort: 'title',
     by: 'DESC',
   },
+  {
+    id: 3,
+    tid: 'По популярности',
+    sort: 'clicks',
+    by: 'DESC',
+  },
 ];
