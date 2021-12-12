@@ -1,5 +1,4 @@
-import { setActivePath } from '../../lib/common/navigation';
-
+import { setActivePath } from 'src/lib/common/navigation';
 import { PATTERNS_ROUTE_PATH } from './patterns.constant';
 
 export function patternsRouter(ctx) {

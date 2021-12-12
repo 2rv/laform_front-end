@@ -9,6 +9,7 @@ export function SearchFilterContainer(props: SearchFilterContainerPropsType) {
     filterOptions,
     categories = [],
     handleFilter,
+    disabled = false,
   } = props;
 
   const [values, setValues]: [any, Function] = useState({});
@@ -58,6 +59,7 @@ export function SearchFilterContainer(props: SearchFilterContainerPropsType) {
       categories={[{ id: 0, tid: FILTER_NAME_ALL }, ...categories]}
       values={values}
       handleChange={handleChange}
+      disabled={disabled}
     />
   );
 }

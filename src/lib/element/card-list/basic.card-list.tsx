@@ -8,6 +8,7 @@ import {
 } from '../card';
 import { BasicCardListTypeProps } from './card-list.type';
 import { TextSecondary } from '../text';
+import { CardListSkeleton } from '.';
 
 export function BasicCardList(props: BasicCardListTypeProps) {
   const {
@@ -19,7 +20,12 @@ export function BasicCardList(props: BasicCardListTypeProps) {
     emptyText,
     emptyTvalue,
     isCreateList,
+    pending,
   } = props;
+
+  if (pending) {
+    return <CardListSkeleton quantity={3} />;
+  }
 
   if (!items || !Boolean(items.length)) {
     return <TextSecondary tid={emptyText} tvalue={emptyTvalue} />;

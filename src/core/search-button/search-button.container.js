@@ -29,7 +29,9 @@ export function SearchButtonContainer() {
   };
 
   const fetchData = () => {
-    dispatch(fetchProducts(currentLang, searchInput, productsState.data.currentPage));
+    dispatch(
+      fetchProducts(currentLang, searchInput, productsState.data.currentPage),
+    );
   };
 
   return (
@@ -39,7 +41,10 @@ export function SearchButtonContainer() {
       onChange={onFilter}
       listItems={getRequestData(productsState, {}).products}
       fetchData={fetchData}
-      hasMore={Number(productsState.data?.products?.length) < Number(productsState.data?.totalRecords)}
+      hasMore={
+        Number(productsState.data?.products?.length) <
+        Number(productsState.data?.totalRecords)
+      }
     />
   );
 }

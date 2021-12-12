@@ -1,9 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
-import { ProductCartSkeletonPropsType } from './type.skeleton';
+import { CardListSkeletonProps } from './card-list.type';
 import { SectionLayout } from '../layout';
 
-export function ProductCartSkeleton(props: ProductCartSkeletonPropsType) {
+export function CardListSkeleton(props: CardListSkeletonProps) {
   const { quantity = 9 } = props;
   return (
     <SkeletonContainer>
@@ -60,9 +60,12 @@ const Image = styled.div`
   background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
   background-size: 600px;
   min-width: 360px;
-  height: 260px;
   background-color: #ccc;
   animation: ${animation} 1.6s infinite linear;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  max-height: 500px;
 `;
 
 const LineTitle = styled.div`

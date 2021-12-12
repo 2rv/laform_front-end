@@ -1,46 +1,50 @@
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { TitlePrimary } from 'src/lib/element/title';
 import { SectionLayout } from 'src/lib/element/layout';
 import { BasicCardList } from 'src/lib/element/card-list';
-import { TextSecondary } from 'src/lib/element/text';
 import { SearchBlock } from 'src/lib/common/block-search';
-import { TabFilter } from 'src/lib/common/tab-filter';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { TabLinkBlock } from 'src/lib/element/tab-link';
+import { PATTERNS_TABS } from './patterns.constant';
 
 export function PatternsComponent(props) {
   const {
-    listItems,
-    activeTab,
-    setActiveTab,
-    tabItems,
+    products,
+    onPagination,
+    total,
     filterOptions,
     categories,
-    handleFilter,
+    onFilter,
+    activePath,
+    pageLoading,
     isPending,
-    fetchData,
-    hasMore,
   } = props;
 
   return (
     <SectionLayout>
       <TitlePrimary tid="PATTERNS.PATTERNS.TITLE" />
-      <TabFilter
-        isPending={isPending}
-        activeTab={activeTab}
-        handleFilter={setActiveTab}
-        tabItems={tabItems}
+      <TabLinkBlock
+        activePath={activePath}
+        pathItems={PATTERNS_TABS}
+        disabled={pageLoading || isPending}
       />
       <SearchBlock
         findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
         filterOptions={filterOptions}
         categories={categories}
-        handleFilter={handleFilter}
+        handleFilter={onFilter}
+        disabled={pageLoading || isPending}
       />
       <InfiniteScroll
-        dataLength={listItems?.length ?? 0}
-        next={fetchData}
-        hasMore={hasMore}
+        dataLength={products.length}
+        next={onPagination}
+        hasMore={products.length < +total}
       >
-        <BasicCardList items={listItems} emptyText="OTHER.LIST_IS_EMPTY" />
+        <BasicCardList
+          pending={isPending}
+          items={products}
+          pending={isPending}
+          emptyText="OTHER.LIST_IS_EMPTY"
+        />
       </InfiniteScroll>
     </SectionLayout>
   );

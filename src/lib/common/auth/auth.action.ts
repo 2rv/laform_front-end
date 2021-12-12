@@ -10,7 +10,6 @@ import { AUTH_ACTION_TYPE } from './auth.type';
 export function authSetData(token: any) {
   const user = token ? parseUserAuthData(authDecode(token)) : null;
   setAutorization(token);
-  console.log(user);
   const data: AuthStoreAction = {
     type: AUTH_ACTION_TYPE.SET_DATA,
     token,

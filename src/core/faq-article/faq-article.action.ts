@@ -41,7 +41,7 @@ export function loadDataAction(name: string) {
       });
       dispatch({
         type: FAQ_ARTICLE_ACTION_TYPE.DATA_LOAD_SUCCESS,
-        data: response.data?.data || [],
+        data: response.data?.data,
       });
     } catch (err: any) {
       if (err.response) {

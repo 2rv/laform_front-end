@@ -3,17 +3,13 @@ import {
   setRequestError,
   setRequestPending,
   setRequestSuccess,
-} from '../../main/store/store.service';
+} from 'src/main/store/store.service';
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 
-const initialProductData = {
-  products: [],
-  currentPage: 1,
-  totalRecords: 0,
-};
-
 const initialState = {
-  patternsState: initRequestState(initialProductData),
+  page: 1,
+  total: 0,
+  products: initRequestState([]),
   categories: initRequestState(),
 };
 
@@ -22,55 +18,32 @@ export function patternsStore(state = initialState, action) {
     case PATTERNS_ACTION_TYPE.RESET_PRODUCTS_STATE:
       return {
         ...state,
-        patternsState: initRequestState(initialProductData),
+        page: 1,
+        total: 0,
+        products: initRequestState([]),
       };
+
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_PENDING:
       return {
         ...state,
-        patternsState: setRequestPending(state.patternsState),
+        products: setRequestPending(state.products),
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS:
-      const oldProducts = state.patternsState.data.products;
-      const newProducts = action.data.products;
-      const totalRecords = action.data.totalRecords;
-      const prevCurrentPage = state.patternsState.data.currentPage;
       return {
         ...state,
-        patternsState: setRequestSuccess(
-          state.patternsState,
-          {
-            products: [...oldProducts, ...newProducts],
-            currentPage: prevCurrentPage + 1,
-            totalRecords,
-          },
+        products: setRequestSuccess(
+          state.products,
+          state.products.data.concat(action.data),
         ),
+        page: state.page + 1,
+        total: action.total,
       };
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_ERROR:
       return {
         ...state,
-        patternsState: setRequestError(
-          state.patternsState,
-          action.errorMessage,
-        ),
+        products: setRequestError(state.products, action.errorMessage),
       };
-    case PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_PENDING:
-      return {
-        ...state,
-        patternsState: setRequestPending(state.patternsState),
-      };
-    case PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_SUCCESS:
-      return {
-        ...state,
-        patternsState: setRequestSuccess(state.patternsState),
-      };
-    case PATTERNS_ACTION_TYPE.PATTERNS_UPDATE_ERROR:
-      return {
-        ...state,
-        patternsState: setRequestError(
-          state.patternsState,
-          action.errorMessage,
-        ),
-      };
+
     case PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING:
       return {
         ...state,
@@ -79,19 +52,14 @@ export function patternsStore(state = initialState, action) {
     case PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS:
       return {
         ...state,
-        categories: setRequestSuccess(
-          state.categories,
-          action.data,
-        ),
+        categories: setRequestSuccess(state.categories, action.data),
       };
     case PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_ERROR:
       return {
         ...state,
-        categories: setRequestError(
-          state.categories,
-          action.errorMessage,
-        ),
+        categories: setRequestError(state.categories, action.errorMessage),
       };
+
     default:
       return state;
   }

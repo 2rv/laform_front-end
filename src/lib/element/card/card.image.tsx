@@ -86,7 +86,10 @@ const SkeletonImage = styled.div`
   background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
   background-size: 600px;
   min-width: 360px;
-  height: 260px;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  max-height: 500px;
   background-color: #ccc;
   animation: ${animation} 1.6s infinite linear;
 `;

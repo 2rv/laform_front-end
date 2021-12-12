@@ -33,9 +33,7 @@ export function ReactEditorComponent(props: ReactEditorProps) {
   } = props;
 
   const onChange = (_: API, data?: BlockAPI | OutputData) => {
-    if (!readOnly) {
-      handleChange(data);
-    }
+    handleChange(data);
   };
 
   return (
@@ -51,7 +49,7 @@ export function ReactEditorComponent(props: ReactEditorProps) {
             minHeight={minHeight}
             readOnly={readOnly}
             enableReInitialize={enableReInitialize}
-            onChange={onChange}
+            onChange={!readOnly ? onChange : undefined}
           />
         )}
       </Container>
