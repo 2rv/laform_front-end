@@ -185,7 +185,7 @@ export interface BasicPurchaseType {
   sdekTariffCode?: number;
   sdekCityCode?: number;
   address: string;
-  shippingPrice: number;
+  shippingPrice: string;
   price: string;
   promoCode: string;
   promoCodeDiscount: number;

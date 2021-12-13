@@ -92,6 +92,7 @@ export function AboutOrderFormComponent(props) {
           <AboutOrderPrice
             discount={values[ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]}
             price={values[ABOUT_ORDER_FIELD_NAME.PRICE]}
+            deliveryPrice={values[ABOUT_ORDER_FIELD_NAME.SHIPPING_PRICE]}
           />
         </SectionLayout>
 

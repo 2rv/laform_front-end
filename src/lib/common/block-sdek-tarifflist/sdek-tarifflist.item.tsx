@@ -19,11 +19,14 @@ export function SdekTariffItem(props: SdekTariffItemProps) {
         &nbsp;
         <BoldText tid={value.tariff_name} />
       </div>
-      <div>
-        <Text tid="SDEK_TARIFFLIST.OPTION.DESCRIPTION" />
-        &nbsp;
-        <BoldText tid={value.tariff_description} />
-      </div>
+      {value.tariff_description && (
+        <div>
+          <Text tid="SDEK_TARIFFLIST.OPTION.DESCRIPTION" />
+          &nbsp;
+          <BoldText tid={value.tariff_description} />
+        </div>
+      )}
+
       <div>
         <TextPrimary tid="SDEK_TARIFFLIST.OPTION.DELIVERY_TIME" />
         &nbsp;

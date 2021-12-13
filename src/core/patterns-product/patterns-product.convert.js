@@ -11,10 +11,10 @@ export function performPatternProductData(rowData) {
     modifier: rowData.modifierRu || rowData.modifierEn,
     name: rowData.titleRu || rowData.titleEn,
     description: rowData.descriptionRu || rowData.descriptionEn,
-    descriptionOld: rowData.descriptionOld.replaceAll(/\\n/g, '<br />'),
+    descriptionOld: rowData.descriptionOld?.replaceAll(/\\n/g, '<br />'),
     materials: rowData.materialRu || rowData.materialEn,
-    materialOld: rowData?.materialOld
-      .replaceAll(/\\n</g, '<')
+    materialOld: rowData.materialOld
+      ?.replaceAll(/\\n</g, '<')
       .replaceAll(/\\n/g, '<br />'),
     complexity: rowData.complexity,
     vendorCode: rowData.vendorCode,

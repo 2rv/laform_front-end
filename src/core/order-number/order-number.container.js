@@ -54,7 +54,7 @@ export function OrderNumberContainer() {
       [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: 0,
       [ABOUT_ORDER_FIELD_NAME.PRICE]: 0,
       [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: 0,
-      [ABOUT_ORDER_FIELD_NAME.DELIVERY_METHOD]: '',
+      [ABOUT_ORDER_FIELD_NAME.SHIPPING_PRICE]: 0,
     });
     purchaseInfo.price = purchaseProducts[2];
     return purchaseInfo;

@@ -259,6 +259,7 @@ export function convertCreateOrder(
       }, ${data.address.street}, ${data.address.house}, ${
         data.address.postal_code
       }`,
+      comment: data.comment,
     },
     purchaseProducts: bascketState.map((item) => {
       return {
