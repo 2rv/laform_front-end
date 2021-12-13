@@ -26,7 +26,7 @@ export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
         <ButtonSecondary
-          tid="SDEK_POINTS.PLACEHOLDER"
+          tid="SDEK_TARIFFLIST.PLACEHOLDER"
           onClick={() => onClose(true)}
           disabled={isDisabled}
         />
@@ -49,11 +49,13 @@ export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
                 value={filter}
                 onChange={onFilter}
               />
-              <IconBox>
-                <ButtonIcon>
-                  <CloseIcon />
-                </ButtonIcon>
-              </IconBox>
+              {filter && (
+                <IconBox>
+                  <ButtonIcon onClick={() => setFilter('')}>
+                    <CloseIcon />
+                  </ButtonIcon>
+                </IconBox>
+              )}
             </InputBox>
             <ButtonIcon onClick={() => onClose(false)}>
               <CloseIcon />

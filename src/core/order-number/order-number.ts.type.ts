@@ -8,7 +8,8 @@ export interface OrderPurchaseType {
   address: string;
   phone: string;
   comment?: string;
-  price: string;
+  price: number;
+  shippingPrice: number;
   promoCode?: string;
   promoCodeDiscount: number;
 }

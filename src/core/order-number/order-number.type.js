@@ -7,6 +7,7 @@ export const ABOUT_ORDER_FIELD_NAME = {
   PHONE_NUMBER: 'phone',
   ORDER_STATUS: 'orderStatus',
   PRICE: 'price',
+  SHIPPING_PRICE: 'shippingPrice',
   PROMO_CODE: 'promoCode',
   COMMENT: 'comment',
   PROMO_CODE_DISCOUNT: 'promoCodeDiscount',

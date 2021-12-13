@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
 import { TextCurrency, TextSecondary } from '../../../lib/element/text';
 import { SectionLayout } from '../../../lib/element/layout';
-import { ABOUT_ORDER_FIELD_NAME } from '../order-number.type';
 
 export function AboutOrderPrice(props) {
   const { discount = 0, price = 0, deliveryPrice = 0, deliveryMethod } = props;

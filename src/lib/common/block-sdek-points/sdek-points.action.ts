@@ -15,7 +15,7 @@ export function getPickUpPoint(kladr_id: string) {
 
       const result: basicSdekPoints[] = response.data.map(
         (item: basicSdekPoints) => {
-          item.label = item.location.address_full;
+          item.label = item.location.address_full.toLowerCase().trim();
           return item;
         },
       );

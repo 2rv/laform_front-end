@@ -19,15 +19,10 @@ export function getTariffList(city_code: number, productCount: number) {
             code: city_code,
           },
           amount: productCount,
-          packages: [
-            {
-              weight: 100,
-            },
-          ],
         },
       });
 
-      const result: basicTariffType[] = (response.data?.tariff_codes || []).map(
+      const result: basicTariffType[] = response.data?.map(
         (item: basicTariffType) => {
           item.label = `${item.tariff_name}, стоимость ${item.delivery_sum} руб.`;
           item.delivery_sum = Number(item.delivery_sum) + 40;
@@ -68,11 +63,6 @@ export function getTariff(
             code: city_code,
           },
           amount: productCount,
-          packages: [
-            {
-              weight: 100,
-            },
-          ],
         },
       });
       const result: basicTariffType = {

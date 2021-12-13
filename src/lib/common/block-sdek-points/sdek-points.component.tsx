@@ -48,11 +48,13 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
                 value={filter}
                 onChange={onFilter}
               />
-              <IconBox>
-                <ButtonIcon>
-                  <CloseIcon />
-                </ButtonIcon>
-              </IconBox>
+              {filter && (
+                <IconBox>
+                  <ButtonIcon onClick={() => setFilter('')}>
+                    <CloseIcon />
+                  </ButtonIcon>
+                </IconBox>
+              )}
             </InputBox>
             <ButtonIcon onClick={() => onClose(false)}>
               <CloseIcon />
@@ -61,7 +63,7 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
           {store.sdekPoints
             .filter((i) =>
               Boolean(filter)
-                ? i.label.toLocaleLowerCase().includes(filter)
+                ? i.label.includes(filter.toLowerCase().trim())
                 : true,
             )
             .map((item, k) => (

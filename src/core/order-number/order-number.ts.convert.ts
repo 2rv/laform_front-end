@@ -23,7 +23,8 @@ export function convertPurchaseInfo(
     address: rowData.address,
     phone: rowData.phone,
     comment: rowData.comment,
-    price: rowData.price,
+    price: +rowData.price,
+    shippingPrice: +rowData.shippingPrice,
     promoCode: rowData.promoCode,
     promoCodeDiscount: rowData.promoCodeDiscount,
   };
