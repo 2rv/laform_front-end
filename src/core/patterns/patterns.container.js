@@ -20,6 +20,7 @@ export function PatternsContainer() {
     page,
     total,
     products,
+    pagination,
     categories,
     pageLoading,
     currentLang,
@@ -28,6 +29,7 @@ export function PatternsContainer() {
     page: state[PATTERNS_STORE_NAME].page,
     total: state[PATTERNS_STORE_NAME].total,
     products: state[PATTERNS_STORE_NAME].products,
+    pagination: state[PATTERNS_STORE_NAME].pagination,
     categories: state[PATTERNS_STORE_NAME].categories,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
@@ -50,7 +52,7 @@ export function PatternsContainer() {
     setQuery(copy);
   };
   useEffect(() => {
-    dispatch(getCategoriesAction(currentLang, activePath));
+    dispatch(getCategoriesAction(currentLang));
     dispatch(getProductsAction(activePath, currentLang, isAuth, query));
   }, [activePath, query]);
   const onPagination = () => {
@@ -70,6 +72,7 @@ export function PatternsContainer() {
       onFilter={onFilter}
       onPagination={onPagination}
       filterOptions={filterOptions}
+      isPagination={isRequestPending(pagination)}
     />
   );
 }

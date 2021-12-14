@@ -1,10 +1,10 @@
 import React from 'react';
-import { TitlePrimary } from '../../lib/element/title';
+import { TitlePrimary } from 'src/lib/element/title';
 import { TextSecondary } from 'src/lib/element/text';
-import { SectionLayout } from '../../lib/element/layout';
-import { BasicCardList } from '../../lib/element/card-list';
+import { SectionLayout } from 'src/lib/element/layout';
+import { BasicCardList } from 'src/lib/element/card-list';
 import { FilterTabs } from 'src/lib/element/filter-tabs';
-import { LoaderPrimary } from '../../lib/element/loader';
+import { LoaderPrimary } from 'src/lib/element/loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export function PatternsComponent(props) {
@@ -17,6 +17,7 @@ export function PatternsComponent(props) {
 
     pageLoading,
     isPending,
+    isPagination,
 
     fetchData,
     hasMore,
@@ -39,6 +40,8 @@ export function PatternsComponent(props) {
           hasMore={hasMore}
         >
           <BasicCardList
+            isLoading={isPending}
+            isPagination={isPagination}
             pending={isPending}
             items={listItems}
             emptyText="ALL_LIKES.CATEGORY_EMPTY"

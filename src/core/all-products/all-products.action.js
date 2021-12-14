@@ -118,7 +118,7 @@ export function getProductsByType(value, currentLang, query) {
 export function paginateProductsByType(value, currentLang, page, query) {
   return async (dispatch) => {
     dispatch({
-      type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_PENDING,
+      type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_PAGINATION_PENDING,
     });
     try {
       const type = getTypeByValue(value);
@@ -129,14 +129,14 @@ export function paginateProductsByType(value, currentLang, page, query) {
         ...query,
       });
       dispatch({
-        type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_SUCCESS,
+        type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_PAGINATION_SUCCESS,
         data: response.data,
         total: response.total,
       });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_ERROR,
+          type: ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_PAGINATION_ERROR,
           errorMessage: err.response.data.message,
         });
       }

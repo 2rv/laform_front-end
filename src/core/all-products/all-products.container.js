@@ -29,6 +29,7 @@ export function AllProductsContainer() {
     page,
     total,
     products,
+    pagination,
     categories,
     pageLoading,
     currentLang,
@@ -37,6 +38,7 @@ export function AllProductsContainer() {
     page: state[ALL_PRODUCTS_STORE_NAME].page,
     total: state[ALL_PRODUCTS_STORE_NAME].total,
     products: state[ALL_PRODUCTS_STORE_NAME].products,
+    pagination: state[ALL_PRODUCTS_STORE_NAME].pagination,
     categories: state[ALL_PRODUCTS_STORE_NAME].categories,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
@@ -79,6 +81,7 @@ export function AllProductsContainer() {
       products={getRequestData(products, [])}
       categories={getRequestData(categories, [])}
       isPending={isRequestPending(products)}
+      isPagination={isRequestPending(pagination)}
       onFilter={onFilter}
       onDisable={onDisable}
       onPagination={onPagination}

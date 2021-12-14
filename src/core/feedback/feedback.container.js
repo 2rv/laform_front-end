@@ -7,7 +7,7 @@ import {
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { sendFeedback } from './feedback.action';
 import { FEEDBACK_STORE_NAME } from './feedback.constant';
-import { SEWING_GOODS_FIELD_NAME } from './feedback.type';
+import { FEEDBACK_FIELD_NAME } from './feedback.type';
 import { formValidation } from './feedback.validation';
 import { FeedbackComponent } from './feedback.component';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
@@ -25,7 +25,7 @@ export function FeedbackContainer() {
   };
 
   const initialValues = () => ({
-    [SEWING_GOODS_FIELD_NAME.DESCRIPTION]: '',
+    [FEEDBACK_FIELD_NAME.DESCRIPTION]: '',
   });
 
   if (pageLoading) {

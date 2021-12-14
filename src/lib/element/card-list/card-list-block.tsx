@@ -6,9 +6,16 @@ import { BasicCardList } from './basic.card-list';
 import { CardListTypeProps } from './card-list.type';
 
 export function CardListBlock(props: CardListTypeProps) {
-  const { title, path, items, isSliced = true, ...otherProps } = props;
+  const {
+    title,
+    path,
+    items,
+    isSliced = true,
+    isLoading,
+    ...otherProps
+  } = props;
 
-  if (!items || !Boolean(items.length)) return null;
+  if (!isLoading && (!items || !Boolean(items.length))) return null;
 
   return (
     <SectionLayout>
@@ -18,6 +25,7 @@ export function CardListBlock(props: CardListTypeProps) {
       </HeaderCase>
       <BasicCardList
         items={isSliced ? items.slice(0, 3) : items}
+        isLoading={isLoading}
         {...otherProps}
       />
     </SectionLayout>

@@ -1,18 +1,49 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { TextSecondary } from '../../../../lib/element/text';
-import { LinkPrimary } from '../../../../lib/element/link';
-import { TitlePrimary } from '../../../../lib/element/title';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TextSecondary } from 'src/lib/element/text';
+import { LinkPrimary } from 'src/lib/element/link';
+import { TitlePrimary } from 'src/lib/element/title';
+import { SEWING_GOODS_ROUTE_PATH } from 'src/core/sewing-goods';
+import { MASTER_CLASSES_ROUTE_PATH } from 'src/core/master-classes';
+import { PATTERNS_ROUTE_PATH } from 'src/core/patterns';
 
-export function CatalogListComponent(props) {
-  const { items } = props;
+const catalogListItems = [
+  {
+    title: 'HOME.CATALOG_LIST.E_PATTERNS.TITLE',
+    description: 'HOME.CATALOG_LIST.E_PATTERNS.DESCRIPTION',
+    image: '/static/image/catalog-image-1.jpg',
+    path: PATTERNS_ROUTE_PATH,
+    pathConfig: { params: { type: 'electronic' } },
+  },
+  {
+    title: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.TITLE',
+    description: 'HOME.CATALOG_LIST.PRINTED_PATTERNS.DESCRIPTION',
+    image: '/static/image/catalog-image-2.jpg',
+    path: PATTERNS_ROUTE_PATH,
+    pathConfig: { params: { type: 'printed' } },
+  },
+  {
+    title: 'HOME.CATALOG_LIST.MASTER_CLASSES.TITLE',
+    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
+    image: '/static/image/catalog-image-3.jpg',
+    path: MASTER_CLASSES_ROUTE_PATH,
+  },
+  {
+    title: 'HOME.CATALOG_LIST.SEEWING_GOODS.TITLE',
+    description: 'HOME.CATALOG_LIST.MASTER_CLASSES.DESCRIPTION',
+    image: '/static/image/catalog-image-4.jpg',
+    path: SEWING_GOODS_ROUTE_PATH,
+  },
+];
+
+export function CatalogListComponent() {
   return (
     <Container>
-      {items.map((data, index) => {
-        const { title, description, backgroundImage, path, pathConfig } = data;
+      {catalogListItems.map((data, index) => {
+        const { title, description, image, path, pathConfig } = data;
         return (
           <ContainerItem path={path} pathConfig={pathConfig} key={index}>
-            <BackgroundImage src={backgroundImage} />
+            <BackgroundImage src={image} />
             <Content>
               <TitleText tid={title} />
               <DescriptionText tid={description} />

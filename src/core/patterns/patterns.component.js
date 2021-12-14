@@ -17,6 +17,7 @@ export function PatternsComponent(props) {
     activePath,
     pageLoading,
     isPending,
+    isPagination,
   } = props;
 
   return (
@@ -40,9 +41,9 @@ export function PatternsComponent(props) {
         hasMore={products.length < +total}
       >
         <BasicCardList
-          pending={isPending}
+          isLoading={isPending}
+          isPagination={isPagination}
           items={products}
-          pending={isPending}
           emptyText="OTHER.LIST_IS_EMPTY"
         />
       </InfiniteScroll>

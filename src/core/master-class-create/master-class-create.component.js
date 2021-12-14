@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { ErrorAlert, InfoAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
@@ -32,49 +32,49 @@ export function CreateMasterClassComponent(props) {
     errorMessage,
   } = props;
   return (
-    <>
-      {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
-      <SectionLayout>
-        <TitlePrimary tid="MASTER_CLASSES.CREATE.TITLE" />
-        <Formik
-          initialValues={initialValues}
-          validate={validation}
-          onSubmit={onSubmit}
-          enableReinitialize={true}
-        >
-          {(formProps) => {
-            return (
-              <form onSubmit={formProps.handleSubmit}>
-                <SectionLayout>
-                  <SelectImageBlock
-                    titleTid="PRODUCT_IMAGES.TITLE"
-                    name={CREATE_MASTER_CLASS_FIELD_NAME.IMAGES}
-                    {...formProps}
-                  />
-                  <Divider />
-                  <FormComponent isEdit={isEdit} {...formProps} />
-                </SectionLayout>
-              </form>
-            );
-          }}
-        </Formik>
-        {isSuccess && (
-          <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
-        )}
-        {isError && <ErrorAlert tid={errorMessage} />}
-        {updateIsSuccess && (
-          <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_UPDATED" />
-        )}
-        {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
-        <Divider />
-        <DeleteProductComponent
-          isEdit={isEdit}
-          deleteProduct={deleteProduct}
-          deleteIsPending={deleteIsPending}
-          deleteIsError={deleteIsError}
-          deleteErrorMessage={deleteErrorMessage}
-        />
-      </SectionLayout>
-    </>
+    <SectionLayout>
+      <TitlePrimary tid="MASTER_CLASSES.CREATE.TITLE" />
+      <Formik
+        initialValues={initialValues}
+        validate={validation}
+        onSubmit={onSubmit}
+        enableReinitialize={true}
+      >
+        {(formProps) => {
+          return (
+            <form onSubmit={formProps.handleSubmit}>
+              <SectionLayout>
+                <SelectImageBlock
+                  titleTid="PRODUCT_IMAGES.TITLE"
+                  name={CREATE_MASTER_CLASS_FIELD_NAME.IMAGES}
+                  {...formProps}
+                />
+                <Divider />
+                <FormComponent isEdit={isEdit} {...formProps} />
+              </SectionLayout>
+            </form>
+          );
+        }}
+      </Formik>
+      {isSuccess && (
+        <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
+      )}
+      {isError && <ErrorAlert tid={errorMessage} />}
+      {updateIsSuccess && (
+        <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_UPDATED" />
+      )}
+      {updateIsPending && <InfoAlert tid="Идёт сохранение" />}
+      {isPending && <InfoAlert tid="Идёт создание" />}
+      {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
+      {pageLoading && <LoaderPrimary />}
+      <Divider />
+      <DeleteProductComponent
+        isEdit={isEdit}
+        deleteProduct={deleteProduct}
+        deleteIsPending={deleteIsPending}
+        deleteIsError={deleteIsError}
+        deleteErrorMessage={deleteErrorMessage}
+      />
+    </SectionLayout>
   );
 }

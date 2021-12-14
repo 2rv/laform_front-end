@@ -38,7 +38,7 @@ export function RecomendationComponent(props: recommendationComponentProps) {
             </HeaderCase>
             <BasicCardList
               items={listItems}
-              pending={isPending}
+              isLoading={isPending}
               onSelect={handleChange}
               emptyText="Список пустой"
             />

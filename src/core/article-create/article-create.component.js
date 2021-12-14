@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { ErrorAlert, InfoAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
 import { TitlePrimary } from '../../lib/element/title';
@@ -31,51 +31,49 @@ export function CreateArticleComponent(props) {
     deleteErrorMessage,
   } = props;
   return (
-    <>
+    <SectionLayout>
+      <TitlePrimary tid="ARTICLE_CREATE_FORM.CREATING_AN_ARTICLE" />
+      <Formik
+        initialValues={initialValues}
+        validate={validation}
+        onSubmit={onSubmit}
+        enableReinitialize={true}
+      >
+        {(formProps) => {
+          return (
+            <form onSubmit={formProps.handleSubmit}>
+              <SectionLayout>
+                <SelectImageBlock
+                  titleTid="PRODUCT_IMAGES.TITLE"
+                  name={ARTICLE_FIELD_NAME.IMAGES}
+                  {...formProps}
+                />
+                <Divider />
+                <FormComponent isEdit={isEdit} {...formProps} />
+              </SectionLayout>
+            </form>
+          );
+        }}
+      </Formik>
+      {isSuccess && (
+        <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_CREATED" />
+      )}
+      {isError && <ErrorAlert tid={errorMessage} />}
+      {updateIsSuccess && (
+        <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_UPDATED" />
+      )}
       {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
-      <SectionLayout>
-        <TitlePrimary tid="ARTICLE_CREATE_FORM.CREATING_AN_ARTICLE" />
-        <Formik
-          initialValues={initialValues}
-          validate={validation}
-          onSubmit={onSubmit}
-          enableReinitialize={true}
-        >
-          {(formProps) => {
-            return (
-              <form onSubmit={formProps.handleSubmit}>
-                <SectionLayout>
-                  <SelectImageBlock
-                    titleTid="PRODUCT_IMAGES.TITLE"
-                    name={ARTICLE_FIELD_NAME.IMAGES}
-                    {...formProps}
-                  />
-
-                  <Divider />
-
-                  <FormComponent isEdit={isEdit} {...formProps} />
-                </SectionLayout>
-              </form>
-            );
-          }}
-        </Formik>
-        {isSuccess && (
-          <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_CREATED" />
-        )}
-        {isError && <ErrorAlert tid={errorMessage} />}
-        {updateIsSuccess && (
-          <SuccessAlert tid="ARTICLE_CREATE_FORM.ARTICLE_SUCCESFULLY_UPDATED" />
-        )}
-        {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
-        {isEdit && <Divider />}
-        <DeleteProductComponent
-          isEdit={isEdit}
-          deleteProduct={deleteProduct}
-          deleteIsPending={deleteIsPending}
-          deleteIsError={deleteIsError}
-          deleteErrorMessage={deleteErrorMessage}
-        />
-      </SectionLayout>
-    </>
+      {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
+      {isPending && <InfoAlert tid="Идёт сохранение, подождите" />}
+      {updateIsPending && <InfoAlert tid="Идёт обновление, подождите" />}
+      {isEdit && <Divider />}
+      <DeleteProductComponent
+        isEdit={isEdit}
+        deleteProduct={deleteProduct}
+        deleteIsPending={deleteIsPending}
+        deleteIsError={deleteIsError}
+        deleteErrorMessage={deleteErrorMessage}
+      />
+    </SectionLayout>
   );
 }
