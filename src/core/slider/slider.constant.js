@@ -1,6 +1,4 @@
-export { SIGNUP_ROUTE_PATH } from '../signup';
 export const SLIDER_STORE_NAME = 'SLIDER';
-
 export const SLIDER_API = {
   LOAD_SLIDES: {
     ENDPOINT: (currentLang) => `/slider/get?lang=${currentLang}`,

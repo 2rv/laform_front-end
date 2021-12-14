@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { FooterComponent } from './footer.component';
@@ -19,6 +18,7 @@ import {
   FAQ_LAFORME_PATTERNS_ROUTE_PATH,
   FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from '../faq-article';
+import { LOGIN_ROUTE_PATH } from '../login';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({
@@ -30,11 +30,11 @@ export function FooterContainer() {
     items: [
       {
         tid: 'FOOTER.MENU.SECTION1.MY_PURCHASES',
-        path: isAuth ? USER_ORDERS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+        path: isAuth ? USER_ORDERS_ROUTE_PATH : LOGIN_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.WISH_LIST',
-        path: isAuth ? ALL_LIKES_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+        path: isAuth ? ALL_LIKES_ROUTE_PATH : LOGIN_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',

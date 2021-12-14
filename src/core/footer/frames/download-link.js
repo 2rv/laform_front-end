@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { ReactComponent as GStoreIcon } from '../../asset/svg/google-store.svg';
-import { ReactComponent as AppStoreIcon } from '../../asset/svg/app-store.svg';
-import { FieldLayout } from '../../lib/element/layout';
+import { ReactComponent as GStoreIcon } from 'src/asset/svg/google-store.svg';
+import { ReactComponent as AppStoreIcon } from 'src/asset/svg/app-store.svg';
 import { spacing, THEME_SIZE, THEME_VALUE } from 'src/lib/theme';
 
 export function DownloadLinks() {

@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import { SelectImageBlock } from 'src/lib/common/block-select-image';
-import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { ErrorAlert, InfoAlert, SuccessAlert } from 'src/lib/element/alert';
 import { Divider } from 'src/lib/element/divider';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { SectionLayout } from '../../lib/element/layout';
@@ -31,53 +31,53 @@ export function CreateSewingGoodsComponent(props) {
     validation,
   } = props;
   return (
-    <>
-      {(pageLoading || isPending || updateIsPending) && <LoaderPrimary />}
-      <SectionLayout>
-        <TitlePrimary tid="SEWING_GOODS.CREATE.TITLE" />
-        <Formik
-          initialValues={initialValues}
-          validate={validation}
-          onSubmit={onSubmit}
-          enableReinitialize={true}
-        >
-          {(formProps) => {
-            return (
-              <form onSubmit={formProps.handleSubmit}>
-                <SectionLayout>
-                  <SelectImageBlock
-                    titleTid="PRODUCT_IMAGES.TITLE"
-                    name={SEWING_GOODS_FIELD_NAME.IMAGES}
-                    {...formProps}
-                  />
-                  <Divider />
-                  <FormComponent
-                    {...formProps}
-                    isEdit={isEdit}
-                    initialOption={initialOption}
-                  />
-                </SectionLayout>
-              </form>
-            );
-          }}
-        </Formik>
-        {isSuccess && (
-          <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
-        )}
-        {updateIsSuccess && (
-          <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_UPDATED" />
-        )}
-        {isError && <ErrorAlert tid={errorMessage} />}
-        {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
-        {isEdit && <Divider />}
-        <DeleteProductComponent
-          isEdit={isEdit}
-          deleteProduct={deleteProduct}
-          deleteIsPending={deleteIsPending}
-          deleteIsError={deleteIsError}
-          deleteErrorMessage={deleteErrorMessage}
-        />
-      </SectionLayout>
-    </>
+    <SectionLayout>
+      <TitlePrimary tid="SEWING_GOODS.CREATE.TITLE" />
+      <Formik
+        initialValues={initialValues}
+        validate={validation}
+        onSubmit={onSubmit}
+        enableReinitialize={true}
+      >
+        {(formProps) => {
+          return (
+            <form onSubmit={formProps.handleSubmit}>
+              <SectionLayout>
+                <SelectImageBlock
+                  titleTid="PRODUCT_IMAGES.TITLE"
+                  name={SEWING_GOODS_FIELD_NAME.IMAGES}
+                  {...formProps}
+                />
+                <Divider />
+                <FormComponent
+                  {...formProps}
+                  isEdit={isEdit}
+                  initialOption={initialOption}
+                />
+              </SectionLayout>
+            </form>
+          );
+        }}
+      </Formik>
+      {isSuccess && (
+        <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
+      )}
+      {updateIsSuccess && (
+        <SuccessAlert tid="SEWING_GOODS.CREATE.PRODUCT_SUCCESSFULLY_UPDATED" />
+      )}
+      {isError && <ErrorAlert tid={errorMessage} />}
+      {updateIsError && <ErrorAlert tid={updateErrorMessage} />}
+      {isPending && <InfoAlert tid="Идёт создание, подождите" />}
+      {updateIsPending && <InfoAlert tid="Идёт сохранение, подождите" />}
+      {pageLoading && <LoaderPrimary />}
+      {isEdit && <Divider />}
+      <DeleteProductComponent
+        isEdit={isEdit}
+        deleteProduct={deleteProduct}
+        deleteIsPending={deleteIsPending}
+        deleteIsError={deleteIsError}
+        deleteErrorMessage={deleteErrorMessage}
+      />
+    </SectionLayout>
   );
 }

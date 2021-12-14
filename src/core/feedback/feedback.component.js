@@ -3,8 +3,7 @@ import { SuccessAlert } from 'src/lib/element/alert';
 import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { FeedbackFormComponent } from './frames';
-import { SEWING_GOODS_FIELD_NAME } from './feedback.type';
-import { FooterPhone } from '../footer/footer.phone';
+import { FooterPhone } from '../footer';
 
 export function FeedbackComponent(props) {
   const { isAdmin, isPending, isSuccess, initialValues, validation, onSubmit } =

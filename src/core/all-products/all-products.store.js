@@ -10,6 +10,7 @@ const initialState = {
   page: 1,
   total: 0,
   products: initRequestState([]),
+  pagination: initRequestState(),
   categories: initRequestState(),
 };
 
@@ -31,10 +32,7 @@ export function allProductsStore(state = initialState, action) {
     case ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_UPLOAD_SUCCESS:
       return {
         ...state,
-        products: setRequestSuccess(
-          state.products,
-          state.products.data.concat(action.data),
-        ),
+        products: setRequestSuccess(state.products, action.data),
         page: state.page + 1,
         total: action.total,
       };
@@ -42,6 +40,28 @@ export function allProductsStore(state = initialState, action) {
       return {
         ...state,
         products: setRequestError(state.products, action.errorMessage),
+      };
+
+    case ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_PAGINATION_PENDING:
+      return {
+        ...state,
+        pagination: setRequestPending(state.pagination),
+      };
+    case ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_PAGINATION_SUCCESS:
+      return {
+        ...state,
+        products: setRequestSuccess(
+          state.products,
+          state.products.data.concat(action.data),
+        ),
+        pagination: setRequestSuccess(state.pagination),
+        page: state.page + 1,
+        total: action.total,
+      };
+    case ALL_PRODUCTS_ACTION_TYPE.ALL_PRODUCTS_PAGINATION_ERROR:
+      return {
+        ...state,
+        pagination: setRequestError(state.pagination, action.errorMessage),
       };
 
     case ALL_PRODUCTS_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING:

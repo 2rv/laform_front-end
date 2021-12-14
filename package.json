@@ -21,7 +21,6 @@
     "@editorjs/marker": "^1.2.2",
     "@editorjs/nested-list": "^1.0.2",
     "@editorjs/paragraph": "^2.8.0",
-    "@editorjs/raw": "^2.3.0",
     "@editorjs/table": "^2.0.1",
     "@types/react-redux": "^7.1.16",
     "@unly/universal-language-detector": "^2.0.3",

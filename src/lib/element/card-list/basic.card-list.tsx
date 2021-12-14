@@ -5,10 +5,10 @@ import {
   CardSewingGood,
   CardMasterClass,
   CardArticle,
+  CardSkeleton,
 } from '../card';
 import { BasicCardListTypeProps } from './card-list.type';
 import { TextSecondary } from '../text';
-import { CardListSkeleton } from '.';
 
 export function BasicCardList(props: BasicCardListTypeProps) {
   const {
@@ -20,33 +20,40 @@ export function BasicCardList(props: BasicCardListTypeProps) {
     emptyText,
     emptyTvalue,
     isCreateList,
-    pending,
+    isLoading,
+    isPagination,
+    paginateCount = 3,
   } = props;
 
-  if (pending) {
-    return <CardListSkeleton quantity={3} />;
-  }
-
-  if (!items || !Boolean(items.length)) {
+  if (!isLoading && (!items || !Boolean(items.length))) {
     return <TextSecondary tid={emptyText} tvalue={emptyTvalue} />;
   }
 
   return (
     <Container>
-      {items.map((data: any, index) => {
-        const CardItem = isCardType(data.type);
-        return (
-          <CardItem
-            isCreateList={isCreateList}
-            key={data?.id || index}
-            {...data}
-            onSelect={onSelect}
-            onDelete={onDelete}
-            onRemove={onRemove}
-            admin={admin}
-          />
-        );
-      })}
+      {isLoading
+        ? [...Array(paginateCount).keys()].map((_, i) => (
+            <CardSkeleton key={i} />
+          ))
+        : items.map((data: any, index) => {
+            const CardItem = isCardType(data.type);
+            return (
+              <CardItem
+                isCreateList={isCreateList}
+                key={data?.id || index}
+                {...data}
+                onSelect={onSelect}
+                onDelete={onDelete}
+                onRemove={onRemove}
+                admin={admin}
+              />
+            );
+          })}
+
+      {isPagination &&
+        [...Array(paginateCount).keys()].map((_, i) => (
+          <CardSkeleton key={i} />
+        ))}
     </Container>
   );
 }

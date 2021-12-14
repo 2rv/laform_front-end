@@ -9,7 +9,9 @@ export interface BasicCardListTypeProps {
   emptyText?: string;
   emptyTvalue?: object;
   isCreateList?: boolean;
-  pending?: boolean;
+  isLoading?: boolean;
+  isPagination?: boolean;
+  paginateCount?: number;
 }
 export interface CardListTypeProps extends BasicCardListTypeProps {
   path?: string;

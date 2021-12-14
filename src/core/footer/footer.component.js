@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { FooterLinkList, FooterSocialLink } from './frames';
-import { NotificationContainer } from '../notification';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
-import { DownloadLinks } from '../header-component';
-import { FooterPhoneComponent } from './footer.phone';
+import { NotificationContainer } from '../notification';
+import {
+  FooterLinkList,
+  FooterSocialLink,
+  DownloadLinks,
+  FooterPhone,
+} from './frames';
 
 export function FooterComponent(props) {
   const { laFormeLinkItems, faqLinkItems, contactLinkItems } = props;
@@ -28,7 +31,7 @@ export function FooterComponent(props) {
           <FooterSocialLink />
         </CopyrightCase>
         <DownloadLinks />
-        <FooterPhoneComponent />
+        <FooterPhone />
       </Content>
     </Container>
   );

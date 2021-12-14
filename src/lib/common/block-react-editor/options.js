@@ -6,11 +6,9 @@ import Table from '@editorjs/table';
 import Marker from '@editorjs/marker';
 import Delimiter from '@editorjs/delimiter';
 import ImageTool from '@editorjs/image';
-import RawTool from '@editorjs/raw';
 import { httpRequest } from 'src/main/http';
 
 export const tools = {
-  raw: RawTool,
   header: {
     class: Header,
     config: {

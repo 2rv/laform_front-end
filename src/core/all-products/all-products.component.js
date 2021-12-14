@@ -2,7 +2,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { TitlePrimary } from 'src/lib/element/title';
 import { SectionLayout } from 'src/lib/element/layout';
 import { BasicCardList } from 'src/lib/element/card-list';
-import { LoaderPrimary } from 'src/lib/element/loader';
 import { SearchBlock } from 'src/lib/common/block-search';
 import { TabLinkBlock } from 'src/lib/element/tab-link';
 import { ALL_PRODUCTS_TABS } from './all-products.constant';
@@ -16,6 +15,7 @@ export function AllProductsComponent(props) {
     products,
     categories,
     isPending,
+    isPagination,
     onDisable,
     onPagination,
     onFilter,
@@ -24,11 +24,10 @@ export function AllProductsComponent(props) {
 
   return (
     <SectionLayout>
-      {isPending && <LoaderPrimary />}
       <TabLinkBlock
         activePath={activePath}
         pathItems={ALL_PRODUCTS_TABS}
-        disabled={pageLoading || isPending}
+        disabled={pageLoading || isPending || isPagination}
       />
       <SearchBlock
         findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
@@ -43,7 +42,8 @@ export function AllProductsComponent(props) {
         hasMore={products.length < +total}
       >
         <BasicCardList
-          pending={isPending}
+          isLoading={isPending}
+          isPagination={isPagination}
           onDelete={onDisable}
           admin={isAdmin}
           items={products}

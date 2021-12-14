@@ -10,6 +10,7 @@ const initialState = {
   page: 1,
   total: 0,
   products: initRequestState([]),
+  pagination: initRequestState(),
   categories: initRequestState(),
 };
 
@@ -31,10 +32,7 @@ export function patternsStore(state = initialState, action) {
     case PATTERNS_ACTION_TYPE.PATTERNS_UPLOAD_SUCCESS:
       return {
         ...state,
-        products: setRequestSuccess(
-          state.products,
-          state.products.data.concat(action.data),
-        ),
+        products: setRequestSuccess(state.products, action.data),
         page: state.page + 1,
         total: action.total,
       };
@@ -58,6 +56,28 @@ export function patternsStore(state = initialState, action) {
       return {
         ...state,
         categories: setRequestError(state.categories, action.errorMessage),
+      };
+
+    case PATTERNS_ACTION_TYPE.PATTERNS_PAGINATION_PENDING:
+      return {
+        ...state,
+        pagination: setRequestPending(state.pagination),
+      };
+    case PATTERNS_ACTION_TYPE.PATTERNS_PAGINATION_SUCCESS:
+      return {
+        ...state,
+        products: setRequestSuccess(
+          state.products,
+          state.products.data.concat(action.data),
+        ),
+        pagination: setRequestSuccess(state.pagination),
+        page: state.page + 1,
+        total: action.total,
+      };
+    case PATTERNS_ACTION_TYPE.PATTERNS_PAGINATION_ERROR:
+      return {
+        ...state,
+        pagination: setRequestError(state.pagination, action.errorMessage),
       };
 
     default:
