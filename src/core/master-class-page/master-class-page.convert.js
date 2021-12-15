@@ -1,8 +1,8 @@
 export function convertPurchasedMasterClassData(rowData) {
-  console.log(rowData);
   return {
     id: rowData.id,
     createdDate: rowData?.createdDate,
+    expiredDate: rowData?.expiredDate,
     name: rowData?.masterClassId?.titleRu || rowData.titleEn,
     type: rowData?.masterClassId?.type,
     materials:

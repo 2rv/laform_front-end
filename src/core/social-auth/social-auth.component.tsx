@@ -12,28 +12,24 @@ import { IconButton } from 'src/lib/element/button';
 import { setLinkRedirect } from 'src/main/navigation';
 import { BASE_URL } from 'src/main/http';
 
-const BASE_URL_SLASH_END = BASE_URL?.includes('localhost')
-  ? BASE_URL
-  : `${BASE_URL}/`;
-
 export function SocialAuthComponent() {
   return (
     <SectionLayout type="TEXT">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />
       <Container>
-        <Button onClick={setLinkRedirect(`${BASE_URL_SLASH_END}auth/apple`)}>
+        <Button onClick={setLinkRedirect(`${BASE_URL}/auth/apple`)}>
           <AppleIcon />
           <Case>
             <AppleText />
           </Case>
         </Button>
-        <Button onClick={setLinkRedirect(`${BASE_URL_SLASH_END}auth/google`)}>
+        <Button onClick={setLinkRedirect(`${BASE_URL}/auth/google`)}>
           <GoogleIcon />
           <Case>
             <GoogleText />
           </Case>
         </Button>
-        <Button onClick={setLinkRedirect(`${BASE_URL_SLASH_END}auth/facebook`)}>
+        <Button onClick={setLinkRedirect(`${BASE_URL}/auth/facebook`)}>
           <FbIcon />
           <Case>
             <FbText />

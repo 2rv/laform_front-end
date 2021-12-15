@@ -4,30 +4,44 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { BlockReactEditor } from 'src/lib/common/block-react-editor';
-import { ConvertTime } from 'src/lib/common/time-convert';
+import { ConvertTime, ConvertDate } from 'src/lib/common/time-convert';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function MasterClassPageComponent(props) {
   const { isPending, pageLoading, productInfo } = props;
 
+  const {
+    id,
+    createdDate,
+    expiredDate = new Date('00.00.00'),
+    name,
+    type,
+    materials,
+    articleText,
+  } = productInfo;
   return (
     <SectionLayout>
       {isPending && <LoaderPrimary />}
       <HeaderCase>
-        <Title tid={productInfo.name} />
-        <TextLight tid={ConvertTime(productInfo.createdDate)} />
+        <Title tid={name} />
+        <div>
+          <TextLight tid="MASTER_CLASSES.PAGE.ACCESS_FRONT_VIA" />
+          &nbsp;
+          <TextSecondary
+            tid="MASTER_CLASSES.PAGE.TIME_EXPIRED"
+            tvalue={{
+              text: ConvertTime(expiredDate),
+              date: ConvertDate(expiredDate, 'L'),
+            }}
+          />
+        </div>
       </HeaderCase>
-      {productInfo.materials && (
-        <BlockReactEditor
-          titleTid="Пост"
-          data={productInfo.materials}
-          enableReInitialize
-          readOnly
-        />
+      {materials && (
+        <BlockReactEditor data={materials} enableReInitialize readOnly />
       )}
       <BlockReactEditor
         titleTid="PATTERNS.MATERIALS"
-        data={productInfo.articleText}
+        data={articleText}
         enableReInitialize
         readOnly
       />

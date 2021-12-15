@@ -51,5 +51,9 @@
 				"SAVE": "Сохранить"
 			}
 		}
+	},
+	"PAGE": {
+		"ACCESS_FRONT_VIA": "Доступ к статье истекает через",
+		"TIME_EXPIRED": "{{text}} или {{date}}"
 	}
 }
