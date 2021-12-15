@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { TextSecondary, TextPrimary, TextCurrency } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import { ConvertDate } from 'src/lib/common/time-convert';
+import { ConvertDate } from 'src/lib/common/time';
 import { LinkPrimary } from 'src/lib/element/link';
 import { ABOUT_ACCOUNT_ROUTE_PATH } from 'src/core/about-account';
 import { TableParamsProps } from '../table.type';

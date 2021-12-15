@@ -6,7 +6,7 @@ import { CardListBlock } from '../../lib/element/card-list';
 import { TitlePrimary } from '../../lib/element/title';
 import { BlockComment } from '../block-comment';
 import { BlockReactEditor } from 'src/lib/common/block-react-editor';
-import { ConvertTime } from 'src/lib/common/time-convert';
+import { ConvertTime } from 'src/lib/common/time';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function ArticlePageComponent(props) {

@@ -34,7 +34,7 @@ export function FooterContainer() {
       },
       {
         tid: 'FOOTER.MENU.SECTION1.WISH_LIST',
-        path: isAuth ? ALL_LIKES_ROUTE_PATH : LOGIN_ROUTE_PATH,
+        path: isAuth ? ALL_LIKES_ROUTE_PATH() : LOGIN_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',

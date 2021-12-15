@@ -64,7 +64,7 @@ export const setRequestSuccess = (state, data = null, additional = null) => {
   state.pending = false;
   state.updated = false;
   state.updating = false;
-
+  console.log(data);
   if (data) {
     state.data = data;
   }

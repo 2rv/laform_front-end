@@ -1,53 +1,50 @@
-import React from 'react';
-import { TitlePrimary } from 'src/lib/element/title';
-import { TextSecondary } from 'src/lib/element/text';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { SectionLayout } from 'src/lib/element/layout';
 import { BasicCardList } from 'src/lib/element/card-list';
-import { FilterTabs } from 'src/lib/element/filter-tabs';
-import { LoaderPrimary } from 'src/lib/element/loader';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { SearchBlock } from 'src/lib/common/block-search';
+import { TabLinkBlock } from 'src/lib/element/tab-link';
+import { ALL_LIKES_TABS } from './likes.constant';
 
-export function PatternsComponent(props) {
+export function LikesComponent(props) {
   const {
-    listItems,
-    activeTabText,
-    activeTab,
-    setActiveTab,
-    tabItems,
-
+    activePath,
     pageLoading,
+    total,
+    products,
+    categories,
     isPending,
     isPagination,
-
-    fetchData,
-    hasMore,
+    onPagination,
+    onFilter,
+    filterOptions,
   } = props;
-
   return (
-    <React.Fragment>
-      {isPending && <LoaderPrimary />}
-      <SectionLayout>
-        <TitlePrimary tid={activeTabText} />
-        <FilterTabs
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          tabItems={tabItems}
-          disabled={isPending}
+    <SectionLayout>
+      <TabLinkBlock
+        activePath={activePath}
+        pathItems={ALL_LIKES_TABS}
+        disabled={pageLoading || isPending || isPagination}
+      />
+      <SearchBlock
+        findPlaceholderTid="Искать товар"
+        filterOptions={filterOptions}
+        categories={categories}
+        handleFilter={onFilter}
+        disabled={pageLoading || isPending}
+      />
+      <InfiniteScroll
+        dataLength={products.length}
+        next={onPagination}
+        hasMore={products.length < +total}
+      >
+        <BasicCardList
+          isLoading={isPending}
+          isPagination={isPagination}
+          items={products}
+          emptyText="ALL_LIKES.CATEGORY_EMPTY"
+          isCreateList
         />
-        <InfiniteScroll
-          dataLength={listItems?.length ?? 0}
-          next={fetchData}
-          hasMore={hasMore}
-        >
-          <BasicCardList
-            isLoading={isPending}
-            isPagination={isPagination}
-            pending={isPending}
-            items={listItems}
-            emptyText="ALL_LIKES.CATEGORY_EMPTY"
-          />
-        </InfiniteScroll>
-      </SectionLayout>
-    </React.Fragment>
+      </InfiniteScroll>
+    </SectionLayout>
   );
 }

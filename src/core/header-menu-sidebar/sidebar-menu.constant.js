@@ -25,7 +25,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
     { title: 'HEADER.USER_MENU.HOME', pathname: HOME_ROUTE_PATH },
     { title: 'HEADER.USER_MENU.HELP', pathname: FAQ_ROUTE_PATH },
     { title: 'HEADER.USER_MENU.SETTINGS', pathname: SETTINGS_ROUTE_PATH },
-    { title: 'HEADER.USER_MENU.FAVORITE', pathname: ALL_LIKES_ROUTE_PATH },
+    { title: 'HEADER.USER_MENU.FAVORITE', pathname: ALL_LIKES_ROUTE_PATH() },
     {
       title: 'HEADER.USER_MENU.MY_PURCHASES',
       pathname: USER_ORDERS_ROUTE_PATH,

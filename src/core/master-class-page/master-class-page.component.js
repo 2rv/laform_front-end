@@ -4,7 +4,7 @@ import { SectionLayout } from '../../lib/element/layout';
 import { TextSecondary } from '../../lib/element/text';
 import { TitlePrimary } from '../../lib/element/title';
 import { BlockReactEditor } from 'src/lib/common/block-react-editor';
-import { ConvertTime, ConvertDate } from 'src/lib/common/time-convert';
+import { ConvertTime, ConvertDate } from 'src/lib/common/time';
 import { LoaderPrimary } from 'src/lib/element/loader';
 
 export function MasterClassPageComponent(props) {

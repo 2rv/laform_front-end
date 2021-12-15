@@ -9,7 +9,7 @@ import { ReactComponent as EditIcon } from '../../asset/svg/edit-icon.svg';
 import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
 import { SubComment } from './comment.sub-item';
-import { ConvertTime } from 'src/lib/common/time-convert';
+import { ConvertTime } from 'src/lib/common/time';
 import { USER_ROLE } from 'src/lib/common/auth';
 
 export function CommentItem(props) {

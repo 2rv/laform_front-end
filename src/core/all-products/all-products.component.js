@@ -1,5 +1,4 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { TitlePrimary } from 'src/lib/element/title';
 import { SectionLayout } from 'src/lib/element/layout';
 import { BasicCardList } from 'src/lib/element/card-list';
 import { SearchBlock } from 'src/lib/common/block-search';

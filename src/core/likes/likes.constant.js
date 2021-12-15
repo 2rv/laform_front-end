@@ -1,22 +1,62 @@
-export const ALL_LIKES_ROUTE_PATH = '/likes';
+export const ALL_LIKES_ROUTE_PATH = ({ type } = { type: '[[...type]]' }) =>
+  `/likes/${type}`;
+
 export const ALL_LIKES_STORE_NAME = 'ALL_LIKES';
-export const ALL_LIKES_GUEST_REDIRECT = '';
 export const LIKES_API = {
-  SEWING_PRODUCT_LIKES_UPLOAD: {
-    ENDPOINT: (currentLang, page) => `/sewing-product/liked/get/?lang=${currentLang}${Boolean(page) ? `&page=${page}` : ''}`,
+  GET_MASTER_PROUCTS: {
+    ENDPOINT: '/master-class/liked/get',
     TYPE: 'GET',
   },
-  MASTER_CLASS_LIKES_UPLOAD: {
-    ENDPOINT: (currentLang, page) => `/master-class/liked/get/?lang=${currentLang}${Boolean(page) ? `&page=${page}` : ''}`,
+  GET_PATTERNS_PRODUCTS: {
+    ENDPOINT: '/pattern-product/liked/get',
     TYPE: 'GET',
   },
-  PATTERN_PRODUCT_LIKES_UPLOAD: {
-    ENDPOINT: (currentLang, page) =>
-      `/pattern-product/liked/get/?lang=${currentLang}${Boolean(page) ? `&page=${page}` : ''}`,
+  GET_SEWING_PRODUCTS: {
+    ENDPOINT: '/sewing-product/liked/get',
     TYPE: 'GET',
   },
-  POST_LIKES_UPLOAD: {
-    ENDPOINT: (currentLang, page) => `/post/liked/get/?lang=${currentLang}${Boolean(page) ? `&page=${page}` : ''}`,
+  GET_POST: {
+    ENDPOINT: '/post/liked/get',
+    TYPE: 'GET',
+  },
+  GET_CATEGORIES: {
+    ENDPOINT: '/category/get',
     TYPE: 'GET',
   },
 };
+
+export const ALL_LIKES_TAB_TYPES = {
+  0: 'master-class',
+  1: 'pattern-electronic',
+  2: 'pattern-print',
+  3: 'sewing-good',
+  4: 'blog',
+};
+
+export const ALL_LIKES_TABS = [
+  {
+    name: 'ALL_LIKES.TABS.MASTER_CLASS',
+    path: ALL_LIKES_ROUTE_PATH,
+    pathConfig: { params: { type: ALL_LIKES_TAB_TYPES[0] } },
+  },
+  {
+    name: 'Электронные выкройки',
+    path: ALL_LIKES_ROUTE_PATH,
+    pathConfig: { params: { type: ALL_LIKES_TAB_TYPES[1] } },
+  },
+  {
+    name: 'Печаные выкройки',
+    path: ALL_LIKES_ROUTE_PATH,
+    pathConfig: { params: { type: ALL_LIKES_TAB_TYPES[2] } },
+  },
+  {
+    name: 'ALL_LIKES.TABS.SEWING_PRODUCT',
+    path: ALL_LIKES_ROUTE_PATH,
+    pathConfig: { params: { type: ALL_LIKES_TAB_TYPES[3] } },
+  },
+  {
+    name: 'ALL_LIKES.TABS.POST',
+    path: ALL_LIKES_ROUTE_PATH,
+    pathConfig: { params: { type: ALL_LIKES_TAB_TYPES[4] } },
+  },
+];
