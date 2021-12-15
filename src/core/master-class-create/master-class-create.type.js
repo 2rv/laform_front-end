@@ -45,4 +45,5 @@ export const CREATE_MASTER_CLASS_FIELD_NAME = {
   ARTICLE: 'articleRu',
   MATERIAL: 'materialRu',
   DELETED: 'deleted',
+  IN_ENGLISH: 'inEnglish',
 };

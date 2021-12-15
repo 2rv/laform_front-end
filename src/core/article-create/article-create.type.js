@@ -29,4 +29,5 @@ export const ARTICLE_FIELD_NAME = {
   ARTICLE: 'articleRu',
   RECOMMENDATIONS: 'recommendation',
   DELETED: 'deleted',
+  IN_ENGLISH: 'inEnglish',
 };

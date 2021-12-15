@@ -1,6 +1,18 @@
 import { CREATE_MASTER_CLASS_FIELD_NAME } from './master-class-create.type';
 
 export function convertForUpload(imageUrls, formValues) {
+  const categories = formValues[CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES].map(
+    (item) => ({
+      id: item.basicId,
+    }),
+  );
+  const recommendations =
+    formValues[CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS].length === 0
+      ? null
+      : {
+          recommendationProducts:
+            formValues[CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS],
+        };
   return {
     [CREATE_MASTER_CLASS_FIELD_NAME.IMAGES]: imageUrls,
     [CREATE_MASTER_CLASS_FIELD_NAME.NAME]:
@@ -9,11 +21,7 @@ export function convertForUpload(imageUrls, formValues) {
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.VENDOR_CODE],
     [CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER]:
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.MODIFIER],
-    [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: formValues[
-      CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES
-    ].map((item) => ({
-      id: item.basicId,
-    })),
+    [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: categories,
     [CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION]:
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.DESCRIPTION],
     [CREATE_MASTER_CLASS_FIELD_NAME.MATERIAL]:
@@ -24,18 +32,20 @@ export function convertForUpload(imageUrls, formValues) {
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT],
     [CREATE_MASTER_CLASS_FIELD_NAME.PRICE]:
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.PRICE],
-    [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]:
-      formValues[CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS].length === 0
-        ? null
-        : {
-            recommendationProducts:
-              formValues[CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS],
-          },
+    [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: recommendations,
     [CREATE_MASTER_CLASS_FIELD_NAME.DELETED]:
       formValues[CREATE_MASTER_CLASS_FIELD_NAME.DELETED],
+    [CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH]:
+      formValues[CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH],
   };
 }
 export function convertForChange(rowData) {
+  const categories = rowData[CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES].map(
+    (i) => ({
+      basicId: i.id,
+      tid: i.categoryNameRu,
+    }),
+  );
   return {
     [CREATE_MASTER_CLASS_FIELD_NAME.NAME]:
       rowData[CREATE_MASTER_CLASS_FIELD_NAME.NAME],
@@ -54,19 +64,15 @@ export function convertForChange(rowData) {
     [CREATE_MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: convertRecommendations(
       rowData.recommendation?.recommendationProducts,
     ),
-    [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: rowData[
-      CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES
-    ].map((i) => ({
-      basicId: i.id,
-      tid: i.categoryNameRu,
-    })),
-    [CREATE_MASTER_CLASS_FIELD_NAME.PRICE]: Number(
-      rowData[CREATE_MASTER_CLASS_FIELD_NAME.PRICE],
-    ),
+    [CREATE_MASTER_CLASS_FIELD_NAME.CATEGORIES]: categories,
+    [CREATE_MASTER_CLASS_FIELD_NAME.PRICE]:
+      +rowData[CREATE_MASTER_CLASS_FIELD_NAME.PRICE],
     [CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT]:
       rowData[CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT],
     [CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE]:
       rowData[CREATE_MASTER_CLASS_FIELD_NAME.ARTICLE] || [],
+    [CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH]:
+      !!rowData[CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH],
   };
 }
 

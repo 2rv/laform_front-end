@@ -123,6 +123,7 @@ export function convertForUpload(
       filesPdf,
     ),
     deleted: values.deleted,
+    inEnglish: !!values.inEnglish,
   };
 }
 
@@ -156,5 +157,6 @@ export function convertForChange(rowData: dataValueType): formValueType {
     complexity: rowData.complexity,
     materialRu: rowData.materialRu || [],
     deleted: rowData.deleted,
+    inEnglish: !!rowData.inEnglish,
   };
 }
