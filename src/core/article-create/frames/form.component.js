@@ -1,11 +1,7 @@
 import styled from 'styled-components';
-import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
-import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
-import {
-  BasicField,
-  MultiField,
-  FieldCheckbox,
-} from '../../../lib/element/field';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
+import { ButtonPrimary, ButtonSecondary } from 'src/lib/element/button';
+import { BasicField, FieldCheckbox } from 'src/lib/element/field';
 import { ARTICLE_FIELD_NAME } from '../article-create.type';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
@@ -32,6 +28,12 @@ export function FormComponent(props) {
     setFieldValue(
       ARTICLE_FIELD_NAME.DELETED,
       !values[ARTICLE_FIELD_NAME.DELETED],
+    );
+  };
+  const setEnglish = () => {
+    setFieldValue(
+      ARTICLE_FIELD_NAME.IN_ENGLISH,
+      !values[ARTICLE_FIELD_NAME.IN_ENGLISH],
     );
   };
   return (
@@ -87,13 +89,23 @@ export function FormComponent(props) {
 
       <Divider />
 
-      <FieldCheckbox
-        titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.VISIBILITY"
-        labelTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.VISIBILITY"
-        name={ARTICLE_FIELD_NAME.DELETED}
-        checked={!values[ARTICLE_FIELD_NAME.DELETED]}
-        onClick={setVisible}
-      />
+      <FieldLayout type="double" adaptive>
+        <FieldCheckbox
+          titleTid="ARTICLE_CREATE_FORM.FIELDS.TITLE.VISIBILITY"
+          labelTid="ARTICLE_CREATE_FORM.FIELDS.PLACEHOLDER.VISIBILITY"
+          name={ARTICLE_FIELD_NAME.DELETED}
+          checked={!values[ARTICLE_FIELD_NAME.DELETED]}
+          onClick={setVisible}
+        />
+        <FieldCheckbox
+          titleTid="На английском"
+          labelTid="Этот товар на английском"
+          name={ARTICLE_FIELD_NAME.IN_ENGLISH}
+          checked={values[ARTICLE_FIELD_NAME.IN_ENGLISH]}
+          onClick={setEnglish}
+        />
+      </FieldLayout>
+
       <FieldLayout type="double" adaptive>
         {isEdit ? (
           <ButtonPrimary

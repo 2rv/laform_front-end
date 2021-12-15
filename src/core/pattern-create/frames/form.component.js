@@ -40,6 +40,12 @@ export function FormComponent(props) {
       !values[CREATE_PATTERN_FIELD_NAME.DELETED],
     );
   };
+  const setEnglish = () => {
+    setFieldValue(
+      CREATE_PATTERN_FIELD_NAME.IN_ENGLISH,
+      !values[CREATE_PATTERN_FIELD_NAME.IN_ENGLISH],
+    );
+  };
 
   const setCount = () => {
     if (values[CREATE_PATTERN_FIELD_NAME.TYPE] === 2) {
@@ -217,13 +223,23 @@ export function FormComponent(props) {
 
       <Divider />
 
-      <FieldCheckbox
-        titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
-        labelTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
-        name={CREATE_PATTERN_FIELD_NAME.DELETED}
-        checked={!values[CREATE_PATTERN_FIELD_NAME.DELETED]}
-        onClick={setVisible}
-      />
+      <FieldLayout type="double" adaptive>
+        <FieldCheckbox
+          titleTid="PATTERNS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
+          labelTid="PATTERNS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
+          name={CREATE_PATTERN_FIELD_NAME.DELETED}
+          checked={!values[CREATE_PATTERN_FIELD_NAME.DELETED]}
+          onClick={setVisible}
+        />
+
+        <FieldCheckbox
+          titleTid="На английском"
+          labelTid="Этот товар на английском"
+          name={CREATE_PATTERN_FIELD_NAME.IN_ENGLISH}
+          checked={values[CREATE_PATTERN_FIELD_NAME.IN_ENGLISH]}
+          onClick={setEnglish}
+        />
+      </FieldLayout>
 
       <FieldLayout type="double" adaptive>
         {isEdit ? (

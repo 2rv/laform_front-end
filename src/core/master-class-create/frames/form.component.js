@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import { THEME_COLOR, THEME_SIZE, spacing } from '../../../lib/theme';
-import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
-import { TitlePrimary } from '../../../lib/element/title';
-import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
+import { THEME_COLOR, THEME_SIZE, spacing } from 'src/lib/theme';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
+import { ButtonPrimary, ButtonSecondary } from 'src/lib/element/button';
 import {
   BasicField,
-  MultiField,
   TextareaField,
   FieldCheckbox,
-} from '../../../lib/element/field';
+} from 'src/lib/element/field';
 import { Field } from 'formik';
 import { CREATE_MASTER_CLASS_FIELD_NAME } from '../master-class-create.type';
 import { BlockCategories } from 'src/lib/common/block-categories';
@@ -38,6 +37,13 @@ export function FormComponent(props) {
       !values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED],
     );
   };
+  const setEnglish = () => {
+    setFieldValue(
+      CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH,
+      !values[CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH],
+    );
+  };
+
   //----------------------------
 
   return (
@@ -146,14 +152,22 @@ export function FormComponent(props) {
         />
 
         <Divider />
-
-        <FieldCheckbox
-          titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
-          labelTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
-          name={CREATE_MASTER_CLASS_FIELD_NAME.DELETED}
-          checked={!values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
-          onClick={setVisible}
-        />
+        <FieldLayout type="double" adaptive>
+          <FieldCheckbox
+            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
+            labelTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
+            name={CREATE_MASTER_CLASS_FIELD_NAME.DELETED}
+            checked={!values[CREATE_MASTER_CLASS_FIELD_NAME.DELETED]}
+            onClick={setVisible}
+          />
+          <FieldCheckbox
+            titleTid="На английском"
+            labelTid="Этот товар на английском"
+            name={CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH}
+            checked={values[CREATE_MASTER_CLASS_FIELD_NAME.IN_ENGLISH]}
+            onClick={setEnglish}
+          />
+        </FieldLayout>
         <FieldLayout type="double" adaptive>
           {isEdit ? (
             <ButtonPrimary
