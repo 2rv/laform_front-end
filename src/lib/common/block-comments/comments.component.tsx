@@ -5,7 +5,7 @@ import { LinkSecondary } from 'src/lib/element/link';
 import { Divider } from 'src/lib/element/divider';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
-import { ConvertTime } from 'src/lib/common/time-convert';
+import { ConvertTime } from 'src/lib/common/time';
 
 export interface CommentsProps {
   id: string;

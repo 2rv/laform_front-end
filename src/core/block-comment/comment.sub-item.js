@@ -11,7 +11,7 @@ import { ReactComponent as ArrowUpOutlined } from '../../asset/svg/arrow-up-outl
 import { SectionLayout } from '../../lib/element/layout';
 import { Divider } from '../../lib/element/divider';
 import { useState } from 'react';
-import { ConvertTime } from 'src/lib/common/time-convert';
+import { ConvertTime } from 'src/lib/common/time';
 import { USER_ROLE } from 'src/lib/common/auth';
 
 export function SubComment(props) {

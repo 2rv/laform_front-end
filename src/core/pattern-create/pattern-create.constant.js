@@ -1,4 +1,4 @@
-export const CREATE_PATTERN_ROUTE_PATH = ({ id } = { type: '[[...id]]' }) =>
+export const CREATE_PATTERN_ROUTE_PATH = ({ id } = { id: '[[...id]]' }) =>
   `/pattern/create/${id}`;
 
 export const CREATE_PATTERN_STORE_NAME = 'CREATE_PATTERN';

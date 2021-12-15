@@ -5,10 +5,6 @@ import {
   navigationStore,
   NAVIGATION_STORE_NAME,
 } from '../../lib/common/navigation';
-import {
-  paymentMethodStore,
-  PAYMENT_METHOD_STORE_NAME,
-} from '../../lib/common/payment-method';
 import { signupStore, SIGNUP_STORE_NAME } from '../../core/signup';
 import { loginStore, LOGIN_STORE_NAME } from '../../core/login';
 import {
@@ -216,7 +212,6 @@ export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
   [LANG_STORE_NAME]: langStore,
   [NAVIGATION_STORE_NAME]: navigationStore,
-  [PAYMENT_METHOD_STORE_NAME]: paymentMethodStore,
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [AUTH_RECOVERY_ACCOUNT_STORE_NAME]: authRecoveryAccountStore,

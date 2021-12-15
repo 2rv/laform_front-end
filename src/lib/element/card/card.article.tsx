@@ -3,7 +3,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
 import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
-import { ConvertTime } from 'src/lib/common/time-convert';
+import { ConvertTime } from 'src/lib/common/time';
 import { CardArticleType } from './card.type';
 import {
   DeleteButton,

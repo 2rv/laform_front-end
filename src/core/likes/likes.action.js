@@ -1,5 +1,5 @@
-import { httpRequest } from '../../main/http';
-import { LIKES_API } from './likes.constant';
+import { httpRequest } from 'src/main/http';
+import { ALL_LIKES_TAB_TYPES, LIKES_API } from './likes.constant';
 import { LIKES_ACTION_TYPE } from './likes.type';
 import {
   convertArticleProducts,
@@ -8,115 +8,171 @@ import {
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
 
-export function likeSewingProductUploadData(currentLang, page) {
+function getCategories(currentLang, type) {
   return async (dispatch) => {
     dispatch({
-      type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
+      type: LIKES_ACTION_TYPE.GET_CATEGORIES_PENDING,
     });
-
     try {
       const response = await httpRequest({
-        method: LIKES_API.SEWING_PRODUCT_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.SEWING_PRODUCT_LIKES_UPLOAD.ENDPOINT(currentLang, page),
+        method: LIKES_API.GET_CATEGORIES.TYPE,
+        url: LIKES_API.GET_CATEGORIES.ENDPOINT,
+        params: {
+          lang: currentLang,
+          type: type,
+        },
       });
       dispatch({
-        type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: {
-          products: convertSewingGoodProducts(response.data[0]),
-          totalRecords: response.data[1],
-        },
+        type: LIKES_ACTION_TYPE.GET_CATEGORIES_SUCCESS,
+        data: response.data.map((category) => ({
+          id: category.id,
+          tid: category.categoryNameRu,
+        })),
       });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: LIKES_ACTION_TYPE.LIKES_UPLOAD_ERROR,
+          type: LIKES_ACTION_TYPE.GET_CATEGORIES_ERROR,
           errorMessage: err.response.data.message,
         });
       }
     }
   };
 }
+async function getMasterClasses(query) {
+  const response = await httpRequest({
+    method: LIKES_API.GET_MASTER_PROUCTS.TYPE,
+    url: LIKES_API.GET_MASTER_PROUCTS.ENDPOINT,
+    params: {
+      lang: query.currentLang,
+      page: query.page,
+      where: query.where,
+      sort: query.sort,
+      by: query.by,
+      category: query.category,
+    },
+  });
+  return {
+    data: convertMasterClassProducts(response.data[0]),
+    total: response.data[1],
+  };
+}
+async function getPatternProducts(query) {
+  const response = await httpRequest({
+    method: LIKES_API.GET_PATTERNS_PRODUCTS.TYPE,
+    url: LIKES_API.GET_PATTERNS_PRODUCTS.ENDPOINT,
+    params: {
+      lang: query.currentLang,
+      page: query.page,
+      where: query.where,
+      sort: query.sort,
+      by: query.by,
+      category: query.category,
+    },
+  });
+  return {
+    data: convertPatternProducts(response.data[0]),
+    total: response.data[1],
+  };
+}
+async function getSewingGoods(query) {
+  const response = await httpRequest({
+    method: LIKES_API.GET_SEWING_PRODUCTS.TYPE,
+    url: LIKES_API.GET_SEWING_PRODUCTS.ENDPOINT,
+    params: {
+      lang: query.currentLang,
+      page: query.page,
+      where: query.where,
+      sort: query.sort,
+      by: query.by,
+      category: query.category,
+    },
+  });
+  return {
+    data: convertSewingGoodProducts(response.data[0]),
+    total: response.data[1],
+  };
+}
+async function getPosts(query) {
+  const response = await httpRequest({
+    method: LIKES_API.GET_POST.TYPE,
+    url: LIKES_API.GET_POST.ENDPOINT,
+    params: {
+      lang: query.currentLang,
+      page: query.page,
+      where: query.where,
+      sort: query.sort,
+      by: query.by,
+      category: query.category,
+    },
+  });
+  return {
+    data: convertArticleProducts(response.data[0]),
+    total: response.data[1],
+  };
+}
+const getProducts = {
+  0: getMasterClasses,
+  1: getPatternProducts,
+  2: getPatternProducts,
+  3: getSewingGoods,
+  4: getPosts,
+};
 
-export function likeMasterClassUploadData(currentLang, page) {
+function getTypeByValue(value) {
+  return Object.keys(ALL_LIKES_TAB_TYPES).find(
+    (key) => ALL_LIKES_TAB_TYPES[key] === value,
+  );
+}
+
+export function getProductsByType(value, currentLang, query) {
   return async (dispatch) => {
+    dispatch({ type: LIKES_ACTION_TYPE.RESET_PRODUCTS_STATE });
     dispatch({
-      type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
+      type: LIKES_ACTION_TYPE.GET_LIKES_PENDING,
     });
-
     try {
-      const response = await httpRequest({
-        method: LIKES_API.MASTER_CLASS_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.MASTER_CLASS_LIKES_UPLOAD.ENDPOINT(currentLang, page),
-      });
+      const type = getTypeByValue(value);
+
+      const response = await getProducts[type]({ type, currentLang, ...query });
+      dispatch(getCategories(currentLang, type));
       dispatch({
-        type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: {
-          products: convertMasterClassProducts(response.data[0]),
-          totalRecords: response.data[1],
-        },
+        type: LIKES_ACTION_TYPE.GET_LIKES_SUCCESS,
+        data: response.data,
+        total: response.total,
       });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: LIKES_ACTION_TYPE.LIKES_UPLOAD_ERROR,
+          type: LIKES_ACTION_TYPE.GET_LIKES_ERROR,
           errorMessage: err.response.data.message,
         });
       }
     }
   };
 }
-
-export function likePatternProductUploadData(currentLang, page) {
+export function paginateProductsByType(value, query) {
   return async (dispatch) => {
     dispatch({
-      type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
+      type: LIKES_ACTION_TYPE.PAGINATION_LIKES_PENDING,
     });
-
     try {
-      const response = await httpRequest({
-        method: LIKES_API.PATTERN_PRODUCT_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.PATTERN_PRODUCT_LIKES_UPLOAD.ENDPOINT(currentLang, page),
+      const type = getTypeByValue(value);
+      const response = await getProducts[type]({
+        type,
+        currentLang,
+        page,
+        ...query,
       });
       dispatch({
-        type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: {
-          products: convertPatternProducts(response.data[0]),
-          totalRecords: response.data[1],
-        },
+        type: LIKES_ACTION_TYPE.PAGINATION_LIKES_SUCCESS,
+        data: response.data,
+        total: response.total,
       });
     } catch (err) {
       if (err.response) {
         dispatch({
-          type: LIKES_ACTION_TYPE.LIKES_UPLOAD_ERROR,
-          errorMessage: err.response.data.message,
-        });
-      }
-    }
-  };
-}
-
-export function likePostUploadData(currentLang, page) {
-  return async (dispatch) => {
-    dispatch({
-      type: LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING,
-    });
-
-    try {
-      const response = await httpRequest({
-        method: LIKES_API.POST_LIKES_UPLOAD.TYPE,
-        url: LIKES_API.POST_LIKES_UPLOAD.ENDPOINT(currentLang, page),
-      });
-      dispatch({
-        type: LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS,
-        data: {
-          products: convertArticleProducts(response.data[0]),
-          totalRecords: response.data[1],
-        },
-      });
-    } catch (err) {
-      if (err.response) {
-        dispatch({
-          type: LIKES_ACTION_TYPE.LIKES_UPLOAD_ERROR,
+          type: LIKES_ACTION_TYPE.PAGINATION_LIKES_ERROR,
           errorMessage: err.response.data.message,
         });
       }

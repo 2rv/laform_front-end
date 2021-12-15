@@ -36,6 +36,7 @@ interface dataValueType {
   optionType: 0 | 1 | 2 | 3;
   options: optionType[];
   deleted?: boolean;
+  inEnglish: boolean;
 }
 interface categoryValueType {
   basicId: string;
@@ -58,6 +59,7 @@ interface formValueType {
   options: optionType[];
   images?: any;
   deleted?: boolean;
+  inEnglish: boolean;
 }
 
 export function convertForUpload(
@@ -103,6 +105,7 @@ export function convertForUpload(
       values.optionType,
     ),
     deleted: values.deleted,
+    inEnglish: values.inEnglish,
   };
 }
 
@@ -151,6 +154,7 @@ export function convertForChange(rowData: dataValueType): formValueType {
     optionType: rowData.optionType,
     options: rowData.options,
     deleted: rowData.deleted,
+    inEnglish: !!rowData.inEnglish,
   };
 }
 

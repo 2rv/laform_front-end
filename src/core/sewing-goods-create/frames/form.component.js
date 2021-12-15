@@ -1,21 +1,21 @@
 import styled from 'styled-components';
-import { THEME_SIZE } from '../../../lib/theme';
-import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
-import { TitlePrimary } from '../../../lib/element/title';
-import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
+import { THEME_SIZE } from 'src/lib/theme';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
+import { ButtonPrimary, ButtonSecondary } from 'src/lib/element/button';
 import {
   BasicField,
   TextareaField,
   FieldCheckbox,
-} from '../../../lib/element/field';
-import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
-import { RecomendationBlock } from '../../../lib/common/block-select-recomendation';
+} from 'src/lib/element/field';
+import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
 import { Divider } from 'src/lib/element/divider';
 import { BlockCategories } from 'src/lib/common/block-categories';
 import { numberValue } from 'src/lib/common/create-product-validation';
-import { ProductOptions } from '../../../lib/common/block-product-options';
+import { ProductOptions } from 'src/lib/common/block-product-options';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 import { CreatePriceBlock } from 'src/lib/common/block-create-price';
+import { SEWING_GOODS_FIELD_NAME } from '../sewing-goods-create.type';
 
 export function FormComponent(props) {
   const {
@@ -33,6 +33,12 @@ export function FormComponent(props) {
     setFieldValue(
       SEWING_GOODS_FIELD_NAME.DELETED,
       !values[SEWING_GOODS_FIELD_NAME.DELETED],
+    );
+  };
+  const setEnglish = () => {
+    setFieldValue(
+      SEWING_GOODS_FIELD_NAME.IN_ENGLISH,
+      !values[SEWING_GOODS_FIELD_NAME.IN_ENGLISH],
     );
   };
 
@@ -182,13 +188,23 @@ export function FormComponent(props) {
 
       <Divider />
 
-      <FieldCheckbox
-        titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
-        labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
-        name={SEWING_GOODS_FIELD_NAME.DELETED}
-        checked={!values[SEWING_GOODS_FIELD_NAME.DELETED]}
-        onClick={setVisible}
-      />
+      <FieldLayout type="double" adaptive>
+        <FieldCheckbox
+          titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
+          labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
+          name={SEWING_GOODS_FIELD_NAME.DELETED}
+          checked={!values[SEWING_GOODS_FIELD_NAME.DELETED]}
+          onClick={setVisible}
+        />
+
+        <FieldCheckbox
+          titleTid="На английском"
+          labelTid="Этот товар на английском"
+          name={SEWING_GOODS_FIELD_NAME.IN_ENGLISH}
+          checked={values[SEWING_GOODS_FIELD_NAME.IN_ENGLISH]}
+          onClick={setEnglish}
+        />
+      </FieldLayout>
 
       <FieldLayout type="double" adaptive>
         {isEdit ? (

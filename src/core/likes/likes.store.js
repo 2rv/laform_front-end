@@ -3,52 +3,78 @@ import {
   setRequestError,
   setRequestPending,
   setRequestSuccess,
-} from '../../main/store/store.service';
+} from 'src/main/store/store.service';
 import { LIKES_ACTION_TYPE } from './likes.type';
 
-const initialProductData = {
-  products: [],
-  currentPage: 1,
-  totalRecords: 0,
-};
-
 const initialState = {
-  likes: initRequestState(initialProductData),
+  page: 1,
+  total: 0,
+  products: initRequestState([]),
+  pagination: initRequestState(),
+  categories: initRequestState(),
 };
 
 export function allLikesStore(state = initialState, action) {
   switch (action.type) {
     case LIKES_ACTION_TYPE.RESET_PRODUCTS_STATE:
+      return initialState;
+
+    case LIKES_ACTION_TYPE.GET_CATEGORIES_PENDING:
       return {
         ...state,
-        likes: initRequestState(initialProductData),
+        categories: setRequestPending(state.categories),
       };
-    case LIKES_ACTION_TYPE.LIKES_UPLOAD_PENDING:
+    case LIKES_ACTION_TYPE.GET_CATEGORIES_SUCCESS:
       return {
         ...state,
-        likes: setRequestPending(state.likes),
+        categories: setRequestSuccess(state.categories, action.data),
       };
-    case LIKES_ACTION_TYPE.LIKES_UPLOAD_SUCCESS:
-      const oldProducts = state.likes.data.products;
-      const newProducts = action.data.products;
-      const totalRecords = action.data.totalRecords;
-      const prevCurrentPage = state.likes.data.currentPage;
+    case LIKES_ACTION_TYPE.GET_CATEGORIES_ERROR:
       return {
         ...state,
-        likes: setRequestSuccess(
-          state.likes,
-          {
-            products: [...oldProducts, ...newProducts],
-            currentPage: prevCurrentPage + 1,
-            totalRecords,
-          },
+        categories: setRequestError(state.categories, action.errorMessage),
+      };
+
+    case LIKES_ACTION_TYPE.GET_LIKES_PENDING:
+      return {
+        ...state,
+        products: setRequestPending(state.products),
+      };
+    case LIKES_ACTION_TYPE.GET_LIKES_SUCCESS:
+      return {
+        ...state,
+        products: setRequestSuccess(state.products, action.data),
+        page: state.page + 1,
+        total: action.total,
+      };
+    case LIKES_ACTION_TYPE.GET_LIKES_ERROR:
+      return {
+        ...state,
+        products: setRequestError(state.products, action.errorMessage),
+      };
+
+    case LIKES_ACTION_TYPE.PAGINATION_LIKES_PENDING:
+      return {
+        ...state,
+        pagination: setRequestPending(state.pagination),
+      };
+    case LIKES_ACTION_TYPE.PAGINATION_LIKES_SUCCESS:
+      return {
+        ...state,
+        products: setRequestSuccess(
+          state.products,
+          state.products.data.concat(action.data),
         ),
+        pagination: setRequestSuccess(state.pagination),
+        page: state.page + 1,
+        total: action.total,
       };
-    case LIKES_ACTION_TYPE.LIKES_UPLOAD_ERROR:
+    case LIKES_ACTION_TYPE.PAGINATION_LIKES_ERROR:
       return {
         ...state,
-        likes: setRequestError(state.likes, action.errorMessage),
+        pagination: setRequestError(state.pagination, action.errorMessage),
       };
+
     default:
       return state;
   }

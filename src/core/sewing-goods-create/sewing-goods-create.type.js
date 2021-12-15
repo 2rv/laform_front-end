@@ -56,4 +56,5 @@ export const SEWING_GOODS_FIELD_NAME = {
   OPTION_VISIBILITY: 'optionVisibility',
 
   DELETED: 'deleted',
+  IN_ENGLISH: 'inEnglish',
 };

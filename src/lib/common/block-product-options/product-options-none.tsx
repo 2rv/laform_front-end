@@ -7,7 +7,7 @@ import { BasicField } from '../../element/field';
 import { FieldLayout, SectionLayout } from '../../element/layout';
 import { ProductOptionsNoneProps } from './components.type';
 import { SyntheticEvent } from 'react';
-import { MultiFilesBlock } from '../multi-files';
+import { MultiFilesBlock } from '../block-multi-files';
 
 export function ProductOptionsNone(props: ProductOptionsNoneProps) {
   const {

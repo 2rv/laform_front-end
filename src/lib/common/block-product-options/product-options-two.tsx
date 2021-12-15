@@ -7,7 +7,7 @@ import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
 import React from 'react';
 import { ProductOptionsTwoProps } from './components.type';
-import { MultiFilesBlock } from '../multi-files';
+import { MultiFilesBlock } from '../block-multi-files';
 
 export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
   const {
