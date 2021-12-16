@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { spacing } from '../../../lib/theme';
-import { IconButton } from '../../../lib/element/button';
-import { ReactComponent as EditIcon } from '../../../asset/svg/change-icon.svg';
-import { ReactComponent as DeleteIcon } from '../../../asset/svg/cancel-delete-icon.svg';
-import { Divider } from '../../../lib/element/divider';
-import { TextPrimary } from '../../../lib/element/text';
+import { ReactComponent as ChangeIcon } from 'src/asset/svg/change.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
+import { spacing } from 'src/lib/theme';
+import { IconButton } from 'src/lib/element/button';
+import { Divider } from 'src/lib/element/divider';
+import { TextPrimary } from 'src/lib/element/text';
 
-export function SliderItem({ index, data, removeSlide, editSlide }) {
+export function SliderItem(props) {
+  const { index, data, removeSlide, editSlide } = props;
   return (
     <Container>
       <Content>
@@ -16,10 +17,10 @@ export function SliderItem({ index, data, removeSlide, editSlide }) {
         </Case>
         <Case>
           <Button onClick={() => editSlide(data.id)}>
-            <EditIcon />
+            <ChangeIcon />
           </Button>
           <Button onClick={() => removeSlide(index, data.id)}>
-            <DeleteIcon />
+            <RemoveIcon />
           </Button>
         </Case>
       </Content>

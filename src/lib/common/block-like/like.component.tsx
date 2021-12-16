@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { IconButton } from 'src/lib/element/button';
 import { THEME_COLOR } from 'src/lib/theme';
 import { LikeComponentProps } from './like.type';
+import { ReactComponent as LikeIcon } from 'src/asset/svg/like.svg';
+import { ReactComponent as LikeDeleteIcon } from 'src/asset/svg/like-delete.svg';
 
 export function LikeComponent(props: LikeComponentProps) {
   const { like, switchLike, pending } = props;
@@ -14,27 +16,26 @@ export function LikeComponent(props: LikeComponentProps) {
   );
 }
 
-const Icon = styled.div<{ like: boolean }>`
-  background-image: ${(p) =>
-    p.like
-      ? "url('/static/image/favorite-icon-active.svg')"
-      : "url('/static/image/favorite-icon.svg')"};
-  width: 16px;
-  height: 16px;
+const Icon = styled(LikeIcon)<{ like: boolean }>`
+  fill: ${(p) => (p.like ? THEME_COLOR.PRIMARY : THEME_COLOR.SECONDARY_DARK)};
 `;
-const DeleteIcon = styled.div`
+const DeleteIcon = styled(LikeDeleteIcon)`
   display: none;
-  background-image: url('/static/image/delete-like.svg');
-  width: 16px;
-  height: 16px;
 `;
 const Button = styled(IconButton)<{ like: boolean }>`
-  fill: ${(p) => (p.like ? THEME_COLOR.WHITE : THEME_COLOR.SECONDARY_DARK)};
   background-color: ${THEME_COLOR.GRAY};
-  &:hover ${DeleteIcon} {
-    display: inline;
-  }
-  &:hover ${Icon} {
-    display: none;
-  }
+  transition: 0.8s;
+  ${(p) => {
+    return (
+      p.like &&
+      css`
+        &:hover ${DeleteIcon} {
+          display: inline;
+        }
+        &:hover ${Icon} {
+          display: none;
+        }
+      `
+    );
+  }}
 `;

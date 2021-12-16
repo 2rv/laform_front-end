@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-import { TitlePrimary } from '../../lib/element/title';
-import { TextSecondary } from '../../lib/element/text';
-import { ButtonBasic } from '../../lib/element/button';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { ReactComponent as CommentIcon } from '../../asset/svg/arrow-for-comment.svg';
-import { ReactComponent as DeleteIcon } from '../../asset/svg/delete-cancel-icon.svg';
-import { ReactComponent as EditIcon } from '../../asset/svg/edit-icon.svg';
-import { ReactComponent as ArrowDownOutlined } from '../../asset/svg/arrow-down-outlined.svg';
-import { ReactComponent as ArrowUpOutlined } from '../../asset/svg/arrow-up-outlined.svg';
-import { SectionLayout } from '../../lib/element/layout';
-import { Divider } from '../../lib/element/divider';
 import { useState } from 'react';
+import { TitlePrimary } from 'src/lib/element/title';
+import { TextSecondary } from 'src/lib/element/text';
+import { ButtonBasic } from 'src/lib/element/button';
+import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
+import { ReactComponent as CommentIcon } from 'src/asset/svg/arrow-for-comment.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
+import { ReactComponent as ChangeIcon } from 'src/asset/svg/change.svg';
+import { ReactComponent as ArrowDownOutlined } from 'src/asset/svg/arrow-down-outlined.svg';
+import { ReactComponent as ArrowUpOutlined } from 'src/asset/svg/arrow-up-outlined.svg';
+import { SectionLayout } from 'src/lib/element/layout';
+import { Divider } from 'src/lib/element/divider';
 import { ConvertTime } from 'src/lib/common/time';
 import { USER_ROLE } from 'src/lib/common/auth';
 
@@ -61,12 +61,12 @@ export function SubComment(props) {
                 {(userId?.id === user?.id ||
                   user?.role === USER_ROLE.ADMIN) && (
                   <Button onClick={() => handleDeleteSubComment(id)}>
-                    <DeleteIcon />
+                    <RemoveIcon />
                   </Button>
                 )}
                 {userId?.id === user?.id && (
                   <Button onClick={() => editComment(id, text)}>
-                    <EditIcon />
+                    <ChangeIcon />
                   </Button>
                 )}
               </ActionsCase>

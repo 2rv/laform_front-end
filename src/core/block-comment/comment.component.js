@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { TitlePrimary } from '../../lib/element/title';
-import { TextareaField } from '../../lib/element/field';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { ReactComponent as SendIcon } from '../../asset/svg/message-send-icon.svg';
-import { ReactComponent as CancelIcon } from '../../asset/svg/cancel-delete-icon.svg';
-import { SectionLayout } from '../../lib/element/layout';
-import { ButtonBasic, IconButton } from '../../lib/element/button';
-import { CommentItem } from './comment.item';
+import { useEffect, useRef } from 'react';
+import { ReactComponent as SendIcon } from 'src/asset/svg/send.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
+import { TitlePrimary } from 'src/lib/element/title';
+import { TextareaField } from 'src/lib/element/field';
+import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
+import { SectionLayout } from 'src/lib/element/layout';
+import { ButtonBasic, IconButton } from 'src/lib/element/button';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
-import { useEffect, useRef } from 'react';
 import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 import { SignComponent } from './comment.sign';
+import { CommentItem } from './comment.item';
 
 export function CommentComponent(props) {
   const {
@@ -120,7 +120,7 @@ export function CommentComponent(props) {
             <TextareaActionButtons>
               {Boolean(editComment.id) && (
                 <Button onClick={cancelEditing}>
-                  <CancelIcon />
+                  <RemoveIcon />
                 </Button>
               )}
               <Button

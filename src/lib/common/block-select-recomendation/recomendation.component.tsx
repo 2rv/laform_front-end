@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
 import { ModalFull } from 'src/lib/element/modal';
 import { BasicCardList } from 'src/lib/element/card-list';
-import { ReactComponent as CancelIcon } from '../../../asset/svg/delete-cancel-icon.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { recommendationComponentProps } from './recomendation.type';
 import { RecomendationList } from './list-recomendation';
 
@@ -33,7 +33,7 @@ export function RecomendationComponent(props: recommendationComponentProps) {
             <HeaderCase>
               <TitlePrimary tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.SELECT_RECOMENDATION" />
               <ButtonIcon onClick={() => setModal(false)}>
-                <CancelIcon />
+                <RemoveIcon />
               </ButtonIcon>
             </HeaderCase>
             <BasicCardList

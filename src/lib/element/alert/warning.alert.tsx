@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as AlertIcon } from 'src/asset/svg/info-alert.svg';
+import { ReactComponent as AlertIcon } from 'src/asset/svg/alert-info.svg';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../theme';
 import { text } from '../../common/text';
 import { AlertPropsType } from './type.alert';

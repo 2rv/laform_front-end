@@ -6,7 +6,7 @@ import { ModalFull } from 'src/lib/element/modal';
 import { spacing } from 'src/lib/theme';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
-import { ReactComponent as CloseIcon } from 'src/asset/svg/delete-cancel-icon.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { SdekPointsComponentProps } from './sdek-points.type';
 import { SdekPointOption } from './sdek-points.option';
 import { SdekPointItem } from './sdek-points.item';
@@ -35,7 +35,7 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
         <ItemCase>
           <SdekPointItem value={value} />
           <ButtonIcon onClick={() => onChange({})}>
-            <CloseIcon />
+            <RemoveIcon />
           </ButtonIcon>
         </ItemCase>
       )}
@@ -51,13 +51,13 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
               {filter && (
                 <IconBox>
                   <ButtonIcon onClick={() => setFilter('')}>
-                    <CloseIcon />
+                    <RemoveIcon />
                   </ButtonIcon>
                 </IconBox>
               )}
             </InputBox>
             <ButtonIcon onClick={() => onClose(false)}>
-              <CloseIcon />
+              <RemoveIcon />
             </ButtonIcon>
           </HeaderCase>
           {store.sdekPoints

@@ -8,7 +8,7 @@ import { ModalFull } from 'src/lib/element/modal';
 import { spacing } from 'src/lib/theme';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
-import { ReactComponent as CloseIcon } from 'src/asset/svg/delete-cancel-icon.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { SdekTariffListOption } from './sdek-tarifflist.option';
 import { SdekTariffItem } from './sdek-tarifflist.item';
 
@@ -36,7 +36,7 @@ export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
         <ItemCase>
           <SdekTariffItem value={value} />
           <ButtonIcon onClick={onClear}>
-            <CloseIcon />
+            <RemoveIcon />
           </ButtonIcon>
         </ItemCase>
       )}
@@ -52,13 +52,13 @@ export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
               {filter && (
                 <IconBox>
                   <ButtonIcon onClick={() => setFilter('')}>
-                    <CloseIcon />
+                    <RemoveIcon />
                   </ButtonIcon>
                 </IconBox>
               )}
             </InputBox>
             <ButtonIcon onClick={() => onClose(false)}>
-              <CloseIcon />
+              <RemoveIcon />
             </ButtonIcon>
           </HeaderCase>
           {store.sdekTariffList

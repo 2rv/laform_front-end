@@ -18,6 +18,7 @@ function TextareaClean(props: TextareaFieldProps, ref: any) {
     children,
     minHeight = 46,
     maxHeight = 500,
+    rows = 1,
     ...restProps
   } = props;
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -38,6 +39,7 @@ function TextareaClean(props: TextareaFieldProps, ref: any) {
         error={!!error}
         minHeight={minHeight}
         maxHeight={maxHeight}
+        rows={rows}
         {...restProps}
       />
       {children}

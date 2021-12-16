@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { ReactComponent as FindIcon } from 'src/asset/svg/find-icon.svg';
-import { ReactComponent as CloseIcon } from  'src/asset/svg/delete-cancel-icon.svg';
+import { ReactComponent as FindIcon } from 'src/asset/svg/find.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { TitlePrimary } from 'src/lib/element/title';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { ButtonBasic, IconButton } from 'src/lib/element/button';
@@ -41,7 +41,7 @@ export function SearchButtonComponent(props) {
               <IconBox>
                 {Boolean(searchInput.length > 0) ? (
                   <ButtonIcon onClick={() => setSearchInput('')}>
-                    <CloseIcon />
+                    <RemoveIcon />
                   </ButtonIcon>
                 ) : (
                   <ButtonIcon>
@@ -51,7 +51,7 @@ export function SearchButtonComponent(props) {
               </IconBox>
             </InputBox>
             <ButtonIcon onClick={() => setModalVisibility(false)}>
-              <CloseIcon />
+              <RemoveIcon />
             </ButtonIcon>
           </HeaderCase>
           <div id="scrollableDiv" style={{ height: '100vh', overflow: 'auto' }}>

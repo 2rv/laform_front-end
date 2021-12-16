@@ -1,12 +1,12 @@
 import styled from 'styled-components';
+import { ReactComponent as SizeIcon } from 'src/asset/svg/how-size.svg';
+import { ReactComponent as DownloadIcon } from 'src/asset/svg/how-download.svg';
+import { ReactComponent as PaperIcon } from 'src/asset/svg/how-paper.svg';
 import { setLinkRedirect } from 'src/main/navigation';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from 'src/lib/theme';
 import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { TextSecondary } from 'src/lib/element/text';
-import { ReactComponent as SizeIcon } from 'src/asset/svg/size.svg';
-import { ReactComponent as DownloadIcon } from 'src/asset/svg/arrow-down-download.svg';
-import { ReactComponent as PaperIcon } from 'src/asset/svg/paper.svg';
 import { LinkSecondary } from 'src/lib/element/link';
 import {
   FAQ_SIZE_ROUTE_PATH,

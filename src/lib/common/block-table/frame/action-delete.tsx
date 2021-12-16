@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as DeleteIcon } from '../../../../asset/svg/cancel-delete-icon.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { IconButton } from 'src/lib/element/button';
 
 interface props {
@@ -16,7 +16,7 @@ export function ActionDelete(props: props) {
 
   return (
     <Button onClick={() => deleteItem({ id, indexId })}>
-      <DeleteIcon />
+      <RemoveIcon />
     </Button>
   );
 }
