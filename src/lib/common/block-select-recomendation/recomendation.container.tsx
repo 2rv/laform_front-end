@@ -23,7 +23,11 @@ export function RecomendationContainer(props: recommendationContainerProps) {
 
   const listItems = getRequestData(productsState, []);
 
-  const handleChange = (id: string, type: number, status: boolean) => {
+  const handleChange = (
+    id: string,
+    type: 0 | 1 | 2 | 3 | 4,
+    status: boolean,
+  ) => {
     if (values.length >= 3 && status) {
       alert('Максимум 3 рекомендации');
       return false;

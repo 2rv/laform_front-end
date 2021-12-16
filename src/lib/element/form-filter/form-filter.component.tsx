@@ -15,23 +15,18 @@ export function FormFilterComponent(props: FormFilterComponentPropsType) {
 
   return (
     <Container>
-      <FieldSelect
+      <Select
         options={filterOptions}
         name={filterSelectName}
         value={formik.values[filterSelectName]}
         onChange={formik.handleChange}
-        width={200}
-        adaptive
       />
-      <BasicField
+      <Field
         placeholderTid={findPlaceholderTid}
         name={findFieldName}
         value={formik.values[findFieldName]}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        isFindInput
-        width={250}
-        adaptive
       />
     </Container>
   );
@@ -43,5 +38,17 @@ const Container = styled.div`
   gap: ${spacing(3)};
   @media screen and (max-width: 720px) {
     flex-flow: column;
+  }
+`;
+const Field = styled(BasicField)`
+  width: 250;
+  @media screen and (max-width: 720px) {
+    width: 100%;
+  }
+`;
+const Select = styled(FieldSelect)`
+  width: 200;
+  @media screen and (max-width: 720px) {
+    width: 100%;
   }
 `;

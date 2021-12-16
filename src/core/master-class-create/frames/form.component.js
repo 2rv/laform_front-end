@@ -126,7 +126,7 @@ export function FormComponent(props) {
             onChange={setNumber(CREATE_MASTER_CLASS_FIELD_NAME.DISCOUNT)}
             onBlur={handleBlur}
           />
-          <BasicField
+          <Test
             placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.INDICATE_PRICE"
             titleTid="MASTER_CLASSES.CREATE.FORM.PRICE"
             name={CREATE_MASTER_CLASS_FIELD_NAME.PRICE}
@@ -193,4 +193,7 @@ export function FormComponent(props) {
 
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+const Test = styled(BasicField)`
+  background-color: red;
 `;

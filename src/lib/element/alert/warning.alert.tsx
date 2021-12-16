@@ -1,9 +1,8 @@
-import { AlertPropsType } from './type.alert';
 import styled from 'styled-components';
-import { THEME_COLOR, THEME_SIZE } from '../../theme';
-import { spacing } from '../../theme';
-import { ReactComponent as AlertIcon } from '../../../asset/svg/info-alert.svg';
+import { ReactComponent as AlertIcon } from 'src/asset/svg/info-alert.svg';
+import { THEME_COLOR, THEME_SIZE, spacing } from '../../theme';
 import { text } from '../../common/text';
+import { AlertPropsType } from './type.alert';
 
 export function WarningAlert(props: AlertPropsType) {
   const { tid, className, tvalue } = props;

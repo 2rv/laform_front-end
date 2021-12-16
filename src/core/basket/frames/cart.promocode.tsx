@@ -19,8 +19,10 @@ export function CartPromoCode(props: CartPromoCodeProps) {
     },
   } = props;
 
-  const getFieldError = (name: ORDER_FIELD_NAME) => {
-    return errors[name] && touched[name] && errors[name];
+  const getFieldError = (name: ORDER_FIELD_NAME): string | undefined => {
+    if (errors[name] && touched[name]) {
+      return errors[name] + '';
+    }
   };
   const [isSending, setIsSending] = useState(false);
 

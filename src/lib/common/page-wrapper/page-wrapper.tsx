@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { PageWrapperPropsType } from './type.page-wrapper';
-import { FooterContainer } from '../../../core/footer';
-import { Header } from '../../../core/header';
+import { FooterContainer } from 'src/core/footer';
+import { Header } from 'src/core/header';
 import { SectionLayout } from 'src/lib/element/layout';
 import { spacing } from 'src/lib/theme';
-import { SidebarMenu } from '../../../core/header-menu-sidebar';
-import { initializeBasketStore } from '../../../core/basket/basket.action';
+import { SidebarMenu } from 'src/core/header-menu-sidebar';
+import { initializeBasketStore } from 'src/core/basket/basket.action';
 import { useDispatch } from 'react-redux';
 import { ScrollToTopButton } from '../scroll-to-top';
 

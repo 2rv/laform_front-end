@@ -7,7 +7,7 @@ interface props {
   totalPrice?: number;
 }
 export function TablePrice(props: props) {
-  const { isLast, totalPrice } = props;
+  const { isLast = false, totalPrice } = props;
   if (typeof totalPrice !== 'number') return null;
   if (isNaN(totalPrice)) return <td />;
 
@@ -22,7 +22,7 @@ export function TablePrice(props: props) {
   );
 }
 
-const Td = styled.td<any>`
+const Td = styled.td<{ last: boolean }>`
   vertical-align: middle;
   width: auto;
   min-width: 150px;

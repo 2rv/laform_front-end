@@ -1,12 +1,12 @@
+import React, { useState, useCallback } from 'react';
+import styled from 'styled-components';
+import { httpRequest } from 'src/main/http';
 import { ButtonSecondary } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
 import { FieldLayout } from 'src/lib/element/layout';
-import { CartEmailProps, ORDER_FIELD_NAME, formikValues } from '../basket.type';
-import React, { useState, useCallback } from 'react';
-import { httpRequest } from 'src/main/http';
-import { EmailConfirmed } from 'src/core/header-component';
-import styled from 'styled-components';
 import { Divider } from 'src/lib/element/divider';
+import { EmailConfirmed } from 'src/core/header-component';
+import { CartEmailProps, ORDER_FIELD_NAME, formikValues } from '../basket.type';
 
 export function CartEmail(props: CartEmailProps) {
   const {
@@ -21,8 +21,10 @@ export function CartEmail(props: CartEmailProps) {
     },
     isAuth,
   } = props;
-  const getFieldError = (name: ORDER_FIELD_NAME) => {
-    return errors[name] && touched[name] && errors[name];
+  const getFieldError = (name: ORDER_FIELD_NAME): string | undefined => {
+    if (errors[name] && touched[name]) {
+      return errors[name] + '';
+    }
   };
   const [isSending, setIsSending] = useState(false);
 

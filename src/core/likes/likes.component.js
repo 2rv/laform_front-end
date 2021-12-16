@@ -42,7 +42,6 @@ export function LikesComponent(props) {
           isPagination={isPagination}
           items={products}
           emptyText="ALL_LIKES.CATEGORY_EMPTY"
-          isCreateList
         />
       </InfiniteScroll>
     </SectionLayout>

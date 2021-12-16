@@ -28,7 +28,12 @@ export function SettingsFormChangeNotificationComponent(props) {
   } = props;
 
   const isSubmitDisabled = () => {
-    return pageLoading || isNotificationLoadPending || isFormUploadPending || notificationData[fieldNotification] === values[fieldNotification];
+    return (
+      pageLoading ||
+      isNotificationLoadPending ||
+      isFormUploadPending ||
+      notificationData[fieldNotification] === values[fieldNotification]
+    );
   };
 
   return (
@@ -42,7 +47,7 @@ export function SettingsFormChangeNotificationComponent(props) {
           value={values[fieldNotification]}
           onBlur={handleBlur}
           checked={values[fieldNotification]}
-          onClick={(e) =>
+          onClick={() =>
             setFieldValue(fieldNotification, !values[fieldNotification])
           }
         />

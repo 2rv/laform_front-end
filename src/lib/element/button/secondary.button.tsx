@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { THEME_COLOR } from '../../theme';
 import { ButtonBasic } from './basic.button';
 import { ButtonPropsType } from './button.type';
+import { THEME_COLOR } from '../../theme';
 
 export function ButtonSecondary(props: ButtonPropsType) {
   return <Button {...props} />;

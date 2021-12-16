@@ -15,7 +15,7 @@ export function ModalPopup(props: ModalPopupProps) {
   }, [modalVisibilty]);
 
   return (
-    <Container isopen={modalVisibilty} onClick={onClose}>
+    <Container isOpen={modalVisibilty} onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>{children}</Content>
     </Container>
   );
@@ -29,8 +29,8 @@ const animation = keyframes`
     opacity: 1;
   }
 `;
-const Container = styled.div<any>`
-  display: ${(p) => (p.isopen ? 'flex' : 'none')};
+const Container = styled.div<{ isOpen: boolean }>`
+  display: ${(p) => (p.isOpen ? 'flex' : 'none')};
   position: fixed;
   z-index: 9999;
   padding: 100px 0;

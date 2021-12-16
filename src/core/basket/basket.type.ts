@@ -3,6 +3,7 @@ import {
   FormikHelpers,
   FormikState,
   FormikConfig,
+  FormikErrors,
 } from 'formik';
 import { TableItemType } from 'src/lib/common/block-table/table.type';
 import {
@@ -47,7 +48,10 @@ export interface formikValues extends userInfoValues {
   [ORDER_FIELD_NAME.SDEK_POINT]: any;
   [ORDER_FIELD_NAME.SDEK_TARIFF]: any;
 }
-
+type FormikObjType = FormikHandlers &
+  FormikHelpers<formikValues> &
+  FormikState<formikValues> &
+  FormikErrors<formikValues>;
 export interface addToCartDataType {
   id: string;
   type: 0 | 1 | 2 | 3;
@@ -91,20 +95,14 @@ export interface BasketFormContainerProps
   extends FormikConfig<formikValues>,
     BasketFormProps {}
 export interface BasketFormComponentProps extends BasketFormProps {
-  formik: FormikHandlers &
-    FormikHelpers<formikValues> &
-    FormikState<formikValues>;
+  formik: FormikObjType;
 }
 export interface CartEmailProps {
-  formik: FormikHandlers &
-    FormikHelpers<formikValues> &
-    FormikState<formikValues>;
+  formik: FormikObjType;
   isAuth: boolean;
 }
 export interface CartPromoCodeProps {
-  formik: FormikHandlers &
-    FormikHelpers<formikValues> &
-    FormikState<formikValues>;
+  formik: FormikObjType;
 }
 export interface CartPriceProps {
   price: number;

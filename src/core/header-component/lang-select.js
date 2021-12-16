@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { ReactComponent as ArrowDownIcon } from '../../asset/svg/arrow-down-lang.svg';
-import { langUpdateLanguage } from '../../lib/common/lang/lang.action';
-import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../lib/theme';
-import { TextPrimary } from '../../lib/element/text';
-import { Popup } from '../../lib/element/popup';
-import { TextButton } from '../../lib/element/button';
-import { LANG_SUPPORTED } from '../../main/lang/lang.constant';
+import { ReactComponent as ArrowDownIcon } from 'src/asset/svg/arrow-down-lang.svg';
+import { langUpdateLanguage } from 'src/lib/common/lang/lang.action';
+import { spacing, THEME_SIZE, THEME_COLOR, THEME_VALUE } from 'src/lib/theme';
+import { TextPrimary } from 'src/lib/element/text';
+import { Popup } from 'src/lib/element/popup';
+import { ButtonBasic } from 'src/lib/element/button';
+import { LANG_SUPPORTED } from 'src/main/lang/lang.constant';
 
 export function LangSelect(props) {
   const { currentLang } = props;
@@ -15,9 +15,6 @@ export function LangSelect(props) {
 
   const updateLanguageHandler = (lang) => {
     dispatch(langUpdateLanguage(lang));
-    // if (currentLang.toUpperCase() !== lang) {
-    //   window.location.reload();
-    // }
   };
 
   return (
@@ -56,8 +53,11 @@ const Content = styled.div`
   cursor: pointer;
   user-select: none;
 `;
-const Button = styled(TextButton)`
+const Button = styled(ButtonBasic)`
   justify-content: flex-start;
+  background-color: transparent;
+  border-radius: 0px;
+  height: fit-content;
 `;
 const Text = styled(TextPrimary)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};

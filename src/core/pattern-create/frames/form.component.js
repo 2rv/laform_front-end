@@ -1,21 +1,21 @@
 import styled from 'styled-components';
-import { THEME_SIZE } from '../../../lib/theme';
-import { FieldLayout, SectionLayout } from '../../../lib/element/layout';
+import { THEME_SIZE } from 'src/lib/theme';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { Divider } from 'src/lib/element/divider';
-import { ButtonPrimary, ButtonSecondary } from '../../../lib/element/button';
+import { ButtonPrimary, ButtonSecondary } from 'src/lib/element/button';
 import {
   BasicField,
   FieldCheckbox,
   TextareaField,
   ComplexityField,
-} from '../../../lib/element/field';
-import { RecomendationBlock } from '../../../lib/common/block-select-recomendation';
-import { ProductOptions } from '../../../lib/common/block-product-options';
+} from 'src/lib/element/field';
+import { RecomendationBlock } from 'src/lib/common/block-select-recomendation';
+import { ProductOptions } from 'src/lib/common/block-product-options';
 import { BlockCategories } from 'src/lib/common/block-categories';
 import { numberValue } from 'src/lib/common/create-product-validation';
 import { checkMinPriceAndDiscount } from 'src/lib/common/product-converters/convert.utils';
 import { CREATE_PATTERN_FIELD_NAME } from '../pattern-create.type';
-import { BlockReactEditor } from '../../../lib/common/block-react-editor';
+import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 import { CreatePriceBlock } from 'src/lib/common/block-create-price';
 import { TitlePrimary } from 'src/lib/element/title';
 

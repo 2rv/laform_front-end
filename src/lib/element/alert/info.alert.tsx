@@ -1,12 +1,8 @@
-import { AlertPropsType } from './type.alert';
-
 import styled from 'styled-components';
-import { THEME_COLOR, THEME_SIZE } from '../../theme';
-import { spacing } from '../../theme';
-
-import { ReactComponent as AlertIcon } from '../../../asset/svg/info-alert.svg';
-
+import { ReactComponent as AlertIcon } from 'src/asset/svg/info-alert.svg';
+import { THEME_COLOR, THEME_SIZE, spacing } from '../../theme';
 import { text } from '../../common/text';
+import { AlertPropsType } from './type.alert';
 
 export function InfoAlert(props: AlertPropsType) {
   const { tid, className, tvalue } = props;
@@ -30,11 +26,12 @@ const Message = styled.span`
 `;
 
 const Alert = styled.div`
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: ${THEME_COLOR.BACKGROUND.INFO};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  padding: ${spacing(3)};
+  padding: 0 ${spacing(3)};
   line-height: 1.5;
 `;

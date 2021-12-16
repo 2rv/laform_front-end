@@ -124,7 +124,6 @@ import {
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
 import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
-import { likeStore, LIKE_STORE_NAME } from '../../core/block-like';
 import {
   emailConfirmedStore,
   EMAIL_CONFIRMED_STORE_NAME,
@@ -235,7 +234,6 @@ export const reducers = combineReducers({
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
-  [LIKE_STORE_NAME]: likeStore,
   [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,

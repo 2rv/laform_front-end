@@ -6,7 +6,7 @@ import { text } from '../../common/text';
 import { LinkPropsType } from './link.type';
 
 export function LinkPrimary(props: LinkPropsType) {
-  const { tid, tvalue, path, pathConfig, className, children } = props;
+  const { tid, tvalue, path, pathConfig, children, className } = props;
 
   return (
     <Link className={className} onClick={setLinkRedirect(path, pathConfig)}>

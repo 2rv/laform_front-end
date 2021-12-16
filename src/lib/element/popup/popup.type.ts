@@ -7,5 +7,5 @@ export interface PopupPropsType {
   middleLeft?: boolean;
   mobileRight?: boolean;
   disableRelative?: boolean;
-  onLeft?: boolean;
+  isLeft?: boolean;
 }

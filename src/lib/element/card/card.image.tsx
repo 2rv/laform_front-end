@@ -54,7 +54,7 @@ const Image = styled.img`
   object-fit: contain;
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
-const Container = styled(LinkPrimary)<any>`
+const Container = styled(LinkPrimary)`
   position: relative;
   display: flex;
   height: 100%;

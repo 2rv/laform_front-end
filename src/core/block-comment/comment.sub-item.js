@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { TitlePrimary } from '../../lib/element/title';
 import { TextSecondary } from '../../lib/element/text';
-import { ButtonBasic, TextButton } from '../../lib/element/button';
+import { ButtonBasic } from '../../lib/element/button';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { ReactComponent as CommentIcon } from '../../asset/svg/arrow-for-comment.svg';
 import { ReactComponent as DeleteIcon } from '../../asset/svg/delete-cancel-icon.svg';

@@ -1,8 +1,7 @@
-import { HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
-export interface ButtonPropsType extends HTMLAttributes<HTMLButtonElement> {
-  type?: 'button' | 'submit' | 'reset';
+export interface ButtonPropsType
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   tid?: string;
   tvalue?: object;
-  disabled?: boolean;
 }

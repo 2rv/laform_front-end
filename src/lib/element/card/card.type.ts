@@ -27,8 +27,7 @@ export interface CardImageProps {
 }
 export interface CardActionProps {
   id: string;
-  type: number;
-  like?: true | false;
+  type: 0 | 1 | 2 | 3 | 4;
   admin?: boolean;
   deleted?: boolean;
   price?: number;
@@ -61,13 +60,13 @@ export interface ProductVendorCodeProps {
 
 export interface CardArticleType {
   id: string;
-  type: number;
+  type: 4;
   image: string;
   name?: string;
   modifier?: string;
   modifierColor?: string;
   createdDate: Date;
-  like?: true | false;
+  like: boolean | undefined;
   deleted?: boolean;
   admin?: boolean;
   onSelect?: Function;
@@ -77,10 +76,10 @@ export interface CardArticleType {
 }
 export interface CardSewingGoodType {
   id: string;
-  like?: true | false;
+  like: boolean | undefined;
   deleted?: boolean;
   admin?: boolean;
-  type: number;
+  type: 3;
   image: string;
   name?: string;
   modifier?: string;
@@ -101,10 +100,10 @@ export interface CardSewingGoodType {
 }
 export interface CardPatternType {
   id: string;
-  like?: true | false;
+  like: boolean | undefined;
   deleted?: boolean;
   admin?: boolean;
-  type: number;
+  type: 1 | 2;
   image: string;
   name: string | undefined;
   modifier?: string;
@@ -122,7 +121,7 @@ export interface CardPatternType {
 }
 export interface CardMasterClassType {
   id: string;
-  type: number;
+  type: 0;
   image: string;
   name: string | undefined;
   modifier?: string;
@@ -130,7 +129,7 @@ export interface CardMasterClassType {
   discount?: number;
   price: number;
   vendorCode: string;
-  like?: true | false;
+  like: boolean | undefined;
   deleted?: boolean;
   admin?: boolean;
   onSelect?: Function;

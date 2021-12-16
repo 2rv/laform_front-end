@@ -3,13 +3,10 @@ import styled, { css } from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { ErrorField } from '../error';
 import { TextSecondary } from '../text';
-import { FilefieldPropsType } from './field.type';
+import { FilefieldProps } from './field.type';
 
-export function FileField(props: FilefieldPropsType) {
+export function FileField(props: FilefieldProps) {
   const {
-    width,
-    adaptive,
-
     titleTid,
     placeholderTid,
     name,
@@ -23,18 +20,18 @@ export function FileField(props: FilefieldPropsType) {
   } = props;
 
   return (
-    <Container width={width} adaptive={adaptive}>
+    <Container>
       {titleTid && <Title tid={titleTid} />}
       <Content error={!!error}>
         {placeholderTid && <Text tid={placeholderTid} />}
         <Input
           accept={accept}
-          {...restProps}
           disabled={disabled}
           onChange={onChange}
           onBlur={onBlur}
           name={name}
           type="file"
+          {...restProps}
         />
       </Content>
       {value && <Light tid={value.name} />}
@@ -48,30 +45,12 @@ const Light = styled(TextSecondary)`
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.WHITE};
 `;
-const Container = styled.div<{
-  adaptive?: boolean;
-  width?: number;
-}>`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: ${(p) => {
-    if (p.width) return p.width + 'px';
-    return '100%';
-  }};
-  ${(p) => {
-    return (
-      p.adaptive &&
-      css`
-        @media screen and (max-width: 720px) {
-          width: 100%;
-        }
-      `
-    );
-  }}
   gap: ${spacing(1)};
 `;
-const Content = styled.label<any>`
+const Content = styled.label<{ error: boolean }>`
   display: flex;
   align-items: center;
   height: 46px;
@@ -100,6 +79,6 @@ const Content = styled.label<any>`
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
 `;
-const Input = styled.input<any>`
+const Input = styled.input`
   display: none;
 `;

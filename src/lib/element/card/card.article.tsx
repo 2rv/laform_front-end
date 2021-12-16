@@ -52,7 +52,7 @@ export function CardArticle(props: CardArticleType) {
           <CardName tid={name} />
           <Date tid={ConvertTime(createdDate)} />
         </ColumnCase>
-        {(like === false || like === true || admin) && (
+        {(typeof like === 'boolean' || admin) && (
           <ActionCase>
             <LikeButton id={id} type={type} like={like} />
             <DeleteButton

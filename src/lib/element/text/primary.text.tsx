@@ -6,7 +6,7 @@ import { THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../theme';
 import { TextPropsType } from './text.type';
 
 export function TextPrimary(props: TextPropsType) {
-  const { tid, tvalue, className, onClick, children } = props;
+  const { tid, tvalue, onClick, children, className } = props;
 
   return (
     <Text className={className} onClick={onClick}>

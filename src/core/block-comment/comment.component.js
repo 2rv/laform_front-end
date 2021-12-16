@@ -5,7 +5,7 @@ import { spacing, THEME_SIZE, THEME_COLOR } from '../../lib/theme';
 import { ReactComponent as SendIcon } from '../../asset/svg/message-send-icon.svg';
 import { ReactComponent as CancelIcon } from '../../asset/svg/cancel-delete-icon.svg';
 import { SectionLayout } from '../../lib/element/layout';
-import { IconButton, TextButton } from '../../lib/element/button';
+import { ButtonBasic, IconButton } from '../../lib/element/button';
 import { CommentItem } from './comment.item';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { Spinner } from 'src/lib/element/spinner';
@@ -141,10 +141,13 @@ export function CommentComponent(props) {
 const Line = styled.div`
   display: flex;
 `;
-const CancelButton = styled(TextButton)`
+const CancelButton = styled(ButtonBasic)`
   font-size: ${THEME_SIZE.FONT.SMALL};
-  width: fit-content;
+  background-color: transparent;
   padding: 0;
+  border-radius: 0px;
+  width: fit-content;
+  height: fit-content;
 `;
 const HeaderCase = styled.div`
   display: flex;

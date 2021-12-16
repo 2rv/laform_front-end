@@ -4,7 +4,7 @@ import { spacing, THEME_SIZE } from 'src/lib/theme';
 import {
   ButtonSecondary,
   IconButton,
-  TextButton,
+  ButtonBasic,
 } from 'src/lib/element/button';
 import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
 import { ModalFull } from 'src/lib/element/modal';
@@ -110,7 +110,10 @@ const LineCase = styled.div`
   justify-content: space-between;
   gap: ${spacing(2)};
 `;
-const Button = styled(TextButton)`
-  width: auto;
+const Button = styled(ButtonBasic)`
   padding: 0;
+  background-color: transparent;
+  border-radius: 0px;
+  width: auto;
+  height: fit-content;
 `;

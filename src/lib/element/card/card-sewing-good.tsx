@@ -74,7 +74,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
           isCount={isCount}
           isLength={isLength}
         />
-        {(like === false || like === true || admin) && (
+        {(typeof like === 'boolean' || admin) && (
           <ActionCase>
             <LikeButton id={id} type={type} like={like} />
             <DeleteButton

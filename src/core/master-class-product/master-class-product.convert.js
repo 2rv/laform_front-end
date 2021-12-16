@@ -13,7 +13,7 @@ export function performMasterClassProductData(rowData) {
     discount: rowData?.discount,
     categories: rowData.categories,
     images: rowData.images.map((item) => item.fileUrl),
-    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
+    like: rowData.like && Boolean(rowData.like.length),
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
     ),

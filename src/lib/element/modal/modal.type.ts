@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 export interface ModalMenuPropsType {
   active: boolean;
@@ -17,7 +17,7 @@ interface IModalItems {
 
 export interface ModalPopupProps {
   modalVisibilty: boolean;
-  onClose: Function;
+  onClose: MouseEventHandler<HTMLDivElement>;
   children: React.ReactElement<any | null>;
 }
 

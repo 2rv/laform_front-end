@@ -1,15 +1,13 @@
 import styled, { css } from 'styled-components';
-
 import { text } from '../../common/text';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
-
 import { ButtonPropsType } from './button.type';
 
 export function ButtonBasic(props: ButtonPropsType) {
   const { tid, tvalue, children, type = 'button', ...rest } = props;
   return (
     <Button type={type} {...rest}>
-      {tid ? text(tid, tvalue) : children}
+      {children || text(tid, tvalue)}
     </Button>
   );
 }
