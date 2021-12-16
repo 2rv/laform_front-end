@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { TitlePrimary } from '../../lib/element/title';
-import { ButtonBasic, IconButton } from '../../lib/element/button';
-import { Spinner } from '../../lib/element/spinner';
-import { ReactComponent as PlusIcon } from '../../asset/svg/plus-icon.svg';
-import { TextSecondary } from '../../lib/element/text';
-import { LoaderPrimary } from '../..//lib/element/loader';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TitlePrimary } from 'src/lib/element/title';
+import { ButtonBasic, IconButton } from 'src/lib/element/button';
+import { Spinner } from 'src/lib/element/spinner';
+import { ReactComponent as PlusIcon } from 'src/asset/svg/plus.svg';
+import { TextSecondary } from 'src/lib/element/text';
+import { LoaderPrimary } from 'src//lib/element/loader';
 import { SliderList } from './frames';
 
 export function SliderListComponent(props) {

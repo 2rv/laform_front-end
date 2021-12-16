@@ -1,12 +1,12 @@
 import styled from 'styled-components';
+import React, { useState } from 'react';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { spacing } from 'src/lib/theme';
-import React, { useState } from 'react';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
 import { ModalFull } from 'src/lib/element/modal';
 import { BasicCardList } from 'src/lib/element/card-list';
-import { ReactComponent as CancelIcon } from 'src/asset/svg/delete-cancel-icon.svg';
 import { CompilationModalProps } from '../product-selections.type';
 
 export function CompilationModal(props: CompilationModalProps) {
@@ -25,7 +25,7 @@ export function CompilationModal(props: CompilationModalProps) {
             <HeaderCase>
               <TitlePrimary tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.SELECT_RECOMENDATION" />
               <ButtonIcon onClick={() => setModal(false)}>
-                <CancelIcon />
+                <RemoveIcon />
               </ButtonIcon>
             </HeaderCase>
             <BasicCardList

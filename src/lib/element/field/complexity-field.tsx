@@ -1,7 +1,7 @@
 import { Field } from 'formik';
 import styled from 'styled-components';
 import { TextSecondary } from '../text';
-import { ReactComponent as GalochkaIcon } from '../../../asset/svg/galochka.svg';
+import { ReactComponent as ComplexityIcon } from 'src/asset/svg/complexity.svg';
 
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { ComplexityFieldProps } from './field.type';
@@ -28,7 +28,7 @@ export function ComplexityField(props: ComplexityFieldProps) {
     </Complexity>
   );
 }
-const ComplexityDot = styled(GalochkaIcon)<{ active: boolean }>`
+const ComplexityDot = styled(ComplexityIcon)<{ active: boolean }>`
   fill: ${(p) =>
     p.active ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;

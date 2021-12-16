@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { Popup } from 'src/lib/element/popup';
-import { ReactComponent as EditIcon } from 'src/asset/svg/change-icon.svg';
+import { ReactComponent as ChangeIcon } from 'src/asset/svg/change.svg';
 import { IconButton, ButtonSecondary } from 'src/lib/element/button';
 import { FieldSelect } from 'src/lib/element/field';
 import { Formik } from 'formik';
@@ -124,7 +124,7 @@ export function ActionChange(props: props) {
               )}
             >
               <Button>
-                <EditIcon />
+                <ChangeIcon />
               </Button>
             </Popup>
           </Container>

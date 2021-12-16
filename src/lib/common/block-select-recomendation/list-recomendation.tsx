@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { TextSecondary } from '../../element/text';
 import { ButtonBasic } from '../../element/button';
-import { ReactComponent as DeleteIcon } from '../../../asset/svg/delete-cancel-icon.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { Divider } from '../../element/divider';
 import { SectionLayout } from '../../element/layout';
 
@@ -23,7 +23,7 @@ export function RecomendationList(props: any) {
 
               <Content>
                 <IconButton onClick={() => handleChange(item.id, null, false)}>
-                  <DeleteIcon />
+                  <RemoveIcon />
                 </IconButton>
               </Content>
             </Container>

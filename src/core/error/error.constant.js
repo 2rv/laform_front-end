@@ -1,8 +1,8 @@
 import { HOME_ROUTE_PATH } from '../home';
-import { ReactComponent as ErrorImage } from '../../asset/svg/error-page.svg';
-import { ReactComponent as NotFoundImage } from '../../asset/svg/not-found-page.svg';
-import { ReactComponent as NotPaidImage } from '../../asset/svg/not-paid-page.svg';
-import { ReactComponent as PaidImage } from '../../asset/svg/paid-page.svg';
+import { ReactComponent as ErrorImage } from 'src/asset/svg/page-error.svg';
+import { ReactComponent as NotFoundImage } from 'src/asset/svg/page-not-found.svg';
+import { ReactComponent as NotPaidImage } from 'src/asset/svg/page-not-paid.svg';
+import { ReactComponent as PaidImage } from 'src/asset/svg/page-paid.svg';
 
 import styled from 'styled-components';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';

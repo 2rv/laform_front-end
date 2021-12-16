@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { WarningAlert } from '../../lib/element/alert';
 import { LinkPrimary } from 'src/lib/element/link';
 import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from '../auth-verificate-email';
-import { ReactComponent as AlertIcon } from '../../asset/svg/info-alert.svg';
+import { ReactComponent as AlertIcon } from '../../asset/svg/alert-info.svg';
 import { THEME_COLOR } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
 

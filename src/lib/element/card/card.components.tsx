@@ -13,7 +13,7 @@ import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
 import { TextCurrency, TextSecondary } from '../text';
 import { Popup } from '../popup';
 import { FieldLayout } from '../layout';
-import { ReactComponent as GalochkaIcon } from 'src/asset/svg/galochka.svg';
+import { ReactComponent as ComplexityIcon } from 'src/asset/svg/complexity.svg';
 import { ReactComponent as PowerOffIcon } from 'src/asset/svg/power-off.svg';
 import { ReactComponent as PowerOnIcon } from 'src/asset/svg/power-on.svg';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
@@ -132,7 +132,7 @@ const ComplexityCase = styled.div`
   display: flex;
   gap: ${spacing(2)};
 `;
-const ComplexityDot = styled(GalochkaIcon)<{ active: boolean }>`
+const ComplexityDot = styled(ComplexityIcon)<{ active: boolean }>`
   fill: ${(p) =>
     p.active ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;
