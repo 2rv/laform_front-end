@@ -3,7 +3,8 @@ import { THEME_SIZE, THEME_COLOR, THEME_VALUE } from '../../theme';
 import { TextCurrenyType } from './text.type';
 import { currencyFormat } from '../../common/text';
 
-export function TextCurrency({ price, className }: TextCurrenyType) {
+export function TextCurrency(props: TextCurrenyType) {
+  const { price, className } = props;
   return <Text className={className}>{currencyFormat(price)}</Text>;
 }
 

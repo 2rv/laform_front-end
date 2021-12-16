@@ -4,10 +4,13 @@ import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation';
 import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { getQuery } from 'src/main/navigation';
 import { getRequestData, isRequestPending } from 'src/main/store/store.service';
-import { getProductsByType, paginateProductsByType } from './likes.action';
+import {
+  clearLikesStoreAction,
+  getProductsByType,
+  paginateProductsByType,
+} from './likes.action';
 import { ALL_LIKES_STORE_NAME, ALL_LIKES_TAB_TYPES } from './likes.constant';
 import { LikesComponent } from './likes.component';
-// import { LIKE_STORE_NAME } from '../block-like';
 
 export function LikesContainer() {
   const activePath = (getQuery('type') || ALL_LIKES_TAB_TYPES)[0];
@@ -30,16 +33,17 @@ export function LikesContainer() {
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
     currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
-
   const [query, setQuery] = useState({
     where: null,
     sort: null,
     by: null,
     category: null,
   });
-
   useEffect(() => {
     dispatch(getProductsByType(activePath, currentLang, query));
+    return () => {
+      dispatch(clearLikesStoreAction);
+    };
   }, [activePath, query]);
 
   const onFilter = (props) => {
@@ -94,65 +98,3 @@ export const filterOptions = [
     by: 'DESC',
   },
 ];
-
-//   activeTabText={activeTabText}
-//   activeTab={activeTab}
-//   setActiveTab={setActiveTab}
-//   tabItems={tabs}
-//   listItems={getRequestData(likes, {}).products}
-//   pageLoading={pageLoading}
-//   isPending={isRequestPending(likes)}
-//   fetchData={fetchData}
-//   hasMore={
-//     Number(likes.data?.products?.length) < Number(likes.data?.totalRecords)
-//   }
-// const { likes, pageLoading, currentLang, user, isAuth, updated } =
-// useSelector((state) => ({
-//   likes: state[ALL_LIKES_STORE_NAME].likes,
-//   pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-//   currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-//   updated: state[LIKE_STORE_NAME].like.success,
-// }));
-
-// const [activeTab, setActiveTab] = useState(3);
-// const [activeTabText, setActiveTabText] = useState('');
-
-// useEffect(() => {
-// dispatch({ type: LIKES_ACTION_TYPE.RESET_PRODUCTS_STATE });
-// if (activeTab === 3) {
-//   dispatch(likeSewingProductUploadData(currentLang));
-//   setActiveTabText('ALL_LIKES.TABS.SEWING_PRODUCT');
-// } else if (activeTab === 2) {
-//   dispatch(likeMasterClassUploadData(currentLang));
-//   setActiveTabText('ALL_LIKES.TABS.MASTER_CLASS');
-// } else if (activeTab === 1) {
-//   dispatch(likePatternProductUploadData(currentLang));
-//   setActiveTabText('ALL_LIKES.TABS.PATTERN_PRODUCT');
-// } else if (activeTab === 0) {
-//   dispatch(likePostUploadData(currentLang));
-//   setActiveTabText('ALL_LIKES.TABS.POST');
-// }
-// }, [activeTab, updated]);
-
-// const fetchData = () => {
-// if (activeTab === 3) {
-//   dispatch(
-//     likeSewingProductUploadData(currentLang, likes.data.currentPage),
-//   );
-// } else if (activeTab === 2) {
-//   dispatch(likeMasterClassUploadData(currentLang, likes.data.currentPage));
-// } else if (activeTab === 1) {
-//   dispatch(
-//     likePatternProductUploadData(currentLang, likes.data.currentPage),
-//   );
-// } else if (activeTab === 0) {
-//   dispatch(likePostUploadData(currentLang, likes.data.currentPage));
-// }
-// };
-
-// export const tabs = [
-//   { name: 'ALL_LIKES.TABS.SEWING_PRODUCT', type: 3 },
-//   { name: 'ALL_LIKES.TABS.MASTER_CLASS', type: 2 },
-//   { name: 'ALL_LIKES.TABS.PATTERN_PRODUCT', type: 1 },
-//   { name: 'ALL_LIKES.TABS.POST', type: 0 },
-// ];

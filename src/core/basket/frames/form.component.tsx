@@ -39,7 +39,9 @@ export function FormComponent(props: BasketFormComponentProps) {
   }, [basketPrice, values]);
 
   const getFieldError = (name: ORDER_FIELD_NAME | USER_INFO_FIELD_NAME) => {
-    return errors[name] && touched[name] && errors[name];
+    if (errors[name] && touched[name]) {
+      return errors[name] + '';
+    }
   };
 
   return (

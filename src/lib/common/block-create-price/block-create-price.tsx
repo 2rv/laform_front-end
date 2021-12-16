@@ -50,6 +50,11 @@ const Container = styled.div`
   margin-top: 18px;
   height: 46px;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    flex-flow: column;
+    height: auto;
+    align-items: flex-start;
+  }
 `;
 const Column = styled.div`
   display: flex;

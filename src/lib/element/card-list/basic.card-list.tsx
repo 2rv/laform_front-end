@@ -39,13 +39,13 @@ export function BasicCardList(props: BasicCardListTypeProps) {
             const CardItem = isCardType(data.type);
             return (
               <CardItem
-                isCreateList={isCreateList}
                 key={data?.id || index}
-                {...data}
                 onSelect={onSelect}
                 onDelete={onDelete}
                 onRemove={onRemove}
+                isCreateList={isCreateList}
                 admin={admin}
+                {...data}
               />
             );
           })}

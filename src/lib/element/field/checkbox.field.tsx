@@ -1,14 +1,21 @@
 import styled, { css } from 'styled-components';
-import { ReactComponent as CheckmarkIcon } from '../../../asset/svg/check-mark.svg';
+import { ReactComponent as CheckmarkIcon } from 'src/asset/svg/check-mark.svg';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
-import { CheckboxPropsType } from './field.type';
+import { FieldCheckboxProps } from './field.type';
 
-export function FieldCheckbox(props: CheckboxPropsType) {
-  const { titleTid, labelTid, name, checked, onClick, width, adaptive } = props;
+export function FieldCheckbox(props: FieldCheckboxProps) {
+  const {
+    titleTid,
+    labelTid,
+    name,
+    checked = false,
+    onClick,
+    className,
+  } = props;
 
   return (
-    <Container width={width} adaptive={adaptive}>
+    <Container className={className}>
       {titleTid && <Title tid={titleTid} />}
       <Content htmlFor={name} onClick={onClick}>
         <Input
@@ -29,26 +36,10 @@ export function FieldCheckbox(props: CheckboxPropsType) {
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
 `;
-const Container = styled.div<{
-  adaptive?: boolean;
-  width?: number;
-}>`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${(p) => {
-    if (p.width) return p.width + 'px';
-    return '100%';
-  }};
-  ${(p) => {
-    return (
-      p.adaptive &&
-      css`
-        @media screen and (max-width: 720px) {
-          width: 100%;
-        }
-      `
-    );
-  }}
+  width: 100%;
   gap: ${spacing(1)};
 `;
 const Content = styled.label`

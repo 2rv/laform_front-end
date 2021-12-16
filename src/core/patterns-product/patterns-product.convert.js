@@ -24,7 +24,7 @@ export function performPatternProductData(rowData) {
     categories: rowData.categories,
     images: rowData.images.map((item) => item.fileUrl),
     sizes: convertOptions(rowData.options, rowData.optionType, 2),
-    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
+    like: rowData.like && Boolean(rowData.like.length),
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
     ),

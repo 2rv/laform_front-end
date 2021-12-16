@@ -24,7 +24,9 @@ export function UserInfoComponent(props: UserInfoComponentProps) {
   } = props;
 
   const getFieldError = (name: USER_INFO_FIELD_NAME) => {
-    return errors[name] && touched[name] && errors[name];
+    if (errors[name] && touched[name]) {
+      return errors[name] + '';
+    }
   };
 
   const { country, city, settlement, street, house, postal_code } =

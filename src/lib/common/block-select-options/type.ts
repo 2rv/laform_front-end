@@ -25,8 +25,8 @@ export enum CART_MODAL_FIELD_NAME {
 
 export interface CartModalContainerProps {
   id: string;
-  type: number;
-  like?: boolean;
+  type: 0 | 1 | 2 | 3;
+  like: boolean | undefined;
   vendorCode?: string;
   price?: number;
   discount?: number;
@@ -38,8 +38,8 @@ export interface CartModalContainerProps {
 }
 export interface CartModalComponentProps {
   id: string;
-  type: number;
-  like?: boolean;
+  type: 0 | 1 | 2 | 3;
+  like: boolean | undefined;
   vendorCode?: string;
   isOptions: boolean;
   isSizes: boolean;

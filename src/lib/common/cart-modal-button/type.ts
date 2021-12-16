@@ -25,7 +25,7 @@ export enum CART_MODAL_FIELD_NAME {
 
 export interface CartModalContainerProps {
   id: string;
-  type: number;
+  type: 0 | 1 | 2 | 3;
   price?: number;
   discount?: number;
   count?: number;
@@ -87,7 +87,7 @@ export interface getPriceProps extends getBasicProps {
 }
 export interface getInfoProps extends getBasicProps {
   id: string;
-  type: number;
+  type: 0 | 1 | 2 | 3;
   count?: number;
   length?: number;
   isCount?: boolean;

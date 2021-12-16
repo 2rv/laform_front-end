@@ -77,7 +77,7 @@ export interface BasicArticleType {
   image: BasicFileType;
   categories: BasicCategoryType[];
   recommendation: BasicRecommendationType;
-  like: BasicLikeType[];
+  like: BasicLikeType[] | undefined;
   titleRu: string;
   titleEn: string;
   modifierRu: string;
@@ -96,7 +96,7 @@ export interface BasicMasterClassType {
   categories: BasicCategoryType[];
   images: BasicFileType[];
   recommendation: BasicRecommendationType;
-  like: BasicLikeType[];
+  like: BasicLikeType[] | undefined;
   titleRu: string;
   titleEn: string;
   descriptionRu: string;
@@ -124,7 +124,7 @@ export interface BasicPatternType {
   filesPdf: BasicFileType[];
   options: BasicOptionType[];
   recommendation: BasicRecommendationType;
-  like: BasicLikeType[];
+  like: BasicLikeType[] | undefined;
   titleRu: string;
   titleEn: string;
   materialRu: BasicReactEditorType;
@@ -153,7 +153,7 @@ export interface BasicSewingGoodType {
   images: BasicFileType[];
   options: BasicOptionType[];
   recommendation: BasicRecommendationType;
-  like: BasicLikeType[];
+  like: BasicLikeType[] | undefined;
   descriptionRu?: string;
   descriptionEn?: string;
   price: string;

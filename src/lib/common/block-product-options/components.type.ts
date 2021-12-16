@@ -1,10 +1,12 @@
+import { ChangeEventHandler, FocusEventHandler } from 'react';
+
 export interface ProductOptionsProps {
   errors: any;
   touched: any;
   values: any;
   setFieldValue: Function;
-  handleChange: Function;
-  handleBlur: Function;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleBlur: FocusEventHandler<HTMLInputElement>;
 
   productPriceName: string;
   productDiscountName: string;
@@ -39,8 +41,8 @@ export interface ProductOptionsOneProps {
   isFirst: boolean;
   isCount: boolean;
   isLength: boolean;
-  handleChange: Function;
-  handleBlur: Function;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleBlur: FocusEventHandler<HTMLInputElement>;
   getFieldError: Function;
   remove: Function;
   setNumber: Function;
@@ -65,8 +67,8 @@ export interface ProductOptionsTwoProps {
   isFirst: boolean;
   isCount: boolean;
   isLength: boolean;
-  handleChange: Function;
-  handleBlur: Function;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleBlur: FocusEventHandler<HTMLInputElement>;
   getFieldError: Function;
   remove: Function;
   setNumber: Function;
@@ -92,8 +94,8 @@ export interface ProductOptionsThreeProps {
   index: number;
   getFieldError: Function;
   remove: Function;
-  handleChange: Function;
-  handleBlur: Function;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleBlur: FocusEventHandler<HTMLInputElement>;
   setNumber: Function;
   setTwoDigit: Function;
   setToHundred: Function;
@@ -124,9 +126,9 @@ export interface ProductOptionsNoneProps {
   productDiscountName: string;
   productCountName: string;
   productLengthName: string;
-  handleBlur: Function;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleBlur: FocusEventHandler<HTMLInputElement>;
   setFieldValue: Function;
-  handleChange: Function;
 
   productFileName: string;
   productFilesName: string;

@@ -20,7 +20,7 @@ export function performSewingGoodsProductData(rowData) {
     options: convertOptions(rowData.options, rowData.optionType, 1),
     sizes: convertOptions(rowData.options, rowData.optionType, 2),
     colors: convertOptions(rowData.options, rowData.optionType, 3),
-    like: rowData?.like ? (rowData.like?.length ? true : false) : null,
+    like: rowData.like && Boolean(rowData.like.length),
     recommendations: convertMultiProducts(
       rowData.recommendation?.recommendationProducts,
     ),

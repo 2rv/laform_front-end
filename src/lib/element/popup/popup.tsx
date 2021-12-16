@@ -10,10 +10,10 @@ export function Popup(props: PopupPropsType) {
     content,
     children,
     top = 45,
-    middleLeft,
-    mobileRight,
-    onLeft,
-    disableRelative,
+    middleLeft = false,
+    mobileRight = false,
+    isLeft = false,
+    disableRelative = false,
   } = props;
   const [visible, setVisible]: [boolean, Function] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -37,7 +37,7 @@ export function Popup(props: PopupPropsType) {
           disableRelative={disableRelative}
           middleLeft={middleLeft}
           mobileRight={mobileRight}
-          onLeft={onLeft}
+          isLeft={isLeft}
         >
           {content instanceof Function ? content(setVisible) : content}
         </PopupContent>
@@ -47,7 +47,7 @@ export function Popup(props: PopupPropsType) {
   );
 }
 
-const PopupContainer = styled.div<any>`
+const PopupContainer = styled.div<{ disableRelative: boolean }>`
   position: relative;
   ${(p) =>
     p.disableRelative &&
@@ -56,11 +56,17 @@ const PopupContainer = styled.div<any>`
     `}
 `;
 
-const PopupContent = styled.div<any>`
+const PopupContent = styled.div<{
+  disableRelative: boolean;
+  isLeft: boolean;
+  top: number;
+  middleLeft: boolean;
+  mobileRight: boolean;
+}>`
   position: absolute;
   z-index: 11;
   top: ${(p) => p.top}px;
-  ${(p) => p.onLeft ? 'left: 0' : 'right: 0'};
+  ${(p) => (p.isLeft ? 'left: 0' : 'right: 0')};
   ${(p) =>
     p.middleLeft &&
     css`

@@ -18,6 +18,12 @@ export function allLikesStore(state = initialState, action) {
   switch (action.type) {
     case LIKES_ACTION_TYPE.RESET_PRODUCTS_STATE:
       return initialState;
+    case LIKES_ACTION_TYPE.UPDATE_PRODUCTS_STATE:
+      return {
+        ...state,
+        products: setRequestSuccess(state.products, action.data),
+        total: state.total - 1,
+      };
 
     case LIKES_ACTION_TYPE.GET_CATEGORIES_PENDING:
       return {

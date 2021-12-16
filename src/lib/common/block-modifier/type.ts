@@ -1,3 +1,5 @@
+import { ChangeEventHandler, FocusEventHandler } from 'react';
+
 export interface ModifierContainerProps {
   titleTid?: string;
   placeholderTid: string;
@@ -7,8 +9,8 @@ export interface ModifierContainerProps {
   values: any;
   errors: any;
   touched: any;
-  handleChange: Function;
-  handleBlur: Function;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleBlur: FocusEventHandler<HTMLInputElement>;
 }
 
 export interface ModifierComponentProps {
@@ -19,7 +21,7 @@ export interface ModifierComponentProps {
   colorName: string;
   values: any;
   error: any;
-  handleChange: Function;
-  handleBlur: Function;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleBlur: FocusEventHandler<HTMLInputElement>;
   colors: { id: string; tid: string }[];
 }

@@ -1,14 +1,11 @@
-import styled, { css } from 'styled-components';
-
-import { ReactComponent as ArrowDown } from '../../../asset/svg/arrow-down-solid.svg';
-
+import styled from 'styled-components';
+import { ReactComponent as ArrowDown } from 'src/asset/svg/arrow-down-solid.svg';
 import { text } from '../../common/text';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
+import { FieldSelectProps } from './field.type';
 
-import { SelectPropsType } from './field.type';
-
-export function FieldSelect(props: SelectPropsType) {
+export function FieldSelect(props: FieldSelectProps) {
   const {
     titleTid,
     name,
@@ -16,15 +13,13 @@ export function FieldSelect(props: SelectPropsType) {
     options,
     onChange,
     onBlur,
-    width,
     disabled,
-    adaptive,
     textValue,
     defaultTid,
   } = props;
 
   return (
-    <Container width={width} adaptive={adaptive}>
+    <Container>
       {titleTid && <Title tid={titleTid} />}
       <InputContainer>
         <Select
@@ -51,22 +46,9 @@ export function FieldSelect(props: SelectPropsType) {
   );
 }
 
-const Container = styled.div<any>`
+const Container = styled.div`
   display: grid;
-  width: ${(p) => {
-    if (p.width) return p.width + 'px';
-    return '100%';
-  }};
-  ${(p) => {
-    return (
-      p.adaptive &&
-      css`
-        @media screen and (max-width: 720px) {
-          width: 100%;
-        }
-      `
-    );
-  }}
+  width: 100%;
   gap: ${spacing(1)};
 `;
 

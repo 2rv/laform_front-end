@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import { spacing } from '../../theme';
-import { ButtonPropsType } from './button.type';
 import { ButtonBasic } from './basic.button';
+import { ButtonPropsType } from './button.type';
+import { spacing } from '../../theme';
 
 export function IconButton(props: ButtonPropsType) {
-  const { children, ...rest } = props;
-
-  return <Button {...rest}>{children}</Button>;
+  return <Button {...props} />;
 }
 
 const Button = styled(ButtonBasic)`

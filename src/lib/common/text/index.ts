@@ -1,6 +1,6 @@
 import { i18n } from 'src/main/lang';
 
-export function text(tId: any, tValue?: object) {
+export function text(tId: string = '', tValue?: object) {
   return i18n.t(tId, tValue);
 }
 export const currencyFormat = (price: any) => {

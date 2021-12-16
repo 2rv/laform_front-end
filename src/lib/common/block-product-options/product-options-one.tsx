@@ -3,7 +3,7 @@ import { spacing } from '../../theme';
 import { IconButton } from '../../element/button';
 import { BasicField, FieldCheckbox } from '../../element/field';
 import { FieldLayout } from '../../element/layout';
-import { ReactComponent as RemoveIcon } from '../../../asset/svg/remove.svg';
+import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
 import React from 'react';
 import { ProductOptionsOneProps } from './components.type';

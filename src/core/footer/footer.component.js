@@ -6,7 +6,7 @@ import {
   FooterLinkList,
   FooterSocialLink,
   DownloadLinks,
-  FooterPhone,
+  FooterPhoneComponent,
 } from './frames';
 
 export function FooterComponent(props) {
@@ -31,7 +31,7 @@ export function FooterComponent(props) {
           <FooterSocialLink />
         </CopyrightCase>
         <DownloadLinks />
-        <FooterPhone />
+        <FooterPhoneComponent />
       </Content>
     </Container>
   );

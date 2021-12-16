@@ -1,5 +1,9 @@
 import { httpRequest } from 'src/main/http';
-import { ALL_LIKES_TAB_TYPES, LIKES_API } from './likes.constant';
+import {
+  ALL_LIKES_TAB_TYPES,
+  LIKES_API,
+  ALL_LIKES_STORE_NAME,
+} from './likes.constant';
 import { LIKES_ACTION_TYPE } from './likes.type';
 import {
   convertArticleProducts,
@@ -7,6 +11,7 @@ import {
   convertPatternProducts,
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
+import { getRequestData } from 'src/main/store/store.service';
 
 function getCategories(currentLang, type) {
   return async (dispatch) => {
@@ -127,7 +132,7 @@ function getTypeByValue(value) {
 
 export function getProductsByType(value, currentLang, query) {
   return async (dispatch) => {
-    dispatch({ type: LIKES_ACTION_TYPE.RESET_PRODUCTS_STATE });
+    dispatch(clearLikesStoreAction);
     dispatch({
       type: LIKES_ACTION_TYPE.GET_LIKES_PENDING,
     });
@@ -176,6 +181,25 @@ export function paginateProductsByType(value, query) {
           errorMessage: err.response.data.message,
         });
       }
+    }
+  };
+}
+
+export const clearLikesStoreAction = {
+  type: LIKES_ACTION_TYPE.RESET_PRODUCTS_STATE,
+};
+
+export function updateLocateLikesStore(id) {
+  return async (dispatch, getState) => {
+    try {
+      const state = getState()[ALL_LIKES_STORE_NAME].products;
+      const products = getRequestData(state, []);
+      dispatch({
+        type: LIKES_ACTION_TYPE.UPDATE_PRODUCTS_STATE,
+        data: products.filter((i) => i.id !== id),
+      });
+    } catch (err) {
+      dispatch(clearLikesStoreAction);
     }
   };
 }

@@ -10,20 +10,15 @@ import {
   RemoveButtonProps,
 } from './card.type';
 import { ButtonPrimary, ButtonSecondary, IconButton } from '../button';
-import { LikeButton as LikeAction } from 'src/core/block-like';
 import { TextCurrency, TextSecondary } from '../text';
 import { Popup } from '../popup';
 import { FieldLayout } from '../layout';
-import { ReactComponent as GalochkaIcon } from '../../../asset/svg/galochka.svg';
-import { ReactComponent as PowerOffIcon } from '../../../asset/svg/power-off.svg';
-import { ReactComponent as PowerOnIcon } from '../../../asset/svg/power-on.svg';
+import { ReactComponent as GalochkaIcon } from 'src/asset/svg/galochka.svg';
+import { ReactComponent as PowerOffIcon } from 'src/asset/svg/power-off.svg';
+import { ReactComponent as PowerOnIcon } from 'src/asset/svg/power-on.svg';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
+export { LikeButton } from 'src/lib/common/block-like';
 
-export function LikeButton(props: CardActionProps) {
-  const { id, type, like = null } = props;
-  if (like === null) return null;
-  return <LikeAction id={id} type={type} like={like} />;
-}
 export function SelectButton(props: CardActionProps) {
   const { id, type, onSelect } = props;
 

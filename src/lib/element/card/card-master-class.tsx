@@ -60,7 +60,7 @@ export function CardMasterClass(props: CardMasterClassType) {
           discount={discount}
           thisIsCart={Boolean(onSelect)}
         />
-        {(like === false || like === true || admin) && (
+        {(typeof like === 'boolean' || admin) && (
           <ActionCase>
             <LikeButton id={id} type={type} like={like} />
             <DeleteButton

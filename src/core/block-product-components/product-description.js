@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { useState } from 'react';
 import { THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
-import { TextButton } from 'src/lib/element/button';
+import { ButtonBasic } from 'src/lib/element/button';
 
 export function ProductDescription(props) {
   const [more, setMore] = useState(true);
@@ -32,11 +32,14 @@ export function ProductDescription(props) {
   );
 }
 
-const Button = styled(TextButton)`
+const Button = styled(ButtonBasic)`
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
   width: fit-content;
   display: inline;
   padding: 0;
+  background-color: transparent;
+  border-radius: 0px;
+  height: fit-content;
 `;
 const Container = styled.div`
   display: inline;

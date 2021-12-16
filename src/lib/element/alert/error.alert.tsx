@@ -1,16 +1,15 @@
 import styled from 'styled-components';
+import { ReactComponent as AlertIcon } from 'src/asset/svg/error-alert.svg';
 import { THEME_COLOR, THEME_SIZE, spacing } from '../../theme';
-import { ReactComponent as AlertIcon } from '../../../asset/svg/error-alert.svg';
 import { text } from '../../common/text';
 import { AlertPropsType } from './type.alert';
 
 export function ErrorAlert(props: AlertPropsType) {
   const { tid, className, tvalue } = props;
-  const alertTid = `ERROR.${tid}`;
   return (
     <Alert className={className}>
       <Icon />
-      <Message>{text(alertTid, tvalue)}</Message>
+      <Message>{text(`ERROR.${tid}`, tvalue)}</Message>
     </Alert>
   );
 }
@@ -27,14 +26,12 @@ const Message = styled.span`
 `;
 
 const Alert = styled.div`
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: ${THEME_COLOR.BACKGROUND.DANGER};
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  height: 46px;
   padding: 0 ${spacing(3)};
   line-height: 1.5;
-  min-width: 0;
-  gap: ${spacing(2)};
 `;

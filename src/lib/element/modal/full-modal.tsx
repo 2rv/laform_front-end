@@ -29,7 +29,7 @@ const animation = keyframes`
     opacity: 1;
   }
 `;
-const Container = styled.div<any>`
+const Container = styled.div<{ open: boolean }>`
   position: fixed;
   top: 0;
   left: 0;

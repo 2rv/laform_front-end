@@ -23,7 +23,7 @@ export function DeleteProductComponent(props) {
     <SectionLayout>
       <Popup
         mobileRight
-        onLeft
+        isLeft
         content={(setVisible) => (
           <Content>
             <TextSecondary tid="OTHER.ARE_YOU_SURE_TO_DELETE_THIS_PRODUCT" />
