@@ -88,10 +88,6 @@ import {
 import { usersRouter, USERS_ROUTE_PATH } from '../../core/users';
 import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
 import {
-  unsubscribeNotificationRouter,
-  UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH,
-} from '../../core/unsubscribe-notification';
-import {
   createPatternRouter,
   CREATE_PATTERN_ROUTE_PATH,
 } from '../../core/pattern-create';
@@ -188,7 +184,6 @@ export const routes = {
   [BASKET_ROUTE_PATH]: basketRouter,
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
-  [UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH]: unsubscribeNotificationRouter,
 };
 
 export const Router = routesInit(routes);

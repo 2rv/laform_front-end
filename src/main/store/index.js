@@ -17,14 +17,6 @@ import {
 } from '../../core/settings-change-email';
 import { sliderStore, SLIDER_STORE_NAME } from '../../core/slider';
 import {
-  notificationStore,
-  NOTIFICATION_STORE_NAME,
-} from '../../core/notification';
-import {
-  settingsChangeNotificationStore,
-  SETTINGS_CHANGE_NOTIFICATION_STORE_NAME,
-} from '../../core/settings-change-notification';
-import {
   sewingGoodsStore,
   SEWING_GOODS_STORE_NAME,
 } from '../../core/sewing-goods';
@@ -113,10 +105,6 @@ import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
 import { searchButtonStore } from '../../core/search-button/search-button.store';
 import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
 import {
-  unsubscribeNotificationStore,
-  UNSUBSCRIBE_NOTIFICATION_STORE_NAME,
-} from '../../core/unsubscribe-notification';
-import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
 } from '../../lib/common/block-categories';
@@ -192,8 +180,6 @@ export const reducers = combineReducers({
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
-  [NOTIFICATION_STORE_NAME]: notificationStore,
-  [SETTINGS_CHANGE_NOTIFICATION_STORE_NAME]: settingsChangeNotificationStore,
   [ORDERS_STORE_NAME]: ordersStore,
   [USER_ORDERS_STORE_NAME]: userOrdersStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
@@ -208,7 +194,6 @@ export const reducers = combineReducers({
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
-  [UNSUBSCRIBE_NOTIFICATION_STORE_NAME]: unsubscribeNotificationStore,
   [ALL_PRODUCTS_STORE_NAME]: allProductsStore,
 });
 

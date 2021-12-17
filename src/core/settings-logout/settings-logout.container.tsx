@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { authLogout } from '../../lib/common/auth';
+import { authSetData } from 'src/lib/common/auth';
+import { redirect } from 'src/main/navigation';
 import { clearCartAction } from '../basket/basket.action';
 import { SettingsLogutComponent } from './settings-logout.component';
 
@@ -8,7 +9,8 @@ export function SettingsLogutContainer() {
 
   const logout = () => {
     dispatch(clearCartAction());
-    authLogout();
+    dispatch(authSetData(null));
+    redirect('/');
   };
 
   return <SettingsLogutComponent onClick={logout} />;

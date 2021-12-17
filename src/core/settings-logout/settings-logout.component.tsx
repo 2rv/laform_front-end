@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { TitlePrimary } from '../../lib/element/title';
-import { ButtonSecondary } from '../../lib/element/button';
-import { FieldLayout, SectionLayout } from '../../lib/element/layout';
-import { THEME_SIZE } from '../../lib/theme';
+import { TitlePrimary } from 'src/lib/element/title';
+import { ButtonSecondary } from 'src/lib/element/button';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
+import { THEME_SIZE } from 'src/lib/theme';
 
-export function SettingsLogutComponent(props) {
+export function SettingsLogutComponent(props: { onClick: () => void }) {
   return (
     <SectionLayout type="SMALL">
       <Title tid="SETTINGS.LOGOUT.TITLE" />

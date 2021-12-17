@@ -1,3 +1,2 @@
-import { SocialAuthAccessPage } from '../../core/social-auth-access';
-
+import { SocialAuthAccessPage } from '../../../core/auth-social-access';
 export default SocialAuthAccessPage;
