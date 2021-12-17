@@ -15,8 +15,8 @@ import { NavigationObserver } from '../lib/common/navigation';
 
 import '../asset/css/main.css';
 
-import '../core/signup';
-import '../core/login';
+import '../core/auth-signup';
+import '../core/auth-login';
 
 class MyApp extends App {
   componentDidMount() {
@@ -49,8 +49,16 @@ class MyApp extends App {
       <ReduxProvider store={store}>
         <Head>
           <title>La'forme Patterns</title>
-          <link rel="icon" href="/static/image/laforme-favicon.png" sizes="32x32" />
-          <link rel="icon" href="/static/image/laforme-favicon.png" sizes="192x192" />
+          <link
+            rel="icon"
+            href="/static/image/laforme-favicon.png"
+            sizes="32x32"
+          />
+          <link
+            rel="icon"
+            href="/static/image/laforme-favicon.png"
+            sizes="192x192"
+          />
         </Head>
         <NavigationObserver />
         <Component {...pageProps} />

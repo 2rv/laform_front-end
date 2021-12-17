@@ -41,7 +41,7 @@ export function convertForChange(rowData) {
       rowData.recommendation?.recommendationProducts,
     ),
     [ARTICLE_FIELD_NAME.CATEGORIES]: recommendations,
-    [ARTICLE_FIELD_NAME.ARTICLE]: rowData[ARTICLE_FIELD_NAME.ARTICLE],
+    [ARTICLE_FIELD_NAME.ARTICLE]: rowData[ARTICLE_FIELD_NAME.ARTICLE] || {},
     [ARTICLE_FIELD_NAME.IN_ENGLISH]: !!rowData[ARTICLE_FIELD_NAME.IN_ENGLISH],
   };
 }

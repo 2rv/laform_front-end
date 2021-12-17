@@ -1,1 +1,0 @@
-export { SocialAuthAccessPage } from './social-auth-access.page';

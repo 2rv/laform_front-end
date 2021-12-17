@@ -1,6 +1,6 @@
 import { authRedirectPrivated } from 'src/lib/common/auth';
-import { setActivePath } from '../../lib/common/navigation';
-import { LOGIN_ROUTE_PATH } from '../login';
+import { setActivePath } from 'src/lib/common/navigation';
+import { LOGIN_ROUTE_PATH } from '../auth-login';
 import { PATTERNS_PAGE_ROUTE_PATH } from './patterns-page.constant';
 
 export function patternsPageRouter(ctx) {

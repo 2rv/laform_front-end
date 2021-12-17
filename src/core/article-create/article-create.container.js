@@ -66,6 +66,7 @@ export function CreateArticleContainer() {
       [ARTICLE_FIELD_NAME.RECOMMENDATIONS]: [],
       [ARTICLE_FIELD_NAME.DELETED]: false,
       [ARTICLE_FIELD_NAME.IN_ENGLISH]: false,
+      [ARTICLE_FIELD_NAME.ARTICLE]: {},
     });
     return data;
   };

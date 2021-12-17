@@ -24,8 +24,10 @@ export interface dataValueType {
   type: 1 | 2;
   titleRu: string;
   descriptionRu: string;
+  descriptionOld?: string;
   modifierRu: string;
   materialRu: any;
+  materialOld?: string;
   images: FileType[];
   recommendation: any;
   categories: categoryType[];
@@ -45,8 +47,10 @@ export interface formValueType {
   type: 1 | 2;
   titleRu: string;
   descriptionRu: string;
+  descriptionOld?: string;
   modifierRu: string;
   materialRu: any;
+  materialOld?: string;
   recommendation: any;
   categories: categoryValueType[];
   complexity: number;

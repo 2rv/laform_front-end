@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 import { WarningAlert } from '../../lib/element/alert';
 import { LinkPrimary } from 'src/lib/element/link';
-import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from '../auth-verificate-email';
+import { AUTH_CONFIRM_EMAIL_ROUTE_PATH } from '../auth-confirm-email';
 import { ReactComponent as AlertIcon } from '../../asset/svg/alert-info.svg';
 import { THEME_COLOR } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
 
 export function EmailConfirmed({ isHide = true }) {
   return (
-    <LinkPrimary path={AUTH_VERIFICATE_EMAIL_ROUTE_PATH}>
+    <LinkPrimary path={AUTH_CONFIRM_EMAIL_ROUTE_PATH}>
       {isHide && (
         <Button>
           <Icon />

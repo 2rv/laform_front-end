@@ -108,7 +108,7 @@ export function CommentComponent(props) {
             )}
           </HeaderCase>
           <Content>
-            <TextareaField
+            <Textarea
               ref={textareaRef}
               disabled={createPending}
               onChange={handleChange}
@@ -172,13 +172,20 @@ const SpinnerCase = styled.div`
 `;
 const TextareaActionButtons = styled.div`
   display: flex;
-  gap: ${spacing(1)};
+  align-items: center;
+  gap: ${spacing(3)};
+  right: ${spacing(5)};
   position: absolute;
-  right: ${spacing(4)};
+`;
+const Textarea = styled(TextareaField)`
+  padding-right: ${spacing(10)};
 `;
 const Button = styled(IconButton)`
-  width: inherit;
   padding: 0;
+  background-color: transparent;
+  height: fit-content;
+  width: fit-content;
+  min-width: fit-content;
 `;
 const Content = styled.div`
   display: grid;

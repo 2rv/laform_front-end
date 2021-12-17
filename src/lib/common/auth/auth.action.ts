@@ -4,7 +4,6 @@ import { authDecode, setAutorization } from 'src/main/auth';
 import { parseUserAuthData } from './auth.convert';
 import { getCookie } from 'src/main/cookie';
 import { AUTH_COOKIE } from 'src/main/auth/auth.constant';
-import { redirect } from 'src/main/navigation';
 import { AUTH_ACTION_TYPE } from './auth.type';
 
 export function authSetData(token: any) {
@@ -21,10 +20,6 @@ export function authSetData(token: any) {
 }
 export function authGetCookieToken(ctx: any) {
   return getCookie(AUTH_COOKIE, ctx);
-}
-export function authLogout() {
-  setAutorization(null);
-  redirect('/');
 }
 export function authSetEmailConfirmed() {
   return (dispatch: Dispatch) =>

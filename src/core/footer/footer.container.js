@@ -18,7 +18,7 @@ import {
   FAQ_LAFORME_PATTERNS_ROUTE_PATH,
   FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from '../faq-article';
-import { LOGIN_ROUTE_PATH } from '../login';
+import { LOGIN_ROUTE_PATH } from '../auth-login';
 
 export function FooterContainer() {
   const { isAuth } = useSelector((state) => ({

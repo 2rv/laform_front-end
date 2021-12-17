@@ -1,11 +1,15 @@
 import styled from 'styled-components';
-import { TextSecondary, TextCurrency } from '../../../lib/element/text';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../lib/theme';
+import { TextSecondary, TextCurrency } from 'src/lib/element/text';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { CartPriceProps } from '../basket.type';
-
 export function CartPrice(props: CartPriceProps) {
-  const { price, promoDiscount, deliveryInfo } = props;
-  const deliveryPrice: number = deliveryInfo?.total_sum || 0;
+  const { price, promoDiscount, deliveryInfo, deliveryType } = props;
+  let deliveryPrice: number = 0;
+  if (+deliveryType === 0) {
+    deliveryPrice = deliveryInfo?.total_sum || 0;
+  } else if (+deliveryType === 1) {
+    deliveryPrice = 400;
+  }
   const discountPrice = price - (price / 100) * promoDiscount;
   const totalPrice = Number(discountPrice) + Number(deliveryPrice);
   return (

@@ -134,6 +134,17 @@ export function FormComponent(props) {
         onBlur={handleBlur}
         minHeight={100}
       />
+      {values[CREATE_PATTERN_FIELD_NAME.DESCRIPTION_OLD] && (
+        <TextArea
+          titleTid="Описание старый тип"
+          name={CREATE_PATTERN_FIELD_NAME.DESCRIPTION_OLD}
+          value={values[CREATE_PATTERN_FIELD_NAME.DESCRIPTION_OLD]}
+          error={getFieldError(CREATE_PATTERN_FIELD_NAME.DESCRIPTION_OLD)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          minHeight={100}
+        />
+      )}
 
       <Divider />
 
@@ -144,6 +155,17 @@ export function FormComponent(props) {
         error={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL)}
         enableIsEdit={isEdit}
       />
+      {values[CREATE_PATTERN_FIELD_NAME.MATERIAL_OLD] && (
+        <TextArea
+          titleTid="Материалы старый тип"
+          name={CREATE_PATTERN_FIELD_NAME.MATERIAL_OLD}
+          value={values[CREATE_PATTERN_FIELD_NAME.MATERIAL_OLD]}
+          error={getFieldError(CREATE_PATTERN_FIELD_NAME.MATERIAL_OLD)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          minHeight={100}
+        />
+      )}
 
       <Divider />
 
@@ -260,4 +282,8 @@ export function FormComponent(props) {
 }
 const Title = styled(TitlePrimary)`
   font-size: ${THEME_SIZE.FONT.DEFAULT};
+`;
+
+const TextArea = styled(TextareaField)`
+  resize: vertical;
 `;
