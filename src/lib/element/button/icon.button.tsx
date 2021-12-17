@@ -4,7 +4,7 @@ import { ButtonPropsType } from './button.type';
 import { spacing } from '../../theme';
 
 export function IconButton(props: ButtonPropsType) {
-  return <Button {...props} />;
+  return <Button className={props.className} {...props} />;
 }
 
 const Button = styled(ButtonBasic)`

@@ -3,8 +3,8 @@ import { TextSecondary } from 'src/lib/element/text';
 import { ButtonSecondary, ButtonBasic } from 'src/lib/element/button';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { LinkPrimary } from 'src/lib/element/link';
-import { LOGIN_ROUTE_PATH } from 'src/core/login';
-import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
+import { LOGIN_ROUTE_PATH } from '../../auth-login';
+import { SIGNUP_ROUTE_PATH } from '../../auth-signup';
 
 export function CartSign() {
   return (

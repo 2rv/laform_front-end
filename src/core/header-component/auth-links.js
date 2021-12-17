@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { LinkPrimary } from '../../lib/element/link';
-import { TextSecondary } from '../../lib/element/text';
-import { LOGIN_ROUTE_PATH } from '../login';
-import { SIGNUP_ROUTE_PATH } from '../signup';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { LinkPrimary } from 'src/lib/element/link';
+import { TextSecondary } from 'src/lib/element/text';
+import { LOGIN_ROUTE_PATH } from '../auth-login';
+import { SIGNUP_ROUTE_PATH } from '../auth-signup';
 
 export function AuthLinks(props) {
   const { mobile } = props;

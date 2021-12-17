@@ -1,4 +1,4 @@
-import { AUTH_VERIFICATE_EMAIL_ROUTE_PATH } from 'src/core/auth-verificate-email';
+import { AUTH_CONFIRM_EMAIL_ROUTE_PATH } from 'src/core/auth-confirm-email';
 import { redirect } from '../../../main/navigation/navigation.core';
 import { AUTH_STORE_NAME } from './auth.constant';
 import { USER_ROLE } from './auth.type';
@@ -24,11 +24,11 @@ export const authConfirmedEmail = (ctx: any) => {
   if (user && !user?.emailConfirmed) {
     if (res) {
       res.writeHead(301, {
-        Location: AUTH_VERIFICATE_EMAIL_ROUTE_PATH,
+        Location: AUTH_CONFIRM_EMAIL_ROUTE_PATH,
       });
       res.end();
     } else {
-      redirect(AUTH_VERIFICATE_EMAIL_ROUTE_PATH);
+      redirect(AUTH_CONFIRM_EMAIL_ROUTE_PATH);
     }
   }
 };

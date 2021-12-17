@@ -61,7 +61,7 @@ export function CommentItem(props) {
             )}
           </ActionsCase>
         </HeaderCase>
-        <TextSecondary tid={text} />
+        <Text tid={text} />
         <Divider />
         <SubComment
           handleDeleteSubComment={removeSubComment}
@@ -76,6 +76,9 @@ export function CommentItem(props) {
     </Container>
   );
 }
+const Text = styled(TextSecondary)`
+  word-break: break-word;
+`;
 const Case = styled.div`
   display: flex;
   align-items: baseline;

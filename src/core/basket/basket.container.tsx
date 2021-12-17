@@ -80,6 +80,7 @@ export function BasketContainer() {
       [ORDER_FIELD_NAME.SDEK_POINT]: {},
       [ORDER_FIELD_NAME.SDEK_TARIFF]: {},
       [ORDER_FIELD_NAME.PRICE]: 0,
+      [ORDER_FIELD_NAME.DELIVERY_TYPE]: 0,
     };
   }
   return (

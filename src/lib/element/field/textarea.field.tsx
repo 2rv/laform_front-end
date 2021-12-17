@@ -23,7 +23,7 @@ function TextareaClean(props: TextareaFieldProps, ref: any) {
   } = props;
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.currentTarget.style.height = 'auto';
-    e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+    e.currentTarget.style.height = `${e.currentTarget.scrollHeight + 3}px`;
     if (typeof onChange === 'function') {
       onChange(e);
     }
@@ -61,11 +61,12 @@ const Textarea = styled.textarea<{
   maxHeight?: number;
   minHeight?: number;
 }>`
-  padding: ${spacing(3)};
+  padding: ${spacing(2)} ${spacing(3)};
   min-height: ${(p) => p.minHeight}px;
   max-height: ${(p) => p.maxHeight}px;
   width: 100%;
   overflow-y: auto;
+  box-sizing: border-box;
   resize: none;
   line-height: 1.5;
   font-size: ${THEME_SIZE.FONT.SMALL};

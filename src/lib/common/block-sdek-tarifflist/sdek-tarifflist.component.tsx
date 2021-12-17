@@ -1,7 +1,6 @@
 import React, { useState, SyntheticEvent } from 'react';
 import styled from 'styled-components';
 import { WarningAlert } from 'src/lib/element/alert';
-import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { SdekTariffListComponentProps } from './sdek-tarifflist.type';
 import { Divider } from 'src/lib/element/divider';
 import { ModalFull } from 'src/lib/element/modal';
@@ -23,14 +22,12 @@ export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
   }
 
   return (
-    <SectionLayout type="SMALL">
-      <FieldLayout type="double" adaptive>
-        <ButtonSecondary
-          tid="SDEK_TARIFFLIST.PLACEHOLDER"
-          onClick={() => onClose(true)}
-          disabled={isDisabled}
-        />
-      </FieldLayout>
+    <>
+      <ButtonSecondary
+        tid="SDEK_TARIFFLIST.PLACEHOLDER"
+        onClick={() => onClose(true)}
+        disabled={isDisabled}
+      />
 
       {value.label && (
         <ItemCase>
@@ -80,7 +77,7 @@ export function SdekTariffListComponent(props: SdekTariffListComponentProps) {
         </Content>
       </ModalFull>
       {error && <WarningAlert tid={error} />}
-    </SectionLayout>
+    </>
   );
 }
 

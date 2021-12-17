@@ -163,3 +163,13 @@ export const requiredEmail = (value) => {
   }
   return null;
 };
+
+export const requiredPostalCode = (value) => {
+  if (typeof value === 'string' || typeof value === 'undefined') {
+    return getError('Необходим почтовый индекс');
+  }
+  if (typeof value === 'object' && !Boolean(value.postal_code)) {
+    return getError('Необходим почтовый индекс');
+  }
+  return null;
+};

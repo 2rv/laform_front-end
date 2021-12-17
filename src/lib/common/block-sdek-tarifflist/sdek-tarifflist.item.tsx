@@ -26,7 +26,6 @@ export function SdekTariffItem(props: SdekTariffItemProps) {
           <BoldText tid={value.tariff_description} />
         </div>
       )}
-
       <div>
         <TextPrimary tid="SDEK_TARIFFLIST.OPTION.DELIVERY_TIME" />
         &nbsp;

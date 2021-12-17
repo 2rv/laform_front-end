@@ -1,22 +1,22 @@
 import styled, { css } from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../lib/theme';
-import { LinkSecondary } from '../../lib/element/link';
-import { IconButton } from '../../lib/element/button';
-import { ReactComponent as TShirtIcon } from '../../asset/svg/tee-shirt.svg';
-import { ReactComponent as MasterClassIcon } from '../../asset/svg/mobile-master-class.svg';
-import { ReactComponent as UserIcon } from '../../asset/svg/mobile-user.svg';
-import { ReactComponent as CartIcon } from '../../asset/svg/mobile-cart.svg';
+import { useSelector } from 'react-redux';
+import { ReactComponent as TShirtIcon } from 'src/asset/svg/tee-shirt.svg';
+import { ReactComponent as MasterClassIcon } from 'src/asset/svg/mobile-master-class.svg';
+import { ReactComponent as UserIcon } from 'src/asset/svg/mobile-user.svg';
+import { ReactComponent as CartIcon } from 'src/asset/svg/mobile-cart.svg';
+import { ReactComponent as GStoreIcon } from 'src/asset/svg/google-store.svg';
+import { ReactComponent as AppStoreIcon } from 'src/asset/svg/app-store.svg';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { LinkSecondary } from 'src/lib/element/link';
+import { IconButton } from 'src/lib/element/button';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { setLinkRedirect } from 'src/main/navigation';
+
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { BASKET_ROUTE_PATH } from '../basket';
-import { SIGNUP_ROUTE_PATH } from 'src/core/signup';
-import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { useSelector } from 'react-redux';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
-
-import { ReactComponent as GStoreIcon } from '../../asset/svg/google-store.svg';
-import { ReactComponent as AppStoreIcon } from '../../asset/svg/app-store.svg';
+import { LOGIN_ROUTE_PATH } from '../auth-login';
 
 export function MobileNavMenu(props) {
   const { activePath } = props;
@@ -46,7 +46,7 @@ export function MobileNavMenu(props) {
 
       <Button
         onClick={setLinkRedirect(
-          isAuth ? USER_ORDERS_ROUTE_PATH : SIGNUP_ROUTE_PATH,
+          isAuth ? USER_ORDERS_ROUTE_PATH : LOGIN_ROUTE_PATH,
         )}
       >
         <UserStyledIcon
@@ -96,20 +96,16 @@ const MasterClassStyledIcon = styled(MasterClassIcon)`
           fill: ${THEME_COLOR.TEXT.LIGHT};
         `}
 `;
-
 const TShirtStyledIcon = styled(TShirtIcon)`
   ${(p) =>
     p.active
       ? css`
           fill: ${THEME_COLOR.SECONDARY_DARK};
-          /* stroke: ${THEME_COLOR.SECONDARY_DARK}; */
         `
       : css`
           fill: ${THEME_COLOR.TEXT.LIGHT};
-          /* stroke: ${THEME_COLOR.TEXT.LIGHT}; */
         `}
 `;
-
 const CartStyledIcon = styled(CartIcon)`
   ${(p) =>
     p.active
