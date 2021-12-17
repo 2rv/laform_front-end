@@ -1,7 +1,7 @@
 import { routesInit } from './router.core';
 import { homeRouter, HOME_ROUTE_PATH } from '../../core/home';
-import { signupRouter, SIGNUP_ROUTE_PATH } from '../../core/signup';
-import { loginRouter, LOGIN_ROUTE_PATH } from '../../core/login';
+import { signupRouter, SIGNUP_ROUTE_PATH } from '../../core/auth-signup';
+import { loginRouter, LOGIN_ROUTE_PATH } from '../../core/auth-login';
 import { patternsRouter, PATTERNS_ROUTE_PATH } from '../../core/patterns';
 import {
   masterClassesRouter,
@@ -20,14 +20,6 @@ import {
   authChangePasswordRouter,
   AUTH_CHANGE_PASSWORD_ROUTE_PATH,
 } from '../../core/auth-change-password';
-import {
-  authVerificateEmailRouter,
-  AUTH_VERIFICATE_EMAIL_ROUTE_PATH,
-} from '../../core/auth-verificate-email';
-import {
-  authVerificateEmailConfirmRouter,
-  AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH,
-} from '../../core/auth-verificate-email-confirm';
 import { settingsRouter, SETTINGS_ROUTE_PATH } from '../../core/settings';
 import { ordersRouter, ORDERS_ROUTE_PATH } from '../../core/orders';
 import {
@@ -73,10 +65,6 @@ import {
   SLIDER_LIST_ROUTE_PATH,
 } from '../../core/slider-list';
 import { promocodesRouter, PROMOCODES_ROUTE_PATH } from '../../core/promocodes';
-import {
-  AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH,
-  authVerificateEmailRecoveryAccountRouter,
-} from '../../core/auth-verificate-email-recovery-account';
 import {
   createMasterClassRouter,
   CREATE_MASTER_CLASS_ROUTE_PATH,
@@ -145,8 +133,18 @@ import {
   faqLaformeStudioRouter,
   FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from '../../core/faq-article';
+import {
+  authConfirmEmailRouter,
+  AUTH_CONFIRM_EMAIL_ROUTE_PATH,
+} from '../../core/auth-confirm-email';
 
 export const routes = {
+  [SIGNUP_ROUTE_PATH]: signupRouter,
+  [LOGIN_ROUTE_PATH]: loginRouter,
+  [AUTH_CONFIRM_EMAIL_ROUTE_PATH]: authConfirmEmailRouter,
+  [AUTH_RECOVERY_ACCOUNT_ROUTE_PATH]: authRecoveryAccountRouter,
+  [AUTH_CHANGE_PASSWORD_ROUTE_PATH]: authChangePasswordRouter,
+  [FAQ_ROUTE_PATH]: faqRouter,
   [FAQ_HOW_PRINT_ROUTE_PATH]: faqHowPrintRouter,
   [FAQ_HOW_GLUE_ROUTE_PATH]: faqHowGlueRouter,
   [FAQ_LAFORME_PATTERNS_ROUTE_PATH]: faqLaformePatternsRouter,
@@ -170,35 +168,26 @@ export const routes = {
   [PATTERNS_PAGE_ROUTE_PATH]: patternsPageRouter,
   [PATTERNS_PRODUCT_ROUTE_PATH]: patternsProductRouter,
   [PATTERNS_ROUTE_PATH]: patternsRouter,
+  [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
   [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
+  [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
+  [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
+  [CREATE_MASTER_CLASS_ROUTE_PATH]: createMasterClassRouter,
+  [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
   [USERS_ROUTE_PATH]: usersRouter,
   [PRODUCT_SELECTIONS_ROUTE_PATH]: productSelectionsRouter,
   [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
   [FEEDBACK_ROUTE_PATH]: feedbackRouter,
-  [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
-  [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
-  [CREATE_MASTER_CLASS_ROUTE_PATH]: createMasterClassRouter,
-  [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_ROUTE_PATH]:
-    authVerificateEmailRecoveryAccountRouter,
   [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,
   [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
   [ARTICLES_ROUTE_PATH]: articlesRouter,
   [HOME_ROUTE_PATH]: homeRouter,
-  [SIGNUP_ROUTE_PATH]: signupRouter,
-  [LOGIN_ROUTE_PATH]: loginRouter,
-  [AUTH_RECOVERY_ACCOUNT_ROUTE_PATH]: authRecoveryAccountRouter,
-  [AUTH_CHANGE_PASSWORD_ROUTE_PATH]: authChangePasswordRouter,
-  [AUTH_VERIFICATE_EMAIL_ROUTE_PATH]: authVerificateEmailRouter,
-  [AUTH_VERIFICATE_EMAIL_CONFIRM_ROUTE_PATH]: authVerificateEmailConfirmRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
   [USER_ORDERS_ROUTE_PATH]: userOrdersRouter,
-  [FAQ_ROUTE_PATH]: faqRouter,
   [BASKET_ROUTE_PATH]: basketRouter,
   [SLIDER_LIST_ROUTE_PATH]: sliderListRouter,
   [PROMOCODES_ROUTE_PATH]: promocodesRouter,
-  [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
-  [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
   [UNSUBSCRIBE_NOTIFICATION_ROUTE_PATH]: unsubscribeNotificationRouter,
 };
 

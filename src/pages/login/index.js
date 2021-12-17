@@ -1,3 +1,2 @@
-import { LoginPage } from '../../core/login';
-
+import { LoginPage } from '../../core/auth-login';
 export default LoginPage;

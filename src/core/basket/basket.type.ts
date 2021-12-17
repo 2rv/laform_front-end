@@ -36,6 +36,7 @@ export enum ORDER_FIELD_NAME {
   SDEK_POINT = 'sdekPoint',
   SDEK_TARIFF = 'sdekTariff',
   PRICE = 'price',
+  DELIVERY_TYPE = 'deliveryType',
 }
 export interface formikValues extends userInfoValues {
   [ORDER_FIELD_NAME.EMAIL]: string;
@@ -47,6 +48,7 @@ export interface formikValues extends userInfoValues {
   [ORDER_FIELD_NAME.PRICE]: number;
   [ORDER_FIELD_NAME.SDEK_POINT]: any;
   [ORDER_FIELD_NAME.SDEK_TARIFF]: any;
+  [ORDER_FIELD_NAME.DELIVERY_TYPE]: 0 | 1 | 2;
 }
 type FormikObjType = FormikHandlers &
   FormikHelpers<formikValues> &
@@ -108,6 +110,7 @@ export interface CartPriceProps {
   price: number;
   promoDiscount: number;
   deliveryInfo: basicTariffType;
+  deliveryType: 0 | 1 | 2;
 }
 export interface BasketFormProps extends AlertProps {
   isAuth: boolean;
@@ -122,6 +125,7 @@ export interface CartAlertProps extends AlertProps {
   emailConfirmedError: any;
   fullNameError: any;
   phoneError: any;
+  postalCodeErrro: any;
 }
 export interface AlertProps {
   orderError: boolean;

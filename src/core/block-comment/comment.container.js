@@ -88,6 +88,7 @@ export function CommentContainer(props) {
 
   const onSubmitEnter = (e) => {
     if (e.keyCode === 13) {
+      e.target.style.height = 'auto';
       e.preventDefault();
       onSubmit();
       e.target.value = '';

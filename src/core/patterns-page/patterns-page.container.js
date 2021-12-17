@@ -6,14 +6,13 @@ import {
   isRequestError,
   isRequestPending,
   isRequestSuccess,
-} from '../../main/store/store.service';
-import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation/navigation.constant';
+} from 'src/main/store/store.service';
+import { NAVIGATION_STORE_NAME } from 'src/lib/common/navigation/navigation.constant';
+import { getQuery, redirect } from 'src/main/navigation';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { patternsPageUploadData } from './patterns-page.action';
 import { PATTERNS_PAGE_STORE_NAME } from './patterns-page.constant';
 import { PatternsPageComponent } from './patterns-page.component';
-import { getQuery, redirect } from 'src/main/navigation';
-import { AUTH_STORE_NAME } from 'src/lib/common/auth';
-import { LOGIN_ROUTE_PATH } from '../login';
 
 export function PatternsPageContainer() {
   const id = getQuery('id');
@@ -28,7 +27,6 @@ export function PatternsPageContainer() {
   );
   useEffect(() => {
     if (isAuth) dispatch(patternsPageUploadData(id));
-    else redirect(LOGIN_ROUTE_PATH);
   }, []);
   return (
     <PatternsPageComponent

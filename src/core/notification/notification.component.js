@@ -4,7 +4,7 @@ import { ButtonSecondary } from 'src/lib/element/button';
 import { SectionLayout } from 'src/lib/element/layout';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { setLinkRedirect } from 'src/main/navigation';
-import { LOGIN_ROUTE_PATH } from 'src/core/login';
+import { LOGIN_ROUTE_PATH } from '../auth-login';
 
 export function NotificationComponent(props) {
   const {

@@ -1,7 +1,6 @@
 import React, { useState, SyntheticEvent } from 'react';
 import styled from 'styled-components';
 import { Divider } from 'src/lib/element/divider';
-import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { ModalFull } from 'src/lib/element/modal';
 import { spacing } from 'src/lib/theme';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
@@ -22,15 +21,12 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
   }
 
   return (
-    <SectionLayout type="SMALL">
-      <FieldLayout type="double" adaptive>
-        <ButtonSecondary
-          tid="SDEK_POINTS.PLACEHOLDER"
-          onClick={() => onClose(true)}
-          disabled={isDisabled}
-        />
-      </FieldLayout>
-
+    <>
+      <ButtonSecondary
+        tid="SDEK_POINTS.PLACEHOLDER"
+        onClick={() => onClose(true)}
+        disabled={isDisabled}
+      />
       {value.label && (
         <ItemCase>
           <SdekPointItem value={value} />
@@ -79,7 +75,7 @@ export function SdekPointsComponent(props: SdekPointsComponentProps) {
         </Content>
       </ModalFull>
       {error && <WarningAlert tid={error} />}
-    </SectionLayout>
+    </>
   );
 }
 const InputBox = styled.div`

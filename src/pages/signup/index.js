@@ -1,3 +1,2 @@
-import { SignupPage } from '../../core/signup';
-
+import { SignupPage } from '../../core/auth-signup';
 export default SignupPage;

@@ -5,24 +5,8 @@ import {
   navigationStore,
   NAVIGATION_STORE_NAME,
 } from '../../lib/common/navigation';
-import { signupStore, SIGNUP_STORE_NAME } from '../../core/signup';
-import { loginStore, LOGIN_STORE_NAME } from '../../core/login';
-import {
-  authRecoveryAccountStore,
-  AUTH_RECOVERY_ACCOUNT_STORE_NAME,
-} from '../../core/auth-recovery-account';
-import {
-  authVerificateEmailStore,
-  AUTH_VERIFICATE_EMAIL_STORE_NAME,
-} from '../../core/auth-verificate-email';
-import {
-  authVerificateEmailConfirmStore,
-  AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME,
-} from '../../core/auth-verificate-email-confirm';
-import {
-  authChangePasswordStore,
-  AUTH_CHANGE_PASSWORD_STORE_NAME,
-} from '../../core/auth-change-password';
+import { signupStore, SIGNUP_STORE_NAME } from '../../core/auth-signup';
+import { loginStore, LOGIN_STORE_NAME } from '../../core/auth-login';
 import {
   settingsChangePasswordStore,
   SETTINGS_CHANGE_PASSWORD_STORE_NAME,
@@ -98,10 +82,6 @@ import {
   sliderEditStore,
   SLIDER_EDIT_STORE_NAME,
 } from '../../core/slider-edit';
-import {
-  AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME,
-  authVerificateEmailRecoveryAccountStore,
-} from '../../core/auth-verificate-email-recovery-account';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 import {
   createMasterClassStore,
@@ -124,10 +104,6 @@ import {
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
 import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
-import {
-  emailConfirmedStore,
-  EMAIL_CONFIRMED_STORE_NAME,
-} from '../../core/email-confirmed';
 import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_STORE_NAME,
@@ -179,6 +155,7 @@ import {
   faqArticleStore,
   FAQ_ARTICLE_STORE_NAME,
 } from '../../core/faq-article';
+
 export const reducers = combineReducers({
   [FAQ_ARTICLE_STORE_NAME]: faqArticleStore,
   [USER_INFO_STORE_NAME]: userInfoStore,
@@ -196,8 +173,6 @@ export const reducers = combineReducers({
   [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
   [RECOMENDATION_STORE_NAME]: recomendationStore,
   [CREATE_MASTER_CLASS_STORE_NAME]: createMasterClassStore,
-  [AUTH_VERIFICATE_EMAIL_RECOVERY_ACCOUNT_STORE_NAME]:
-    authVerificateEmailRecoveryAccountStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
   [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,
@@ -213,10 +188,6 @@ export const reducers = combineReducers({
   [NAVIGATION_STORE_NAME]: navigationStore,
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
-  [AUTH_RECOVERY_ACCOUNT_STORE_NAME]: authRecoveryAccountStore,
-  [AUTH_VERIFICATE_EMAIL_STORE_NAME]: authVerificateEmailStore,
-  [AUTH_CHANGE_PASSWORD_STORE_NAME]: authChangePasswordStore,
-  [AUTH_VERIFICATE_EMAIL_CONFIRM_STORE_NAME]: authVerificateEmailConfirmStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
@@ -234,7 +205,6 @@ export const reducers = combineReducers({
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
-  [EMAIL_CONFIRMED_STORE_NAME]: emailConfirmedStore,
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
   [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
