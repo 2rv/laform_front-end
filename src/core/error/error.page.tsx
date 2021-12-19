@@ -1,12 +1,13 @@
-import { PageWrapper } from '../../lib/common/page-wrapper';
-import { ErrorContainer } from './error.container';
+import { PageWrapper } from 'src/lib/common/page-wrapper';
+import { ErrorPageProps, ERROR_PAGE_CONFIG } from './error.constant';
+import { ErrorComponent } from './error.component';
 
-export function ErrorPage(props) {
+export function ErrorPage(props: ErrorPageProps) {
   const { errorStatus } = props;
 
   return (
     <PageWrapper>
-      <ErrorContainer errorStatus={errorStatus} />
+      <ErrorComponent config={ERROR_PAGE_CONFIG[errorStatus]} />
     </PageWrapper>
   );
 }

@@ -1,37 +1,5 @@
 import { basicSdekPoints } from '../block-sdek-points';
 
-export interface SdekTariffListType {
-  sdekTariffList: basicTariffType[];
-  sdekTariff: basicTariffType | {};
-  pending: true | false;
-  errorMessage?: string;
-}
-
-export interface SdekTariffListComponentProps {
-  store: SdekTariffListType;
-  value: basicTariffType;
-  onChange: (value: basicTariffType) => void;
-  onClear: () => void;
-  isDisabled: boolean;
-  error: any;
-}
-export interface SdekTariffListContainerProps {
-  data: basicSdekPoints;
-  value: basicTariffType;
-  onChange: Function;
-  name: string;
-  basketCount: number;
-  error: any;
-}
-export enum SDEK_TARIFFLIST_ACTION_TYPE {
-  PENDING = 'SDEK_TARIFFLIST_ACTION_TYPE.PENDING',
-  SUCCCESS = 'SDEK_TARIFFLIST_ACTION_TYPE.SUCCCESS',
-  ERROR = 'SDEK_TARIFFLIST_ACTION_TYPE.ERROR',
-
-  TARIFF_PENDING = 'SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_PENDING',
-  TARIFF_SUCCCESS = 'SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_SUCCCESS',
-  TARIFF_ERROR = 'SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_ERROR',
-}
 export interface basicTariffType {
   label: string;
   delivery_mode: number;
@@ -44,4 +12,43 @@ export interface basicTariffType {
   weight_calc?: number;
   total_sum?: number;
   currency?: string;
+}
+
+export type SdekTariffListStateType = {
+  sdekTariffList?: basicTariffType[];
+  sdekTariff?: basicTariffType;
+  pending: boolean;
+  error?: string;
+};
+export type SdekTariffListActionType = {
+  type: SDEK_TARIFFLIST_ACTION_TYPE;
+  error?: string;
+  data?: basicTariffType[];
+  basicTariff?: basicTariffType;
+};
+export enum SDEK_TARIFFLIST_ACTION_TYPE {
+  PENDING = 'PENDING',
+  SUCCCESS = 'SUCCCESS',
+  ERROR = 'ERROR',
+
+  TARIFF_PENDING = 'TARIFF_PENDING',
+  TARIFF_SUCCCESS = 'TARIFF_SUCCCESS',
+  TARIFF_ERROR = 'TARIFF_ERROR',
+}
+
+export interface SdekTariffListComponentProps {
+  state: SdekTariffListStateType;
+  value: basicTariffType | undefined;
+  onChange: (value: basicTariffType) => void;
+  onClear: () => void;
+  isDisabled: boolean;
+  error?: string;
+}
+export interface SdekTariffListContainerProps {
+  data: basicSdekPoints | undefined;
+  value: basicTariffType | undefined;
+  onChange: Function;
+  name: string;
+  basketCount: number;
+  error?: string;
 }

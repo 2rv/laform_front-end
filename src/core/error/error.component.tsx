@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE } from '../../lib/theme';
-import { TextPrimary, TextSecondary } from '../../lib/element/text';
+import { spacing, THEME_SIZE } from 'src/lib/theme';
+import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 import { ButtonPrimary } from 'src/lib/element/button';
 import { SectionLayout } from 'src/lib/element/layout';
 import { setLinkRedirect } from 'src/main/navigation';
+import { ErrorComponentProps } from './error.constant';
 
-export function ErrorComponent(props) {
-  const { titleTid, textTid, linkTid, linkPath, image } = props;
+export function ErrorComponent(props: ErrorComponentProps) {
+  const { titleTid, textTid, linkTid, linkPath, image } = props.config;
   const Image = image;
   return (
     <Container>

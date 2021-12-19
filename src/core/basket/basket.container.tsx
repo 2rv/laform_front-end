@@ -77,8 +77,8 @@ export function BasketContainer() {
 
       [ORDER_FIELD_NAME.PROMO_CODE]: '',
       [ORDER_FIELD_NAME.PROMO_DISCOUNT]: 0,
-      [ORDER_FIELD_NAME.SDEK_POINT]: {},
-      [ORDER_FIELD_NAME.SDEK_TARIFF]: {},
+      [ORDER_FIELD_NAME.SDEK_POINT]: undefined,
+      [ORDER_FIELD_NAME.SDEK_TARIFF]: undefined,
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.DELIVERY_TYPE]: 0,
     };

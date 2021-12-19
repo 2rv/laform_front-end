@@ -1,30 +1,36 @@
 import { BasicAddressType } from 'src/lib/basic-types';
 
-export interface sdekPointsType {
-  sdekPoints: basicSdekPoints[];
-  pending: true | false;
-  errorMessage?: string;
-}
-export interface SdekPointsComponentProps {
-  store: sdekPointsType;
-  value: basicSdekPoints;
-  onChange: (value: basicSdekPoints | {}) => void;
-  isDisabled: boolean;
-  error: any;
-}
-export interface SdekPointsContainerProps {
-  data: BasicAddressType;
-  value: basicSdekPoints;
-  onChange: Function;
-  name: string;
-  error: any;
-}
+export type sdekPointsStateType = {
+  sdekPoints?: basicSdekPoints[];
+  pending: boolean;
+  error?: string;
+};
+
+export type sdekPointsActionType = {
+  type: SDEK_POINTS_ACTION_TYPE;
+  error?: string;
+  data?: basicSdekPoints[];
+};
 export enum SDEK_POINTS_ACTION_TYPE {
-  PEINDING = 'SDEK_POINTS_ACTION_TYPE.PEINDING',
-  SUCCCESS = 'SDEK_POINTS_ACTION_TYPE.SUCCCESS',
-  ERROR = 'SDEK_POINTS_ACTION_TYPE.ERROR',
+  PEINDING = 'PEINDING',
+  SUCCCESS = 'SUCCCESS',
+  ERROR = 'ERROR',
 }
 
+export interface SdekPointsComponentProps {
+  state: sdekPointsStateType;
+  value: basicSdekPoints | undefined;
+  onChange: (value: basicSdekPoints | undefined) => void;
+  isDisabled: boolean;
+  error?: string;
+}
+export interface SdekPointsContainerProps {
+  data: BasicAddressType | undefined;
+  value: basicSdekPoints | undefined;
+  onChange: Function;
+  name: string;
+  error?: string;
+}
 export interface basicSdekPoints {
   address_comment: string;
   allowed_cod: boolean;

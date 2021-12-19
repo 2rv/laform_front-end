@@ -1,12 +1,22 @@
+import { Dispatch } from 'react';
 import { httpRequest } from 'src/main/http';
-import { GET_TARIFF, GET_TARIFFLIST } from './sdek-tarifflist.constant';
 import {
   basicTariffType,
+  SdekTariffListActionType,
   SDEK_TARIFFLIST_ACTION_TYPE,
 } from './sdek-tarifflist.type';
 
+enum GET_TARIFFLIST {
+  URL = '/sdek/calculator/tarifflist',
+  TYPE = 'POST',
+}
+enum GET_TARIFF {
+  URL = '/sdek/calculator/tariff',
+  TYPE = 'POST',
+}
+
 export function getTariffList(city_code: number, productCount: number) {
-  return async (dispatch: Function) => {
+  return async (dispatch: Dispatch<SdekTariffListActionType>) => {
     dispatch({
       type: SDEK_TARIFFLIST_ACTION_TYPE.PENDING,
     });
@@ -37,7 +47,7 @@ export function getTariffList(city_code: number, productCount: number) {
       if (err.response) {
         dispatch({
           type: SDEK_TARIFFLIST_ACTION_TYPE.ERROR,
-          errorMessage: err.response.data.message,
+          error: err.response.data.message,
         });
       }
     }
@@ -49,7 +59,7 @@ export function getTariff(
   tariff: basicTariffType,
   productCount: number,
 ) {
-  return async (dispatch: Function) => {
+  return async (dispatch: Dispatch<SdekTariffListActionType>) => {
     dispatch({
       type: SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_PENDING,
     });
@@ -82,13 +92,13 @@ export function getTariff(
       };
       dispatch({
         type: SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_SUCCCESS,
-        data: result,
+        basicTariff: result,
       });
     } catch (err: any) {
       if (err.response) {
         dispatch({
           type: SDEK_TARIFFLIST_ACTION_TYPE.TARIFF_ERROR,
-          errorMessage: err.response.data.message,
+          error: err.response.data.message,
         });
       }
     }

@@ -1,16 +1,20 @@
+import { Dispatch } from 'react';
 import { httpRequest } from 'src/main/http';
-import { GET_CITY_CODE } from './sdek-points.constant';
-import { basicSdekPoints, SDEK_POINTS_ACTION_TYPE } from './sdek-points.type';
+import {
+  basicSdekPoints,
+  sdekPointsActionType,
+  SDEK_POINTS_ACTION_TYPE,
+} from './sdek-points.type';
 
 export function getPickUpPoint(kladr_id: string) {
-  return async (dispatch: Function) => {
+  return async (dispatch: Dispatch<sdekPointsActionType>) => {
     dispatch({
       type: SDEK_POINTS_ACTION_TYPE.PEINDING,
     });
     try {
       const response = await httpRequest({
-        method: GET_CITY_CODE.TYPE,
-        url: GET_CITY_CODE.URL + kladr_id,
+        method: 'GET',
+        url: 'sdek/city-code/' + kladr_id,
       });
 
       const result: basicSdekPoints[] = response.data.map(
@@ -28,7 +32,7 @@ export function getPickUpPoint(kladr_id: string) {
       if (err.response) {
         dispatch({
           type: SDEK_POINTS_ACTION_TYPE.ERROR,
-          errorMessage: err.response.data.message,
+          error: err.response.data.message,
         });
       }
     }

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { scrollTo } from 'src/main/navigation';
 import { THEME_COLOR } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
 import { ReactComponent as ArrowUp } from 'src/asset/svg/arrow-up.svg';
-import { useEffect, useState } from 'react';
 
 export function ScrollToTopButton() {
   const [view, setView] = useState(false);
@@ -17,7 +18,7 @@ export function ScrollToTopButton() {
     return () => document.removeEventListener('scroll', tooggleView);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToTop = () => scrollTo();
 
   if (!view) return null;
   return (

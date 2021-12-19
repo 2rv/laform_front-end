@@ -13,6 +13,7 @@ import {
 } from 'src/lib/basic-types';
 import { basicTariffType } from 'src/lib/common/block-sdek-tarifflist';
 import { userInfoValues } from '../settings-user-info';
+import { basicSdekPoints } from 'src/lib/common/block-sdek-points';
 export enum BASKET_ACTION_TYPE {
   PRODUCT_ADD_PENDING = 'BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING',
   PRODUCT_ADD_SUCCESS = 'BASKET_ACTION_TYPE.PRODUCT_ADD_SUCCESS',
@@ -46,8 +47,8 @@ export interface formikValues extends userInfoValues {
   [ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]: string;
   [ORDER_FIELD_NAME.EMAIL_CONFIRMED]: boolean;
   [ORDER_FIELD_NAME.PRICE]: number;
-  [ORDER_FIELD_NAME.SDEK_POINT]: any;
-  [ORDER_FIELD_NAME.SDEK_TARIFF]: any;
+  [ORDER_FIELD_NAME.SDEK_POINT]: basicSdekPoints | undefined;
+  [ORDER_FIELD_NAME.SDEK_TARIFF]: basicTariffType | undefined;
   [ORDER_FIELD_NAME.DELIVERY_TYPE]: 0 | 1 | 2;
 }
 type FormikObjType = FormikHandlers &
@@ -96,6 +97,7 @@ export interface CartTablesProps {
 export interface BasketFormContainerProps
   extends FormikConfig<formikValues>,
     BasketFormProps {}
+
 export interface BasketFormComponentProps extends BasketFormProps {
   formik: FormikObjType;
 }
@@ -109,7 +111,7 @@ export interface CartPromoCodeProps {
 export interface CartPriceProps {
   price: number;
   promoDiscount: number;
-  deliveryInfo: basicTariffType;
+  deliveryInfo: basicTariffType | undefined;
   deliveryType: 0 | 1 | 2;
 }
 export interface BasketFormProps extends AlertProps {
