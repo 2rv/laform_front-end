@@ -7,13 +7,13 @@ import { Divider } from 'src/lib/element/divider';
 import { FieldSelect, TextareaField } from 'src/lib/element/field';
 import { ButtonPrimary } from 'src/lib/element/button';
 import { LoaderPrimary } from 'src/lib/element/loader';
+import { BlockSdekPoints } from 'src/lib/common/block-sdek-points';
+import { BlockSdekTariffList } from 'src/lib/common/block-sdek-tarifflist';
 import { CartEmail } from './cart.email';
 import { CartPrice } from './cart.price';
 import { CartAlert } from './cart.alert';
 import { CartPromoCode } from './cart.promocode';
 import { BasketFormComponentProps, ORDER_FIELD_NAME } from '../basket.type';
-import { BlockSdekPoints } from 'src/lib/common/block-sdek-points';
-import { BlockSdekTariffList } from 'src/lib/common/block-sdek-tarifflist';
 import { BlockUserInfo, USER_INFO_FIELD_NAME } from '../../settings-user-info';
 
 export function FormComponent(props: BasketFormComponentProps) {
@@ -38,10 +38,10 @@ export function FormComponent(props: BasketFormComponentProps) {
     setFieldValue(ORDER_FIELD_NAME.PRICE, basketPrice);
   }, [basketPrice, values]);
 
-  const getFieldError = (name: ORDER_FIELD_NAME | USER_INFO_FIELD_NAME) => {
-    if (errors[name] && touched[name]) {
-      return errors[name] + '';
-    }
+  const getFieldError = (
+    name: ORDER_FIELD_NAME | USER_INFO_FIELD_NAME,
+  ): any => {
+    return (errors[name] && touched[name] && errors[name]) || '';
   };
 
   return (
@@ -73,24 +73,23 @@ export function FormComponent(props: BasketFormComponentProps) {
             />
           </FieldLayout>
           {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 0 && (
-            <FieldLayout type="double" adaptive>
-              <BlockSdekPoints
-                data={values[USER_INFO_FIELD_NAME.FULL_ADDRESS]}
-                value={values[ORDER_FIELD_NAME.SDEK_POINT]}
-                name={ORDER_FIELD_NAME.SDEK_POINT}
-                onChange={setFieldValue}
-                error={getFieldError(ORDER_FIELD_NAME.SDEK_POINT)}
-              />
-
-              <BlockSdekTariffList
-                data={values[ORDER_FIELD_NAME.SDEK_POINT]}
-                basketCount={basketCount}
-                value={values[ORDER_FIELD_NAME.SDEK_TARIFF]}
-                name={ORDER_FIELD_NAME.SDEK_TARIFF}
-                onChange={setFieldValue}
-                error={getFieldError(ORDER_FIELD_NAME.SDEK_TARIFF)}
-              />
-            </FieldLayout>
+            <BlockSdekPoints
+              data={values[USER_INFO_FIELD_NAME.FULL_ADDRESS]}
+              value={values[ORDER_FIELD_NAME.SDEK_POINT]}
+              name={ORDER_FIELD_NAME.SDEK_POINT}
+              onChange={setFieldValue}
+              error={getFieldError(ORDER_FIELD_NAME.SDEK_POINT)}
+            />
+          )}
+          {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 0 && (
+            <BlockSdekTariffList
+              data={values[ORDER_FIELD_NAME.SDEK_POINT]}
+              basketCount={basketCount}
+              value={values[ORDER_FIELD_NAME.SDEK_TARIFF]}
+              name={ORDER_FIELD_NAME.SDEK_TARIFF}
+              onChange={setFieldValue}
+              error={getFieldError(ORDER_FIELD_NAME.SDEK_TARIFF)}
+            />
           )}
 
           <Divider />
@@ -150,30 +149,3 @@ const Title = styled(TitlePrimary)`
 const Button = styled(ButtonPrimary)`
   margin-top: 19px;
 `;
-
-// const data = result.concat([
-// 	{
-// 	  label: 'Самовывоз',
-// 	  delivery_mode: -1,
-// 	  delivery_sum: 0,
-// 	  total_sum: 0,
-// 	  period_max: -1,
-// 	  period_min: -1,
-// 	  tariff_code: -1,
-// 	  tariff_description: 'Забирайте сами',
-// 	  tariff_name: 'Самовывоз',
-// 	  notSdek: true,
-// 	},
-// 	{
-// 	  label: 'Почта россии',
-// 	  delivery_mode: -1,
-// 	  delivery_sum: 400,
-// 	  total_sum: 400,
-// 	  period_max: -1,
-// 	  period_min: -1,
-// 	  tariff_code: -2,
-// 	  tariff_description: 'Товары будут отправлены через почту россии',
-// 	  tariff_name: 'Почта россии',
-// 	  notSdek: true,
-// 	},
-//   ]);

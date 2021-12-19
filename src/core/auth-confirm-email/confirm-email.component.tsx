@@ -76,6 +76,9 @@ export function ConfirmEmailComponent(props: ConfirmEmailComponentProps) {
           &nbsp;
           <LinkPrimary
             path={SETTINGS_ROUTE_PATH}
+            pathConfig={{
+              scrollParams: { top: 1100 },
+            }}
             tid="AUTH.CONFIRM_EMAIL.CHANGE_EMAIL_SETTINGS"
           />
         </div>

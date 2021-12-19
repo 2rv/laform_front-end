@@ -5,8 +5,9 @@ import { spacing } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
 import { Divider } from 'src/lib/element/divider';
 import { TextPrimary } from 'src/lib/element/text';
+import { SliderItemProps } from './slider-list.type';
 
-export function SliderItem(props) {
+export function SliderItem(props: SliderItemProps) {
   const { index, data, removeSlide, editSlide } = props;
   return (
     <Container>
@@ -19,7 +20,7 @@ export function SliderItem(props) {
           <Button onClick={() => editSlide(data.id)}>
             <ChangeIcon />
           </Button>
-          <Button onClick={() => removeSlide(index, data.id)}>
+          <Button onClick={() => removeSlide(data.id, index)}>
             <RemoveIcon />
           </Button>
         </Case>

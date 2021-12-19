@@ -11,10 +11,6 @@ import {
   settingsChangePasswordStore,
   SETTINGS_CHANGE_PASSWORD_STORE_NAME,
 } from '../../core/settings-change-password';
-import {
-  settingsChangeEmailStore,
-  SETTINGS_CHANGE_EMAIL_STORE_NAME,
-} from '../../core/settings-change-email';
 import { sliderStore, SLIDER_STORE_NAME } from '../../core/slider';
 import {
   sewingGoodsStore,
@@ -66,10 +62,6 @@ import {
   orderNumberStore,
   ORDER_NUMBER_STORE_NAME,
 } from '../../core/order-number';
-import {
-  sliderListStore,
-  SLIDER_LIST_STORE_NAME,
-} from '../../core/slider-list';
 import {
   sliderEditStore,
   SLIDER_EDIT_STORE_NAME,
@@ -127,15 +119,6 @@ import {
   PRODUCT_SELECTIONS_STORE_NAME,
 } from '../../core/product-selections';
 import {
-  sdekPointsStore,
-  SDEK_POINTS_STORE_NAME,
-} from '../../lib/common/block-sdek-points';
-
-import {
-  sdekTariffListStore,
-  SDEK_TARIFFLIST_STORE_NAME,
-} from '../../lib/common/block-sdek-tarifflist';
-import {
   userInfoStore,
   USER_INFO_STORE_NAME,
 } from '../../core/settings-user-info';
@@ -147,8 +130,6 @@ import {
 export const reducers = combineReducers({
   [FAQ_ARTICLE_STORE_NAME]: faqArticleStore,
   [USER_INFO_STORE_NAME]: userInfoStore,
-  [SDEK_TARIFFLIST_STORE_NAME]: sdekTariffListStore,
-  [SDEK_POINTS_STORE_NAME]: sdekPointsStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,
@@ -176,9 +157,7 @@ export const reducers = combineReducers({
   [NAVIGATION_STORE_NAME]: navigationStore,
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
-  [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
-  [SETTINGS_CHANGE_EMAIL_STORE_NAME]: settingsChangeEmailStore,
   [SLIDER_STORE_NAME]: sliderStore,
   [ORDERS_STORE_NAME]: ordersStore,
   [USER_ORDERS_STORE_NAME]: userOrdersStore,
@@ -187,7 +166,6 @@ export const reducers = combineReducers({
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
-  [SLIDER_LIST_STORE_NAME]: sliderListStore,
   [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,

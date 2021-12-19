@@ -21,11 +21,9 @@ export function CartEmail(props: CartEmailProps) {
     },
     isAuth,
   } = props;
-  const getFieldError = (name: ORDER_FIELD_NAME): string | undefined => {
-    if (errors[name] && touched[name]) {
-      return errors[name] + '';
-    }
-  };
+  function getFieldError(name: ORDER_FIELD_NAME): string {
+    return (touched[name] && errors[name] && errors[name]) || '';
+  }
   const [isSending, setIsSending] = useState(false);
 
   const sendCode = useCallback(

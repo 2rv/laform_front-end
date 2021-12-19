@@ -8,7 +8,7 @@ export const redirect = (pathname, config = {}) => {
     query,
     as = pathname,
     params,
-    scrollTop = true,
+    scrollParams,
     shallow,
   } = config;
 
@@ -18,29 +18,30 @@ export const redirect = (pathname, config = {}) => {
         shallow,
         query,
       })
-      .then(() => scrollToTop(scrollTop));
+      .then(() => scrollTo(scrollParams));
   }
 
   if (local) {
     return router
       .push({ pathname, as, query, shallow })
-      .then(() => scrollToTop(scrollTop));
+      .then(() => scrollTo(scrollParams));
   }
 
   window.location.href = pathname;
 };
 
-export const scrollToTop = (isScrollToTop) => {
-  if (isScrollToTop) {
-    window.scrollTo(0, 0);
-  }
+export const scrollTo = (scrollParams = {}) => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+    ...scrollParams,
+  });
 };
-
 export const setLinkRedirect = (path, confirg) => (e) => {
   e.preventDefault();
   redirect(path, confirg);
 };
-
 export const getQuery = (id) => {
   if (typeof window === 'undefined') {
     return null;
@@ -53,17 +54,4 @@ export const getQuery = (id) => {
   if (data === 'false') return false;
 
   return data;
-};
-
-export const scrollTo = (elementId, offset = 0) => {
-  if (elementId) {
-    return window.scrollBy({
-      top:
-        document.getElementById(elementId).offsetTop -
-        document.documentElement.scrollTop -
-        offset,
-      behavior: 'smooth',
-    });
-  }
-  return null;
 };

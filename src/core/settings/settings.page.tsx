@@ -1,4 +1,4 @@
-import { PageWrapper } from '../../lib/common/page-wrapper';
+import { PageWrapper } from 'src/lib/common/page-wrapper';
 import { SettingsComponent } from './settings.component';
 
 export function SettingsPage() {
