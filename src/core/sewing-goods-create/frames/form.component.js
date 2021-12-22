@@ -127,7 +127,6 @@ export function FormComponent(props) {
           titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.QUANTITY"
           labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.QUANTITY"
           name={SEWING_GOODS_FIELD_NAME.IS_COUNT}
-          value={values[SEWING_GOODS_FIELD_NAME.IS_COUNT]}
           onBlur={handleBlur}
           checked={values[SEWING_GOODS_FIELD_NAME.IS_COUNT]}
           onClick={setCount}
@@ -136,7 +135,6 @@ export function FormComponent(props) {
           titleTid="SEWING_GOODS.CREATE.FORM.FIELDS.TITLE.LENGTH"
           labelTid="SEWING_GOODS.CREATE.FORM.FIELDS.PLACEHOLDER.LENGTH"
           name={SEWING_GOODS_FIELD_NAME.IS_LENGTH}
-          value={values[SEWING_GOODS_FIELD_NAME.IS_LENGTH]}
           onBlur={handleBlur}
           checked={values[SEWING_GOODS_FIELD_NAME.IS_LENGTH]}
           onClick={setLength}

@@ -6,7 +6,7 @@ import {
 } from './convert.basic';
 
 import {
-  BasicArticleType,
+  BasicPostType,
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
@@ -37,7 +37,7 @@ export const convertSewingGoodProducts = (
   return data.map((item) => convertSewingGoodItemConverter(item));
 };
 export const convertArticleProducts = (
-  data: BasicArticleType[],
+  data: BasicPostType[],
 ): CardArticleType[] => {
   return data.map(convertArticleItemConverter);
 };

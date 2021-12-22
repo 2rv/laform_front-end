@@ -11,12 +11,12 @@ import { SliderItem } from './slider-list.item';
 
 export function SliderListComponent(props: SliderListComponentProps) {
   const { state, editSlide, addSlide, removeSlide } = props;
-  const { data, pending, error } = state;
+  const { data = [], pending, error } = state;
   return (
     <Container>
       <TitlePrimary tid="SLIDER.LIST.TITLE" />
       {pending && <CenteredSpinner />}
-      {(data || []).map((data, index) => (
+      {data.map((data, index) => (
         <SliderItem
           key={index}
           index={index}

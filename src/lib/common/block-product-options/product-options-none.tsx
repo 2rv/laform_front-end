@@ -6,8 +6,6 @@ import {
 import { BasicField } from '../../element/field';
 import { FieldLayout, SectionLayout } from '../../element/layout';
 import { ProductOptionsNoneProps } from './components.type';
-import { SyntheticEvent } from 'react';
-import { MultiFilesBlock } from '../block-multi-files';
 
 export function ProductOptionsNone(props: ProductOptionsNoneProps) {
   const {
@@ -22,10 +20,6 @@ export function ProductOptionsNone(props: ProductOptionsNoneProps) {
     setFieldValue,
     isCount,
     isLength,
-    isFile,
-
-    productFileName,
-    productFilesName,
   } = props;
 
   const getFieldError = (name: string) =>
@@ -39,16 +33,6 @@ export function ProductOptionsNone(props: ProductOptionsNoneProps) {
 
   const setToHundred = (name: string) => (e: any) =>
     setFieldValue(name, numberToHundred(e));
-
-  const setPdfFile =
-    (name: string) => (e: SyntheticEvent<HTMLInputElement>) => {
-      const file = e.currentTarget?.files?.[0];
-      if (!file || file.type.split('/')[1] !== 'pdf') {
-        alert('PATTERNS.CREATE_ELECTRONIC.FORM.NEED_PDF');
-        setFieldValue(name, undefined);
-      } else setFieldValue(name, file);
-    };
-
   return (
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
@@ -100,15 +84,6 @@ export function ProductOptionsNone(props: ProductOptionsNoneProps) {
             />
           )}
         </FieldLayout>
-      )}
-      {isFile && (
-        <MultiFilesBlock
-          handleChange={setPdfFile}
-          fileName={productFileName}
-          filesName={productFilesName}
-          values={values[productFilesName]}
-          handleBlur={handleBlur}
-        />
       )}
     </SectionLayout>
   );

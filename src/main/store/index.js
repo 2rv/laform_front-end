@@ -11,7 +11,6 @@ import {
   settingsChangePasswordStore,
   SETTINGS_CHANGE_PASSWORD_STORE_NAME,
 } from '../../core/settings-change-password';
-import { sliderStore, SLIDER_STORE_NAME } from '../../core/slider';
 import {
   sewingGoodsStore,
   SEWING_GOODS_STORE_NAME,
@@ -62,27 +61,11 @@ import {
   orderNumberStore,
   ORDER_NUMBER_STORE_NAME,
 } from '../../core/order-number';
-import {
-  sliderEditStore,
-  SLIDER_EDIT_STORE_NAME,
-} from '../../core/slider-edit';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
-import {
-  createMasterClassStore,
-  CREATE_MASTER_CLASS_STORE_NAME,
-} from '../../core/master-class-create';
-import {
-  recomendationStore,
-  RECOMENDATION_STORE_NAME,
-} from '../../lib/common/block-select-recomendation';
 import {
   createSewingGoodsStore,
   CREATE_SEWING_GOODS_STORE_NAME,
 } from '../../core/sewing-goods-create';
-import {
-  createArticleStore,
-  CREATE_ARTICLE_STORE_NAME,
-} from '../../core/article-create';
 import {
   createNotificationStore,
   CREATE_NOTIFICATION_STORE_NAME,
@@ -100,10 +83,6 @@ import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
 } from '../../lib/common/block-categories';
-import {
-  createPatternStore,
-  CREATE_PATTERN_STORE_NAME,
-} from '../../core/pattern-create';
 import {
   allProductsStore,
   ALL_PRODUCTS_STORE_NAME,
@@ -134,14 +113,10 @@ export const reducers = combineReducers({
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [STATISTICS_STORE_NAME]: statisticsStore,
   [FEEDBACK_STORE_NAME]: feedbackStore,
-  [CREATE_PATTERN_STORE_NAME]: createPatternStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,
-  [CREATE_ARTICLE_STORE_NAME]: createArticleStore,
   [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
-  [RECOMENDATION_STORE_NAME]: recomendationStore,
-  [CREATE_MASTER_CLASS_STORE_NAME]: createMasterClassStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
   [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,
@@ -158,7 +133,6 @@ export const reducers = combineReducers({
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
-  [SLIDER_STORE_NAME]: sliderStore,
   [ORDERS_STORE_NAME]: ordersStore,
   [USER_ORDERS_STORE_NAME]: userOrdersStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
@@ -166,7 +140,6 @@ export const reducers = combineReducers({
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
-  [SLIDER_EDIT_STORE_NAME]: sliderEditStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [USERS_STORE_NAME]: usersStore,

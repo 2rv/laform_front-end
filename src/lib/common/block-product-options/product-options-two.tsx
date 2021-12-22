@@ -7,7 +7,6 @@ import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { Divider } from 'src/lib/element/divider';
 import React from 'react';
 import { ProductOptionsTwoProps } from './components.type';
-import { MultiFilesBlock } from '../block-multi-files';
 
 export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
   const {
@@ -18,7 +17,6 @@ export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
     setNumber,
     setTwoDigit,
     setToHundred,
-    setPdfFile,
     handleBlur,
     getFieldError,
     remove,
@@ -30,9 +28,6 @@ export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
     optionDiscountName,
     optionCountName,
     optionLengthName,
-    optionFileName,
-    optionFilesName,
-    isFile,
     isCount,
     isLength,
     optionVisibilityName,
@@ -103,15 +98,6 @@ export function ProductOptionsTwo(props: ProductOptionsTwoProps) {
             />
           )}
         </FieldLayout>
-        {isFile && (
-          <MultiFilesBlock
-            handleChange={setPdfFile}
-            fileName={optionFileName}
-            filesName={`${fieldArrayName}.${index}.${optionFilesName}`}
-            values={value[optionFilesName]}
-            handleBlur={handleBlur}
-          />
-        )}
         <FieldCheckbox
           titleTid="Видимость опции"
           labelTid="Опция видна в списке"

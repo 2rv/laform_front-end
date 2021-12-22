@@ -24,7 +24,6 @@ export function useInterval(
   }, [count]);
 
   const startInterval = useCallback(() => {
-    console.log('start');
     setCount(initialCount);
   }, []);
 

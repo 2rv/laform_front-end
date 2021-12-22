@@ -40,12 +40,11 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
       <FieldArray name={CATEGORIES_TYPE.CATEGORIES}>
         {({ remove, push }) => {
           const handleAdd = (e: SyntheticEvent<HTMLInputElement>) => {
-            const value: number = Number(e.currentTarget.value);
-            const isCategoryExists: boolean = values[
-              CATEGORIES_TYPE.CATEGORIES
-            ].some((category: any) => {
-              return category.tid === categories[value].tid;
-            });
+            const value = Number(e.currentTarget.value);
+
+            const isCategoryExists: boolean = values.some(
+              (category) => category.tid === categories[value].tid,
+            );
 
             if (isCategoryExists) {
               setCategoryExists('ERROR.CATEGORY_ALREADY_EXISTS');
@@ -53,21 +52,21 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
             }
 
             if (value === 999999 || value === NaN) return;
+
             push(categories[value]);
+
             setCategoryExists('');
           };
           return (
             <FieldLayout type="double" adaptive>
-              {values[CATEGORIES_TYPE.CATEGORIES].map(
-                (value: any, index: number) => (
-                  <LineCase key={index}>
-                    <CategoryText tid={value.tid} />
-                    <IconButton onClick={() => remove(index)}>
-                      <RemoveIcon />
-                    </IconButton>
-                  </LineCase>
-                ),
-              )}
+              {values.map((value, index) => (
+                <LineCase key={index}>
+                  <CategoryText tid={value.tid} />
+                  <IconButton onClick={() => remove(index)}>
+                    <RemoveIcon />
+                  </IconButton>
+                </LineCase>
+              ))}
               <LineCase>
                 <FieldSelect
                   options={[
@@ -107,6 +106,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
     </SectionLayout>
   );
 }
+
 const CategoryText = styled(TextPrimary)`
   background-color: ${THEME_COLOR.GRAY};
   height: 46px;
@@ -133,7 +133,6 @@ const StyledPlusIcon = styled(PlusIcon)`
   width: 18;
   height: 18;
 `;
-
 const CategoryExistsText = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.DANGER};
 `;

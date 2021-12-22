@@ -32,20 +32,13 @@ export function ProductOptions(props: ProductOptionsProps) {
     fieldArrayName,
     optionTypeName,
     optionSizeName,
-    optionColorName,
+    optionColorName = '',
     optionCountName = '',
     optionLengthName = '',
     optionPriceName,
     optionDiscountName,
-    isFile = false,
     isCount = false,
     isLength = false,
-    isPattern = false,
-
-    optionFilesName = '',
-    optionFileName = '',
-    productFileName = '',
-    productFilesName = '',
     optionVisibilityName = '',
   } = props;
 
@@ -59,7 +52,6 @@ export function ProductOptions(props: ProductOptionsProps) {
     if (newType === 0) {
       setFieldValue(productPriceName, '');
       setFieldValue(productDiscountName, 0);
-      if (isFile) setFieldValue(productFilesName, []);
       if (isCount) setFieldValue(productCountName, 0);
       if (isLength) setFieldValue(productLengthName, '');
       setFieldValue(fieldArrayName, []);
@@ -92,7 +84,6 @@ export function ProductOptions(props: ProductOptionsProps) {
       });
       setFieldValue(productPriceName, undefined);
       setFieldValue(productDiscountName, undefined);
-      if (isFile) setFieldValue(productFilesName, undefined);
       setFieldValue(fieldArrayName, newOptions);
     }
 
@@ -113,16 +104,6 @@ export function ProductOptions(props: ProductOptionsProps) {
       setFieldValue(`${fieldArrayName}.${index}.${name}`, !checked);
     };
 
-  function setPdfFile(name: string) {
-    return (e: SyntheticEvent<HTMLInputElement>) => {
-      const file = e.currentTarget?.files?.[0];
-      if (!file || file.type.split('/')[1] !== 'pdf') {
-        alert('PATTERNS.CREATE_ELECTRONIC.FORM.NEED_PDF');
-        setFieldValue(name, undefined);
-      } else setFieldValue(name, file);
-    };
-  }
-
   return (
     <SectionLayout type="SMALL">
       <FieldLayout type="double" adaptive>
@@ -130,7 +111,7 @@ export function ProductOptions(props: ProductOptionsProps) {
           titleTid="Выберите тип параметров"
           name={optionTypeName}
           value={values[optionTypeName]}
-          options={isPattern ? optionPatternSelectType : optionSelectType}
+          options={optionSelectType}
           onChange={handleType}
           onBlur={handleBlur}
         />
@@ -181,7 +162,6 @@ export function ProductOptions(props: ProductOptionsProps) {
                     setNumber={setNumber}
                     setTwoDigit={setTwoDigit}
                     setToHundred={setToHundred}
-                    setPdfFile={setPdfFile}
                     handleBlur={handleBlur}
                     getFieldError={getFieldError}
                     remove={remove}
@@ -193,9 +173,6 @@ export function ProductOptions(props: ProductOptionsProps) {
                     optionDiscountName={optionDiscountName}
                     optionCountName={optionCountName}
                     optionLengthName={optionLengthName}
-                    optionFileName={optionFileName}
-                    optionFilesName={optionFilesName}
-                    isFile={isFile}
                     isCount={isCount}
                     isLength={isLength}
                     optionVisibilityName={optionVisibilityName}
@@ -215,7 +192,6 @@ export function ProductOptions(props: ProductOptionsProps) {
                     setNumber={setNumber}
                     setTwoDigit={setTwoDigit}
                     setToHundred={setToHundred}
-                    setPdfFile={setPdfFile}
                     handleBlur={handleBlur}
                     fieldTitle="Цвет"
                     fieldPlaceholder="Введите цвет"
@@ -225,8 +201,6 @@ export function ProductOptions(props: ProductOptionsProps) {
                     optionDiscountName={optionDiscountName}
                     optionCountName={optionCountName}
                     optionLengthName={optionLengthName}
-                    optionFileName={optionFileName}
-                    optionFilesName={optionFilesName}
                     isCount={isCount}
                     isLength={isLength}
                     optionVisibilityName={optionVisibilityName}
@@ -249,9 +223,6 @@ export function ProductOptions(props: ProductOptionsProps) {
                 productLengthName={productLengthName}
                 isCount={isCount}
                 isLength={isLength}
-                isFile={isFile}
-                productFileName={productFileName}
-                productFilesName={productFilesName}
               />
             )}
             <ButtonSecondary
@@ -265,11 +236,6 @@ export function ProductOptions(props: ProductOptionsProps) {
     </SectionLayout>
   );
 }
-const optionPatternSelectType = [
-  { id: 0, tid: 'Без параметров' },
-  { id: 2, tid: 'Только размер' },
-];
-
 const optionSelectType = [
   { id: 0, tid: 'Без параметров' },
   { id: 1, tid: 'Размер и цвет' },

@@ -2,13 +2,13 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { CardListBlock } from 'src/lib/element/card-list';
 import { CatalogListComponent, AdvantageInfoComponent } from './frames';
 import { BlockHelpLinks } from '../block-help-links';
-import { SliderContainer } from '../slider';
+import { SliderBlock } from '../slider';
 
 export function HomeComponent(props) {
   const { compilationPending, compilationBlock } = props;
   return (
     <SectionLayout type="MEDIUM">
-      <SliderContainer />
+      <SliderBlock />
       <CatalogListComponent />
       {compilationPending ? (
         <CardListBlock

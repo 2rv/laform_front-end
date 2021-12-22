@@ -24,8 +24,6 @@ export function sendCodeToEmailAction() {
       });
     } catch (err: any) {
       if (err.response) {
-        console.log(err.response.data.message);
-
         setState({
           type: CONFIRM_EMAIL_ACTION_TYPE.SEND_ERROR,
           error: err.response.data.message,

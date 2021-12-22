@@ -1,10 +1,8 @@
+import { OutputData } from '@editorjs/editorjs';
 import { USER_ROLE } from '../common/auth';
 
-export interface BasicReactEditorType {
-  blocks: [];
-  time: number;
-  version: string;
-}
+export type BasicReactEditorType = OutputData;
+
 export interface BasicCategoryType {
   id: string;
   categoryNameRu: string;
@@ -14,7 +12,7 @@ export interface BasicCategoryType {
 export interface BasicRecommendationProducsType {
   id: string;
   masterClassId: BasicMasterClassType;
-  postId: BasicArticleType;
+  postId: BasicPostType;
   patternProductId: BasicPatternType;
   sewingProductId: BasicSewingGoodType;
 }
@@ -22,10 +20,7 @@ export interface BasicRecommendationType {
   id: string;
   recommendationProducts: BasicRecommendationProducsType[];
 }
-export interface BasicFileType {
-  id: string;
-  fileUrl: string;
-}
+
 export interface BasicLikeType {
   id: string;
   userId: string;
@@ -45,6 +40,7 @@ export interface BasicOptionType {
   count: number;
   length: string;
   filesPdf: BasicFileType[];
+  optionVisibility: boolean;
 }
 export interface BasicAddressType {
   country: string;
@@ -65,11 +61,11 @@ export interface BasicCommentProps {
   id: string;
   text: string;
   masterClassId: BasicMasterClassType;
-  postId: BasicArticleType;
+  postId: BasicPostType;
   patternProductId: BasicPatternType;
   sewingProductId: BasicSewingGoodType;
 }
-export interface BasicArticleType {
+export interface BasicPostType {
   id: string;
   vendorCode: string;
   type: 4;
@@ -85,8 +81,9 @@ export interface BasicArticleType {
   modifierColor: string;
   articleRu: BasicReactEditorType;
   articleEn: BasicReactEditorType;
-  pinned: false | true;
-  deleted: false | true;
+  pinned: boolean;
+  deleted: boolean;
+  inEnglish: boolean;
 }
 export interface BasicMasterClassType {
   id: string;
@@ -109,8 +106,9 @@ export interface BasicMasterClassType {
   articleEn: BasicReactEditorType;
   price: string;
   discount: number;
-  pinned: false | true;
-  deleted: false | true;
+  pinned: boolean;
+  deleted: boolean;
+  inEnglish: boolean;
 }
 export interface BasicPatternType {
   id: string;
@@ -139,9 +137,10 @@ export interface BasicPatternType {
   price: string;
   discount: number;
   count: number;
-  isCount: false | true;
-  pinned: false | true;
-  deleted: false | true;
+  isCount: boolean;
+  pinned: boolean;
+  deleted: boolean;
+  inEnglish: boolean;
 }
 export interface BasicSewingGoodType {
   id: string;
@@ -159,17 +158,17 @@ export interface BasicSewingGoodType {
   price: string;
   discount: number;
   count: number;
-  isCount: false | true;
+  isCount: boolean;
   length: string;
-  isLength: false | true;
+  isLength: boolean;
   titleRu: string;
   titleEn: string;
   modifierRu: string;
   modifierEn: string;
-  pinned: false | true;
-  deleted: false | true;
+  pinned: boolean;
+  deleted: boolean;
+  inEnglish: boolean;
 }
-
 export interface BasicPurchaseType {
   id: string;
   orderNumber: string;
@@ -211,14 +210,24 @@ export interface BasicUserInfoType {
   login: string;
   role: USER_ROLE;
   email: string;
-  emailConfirmed: true | false;
-  notificationEmail: true | false;
+  emailConfirmed: boolean;
+  notificationEmail: boolean;
   purchase: BasicPurchaseType[];
   userSettingId: BasicUserSettingType;
   comment: BasicCommentProps[];
   like: BasicRecommendationProducsType[];
 }
-
+export type BasicSlideType = {
+  id: string;
+  headingTextRu: string;
+  buttonTextRu?: string;
+  buttonUrl?: string;
+  titleTextColor: string;
+  buttonColor?: string;
+  buttonTextColor?: string;
+  isHaveButton: boolean;
+  imageUrl: BasicFileType;
+};
 export enum PURCHASE_STATUS {
   CREATED = 0, //'Сформирован',
   AWAITING_PAYMENT = 1, //'Ожидает оплаты',
@@ -252,22 +261,12 @@ export const PURCHASE_STATUS_SELECT = [
   { id: 7, tid: 'Вовращен отправителю' },
   { id: 8, tid: 'Возвращен по гарантии' },
 ];
-
-export const SLIDER_COLORS = [
-  '#2F2A2C',
-  '#5F5B5D',
-  '#8F8D8E',
-  '#FFFFFF',
-  '#F0F0F0',
-  '#FF005A',
-  '#7C1C3E',
-];
-// const SLIDER_COLORS = [
-// 	{ id: 0, tid: 'Чёрный', color: '#2F2A2C' },
-// 	{ id: 1, tid: 'Серый', color: '#5F5B5D' },
-// 	{ id: 2, tid: 'Светло серый', color: '#8F8D8E' },
-// 	{ id: 3, tid: 'Белый', color: '#FFFFFF' },
-// 	{ id: 4, tid: 'Фоновый серый', color: '#F0F0F0' },
-// 	{ id: 5, tid: 'Розовый основной', color: '#FF005A' },
-// 	{ id: 6, tid: 'Тёмно розовый', color: '#7C1C3E' },
-//   ];
+export type BasicFileType = {
+  id: string;
+  fileUrl: string;
+};
+export type FileType = {
+  id?: string;
+  fileUrl: string;
+  file?: File;
+};

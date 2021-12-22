@@ -2,6 +2,7 @@ import { httpRequest } from 'src/main/http';
 import { convertPatternProducts } from 'src/lib/common/product-converters';
 import { PATTERNS_ACTION_TYPE } from './patterns.type';
 import { PATTERNS_API } from './patterns.constant';
+import { convertCategories } from 'src/lib/common/block-search';
 
 export function getCategoriesAction(currentLang) {
   return async (dispatch) => {
@@ -19,10 +20,7 @@ export function getCategoriesAction(currentLang) {
       });
       dispatch({
         type: PATTERNS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
-        data: response.data.map((category) => ({
-          id: category.id,
-          tid: category.categoryNameRu,
-        })),
+        data: convertCategories(response.data),
       });
     } catch (err) {
       if (err.response) {

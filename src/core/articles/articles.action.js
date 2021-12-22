@@ -2,6 +2,7 @@ import { httpRequest } from '../../main/http';
 import { ARTICLES_API } from './articles.constant';
 import { ARTICLES_ACTION_TYPE } from './articles.type';
 import { convertArticleProducts } from 'src/lib/common/product-converters';
+import { convertCategories } from 'src/lib/common/block-search';
 
 export function articlesUploadData(isAuth, query) {
   return async (dispatch) => {
@@ -46,13 +47,9 @@ export function fetchCategories(currentLang, type) {
         method: ARTICLES_API.CATEGORIES_UPLOAD_DATA.TYPE,
         url: ARTICLES_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang, type),
       });
-      const convertedCategories = response.data.map((category) => ({
-        id: category.id,
-        tid: category.categoryNameRu,
-      }));
       dispatch({
         type: ARTICLES_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
-        data: convertedCategories,
+        data: convertCategories(response.data),
       });
     } catch (err) {
       if (err.response) {

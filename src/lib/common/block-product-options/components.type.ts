@@ -7,31 +7,21 @@ export interface ProductOptionsProps {
   setFieldValue: Function;
   handleChange: ChangeEventHandler<HTMLInputElement>;
   handleBlur: FocusEventHandler<HTMLInputElement>;
-
   productPriceName: string;
   productDiscountName: string;
   productCountName?: string;
   productLengthName?: string;
-  isFile?: boolean;
-  isPattern?: boolean;
   isCount?: boolean;
   isLength?: boolean;
   initialOption: any;
-
   fieldArrayName: string;
   optionTypeName: string;
   optionSizeName: string;
-  optionColorName: string;
+  optionColorName?: string;
   optionPriceName: string;
   optionDiscountName: string;
   optionCountName?: string;
   optionLengthName?: string;
-
-  optionFileName?: string;
-  productFileName?: string;
-
-  optionFilesName?: string;
-  productFilesName?: string;
   optionVisibilityName?: string;
 }
 
@@ -62,8 +52,6 @@ export interface ProductOptionsOneProps {
 export interface ProductOptionsTwoProps {
   index: number;
   value: any;
-
-  isFile?: boolean;
   isFirst: boolean;
   isCount: boolean;
   isLength: boolean;
@@ -74,7 +62,6 @@ export interface ProductOptionsTwoProps {
   setNumber: Function;
   setTwoDigit: Function;
   setToHundred: Function;
-  setPdfFile: Function;
   fieldTitle: string;
   fieldPlaceholder: string;
   optionName: string;
@@ -83,8 +70,6 @@ export interface ProductOptionsTwoProps {
   optionDiscountName: string;
   optionCountName: string;
   optionLengthName: string;
-  optionFileName: string;
-  optionFilesName: string;
   optionVisibilityName: string;
   setVisibility: Function;
 }
@@ -119,7 +104,6 @@ export interface ProductOptionsNoneProps {
   values: any;
   errors: any;
   touched: any;
-  isFile: boolean;
   isLength: boolean;
   isCount: boolean;
   productPriceName: string;
@@ -129,7 +113,4 @@ export interface ProductOptionsNoneProps {
   handleChange: ChangeEventHandler<HTMLInputElement>;
   handleBlur: FocusEventHandler<HTMLInputElement>;
   setFieldValue: Function;
-
-  productFileName: string;
-  productFilesName: string;
 }

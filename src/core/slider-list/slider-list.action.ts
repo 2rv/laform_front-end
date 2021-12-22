@@ -1,12 +1,13 @@
-import { httpRequest } from '../../main/http';
+import { httpRequest } from 'src/main/http';
 import {
-  BasicSlideType,
   SliderListActionType,
   SliderListStateType,
   SLIDER_LIST_ACTION_TYPE,
   SlideType,
 } from './slider-list.type';
 import { Dispatch } from 'react';
+import { BasicSlideType } from 'src/lib/basic-types';
+import { AxiosResponse } from 'axios';
 
 export function getSlidersAction() {
   return async (dispatch: Dispatch<SliderListActionType>) => {
@@ -15,15 +16,17 @@ export function getSlidersAction() {
     });
 
     try {
-      const response = await httpRequest({
+      const response: AxiosResponse<BasicSlideType[]> = await httpRequest({
         method: 'GET',
         url: 'slider/get',
         params: { lang: 'ru' },
       });
-      const result: SlideType[] = response.data.map((item: BasicSlideType) => ({
+      const result: SlideType[] = response.data.map((item) => ({
         id: item.id,
         name: item.headingTextRu,
         image: item.imageUrl?.fileUrl,
+        buttonText: item.buttonTextRu,
+        buttonPath: item.buttonUrl,
       }));
       dispatch({
         type: SLIDER_LIST_ACTION_TYPE.SUCCESS,

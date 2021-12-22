@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import styled, { css } from 'styled-components';
-
 import { PopupPropsType } from './popup.type';
-
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 
 export function Popup(props: PopupPropsType) {
@@ -14,8 +12,9 @@ export function Popup(props: PopupPropsType) {
     mobileRight = false,
     isLeft = false,
     disableRelative = false,
+    disableBackground = false,
   } = props;
-  const [visible, setVisible]: [boolean, Function] = useState(false);
+  const [visible, setVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (e: MouseEvent) => {
@@ -35,6 +34,7 @@ export function Popup(props: PopupPropsType) {
         <PopupContent
           top={top}
           disableRelative={disableRelative}
+          disableBackground={disableBackground}
           middleLeft={middleLeft}
           mobileRight={mobileRight}
           isLeft={isLeft}
@@ -62,6 +62,7 @@ const PopupContent = styled.div<{
   top: number;
   middleLeft: boolean;
   mobileRight: boolean;
+  disableBackground: boolean;
 }>`
   position: absolute;
   z-index: 11;
@@ -94,10 +95,20 @@ const PopupContent = styled.div<{
       : css`
           width: max-content;
         `}
-  background: ${THEME_COLOR.WHITE};
-  box-shadow: ${THEME_COLOR.SHADOW.MODAL};
+  ${(p) => {
+    return p.disableBackground
+      ? css`
+          background: transparent;
+          box-shadow: none;
+          padding: 0;
+        `
+      : css`
+          background: ${THEME_COLOR.WHITE};
+          box-shadow: ${THEME_COLOR.SHADOW.MODAL};
+          padding: ${spacing(4)};
+        `;
+  }}
   border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
-  padding: ${spacing(4)};
 `;
 
 const PopupAction = styled.div`

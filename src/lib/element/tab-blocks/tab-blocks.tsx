@@ -6,15 +6,15 @@ import { SectionLayout } from '../layout';
 import { TabBlocksComponentProps } from './tab-blocks.type';
 
 export function TabBlocksComponent(props: TabBlocksComponentProps) {
-  const { children, tabItems } = props;
-  const [activeTab, setTab] = useState(0);
+  const { children, tabItems, otherUseState, disabled } = props;
+  const [activeTab, setTab] = otherUseState || useState(0);
   return (
     <SectionLayout>
       <Container>
         {tabItems.map((name, key) => (
           <Tab
             key={key}
-            disabled={activeTab === key}
+            disabled={disabled || activeTab === key}
             onClick={() => setTab(key)}
             tid={name}
             isActive={key === activeTab}

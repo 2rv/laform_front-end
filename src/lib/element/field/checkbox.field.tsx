@@ -9,22 +9,25 @@ export function FieldCheckbox(props: FieldCheckboxProps) {
     titleTid,
     labelTid,
     name,
-    checked = false,
-    onClick,
+    checked,
+    onChange,
     className,
+    onBlur,
+    disabled,
   } = props;
-
   return (
     <Container className={className}>
       {titleTid && <Title tid={titleTid} />}
-      <Content htmlFor={name} onClick={onClick}>
+      <Content>
         <Input
           type="checkbox"
-          onChange={() => null}
+          onChange={onChange}
           name={name}
           checked={checked}
+          onBlur={onBlur}
+          disabled={disabled}
         />
-        <CheckmarkContainer checked={checked}>
+        <CheckmarkContainer checked={!!checked}>
           <Checkmark />
         </CheckmarkContainer>
         <Title tid={labelTid} />

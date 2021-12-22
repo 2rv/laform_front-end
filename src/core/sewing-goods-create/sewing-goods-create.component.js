@@ -3,8 +3,8 @@ import { SelectImageBlock } from 'src/lib/common/block-select-image';
 import { ErrorAlert, InfoAlert, SuccessAlert } from 'src/lib/element/alert';
 import { Divider } from 'src/lib/element/divider';
 import { LoaderPrimary } from 'src/lib/element/loader';
-import { SectionLayout } from '../../lib/element/layout';
-import { TitlePrimary } from '../../lib/element/title';
+import { SectionLayout } from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
 import { FormComponent, DeleteProductComponent } from './frames';
 import { SEWING_GOODS_FIELD_NAME } from './sewing-goods-create.type';
 
