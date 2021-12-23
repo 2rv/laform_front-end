@@ -37,12 +37,12 @@ export type changeEmailStateType = {
   updateSuccess: boolean;
   updateError?: string;
 };
-
 export type changeEmailActionType = {
   type: CHANGE_EMAIL_ACTION_TYPE;
   error?: string;
   data?: string;
 };
+
 export type ChangeEmailComponentProps = {
   state: changeEmailStateType;
   onSubmit: (values: changeEmailValues) => void;

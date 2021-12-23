@@ -2,6 +2,7 @@ import { httpRequest } from '../../main/http';
 import { MASTER_CLASSES_API } from './master-classes.constant';
 import { MASTER_CLASSES_ACTION_TYPE } from './master-classes.type';
 import { convertMasterClassProducts } from '../../lib/common/product-converters';
+import { convertCategories } from 'src/lib/common/block-search';
 
 export function masterClassesUploadData(isAuth, query) {
   return async (dispatch, getState) => {
@@ -51,13 +52,9 @@ export function fetchCategories(currentLang, type) {
           type,
         ),
       });
-      const convertedCategories = response.data.map((category) => ({
-        id: category.id,
-        tid: category.categoryNameRu,
-      }));
       dispatch({
         type: MASTER_CLASSES_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
-        data: convertedCategories,
+        data: convertCategories(response.data),
       });
     } catch (err) {
       if (err.response) {

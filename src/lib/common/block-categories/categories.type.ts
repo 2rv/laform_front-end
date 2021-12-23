@@ -1,10 +1,10 @@
 export interface CategoriesContainerProps {
-  values: any;
-  type: number;
+  values: CategoryType[];
+  type: 0 | 1 | 2 | 3 | 4;
 }
 
 export interface CategoriesComponentProps {
-  values: any;
+  values: CategoryType[];
   categories: CategoryType[];
   uploadPending: boolean;
   uploadError: boolean;
@@ -32,11 +32,11 @@ export interface CategoriesModalProps {
   deleteErrorMessage: string;
 }
 
-export interface CategoryType {
+export type CategoryType = {
   id: number;
   basicId: string;
   tid: string;
-}
+};
 
 export const CATEGORIES_TYPE = {
   CATEGORIES: 'categories',

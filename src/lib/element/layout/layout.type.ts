@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ContentLayoutPropsType {
   horizontal?: 'center' | undefined;
   vertical?: 'center' | undefined;
@@ -18,7 +20,7 @@ export interface SectionLayoutPropsType {
     | 'TEXT'
     | 'TEXT_SMALL'
     | undefined;
-  children: any;
+  children: ReactNode;
   className?: string;
 }
 export interface FieldLayoutPropsType {

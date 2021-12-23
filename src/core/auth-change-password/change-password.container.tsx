@@ -62,7 +62,6 @@ export function ChangePasswordContainer() {
     [CHANGE_PASSWORD_FIELD_NAME.PASSWORD]: '',
     [CHANGE_PASSWORD_FIELD_NAME.PASSWORD_REPEAT]: '',
   };
-
   return (
     <ChangePasswordComponent
       initialValues={initialValues}

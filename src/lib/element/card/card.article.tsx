@@ -12,7 +12,7 @@ import {
   CardName,
   RemoveButton,
 } from './card.components';
-import { CREATE_ARTICLE_DYNAMIC_ROUTE_PATH } from 'src/core/article-create';
+import { POST_CREATE_ROUTE_PATH } from 'src/core/post-create';
 
 export function CardArticle(props: CardArticleType) {
   const {
@@ -35,12 +35,8 @@ export function CardArticle(props: CardArticleType) {
   return (
     <Container>
       <CardImage
-        path={
-          isCreateList
-            ? CREATE_ARTICLE_DYNAMIC_ROUTE_PATH
-            : ARTICLE_PAGE_ROUTE_PATH
-        }
-        pathConfig={{ dynamic: true, params: { id: id } }}
+        path={isCreateList ? POST_CREATE_ROUTE_PATH : ARTICLE_PAGE_ROUTE_PATH}
+        pathConfig={{ params: { id: id } }}
         image={image}
         modifier={modifier}
         modifierColor={modifierColor}

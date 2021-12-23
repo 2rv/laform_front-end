@@ -1,27 +1,32 @@
-import { useEffect, useState, SyntheticEvent } from 'react';
-import { SEARCH_FILTER_FIELD_NAME } from './search-filter.type';
+import { useEffect, useState, ChangeEvent } from 'react';
+import {
+  SearchBlockValues,
+  SEARCH_FILTER_FIELD_NAME,
+} from './search-filter.type';
 import { SearchFilterComponent } from './search-filter.component';
-import { SearchFilterContainerPropsType } from './search-filter.type';
+import { SearchFilterContainerProps } from './search-filter.type';
 
-export function SearchFilterContainer(props: SearchFilterContainerPropsType) {
+export function SearchFilterContainer(props: SearchFilterContainerProps) {
   const {
     findPlaceholderTid,
-    filterOptions,
+    filterOptions = [],
     categories = [],
     handleFilter,
     disabled = false,
   } = props;
 
-  const [values, setValues]: [any, Function] = useState({});
+  const [values, setValues] = useState<SearchBlockValues>({});
 
   useEffect(() => {
     let timeoutId = setTimeout(() => {
       if (Object.keys(values).length > 0) {
-        const where = values[SEARCH_FILTER_FIELD_NAME.FIND];
-        const filter = values[SEARCH_FILTER_FIELD_NAME.FILTER];
-        const category = values[SEARCH_FILTER_FIELD_NAME.CATEGORY];
-        const sort = filterOptions[filter]?.sort;
-        const by = filterOptions[filter]?.by;
+        const where = values[SEARCH_FILTER_FIELD_NAME.WHERE];
+        const categoryIndex = values[SEARCH_FILTER_FIELD_NAME.CATEGORY] || 0;
+        const sortIndex = values[SEARCH_FILTER_FIELD_NAME.SORT] || 0;
+
+        const by = filterOptions[sortIndex]?.by;
+        const sort = filterOptions[sortIndex]?.sort;
+        const category = categories[categoryIndex]?.tid;
         handleFilter({ where, sort, by, category });
       }
     }, 1000);
@@ -30,32 +35,32 @@ export function SearchFilterContainer(props: SearchFilterContainerPropsType) {
     };
   }, [values]);
 
-  function handleChange(name: string) {
-    return (event: SyntheticEvent<HTMLInputElement>) => {
-      const copy: any = { ...values };
-      // When we change the search and category filter, we reset their value, because they do not work together.
-      if (
-        [
-          SEARCH_FILTER_FIELD_NAME.FIND,
-          SEARCH_FILTER_FIELD_NAME.CATEGORY,
-        ].includes(name)
-      ) {
-        delete copy[SEARCH_FILTER_FIELD_NAME.FIND];
-        delete copy[SEARCH_FILTER_FIELD_NAME.CATEGORY];
-      }
-      if (event.currentTarget.value === FILTER_NAME_ALL) {
-        copy[name] = undefined;
+  function handleChange(e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) {
+    const name: string | SEARCH_FILTER_FIELD_NAME = e.target.name;
+    const value: string = e.target.value;
+
+    const copy = { ...values };
+    if (name === SEARCH_FILTER_FIELD_NAME.WHERE) {
+      copy[SEARCH_FILTER_FIELD_NAME.WHERE] = value;
+    }
+    if (name === SEARCH_FILTER_FIELD_NAME.CATEGORY) {
+      if (value === FILTER_NAME_ALL) {
+        copy[SEARCH_FILTER_FIELD_NAME.CATEGORY] = undefined;
       } else {
-        copy[name] = event.currentTarget.value;
+        copy[SEARCH_FILTER_FIELD_NAME.CATEGORY] = +value;
       }
-      setValues(copy);
-    };
+    }
+    if (name === SEARCH_FILTER_FIELD_NAME.SORT) {
+      copy[SEARCH_FILTER_FIELD_NAME.SORT] = +value;
+    }
+
+    setValues(copy);
   }
 
   return (
     <SearchFilterComponent
       findPlaceholderTid={findPlaceholderTid}
-      filterOptions={filterOptions}
+      sorting={filterOptions}
       categories={[{ id: 0, tid: FILTER_NAME_ALL }, ...categories]}
       values={values}
       handleChange={handleChange}

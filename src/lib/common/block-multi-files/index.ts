@@ -1,1 +1,0 @@
-export { MultiFilesBlock } from './component';

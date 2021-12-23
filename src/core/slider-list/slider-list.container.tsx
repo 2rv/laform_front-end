@@ -1,4 +1,6 @@
 import { useEffect, useReducer } from 'react';
+import { redirect } from 'src/main/navigation';
+import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
 import { getSlidersAction, slideRemoveAction } from './slider-list.action';
 import { SliderListComponent } from './slider-list.component';
 import {
@@ -63,7 +65,9 @@ export function SliderListContainer() {
     });
   };
 
-  const editSlide = (_: string) => {}; // redirect(SLIDER_EDIT_ROUTE_PATH, { dynamic: true, params: { id: id } })
+  const editSlide = (id: string) => {
+    redirect(SLIDER_EDIT_ROUTE_PATH, { dynamic: true, params: { id: id } });
+  };
 
   const removeSlide = (id: string) => {
     slideRemoveAction(id)(setState, state);

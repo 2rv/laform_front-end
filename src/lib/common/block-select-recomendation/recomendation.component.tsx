@@ -1,47 +1,77 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
-import { useState } from 'react';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
 import { ModalFull } from 'src/lib/element/modal';
+import { SearchBlock } from 'src/lib/common/block-search';
 import { BasicCardList } from 'src/lib/element/card-list';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
-import { recommendationComponentProps } from './recomendation.type';
-import { RecomendationList } from './list-recomendation';
 
-export function RecomendationComponent(props: recommendationComponentProps) {
-  const { isPending, listItems, handleChange, selectedItems } = props;
-  const [modal, setModal] = useState(false);
+import { RecommendationComponentProps } from './recomendation.type';
+import { RecommendationList } from './recomendation.list';
 
+export function RecommendationComponent(props: RecommendationComponentProps) {
+  const {
+    handleChange,
+    filterOptions,
+    onPagination,
+    onFilter,
+    typeHandler,
+    values,
+    state: { getPending, paginatePending, categories, products, total },
+  } = props;
+  const [open, setOpen] = useState(false);
   return (
     <SectionLayout type="SMALL">
       <Title tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE" />
-
       <FieldLayout type="double" adaptive>
         <ButtonSecondary
           tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.ADD_RECOMENDATIONS"
-          onClick={() => setModal(true)}
+          onClick={() => setOpen(true)}
         />
       </FieldLayout>
+      <RecommendationList values={values} handleChange={handleChange} />
 
-      <RecomendationList items={selectedItems} handleChange={handleChange} />
-
-      <ModalFull onOpen={modal}>
+      <ModalFull onOpen={open}>
         <Case>
           <Wrapper type="SMALL">
             <HeaderCase>
               <TitlePrimary tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.SELECT_RECOMENDATION" />
-              <ButtonIcon onClick={() => setModal(false)}>
+              <ButtonIcon onClick={() => setOpen(false)}>
                 <RemoveIcon />
               </ButtonIcon>
             </HeaderCase>
-            <BasicCardList
-              items={listItems}
-              isLoading={isPending}
-              onSelect={handleChange}
-              emptyText="Список пустой"
+            <TabBlocks
+              tabItems={['МК', 'ВЭ', 'ВП', 'ТДШ', 'БЛОГ']}
+              otherUseState={typeHandler}
+              children={[]}
             />
+            <SearchBlock
+              findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
+              filterOptions={filterOptions}
+              categories={categories}
+              handleFilter={onFilter}
+              disabled={getPending}
+            />
+            <InfiniteScroll
+              loader={<></>}
+              dataLength={products.length}
+              next={onPagination}
+              hasMore={products.length < total}
+            >
+              <BasicCardList
+                isLoading={getPending}
+                isPagination={paginatePending}
+                onSelect={handleChange}
+                items={products}
+                emptyText="ALL_PRODUCTS.CATEGORY_EMPTY"
+                isCreateList
+              />
+            </InfiniteScroll>
           </Wrapper>
         </Case>
       </ModalFull>
@@ -51,6 +81,7 @@ export function RecomendationComponent(props: recommendationComponentProps) {
 
 const Wrapper = styled(SectionLayout)`
   max-width: 1140px;
+  width: 100%;
 `;
 const ButtonIcon = styled(IconButton)`
   padding: 0;

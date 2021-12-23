@@ -13,7 +13,7 @@ import {
   RemoveButton,
 } from './card.components';
 import { CartModalButton } from '../../common/cart-modal-button';
-import { CREATE_PATTERN_ROUTE_PATH } from 'src/core/pattern-create';
+import { PATTERN_CREATE_ROUTE_PATH } from 'src/core/pattern-create';
 
 export function CardPattern(props: CardPatternType) {
   const {
@@ -41,7 +41,7 @@ export function CardPattern(props: CardPatternType) {
     <Container>
       <CardImage
         path={
-          isCreateList ? CREATE_PATTERN_ROUTE_PATH : PATTERNS_PRODUCT_ROUTE_PATH
+          isCreateList ? PATTERN_CREATE_ROUTE_PATH : PATTERNS_PRODUCT_ROUTE_PATH
         }
         pathConfig={{ params: { id: id } }}
         image={image}

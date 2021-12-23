@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import dynamic from 'next/dynamic';
 import { Props } from 'react-editor-js';
-import { API, BlockAPI, OutputData } from '@editorjs/editorjs';
+import { API, BlockAPI, BlockToolData, OutputData } from '@editorjs/editorjs';
 import { THEME_COLOR, THEME_SIZE } from '../../theme';
 import { SectionLayout } from '../../element/layout';
 import { TitlePrimary } from '../../element/title';
@@ -15,7 +15,11 @@ interface ReactEditorProps extends Props {
   titleTid?: string;
   error?: string;
   handleChange: (data?: BlockAPI | OutputData) => void;
-  enableIsEdit: boolean;
+  enableIsEdit?: boolean;
+  onCompareBlocks?: (
+    newBlocks: BlockToolData | undefined,
+    oldBlocks: BlockToolData | undefined,
+  ) => boolean;
 }
 export function ReactEditorComponent(props: ReactEditorProps) {
   const {

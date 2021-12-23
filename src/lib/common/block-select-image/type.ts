@@ -1,6 +1,6 @@
 export interface SelectImageProps {
   titleTid: string;
-  maxImages: number;
+  maxImages?: number;
   values: any;
   errors: any;
   setFieldValue: Function;

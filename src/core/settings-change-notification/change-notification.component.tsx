@@ -20,7 +20,7 @@ export function ChangeNotificationComponent(
         titleTid="SETTINGS.CHANGE_NOTIFICATION.NEWSLETTER.TITLE"
         labelTid="SETTINGS.CHANGE_NOTIFICATION.NEWSLETTER.LABEL"
         checked={checked}
-        onClick={onChange}
+        onChange={onChange}
         disabled={pending}
       />
       {success && <SuccessAlert tid="SETTINGS.CHANGE_NOTIFICATION.SUCCESS" />}

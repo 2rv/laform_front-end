@@ -1,6 +1,6 @@
 import { FormikHandlers, FormikHelpers, FormikState } from 'formik';
 import {
-  BasicArticleType,
+  BasicPostType,
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
@@ -35,7 +35,7 @@ export interface CompilationsPerformProps {
     compilationProducts: BasicRecommendationProducsType[];
   }[];
   patternRes: BasicPatternType[];
-  articleRes: BasicArticleType[];
+  articleRes: BasicPostType[];
   sewingRes: BasicSewingGoodType[];
   masterRes: BasicMasterClassType[];
 }

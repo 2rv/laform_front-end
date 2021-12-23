@@ -14,7 +14,6 @@ export function FieldSelect(props: FieldSelectProps) {
     onChange,
     onBlur,
     disabled,
-    textValue,
     defaultTid,
   } = props;
 
@@ -34,8 +33,8 @@ export function FieldSelect(props: FieldSelectProps) {
               {defaultTid}
             </option>
           )}
-          {options.map(({ id, tid, tvalue, hidden }) => (
-            <option key={id} value={textValue ? tid : id} hidden={hidden}>
+          {options.map(({ id, tid, tvalue }) => (
+            <option key={id} value={id}>
               {text(tid, tvalue)}
             </option>
           ))}

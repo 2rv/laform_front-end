@@ -76,8 +76,8 @@ export interface basketStateType {
   optionId: string;
   count: number;
   length: number;
-  isCount: false | true;
-  isLength: false | true;
+  isCount: boolean;
+  isLength: boolean;
   masterClassId: BasicMasterClassType;
   patternProductId: BasicPatternType;
   sewingProductId: BasicSewingGoodType;

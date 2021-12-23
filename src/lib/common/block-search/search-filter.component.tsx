@@ -3,14 +3,14 @@ import { spacing } from 'src/lib/theme';
 import { FieldSelect, BasicField } from 'src/lib/element/field';
 import { FieldLayout } from 'src/lib/element/layout';
 import {
-  SearchFilterComponentPropsType,
+  SearchFilterComponentProps,
   SEARCH_FILTER_FIELD_NAME,
 } from './search-filter.type';
 
-export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
+export function SearchFilterComponent(props: SearchFilterComponentProps) {
   const {
     findPlaceholderTid,
-    filterOptions,
+    sorting,
     categories,
     values,
     handleChange,
@@ -21,23 +21,25 @@ export function SearchFilterComponent(props: SearchFilterComponentPropsType) {
     <Container>
       <FieldLayout type="double" adaptive>
         <Select
-          options={filterOptions}
-          value={values[SEARCH_FILTER_FIELD_NAME.FILTER] || 0}
-          onChange={handleChange(SEARCH_FILTER_FIELD_NAME.FILTER)}
+          options={sorting}
+          value={values[SEARCH_FILTER_FIELD_NAME.SORT]}
+          name={SEARCH_FILTER_FIELD_NAME.SORT}
+          onChange={handleChange}
           disabled={disabled}
         />
         <Select
           options={categories}
-          value={values[SEARCH_FILTER_FIELD_NAME.CATEGORY] || 0}
-          onChange={handleChange(SEARCH_FILTER_FIELD_NAME.CATEGORY)}
+          value={values[SEARCH_FILTER_FIELD_NAME.CATEGORY]}
+          name={SEARCH_FILTER_FIELD_NAME.CATEGORY}
+          onChange={handleChange}
           disabled={disabled}
-          textValue
         />
       </FieldLayout>
       <Field
         placeholderTid={findPlaceholderTid}
-        value={values[SEARCH_FILTER_FIELD_NAME.FIND] || ''}
-        onChange={handleChange(SEARCH_FILTER_FIELD_NAME.FIND)}
+        name={SEARCH_FILTER_FIELD_NAME.WHERE}
+        value={values[SEARCH_FILTER_FIELD_NAME.WHERE]}
+        onChange={handleChange}
         disabled={disabled}
       />
     </Container>
@@ -52,14 +54,12 @@ const Container = styled.div`
     flex-flow: column;
   }
 `;
-
 const Field = styled(BasicField)`
   width: 250px;
   @media screen and (max-width: 720px) {
     width: 100%;
   }
 `;
-
 const Select = styled(FieldSelect)`
   width: 200px;
   @media screen and (max-width: 720px) {
