@@ -1,3 +1,4 @@
+import { BasicFileType } from 'src/lib/basic-types';
 import { CardMultiType } from 'src/lib/element/card';
 import {
   SortOptionType,
@@ -5,40 +6,58 @@ import {
   SearchBlockHandleFilterType,
 } from '../block-search';
 
-export interface RecomendationContainerProps {
-  values: RecommendationType;
-  name: string;
-  setFieldValue: (name: string, value: RecommendationType) => void;
-}
-
 export type RecommendationType = {
   id?: string;
   recommendationProducts: RecommendationProducType[];
 };
 export type RecommendationProducType = {
   id?: string;
-  type: 0 | 1 | 2 | 3 | 4;
-  masterClassId?: { id: string };
-  postId?: { id: string };
-  patternProductId?: { id: string };
-  sewingProductId?: { id: string };
+  masterClassId?: {
+    id: string;
+    images: BasicFileType[];
+    titleRu: string;
+    type: 0;
+  };
+  patternProductId?: {
+    id: string;
+    images: BasicFileType[];
+    titleRu: string;
+    type: 1 | 2;
+  };
+  sewingProductId?: {
+    id: string;
+    images: BasicFileType[];
+    titleRu: string;
+    type: 3;
+  };
+  postId?: { id: string; image: BasicFileType; titleRu: string; type: 4 };
 };
 
-export interface RecommendationComponentProps extends RecommendationListProps {
+export interface RecomendationContainerProps {
+  values: RecommendationType;
+  name: string;
+  setFieldValue: (name: string, value: RecommendationType) => void;
+}
+export interface RecommendationComponentProps {
+  values: RecommendationType;
   state: RecommendationStateType;
   onPagination: () => void;
   filterOptions: SortOptionType[];
   onFilter: SearchBlockHandleFilterType;
   typeHandler: [number, (val: number) => void];
+  handleChange: (
+    id: string,
+    type: 0 | 1 | 2 | 3 | 4,
+    status: boolean,
+  ) => boolean;
 }
-
 export interface RecommendationListProps {
   handleChange: (
     id: string,
     type: 0 | 1 | 2 | 3 | 4,
     status: boolean,
   ) => boolean;
-  selectedProducts: CardMultiType[];
+  values: RecommendationType;
 }
 
 export type prodResType = {
@@ -53,7 +72,6 @@ export type QueryType = {
   page?: number;
   type: number;
 };
-
 export enum RECOMENDATION_ACTION_TYPE {
   RESET = 'RESET',
 
@@ -65,7 +83,6 @@ export enum RECOMENDATION_ACTION_TYPE {
   PAGINATE_SUCCESS = 'PAGINATE_SUCCESS',
   PAGINATE_ERROR = 'PAGINATE_ERROR',
 }
-
 export type RecommendationStateType = {
   getPending: boolean;
   getError?: string;
@@ -78,7 +95,6 @@ export type RecommendationStateType = {
   total: number;
   page: number;
 };
-
 export type RecommendationActionType = {
   type: RECOMENDATION_ACTION_TYPE;
   error?: string;

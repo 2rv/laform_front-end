@@ -79,8 +79,6 @@ export function patternGetByIdAction(id: string) {
         data: convertForChange(response.data),
       });
     } catch (err: any) {
-      console.log(err);
-
       if (err.response) {
         dispatch({
           type: PATTERN_CREATE_ACTION_TYPE.GET_ERROR,
@@ -137,8 +135,6 @@ export function patternCreateAction(values: PatternValues) {
 
       const patternData = convertForSave(images, files, values);
 
-      console.log(patternData);
-
       await httpRequest({
         url: '/pattern-product/create',
         method: 'POST',
@@ -177,8 +173,6 @@ export function patternUpdateAction(id: string, values: PatternValues) {
         : [await uploadFilesAction(values[PATTERN_CREATE_FIELD_NAME.FILES])];
 
       const patternData = convertForSave(images, files, values);
-
-      console.log(id, patternData);
 
       await httpRequest({
         url: '/pattern-product/update/' + id,

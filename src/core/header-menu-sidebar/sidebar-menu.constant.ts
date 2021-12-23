@@ -11,7 +11,7 @@ import { PATTERN_CREATE_ROUTE_PATH } from '../pattern-create';
 import { PROMOCODES_ROUTE_PATH } from '../promocodes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { SEWING_GOODS_ROUTE_PATH } from '../sewing-goods';
-import { CREATE_SEWING_GOODS_ROUTE_PATH } from '../sewing-goods-create';
+import { SEWING_GOODS_CREATE_ROUTE_PATH } from '../sewing-goods-create';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { STATISTICS_ROUTE_PATH } from '../statistics';
@@ -54,7 +54,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
           title: 'HEADER.ADMIN_MENU.PATTERN_CREATING',
         },
         {
-          pathname: CREATE_SEWING_GOODS_ROUTE_PATH,
+          pathname: SEWING_GOODS_CREATE_ROUTE_PATH(),
           title: 'HEADER.ADMIN_MENU.SEWING_GOODS_CREATING',
         },
         {

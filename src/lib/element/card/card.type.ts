@@ -138,8 +138,8 @@ export interface CardMasterClassType {
   isCreateList?: boolean;
 }
 export type CardMultiType =
-  | CardArticleType
   | CardSewingGoodType
   | CardPatternType
   | CardMasterClassType
+  | CardArticleType
   | undefined;

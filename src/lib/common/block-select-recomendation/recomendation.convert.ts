@@ -13,11 +13,6 @@ export function convertRecommendations(
         patternProductId: item.patternProductId,
         postId: item.postId,
         sewingProductId: item.sewingProductId,
-        type:
-          item.masterClassId?.type ||
-          item.patternProductId?.type ||
-          item.postId?.type ||
-          item.sewingProductId?.type,
       };
     }),
   };

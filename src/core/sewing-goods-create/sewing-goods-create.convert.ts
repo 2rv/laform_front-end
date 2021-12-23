@@ -1,134 +1,127 @@
 import {
   BasicFileType,
   BasicOptionType,
-  BasicPatternType,
+  BasicSewingGoodType,
 } from 'src/lib/basic-types';
 import {
-  PatternProductDto,
-  PatternProductsOptionDto,
+  SewingProductDto,
+  SewingProductOptionDto,
 } from 'src/lib/basic-types/create';
 import { convertRecommendations } from 'src/lib/common/block-select-recomendation';
 import {
-  PatternOptionValues,
-  PatternValues,
-  PATTERN_CREATE_FIELD_NAME,
-} from './pattern-create.type';
+  SewingGoodsOptionValues,
+  SewingGoodsValues,
+  SEWING_GOODS_CREATE_FIELD_NAME,
+} from './sewing-goods-create.type';
 
 export function convertForSave(
   images: BasicFileType[],
-  files: BasicFileType[][],
-  values: PatternValues,
-): PatternProductDto {
-  const categories = values[PATTERN_CREATE_FIELD_NAME.CATEGORIES].map(
+  values: SewingGoodsValues,
+): SewingProductDto {
+  const categories = values[SEWING_GOODS_CREATE_FIELD_NAME.CATEGORIES].map(
     (item) => ({
       id: item.basicId,
     }),
   );
 
   return {
-    type: values.type ? 2 : 1,
     vendorCode: values.vendorCode,
 
     titleRu: values.titleRu,
     modifierRu: values.modifierRu,
 
     descriptionRu: values.descriptionRu,
-    descriptionOld: values.descriptionOld,
-
-    materialRu: values.materialRu || null,
-    materialOld: values.materialOld,
-
     images: images,
     recommendation: values.recommendation,
     categories: categories,
 
-    complexity: values.complexity,
-
-    price: values.optionType ? null : +(+values.price || 0).toFixed(2),
-    discount: values.optionType ? null : +(values.discount || 0),
-    count: values.optionType ? null : +(values.count || 0),
+    price: values.optionType === 0 ? +(+(values.price || 0)).toFixed(2) : null,
+    discount: values.optionType === 0 ? +values.discount : null,
+    count:
+      values.isCount && values.optionType === 0
+        ? Math.floor(+(values.count || 0))
+        : null,
+    length:
+      values.isLength && values.optionType === 0
+        ? +(+(values.length || 0)).toFixed(2)
+        : null,
 
     isCount: values.isCount,
-    optionType: values.optionType ? 2 : 0,
+    isLength: values.isLength,
+    optionType: values.optionType,
     deleted: !values.isPublic,
     inEnglish: values.inEnglish,
-
-    filesPdf: values.optionType ? [] : files[0],
 
     options: optionsForSave(
       values.options,
       values.isCount,
-      files,
+      values.isLength,
       values.optionType,
     ),
   };
 }
 
 function optionsForSave(
-  options: PatternOptionValues[] = [],
+  options: SewingGoodsOptionValues[],
   isCount: boolean,
-  files: BasicFileType[][],
-  isHaveOptions: boolean,
-): PatternProductsOptionDto[] {
-  if (!isHaveOptions) return [];
-  return options.map((item, index) => ({
-    size: item.size || '',
-    price: +(item.price || 0).toFixed(2),
-    discount: +(item.discount || 0).toFixed(0),
-    count: isCount ? +(item.count || 0) : null,
-    filesPdf: files[index],
+  isLength: boolean,
+  type: 0 | 1 | 2 | 3,
+): SewingProductOptionDto[] {
+  if (type === 0) return [];
+  return options.map((item) => ({
+    size: type === 1 || type === 2 ? item.size : null,
+    colorRu: type === 1 || type === 3 ? item.colorRu : null,
+    price: +(+(item.price || 0)).toFixed(2),
+    discount: +(item.discount || 0),
+    count: isCount ? Math.floor(+(item.count || 0)) : null,
+    length: isLength ? +(+(item.length || 0)).toFixed(2) : null,
     optionVisibility: item.optionVisibility,
   }));
 }
 
-export function convertForChange(data: BasicPatternType): PatternValues {
+export function convertForChange(data: BasicSewingGoodType): SewingGoodsValues {
   const categories = data.categories.map((i, index) => ({
     id: index,
     basicId: i.id,
     tid: i.categoryNameRu,
   }));
+
   return {
-    type: data.type === 2,
     vendorCode: data.vendorCode,
 
     titleRu: data.titleRu,
     modifierRu: data.modifierRu,
 
-    descriptionOld: data.descriptionOld,
     descriptionRu: data.descriptionRu || '',
-
-    materialRu: data.materialRu || undefined,
-    materialOld: data.materialOld,
 
     images: data.images,
     recommendation: convertRecommendations(data.recommendation),
     categories: categories,
 
-    complexity: data.complexity,
-
     price: +data.price,
     discount: data.discount,
     count: data.count,
+    length: +data.length,
 
     isCount: data.isCount,
-    optionType: data.optionType === 2,
+    isLength: data.isLength,
+    optionType: data.optionType,
     isPublic: !data.deleted,
     inEnglish: !!data.inEnglish,
 
     options: optionsForChange(data?.options),
-    filesPdf: data.filesPdf,
   };
 }
-
 function optionsForChange(
   options: BasicOptionType[] = [],
-): PatternOptionValues[] {
+): SewingGoodsOptionValues[] {
   return options.map((item) => ({
     size: item.size,
+    colorRu: item.colorRu,
     price: +item.price,
     discount: item.discount,
     count: item.count,
-    filesPdf: item.filesPdf,
+    length: +item.length,
     optionVisibility: item.optionVisibility,
   }));
 }

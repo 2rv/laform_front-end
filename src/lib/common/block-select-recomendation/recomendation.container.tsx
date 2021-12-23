@@ -9,6 +9,7 @@ import {
   RecomendationContainerProps,
   RECOMENDATION_ACTION_TYPE,
   RecommendationActionType,
+  RecommendationProducType,
   RecommendationStateType,
 } from './recomendation.type';
 
@@ -109,26 +110,79 @@ export function RecomendationContainer(props: RecomendationContainerProps) {
     type: 0 | 1 | 2 | 3 | 4,
     status: boolean,
   ) => {
-    if (values.recommendationProducts.length >= 3 && status) {
-      alert('Максимум 3 рекомендации');
-      return false;
-    }
     if (status) {
+      if (values.recommendationProducts.length >= 3 && status) {
+        alert('Максимум 3 рекомендации');
+        return false;
+      }
+      const isExist = values.recommendationProducts.find((item) => {
+        if (type === 0) return item.masterClassId?.id === id;
+        if (type === 1) return item.patternProductId?.id === id;
+        if (type === 2) return item.patternProductId?.id === id;
+        if (type === 3) return item.sewingProductId?.id === id;
+        if (type === 4) return item.postId?.id === id;
+      });
+      if (isExist) return true;
+      const product = state.products.find((item) => {
+        if (item?.type === 0) return item?.id === id;
+        if (item?.type === 1) return item?.id === id;
+        if (item?.type === 2) return item?.id === id;
+        if (item?.type === 3) return item?.id === id;
+        if (item?.type === 4) return item?.id === id;
+      });
+      if (!product) return false;
+      const recommend: RecommendationProducType = {};
       if (type === 0) {
-        values.recommendationProducts.push({ type, masterClassId: { id } });
+        recommend.masterClassId = {
+          id: product.id,
+          images: [
+            {
+              id: '',
+              fileUrl: product.image,
+            },
+          ],
+          titleRu: product.name || '',
+          type: type,
+        };
       }
-      if (type === 1) {
-        values.recommendationProducts.push({ type, patternProductId: { id } });
-      }
-      if (type === 2) {
-        values.recommendationProducts.push({ type, patternProductId: { id } });
+      if (type === 1 || type === 2) {
+        recommend.patternProductId = {
+          id: product.id,
+          images: [
+            {
+              id: '',
+              fileUrl: product.image,
+            },
+          ],
+          titleRu: product.name || '',
+          type: type,
+        };
       }
       if (type === 3) {
-        values.recommendationProducts.push({ type, patternProductId: { id } });
+        recommend.sewingProductId = {
+          id: product.id,
+          images: [
+            {
+              id: '',
+              fileUrl: product.image,
+            },
+          ],
+          titleRu: product.name || '',
+          type: type,
+        };
       }
       if (type === 4) {
-        values.recommendationProducts.push({ type, sewingProductId: { id } });
+        recommend.postId = {
+          id: product.id,
+          image: {
+            id: '',
+            fileUrl: product.image,
+          },
+          titleRu: product.name || '',
+          type: type,
+        };
       }
+      values.recommendationProducts.push(recommend);
       setFieldValue(name, values);
     } else {
       const result = values.recommendationProducts.filter((item) => {
@@ -136,45 +190,18 @@ export function RecomendationContainer(props: RecomendationContainerProps) {
         if (item.patternProductId) return item.patternProductId.id !== id;
         if (item.sewingProductId) return item.sewingProductId.id !== id;
         if (item.postId) return item.postId.id !== id;
+        return true;
       });
       values.recommendationProducts = result;
       setFieldValue(name, values);
     }
     return true;
   };
-  const selectedProducts = state.products.filter((item) => {
-    if (!item) return false;
-    if (item.type === 0) {
-      return !!values.recommendationProducts.find(
-        (i: any) => i.masterClassId?.id === item.id,
-      );
-    }
-    if (item.type === 1) {
-      return !!values.recommendationProducts.find(
-        (i: any) => i.patternProductId?.id === item.id,
-      );
-    }
-    if (item.type === 2) {
-      return !!values.recommendationProducts.find(
-        (i: any) => i.patternProductId?.id === item.id,
-      );
-    }
-    if (item.type === 3) {
-      return !!values.recommendationProducts.find(
-        (i: any) => i.sewingProductId?.id === item.id,
-      );
-    }
-    if (item.type === 4) {
-      return !!values.recommendationProducts.find(
-        (i: any) => i.postId?.id === item.id,
-      );
-    }
-  });
 
   return (
     <RecommendationComponent
       state={state}
-      selectedProducts={selectedProducts}
+      values={values}
       handleChange={handleChange}
       onFilter={onFilter}
       onPagination={onPagination}

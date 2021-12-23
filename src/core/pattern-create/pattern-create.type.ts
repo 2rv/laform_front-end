@@ -9,11 +9,6 @@ import { BasicReactEditorType, FileType } from 'src/lib/basic-types';
 import { RecommendationType } from 'src/lib/common/block-select-recomendation';
 import { CategoryType } from 'src/lib/common/block-categories/categories.type';
 
-type FormikType = FormikHandlers &
-  FormikHelpers<PatternValues> &
-  FormikState<PatternValues> &
-  FormikErrors<PatternValues>;
-
 export enum PATTERN_CREATE_FIELD_NAME {
   TYPE = 'type',
   VENDOR_CODE = 'vendorCode',
@@ -54,8 +49,6 @@ export enum PATTERN_CREATE_OPTIONS_FIELD_NAME {
   OPTION_VISIBILITY = 'optionVisibility',
   OPTION_FILES = 'filesPdf',
 }
-//   FILE = 'productFilePdf',
-//   OPTION_FILE = 'optionFilePdf',
 export type PatternOptionValues = {
   [PATTERN_CREATE_OPTIONS_FIELD_NAME.OPTION_SIZE]?: string;
   [PATTERN_CREATE_OPTIONS_FIELD_NAME.OPTION_PRICE]?: number;
@@ -94,7 +87,6 @@ export type PatternValues = {
 
   [PATTERN_CREATE_FIELD_NAME.OPTIONS]: PatternOptionValues[];
 };
-
 export enum PATTERN_CREATE_ACTION_TYPE {
   CREATE_PENDING = 'CREATE_PENDING',
   CREATE_SUCCESS = 'CREATE_SUCCESS',
@@ -112,7 +104,6 @@ export enum PATTERN_CREATE_ACTION_TYPE {
   REMOVE_SUCCESS = 'REMOVE_SUCCESS',
   REMOVE_ERROR = 'REMOVE_ERROR',
 }
-
 export type PatternCreateStateType = {
   createPending: boolean;
   createSuccess: boolean;
@@ -141,7 +132,10 @@ export interface PatternCreateComponentProps
   onRemove: () => void;
   state: PatternCreateStateType;
 }
-
+type FormikType = FormikHandlers &
+  FormikHelpers<PatternValues> &
+  FormikState<PatternValues> &
+  FormikErrors<PatternValues>;
 export type PatternCreateFormProps = {
   formik: FormikType;
   isEdit: boolean;
@@ -149,9 +143,6 @@ export type PatternCreateFormProps = {
   onRemove: () => void;
 };
 
-export type MultiFilesProps = {
-  formik: FormikType;
-};
 export type PatternCreateOptionsProps = {
   formik: FormikType;
 };

@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
 import { ModalFull } from 'src/lib/element/modal';
+import { SearchBlock } from 'src/lib/common/block-search';
 import { BasicCardList } from 'src/lib/element/card-list';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 
 import { RecommendationComponentProps } from './recomendation.type';
 import { RecommendationList } from './recomendation.list';
-import { SearchBlock } from '../block-search';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { TabBlocks } from 'src/lib/element/tab-blocks';
 
 export function RecommendationComponent(props: RecommendationComponentProps) {
   const {
@@ -20,8 +20,8 @@ export function RecommendationComponent(props: RecommendationComponentProps) {
     filterOptions,
     onPagination,
     onFilter,
-    selectedProducts,
     typeHandler,
+    values,
     state: { getPending, paginatePending, categories, products, total },
   } = props;
   const [open, setOpen] = useState(false);
@@ -34,10 +34,7 @@ export function RecommendationComponent(props: RecommendationComponentProps) {
           onClick={() => setOpen(true)}
         />
       </FieldLayout>
-      <RecommendationList
-        selectedProducts={selectedProducts}
-        handleChange={handleChange}
-      />
+      <RecommendationList values={values} handleChange={handleChange} />
 
       <ModalFull onOpen={open}>
         <Case>

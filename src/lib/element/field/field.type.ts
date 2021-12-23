@@ -10,6 +10,7 @@ export interface FieldCheckboxProps
   extends InputHTMLAttributes<HTMLInputElement> {
   titleTid: string;
   labelTid: string;
+  error?: string;
 }
 export type FieldSelectOptionType = {
   id: number;

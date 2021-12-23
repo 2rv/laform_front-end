@@ -170,7 +170,7 @@ export function PatternCreateContainer() {
 
         [PATTERN_CREATE_FIELD_NAME.PRICE]: 0,
         [PATTERN_CREATE_FIELD_NAME.DISCOUNT]: 0,
-        [PATTERN_CREATE_FIELD_NAME.COUNT]: undefined,
+        [PATTERN_CREATE_FIELD_NAME.COUNT]: 0,
 
         [PATTERN_CREATE_FIELD_NAME.OPTION_TYPE]: false, // true === 2 / false === 0
         [PATTERN_CREATE_FIELD_NAME.IS_COUNT]: false,

@@ -3,6 +3,7 @@ import { ReactComponent as CheckmarkIcon } from 'src/asset/svg/check-mark.svg';
 import { spacing, THEME_COLOR, THEME_SIZE, THEME_VALUE } from '../../theme';
 import { TextSecondary } from '../text';
 import { FieldCheckboxProps } from './field.type';
+import { ErrorField } from '../error';
 
 export function FieldCheckbox(props: FieldCheckboxProps) {
   const {
@@ -14,6 +15,7 @@ export function FieldCheckbox(props: FieldCheckboxProps) {
     className,
     onBlur,
     disabled,
+    error,
   } = props;
   return (
     <Container className={className}>
@@ -32,6 +34,7 @@ export function FieldCheckbox(props: FieldCheckboxProps) {
         </CheckmarkContainer>
         <Title tid={labelTid} />
       </Content>
+      {error && <ErrorField errorTid={error} />}
     </Container>
   );
 }

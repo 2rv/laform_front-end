@@ -96,3 +96,37 @@ export type PatternProductDto = {
   isCount: boolean;
   inEnglish: boolean;
 };
+
+export type SewingProductOptionDto = {
+  size: string | undefined | null;
+  colorRu: string | undefined | null;
+  price: number | undefined | null;
+  discount: number | undefined | null;
+  count: number | undefined | null;
+  length: number | undefined | null;
+  optionVisibility: boolean;
+};
+
+export type SewingProductDto = {
+  vendorCode?: string;
+
+  titleRu: string;
+  descriptionRu: string;
+  modifierRu: string;
+
+  images: BasicFileType[];
+  categories?: CategoryDto[];
+  recommendation?: BasicRecommendationType;
+
+  price: number | null;
+  count: number | null | undefined;
+  length: number | null | undefined;
+  discount: number | null;
+  options: SewingProductOptionDto[];
+
+  optionType: 0 | 1 | 2 | 3;
+  deleted: boolean;
+  isCount: boolean;
+  isLength: boolean;
+  inEnglish: boolean;
+};

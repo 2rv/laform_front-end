@@ -1,31 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
-import { TextSecondary } from '../../element/text';
-import { ButtonBasic } from '../../element/button';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
-import { Divider } from '../../element/divider';
-import { SectionLayout } from '../../element/layout';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TextSecondary } from 'src/lib/element/text';
+import { ButtonBasic } from 'src/lib/element/button';
+import { Divider } from 'src/lib/element/divider';
+import { SectionLayout } from 'src/lib/element/layout';
 import { RecommendationListProps } from './recomendation.type';
 
 export function RecommendationList(props: RecommendationListProps) {
-  const { selectedProducts, handleChange } = props;
+  const { handleChange, values } = props;
 
   return (
     <SectionLayout type="SMALL">
-      {selectedProducts.map((item) => {
-        if (typeof item === 'undefined') return;
+      {values.recommendationProducts.map((item) => {
+        const product =
+          item.masterClassId ||
+          item.patternProductId ||
+          item.sewingProductId ||
+          item.postId;
+        if (typeof item === 'undefined') return null;
+
+        const srcImage = (
+          item.masterClassId?.images[0] ||
+          item.patternProductId?.images[0] ||
+          item.sewingProductId?.images[0] ||
+          item.postId?.image
+        )?.fileUrl;
         return (
           <React.Fragment key={item.id}>
             <Container>
               <Content>
-                <Image src={item.image} />
-                <Name tid={item.name} />
+                <Image src={srcImage} />
+                <Name tid={product?.titleRu} />
               </Content>
 
               <Content>
                 <IconButton
-                  onClick={() => handleChange(item.id, item.type, false)}
+                  onClick={() =>
+                    handleChange(product?.id || '', product?.type || 0, false)
+                  }
                 >
                   <RemoveIcon />
                 </IconButton>

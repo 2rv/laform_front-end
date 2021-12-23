@@ -75,7 +75,6 @@ function PatternCreateOptionItem(props: PatternCreateOptionItemProps) {
           value={value[PATTERN_CREATE_OPTIONS_FIELD_NAME.OPTION_SIZE]}
           onChange={handleChange}
           onBlur={handleBlur}
-          //   error={getFieldError(optionName, index)}
         />
         <Line>
           <BasicField
@@ -86,7 +85,6 @@ function PatternCreateOptionItem(props: PatternCreateOptionItemProps) {
             type="number"
             onChange={handleChange}
             onBlur={handleBlur}
-            // error={getFieldError(optionPriceName, index)}
           />
           <Button onClick={onRemove}>
             <RemoveIcon />
@@ -101,7 +99,6 @@ function PatternCreateOptionItem(props: PatternCreateOptionItemProps) {
           type="number"
           onChange={handleChange}
           onBlur={handleBlur}
-          //   error={getFieldError(optionDiscountName, index)}
         />
         {values[PATTERN_CREATE_FIELD_NAME.IS_COUNT] && (
           <BasicField
@@ -112,7 +109,6 @@ function PatternCreateOptionItem(props: PatternCreateOptionItemProps) {
             type="number"
             onChange={handleChange}
             onBlur={handleBlur}
-            // error={getFieldError(optionCountName, index)}
           />
         )}
       </FieldLayout>

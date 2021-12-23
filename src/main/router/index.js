@@ -70,8 +70,8 @@ import {
   MASTER_CLASS_CREATE_ROUTE_PATH,
 } from '../../core/master-class-create';
 import {
-  createSewingGoodsRouter,
-  CREATE_SEWING_GOODS_ROUTE_PATH,
+  sewingGoodsCreateRouter,
+  SEWING_GOODS_CREATE_ROUTE_PATH,
 } from '../../core/sewing-goods-create';
 import {
   postCreateRouter,
@@ -168,7 +168,7 @@ export const routes = {
   [PATTERN_CREATE_ROUTE_PATH]: patternCreateRouter,
   [POST_CREATE_ROUTE_PATH]: postCreateRouter,
   [MASTER_CLASS_CREATE_ROUTE_PATH]: masterClassCreateRouter,
-  [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
+  [SEWING_GOODS_CREATE_ROUTE_PATH]: sewingGoodsCreateRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
   [USERS_ROUTE_PATH]: usersRouter,
   [PRODUCT_SELECTIONS_ROUTE_PATH]: productSelectionsRouter,

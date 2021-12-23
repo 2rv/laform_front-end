@@ -63,10 +63,6 @@ import {
 } from '../../core/order-number';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 import {
-  createSewingGoodsStore,
-  CREATE_SEWING_GOODS_STORE_NAME,
-} from '../../core/sewing-goods-create';
-import {
   createNotificationStore,
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
@@ -116,7 +112,6 @@ export const reducers = combineReducers({
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,
-  [CREATE_SEWING_GOODS_STORE_NAME]: createSewingGoodsStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
   [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,

@@ -5,7 +5,7 @@ import { ARTICLES_ROUTE_PATH } from '../articles';
 import { FAQ_ABOUT_US_ROUTE_PATH, FAQ_ROUTE_PATH } from '../faq-article';
 import { MASTER_CLASS_CREATE_ROUTE_PATH } from '../master-class-create';
 import { PATTERN_CREATE_ROUTE_PATH } from '../pattern-create';
-import { CREATE_SEWING_GOODS_ROUTE_PATH } from '../sewing-goods-create';
+import { SEWING_GOODS_CREATE_ROUTE_PATH } from '../sewing-goods-create';
 import { POST_CREATE_ROUTE_PATH } from '../post-create';
 import { USERS_ROUTE_PATH } from '../users';
 import { ORDERS_ROUTE_PATH } from '../orders';
@@ -46,7 +46,7 @@ export const ADMIN_MENU_ITEMS = [
     path: PATTERN_CREATE_ROUTE_PATH(),
   },
   {
-    path: CREATE_SEWING_GOODS_ROUTE_PATH,
+    path: SEWING_GOODS_CREATE_ROUTE_PATH(),
     tid: 'HEADER.ADMIN_MENU.SEWING_GOODS_CREATING',
   },
   {
