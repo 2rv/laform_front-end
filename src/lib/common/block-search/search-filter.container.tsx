@@ -20,14 +20,23 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
   useEffect(() => {
     let timeoutId = setTimeout(() => {
       if (Object.keys(values).length > 0) {
-        const where = values[SEARCH_FILTER_FIELD_NAME.WHERE];
+        const result: any = {
+          where: values[SEARCH_FILTER_FIELD_NAME.WHERE],
+          sort: undefined,
+          by: undefined,
+          category: undefined,
+        };
         const categoryIndex = values[SEARCH_FILTER_FIELD_NAME.CATEGORY] || 0;
         const sortIndex = values[SEARCH_FILTER_FIELD_NAME.SORT] || 0;
+        result.by = filterOptions[sortIndex]?.by;
+        result.sort = filterOptions[sortIndex]?.sort;
 
-        const by = filterOptions[sortIndex]?.by;
-        const sort = filterOptions[sortIndex]?.sort;
-        const category = categories[categoryIndex]?.tid;
-        handleFilter({ where, sort, by, category });
+        if (categoryIndex !== 0) {
+          result.category = categories[categoryIndex]?.tid;
+        }
+        console.log(result);
+
+        handleFilter(result);
       }
     }, 1000);
     return () => {
@@ -38,22 +47,17 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
   function handleChange(e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) {
     const name: string | SEARCH_FILTER_FIELD_NAME = e.target.name;
     const value: string = e.target.value;
-
     const copy = { ...values };
+
     if (name === SEARCH_FILTER_FIELD_NAME.WHERE) {
       copy[SEARCH_FILTER_FIELD_NAME.WHERE] = value;
     }
     if (name === SEARCH_FILTER_FIELD_NAME.CATEGORY) {
-      if (value === FILTER_NAME_ALL) {
-        copy[SEARCH_FILTER_FIELD_NAME.CATEGORY] = undefined;
-      } else {
-        copy[SEARCH_FILTER_FIELD_NAME.CATEGORY] = +value;
-      }
+      copy[SEARCH_FILTER_FIELD_NAME.CATEGORY] = +value;
     }
     if (name === SEARCH_FILTER_FIELD_NAME.SORT) {
       copy[SEARCH_FILTER_FIELD_NAME.SORT] = +value;
     }
-
     setValues(copy);
   }
 
@@ -61,11 +65,10 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
     <SearchFilterComponent
       findPlaceholderTid={findPlaceholderTid}
       sorting={filterOptions}
-      categories={[{ id: 0, tid: FILTER_NAME_ALL }, ...categories]}
+      categories={categories}
       values={values}
       handleChange={handleChange}
       disabled={disabled}
     />
   );
 }
-const FILTER_NAME_ALL = 'OTHER.CATEGORY_FILTER.ALL';

@@ -81,7 +81,6 @@ export interface BasicPostType {
   modifierColor: string;
   articleRu: BasicReactEditorType;
   articleEn: BasicReactEditorType;
-  pinned: boolean;
   deleted: boolean;
   inEnglish: boolean;
 }
@@ -106,7 +105,6 @@ export interface BasicMasterClassType {
   articleEn: BasicReactEditorType;
   price: string;
   discount: number;
-  pinned: boolean;
   deleted: boolean;
   inEnglish: boolean;
 }
@@ -138,7 +136,6 @@ export interface BasicPatternType {
   discount: number;
   count: number;
   isCount: boolean;
-  pinned: boolean;
   deleted: boolean;
   inEnglish: boolean;
 }
@@ -165,7 +162,6 @@ export interface BasicSewingGoodType {
   titleEn: string;
   modifierRu: string;
   modifierEn: string;
-  pinned: boolean;
   deleted: boolean;
   inEnglish: boolean;
 }

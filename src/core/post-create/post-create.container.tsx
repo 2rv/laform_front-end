@@ -153,7 +153,7 @@ export function PostCreateContainer() {
         [POST_FIELD_NAME.RECOMMENDATIONS]: {
           recommendationProducts: [],
         },
-        [POST_FIELD_NAME.IS_PUBLIC]: false,
+        [POST_FIELD_NAME.IS_PUBLIC]: true,
         [POST_FIELD_NAME.IN_ENGLISH]: false,
       }
     );

@@ -69,6 +69,7 @@ function optionsForSave(
 ): SewingProductOptionDto[] {
   if (type === 0) return [];
   return options.map((item) => ({
+    id: item.id,
     size: type === 1 || type === 2 ? item.size : null,
     colorRu: type === 1 || type === 3 ? item.colorRu : null,
     price: +(+(item.price || 0)).toFixed(2),
@@ -116,6 +117,7 @@ function optionsForChange(
   options: BasicOptionType[] = [],
 ): SewingGoodsOptionValues[] {
   return options.map((item) => ({
+    id: item.id,
     size: item.size,
     colorRu: item.colorRu,
     price: +item.price,

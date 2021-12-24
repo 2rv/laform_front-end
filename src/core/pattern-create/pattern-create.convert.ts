@@ -72,6 +72,7 @@ function optionsForSave(
 ): PatternProductsOptionDto[] {
   if (!isHaveOptions) return [];
   return options.map((item, index) => ({
+    id: item.id,
     size: item.size || '',
     price: +(item.price || 0).toFixed(2),
     discount: +(item.discount || 0).toFixed(0),
@@ -124,6 +125,7 @@ function optionsForChange(
   options: BasicOptionType[] = [],
 ): PatternOptionValues[] {
   return options.map((item) => ({
+    id: item.id,
     size: item.size,
     price: +item.price,
     discount: item.discount,

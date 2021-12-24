@@ -58,6 +58,7 @@ export type SliderDto = {
 };
 
 export type PatternProductsOptionDto = {
+  id?: string;
   size: string;
   price: number;
   discount?: number;
@@ -98,6 +99,7 @@ export type PatternProductDto = {
 };
 
 export type SewingProductOptionDto = {
+  id?: string;
   size: string | undefined | null;
   colorRu: string | undefined | null;
   price: number | undefined | null;
