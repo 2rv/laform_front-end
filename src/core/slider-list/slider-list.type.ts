@@ -1,4 +1,3 @@
-import { BasicFileType } from 'src/lib/basic-types';
 export enum SLIDER_LIST_ACTION_TYPE {
   PENDING = 'PENDING',
   SUCCESS = 'SUCCESS',
@@ -15,15 +14,11 @@ export type SliderListActionType = {
   error?: string;
   data?: SlideType[];
 };
-export type BasicSlideType = {
-  id: string;
-  headingTextRu: string;
-  imageUrl: BasicFileType;
-};
 export type SlideType = {
   id: string;
   name: string;
   image: string;
+  buttonText?: string;
 };
 export type SliderListComponentProps = {
   addSlide: () => void;

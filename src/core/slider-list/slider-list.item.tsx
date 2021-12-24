@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as ChangeIcon } from 'src/asset/svg/change.svg';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
-import { spacing } from 'src/lib/theme';
+import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { IconButton } from 'src/lib/element/button';
 import { Divider } from 'src/lib/element/divider';
 import { TextPrimary } from 'src/lib/element/text';
@@ -34,6 +34,7 @@ const Image = styled.img`
   height: 75px;
   max-width: 75px;
   width: 75px;
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
 `;
 const Button = styled(IconButton)`
   padding: 0;

@@ -2,6 +2,7 @@ import { httpRequest } from '../../main/http';
 import { SEWING_GOODS_API } from './sewing-goods.constant';
 import { SEWING_GOODS_ACTION_TYPE } from './sewing-goods.type';
 import { convertSewingGoodProducts } from 'src/lib/common/product-converters';
+import { convertCategories } from 'src/lib/common/block-search';
 
 export function sewingGoodsUploadData(isAuth, query) {
   return async (dispatch, getState) => {
@@ -49,13 +50,9 @@ export function fetchCategories(currentLang, type) {
           type,
         ),
       });
-      const convertedCategories = response.data.map((category) => ({
-        id: category.id,
-        tid: category.categoryNameRu,
-      }));
       dispatch({
         type: SEWING_GOODS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
-        data: convertedCategories,
+        data: convertCategories(response.data),
       });
     } catch (err) {
       if (err.response) {

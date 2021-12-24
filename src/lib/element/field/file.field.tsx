@@ -6,48 +6,26 @@ import { TextSecondary } from '../text';
 import { FilefieldProps } from './field.type';
 
 export function FileField(props: FilefieldProps) {
-  const {
-    titleTid,
-    placeholderTid,
-    name,
-    value,
-    error,
-    disabled,
-    accept,
-    onChange,
-    onBlur,
-    ...restProps
-  } = props;
+  const { titleTid, placeholderTid, error, type, file, ...restProps } = props;
 
   return (
     <Container>
       {titleTid && <Title tid={titleTid} />}
       <Content error={!!error}>
-        {placeholderTid && <Text tid={placeholderTid} />}
-        <Input
-          accept={accept}
-          disabled={disabled}
-          onChange={onChange}
-          onBlur={onBlur}
-          name={name}
-          type="file"
-          {...restProps}
-        />
+        {placeholderTid && <Text tid={file?.file ? 'Файл' : placeholderTid} />}
+        <Input type="file" {...restProps} />
       </Content>
-      {value && <Light tid={value.name} />}
       {error && <ErrorField errorTid={error} />}
     </Container>
   );
 }
-const Light = styled(TextSecondary)`
-  color: ${THEME_COLOR.TEXT.LIGHT};
-`;
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.WHITE};
 `;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: ${spacing(1)};
 `;
 const Content = styled.label<{ error: boolean }>`
@@ -75,7 +53,6 @@ const Content = styled.label<{ error: boolean }>`
     opacity: ${THEME_VALUE.OPACITY.HOVER};
   }
 `;
-
 const Title = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.SMALL};
 `;

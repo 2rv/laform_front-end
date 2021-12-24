@@ -10,6 +10,7 @@ import {
   convertPatternProducts,
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
+import { convertCategories } from 'src/lib/common/block-search';
 
 function getCategories(currentLang, type) {
   return async (dispatch) => {
@@ -23,10 +24,7 @@ function getCategories(currentLang, type) {
       });
       dispatch({
         type: ALL_PRODUCTS_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
-        data: response.data.map((category) => ({
-          id: category.id,
-          tid: category.categoryNameRu,
-        })),
+        data: convertCategories(response.data),
       });
     } catch (err) {
       if (err.response) {

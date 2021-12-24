@@ -66,17 +66,17 @@ import {
 } from '../../core/slider-list';
 import { promocodesRouter, PROMOCODES_ROUTE_PATH } from '../../core/promocodes';
 import {
-  createMasterClassRouter,
-  CREATE_MASTER_CLASS_ROUTE_PATH,
+  masterClassCreateRouter,
+  MASTER_CLASS_CREATE_ROUTE_PATH,
 } from '../../core/master-class-create';
 import {
-  createSewingGoodsRouter,
-  CREATE_SEWING_GOODS_ROUTE_PATH,
+  sewingGoodsCreateRouter,
+  SEWING_GOODS_CREATE_ROUTE_PATH,
 } from '../../core/sewing-goods-create';
 import {
-  createArticleRouter,
-  CREATE_ARTICLE_ROUTE_PATH,
-} from '../../core/article-create';
+  postCreateRouter,
+  POST_CREATE_ROUTE_PATH,
+} from '../../core/post-create';
 import {
   createNotificationRouter,
   CREATE_NOTIFICATION_ROUTE_PATH,
@@ -88,8 +88,8 @@ import {
 import { usersRouter, USERS_ROUTE_PATH } from '../../core/users';
 import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
 import {
-  createPatternRouter,
-  CREATE_PATTERN_ROUTE_PATH,
+  patternCreateRouter,
+  PATTERN_CREATE_ROUTE_PATH,
 } from '../../core/pattern-create';
 import {
   allProductsRouter,
@@ -165,10 +165,10 @@ export const routes = {
   [PATTERNS_PRODUCT_ROUTE_PATH]: patternsProductRouter,
   [PATTERNS_ROUTE_PATH]: patternsRouter,
   [ALL_LIKES_ROUTE_PATH]: allLikesRouter,
-  [CREATE_PATTERN_ROUTE_PATH]: createPatternRouter,
-  [CREATE_ARTICLE_ROUTE_PATH]: createArticleRouter,
-  [CREATE_SEWING_GOODS_ROUTE_PATH]: createSewingGoodsRouter,
-  [CREATE_MASTER_CLASS_ROUTE_PATH]: createMasterClassRouter,
+  [PATTERN_CREATE_ROUTE_PATH]: patternCreateRouter,
+  [POST_CREATE_ROUTE_PATH]: postCreateRouter,
+  [MASTER_CLASS_CREATE_ROUTE_PATH]: masterClassCreateRouter,
+  [SEWING_GOODS_CREATE_ROUTE_PATH]: sewingGoodsCreateRouter,
   [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
   [USERS_ROUTE_PATH]: usersRouter,
   [PRODUCT_SELECTIONS_ROUTE_PATH]: productSelectionsRouter,

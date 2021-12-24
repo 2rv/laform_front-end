@@ -28,8 +28,8 @@ export interface TableItemType {
   comment?: string;
   filePDF?: string;
   optionIndex?: number;
-  isCount?: true | false;
-  isLength?: true | false;
+  isCount?: boolean;
+  isLength?: boolean;
 }
 
 export interface TableItemProps {

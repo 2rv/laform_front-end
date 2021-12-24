@@ -6,7 +6,7 @@ import {
 } from '../../element/card';
 
 import {
-  BasicArticleType,
+  BasicPostType,
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
@@ -36,7 +36,7 @@ export function masterClassItemConverter(
 }
 
 export function convertArticleItemConverter(
-  item: BasicArticleType,
+  item: BasicPostType,
 ): CardArticleType {
   return {
     id: item.id,

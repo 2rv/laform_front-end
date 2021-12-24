@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+import { FileType } from 'src/lib/basic-types';
 import { SelectImageComponent } from './component';
 import { SelectImageProps } from './type';
 
@@ -36,11 +37,12 @@ export function SelectImageContainer(props: SelectImageProps) {
     }
     const reader = new FileReader();
     reader.onload = () => {
-      if (reader.result) {
-        setFieldValue(`${name}.${index}`, {
+      if (typeof reader.result === 'string') {
+        const value: FileType = {
           fileUrl: reader.result,
           file: file,
-        });
+        };
+        setFieldValue(`${name}.${index}`, value);
       }
     };
 

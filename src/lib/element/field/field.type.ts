@@ -1,4 +1,5 @@
 import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import { FileType } from 'src/lib/basic-types';
 
 export interface BasicFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   titleTid?: string;
@@ -9,22 +10,21 @@ export interface FieldCheckboxProps
   extends InputHTMLAttributes<HTMLInputElement> {
   titleTid: string;
   labelTid: string;
-  onClick: () => void;
+  error?: string;
 }
+export type FieldSelectOptionType = {
+  id: number;
+  tid: string;
+  tvalue?: object;
+};
 export interface FieldSelectProps {
   titleTid?: string;
   name?: string;
   value?: any;
-  options: {
-    id: number | string;
-    tid: string;
-    tvalue?: any;
-    hidden?: boolean;
-  }[];
+  options: FieldSelectOptionType[];
   onChange: any;
   onBlur?: any;
   disabled?: boolean;
-  textValue?: boolean;
   multiple?: boolean;
   defaultTid?: string;
 }
@@ -36,20 +36,14 @@ export interface TextareaFieldProps
   minHeight?: number;
   maxHeight?: number;
 }
-export interface FilefieldProps {
+export interface FilefieldProps extends InputHTMLAttributes<HTMLInputElement> {
   titleTid?: string;
   placeholderTid: string;
-  name: string;
-  value: any;
   error?: string;
-  onChange: any;
-  accept: any;
-  onBlur: any;
-  disabled?: boolean;
+  file?: FileType;
 }
 export interface ComplexityFieldProps {
-  name: string;
-  value: number;
+  value: 0 | 1 | 2 | 3 | 4 | 5;
   title: string;
   onChange: Function;
 }

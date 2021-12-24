@@ -7,7 +7,7 @@ import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { ComplexityFieldProps } from './field.type';
 
 export function ComplexityField(props: ComplexityFieldProps) {
-  const { title, name, value, onChange } = props;
+  const { title, value, onChange } = props;
 
   return (
     <Complexity>
@@ -15,12 +15,7 @@ export function ComplexityField(props: ComplexityFieldProps) {
       <FieldComplexity>
         {[1, 2, 3, 4, 5].map((rate, index) => (
           <ComplexityLabel key={index}>
-            <FieldRadio
-              type="radio"
-              name={name}
-              value={rate}
-              onChange={onChange}
-            />
+            <FieldRadio type="radio" value={rate} onChange={onChange} />
             <ComplexityDot active={rate <= value} />
           </ComplexityLabel>
         ))}

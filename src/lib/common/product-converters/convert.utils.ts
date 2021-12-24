@@ -62,8 +62,13 @@ export const convertOptions = (
   }
 };
 
+type GetMinPriceOnOption = {
+  price?: string | number;
+  discount?: number;
+};
+
 export function checkMinPriceAndDiscount(
-  values: BasicOptionType[],
+  values: GetMinPriceOnOption[] | undefined = [],
   price: string | number = 0,
   discount: number = 0,
 ): { price: number; discount?: number } {
@@ -72,7 +77,7 @@ export function checkMinPriceAndDiscount(
   }
 
   const result = values.reduce(
-    (acc, item) => {
+    (acc: any, item) => {
       const dPrice = getPrice({ price: String(item.price) });
       if (acc.price > dPrice) {
         acc.price = dPrice;
@@ -81,13 +86,13 @@ export function checkMinPriceAndDiscount(
       return acc;
     },
     {
-      price: Number(values[0].price),
-      discount: values[0].discount,
+      price: +(values[0].price || 0),
+      discount: +(values[0].discount || 0),
     },
   );
   return {
-    price: result.price,
-    discount: result.discount,
+    price: +result.price,
+    discount: +result.discount,
   };
 }
 

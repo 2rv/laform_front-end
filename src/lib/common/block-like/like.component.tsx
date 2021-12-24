@@ -26,16 +26,15 @@ const Button = styled(IconButton)<{ like: boolean }>`
   background-color: ${THEME_COLOR.GRAY};
   transition: 0.8s;
   ${(p) => {
-    return (
-      p.like &&
-      css`
-        &:hover ${DeleteIcon} {
-          display: inline;
-        }
-        &:hover ${Icon} {
-          display: none;
-        }
-      `
-    );
+    return p.like
+      ? css`
+          &:hover ${DeleteIcon} {
+            display: inline;
+          }
+          &:hover ${Icon} {
+            display: none;
+          }
+        `
+      : '';
   }}
 `;
