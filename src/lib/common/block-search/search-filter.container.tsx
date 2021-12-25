@@ -34,7 +34,6 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
         if (categoryIndex !== 0) {
           result.category = categories[categoryIndex]?.tid;
         }
-        console.log(result);
 
         handleFilter(result);
       }

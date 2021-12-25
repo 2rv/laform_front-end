@@ -61,7 +61,7 @@ function RecommendationReducer(
       return {
         ...state,
         paginatePending: false,
-        products: (action.products || []).concat(state.products),
+        products: [...state.products, ...(action.products || [])],
         page: state.page + 1,
       };
     case RECOMENDATION_ACTION_TYPE.PAGINATE_ERROR:

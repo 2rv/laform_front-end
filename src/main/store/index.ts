@@ -73,8 +73,6 @@ import {
 } from '../../core/master-class-page';
 import { usersStore, USERS_STORE_NAME } from '../../core/users';
 import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
-import { searchButtonStore } from '../../core/search-button/search-button.store';
-import { SEARCH_BUTTON_STORE_NAME } from '../../core/search-button/search-button.constant';
 import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
@@ -103,6 +101,11 @@ import {
 } from '../../core/faq-article';
 
 export const reducers = combineReducers({
+  [AUTH_STORE_NAME]: authStore,
+  [LANG_STORE_NAME]: langStore,
+  [NAVIGATION_STORE_NAME]: navigationStore,
+  [BASKET_STORE_NAME]: basketStore,
+  // Сверху нужное снизу лучше бы отвязать от стора
   [FAQ_ARTICLE_STORE_NAME]: faqArticleStore,
   [USER_INFO_STORE_NAME]: userInfoStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
@@ -122,16 +125,12 @@ export const reducers = combineReducers({
   [PATTERNS_PRODUCT_STORE_NAME]: patternsProductStore,
   [ARTICLES_STORE_NAME]: articlesStore,
   [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
-  [AUTH_STORE_NAME]: authStore,
-  [LANG_STORE_NAME]: langStore,
-  [NAVIGATION_STORE_NAME]: navigationStore,
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [ORDERS_STORE_NAME]: ordersStore,
   [USER_ORDERS_STORE_NAME]: userOrdersStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
-  [BASKET_STORE_NAME]: basketStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
@@ -139,7 +138,6 @@ export const reducers = combineReducers({
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
-  [SEARCH_BUTTON_STORE_NAME]: searchButtonStore,
   [ALL_PRODUCTS_STORE_NAME]: allProductsStore,
 });
 

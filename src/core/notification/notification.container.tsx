@@ -65,7 +65,7 @@ export function NotificationContainer() {
   }, []);
 
   const onChange = () => {
-    if (!isAuth) redirect(LOGIN_ROUTE_PATH);
+    if (!isAuth) return redirect(LOGIN_ROUTE_PATH);
     if (!state.pending) {
       changeSubscribeStatus(state.checked)(setState);
     }

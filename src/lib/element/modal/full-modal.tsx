@@ -4,7 +4,7 @@ import { ModalFullProps } from './modal.type';
 import { useEffect } from 'react';
 
 export function ModalFull(props: ModalFullProps) {
-  const { onOpen = false, children, className } = props;
+  const { onOpen = false, id, children, className } = props;
   useEffect(() => {
     if (onOpen) {
       document.body.style.overflow = 'hidden';
@@ -15,7 +15,7 @@ export function ModalFull(props: ModalFullProps) {
   if (!onOpen) return null;
 
   return (
-    <Container open={onOpen} className={className}>
+    <Container id={id} open={onOpen} className={className}>
       <Content className={className}>{children}</Content>
     </Container>
   );
@@ -33,12 +33,19 @@ const Container = styled.div<{ open: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100vw;
-  background-color: ${THEME_COLOR.WHITE};
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
   z-index: 10;
+  background-color: ${THEME_COLOR.WHITE};
+
+  /* display: ${(p) => (p.open ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center; */
+
+  overflow: auto;
   animation: ${animation} 0.2s;
-  display: ${(p) => (p.open ? 'flex' : 'none')};
   padding: ${spacing(6)};
   @media screen and (max-width: 1070px) {
     padding: ${spacing(5)};
@@ -46,12 +53,10 @@ const Container = styled.div<{ open: boolean }>`
   @media screen and (max-width: 720px) {
     padding: ${spacing(1)};
   }
-  overflow-y: auto;
-  justify-content: center;
 `;
 const Content = styled.div`
   display: flex;
-  height: fit-content;
-  justify-content: center;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 `;
