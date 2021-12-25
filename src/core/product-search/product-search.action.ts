@@ -9,18 +9,20 @@ import {
 } from 'src/lib/common/product-converters';
 import {
   prodResType,
-  QueryType,
-  RECOMENDATION_ACTION_TYPE,
-  RecommendationActionType,
-} from './recomendation.type';
+  PRODUCT_SEARCH_ACTION_TYPE,
+  ProductSearchActionType,
+} from './product-search.type';
 import {
-  BasicCategoryType,
   BasicPostType,
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
 } from 'src/lib/basic-types';
-import { convertCategories } from '../block-search';
+
+type QueryType = {
+  page?: number;
+  where?: string;
+};
 
 async function getMasterClasses(query: QueryType): Promise<prodResType> {
   const response: AxiosResponse<[BasicMasterClassType[], number]> =
@@ -30,10 +32,8 @@ async function getMasterClasses(query: QueryType): Promise<prodResType> {
       params: {
         lang: 'ru',
         where: query.where,
-        sort: query.sort,
-        by: query.by,
-        category: query.category,
         page: query.page,
+        size: 5,
       },
     });
   return {
@@ -49,16 +49,8 @@ async function getPatternProducts(query: QueryType): Promise<prodResType> {
       params: {
         lang: 'ru',
         where: query.where,
-        sort: query.sort,
-        by: query.by,
-        category: query.category,
-        type:
-          query.type === 1
-            ? 'electronic'
-            : query.type === 2
-            ? 'printed'
-            : undefined,
         page: query.page,
+        size: 5,
       },
     });
   return {
@@ -74,10 +66,8 @@ async function getSewingGoods(query: QueryType): Promise<prodResType> {
       params: {
         lang: 'ru',
         where: query.where,
-        sort: query.sort,
-        by: query.by,
-        category: query.category,
         page: query.page,
+        size: 5,
       },
     });
   return {
@@ -92,10 +82,8 @@ async function getPosts(query: QueryType): Promise<prodResType> {
     params: {
       lang: 'ru',
       where: query.where,
-      sort: query.sort,
-      by: query.by,
-      category: query.category,
       page: query.page,
+      size: 5,
     },
   });
   return {
@@ -103,41 +91,40 @@ async function getPosts(query: QueryType): Promise<prodResType> {
     total: response.data[1],
   };
 }
-const getProducts = [
-  getMasterClasses,
-  getPatternProducts,
-  getPatternProducts,
-  getSewingGoods,
-  getPosts,
-];
 
 export function getProductsByType(query: QueryType) {
-  return async (dispatch: Dispatch<RecommendationActionType>) => {
-    dispatch({ type: RECOMENDATION_ACTION_TYPE.RESET });
+  return async (dispatch: Dispatch<ProductSearchActionType>) => {
+    dispatch({ type: PRODUCT_SEARCH_ACTION_TYPE.RESET });
     dispatch({
-      type: RECOMENDATION_ACTION_TYPE.GET_PENDING,
+      type: PRODUCT_SEARCH_ACTION_TYPE.GET_PENDING,
     });
     try {
-      const prodRes = await getProducts[query.type](query);
-      const catRes: AxiosResponse<BasicCategoryType[]> = await httpRequest({
-        method: 'GET',
-        url: '/category/get',
-        params: {
-          type: query.type,
-          lang: 'ru',
-        },
-      });
+      const masterClasses = await getMasterClasses(query);
+      const patternProducts = await getPatternProducts(query);
+      const sewignProducts = await getSewingGoods(query);
+      const posts = await getPosts(query);
+
+      const products = [
+        ...(masterClasses?.data || []),
+        ...(patternProducts.data || []),
+        ...(sewignProducts.data || []),
+        ...(posts.data || []),
+      ];
+      const total =
+        (masterClasses.total || 0) +
+        (patternProducts.total || 0) +
+        (sewignProducts.total || 0) +
+        (posts.total || 0);
 
       dispatch({
-        type: RECOMENDATION_ACTION_TYPE.GET_SUCCESS,
-        products: prodRes.data,
-        total: prodRes.total,
-        categories: convertCategories(catRes.data),
+        type: PRODUCT_SEARCH_ACTION_TYPE.GET_SUCCESS,
+        products: products,
+        total: total,
       });
     } catch (err: any) {
       if (err.response) {
         dispatch({
-          type: RECOMENDATION_ACTION_TYPE.GET_ERROR,
+          type: PRODUCT_SEARCH_ACTION_TYPE.GET_ERROR,
           error: err.response.data.message,
         });
       }
@@ -145,25 +132,38 @@ export function getProductsByType(query: QueryType) {
   };
 }
 
-export function paginateProductsByType(page: number, query: QueryType) {
-  return async (dispatch: Dispatch<RecommendationActionType>) => {
+export function paginateProductsByType(query: QueryType) {
+  return async (dispatch: Dispatch<ProductSearchActionType>) => {
     dispatch({
-      type: RECOMENDATION_ACTION_TYPE.PAGINATE_PENDING,
+      type: PRODUCT_SEARCH_ACTION_TYPE.PAGINATE_PENDING,
     });
     try {
-      const response = await getProducts[query.type]({
-        page: page + 1,
-        ...query,
-      });
+      const masterClasses = await getMasterClasses(query);
+      const patternProducts = await getPatternProducts(query);
+      const sewignProducts = await getSewingGoods(query);
+      const posts = await getPosts(query);
+
+      const products = [
+        ...(masterClasses?.data || []),
+        ...(patternProducts.data || []),
+        ...(sewignProducts.data || []),
+        ...(posts.data || []),
+      ];
+      const total =
+        (masterClasses.total || 0) +
+        (patternProducts.total || 0) +
+        (sewignProducts.total || 0) +
+        (posts.total || 0);
+
       dispatch({
-        type: RECOMENDATION_ACTION_TYPE.PAGINATE_SUCCESS,
-        products: response.data,
-        total: response.total,
+        type: PRODUCT_SEARCH_ACTION_TYPE.PAGINATE_SUCCESS,
+        products: products,
+        total: total,
       });
     } catch (err: any) {
       if (err.response) {
         dispatch({
-          type: RECOMENDATION_ACTION_TYPE.PAGINATE_ERROR,
+          type: PRODUCT_SEARCH_ACTION_TYPE.PAGINATE_ERROR,
           error: err.response.data.message,
         });
       }

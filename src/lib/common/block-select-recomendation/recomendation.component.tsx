@@ -36,7 +36,7 @@ export function RecommendationComponent(props: RecommendationComponentProps) {
       </FieldLayout>
       <RecommendationList values={values} handleChange={handleChange} />
 
-      <ModalFull onOpen={open}>
+      <ModalFull onOpen={open} id="scrollableModalForRecommendations">
         <Case>
           <Wrapper type="SMALL">
             <HeaderCase>
@@ -58,6 +58,7 @@ export function RecommendationComponent(props: RecommendationComponentProps) {
               disabled={getPending}
             />
             <InfiniteScroll
+              scrollableTarget="scrollableModalForRecommendations"
               loader={<></>}
               dataLength={products.length}
               next={onPagination}

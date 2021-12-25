@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing } from '../../lib/theme';
+import { spacing } from 'src/lib/theme';
 import {
   NavMenu,
   CartButton,
@@ -9,7 +9,7 @@ import {
   LogoMobile,
   EmailConfirmed,
 } from '../header-component';
-import { SearchButtonContainer } from '../search-button/search-button.container';
+import { BlockProductSearch } from '../product-search';
 
 export function HeaderMenuComponent(props) {
   const {
@@ -41,7 +41,7 @@ export function HeaderMenuComponent(props) {
           />
         )}
         {!isAuth && <LinksAuth />}
-        <SearchButtonContainer />
+        <BlockProductSearch />
         <CartButton cartCount={cartCount} />
       </Case>
     </Container>

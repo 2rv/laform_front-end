@@ -100,7 +100,7 @@ export function ConfirmEmailContainer() {
   };
 
   const onConfirmEmail = () => {
-    if (!emailConfirmed) {
+    if (!emailConfirmed || !code) {
       sendConfirmCodeAction(code)(setState, dispatch);
     }
   };
