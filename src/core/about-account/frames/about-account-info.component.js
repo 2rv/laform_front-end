@@ -30,7 +30,7 @@ export function AboutAccountInfoComponent(props) {
         <LineSection>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.DATE_OF_REGISTRATION" />
-            <InfoText>{ConvertDate(createDate, 'MMMM DD, YYYY')}</InfoText>
+            <InfoText>{ConvertDate(createDate, 'PPP')}</InfoText>
           </SectionLayout>
           <SectionLayout type="TEXT">
             <InfoTitle tid="PROFILE.EMAIL" />

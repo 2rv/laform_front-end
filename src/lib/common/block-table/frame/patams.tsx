@@ -153,7 +153,7 @@ export function BlockParams(props: { params: TableParamsProps }) {
         <div>
           <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CREATED_DATE" />
           &nbsp;
-          <TextPrimary tid={ConvertDate(createdDate, 'MMMM DD, YYYY')} />
+          <TextPrimary tid={ConvertDate(createdDate, 'PPP')} />
         </div>
       )}
     </Case>

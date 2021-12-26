@@ -1,2 +1,2 @@
-export { ModalPopup } from './popup.modal';
+export { ModalPopup } from './popup.depricated';
 export { ModalFull } from './full-modal';

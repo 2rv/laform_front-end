@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ChartBlock } from 'src/lib/common/block-chart';
-import { SectionLayout } from 'src/lib/element/layout';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { LoaderPrimary } from 'src/lib/element/loader';
 import { TitlePrimary } from 'src/lib/element/title';
 import { THEME_SIZE } from 'src/lib/theme';
@@ -8,6 +8,7 @@ import { TabLinkBlock } from 'src/lib/element/tab-link';
 import { TotalStats, TimeSelect } from './frames';
 import { STATISTICS_PERIODS, STATISTICS_TABS } from './statistics.constant';
 import { FieldSelect } from 'src/lib/element/field';
+import { BlockDatepicker } from 'src/lib/common/block-datepicker';
 
 export function StatisticstComponent(props) {
   const {
@@ -34,12 +35,7 @@ export function StatisticstComponent(props) {
         disabled={pageLoading}
       />
       <Title tid="STATISTICS.TITLES.TOTAL" />
-      <FieldSelect
-        onChange={onChange}
-        value={value}
-        tid="Период"
-        options={STATISTICS_PERIODS}
-      />
+      <BlockDatepicker />
       <TotalStats general={general} activePath={activePath} />
       {!activePath && <ChartBlock data={users} />}
       <ChartBlock data={count} />

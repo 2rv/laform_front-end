@@ -20,6 +20,7 @@ export function userLoadData(id) {
         data: convertUserInfo(response.data),
       });
     } catch (err) {
+      console.log(err);
       if (err.response) {
         dispatch({
           type: ABOUT_ACCOUNT_ACTION_TYPE.USER_LOAD_DATA_ERROR,

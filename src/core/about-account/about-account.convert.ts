@@ -65,12 +65,11 @@ const convertLikesData = (likes: BasicRecommendationProducsType[]) => {
       like.patternProductId ||
       like.sewingProductId ||
       like.postId;
-
     if (product.type === 0) {
       return {
         id: like.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         category: 'PROFILE.CATEGORIES.MASTER_CLASS',
         path: MASTER_CLASS_PRODUCT_ROUTE_PATH,
         pathConfig: { params: { id: product.id } },
@@ -79,7 +78,7 @@ const convertLikesData = (likes: BasicRecommendationProducsType[]) => {
       return {
         id: like.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         category:
           product.type === 1
             ? 'PROFILE.CATEGORIES.ELECTRONIC_PATTERN'
@@ -91,7 +90,7 @@ const convertLikesData = (likes: BasicRecommendationProducsType[]) => {
       return {
         id: like.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         category: 'PROFILE.CATEGORIES.SEWING_GOODS',
         path: SEWING_GOODS_PRODUCT_ROUTE_PATH,
         pathConfig: { params: { id: product.id } },
@@ -100,7 +99,7 @@ const convertLikesData = (likes: BasicRecommendationProducsType[]) => {
       return {
         id: like.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         category: 'PROFILE.CATEGORIES.ARTICLE',
         path: ARTICLE_PAGE_ROUTE_PATH,
         pathConfig: { params: { id: product.id } },
@@ -121,7 +120,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
       return {
         id: comment.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         text: comment.text,
         createDate: comment.createDate,
         path: MASTER_CLASS_PRODUCT_ROUTE_PATH,
