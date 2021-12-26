@@ -31,7 +31,7 @@ export function MasterClassPageComponent(props) {
             tid="MASTER_CLASSES.PAGE.TIME_EXPIRED"
             tvalue={{
               text: ConvertTime(expiredDate),
-              date: ConvertDate(expiredDate, 'L'),
+              date: ConvertDate(expiredDate),
             }}
           />
         </div>
