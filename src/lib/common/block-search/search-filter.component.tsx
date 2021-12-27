@@ -12,6 +12,7 @@ export function SearchFilterComponent(props: SearchFilterComponentProps) {
     findPlaceholderTid,
     sorting,
     categories,
+    statuses,
     values,
     handleChange,
     disabled,
@@ -20,20 +21,34 @@ export function SearchFilterComponent(props: SearchFilterComponentProps) {
   return (
     <Container>
       <FieldLayout type="double" adaptive>
-        <Select
-          options={sorting}
-          value={values[SEARCH_FILTER_FIELD_NAME.SORT]}
-          name={SEARCH_FILTER_FIELD_NAME.SORT}
-          onChange={handleChange}
-          disabled={disabled}
-        />
-        <Select
-          options={categories}
-          value={values[SEARCH_FILTER_FIELD_NAME.CATEGORY]}
-          name={SEARCH_FILTER_FIELD_NAME.CATEGORY}
-          onChange={handleChange}
-          disabled={disabled}
-        />
+        {sorting.length ? (
+          <Select
+            options={sorting}
+            value={values[SEARCH_FILTER_FIELD_NAME.SORT]}
+            name={SEARCH_FILTER_FIELD_NAME.SORT}
+            onChange={handleChange}
+            disabled={disabled}
+          />
+        ) : null}
+
+        {categories.length ? (
+          <Select
+            options={categories}
+            value={values[SEARCH_FILTER_FIELD_NAME.CATEGORY]}
+            name={SEARCH_FILTER_FIELD_NAME.CATEGORY}
+            onChange={handleChange}
+            disabled={disabled}
+          />
+        ) : null}
+        {statuses.length ? (
+          <Select
+            options={statuses}
+            value={values[SEARCH_FILTER_FIELD_NAME.STATUS]}
+            name={SEARCH_FILTER_FIELD_NAME.STATUS}
+            onChange={handleChange}
+            disabled={disabled}
+          />
+        ) : null}
       </FieldLayout>
       <Field
         placeholderTid={findPlaceholderTid}

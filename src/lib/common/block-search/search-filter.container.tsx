@@ -11,6 +11,7 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
     findPlaceholderTid,
     filterOptions = [],
     categories = [],
+    statuses = [],
     handleFilter,
     disabled = false,
   } = props;
@@ -25,14 +26,19 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
           sort: undefined,
           by: undefined,
           category: undefined,
+          status: undefined,
         };
         const categoryIndex = values[SEARCH_FILTER_FIELD_NAME.CATEGORY] || 0;
+        const statusIndex = values[SEARCH_FILTER_FIELD_NAME.STATUS];
         const sortIndex = values[SEARCH_FILTER_FIELD_NAME.SORT] || 0;
         result.by = filterOptions[sortIndex]?.by;
         result.sort = filterOptions[sortIndex]?.sort;
 
         if (categoryIndex !== 0) {
           result.category = categories[categoryIndex]?.tid;
+        }
+        if (statusIndex !== -1) {
+          result.status = statusIndex;
         }
 
         handleFilter(result);
@@ -57,6 +63,9 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
     if (name === SEARCH_FILTER_FIELD_NAME.SORT) {
       copy[SEARCH_FILTER_FIELD_NAME.SORT] = +value;
     }
+    if (name === SEARCH_FILTER_FIELD_NAME.STATUS) {
+      copy[SEARCH_FILTER_FIELD_NAME.STATUS] = +value;
+    }
     setValues(copy);
   }
 
@@ -65,6 +74,12 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
       findPlaceholderTid={findPlaceholderTid}
       sorting={filterOptions}
       categories={categories}
+      statuses={[
+        {
+          id: -1,
+          tid: 'OTHER.CATEGORY_FILTER.ALL',
+        },
+      ].concat(statuses)}
       values={values}
       handleChange={handleChange}
       disabled={disabled}
