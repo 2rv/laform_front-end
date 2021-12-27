@@ -78,7 +78,6 @@ export interface BasicPostType {
   titleEn: string;
   modifierRu: string;
   modifierEn: string;
-  modifierColor: string;
   articleRu: BasicReactEditorType;
   articleEn: BasicReactEditorType;
   deleted: boolean;

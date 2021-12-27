@@ -20,7 +20,6 @@ export function CardArticle(props: CardArticleType) {
     image,
     name,
     modifier,
-    modifierColor,
     createdDate,
     like,
     deleted,
@@ -39,7 +38,6 @@ export function CardArticle(props: CardArticleType) {
         pathConfig={{ params: { id: id } }}
         image={image}
         modifier={modifier}
-        modifierColor={modifierColor}
         deleted={deleted}
         isCreateList={isCreateList}
       />

@@ -16,10 +16,6 @@ import {
   SEWING_GOODS_STORE_NAME,
 } from '../../core/sewing-goods';
 import { patternsStore, PATTERNS_STORE_NAME } from '../../core/patterns';
-import {
-  userOrdersStore,
-  USER_ORDERS_STORE_NAME,
-} from '../../core/user-orders';
 import { userOrderStore, USER_ORDER_STORE_NAME } from '../../core/user-order';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import { articlesStore, ARTICLES_STORE_NAME } from '../../core/articles';
@@ -125,7 +121,6 @@ export const reducers = combineReducers({
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
-  [USER_ORDERS_STORE_NAME]: userOrdersStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,

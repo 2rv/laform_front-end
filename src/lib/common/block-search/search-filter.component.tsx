@@ -31,7 +31,7 @@ export function SearchFilterComponent(props: SearchFilterComponentProps) {
           />
         ) : null}
 
-        {categories.length ? (
+        {categories.length > 1 ? (
           <Select
             options={categories}
             value={values[SEARCH_FILTER_FIELD_NAME.CATEGORY]}
@@ -40,7 +40,7 @@ export function SearchFilterComponent(props: SearchFilterComponentProps) {
             disabled={disabled}
           />
         ) : null}
-        {statuses.length ? (
+        {statuses.length > 1 ? (
           <Select
             options={statuses}
             value={values[SEARCH_FILTER_FIELD_NAME.STATUS]}

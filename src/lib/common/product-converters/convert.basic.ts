@@ -46,7 +46,6 @@ export function convertArticleItemConverter(
     like: item.like && Boolean(item.like.length),
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
-    modifierColor: item.modifierColor,
     createdDate: item.createdDate,
   };
 }

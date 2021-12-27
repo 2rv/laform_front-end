@@ -22,7 +22,6 @@ export interface CardImageProps {
   isCreateList?: boolean;
   discount?: number;
   path: string | Function;
-  modifierColor?: string;
   pathConfig: object;
 }
 export interface CardActionProps {
@@ -64,7 +63,6 @@ export interface CardArticleType {
   image: string;
   name?: string;
   modifier?: string;
-  modifierColor?: string;
   createdDate: Date;
   like: boolean | undefined;
   deleted?: boolean;
@@ -83,7 +81,6 @@ export interface CardSewingGoodType {
   image: string;
   name?: string;
   modifier?: string;
-  modifierColor?: string;
   price?: number;
   discount?: number;
   count?: number;
@@ -107,7 +104,6 @@ export interface CardPatternType {
   image: string;
   name: string | undefined;
   modifier?: string;
-  modifierColor?: string;
   price?: number;
   discount?: number;
   count?: number;
@@ -125,7 +121,6 @@ export interface CardMasterClassType {
   image: string;
   name: string | undefined;
   modifier?: string;
-  modifierColor?: string;
   discount?: number;
   price: number;
   vendorCode: string;
