@@ -16,11 +16,6 @@ import {
   SEWING_GOODS_STORE_NAME,
 } from '../../core/sewing-goods';
 import { patternsStore, PATTERNS_STORE_NAME } from '../../core/patterns';
-import { ordersStore, ORDERS_STORE_NAME } from '../../core/orders';
-import {
-  userOrdersStore,
-  USER_ORDERS_STORE_NAME,
-} from '../../core/user-orders';
 import { userOrderStore, USER_ORDER_STORE_NAME } from '../../core/user-order';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import { articlesStore, ARTICLES_STORE_NAME } from '../../core/articles';
@@ -86,7 +81,6 @@ import {
   recentCommentsStore,
   RECENT_COMMENTS_STORE_NAME,
 } from '../../core/recent-comments';
-import { statisticsStore, STATISTICS_STORE_NAME } from '../../core/statistics';
 import {
   productSelectionsStore,
   PRODUCT_SELECTIONS_STORE_NAME,
@@ -110,7 +104,6 @@ export const reducers = combineReducers({
   [USER_INFO_STORE_NAME]: userInfoStore,
   [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
-  [STATISTICS_STORE_NAME]: statisticsStore,
   [FEEDBACK_STORE_NAME]: feedbackStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
@@ -128,8 +121,6 @@ export const reducers = combineReducers({
   [SIGNUP_STORE_NAME]: signupStore,
   [LOGIN_STORE_NAME]: loginStore,
   [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
-  [ORDERS_STORE_NAME]: ordersStore,
-  [USER_ORDERS_STORE_NAME]: userOrdersStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
   [HOME_STORE_NAME]: homeStore,

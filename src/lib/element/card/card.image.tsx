@@ -14,7 +14,6 @@ export function CardImage(props: CardImageProps) {
     path,
     pathConfig,
     isCreateList = false,
-    modifierColor = THEME_COLOR.PRIMARY,
   } = props;
   const [imageLoaded, setimageLoaded] = useState(false);
   return (
@@ -39,7 +38,7 @@ export function CardImage(props: CardImageProps) {
           ))}
         {Boolean(discount) && <Modifier tid="PRODUCT_PRICE.STOCK" />}
         {Boolean(modifier) && (
-          <Modifier bgColor={modifierColor} tid={modifier} />
+          <Modifier bgColor={THEME_COLOR.PRIMARY} tid={modifier} />
         )}
       </Case>
     </Container>

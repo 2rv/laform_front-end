@@ -11,13 +11,20 @@ import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 const minDate = new Date('2014/00/01');
 const maxDate = new Date();
 
-export function DatepickerCore() {
-  const [startDate, setStartDate] = useState(new Date('2021/01/01'));
-  const [endDate, setEndDate] = useState(new Date());
+export function DatepickerCore(props: {
+  onChange: (v: { from: Date; to: Date }) => void;
+}) {
+  const { onChange } = props;
+  const [from, setFrom] = useState(new Date('2021/01/01'));
+  const [to, setTo] = useState(new Date());
 
   useEffect(() => {
     registerLocale('ru', ru);
   }, []);
+
+  useEffect(() => {
+    onChange({ from: from, to: to });
+  }, [from, to]);
 
   return (
     <Container>
@@ -25,14 +32,14 @@ export function DatepickerCore() {
         customInput={<DatepickerInput />}
         renderCustomHeader={DatepickerHeader}
         calendarContainer={DatepickerContainer}
-        onChange={(date: any) => setStartDate(date)}
+        onChange={(date: Date) => setFrom(date)}
         locale="ru"
         dateFormat="dd-MM-yyyy"
         withPortal
         selectsStart
-        selected={startDate}
-        startDate={startDate}
-        endDate={endDate}
+        selected={from}
+        startDate={from}
+        endDate={to}
         minDate={minDate}
         maxDate={maxDate}
       />
@@ -40,15 +47,15 @@ export function DatepickerCore() {
         customInput={<DatepickerInput />}
         renderCustomHeader={DatepickerHeader}
         calendarContainer={DatepickerContainer}
-        onChange={(date: any) => setEndDate(date)}
+        onChange={(date: Date) => setTo(date)}
         locale="ru"
         dateFormat="dd-MM-yyyy"
         withPortal
         selectsEnd
-        startDate={startDate}
-        endDate={endDate}
-        selected={endDate}
-        minDate={startDate}
+        startDate={from}
+        endDate={to}
+        selected={to}
+        minDate={from}
         maxDate={maxDate}
       />
     </Container>

@@ -1,10 +1,10 @@
-import { SectionLayout } from 'src/lib/element/layout';
 import { TextCurrency, TextSecondary } from 'src/lib/element/text';
 import { TitlePrimary } from 'src/lib/element/title';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import styled from 'styled-components';
+import { StatsCardProps, TotalStatsProps } from './statistics.type';
 
-function StatsCard(props) {
+function StatsCard(props: StatsCardProps) {
   const { title, value = 0, valutTid } = props;
   return (
     <Case>
@@ -18,46 +18,46 @@ function StatsCard(props) {
   );
 }
 
-export function TotalStats(props) {
+export function TotalStats(props: TotalStatsProps) {
   const { general, activePath } = props;
   return (
     <Content>
       {activePath ? (
         <StatsCard
           title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
-          value={general.totalCount}
+          value={general?.totalCount || 0}
           valutTid="OTHER.AMOUNT"
         />
       ) : (
         <>
           <StatsCard
             title="STATISTICS.PARAMETERS.TOTAL_ITEM_SOLD"
-            value={general.totalCount}
+            value={general?.totalCount || 0}
             valutTid="OTHER.AMOUNT"
           />
           <StatsCard
             title="STATISTICS.PARAMETERS.TOTAL_ORDERS"
-            value={general.totalOrders}
+            value={general?.totalOrders || 0}
             valutTid="OTHER.AMOUNT"
           />
           <StatsCard
             title="STATISTICS.PARAMETERS.TOTAL_SOLD_MATERIAL_GOODS"
-            value={general.printCount}
+            value={general?.printCount || 0}
             valutTid="OTHER.AMOUNT"
           />
           <StatsCard
             title="STATISTICS.PARAMETERS.TOTAL_ELECTRONIC_GOODS_SOLD"
-            value={general.electronicCount}
+            value={general?.electronicCount || 0}
             valutTid="OTHER.AMOUNT"
           />
           <StatsCard
             title="STATISTICS.PARAMETERS.TOTAL_PROFIT"
-            value={general.totalPrice}
+            value={general?.totalPrice || 0}
             valutTid="OTHER.VALUTE"
           />
           <StatsCard
             title="STATISTICS.PARAMETERS.AVERAGE_COST_PER_ORDER"
-            value={general.averagePrice}
+            value={general?.averagePrice || 0}
             valutTid="OTHER.VALUTE"
           />
         </>
