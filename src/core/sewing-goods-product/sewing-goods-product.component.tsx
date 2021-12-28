@@ -12,6 +12,7 @@ import {
 } from '../block-product-components';
 import { BlockComment } from '../block-comment';
 import { SewingGoodsProductComponentProps } from './sewing-goods-product.type';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
 
 export function SewingGoodsProductComponent(
   props: SewingGoodsProductComponentProps,
@@ -70,12 +71,14 @@ export function SewingGoodsProductComponent(
           />
         </Content>
       </Container>
-      <CardListBlock
-        title="SEWING_GOODS.RECOMMENDATIONS"
-        isLoading={pending}
-        items={recommendations}
-      />
-      <BlockComment id={id} type={3} />
+      <TabBlocks tabItems={['Рекомендации', 'Отзывы']}>
+        <CardListBlock
+          title="SEWING_GOODS.RECOMMENDATIONS"
+          isLoading={pending}
+          items={recommendations}
+        />
+        <BlockComment id={id} type={3} />
+      </TabBlocks>
     </SectionLayout>
   );
 }

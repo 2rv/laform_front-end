@@ -13,6 +13,7 @@ import {
 } from 'src/core/block-product-components';
 import { BlockComment } from '../block-comment';
 import { MasterClassProductComponentProps } from './master-class-product.type';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
 
 export function MasterClassProductComponent(
   props: MasterClassProductComponentProps,
@@ -57,20 +58,25 @@ export function MasterClassProductComponent(
           </Content>
         </Container>
       </SectionLayout>
-      {materials && (
-        <BlockReactEditor
-          titleTid="PATTERNS.MATERIALS"
-          data={materials}
-          enableReInitialize
-          readOnly
+
+      <TabBlocks tabItems={['Материалы', 'Рекомендации', 'Отзывы']}>
+        {materials ? (
+          <BlockReactEditor
+            titleTid="PATTERNS.MATERIALS"
+            data={materials}
+            enableReInitialize
+            readOnly
+          />
+        ) : (
+          <div />
+        )}
+        <CardListBlock
+          isLoading={pending}
+          items={recommendations}
+          title="MASTER_CLASSES.MASTER_CLASSES.RECOMMENDATIONS"
         />
-      )}
-      <CardListBlock
-        isLoading={pending}
-        items={recommendations}
-        title="MASTER_CLASSES.MASTER_CLASSES.RECOMMENDATIONS"
-      />
-      <BlockComment type={0} id={id} />
+        <BlockComment type={0} id={id} />
+      </TabBlocks>
     </SectionLayout>
   );
 }
