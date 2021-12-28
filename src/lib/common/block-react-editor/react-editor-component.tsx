@@ -14,7 +14,7 @@ const ReactEditorCore = dynamic(() => import('./react-editor-core'), {
 interface ReactEditorProps extends Props {
   titleTid?: string;
   error?: string;
-  handleChange: (data?: BlockAPI | OutputData) => void;
+  handleChange?: (data?: BlockAPI | OutputData) => void;
   enableIsEdit?: boolean;
   onCompareBlocks?: (
     newBlocks: BlockToolData | undefined,
@@ -37,7 +37,9 @@ export function ReactEditorComponent(props: ReactEditorProps) {
   } = props;
 
   const onChange = (_: API, data?: BlockAPI | OutputData) => {
-    handleChange(data);
+    if (typeof handleChange === 'function') {
+      handleChange(data);
+    }
   };
 
   return (

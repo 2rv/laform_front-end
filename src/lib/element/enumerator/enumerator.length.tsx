@@ -1,44 +1,33 @@
 import styled from 'styled-components';
+import { ChangeEvent } from 'react';
 import { THEME_COLOR, spacing, THEME_SIZE } from '../../theme';
 import { ButtonBasic } from '../button';
 import { EnumeratorLengthProps } from './enumerator.type';
 import { BasicField } from '../field';
-import { SyntheticEvent } from 'react';
 import { TextSecondary } from '../text';
 
 export function EnumeratorLength(props: EnumeratorLengthProps) {
   const {
     titleTid,
-    length = 0,
+    length,
     onChange,
     minLength = 0,
     maxLength = Infinity,
   } = props;
 
   const increment = () => {
-    if (
-      length === '' ||
-      length === null ||
-      length === undefined ||
-      isNaN(Number(length))
-    ) {
-      return onChange(0.1);
-    }
-    const result: number = parseFloat(String(length)) + 0.1;
-    onChange(result.toFixed(2));
+    const result: number = parseFloat((+length + 0.1).toFixed(2));
+    onChange(result);
   };
   const dicrement = () => {
     if (length > minLength) {
-      const result: number = parseFloat(String(length)) - 0.1;
-      onChange(result.toFixed(2));
+      const result: number = parseFloat((+length - 0.1).toFixed(2));
+      onChange(result);
     }
   };
-  const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
-    const value: any = e.currentTarget.value;
-    if (value === '' || value === null || value === undefined) {
-      return onChange(value);
-    }
-    const result: number = parseInt(String(value * 100)) / 100;
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+    const result: number = parseFloat((+value).toFixed(2));
     onChange(result);
   };
 

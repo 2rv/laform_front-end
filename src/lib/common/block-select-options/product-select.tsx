@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FieldSelect } from '../../element/field';
 import { spacing, THEME_SIZE, THEME_COLOR } from '../../theme';
 import { TextSecondary } from '../../element/text';
-import { ReactComponent as QuestionIcon } from '../../../asset/svg/question-mark.svg';
+import { ReactComponent as QuestionIcon } from 'src/asset/svg/question-mark.svg';
 import { ProductSelectFieldProps } from './type';
 import { LinkSecondary } from 'src/lib/element/link';
 import { FAQ_SIZE_ROUTE_PATH } from 'src/core/faq-article';
@@ -18,6 +18,7 @@ export function ProductSelect(props: ProductSelectFieldProps) {
     onBlur,
     isSize,
   } = props;
+
   return (
     <Container>
       <Line>

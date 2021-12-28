@@ -49,7 +49,7 @@ export interface formikValues extends userInfoValues {
   [ORDER_FIELD_NAME.PRICE]: number;
   [ORDER_FIELD_NAME.SDEK_POINT]: basicSdekPoints | undefined;
   [ORDER_FIELD_NAME.SDEK_TARIFF]: basicTariffType | undefined;
-  [ORDER_FIELD_NAME.DELIVERY_TYPE]: 0 | 1 | 2;
+  [ORDER_FIELD_NAME.DELIVERY_TYPE]: -1 | 0 | 1 | 2;
 }
 type FormikObjType = FormikHandlers &
   FormikHelpers<formikValues> &
@@ -112,7 +112,7 @@ export interface CartPriceProps {
   price: number;
   promoDiscount: number;
   deliveryInfo: basicTariffType | undefined;
-  deliveryType: 0 | 1 | 2;
+  deliveryType: -1 | 0 | 1 | 2;
 }
 export interface BasketFormProps extends AlertProps {
   isAuth: boolean;

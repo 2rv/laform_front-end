@@ -7,14 +7,15 @@ import { FieldSelectProps } from './field.type';
 
 export function FieldSelect(props: FieldSelectProps) {
   const {
-    titleTid,
     name,
     value,
-    options,
     onChange,
     onBlur,
     disabled,
+
     defaultTid,
+    titleTid,
+    options,
   } = props;
 
   return (
@@ -29,7 +30,7 @@ export function FieldSelect(props: FieldSelectProps) {
           onBlur={onBlur}
         >
           {defaultTid && (
-            <option value="" selected disabled>
+            <option value={-1} selected disabled>
               {defaultTid}
             </option>
           )}

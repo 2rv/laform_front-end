@@ -16,7 +16,7 @@ export interface BasicCardListTypeProps {
 export interface CardListTypeProps extends BasicCardListTypeProps {
   path?: string;
   title?: string;
-  isSliced: boolean;
+  isSliced?: boolean;
 }
 export interface CardListSkeletonProps {
   quantity?: any;

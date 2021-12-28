@@ -1,20 +1,6 @@
-export interface OptionType {
-  id: number;
-  optionId: string;
-  tid: string;
-  tvalue: {
-    color?: string;
-    size?: string;
-    price?: number;
-  };
-  size?: string;
-  color?: string;
-  price?: number;
-  discount?: number;
-  vendorCode: string;
-  count?: number;
-  length?: number;
-}
+import { ChangeEvent, FocusEventHandler } from 'react';
+import { OptionType } from 'src/lib/element/card';
+
 export enum CART_MODAL_FIELD_NAME {
   OPTION = 'option',
   COLOR = 'color',
@@ -22,10 +8,17 @@ export enum CART_MODAL_FIELD_NAME {
   COUNT = 'count',
   LENGTH = 'length',
 }
-
+export type CartModalValues = {
+  [CART_MODAL_FIELD_NAME.COUNT]: number;
+  [CART_MODAL_FIELD_NAME.LENGTH]: number;
+  [CART_MODAL_FIELD_NAME.OPTION]: number;
+  [CART_MODAL_FIELD_NAME.SIZE]: number;
+  [CART_MODAL_FIELD_NAME.COLOR]: number;
+};
 export interface CartModalContainerProps {
   id: string;
   type: 0 | 1 | 2 | 3;
+  optionType?: 0 | 1 | 2 | 3;
   price?: number;
   discount?: number;
   count?: number;
@@ -38,15 +31,13 @@ export interface CartModalContainerProps {
   thisIsCart?: boolean;
 }
 export interface CartModalComponentProps {
-  isOptions: boolean;
-  isSizes: boolean;
-  isColors: boolean;
+  optionType: 0 | 1 | 2 | 3;
   isCount: boolean;
   isLength: boolean;
   isCart: boolean;
   isPending: boolean;
   isDisabled: boolean;
-  values: any;
+  values: CartModalValues;
   count: number;
   length: number;
   price: number;
@@ -54,48 +45,47 @@ export interface CartModalComponentProps {
   options: OptionType[];
   colors: OptionType[];
   sizes: OptionType[];
-  handleChange: Function;
-  handleCount: Function;
-  handleLenght: Function;
-  handleBlur: Function;
+  handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  handleCount: (val: number) => void;
+  handleLenght: (val: number) => void;
+  handleBlur: FocusEventHandler<HTMLSelectElement>;
   addToCart: Function;
 }
-
-interface getBasicProps {
+type getBasicProps = {
   options: OptionType[];
   colors: OptionType[];
   sizes: OptionType[];
-  option?: number | string;
-  size?: number | string;
-  color?: number | string;
-}
+  option: number;
+  size: number;
+  color: number;
+  optionType: 0 | 1 | 2 | 3;
+};
 export interface getCountProps extends getBasicProps {
-  count?: number;
+  count: number;
 }
 export interface getDiscountProps extends getBasicProps {
-  discount?: number;
+  discount: number;
 }
 export interface getLengthProps extends getBasicProps {
-  length?: number;
+  length: number;
 }
 export interface getPriceProps extends getBasicProps {
-  count?: number;
-  length?: number;
-  price?: number;
-  isCount?: boolean;
-  isLength?: boolean;
+  count: number;
+  length: number;
+  price: number;
+  isCount: boolean;
+  isLength: boolean;
 }
 export interface getInfoProps extends getBasicProps {
   id: string;
   type: 0 | 1 | 2 | 3;
-  count?: number;
-  length?: number;
-  isCount?: boolean;
-  isLength?: boolean;
+  count: number;
+  length: number;
+  isCount: boolean;
+  isLength: boolean;
 }
-
 export interface isCartProps extends getBasicProps {
-  optionId?: string;
-  id?: string;
-  productId?: string;
+  optionId: string;
+  id: string;
+  productId: string;
 }

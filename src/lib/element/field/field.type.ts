@@ -1,4 +1,8 @@
-import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import {
+  InputHTMLAttributes,
+  SelectHTMLAttributes,
+  TextareaHTMLAttributes,
+} from 'react';
 import { FileType } from 'src/lib/basic-types';
 
 export interface BasicFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -17,15 +21,10 @@ export type FieldSelectOptionType = {
   tid: string;
   tvalue?: object;
 };
-export interface FieldSelectProps {
+export interface FieldSelectProps
+  extends SelectHTMLAttributes<HTMLSelectElement> {
   titleTid?: string;
-  name?: string;
-  value?: any;
   options: FieldSelectOptionType[];
-  onChange: any;
-  onBlur?: any;
-  disabled?: boolean;
-  multiple?: boolean;
   defaultTid?: string;
 }
 export interface TextareaFieldProps

@@ -9,12 +9,11 @@ export function CardListBlock(props: CardListTypeProps) {
   const {
     title,
     path,
-    items,
+    items = [],
     isSliced = true,
     isLoading,
     ...otherProps
   } = props;
-
   if (!isLoading && (!items || !Boolean(items.length))) return null;
 
   return (

@@ -16,16 +16,15 @@ export function EnumeratorCount(props: EnumeratorCountProps) {
   } = props;
 
   const increment = () => {
-    onChange(Number(count) + 1);
+    onChange(count + 1);
   };
   const dicrement = () => {
-    if (Number(count) > minNumber) onChange(Number(count) - 1);
+    if (count > minNumber) onChange(count - 1);
   };
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
-    // const value = e.currentTarget.value;
-    // if (isNaN(value)) return onChange(0);
-    // if (value > maxNumber) return onChange(maxNumber);
-    onChange(e.currentTarget.value);
+    const value = e.currentTarget.value;
+    const result: number = parseInt(value);
+    onChange(result);
   };
 
   return (

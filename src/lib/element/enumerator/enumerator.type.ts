@@ -1,13 +1,13 @@
 export interface EnumeratorCountProps {
-  onChange: Function;
-  count: any;
+  onChange: (val: number) => void;
+  count: number;
   minNumber?: number;
   maxNumber?: number;
   titleTid?: string;
 }
 export interface EnumeratorLengthProps {
-  onChange: Function;
-  length: any;
+  onChange: (val: number) => void;
+  length: number;
   minLength?: number;
   maxLength?: number;
   titleTid?: string;

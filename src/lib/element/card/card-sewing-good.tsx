@@ -37,6 +37,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
     isCount,
     isLength,
     isCreateList,
+    optionType,
   } = props;
 
   return (
@@ -73,6 +74,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
           sizes={sizes}
           isCount={isCount}
           isLength={isLength}
+          optionType={optionType}
         />
         {(typeof like === 'boolean' || admin) && (
           <ActionCase>

@@ -1,4 +1,4 @@
-export interface OptionType {
+export type OptionType = {
   id: number;
   optionId: string;
   tid: string;
@@ -14,7 +14,8 @@ export interface OptionType {
   vendorCode: string;
   count?: number;
   length?: number;
-}
+};
+
 export interface CardImageProps {
   image: string;
   modifier?: string;
@@ -48,13 +49,13 @@ export interface CardPriceProps {
   discount?: number;
 }
 export interface CardCountProps {
-  count?: number;
+  count: number;
 }
 export interface CardLengthProps {
-  length?: number;
+  length: number;
 }
 export interface ProductVendorCodeProps {
-  vendorCode?: string;
+  vendorCode: string;
 }
 
 export interface CardArticleType {
@@ -88,6 +89,7 @@ export interface CardSewingGoodType {
   isCount: boolean;
   isLength: boolean;
   options?: OptionType[];
+  optionType: 0 | 1 | 2 | 3;
   colors?: OptionType[];
   sizes?: OptionType[];
   onSelect?: Function;
@@ -101,6 +103,7 @@ export interface CardPatternType {
   deleted?: boolean;
   admin?: boolean;
   type: 1 | 2;
+  optionType: 0 | 2;
   image: string;
   name: string | undefined;
   modifier?: string;

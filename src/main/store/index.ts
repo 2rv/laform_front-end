@@ -28,18 +28,6 @@ import {
   ABOUT_ACCOUNT_STORE_NAME,
 } from '../../core/about-account';
 import {
-  masterClassProductStore,
-  MASTER_CLASS_PRODUCT_STORE_NAME,
-} from '../../core/master-class-product';
-import {
-  sewingGoodsProductStore,
-  SEWING_GOODS_PRODUCT_STORE_NAME,
-} from '../../core/sewing-goods-product';
-import {
-  patternsProductStore,
-  PATTERNS_PRODUCT_STORE_NAME,
-} from '../../core/patterns-product';
-import {
   sewingGoodsPageStore,
   SEWING_GOODS_PAGE_STORE_NAME,
 } from '../../core/sewing-goods-page';
@@ -110,12 +98,9 @@ export const reducers = combineReducers({
   [COMMENT_STORE_NAME]: commentStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
-  [SEWING_GOODS_PRODUCT_STORE_NAME]: sewingGoodsProductStore,
   [SEWING_GOODS_STORE_NAME]: sewingGoodsStore,
-  [MASTER_CLASS_PRODUCT_STORE_NAME]: masterClassProductStore,
   [MASTER_CLASSES_STORE_NAME]: masterClassesStore,
   [PATTERNS_STORE_NAME]: patternsStore,
-  [PATTERNS_PRODUCT_STORE_NAME]: patternsProductStore,
   [ARTICLES_STORE_NAME]: articlesStore,
   [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
   [SIGNUP_STORE_NAME]: signupStore,

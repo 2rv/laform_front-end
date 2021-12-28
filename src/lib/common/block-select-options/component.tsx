@@ -9,7 +9,7 @@ import {
   ProductVendorCode,
   CardPrice,
 } from '../../element/card/card.components';
-import { CartModalComponentProps, CART_MODAL_FIELD_NAME } from './type';
+import { CartModalComponentProps, SELECT_OPTIONS_FIELD_NAME } from './type';
 import { Divider } from 'src/lib/element/divider';
 import { ProductSelect } from './product-select';
 import {
@@ -21,64 +21,64 @@ export function ProductSelectOptionsComponent(props: CartModalComponentProps) {
   const {
     id,
     type,
-    like,
-    vendorCode,
-    isOptions,
-    isSizes,
-    isColors,
+    optionType,
     isCount,
     isLength,
     isCart,
     isPending,
     isDisabled,
+
+    price,
+    discount,
+    like,
+    vendorCode,
     options,
     colors,
     sizes,
     count,
     length,
+
     handleChange,
     handleCount,
     handleLenght,
     handleBlur,
     addToCart,
     values,
-    price,
-    discount,
   } = props;
 
   return (
     <Container>
       <SectionLayout type="TEXT_SMALL">
-        {Boolean(isOptions) && (
+        {optionType === 1 && (
           <ProductSelect
             titleTid="Опция"
             name="option"
             defaultTid="Выберите опцию"
             options={options}
-            value={values[CART_MODAL_FIELD_NAME.OPTION]}
+            value={values[SELECT_OPTIONS_FIELD_NAME.OPTION]}
             onChange={handleChange}
             onBlur={handleBlur}
           />
         )}
-        {Boolean(isSizes) && (
+        {optionType === 2 && (
           <ProductSelect
             titleTid="Размер"
             defaultTid="Выберите размер"
             name="size"
             options={sizes}
-            value={values[CART_MODAL_FIELD_NAME.SIZE]}
+            value={values[SELECT_OPTIONS_FIELD_NAME.SIZE]}
             onChange={handleChange}
             onBlur={handleBlur}
             isSize
           />
         )}
-        {Boolean(isColors) && (
+        {optionType === 3 && (
           <ProductSelect
             titleTid="Цвет"
             defaultTid="Выберите цвет"
             name="color"
             options={colors}
-            value={values[CART_MODAL_FIELD_NAME.COLOR]}
+            value={values[SELECT_OPTIONS_FIELD_NAME.COLOR]}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -88,7 +88,7 @@ export function ProductSelectOptionsComponent(props: CartModalComponentProps) {
             titleTid="Количество"
             maxNumber={count}
             minNumber={0}
-            count={values[CART_MODAL_FIELD_NAME.COUNT]}
+            count={values[SELECT_OPTIONS_FIELD_NAME.COUNT]}
             onChange={handleCount}
           />
         )}
@@ -97,7 +97,7 @@ export function ProductSelectOptionsComponent(props: CartModalComponentProps) {
             titleTid="Длинна"
             maxLength={length}
             minLength={0}
-            length={values[CART_MODAL_FIELD_NAME.LENGTH]}
+            length={values[SELECT_OPTIONS_FIELD_NAME.LENGTH]}
             onChange={handleLenght}
           />
         )}

@@ -35,6 +35,7 @@ export function CardPattern(props: CardPatternType) {
     onRemove,
     isCount,
     isCreateList,
+    optionType,
   } = props;
 
   return (
@@ -68,6 +69,7 @@ export function CardPattern(props: CardPatternType) {
           sizes={sizes}
           isCount={isCount}
           thisIsCart={Boolean(onSelect)}
+          optionType={optionType}
         />
         {(typeof like === 'boolean' || admin) && (
           <ActionCase>
