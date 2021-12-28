@@ -15,9 +15,7 @@ import { CartModalComponentProps, CART_MODAL_FIELD_NAME } from './type';
 
 export function CartButtonComponent(props: CartModalComponentProps) {
   const {
-    isOptions,
-    isSizes,
-    isColors,
+    optionType,
     isCount,
     isLength,
     isCart,
@@ -42,7 +40,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
     addToCart();
     setVisible();
   };
-  if (!isOptions && !isSizes && !isColors && !isCount && !isLength) {
+  if (optionType === 0 && !isCount && !isLength) {
     return (
       <Button
         disabled={isDisabled}
@@ -68,7 +66,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
         <Content>
           <SectionLayout type="TEXT_SMALL">
             <TextSecondary tid="Выберите параметр" />
-            {Boolean(isOptions) && (
+            {optionType === 1 && (
               <FieldSelect
                 titleTid="Опция товара"
                 name="option"
@@ -79,7 +77,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
                 onBlur={handleBlur}
               />
             )}
-            {Boolean(isSizes) && (
+            {optionType === 2 && (
               <FieldSelect
                 titleTid="Размер товара"
                 defaultTid="Выберите размер"
@@ -90,7 +88,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
                 onBlur={handleBlur}
               />
             )}
-            {Boolean(isColors) && (
+            {optionType === 3 && (
               <FieldSelect
                 titleTid="Цвет товара"
                 defaultTid="Выберите цвет"

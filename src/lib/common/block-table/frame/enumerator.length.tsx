@@ -28,7 +28,7 @@ export function TableEnumeratorLength(props: props) {
     <Td>
       <EnumeratorLength
         titleTid="Длинна"
-        length={length}
+        length={length || 0}
         maxLength={maxLength}
         onChange={handleChange}
         minLength={0.1}

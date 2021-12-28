@@ -18,7 +18,7 @@ export function TableEnumeratorCount(props: props) {
     id,
     type,
     indexId,
-    count,
+    count = 0,
     isCount,
     isLength,
     maxCount = 0,
@@ -41,7 +41,7 @@ export function TableEnumeratorCount(props: props) {
     <Td>
       <EnumeratorCount
         titleTid="Количество"
-        count={count}
+        count={count || 0}
         maxNumber={maxCount}
         onChange={handleChange}
         minNumber={1}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import {
   BASKET_STORE_NAME,
   BASKET_ROUTE_PATH,
@@ -19,6 +19,7 @@ import {
   isCartUtil,
 } from './utils';
 import { LANG_STORE_NAME } from '../lang';
+import { basketStateType } from 'src/core/basket/basket.type';
 
 export function CartButtonContainer(props: CartModalContainerProps) {
   const {
@@ -26,14 +27,15 @@ export function CartButtonContainer(props: CartModalContainerProps) {
     type = false,
     price = 0,
     discount = 0,
-    count,
-    length,
+    count = 0,
+    length = 0,
     options = [],
     colors = [],
     sizes = [],
     isCount = false,
     isLength = false,
     thisIsCart = false,
+    optionType = 0,
   } = props;
   if (!id || type === false || thisIsCart) return null;
 
@@ -50,11 +52,11 @@ export function CartButtonContainer(props: CartModalContainerProps) {
   const [isCart, setCart] = useState(false);
   const formik = useFormik({
     initialValues: {
-      [CART_MODAL_FIELD_NAME.OPTION]: '',
-      [CART_MODAL_FIELD_NAME.COLOR]: '',
-      [CART_MODAL_FIELD_NAME.SIZE]: '',
-      [CART_MODAL_FIELD_NAME.COUNT]: '',
-      [CART_MODAL_FIELD_NAME.LENGTH]: '',
+      [CART_MODAL_FIELD_NAME.OPTION]: -1,
+      [CART_MODAL_FIELD_NAME.COLOR]: -1,
+      [CART_MODAL_FIELD_NAME.SIZE]: -1,
+      [CART_MODAL_FIELD_NAME.COUNT]: 0,
+      [CART_MODAL_FIELD_NAME.LENGTH]: 0,
     },
     initialTouched: {
       [CART_MODAL_FIELD_NAME.OPTION]: false,
@@ -67,11 +69,100 @@ export function CartButtonContainer(props: CartModalContainerProps) {
   });
 
   useEffect(() => {
-    const result = bascketState.find((item: any) => {
-      return checkCart(item.id, item.optionId);
+    const result = bascketState.some((item: basketStateType) => {
+      return isCartUtil({
+        options: options,
+        colors: colors,
+        sizes: sizes,
+        option: +formik.values.option,
+        size: +formik.values.size,
+        color: +formik.values.color,
+        optionId: item.optionId,
+        id: id,
+        productId: item.id,
+        optionType: optionType,
+      });
     });
     setCart(Boolean(result));
   }, [bascketState, formik.values]);
+
+  const getPrice = (): number => {
+    return getPriceUtil({
+      options: options,
+      colors: colors,
+      sizes: sizes,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      count: formik.values.count,
+      length: formik.values.length,
+      price: price,
+      isCount: isCount,
+      isLength: isLength,
+      optionType: optionType,
+    });
+  };
+  const getDiscount = (): number => {
+    return getDiscountUtil({
+      options: options,
+      colors: colors,
+      sizes: sizes,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      discount: discount,
+      optionType: optionType,
+    });
+  };
+  const getCount = (): number => {
+    return getCountUtil({
+      options: options,
+      colors: colors,
+      sizes: sizes,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      count: count,
+      optionType: optionType,
+    });
+  };
+  const getLength = (): number => {
+    return getLengthUtil({
+      options: options,
+      colors: colors,
+      sizes: sizes,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      length: length,
+      optionType: optionType,
+    });
+  };
+  const getInfo = () => {
+    return getInfoUtil({
+      id: id,
+      type: type,
+      options: options,
+      colors: colors,
+      sizes: sizes,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      count: formik.values.count,
+      length: formik.values.length,
+      isCount: isCount,
+      isLength: isLength,
+      optionType: optionType,
+    });
+  };
+
+  const isDisabled = (): boolean => {
+    if (getPrice() <= 0) return true;
+    if (optionType === 1) return !Boolean(formik.values.option);
+    if (optionType === 2) return !Boolean(formik.values.size);
+    if (optionType === 3) return !Boolean(formik.values.color);
+    return false;
+  };
 
   const handleBasket = () => {
     if (isCart) return redirect(BASKET_ROUTE_PATH);
@@ -91,107 +182,22 @@ export function CartButtonContainer(props: CartModalContainerProps) {
     }
     formik.setFieldValue(CART_MODAL_FIELD_NAME.LENGTH, value);
   };
-  const handleChangeSelect = (e: any) => {
-    formik.setFieldValue(CART_MODAL_FIELD_NAME.COUNT, '');
-    formik.setFieldValue(CART_MODAL_FIELD_NAME.LENGTH, '');
+  const handleChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    formik.setFieldValue(CART_MODAL_FIELD_NAME.COUNT, 0);
+    formik.setFieldValue(CART_MODAL_FIELD_NAME.LENGTH, 0);
     formik.handleChange(e);
   };
-  const getPrice = (): number => {
-    return getPriceUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      count: Number(formik.values.count),
-      length: Number(formik.values.length),
-      price: price,
-      isCount: isCount,
-      isLength: isLength,
-    });
-  };
-  const getDiscount = (): number => {
-    return getDiscountUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      discount: discount,
-    });
-  };
-  const getCount = (): number => {
-    return getCountUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      count: count,
-    });
-  };
-  const getLength = (): number => {
-    return getLengthUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      length: length,
-    });
-  };
-  const getInfo = () => {
-    return getInfoUtil({
-      id: id,
-      type: type,
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      count: Number(formik.values.count),
-      length: Number(formik.values.length),
-      isCount: isCount,
-      isLength: isLength,
-    });
-  };
-  const isDisabled = (): boolean => {
-    if (getPrice() <= 0) return true;
-    if (Boolean(options.length)) return !Boolean(formik.values.option);
-    if (Boolean(sizes.length)) return !Boolean(formik.values.size);
-    if (Boolean(colors.length)) return !Boolean(formik.values.color);
-    return false;
-  };
-  const checkCart = (productId: string, optionId: string): boolean => {
-    return isCartUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      optionId: optionId,
-      id: id,
-      productId: productId,
-    });
-  };
+
   return (
     <CartButtonComponent
       isCart={isCart}
       isPending={isPending}
-      isOptions={Boolean(options.length)}
-      isSizes={Boolean(sizes.length)}
-      isColors={Boolean(colors.length)}
+      optionType={optionType}
       isCount={isCount}
       isLength={isLength}
       isDisabled={isDisabled()}
-      price={Number(getPrice())}
-      discount={Number(getDiscount())}
+      price={getPrice()}
+      discount={getDiscount()}
       options={options}
       colors={colors}
       sizes={sizes}

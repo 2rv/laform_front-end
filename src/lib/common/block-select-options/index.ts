@@ -1,1 +1,1 @@
-export { ProductSelectOptionsContainer as ProductSelect } from './container';
+export { ProductSelectOptionsContainer as BlockProductSelect } from './container';

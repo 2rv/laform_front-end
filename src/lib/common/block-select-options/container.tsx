@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import {
   BASKET_STORE_NAME,
   BASKET_ROUTE_PATH,
@@ -8,7 +8,7 @@ import { redirect } from 'src/main/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { isRequestPending } from 'src/main/store/store.service';
 import { useFormik } from 'formik';
-import { CartModalContainerProps, CART_MODAL_FIELD_NAME } from './type';
+import { CartModalContainerProps, SELECT_OPTIONS_FIELD_NAME } from './type';
 import { ProductSelectOptionsComponent } from './component';
 import {
   getCountUtil,
@@ -17,11 +17,10 @@ import {
   getLengthUtil,
   getPriceUtil,
   getVendorCodeUtil,
-  isCountUtil,
-  isLengthUtil,
   isCartUtil,
 } from './utils';
 import { LANG_STORE_NAME } from '../lang';
+import { basketStateType } from 'src/core/basket/basket.type';
 
 export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
   const {
@@ -30,13 +29,17 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
     like,
     price = 0,
     discount = 0,
-    vendorCode,
-    count,
-    length,
+    vendorCode = '',
+    count = 0,
+    length = 0,
     options = [],
     colors = [],
     sizes = [],
+    isCount = false,
+    isLength = false,
+    optionType = 0,
   } = props;
+
   if (!id || type === false) return null;
 
   const { bascketState, basketAction, currentLang } = useSelector(
@@ -53,65 +56,54 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
 
   const formik = useFormik({
     initialValues: {
-      [CART_MODAL_FIELD_NAME.OPTION]: '',
-      [CART_MODAL_FIELD_NAME.COLOR]: '',
-      [CART_MODAL_FIELD_NAME.SIZE]: '',
-      [CART_MODAL_FIELD_NAME.COUNT]: '',
-      [CART_MODAL_FIELD_NAME.LENGTH]: '',
+      [SELECT_OPTIONS_FIELD_NAME.OPTION]: -1,
+      [SELECT_OPTIONS_FIELD_NAME.COLOR]: -1,
+      [SELECT_OPTIONS_FIELD_NAME.SIZE]: -1,
+      [SELECT_OPTIONS_FIELD_NAME.COUNT]: 0,
+      [SELECT_OPTIONS_FIELD_NAME.LENGTH]: 0,
     },
     initialTouched: {
-      [CART_MODAL_FIELD_NAME.OPTION]: false,
-      [CART_MODAL_FIELD_NAME.COLOR]: false,
-      [CART_MODAL_FIELD_NAME.SIZE]: false,
-      [CART_MODAL_FIELD_NAME.COUNT]: false,
-      [CART_MODAL_FIELD_NAME.LENGTH]: false,
+      [SELECT_OPTIONS_FIELD_NAME.OPTION]: false,
+      [SELECT_OPTIONS_FIELD_NAME.COLOR]: false,
+      [SELECT_OPTIONS_FIELD_NAME.SIZE]: false,
+      [SELECT_OPTIONS_FIELD_NAME.COUNT]: false,
+      [SELECT_OPTIONS_FIELD_NAME.LENGTH]: false,
     },
     onSubmit: () => {},
   });
 
   useEffect(() => {
-    const result = bascketState.find((item: any) => {
-      return checkCart(item.id, item.optionId);
+    const result = bascketState.some((item: basketStateType) => {
+      return isCartUtil({
+        options: options,
+        colors: colors,
+        sizes: sizes,
+        option: +formik.values.option,
+        size: +formik.values.size,
+        color: +formik.values.color,
+        optionId: item.optionId,
+        id: id,
+        productId: item.id,
+        optionType: optionType,
+      });
     });
-    setCart(Boolean(result));
+    setCart(result);
   }, [bascketState, formik.values]);
 
-  const handleBasket = () => {
-    if (isCart) return redirect(BASKET_ROUTE_PATH);
-    dispatch(addToCartAction(getInfo(), currentLang));
-  };
-  const handleCount = (value: number) => {
-    const countNum = getCount();
-    if (countNum < value) {
-      return formik.setFieldValue(CART_MODAL_FIELD_NAME.COUNT, countNum);
-    }
-    formik.setFieldValue(CART_MODAL_FIELD_NAME.COUNT, value);
-  };
-  const handleLenght = (value: number) => {
-    const lengthNum = getLength();
-    if (Math.floor(lengthNum * 100) < Math.floor(value * 100)) {
-      return formik.setFieldValue(CART_MODAL_FIELD_NAME.LENGTH, lengthNum);
-    }
-    formik.setFieldValue(CART_MODAL_FIELD_NAME.LENGTH, value);
-  };
-  const handleChangeSelect = (e: any) => {
-    formik.setFieldValue(CART_MODAL_FIELD_NAME.COUNT, '');
-    formik.setFieldValue(CART_MODAL_FIELD_NAME.LENGTH, '');
-    formik.handleChange(e);
-  };
   const getPrice = (): number => {
     return getPriceUtil({
       options: options,
       colors: colors,
       sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      count: Number(formik.values.count),
-      length: Number(formik.values.length),
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      count: +formik.values.count,
+      length: +formik.values.length,
       price: price,
-      isCount: isCount(),
-      isLength: isLength(),
+      isCount: isCount,
+      isLength: isLength,
+      optionType: optionType,
     });
   };
   const getDiscount = (): number => {
@@ -119,10 +111,11 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
       options: options,
       colors: colors,
       sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
       discount: discount,
+      optionType: optionType,
     });
   };
   const getCount = (): number => {
@@ -130,10 +123,11 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
       options: options,
       colors: colors,
       sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
       count: count,
+      optionType: optionType,
     });
   };
   const getLength = (): number => {
@@ -141,10 +135,30 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
       options: options,
       colors: colors,
       sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
       length: length,
+      optionType: optionType,
+    });
+  };
+  const isDisabled = (): boolean => {
+    if (getPrice() <= 0) return true;
+    if (optionType === 1) return !Boolean(formik.values.option);
+    if (optionType === 2) return !Boolean(formik.values.size);
+    if (optionType === 3) return !Boolean(formik.values.color);
+    return false;
+  };
+  const getVendorCode = (): string => {
+    return getVendorCodeUtil({
+      options: options,
+      colors: colors,
+      sizes: sizes,
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      vendorCode: vendorCode,
+      optionType: optionType,
     });
   };
   const getInfo = () => {
@@ -154,68 +168,40 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
       options: options,
       colors: colors,
       sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      count: Number(formik.values.count),
-      length: Number(formik.values.length),
-      isCount: isCount(),
-      isLength: isLength(),
+      option: +formik.values.option,
+      size: +formik.values.size,
+      color: +formik.values.color,
+      count: +formik.values.count,
+      length: +formik.values.length,
+      isCount: isCount,
+      isLength: isLength,
+      optionType: optionType,
     });
   };
-  const getVendorCode = (): string => {
-    return getVendorCodeUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      vendorCode: vendorCode,
-    });
+  const handleBasket = () => {
+    if (isCart) return redirect(BASKET_ROUTE_PATH);
+    dispatch(addToCartAction(getInfo(), currentLang));
   };
-  const isCount = (): boolean => {
-    return isCountUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      count: count,
-    });
+  const handleCount = (value: number) => {
+    const countNum = getCount();
+    if (countNum < value) {
+      return formik.setFieldValue(SELECT_OPTIONS_FIELD_NAME.COUNT, countNum);
+    }
+    formik.setFieldValue(SELECT_OPTIONS_FIELD_NAME.COUNT, value);
   };
-  const isLength = (): boolean => {
-    return isLengthUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      length: length,
-    });
+  const handleLenght = (value: number) => {
+    const lengthNum = getLength();
+    if (Math.floor(lengthNum * 100) < Math.floor(value * 100)) {
+      return formik.setFieldValue(SELECT_OPTIONS_FIELD_NAME.LENGTH, lengthNum);
+    }
+    formik.setFieldValue(SELECT_OPTIONS_FIELD_NAME.LENGTH, value);
   };
-  const isDisabled = (): boolean => {
-    if (getPrice() <= 0) return true;
-    if (Boolean(options.length)) return !Boolean(formik.values.option);
-    if (Boolean(sizes.length)) return !Boolean(formik.values.size);
-    if (Boolean(colors.length)) return !Boolean(formik.values.color);
-    return false;
+  const handleOption = (e: ChangeEvent<HTMLSelectElement>) => {
+    formik.setFieldValue(SELECT_OPTIONS_FIELD_NAME.COUNT, 0);
+    formik.setFieldValue(SELECT_OPTIONS_FIELD_NAME.LENGTH, 0);
+    formik.handleChange(e);
   };
-  const checkCart = (productId: string, optionId: string): boolean => {
-    return isCartUtil({
-      options: options,
-      colors: colors,
-      sizes: sizes,
-      option: formik.values.option,
-      size: formik.values.size,
-      color: formik.values.color,
-      optionId: optionId,
-      id: id,
-      productId: productId,
-    });
-  };
+
   return (
     <ProductSelectOptionsComponent
       id={id}
@@ -224,21 +210,19 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
       vendorCode={getVendorCode()}
       isCart={isCart}
       isPending={isPending}
-      isOptions={Boolean(options.length)}
-      isSizes={Boolean(sizes.length)}
-      isColors={Boolean(colors.length)}
-      isCount={isCount()}
-      isLength={isLength()}
+      optionType={optionType}
+      isCount={isCount}
+      isLength={isLength}
       isDisabled={isDisabled()}
-      price={Number(getPrice())}
-      discount={Number(getDiscount())}
+      price={getPrice()}
+      discount={getDiscount()}
       options={options}
       colors={colors}
       sizes={sizes}
       count={getCount()}
       length={getLength()}
       values={formik.values}
-      handleChange={handleChangeSelect}
+      handleChange={handleOption}
       handleBlur={formik.handleBlur}
       handleCount={handleCount}
       handleLenght={handleLenght}

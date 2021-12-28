@@ -21,16 +21,12 @@ export { LikeButton } from 'src/lib/common/block-like';
 
 export function SelectButton(props: CardActionProps) {
   const { id, type, onSelect } = props;
-
   if (!onSelect) return null;
-
   const [isSelected, setSelect] = useState(false);
-
   const onSelectCard = () => {
     const result = onSelect(id, type, !isSelected);
     if (result) setSelect(!isSelected);
   };
-
   return (
     <Button
       onClick={onSelectCard}
@@ -42,7 +38,6 @@ export function SelectButton(props: CardActionProps) {
 export function DeleteButton(props: CardActionProps) {
   const { id, admin, onDelete, deleted } = props;
   if (!admin || !onDelete) return null;
-
   return deleted ? (
     <ButtonIcon onClick={() => onDelete(id, deleted ? 'true' : 'false')}>
       <PowerOnIcon />
@@ -105,7 +100,6 @@ const Content = styled.div`
 const ButtonIcon = styled(IconButton)`
   padding: 0;
 `;
-
 export function ComplexityDots(props: { complexity?: number; title?: string }) {
   const { complexity = 0, title } = props;
 
@@ -139,7 +133,6 @@ const ComplexityDot = styled(ComplexityIcon)<{ active: boolean }>`
 const ComplexityText = styled(TextSecondary)`
   min-width: max-content;
 `;
-
 export const CardName = styled(TextSecondary)`
   font-size: ${THEME_SIZE.FONT.MEDIUM};
   font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
@@ -150,13 +143,10 @@ export const CardName = styled(TextSecondary)`
   overflow: hidden;
   word-break: break-word;
 `;
-
 export function CardPrice(props: CardPriceProps) {
   const { price = 0, discount = 0 } = props;
   return (
     <div>
-      {/* <TextSecondary tid="OTHER.CARD.PRODUCT_PRICE" /> 
-       &nbsp; */}
       {Boolean(discount) ? (
         <>
           <Text price={(price - (price / 100) * discount).toFixed(2)} />
@@ -185,6 +175,8 @@ const ThroughText = styled(TextCurrency)`
 `;
 export function CardCount(props: CardCountProps) {
   const { count = 0 } = props;
+  if (count === -1) return null;
+  if (count === 0) return <TextSecondary tid="Нет в наличии" />;
   return (
     <div>
       <TextSecondary tid="Всего - " />
@@ -197,6 +189,8 @@ export function CardCount(props: CardCountProps) {
 }
 export function CardLength(props: CardLengthProps) {
   const { length = 0 } = props;
+  if (length === -1) return null;
+  if (length === 0) return <TextSecondary tid="Нет в наличии" />;
   return (
     <div>
       <TextSecondary tid="Всего - " />

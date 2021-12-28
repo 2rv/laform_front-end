@@ -1,6 +1,6 @@
 import { FieldArray } from 'formik';
 import styled from 'styled-components';
-import { SyntheticEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { FieldLayout, SectionLayout } from '../../element/layout';
 import { CategoriesComponentProps, CATEGORIES_TYPE } from './categories.type';
 import { FieldSelect } from 'src/lib/element/field';
@@ -39,7 +39,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
       <Title tid="Категории" />
       <FieldArray name={CATEGORIES_TYPE.CATEGORIES}>
         {({ remove, push }) => {
-          const handleAdd = (e: SyntheticEvent<HTMLInputElement>) => {
+          const handleAdd = (e: ChangeEvent<HTMLSelectElement>) => {
             const value = Number(e.currentTarget.value);
 
             const isCategoryExists: boolean = values.some(
