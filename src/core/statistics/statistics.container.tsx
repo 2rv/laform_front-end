@@ -52,8 +52,8 @@ function statisticsReducer(
 }
 
 export function StatisticsContainer() {
-  const path: any = getQuery('type');
-  const activePath: keyof typeof STATISTICS_TYPE = path?.[0] || 'undefined';
+  const path: any = getQuery('type')?.[0];
+  const activePath: keyof typeof STATISTICS_TYPE = path || 'undefined';
   const [state, setState] = useReducer(statisticsReducer, initialState);
   const [range, setRange] = useState<{ from: Date; to: Date }>();
 

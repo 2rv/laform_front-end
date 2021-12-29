@@ -124,25 +124,27 @@ function MasterClasssCreateReducer(
 }
 
 export function MasterClassCreateContainer() {
-  const masterClassId: any = getQuery('id');
+  const id = getQuery('id')?.[0];
   const [state, setState] = useReducer(MasterClasssCreateReducer, initialState);
 
   useEffect(() => {
-    if (masterClassId) {
-      masterClassGetByIdAction(masterClassId)(setState);
+    if (typeof id === 'string' && id) {
+      masterClassGetByIdAction(id)(setState);
     }
-  }, [masterClassId]);
+  }, [id]);
 
   const onSubmit = (values: MasterClassValues) => {
-    if (masterClassId) {
-      masterClassUpdateAction(masterClassId, values)(setState);
+    if (typeof id === 'string' && id) {
+      masterClassUpdateAction(id, values)(setState);
     } else {
       masterClassCreateAction(values)(setState);
     }
   };
 
   const onRemove = () => {
-    masterClassRemoveByIdAction(masterClassId)(setState);
+    if (typeof id === 'string' && id) {
+      masterClassRemoveByIdAction(id)(setState);
+    }
   };
 
   const initialValues = () => {
@@ -174,7 +176,7 @@ export function MasterClassCreateContainer() {
       onSubmit={onSubmit}
       validate={masterClassValidate}
       onRemove={onRemove}
-      isEdit={Boolean(masterClassId)}
+      isEdit={Boolean(id)}
     />
   );
 }

@@ -45,6 +45,7 @@ export const convertArticleProducts = (
 export const convertMultiProducts = (
   rowData: BasicRecommendationProducsType[] = [],
 ): CardMultiType[] => {
+  if (!rowData) return [];
   return rowData.map((item) => {
     const { masterClassId, patternProductId, sewingProductId, postId } = item;
     if (masterClassId) return masterClassItemConverter(masterClassId);

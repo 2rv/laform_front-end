@@ -11,7 +11,7 @@ export const convertUsersOrderData = (
     image: '/static/image/orders-image.jpg',
     name: data.orderNumber,
     path: USER_ORDER_ROUTE_PATH,
-    pathConfig: { dynamic: true, params: { id: data?.id } },
+    pathConfig: { params: { id: data?.id } },
     totalPrice: getPrice({
       price: data.price,
       discount: data.promoCodeDiscount,

@@ -48,7 +48,7 @@ function patternsProductReducer(
 }
 
 export function PatternsProductContainer() {
-  const id: any = getQuery('id');
+  const id = getQuery('id');
   const { lang, isAuth } = useSelector((state: any) => ({
     lang: state[LANG_STORE_NAME].active.toLowerCase(),
     isAuth: state[AUTH_STORE_NAME].logged,
@@ -57,7 +57,9 @@ export function PatternsProductContainer() {
   const [state, setState] = useReducer(patternsProductReducer, initialState);
 
   useEffect(() => {
-    getPatternsProductAction(id, isAuth, lang)(setState);
+    if (typeof id === 'string' && id) {
+      getPatternsProductAction(id, isAuth, lang)(setState);
+    }
   }, [id]);
 
   return <PatternsProductComponent state={state} />;

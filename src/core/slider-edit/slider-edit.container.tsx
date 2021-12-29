@@ -128,13 +128,13 @@ function sliderEditReducer(
 }
 
 export function SliderEditContainer() {
-  const sliderId: any = getQuery('id');
-  const isNewSlider = sliderId?.includes('new');
+  const id = getQuery('id');
+  const isNewSlider = id?.includes('new');
   const [state, setState] = useReducer(sliderEditReducer, initialState);
 
   useEffect(() => {
-    if (!isNewSlider && sliderId) {
-      getSlideByIdAction(sliderId)(setState);
+    if (!isNewSlider && typeof id === 'string' && id) {
+      getSlideByIdAction(id)(setState);
     }
   }, []);
 
@@ -158,16 +158,16 @@ export function SliderEditContainer() {
   const onSubmit = (values: SliderEditValue) => {
     if (isNewSlider) {
       saveSlideAction(values)(setState);
-    } else if (sliderId) {
-      updateSlideAction(sliderId, values)(setState);
+    } else if (typeof id === 'string' && id) {
+      updateSlideAction(id, values)(setState);
     }
   };
 
   const onRemove = () => {
     if (isNewSlider) {
       redirect(SLIDER_LIST_ROUTE_PATH);
-    } else if (sliderId) {
-      removeSlideAction(sliderId);
+    } else if (typeof id === 'string' && id) {
+      removeSlideAction(id);
     }
   };
 

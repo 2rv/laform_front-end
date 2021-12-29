@@ -10,13 +10,13 @@ export function LikeComponent(props: LikeComponentProps) {
 
   return (
     <Button onClick={switchLike} like={like} disabled={pending}>
-      <Icon like={like} />
+      <Icon like={like ? 1 : undefined} />
       <DeleteIcon />
     </Button>
   );
 }
 
-const Icon = styled(LikeIcon)<{ like: boolean }>`
+const Icon = styled(LikeIcon)<{ like?: 1 }>`
   fill: ${(p) => (p.like ? THEME_COLOR.PRIMARY : THEME_COLOR.SECONDARY_DARK)};
 `;
 const DeleteIcon = styled(LikeDeleteIcon)`

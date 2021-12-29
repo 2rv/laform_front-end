@@ -11,12 +11,12 @@ type ProductDescriptionProps = {
 };
 
 export function ProductDescription(props: ProductDescriptionProps) {
-  const { description = '', descriptionOld = '', limit = 200 } = props;
+  const { description, descriptionOld, limit = 200 } = props;
 
   const [more, setMore] = useState(true);
 
-  const firstText = description.slice(0, limit);
-  const secondText = description.slice(limit);
+  const firstText = (description || '').slice(0, limit);
+  const secondText = (description || '').slice(limit);
 
   return (
     <Container>
@@ -35,7 +35,7 @@ export function ProductDescription(props: ProductDescriptionProps) {
           )}
         </>
       ) : (
-        <div dangerouslySetInnerHTML={{ __html: descriptionOld }} />
+        <div dangerouslySetInnerHTML={{ __html: descriptionOld || '' }} />
       )}
     </Container>
   );

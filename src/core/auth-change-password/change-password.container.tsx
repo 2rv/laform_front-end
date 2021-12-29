@@ -51,7 +51,7 @@ export function ChangePasswordContainer() {
 
   const onSubmit = (values: ChangePasswordValues) => {
     const code = getQuery('code');
-    if (typeof code === 'string') {
+    if (typeof code === 'string' && code) {
       changePasswordAction(code, values)(setState);
     } else {
       setState({ type: CHANGE_PASSWORD_ACTION_TYPE.ERROR, error: 'Ошибка' });

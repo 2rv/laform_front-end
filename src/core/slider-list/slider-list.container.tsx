@@ -66,7 +66,7 @@ export function SliderListContainer() {
   };
 
   const editSlide = (id: string) => {
-    redirect(SLIDER_EDIT_ROUTE_PATH, { dynamic: true, params: { id: id } });
+    redirect(SLIDER_EDIT_ROUTE_PATH, { params: { id: id } });
   };
 
   const removeSlide = (id: string) => {

@@ -41,7 +41,7 @@ export const convertPurchaseData = (
       return {
         id: product.id,
         path: typePathProduct(product.type),
-        pathConfig: { dynamic: true, params: { id: item.id } },
+        pathConfig: { params: { id: item.id } },
         type: product.type,
         name: product.titleRu,
         image: product.images?.[0].fileUrl,
