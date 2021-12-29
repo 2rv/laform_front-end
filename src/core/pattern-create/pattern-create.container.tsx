@@ -124,25 +124,27 @@ function PatternCreateReducer(
 }
 
 export function PatternCreateContainer() {
-  const patternId: any = getQuery('id');
+  const id = getQuery('id')?.[0];
   const [state, setState] = useReducer(PatternCreateReducer, initialState);
 
   useEffect(() => {
-    if (patternId) {
-      patternGetByIdAction(patternId)(setState);
+    if (typeof id === 'string' && id) {
+      patternGetByIdAction(id)(setState);
     }
-  }, [patternId]);
+  }, [id]);
 
   const onSubmit = (values: PatternValues) => {
-    if (patternId) {
-      patternUpdateAction(patternId, values)(setState);
+    if (typeof id === 'string' && id) {
+      patternUpdateAction(id, values)(setState);
     } else {
       patternCreateAction(values)(setState);
     }
   };
 
   const onRemove = () => {
-    patternRemoveByIdAction(patternId)(setState);
+    if (typeof id === 'string' && id) {
+      patternRemoveByIdAction(id)(setState);
+    }
   };
 
   const initialValues = () => {
@@ -188,7 +190,7 @@ export function PatternCreateContainer() {
       onSubmit={onSubmit}
       validate={patternValidate}
       onRemove={onRemove}
-      isEdit={Boolean(patternId)}
+      isEdit={Boolean(id)}
     />
   );
 }

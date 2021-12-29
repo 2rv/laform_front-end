@@ -9,7 +9,7 @@ export const convertOrdersData = (data: BasicPurchaseType): TableItemType => {
     image: '/static/image/orders-image.jpg',
     name: data.orderNumber,
     path: ORDER_NUMBER_ROUTE_PATH,
-    pathConfig: { dynamic: true, params: { id: data?.id } },
+    pathConfig: { params: { id: data?.id } },
     totalPrice: getPrice({
       discount: data.promoCodeDiscount,
       shippingPrice: data.shippingPrice || 0,

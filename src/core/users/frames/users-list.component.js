@@ -63,7 +63,7 @@ export function UsersListComponent({ isPending, users }) {
             <Content>
               <CaseLink
                 path={ABOUT_ACCOUNT_ROUTE_PATH}
-                pathConfig={{ dynamic: true, params: { id: id } }}
+                pathConfig={{ params: { id: id } }}
               >
                 <UserIcon />
                 <LoginText>{login}</LoginText>

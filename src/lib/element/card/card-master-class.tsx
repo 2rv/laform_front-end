@@ -40,7 +40,7 @@ export function CardMasterClass(props: CardMasterClassType) {
             ? MASTER_CLASS_CREATE_ROUTE_PATH
             : MASTER_CLASS_PRODUCT_ROUTE_PATH
         }
-        pathConfig={{ dynamic: true, params: { id: id } }}
+        pathConfig={{ params: { id: id } }}
         image={image}
         modifier={modifier}
         deleted={deleted}

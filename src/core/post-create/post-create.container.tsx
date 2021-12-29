@@ -124,22 +124,24 @@ function PostCreateReducer(
 }
 
 export function PostCreateContainer() {
-  const postId: any = getQuery('id');
+  const id = getQuery('id')?.[0];
   const [state, setState] = useReducer(PostCreateReducer, initialState);
   useEffect(() => {
-    if (postId) {
-      postGetByIdAction(postId)(setState);
+    if (typeof id === 'string' && id) {
+      postGetByIdAction(id)(setState);
     }
-  }, [postId]);
+  }, [id]);
   const onSubmit = (values: PostValues) => {
-    if (postId) {
-      postUpdateAction(postId, values)(setState);
+    if (typeof id === 'string' && id) {
+      postUpdateAction(id, values)(setState);
     } else {
       postCreateAction(values)(setState);
     }
   };
   const onRemove = () => {
-    postRemoveByIdAction(postId)(setState);
+    if (typeof id === 'string' && id) {
+      postRemoveByIdAction(id)(setState);
+    }
   };
   const initialValues = () => {
     return (
@@ -166,7 +168,7 @@ export function PostCreateContainer() {
       onSubmit={onSubmit}
       validate={postValidate}
       onRemove={onRemove}
-      isEdit={Boolean(postId)}
+      isEdit={Boolean(id)}
     />
   );
 }

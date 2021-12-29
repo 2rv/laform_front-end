@@ -124,25 +124,27 @@ function SewingGoodsCreateReducer(
 }
 
 export function SewingGoodsCreateContainer() {
-  const sewingGoodsId: any = getQuery('id');
+  const id = getQuery('id')?.[0];
   const [state, setState] = useReducer(SewingGoodsCreateReducer, initialState);
 
   useEffect(() => {
-    if (sewingGoodsId) {
-      sewingGoodsGetByIdAction(sewingGoodsId)(setState);
+    if (typeof id === 'string' && id) {
+      sewingGoodsGetByIdAction(id)(setState);
     }
-  }, [sewingGoodsId]);
+  }, [id]);
 
   const onSubmit = (values: SewingGoodsValues) => {
-    if (sewingGoodsId) {
-      sewingGoodsUpdateAction(sewingGoodsId, values)(setState);
+    if (typeof id === 'string' && id) {
+      sewingGoodsUpdateAction(id, values)(setState);
     } else {
       sewingGoodsCreateAction(values)(setState);
     }
   };
 
   const onRemove = () => {
-    sewingGoodsRemoveByIdAction(sewingGoodsId)(setState);
+    if (typeof id === 'string' && id) {
+      sewingGoodsRemoveByIdAction(id)(setState);
+    }
   };
 
   const initialValues = () => {
@@ -185,7 +187,7 @@ export function SewingGoodsCreateContainer() {
       onSubmit={onSubmit}
       validate={sewingGoodsValidate}
       onRemove={onRemove}
-      isEdit={Boolean(sewingGoodsId)}
+      isEdit={Boolean(id)}
     />
   );
 }

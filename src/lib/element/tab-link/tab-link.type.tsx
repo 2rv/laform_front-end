@@ -2,7 +2,7 @@ export interface TabLinkComponentProps {
   activePath: string | undefined;
   pathItems: {
     name: string;
-    path: string | Function;
+    path: string | (() => string);
     pathConfig?: { params?: { type?: string } };
   }[];
   disabled: boolean;

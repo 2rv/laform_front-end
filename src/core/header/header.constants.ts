@@ -1,7 +1,7 @@
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { PATTERNS_ROUTE_PATH } from '../patterns';
 import { SEWING_GOODS_ROUTE_PATH } from '../sewing-goods';
-import { ARTICLES_ROUTE_PATH } from '../articles';
+import { POSTS_ROUTE_PATH } from '../posts';
 import { FAQ_ABOUT_US_ROUTE_PATH, FAQ_ROUTE_PATH } from '../faq-article';
 import { MASTER_CLASS_CREATE_ROUTE_PATH } from '../master-class-create';
 import { PATTERN_CREATE_ROUTE_PATH } from '../pattern-create';
@@ -24,7 +24,7 @@ export const NAV_MENU_ITEMS = [
   { name: 'HEADER.MENU_ITEMS.PATTERNS', path: PATTERNS_ROUTE_PATH() },
   { name: 'HEADER.MENU_ITEMS.SEWING_GOODS', path: SEWING_GOODS_ROUTE_PATH },
   { name: 'HEADER.MENU_ITEMS.MASTER_CLASSES', path: MASTER_CLASSES_ROUTE_PATH },
-  { name: 'HEADER.MENU_ITEMS.ARTICLES', path: ARTICLES_ROUTE_PATH },
+  { name: 'HEADER.MENU_ITEMS.ARTICLES', path: POSTS_ROUTE_PATH },
   { name: 'HEADER.MENU_ITEMS.HELP', path: FAQ_ROUTE_PATH },
   { name: 'HEADER.MENU_ITEMS.ABOUT_US', path: FAQ_ABOUT_US_ROUTE_PATH },
 ];

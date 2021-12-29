@@ -124,7 +124,7 @@ export function BlockParams(props: { params: TableParamsProps }) {
           <FullNameText
             tid={fullName}
             path={ABOUT_ACCOUNT_ROUTE_PATH}
-            pathConfig={{ dynamic: true, params: { id: userId } }}
+            pathConfig={{ params: { id: userId } }}
           />
         </div>
       )}

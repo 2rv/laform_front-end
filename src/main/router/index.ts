@@ -11,7 +11,7 @@ import {
   sewingGoodsRouter,
   SEWING_GOODS_ROUTE_PATH,
 } from '../../core/sewing-goods';
-import { articlesRouter, ARTICLES_ROUTE_PATH } from '../../core/articles';
+import { postsRouter, POSTS_ROUTE_PATH } from '../../core/posts';
 import {
   authRecoveryAccountRouter,
   AUTH_RECOVERY_ACCOUNT_ROUTE_PATH,
@@ -176,7 +176,7 @@ export const routes = {
   [FEEDBACK_ROUTE_PATH]: feedbackRouter,
   [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,
   [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
-  [ARTICLES_ROUTE_PATH]: articlesRouter,
+  [POSTS_ROUTE_PATH]: postsRouter,
   [HOME_ROUTE_PATH]: homeRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,

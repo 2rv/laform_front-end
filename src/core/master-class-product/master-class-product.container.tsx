@@ -45,7 +45,7 @@ function masterClassProductReducer(
 }
 
 export function MasterClassProductContainer() {
-  const id: any = getQuery('id');
+  const id = getQuery('id');
 
   const { lang, isAuth } = useSelector((state: any) => ({
     lang: state[LANG_STORE_NAME].active.toLowerCase(),
@@ -55,7 +55,9 @@ export function MasterClassProductContainer() {
   const [state, setState] = useReducer(masterClassProductReducer, initialState);
 
   useEffect(() => {
-    getMasterClassProductAction(id, isAuth, lang)(setState);
+    if (typeof id === 'string' && id) {
+      getMasterClassProductAction(id, isAuth, lang)(setState);
+    }
   }, [id]);
 
   return <MasterClassProductComponent state={state} />;

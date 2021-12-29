@@ -12,7 +12,7 @@ export function UsersListItemComponent(props) {
       <UsersImageLogin>
         <Link
           path={ABOUT_ACCOUNT_ROUTE_PATH}
-          pathConfig={{ dynamic: true, params: { id: id } }}
+          pathConfig={{ params: { id: id } }}
         >
           <UserIcon />
           <TextSecondary>{login}</TextSecondary>

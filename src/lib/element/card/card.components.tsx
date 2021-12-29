@@ -108,7 +108,10 @@ export function ComplexityDots(props: { complexity?: number; title?: string }) {
       {title && <ComplexityText tid={title} />}
       <ComplexityCase>
         {[1, 2, 3, 4, 5].map((rate, index) => (
-          <ComplexityDot key={index} active={rate <= complexity} />
+          <ComplexityDot
+            key={index}
+            active={rate <= complexity ? 1 : undefined}
+          />
         ))}
       </ComplexityCase>
     </ComplexityContainer>
@@ -126,7 +129,7 @@ const ComplexityCase = styled.div`
   display: flex;
   gap: ${spacing(2)};
 `;
-const ComplexityDot = styled(ComplexityIcon)<{ active: boolean }>`
+const ComplexityDot = styled(ComplexityIcon)<{ active?: 1 }>`
   fill: ${(p) =>
     p.active ? THEME_COLOR.SECONDARY_DARK : THEME_COLOR.LIGHT_GRAY};
 `;

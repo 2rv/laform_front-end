@@ -48,7 +48,7 @@ export function CardSewingGood(props: CardSewingGoodType) {
             ? SEWING_GOODS_CREATE_ROUTE_PATH
             : SEWING_GOODS_PRODUCT_ROUTE_PATH
         }
-        pathConfig={{ dynamic: true, params: { id: id } }}
+        pathConfig={{ params: { id: id } }}
         image={image}
         modifier={modifier}
         deleted={deleted}

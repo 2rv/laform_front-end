@@ -1,5 +1,5 @@
 import { POST_CREATE_ROUTE_PATH } from '../post-create';
-import { ARTICLES_ROUTE_PATH } from '../articles';
+import { POSTS_ROUTE_PATH } from '../posts';
 import { FAQ_ROUTE_PATH } from '../faq-article';
 import { HOME_ROUTE_PATH } from '../home';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
@@ -39,7 +39,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
       title: 'HEADER.MENU_ITEMS.MASTER_CLASSES',
       pathname: MASTER_CLASSES_ROUTE_PATH,
     },
-    { title: 'HEADER.MENU_ITEMS.ARTICLES', pathname: ARTICLES_ROUTE_PATH },
+    { title: 'HEADER.MENU_ITEMS.ARTICLES', pathname: POSTS_ROUTE_PATH },
   ];
   const adminLinks: any = [
     {
