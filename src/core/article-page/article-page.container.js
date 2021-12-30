@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { getQuery } from 'src/main/navigation';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
 import {
@@ -18,15 +17,15 @@ import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 export function ArticlePageContainer() {
   const dispatch = useDispatch();
   const articleProductId = getQuery('id');
-  const { state, pageLoading, currentLang, isAuth } = useSelector((state) => ({
+  const { state, pageLoading, isAuth } = useSelector((state) => ({
     state: state[ARTICLE_PAGE_STORE_NAME].articlePage,
     pageLoading: state[NAVIGATION_STORE_NAME].pageLoading,
-    currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
+
     isAuth: state[AUTH_STORE_NAME].logged,
   }));
 
   useEffect(() => {
-    dispatch(articlePageUploadData(currentLang, articleProductId, isAuth));
+    dispatch(articlePageUploadData(articleProductId, isAuth));
   }, [articleProductId]);
 
   return (

@@ -77,9 +77,6 @@ export function postGetByIdAction(id: string) {
       const response: AxiosResponse<BasicPostType> = await httpRequest({
         method: 'GET',
         url: '/post/get/for-update/' + id,
-        params: {
-          lang: 'ru',
-        },
       });
       dispatch({
         type: POST_CREATE_ACTION_TYPE.GET_SUCCESS,

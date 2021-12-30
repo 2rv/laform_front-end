@@ -1,5 +1,7 @@
 import { useEffect, useReducer, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { SearchBlockFilterValues } from '../block-search';
+import { LANG_STORE_NAME } from '../lang';
 import {
   getProductsByType,
   paginateProductsByType,
@@ -83,13 +85,17 @@ export function RecomendationContainer(props: RecomendationContainerProps) {
   const { values, name, setFieldValue } = props;
   const [state, setState] = useReducer(RecommendationReducer, initialState);
 
+  const { lang } = useSelector((state: any) => ({
+    lang: state[LANG_STORE_NAME].active.toLowerCase(),
+  }));
+
   const typeHandler = useState(0);
   const [type] = typeHandler;
   const [query, setQuery] = useState<SearchBlockFilterValues>();
 
   useEffect(() => {
-    getProductsByType({ type, ...query })(setState);
-  }, [type, query]);
+    getProductsByType({ type, lang, ...query })(setState);
+  }, [type, query, lang]);
 
   const onFilter = (props: SearchBlockFilterValues) => {
     const { where, sort, by, category } = props;
@@ -102,7 +108,7 @@ export function RecomendationContainer(props: RecomendationContainerProps) {
   };
 
   const onPagination = () => {
-    paginateProductsByType(state.page, { type, ...query })(setState);
+    paginateProductsByType(state.page, { type, lang, ...query })(setState);
   };
 
   const handleChange = (

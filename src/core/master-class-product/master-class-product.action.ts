@@ -8,11 +8,7 @@ import { AxiosResponse } from 'axios';
 import { BasicMasterClassType } from 'src/lib/basic-types';
 import { Dispatch } from 'react';
 
-export function getMasterClassProductAction(
-  id: string,
-  isAuth: boolean,
-  lang: string,
-) {
+export function getMasterClassProductAction(id: string, isAuth: boolean) {
   return async (dispatch: Dispatch<MasterClassProductActionType>) => {
     dispatch({
       type: MASTER_CLASS_PRODUCT_ACTION_TYPE.PENDING,
@@ -22,9 +18,6 @@ export function getMasterClassProductAction(
       const response: AxiosResponse<BasicMasterClassType> = await httpRequest({
         method: 'GET',
         url: isAuth ? '/master-class/auth/get/' + id : 'master-class/get/' + id,
-        params: {
-          lang: lang,
-        },
       });
 
       dispatch({

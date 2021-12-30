@@ -1,4 +1,6 @@
 import { ChangeEvent, useEffect, useReducer, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import {
   getProductsByType,
   paginateProductsByType,
@@ -79,17 +81,24 @@ export function ProductSearchContainer() {
   const [isOpen, setOpen] = useState(false);
   const [where, setWhere] = useState('');
 
+  const { lang } = useSelector((state: any) => ({
+    lang: state[LANG_STORE_NAME].active.toLowerCase(),
+  }));
+
   useEffect(() => {
     if (isOpen) {
-      getProductsByType({ page: state.page, where: where ? where : undefined })(
-        setState,
-      );
+      getProductsByType({
+        page: state.page,
+        lang,
+        where: where ? where : undefined,
+      })(setState);
     }
   }, [where, isOpen]);
 
   const onPagination = () => {
     paginateProductsByType({
       page: state.page,
+      lang,
       where: where ? where : undefined,
     })(setState);
   };

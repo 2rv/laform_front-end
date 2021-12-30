@@ -28,7 +28,7 @@ async function getMasterClasses(query: QueryType): Promise<prodResType> {
       url: '/master-class/get',
       method: 'GET',
       params: {
-        lang: 'ru',
+        lang: query.lang,
         where: query.where,
         sort: query.sort,
         by: query.by,
@@ -47,7 +47,7 @@ async function getPatternProducts(query: QueryType): Promise<prodResType> {
       url: '/pattern-product/get',
       method: 'GET',
       params: {
-        lang: 'ru',
+        lang: query.lang,
         where: query.where,
         sort: query.sort,
         by: query.by,
@@ -72,7 +72,7 @@ async function getSewingGoods(query: QueryType): Promise<prodResType> {
       url: '/sewing-product/get',
       method: 'GET',
       params: {
-        lang: 'ru',
+        lang: query.lang,
         where: query.where,
         sort: query.sort,
         by: query.by,
@@ -90,7 +90,7 @@ async function getPosts(query: QueryType): Promise<prodResType> {
     url: '/post/get',
     method: 'GET',
     params: {
-      lang: 'ru',
+      lang: query.lang,
       where: query.where,
       sort: query.sort,
       by: query.by,
@@ -124,7 +124,7 @@ export function getProductsByType(query: QueryType) {
         url: '/category/get',
         params: {
           type: query.type,
-          lang: 'ru',
+          lang: query.lang,
         },
       });
 

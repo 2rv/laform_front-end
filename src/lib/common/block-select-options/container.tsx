@@ -19,7 +19,6 @@ import {
   getVendorCodeUtil,
   isCartUtil,
 } from './utils';
-import { LANG_STORE_NAME } from '../lang';
 import { basketStateType } from 'src/core/basket/basket.type';
 
 export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
@@ -42,13 +41,10 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
 
   if (!id || type === false) return null;
 
-  const { bascketState, basketAction, currentLang } = useSelector(
-    (state: any) => ({
-      bascketState: state[BASKET_STORE_NAME].basket,
-      basketAction: state[BASKET_STORE_NAME].basketAction,
-      currentLang: state[LANG_STORE_NAME].active.toLowerCase(),
-    }),
-  );
+  const { bascketState, basketAction } = useSelector((state: any) => ({
+    bascketState: state[BASKET_STORE_NAME].basket,
+    basketAction: state[BASKET_STORE_NAME].basketAction,
+  }));
 
   const dispatch = useDispatch();
   const isPending = isRequestPending(basketAction);
@@ -180,7 +176,7 @@ export function ProductSelectOptionsContainer(props: CartModalContainerProps) {
   };
   const handleBasket = () => {
     if (isCart) return redirect(BASKET_ROUTE_PATH);
-    dispatch(addToCartAction(getInfo(), currentLang));
+    dispatch(addToCartAction(getInfo()));
   };
   const handleCount = (value: number) => {
     const countNum = getCount();

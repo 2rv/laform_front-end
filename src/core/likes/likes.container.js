@@ -44,7 +44,7 @@ export function LikesContainer() {
     return () => {
       dispatch(clearLikesStoreAction);
     };
-  }, [activePath, query]);
+  }, [activePath, currentLang, query]);
 
   const onFilter = (props) => {
     const { where, sort, by, category } = props;

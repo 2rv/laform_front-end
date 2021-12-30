@@ -8,11 +8,7 @@ import {
 } from './sewing-goods-product.type';
 import { convertSewingGoodsProductData } from './sewing-goods-product.convert';
 
-export function getSewingGoodsProductAction(
-  id: string,
-  isAuth: boolean,
-  lang: string,
-) {
+export function getSewingGoodsProductAction(id: string, isAuth: boolean) {
   return async (dispatch: Dispatch<SewingGoodsProductActionType>) => {
     dispatch({
       type: SEWING_GOODS_PRODUCT_ACTION_TYPE.PENDING,
@@ -24,9 +20,6 @@ export function getSewingGoodsProductAction(
         url: isAuth
           ? '/sewing-product/auth/get/' + id
           : 'sewing-product/get/' + id,
-        params: {
-          lang: lang,
-        },
       });
       dispatch({
         type: SEWING_GOODS_PRODUCT_ACTION_TYPE.SUCCESS,

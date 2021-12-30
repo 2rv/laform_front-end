@@ -135,9 +135,6 @@ export function masterClassGetByIdAction(id: string) {
       const response: AxiosResponse<BasicMasterClassType> = await httpRequest({
         method: 'GET',
         url: '/master-class/get/for-update/' + id,
-        params: {
-          lang: 'ru',
-        },
       });
       dispatch({
         type: MASTER_CLASS_CREATE_ACTION_TYPE.GET_SUCCESS,

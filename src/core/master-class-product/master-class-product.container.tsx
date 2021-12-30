@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { getMasterClassProductAction } from './master-class-product.action';
 import { MasterClassProductComponent } from './master-class-product.component';
 import { getQuery } from 'src/main/navigation';
-import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import {
   MasterClassProductActionType,
@@ -47,8 +46,7 @@ function masterClassProductReducer(
 export function MasterClassProductContainer() {
   const id = getQuery('id');
 
-  const { lang, isAuth } = useSelector((state: any) => ({
-    lang: state[LANG_STORE_NAME].active.toLowerCase(),
+  const { isAuth } = useSelector((state: any) => ({
     isAuth: state[AUTH_STORE_NAME].logged,
   }));
 
@@ -56,7 +54,7 @@ export function MasterClassProductContainer() {
 
   useEffect(() => {
     if (typeof id === 'string' && id) {
-      getMasterClassProductAction(id, isAuth, lang)(setState);
+      getMasterClassProductAction(id, isAuth)(setState);
     }
   }, [id]);
 

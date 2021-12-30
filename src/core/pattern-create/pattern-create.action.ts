@@ -70,9 +70,6 @@ export function patternGetByIdAction(id: string) {
       const response: AxiosResponse<BasicPatternType> = await httpRequest({
         method: 'GET',
         url: '/pattern-product/get/for-update/' + id,
-        params: {
-          lang: 'ru',
-        },
       });
       dispatch({
         type: PATTERN_CREATE_ACTION_TYPE.GET_SUCCESS,

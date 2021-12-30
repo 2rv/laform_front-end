@@ -1,8 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { useSelector } from 'react-redux';
-
 import { getQuery } from 'src/main/navigation';
-import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { getPatternsProductAction } from './patterns-product.action';
 import { PatternsProductComponent } from './patterns-product.component';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
@@ -49,8 +47,7 @@ function patternsProductReducer(
 
 export function PatternsProductContainer() {
   const id = getQuery('id');
-  const { lang, isAuth } = useSelector((state: any) => ({
-    lang: state[LANG_STORE_NAME].active.toLowerCase(),
+  const { isAuth } = useSelector((state: any) => ({
     isAuth: state[AUTH_STORE_NAME].logged,
   }));
 
@@ -58,7 +55,7 @@ export function PatternsProductContainer() {
 
   useEffect(() => {
     if (typeof id === 'string' && id) {
-      getPatternsProductAction(id, isAuth, lang)(setState);
+      getPatternsProductAction(id, isAuth)(setState);
     }
   }, [id]);
 
