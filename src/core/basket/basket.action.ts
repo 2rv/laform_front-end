@@ -1,5 +1,4 @@
-import { httpRequest } from '../../main/http';
-import { BASKET_API } from './basket.constant';
+import { httpRequest } from 'src/main/http';
 import {
   BASKET_ACTION_TYPE,
   addToCartDataType,
@@ -25,8 +24,7 @@ export function initializeBasketStore() {
     }
   };
 }
-
-export function addToCartAction(data: addToCartDataType, currentLang: string) {
+export function addToCartAction(data: addToCartDataType) {
   return async (dispatch: Function) => {
     dispatch({
       type: BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING,
@@ -34,11 +32,13 @@ export function addToCartAction(data: addToCartDataType, currentLang: string) {
     try {
       const response = await httpRequest({
         method: 'GET',
-        url: BASKET_API.ADD_BACKET_LOAD_ITEM_INFO(
-          data.type,
-          data.id,
-          currentLang,
-        ),
+        url:
+          [
+            '/master-class/get/',
+            '/pattern-product/get/',
+            '/pattern-product/get/',
+            '/sewing-product/get/',
+          ][data.type] + data.id,
       });
       const basketStorage = JSON.parse(localStorage.getItem('basket') || '[]');
       const convertedData = convertAddToCart(
@@ -130,7 +130,7 @@ export function createOrderAction(
       const data = convertCreateOrder(values, bascketState, isSdek);
       const response = await httpRequest({
         method: 'POST',
-        url: BASKET_API.CREATE_ORDER(isAuth),
+        url: isAuth ? 'purchase/create' : 'purchase/not-auth/create',
         data: data,
       });
 

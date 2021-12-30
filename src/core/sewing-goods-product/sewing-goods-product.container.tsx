@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { useSelector } from 'react-redux';
 import { getQuery } from 'src/main/navigation';
-import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import { getSewingGoodsProductAction } from './sewing-goods-product.action';
 import { SewingGoodsProductComponent } from './sewing-goods-product.component';
@@ -48,15 +47,14 @@ function sewingGoodsProductReducer(
 
 export function SewingGoodsProductContainer() {
   const id = getQuery('id');
-  const { lang, isAuth } = useSelector((state: any) => ({
-    lang: state[LANG_STORE_NAME].active.toLowerCase(),
+  const { isAuth } = useSelector((state: any) => ({
     isAuth: state[AUTH_STORE_NAME].logged,
   }));
   const [state, setState] = useReducer(sewingGoodsProductReducer, initialState);
 
   useEffect(() => {
     if (typeof id === 'string' && id) {
-      getSewingGoodsProductAction(id, isAuth, lang)(setState);
+      getSewingGoodsProductAction(id, isAuth)(setState);
     }
   }, [id]);
 

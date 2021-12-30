@@ -8,11 +8,7 @@ import {
   PATTERNS_PRODUCT_ACTION_TYPE,
 } from './patterns-product.type';
 
-export function getPatternsProductAction(
-  id: string,
-  isAuth: boolean,
-  lang: string,
-) {
+export function getPatternsProductAction(id: string, isAuth: boolean) {
   return async (dispatch: Dispatch<PatternsProductActionType>) => {
     dispatch({
       type: PATTERNS_PRODUCT_ACTION_TYPE.PENDING,
@@ -24,9 +20,6 @@ export function getPatternsProductAction(
         url: isAuth
           ? '/pattern-product/auth/get/' + id
           : 'pattern-product/get/' + id,
-        params: {
-          lang: lang,
-        },
       });
 
       dispatch({

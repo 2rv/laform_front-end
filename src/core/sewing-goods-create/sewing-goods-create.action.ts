@@ -77,9 +77,6 @@ export function sewingGoodsGetByIdAction(id: string) {
       const response: AxiosResponse<BasicSewingGoodType> = await httpRequest({
         method: 'GET',
         url: '/sewing-product/get/for-update/' + id,
-        params: {
-          lang: 'ru',
-        },
       });
       dispatch({
         type: SEWING_GOODS_CREATE_ACTION_TYPE.GET_SUCCESS,

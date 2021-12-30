@@ -6,7 +6,6 @@ import {
   isRequestPending,
 } from '../../main/store/store.service';
 import { NAVIGATION_STORE_NAME } from '../../lib/common/navigation';
-import { LANG_STORE_NAME } from '../../lib/common/lang';
 import { compilationLoadData } from './home.action';
 import { HOME_STORE_NAME } from './home.constant';
 import { AUTH_STORE_NAME } from 'src/lib/common/auth';

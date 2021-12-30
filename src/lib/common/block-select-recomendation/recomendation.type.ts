@@ -65,6 +65,7 @@ export type prodResType = {
   total: number;
 };
 export type QueryType = {
+  lang: string;
   where?: string;
   sort?: string;
   by?: string;

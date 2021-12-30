@@ -20,6 +20,7 @@ import {
 } from 'src/lib/basic-types';
 
 type QueryType = {
+  lang: string;
   page?: number;
   where?: string;
 };
@@ -30,7 +31,7 @@ async function getMasterClasses(query: QueryType): Promise<prodResType> {
       url: '/master-class/get',
       method: 'GET',
       params: {
-        lang: 'ru',
+        lang: query.lang,
         where: query.where,
         page: query.page,
         size: 5,
@@ -47,7 +48,7 @@ async function getPatternProducts(query: QueryType): Promise<prodResType> {
       url: '/pattern-product/get',
       method: 'GET',
       params: {
-        lang: 'ru',
+        lang: query.lang,
         where: query.where,
         page: query.page,
         size: 5,
@@ -64,7 +65,7 @@ async function getSewingGoods(query: QueryType): Promise<prodResType> {
       url: '/sewing-product/get',
       method: 'GET',
       params: {
-        lang: 'ru',
+        lang: query.lang,
         where: query.where,
         page: query.page,
         size: 5,
@@ -80,7 +81,7 @@ async function getPosts(query: QueryType): Promise<prodResType> {
     url: '/post/get',
     method: 'GET',
     params: {
-      lang: 'ru',
+      lang: query.lang,
       where: query.where,
       page: query.page,
       size: 5,
