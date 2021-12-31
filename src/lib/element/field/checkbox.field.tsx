@@ -17,6 +17,7 @@ export function FieldCheckbox(props: FieldCheckboxProps) {
     disabled,
     error,
   } = props;
+
   return (
     <Container className={className}>
       {titleTid && <Title tid={titleTid} />}

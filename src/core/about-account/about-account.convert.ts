@@ -1,6 +1,6 @@
 import {
   BasicCommentProps,
-  BasicRecommendationProducsType,
+  BasicProductLinkType,
   BasicUserInfoType,
 } from 'src/lib/basic-types';
 import { CommentsProps } from 'src/lib/common/block-comments';
@@ -58,7 +58,7 @@ export const convertUserInfo = (data: BasicUserInfoType): UserInfoProps => {
     comments: convertCommentsData(data.comment),
   };
 };
-const convertLikesData = (likes: BasicRecommendationProducsType[]) => {
+const convertLikesData = (likes: BasicProductLinkType[]) => {
   return likes.map((like) => {
     const product =
       like.masterClassId ||

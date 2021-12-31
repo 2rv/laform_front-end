@@ -1,78 +1,30 @@
-import { BasicFileType } from 'src/lib/basic-types';
-import { CardMultiType } from 'src/lib/element/card';
+import { CardMultiType, CardProductLinkType } from 'src/lib/element/card';
 import {
   SortOptionType,
   CategoryOptionType,
   SearchBlockHandleFilterType,
 } from '../block-search';
 
-export type RecommendationType = {
-  id?: string;
-  recommendationProducts: RecommendationProducType[];
-};
-export type RecommendationProducType = {
-  id?: string;
-  masterClassId?: {
-    id: string;
-    images: BasicFileType[];
-    titleRu: string;
-    type: 0;
-  };
-  patternProductId?: {
-    id: string;
-    images: BasicFileType[];
-    titleRu: string;
-    type: 1 | 2;
-  };
-  sewingProductId?: {
-    id: string;
-    images: BasicFileType[];
-    titleRu: string;
-    type: 3;
-  };
-  postId?: { id: string; image: BasicFileType; titleRu: string; type: 4 };
-};
-
-export interface RecomendationContainerProps {
-  values: RecommendationType;
+export type RecomendationContainerProps = {
+  value: CardProductLinkType[];
   name: string;
-  setFieldValue: (name: string, value: RecommendationType) => void;
-}
-export interface RecommendationComponentProps {
-  values: RecommendationType;
+  setFieldValue: (name: string, value: CardProductLinkType[]) => void;
+};
+export type RecommendationComponentProps = {
+  value: CardProductLinkType[];
   state: RecommendationStateType;
   onPagination: () => void;
   filterOptions: SortOptionType[];
   onFilter: SearchBlockHandleFilterType;
   typeHandler: [number, (val: number) => void];
-  handleChange: (
-    id: string,
-    type: 0 | 1 | 2 | 3 | 4,
-    status: boolean,
-  ) => boolean;
-}
-export interface RecommendationListProps {
-  handleChange: (
-    id: string,
-    type: 0 | 1 | 2 | 3 | 4,
-    status: boolean,
-  ) => boolean;
-  values: RecommendationType;
-}
+  onSelect: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+  onRemove: (id: string) => void;
+};
+export type RecommendationListProps = {
+  value: CardProductLinkType[];
+  onSelect: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+};
 
-export type prodResType = {
-  data: CardMultiType[];
-  total: number;
-};
-export type QueryType = {
-  lang: string;
-  where?: string;
-  sort?: string;
-  by?: string;
-  category?: string;
-  page?: number;
-  type: number;
-};
 export enum RECOMENDATION_ACTION_TYPE {
   RESET = 'RESET',
 
@@ -102,4 +54,8 @@ export type RecommendationActionType = {
   products?: CardMultiType[];
   categories?: CategoryOptionType[];
   total?: number;
+};
+export type RecommendationType = {
+  id?: string;
+  recommendationProducts: CardProductLinkType[];
 };

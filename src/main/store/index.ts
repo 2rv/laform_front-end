@@ -50,19 +50,11 @@ import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
 } from '../../lib/common/block-categories';
-import {
-  allProductsStore,
-  ALL_PRODUCTS_STORE_NAME,
-} from '../../core/all-products';
 import { feedbackStore, FEEDBACK_STORE_NAME } from '../../core/feedback';
 import {
   recentCommentsStore,
   RECENT_COMMENTS_STORE_NAME,
 } from '../../core/recent-comments';
-import {
-  productSelectionsStore,
-  PRODUCT_SELECTIONS_STORE_NAME,
-} from '../../core/product-selections';
 import {
   userInfoStore,
   USER_INFO_STORE_NAME,
@@ -80,7 +72,6 @@ export const reducers = combineReducers({
   // Сверху нужное снизу лучше бы отвязать от стора
   [FAQ_ARTICLE_STORE_NAME]: faqArticleStore,
   [USER_INFO_STORE_NAME]: userInfoStore,
-  [PRODUCT_SELECTIONS_STORE_NAME]: productSelectionsStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [FEEDBACK_STORE_NAME]: feedbackStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
@@ -100,6 +91,5 @@ export const reducers = combineReducers({
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [USERS_STORE_NAME]: usersStore,
   [ALL_LIKES_STORE_NAME]: allLikesStore,
-  [ALL_PRODUCTS_STORE_NAME]: allProductsStore,
 });
 export { initStore } from './store.core';

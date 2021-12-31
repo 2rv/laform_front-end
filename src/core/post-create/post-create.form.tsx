@@ -106,8 +106,10 @@ export function PostCreateForm(props: PostCreateFormProps) {
         <Divider />
 
         <RecomendationBlock
-          values={values[POST_FIELD_NAME.RECOMMENDATIONS]}
-          name={POST_FIELD_NAME.RECOMMENDATIONS}
+          value={
+            values[POST_FIELD_NAME.RECOMMENDATIONS]?.recommendationProducts
+          }
+          name={`${POST_FIELD_NAME.RECOMMENDATIONS}.recommendationProducts`}
           setFieldValue={setFieldValue}
         />
 

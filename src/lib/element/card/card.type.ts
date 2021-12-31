@@ -37,12 +37,12 @@ export interface CardActionProps {
   options?: OptionType[];
   colors?: OptionType[];
   sizes?: OptionType[];
-  onSelect?: Function;
-  onDelete?: Function;
+  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+  onDelete?: (id: string, deleted: boolean) => void;
 }
 export interface RemoveButtonProps {
   id: string;
-  onRemove?: Function;
+  onRemove?: (id: string) => void;
 }
 export interface CardPriceProps {
   price?: number;
@@ -68,9 +68,9 @@ export interface CardArticleType {
   like: boolean | undefined;
   deleted?: boolean;
   admin?: boolean;
-  onSelect?: Function;
-  onDelete?: Function;
-  onRemove?: Function;
+  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+  onDelete?: (id: string, deleted: boolean) => void;
+  onRemove?: (id: string) => void;
   isCreateList?: boolean;
 }
 export interface CardSewingGoodType {
@@ -92,9 +92,9 @@ export interface CardSewingGoodType {
   optionType: 0 | 1 | 2 | 3;
   colors?: OptionType[];
   sizes?: OptionType[];
-  onSelect?: Function;
-  onDelete?: Function;
-  onRemove?: Function;
+  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+  onDelete?: (id: string, deleted: boolean) => void;
+  onRemove?: (id: string) => void;
   isCreateList?: boolean;
 }
 export interface CardPatternType {
@@ -113,9 +113,9 @@ export interface CardPatternType {
   isCount: boolean;
   complexity: number;
   sizes?: OptionType[];
-  onSelect?: Function;
-  onDelete?: Function;
-  onRemove?: Function;
+  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+  onDelete?: (id: string, deleted: boolean) => void;
+  onRemove?: (id: string) => void;
   isCreateList?: boolean;
 }
 export interface CardMasterClassType {
@@ -130,14 +130,21 @@ export interface CardMasterClassType {
   like: boolean | undefined;
   deleted?: boolean;
   admin?: boolean;
-  onSelect?: Function;
-  onDelete?: Function;
-  onRemove?: Function;
+  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+  onDelete?: (id: string, deleted: boolean) => void;
+  onRemove?: (id: string) => void;
   isCreateList?: boolean;
 }
 export type CardMultiType =
   | CardSewingGoodType
   | CardPatternType
   | CardMasterClassType
-  | CardArticleType
-  | undefined;
+  | CardArticleType;
+
+export type CardProductLinkType = {
+  id?: string;
+  masterClassId?: CardMasterClassType;
+  patternProductId?: CardPatternType;
+  sewingProductId?: CardSewingGoodType;
+  postId?: CardArticleType;
+};

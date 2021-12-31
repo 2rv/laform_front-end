@@ -15,10 +15,10 @@ import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
-import { ALL_PRODUCTS_ROUTE_PATH } from '../all-products';
+import { PRODUCTS_LIST_ROUTE_PATH } from '../products-list';
 import { STATISTICS_ROUTE_PATH } from '../statistics';
 import { RECENT_COMMENTS_ROUTE_PATH } from '../recent-comments';
-import { PRODUCT_SELECTIONS_ROUTE_PATH } from '../product-selections';
+import { PRODUCTS_COMPILATION_ROUTE_PATH } from '../products-compilation';
 
 export const NAV_MENU_ITEMS = [
   { name: 'HEADER.MENU_ITEMS.PATTERNS', path: PATTERNS_ROUTE_PATH() },
@@ -60,12 +60,12 @@ export const ADMIN_MENU_ITEMS = [
   { path: USERS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.USERS_LIST' },
   { path: ORDERS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.ORDERS_TABLE' },
   {
-    path: PRODUCT_SELECTIONS_ROUTE_PATH,
+    path: PRODUCTS_COMPILATION_ROUTE_PATH,
     tid: 'HEADER.ADMIN_MENU.BEST_PRODUCTS',
   },
   { path: SLIDER_LIST_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.SLIDER' },
   { path: PROMOCODES_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.PROMOCODES' },
-  { path: ALL_PRODUCTS_ROUTE_PATH(), tid: 'HEADER.ADMIN_MENU.ALL_PRODUCTS' },
+  { path: PRODUCTS_LIST_ROUTE_PATH(), tid: 'HEADER.ADMIN_MENU.ALL_PRODUCTS' },
   {
     path: STATISTICS_ROUTE_PATH(),
     tid: 'HEADER.ADMIN_MENU.STATISTICS',

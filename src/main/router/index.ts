@@ -92,9 +92,9 @@ import {
   PATTERN_CREATE_ROUTE_PATH,
 } from '../../core/pattern-create';
 import {
-  allProductsRouter,
-  ALL_PRODUCTS_ROUTE_PATH,
-} from '../../core/all-products';
+  productsListRouter,
+  PRODUCTS_LIST_ROUTE_PATH,
+} from '../../core/products-list';
 import { feedbackRouter, FEEDBACK_ROUTE_PATH } from '../../core/feedback';
 import {
   recentCommentsRouter,
@@ -102,9 +102,9 @@ import {
 } from '../../core/recent-comments';
 import { statisticsRouter, STATISTICS_ROUTE_PATH } from '../../core/statistics';
 import {
-  productSelectionsRouter,
-  PRODUCT_SELECTIONS_ROUTE_PATH,
-} from '../../core/product-selections';
+  productsCompilationRouter,
+  PRODUCTS_COMPILATION_ROUTE_PATH,
+} from '../../core/products-compilation';
 import {
   faqSizeRouter,
   FAQ_SIZE_ROUTE_PATH,
@@ -160,7 +160,7 @@ export const routes = {
   [ORDER_NUMBER_ROUTE_PATH()]: orderNumberRouter,
   [SLIDER_EDIT_ROUTE_PATH()]: sliderEditRouter,
   [STATISTICS_ROUTE_PATH()]: statisticsRouter,
-  [ALL_PRODUCTS_ROUTE_PATH()]: allProductsRouter,
+  [PRODUCTS_LIST_ROUTE_PATH()]: productsListRouter,
   [PATTERNS_PAGE_ROUTE_PATH()]: patternsPageRouter,
   [PATTERNS_PRODUCT_ROUTE_PATH()]: patternsProductRouter,
   [PATTERNS_ROUTE_PATH()]: patternsRouter,
@@ -169,16 +169,17 @@ export const routes = {
   [POST_CREATE_ROUTE_PATH()]: postCreateRouter,
   [MASTER_CLASS_CREATE_ROUTE_PATH()]: masterClassCreateRouter,
   [SEWING_GOODS_CREATE_ROUTE_PATH()]: sewingGoodsCreateRouter,
-  [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
-  [USERS_ROUTE_PATH]: usersRouter,
-  [PRODUCT_SELECTIONS_ROUTE_PATH]: productSelectionsRouter,
-  [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
-  [FEEDBACK_ROUTE_PATH]: feedbackRouter,
-  [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,
   [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
   [POSTS_ROUTE_PATH]: postsRouter,
-  [HOME_ROUTE_PATH]: homeRouter,
+  [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,
   [SETTINGS_ROUTE_PATH]: settingsRouter,
+  [HOME_ROUTE_PATH]: homeRouter,
+  [PRODUCTS_COMPILATION_ROUTE_PATH]: productsCompilationRouter,
+
+  [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
+  [USERS_ROUTE_PATH]: usersRouter,
+  [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
+  [FEEDBACK_ROUTE_PATH]: feedbackRouter,
   [ORDERS_ROUTE_PATH]: ordersRouter,
   [USER_ORDERS_ROUTE_PATH]: userOrdersRouter,
   [BASKET_ROUTE_PATH]: basketRouter,

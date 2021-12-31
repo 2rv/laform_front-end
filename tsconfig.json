@@ -30,7 +30,6 @@
     "src/lib/common/lang/lang.action.js",
     "src/lib/common/lang/lang.main.js",
     "src/main/store/storeHandlers.js",
-    "src/main/store/store.convert.js",
-    "src/core/Home/Home.page.js"
+    "src/main/store/store.convert.js"
   ]
 }

@@ -225,8 +225,11 @@ export function SewingGoodsCreateForm(props: SewingGoodsCreateFormProps) {
         <Divider />
 
         <RecomendationBlock
-          values={values[SEWING_GOODS_CREATE_FIELD_NAME.RECOMMENDATIONS]}
-          name={SEWING_GOODS_CREATE_FIELD_NAME.RECOMMENDATIONS}
+          value={
+            values[SEWING_GOODS_CREATE_FIELD_NAME.RECOMMENDATIONS]
+              ?.recommendationProducts
+          }
+          name={`${SEWING_GOODS_CREATE_FIELD_NAME.RECOMMENDATIONS}.recommendationProducts`}
           setFieldValue={setFieldValue}
         />
 

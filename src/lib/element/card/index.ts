@@ -11,4 +11,5 @@ export type {
   CardMasterClassType,
   OptionType,
   CardMultiType,
+  CardProductLinkType,
 } from './card.type';

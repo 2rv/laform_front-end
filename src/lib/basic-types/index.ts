@@ -9,18 +9,6 @@ export interface BasicCategoryType {
   categoryNameEn: string;
   type: string;
 }
-export interface BasicRecommendationProducsType {
-  id: string;
-  masterClassId: BasicMasterClassType;
-  postId: BasicPostType;
-  patternProductId: BasicPatternType;
-  sewingProductId: BasicSewingGoodType;
-}
-export interface BasicRecommendationType {
-  id: string;
-  recommendationProducts: BasicRecommendationProducsType[];
-}
-
 export interface BasicLikeType {
   id: string;
   userId: string;
@@ -210,7 +198,7 @@ export interface BasicUserInfoType {
   purchase: BasicPurchaseType[];
   userSettingId: BasicUserSettingType;
   comment: BasicCommentProps[];
-  like: BasicRecommendationProducsType[];
+  like: BasicProductLinkType[];
 }
 export type BasicSlideType = {
   id: string;
@@ -264,4 +252,24 @@ export type FileType = {
   id?: string;
   fileUrl: string;
   file?: File;
+};
+
+export type BasicProductLinkType = {
+  id: string;
+  masterClassId: BasicMasterClassType;
+  postId: BasicPostType;
+  patternProductId: BasicPatternType;
+  sewingProductId: BasicSewingGoodType;
+};
+export type BasicRecommendationType = {
+  id: string;
+  recommendationProducts: BasicProductLinkType[];
+};
+export type BasicCompilationType = {
+  id: string;
+  createdDate: Date;
+  title: string;
+  path?: string;
+  inEnglish: boolean;
+  compilationProducts: BasicProductLinkType[];
 };

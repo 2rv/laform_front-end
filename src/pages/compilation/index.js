@@ -1,2 +1,2 @@
-import { ProductSelectionsPage } from '../../core/product-selections';
-export default ProductSelectionsPage;
+import { ProductsCompilationPage } from '../../core/products-compilation';
+export default ProductsCompilationPage;

@@ -11,9 +11,9 @@ import {
   SEWING_GOODS_CREATE_FIELD_NAME,
 } from './sewing-goods-create.type';
 import {
-  ALL_PRODUCTS_ROUTE_PATH,
-  ALL_PRODUCTS_TAB_TYPES,
-} from '../all-products';
+  PRODUCTS_LIST_ROUTE_PATH,
+  PRODUCTS_LIST_TAB_TYPES,
+} from '../products-list';
 import { Dispatch } from 'react';
 import {
   BasicFileType,
@@ -28,8 +28,8 @@ async function uploadFilesAction(files: FileType[]): Promise<BasicFileType[]> {
     oldFiles: BasicFileType[];
   };
 
-  const { newFiles, oldFiles } = files.reduce(
-    (acc: accumulator, file) => {
+  const { newFiles, oldFiles } = files.reduce<accumulator>(
+    (acc, file) => {
       if (!!file.file) acc.newFiles.push(file);
       if (!file.file && file.id) {
         acc.oldFiles.push({
@@ -105,8 +105,8 @@ export function sewingGoodsRemoveByIdAction(id: string) {
       dispatch({
         type: SEWING_GOODS_CREATE_ACTION_TYPE.REMOVE_SUCCESS,
       });
-      redirect(ALL_PRODUCTS_ROUTE_PATH, {
-        params: { type: ALL_PRODUCTS_TAB_TYPES[3] },
+      redirect(PRODUCTS_LIST_ROUTE_PATH, {
+        params: { type: PRODUCTS_LIST_TAB_TYPES[3] },
       });
     } catch (err: any) {
       if (err.response) {

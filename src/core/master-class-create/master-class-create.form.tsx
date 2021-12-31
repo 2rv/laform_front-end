@@ -177,8 +177,11 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
         <Divider />
 
         <RecomendationBlock
-          values={values[MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]}
-          name={MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS}
+          value={
+            values[MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]
+              ?.recommendationProducts
+          }
+          name={`${MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS}.recommendationProducts`}
           setFieldValue={setFieldValue}
         />
 

@@ -8,9 +8,9 @@ import {
   PATTERN_CREATE_FIELD_NAME,
 } from './pattern-create.type';
 import {
-  ALL_PRODUCTS_ROUTE_PATH,
-  ALL_PRODUCTS_TAB_TYPES,
-} from '../all-products';
+  PRODUCTS_LIST_ROUTE_PATH,
+  PRODUCTS_LIST_TAB_TYPES,
+} from '../products-list';
 import { Dispatch } from 'react';
 import { BasicFileType, BasicPatternType, FileType } from 'src/lib/basic-types';
 import { AxiosResponse } from 'axios';
@@ -21,8 +21,8 @@ async function uploadFilesAction(files: FileType[]): Promise<BasicFileType[]> {
     oldFiles: BasicFileType[];
   };
 
-  const { newFiles, oldFiles } = files.reduce(
-    (acc: accumulator, file) => {
+  const { newFiles, oldFiles } = files.reduce<accumulator>(
+    (acc, file) => {
       if (!!file.file) acc.newFiles.push(file);
       if (!file.file && file.id) {
         acc.oldFiles.push({
@@ -98,8 +98,8 @@ export function patternRemoveByIdAction(id: string, type: 1 | 2 = 1) {
       dispatch({
         type: PATTERN_CREATE_ACTION_TYPE.REMOVE_SUCCESS,
       });
-      redirect(ALL_PRODUCTS_ROUTE_PATH, {
-        params: { type: ALL_PRODUCTS_TAB_TYPES[type] },
+      redirect(PRODUCTS_LIST_ROUTE_PATH, {
+        params: { type: PRODUCTS_LIST_TAB_TYPES[type] },
       });
     } catch (err: any) {
       if (err.response) {

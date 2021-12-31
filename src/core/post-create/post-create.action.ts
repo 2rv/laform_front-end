@@ -11,9 +11,9 @@ import { Dispatch } from 'react';
 import { BasicFileType, BasicPostType, FileType } from 'src/lib/basic-types';
 import { redirect } from 'src/main/navigation';
 import {
-  ALL_PRODUCTS_ROUTE_PATH,
-  ALL_PRODUCTS_TAB_TYPES,
-} from '../all-products';
+  PRODUCTS_LIST_ROUTE_PATH,
+  PRODUCTS_LIST_TAB_TYPES,
+} from '../products-list';
 
 async function uploadFileAction(
   image: FileType[],
@@ -140,8 +140,8 @@ export function postRemoveByIdAction(id: string) {
       dispatch({
         type: POST_CREATE_ACTION_TYPE.REMOVE_SUCCESS,
       });
-      redirect(ALL_PRODUCTS_ROUTE_PATH, {
-        params: { type: ALL_PRODUCTS_TAB_TYPES[4] },
+      redirect(PRODUCTS_LIST_ROUTE_PATH, {
+        params: { type: PRODUCTS_LIST_TAB_TYPES[4] },
       });
     } catch (err: any) {
       if (err.response) {

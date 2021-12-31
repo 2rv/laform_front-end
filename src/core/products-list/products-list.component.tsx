@@ -3,46 +3,43 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { BasicCardList } from 'src/lib/element/card-list';
 import { SearchBlock } from 'src/lib/common/block-search';
 import { TabLinkBlock } from 'src/lib/element/tab-link';
-import { ALL_PRODUCTS_TABS } from './all-products.constant';
+import { PRODUCTS_LIST_TABS } from './products-list.constant';
+import { ProductsListComponentProps } from './products-list.type';
 
-export function AllProductsComponent(props) {
+export function ProductsListComponent(props: ProductsListComponentProps) {
   const {
-    isAdmin,
     activePath,
-    pageLoading,
-    total,
-    products,
-    categories,
-    isPending,
-    isPagination,
-    onDisable,
-    onPagination,
+    isAdmin,
     onFilter,
+    onPagination,
+    onDisable,
     filterOptions,
+    state: { getPending, paginatePending, categories, products, total },
   } = props;
 
   return (
     <SectionLayout>
       <TabLinkBlock
         activePath={activePath}
-        pathItems={ALL_PRODUCTS_TABS}
-        disabled={pageLoading || isPending || isPagination}
+        pathItems={PRODUCTS_LIST_TABS}
+        disabled={getPending}
       />
       <SearchBlock
         findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
         filterOptions={filterOptions}
         categories={categories}
         handleFilter={onFilter}
-        disabled={pageLoading || isPending}
+        disabled={getPending}
       />
       <InfiniteScroll
+        loader={<></>}
         dataLength={products.length}
         next={onPagination}
         hasMore={products.length < +total}
       >
         <BasicCardList
-          isLoading={isPending}
-          isPagination={isPagination}
+          isLoading={getPending}
+          isPagination={paginatePending}
           onDelete={onDisable}
           admin={isAdmin}
           items={products}

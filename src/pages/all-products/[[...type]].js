@@ -1,3 +1,2 @@
-import { AllProductsPage } from '../../core/all-products';
-
-export default AllProductsPage;
+import { ProductsListPage } from '../../core/products-list';
+export default ProductsListPage;
