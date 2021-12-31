@@ -36,7 +36,7 @@ const catalogListItems = [
   },
 ];
 
-export function CatalogListComponent() {
+export function HomeCatalog() {
   return (
     <Container>
       {catalogListItems.map((data, index) => {

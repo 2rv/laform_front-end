@@ -8,13 +8,13 @@ import { TextPrimary } from 'src/lib/element/text';
 import { SliderItemProps } from './slider-list.type';
 
 export function SliderItem(props: SliderItemProps) {
-  const { index, data, removeSlide, editSlide } = props;
+  const { lang, index, data, removeSlide, editSlide } = props;
   return (
     <Container>
       <Content>
         <Case>
           <Image src={data.image} />
-          <TextPrimary tid={data.name} />
+          <TextPrimary tid={lang === 'en' ? data.nameEn : data.nameRu} />
         </Case>
         <Case>
           <Button onClick={() => editSlide(data.id)}>

@@ -204,6 +204,10 @@ export type BasicSlideType = {
   id: string;
   headingTextRu: string;
   buttonTextRu?: string;
+
+  headingTextEn: string;
+  buttonTextEn?: string;
+
   buttonUrl?: string;
   titleTextColor: string;
   buttonColor?: string;

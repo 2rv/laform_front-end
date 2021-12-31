@@ -5,7 +5,7 @@ import {
   FormikHelpers,
   FormikState,
 } from 'formik';
-import { CardProductLinkType } from 'src/lib/element/card';
+import { CardMultiType, CardProductLinkType } from 'src/lib/element/card';
 
 export enum PRODUCT_SELECTIONS_ACTION_TYPE {
   GET_PENDING = 'GET_PENDING',
@@ -43,6 +43,13 @@ export type CompilationType = {
   title: string;
   path?: string;
   compilationProducts: CardProductLinkType[];
+  inEnglish: boolean;
+};
+export type CardCompilationType = {
+  id?: string;
+  title: string;
+  path?: string;
+  compilationProducts: CardMultiType[];
   inEnglish: boolean;
 };
 

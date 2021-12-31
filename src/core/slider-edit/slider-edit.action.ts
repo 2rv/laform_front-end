@@ -45,9 +45,6 @@ export function getSlideByIdAction(id: string) {
       const response = await httpRequest({
         method: 'GET',
         url: '/slider/get/' + id,
-        params: {
-          lang: 'ru',
-        },
       });
 
       dispatch({

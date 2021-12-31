@@ -1,4 +1,6 @@
 import { useEffect, useReducer } from 'react';
+import { useSelector } from 'react-redux';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 import { redirect } from 'src/main/navigation';
 import { SLIDER_EDIT_ROUTE_PATH } from '../slider-edit';
 import { getSlidersAction, slideRemoveAction } from './slider-list.action';
@@ -53,10 +55,15 @@ export function SliderListContainer() {
     getSlidersAction()(setState);
   }, []);
 
+  const { lang } = useSelector((state: any) => ({
+    lang: state[LANG_STORE_NAME].active.toLowerCase(),
+  }));
+
   const addSlide = () => {
     const newSlide = {
       id: 'new' + state.data?.length,
-      name: 'Новый слайд - ' + state.data?.length,
+      nameRu: 'Новый слайд - ' + state.data?.length,
+      nameEn: 'new Slide - ' + state.data?.length,
       image: '',
     };
     setState({
@@ -79,6 +86,7 @@ export function SliderListContainer() {
       removeSlide={removeSlide}
       addSlide={addSlide}
       state={state}
+      lang={lang}
     />
   );
 }

@@ -19,13 +19,14 @@ export function getSlidersAction() {
       const response: AxiosResponse<BasicSlideType[]> = await httpRequest({
         method: 'GET',
         url: 'slider/get',
-        params: { lang: 'ru' },
       });
       const result: SlideType[] = response.data.map((item) => ({
         id: item.id,
-        name: item.headingTextRu,
+        nameRu: item.headingTextRu,
+        nameEn: item.headingTextEn,
         image: item.imageUrl?.fileUrl,
-        buttonText: item.buttonTextRu,
+        buttonTextRu: item.buttonTextRu,
+        buttonTextEn: item.buttonTextEn,
         buttonPath: item.buttonUrl,
       }));
       dispatch({

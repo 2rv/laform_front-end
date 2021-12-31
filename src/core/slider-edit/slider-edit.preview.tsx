@@ -9,6 +9,7 @@ import { ErrorField } from 'src/lib/element/error';
 
 export function SlidePreview(props: SlidePreviewProps) {
   const {
+    lang,
     formik: { values, errors, touched },
     onChangeImage,
   } = props;
@@ -31,18 +32,32 @@ export function SlidePreview(props: SlidePreviewProps) {
         </Field>
         <Content>
           <SlideText>
-            <Text
-              color={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]}
-              tid={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]}
-            />
+            {lang === 'ru' ? (
+              <Text
+                color={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]}
+                tid={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU]}
+              />
+            ) : (
+              <Text
+                color={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]}
+                tid={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN]}
+              />
+            )}
           </SlideText>
-          {isButton && (
-            <Button
-              color={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]}
-              bgcolor={values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]}
-              tid={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]}
-            />
-          )}
+          {isButton &&
+            (lang === 'ru' ? (
+              <Button
+                color={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]}
+                bgcolor={values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]}
+                tid={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_RU]}
+              />
+            ) : (
+              <Button
+                color={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]}
+                bgcolor={values[SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]}
+                tid={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_EN]}
+              />
+            ))}
         </Content>
       </PreviewContainer>
       {imageError && <ErrorField errorTid={imageError} />}

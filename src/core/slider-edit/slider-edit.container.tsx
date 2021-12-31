@@ -18,6 +18,8 @@ import {
   updateSlideAction,
 } from './slider-edit.action';
 import { FileType } from 'src/lib/basic-types';
+import { useSelector } from 'react-redux';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 const initialState = {
   createPending: false,
@@ -132,6 +134,10 @@ export function SliderEditContainer() {
   const isNewSlider = id?.includes('new');
   const [state, setState] = useReducer(sliderEditReducer, initialState);
 
+  const { lang } = useSelector((state: any) => ({
+    lang: state[LANG_STORE_NAME].active.toLowerCase(),
+  }));
+
   useEffect(() => {
     if (!isNewSlider && typeof id === 'string' && id) {
       getSlideByIdAction(id)(setState);
@@ -141,11 +147,13 @@ export function SliderEditContainer() {
   const initialValues = () => {
     return (
       state.initialValues || {
-        [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: '',
+        [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU]: '',
+        [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN]: '',
         [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: '#ffffff',
 
         [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: true,
-        [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: '',
+        [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_RU]: '',
+        [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_EN]: '',
         [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: '#ffffff',
         [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: '#000',
         [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: '',
@@ -199,6 +207,7 @@ export function SliderEditContainer() {
   return (
     <SliderEditComponent
       state={state}
+      lang={lang}
       formik={formik}
       onChangeImage={onChangeImage}
       onRemove={onRemove}

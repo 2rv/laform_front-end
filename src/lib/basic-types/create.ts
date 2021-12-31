@@ -48,8 +48,12 @@ export type MasterClassDto = {
 
 export type SliderDto = {
   imageUrl: BasicFileType;
+
   headingTextRu: string;
   buttonTextRu?: string;
+  headingTextEn: string;
+  buttonTextEn?: string;
+
   buttonUrl?: string;
   titleTextColor?: string;
   buttonColor?: string;

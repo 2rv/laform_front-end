@@ -12,6 +12,7 @@ import { SliderComponentProps } from './slider.type';
 export function SliderComponent(props: SliderComponentProps) {
   const {
     state: { pending, slidersData },
+    lang,
   } = props;
 
   if (pending) {
@@ -41,7 +42,7 @@ export function SliderComponent(props: SliderComponentProps) {
       <div ref={sliderRef} className="keen-slider">
         {slidersData.map((data) => (
           <div className="keen-slider__slide">
-            <SliderItemComponent key={data.id} data={data} />
+            <SliderItemComponent lang={lang} key={data.id} data={data} />
           </div>
         ))}
       </div>

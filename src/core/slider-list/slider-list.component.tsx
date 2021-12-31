@@ -10,7 +10,7 @@ import { SliderListComponentProps } from './slider-list.type';
 import { SliderItem } from './slider-list.item';
 
 export function SliderListComponent(props: SliderListComponentProps) {
-  const { state, editSlide, addSlide, removeSlide } = props;
+  const { lang, state, editSlide, addSlide, removeSlide } = props;
   const { data = [], pending, error } = state;
   return (
     <Container>
@@ -21,6 +21,7 @@ export function SliderListComponent(props: SliderListComponentProps) {
           key={index}
           index={index}
           data={data}
+          lang={lang}
           removeSlide={removeSlide}
           editSlide={editSlide}
         />

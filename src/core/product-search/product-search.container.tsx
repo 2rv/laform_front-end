@@ -41,6 +41,7 @@ function ProductSearchReducer(
         getPending: false,
         products: action.products || [],
         total: action.total || 0,
+        page: state.page + 1,
       };
     case PRODUCT_SEARCH_ACTION_TYPE.GET_ERROR:
       return {

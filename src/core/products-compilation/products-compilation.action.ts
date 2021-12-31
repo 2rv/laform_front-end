@@ -57,6 +57,7 @@ export function saveCompilationAction(values: ProductsCompilationValues) {
       });
       dispatch({
         type: PRODUCT_SELECTIONS_ACTION_TYPE.SAVE_SUCCESS,
+        products: values.products,
       });
     } catch (err: any) {
       if (err.response) {
