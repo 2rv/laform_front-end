@@ -15,6 +15,7 @@ export function convertForSave(
     image: imageUrl,
     categories: categories,
     recommendation: values[POST_FIELD_NAME.RECOMMENDATIONS],
+
     titleRu: values[POST_FIELD_NAME.NAME],
     modifierRu: values[POST_FIELD_NAME.MODIFIER],
     articleRu: values[POST_FIELD_NAME.POST] || { blocks: [] },

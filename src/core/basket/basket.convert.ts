@@ -15,7 +15,7 @@ import {
 } from './basket.type';
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 
-interface ConvertAcc {
+interface accumulator {
   masterProducts: TableItemType[];
   patternProducts: TableItemType[];
   sewingProducts: TableItemType[];
@@ -78,8 +78,8 @@ export function convertAddToCart(
   }
 }
 export function convertForTable(basketState: basketStateType[]) {
-  return basketState.reduce(
-    (acc: ConvertAcc, i) => {
+  return basketState.reduce<accumulator>(
+    (acc, i) => {
       if (i.type === 0) {
         const item = masterItemConvert(i);
         acc.masterProducts.push(item);

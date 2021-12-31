@@ -96,13 +96,13 @@ export function checkMinPriceAndDiscount(
   };
 }
 
-interface getPriceProps {
+type getPriceProps = {
   price?: number | string;
   discount?: number;
   count?: number | string;
   length?: number | string;
   shippingPrice?: number | string;
-}
+};
 export function getPrice(props: getPriceProps): number {
   const {
     price = '0',

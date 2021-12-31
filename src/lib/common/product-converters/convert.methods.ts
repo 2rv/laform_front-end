@@ -10,7 +10,7 @@ import {
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
-  BasicRecommendationProducsType,
+  BasicProductLinkType,
 } from 'src/lib/basic-types';
 
 import {
@@ -42,16 +42,22 @@ export const convertArticleProducts = (
   return data.map(convertArticleItemConverter);
 };
 
-export const convertMultiProducts = (
-  rowData: BasicRecommendationProducsType[] = [],
-): CardMultiType[] => {
-  if (!rowData) return [];
-  return rowData.map((item) => {
+export const convertMultiProducts = (data: BasicProductLinkType[] = []) => {
+  if (!data) return [];
+  return data.reduce<CardMultiType[]>((acc, item) => {
     const { masterClassId, patternProductId, sewingProductId, postId } = item;
-    if (masterClassId) return masterClassItemConverter(masterClassId);
-    if (patternProductId) return convertPatternItemConverter(patternProductId);
-    if (sewingProductId) return convertSewingGoodItemConverter(sewingProductId);
-    if (postId) return convertArticleItemConverter(postId);
-    return undefined;
-  });
+    if (masterClassId) {
+      acc.push(masterClassItemConverter(masterClassId));
+    }
+    if (patternProductId) {
+      acc.push(convertPatternItemConverter(patternProductId));
+    }
+    if (sewingProductId) {
+      acc.push(convertSewingGoodItemConverter(sewingProductId));
+    }
+    if (postId) {
+      acc.push(convertArticleItemConverter(postId));
+    }
+    return acc;
+  }, []);
 };

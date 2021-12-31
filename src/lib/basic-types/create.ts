@@ -1,16 +1,16 @@
 import { BasicReactEditorType, BasicFileType } from './index';
 
-interface BasicRecommendationProducsType {
+export type BasicRecommendationProducsDto = {
   id?: string;
   masterClassId?: { id: string };
   postId?: { id: string };
   patternProductId?: { id: string };
   sewingProductId?: { id: string };
-}
-interface BasicRecommendationType {
+};
+export type BasicRecommendationDto = {
   id?: string;
-  recommendationProducts: BasicRecommendationProducsType[];
-}
+  recommendationProducts: BasicRecommendationProducsDto[];
+};
 
 type CategoryDto = {
   id: string;
@@ -20,7 +20,7 @@ export type PostDto = {
   type?: 4;
   image: BasicFileType;
   categories?: CategoryDto[];
-  recommendation: BasicRecommendationType;
+  recommendation: BasicRecommendationDto;
   titleRu: string;
   modifierRu?: string;
   articleRu: BasicReactEditorType;
@@ -33,7 +33,7 @@ export type MasterClassDto = {
   type?: 0;
   images: BasicFileType[];
   categories?: CategoryDto[];
-  recommendation: BasicRecommendationType;
+  recommendation: BasicRecommendationDto;
   titleRu: string;
   modifierRu?: string;
   articleRu: BasicReactEditorType;
@@ -82,7 +82,7 @@ export type PatternProductDto = {
 
   images: BasicFileType[];
   categories?: CategoryDto[];
-  recommendation?: BasicRecommendationType;
+  recommendation?: BasicRecommendationDto;
 
   complexity: 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -118,7 +118,7 @@ export type SewingProductDto = {
 
   images: BasicFileType[];
   categories?: CategoryDto[];
-  recommendation?: BasicRecommendationType;
+  recommendation?: BasicRecommendationDto;
 
   price: number | null;
   count: number | null | undefined;
@@ -131,4 +131,12 @@ export type SewingProductDto = {
   isCount: boolean;
   isLength: boolean;
   inEnglish: boolean;
+};
+
+export type CompilationDto = {
+  id?: string;
+  title: string;
+  path?: string;
+  inEnglish: boolean;
+  compilationProducts: BasicRecommendationProducsDto[];
 };

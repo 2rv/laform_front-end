@@ -39,7 +39,7 @@ export function DeleteButton(props: CardActionProps) {
   const { id, admin, onDelete, deleted } = props;
   if (!admin || !onDelete) return null;
   return deleted ? (
-    <ButtonIcon onClick={() => onDelete(id, deleted ? 'true' : 'false')}>
+    <ButtonIcon onClick={() => onDelete(id, deleted)}>
       <PowerOnIcon />
     </ButtonIcon>
   ) : (
@@ -54,7 +54,7 @@ export function DeleteButton(props: CardActionProps) {
             <ButtonSecondary
               tid="OTHER.YES"
               onClick={() => {
-                onDelete(id, deleted ? 'true' : 'false');
+                onDelete(id, !!deleted);
                 setVisible(false);
               }}
             />

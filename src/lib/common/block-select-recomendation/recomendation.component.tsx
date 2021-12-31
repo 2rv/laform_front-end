@@ -8,23 +8,23 @@ import { THEME_SIZE } from 'src/lib/theme';
 import { ButtonSecondary, IconButton } from 'src/lib/element/button';
 import { ModalFull } from 'src/lib/element/modal';
 import { SearchBlock } from 'src/lib/common/block-search';
-import { BasicCardList } from 'src/lib/element/card-list';
+import { BasicCardList, CardProductLink } from 'src/lib/element/card-list';
 import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
-
 import { RecommendationComponentProps } from './recomendation.type';
-import { RecommendationList } from './recomendation.list';
 
 export function RecommendationComponent(props: RecommendationComponentProps) {
   const {
-    handleChange,
+    onSelect,
+    onRemove,
     filterOptions,
     onPagination,
     onFilter,
     typeHandler,
-    values,
+    value,
     state: { getPending, paginatePending, categories, products, total },
   } = props;
   const [open, setOpen] = useState(false);
+
   return (
     <SectionLayout type="SMALL">
       <Title tid="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE" />
@@ -34,7 +34,8 @@ export function RecommendationComponent(props: RecommendationComponentProps) {
           onClick={() => setOpen(true)}
         />
       </FieldLayout>
-      <RecommendationList values={values} handleChange={handleChange} />
+
+      <CardProductLink products={value} admin onRemove={onRemove} />
 
       <ModalFull onOpen={open} id="scrollableModalForRecommendations">
         <Case>
@@ -49,6 +50,7 @@ export function RecommendationComponent(props: RecommendationComponentProps) {
               tabItems={['МК', 'ВЭ', 'ВП', 'ТДШ', 'БЛОГ']}
               otherUseState={typeHandler}
               children={[]}
+              disabled={getPending}
             />
             <SearchBlock
               findPlaceholderTid="PATTERNS.PATTERNS.FIELD.FIND_PATTERNS"
@@ -67,7 +69,7 @@ export function RecommendationComponent(props: RecommendationComponentProps) {
               <BasicCardList
                 isLoading={getPending}
                 isPagination={paginatePending}
-                onSelect={handleChange}
+                onSelect={onSelect}
                 items={products}
                 emptyText="ALL_PRODUCTS.CATEGORY_EMPTY"
                 isCreateList

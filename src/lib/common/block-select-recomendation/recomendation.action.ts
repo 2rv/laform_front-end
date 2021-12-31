@@ -8,8 +8,6 @@ import {
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
 import {
-  prodResType,
-  QueryType,
   RECOMENDATION_ACTION_TYPE,
   RecommendationActionType,
 } from './recomendation.type';
@@ -21,7 +19,21 @@ import {
   BasicSewingGoodType,
 } from 'src/lib/basic-types';
 import { convertCategories } from '../block-search';
+import { CardMultiType } from 'src/lib/element/card';
 
+type prodResType = {
+  data: CardMultiType[];
+  total: number;
+};
+type QueryType = {
+  lang: string;
+  where?: string;
+  sort?: string;
+  by?: string;
+  category?: string;
+  page?: number;
+  type: number;
+};
 async function getMasterClasses(query: QueryType): Promise<prodResType> {
   const response: AxiosResponse<[BasicMasterClassType[], number]> =
     await httpRequest({

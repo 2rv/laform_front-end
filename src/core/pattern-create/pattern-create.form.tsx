@@ -251,8 +251,11 @@ export function PatternCreateForm(props: PatternCreateFormProps) {
         <Divider />
 
         <RecomendationBlock
-          values={values[PATTERN_CREATE_FIELD_NAME.RECOMMENDATIONS]}
-          name={PATTERN_CREATE_FIELD_NAME.RECOMMENDATIONS}
+          value={
+            values[PATTERN_CREATE_FIELD_NAME.RECOMMENDATIONS]
+              ?.recommendationProducts
+          }
+          name={`${PATTERN_CREATE_FIELD_NAME.RECOMMENDATIONS}.recommendationProducts`}
           setFieldValue={setFieldValue}
         />
 

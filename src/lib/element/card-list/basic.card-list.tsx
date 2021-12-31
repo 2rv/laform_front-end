@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import {
+  CardMasterClass,
   CardPattern,
   CardSewingGood,
-  CardMasterClass,
   CardArticle,
   CardSkeleton,
+  CardArticleType,
+  CardSewingGoodType,
+  CardPatternType,
+  CardMasterClassType,
+  CardMultiType,
 } from '../card';
 import { BasicCardListTypeProps } from './card-list.type';
 import { TextSecondary } from '../text';
@@ -35,19 +40,60 @@ export function BasicCardList(props: BasicCardListTypeProps) {
         ? [...Array(paginateCount).keys()].map((_, i) => (
             <CardSkeleton key={i} />
           ))
-        : items.map((data: any, index) => {
-            const CardItem = isCardType(data.type);
-            return (
-              <CardItem
-                key={data?.id || index}
-                onSelect={onSelect}
-                onDelete={onDelete}
-                onRemove={onRemove}
-                isCreateList={isCreateList}
-                admin={admin}
-                {...data}
-              />
-            );
+        : items.map((card, index) => {
+            if (isMasterClass(card)) {
+              return (
+                <CardMasterClass
+                  key={card?.id || index}
+                  onSelect={onSelect}
+                  onDelete={onDelete}
+                  onRemove={onRemove}
+                  isCreateList={isCreateList}
+                  admin={admin}
+                  {...card}
+                />
+              );
+            }
+            if (isPattern(card)) {
+              return (
+                <CardPattern
+                  key={card?.id || index}
+                  onSelect={onSelect}
+                  onDelete={onDelete}
+                  onRemove={onRemove}
+                  isCreateList={isCreateList}
+                  admin={admin}
+                  {...card}
+                />
+              );
+            }
+            if (isSewing(card)) {
+              return (
+                <CardSewingGood
+                  key={card?.id || index}
+                  onSelect={onSelect}
+                  onDelete={onDelete}
+                  onRemove={onRemove}
+                  isCreateList={isCreateList}
+                  admin={admin}
+                  {...card}
+                />
+              );
+            }
+            if (isPost(card)) {
+              return (
+                <CardArticle
+                  key={card?.id || index}
+                  onSelect={onSelect}
+                  onDelete={onDelete}
+                  onRemove={onRemove}
+                  isCreateList={isCreateList}
+                  admin={admin}
+                  {...card}
+                />
+              );
+            }
+            return null;
           })}
 
       {isPagination &&
@@ -73,19 +119,19 @@ const Container = styled.div`
   }
 `;
 
-const isCardType = (type: 0 | 1 | 2 | 3 | 4) => {
-  switch (type) {
-    case 0:
-      return CardMasterClass;
-    case 1:
-      return CardPattern;
-    case 2:
-      return CardPattern;
-    case 3:
-      return CardSewingGood;
-    case 4:
-      return CardArticle;
-    default:
-      return () => null;
-  }
-};
+export function isMasterClass(
+  card: CardMultiType,
+): card is CardMasterClassType {
+  return (card as CardMasterClassType).type === 0;
+}
+export function isPattern(card: CardMultiType): card is CardPatternType {
+  return (
+    (card as CardPatternType).type === 1 || (card as CardPatternType).type === 2
+  );
+}
+export function isSewing(card: CardMultiType): card is CardSewingGoodType {
+  return (card as CardSewingGoodType).type === 3;
+}
+export function isPost(card: CardMultiType): card is CardArticleType {
+  return (card as CardArticleType).type === 4;
+}

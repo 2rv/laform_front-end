@@ -11,9 +11,9 @@ import {
   convertForChange,
 } from './master-class-create.convert';
 import {
-  ALL_PRODUCTS_ROUTE_PATH,
-  ALL_PRODUCTS_TAB_TYPES,
-} from '../all-products';
+  PRODUCTS_LIST_ROUTE_PATH,
+  PRODUCTS_LIST_TAB_TYPES,
+} from '../products-list';
 import { Dispatch } from 'react';
 import {
   BasicFileType,
@@ -23,12 +23,12 @@ import {
 import { AxiosResponse } from 'axios';
 
 async function uploadFilesAction(images: FileType[]): Promise<BasicFileType[]> {
-  type NewOldImages = {
+  type accumulator = {
     newImages: FileType[];
     oldImages: BasicFileType[];
   };
-  const { newImages, oldImages } = images.reduce(
-    (acc: NewOldImages, image) => {
+  const { newImages, oldImages } = images.reduce<accumulator>(
+    (acc, image) => {
       if (!!image.file) acc.newImages.push(image);
       if (!image.file && image.id) {
         acc.oldImages.push({
@@ -163,8 +163,9 @@ export function masterClassRemoveByIdAction(id: string) {
       dispatch({
         type: MASTER_CLASS_CREATE_ACTION_TYPE.REMOVE_SUCCESS,
       });
-      redirect(ALL_PRODUCTS_ROUTE_PATH, {
-        params: { type: ALL_PRODUCTS_TAB_TYPES[0] },
+
+      redirect(PRODUCTS_LIST_ROUTE_PATH, {
+        params: { type: PRODUCTS_LIST_TAB_TYPES[0] },
       });
     } catch (err: any) {
       if (err.response) {

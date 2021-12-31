@@ -1,10 +1,10 @@
-import { CardMultiType } from '../card';
+import { CardMultiType, CardProductLinkType } from '../card';
 
-export interface BasicCardListTypeProps {
+export type BasicCardListTypeProps = {
   items: CardMultiType[];
-  onSelect?: Function;
-  onDelete?: Function;
-  onRemove?: Function;
+  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
+  onDelete?: (id: string, deleted: boolean) => void;
+  onRemove?: (id: string) => void;
   admin?: boolean;
   emptyText?: string;
   emptyTvalue?: object;
@@ -12,12 +12,14 @@ export interface BasicCardListTypeProps {
   isLoading?: boolean;
   isPagination?: boolean;
   paginateCount?: number;
-}
+};
 export interface CardListTypeProps extends BasicCardListTypeProps {
   path?: string;
   title?: string;
   isSliced?: boolean;
 }
-export interface CardListSkeletonProps {
-  quantity?: any;
-}
+export type CardProductLinkProps = {
+  products: CardProductLinkType[];
+  onRemove?: (id: string) => void;
+  admin?: boolean;
+};

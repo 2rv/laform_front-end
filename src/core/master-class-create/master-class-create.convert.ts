@@ -24,6 +24,7 @@ export function convertForSave(
     categories: categories,
     images: images,
     recommendation: values[MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS],
+
     vendorCode: values[MASTER_CLASS_FIELD_NAME.VENDOR_CODE],
     inEnglish: values[MASTER_CLASS_FIELD_NAME.IN_ENGLISH],
     deleted: !values[MASTER_CLASS_FIELD_NAME.IS_PUBLIC],
