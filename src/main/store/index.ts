@@ -29,7 +29,6 @@ import {
   patternsPageStore,
   PATTERNS_PAGE_STORE_NAME,
 } from '../../core/patterns-page';
-import { homeStore, HOME_STORE_NAME } from '../../core/home';
 import {
   orderNumberStore,
   ORDER_NUMBER_STORE_NAME,
@@ -71,21 +70,23 @@ export const reducers = combineReducers({
   [BASKET_STORE_NAME]: basketStore,
   // Сверху нужное снизу лучше бы отвязать от стора
   [FAQ_ARTICLE_STORE_NAME]: faqArticleStore,
+
+  [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
+  [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
+  [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
+  [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
+
+  [SIGNUP_STORE_NAME]: signupStore,
+  [LOGIN_STORE_NAME]: loginStore,
+  [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
+
   [USER_INFO_STORE_NAME]: userInfoStore,
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [FEEDBACK_STORE_NAME]: feedbackStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
-  [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [COMMENT_STORE_NAME]: commentStore,
-  [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
-  [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
-  [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
-  [SIGNUP_STORE_NAME]: signupStore,
-  [LOGIN_STORE_NAME]: loginStore,
-  [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
   [USER_ORDER_STORE_NAME]: userOrderStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
-  [HOME_STORE_NAME]: homeStore,
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,

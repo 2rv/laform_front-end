@@ -25,8 +25,12 @@ export enum SLIDER_EDIT_ACTION_TYPE {
   REMOVE_ERROR = 'REMOVE_ERROR',
 }
 export enum SLIDER_EDIT_FIELD_NAME {
-  TITLE_TEXT = 'titleText',
-  BUTTON_TEXT = 'buttonText',
+  TITLE_TEXT_RU = 'titleTextRu',
+  BUTTON_TEXT_RU = 'buttonTextRu',
+
+  TITLE_TEXT_EN = 'titleTextEn',
+  BUTTON_TEXT_EN = 'buttonTextEn',
+
   TITLE_TEXT_COLOR = 'titleTextColor',
   BUTTON_TEXT_COLOR = 'buttonTextColor',
   BUTTON_COLOR = 'buttonColor',
@@ -36,11 +40,13 @@ export enum SLIDER_EDIT_FIELD_NAME {
 }
 
 export type SliderEditValue = {
-  [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: string;
+  [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU]: string;
+  [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN]: string;
   [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: string;
 
   [SLIDER_EDIT_FIELD_NAME.IS_BUTTON]: boolean;
-  [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]?: string;
+  [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_RU]?: string;
+  [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_EN]?: string;
   [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]?: string;
   [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]?: string;
   [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]?: string;
@@ -75,12 +81,14 @@ export type SliderEditActionType = {
   error?: string;
 };
 export type SliderEditComponentProps = {
+  lang: 'ru' | 'en';
   state: SliderEditStateType;
   formik: FormikType;
   onChangeImage: (e: ChangeEvent<HTMLInputElement>) => void;
   onRemove: () => void;
 };
 export type SlidePreviewProps = {
+  lang: 'ru' | 'en';
   formik: FormikType;
   onChangeImage: (e: ChangeEvent<HTMLInputElement>) => void;
 };

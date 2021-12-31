@@ -3,7 +3,6 @@ import React from 'react';
 import { spacing, THEME_COLOR } from '../../lib/theme';
 import { HeaderLogoComponent } from './header-logo.component';
 import { HeaderMenuComponent } from './header-menu.component';
-import { MobileNavMenu } from '../header-component';
 
 export function HeaderComponent(props) {
   const {
@@ -43,7 +42,6 @@ export function HeaderComponent(props) {
           modalMenuItems={modalMenuItems}
         />
       </HeaderMenuCase>
-      {/* <MobileNavMenu activePath={activePath} /> */}
     </Container>
   );
 }

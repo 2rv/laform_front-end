@@ -4,7 +4,7 @@ import { BasicSlideType } from 'src/lib/basic-types';
 import { httpRequest } from 'src/main/http';
 import { SliderActionType, SLIDER_ACTION_TYPE } from './slider.type';
 
-export function sliderLoadData(lang: 'ru' | 'en') {
+export function sliderLoadData() {
   return async (dispatch: Dispatch<SliderActionType>) => {
     dispatch({
       type: SLIDER_ACTION_TYPE.PENDING,
@@ -14,18 +14,17 @@ export function sliderLoadData(lang: 'ru' | 'en') {
       const response: AxiosResponse<BasicSlideType[]> = await httpRequest({
         method: 'GET',
         url: '/slider/get',
-        params: {
-          lang: lang,
-        },
       });
 
       dispatch({
         type: SLIDER_ACTION_TYPE.SUCCESS,
         data: response.data.map((data) => ({
           id: data.id,
-          titleText: data.headingTextRu,
+          titleTextRu: data.headingTextRu,
+          titleTextEn: data.headingTextEn,
           titleTextColor: data.titleTextColor,
-          buttonText: data.buttonTextRu,
+          buttonTextRu: data.buttonTextRu,
+          buttonTextEn: data.buttonTextEn,
           buttonTextColor: data.buttonTextColor,
           buttonColor: data.buttonColor,
           isButton: data.isHaveButton,

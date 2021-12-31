@@ -51,13 +51,22 @@ export function SlideEditForm(props: SlideEditFormProps) {
         <Title tid="SLIDER.EDIT_SLIDER.EDIT" />
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.TEXT"
-            placeholderTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.PLACEHOLDER.TEXT"
-            name={SLIDER_EDIT_FIELD_NAME.TITLE_TEXT}
-            value={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]}
+            titleTid="Основной текст баннера на русском"
+            placeholderTid="Русский текст на баннере"
+            name={SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU}
+            value={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU]}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={getFieldError(SLIDER_EDIT_FIELD_NAME.TITLE_TEXT)}
+            error={getFieldError(SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU)}
+          />
+          <BasicField
+            titleTid="Основной текст баннера на английском"
+            placeholderTid="Английский текст на баннере"
+            name={SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN}
+            value={values[SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN]}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={getFieldError(SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN)}
           />
           <ColorPickerField
             titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.TEXT_COLOR"
@@ -79,13 +88,22 @@ export function SlideEditForm(props: SlideEditFormProps) {
           {values[SLIDER_EDIT_FIELD_NAME.IS_BUTTON] && (
             <>
               <BasicField
-                titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.BUTTON_TEXT"
-                placeholderTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.PLACEHOLDER.BUTTON_TEXT"
-                name={SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT}
-                value={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]}
+                titleTid="Текст кнопки на русском"
+                placeholderTid="Текст кнопки на русском"
+                name={SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_RU}
+                value={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_RU]}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={getFieldError(SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT)}
+                error={getFieldError(SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_RU)}
+              />
+              <BasicField
+                titleTid="Текст кнопки на английском"
+                placeholderTid="Текст кнопки на английском"
+                name={SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_EN}
+                value={values[SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_EN]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={getFieldError(SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_EN)}
               />
               <ColorPickerField
                 titleTid="SLIDER.EDIT_SLIDER.FORM.FIELDS.TITLE.BUTTON_COLOR"

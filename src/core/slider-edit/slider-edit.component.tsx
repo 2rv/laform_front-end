@@ -5,13 +5,17 @@ import { SlidePreview } from './slider-edit.preview';
 import { SliderEditComponentProps } from './slider-edit.type';
 
 export function SliderEditComponent(props: SliderEditComponentProps) {
-  const { state, formik, onChangeImage, onRemove } = props;
+  const { state, lang, formik, onChangeImage, onRemove } = props;
 
   return (
     <SectionLayout type="SMALL">
       <TitlePrimary tid="SLIDER.EDIT_SLIDER.TITLE" />
       <SectionLayout>
-        <SlidePreview formik={formik} onChangeImage={onChangeImage} />
+        <SlidePreview
+          lang={lang}
+          formik={formik}
+          onChangeImage={onChangeImage}
+        />
         <SlideEditForm state={state} formik={formik} onRemove={onRemove} />
       </SectionLayout>
     </SectionLayout>

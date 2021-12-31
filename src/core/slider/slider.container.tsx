@@ -47,8 +47,8 @@ export function SliderContainer() {
   );
 
   useEffect(() => {
-    sliderLoadData(lang)(setState);
+    sliderLoadData()(setState);
   }, []);
 
-  return <SliderComponent state={state} />;
+  return <SliderComponent lang={lang} state={state} />;
 }

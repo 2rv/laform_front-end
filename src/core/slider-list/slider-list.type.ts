@@ -16,19 +16,23 @@ export type SliderListActionType = {
 };
 export type SlideType = {
   id: string;
-  name: string;
+  nameRu: string;
+  nameEn: string;
+  buttonTextRu?: string;
+  buttonTextEn?: string;
   image: string;
-  buttonText?: string;
 };
 export type SliderListComponentProps = {
   addSlide: () => void;
   removeSlide: (id: string, index: number) => void;
   editSlide: (id: string) => void;
   state: SliderListStateType;
+  lang: 'ru' | 'en';
 };
 export type SliderItemProps = {
   index: number;
   data: SlideType;
   removeSlide: (id: string, index: number) => void;
   editSlide: (id: string) => void;
+  lang: 'ru' | 'en';
 };

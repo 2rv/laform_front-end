@@ -15,9 +15,11 @@ export type SliderActionType = {
 };
 export type SlideType = {
   id: string;
-  titleText: string;
+  titleTextRu: string;
+  titleTextEn: string;
+  buttonTextRu?: string;
+  buttonTextEn?: string;
   titleTextColor: string;
-  buttonText?: string;
   buttonTextColor?: string;
   buttonColor?: string;
   isButton: boolean;
@@ -27,7 +29,9 @@ export type SlideType = {
 
 export type SliderComponentProps = {
   state: SliderStateType;
+  lang: 'ru' | 'en';
 };
 export type SliderItemComponentProps = {
   data: SlideType;
+  lang: 'ru' | 'en';
 };

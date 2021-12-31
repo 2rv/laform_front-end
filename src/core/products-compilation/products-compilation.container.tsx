@@ -61,6 +61,7 @@ function ProductsCompilationReducer(
       return {
         ...state,
         savePending: false,
+        products: action.products || [],
         saveSuccess: true,
       };
     case PRODUCT_SELECTIONS_ACTION_TYPE.SAVE_ERROR:

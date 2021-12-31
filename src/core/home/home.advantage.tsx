@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from '../../../../lib/theme';
-import { TextPrimary } from '../../../../lib/element/text';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TextPrimary } from 'src/lib/element/text';
 
-export function AdvantageInfoComponent() {
+export function HomeAdvantage() {
   return (
     <Container>
       <Content>
@@ -20,6 +20,7 @@ export function AdvantageInfoComponent() {
     </Container>
   );
 }
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);

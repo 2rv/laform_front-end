@@ -6,11 +6,13 @@ import { ButtonBasic } from 'src/lib/element/button';
 import { SliderItemComponentProps } from './slider.type';
 
 export function SliderItemComponent(props: SliderItemComponentProps) {
-  const { data } = props;
+  const { data, lang } = props;
   const {
-    titleText,
+    titleTextRu,
+    titleTextEn,
     titleTextColor,
-    buttonText,
+    buttonTextRu,
+    buttonTextEn,
     buttonTextColor,
     buttonColor,
     isButton,
@@ -20,11 +22,13 @@ export function SliderItemComponent(props: SliderItemComponentProps) {
   return (
     <Container>
       <Content>
-        <Title color={titleTextColor}>{titleText}</Title>
+        <Title color={titleTextColor}>
+          {lang === 'en' ? titleTextEn : titleTextRu}
+        </Title>
         {isButton && (
           <LinkPrimary path={buttonPath}>
             <Button bgcolor={buttonColor} color={buttonTextColor}>
-              {buttonText}
+              {lang === 'en' ? buttonTextEn : buttonTextRu}
             </Button>
           </LinkPrimary>
         )}

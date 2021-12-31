@@ -6,10 +6,12 @@ const config = (values: SliderEditValue) => {
   if (values.isButton) {
     return {
       [SLIDER_EDIT_FIELD_NAME.SLIDE_IMAGE]: [required],
-      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: [required],
+      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU]: [required],
+      [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN]: [required],
       [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: [required],
 
-      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT]: [required],
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_RU]: [required],
+      [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_EN]: [required],
       [SLIDER_EDIT_FIELD_NAME.BUTTON_PATH]: [required],
       [SLIDER_EDIT_FIELD_NAME.BUTTON_COLOR]: [required],
       [SLIDER_EDIT_FIELD_NAME.BUTTON_TEXT_COLOR]: [required],
@@ -17,7 +19,8 @@ const config = (values: SliderEditValue) => {
   }
   return {
     [SLIDER_EDIT_FIELD_NAME.SLIDE_IMAGE]: [requiredArray],
-    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT]: [required],
+    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_RU]: [required],
+    [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_EN]: [required],
     [SLIDER_EDIT_FIELD_NAME.TITLE_TEXT_COLOR]: [required],
   };
 };
