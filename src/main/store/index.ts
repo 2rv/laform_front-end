@@ -43,7 +43,6 @@ import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
 } from '../../lib/common/block-categories';
-import { feedbackStore, FEEDBACK_STORE_NAME } from '../../core/feedback';
 import {
   recentCommentsStore,
   RECENT_COMMENTS_STORE_NAME,
@@ -74,7 +73,6 @@ export const reducers = combineReducers({
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
 
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
-  [FEEDBACK_STORE_NAME]: feedbackStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [COMMENT_STORE_NAME]: commentStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,

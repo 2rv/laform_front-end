@@ -5,7 +5,7 @@ import { spacing, THEME_SIZE, THEME_VALUE } from 'src/lib/theme';
 
 export function DownloadLinks() {
   return (
-    <Container type="double" adaptive>
+    <Container>
       <Link
         href="https://play.google.com/store/apps"
         target="_blank"

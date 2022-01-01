@@ -1,8 +1,9 @@
-import { useSelector } from 'react-redux';
-import { AUTH_STORE_NAME } from 'src/lib/common/auth';
+import React from 'react';
+import styled from 'styled-components';
+import { spacing, THEME_SIZE } from 'src/lib/theme';
+import { TextPrimary } from 'src/lib/element/text';
+import { LinkSecondary } from 'src/lib/element/link';
 import { ALL_LIKES_ROUTE_PATH } from '../likes';
-import { SETTINGS_ROUTE_PATH } from '../settings';
-import { FooterComponent } from './footer.component';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { FEEDBACK_ROUTE_PATH } from '../feedback';
 import {
@@ -11,30 +12,24 @@ import {
   FAQ_LEGAL_INFORMATION_ROUTE_PATH,
   FAQ_PRIVACY_POLICY_ROUTE_PATH,
   FAQ_TERMS_OF_USE_ROUTE_PATH,
-  FAQ_ABOUT_US_ROUTE_PATH,
   FAQ_ROUTE_PATH,
   FAQ_HOW_PRINT_ROUTE_PATH,
   FAQ_HOW_GLUE_ROUTE_PATH,
   FAQ_LAFORME_PATTERNS_ROUTE_PATH,
   FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from '../faq-article';
-import { LOGIN_ROUTE_PATH } from '../auth-login';
 
-export function FooterContainer() {
-  const { isAuth } = useSelector((state) => ({
-    isAuth: state[AUTH_STORE_NAME].logged,
-  }));
-
-  const laFormeLinkItems = {
+const FOOTER_NAVIGATION_LINKS = [
+  {
     title: 'FOOTER.MENU.SECTION1.TITLE',
     items: [
       {
         tid: 'FOOTER.MENU.SECTION1.MY_PURCHASES',
-        path: isAuth ? USER_ORDERS_ROUTE_PATH : LOGIN_ROUTE_PATH,
+        path: USER_ORDERS_ROUTE_PATH,
       },
       {
         tid: 'FOOTER.MENU.SECTION1.WISH_LIST',
-        path: isAuth ? ALL_LIKES_ROUTE_PATH() : LOGIN_ROUTE_PATH,
+        path: ALL_LIKES_ROUTE_PATH(),
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',
@@ -45,8 +40,8 @@ export function FooterContainer() {
         path: FAQ_LAFORME_STUDIO_ROUTE_PATH,
       },
     ],
-  };
-  const faqLinkItems = {
+  },
+  {
     title: 'FOOTER.MENU.SECTION2.TITLE',
     items: [
       {
@@ -70,8 +65,8 @@ export function FooterContainer() {
         path: FAQ_ROUTE_PATH,
       },
     ],
-  };
-  const contactLinkItems = {
+  },
+  {
     title: 'FOOTER.MENU.SECTION3.TITLE',
     items: [
       {
@@ -91,13 +86,39 @@ export function FooterContainer() {
         path: FEEDBACK_ROUTE_PATH,
       },
     ],
-  };
-
+  },
+];
+export function NavLinks() {
   return (
-    <FooterComponent
-      laFormeLinkItems={laFormeLinkItems}
-      faqLinkItems={faqLinkItems}
-      contactLinkItems={contactLinkItems}
-    />
+    <Container>
+      {FOOTER_NAVIGATION_LINKS.map((block) => {
+        const { title, items } = block;
+        return (
+          <Content>
+            <Title tid={title} />
+            {items.map((link, key) => (
+              <LinkSecondary key={key} tid={link.tid} path={link.path} />
+            ))}
+          </Content>
+        );
+      })}
+    </Container>
   );
 }
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing(1)};
+  line-height: 1.5;
+`;
+const Title = styled(TextPrimary)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
+const Container = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+  justify-content: space-between;
+  @media screen and (max-width: 720px) {
+    flex-direction: column;
+  }
+`;
