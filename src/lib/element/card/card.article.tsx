@@ -28,6 +28,7 @@ export function CardArticle(props: CardArticleType) {
     onSelect,
     onDelete,
     onRemove,
+    onRemoveLike,
     isCreateList,
   } = props;
 
@@ -48,7 +49,12 @@ export function CardArticle(props: CardArticleType) {
         </ColumnCase>
         {(typeof like === 'boolean' || admin) && (
           <ActionCase>
-            <LikeButton id={id} type={type} like={like} />
+            <LikeButton
+              id={id}
+              type={type}
+              like={like}
+              onRemoveLike={onRemoveLike}
+            />
             <DeleteButton
               id={id}
               type={type}

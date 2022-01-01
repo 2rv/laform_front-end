@@ -36,7 +36,7 @@ export function likeAction(id: string, type: 0 | 1 | 2 | 3 | 4) {
 export function unlikeAction(
   id: string,
   type: 0 | 1 | 2 | 3 | 4,
-  updateLikesPage: (id: string) => void,
+  onRemoveLike?: (id: string) => void,
 ) {
   return async (setState: LikeDispatch) => {
     setState({
@@ -51,13 +51,15 @@ export function unlikeAction(
       setState({
         type: 'success',
       });
-      updateLikesPage(id);
+      if (typeof onRemoveLike === 'function') {
+        onRemoveLike(id);
+      }
     } catch (err: any) {
       if (err.response) {
         setState({
           type: 'success',
         });
-      } else console.log(err);
+      }
     }
   };
 }

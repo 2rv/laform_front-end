@@ -86,7 +86,10 @@ import {
   MASTER_CLASS_PAGE_ROUTE_PATH,
 } from '../../core/master-class-page';
 import { usersRouter, USERS_ROUTE_PATH } from '../../core/users';
-import { allLikesRouter, ALL_LIKES_ROUTE_PATH } from '../../core/likes';
+import {
+  productsLikeRouter,
+  PRODUCTS_LIKE_ROUTE_PATH,
+} from '../../core/products-like';
 import {
   patternCreateRouter,
   PATTERN_CREATE_ROUTE_PATH,
@@ -161,10 +164,10 @@ export const routes = {
   [SLIDER_EDIT_ROUTE_PATH()]: sliderEditRouter,
   [STATISTICS_ROUTE_PATH()]: statisticsRouter,
   [PRODUCTS_LIST_ROUTE_PATH()]: productsListRouter,
+  [PRODUCTS_LIKE_ROUTE_PATH()]: productsLikeRouter,
   [PATTERNS_PAGE_ROUTE_PATH()]: patternsPageRouter,
   [PATTERNS_PRODUCT_ROUTE_PATH()]: patternsProductRouter,
   [PATTERNS_ROUTE_PATH()]: patternsRouter,
-  [ALL_LIKES_ROUTE_PATH()]: allLikesRouter,
   [PATTERN_CREATE_ROUTE_PATH()]: patternCreateRouter,
   [POST_CREATE_ROUTE_PATH()]: postCreateRouter,
   [MASTER_CLASS_CREATE_ROUTE_PATH()]: masterClassCreateRouter,

@@ -3,14 +3,6 @@ import { PRODUCTS_LIST_TAB_TYPES } from './products-list.type';
 export const PRODUCTS_LIST_ROUTE_PATH = ({ type } = { type: '[[...type]]' }) =>
   `/all-products/${type}`;
 
-// export const PRODUCTS_LIST_TAB_TYPES = {
-//   0: 'master-class',
-//   1: 'pattern-electronic',
-//   2: 'pattern-print',
-//   3: 'sewing-good',
-//   4: 'blog',
-// };
-
 export const PRODUCTS_LIST_TABS = [
   {
     name: 'ALL_PRODUCTS.TABS.MASTER_CLASS',

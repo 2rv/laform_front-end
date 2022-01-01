@@ -38,7 +38,6 @@ import {
   MASTER_CLASS_PAGE_STORE_NAME,
 } from '../../core/master-class-page';
 import { usersStore, USERS_STORE_NAME } from '../../core/users';
-import { allLikesStore, ALL_LIKES_STORE_NAME } from '../../core/likes';
 import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
@@ -69,7 +68,6 @@ export const reducers = combineReducers({
   [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
 
   [USER_INFO_STORE_NAME]: userInfoStore,
-  [ALL_LIKES_STORE_NAME]: allLikesStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
 
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,

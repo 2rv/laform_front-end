@@ -2,7 +2,7 @@ import { POST_CREATE_ROUTE_PATH } from '../post-create';
 import { POSTS_ROUTE_PATH } from '../posts';
 import { FAQ_ROUTE_PATH } from '../faq-article';
 import { HOME_ROUTE_PATH } from '../home';
-import { ALL_LIKES_ROUTE_PATH } from '../likes';
+import { PRODUCTS_LIKE_ROUTE_PATH } from '../products-like';
 import { MASTER_CLASS_CREATE_ROUTE_PATH } from '../master-class-create';
 import { MASTER_CLASSES_ROUTE_PATH } from '../master-classes';
 import { ORDERS_ROUTE_PATH } from '../orders';
@@ -25,7 +25,10 @@ export const NAVIGATION_MENU = (isAuth = false) => {
     { title: 'HEADER.USER_MENU.HOME', pathname: HOME_ROUTE_PATH },
     { title: 'HEADER.USER_MENU.HELP', pathname: FAQ_ROUTE_PATH },
     { title: 'HEADER.USER_MENU.SETTINGS', pathname: SETTINGS_ROUTE_PATH },
-    { title: 'HEADER.USER_MENU.FAVORITE', pathname: ALL_LIKES_ROUTE_PATH() },
+    {
+      title: 'HEADER.USER_MENU.FAVORITE',
+      pathname: PRODUCTS_LIKE_ROUTE_PATH(),
+    },
     {
       title: 'HEADER.USER_MENU.MY_PURCHASES',
       pathname: USER_ORDERS_ROUTE_PATH,

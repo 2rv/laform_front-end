@@ -14,6 +14,7 @@ export type LikeContainerProps = {
   id: string;
   type: 0 | 1 | 2 | 3 | 4;
   like: boolean | undefined;
+  onRemoveLike?: (id: string) => void;
 };
 export type LikeComponentProps = {
   like: boolean;

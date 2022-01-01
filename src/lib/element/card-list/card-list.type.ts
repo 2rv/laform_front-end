@@ -5,6 +5,7 @@ export type BasicCardListTypeProps = {
   onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
   onDelete?: (id: string, deleted: boolean) => void;
   onRemove?: (id: string) => void;
+  onRemoveLike?: (id: string) => void;
   admin?: boolean;
   emptyText?: string;
   emptyTvalue?: object;

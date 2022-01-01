@@ -16,10 +16,15 @@ const SOCIAL_LINKS = [
 export function SocialLinks() {
   return (
     <Container>
-      {SOCIAL_LINKS.map((item) => {
+      {SOCIAL_LINKS.map((item, key) => {
         const Icon = item.icon;
         return (
-          <Link href={item.url} target="_blank" rel="noopener noreferrer">
+          <Link
+            key={key}
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Icon />
           </Link>
         );

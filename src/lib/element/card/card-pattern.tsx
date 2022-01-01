@@ -33,6 +33,7 @@ export function CardPattern(props: CardPatternType) {
     onSelect,
     onDelete,
     onRemove,
+    onRemoveLike,
     isCount,
     isCreateList,
     optionType,
@@ -73,7 +74,12 @@ export function CardPattern(props: CardPatternType) {
         />
         {(typeof like === 'boolean' || admin) && (
           <ActionCase>
-            <LikeButton id={id} type={type} like={like} />
+            <LikeButton
+              id={id}
+              type={type}
+              like={like}
+              onRemoveLike={onRemoveLike}
+            />
             <DeleteButton
               id={id}
               type={type}

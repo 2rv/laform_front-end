@@ -31,7 +31,6 @@ export function masterClassItemConverter(
     modifier: item.modifierRu || item.modifierEn,
     price: getPrice({ price: item.price }),
     discount: item.discount,
-    vendorCode: item.vendorCode,
   };
 }
 

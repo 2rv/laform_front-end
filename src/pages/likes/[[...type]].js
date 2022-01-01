@@ -1,2 +1,2 @@
-import { LikesPage } from '../../core/likes';
-export default LikesPage;
+import { ProductsLikePage } from '../../core/products-like';
+export default ProductsLikePage;
