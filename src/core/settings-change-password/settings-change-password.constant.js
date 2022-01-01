@@ -1,6 +1,0 @@
-export const SETTINGS_CHANGE_PASSWORD_STORE_NAME = 'SETTINGS_CHANGE_PASSWORD';
-
-export const SETTINGS_CHANGE_PASSWORD_API = {
-  ENDPOINT: '/user/settings/password',
-  METHOD: 'PATCH',
-};

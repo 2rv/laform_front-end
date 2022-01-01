@@ -1,5 +1,4 @@
 import { useReducer } from 'react';
-import { getQuery } from 'src/main/navigation';
 import { ChangePasswordComponent } from './change-password.component';
 import { changePassworValidation } from './change-password.validation';
 import {
@@ -46,19 +45,13 @@ function changePasswordReducer(
   }
 }
 
-export function ChangePasswordContainer() {
+export function SettingsChangePasswordContainer() {
   const [state, setState] = useReducer(changePasswordReducer, initialState);
-
   const onSubmit = (values: ChangePasswordValues) => {
-    const code = getQuery('code');
-    if (typeof code === 'string' && code) {
-      changePasswordAction(code, values)(setState);
-    } else {
-      setState({ type: CHANGE_PASSWORD_ACTION_TYPE.ERROR, error: 'Ошибка' });
-    }
+    changePasswordAction(values)(setState);
   };
-
   const initialValues = {
+    [CHANGE_PASSWORD_FIELD_NAME.OLD_PASSWORD]: '',
     [CHANGE_PASSWORD_FIELD_NAME.PASSWORD]: '',
     [CHANGE_PASSWORD_FIELD_NAME.PASSWORD_REPEAT]: '',
   };
