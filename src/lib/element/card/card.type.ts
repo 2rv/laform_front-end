@@ -58,32 +58,59 @@ export interface ProductVendorCodeProps {
   vendorCode: string;
 }
 
-export interface CardArticleType {
-  id: string;
-  type: 4;
-  image: string;
-  name?: string;
-  modifier?: string;
-  createdDate: Date;
-  like: boolean | undefined;
-  deleted?: boolean;
+type CardOtherProps = {
   admin?: boolean;
   onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
   onDelete?: (id: string, deleted: boolean) => void;
   onRemove?: (id: string) => void;
+  onRemoveLike?: (id: string) => void;
   isCreateList?: boolean;
-}
-export interface CardSewingGoodType {
+};
+export interface CardMasterClassType extends CardOtherProps {
   id: string;
-  like: boolean | undefined;
+  type: 0;
   deleted?: boolean;
-  admin?: boolean;
-  type: 3;
+  like: boolean | undefined;
+
   image: string;
   name?: string;
   modifier?: string;
+
   price?: number;
   discount?: number;
+}
+export interface CardPatternType extends CardOtherProps {
+  id: string;
+  type: 1 | 2;
+  deleted?: boolean;
+  like: boolean | undefined;
+
+  image: string;
+  name?: string;
+  modifier?: string;
+
+  price?: number;
+  discount?: number;
+
+  optionType: 0 | 2;
+  count?: number;
+  isCount: boolean;
+  complexity: number;
+  sizes?: OptionType[];
+}
+export interface CardSewingGoodType extends CardOtherProps {
+  id: string;
+  type: 3;
+  deleted?: boolean;
+  like: boolean | undefined;
+
+  image: string;
+  name?: string;
+  modifier?: string;
+
+  price?: number;
+  discount?: number;
+
   count?: number;
   length?: number;
   isCount: boolean;
@@ -92,49 +119,21 @@ export interface CardSewingGoodType {
   optionType: 0 | 1 | 2 | 3;
   colors?: OptionType[];
   sizes?: OptionType[];
-  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
-  onDelete?: (id: string, deleted: boolean) => void;
-  onRemove?: (id: string) => void;
-  isCreateList?: boolean;
 }
-export interface CardPatternType {
+
+export interface CardArticleType extends CardOtherProps {
   id: string;
-  like: boolean | undefined;
+  type: 4;
   deleted?: boolean;
-  admin?: boolean;
-  type: 1 | 2;
-  optionType: 0 | 2;
-  image: string;
-  name: string | undefined;
-  modifier?: string;
-  price?: number;
-  discount?: number;
-  count?: number;
-  isCount: boolean;
-  complexity: number;
-  sizes?: OptionType[];
-  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
-  onDelete?: (id: string, deleted: boolean) => void;
-  onRemove?: (id: string) => void;
-  isCreateList?: boolean;
-}
-export interface CardMasterClassType {
-  id: string;
-  type: 0;
-  image: string;
-  name: string | undefined;
-  modifier?: string;
-  discount?: number;
-  price: number;
-  vendorCode: string;
   like: boolean | undefined;
-  deleted?: boolean;
-  admin?: boolean;
-  onSelect?: (id: string, type: 0 | 1 | 2 | 3 | 4, status: boolean) => boolean;
-  onDelete?: (id: string, deleted: boolean) => void;
-  onRemove?: (id: string) => void;
-  isCreateList?: boolean;
+
+  image: string;
+  name?: string;
+  modifier?: string;
+
+  createdDate: Date;
 }
+
 export type CardMultiType =
   | CardSewingGoodType
   | CardPatternType

@@ -3,44 +3,43 @@ import { SectionLayout } from 'src/lib/element/layout';
 import { BasicCardList } from 'src/lib/element/card-list';
 import { SearchBlock } from 'src/lib/common/block-search';
 import { TabLinkBlock } from 'src/lib/element/tab-link';
-import { ALL_LIKES_TABS } from './likes.constant';
+import { ProductsLikeComponentProps } from './products-like.type';
+import { PRODUCTS_LIKE_TABS } from './products-like.constant';
 
-export function LikesComponent(props) {
+export function ProductsLikeComponent(props: ProductsLikeComponentProps) {
   const {
     activePath,
-    pageLoading,
-    total,
-    products,
-    categories,
-    isPending,
-    isPagination,
-    onPagination,
     onFilter,
+    onPagination,
+    onRemoveLike,
     filterOptions,
+    state: { getPending, paginatePending, categories, products, total },
   } = props;
   return (
     <SectionLayout>
       <TabLinkBlock
         activePath={activePath}
-        pathItems={ALL_LIKES_TABS}
-        disabled={pageLoading || isPending || isPagination}
+        pathItems={PRODUCTS_LIKE_TABS}
+        disabled={getPending}
       />
       <SearchBlock
         findPlaceholderTid="Искать товар"
         filterOptions={filterOptions}
         categories={categories}
         handleFilter={onFilter}
-        disabled={pageLoading || isPending}
+        disabled={getPending}
       />
       <InfiniteScroll
+        loader={<></>}
         dataLength={products.length}
         next={onPagination}
         hasMore={products.length < +total}
       >
         <BasicCardList
-          isLoading={isPending}
-          isPagination={isPagination}
+          isLoading={getPending}
+          isPagination={paginatePending}
           items={products}
+          onRemoveLike={onRemoveLike}
           emptyText="ALL_LIKES.CATEGORY_EMPTY"
         />
       </InfiniteScroll>

@@ -12,7 +12,7 @@ import { ORDERS_ROUTE_PATH } from '../orders';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
 import { PROMOCODES_ROUTE_PATH } from '../promocodes';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
-import { ALL_LIKES_ROUTE_PATH } from '../likes';
+import { PRODUCTS_LIKE_ROUTE_PATH } from '../products-like';
 import { SETTINGS_ROUTE_PATH } from '../settings';
 import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
 import { PRODUCTS_LIST_ROUTE_PATH } from '../products-list';
@@ -31,7 +31,7 @@ export const NAV_MENU_ITEMS = [
 
 export const USER_MENU_ITEMS = [
   { path: USER_ORDERS_ROUTE_PATH, tid: 'HEADER.USER_MENU.MY_PURCHASES' },
-  { path: ALL_LIKES_ROUTE_PATH(), tid: 'HEADER.USER_MENU.FAVORITE' },
+  { path: PRODUCTS_LIKE_ROUTE_PATH(), tid: 'HEADER.USER_MENU.FAVORITE' },
   { path: SETTINGS_ROUTE_PATH, tid: 'HEADER.USER_MENU.SETTINGS' },
 ];
 

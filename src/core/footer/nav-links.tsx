@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { TextPrimary } from 'src/lib/element/text';
 import { LinkSecondary } from 'src/lib/element/link';
-import { ALL_LIKES_ROUTE_PATH } from '../likes';
+import { PRODUCTS_LIKE_ROUTE_PATH } from '../products-like';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { FEEDBACK_ROUTE_PATH } from '../feedback';
 import {
@@ -29,7 +29,7 @@ const FOOTER_NAVIGATION_LINKS = [
       },
       {
         tid: 'FOOTER.MENU.SECTION1.WISH_LIST',
-        path: ALL_LIKES_ROUTE_PATH(),
+        path: PRODUCTS_LIKE_ROUTE_PATH(),
       },
       {
         tid: 'FOOTER.MENU.SECTION1.LA_FORME_PATTERNS',
@@ -91,10 +91,10 @@ const FOOTER_NAVIGATION_LINKS = [
 export function NavLinks() {
   return (
     <Container>
-      {FOOTER_NAVIGATION_LINKS.map((block) => {
+      {FOOTER_NAVIGATION_LINKS.map((block, key) => {
         const { title, items } = block;
         return (
-          <Content>
+          <Content key={key}>
             <Title tid={title} />
             {items.map((link, key) => (
               <LinkSecondary key={key} tid={link.tid} path={link.path} />

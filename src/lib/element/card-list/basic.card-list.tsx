@@ -21,6 +21,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
     onSelect,
     onDelete,
     onRemove,
+    onRemoveLike,
     admin,
     emptyText,
     emptyTvalue,
@@ -48,6 +49,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
                   onSelect={onSelect}
                   onDelete={onDelete}
                   onRemove={onRemove}
+                  onRemoveLike={onRemoveLike}
                   isCreateList={isCreateList}
                   admin={admin}
                   {...card}
@@ -61,6 +63,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
                   onSelect={onSelect}
                   onDelete={onDelete}
                   onRemove={onRemove}
+                  onRemoveLike={onRemoveLike}
                   isCreateList={isCreateList}
                   admin={admin}
                   {...card}
@@ -74,6 +77,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
                   onSelect={onSelect}
                   onDelete={onDelete}
                   onRemove={onRemove}
+                  onRemoveLike={onRemoveLike}
                   isCreateList={isCreateList}
                   admin={admin}
                   {...card}
@@ -87,6 +91,7 @@ export function BasicCardList(props: BasicCardListTypeProps) {
                   onSelect={onSelect}
                   onDelete={onDelete}
                   onRemove={onRemove}
+                  onRemoveLike={onRemoveLike}
                   isCreateList={isCreateList}
                   admin={admin}
                   {...card}

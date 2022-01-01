@@ -1,7 +1,5 @@
-import { useCallback, useReducer } from 'react';
-import { useDispatch } from 'react-redux';
+import { useReducer } from 'react';
 import { likeAction, unlikeAction } from './like.action';
-import { updateLocateLikesStore } from 'src/core/likes';
 import { LikeComponent } from './like.component';
 import { LikeActionType, LikeContainerProps, LikeStateType } from './like.type';
 
@@ -31,20 +29,12 @@ function likeReducer(state: LikeStateType, action: LikeActionType) {
 }
 
 export function LikeContainer(props: LikeContainerProps) {
-  const { id, type, like = false } = props;
+  const { id, type, like = false, onRemoveLike } = props;
   const [state, setState] = useReducer(likeReducer, like, init);
-  const dispatch = useDispatch();
-
-  const updateLikesPage = useCallback(
-    (id: string) => {
-      dispatch(updateLocateLikesStore(id));
-    },
-    [dispatch],
-  );
 
   function switchLike() {
     if (state.like) {
-      unlikeAction(id, type, updateLikesPage)(setState);
+      unlikeAction(id, type, onRemoveLike)(setState);
     } else likeAction(id, type)(setState);
   }
 

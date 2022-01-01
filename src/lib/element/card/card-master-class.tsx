@@ -29,6 +29,7 @@ export function CardMasterClass(props: CardMasterClassType) {
     onSelect,
     onDelete,
     onRemove,
+    onRemoveLike,
     isCreateList,
   } = props;
 
@@ -62,7 +63,12 @@ export function CardMasterClass(props: CardMasterClassType) {
         />
         {(typeof like === 'boolean' || admin) && (
           <ActionCase>
-            <LikeButton id={id} type={type} like={like} />
+            <LikeButton
+              id={id}
+              type={type}
+              like={like}
+              onRemoveLike={onRemoveLike}
+            />
             <DeleteButton
               id={id}
               type={type}
