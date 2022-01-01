@@ -13,9 +13,9 @@ import {
   FAQ_HOW_PRINT_ROUTE_PATH,
   FAQ_HOW_GLUE_ROUTE_PATH,
   FAQ_ROUTE_PATH,
-} from '../faq-article';
+} from './faq-article.constant';
 
-export function HelpLinksComponent(props: { viewAll?: boolean }) {
+export function FaqLinks(props: { viewAll?: boolean }) {
   const { viewAll } = props;
   return (
     <SectionLayout>
@@ -24,7 +24,7 @@ export function HelpLinksComponent(props: { viewAll?: boolean }) {
         {viewAll && <LinkSecondary tid="HOME.VIEW_ALL" path={FAQ_ROUTE_PATH} />}
       </Case>
       <List>
-        {INFO_BLOCK_ITEMS.map(({ icon: Icon, tid, path }, index) => (
+        {FAQ_LINKS.map(({ icon: Icon, tid, path }, index) => (
           <Content key={index} onClick={setLinkRedirect(path)}>
             <Icon />
             <Text tid={tid} />
@@ -35,7 +35,7 @@ export function HelpLinksComponent(props: { viewAll?: boolean }) {
   );
 }
 
-const INFO_BLOCK_ITEMS = [
+const FAQ_LINKS = [
   {
     icon: SizeIcon,
     tid: 'INFORMATION_DIRECTORY_LIST.ITEMS.SIZING_INFO',

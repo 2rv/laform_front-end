@@ -10,11 +10,13 @@ import { ErrorField } from '../../element/error';
 const ReactEditorCore = dynamic(() => import('./react-editor-core'), {
   ssr: false,
 });
-
+export type ReactEditorChangeHandlerType = (
+  data?: BlockAPI | OutputData,
+) => void;
 interface ReactEditorProps extends Props {
   titleTid?: string;
   error?: string;
-  handleChange?: (data?: BlockAPI | OutputData) => void;
+  handleChange?: ReactEditorChangeHandlerType;
   enableIsEdit?: boolean;
   onCompareBlocks?: (
     newBlocks: BlockToolData | undefined,

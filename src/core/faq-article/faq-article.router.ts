@@ -34,7 +34,6 @@ export function faqAboutUsRouter(ctx: any) {
 export function faqRouter(ctx: any) {
   ctx.store.dispatch(setActivePath(FAQ_ROUTE_PATH));
 }
-
 export function faqHowPrintRouter(ctx: any) {
   ctx.store.dispatch(setActivePath(FAQ_HOW_PRINT_ROUTE_PATH));
 }

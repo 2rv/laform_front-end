@@ -12,7 +12,7 @@ import { IconButton } from 'src/lib/element/button';
 import { setLinkRedirect } from 'src/main/navigation';
 import { BASE_URL } from 'src/main/http';
 
-export function SocialAuthComponent() {
+export function AuthSocialComponent() {
   return (
     <SectionLayout type="TEXT">
       <TextPrimary tid="SIGNUP.SOCIAL.HELPER_TEXT" />

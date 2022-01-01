@@ -1,51 +1,32 @@
 import { SectionLayout } from 'src/lib/element/layout';
 import { ButtonSecondary } from 'src/lib/element/button';
 import { BlockReactEditor } from 'src/lib/common/block-react-editor';
-import { LoaderPrimary } from 'src/lib/element/loader';
 import { SuccessAlert } from 'src/lib/element/alert';
 import { CenteredSpinner } from 'src/lib/element/spinner';
-import { BlockHelpLinks } from '../block-help-links';
+import { FaqLinks } from './faq-links';
+import { FaqArticleComponentProps } from './faq-article.type';
 
-interface FaqArticleComponentProps {
-  pending: boolean;
-  success: boolean;
-  error: boolean;
-  errorMessage: string;
-  data: any;
-  handleSave: () => void;
-  handleChange: (data: any) => void;
-  isAdmin: boolean;
-  pageLoading: boolean;
-  disabled: boolean;
-  titleTid?: string;
-}
 export function FaqArticleComponent(props: FaqArticleComponentProps) {
   const {
-    pending,
-    success,
-    error,
-    errorMessage,
-    data,
+    isAdmin,
+    state: { data, getPending, savePending, saveSuccess, saveError },
     handleSave,
     handleChange,
-    isAdmin,
-    pageLoading,
     disabled,
     titleTid,
   } = props;
+
   return (
     <SectionLayout>
-      {!titleTid && <BlockHelpLinks />}
-      {pending && <CenteredSpinner />}
-      {pageLoading && <LoaderPrimary />}
+      {!titleTid && <FaqLinks />}
       <BlockReactEditor
         titleTid={titleTid}
+        handleChange={handleChange}
         data={data}
+        error={saveError}
         enableIsEdit={isAdmin}
         readOnly={!isAdmin}
         enableReInitialize={!isAdmin}
-        handleChange={handleChange}
-        error={error ? errorMessage : undefined}
       />
       {isAdmin && (
         <ButtonSecondary
@@ -54,7 +35,8 @@ export function FaqArticleComponent(props: FaqArticleComponentProps) {
           onClick={handleSave}
         />
       )}
-      {success && <SuccessAlert tid="Успешно обновлено" />}
+      {(getPending || savePending) && <CenteredSpinner />}
+      {saveSuccess && <SuccessAlert tid="Успешно обновлено" />}
     </SectionLayout>
   );
 }

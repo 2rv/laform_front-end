@@ -1,11 +1,41 @@
-export const FAQ_ARTICLE_ACTION_TYPE = {
-  DATA_LOAD_PENDING: 'FAQ_ARTICLE_ACTION_TYPE.DATA_LOAD_PENDING',
-  DATA_LOAD_SUCCESS: 'FAQ_ARTICLE_ACTION_TYPE.DATA_LOAD_SUCCESS',
-  DATA_LOAD_ERROR: 'FAQ_ARTICLE_ACTION_TYPE.DATA_LOAD_ERROR',
+import { BasicReactEditorType } from 'src/lib/basic-types';
+import { ReactEditorChangeHandlerType } from 'src/lib/common/block-react-editor';
 
-  DATA_SAVE_PENDING: 'FAQ_ARTICLE_ACTION_TYPE.DATA_SAVE_PENDING',
-  DATA_SAVE_SUCCESS: 'FAQ_ARTICLE_ACTION_TYPE.DATA_SAVE_SUCCESS',
-  DATA_SAVE_ERROR: 'FAQ_ARTICLE_ACTION_TYPE.DATA_SAVE_ERROR',
+export enum FAQ_ACTION_TYPE {
+  GET_PENDING = 'GET_PENDING',
+  GET_SUCCESS = 'GET_SUCCESS',
+  GET_ERROR = 'GET_ERROR',
 
-  REDATA_LOAD: 'FAQ_ARTICLE_ACTION_TYPE.REDATA_LOAD',
+  SAVE_PENDING = 'SAVE_PENDING',
+  SAVE_SUCCESS = 'SAVE_SUCCESS',
+  SAVE_ERROR = 'SAVE_ERROR',
+
+  RESET = 'RESET',
+}
+export type FaqArticleContainerProps = {
+  name: string;
+  titleTid?: string;
+};
+export type FaqArticleStateType = {
+  getPending: boolean;
+  data?: BasicReactEditorType;
+  getError?: string;
+
+  savePending: boolean;
+  saveSuccess: boolean;
+  saveError?: string;
+};
+export type FaqArticleActionType = {
+  type: FAQ_ACTION_TYPE;
+  error?: string;
+  data?: BasicReactEditorType;
+};
+export type FaqArticleComponentProps = {
+  isAdmin: boolean;
+  state: FaqArticleStateType;
+  handleSave: () => void;
+  handleChange: ReactEditorChangeHandlerType;
+
+  disabled: boolean;
+  titleTid?: string;
 };

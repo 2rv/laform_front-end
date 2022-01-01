@@ -1,6 +1,6 @@
 import { SectionLayout } from 'src/lib/element/layout';
 import { CardListBlock } from 'src/lib/element/card-list';
-import { BlockHelpLinks } from '../block-help-links';
+import { BlockFaqLinks } from '../faq-article';
 import { SliderBlock } from '../slider';
 import { HomeComponentProps } from './home.type';
 import { HomeCatalog } from './home.catalog';
@@ -25,7 +25,7 @@ export function HomeComponent(props: HomeComponentProps) {
           items={item.compilationProducts}
         />
       ))}
-      <BlockHelpLinks viewAll />
+      <BlockFaqLinks viewAll />
       <HomeAdvantage />
     </SectionLayout>
   );

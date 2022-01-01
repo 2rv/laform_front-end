@@ -7,7 +7,7 @@ import { BasicField } from 'src/lib/element/field';
 import { ButtonPrimary } from 'src/lib/element/button';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
 import { LoaderPrimary } from 'src/lib/element/loader';
-import { BlockSocialAuth } from '../auth-social';
+import { BlockAuthSocial } from '../auth-social';
 import { LOGIN_ROUTE_PATH } from '../auth-login';
 import { SignupComponentProps, SIGNUP_FIELD_NAME } from './signup.type';
 
@@ -101,7 +101,7 @@ export function SignupComponent(props: SignupComponentProps) {
               );
             }}
           </Formik>
-          <BlockSocialAuth />
+          <BlockAuthSocial />
           <div>
             <TextSecondary tid="SIGNUP.FOOTER.HAVE_ACCOUNT" />
             &nbsp;
