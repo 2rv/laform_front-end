@@ -5,12 +5,6 @@ import {
   navigationStore,
   NAVIGATION_STORE_NAME,
 } from '../../lib/common/navigation';
-import { signupStore, SIGNUP_STORE_NAME } from '../../core/auth-signup';
-import { loginStore, LOGIN_STORE_NAME } from '../../core/auth-login';
-import {
-  settingsChangePasswordStore,
-  SETTINGS_CHANGE_PASSWORD_STORE_NAME,
-} from '../../core/settings-change-password';
 import { userOrderStore, USER_ORDER_STORE_NAME } from '../../core/user-order';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import {
@@ -76,21 +70,19 @@ export const reducers = combineReducers({
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
   [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
 
-  [SIGNUP_STORE_NAME]: signupStore,
-  [LOGIN_STORE_NAME]: loginStore,
-  [SETTINGS_CHANGE_PASSWORD_STORE_NAME]: settingsChangePasswordStore,
+  [USER_ORDER_STORE_NAME]: userOrderStore,
+  [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
+  [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
 
   [USER_INFO_STORE_NAME]: userInfoStore,
+  [ALL_LIKES_STORE_NAME]: allLikesStore,
+  [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
+
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [FEEDBACK_STORE_NAME]: feedbackStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [COMMENT_STORE_NAME]: commentStore,
-  [USER_ORDER_STORE_NAME]: userOrderStore,
-  [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
-  [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
-  [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
   [USERS_STORE_NAME]: usersStore,
-  [ALL_LIKES_STORE_NAME]: allLikesStore,
 });
 export { initStore } from './store.core';

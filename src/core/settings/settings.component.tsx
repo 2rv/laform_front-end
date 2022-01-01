@@ -9,8 +9,11 @@ import { SettingsChangeEmailContainer } from '../settings-change-email';
 import { SettingsChangeNotificationContainer } from '../settings-change-notification';
 import { SettingsLogutContainer } from '../settings-logout';
 import { BlockUserInfo } from '../settings-user-info';
+import { useSelector } from 'react-redux';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 export function SettingsComponent() {
+  useSelector((state: any) => state[LANG_STORE_NAME]);
   return (
     <ContentLayout horizontal="center">
       <PageLayout type="MEDIUM">
