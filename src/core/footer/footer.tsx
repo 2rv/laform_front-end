@@ -2,24 +2,17 @@ import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 import { NotificationContainer } from '../notification';
-import {
-  FooterLinkList,
-  FooterSocialLink,
-  DownloadLinks,
-  FooterPhoneComponent,
-} from './frames';
+import { NavLinks } from './nav-links';
+import { SocialLinks } from './social-links';
+import { DownloadLinks } from './download-link';
+import { BlockPhone } from './phone';
 
-export function FooterComponent(props) {
-  const { laFormeLinkItems, faqLinkItems, contactLinkItems } = props;
+export function Footer() {
   return (
     <Container>
       <Content>
         <ContentCase>
-          <ListCase>
-            <FooterLinkList data={laFormeLinkItems} />
-            <FooterLinkList data={faqLinkItems} />
-            <FooterLinkList data={contactLinkItems} />
-          </ListCase>
+          <NavLinks />
           <NotificationContainer />
         </ContentCase>
         <CopyrightCase>
@@ -28,10 +21,10 @@ export function FooterComponent(props) {
             &nbsp;
             <CopyrightMessage tid="FOOTER.COPYRIGHT.ALL_RIGHTS_RESERVED" />
           </div>
-          <FooterSocialLink />
+          <SocialLinks />
         </CopyrightCase>
         <DownloadLinks />
-        <FooterPhoneComponent />
+        <BlockPhone />
       </Content>
     </Container>
   );
@@ -55,14 +48,6 @@ const ContentCase = styled.div`
   }
   input {
     background: ${THEME_COLOR.WHITE};
-  }
-`;
-const ListCase = styled.div`
-  display: flex;
-  gap: ${spacing(3)};
-  justify-content: space-between;
-  @media screen and (max-width: 720px) {
-    flex-direction: column;
   }
 `;
 const CopyrightCase = styled.div`

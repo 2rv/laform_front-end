@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { PageWrapperPropsType } from './type.page-wrapper';
-import { FooterContainer } from 'src/core/footer';
+import { Footer } from 'src/core/footer';
 import { Header } from 'src/core/header';
 import { SectionLayout } from 'src/lib/element/layout';
 import { spacing } from 'src/lib/theme';
@@ -38,7 +38,7 @@ export function PageWrapper(props: PageWrapperPropsType) {
           <MainCase>
             <Main>{children}</Main>
           </MainCase>
-          <FooterContainer />
+          <Footer />
         </Content>
       </Relative>
       <ScrollToTopButton />
