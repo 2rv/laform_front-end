@@ -4,7 +4,7 @@ import { getQuery, redirect } from 'src/main/navigation';
 import { authSetData } from 'src/lib/common/auth';
 import { HOME_ROUTE_PATH } from '../home';
 
-export function SocialAuthAccessPage() {
+export function AuthSocialPage() {
   const dispatch = useDispatch();
   const token = getQuery('data');
 

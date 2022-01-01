@@ -24,7 +24,6 @@ export {
   faqLaformePatternsRouter,
   faqLaformeStudioRouter,
 } from './faq-article.router';
-export { faqArticleStore } from './faq-article.store';
 export {
   FAQ_SIZE_ROUTE_PATH,
   FAQ_DELIVERY_PAYMENT_ROUTE_PATH,
@@ -33,9 +32,9 @@ export {
   FAQ_TERMS_OF_USE_ROUTE_PATH,
   FAQ_ABOUT_US_ROUTE_PATH,
   FAQ_ROUTE_PATH,
-  FAQ_ARTICLE_STORE_NAME,
   FAQ_HOW_PRINT_ROUTE_PATH,
   FAQ_HOW_GLUE_ROUTE_PATH,
   FAQ_LAFORME_PATTERNS_ROUTE_PATH,
   FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from './faq-article.constant';
+export { FaqLinks as BlockFaqLinks } from './faq-links';

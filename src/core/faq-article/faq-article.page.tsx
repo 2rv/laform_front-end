@@ -13,13 +13,9 @@ import {
   FAQ_LAFORME_PATTERNS_ROUTE_PATH,
   FAQ_LAFORME_STUDIO_ROUTE_PATH,
 } from './faq-article.constant';
+import { FaqArticleContainerProps } from './faq-article.type';
 
-interface FaqArticlePageProps {
-  name: string;
-  titleTid?: string;
-}
-
-function FaqArticlePage(props: FaqArticlePageProps) {
+function FaqArticlePage(props: FaqArticleContainerProps) {
   const { name, titleTid } = props;
   return (
     <PageWrapper>
@@ -28,6 +24,7 @@ function FaqArticlePage(props: FaqArticlePageProps) {
   );
 }
 
+export const FaqPage = () => <FaqArticlePage name={FAQ_ROUTE_PATH} />;
 export const FaqSizePage = () => (
   <FaqArticlePage
     titleTid="Как выбрать размер"
@@ -70,8 +67,6 @@ export const FaqAboutUsPage = () => (
     key={FAQ_ABOUT_US_ROUTE_PATH}
   />
 );
-export const FaqPage = () => <FaqArticlePage name={FAQ_ROUTE_PATH} />;
-
 export const FaqHowPrintPage = () => (
   <FaqArticlePage
     titleTid="Как распечатать выкройку"

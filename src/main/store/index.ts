@@ -52,10 +52,6 @@ import {
   userInfoStore,
   USER_INFO_STORE_NAME,
 } from '../../core/settings-user-info';
-import {
-  faqArticleStore,
-  FAQ_ARTICLE_STORE_NAME,
-} from '../../core/faq-article';
 
 export const reducers = combineReducers({
   [AUTH_STORE_NAME]: authStore,
@@ -63,7 +59,6 @@ export const reducers = combineReducers({
   [NAVIGATION_STORE_NAME]: navigationStore,
   [BASKET_STORE_NAME]: basketStore,
   // Сверху нужное снизу лучше бы отвязать от стора
-  [FAQ_ARTICLE_STORE_NAME]: faqArticleStore,
 
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,

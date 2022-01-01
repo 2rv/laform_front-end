@@ -11,7 +11,7 @@ import {
   SectionLayout,
   ContentLayout,
 } from 'src/lib/element/layout';
-import { BlockSocialAuth } from '../auth-social';
+import { BlockAuthSocial } from '../auth-social';
 import { SIGNUP_ROUTE_PATH } from '../auth-signup';
 import { AUTH_RECOVERY_ACCOUNT_ROUTE_PATH } from '../auth-recovery-account';
 import { LOGIN_FIELD_NAME, LoginComponentProps } from './login.type';
@@ -83,7 +83,7 @@ export function LoginComponent(props: LoginComponentProps) {
               );
             }}
           </Formik>
-          <BlockSocialAuth />
+          <BlockAuthSocial />
           <SectionLayout type="TEXT">
             <div>
               <TextSecondary tid="LOGIN.FOOTER.HAVENT_ACCOUNT_YET" />
