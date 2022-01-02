@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from '../../theme';
 import { TextSecondary } from '../text';
 import { CardImage } from './card.image';
-import { ARTICLE_PAGE_ROUTE_PATH } from '../../../core/article-page';
+import { POST_PAGE_ROUTE_PATH } from '../../../core/post-page';
 import { ConvertTime } from 'src/lib/common/time';
 import { CardArticleType } from './card.type';
 import {
@@ -35,7 +35,7 @@ export function CardArticle(props: CardArticleType) {
   return (
     <Container>
       <CardImage
-        path={isCreateList ? POST_CREATE_ROUTE_PATH : ARTICLE_PAGE_ROUTE_PATH}
+        path={isCreateList ? POST_CREATE_ROUTE_PATH : POST_PAGE_ROUTE_PATH}
         pathConfig={{ params: { id: id } }}
         image={image}
         modifier={modifier}

@@ -11,7 +11,7 @@ import {
   ProductCategories,
   ProductImages,
 } from 'src/core/block-product-components';
-import { BlockComment } from '../block-comment';
+import { BlockComment } from '../../lib/common/block-comment';
 import { MasterClassProductComponentProps } from './master-class-product.type';
 import { TabBlocks } from 'src/lib/element/tab-blocks';
 

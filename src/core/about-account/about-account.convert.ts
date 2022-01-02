@@ -4,7 +4,7 @@ import {
   BasicUserInfoType,
 } from 'src/lib/basic-types';
 import { CommentsProps } from 'src/lib/common/block-comments';
-import { ARTICLE_PAGE_ROUTE_PATH } from '../article-page';
+import { POST_PAGE_ROUTE_PATH } from '../post-page';
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
 import { convertOrdersData } from '../orders/orders.convert';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../patterns-product';
@@ -101,7 +101,7 @@ const convertLikesData = (likes: BasicProductLinkType[]) => {
         name: product.titleRu,
         image: product.images[0]?.fileUrl,
         category: 'PROFILE.CATEGORIES.ARTICLE',
-        path: ARTICLE_PAGE_ROUTE_PATH,
+        path: POST_PAGE_ROUTE_PATH,
         pathConfig: { params: { id: product.id } },
       };
     }
@@ -153,7 +153,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
         image: product.images[0].fileUrl,
         text: comment.text,
         createDate: comment.createDate,
-        path: ARTICLE_PAGE_ROUTE_PATH,
+        path: POST_PAGE_ROUTE_PATH,
         pathConfig: { params: { id: product.id } },
       };
     }

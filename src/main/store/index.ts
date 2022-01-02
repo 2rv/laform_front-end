@@ -8,10 +8,6 @@ import {
 import { userOrderStore, USER_ORDER_STORE_NAME } from '../../core/user-order';
 import { basketStore, BASKET_STORE_NAME } from '../../core/basket';
 import {
-  articlePageStore,
-  ARTICLE_PAGE_STORE_NAME,
-} from '../../core/article-page';
-import {
   aboutAccountStore,
   ABOUT_ACCOUNT_STORE_NAME,
 } from '../../core/about-account';
@@ -32,7 +28,6 @@ import {
   createNotificationStore,
   CREATE_NOTIFICATION_STORE_NAME,
 } from '../../core/create-notification';
-import { commentStore, COMMENT_STORE_NAME } from '../../core/block-comment';
 import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_STORE_NAME,
@@ -61,7 +56,6 @@ export const reducers = combineReducers({
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,
   [SEWING_GOODS_PAGE_STORE_NAME]: sewingGoodsPageStore,
-  [ARTICLE_PAGE_STORE_NAME]: articlePageStore,
 
   [USER_ORDER_STORE_NAME]: userOrderStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
@@ -72,7 +66,6 @@ export const reducers = combineReducers({
 
   [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
-  [COMMENT_STORE_NAME]: commentStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [USERS_STORE_NAME]: usersStore,
 });

@@ -4,34 +4,16 @@ import { ReactComponent as RemoveIcon } from 'src/asset/svg/remove.svg';
 import { ReactComponent as ChangeIcon } from 'src/asset/svg/change.svg';
 import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
 import { ConvertTime } from 'src/lib/common/time';
-import { USER_ROLE } from 'src/lib/common/auth';
 import { TitlePrimary } from 'src/lib/element/title';
 import { TextSecondary } from 'src/lib/element/text';
 import { ButtonBasic } from 'src/lib/element/button';
-import { SectionLayout } from 'src/lib/element/layout';
 import { Divider } from 'src/lib/element/divider';
-import { SubComment } from './comment.sub-item';
+import { CommentItemProps } from './comment.type';
+import { SubCommentItem } from './comment.sub-item';
 
-export function CommentItem(props) {
-  const {
-    handleSetSubUser,
-    handleDeleteComment,
-    handleDeleteSubComment,
-    handleEditComment,
-    cancelEditing,
-    setSubUser,
-    user,
-  } = props;
-  const { id, text, createDate, userId, subComment = [] } = props.data;
-  const createSubComment = () => {
-    handleSetSubUser(userId, id);
-    cancelEditing();
-  };
-  const removeSubComment = (subId) => handleDeleteSubComment(id, subId);
-  const editComment = () => {
-    handleEditComment(id, text, 'comment');
-    setSubUser(null);
-  };
+export function CommentItem(props: CommentItemProps) {
+  const { data, isAdmin, onRemove, onEdit, onSubComment } = props;
+  const { id, text, createDate, userId, subComment } = data;
 
   return (
     <Container>
@@ -42,20 +24,18 @@ export function CommentItem(props) {
               <Title tid={userId.login} />
               <TextLight tid={ConvertTime(createDate)} />
             </TitleCase>
-            {Boolean(user) && (
-              <Button onClick={createSubComment}>
-                <CommentIcon />
-              </Button>
-            )}
+            <Button onClick={() => onSubComment({ commentId: id, ...userId })}>
+              <CommentIcon />
+            </Button>
           </Case>
           <ActionsCase>
-            {(userId?.id === user?.id || user?.role === USER_ROLE.ADMIN) && (
-              <Button onClick={() => handleDeleteComment(id)}>
+            {isAdmin && (
+              <Button onClick={() => onRemove(id)}>
                 <RemoveIcon />
               </Button>
             )}
-            {userId?.id === user?.id && (
-              <Button onClick={editComment}>
+            {isAdmin && (
+              <Button onClick={() => onEdit({ id: id, value: text })}>
                 <ChangeIcon />
               </Button>
             )}
@@ -63,19 +43,30 @@ export function CommentItem(props) {
         </HeaderCase>
         <Text tid={text} />
         <Divider />
-        <SubComment
-          handleDeleteSubComment={removeSubComment}
-          handleEditComment={handleEditComment}
-          createSubComment={createSubComment}
-          subComment={subComment}
-          setSubUser={setSubUser}
-          userId={userId}
-          user={user}
-        />
+
+        <List>
+          {subComment.map((data, key) => (
+            <SubCommentItem
+              key={data?.id || key}
+              parentId={id}
+              isAdmin={isAdmin}
+              data={data}
+              onRemove={onRemove}
+              onEdit={onEdit}
+            />
+          ))}
+        </List>
       </Content>
     </Container>
   );
 }
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing(3)};
+  width: 100%;
+`;
 const Text = styled(TextSecondary)`
   word-break: break-word;
 `;
@@ -119,7 +110,6 @@ const Title = styled(TitlePrimary)`
     text-transform: uppercase;
   }
 `;
-
 const Button = styled(ButtonBasic)`
   padding: 0;
   width: fit-content;

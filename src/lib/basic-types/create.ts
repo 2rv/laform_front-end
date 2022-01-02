@@ -144,3 +144,12 @@ export type CompilationDto = {
   inEnglish: boolean;
   compilationProducts: BasicRecommendationProducsDto[];
 };
+
+export type CommentDto = {
+  text: string;
+  userId?: string;
+  postId?: string;
+  sewingProductId?: string;
+  patternProductId?: string;
+  masterClassId?: string;
+};
