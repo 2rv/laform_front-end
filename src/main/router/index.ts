@@ -136,6 +136,7 @@ import {
   authConfirmEmailRouter,
   AUTH_CONFIRM_EMAIL_ROUTE_PATH,
 } from '../../core/auth-confirm-email';
+import { postPageRouter, POST_PAGE_ROUTE_PATH } from 'src/core/post-page';
 
 export const routes = {
   [SIGNUP_ROUTE_PATH]: signupRouter,
@@ -172,6 +173,7 @@ export const routes = {
   [POST_CREATE_ROUTE_PATH()]: postCreateRouter,
   [MASTER_CLASS_CREATE_ROUTE_PATH()]: masterClassCreateRouter,
   [SEWING_GOODS_CREATE_ROUTE_PATH()]: sewingGoodsCreateRouter,
+  [POST_PAGE_ROUTE_PATH()]: postPageRouter,
   [MASTER_CLASSES_ROUTE_PATH]: masterClassesRouter,
   [POSTS_ROUTE_PATH]: postsRouter,
   [SEWING_GOODS_ROUTE_PATH]: sewingGoodsRouter,

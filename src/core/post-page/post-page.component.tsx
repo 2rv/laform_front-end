@@ -1,45 +1,39 @@
 import styled from 'styled-components';
-import { THEME_SIZE, THEME_COLOR } from '../../lib/theme';
-import { SectionLayout } from '../../lib/element/layout';
-import { TextSecondary } from '../../lib/element/text';
-import { CardListBlock } from '../../lib/element/card-list';
-import { TitlePrimary } from '../../lib/element/title';
-import { BlockComment } from '../block-comment';
+import { THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
+import { SectionLayout } from 'src/lib/element/layout';
+import { TextSecondary } from 'src/lib/element/text';
+import { CardListBlock } from 'src/lib/element/card-list';
+import { TitlePrimary } from 'src/lib/element/title';
 import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 import { ConvertTime } from 'src/lib/common/time';
-import { LoaderPrimary } from 'src/lib/element/loader';
+import { CenteredSpinner } from 'src/lib/element/spinner';
+import { BlockComment } from '../../lib/common/block-comment';
+import { PostPageComponentProps } from './post-page.type';
 
-export function ArticlePageComponent(props) {
+export function PostPageComponent(props: PostPageComponentProps) {
   const {
-    isPending,
-    isError,
-    isSuccess,
-    errorMessage,
-    pageLoading,
-    productInfo,
+    state: { pending, post },
   } = props;
 
-  const {
-    id,
-    type,
-    modifier,
-    name,
-    categories,
-    postArticle,
-    createdDate,
-    recommendations,
-  } = productInfo;
+  if (!post)
+    return (
+      <SectionLayout>
+        <CenteredSpinner />
+      </SectionLayout>
+    );
+
+  const { id, type, name, postArticle, createdDate, recommendations } = post;
 
   return (
     <SectionLayout>
-      {isPending && <LoaderPrimary />}
+      {pending && <CenteredSpinner />}
       <HeaderCase>
         <Title tid={name} />
         <TextLight tid={ConvertTime(createdDate)} />
       </HeaderCase>
       <BlockReactEditor data={postArticle} enableReInitialize readOnly />
       <CardListBlock
-        pending={isPending}
+        isLoading={pending}
         title="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE"
         items={recommendations}
       />

@@ -67,6 +67,12 @@ export type PostCreateStateType = {
   updateSuccess: boolean;
   updateError?: string;
 };
+export type PostCreateActionType = {
+  type: POST_CREATE_ACTION_TYPE;
+  error?: string;
+  data?: PostValues;
+};
+
 export enum POST_CREATE_ACTION_TYPE {
   CREATE_PENDING = 'CREATE_PENDING',
   CREATE_SUCCESS = 'CREATE_SUCCESS',
@@ -84,8 +90,3 @@ export enum POST_CREATE_ACTION_TYPE {
   REMOVE_SUCCESS = 'REMOVE_SUCCESS',
   REMOVE_ERROR = 'REMOVE_ERROR',
 }
-export type PostCreateActionType = {
-  type: POST_CREATE_ACTION_TYPE;
-  error?: string;
-  data?: PostValues;
-};

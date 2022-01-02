@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { SectionLayout } from 'src/lib/element/layout';
 import { CardListBlock } from 'src/lib/element/card-list';
-import { BlockComment } from '../block-comment';
+import { BlockComment } from '../../lib/common/block-comment';
 import { Divider } from 'src/lib/element/divider';
 import {
   ProducName,

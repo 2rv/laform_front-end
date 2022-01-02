@@ -10,7 +10,7 @@ import {
   ProductCategories,
   ProductImages,
 } from '../block-product-components';
-import { BlockComment } from '../block-comment';
+import { BlockComment } from '../../lib/common/block-comment';
 import { SewingGoodsProductComponentProps } from './sewing-goods-product.type';
 import { TabBlocks } from 'src/lib/element/tab-blocks';
 
