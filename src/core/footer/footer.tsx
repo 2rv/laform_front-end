@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
-import { NotificationContainer } from '../notification';
+import { Notification } from './notification';
 import { NavLinks } from './nav-links';
 import { SocialLinks } from './social-links';
 import { DownloadLinks } from './download-link';
@@ -13,7 +13,7 @@ export function Footer() {
       <Content>
         <ContentCase>
           <NavLinks />
-          <NotificationContainer />
+          <Notification />
         </ContentCase>
         <CopyrightCase>
           <div>

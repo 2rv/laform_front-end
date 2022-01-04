@@ -46,34 +46,3 @@ const Container = styled.div`
     order: 2;
   }
 `;
-
-{
-  /* <Link
-href="https://instagram.com/laforme.ru"
-target="_blank"
-rel="noopener noreferrer"
->
-<InstagramIcon />
-</Link>
-<Link
-href="https://vk.com/laforme"
-target="_blank"
-rel="noopener noreferrer"
->
-<VkIcon />
-</Link>
-<Link
-href="https://ok.ru/profile/560920150257"
-target="_blank"
-rel="noopener noreferrer"
->
-<OKIcon />
-</Link>
-<Link
-href="https://vm.tiktok.com/ZSJknASGV"
-target="_blank"
-rel="noopener noreferrer"
->
-<TiktokIcon />
-</Link> */
-}

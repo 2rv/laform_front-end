@@ -1,12 +1,12 @@
 import { useEffect, Dispatch, useReducer, ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
+import { httpRequest } from 'src/main/http';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { SuccessAlert } from 'src/lib/element/alert';
 import { ButtonSecondary } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { LinkPrimary } from 'src/lib/element/link';
-import { httpRequest } from 'src/main/http';
 
 enum PHONE_ACTION_TYPE {
   GET_PENDING = 'GET_PENDING',
