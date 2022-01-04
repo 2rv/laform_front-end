@@ -116,9 +116,12 @@ const Title = styled(TextPrimary)`
 `;
 const Container = styled.div`
   display: flex;
-  gap: ${spacing(3)};
-  justify-content: space-between;
+  gap: ${THEME_SIZE.SECTION.MEDIUM};
+  @media screen and (max-width: 1070px) {
+    gap: ${THEME_SIZE.SECTION.SMALL};
+  }
   @media screen and (max-width: 720px) {
     flex-direction: column;
+    gap: ${THEME_SIZE.SECTION.SMALL};
   }
 `;

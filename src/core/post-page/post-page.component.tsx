@@ -7,7 +7,7 @@ import { TitlePrimary } from 'src/lib/element/title';
 import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 import { ConvertTime } from 'src/lib/common/time';
 import { CenteredSpinner } from 'src/lib/element/spinner';
-import { BlockComment } from '../../lib/common/block-comment';
+import { BlockComment } from 'src/lib/common/block-comment';
 import { PostPageComponentProps } from './post-page.type';
 
 export function PostPageComponent(props: PostPageComponentProps) {

@@ -12,7 +12,8 @@ import { CommentItemProps } from './comment.type';
 import { SubCommentItem } from './comment.sub-item';
 
 export function CommentItem(props: CommentItemProps) {
-  const { data, isAdmin, onRemove, onEdit, onSubComment } = props;
+  const { data, isAdmin, onRemove, onEdit, onSubComment, currentUserId } =
+    props;
   const { id, text, createDate, userId, subComment } = data;
 
   return (
@@ -29,16 +30,18 @@ export function CommentItem(props: CommentItemProps) {
             </Button>
           </Case>
           <ActionsCase>
-            {isAdmin && (
-              <Button onClick={() => onRemove(id)}>
-                <RemoveIcon />
-              </Button>
-            )}
-            {isAdmin && (
-              <Button onClick={() => onEdit({ id: id, value: text })}>
-                <ChangeIcon />
-              </Button>
-            )}
+            {isAdmin ||
+              (currentUserId === userId.id && (
+                <Button onClick={() => onRemove(id)}>
+                  <RemoveIcon />
+                </Button>
+              ))}
+            {isAdmin ||
+              (currentUserId === userId.id && (
+                <Button onClick={() => onEdit({ id: id, value: text })}>
+                  <ChangeIcon />
+                </Button>
+              ))}
           </ActionsCase>
         </HeaderCase>
         <Text tid={text} />
@@ -50,6 +53,7 @@ export function CommentItem(props: CommentItemProps) {
               key={data?.id || key}
               parentId={id}
               isAdmin={isAdmin}
+              currentUserId={currentUserId}
               data={data}
               onRemove={onRemove}
               onEdit={onEdit}

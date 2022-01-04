@@ -10,19 +10,9 @@ import { ConvertTime } from 'src/lib/common/time';
 import { SubCommentItemProps } from './comment.type';
 
 export function SubCommentItem(props: SubCommentItemProps) {
-  const { parentId, data, isAdmin, onRemove, onEdit } = props;
+  const { parentId, data, isAdmin, onRemove, onEdit, currentUserId } = props;
   const { id, text, createDate, userId } = data;
-  //   const editComment = (id, text) => {
-  //     setSubUser(null);
-  //     handleEditComment(id, text, 'subComment');
-  //   };
-  //   import { ReactComponent as CommentIcon } from 'src/asset/svg/arrow-for-comment.svg';
-  //    {Boolean(user) && (
-  //           <Button onClick={createSubComment}>
-  //             <CommentIcon />
-  //           </Button>
-  //         )}
-  //   if (subComment.length === 0) return null;
+
   return (
     <Wrapper key={id}>
       <Container>
@@ -36,24 +26,26 @@ export function SubCommentItem(props: SubCommentItemProps) {
         </Content>
       </Container>
       <ActionsCase>
-        {isAdmin && (
-          <Button onClick={() => onRemove(parentId, id)}>
-            <RemoveIcon />
-          </Button>
-        )}
-        {isAdmin && (
-          <Button
-            onClick={() =>
-              onEdit({
-                value: text,
-                id: parentId,
-                subId: id,
-              })
-            }
-          >
-            <ChangeIcon />
-          </Button>
-        )}
+        {isAdmin ||
+          (currentUserId === userId.id && (
+            <Button onClick={() => onRemove(parentId, id)}>
+              <RemoveIcon />
+            </Button>
+          ))}
+        {isAdmin ||
+          (currentUserId === userId.id && (
+            <Button
+              onClick={() =>
+                onEdit({
+                  value: text,
+                  id: parentId,
+                  subId: id,
+                })
+              }
+            >
+              <ChangeIcon />
+            </Button>
+          ))}
       </ActionsCase>
     </Wrapper>
   );

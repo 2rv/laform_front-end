@@ -1,60 +1,42 @@
 import styled from 'styled-components';
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
-import { TextSecondary } from 'src/lib/element/text';
-import { NotificationContainer } from '../notification';
+import { spacing, THEME_COLOR } from 'src/lib/theme';
+import { Notification } from './notification';
 import { NavLinks } from './nav-links';
 import { SocialLinks } from './social-links';
-import { DownloadLinks } from './download-link';
 import { BlockPhone } from './phone';
+import { Copyright } from './copyright';
 
 export function Footer() {
   return (
     <Container>
       <Content>
-        <ContentCase>
+        <Line>
           <NavLinks />
-          <NotificationContainer />
-        </ContentCase>
-        <CopyrightCase>
-          <div>
-            <Copyright tid="FOOTER.COPYRIGHT.BRAND" />
-            &nbsp;
-            <CopyrightMessage tid="FOOTER.COPYRIGHT.ALL_RIGHTS_RESERVED" />
-          </div>
-          <SocialLinks />
-        </CopyrightCase>
-        <DownloadLinks />
+          <Notification />
+        </Line>
         <BlockPhone />
+        <Case>
+          <Copyright />
+          <SocialLinks />
+        </Case>
       </Content>
     </Container>
   );
 }
 
-const CopyrightMessage = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  line-height: 1.5;
-`;
-const Copyright = styled(TextSecondary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
-  line-height: 1.5;
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
-`;
-const ContentCase = styled.div`
-  display: grid;
-  gap: ${spacing(6)};
-  grid-template-columns: 1fr auto;
+const Line = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+  justify-content: space-between;
   @media screen and (max-width: 720px) {
     display: contents;
   }
-  input {
-    background: ${THEME_COLOR.WHITE};
-  }
 `;
-const CopyrightCase = styled.div`
+const Case = styled.div`
   display: flex;
+  gap: ${spacing(3)};
   justify-content: space-between;
-  align-items: center;
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 1070px) {
     display: contents;
   }
 `;

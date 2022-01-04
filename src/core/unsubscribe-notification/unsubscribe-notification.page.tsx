@@ -1,27 +1,24 @@
 import styled from 'styled-components';
 import { PageWrapper } from 'src/lib/common/page-wrapper';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { getQuery } from 'src/main/navigation/navigation.core';
 import { TextSecondary } from 'src/lib/element/text';
 import { THEME_SIZE } from 'src/lib/theme';
 import { httpRequest } from 'src/main/http';
 
 export function UnsubscribeNotificationPage() {
-  const code = getQuery('code');
-
-  const unsubscribeAction = useCallback(async () => {
-    await httpRequest({
-      method: 'PUT',
-      url: '/user/unsubscribe',
-      params: {
-        code: code,
-      },
-    });
-  }, [code]);
-
   useEffect(() => {
+    const code = getQuery('code');
     if (code) {
-      unsubscribeAction();
+      (async () => {
+        await httpRequest({
+          method: 'PUT',
+          url: '/user/unsubscribe',
+          params: {
+            code: code,
+          },
+        });
+      })();
     }
   }, []);
 

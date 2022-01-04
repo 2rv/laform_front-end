@@ -17,9 +17,10 @@ export function BasicField(props: BasicFieldProps) {
   } = props;
 
   return (
-    <Container className={className}>
+    <Container>
       {titleTid && <Title tid={titleTid} />}
       <Input
+        className={className}
         placeholder={placeholderTid && text(placeholderTid)}
         type={type}
         error={!!error}

@@ -1,12 +1,15 @@
 import { useEffect, Dispatch, useReducer, ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
+import { httpRequest } from 'src/main/http';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
 import { SuccessAlert } from 'src/lib/element/alert';
 import { ButtonSecondary } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
-import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
+import { SectionLayout } from 'src/lib/element/layout';
 import { LinkPrimary } from 'src/lib/element/link';
-import { httpRequest } from 'src/main/http';
+import styled from 'styled-components';
+import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TextSecondary } from 'src/lib/element/text';
 
 enum PHONE_ACTION_TYPE {
   GET_PENDING = 'GET_PENDING',
@@ -159,35 +162,60 @@ export function BlockPhone() {
       savePhoneAction(state.phone)(setState);
     }
     return (
-      <SectionLayout type="SMALL">
-        <LinkPrimary
-          tid={`Позвонить нам - ${state.phone}`}
-          path={`tel:${state.phone}`}
-          pathConfig={{ local: false }}
+      <Container>
+        <SectionLayout type="SMALL">
+          <Text tid="Позвонить нам" />
+          <Link
+            tid={state.phone}
+            path={`tel:${state.phone}`}
+            pathConfig={{ local: false }}
+          />
+        </SectionLayout>
+        <Field
+          placeholderTid="Введите номер телефона"
+          value={state.phone}
+          onChange={onChange}
+          disabled={state.savePending}
         />
-        <FieldLayout type="double" adaptive>
-          <BasicField
-            placeholderTid="Введите номер телефона"
-            value={state.phone}
-            onChange={onChange}
-            disabled={state.savePending}
-          />
-          <ButtonSecondary
-            tid="Сохранить"
-            onClick={onSave}
-            disabled={state.savePending || !state.phone}
-          />
-          {state.saveSuccess && <SuccessAlert tid="Успешно" />}
-        </FieldLayout>
-      </SectionLayout>
+        <ButtonSecondary
+          tid="Сохранить"
+          onClick={onSave}
+          disabled={state.savePending || !state.phone}
+        />
+        {state.saveSuccess && <SuccessAlert tid="Успешно" />}
+      </Container>
     );
   } else {
     return (
-      <LinkPrimary
-        tid={`Позвонить нам - ${state.phone}`}
-        path={`tel:${state.phone}`}
-        pathConfig={{ local: false }}
-      />
+      <SectionLayout type="SMALL">
+        <Text tid="Позвонить нам" />
+        <Link
+          tid={state.phone}
+          path={`tel:${state.phone}`}
+          pathConfig={{ local: false }}
+        />
+      </SectionLayout>
     );
   }
 }
+const Field = styled(BasicField)`
+  background-color: ${THEME_COLOR.WHITE};
+`;
+const Text = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+`;
+const Link = styled(LinkPrimary)`
+  font-size: ${THEME_SIZE.FONT.LARGE};
+  width: fit-content;
+`;
+const Container = styled.div`
+  display: flex;
+  gap: ${spacing(3)};
+  align-items: flex-end;
+  width: fit-content;
+  @media screen and (max-width: 720px) {
+    align-items: flex-start;
+    flex-direction: column;
+    width: auto;
+  }
+`;

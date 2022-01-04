@@ -38,6 +38,6 @@ const Button = styled(IconButton)`
   border-radius: 50%;
   @media screen and (max-width: 720px) {
     right: 10px;
-    bottom: 60px;
+    bottom: 120px;
   }
 `;

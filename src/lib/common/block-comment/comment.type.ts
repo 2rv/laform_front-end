@@ -75,7 +75,7 @@ export type CommentComponentProps = {
   isEdit: CommentEditType;
   state: CommentStateType;
   textareaRef: MutableRefObject<HTMLTextAreaElement | null>;
-
+  currentUserId: number;
   subUser: SubCommentValues;
   onSubComment: (data?: SubCommentValues) => void;
 };
@@ -84,6 +84,7 @@ export type CommentItemProps = {
   onRemove: (iid: string, subId?: string) => void;
   onEdit: (props?: CommentEditType) => void;
   isAdmin: boolean;
+  currentUserId: number;
   subUser: SubCommentValues;
   onSubComment: (data?: SubCommentValues) => void;
 };
@@ -93,6 +94,7 @@ export type SubCommentItemProps = {
   data: SubCommentType;
   isAdmin: boolean;
   parentId: string;
+  currentUserId: number;
 };
 
 export type CommentType = {
