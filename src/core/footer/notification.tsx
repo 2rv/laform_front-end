@@ -147,17 +147,20 @@ export function Notification() {
   );
 }
 const Title = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  font-size: ${THEME_SIZE.FONT.LARGE};
+  line-height: 1.5;
+  @media screen and (max-width: 1070px) {
+    font-size: ${THEME_SIZE.FONT.MEDIUM};
+  }
+`;
+const BoldTitle = styled(Title)`
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
 `;
 const Container = styled.div`
   display: flex;
   flex-flow: column;
   gap: ${spacing(3)};
   @media screen and (max-width: 720px) {
-    order: 1;
+    order: 2;
   }
-`;
-const BoldTitle = styled(Title)`
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  line-height: 1.5;
 `;
