@@ -5,15 +5,15 @@ import { CardListBlock } from 'src/lib/element/card-list';
 import { BlockReactEditor } from 'src/lib/common/block-react-editor';
 import { Divider } from 'src/lib/element/divider';
 import { BlockProductSelect } from 'src/lib/common/block-select-options';
+import { BlockComment } from 'src/lib/common/block-comment';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
 import {
   ProducName,
   ProductDescription,
   ProductCategories,
   ProductImages,
-} from 'src/core/block-product-components';
-import { BlockComment } from '../../lib/common/block-comment';
+} from '../block-product-components';
 import { MasterClassProductComponentProps } from './master-class-product.type';
-import { TabBlocks } from 'src/lib/element/tab-blocks';
 
 export function MasterClassProductComponent(
   props: MasterClassProductComponentProps,

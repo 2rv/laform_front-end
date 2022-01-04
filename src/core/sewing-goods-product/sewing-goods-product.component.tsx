@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { SectionLayout } from 'src/lib/element/layout';
 import { CardListBlock } from 'src/lib/element/card-list';
-import { BlockProductSelect } from 'src/lib/common/block-select-options';
 import { Divider } from 'src/lib/element/divider';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
+import { BlockProductSelect } from 'src/lib/common/block-select-options';
+import { BlockComment } from 'src/lib/common/block-comment';
 import {
   ProducName,
   ProductDescription,
   ProductCategories,
   ProductImages,
 } from '../block-product-components';
-import { BlockComment } from '../../lib/common/block-comment';
 import { SewingGoodsProductComponentProps } from './sewing-goods-product.type';
-import { TabBlocks } from 'src/lib/element/tab-blocks';
 
 export function SewingGoodsProductComponent(
   props: SewingGoodsProductComponentProps,

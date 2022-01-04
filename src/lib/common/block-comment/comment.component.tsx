@@ -11,6 +11,7 @@ import { SignComponent } from '../block-comments/comment.sign';
 import { CommentComponentProps } from './comment.type';
 import { CommentItem } from './comment.item';
 import { CenteredSpinner } from 'src/lib/element/spinner';
+import { AutoScrollBottom } from '../hooks';
 
 export function CommentComponent(props: CommentComponentProps) {
   const {
@@ -27,74 +28,77 @@ export function CommentComponent(props: CommentComponentProps) {
     isEdit,
     subUser,
     onSubComment,
+    currentUserId,
   } = props;
 
   return (
     <SectionLayout>
       <TitlePrimary tid="COMMENTS.REVIEWS" />
+      {comments.length ? (
+        <ListComment>
+          {comments.map((data, key) => (
+            <CommentItem
+              key={data?.id || key}
+              data={data}
+              isAdmin={isAdmin}
+              onRemove={onRemove}
+              onEdit={onEdit}
+              subUser={subUser}
+              onSubComment={onSubComment}
+              currentUserId={currentUserId}
+            />
+          ))}
+          <AutoScrollBottom />
+        </ListComment>
+      ) : (
+        <TextSecondary tid="COMMENTS.NO_REVIEWS" />
+      )}
       {getPending && <CenteredSpinner />}
-      {isAuth ? null : <SignComponent />}
-
-      {comments.map((data, key) => (
-        <CommentItem
-          key={data?.id || key}
-          data={data}
-          isAdmin={isAdmin}
-          onRemove={onRemove}
-          onEdit={onEdit}
-          subUser={subUser}
-          onSubComment={onSubComment}
-        />
-      ))}
-
-      <SectionLayout type="SMALL">
-        <HeaderCase>
-          <Title tid="COMMENTS.WRITE_REVIEW" />
-          {typeof subUser !== 'undefined' && (
-            <Line>
-              <div>
-                <LightText tid="COMMENTS.REPLY_USER" />
+      {isAuth ? (
+        <SectionLayout type="SMALL">
+          <HeaderCase>
+            <Title tid="COMMENTS.WRITE_REVIEW" />
+            {typeof subUser !== 'undefined' && (
+              <Line>
+                <div>
+                  <LightText tid="COMMENTS.REPLY_USER" />
+                  &nbsp;
+                  <SubTitle tid={subUser.login} />
+                </div>
                 &nbsp;
-                <SubTitle tid={subUser.login} />
-              </div>
-              &nbsp;
-              <CancelButton
-                tid="COMMENTS.CANCEL"
-                onClick={() => onSubComment()}
-              />
-            </Line>
-          )}
-        </HeaderCase>
-
-        <Content>
-          <Textarea
-            ref={textareaRef}
-            value={value}
-            onChange={onChange}
-            onKeyDown={onSubmitEnter}
-            maxHeight={200}
-            placeholderTid="COMMENTS.WRITE_YOUR_REVIEW"
-            disabled={createPending}
-          />
-          <TextareaActionButtons>
-            {Boolean(isEdit.id) && (
-              <Button onClick={() => onEdit()}>
-                <RemoveIcon />
-              </Button>
+                <CancelButton
+                  tid="COMMENTS.CANCEL"
+                  onClick={() => onSubComment()}
+                />
+              </Line>
             )}
-            <Button onClick={onSubmit} disabled={getPending || createPending}>
-              <SendIcon />
-            </Button>
-          </TextareaActionButtons>
-        </Content>
-      </SectionLayout>
+          </HeaderCase>
 
-      {/* <TextSecondary tid="COMMENTS.NO_REVIEWS" /> */}
-
-      {/* <ListComment>
-        <div ref={messageRef} />
-      </ListComment>
-      */}
+          <Content>
+            <Textarea
+              ref={textareaRef}
+              value={value}
+              onChange={onChange}
+              onKeyDown={onSubmitEnter}
+              maxHeight={200}
+              placeholderTid="COMMENTS.WRITE_YOUR_REVIEW"
+              disabled={createPending}
+            />
+            <TextareaActionButtons>
+              {Boolean(isEdit.id) && (
+                <Button onClick={() => onEdit()}>
+                  <RemoveIcon />
+                </Button>
+              )}
+              <Button onClick={onSubmit} disabled={getPending || createPending}>
+                <SendIcon />
+              </Button>
+            </TextareaActionButtons>
+          </Content>
+        </SectionLayout>
+      ) : (
+        <SignComponent />
+      )}
     </SectionLayout>
   );
 }
@@ -153,31 +157,11 @@ const SubTitle = styled(TextPrimary)`
     text-transform: uppercase;
   }
 `;
-// const ListComment = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: ${spacing(3)};
-//   overflow: auto;
-//   max-height: 450px;
-//   scroll-behavior: smooth;
-// `;
-
-//   const messageRef = useRef(null);
-
-//   useEffect(() => {
-//     if (messageRef.current) {
-//       messageRef.current.parentNode.scrollTop = messageRef.current.offsetTop;
-//     }
-//   }, [comments]);
-
-//   const cancelEditing = () => {
-//     setEditComment({ id: null, type: null });
-//     textareaRef.current.value = '';
-//   };
-
-//   const cancelReplying = () => {
-//     setSubUser(null);
-//     cancelEditing();
-//   };
-//   if (!id || type === null || type === undefined)
-//     return <TextPrimary tid="COMMENTS.EMPTY_REVIEW" />;
+const ListComment = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing(3)};
+  overflow: auto;
+  max-height: 450px;
+  scroll-behavior: smooth;
+`;

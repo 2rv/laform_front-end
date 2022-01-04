@@ -2,18 +2,18 @@ import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { SectionLayout } from 'src/lib/element/layout';
 import { CardListBlock } from 'src/lib/element/card-list';
-import { BlockComment } from '../../lib/common/block-comment';
+import { BlockComment } from 'src/lib/common/block-comment';
 import { Divider } from 'src/lib/element/divider';
+import { BlockProductSelect } from 'src/lib/common/block-select-options';
+import { ComplexityDots } from 'src/lib/element/card';
+import { TabBlocks } from 'src/lib/element/tab-blocks';
 import {
   ProducName,
   ProductDescription,
   ProductCategories,
   ProductImages,
   ProductMaterials,
-} from 'src/core/block-product-components';
-import { BlockProductSelect } from 'src/lib/common/block-select-options';
-import { ComplexityDots } from 'src/lib/element/card';
-import { TabBlocks } from 'src/lib/element/tab-blocks';
+} from '../block-product-components';
 import { PatternsProductComponentProps } from './patterns-product.type';
 
 export function PatternsProductComponent(props: PatternsProductComponentProps) {

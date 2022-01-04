@@ -226,8 +226,9 @@ export function CommentContainer(props: CommentContainerProps) {
     subId: undefined,
   });
   const [subComment, setSubComment] = useState<SubCommentValues>(undefined);
-  const { isAdmin, isAuth } = useSelector((state: any) => ({
+  const { isAdmin, currentUserId, isAuth } = useSelector((state: any) => ({
     isAdmin: state[AUTH_STORE_NAME].user?.role === USER_ROLE.ADMIN,
+    currentUserId: state[AUTH_STORE_NAME].user?.id,
     isAuth: state[AUTH_STORE_NAME].logged,
   }));
   useEffect(() => {
@@ -251,7 +252,6 @@ export function CommentContainer(props: CommentContainerProps) {
       if (typeof subComment !== 'undefined') {
         createSubCommentAction({ id: subComment.commentId, value })(setState);
       } else createCommentAction({ id, type, value })(setState);
-
       setValue('');
     }
   };
@@ -303,6 +303,7 @@ export function CommentContainer(props: CommentContainerProps) {
       isAdmin={isAdmin}
       isAuth={isAuth}
       isEdit={isEdit}
+      currentUserId={currentUserId}
       state={state}
       textareaRef={textareaRef}
     />
