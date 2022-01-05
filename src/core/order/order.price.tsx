@@ -1,10 +1,16 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextCurrency, TextSecondary } from '../../../lib/element/text';
-import { SectionLayout } from '../../../lib/element/layout';
+import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
+import { TextCurrency, TextSecondary } from 'src/lib/element/text';
+import { SectionLayout } from 'src/lib/element/layout';
 
-export function AboutOrderPrice(props) {
-  const { discount = 0, price = 0, deliveryPrice = 0, deliveryMethod } = props;
+type OrderPriceProps = {
+  price: number;
+  discount: number;
+  deliveryPrice: number;
+};
+
+export function OrderPrice(props: OrderPriceProps) {
+  const { discount = 0, price = 0, deliveryPrice = 0 } = props;
 
   const discountPrice = price - price * (discount / 100);
   const totalPrice = Number(discountPrice) + Number(deliveryPrice);

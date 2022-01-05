@@ -13,6 +13,7 @@ export function BasicField(props: BasicFieldProps) {
     error,
     type = 'text',
     className,
+
     ...restProps
   } = props;
 
@@ -34,7 +35,6 @@ export function BasicField(props: BasicFieldProps) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   gap: ${spacing(1)};
 `;
 const Title = styled(TextSecondary)`
@@ -44,14 +44,14 @@ const Input = styled.input<{ error: boolean }>`
   display: flex;
   align-items: center;
   height: 46px;
-  width: inherit;
+  width: 100%;
   justify-content: center;
   align-items: center;
   font-family: ${THEME_VALUE.FONT_NAME.PRIMARY};
   padding: 0 ${spacing(3)};
-
-  color: ${THEME_COLOR.SECONDARY_DARK};
   background-color: ${THEME_COLOR.GRAY};
+  color: ${THEME_COLOR.SECONDARY_DARK};
+
   font-size: ${THEME_SIZE.FONT.SMALL};
   transition: ${THEME_VALUE.TRANSITION.HOVER};
 

@@ -1,3 +1,2 @@
-import { OrderNumberPage } from '../../core/order-number';
-
-export default OrderNumberPage;
+import { OrderPage } from '../../core/order';
+export default OrderPage;

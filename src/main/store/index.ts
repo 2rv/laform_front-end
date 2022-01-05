@@ -19,10 +19,6 @@ import {
   patternsPageStore,
   PATTERNS_PAGE_STORE_NAME,
 } from '../../core/patterns-page';
-import {
-  orderNumberStore,
-  ORDER_NUMBER_STORE_NAME,
-} from '../../core/order-number';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 import {
   createNotificationStore,
@@ -59,7 +55,6 @@ export const reducers = combineReducers({
 
   [USER_ORDER_STORE_NAME]: userOrderStore,
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
-  [ORDER_NUMBER_STORE_NAME]: orderNumberStore,
 
   [USER_INFO_STORE_NAME]: userInfoStore,
   [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,

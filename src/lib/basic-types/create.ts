@@ -1,4 +1,4 @@
-import { BasicReactEditorType, BasicFileType } from './index';
+import { BasicReactEditorType, BasicFileType, PURCHASE_STATUS } from './index';
 
 export type BasicRecommendationProducsDto = {
   id?: string;
@@ -152,4 +152,29 @@ export type CommentDto = {
   sewingProductId?: string;
   patternProductId?: string;
   masterClassId?: string;
+};
+
+export type UpdatePurchaseDto = {
+  orderStatus?: PURCHASE_STATUS;
+  email?: string;
+  fullName?: string;
+  phone?: string;
+  comment?: string;
+  purchaseProducts?: UpdatePurchaseProductDto[];
+  shippingPrice?: string;
+  price?: string;
+  address?: string;
+};
+
+export type UpdatePurchaseProductDto = {
+  id: string;
+  masterClassId?: string;
+  patternProductId?: string;
+  sewingProductId?: string;
+  optionId?: string;
+  type: 0 | 1 | 2 | 3;
+  totalCount?: number;
+  totalLength?: number;
+  totalDiscount?: number;
+  totalPrice?: number;
 };

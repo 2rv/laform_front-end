@@ -1,15 +1,16 @@
-import { useEffect, Dispatch, useReducer, ChangeEvent } from 'react';
+import { useEffect, Dispatch, useReducer, ChangeEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { httpRequest } from 'src/main/http';
 import { AUTH_STORE_NAME, USER_ROLE } from 'src/lib/common/auth';
-import { SuccessAlert } from 'src/lib/element/alert';
-import { ButtonSecondary } from 'src/lib/element/button';
+import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
+import { IconButton } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
 import { SectionLayout } from 'src/lib/element/layout';
 import { LinkPrimary } from 'src/lib/element/link';
 import styled from 'styled-components';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
+import { ReactComponent as ChangeIcon } from 'src/asset/svg/change.svg';
 
 enum PHONE_ACTION_TYPE {
   GET_PENDING = 'GET_PENDING',
@@ -86,6 +87,7 @@ function PhoneReducer(state: PhoneStateType, action: PhoneActionType) {
       return {
         ...state,
         phone: action.phone || '',
+        saveSuccess: false,
       };
     default:
       return state;
@@ -150,7 +152,7 @@ export function BlockPhone() {
   useEffect(() => {
     getPhoneAction()(setState);
   }, []);
-
+  const [isEdit, setEdit] = useState(false);
   if (isAdmin) {
     function onChange(e: ChangeEvent<HTMLInputElement>) {
       setState({
@@ -158,31 +160,39 @@ export function BlockPhone() {
         phone: e.currentTarget.value.trim(),
       });
     }
-    function onSave() {
-      savePhoneAction(state.phone)(setState);
+    function toggleEdit() {
+      if (isEdit) {
+        savePhoneAction(state.phone)(setState);
+      }
+      setEdit(!isEdit);
     }
     return (
       <Container>
         <SectionLayout type="SMALL">
           <Text tid="Позвонить нам" />
-          <Link
-            tid={state.phone}
-            path={`tel:${state.phone}`}
-            pathConfig={{ local: false }}
-          />
+          {isEdit ? (
+            <Field
+              placeholderTid="Введите номер телефона"
+              value={state.phone}
+              onChange={onChange}
+              disabled={state.savePending}
+            />
+          ) : (
+            <Link
+              tid={state.phone}
+              path={`tel:${state.phone}`}
+              pathConfig={{ local: false }}
+            />
+          )}
         </SectionLayout>
-        <Field
-          placeholderTid="Введите номер телефона"
-          value={state.phone}
-          onChange={onChange}
-          disabled={state.savePending}
-        />
-        <ButtonSecondary
-          tid="Сохранить"
-          onClick={onSave}
+        <Button
+          onClick={toggleEdit}
           disabled={state.savePending || !state.phone}
-        />
+        >
+          <ChangeIcon />
+        </Button>
         {state.saveSuccess && <SuccessAlert tid="Успешно" />}
+        {state.saveError && <ErrorAlert tid={state.saveError} />}
       </Container>
     );
   } else {
@@ -212,10 +222,12 @@ const Container = styled.div`
   display: flex;
   gap: ${spacing(3)};
   align-items: flex-end;
-  width: fit-content;
   @media screen and (max-width: 720px) {
     align-items: flex-start;
     flex-direction: column;
-    width: auto;
   }
+`;
+const Button = styled(IconButton)`
+  padding: 0;
+  background-color: ${THEME_COLOR.WHITE};
 `;
