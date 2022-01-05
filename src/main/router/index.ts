@@ -52,10 +52,7 @@ import {
   patternsPageRouter,
   PATTERNS_PAGE_ROUTE_PATH,
 } from '../../core/patterns-page';
-import {
-  orderNumberRouter,
-  ORDER_NUMBER_ROUTE_PATH,
-} from '../../core/order-number';
+import { orderRouter, ORDER_ROUTE_PATH } from '../../core/order';
 import {
   sliderEditRouter,
   SLIDER_EDIT_ROUTE_PATH,
@@ -161,7 +158,7 @@ export const routes = {
   [MASTER_CLASS_PRODUCT_ROUTE_PATH()]: masterClassProductRouter,
   [USER_ORDER_ROUTE_PATH()]: userOrderRouter,
   [ABOUT_ACCOUNT_ROUTE_PATH()]: aboutAccountRouter,
-  [ORDER_NUMBER_ROUTE_PATH()]: orderNumberRouter,
+  [ORDER_ROUTE_PATH()]: orderRouter,
   [SLIDER_EDIT_ROUTE_PATH()]: sliderEditRouter,
   [STATISTICS_ROUTE_PATH()]: statisticsRouter,
   [PRODUCTS_LIST_ROUTE_PATH()]: productsListRouter,

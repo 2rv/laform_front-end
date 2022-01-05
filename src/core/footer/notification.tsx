@@ -132,6 +132,7 @@ export function Notification() {
     <Container>
       <div>
         <Title tid="NOTIFICATION.PRE_CTA" />
+        <br />
         <BoldTitle tid="NOTIFICATION.CTA" />
       </div>
       <ButtonSecondary
@@ -159,6 +160,8 @@ const BoldTitle = styled(Title)`
 const Container = styled.div`
   display: flex;
   flex-flow: column;
+  max-width: 270px;
+  width: 100%;
   gap: ${spacing(3)};
   @media screen and (max-width: 720px) {
     order: 2;
