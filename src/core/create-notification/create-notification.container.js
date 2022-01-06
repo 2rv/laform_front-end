@@ -22,7 +22,7 @@ export function CreateNotificationContainer() {
 
   const onSubmit = (values) => {
     const data = convertCreateNotificationFormData(values);
-    dispatch(createNotificationUpload(data));
+    // dispatch(createNotificationUpload(data));
   };
 
   const initialValues = () => ({

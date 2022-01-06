@@ -6,7 +6,7 @@ import { LinkPrimary } from 'src/lib/element/link';
 import { ABOUT_ACCOUNT_ROUTE_PATH } from 'src/core/about-account';
 import { TableParamsProps } from '../table.type';
 
-export function TableParams(props: { params?: TableParamsProps }) {
+export function TableParams(props: TableParamsProps) {
   const { params } = props;
   if (!params) return null;
 
@@ -16,19 +16,9 @@ export function TableParams(props: { params?: TableParamsProps }) {
     </Td>
   );
 }
-
-const Td = styled.td`
-  vertical-align: middle;
-  width: 100%;
-  padding-right: ${spacing(4)};
-  @media screen and (max-width: 875px) {
-    padding-right: 0;
-    margin-left: 90px;
-    max-width: fit-content;
-  }
-`;
-
-export function BlockParams(props: { params: TableParamsProps }) {
+export function BlockParams(
+  props: Required<Omit<TableParamsProps, 'otherParams'>>,
+) {
   const { params } = props;
   const {
     option,
@@ -47,6 +37,7 @@ export function BlockParams(props: { params: TableParamsProps }) {
     email,
     createdDate,
   } = params;
+
   return (
     <Case>
       {Boolean(option) && (
@@ -128,6 +119,7 @@ export function BlockParams(props: { params: TableParamsProps }) {
           />
         </div>
       )}
+
       {Boolean(address) && (
         <div>
           <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CITY" />
@@ -146,7 +138,7 @@ export function BlockParams(props: { params: TableParamsProps }) {
         <div>
           <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.EMAIL" />
           &nbsp;
-          <TextPrimary tid={email} />
+          <Text tid={email} />
         </div>
       )}
       {Boolean(createdDate) && (
@@ -159,7 +151,16 @@ export function BlockParams(props: { params: TableParamsProps }) {
     </Case>
   );
 }
-
+const Td = styled.td`
+  vertical-align: middle;
+  width: 100%;
+  padding-right: ${spacing(4)};
+  @media screen and (max-width: 875px) {
+    padding-right: 0;
+    margin-left: 90px;
+    max-width: fit-content;
+  }
+`;
 const Case = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -171,4 +172,7 @@ const FullNameText = styled(LinkPrimary)`
 `;
 const NumberText = styled(TextCurrency)`
   color: ${THEME_COLOR.SECONDARY_DARK};
+`;
+const Text = styled(TextPrimary)`
+  word-break: break-all;
 `;

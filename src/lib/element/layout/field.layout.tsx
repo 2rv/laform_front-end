@@ -3,9 +3,9 @@ import { spacing } from '../../theme';
 import { FieldLayoutPropsType } from './layout.type';
 
 export function FieldLayout(props: FieldLayoutPropsType) {
-  const { type, children, adaptive } = props;
+  const { type, children, adaptive, className } = props;
   return (
-    <Layout adaptive={adaptive} type={type}>
+    <Layout adaptive={adaptive} type={type} className={className}>
       {children}
     </Layout>
   );

@@ -1,12 +1,9 @@
 import styled, { css } from 'styled-components';
 import { TextSecondary, TextCurrency } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { TablePriceProps } from '../table.type';
 
-interface props {
-  isLast?: boolean;
-  totalPrice?: number;
-}
-export function TablePrice(props: props) {
+export function TablePrice(props: TablePriceProps) {
   const { isLast = false, totalPrice } = props;
   if (typeof totalPrice !== 'number') return null;
   if (isNaN(totalPrice)) return <td />;

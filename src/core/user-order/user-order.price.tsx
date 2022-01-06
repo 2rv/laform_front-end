@@ -1,10 +1,15 @@
 import styled from 'styled-components';
-import { spacing, THEME_SIZE, THEME_COLOR } from '../../../lib/theme';
-import { TextCurrency, TextSecondary } from '../../../lib/element/text';
-import { SectionLayout } from '../../../lib/element/layout';
-import { ABOUT_ORDER_FIELD_NAME } from '../user-order.type';
+import { spacing, THEME_SIZE, THEME_COLOR } from 'src/lib/theme';
+import { TextCurrency, TextSecondary } from 'src/lib/element/text';
+import { SectionLayout } from 'src/lib/element/layout';
 
-export function AboutOrderPrice(props) {
+type UserOrderPriceProps = {
+  price: number;
+  discount: number;
+  deliveryPrice: number;
+};
+
+export function UserOrderPrice(props: UserOrderPriceProps) {
   const { discount = 0, price = 0, deliveryPrice = 0 } = props;
 
   const discountPrice = price - price * (discount / 100);
@@ -45,11 +50,19 @@ export function AboutOrderPrice(props) {
 const Container = styled.div`
   display: flex;
   gap: ${spacing(6)};
+  @media screen and (max-width: 400px) {
+    gap: ${spacing(3)};
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 const VerticalDivider = styled.div`
   display: grid;
   width: 3px;
   background-color: ${THEME_COLOR.GRAY};
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
 `;
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};

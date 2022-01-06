@@ -1,19 +1,9 @@
 import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { EnumeratorCount } from 'src/lib/element/enumerator';
+import { TableEnumeratorCountProps } from '../table.type';
 
-interface props {
-  id?: string;
-  type?: number;
-  indexId?: string;
-  count?: number;
-  maxCount?: number;
-  changeItem?: Function;
-  isCount?: boolean;
-  isLength?: boolean;
-}
-
-export function TableEnumeratorCount(props: props) {
+export function TableEnumeratorCount(props: TableEnumeratorCountProps) {
   const {
     id,
     type,

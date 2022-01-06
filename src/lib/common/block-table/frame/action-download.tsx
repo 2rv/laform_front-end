@@ -1,10 +1,7 @@
-import { ReactComponent as DownloadIcon } from '../../../../asset/svg/upload.svg';
+import { ReactComponent as DownloadIcon } from 'src/asset/svg/upload.svg';
+import { ActionDownloadProps } from '../table.type';
 
-interface props {
-  filePDF?: string;
-}
-
-export function ActionDownload(props: props) {
+export function ActionDownload(props: ActionDownloadProps) {
   const { filePDF } = props;
   if (!Boolean(filePDF)) return null;
 

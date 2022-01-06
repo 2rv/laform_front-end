@@ -50,11 +50,19 @@ export function OrderPrice(props: OrderPriceProps) {
 const Container = styled.div`
   display: flex;
   gap: ${spacing(6)};
+  @media screen and (max-width: 400px) {
+    gap: ${spacing(3)};
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 const VerticalDivider = styled.div`
   display: grid;
   width: 3px;
   background-color: ${THEME_COLOR.GRAY};
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
 `;
 const Text = styled(TextSecondary)`
   color: ${THEME_COLOR.TEXT.LIGHT};

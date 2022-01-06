@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { AUTH_STORE_NAME } from '../../lib/common/auth';
+import { AUTH_STORE_NAME } from 'src/lib/common/auth';
 import {
   getRequestErrorMessage,
   isRequestError,
   isRequestPending,
   isRequestSuccess,
-} from '../../main/store/store.service';
+} from 'src/main/store/store.service';
 import { BASKET_STORE_NAME } from './basket.constant';
 import { BasketComponent } from './basket.component';
 import { convertForTable } from './basket.convert';
@@ -15,12 +15,12 @@ import {
   createOrderAction,
 } from './basket.action';
 import { formValidation } from './basket.validation';
-import {
-  changeCartataType,
-  formikValues,
-  ORDER_FIELD_NAME,
-} from './basket.type';
+import { formikValues, ORDER_FIELD_NAME } from './basket.type';
 import { USER_INFO_FIELD_NAME } from '../settings-user-info';
+import {
+  ChangeItemFnValues,
+  DeleteItemFnValues,
+} from 'src/lib/common/block-table';
 
 export function BasketContainer() {
   const dispatch = useDispatch();
@@ -40,10 +40,10 @@ export function BasketContainer() {
     basketCount,
   } = convertForTable(bascketState);
 
-  const changeItem = (data: changeCartataType) => {
+  const changeItem = (data: ChangeItemFnValues) => {
     dispatch(changeProductCartAction(data, bascketState));
   };
-  const deleteItem = (data: changeCartataType) => {
+  const deleteItem = (data: DeleteItemFnValues) => {
     dispatch(deleteProuctCartAction(data, bascketState));
   };
   const onSubmit = (values: formikValues) => {

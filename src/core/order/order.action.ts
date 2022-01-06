@@ -9,11 +9,13 @@ import {
 import {
   ORDER_ACTION_TYPE,
   OrderActionType,
-  changePurchaseProductValues,
   PurchaseProductTypeForOrer,
   OrderValues,
 } from './order.type';
-
+import {
+  DeleteItemFnValues,
+  ChangeItemFnValues,
+} from 'src/lib/common/block-table';
 export function getOrderAction(id: string) {
   return async (dispatch: Dispatch<OrderActionType>) => {
     dispatch({
@@ -75,7 +77,7 @@ export function updateOrderAction(
 }
 export function changePurchaseProductAction(
   purchaseProducts: PurchaseProductTypeForOrer[],
-  values: changePurchaseProductValues,
+  values: ChangeItemFnValues,
 ) {
   return async (dispatch: Dispatch<OrderActionType>) => {
     try {
@@ -94,7 +96,7 @@ export function changePurchaseProductAction(
 }
 export function deletePurchaseProductAction(
   purchaseProducts: PurchaseProductTypeForOrer[],
-  values: changePurchaseProductValues,
+  values: DeleteItemFnValues,
 ) {
   return async (dispatch: Dispatch<OrderActionType>) => {
     try {

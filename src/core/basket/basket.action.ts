@@ -3,10 +3,13 @@ import {
   BASKET_ACTION_TYPE,
   addToCartDataType,
   basketStateType,
-  changeCartataType,
   formikValues,
 } from './basket.type';
 import { convertAddToCart, convertCreateOrder } from './basket.convert';
+import {
+  ChangeItemFnValues,
+  DeleteItemFnValues,
+} from 'src/lib/common/block-table';
 
 export function initializeBasketStore() {
   return async (dispatch: Function) => {
@@ -74,8 +77,9 @@ export function clearCartAction() {
     }
   };
 }
+
 export function changeProductCartAction(
-  data: changeCartataType,
+  data: ChangeItemFnValues,
   bascketState: basketStateType[],
 ) {
   return async (dispatch: Function) => {
@@ -96,7 +100,7 @@ export function changeProductCartAction(
   };
 }
 export function deleteProuctCartAction(
-  data: changeCartataType,
+  data: DeleteItemFnValues,
   bascketState: basketStateType[],
 ) {
   return async (dispatch: Function) => {

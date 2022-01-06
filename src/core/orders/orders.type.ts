@@ -1,6 +1,6 @@
 import { PURCHASE_STATUS_INFO } from 'src/lib/basic-types';
 import { SearchBlockFilterValues } from 'src/lib/common/block-search';
-import { TableItemType } from 'src/lib/common/block-table/table.type';
+import { TableItemData } from 'src/lib/common/block-table';
 
 export enum ORDERS_ACTION_TYPE {
   RESET = 'RESET',
@@ -11,7 +11,7 @@ export enum ORDERS_ACTION_TYPE {
 export type OrdersActionType = {
   type: ORDERS_ACTION_TYPE;
   error?: string;
-  orders?: TableItemType[];
+  orders?: TableItemData[];
   total?: number;
 };
 export type OrdersStateType = {
@@ -20,7 +20,7 @@ export type OrdersStateType = {
 
   pending: boolean;
   error?: string;
-  orders: TableItemType[];
+  orders: TableItemData[];
 };
 
 export type OrdersComponentProps = {

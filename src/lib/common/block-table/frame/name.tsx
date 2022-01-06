@@ -2,17 +2,9 @@ import styled from 'styled-components';
 import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { LinkSecondary } from 'src/lib/element/link';
 import { ReactComponent as OrderIcon } from 'src/asset/svg/order.svg';
+import { TableNameProps } from '../table.type';
 
-interface props {
-  image?: string;
-  name?: string;
-  vendorCode?: string;
-  path: any;
-  isOrder?: string;
-  pathConfig: string;
-}
-
-export function TableName(props: props) {
+export function TableName(props: TableNameProps) {
   const {
     image,
     name,

@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import { ProductDescription } from 'src/core/block-product-components';
+import { TableCommentProps } from '../table.type';
 
-interface props {
-  comment?: string;
-}
-export function TableComment(props: props) {
+export function TableComment(props: TableCommentProps) {
   const { comment = null } = props;
   if (!comment) return null;
   return (

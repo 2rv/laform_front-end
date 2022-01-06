@@ -1,11 +1,11 @@
-import { BasicPurchaseType, PURCHASE_STATUS_INFO } from 'src/lib/basic-types';
-import { TableItemType } from 'src/lib/common/block-table/table.type';
+import { BasicPurchaseType } from 'src/lib/basic-types';
+import { TableItemData } from 'src/lib/common/block-table';
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 import { USER_ORDER_ROUTE_PATH } from '../user-order';
 
 export const convertUsersOrderData = (
   data: BasicPurchaseType,
-): TableItemType => {
+): TableItemData => {
   return {
     id: data.id,
     image: '/static/image/orders-image.jpg',
@@ -17,7 +17,7 @@ export const convertUsersOrderData = (
       discount: data.promoCodeDiscount,
       shippingPrice: data.shippingPrice || 0,
     }),
-    status: PURCHASE_STATUS_INFO[data.orderStatus],
+    status: data.orderStatus,
     params: {
       count: data.purchaseProductsCount,
       createdDate: data.createdDate,

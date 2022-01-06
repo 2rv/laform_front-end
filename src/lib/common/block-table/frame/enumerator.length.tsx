@@ -1,28 +1,16 @@
 import styled from 'styled-components';
 import { spacing } from 'src/lib/theme';
 import { EnumeratorLength } from 'src/lib/element/enumerator';
+import { TableEnumeratorLengthProps } from '../table.type';
 
-interface props {
-  id?: string;
-  type?: number;
-  indexId?: string;
-  length?: number;
-  maxLength?: number;
-  changeItem?: Function;
-  isLength?: boolean;
-}
-export function TableEnumeratorLength(props: props) {
+export function TableEnumeratorLength(props: TableEnumeratorLengthProps) {
   const { id, indexId, isLength, length, maxLength = 0, changeItem } = props;
   if (!id || typeof changeItem !== 'function' || !isLength) return null;
   const handleChange = (value: number) => {
     if (Math.floor(maxLength * 100) < Math.floor(value * 100)) {
       return changeItem({ indexId, id, length: maxLength });
     }
-    changeItem({
-      indexId,
-      id,
-      length: value,
-    });
+    changeItem({ indexId, id, length: value });
   };
   return (
     <Td>

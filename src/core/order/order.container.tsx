@@ -12,9 +12,12 @@ import {
   OrderStateType,
   OrderActionType,
   ORDER_ACTION_TYPE,
-  changePurchaseProductValues,
   OrderValues,
 } from './order.type';
+import {
+  DeleteItemFnValues,
+  ChangeItemFnValues,
+} from 'src/lib/common/block-table';
 
 const initialState: OrderStateType = {
   getPending: false,
@@ -102,10 +105,10 @@ export function OrderContainer() {
       updateOrderAction(id, values, state.purchaseProducts)(setState);
     }
   };
-  const changeItem = (values: changePurchaseProductValues) => {
+  const changeItem = (values: DeleteItemFnValues) => {
     changePurchaseProductAction(state.purchaseProducts, values)(setState);
   };
-  const deleteItem = (values: changePurchaseProductValues) => {
+  const deleteItem = (values: ChangeItemFnValues) => {
     deletePurchaseProductAction(state.purchaseProducts, values)(setState);
   };
 

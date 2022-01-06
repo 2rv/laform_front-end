@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import { TextPrimary } from 'src/lib/element/text';
+import { TableHeaderProps } from '../table.type';
 
-interface props {
-  text: string;
-}
-
-export function TableHeader(props: props) {
-  const { text } = props;
+export function TableHeader(props: TableHeaderProps) {
+  const { children } = props;
   return (
     <Td>
       <Case>
-        <TextPrimary tid={text} />
+        <TextPrimary tid={children} />
       </Case>
     </Td>
   );
