@@ -20,10 +20,6 @@ import {
 } from '../../core/patterns-page';
 import { promocodesStore, PROMOCODES_STORE_NAME } from '../../core/promocodes';
 import {
-  createNotificationStore,
-  CREATE_NOTIFICATION_STORE_NAME,
-} from '../../core/create-notification';
-import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_STORE_NAME,
 } from '../../core/master-class-page';
@@ -32,10 +28,6 @@ import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
 } from '../../lib/common/block-categories';
-import {
-  recentCommentsStore,
-  RECENT_COMMENTS_STORE_NAME,
-} from '../../core/recent-comments';
 import {
   userInfoStore,
   USER_INFO_STORE_NAME,
@@ -55,9 +47,7 @@ export const reducers = combineReducers({
   [ABOUT_ACCOUNT_STORE_NAME]: aboutAccountStore,
 
   [USER_INFO_STORE_NAME]: userInfoStore,
-  [CREATE_NOTIFICATION_STORE_NAME]: createNotificationStore,
 
-  [RECENT_COMMENTS_STORE_NAME]: recentCommentsStore,
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
   [USERS_STORE_NAME]: usersStore,

@@ -15,7 +15,7 @@ import { SEWING_GOODS_CREATE_ROUTE_PATH } from '../sewing-goods-create';
 import { SLIDER_LIST_ROUTE_PATH } from '../slider-list';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { STATISTICS_ROUTE_PATH } from '../statistics';
-import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
+import { MAILING_ROUTE_PATH } from '../mailing';
 import { USERS_ROUTE_PATH } from '../users';
 import { PRODUCTS_LIST_ROUTE_PATH } from '../products-list';
 import { PRODUCTS_COMPILATION_ROUTE_PATH } from '../products-compilation';
@@ -65,7 +65,7 @@ export const NAVIGATION_MENU = (isAuth = false) => {
           title: 'HEADER.ADMIN_MENU.ARTICLE_CREATING',
         },
         {
-          pathname: CREATE_NOTIFICATION_ROUTE_PATH,
+          pathname: MAILING_ROUTE_PATH,
           title: 'HEADER.ADMIN_MENU.NOTIFICATION_CREATING',
         },
         { pathname: USERS_ROUTE_PATH, title: 'HEADER.ADMIN_MENU.USERS_LIST' },

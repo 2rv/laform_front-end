@@ -26,26 +26,24 @@ export function SubCommentItem(props: SubCommentItemProps) {
         </Content>
       </Container>
       <ActionsCase>
-        {isAdmin ||
-          (currentUserId === userId.id && (
-            <Button onClick={() => onRemove(parentId, id)}>
-              <RemoveIcon />
-            </Button>
-          ))}
-        {isAdmin ||
-          (currentUserId === userId.id && (
-            <Button
-              onClick={() =>
-                onEdit({
-                  value: text,
-                  id: parentId,
-                  subId: id,
-                })
-              }
-            >
-              <ChangeIcon />
-            </Button>
-          ))}
+        {(isAdmin || currentUserId === userId.id) && (
+          <Button onClick={() => onRemove(parentId, id)}>
+            <RemoveIcon />
+          </Button>
+        )}
+        {(isAdmin || currentUserId === userId.id) && (
+          <Button
+            onClick={() =>
+              onEdit({
+                value: text,
+                id: parentId,
+                subId: id,
+              })
+            }
+          >
+            <ChangeIcon />
+          </Button>
+        )}
       </ActionsCase>
     </Wrapper>
   );

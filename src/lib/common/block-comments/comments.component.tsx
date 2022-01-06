@@ -7,15 +7,15 @@ import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { TextSecondary } from 'src/lib/element/text';
 import { ConvertTime } from 'src/lib/common/time';
 
-export interface CommentsProps {
+export type CommentsProps = {
   id: string;
   name: string;
   image: string;
   text: string;
   createDate: Date;
-  path: Function;
+  path: () => string;
   pathConfig: { params: { id: string } };
-}
+};
 
 export function CommentsComponent(props: { comments: CommentsProps[] }) {
   const { comments = [] } = props;

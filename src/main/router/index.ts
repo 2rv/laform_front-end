@@ -74,10 +74,7 @@ import {
   postCreateRouter,
   POST_CREATE_ROUTE_PATH,
 } from '../../core/post-create';
-import {
-  createNotificationRouter,
-  CREATE_NOTIFICATION_ROUTE_PATH,
-} from '../../core/create-notification';
+import { mailingRouter, MAILING_ROUTE_PATH } from '../../core/mailing';
 import {
   masterClassPageRouter,
   MASTER_CLASS_PAGE_ROUTE_PATH,
@@ -177,8 +174,7 @@ export const routes = {
   [SETTINGS_ROUTE_PATH]: settingsRouter,
   [HOME_ROUTE_PATH]: homeRouter,
   [PRODUCTS_COMPILATION_ROUTE_PATH]: productsCompilationRouter,
-
-  [CREATE_NOTIFICATION_ROUTE_PATH]: createNotificationRouter,
+  [MAILING_ROUTE_PATH]: mailingRouter,
   [USERS_ROUTE_PATH]: usersRouter,
   [RECENT_COMMENTS_ROUTE_PATH]: recentCommentsRouter,
   [FEEDBACK_ROUTE_PATH]: feedbackRouter,
