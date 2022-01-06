@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 import { TextPrimary } from 'src/lib/element/text';
 import { THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { PURCHASE_STATUS } from 'src/lib/basic-types';
+import { TableStatusProps } from '../table.type';
 
-interface props {
-  status?: string;
-}
-
-export function TableStatus(props: props) {
+export function TableStatus(props: TableStatusProps) {
   const { status } = props;
   if (!status) return null;
   return (
     <Td>
       <Case>
-        <ColoredText tid={status} />
+        <ColoredText tid={PURCHASE_STATUS[status]} />
       </Case>
     </Td>
   );

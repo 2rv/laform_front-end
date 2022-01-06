@@ -75,7 +75,10 @@ export function TableItem(props: TableItemProps) {
         length={length}
         maxLength={maxLength}
       />
-      <TablePrice isLast={Boolean(!status)} totalPrice={totalPrice} />
+      <TablePrice
+        isLast={typeof status === 'undefined'}
+        totalPrice={totalPrice}
+      />
       <TableStatus status={status} />
       <TableActions
         id={id}

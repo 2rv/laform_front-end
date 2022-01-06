@@ -1,5 +1,6 @@
 import { PromocodeFormContainer, PromocodesListComponent } from './frames';
-import { SectionLayout } from '../../lib/element/layout';
+import { SectionLayout } from 'src/lib/element/layout';
+import { TitlePrimary } from 'src/lib/element/title';
 
 export function PromocodesComponent(props) {
   const { promocodes, isPending } = props;

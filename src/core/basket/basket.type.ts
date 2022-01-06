@@ -5,7 +5,11 @@ import {
   FormikConfig,
   FormikErrors,
 } from 'formik';
-import { TableItemType } from 'src/lib/common/block-table/table.type';
+import {
+  TableItemData,
+  ChangeItemFnType,
+  DeleteItemFnType,
+} from 'src/lib/common/block-table';
 import {
   BasicMasterClassType,
   BasicPatternType,
@@ -14,6 +18,7 @@ import {
 import { basicTariffType } from 'src/lib/common/block-sdek-tarifflist';
 import { userInfoValues } from '../settings-user-info';
 import { basicSdekPoints } from 'src/lib/common/block-sdek-points';
+
 export enum BASKET_ACTION_TYPE {
   PRODUCT_ADD_PENDING = 'BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING',
   PRODUCT_ADD_SUCCESS = 'BASKET_ACTION_TYPE.PRODUCT_ADD_SUCCESS',
@@ -62,13 +67,6 @@ export interface addToCartDataType {
   count?: number;
   length?: number;
 }
-export interface changeCartataType {
-  id: string;
-  indexId: string;
-  optionId?: string;
-  count?: number;
-  length?: number;
-}
 export interface basketStateType {
   id: string;
   type: 0 | 1 | 2 | 3;
@@ -88,11 +86,12 @@ export interface BasketComponentProps
   isEmpty: boolean;
 }
 export interface CartTablesProps {
-  changeItem: Function;
-  deleteItem: Function;
-  sewingProducts: TableItemType[];
-  masterProducts: TableItemType[];
-  patternProducts: TableItemType[];
+  changeItem: ChangeItemFnType;
+  deleteItem: DeleteItemFnType;
+
+  sewingProducts: TableItemData[];
+  masterProducts: TableItemData[];
+  patternProducts: TableItemData[];
 }
 export interface BasketFormContainerProps
   extends FormikConfig<formikValues>,

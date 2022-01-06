@@ -32,7 +32,7 @@
     "chartjs-plugin-zoom": "^1.2.0",
     "date-fns": "^2.27.0",
     "dotenv": "^8.6.0",
-    "editorjs-html": "^3.4.0",
+    "editorjs-html": "^3.4.2",
     "express": "^4.17.1",
     "formik": "^2.2.6",
     "i": "^0.3.6",

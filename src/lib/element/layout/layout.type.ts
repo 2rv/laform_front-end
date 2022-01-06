@@ -27,4 +27,5 @@ export interface FieldLayoutPropsType {
   type?: 'double' | undefined;
   adaptive?: boolean;
   children: any;
+  className?: string;
 }

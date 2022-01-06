@@ -3,25 +3,9 @@ import { spacing } from 'src/lib/theme';
 import { ActionChange } from './action-change';
 import { ActionDelete } from './action-delete';
 import { ActionDownload } from './action-download';
-import { OptionType } from 'src/lib/element/card';
+import { TableActionsProps } from '../table.type';
 
-interface props {
-  id: string;
-  indexId?: string;
-  changeItem?: Function;
-  deleteItem?: Function;
-  filePDF?: string;
-  optionIndex?: number;
-  options?: OptionType[];
-  sizes?: OptionType[];
-  colors?: OptionType[];
-  maxCount?: number;
-  maxLength?: number;
-  isCount?: boolean;
-  isLength?: boolean;
-}
-
-export function TableActions(props: props) {
+export function TableActions(props: TableActionsProps) {
   const {
     id,
     indexId,

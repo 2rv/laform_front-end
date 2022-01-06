@@ -32,8 +32,6 @@ export function OrdersComponent(props: OrdersComponentProps) {
 
   return (
     <SectionLayout>
-      {pending && <CenteredSpinner />}
-
       <TitlePrimary tid="ORDERS.TITLE" />
       <SearchBlock
         findPlaceholderTid="Поиск по номеру заказа"
@@ -42,6 +40,7 @@ export function OrdersComponent(props: OrdersComponentProps) {
         disabled={pending}
       />
       <BlockDatepicker onChange={onFilter} />
+      {pending && <CenteredSpinner />}
       <InfiniteScroll
         loader={<></>}
         dataLength={orders.length}

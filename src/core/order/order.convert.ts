@@ -1,7 +1,7 @@
 import { MASTER_CLASS_PRODUCT_ROUTE_PATH } from '../master-class-product';
 import { PATTERNS_PRODUCT_ROUTE_PATH } from '../patterns-product';
 import { SEWING_GOODS_PRODUCT_ROUTE_PATH } from '../sewing-goods-product';
-import { TableItemType } from 'src/lib/common/block-table/table.type';
+import { TableItemData, ChangeItemFnValues } from 'src/lib/common/block-table';
 import { BasicPurchaseType } from 'src/lib/basic-types';
 import { convertOptions } from 'src/lib/common/product-converters';
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
@@ -9,7 +9,6 @@ import {
   OrderValues,
   ProductsType,
   PurchaseProductTypeForOrer,
-  changePurchaseProductValues,
 } from './order.type';
 import { UpdatePurchaseDto } from 'src/lib/basic-types/create';
 
@@ -54,7 +53,7 @@ export function convertPurchaseProducts(
     [[], 0],
   );
 }
-function masterItemConvert(data: PurchaseProductTypeForOrer): TableItemType {
+function masterItemConvert(data: PurchaseProductTypeForOrer): TableItemData {
   const totalPrice = getPrice({
     price: data.totalPrice,
     discount: data.totalDiscount,
@@ -74,7 +73,7 @@ function masterItemConvert(data: PurchaseProductTypeForOrer): TableItemType {
     },
   };
 }
-function patternItemConvert(data: PurchaseProductTypeForOrer): TableItemType {
+function patternItemConvert(data: PurchaseProductTypeForOrer): TableItemData {
   const option = data.patternProductId?.options.find(
     (i) => i.id === data.optionId?.id,
   );
@@ -112,7 +111,7 @@ function patternItemConvert(data: PurchaseProductTypeForOrer): TableItemType {
     },
   };
 }
-function sewingItemConvert(data: PurchaseProductTypeForOrer): TableItemType {
+function sewingItemConvert(data: PurchaseProductTypeForOrer): TableItemData {
   const option = data.sewingProductId?.options.find(
     (i) => i.id === data.optionId?.id,
   );
@@ -172,12 +171,12 @@ function sewingItemConvert(data: PurchaseProductTypeForOrer): TableItemType {
 
 export function convertChangePurchaseProducts(
   purchaseProducts: PurchaseProductTypeForOrer[],
-  values: changePurchaseProductValues,
+  values: ChangeItemFnValues,
 ): PurchaseProductTypeForOrer[] {
   return purchaseProducts.map((item) => {
     if (item.id === values.id) {
       if (values.count) item.totalCount = values.count;
-      if (values.length) item.totalLength = values.length;
+      if (values.length) item.totalLength = String(values.length);
       if (values.optionId) item.optionId = { id: values.optionId };
     }
     return item;

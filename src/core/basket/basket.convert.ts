@@ -7,7 +7,7 @@ import {
   BasicSewingGoodType,
 } from 'src/lib/basic-types';
 import { convertOptions } from 'src/lib/common/product-converters';
-import { TableItemType } from 'src/lib/common/block-table/table.type';
+import { TableItemData } from 'src/lib/common/block-table';
 import {
   basketStateType,
   addToCartDataType,
@@ -16,9 +16,9 @@ import {
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
 
 interface accumulator {
-  masterProducts: TableItemType[];
-  patternProducts: TableItemType[];
-  sewingProducts: TableItemType[];
+  masterProducts: TableItemData[];
+  patternProducts: TableItemData[];
+  sewingProducts: TableItemData[];
   basketPrice: number;
   basketCount: number;
 }
@@ -124,7 +124,7 @@ export function convertForTable(basketState: basketStateType[]) {
     },
   );
 }
-const masterItemConvert = (data: basketStateType): TableItemType => {
+const masterItemConvert = (data: basketStateType): TableItemData => {
   const totalPrice = getPrice({
     price: data.masterClassId.price,
     discount: data.masterClassId.discount,
@@ -145,7 +145,7 @@ const masterItemConvert = (data: basketStateType): TableItemType => {
     },
   };
 };
-const patternItemConvert = (data: basketStateType): TableItemType => {
+const patternItemConvert = (data: basketStateType): TableItemData => {
   const option = (data.patternProductId?.options || []).find(
     (i) => i.id === data.optionId,
   );
@@ -185,7 +185,7 @@ const patternItemConvert = (data: basketStateType): TableItemType => {
     },
   };
 };
-const sewingItemConvert = (data: basketStateType): TableItemType => {
+const sewingItemConvert = (data: basketStateType): TableItemData => {
   const option = data.sewingProductId?.options.find(
     (i) => i.id === data.optionId,
   );

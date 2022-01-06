@@ -5,23 +5,9 @@ import { ReactComponent as ChangeIcon } from 'src/asset/svg/change.svg';
 import { IconButton, ButtonSecondary } from 'src/lib/element/button';
 import { FieldSelect } from 'src/lib/element/field';
 import { Formik } from 'formik';
-import { OptionType } from 'src/lib/element/card';
+import { ActionChangeProps } from '../table.type';
 
-interface props {
-  id: string;
-  indexId?: string;
-  changeItem?: Function;
-  optionIndex?: number;
-  sizes?: OptionType[];
-  colors?: OptionType[];
-  options?: OptionType[];
-  maxCount?: number;
-  maxLength?: number;
-  isCount?: boolean;
-  isLength?: boolean;
-}
-
-export function ActionChange(props: props) {
+export function ActionChange(props: ActionChangeProps) {
   const {
     id,
     indexId,

@@ -1,66 +1,130 @@
-import { BasicPurchaseType } from 'src/lib/basic-types';
+import {
+  BasicPurchaseProductType,
+  BasicPurchaseType,
+} from 'src/lib/basic-types';
 import { getPrice } from 'src/lib/common/product-converters/convert.utils';
-import { TableItemType } from 'src/lib/common/block-table/table.type';
+import { TableItemData } from 'src/lib/common/block-table';
 import { MASTER_CLASS_PAGE_ROUTE_PATH } from '../master-class-page';
 import { PATTERNS_PAGE_ROUTE_PATH } from '../patterns-page';
 import { SEWING_GOODS_PAGE_ROUTE_PATH } from '../sewing-goods-page';
-import { ABOUT_ORDER_FIELD_NAME } from './user-order.type';
-export interface orderDataType {
-  purchaseInfo: any;
-  purchaseProducts: TableItemType[];
-}
-export const convertPurchaseData = (
-  rowData: BasicPurchaseType,
-): orderDataType => {
+import { UserOrderData } from './user-order.type';
+
+export const convertUserOrder = (data: BasicPurchaseType): UserOrderData => {
+  const { purchaseProducts, ...purchase } = data;
+  const [products, price] = convertProducts(purchaseProducts);
   return {
-    purchaseInfo: {
-      [ABOUT_ORDER_FIELD_NAME.ID]: rowData.id,
-      [ABOUT_ORDER_FIELD_NAME.ORDER_NUMBER]: rowData.orderNumber,
-      [ABOUT_ORDER_FIELD_NAME.ORDER_STATUS]: rowData.orderStatus,
-      [ABOUT_ORDER_FIELD_NAME.EMAIL]: rowData.email,
-      [ABOUT_ORDER_FIELD_NAME.FULL_NAME]: rowData.fullName,
-      [ABOUT_ORDER_FIELD_NAME.ADRESS]: rowData.address,
-      [ABOUT_ORDER_FIELD_NAME.PHONE_NUMBER]: rowData.phone,
-      [ABOUT_ORDER_FIELD_NAME.COMMENT]: rowData.comment,
-      [ABOUT_ORDER_FIELD_NAME.PRICE]: rowData.price,
-      [ABOUT_ORDER_FIELD_NAME.SHIPPING_PRICE]: rowData.shippingPrice,
-      [ABOUT_ORDER_FIELD_NAME.PROMO_CODE]: rowData.promoCode,
-      [ABOUT_ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: rowData.promoCodeDiscount,
+    order: {
+      id: purchase.id,
+      address: purchase.address,
+      email: purchase.email,
+      fullName: purchase.fullName,
+      orderNumber: purchase.orderNumber,
+      phone: purchase.phone,
+      orderStatus: purchase.orderStatus,
+      price: +purchase.price,
+      shippingPrice: +purchase.shippingPrice,
+      promoCode: purchase.promoCode,
+      comment: purchase.comment,
+      promoCodeDiscount: purchase.promoCodeDiscount,
     },
-    purchaseProducts: rowData.purchaseProducts.map((item) => {
-      const totalPrice = getPrice({
-        price: item.totalPrice,
-        discount: item.totalDiscount,
-        count: item.totalCount,
-        length: item.totalLength,
-      });
-
-      const product =
-        item.masterClassId || item.sewingProductId || item.patternProductId;
-
-      return {
-        id: product.id,
-        path: typePathProduct(product.type),
-        pathConfig: { params: { id: item.id } },
-        type: product.type,
-        name: product.titleRu,
-        image: product.images?.[0].fileUrl,
-        totalPrice: totalPrice,
-        vendorCode: item.optionId?.vendorCode || product?.vendorCode,
-        params: {
-          count: item.totalCount,
-          length: +item.totalLength,
-          size: item.optionId?.size,
-          color: item.optionId?.colorEn || item.optionId?.colorRu,
-          createdDate: item.createdDate,
-        },
-      };
-    }),
+    products: products,
+    price: price,
   };
 };
+function convertProducts(purchaseProducts: BasicPurchaseProductType[]) {
+  return purchaseProducts.reduce<[TableItemData[], number]>(
+    (acc, item) => {
+      if (item.masterClassId) {
+        const result = masterItemConvert(item);
+        acc[1] += result?.totalPrice || 0;
+        acc[0].push(result);
+      }
+      if (item.patternProductId) {
+        const result = patternItemConvert(item);
+        acc[1] += result?.totalPrice || 0;
+        acc[0].push(result);
+      }
+      if (item.sewingProductId) {
+        const result = sewingItemConvert(item);
+        acc[1] += result?.totalPrice || 0;
+        acc[0].push(result);
+      }
+      return acc;
+    },
+    [[], 0],
+  );
+}
+function masterItemConvert(data: BasicPurchaseProductType): TableItemData {
+  const totalPrice = getPrice({
+    price: data.totalPrice,
+    discount: data.totalDiscount,
+  });
 
-const typePathProduct = (type: number) => {
-  if (type === 0) return MASTER_CLASS_PAGE_ROUTE_PATH;
-  if (type === 1 || type === 2) return PATTERNS_PAGE_ROUTE_PATH;
-  if (type === 3) return SEWING_GOODS_PAGE_ROUTE_PATH;
-};
+  return {
+    id: data.id,
+    type: data.masterClassId.type,
+    path: MASTER_CLASS_PAGE_ROUTE_PATH,
+    pathConfig: { params: { id: data.id } },
+    image: data.masterClassId.images[0]?.fileUrl,
+    name: data.masterClassId.titleRu,
+    vendorCode: data.masterClassId.vendorCode,
+    totalPrice: totalPrice,
+    params: {
+      program: 'Удаленная',
+      createdDate: data.createdDate,
+    },
+  };
+}
+function patternItemConvert(data: BasicPurchaseProductType): TableItemData {
+  const totalPrice = getPrice({
+    price: data.totalPrice,
+    discount: data.totalDiscount,
+    count: data.totalCount,
+  });
+
+  return {
+    id: data.id,
+    type: data.patternProductId.type,
+    path: PATTERNS_PAGE_ROUTE_PATH,
+    pathConfig: { params: { id: data.id } },
+    image: data.patternProductId.images[0].fileUrl,
+    name: data.patternProductId.titleRu,
+    vendorCode: data.optionId?.vendorCode || data.sewingProductId.vendorCode,
+    totalPrice: totalPrice,
+    count: data.totalCount,
+    isCount: data.patternProductId.isCount,
+    params: {
+      count: data.totalCount,
+      size: data.optionId?.size,
+      type: data.type,
+      complexity: data.patternProductId.complexity,
+      createdDate: data.createdDate,
+    },
+  };
+}
+function sewingItemConvert(data: BasicPurchaseProductType): TableItemData {
+  const totalPrice = getPrice({
+    price: data.totalPrice,
+    discount: data.totalDiscount,
+    count: data.totalCount,
+    length: data.totalLength,
+  });
+
+  return {
+    id: data.id,
+    type: data.sewingProductId.type,
+    path: SEWING_GOODS_PAGE_ROUTE_PATH,
+    pathConfig: { params: { id: data.id } },
+    image: data.sewingProductId.images[0].fileUrl,
+    name: data.sewingProductId.titleRu,
+    vendorCode: data.optionId?.vendorCode || data.sewingProductId.vendorCode,
+    totalPrice: totalPrice,
+    params: {
+      count: data.totalCount,
+      length: +data.totalLength,
+      size: data.optionId?.size,
+      color: data.optionId?.colorRu,
+      createdDate: data.createdDate,
+    },
+  };
+}

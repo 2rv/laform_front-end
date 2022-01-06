@@ -1,5 +1,9 @@
 import { BasicPurchaseProductType } from 'src/lib/basic-types';
-import { TableItemType } from 'src/lib/common/block-table/table.type';
+import {
+  TableItemData,
+  DeleteItemFnType,
+  ChangeItemFnType,
+} from 'src/lib/common/block-table';
 import { FormikConfig } from 'formik';
 export enum ORDER_FIELD_NAME {
   ID = 'id',
@@ -40,20 +44,20 @@ export type OrderValues = {
   [ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: number;
   [ORDER_FIELD_NAME.SHIPPING_PRICE]: number;
 };
-export type ProductsType = [TableItemType[], number];
+export type ProductsType = [TableItemData[], number];
 export type OrderActionType = {
   type: ORDER_ACTION_TYPE;
   error?: string;
   order?: OrderValues;
   purchaseProducts?: PurchaseProductTypeForOrer[];
-  products?: TableItemType[];
+  products?: TableItemData[];
   price?: number;
 };
 export type OrderStateType = {
   getPending: boolean;
   order?: OrderValues;
   purchaseProducts: PurchaseProductTypeForOrer[];
-  products: TableItemType[];
+  products: TableItemData[];
   price: number;
   getError?: string;
 
@@ -61,17 +65,10 @@ export type OrderStateType = {
   updateSuccess: boolean;
   updateError?: string;
 };
-export type changePurchaseProductValues = {
-  id: string;
-  length: string;
-  count: number;
-  optionId: string;
-};
-
 export interface OrderComponentProps extends FormikConfig<OrderValues> {
   state: OrderStateType;
-  changeItem: (values: changePurchaseProductValues) => void;
-  deleteItem: (values: changePurchaseProductValues) => void;
+  changeItem: ChangeItemFnType;
+  deleteItem: DeleteItemFnType;
 }
 export interface OrderFormProps extends FormikConfig<OrderValues> {
   state: OrderStateType;

@@ -2,27 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 import { TableItem } from './table-item';
 import { TableHeader, TableDivider } from './frame';
-import { TableItemType, TableProps } from './table.type';
+import { TableListProps } from './table.type';
 
-export function TableList(props: TableProps) {
+export function TableList(props: TableListProps) {
   const { headers = [], items, changeItem, deleteItem } = props;
-  if (!Boolean(items) || Boolean(items.length <= 0)) return null;
+  if (!Boolean(items) || !Boolean(items.length)) return null;
 
   return (
     <Table>
       {Boolean(headers.length > 0) && (
         <thead>
           <Tr>
-            {headers.map((item: any, index: number) => (
-              <TableHeader text={item} key={index} />
+            {headers.map((text, key) => (
+              <TableHeader children={text} key={key} />
             ))}
           </Tr>
           <TableDivider />
         </thead>
       )}
       <tbody>
-        {items.map((data: TableItemType, i: number) => (
-          <React.Fragment key={data.id + i}>
+        {items.map((data, key) => (
+          <React.Fragment key={data.id + key}>
             <TableItem
               data={data}
               changeItem={changeItem}
