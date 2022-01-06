@@ -14,7 +14,7 @@ import { PROMOCODES_ROUTE_PATH } from '../promocodes';
 import { USER_ORDERS_ROUTE_PATH } from '../user-orders';
 import { PRODUCTS_LIKE_ROUTE_PATH } from '../products-like';
 import { SETTINGS_ROUTE_PATH } from '../settings';
-import { CREATE_NOTIFICATION_ROUTE_PATH } from '../create-notification';
+import { MAILING_ROUTE_PATH } from '../mailing';
 import { PRODUCTS_LIST_ROUTE_PATH } from '../products-list';
 import { STATISTICS_ROUTE_PATH } from '../statistics';
 import { RECENT_COMMENTS_ROUTE_PATH } from '../recent-comments';
@@ -54,7 +54,7 @@ export const ADMIN_MENU_ITEMS = [
     tid: 'HEADER.ADMIN_MENU.ARTICLE_CREATING',
   },
   {
-    path: CREATE_NOTIFICATION_ROUTE_PATH,
+    path: MAILING_ROUTE_PATH,
     tid: 'HEADER.ADMIN_MENU.NOTIFICATION_CREATING',
   },
   { path: USERS_ROUTE_PATH, tid: 'HEADER.ADMIN_MENU.USERS_LIST' },

@@ -30,18 +30,16 @@ export function CommentItem(props: CommentItemProps) {
             </Button>
           </Case>
           <ActionsCase>
-            {isAdmin ||
-              (currentUserId === userId.id && (
-                <Button onClick={() => onRemove(id)}>
-                  <RemoveIcon />
-                </Button>
-              ))}
-            {isAdmin ||
-              (currentUserId === userId.id && (
-                <Button onClick={() => onEdit({ id: id, value: text })}>
-                  <ChangeIcon />
-                </Button>
-              ))}
+            {(isAdmin || currentUserId === userId.id) && (
+              <Button onClick={() => onRemove(id)}>
+                <RemoveIcon />
+              </Button>
+            )}
+            {(isAdmin || currentUserId === userId.id) && (
+              <Button onClick={() => onEdit({ id: id, value: text })}>
+                <ChangeIcon />
+              </Button>
+            )}
           </ActionsCase>
         </HeaderCase>
         <Text tid={text} />
