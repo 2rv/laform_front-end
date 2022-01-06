@@ -50,13 +50,15 @@ export function SearchFilterComponent(props: SearchFilterComponentProps) {
           />
         ) : null}
       </FieldLayout>
-      <Field
-        placeholderTid={findPlaceholderTid}
-        name={SEARCH_FILTER_FIELD_NAME.WHERE}
-        value={values[SEARCH_FILTER_FIELD_NAME.WHERE]}
-        onChange={handleChange}
-        disabled={disabled}
-      />
+      <FieldCase>
+        <BasicField
+          placeholderTid={findPlaceholderTid}
+          name={SEARCH_FILTER_FIELD_NAME.WHERE}
+          value={values[SEARCH_FILTER_FIELD_NAME.WHERE]}
+          onChange={handleChange}
+          disabled={disabled}
+        />
+      </FieldCase>
     </Container>
   );
 }
@@ -69,7 +71,7 @@ const Container = styled.div`
     flex-flow: column;
   }
 `;
-const Field = styled(BasicField)`
+const FieldCase = styled.div`
   width: 250px;
   @media screen and (max-width: 720px) {
     width: 100%;
