@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface PopupPropsType {
-  content: any;
+  content: ReactNode | ((setVisible: (visible: boolean) => void) => ReactNode);
   children: ReactNode;
   top?: number;
   middleLeft?: boolean;

@@ -4,7 +4,7 @@ import { convertArticleProducts } from 'src/lib/common/product-converters';
 import { convertCategories } from 'src/lib/common/block-search';
 import { PostsActionType, POSTS_ACTION_TYPE } from './posts.type';
 
-export type QueryType = {
+type QueryType = {
   lang: string;
   isAuth: boolean;
   page?: number;

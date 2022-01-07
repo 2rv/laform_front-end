@@ -237,6 +237,11 @@ export const PURCHASE_STATUS_INFO = {
   7: 'Вовращен отправителю',
   8: 'Возвращен по гарантии',
 };
+export const USER_ROLE_INFO = {
+  0: 'Заблокирован',
+  1: 'Пользователь',
+  2: 'Администратор',
+};
 export const PURCHASE_STATUS_SELECT = [
   { id: 0, tid: 'Сформирован' },
   { id: 1, tid: 'Ожидает оплаты' },

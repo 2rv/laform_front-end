@@ -4,7 +4,7 @@ import { PatternsActionType, PATTERNS_ACTION_TYPE } from './patterns.type';
 import { convertCategories } from 'src/lib/common/block-search';
 import { Dispatch } from 'react';
 
-export type QueryType = {
+type QueryType = {
   type: any;
   lang: string;
   isAuth: boolean;

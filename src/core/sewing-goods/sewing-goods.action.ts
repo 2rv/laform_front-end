@@ -7,7 +7,7 @@ import {
   SEWING_GOODS_ACTION_TYPE,
 } from './sewing-goods.type';
 
-export type QueryType = {
+type QueryType = {
   lang: string;
   isAuth: boolean;
   page?: number;

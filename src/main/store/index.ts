@@ -23,7 +23,6 @@ import {
   masterClassPageStore,
   MASTER_CLASS_PAGE_STORE_NAME,
 } from '../../core/master-class-page';
-import { usersStore, USERS_STORE_NAME } from '../../core/users';
 import {
   categoriesStore,
   CATEGORIES_STORE_NAME,
@@ -50,6 +49,5 @@ export const reducers = combineReducers({
 
   [CATEGORIES_STORE_NAME]: categoriesStore,
   [PROMOCODES_STORE_NAME]: promocodesStore,
-  [USERS_STORE_NAME]: usersStore,
 });
 export { initStore } from './store.core';
