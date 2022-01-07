@@ -1,5 +1,4 @@
 import { useEffect, useReducer, useState } from 'react';
-import { USER_ROLE_INFO } from 'src/lib/basic-types';
 import { SearchBlockFilterValues } from 'src/lib/common/block-search';
 import {
   getUsersAction,
@@ -165,7 +164,12 @@ export const filterOptions = [
     by: 'DESC',
   },
 ];
-const roleCategories = Object.values(USER_ROLE_INFO).map((item, index) => ({
+const roleCategories = Object.values({
+  0: 'OTHER.CATEGORY_FILTER.ALL',
+  1: 'Заблокирован',
+  2: 'Пользователь',
+  3: 'Администратор',
+}).map((item, index) => ({
   id: index,
   tid: item,
 }));
