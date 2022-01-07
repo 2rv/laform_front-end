@@ -7,7 +7,7 @@ import {
   MASTER_CLASSES_ACTION_TYPE,
 } from './master-classes.type';
 
-export type QueryType = {
+type QueryType = {
   lang: string;
   isAuth: boolean;
   page?: number;
