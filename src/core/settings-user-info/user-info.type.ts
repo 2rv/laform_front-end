@@ -66,35 +66,35 @@ export interface userInfoValues {
   [USER_INFO_FIELD_NAME.FULL_NAME]: string;
   [USER_INFO_FIELD_NAME.PHONE]: string;
 }
-export interface CountryType {
+export type CountryType = {
   label?: string;
   country?: string;
   country_iso_code?: string;
-}
-export interface CityType {
+};
+export type CityType = {
   label?: string;
   city?: string;
   settlement?: string;
   fias_id?: string;
   fias_level?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
   kladr_id?: string;
-}
-export interface StreetType {
+};
+export type StreetType = {
   label?: string;
   street?: string;
   fias_id?: string;
   fias_level?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
-}
-export interface HouseType {
+};
+export type HouseType = {
   label?: string;
   house?: string;
   fias_id?: string;
   fias_level?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
-}
-export interface PostalCodeType {
+};
+export type PostalCodeType = {
   label?: string;
   postal_code?: string;
-}
+};
 
 export interface locationsProps
   extends CountryType,

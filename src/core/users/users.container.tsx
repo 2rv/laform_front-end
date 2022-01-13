@@ -90,6 +90,10 @@ function UsersReducer(
         updatePending: false,
         updateError: action.error,
       };
+
+    case USERS_ACTION_TYPE.RESET:
+      return initialState;
+
     default:
       return state;
   }
