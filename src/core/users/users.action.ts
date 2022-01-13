@@ -7,11 +7,21 @@ type QueryType = {
   where?: string;
   sort?: string;
   by?: string;
-  category?: string;
+  category?: any;
 };
+
+enum USER_ROLE {
+  'Заблокирован',
+  'Пользователь',
+  'Администратор',
+}
 
 export function getUsersAction(query: QueryType) {
   return async (dispatch: Dispatch<UsersActionType>) => {
+    dispatch({
+      type: USERS_ACTION_TYPE.RESET,
+    });
+
     dispatch({
       type: USERS_ACTION_TYPE.GET_PENDING,
     });
@@ -21,11 +31,10 @@ export function getUsersAction(query: QueryType) {
         method: 'GET',
         url: 'user/get',
         params: {
-          page: query.page,
           where: query.where,
           sort: query.sort,
           by: query.by,
-          role: query.category,
+          role: query.category ? USER_ROLE[query.category] : undefined,
         },
       });
       dispatch({

@@ -6,6 +6,8 @@ import {
 } from 'src/lib/common/block-search';
 
 export enum USERS_ACTION_TYPE {
+  RESET = 'RESET',
+
   GET_PENDING = 'GET_PENDING',
   GET_SUCCESS = 'GET_SUCCESS',
   GET_ERROR = 'GET_ERROR',
