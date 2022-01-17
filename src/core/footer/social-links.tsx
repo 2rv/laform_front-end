@@ -14,11 +14,12 @@ const STORE_LINKS = [
 ];
 const SOCIAL_LINKS = [
   { url: 'https://www.facebook.com/laforme.designbureau', icon: FBIcon },
-  { url: 'https://instagram.com/laforme.ru', icon: InstagramIcon },
+  { url: 'https://www.instagram.com/laforme.patterns', icon: InstagramIcon },
   { url: 'https://vk.com/laforme', icon: VkIcon },
   { url: 'https://ok.ru/profile/560920150257', icon: OKIcon },
   { url: 'https://vm.tiktok.com/ZSJknASGV', icon: TiktokIcon },
 ];
+
 export function SocialLinks() {
   return (
     <Container>
