@@ -170,6 +170,7 @@ export function BlockPhone() {
       <Container>
         <SectionLayout type="SMALL">
           <Text tid="Позвонить нам" />
+
           {isEdit ? (
             <Field
               placeholderTid="Введите номер телефона"
@@ -185,10 +186,7 @@ export function BlockPhone() {
             />
           )}
         </SectionLayout>
-        <Button
-          onClick={toggleEdit}
-          disabled={state.savePending || !state.phone}
-        >
+        <Button onClick={toggleEdit} disabled={state.savePending}>
           <ChangeIcon />
         </Button>
         {state.saveSuccess && <SuccessAlert tid="Успешно" />}
@@ -196,6 +194,7 @@ export function BlockPhone() {
       </Container>
     );
   } else {
+    if (!state.phone) return null;
     return (
       <SectionLayout type="SMALL">
         <Text tid="Позвонить нам" />
