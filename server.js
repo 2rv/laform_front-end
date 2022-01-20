@@ -32,14 +32,14 @@ if (!dev && cluster.isMaster) {
     if (!dev) {
       // Enforce SSL & HSTS in production
       server.use((req, res, next) => {
-        const proto = req.headers['x-forwarded-proto'];
-        if (proto === 'https') {
+        // const proto = req.headers['x-forwarded-proto'];
+        // if (proto === 'https') { иначе хостинг работать не будет
           res.set({
             'Strict-Transport-Security': 'max-age=31557600', // one-year
           });
           return next();
-        }
-        res.redirect(`https://${req.headers.host}${req.url}`);
+        // }
+        // res.redirect(`https://${req.headers.host}${req.url}`);
       });
     }
 
