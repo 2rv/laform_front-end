@@ -42,4 +42,5 @@ export type UserOrderStateType = {
 };
 export type UserOrderComponentProps = {
   state: UserOrderStateType;
+  handlePayment: () => void;
 };

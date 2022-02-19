@@ -8,6 +8,7 @@ import { BasicField, TextareaField } from 'src/lib/element/field';
 import { UserOrderPrice } from './user-order.price';
 import { CenteredSpinner } from 'src/lib/element/spinner';
 import { PURCHASE_STATUS } from 'src/lib/basic-types';
+import { ButtonPrimary } from 'src/lib/element/button';
 
 const headersTable = [
   'ORDER_NUMBER.TABLE.HEADER.ORDER_ITEMS',
@@ -18,6 +19,7 @@ const headersTable = [
 export function UserOrderComponent(props: UserOrderComponentProps) {
   const {
     state: { pending, order, products },
+    handlePayment,
   } = props;
   if (!order) return <CenteredSpinner />;
   const {
@@ -35,11 +37,16 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
   } = order;
   return (
     <SectionLayout>
-      <div>
-        <TitlePrimary tid="ORDER_NUMBER.TABLE.MY_PURCHASE" />
-        &nbsp;
-        <BoldTitle tid={orderNumber || ''} />
-      </div>
+      <LineCase>
+        <div>
+          <TitlePrimary tid="ORDER_NUMBER.TABLE.MY_PURCHASE" />
+          &nbsp;
+          <BoldTitle tid={orderNumber || ''} />
+          &nbsp; - &nbsp;
+          <Status tid={PURCHASE_STATUS[orderStatus]} />
+        </div>
+      </LineCase>
+
       {pending && <CenteredSpinner />}
       <Table items={products} headers={headersTable} />
 
@@ -91,11 +98,10 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
             discount={promoCodeDiscount}
             deliveryPrice={shippingPrice}
           />
-          <Case>
-            <TitlePrimary tid="Состояние -" />
-            &nbsp;
-            <Status tid={PURCHASE_STATUS[orderStatus]} />
-          </Case>
+          {(PURCHASE_STATUS['Сформирован'] === orderStatus ||
+            PURCHASE_STATUS['Ожидает оплаты'] === orderStatus) && (
+            <ButtonPrimary onClick={handlePayment} tid="Оплатить" />
+          )}
         </LineCase>
       </SectionLayout>
     </SectionLayout>
@@ -114,16 +120,6 @@ const LineCase = styled.div`
   grid-template-columns: auto 1fr;
   @media screen and (max-width: 880px) {
     grid-template-columns: 1fr;
-  }
-`;
-const Case = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  @media screen and (max-width: 880px) {
-    justify-content: flex-start;
-    align-items: flex-start;
   }
 `;
 const Status = styled(TitlePrimary)`
