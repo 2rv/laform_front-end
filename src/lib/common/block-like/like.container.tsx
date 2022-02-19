@@ -30,6 +30,7 @@ function likeReducer(state: LikeStateType, action: LikeActionType) {
 
 export function LikeContainer(props: LikeContainerProps) {
   const { id, type, like = false, onRemoveLike } = props;
+
   const [state, setState] = useReducer(likeReducer, like, init);
 
   function switchLike() {

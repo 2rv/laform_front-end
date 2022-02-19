@@ -31,6 +31,7 @@ export function addToCartAction(data: addToCartDataType) {
   return async (dispatch: Function) => {
     dispatch({
       type: BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING,
+      id: data.id,
     });
     try {
       const response = await httpRequest({
@@ -58,8 +59,13 @@ export function addToCartAction(data: addToCartDataType) {
       dispatch({
         type: BASKET_ACTION_TYPE.ADD_TO_BASKET,
         data: convertedData,
+        id: data.id,
       });
     } catch (error) {
+      dispatch({
+        type: BASKET_ACTION_TYPE.PRODUCT_ADD_ERROR,
+        id: data.id,
+      });
       dispatch(clearCartAction());
     }
   };

@@ -72,8 +72,14 @@ export function checkMinPriceAndDiscount(
   price: string | number = 0,
   discount: number = 0,
 ): { price: number; discount?: number } {
+  if (discount > 100) {
+    discount = 100;
+  }
   if (!values || values.length === 0) {
-    return { price: getPrice({ price: String(price) }), discount: discount };
+    return {
+      price: getPrice({ price: String(price || 0) }),
+      discount: discount,
+    };
   }
 
   const result = values.reduce(

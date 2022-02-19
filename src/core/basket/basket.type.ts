@@ -127,6 +127,7 @@ export interface CartAlertProps extends AlertProps {
   fullNameError: any;
   phoneError: any;
   postalCodeErrro: any;
+  emailNotConfirmed: boolean;
 }
 export interface AlertProps {
   orderError: boolean;
