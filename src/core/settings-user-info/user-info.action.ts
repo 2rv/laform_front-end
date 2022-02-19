@@ -9,7 +9,7 @@ import {
 
 export async function getCountry(query: string) {
   const response = await httpRequest({
-    url: '/get/country/' + query,
+    url: '/dadata/get/country/' + query,
     method: 'POST',
   });
 

@@ -11,6 +11,7 @@ const initialState = {
   basket: [],
   basketAction: initRequestState(),
   order: initRequestState(),
+  activeId: [],
 };
 
 export function basketStore(state = initialState, action: any) {
@@ -20,12 +21,14 @@ export function basketStore(state = initialState, action: any) {
         ...state,
         basket: [...state.basket, action.data],
         basketAction: setRequestSuccess(state.basketAction),
+        activeId: state.activeId.filter((id) => id !== action.id),
       };
 
     case BASKET_ACTION_TYPE.PRODUCT_ADD_PENDING:
       return {
         ...state,
         basketAction: setRequestPending(state.basketAction),
+        activeId: [...state.activeId, action.id],
       };
     case BASKET_ACTION_TYPE.PRODUCT_ADD_SUCCESS:
       return {
@@ -36,6 +39,7 @@ export function basketStore(state = initialState, action: any) {
       return {
         ...state,
         basketAction: setRequestError(state.basketAction, action.errorMessage),
+        activeId: state.activeId.filter((id) => id !== action.id),
       };
 
     case BASKET_ACTION_TYPE.INIT_BASKET:

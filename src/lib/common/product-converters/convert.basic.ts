@@ -30,7 +30,7 @@ export function masterClassItemConverter(
     deleted: item.deleted,
     modifier: item.modifierRu || item.modifierEn,
     price: getPrice({ price: item.price }),
-    discount: item.discount,
+    discount: +item.discount > 100 ? 100 : item.discount,
   };
 }
 

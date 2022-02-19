@@ -122,16 +122,15 @@ export function FormComponent(props: BasketFormComponentProps) {
 
       <Divider />
       <FieldLayout type="double" adaptive>
-        {values[ORDER_FIELD_NAME.EMAIL_CONFIRMED] && (
-          <Button
-            tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
-            disabled={isPending}
-            type="submit"
-          />
-        )}
+        <Button
+          tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
+          disabled={isPending || !values[ORDER_FIELD_NAME.EMAIL_CONFIRMED]}
+          type="submit"
+        />
       </FieldLayout>
 
       <CartAlert
+        emailNotConfirmed={!values[ORDER_FIELD_NAME.EMAIL_CONFIRMED]}
         emailConfirmedError={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRMED)}
         fullNameError={getFieldError(USER_INFO_FIELD_NAME.FULL_NAME)}
         phoneError={getFieldError(USER_INFO_FIELD_NAME.PHONE)}

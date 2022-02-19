@@ -50,6 +50,7 @@ export interface CartModalComponentProps {
   handleLenght: (val: number) => void;
   handleBlur: FocusEventHandler<HTMLSelectElement>;
   addToCart: Function;
+  activeAdding: boolean;
 }
 type getBasicProps = {
   options: OptionType[];

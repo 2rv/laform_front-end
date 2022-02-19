@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { getQuery } from 'src/main/navigation';
-import { getOrderAction } from './user-order.action';
+import { getOrderAction, getLinkForPaymentOrder } from './user-order.action';
 import { UserOrderComponent } from './user-order.component';
 import {
   USER_ORDER_ACTION_TYPE,
@@ -56,5 +56,11 @@ export function UserOrderContainer() {
     }
   }, [id]);
 
-  return <UserOrderComponent state={state} />;
+  const handlePayment = () => {
+    if (id && typeof id === 'string') {
+      getLinkForPaymentOrder(id)();
+    }
+  };
+
+  return <UserOrderComponent state={state} handlePayment={handlePayment} />;
 }

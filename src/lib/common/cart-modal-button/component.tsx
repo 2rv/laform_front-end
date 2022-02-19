@@ -34,6 +34,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
     values,
     price,
     discount,
+    activeAdding,
   } = props;
 
   const handleCart = (setVisible: Function) => () => {
@@ -43,11 +44,11 @@ export function CartButtonComponent(props: CartModalComponentProps) {
   if (optionType === 0 && !isCount && !isLength) {
     return (
       <Button
-        disabled={isDisabled}
+        disabled={isDisabled || isPending}
         active={isCart}
         onClick={() => addToCart()}
         tid={
-          isPending
+          isPending && activeAdding
             ? 'Подождите'
             : isCart
             ? 'BASKET.GO_TO_BASKET'
@@ -140,7 +141,11 @@ export function CartButtonComponent(props: CartModalComponentProps) {
           disabled={isPending}
           active={isCart}
           tid={
-            isPending ? 'Подождите' : isCart ? 'OTHER.SELECTED' : 'OTHER.SELECT'
+            isPending && activeAdding
+              ? 'Подождите'
+              : isCart
+              ? 'OTHER.SELECTED'
+              : 'OTHER.SELECT'
           }
         />
       }

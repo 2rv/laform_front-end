@@ -38,10 +38,13 @@ export function CartButtonContainer(props: CartModalContainerProps) {
   } = props;
   if (!id || type === false || thisIsCart) return null;
 
-  const { bascketState, basketAction } = useSelector((state: any) => ({
-    bascketState: state[BASKET_STORE_NAME].basket,
-    basketAction: state[BASKET_STORE_NAME].basketAction,
-  }));
+  const { bascketState, basketAction, basketActiveId } = useSelector(
+    (state: any) => ({
+      bascketState: state[BASKET_STORE_NAME].basket,
+      basketAction: state[BASKET_STORE_NAME].basketAction,
+      basketActiveId: state[BASKET_STORE_NAME].activeId,
+    }),
+  );
 
   const dispatch = useDispatch();
   const isPending = isRequestPending(basketAction);
@@ -205,6 +208,7 @@ export function CartButtonContainer(props: CartModalContainerProps) {
       handleCount={handleCount}
       handleLenght={handleLenght}
       addToCart={handleBasket}
+      activeAdding={!!basketActiveId.find((aId: string) => aId === id)}
     />
   );
 }

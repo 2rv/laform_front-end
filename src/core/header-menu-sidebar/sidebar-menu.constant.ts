@@ -23,8 +23,16 @@ import { PRODUCTS_COMPILATION_ROUTE_PATH } from '../products-compilation';
 export const NAVIGATION_MENU = (isAuth = false) => {
   const userLinks = [
     { title: 'HEADER.USER_MENU.HOME', pathname: HOME_ROUTE_PATH },
-    { title: 'HEADER.USER_MENU.HELP', pathname: FAQ_ROUTE_PATH },
-    { title: 'HEADER.USER_MENU.SETTINGS', pathname: SETTINGS_ROUTE_PATH },
+    {
+      title: 'HEADER.MENU_ITEMS.MASTER_CLASSES',
+      pathname: MASTER_CLASSES_ROUTE_PATH,
+    },
+    {
+      title: 'HEADER.MENU_ITEMS.SEWING_GOODS',
+      pathname: SEWING_GOODS_ROUTE_PATH,
+    },
+    { title: 'HEADER.MENU_ITEMS.PATTERNS', pathname: PATTERNS_ROUTE_PATH() },
+    { title: 'HEADER.MENU_ITEMS.ARTICLES', pathname: POSTS_ROUTE_PATH },
     {
       title: 'HEADER.USER_MENU.FAVORITE',
       pathname: PRODUCTS_LIKE_ROUTE_PATH(),
@@ -33,16 +41,8 @@ export const NAVIGATION_MENU = (isAuth = false) => {
       title: 'HEADER.USER_MENU.MY_PURCHASES',
       pathname: USER_ORDERS_ROUTE_PATH,
     },
-    {
-      title: 'HEADER.MENU_ITEMS.SEWING_GOODS',
-      pathname: SEWING_GOODS_ROUTE_PATH,
-    },
-    { title: 'HEADER.MENU_ITEMS.PATTERNS', pathname: PATTERNS_ROUTE_PATH() },
-    {
-      title: 'HEADER.MENU_ITEMS.MASTER_CLASSES',
-      pathname: MASTER_CLASSES_ROUTE_PATH,
-    },
-    { title: 'HEADER.MENU_ITEMS.ARTICLES', pathname: POSTS_ROUTE_PATH },
+    { title: 'HEADER.USER_MENU.SETTINGS', pathname: SETTINGS_ROUTE_PATH },
+    { title: 'HEADER.USER_MENU.HELP', pathname: FAQ_ROUTE_PATH },
   ];
   const adminLinks: any = [
     {

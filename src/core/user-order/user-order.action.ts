@@ -32,3 +32,21 @@ export function getOrderAction(id: string) {
     }
   };
 }
+
+export function getLinkForPaymentOrder(id: string) {
+  return async () => {
+    try {
+      const response = await httpRequest({
+        method: 'GET',
+        url: '/payment/link/' + id,
+      });
+
+      if (response.data) {
+        window.location.href = response.data;
+      } else {
+      }
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
+}

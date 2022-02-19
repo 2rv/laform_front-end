@@ -118,7 +118,9 @@ export function ProductSelectOptionsComponent(props: CartModalComponentProps) {
                 : 'BASKET.ADD_TO_BASKET'
             }
           />
-          <LikeButton id={id} type={type} like={like} />
+          {typeof like === 'boolean' && (
+            <LikeButton id={id} type={type} like={like} />
+          )}
         </ActionCase>
       </FooterCase>
       <Case>
