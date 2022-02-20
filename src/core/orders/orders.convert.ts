@@ -19,6 +19,7 @@ export const convertOrdersData = (data: BasicPurchaseType): TableItemData => {
     params: {
       count: data.purchaseProductsCount,
       createdDate: data.createdDate,
+      deliveryType: data.deliveryType,
     },
     otherParams: {
       email: data.email,

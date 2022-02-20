@@ -7,6 +7,7 @@ import { FieldLayout } from 'src/lib/element/layout';
 import { Divider } from 'src/lib/element/divider';
 import { EmailConfirmed } from 'src/core/header-component';
 import { CartEmailProps, ORDER_FIELD_NAME, formikValues } from '../basket.type';
+import { useInterval } from 'src/lib/common/hooks';
 
 export function CartEmail(props: CartEmailProps) {
   const {
@@ -21,6 +22,7 @@ export function CartEmail(props: CartEmailProps) {
     },
     isAuth,
   } = props;
+
   function getFieldError(name: ORDER_FIELD_NAME): string {
     return (touched[name] && errors[name] && errors[name]) || '';
   }
@@ -30,6 +32,7 @@ export function CartEmail(props: CartEmailProps) {
     async (values: formikValues) => {
       if (isSending) return;
       setIsSending(true);
+      startInterval();
       try {
         await httpRequest({
           method: 'POST',
@@ -39,7 +42,6 @@ export function CartEmail(props: CartEmailProps) {
       } catch (err: any) {
         setFieldError(ORDER_FIELD_NAME.EMAIL, err.response.data.message);
       }
-      setIsSending(false);
     },
     [isSending],
   );
@@ -68,6 +70,10 @@ export function CartEmail(props: CartEmailProps) {
     },
     [isSending],
   );
+
+  const [count, startInterval] = useInterval(() => {
+    setIsSending(false);
+  });
 
   return (
     <React.Fragment>
@@ -99,7 +105,11 @@ export function CartEmail(props: CartEmailProps) {
                 error={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE)}
               />
               <ButtonSecondary
-                tid="BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL"
+                tid={
+                  isSending
+                    ? `${count}`
+                    : 'BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL'
+                }
                 onClick={() => sendCode(values)}
                 disabled={isSending || !!errors[ORDER_FIELD_NAME.EMAIL]}
               />
@@ -107,7 +117,6 @@ export function CartEmail(props: CartEmailProps) {
                 tid="BASKET.FORM.BUTTON.VERIFICATION_EMAIL"
                 onClick={() => confirmCode(values)}
                 disabled={
-                  isSending ||
                   !values[ORDER_FIELD_NAME.EMAIL] ||
                   !!errors[ORDER_FIELD_NAME.EMAIL] ||
                   !values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE] ||

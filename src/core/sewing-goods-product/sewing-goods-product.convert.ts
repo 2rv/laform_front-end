@@ -17,7 +17,7 @@ export function convertSewingGoodsProductData(
     name: data.titleRu,
     modifier: data.modifierRu,
     price: +data.price,
-    discount: data.discount,
+    discount: +data.discount > 100 ? 100 : data.discount,
     count: data.count,
     length: +data.length,
     vendorCode: data.vendorCode,

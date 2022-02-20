@@ -38,6 +38,7 @@ export function BlockParams(
     createdDate,
     deliveryType,
   } = params;
+  console.log(deliveryType);
 
   return (
     <Case>
@@ -163,7 +164,7 @@ export function BlockParams(
           <TextPrimary tid={'Самовывоз'} />
         </div>
       )}
-      {deliveryType === 1 && (
+      {deliveryType === 2 && (
         <div>
           <TextSecondary tid="Метод доставки" />
           &nbsp;

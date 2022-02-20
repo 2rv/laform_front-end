@@ -76,6 +76,8 @@ export function patternGetByIdAction(id: string) {
         data: convertForChange(response.data),
       });
     } catch (err: any) {
+      console.log(err);
+
       if (err.response) {
         dispatch({
           type: PATTERN_CREATE_ACTION_TYPE.GET_ERROR,

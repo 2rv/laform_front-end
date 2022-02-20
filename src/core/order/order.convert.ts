@@ -26,6 +26,7 @@ export function convertPurchase(data: BasicPurchaseType): OrderValues {
     shippingPrice: +data.shippingPrice,
     promoCode: data.promoCode,
     promoCodeDiscount: data.promoCodeDiscount,
+    deliveryType: data.deliveryType,
   };
 }
 export function convertPurchaseProducts(

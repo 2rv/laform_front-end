@@ -48,7 +48,7 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
           &nbsp; - &nbsp;
           {deliveryType === 0 && <TitlePrimary tid={'Почта России'} />}
           {deliveryType === 1 && <TitlePrimary tid={'Самовывоз'} />}
-          {deliveryType === 1 && <TitlePrimary tid={'Служба доставки СДЭК'} />}
+          {deliveryType === 2 && <TitlePrimary tid={'Служба доставки СДЭК'} />}
         </div>
       </LineCase>
 
