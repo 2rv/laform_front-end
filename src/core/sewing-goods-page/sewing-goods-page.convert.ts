@@ -27,7 +27,7 @@ export function convertSewingGoodData(
     id: data.id,
     title: data.sewingProductId?.titleRu,
     description: data.sewingProductId?.descriptionRu,
-    images: data.sewingProductId?.images.map((image) => image.fileUrl),
+    images: data.sewingProductId?.images.map((image) => image?.fileUrl),
     categories: data.sewingProductId?.categories,
     price: +data.totalPrice,
     discount: +data.totalDiscount,

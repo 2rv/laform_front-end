@@ -17,10 +17,12 @@ export function CartAlert(props: CartAlertProps) {
     phoneError,
     postalCodeErrro,
     emailNotConfirmed,
+    selectDiliveryType,
   } = props;
 
   return (
     <FieldLayout type="double" adaptive>
+      {selectDiliveryType && <InfoAlert tid="Выберите тип доставки" />}
       {orderError && <ErrorAlert tid={orderErrorMessage} />}
       {postalCodeErrro && <ErrorAlert tid={postalCodeErrro} />}
       {orderSuccess && <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />}

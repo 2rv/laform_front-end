@@ -6,7 +6,7 @@ import { TableStatusProps } from '../table.type';
 
 export function TableStatus(props: TableStatusProps) {
   const { status } = props;
-  if (!status) return null;
+  if (typeof status !== 'number') return null;
   return (
     <Td>
       <Case>

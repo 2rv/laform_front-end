@@ -14,6 +14,7 @@ import {
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
+  DELIVERY_TYPE,
 } from 'src/lib/basic-types';
 import { basicTariffType } from 'src/lib/common/block-sdek-tarifflist';
 import { userInfoValues } from '../settings-user-info';
@@ -54,7 +55,7 @@ export interface formikValues extends userInfoValues {
   [ORDER_FIELD_NAME.PRICE]: number;
   [ORDER_FIELD_NAME.SDEK_POINT]: basicSdekPoints | undefined;
   [ORDER_FIELD_NAME.SDEK_TARIFF]: basicTariffType | undefined;
-  [ORDER_FIELD_NAME.DELIVERY_TYPE]: -1 | 0 | 1 | 2;
+  [ORDER_FIELD_NAME.DELIVERY_TYPE]: DELIVERY_TYPE;
 }
 type FormikObjType = FormikHandlers &
   FormikHelpers<formikValues> &
@@ -128,6 +129,7 @@ export interface CartAlertProps extends AlertProps {
   phoneError: any;
   postalCodeErrro: any;
   emailNotConfirmed: boolean;
+  selectDiliveryType: boolean;
 }
 export interface AlertProps {
   orderError: boolean;

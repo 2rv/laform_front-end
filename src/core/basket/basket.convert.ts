@@ -5,6 +5,7 @@ import {
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
+  DELIVERY_TYPE,
 } from 'src/lib/basic-types';
 import { convertOptions } from 'src/lib/common/product-converters';
 import { TableItemData } from 'src/lib/common/block-table';
@@ -136,7 +137,7 @@ const masterItemConvert = (data: basketStateType): TableItemData => {
     indexId: data.indexId,
     path: MASTER_CLASS_PRODUCT_ROUTE_PATH,
     pathConfig: { params: { id: data.masterClassId.id } },
-    image: data.masterClassId.images[0].fileUrl,
+    image: data.masterClassId.images[0]?.fileUrl,
     name: data.masterClassId.titleRu || data.masterClassId.titleEn,
     vendorCode: data.masterClassId.vendorCode,
     totalPrice: totalPrice,
@@ -166,7 +167,7 @@ const patternItemConvert = (data: basketStateType): TableItemData => {
     indexId: data.indexId,
     path: PATTERNS_PRODUCT_ROUTE_PATH,
     pathConfig: { params: { id: data.patternProductId.id } },
-    image: data.patternProductId.images[0].fileUrl,
+    image: data.patternProductId.images[0]?.fileUrl,
     name: data.patternProductId.titleRu || data.patternProductId.titleEn,
     vendorCode: option?.vendorCode || data.patternProductId.vendorCode,
     totalPrice: totalPrice,
@@ -206,7 +207,7 @@ const sewingItemConvert = (data: basketStateType): TableItemData => {
     indexId: data.indexId,
     path: SEWING_GOODS_PRODUCT_ROUTE_PATH,
     pathConfig: { params: { id: data.sewingProductId.id } },
-    image: data.sewingProductId.images[0].fileUrl,
+    image: data.sewingProductId.images[0]?.fileUrl,
     name: data.sewingProductId.titleRu,
     vendorCode: option?.vendorCode || data.sewingProductId.vendorCode,
     count: data.count,
@@ -251,7 +252,7 @@ export function convertCreateOrder(
       fullName: data.fullName,
       phone: data.phone,
       promoCode: data.promoCode,
-      sdek: isSdek,
+      sdek: isSdek && +data.deliveryType === DELIVERY_TYPE.SDEK,
       sdekTariffCode: data?.sdekTariff?.tariff_code,
       sdekCityCode: data?.sdekPoint?.location?.city_code,
       address: `${data.address.country}, ${
@@ -260,6 +261,7 @@ export function convertCreateOrder(
         data.address.postal_code
       }`,
       comment: data.comment,
+      deliveryType: +data.deliveryType,
     },
     purchaseProducts: bascketState.map((item) => {
       return {

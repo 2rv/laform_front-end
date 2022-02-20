@@ -64,7 +64,7 @@ export const tools = {
             return {
               success: 1,
               file: {
-                url: res.data.fileUrl,
+                url: res.data?.fileUrl,
               },
             };
           });

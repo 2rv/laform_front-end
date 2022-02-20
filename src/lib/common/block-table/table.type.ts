@@ -1,4 +1,4 @@
-import { PURCHASE_STATUS } from 'src/lib/basic-types';
+import { DELIVERY_TYPE, PURCHASE_STATUS } from 'src/lib/basic-types';
 import { OptionType } from 'src/lib/element/card';
 
 export type TableHeaderProps = {
@@ -91,6 +91,7 @@ export type ParamsProps = {
   phone?: string;
   email?: string;
   createdDate?: Date;
+  deliveryType?: DELIVERY_TYPE;
 };
 
 //----------

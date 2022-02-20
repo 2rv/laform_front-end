@@ -16,7 +16,7 @@ export function convertMasterClassProductData(
     price: +data.price,
     discount: data.discount,
     categories: data.categories,
-    images: data.images.map((item) => item.fileUrl),
+    images: data.images.map((item) => item?.fileUrl),
     like: data.like && Boolean(data.like.length),
     recommendations: convertMultiProducts(
       data.recommendation?.recommendationProducts,

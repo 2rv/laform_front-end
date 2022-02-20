@@ -1,4 +1,4 @@
-import { PURCHASE_STATUS } from 'src/lib/basic-types';
+import { DELIVERY_TYPE, PURCHASE_STATUS } from 'src/lib/basic-types';
 import { TableItemData } from 'src/lib/common/block-table';
 
 export enum USER_ORDER_ACTION_TYPE {
@@ -20,6 +20,7 @@ export type UserOrderValues = {
   promoCode: string;
   comment: string;
   promoCodeDiscount: number;
+  deliveryType: DELIVERY_TYPE;
 };
 export type UserOrderData = {
   order: UserOrderValues;

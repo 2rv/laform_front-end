@@ -15,6 +15,8 @@ import { CartAlert } from './cart.alert';
 import { CartPromoCode } from './cart.promocode';
 import { BasketFormComponentProps, ORDER_FIELD_NAME } from '../basket.type';
 import { BlockUserInfo, USER_INFO_FIELD_NAME } from '../../settings-user-info';
+import { TextPrimary } from 'src/lib/element/text';
+import { DILIVERY_OPTIONS } from 'src/lib/basic-types';
 
 export function FormComponent(props: BasketFormComponentProps) {
   const {
@@ -65,14 +67,10 @@ export function FormComponent(props: BasketFormComponentProps) {
               onChange={handleChange}
               onBlur={handleBlur}
               defaultTid="Выберите метод доставки"
-              options={[
-                { id: 0, tid: 'Служба доставки СДЭК' },
-                { id: 1, tid: 'Почта России - 400 руб.' },
-                { id: 2, tid: 'Самовывоз - бесплатно (Санкт-Петербург)' },
-              ]}
+              options={DILIVERY_OPTIONS}
             />
           </FieldLayout>
-          {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 0 && (
+          {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 2 && (
             <BlockSdekPoints
               data={values[USER_INFO_FIELD_NAME.FULL_ADDRESS]}
               value={values[ORDER_FIELD_NAME.SDEK_POINT]}
@@ -81,7 +79,7 @@ export function FormComponent(props: BasketFormComponentProps) {
               error={getFieldError(ORDER_FIELD_NAME.SDEK_POINT)}
             />
           )}
-          {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 0 && (
+          {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 2 && (
             <BlockSdekTariffList
               data={values[ORDER_FIELD_NAME.SDEK_POINT]}
               basketCount={basketCount}
@@ -91,7 +89,9 @@ export function FormComponent(props: BasketFormComponentProps) {
               error={getFieldError(ORDER_FIELD_NAME.SDEK_TARIFF)}
             />
           )}
-
+          {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 1 && (
+            <TextPrimary tid="Адресс самомвывоза (Нужен адресс)" />
+          )}
           <Divider />
         </>
       )}
@@ -130,6 +130,7 @@ export function FormComponent(props: BasketFormComponentProps) {
       </FieldLayout>
 
       <CartAlert
+        selectDiliveryType={+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === -1}
         emailNotConfirmed={!values[ORDER_FIELD_NAME.EMAIL_CONFIRMED]}
         emailConfirmedError={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRMED)}
         fullNameError={getFieldError(USER_INFO_FIELD_NAME.FULL_NAME)}

@@ -23,6 +23,8 @@ export function getOrderAction(id: string) {
         price: price,
       });
     } catch (err: any) {
+      console.log(err);
+
       if (err.response) {
         dispatch({
           type: USER_ORDER_ACTION_TYPE.ERROR,
