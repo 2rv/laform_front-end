@@ -7,6 +7,7 @@ import {
   requiredTariff,
   requiredEmail,
   requiredPostalCode,
+  numberPositiveMin,
 } from '../../main/validate/validate.service';
 import { USER_INFO_FIELD_NAME } from '../settings-user-info';
 import { formikValues, ORDER_FIELD_NAME } from './basket.type';
@@ -16,6 +17,7 @@ const configElectronic = {
   [USER_INFO_FIELD_NAME.FULL_NAME]: [required],
   [USER_INFO_FIELD_NAME.PHONE]: [required, phone],
   [ORDER_FIELD_NAME.EMAIL_CONFIRMED]: [requiredEmail],
+  [ORDER_FIELD_NAME.DELIVERY_TYPE]: [numberPositiveMin(0)],
 };
 
 const configSdek = {
@@ -36,10 +38,10 @@ const configPostRussia = {
 };
 
 export const formValidation = (isSdek: boolean) => (values: formikValues) => {
-  if (isSdek && +values.deliveryType === 0) {
+  if (isSdek && +values.deliveryType === 2) {
     return validate(values, configSdek);
   }
-  if (isSdek && +values.deliveryType === 1) {
+  if (isSdek && +values.deliveryType === 0) {
     return validate(values, configPostRussia);
   }
   return validate(values, configElectronic);

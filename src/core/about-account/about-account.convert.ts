@@ -130,7 +130,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
       return {
         id: comment.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         text: comment.text,
         createDate: comment.createDate,
         path: PATTERNS_PRODUCT_ROUTE_PATH,
@@ -140,7 +140,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
       return {
         id: comment.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         text: comment.text,
         createDate: comment.createDate,
         path: SEWING_GOODS_PRODUCT_ROUTE_PATH,
@@ -150,7 +150,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
       return {
         id: comment.id,
         name: product.titleRu,
-        image: product.images[0].fileUrl,
+        image: product.images[0]?.fileUrl,
         text: comment.text,
         createDate: comment.createDate,
         path: POST_PAGE_ROUTE_PATH,

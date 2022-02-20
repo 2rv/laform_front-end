@@ -172,6 +172,7 @@ export interface BasicPurchaseType {
   promoCode: string;
   promoCodeDiscount: number;
   purchaseProductsCount: number;
+  deliveryType: DELIVERY_TYPE;
 }
 export interface BasicPurchaseProductType {
   id: string;
@@ -226,6 +227,17 @@ export enum PURCHASE_STATUS {
   'Вовращен отправителю' = 7, // 'Вовращен отправителю',
   'Возвращен по гарантии' = 8, //'Возвращен по гарантии',
 }
+export enum DELIVERY_TYPE {
+  POST_OFFICE = 0,
+  PICKUP = 1,
+  SDEK = 2,
+}
+export const DILIVERY_OPTIONS = [
+  { id: DELIVERY_TYPE.SDEK, tid: 'Служба доставки СДЭК' },
+  { id: DELIVERY_TYPE.POST_OFFICE, tid: 'Почта России - 400 руб.' },
+  { id: DELIVERY_TYPE.PICKUP, tid: 'Самовывоз - бесплатно (Санкт-Петербург)' },
+];
+
 export const PURCHASE_STATUS_INFO = {
   0: 'Сформирован',
   1: 'Ожидает оплаты',

@@ -20,7 +20,7 @@ async function uploadFileAction(
     return {
       data: {
         id: image.id || '',
-        fileUrl: image.fileUrl,
+        fileUrl: image?.fileUrl,
       },
     };
   }

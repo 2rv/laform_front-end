@@ -27,7 +27,7 @@ async function uploadFilesAction(files: FileType[]): Promise<BasicFileType[]> {
       if (!file.file && file.id) {
         acc.oldFiles.push({
           id: file.id,
-          fileUrl: file.fileUrl,
+          fileUrl: file?.fileUrl,
         });
       }
       return acc;
@@ -39,7 +39,7 @@ async function uploadFilesAction(files: FileType[]): Promise<BasicFileType[]> {
     return oldFiles.map((file) => {
       return {
         id: file.id || '',
-        fileUrl: file.fileUrl,
+        fileUrl: file?.fileUrl,
       };
     });
   }

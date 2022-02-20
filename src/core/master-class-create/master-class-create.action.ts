@@ -33,7 +33,7 @@ async function uploadFilesAction(images: FileType[]): Promise<BasicFileType[]> {
       if (!image.file && image.id) {
         acc.oldImages.push({
           id: image.id,
-          fileUrl: image.fileUrl,
+          fileUrl: image?.fileUrl,
         });
       }
       return acc;
@@ -45,7 +45,7 @@ async function uploadFilesAction(images: FileType[]): Promise<BasicFileType[]> {
     return oldImages.map((image) => {
       return {
         id: image.id || '',
-        fileUrl: image.fileUrl,
+        fileUrl: image?.fileUrl,
       };
     });
   }

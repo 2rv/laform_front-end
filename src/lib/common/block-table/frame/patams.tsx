@@ -36,6 +36,7 @@ export function BlockParams(
     phone,
     email,
     createdDate,
+    deliveryType,
   } = params;
 
   return (
@@ -146,6 +147,27 @@ export function BlockParams(
           <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.CREATED_DATE" />
           &nbsp;
           <TextPrimary tid={ConvertDate(createdDate, 'PPP')} />
+        </div>
+      )}
+      {deliveryType === 0 && (
+        <div>
+          <TextSecondary tid="Метод доставки" />
+          &nbsp;
+          <TextPrimary tid={'Почта России'} />
+        </div>
+      )}
+      {deliveryType === 1 && (
+        <div>
+          <TextSecondary tid="Метод доставки" />
+          &nbsp;
+          <TextPrimary tid={'Самовывоз'} />
+        </div>
+      )}
+      {deliveryType === 1 && (
+        <div>
+          <TextSecondary tid="Метод доставки" />
+          &nbsp;
+          <TextPrimary tid={'Служба доставки СДЭК'} />
         </div>
       )}
     </Case>

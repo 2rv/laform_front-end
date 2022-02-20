@@ -34,6 +34,7 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
     promoCode,
     comment,
     promoCodeDiscount,
+    deliveryType,
   } = order;
   return (
     <SectionLayout>
@@ -44,6 +45,10 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
           <BoldTitle tid={orderNumber || ''} />
           &nbsp; - &nbsp;
           <Status tid={PURCHASE_STATUS[orderStatus]} />
+          &nbsp; - &nbsp;
+          {deliveryType === 0 && <TitlePrimary tid={'Почта России'} />}
+          {deliveryType === 1 && <TitlePrimary tid={'Самовывоз'} />}
+          {deliveryType === 1 && <TitlePrimary tid={'Служба доставки СДЭК'} />}
         </div>
       </LineCase>
 

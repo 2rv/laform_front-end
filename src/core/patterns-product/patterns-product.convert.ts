@@ -30,7 +30,7 @@ export function convertPatternsProductData(
     discount: data.discount,
     count: data.count,
     categories: data.categories,
-    images: data.images.map((item) => item.fileUrl),
+    images: data.images.map((item) => item?.fileUrl),
     sizes: convertOptions(data.options, data.optionType, 2),
     like: data.like && Boolean(data.like.length),
     recommendations: convertMultiProducts(

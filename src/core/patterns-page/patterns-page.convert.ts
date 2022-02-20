@@ -32,7 +32,7 @@ export const convertPatternData = (
   return {
     id: data.id,
     type: data.patternProductId.type,
-    images: data.patternProductId.images.map((image) => image.fileUrl),
+    images: data.patternProductId.images.map((image) => image?.fileUrl),
     title: data.patternProductId.titleRu,
     categories: data.patternProductId.categories,
     description: data.patternProductId.descriptionRu,

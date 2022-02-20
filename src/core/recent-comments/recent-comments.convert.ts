@@ -22,7 +22,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
       acc.push({
         id: comment.id,
         name: comment.patternProductId.titleRu,
-        image: comment.patternProductId.images[0].fileUrl,
+        image: comment.patternProductId.images[0]?.fileUrl,
         text: comment.text,
         createDate: comment.createDate,
         path: PATTERNS_PRODUCT_ROUTE_PATH,
@@ -33,7 +33,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
       acc.push({
         id: comment.id,
         name: comment.sewingProductId.titleRu,
-        image: comment.sewingProductId.images[0].fileUrl,
+        image: comment.sewingProductId.images[0]?.fileUrl,
         text: comment.text,
         createDate: comment.createDate,
         path: SEWING_GOODS_PRODUCT_ROUTE_PATH,
@@ -44,7 +44,7 @@ export const convertCommentsData = (comments: BasicCommentProps[]) => {
       acc.push({
         id: comment.id,
         name: comment.postId.titleRu,
-        image: comment.postId.image.fileUrl,
+        image: comment.postId.image?.fileUrl,
         text: comment.text,
         createDate: comment.createDate,
         path: POST_PAGE_ROUTE_PATH,

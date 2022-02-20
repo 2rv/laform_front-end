@@ -23,7 +23,7 @@ export function convertSewingGoodsProductData(
     vendorCode: data.vendorCode,
     categories: data.categories,
     description: data.descriptionRu,
-    images: data.images.map((item) => item.fileUrl),
+    images: data.images.map((item) => item?.fileUrl),
     options: convertOptions(data.options, data.optionType, 1),
     sizes: convertOptions(data.options, data.optionType, 2),
     colors: convertOptions(data.options, data.optionType, 3),

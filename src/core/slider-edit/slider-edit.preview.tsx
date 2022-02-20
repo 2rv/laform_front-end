@@ -78,7 +78,7 @@ const Text = styled(TitlePrimary)<any>`
 `;
 const Content = styled.div`
   position: absolute;
-  width: 510px;
+  max-width: 510px;
   display: flex;
   flex-direction: column;
   align-items: center;
