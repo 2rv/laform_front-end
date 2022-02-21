@@ -65,7 +65,11 @@ export function CartPromoCode(props: CartPromoCodeProps) {
       <Button
         tid="BASKET.FORM.ACTIVATE"
         onClick={() => confirmCode(values[ORDER_FIELD_NAME.PROMO_CODE])}
-        disabled={isSending || !!errors[ORDER_FIELD_NAME.PROMO_CODE]}
+        disabled={
+          isSending ||
+          !values[ORDER_FIELD_NAME.PROMO_CODE] ||
+          !!errors[ORDER_FIELD_NAME.PROMO_CODE]
+        }
       />
     </FieldLayout>
   );

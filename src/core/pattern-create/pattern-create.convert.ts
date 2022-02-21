@@ -83,6 +83,8 @@ function optionsForSave(
 }
 
 export function convertForChange(data: BasicPatternType): PatternValues {
+  console.log(data);
+
   const categories = data.categories.map((i, index) => ({
     id: index,
     basicId: i.id,

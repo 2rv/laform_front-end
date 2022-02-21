@@ -124,6 +124,7 @@ export function OrderContainer() {
       [ORDER_FIELD_NAME.PRICE]: 0,
       [ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: 0,
       [ORDER_FIELD_NAME.SHIPPING_PRICE]: 0,
+      [ORDER_FIELD_NAME.DELIVERY_TYPE]: 0,
     };
     return purchaseInfo;
   }

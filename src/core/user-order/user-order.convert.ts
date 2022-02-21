@@ -68,7 +68,7 @@ function masterItemConvert(data: BasicPurchaseProductType): TableItemData {
     pathConfig: { params: { id: data.id } },
     image: data.masterClassId.images[0]?.fileUrl,
     name: data.masterClassId.titleRu,
-    vendorCode: data.masterClassId.vendorCode,
+    vendorCode: data.masterClassId?.vendorCode,
     totalPrice: totalPrice,
     params: {
       program: 'Удаленная',
@@ -90,7 +90,7 @@ function patternItemConvert(data: BasicPurchaseProductType): TableItemData {
     pathConfig: { params: { id: data.id } },
     image: data.patternProductId.images[0]?.fileUrl,
     name: data.patternProductId.titleRu,
-    vendorCode: data.optionId?.vendorCode || data.sewingProductId.vendorCode,
+    vendorCode: data.optionId?.vendorCode || data.sewingProductId?.vendorCode,
     totalPrice: totalPrice,
     count: data.totalCount,
     isCount: data.patternProductId.isCount,
@@ -118,7 +118,7 @@ function sewingItemConvert(data: BasicPurchaseProductType): TableItemData {
     pathConfig: { params: { id: data.id } },
     image: data.sewingProductId.images[0]?.fileUrl,
     name: data.sewingProductId.titleRu,
-    vendorCode: data.optionId?.vendorCode || data.sewingProductId.vendorCode,
+    vendorCode: data.optionId?.vendorCode || data.sewingProductId?.vendorCode,
     totalPrice: totalPrice,
     params: {
       count: data.totalCount,

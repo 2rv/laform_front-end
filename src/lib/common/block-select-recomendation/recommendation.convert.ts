@@ -45,7 +45,9 @@ export function convertRecommendations(
   data: BasicRecommendationType,
 ): RecommendationType {
   return {
-    id: data.id,
-    recommendationProducts: convertProductsLink(data.recommendationProducts),
+    id: data?.id,
+    recommendationProducts: convertProductsLink(
+      data?.recommendationProducts || [],
+    ),
   };
 }

@@ -1,4 +1,4 @@
-import { BasicPurchaseProductType } from 'src/lib/basic-types';
+import { BasicPurchaseProductType, DELIVERY_TYPE } from 'src/lib/basic-types';
 import {
   TableItemData,
   DeleteItemFnType,
@@ -18,6 +18,7 @@ export enum ORDER_FIELD_NAME {
   PROMO_CODE = 'promoCode',
   COMMENT = 'comment',
   PROMO_CODE_DISCOUNT = 'promoCodeDiscount',
+  DELIVERY_TYPE = 'deliveryType',
 }
 export enum ORDER_ACTION_TYPE {
   GET_PENDING = 'GET_PENDING',
@@ -43,6 +44,7 @@ export type OrderValues = {
   [ORDER_FIELD_NAME.PRICE]: number;
   [ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: number;
   [ORDER_FIELD_NAME.SHIPPING_PRICE]: number;
+  [ORDER_FIELD_NAME.DELIVERY_TYPE]: DELIVERY_TYPE;
 };
 export type ProductsType = [TableItemData[], number];
 export type OrderActionType = {
