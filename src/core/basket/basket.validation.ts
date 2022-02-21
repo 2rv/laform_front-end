@@ -17,6 +17,13 @@ const configElectronic = {
   [USER_INFO_FIELD_NAME.FULL_NAME]: [required],
   [USER_INFO_FIELD_NAME.PHONE]: [required, phone],
   [ORDER_FIELD_NAME.EMAIL_CONFIRMED]: [requiredEmail],
+};
+
+const configPrint = {
+  [ORDER_FIELD_NAME.EMAIL]: [required, email],
+  [USER_INFO_FIELD_NAME.FULL_NAME]: [required],
+  [USER_INFO_FIELD_NAME.PHONE]: [required, phone],
+  [ORDER_FIELD_NAME.EMAIL_CONFIRMED]: [requiredEmail],
   [ORDER_FIELD_NAME.DELIVERY_TYPE]: [numberPositiveMin(0)],
 };
 
@@ -43,6 +50,9 @@ export const formValidation = (isSdek: boolean) => (values: formikValues) => {
   }
   if (isSdek && +values.deliveryType === 0) {
     return validate(values, configPostRussia);
+  }
+  if (isSdek) {
+    return validate(values, configPrint);
   }
   return validate(values, configElectronic);
 };

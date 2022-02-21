@@ -49,7 +49,7 @@ export const convertPatternData = (
     shippingPrice: +data.purchase.shippingPrice,
     count: +data.totalCount,
     filesPdf: data.optionId?.filesPdf || data.patternProductId.filesPdf,
-    vendorCode: data.optionId?.vendorCode || data.patternProductId.vendorCode,
+    vendorCode: data.optionId?.vendorCode || data.patternProductId?.vendorCode,
     params: {
       size: data.optionId?.size,
       count: data.totalCount,

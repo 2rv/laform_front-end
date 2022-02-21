@@ -62,7 +62,7 @@ export function PatternsProductComponent(props: PatternsProductComponentProps) {
           <Divider />
           <BlockProductSelect
             id={id}
-            type={3}
+            type={type}
             isCount={isCount}
             optionType={optionType}
             like={like}

@@ -90,7 +90,10 @@ export function FormComponent(props: BasketFormComponentProps) {
             />
           )}
           {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 1 && (
-            <TextPrimary tid="Адресс самомвывоза (Нужен адресс)" />
+            <>
+              <Title tid="Адрес самовывоза " />
+              <TextPrimary tid="199106, Санкт-Петербург, ул. Новгородская, д.23, лит.А" />
+            </>
           )}
           <Divider />
         </>
@@ -130,7 +133,9 @@ export function FormComponent(props: BasketFormComponentProps) {
       </FieldLayout>
 
       <CartAlert
-        selectDiliveryType={+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === -1}
+        selectDiliveryType={
+          !!basketCount && +values[ORDER_FIELD_NAME.DELIVERY_TYPE] === -1
+        }
         emailNotConfirmed={!values[ORDER_FIELD_NAME.EMAIL_CONFIRMED]}
         emailConfirmedError={getFieldError(ORDER_FIELD_NAME.EMAIL_CONFIRMED)}
         fullNameError={getFieldError(USER_INFO_FIELD_NAME.FULL_NAME)}

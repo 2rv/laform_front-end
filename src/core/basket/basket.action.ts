@@ -62,6 +62,7 @@ export function addToCartAction(data: addToCartDataType) {
         id: data.id,
       });
     } catch (error) {
+      console.log(error);
       dispatch({
         type: BASKET_ACTION_TYPE.PRODUCT_ADD_ERROR,
         id: data.id,
