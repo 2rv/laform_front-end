@@ -5,8 +5,11 @@ import { NavLinks } from './nav-links';
 import { SocialLinks } from './social-links';
 import { BlockPhone } from './phone';
 import { Copyright } from './copyright';
+import { useSelector } from 'react-redux';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 export function Footer() {
+  useSelector((s: any) => s[LANG_STORE_NAME]);
   return (
     <Container>
       <Content>

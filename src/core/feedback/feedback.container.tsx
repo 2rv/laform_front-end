@@ -9,6 +9,8 @@ import {
   FEEDBACK_FIELD_NAME,
 } from './feedback.type';
 import { useReducer } from 'react';
+import { useSelector } from 'react-redux';
+import { LANG_STORE_NAME } from 'src/lib/common/lang';
 
 const initialState = {
   pending: false,
@@ -42,13 +44,14 @@ function FeedbackReducer(state: FeedbackStateType, action: FeedbackActionType) {
 
 export function FeedbackContainer() {
   const [state, setState] = useReducer(FeedbackReducer, initialState);
-
+  useSelector((s: any) => s[LANG_STORE_NAME]);
   const onSubmit = (values: FeedbackValues) => {
     createFeedbackAction(values)(setState);
   };
 
   const initialValues = {
     [FEEDBACK_FIELD_NAME.DESCRIPTION]: '',
+    [FEEDBACK_FIELD_NAME.EMAIL]: '',
   };
 
   return (

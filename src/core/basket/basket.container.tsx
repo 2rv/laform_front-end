@@ -47,8 +47,6 @@ export function BasketContainer() {
     dispatch(deleteProuctCartAction(data, bascketState));
   };
   const onSubmit = (values: formikValues) => {
-    console.log(basketCount, values.deliveryType);
-
     dispatch(
       createOrderAction(values, bascketState, isAuth, Boolean(basketCount)),
     );

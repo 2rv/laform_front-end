@@ -4,5 +4,7 @@
   "DESCRIPTION_PLACEHOLDER": "Description",
   "BUTTON_SEND_TEXT": "Send",
   "SUCCESS_MESSAGE": "Email sent successfully",
-  "PHOTOS": "Photos"
+  "PHOTOS": "Photos",
+  "EMAIL_LABEL": "Mail where the answer will come",
+  "EMAIL_PLACEHOLDER": "Enter email"
 }

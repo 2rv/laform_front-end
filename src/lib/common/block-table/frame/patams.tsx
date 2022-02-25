@@ -38,7 +38,6 @@ export function BlockParams(
     createdDate,
     deliveryType,
   } = params;
-  console.log(deliveryType);
 
   return (
     <Case>
