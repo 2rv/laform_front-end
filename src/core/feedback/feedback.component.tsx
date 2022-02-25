@@ -1,10 +1,11 @@
 import { Formik } from 'formik';
 import { ErrorAlert, SuccessAlert } from 'src/lib/element/alert';
-import { SectionLayout } from 'src/lib/element/layout';
+import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { TitlePrimary } from 'src/lib/element/title';
 import { ButtonPrimary } from 'src/lib/element/button';
-import { TextareaField } from 'src/lib/element/field';
+import { BasicField, TextareaField } from 'src/lib/element/field';
 import { FeedbackComponentProps, FEEDBACK_FIELD_NAME } from './feedback.type';
+import styled from 'styled-components';
 
 export function FeedbackComponent(props: FeedbackComponentProps) {
   const {
@@ -23,8 +24,15 @@ export function FeedbackComponent(props: FeedbackComponentProps) {
         onSubmit={onSubmit}
       >
         {(formik) => {
-          const { errors, values, handleSubmit, handleChange, handleBlur } =
-            formik;
+          const {
+            isValid,
+            errors,
+            values,
+            handleSubmit,
+            handleChange,
+            handleBlur,
+          } = formik;
+
           return (
             <form onSubmit={handleSubmit}>
               <SectionLayout type="SMALL">
@@ -38,11 +46,22 @@ export function FeedbackComponent(props: FeedbackComponentProps) {
                   onBlur={handleBlur}
                   minHeight={100}
                 />
-                <ButtonPrimary
-                  type="submit"
-                  tid="FEEDBACK.BUTTON_SEND_TEXT"
-                  disabled={pending}
-                />
+                <FieldLayout type="double" adaptive>
+                  <BasicField
+                    titleTid="FEEDBACK.EMAIL_LABEL"
+                    placeholderTid="FEEDBACK.EMAIL_PLACEHOLDER"
+                    name={FEEDBACK_FIELD_NAME.EMAIL}
+                    value={values[FEEDBACK_FIELD_NAME.EMAIL]}
+                    error={errors[FEEDBACK_FIELD_NAME.EMAIL]}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <Button
+                    type="submit"
+                    tid="FEEDBACK.BUTTON_SEND_TEXT"
+                    disabled={pending || !isValid}
+                  />
+                </FieldLayout>
               </SectionLayout>
             </form>
           );
@@ -53,3 +72,6 @@ export function FeedbackComponent(props: FeedbackComponentProps) {
     </SectionLayout>
   );
 }
+const Button = styled(ButtonPrimary)`
+  margin-top: 19px;
+`;

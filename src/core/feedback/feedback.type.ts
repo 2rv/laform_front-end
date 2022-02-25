@@ -8,6 +8,7 @@ export enum FEEDBACK_ACTION_TYPE {
 
 export enum FEEDBACK_FIELD_NAME {
   DESCRIPTION = 'description',
+  EMAIL = 'email',
 }
 export type FeedbackStateType = {
   pending: boolean;
@@ -21,6 +22,7 @@ export type FeedbackActionType = {
 
 export type FeedbackValues = {
   [FEEDBACK_FIELD_NAME.DESCRIPTION]: string;
+  [FEEDBACK_FIELD_NAME.EMAIL]: string;
 };
 export interface FeedbackComponentProps extends FormikConfig<FeedbackValues> {
   state: FeedbackStateType;

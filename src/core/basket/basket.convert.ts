@@ -261,7 +261,7 @@ export function convertCreateOrder(
         data.address.postal_code
       }`,
       comment: data.comment,
-      deliveryType: +data.deliveryType,
+      deliveryType: +data.deliveryType === -1 ? undefined : +data.deliveryType,
     },
     purchaseProducts: bascketState.map((item) => {
       return {

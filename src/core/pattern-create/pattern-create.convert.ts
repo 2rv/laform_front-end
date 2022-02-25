@@ -26,7 +26,7 @@ export function convertForSave(
   );
 
   return {
-    type: values.type ? 2 : 1,
+    type: values.type ? 1 : 2,
     vendorCode: values.vendorCode,
 
     titleRu: values.titleRu,
@@ -83,15 +83,13 @@ function optionsForSave(
 }
 
 export function convertForChange(data: BasicPatternType): PatternValues {
-  console.log(data);
-
   const categories = data.categories.map((i, index) => ({
     id: index,
     basicId: i.id,
     tid: i.categoryNameRu,
   }));
   return {
-    type: data.type === 2,
+    type: data.type === 1,
     vendorCode: data.vendorCode,
 
     titleRu: data.titleRu,

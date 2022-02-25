@@ -4,5 +4,7 @@
   "DESCRIPTION_PLACEHOLDER": "Описание",
   "BUTTON_SEND_TEXT": " Отправить",
   "SUCCESS_MESSAGE": "Письмо успешно отправлен",
-  "PHOTOS": "Фотографии"
+  "PHOTOS": "Фотографии",
+  "EMAIL_LABEL": "Почта на которую придёт ответ",
+  "EMAIL_PLACEHOLDER": "Введите почту"
 }

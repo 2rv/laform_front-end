@@ -100,7 +100,7 @@ async function getPrintPatternProducts(query: QueryType) {
       sort: query.sort,
       by: query.by,
       category: query.category,
-      type: 'print',
+      type: 'printed',
       getAll: true,
     },
   });
