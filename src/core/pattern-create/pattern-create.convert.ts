@@ -7,6 +7,7 @@ import {
   PatternProductDto,
   PatternProductsOptionDto,
 } from 'src/lib/basic-types/create';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import { convertRecommendations } from 'src/lib/common/block-select-recomendation';
 import {
   PatternOptionValues,
@@ -83,11 +84,6 @@ function optionsForSave(
 }
 
 export function convertForChange(data: BasicPatternType): PatternValues {
-  const categories = data.categories.map((i, index) => ({
-    id: index,
-    basicId: i.id,
-    tid: i.categoryNameRu,
-  }));
   return {
     type: data.type === 1,
     vendorCode: data.vendorCode,
@@ -103,7 +99,8 @@ export function convertForChange(data: BasicPatternType): PatternValues {
 
     images: data.images,
     recommendation: convertRecommendations(data.recommendation),
-    categories: categories,
+
+    categories: convertCategories(data.categories, ''),
 
     complexity: data.complexity,
 

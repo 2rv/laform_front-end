@@ -156,7 +156,6 @@ export function CartButtonContainer(props: CartModalContainerProps) {
   };
 
   const isDisabled = (): boolean => {
-    if (getPrice() <= 0) return true;
     if (optionType === 1) return !Boolean(formik.values.option);
     if (optionType === 2) return !Boolean(formik.values.size);
     if (optionType === 3) return !Boolean(formik.values.color);

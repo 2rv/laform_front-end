@@ -1,11 +1,12 @@
 import { httpRequest } from 'src/main/http';
 import { convertSewingGoodProducts } from 'src/lib/common/product-converters';
-import { convertCategories } from 'src/lib/common/block-search';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import { Dispatch } from 'react';
 import {
   SewingGoodsActionType,
   SEWING_GOODS_ACTION_TYPE,
 } from './sewing-goods.type';
+import { getCategoriestByType } from 'src/lib/common/block-categories/categories.action';
 
 type QueryType = {
   lang: string;
@@ -23,14 +24,7 @@ export function getProductsAction(query: QueryType) {
       type: SEWING_GOODS_ACTION_TYPE.GET_PENDING,
     });
     try {
-      const catResponse = await httpRequest({
-        method: 'GET',
-        url: '/category/get',
-        params: {
-          lang: query.lang,
-          type: '3',
-        },
-      });
+      const catResponse = await getCategoriestByType(query.lang, 3);
 
       const response = await httpRequest({
         method: 'GET',

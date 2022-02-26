@@ -6,7 +6,7 @@ import {
   FormikState,
 } from 'formik';
 import { BasicReactEditorType, FileType } from 'src/lib/basic-types';
-import { CategoryType } from 'src/lib/common/block-categories/categories.type';
+import { CategoryOptionType } from 'src/lib/common/block-categories/categories.type';
 import { RecommendationType } from 'src/lib/common/block-select-recomendation';
 
 export enum POST_FIELD_NAME {
@@ -26,7 +26,7 @@ export type PostValues = {
   [POST_FIELD_NAME.VENDOR_CODE]: string;
   [POST_FIELD_NAME.MODIFIER]: string;
   [POST_FIELD_NAME.IMAGES]: FileType[];
-  [POST_FIELD_NAME.CATEGORIES]: CategoryType[];
+  [POST_FIELD_NAME.CATEGORIES]: CategoryOptionType[];
   [POST_FIELD_NAME.POST]?: BasicReactEditorType;
   [POST_FIELD_NAME.RECOMMENDATIONS]: RecommendationType;
   [POST_FIELD_NAME.IS_PUBLIC]: boolean;

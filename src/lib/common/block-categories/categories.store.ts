@@ -44,12 +44,11 @@ export function categoriesStore(state = initialState, action: any) {
     case CATEGORIES_ACTION_TYPE.CATEGORIES_CREATE_SUCCESS:
       return {
         ...state,
-        createCategory: setRequestSuccess(state.createCategory, action.data),
-        // @ts-ignore
-        uploadCategories: setRequestSuccess(state.uploadCategories, [
-          ...(state.uploadCategories.data || []),
+        createCategory: setRequestSuccess(state.createCategory),
+        uploadCategories: setRequestSuccess(
+          state.uploadCategories,
           action.data,
-        ]),
+        ),
       };
     case CATEGORIES_ACTION_TYPE.CATEGORIES_CREATE_ERROR:
       return {

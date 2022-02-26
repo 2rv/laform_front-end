@@ -6,7 +6,7 @@ import {
   FormikState,
 } from 'formik';
 import { FileType } from 'src/lib/basic-types';
-import { CategoryType } from 'src/lib/common/block-categories/categories.type';
+import { CategoryOptionType } from 'src/lib/common/block-categories/categories.type';
 import { RecommendationType } from 'src/lib/common/block-select-recomendation';
 
 export enum SEWING_GOODS_CREATE_FIELD_NAME {
@@ -64,7 +64,7 @@ export type SewingGoodsValues = {
 
   [SEWING_GOODS_CREATE_FIELD_NAME.IMAGES]: FileType[];
   [SEWING_GOODS_CREATE_FIELD_NAME.RECOMMENDATIONS]: RecommendationType;
-  [SEWING_GOODS_CREATE_FIELD_NAME.CATEGORIES]: CategoryType[];
+  [SEWING_GOODS_CREATE_FIELD_NAME.CATEGORIES]: CategoryOptionType[];
 
   [SEWING_GOODS_CREATE_FIELD_NAME.PRICE]: number;
   [SEWING_GOODS_CREATE_FIELD_NAME.DISCOUNT]: number;

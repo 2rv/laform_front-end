@@ -1,23 +1,36 @@
 import { httpRequest } from 'src/main/http';
 import { CATEGORIES_ACTION_TYPE } from './categories.type';
-import { CATEGORIES_API } from './categories.constant';
-import { convertForCreate } from './categories.convert';
+import { convertForCreate, convertCategories } from './categories.convert';
 import { BasicCategoryType } from 'src/lib/basic-types';
+import { AxiosResponse } from 'axios';
 
-export function uploadCategoriesAction(currentLang: 'ru' | 'en', type: number) {
+export async function getCategoriestByType(
+  lang: string,
+  type: 0 | 1 | 2 | 3 | 4,
+): Promise<AxiosResponse<BasicCategoryType[]>> {
+  return await httpRequest({
+    method: 'GET',
+    url: '/category/get/' + type,
+    params: {
+      lang: lang,
+    },
+  });
+}
+
+export function uploadCategoriesAction(
+  currentLang: 'ru' | 'en',
+  type: 0 | 1 | 2 | 3 | 4,
+) {
   return async (dispatch: Function) => {
     dispatch({
       type: CATEGORIES_ACTION_TYPE.CATEGORIES_UPLOAD_PENDING,
     });
     try {
-      // @ts-ignore
-      const response = await httpRequest({
-        method: CATEGORIES_API.CATEGORIES_UPLOAD_DATA.TYPE,
-        url: CATEGORIES_API.CATEGORIES_UPLOAD_DATA.ENDPOINT(currentLang, type),
-      });
+      const response = await getCategoriestByType(currentLang, type);
+
       dispatch({
         type: CATEGORIES_ACTION_TYPE.CATEGORIES_UPLOAD_SUCCESS,
-        data: response.data,
+        data: convertCategories(response.data, 'Выберите категорию'),
       });
     } catch (err: any) {
       if (err.response) {
@@ -30,22 +43,31 @@ export function uploadCategoriesAction(currentLang: 'ru' | 'en', type: number) {
   };
 }
 
-export function createCategoryAction(value: string, type: number) {
+export function createCategoryAction(
+  value: string,
+  type: 0 | 1 | 2 | 3 | 4,
+  currentLang: 'ru' | 'en',
+) {
   return async (dispatch: Function) => {
     dispatch({
       type: CATEGORIES_ACTION_TYPE.CATEGORIES_CREATE_PENDING,
     });
     try {
       const convertedData = convertForCreate(value, type);
-      // @ts-ignore
-      const response = await httpRequest({
-        method: CATEGORIES_API.CATEGORIES_CREATE.TYPE,
-        url: CATEGORIES_API.CATEGORIES_CREATE.ENDPOINT,
+
+      await httpRequest({
+        method: 'POST',
+        url: '/category/create',
         data: convertedData,
+        params: {
+          lang: currentLang,
+        },
       });
+      const response = await getCategoriestByType(currentLang, type);
+
       dispatch({
         type: CATEGORIES_ACTION_TYPE.CATEGORIES_CREATE_SUCCESS,
-        data: response.data,
+        data: convertCategories(response.data, 'Выберите категорию'),
       });
     } catch (err: any) {
       if (err.response) {
@@ -60,22 +82,23 @@ export function createCategoryAction(value: string, type: number) {
 
 export function deleteCategotyAction(
   id: string,
-  categories: BasicCategoryType[],
+  type: 0 | 1 | 2 | 3 | 4,
+  currentLang: 'ru' | 'en',
 ) {
   return async (dispatch: Function) => {
     dispatch({
       type: CATEGORIES_ACTION_TYPE.CATEGORIES_DELETE_PENDING,
     });
     try {
-      //@ts-ignore
-      const response = await httpRequest({
-        method: CATEGORIES_API.CATEGORY_DELETE.TYPE,
-        url: CATEGORIES_API.CATEGORY_DELETE.ENDPOINT(id),
+      await httpRequest({
+        method: 'DELETE',
+        url: '/category/delete/' + id,
       });
-      const result = categories.filter((i) => i.id !== id);
+      const response = await getCategoriestByType(currentLang, type);
+
       dispatch({
         type: CATEGORIES_ACTION_TYPE.CATEGORIES_DELETE_SUCCESS,
-        data: result,
+        data: convertCategories(response.data, 'Выберите категорию'),
       });
     } catch (err: any) {
       if (err.response) {

@@ -41,6 +41,7 @@ export function CartButtonComponent(props: CartModalComponentProps) {
     addToCart();
     setVisible();
   };
+
   if (optionType === 0 && !isCount && !isLength) {
     return (
       <Button
@@ -50,6 +51,8 @@ export function CartButtonComponent(props: CartModalComponentProps) {
         tid={
           isPending && activeAdding
             ? 'Подождите'
+            : price === 0 && !isCart
+            ? 'Бесплатно'
             : isCart
             ? 'BASKET.GO_TO_BASKET'
             : 'BASKET.ADD_TO_BASKET'

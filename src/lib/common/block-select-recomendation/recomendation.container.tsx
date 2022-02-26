@@ -88,7 +88,7 @@ export function RecomendationContainer(props: RecomendationContainerProps) {
     lang: state[LANG_STORE_NAME].active.toLowerCase(),
   }));
 
-  const typeHandler = useState(0);
+  const typeHandler = useState<any>(0);
   const [type] = typeHandler;
   const [query, setQuery] = useState<SearchBlockFilterValues>();
 

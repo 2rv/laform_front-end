@@ -6,4 +6,3 @@ export type {
   SearchBlockFilterValues,
   SearchBlockHandleFilterType,
 } from './search-filter.type';
-export { convertCategories } from './search-filter.convert';

@@ -1,11 +1,12 @@
 import { httpRequest } from 'src/main/http';
 import { convertPatternProducts } from 'src/lib/common/product-converters';
 import { PatternsActionType, PATTERNS_ACTION_TYPE } from './patterns.type';
-import { convertCategories } from 'src/lib/common/block-search';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import { Dispatch } from 'react';
+import { getCategoriestByType } from 'src/lib/common/block-categories/categories.action';
 
 type QueryType = {
-  type: any;
+  type: 'printed' | 'electronic' | undefined | string;
   lang: string;
   isAuth: boolean;
   page?: number;
@@ -22,14 +23,10 @@ export function getProductsAction(query: QueryType) {
       type: PATTERNS_ACTION_TYPE.GET_PENDING,
     });
     try {
-      const catResponse = await httpRequest({
-        method: 'GET',
-        url: '/category/get',
-        params: {
-          lang: query.lang,
-          type: '2',
-        },
-      });
+      const catResponse = await getCategoriestByType(
+        query.lang,
+        query.type === 'printed' ? 2 : query.type === 'electronic' ? 1 : 2,
+      );
 
       const response = await httpRequest({
         method: 'GET',
