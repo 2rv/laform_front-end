@@ -9,7 +9,7 @@ module.exports = {
         API: 'http://localhost:4000',
       },
       env_production: {
-        PORT: 443,
+        PORT: 3000,
         NODE_ENV: 'production',
         API: 'http://46.36.222.230:4000',
       },
