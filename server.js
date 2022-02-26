@@ -8,6 +8,10 @@ const numCPUs = require('os').cpus().length;
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
 
+console.log(process.env.API)
+
+console.log(process.env.NODE_ENV)
+
 // Multi-process to utilize all CPU cores.
 if (!dev && cluster.isMaster) {
   console.log(`Node cluster master ${process.pid} is running`);
