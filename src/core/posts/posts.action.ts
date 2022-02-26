@@ -1,8 +1,9 @@
 import { Dispatch } from 'react';
 import { httpRequest } from 'src/main/http';
 import { convertArticleProducts } from 'src/lib/common/product-converters';
-import { convertCategories } from 'src/lib/common/block-search';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import { PostsActionType, POSTS_ACTION_TYPE } from './posts.type';
+import { getCategoriestByType } from 'src/lib/common/block-categories/categories.action';
 
 type QueryType = {
   lang: string;
@@ -21,14 +22,7 @@ export function getProductsAction(query: QueryType) {
       type: POSTS_ACTION_TYPE.GET_PENDING,
     });
     try {
-      const catResponse = await httpRequest({
-        method: 'GET',
-        url: '/category/get',
-        params: {
-          lang: query.lang,
-          type: '4',
-        },
-      });
+      const catResponse = await getCategoriestByType(query.lang, 4);
 
       const response = await httpRequest({
         method: 'GET',

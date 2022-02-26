@@ -12,14 +12,14 @@ import {
   RecommendationActionType,
 } from './recomendation.type';
 import {
-  BasicCategoryType,
   BasicPostType,
   BasicMasterClassType,
   BasicPatternType,
   BasicSewingGoodType,
 } from 'src/lib/basic-types';
-import { convertCategories } from '../block-search';
 import { CardMultiType } from 'src/lib/element/card';
+import { getCategoriestByType } from '../block-categories/categories.action';
+import { convertCategories } from '../block-categories/categories.convert';
 
 type prodResType = {
   data: CardMultiType[];
@@ -32,7 +32,7 @@ type QueryType = {
   by?: string;
   category?: string;
   page?: number;
-  type: number;
+  type: 0 | 1 | 2 | 3 | 4;
 };
 async function getMasterClasses(query: QueryType): Promise<prodResType> {
   const response: AxiosResponse<[BasicMasterClassType[], number]> =
@@ -131,20 +131,14 @@ export function getProductsByType(query: QueryType) {
     });
     try {
       const prodRes = await getProducts[query.type](query);
-      const catRes: AxiosResponse<BasicCategoryType[]> = await httpRequest({
-        method: 'GET',
-        url: '/category/get',
-        params: {
-          type: query.type,
-          lang: query.lang,
-        },
-      });
+
+      const catResponse = await getCategoriestByType(query.lang, query.type);
 
       dispatch({
         type: RECOMENDATION_ACTION_TYPE.GET_SUCCESS,
         products: prodRes.data,
         total: prodRes.total,
-        categories: convertCategories(catRes.data),
+        categories: convertCategories(catResponse.data),
       });
     } catch (err: any) {
       if (err.response) {

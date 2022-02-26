@@ -1,11 +1,13 @@
+import { FieldSelectOptionType } from 'src/lib/element/field';
+
 export interface CategoriesContainerProps {
-  values: CategoryType[];
+  values: CategoryOptionType[];
   type: 0 | 1 | 2 | 3 | 4;
 }
 
 export interface CategoriesComponentProps {
-  values: CategoryType[];
-  categories: CategoryType[];
+  values: CategoryOptionType[];
+  categories: CategoryOptionType[];
   uploadPending: boolean;
   uploadError: boolean;
   uploadErrorMessage: string;
@@ -21,7 +23,7 @@ export interface CategoriesComponentProps {
 export interface CategoriesModalProps {
   onOpen: boolean;
   setOpen: Function;
-  categories: CategoryType[];
+  categories: CategoryOptionType[];
   createPending: boolean;
   createCategory: Function;
   createError: boolean;
@@ -32,11 +34,9 @@ export interface CategoriesModalProps {
   deleteErrorMessage: string;
 }
 
-export type CategoryType = {
-  id: number;
+export interface CategoryOptionType extends FieldSelectOptionType {
   basicId: string;
-  tid: string;
-};
+}
 
 export const CATEGORIES_TYPE = {
   CATEGORIES: 'categories',

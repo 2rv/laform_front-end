@@ -1,5 +1,6 @@
 import { BasicFileType, BasicMasterClassType } from 'src/lib/basic-types';
 import { MasterClassDto } from 'src/lib/basic-types/create';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import { convertRecommendations } from 'src/lib/common/block-select-recomendation';
 import {
   MasterClassValues,
@@ -34,11 +35,6 @@ export function convertForSave(
 export function convertForChange(
   data: BasicMasterClassType,
 ): MasterClassValues {
-  const categories = data.categories.map((i, index) => ({
-    id: index,
-    basicId: i.id,
-    tid: i.categoryNameRu,
-  }));
   return {
     [MASTER_CLASS_FIELD_NAME.NAME]: data.titleRu,
     [MASTER_CLASS_FIELD_NAME.VENDOR_CODE]: data.vendorCode,
@@ -49,7 +45,10 @@ export function convertForChange(
     [MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: convertRecommendations(
       data.recommendation,
     ),
-    [MASTER_CLASS_FIELD_NAME.CATEGORIES]: categories,
+    [MASTER_CLASS_FIELD_NAME.CATEGORIES]: convertCategories(
+      data.categories,
+      '',
+    ),
     [MASTER_CLASS_FIELD_NAME.PRICE]: +data.price,
     [MASTER_CLASS_FIELD_NAME.DISCOUNT]: +data.discount,
     [MASTER_CLASS_FIELD_NAME.ARTICLE]: data.articleRu,

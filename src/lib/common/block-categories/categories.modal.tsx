@@ -11,7 +11,7 @@ import { ModalFull } from 'src/lib/element/modal';
 import { TitlePrimary } from 'src/lib/element/title';
 import { useState, SyntheticEvent } from 'react';
 import { BasicField } from 'src/lib/element/field';
-import { CategoriesModalProps, CategoryType } from './categories.type';
+import { CategoriesModalProps, CategoryOptionType } from './categories.type';
 import { FieldLayout, SectionLayout } from 'src/lib/element/layout';
 import { Divider } from 'src/lib/element/divider';
 import { ErrorAlert } from 'src/lib/element/alert';
@@ -41,7 +41,7 @@ export function CategoriesModal(props: CategoriesModalProps) {
     setValue('');
   };
 
-  const handleDelete = (item: CategoryType) => {
+  const handleDelete = (item: CategoryOptionType) => {
     deleteCategory(item.basicId);
   };
 
@@ -73,19 +73,22 @@ export function CategoriesModal(props: CategoriesModalProps) {
           ) && <ErrorAlert tid={createErrorMessage || deleteErrorMessage} />}
         </FieldLayout>
         <TextTitle tid="Список категорий" />
-        {categories.map((item) => (
-          <SectionLayout type="SMALL" key={item.basicId}>
-            <LineCase>
-              <TextSecondary tid={item.tid} />
-              <Button
-                disabled={createPending || deletePending}
-                tid="Удалить"
-                onClick={() => handleDelete(item)}
-              />
-            </LineCase>
-            <Divider />
-          </SectionLayout>
-        ))}
+        {categories.map((item) => {
+          if (item.id === 0) return null;
+          return (
+            <SectionLayout type="SMALL" key={item.basicId}>
+              <LineCase>
+                <TextSecondary tid={item.tid} />
+                <Button
+                  disabled={createPending || deletePending}
+                  tid="Удалить"
+                  onClick={() => handleDelete(item)}
+                />
+              </LineCase>
+              <Divider />
+            </SectionLayout>
+          );
+        })}
       </Container>
     </ModalFull>
   );

@@ -7,6 +7,7 @@ import {
   SewingProductDto,
   SewingProductOptionDto,
 } from 'src/lib/basic-types/create';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import { convertRecommendations } from 'src/lib/common/block-select-recomendation';
 import {
   SewingGoodsOptionValues,
@@ -81,12 +82,6 @@ function optionsForSave(
 }
 
 export function convertForChange(data: BasicSewingGoodType): SewingGoodsValues {
-  const categories = data.categories.map((i, index) => ({
-    id: index,
-    basicId: i.id,
-    tid: i.categoryNameRu,
-  }));
-
   return {
     vendorCode: data.vendorCode,
 
@@ -97,7 +92,7 @@ export function convertForChange(data: BasicSewingGoodType): SewingGoodsValues {
 
     images: data.images,
     recommendation: convertRecommendations(data.recommendation),
-    categories: categories,
+    categories: convertCategories(data.categories, ''),
 
     price: +data.price,
     discount: data.discount,

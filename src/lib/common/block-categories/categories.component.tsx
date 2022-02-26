@@ -36,26 +36,28 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
   return (
     <SectionLayout type="TEXT">
       {(uploadPending || createPending || deletePending) && <LoaderPrimary />}
+
       <Title tid="Категории" />
+
       <FieldArray name={CATEGORIES_TYPE.CATEGORIES}>
         {({ remove, push }) => {
           const handleAdd = (e: ChangeEvent<HTMLSelectElement>) => {
             const value = Number(e.currentTarget.value);
 
             const isCategoryExists: boolean = values.some(
-              (category) => category.tid === categories[value].tid,
+              (category) => category.basicId === categories[value].basicId,
             );
+            const incorrectVal =
+              value === 0 || isNaN(value) || isCategoryExists;
 
-            if (isCategoryExists) {
+            if (!incorrectVal) {
+              push(categories[value]);
+              setCategoryExists('');
+            } else if (isCategoryExists) {
               setCategoryExists('ERROR.CATEGORY_ALREADY_EXISTS');
-              return;
             }
 
-            if (value === 999999 || value === NaN) return;
-
-            push(categories[value]);
-
-            setCategoryExists('');
+            e.currentTarget.value = '0';
           };
           return (
             <FieldLayout type="double" adaptive>
@@ -68,14 +70,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
                 </LineCase>
               ))}
               <LineCase>
-                <FieldSelect
-                  options={[
-                    { id: 999999, tid: 'Выберите категорию' },
-                    ...categories,
-                  ]}
-                  onChange={handleAdd}
-                  value={999999}
-                />
+                <FieldSelect options={categories} onChange={handleAdd} />
                 <Button onClick={() => setOpen(true)}>
                   <StyledPlusIcon />
                 </Button>
@@ -84,9 +79,11 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
           );
         }}
       </FieldArray>
+
       {Boolean(categoryExists.length > 0) && (
         <CategoryExistsText tid={categoryExists} />
       )}
+
       <CategoriesModal
         categories={categories}
         createPending={createPending}
@@ -100,6 +97,7 @@ export function CategoriesComponent(props: CategoriesComponentProps) {
         onOpen={open}
         setOpen={setOpen}
       />
+
       {(uploadError || uploadErrorMessage) && (
         <ErrorAlert tid={uploadErrorMessage} />
       )}

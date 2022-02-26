@@ -7,7 +7,7 @@ import {
 } from 'formik';
 import { BasicReactEditorType, FileType } from 'src/lib/basic-types';
 import { RecommendationType } from 'src/lib/common/block-select-recomendation';
-import { CategoryType } from 'src/lib/common/block-categories/categories.type';
+import { CategoryOptionType } from 'src/lib/common/block-categories/categories.type';
 
 export enum PATTERN_CREATE_FIELD_NAME {
   TYPE = 'type',
@@ -72,7 +72,7 @@ export type PatternValues = {
   [PATTERN_CREATE_FIELD_NAME.COMPLEXITY]: 0 | 1 | 2 | 3 | 4 | 5;
   [PATTERN_CREATE_FIELD_NAME.IMAGES]: FileType[];
   [PATTERN_CREATE_FIELD_NAME.RECOMMENDATIONS]: RecommendationType;
-  [PATTERN_CREATE_FIELD_NAME.CATEGORIES]: CategoryType[];
+  [PATTERN_CREATE_FIELD_NAME.CATEGORIES]: CategoryOptionType[];
 
   [PATTERN_CREATE_FIELD_NAME.TYPE]: boolean;
   [PATTERN_CREATE_FIELD_NAME.IS_COUNT]: boolean;

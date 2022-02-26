@@ -6,7 +6,7 @@ import {
   FormikState,
 } from 'formik';
 import { BasicReactEditorType, FileType } from 'src/lib/basic-types';
-import { CategoryType } from 'src/lib/common/block-categories/categories.type';
+import { CategoryOptionType } from 'src/lib/common/block-categories/categories.type';
 import { RecommendationType } from 'src/lib/common/block-select-recomendation';
 
 type FormikType = FormikHandlers &
@@ -57,7 +57,7 @@ export type MasterClassValues = {
   [MASTER_CLASS_FIELD_NAME.PRICE]: number;
   [MASTER_CLASS_FIELD_NAME.IMAGES]: FileType[];
 
-  [MASTER_CLASS_FIELD_NAME.CATEGORIES]: CategoryType[];
+  [MASTER_CLASS_FIELD_NAME.CATEGORIES]: CategoryOptionType[];
   [MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: RecommendationType;
 
   [MASTER_CLASS_FIELD_NAME.ARTICLE]?: BasicReactEditorType;

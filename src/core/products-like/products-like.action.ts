@@ -5,13 +5,14 @@ import {
   convertPatternProducts,
   convertSewingGoodProducts,
 } from 'src/lib/common/product-converters';
-import { convertCategories } from 'src/lib/common/block-search';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import {
   ProductsLikeActionType,
   PRODUCTS_LIKE_ACTION_TYPE,
   PRODUCTS_LIKE_TAB_TYPES,
 } from './products-like.type';
 import { Dispatch } from 'react';
+import { getCategoriestByType } from 'src/lib/common/block-categories/categories.action';
 
 type QueryType = {
   lang: string;
@@ -23,14 +24,7 @@ type QueryType = {
 };
 
 async function getMasterClasses(query: QueryType) {
-  const catResponse = await httpRequest({
-    method: 'GET',
-    url: '/category/get',
-    params: {
-      lang: query.lang,
-      type: 0,
-    },
-  });
+  const catResponse = await getCategoriestByType(query.lang, 0);
 
   const response = await httpRequest({
     method: 'GET',
@@ -52,14 +46,7 @@ async function getMasterClasses(query: QueryType) {
   };
 }
 async function getElectrinicPatternProducts(query: QueryType) {
-  const catResponse = await httpRequest({
-    method: 'GET',
-    url: '/category/get',
-    params: {
-      lang: query.lang,
-      type: 1,
-    },
-  });
+  const catResponse = await getCategoriestByType(query.lang, 1);
 
   const response = await httpRequest({
     method: 'GET',
@@ -82,14 +69,8 @@ async function getElectrinicPatternProducts(query: QueryType) {
   };
 }
 async function getPrintPatternProducts(query: QueryType) {
-  const catResponse = await httpRequest({
-    method: 'GET',
-    url: '/category/get',
-    params: {
-      lang: query.lang,
-      type: 2,
-    },
-  });
+  const catResponse = await getCategoriestByType(query.lang, 2);
+
   const response = await httpRequest({
     method: 'GET',
     url: '/pattern-product/liked/get',
@@ -111,14 +92,8 @@ async function getPrintPatternProducts(query: QueryType) {
   };
 }
 async function getSewingGoods(query: QueryType) {
-  const catResponse = await httpRequest({
-    method: 'GET',
-    url: '/category/get',
-    params: {
-      lang: query.lang,
-      type: 3,
-    },
-  });
+  const catResponse = await getCategoriestByType(query.lang, 3);
+
   const response = await httpRequest({
     method: 'GET',
     url: '/sewing-product/liked/get',
@@ -139,14 +114,8 @@ async function getSewingGoods(query: QueryType) {
   };
 }
 async function getPosts(query: QueryType) {
-  const catResponse = await httpRequest({
-    method: 'GET',
-    url: '/category/get',
-    params: {
-      lang: query.lang,
-      type: 4,
-    },
-  });
+  const catResponse = await getCategoriestByType(query.lang, 4);
+
   const response = await httpRequest({
     method: 'GET',
     url: '/post/liked/get',

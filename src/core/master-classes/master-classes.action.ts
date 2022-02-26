@@ -1,11 +1,12 @@
 import { Dispatch } from 'react';
 import { httpRequest } from 'src/main/http';
 import { convertMasterClassProducts } from 'src/lib/common/product-converters';
-import { convertCategories } from 'src/lib/common/block-search';
+import { convertCategories } from 'src/lib/common/block-categories/categories.convert';
 import {
   MasterClassesActionType,
   MASTER_CLASSES_ACTION_TYPE,
 } from './master-classes.type';
+import { getCategoriestByType } from 'src/lib/common/block-categories/categories.action';
 
 type QueryType = {
   lang: string;
@@ -24,14 +25,7 @@ export function getProductsAction(query: QueryType) {
       type: MASTER_CLASSES_ACTION_TYPE.GET_PENDING,
     });
     try {
-      const catResponse = await httpRequest({
-        method: 'GET',
-        url: '/category/get',
-        params: {
-          lang: query.lang,
-          type: '0',
-        },
-      });
+      const catResponse = await getCategoriestByType(query.lang, 0);
 
       const response = await httpRequest({
         method: 'GET',
