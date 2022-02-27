@@ -1,10 +1,5 @@
 import { validate } from 'src/main/validate/validate.core';
-import {
-  required,
-  minLength,
-  requiredArray,
-  minLengthArray,
-} from 'src/main/validate/validate.service';
+import { required, minLength } from 'src/main/validate/validate.service';
 import {
   SewingGoodsValues,
   SEWING_GOODS_CREATE_FIELD_NAME,
@@ -13,11 +8,7 @@ import {
 const config = {
   [SEWING_GOODS_CREATE_FIELD_NAME.NAME]: [required, minLength(3)],
   [SEWING_GOODS_CREATE_FIELD_NAME.DESCRIPTION]: [required],
-  [SEWING_GOODS_CREATE_FIELD_NAME.IMAGES]: [
-    required,
-    requiredArray,
-    minLengthArray(1),
-  ],
+  [SEWING_GOODS_CREATE_FIELD_NAME.IMAGES]: [],
 };
 
 export const sewingGoodsValidate = (values: SewingGoodsValues) =>

@@ -5,9 +5,11 @@ import { ReactComponent as ArrowLeft } from 'src/asset/svg/arrow-slider-left.svg
 import { ReactComponent as ArrowRight } from 'src/asset/svg/arrow-slider-right.svg';
 import { ButtonBasic } from 'src/lib/element/button';
 import { THEME_COLOR } from 'src/lib/theme';
+import { TextSecondary } from 'src/lib/element/text';
 
 export function ProductImages(props: { images: string[] }) {
   const { images = [] } = props;
+  console.log(images, images.length);
 
   const [slide, setSlide] = useState(0);
 
@@ -19,7 +21,11 @@ export function ProductImages(props: { images: string[] }) {
     setSlide(slide === images.length - 1 ? 0 : slide + 1);
   };
 
-  return (
+  return !images.length ? (
+    <BackgroudBlock>
+      <TextSecondary tid="Изображения отсутствует" />
+    </BackgroudBlock>
+  ) : (
     <Container>
       <List>
         {images.map((src, index) => (
@@ -113,6 +119,17 @@ const MainImage = styled.img`
   object-fit: contain;
   width: 100%;
   height: 100%;
+`;
+const BackgroudBlock = styled.div`
+  border-radius: ${THEME_SIZE.RADIUS.DEFAULT};
+  background-color: ${THEME_COLOR.GRAY};
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  height: 484px;
 `;
 const Action = styled(ButtonBasic)<{ right?: boolean }>`
   z-index: 1;

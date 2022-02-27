@@ -14,7 +14,8 @@ export function CardListBlock(props: CardListTypeProps) {
     isLoading,
     ...otherProps
   } = props;
-  if (!isLoading && (!items || !Boolean(items.length))) return null;
+  if (!isLoading && (!items || !Boolean(items.length)) && !props.emptyText)
+    return null;
 
   return (
     <SectionLayout>

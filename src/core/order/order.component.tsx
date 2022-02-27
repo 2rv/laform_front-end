@@ -23,14 +23,6 @@ export function OrderComponent(props: OrderComponentProps) {
         <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />
         &nbsp;
         <BoldTitle tid={state.order?.orderNumber || ''} />
-        &nbsp; - &nbsp;
-        {initialValues.deliveryType === 0 && (
-          <TitlePrimary tid={'Почта России'} />
-        )}
-        {initialValues.deliveryType === 1 && <TitlePrimary tid={'Самовывоз'} />}
-        {initialValues.deliveryType === 2 && (
-          <TitlePrimary tid={'Служба доставки СДЭК'} />
-        )}
       </div>
       {state.getPending && <CenteredSpinner />}
       <Table

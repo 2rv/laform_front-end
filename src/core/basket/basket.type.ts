@@ -83,7 +83,8 @@ export interface basketStateType {
 }
 export interface BasketComponentProps
   extends CartTablesProps,
-    BasketFormContainerProps {
+    FormikConfig<formikValues>,
+    BasketFormProps {
   isEmpty: boolean;
 }
 export interface CartTablesProps {
@@ -94,9 +95,6 @@ export interface CartTablesProps {
   masterProducts: TableItemData[];
   patternProducts: TableItemData[];
 }
-export interface BasketFormContainerProps
-  extends FormikConfig<formikValues>,
-    BasketFormProps {}
 
 export interface BasketFormComponentProps extends BasketFormProps {
   formik: FormikObjType;

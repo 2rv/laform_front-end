@@ -20,6 +20,8 @@ export function convertPurchase(data: BasicPurchaseType): OrderValues {
     email: data.email,
     fullName: data.fullName,
     address: data.address,
+    sdekPointAddress: data.sdekPointAddress,
+    sdekTariffName: data.sdekTariffName,
     phone: data.phone,
     comment: data.comment,
     price: +data.price,

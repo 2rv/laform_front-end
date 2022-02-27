@@ -86,6 +86,7 @@ export function PatternsProductComponent(props: PatternsProductComponentProps) {
           isLoading={pending}
           items={recommendations}
           title="PATTERNS.RECOMMENDATIONS"
+          emptyText="Рекомендации отсутствуют"
         />
         <BlockComment type={type} id={id} />
       </TabBlocks>

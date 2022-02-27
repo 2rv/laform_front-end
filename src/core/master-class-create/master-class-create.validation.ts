@@ -6,7 +6,6 @@ import {
   numberPositive,
   numberPositiveMin,
   numberPositiveMax,
-  requiredArray,
 } from '../../main/validate/validate.service';
 import {
   MasterClassValues,
@@ -29,7 +28,7 @@ const config = {
     numberPositive,
     numberPositiveMin(0),
   ],
-  [MASTER_CLASS_FIELD_NAME.IMAGES]: [requiredArray],
+  [MASTER_CLASS_FIELD_NAME.IMAGES]: [],
   [MASTER_CLASS_FIELD_NAME.CATEGORIES]: [],
   [MASTER_CLASS_FIELD_NAME.RECOMMENDATIONS]: [],
   [MASTER_CLASS_FIELD_NAME.ARTICLE]: [required],

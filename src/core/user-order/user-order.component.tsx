@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import { TitlePrimary } from 'src/lib/element/title';
-import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
+import { spacing, THEME_SIZE } from 'src/lib/theme';
 import { Table } from 'src/lib/common/block-table';
 import { UserOrderComponentProps } from './user-order.type';
 import { SectionLayout, FieldLayout } from 'src/lib/element/layout';
 import { BasicField, TextareaField } from 'src/lib/element/field';
 import { UserOrderPrice } from './user-order.price';
 import { CenteredSpinner } from 'src/lib/element/spinner';
-import { PURCHASE_STATUS } from 'src/lib/basic-types';
+import { DELIVERY_TYPE, PURCHASE_STATUS } from 'src/lib/basic-types';
 import { ButtonPrimary } from 'src/lib/element/button';
+import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 
 const headersTable = [
   'ORDER_NUMBER.TABLE.HEADER.ORDER_ITEMS',
@@ -35,6 +36,8 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
     comment,
     promoCodeDiscount,
     deliveryType,
+    sdekPointAddress,
+    sdekTariffName,
   } = order;
   return (
     <SectionLayout>
@@ -43,12 +46,6 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
           <TitlePrimary tid="ORDER_NUMBER.TABLE.MY_PURCHASE" />
           &nbsp;
           <BoldTitle tid={orderNumber || ''} />
-          &nbsp; - &nbsp;
-          <Status tid={PURCHASE_STATUS[orderStatus]} />
-          &nbsp; - &nbsp;
-          {deliveryType === 0 && <TitlePrimary tid={'Почта России'} />}
-          {deliveryType === 1 && <TitlePrimary tid={'Самовывоз'} />}
-          {deliveryType === 2 && <TitlePrimary tid={'Служба доставки СДЭК'} />}
         </div>
       </LineCase>
 
@@ -96,7 +93,44 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
             value={comment}
             disabled={true}
           />
+
+          {typeof deliveryType === 'number' && (
+            <SectionLayout type="TEXT_SMALL">
+              <Secondary tid="Тип доставки" />
+              {deliveryType === DELIVERY_TYPE.POST_OFFICE && (
+                <Primary tid="Почта России" />
+              )}
+              {deliveryType === DELIVERY_TYPE.PICKUP && (
+                <Primary tid="Самовывоз" />
+              )}
+              {deliveryType === DELIVERY_TYPE.SDEK && (
+                <Primary tid="Служба доставки СДЭК" />
+              )}
+            </SectionLayout>
+          )}
+
+          {sdekPointAddress && (
+            <SectionLayout type="TEXT_SMALL">
+              <Secondary tid="Адресс пункта ПВЗ" />
+              <Primary tid={sdekPointAddress} />
+            </SectionLayout>
+          )}
+
+          {sdekTariffName && (
+            <SectionLayout type="TEXT_SMALL">
+              <Secondary tid="Выбранный тариф" />
+              <Primary tid={sdekTariffName} />
+            </SectionLayout>
+          )}
+
+          {typeof orderStatus === 'number' && (
+            <SectionLayout type="TEXT_SMALL">
+              <Secondary tid="Статус заказа" />
+              <Primary tid={PURCHASE_STATUS[orderStatus]} />
+            </SectionLayout>
+          )}
         </SectionLayout>
+
         <LineCase>
           <UserOrderPrice
             price={price}
@@ -127,8 +161,10 @@ const LineCase = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-const Status = styled(TitlePrimary)`
-  font-size: ${THEME_SIZE.FONT.LARGE};
-  font-weight: ${THEME_SIZE.FONT_WEIGHT.BOLD};
-  color: ${THEME_COLOR.TEXT.SUCCESS};
+const Primary = styled(TextPrimary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
+  font-weight: ${THEME_SIZE.FONT_WEIGHT.MEDIUM};
+`;
+const Secondary = styled(TextSecondary)`
+  font-size: ${THEME_SIZE.FONT.MEDIUM};
 `;

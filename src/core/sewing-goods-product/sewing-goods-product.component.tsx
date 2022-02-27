@@ -76,6 +76,7 @@ export function SewingGoodsProductComponent(
           title="SEWING_GOODS.RECOMMENDATIONS"
           isLoading={pending}
           items={recommendations}
+          emptyText="Рекомендации отсутствуют"
         />
         <BlockComment id={id} type={3} />
       </TabBlocks>

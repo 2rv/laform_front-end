@@ -74,6 +74,7 @@ export function MasterClassProductComponent(
           isLoading={pending}
           items={recommendations}
           title="MASTER_CLASSES.MASTER_CLASSES.RECOMMENDATIONS"
+          emptyText="Рекомендации отсутствуют"
         />
         <BlockComment type={0} id={id} />
       </TabBlocks>

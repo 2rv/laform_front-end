@@ -1,10 +1,5 @@
 import { validate } from 'src/main/validate/validate.core';
-import {
-  required,
-  minLength,
-  requiredArray,
-  minLengthArray,
-} from 'src/main/validate/validate.service';
+import { required, minLength } from 'src/main/validate/validate.service';
 import {
   PatternValues,
   PATTERN_CREATE_FIELD_NAME,
@@ -12,11 +7,7 @@ import {
 
 const config = {
   [PATTERN_CREATE_FIELD_NAME.NAME]: [required, minLength(3)],
-  [PATTERN_CREATE_FIELD_NAME.IMAGES]: [
-    required,
-    requiredArray,
-    minLengthArray(1),
-  ],
+  [PATTERN_CREATE_FIELD_NAME.IMAGES]: [],
 };
 
 export const patternValidate = (values: PatternValues) =>
