@@ -166,6 +166,8 @@ export interface BasicPurchaseType {
   sdek?: boolean;
   sdekTariffCode?: number;
   sdekCityCode?: number;
+  sdekPointAddress?: string;
+  sdekTariffName?: string;
   address: string;
   shippingPrice: string;
   price: string;

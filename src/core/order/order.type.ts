@@ -19,6 +19,8 @@ export enum ORDER_FIELD_NAME {
   COMMENT = 'comment',
   PROMO_CODE_DISCOUNT = 'promoCodeDiscount',
   DELIVERY_TYPE = 'deliveryType',
+  SDEL_POINT_ADDRESS = 'sdekPointAddress',
+  SDEL_TARIFF_NAME = 'sdekTariffName',
 }
 export enum ORDER_ACTION_TYPE {
   GET_PENDING = 'GET_PENDING',
@@ -45,6 +47,8 @@ export type OrderValues = {
   [ORDER_FIELD_NAME.PROMO_CODE_DISCOUNT]: number;
   [ORDER_FIELD_NAME.SHIPPING_PRICE]: number;
   [ORDER_FIELD_NAME.DELIVERY_TYPE]: DELIVERY_TYPE;
+  [ORDER_FIELD_NAME.SDEL_POINT_ADDRESS]?: string;
+  [ORDER_FIELD_NAME.SDEL_TARIFF_NAME]?: string;
 };
 export type ProductsType = [TableItemData[], number];
 export type OrderActionType = {

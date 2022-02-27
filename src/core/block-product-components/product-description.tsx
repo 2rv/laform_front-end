@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { THEME_SIZE } from 'src/lib/theme';
-import { TextSecondary } from 'src/lib/element/text';
+import { TextSecondary, TextPrimary } from 'src/lib/element/text';
 import { ButtonBasic } from 'src/lib/element/button';
 
 type ProductDescriptionProps = {
@@ -12,6 +12,10 @@ type ProductDescriptionProps = {
 
 export function ProductDescription(props: ProductDescriptionProps) {
   const { description, descriptionOld, limit = 200 } = props;
+
+  if (!description && !descriptionOld) {
+    return <TextPrimary tid="Описание отсутствует" />;
+  }
 
   const [more, setMore] = useState(true);
 

@@ -21,6 +21,8 @@ export type UserOrderValues = {
   comment: string;
   promoCodeDiscount: number;
   deliveryType: DELIVERY_TYPE;
+  sdekPointAddress?: string;
+  sdekTariffName?: string;
 };
 export type UserOrderData = {
   order: UserOrderValues;

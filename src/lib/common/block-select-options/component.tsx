@@ -102,7 +102,7 @@ export function ProductSelectOptionsComponent(props: CartModalComponentProps) {
           />
         )}
       </SectionLayout>
-      <Divider />
+      {!optionType || !isLength || (!isCount && <Divider />)}
       <FooterCase>
         <CardPrice price={price} discount={discount} />
         <ActionCase>

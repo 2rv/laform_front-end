@@ -255,6 +255,8 @@ export function convertCreateOrder(
       sdek: isSdek && +data.deliveryType === DELIVERY_TYPE.SDEK,
       sdekTariffCode: data?.sdekTariff?.tariff_code,
       sdekCityCode: data?.sdekPoint?.location?.city_code,
+      sdekPointAddress: data?.sdekPoint?.location?.address_full,
+      sdekTariffName: data?.sdekTariff?.tariff_name,
       address: `${data.address.country}, ${
         data.address.city || data.address.settlement
       }, ${data.address.street}, ${data.address.house}, ${

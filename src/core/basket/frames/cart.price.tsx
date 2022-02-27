@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { TextSecondary, TextCurrency } from 'src/lib/element/text';
 import { spacing, THEME_COLOR, THEME_SIZE } from 'src/lib/theme';
 import { CartPriceProps } from '../basket.type';
+import { DELIVERY_TYPE } from 'src/lib/basic-types';
 export function CartPrice(props: CartPriceProps) {
   const { price, promoDiscount, deliveryInfo, deliveryType } = props;
   let deliveryPrice: number = 0;
-  if (+deliveryType === 0) {
+  if (+deliveryType === DELIVERY_TYPE.SDEK) {
     deliveryPrice = deliveryInfo?.total_sum || 0;
-  } else if (+deliveryType === 1) {
+  } else if (+deliveryType === DELIVERY_TYPE.POST_OFFICE) {
     deliveryPrice = 400;
   }
   const discountPrice = price - (price / 100) * promoDiscount;

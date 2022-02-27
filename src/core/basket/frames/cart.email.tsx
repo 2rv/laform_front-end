@@ -1,12 +1,12 @@
-import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
+import { useState, Fragment } from 'react';
 import { httpRequest } from 'src/main/http';
 import { ButtonSecondary } from 'src/lib/element/button';
 import { BasicField } from 'src/lib/element/field';
 import { FieldLayout } from 'src/lib/element/layout';
 import { Divider } from 'src/lib/element/divider';
 import { EmailConfirmed } from 'src/core/header-component';
-import { CartEmailProps, ORDER_FIELD_NAME, formikValues } from '../basket.type';
+import { CartEmailProps, ORDER_FIELD_NAME } from '../basket.type';
 import { useInterval } from 'src/lib/common/hooks';
 
 export function CartEmail(props: CartEmailProps) {
@@ -23,60 +23,50 @@ export function CartEmail(props: CartEmailProps) {
     isAuth,
   } = props;
 
-  function getFieldError(name: ORDER_FIELD_NAME): string {
-    return (touched[name] && errors[name] && errors[name]) || '';
-  }
   const [isSending, setIsSending] = useState(false);
-
-  const sendCode = useCallback(
-    async (values: formikValues) => {
-      if (isSending) return;
-      setIsSending(true);
-      startInterval();
-      try {
-        await httpRequest({
-          method: 'POST',
-          url: '/mail/send/verification-code',
-          data: { email: values[ORDER_FIELD_NAME.EMAIL] },
-        });
-      } catch (err: any) {
-        setFieldError(ORDER_FIELD_NAME.EMAIL, err.response.data.message);
-      }
-    },
-    [isSending],
-  );
-
-  const confirmCode = useCallback(
-    async (values: formikValues) => {
-      if (isSending) return;
-      setIsSending(true);
-      try {
-        const response = await httpRequest({
-          method: 'POST',
-          url: '/auth/verify/code',
-          data: {
-            email: values[ORDER_FIELD_NAME.EMAIL],
-            code: values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE],
-          },
-        });
-        setFieldValue(ORDER_FIELD_NAME.EMAIL_CONFIRMED, response.data || false);
-      } catch (err: any) {
-        setFieldError(
-          ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE,
-          err.response.data.message,
-        );
-      }
-      setIsSending(false);
-    },
-    [isSending],
-  );
-
   const [count, startInterval] = useInterval(() => {
     setIsSending(false);
   });
 
+  const sendCode = async () => {
+    if (isSending) return;
+    setIsSending(true);
+    startInterval();
+    try {
+      await httpRequest({
+        method: 'POST',
+        url: '/mail/send/verification-code',
+        data: { email: values[ORDER_FIELD_NAME.EMAIL] },
+      });
+    } catch (err: any) {
+      setFieldError(ORDER_FIELD_NAME.EMAIL, err.response.data.message);
+    }
+  };
+  const confirmCode = async () => {
+    try {
+      const response = await httpRequest({
+        method: 'POST',
+        url: '/auth/verify/code',
+        data: {
+          email: values[ORDER_FIELD_NAME.EMAIL],
+          code: values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE],
+        },
+      });
+
+      setFieldValue(ORDER_FIELD_NAME.EMAIL_CONFIRMED, response.data || false);
+    } catch (err: any) {
+      setFieldError(
+        ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE,
+        err.response.data.message,
+      );
+    }
+  };
+  const getFieldError = (name: ORDER_FIELD_NAME): string => {
+    return (touched[name] && errors[name] && errors[name]) || '';
+  };
+
   return (
-    <React.Fragment>
+    <Fragment>
       <FieldLayout type="double" adaptive>
         <BasicField
           titleTid="BASKET.FORM.FIELDS.TITLES.EMAIL"
@@ -94,7 +84,7 @@ export function CartEmail(props: CartEmailProps) {
               <EmailConfirmed isHide={false} />
             </Case>
           ) : (
-            <React.Fragment>
+            <Fragment>
               <BasicField
                 titleTid="BASKET.FORM.FIELDS.TITLES.CONFIRM_CODE"
                 placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.WRITE_CODE"
@@ -110,12 +100,12 @@ export function CartEmail(props: CartEmailProps) {
                     ? `${count}`
                     : 'BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL'
                 }
-                onClick={() => sendCode(values)}
+                onClick={sendCode}
                 disabled={isSending || !!errors[ORDER_FIELD_NAME.EMAIL]}
               />
               <ButtonSecondary
                 tid="BASKET.FORM.BUTTON.VERIFICATION_EMAIL"
-                onClick={() => confirmCode(values)}
+                onClick={confirmCode}
                 disabled={
                   !values[ORDER_FIELD_NAME.EMAIL] ||
                   !!errors[ORDER_FIELD_NAME.EMAIL] ||
@@ -123,11 +113,11 @@ export function CartEmail(props: CartEmailProps) {
                   !!errors[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]
                 }
               />
-            </React.Fragment>
+            </Fragment>
           ))}
       </FieldLayout>
       <Divider />
-    </React.Fragment>
+    </Fragment>
   );
 }
 

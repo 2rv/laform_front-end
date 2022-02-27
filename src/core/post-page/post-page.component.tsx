@@ -36,6 +36,7 @@ export function PostPageComponent(props: PostPageComponentProps) {
         isLoading={pending}
         title="ARTICLE_CREATE_FORM.RECOMENDATIONS.TITLE"
         items={recommendations}
+        emptyText="Рекомендации отсутствуют"
       />
       <BlockComment type={type} id={id} />
     </SectionLayout>

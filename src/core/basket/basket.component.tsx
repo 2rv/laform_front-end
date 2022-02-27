@@ -1,10 +1,11 @@
+import { Formik } from 'formik';
 import styled from 'styled-components';
 import { TitlePrimary } from '../../lib/element/title';
 import { SectionLayout } from '../../lib/element/layout';
 import { THEME_SIZE } from '../../lib/theme';
 import { TextSecondary } from '../../lib/element/text';
-import { CartSign, CartTables, FormContainer } from './frames';
 import { BasketComponentProps } from './basket.type';
+import { CartSign, CartTables, FormComponent } from './frames';
 
 export function BasketComponent(props: BasketComponentProps) {
   const {
@@ -16,6 +17,9 @@ export function BasketComponent(props: BasketComponentProps) {
     sewingProducts,
     masterProducts,
     patternProducts,
+    initialValues,
+    validate,
+    onSubmit,
     ...otherProps
   } = props;
   return (
@@ -32,7 +36,23 @@ export function BasketComponent(props: BasketComponentProps) {
             masterProducts={masterProducts}
             patternProducts={patternProducts}
           />
-          <FormContainer isAuth={isAuth} {...otherProps} />
+
+          <Formik
+            initialValues={initialValues}
+            validate={validate}
+            onSubmit={onSubmit}
+            enableReinitialize
+          >
+            {(formik) => (
+              <form onSubmit={formik.handleSubmit}>
+                <FormComponent
+                  formik={formik}
+                  isAuth={isAuth}
+                  {...otherProps}
+                />
+              </form>
+            )}
+          </Formik>
         </SectionLayout>
       )}
       {!isAuth && <CartSign />}

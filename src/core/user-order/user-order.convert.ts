@@ -27,6 +27,8 @@ export const convertUserOrder = (data: BasicPurchaseType): UserOrderData => {
       comment: purchase.comment,
       promoCodeDiscount: purchase.promoCodeDiscount,
       deliveryType: purchase.deliveryType,
+      sdekPointAddress: purchase.sdekPointAddress,
+      sdekTariffName: purchase.sdekTariffName,
     },
     products: products,
     price: price,
