@@ -1,0 +1,37 @@
+{
+  "ORDER_TITLE": "Order number",
+  "USER_ORDER_TITLE": "My purchase",
+  "ORDERS_TITLE": "Order list",
+  "TABLE_HEADER": {
+    "ORDER_ITEMS": "Order goods",
+    "PARAMETERS": "Parameters",
+    "QUANTITY": "Quantity",
+    "TOTAL_PRICE": "Total price",
+    "ORDER": "Order",
+    "DETAILS": "Details",
+    "DELIVERY_DATA": "Delivery data",
+    "TOTAL": "Total",
+    "STATE": "Status"
+  },
+  "FORM": {
+    "TITLE": "About order",
+    "FULL_NAME_TITLE": "Full name",
+    "FULL_NAME_PLACEHOLDER": "Full name not specified",
+    "EMAIL_TITLE": "Mail",
+    "EMAIL_PLACEHOLDER": "Email not specified",
+    "ADRESS_TITLE": "Address",
+    "ADRESS_PLACEHOLDER": "Address not specified",
+    "PHONE_NUMBER_TITLE": "Contact number",
+    "PHONE_NUMBER_PLACEHOLDER": "Contact phone number not specified",
+    "PROMO_CODE_TITLE": "Promo code",
+    "PROMO_CODE_PLACEHOLDER": "Promo code not specified",
+    "COMMENT_TITLE": "Order note",
+    "COMMENT_PLACEHOLDER": "Notes not specified",
+    "PICKUP_POINT_ADDRESS": "Pickup point address",
+    "SELECTED_TARIFF": "Selected tariff",
+    "DATA": "Data",
+    "ORDER_STATUS": "Order status",
+    "SAVE": "Save data",
+    "SUCCESS": "The order status has been successfully changed."
+  }
+}

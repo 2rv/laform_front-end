@@ -15,5 +15,6 @@
   "YOUR_EMAIL_IS_WRONG": "Ваш старый Email некорректен",
   "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Код верификации имеет не правильный Email",
   "CATEGORY_ALREADY_EXISTS": "Данная категория уже существует",
-  "PRODUCT_WAS_PURCHASED": "Данный продукт был куплен и его нельзя удалить"
+  "PRODUCT_WAS_PURCHASED": "Данный продукт был куплен и его нельзя удалить",
+  "ERROR": "Ошибка"
 }

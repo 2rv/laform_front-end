@@ -1,7 +1,8 @@
 {
-	"TITLE": "Рассылка",
-	"NOTIFICATION_SUCCESSFULLY_SENDED": "Уведомление успешно отправлено",
-	"FIELD_TITLE": "Тема письма",
-	"FIELD_PLACEHOLDER": "Например: Новые товары в разделе мастер-классы",
-	"BUTTON_CREATE": "Создать"
+  "TITLE": "Рассылка",
+  "NOTIFICATION_SUCCESSFULLY_SENDED": "Уведомление успешно отправлено",
+  "FIELD_TITLE": "Тема письма",
+  "FIELD_PLACEHOLDER": "Например: Новые товары в разделе мастер-классы",
+  "BUTTON_CREATE": "Создать",
+  "NO_SUPPORT_TABLE": "Не поддерживаются таблицы"
 }

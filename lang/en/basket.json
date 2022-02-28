@@ -3,13 +3,12 @@
     "TITLE": "Basket",
     "IS_EMPTY": "There is nothing in your cart yet",
     "GO_TO_BASKET": "Go to cart",
-    "ADD_TO_BASKET": "Add to Shopping Cart",
-    "REMOTE": "Remote"
+    "ADD_TO_BASKET": "Add to Shopping Cart"
   },
   "FORM": {
-    "TITLE": "Checkout",
+    "TITLE": "Order",
     "ADDITIONAL": "Additional",
-    "CREATE_ORDER": "Checkout",
+    "CREATE_ORDER": "Create order",
     "FIELD": {
       "SHIPPING_METHOD_TITLE": "Shipping method",
       "SHIPPING_METHOD_PLACEHOLDER": "Choose a shipping method",
@@ -40,7 +39,7 @@
       "NEED_FULLNAME": "Full name is required",
       "NEED_PHONE": "Phone number required",
       "NEED_CONFIRM_EMAIL": "To buy a product, you need to confirm your email",
-      "NEED_TYPE_DELIVERY": "Select delivery type"
+      "NEED_TYPE_DELIVERY": "Select shipping method"
     },
     "CART_TABLES": {
       "SEWING_GOODS": "Goods for sewing",

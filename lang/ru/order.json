@@ -1,0 +1,38 @@
+{
+  "ORDER_TITLE": "Заказ номер",
+  "USER_ORDER_TITLE": "Моя покупка",
+  "ORDERS_TITLE": "Список заказов",
+  "FIND": "Поиск по номеру заказа",
+  "TABLE_HEADER": {
+    "ORDER_ITEMS": "Товары заказа",
+    "PARAMETERS": "Параметры",
+    "QUANTITY": "Количество",
+    "TOTAL_PRICE": "Итоговая цена",
+    "ORDER": "Заказ",
+    "DETAILS": "Подробности",
+    "DELIVERY_DATA": "Данные доставки",
+    "TOTAL": "Итого",
+    "STATE": "Состояние"
+  },
+  "FORM": {
+    "TITLE": "О заказе",
+    "FULL_NAME_TITLE": "ФИО",
+    "FULL_NAME_PLACEHOLDER": "ФИО не указан",
+    "EMAIL_TITLE": "Почта",
+    "EMAIL_PLACEHOLDER": "Почта не указана",
+    "ADRESS_TITLE": "Адрес",
+    "ADRESS_PLACEHOLDER": "Адрес не указан",
+    "PHONE_NUMBER_TITLE": "Контактный телефон",
+    "PHONE_NUMBER_PLACEHOLDER": "Контактный телефон не указан",
+    "PROMO_CODE_TITLE": "Промокод",
+    "PROMO_CODE_PLACEHOLDER": "Промокод не указан",
+    "COMMENT_TITLE": "Примечание к заказу",
+    "COMMENT_PLACEHOLDER": "Примечания не указаны",
+    "PICKUP_POINT_ADDRESS": "Адрес пункта ПВЗ",
+    "SELECTED_TARIFF": "Выбранный тариф",
+    "DATA": "Данные",
+    "ORDER_STATUS": "Статус заказа",
+    "SAVE": "Сохранить данные",
+    "SUCCESS": "Статус заказа был успешно изменен."
+  }
+}

@@ -1,18 +1,5 @@
 {
   "HEADER": "Настройки",
-  "USER_INFO": {
-    "TITLE": "Основная информация",
-    "FULLNAME": {
-      "TITLE": "Ваше ФИО",
-      "PLACEHOLDER": "Фамилия, имя и отчество"
-    },
-    "PHONE": {
-      "TITLE": "Контактный номер телефона",
-      "PLACEHOLDER": "+7 (000) 000 00 00"
-    },
-    "SUCCESS": "Данные успешно обновлены",
-    "SUBMIT": "Сохранить"
-  },
   "CHANGE_PASSWORD": {
     "TITLE": "Сменить пароль",
     "OLD_PASSWORD": {
@@ -69,5 +56,27 @@
   "LOGOUT": {
     "TITLE": "Выйти из аккаунта",
     "BUTTON": "Выйти"
+  },
+  "USER_INFO": {
+    "TITLE": "Данные для доставки",
+    "FULLNAME_TITLE": "Ваше ФИО",
+    "FULLNAME_PLACEHOLDER": "Фамилия, имя и отчество",
+    "PHONE_TITLE": "Контактный номер телефона",
+    "PHONE_PLACEHOLDER": "+7 (000) 000 00 00",
+    "COUNTRY_TITLE": "Страна",
+    "COUNTRY_PLACEHOLDER": "Выберите страну",
+    "CITY_TITLE": "Город",
+    "CITY_PLACEHOLDER": "Выберите город",
+    "STREET_TITLE": "Улица",
+    "STREET_PLACEHOLDER": "Выберите улицу",
+    "HOUSE_TITLE": "Дом",
+    "HOUSE_PLACEHOLDER": "Выберите дом",
+    "POSTAL_CODE_TITLE": "Почтовый индекс",
+    "POSTAL_CODE_PLACEHOLDER": "Введите город или индекс",
+    "YOUR_ADDRESS": "Ваш адрес: ",
+    "NO_RESULT": "Нет результатов",
+    "SUBMIT": "Сохранить",
+    "SUCCESS": "Данные успешно обновлены",
+    "DIDNT_FIND_ADDRESS": "Не нашли свой адрес? — введите его в примечание к заказу!"
   }
 }

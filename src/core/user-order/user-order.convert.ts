@@ -73,7 +73,7 @@ function masterItemConvert(data: BasicPurchaseProductType): TableItemData {
     vendorCode: data.masterClassId?.vendorCode,
     totalPrice: totalPrice,
     params: {
-      program: 'Удаленная',
+      program: true,
       createdDate: data.createdDate,
     },
   };

@@ -1,18 +1,5 @@
 {
   "HEADER": "Settings",
-  "USER_INFO": {
-    "TITLE": "Basic information",
-    "FULLNAME": {
-      "TITLE": "Your full name",
-      "PLACEHOLDER": "Full name"
-    },
-    "PHONE": {
-      "TITLE": "Contact phone number",
-      "PLACEHOLDER": "+7 (000) 000 00 00"
-    },
-    "SUCCESS": "Data updated successfully",
-    "SUBMIT": "Save"
-  },
   "CHANGE_PASSWORD": {
     "TITLE": "Change password",
     "OLD_PASSWORD": {
@@ -69,5 +56,27 @@
   "LOGOUT": {
     "TITLE": "Sign out of your account",
     "BUTTON": "Sign out"
+  },
+  "USER_INFO": {
+    "TITLE": "Shipping data",
+    "FULLNAME_TITLE": "Your full name",
+    "FULLNAME_PLACEHOLDER": "Surname, name and patronymic",
+    "PHONE_TITLE": "Сontact phone number",
+    "PHONE_PLACEHOLDER": "+7 (000) 000 00 00",
+    "COUNTRY_TITLE": "The country",
+    "COUNTRY_PLACEHOLDER": "Choose the country",
+    "CITY_TITLE": "City",
+    "CITY_PLACEHOLDER": "Choose city",
+    "STREET_TITLE": "Street",
+    "STREET_PLACEHOLDER": "Choose a street",
+    "HOUSE_TITLE": "House",
+    "HOUSE_PLACEHOLDER": "Choose a house",
+    "POSTAL_CODE_TITLE": "Postcode",
+    "POSTAL_CODE_PLACEHOLDER": "Enter city or postcode",
+    "YOUR_ADDRESS": "Your address: ",
+    "NO_RESULT": "No results",
+    "SUBMIT": "Save",
+    "SUCCESS": "Data updated successfully",
+    "DIDNT_FIND_ADDRESS": "Didn't find your address? - enter it in the note to the order!"
   }
 }

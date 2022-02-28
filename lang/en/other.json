@@ -1,7 +1,12 @@
 {
   "BUY": "Buy",
   "SELECT": "Select",
+  "RESET": "Reset",
+  "SAVE": "Save",
+  "CANCEL": "Cancel",
   "SELECTED": "Selected",
+  "SIGN_IN": "Log in",
+  "SIGN_UP": "Sign up",
   "VALUTE": "rub.",
   "AMOUNT": "Amount",
   "PURCHASED": "Purchased",
@@ -9,16 +14,10 @@
   "ARE_YOU_SURE_TO_DISABLE_PRODUCT": "Are you sure you want to disable this produkt?",
   "YES": "Yes",
   "NO": "No",
-  "CANCEL": "Cancel",
   "USERS_LIST": "Users",
-  "LIST_IS_EMPTY": "List is empty",
-  "NOTHING_FOUND": "Nothing found",
-  "SAVE": "Save",
   "VENDOR_CODE": "Vendor code:",
   "GET_PURCHASES_HISTORY": "To gain access to the purchase history, you must: login or register",
   "LEAVE_REVIEW": "To leave a review, you must: login or register",
-  "SIGN_UP": "Sign up",
-  "SIGN_IN": "Log in",
   "EMAIL_NOT_CONFIRMED": "Email not confirmed",
   "INCORRECT_CODE": "Incorrect code",
   "SEARCH_PRODUCT": "Search product",
@@ -35,12 +34,15 @@
     "SIZE_COLOR_PRICE": "Size: {{size}}, Color: {{color}}, Price: {{price}}",
     "SIZE_PRICE": "Size: {{size}}, Price: {{price}}",
     "COLOR_PRICE": "Color: {{color}}, Price: {{price}}",
-    "PRODUCT_PRICE": "Price товара: "
+    "PRODUCT_PRICE": "Product price: "
   },
-  "CATEGORY_FILTER": {
+  "FILTER": {
     "ALL": "All",
-    "FROM_A_TO_Z": "From a to z",
-    "FROM_Z_TO_A": "From z to a"
+    "FROM_A_TO_Z": "From A to Z",
+    "FROM_Z_TO_A": "From Z to A",
+    "BY_POPULARITY": "Popularity",
+    "NEW": "New ones first",
+    "OLD": "Old ones first"
   },
   "FROM": "From",
   "TO": "To",
@@ -50,5 +52,8 @@
   "PICKUP_ADDRESS": "Pickup address",
   "LAFORME_ADDRESS0": "199106, Russia, St. Petersburg, st. Novgorodskaya, 23, lit.A",
   "NO_DESCRIPTION": "No description",
-  "IMAGES_MISSING": "Image missing"
+  "IMAGES_MISSING": "Image missing",
+  "NO_RECOMMENDATIONS": "No recommendations",
+  "NOTHING_FOUND": "Nothing found",
+  "LIST_IS_EMPTY": "List is empty"
 }

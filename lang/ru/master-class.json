@@ -1,0 +1,47 @@
+{
+  "CREATE": {
+    "TITLE": "Создание мастер-класса",
+    "SUB_TITLE": "Основная информация",
+    "NAME_TITLE": "Название товара",
+    "NAME_PLACEHOLDER": "Введите название",
+    "MODIFIER_TITLE": "Плашка",
+    "MODIFIER_PLACEHOLDER": "Например - Хит",
+    "VENDOR_CODE_TITLE": "Артикул",
+    "VENDOR_CODE_PLACEHOLDER": "Введите артикул",
+    "DESCRIPTION_TITLE": "Описание",
+    "DESCRIPTION_PLACEHOLDER": "Укажите описание",
+    "MATERIAL": "Материалы",
+    "ARTICLE": "Статья",
+    "DISCOUNT_TITLE": "Скидка (%)",
+    "DISCOUNT_PLACEHOLDER": "Укажите скидку",
+    "PRICE_TITLE": "Цена Руб.",
+    "PRICE_PLACEHOLDER": "Укажите цену",
+    "VISIBILITY_TITLE": "Видимость",
+    "VISIBILITY_PLACEHOLDER": "Показан в списке",
+    "IN_ENGLISH_TITLE": "На английском",
+    "IN_ENGLISH_PLACEHOLDER": "Товар на английском",
+    "SAVE": "Сохранить",
+    "CREATE": "Создать мастер-класс",
+    "CREATED": "Мастер-класс успешно создан",
+    "UPDATED": "Мастер-класс успешно обновлён",
+    "REMOVED": "Мастер-класс успешно удалён",
+    "SAVING": "Идёт сохранение, подождите",
+    "REMOVING": "Идёт удаление, подождите"
+  },
+  "PAGE": {
+    "ACCESS_FRONT_VIA": "Доступ к статье истекает через",
+    "TIME_EXPIRED": "{{text}} или {{date}}",
+    "MATERIALS": "Материалы"
+  },
+  "PRODUCT": {
+    "MATERIAL_TAB": "Материалы",
+    "RECOMMENDATION_TAB": "Рекомендации",
+    "COMMENT_TAB": "Отзывы",
+    "MATERIAL": "Материалы",
+    "RECOMMENDATION": "Рекомендации"
+  },
+  "LIST": {
+    "TITLE": "Мастер-классы",
+    "FIND": "Найти мастер-классы"
+  }
+}

@@ -119,35 +119,35 @@ export function PostsContainer() {
 export const filterOptions = [
   {
     id: 0,
-    tid: 'ARTICLES.FILTER_OPTIONS.ALL',
+    tid: 'OTHER.FILTER.ALL',
   },
   {
     id: 1,
-    tid: 'ARTICLES.FILTER_OPTIONS.NEW',
+    tid: 'OTHER.FILTER.NEW',
     sort: 'date',
     by: 'DESC',
   },
   {
     id: 2,
-    tid: 'ARTICLES.FILTER_OPTIONS.OLD',
+    tid: 'OTHER.FILTER.OLD',
     sort: 'date',
     by: 'ASC',
   },
   {
     id: 3,
-    tid: 'OTHER.CATEGORY_FILTER.FROM_A_TO_Z',
+    tid: 'OTHER.FILTER.FROM_A_TO_Z',
     sort: 'title',
     by: 'ASC',
   },
   {
     id: 4,
-    tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
+    tid: 'OTHER.FILTER.FROM_Z_TO_A',
     sort: 'title',
     by: 'DESC',
   },
   {
     id: 3,
-    tid: 'По популярности',
+    tid: 'OTHER.FILTER.BY_POPULARITY',
     sort: 'clicks',
     by: 'DESC',
   },

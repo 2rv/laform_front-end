@@ -25,10 +25,10 @@ export function MasterClassPageComponent(props) {
       <HeaderCase>
         <Title tid={name} />
         <div>
-          <TextLight tid="MASTER_CLASSES.PAGE.ACCESS_FRONT_VIA" />
+          <TextLight tid="MASTER_CLASS.PAGE.ACCESS_FRONT_VIA" />
           &nbsp;
           <TextSecondary
-            tid="MASTER_CLASSES.PAGE.TIME_EXPIRED"
+            tid="MASTER_CLASS.PAGE.TIME_EXPIRED"
             tvalue={{
               text: ConvertTime(expiredDate),
               date: ConvertDate(expiredDate),
@@ -40,7 +40,7 @@ export function MasterClassPageComponent(props) {
         <BlockReactEditor data={materials} enableReInitialize readOnly />
       )}
       <BlockReactEditor
-        titleTid="PATTERNS.MATERIALS"
+        titleTid="MASTER_CLASS.PAGE.MATERIALS"
         data={articleText}
         enableReInitialize
         readOnly

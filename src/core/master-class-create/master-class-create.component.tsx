@@ -10,7 +10,7 @@ export function MasterClassCreateComponent(
   const { initialValues, onSubmit, onRemove, validate, isEdit, state } = props;
   return (
     <SectionLayout>
-      <TitlePrimary tid="MASTER_CLASSES.CREATE.TITLE" />
+      <TitlePrimary tid="MASTER_CLASS.CREATE.TITLE" />
       <Formik
         initialValues={initialValues}
         validate={validate}

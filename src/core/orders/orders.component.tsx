@@ -10,11 +10,11 @@ import { PURCHASE_STATUS_INFO } from 'src/lib/basic-types';
 import { BlockDatepicker } from 'src/lib/common/block-datepicker';
 
 const headersTable = [
-  'ORDERS.TABLE.HEADER.ORDER',
-  'ORDERS.TABLE.HEADER.DETAILS',
-  'ORDERS.TABLE.HEADER.DELIVERY_DATA',
-  'ORDERS.TABLE.HEADER.TOTAL',
-  'ORDERS.TABLE.HEADER.STATE',
+  'ORDER.TABLE_HEADER.ORDER',
+  'ORDER.TABLE_HEADER.DETAILS',
+  'ORDER.TABLE_HEADER.DELIVERY_DATA',
+  'ORDER.TABLE_HEADER.TOTAL',
+  'ORDER.TABLE_HEADER.STATE',
 ];
 const statusCategories = Object.values(PURCHASE_STATUS_INFO).map(
   (item, index) => ({
@@ -32,9 +32,9 @@ export function OrdersComponent(props: OrdersComponentProps) {
 
   return (
     <SectionLayout>
-      <TitlePrimary tid="ORDERS.TITLE" />
+      <TitlePrimary tid="ORDER.ORDERS_TITLE" />
       <SearchBlock
-        findPlaceholderTid="Поиск по номеру заказа"
+        findPlaceholderTid="ORDER.FIND"
         statuses={statusCategories}
         handleFilter={onFilter}
         disabled={pending}
@@ -49,7 +49,7 @@ export function OrdersComponent(props: OrdersComponentProps) {
       >
         <Table headers={headersTable} items={orders} />
         {pending && !orders.length && (
-          <TextSecondary tid="ORDERS.LIST_IS_EMPTY" />
+          <TextSecondary tid="OTHER.LIST_IS_EMPTY" />
         )}
       </InfiniteScroll>
     </SectionLayout>

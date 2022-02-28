@@ -79,7 +79,7 @@ export type ParamsProps = {
   option?: string;
   color?: string;
   size?: string;
-  program?: string;
+  program?: boolean;
   type?: 0 | 1 | 2 | 3;
   category?: string;
   count?: number;

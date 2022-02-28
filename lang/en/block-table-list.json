@@ -1,23 +1,24 @@
 {
-	"SAVE_CHANGES": "Save changes",
-	"PARAMS": {
-		"PROGRAM": "Program:",
-		"COLOR": "Color:",
-		"SIZE": "Size:",
-		"FORMAT": "Format:",
-		"CATEGORY": "Category:",
-		"QUANTITY": "Quantity:",
-		"COMPLEXITY": "Complexity:",
-		"FULL_NAME": "Full name:",
-		"CITY": "City:",
-		"EMAIL": "Email:",
-		"CREATED_DATE": "Created date:",
-		"DILIVERY_INFO": "Delivery address:",
-		"STATUS": "Status:",
-		"DELIVERY_METHOD": "Delivery method:",
-		"PAYMENT_METHOD": "Payment method:",
-		"PHONE": "Contact phone:",
-		"OPTION": "Option:",
-		"LENGTH": "Length:"
-	}
+  "SAVE_CHANGES": "Save changes",
+  "PARAMS": {
+    "PROGRAM": "Program:",
+    "REMOTE_PROGRAM": "remote",
+    "COLOR": "Color:",
+    "SIZE": "Size:",
+    "FORMAT": "Format:",
+    "CATEGORY": "Category:",
+    "QUANTITY": "Quantity:",
+    "COMPLEXITY": "Complexity:",
+    "FULL_NAME": "Full name:",
+    "CITY": "City:",
+    "EMAIL": "Email:",
+    "CREATED_DATE": "Created date:",
+    "DILIVERY_INFO": "Delivery address:",
+    "STATUS": "Status:",
+    "DELIVERY_METHOD": "Delivery method:",
+    "PAYMENT_METHOD": "Payment method:",
+    "PHONE": "Contact phone:",
+    "OPTION": "Option:",
+    "LENGTH": "Length:"
+  }
 }

@@ -77,7 +77,7 @@ export function SearchFilterContainer(props: SearchFilterContainerProps) {
       statuses={[
         {
           id: -1,
-          tid: 'OTHER.CATEGORY_FILTER.ALL',
+          tid: 'OTHER.FILTER.ALL',
         },
       ].concat(statuses)}
       values={values}

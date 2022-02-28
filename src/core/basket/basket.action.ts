@@ -151,7 +151,7 @@ export function createOrderAction(
       } else {
         dispatch({
           type: BASKET_ACTION_TYPE.CREATE_ORDER_ERROR,
-          errorMessage: 'Произошла ошибка',
+          errorMessage: 'ERROR',
         });
       }
 

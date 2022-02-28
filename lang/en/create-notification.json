@@ -3,5 +3,6 @@
   "NOTIFICATION_SUCCESSFULLY_SENDED": "Notification sent successfully",
   "FIELD_TITLE": "Letter subject",
   "FIELD_PLACEHOLDER": "For example: New products in the master classes section",
-  "BUTTON_CREATE": "Create"
+  "BUTTON_CREATE": "Create",
+  "NO_SUPPORT_TABLE": "Tables not supported"
 }

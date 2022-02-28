@@ -8,10 +8,10 @@ import { OrderForm } from './order.form';
 import { CenteredSpinner } from 'src/lib/element/spinner';
 
 const headersTable = [
-  'ORDER_NUMBER.TABLE.HEADER.ORDER_ITEMS',
-  'ORDER_NUMBER.TABLE.HEADER.PARAMETERS',
-  'ORDER_NUMBER.TABLE.HEADER.QUANTITY',
-  'ORDER_NUMBER.TABLE.HEADER.TOTAL_PRICE',
+  'ORDER.TABLE_HEADER.ORDER_ITEMS',
+  'ORDER.TABLE_HEADER.PARAMETERS',
+  'ORDER.TABLE_HEADER.QUANTITY',
+  'ORDER.TABLE_HEADER.TOTAL_PRICE',
 ];
 
 export function OrderComponent(props: OrderComponentProps) {
@@ -20,7 +20,7 @@ export function OrderComponent(props: OrderComponentProps) {
   return (
     <SectionLayout>
       <div>
-        <TitlePrimary tid="ORDER_NUMBER.TABLE.TITLE" />
+        <TitlePrimary tid="ORDER_TITLE" />
         &nbsp;
         <BoldTitle tid={state.order?.orderNumber || ''} />
       </div>

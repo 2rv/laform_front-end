@@ -59,10 +59,16 @@ export function MasterClassProductComponent(
         </Container>
       </SectionLayout>
 
-      <TabBlocks tabItems={['Материалы', 'Рекомендации', 'Отзывы']}>
+      <TabBlocks
+        tabItems={[
+          'MASTER_CLASS.PRODUCT.MATERIAL_TAB',
+          'MASTER_CLASS.PRODUCT.RECOMMENDATION_TAB',
+          'MASTER_CLASS.PRODUCT.COMMENT_TAB',
+        ]}
+      >
         {materials ? (
           <BlockReactEditor
-            titleTid="PATTERNS.MATERIALS"
+            titleTid="MASTER_CLASS.PRODUCT.MATERIAL"
             data={materials}
             enableReInitialize
             readOnly
@@ -73,8 +79,8 @@ export function MasterClassProductComponent(
         <CardListBlock
           isLoading={pending}
           items={recommendations}
-          title="MASTER_CLASSES.MASTER_CLASSES.RECOMMENDATIONS"
-          emptyText="Рекомендации отсутствуют"
+          title="MASTER_CLASS.PRODUCT.RECOMMENDATION"
+          emptyText="OTHER.NO_RECOMMENDATIONS"
         />
         <BlockComment type={0} id={id} />
       </TabBlocks>

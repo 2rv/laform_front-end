@@ -9,20 +9,19 @@ import HOME from './home.json';
 import SIGNUP from './signup.json';
 import LOGIN from './login.json';
 import INFORMATION_DIRECTORY_LIST from './information-directory-list.json';
-import FAQ_LIST from './faq-list.json';
+import FAQ from './faq.json';
 import AUTH from './auth.json';
 import SETTINGS from './settings.json';
 import OTHER from './other.json';
 import PATTERNS from './patterns.json';
 import ARTICLES from './articles.json';
 import SEWING_GOODS from './sewing-goods.json';
-import MASTER_CLASSES from './master-classes.json';
+import MASTER_CLASS from './master-class.json';
 import ERROR_PAGE from './error-page.json';
 import BASKET from './basket.json';
 import PURCHASE from './purchase.json';
 import COMPILATION from './compilation.json';
-import ORDERS from './orders.json';
-import ORDER_NUMBER from './order-number.json';
+import ORDER from './order.json';
 import NOTIFICATION from './notification.json';
 import UNIT from './unit.json';
 import PROFILE from './profile.json';
@@ -56,20 +55,19 @@ export const EN = {
     SIGNUP,
     LOGIN,
     INFORMATION_DIRECTORY_LIST,
-    FAQ_LIST,
+    FAQ,
     AUTH,
     SETTINGS,
     OTHER,
     PATTERNS,
     ARTICLES,
     SEWING_GOODS,
-    MASTER_CLASSES,
+    MASTER_CLASS,
     ERROR_PAGE,
     BASKET,
     PURCHASE,
     COMPILATION,
-    ORDER_NUMBER,
-    ORDERS,
+    ORDER,
     NOTIFICATION,
     UNIT,
     PROFILE,

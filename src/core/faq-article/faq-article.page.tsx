@@ -27,70 +27,70 @@ function FaqArticlePage(props: FaqArticleContainerProps) {
 export const FaqPage = () => <FaqArticlePage name={FAQ_ROUTE_PATH} />;
 export const FaqSizePage = () => (
   <FaqArticlePage
-    titleTid="FAQ_LIST.GENERAL.HOW_TO_CHOOSE_SIZE"
+    titleTid="FAQ.HOW_TO_CHOOSE_SIZE"
     name={FAQ_SIZE_ROUTE_PATH}
     key={FAQ_SIZE_ROUTE_PATH}
   />
 );
 export const FaqDeliveryPaymentPage = () => (
   <FaqArticlePage
-    titleTid="FAQ_LIST.SHIPPING_AND_PAYMENT"
+    titleTid="FAQ.SHIPPING_AND_PAYMENT"
     name={FAQ_DELIVERY_PAYMENT_ROUTE_PATH}
     key={FAQ_DELIVERY_PAYMENT_ROUTE_PATH}
   />
 );
 export const FaqLegalInformationPage = () => (
   <FaqArticlePage
-    titleTid="OTHER.LEGAL_INFORMATION"
+    titleTid="FAQ.LEGAL_INFORMATION"
     name={FAQ_LEGAL_INFORMATION_ROUTE_PATH}
     key={FAQ_LEGAL_INFORMATION_ROUTE_PATH}
   />
 );
 export const FaqPrivacyPolicyPage = () => (
   <FaqArticlePage
-    titleTid="OTHER.PRIVACY_POLICY"
+    titleTid="FAQ.PRIVACY_POLICY"
     name={FAQ_PRIVACY_POLICY_ROUTE_PATH}
     key={FAQ_PRIVACY_POLICY_ROUTE_PATH}
   />
 );
 export const FaqTermsOfUsePage = () => (
   <FaqArticlePage
-    titleTid="OTHER.TERMS_OF_USE"
+    titleTid="FAQ.TERMS_OF_USE"
     name={FAQ_TERMS_OF_USE_ROUTE_PATH}
     key={FAQ_TERMS_OF_USE_ROUTE_PATH}
   />
 );
 export const FaqAboutUsPage = () => (
   <FaqArticlePage
-    titleTid="HEADER.MENU_ITEMS.ABOUT_US"
+    titleTid="FAQ.ABOUT_US"
     name={FAQ_ABOUT_US_ROUTE_PATH}
     key={FAQ_ABOUT_US_ROUTE_PATH}
   />
 );
 export const FaqHowPrintPage = () => (
   <FaqArticlePage
-    titleTid="FAQ_LIST.SALES.HOW_TO_PRINT_PATTERN"
+    titleTid="FAQ.HOW_TO_PRINT_PATTERN"
     name={FAQ_HOW_PRINT_ROUTE_PATH}
     key={FAQ_HOW_PRINT_ROUTE_PATH}
   />
 );
 export const FaqHowGluePage = () => (
   <FaqArticlePage
-    titleTid="FAQ_LIST.HOW_TO_GLUE_PATTERN"
+    titleTid="FAQ.HOW_TO_GLUE_PATTERN"
     name={FAQ_HOW_GLUE_ROUTE_PATH}
     key={FAQ_HOW_GLUE_ROUTE_PATH}
   />
 );
 export const FaqLaformePatternsPage = () => (
   <FaqArticlePage
-    titleTid="LAFORME PATTERNS"
+    titleTid="FAQ.LAFORME_PATTERNS"
     name={FAQ_LAFORME_PATTERNS_ROUTE_PATH}
     key={FAQ_LAFORME_PATTERNS_ROUTE_PATH}
   />
 );
 export const FaqLaformeStuioPage = () => (
   <FaqArticlePage
-    titleTid="LAFORME STUDIO"
+    titleTid="FAQ.LAFORME_STUDIO"
     name={FAQ_LAFORME_STUDIO_ROUTE_PATH}
     key={FAQ_LAFORME_STUDIO_ROUTE_PATH}
   />

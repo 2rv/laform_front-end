@@ -15,5 +15,6 @@
   "YOUR_EMAIL_IS_WRONG": "Your old email is incorrect",
   "VERIFICATION_CODE_PAYLOAD_HAS_WRONG_EMAIL": "Verification code payload has wrong email",
   "CATEGORY_ALREADY_EXISTS": "Category already exists",
-  "PRODUCT_WAS_PURCHASED": "This product was purchased and its cannot be deleted"
+  "PRODUCT_WAS_PURCHASED": "This product was purchased and its cannot be deleted",
+  "ERROR": "Error"
 }

@@ -15,12 +15,7 @@ export function DeleteProduct(props: DeleteProductProps) {
   const { isNull, deleteFn, disabled } = props;
 
   if (isNull) {
-    return (
-      <ButtonSecondary
-        tid="MASTER_CLASSES.CREATE.FORM.BUTTON.RESET"
-        type="reset"
-      />
-    );
+    return <ButtonSecondary tid="OTHER.RESET" type="reset" />;
   }
 
   return (

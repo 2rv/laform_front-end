@@ -127,23 +127,23 @@ export function PatternsContainer() {
 export const filterOptions = [
   {
     id: 0,
-    tid: 'PATTERNS.FILTER_OPTIONS.ALL',
+    tid: 'OTHER.FILTER.ALL',
   },
   {
     id: 1,
-    tid: 'OTHER.CATEGORY_FILTER.FROM_A_TO_Z',
+    tid: 'OTHER.FILTER.FROM_A_TO_Z',
     sort: 'title',
     by: 'ASC',
   },
   {
     id: 2,
-    tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
+    tid: 'OTHER.FILTER.FROM_Z_TO_A',
     sort: 'title',
     by: 'DESC',
   },
   {
     id: 3,
-    tid: 'По популярности',
+    tid: 'OTHER.FILTER.BY_POPULARITY',
     sort: 'clicks',
     by: 'DESC',
   },

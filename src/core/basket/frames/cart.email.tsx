@@ -96,15 +96,13 @@ export function CartEmail(props: CartEmailProps) {
               />
               <ButtonSecondary
                 tid={
-                  isSending
-                    ? `${count}`
-                    : 'BASKET.FORM.FORM.CART_EMAIL.SEND_CODE'
+                  isSending ? `${count}` : 'BASKET.FORM.CART_EMAIL.SEND_CODE'
                 }
                 onClick={sendCode}
                 disabled={isSending || !!errors[ORDER_FIELD_NAME.EMAIL]}
               />
               <ButtonSecondary
-                tid="BASKET.FORM.FORM.CART_EMAIL.CONFIRM_CODE"
+                tid="BASKET.FORM.CART_EMAIL.CONFIRM_CODE"
                 onClick={confirmCode}
                 disabled={
                   !values[ORDER_FIELD_NAME.EMAIL] ||

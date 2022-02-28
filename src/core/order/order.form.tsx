@@ -34,12 +34,12 @@ export function OrderForm(props: OrderFormProps) {
           <form onSubmit={handleSubmit}>
             <SectionLayout>
               <SectionLayout type="SMALL">
-                <Title tid="ORDER_NUMBER.FORM.TITLE" />
+                <Title tid="ORDER.FORM.TITLE" />
                 <SectionLayout type="TEXT">
                   <FieldLayout type="double" adaptive>
                     <BasicField
-                      titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.FULL_NAME"
-                      placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.FULL_NAME"
+                      titleTid="ORDER.FORM.FULL_NAME_TITLE"
+                      placeholderTid="ORDER.FORM.FULL_NAME_PLACEHOLDER"
                       name={ORDER_FIELD_NAME.FULL_NAME}
                       value={values[ORDER_FIELD_NAME.FULL_NAME]}
                       onChange={handleChange}
@@ -47,8 +47,8 @@ export function OrderForm(props: OrderFormProps) {
                       disabled={true}
                     />
                     <BasicField
-                      titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.EMAIL"
-                      placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.EMAIL"
+                      titleTid="ORDER.FORM.EMAIL_TITLE"
+                      placeholderTid="ORDER.FORM.EMAIL_PLACEHOLDER"
                       name={ORDER_FIELD_NAME.EMAIL}
                       value={values[ORDER_FIELD_NAME.EMAIL]}
                       onChange={handleChange}
@@ -56,8 +56,8 @@ export function OrderForm(props: OrderFormProps) {
                       disabled={true}
                     />
                     <BasicField
-                      titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CURRENT_CITY"
-                      placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.MOSKVA"
+                      titleTid="ORDER.FORM.ADRESS_TITLE"
+                      placeholderTid="ORDER.FORM.ADRESS_PLACEHOLDER"
                       name={ORDER_FIELD_NAME.ADRESS}
                       value={values[ORDER_FIELD_NAME.ADRESS]}
                       onChange={handleChange}
@@ -65,8 +65,8 @@ export function OrderForm(props: OrderFormProps) {
                       disabled={true}
                     />
                     <BasicField
-                      titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CONTACT_NUMBER"
-                      placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.CONTACT_NUMBER"
+                      titleTid="ORDER.FORM.PHONE_NUMBER_TITLE"
+                      placeholderTid="ORDER.FORM.PHONE_NUMBER_PLACEHOLDER"
                       name={ORDER_FIELD_NAME.PHONE_NUMBER}
                       value={values[ORDER_FIELD_NAME.PHONE_NUMBER]}
                       onChange={handleChange}
@@ -74,8 +74,8 @@ export function OrderForm(props: OrderFormProps) {
                       disabled={true}
                     />
                     <BasicField
-                      titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PROMO_CODE"
-                      placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.ENTER_PROMO"
+                      titleTid="ORDER.FORM.PROMO_CODE_TITLE"
+                      placeholderTid="ORDER.FORM.PROMO_CODE_PLACEHOLDER"
                       name={ORDER_FIELD_NAME.PROMO_CODE}
                       value={values[ORDER_FIELD_NAME.PROMO_CODE]}
                       onChange={handleChange}
@@ -84,8 +84,8 @@ export function OrderForm(props: OrderFormProps) {
                     />
                   </FieldLayout>
                   <TextareaField
-                    titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.ORDER_NOTE"
-                    placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
+                    titleTid="ORDER.FORM.COMMENT_TITLE"
+                    placeholderTid="ORDER.FORM.COMMENT_PLACEHOLDER"
                     name={ORDER_FIELD_NAME.COMMENT}
                     value={values[ORDER_FIELD_NAME.COMMENT]}
                     onChange={handleChange}
@@ -111,14 +111,14 @@ export function OrderForm(props: OrderFormProps) {
 
                 {order?.sdekPointAddress && (
                   <FieldLayout>
-                    <Secondary tid="Адресс пункта ПВЗ" />
+                    <Secondary tid="ORDER.FORM.PICKUP_POINT_ADDRESS" />
                     <Primary tid={order.sdekPointAddress} />
                   </FieldLayout>
                 )}
 
                 {order?.sdekTariffName && (
                   <FieldLayout>
-                    <Secondary tid="Выбранный тариф" />
+                    <Secondary tid="ORDER.FORM.SELECTED_TARIFF" />
                     <Primary tid={order.sdekTariffName} />
                   </FieldLayout>
                 )}
@@ -133,10 +133,10 @@ export function OrderForm(props: OrderFormProps) {
               <Divider />
 
               <SectionLayout type="SMALL">
-                <Title tid="ORDER_NUMBER.FORM.DATA" />
+                <Title tid="ORDER.FORM.DATA" />
                 <FieldLayout type="double" adaptive>
                   <FieldSelect
-                    titleTid="ORDER_NUMBER.FORM.ORDER_STATUS"
+                    titleTid="ORDER.FORM.ORDER_STATUS"
                     options={PURCHASE_STATUS_SELECT}
                     name={ORDER_FIELD_NAME.ORDER_STATUS}
                     value={values[ORDER_FIELD_NAME.ORDER_STATUS]}
@@ -145,14 +145,12 @@ export function OrderForm(props: OrderFormProps) {
                   />
                   <Button
                     type="submit"
-                    tid="ORDER_NUMBER.FORM.SAVE_DATA"
+                    tid="ORDER.FORM.SAVE"
                     disabled={updatePending}
                   />
                 </FieldLayout>
                 {updatePending && <CenteredSpinner />}
-                {updateSuccess && (
-                  <SuccessAlert tid="ORDER_NUMBER.FORM.ORDER_STATUS_CHANGE_SUCCESS_MESSAGE" />
-                )}
+                {updateSuccess && <SuccessAlert tid="ORDER.FORM.SUCCESS" />}
                 {updateError && <ErrorAlert tid={updateError} />}
               </SectionLayout>
             </SectionLayout>

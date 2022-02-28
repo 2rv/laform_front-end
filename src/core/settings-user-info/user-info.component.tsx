@@ -34,11 +34,11 @@ export function UserInfoComponent(props: UserInfoComponentProps) {
 
   return (
     <SectionLayout type="SMALL">
-      <Title tid="BASKET.FORM.FIELDS.TITLES.DELIVERY_DATA" />
+      <Title tid="SETTINGS.USER_INFO.TITLE" />
       <FieldLayout type="double" adaptive>
         <BasicField
-          titleTid="SETTINGS.USER_INFO.FULLNAME.TITLE"
-          placeholderTid="SETTINGS.USER_INFO.FULLNAME.PLACEHOLDER"
+          titleTid="SETTINGS.USER_INFO.FULLNAME_TITLE"
+          placeholderTid="SETTINGS.USER_INFO.FULLNAME_PLACEHOLDER"
           name={USER_INFO_FIELD_NAME.FULL_NAME}
           value={values[USER_INFO_FIELD_NAME.FULL_NAME]}
           onChange={handleChange}
@@ -46,8 +46,8 @@ export function UserInfoComponent(props: UserInfoComponentProps) {
           error={getFieldError(USER_INFO_FIELD_NAME.FULL_NAME)}
         />
         <BasicField
-          titleTid="SETTINGS.USER_INFO.PHONE.TITLE"
-          placeholderTid="SETTINGS.USER_INFO.PHONE.PLACEHOLDER"
+          titleTid="SETTINGS.USER_INFO.PHONE_TITLE"
+          placeholderTid="SETTINGS.USER_INFO.PHONE_PLACEHOLDER"
           name={USER_INFO_FIELD_NAME.PHONE}
           value={values[USER_INFO_FIELD_NAME.PHONE]}
           onChange={handleChange}
@@ -58,53 +58,53 @@ export function UserInfoComponent(props: UserInfoComponentProps) {
       {children}
       <FieldLayout type="double" adaptive>
         <AsyncReactSelect
-          titleTid="Страна"
-          placeholderTid="Выберите страну"
+          titleTid="SETTINGS.USER_INFO.COUNTRY_TITLE"
+          placeholderTid="SETTINGS.USER_INFO.COUNTRY_PLACEHOLDER"
           value={values.country?.label ? values.country : ''}
           onChange={change.country}
           loadOptions={find.country}
-          noResults={() => 'Нет результатов'}
+          noResults={() => 'SETTINGS.USER_INFO.NO_RESULT'}
         />
         <AsyncReactSelect
-          titleTid="Город"
-          placeholderTid="Выберите город"
+          titleTid="SETTINGS.USER_INFO.CITY_TITLE"
+          placeholderTid="SETTINGS.USER_INFO.CITY_PLACEHOLDER"
           value={values.city?.label ? values.city : ''}
           onChange={change.city}
           loadOptions={find.city}
-          noResults={() => 'Нет результатов'}
+          noResults={() => 'SETTINGS.USER_INFO.NO_RESULT'}
           isDisabled={!values.country}
         />
         <AsyncReactSelect
-          titleTid="Улица"
-          placeholderTid="Выберите улицу"
+          titleTid="SETTINGS.USER_INFO.STREET_TITLE"
+          placeholderTid="SETTINGS.USER_INFO.STREET_PLACEHOLDER"
           value={values.street?.label ? values.street : ''}
           onChange={change.street}
           loadOptions={find.street}
-          noResults={() => 'Нет результатов'}
+          noResults={() => 'SETTINGS.USER_INFO.NO_RESULT'}
           isDisabled={!values.city}
         />
         <AsyncReactSelect
-          titleTid="Дом"
-          placeholderTid="Выберите дом"
+          titleTid="SETTINGS.USER_INFO.HOUSE_TITLE"
+          placeholderTid="SETTINGS.USER_INFO.HOUSE_PLACEHOLDER"
           value={values.house?.label ? values.house : ''}
           onChange={change.house}
           loadOptions={find.house}
-          noResults={() => 'Нет результатов'}
+          noResults={() => 'SETTINGS.USER_INFO.NO_RESULT'}
           isDisabled={!values.street}
         />
         <AsyncReactSelect
-          titleTid="Почтовый индекс"
-          placeholderTid="Введите город или индекс"
+          titleTid="SETTINGS.USER_INFO.POSTAL_CODE_TITLE"
+          placeholderTid="SETTINGS.USER_INFO.POSTAL_CODE_PLACEHOLDER"
           value={values.postal_code?.label ? values.postal_code : ''}
           onChange={change.postal_code}
           loadOptions={find.postal_code}
-          noResults={() => 'Нет результатов'}
+          noResults={() => 'SETTINGS.USER_INFO.NO_RESULT'}
         />
       </FieldLayout>
 
       <TextCase>
         <div>
-          <SecondatyText tid="Ваш адрес —" />
+          <SecondatyText tid="SETTINGS.USER_INFO.YOUR_ADDRESS" />
           <PrimaryText
             tid={`
 				${Boolean(country) ? country + ', ' : ''}
@@ -117,7 +117,7 @@ export function UserInfoComponent(props: UserInfoComponentProps) {
           />
         </div>
         {(!street || !house) && (
-          <SecondatyText tid="Не нашли свой адрес? — введите его в примечание к заказу!" />
+          <SecondatyText tid="SETTINGS.USER_INFO.DIDNT_FIND_ADDRESS" />
         )}
       </TextCase>
 

@@ -1,0 +1,47 @@
+{
+  "CREATE": {
+    "TITLE": "Creating a master class",
+    "SUB_TITLE": "Basic information",
+    "NAME_TITLE": "Product Name",
+    "NAME_PLACEHOLDER": "Enter the title",
+    "MODIFIER_TITLE": "die",
+    "MODIFIER_PLACEHOLDER": "For example - Hit",
+    "VENDOR_CODE_TITLE": "Vendor code",
+    "VENDOR_CODE_PLACEHOLDER": "Enter vendor code",
+    "DESCRIPTION_TITLE": "Description",
+    "DESCRIPTION_PLACEHOLDER": "Specify a description",
+    "MATERIAL": "Materials",
+    "ARTICLE": "Article",
+    "DISCOUNT_TITLE": "A discount (%)",
+    "DISCOUNT_PLACEHOLDER": "Specify a discount",
+    "PRICE_TITLE": "Price",
+    "PRICE_PLACEHOLDER": "Specify the price (rub.)",
+    "VISIBILITY_TITLE": "Visibility",
+    "VISIBILITY_PLACEHOLDER": "Shown in the list",
+    "IN_ENGLISH_TITLE": "In English",
+    "IN_ENGLISH_PLACEHOLDER": "Product in English",
+    "SAVE": "Save",
+    "CREATE": "Create a master class",
+    "CREATED": "Master class successfully created",
+    "UPDATED": "Master class successfully updated",
+    "REMOVED": "Master class successfully removed",
+    "SAVING": "Saving in progress, please wait",
+    "REMOVING": "Deletion in progress, please wait"
+  },
+  "PAGE": {
+    "ACCESS_FRONT_VIA": "Article access expires in",
+    "TIME_EXPIRED": "{{text}} or {{date}}",
+    "MATERIALS": "Materials"
+  },
+  "PRODUCT": {
+    "MATERIAL_TAB": "Materials",
+    "RECOMMENDATION_TAB": "Recommendations",
+    "COMMENT_TAB": "Comment",
+    "MATERIAL": "Materials",
+    "RECOMMENDATION": "Recommendations"
+  },
+  "LIST": {
+    "TITLE": "Master classes",
+    "FIND": "Find master classes"
+  }
+}

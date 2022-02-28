@@ -31,7 +31,7 @@ export function FieldSelect(props: FieldSelectProps) {
         >
           {defaultTid && (
             <option value={-1} selected disabled>
-              {defaultTid}
+              {text(defaultTid)}
             </option>
           )}
           {options.map(({ id, tid, tvalue }) => (

@@ -66,7 +66,7 @@ export function BlockParams(
         <div>
           <TextSecondary tid="BLOCK_TABLE_LIST.PARAMS.PROGRAM" />
           &nbsp;
-          <TextPrimary tid={program} />
+          <TextPrimary tid="BLOCK_TABLE_LIST.PARAMS.REMOTE_PROGRAM" />
         </div>
       )}
       {Boolean(type) && (

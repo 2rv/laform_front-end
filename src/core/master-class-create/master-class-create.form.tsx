@@ -74,12 +74,12 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
 
         <Divider />
 
-        <Title tid="Основная информация" />
+        <Title tid="MASTER_CLASS.CREATE.SUB_TITLE" />
 
         <FieldLayout type="double" adaptive>
           <BasicField
-            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.NAME"
-            placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
+            titleTid="MASTER_CLASS.CREATE.NAME_TITLE"
+            placeholderTid="MASTER_CLASS.CREATE.NAME_PLACEHOLDER"
             name={MASTER_CLASS_FIELD_NAME.NAME}
             value={values[MASTER_CLASS_FIELD_NAME.NAME]}
             error={getFieldError(MASTER_CLASS_FIELD_NAME.NAME)}
@@ -87,8 +87,8 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DICE_OF_GOODS"
-            placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.NAME"
+            titleTid="MASTER_CLASS.CREATE.MODIFIER_TITLE"
+            placeholderTid="MASTER_CLASS.CREATE.MODIFIER_PLACEHOLDER"
             name={MASTER_CLASS_FIELD_NAME.MODIFIER}
             value={values[MASTER_CLASS_FIELD_NAME.MODIFIER]}
             error={getFieldError(MASTER_CLASS_FIELD_NAME.MODIFIER)}
@@ -96,8 +96,8 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
             onBlur={handleBlur}
           />
           <BasicField
-            titleTid="Артикул"
-            placeholderTid="Введите артикул"
+            titleTid="MASTER_CLASS.CREATE.VENDOR_CODE_TITLE"
+            placeholderTid="MASTER_CLASS.CREATE.VENDOR_CODE_PLACEHOLDER"
             name={MASTER_CLASS_FIELD_NAME.VENDOR_CODE}
             value={values[MASTER_CLASS_FIELD_NAME.VENDOR_CODE]}
             error={getFieldError(MASTER_CLASS_FIELD_NAME.VENDOR_CODE)}
@@ -112,8 +112,8 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
         />
 
         <TextareaField
-          titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DESCRIPTION"
-          placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.DESCRIPTION"
+          titleTid="MASTER_CLASS.CREATE.DESCRIPTION_TITLE"
+          placeholderTid="MASTER_CLASS.CREATE.DESCRIPTION_PLACEHOLDER"
           name={MASTER_CLASS_FIELD_NAME.DESCRIPTION}
           value={values[MASTER_CLASS_FIELD_NAME.DESCRIPTION]}
           error={getFieldError(MASTER_CLASS_FIELD_NAME.DESCRIPTION)}
@@ -125,7 +125,7 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
         <Divider />
 
         <BlockReactEditor
-          titleTid="PATTERNS.CREATE.FORM.MATERIALS"
+          titleTid="MASTER_CLASS.CREATE.MATERIAL"
           handleChange={setEditorData(MASTER_CLASS_FIELD_NAME.MATERIAL)}
           data={values[MASTER_CLASS_FIELD_NAME.MATERIAL]}
           error={getFieldError(MASTER_CLASS_FIELD_NAME.MATERIAL)}
@@ -135,7 +135,7 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
         <Divider />
 
         <BlockReactEditor
-          titleTid="MASTER_CLASSES.CREATE.FORM.MASTER_CLASS_ARTICLE"
+          titleTid="MASTER_CLASS.CREATE.ARTICLE"
           handleChange={setEditorData(MASTER_CLASS_FIELD_NAME.ARTICLE)}
           data={values[MASTER_CLASS_FIELD_NAME.ARTICLE]}
           minHeight={100}
@@ -144,11 +144,12 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
 
         <Divider />
 
-        <Title tid="MASTER_CLASSES.CREATE.FORM.PRICE" />
+        <Title tid="MASTER_CLASS.CREATE.PRICE_TITLE" />
+
         <FieldLayout type="double" adaptive>
           <BasicField
-            placeholderTid="0"
-            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.DISCOUNT"
+            placeholderTid="MASTER_CLASS.CREATE.DISCOUNT_TITLE"
+            titleTid="MASTER_CLASS.CREATE.DISCOUNT_PLACEHOLDER"
             name={MASTER_CLASS_FIELD_NAME.DISCOUNT}
             value={values[MASTER_CLASS_FIELD_NAME.DISCOUNT]}
             error={getFieldError(MASTER_CLASS_FIELD_NAME.DISCOUNT)}
@@ -157,8 +158,8 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
             type="number"
           />
           <BasicField
-            placeholderTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.INDICATE_PRICE"
-            titleTid="MASTER_CLASSES.CREATE.FORM.PRICE"
+            placeholderTid="MASTER_CLASS.CREATE.PRICE_TITLE"
+            titleTid="MASTER_CLASS.CREATE.PRICE_PLACEHOLDER"
             name={MASTER_CLASS_FIELD_NAME.PRICE}
             value={values[MASTER_CLASS_FIELD_NAME.PRICE]}
             error={getFieldError(MASTER_CLASS_FIELD_NAME.PRICE)}
@@ -189,16 +190,16 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
 
         <FieldLayout type="double" adaptive>
           <FieldCheckbox
-            titleTid="MASTER_CLASSES.CREATE.FORM.FIELDS.TITLE.VISIBILITY"
-            labelTid="MASTER_CLASSES.CREATE.FORM.FIELDS.PLACEHOLDER.VISIBILITY"
+            titleTid="MASTER_CLASS.CREATE.VISIBILITY_TITLE"
+            labelTid="MASTER_CLASS.CREATE.VISIBILITY_PLACEHOLDER"
             name={MASTER_CLASS_FIELD_NAME.IS_PUBLIC}
             checked={values[MASTER_CLASS_FIELD_NAME.IS_PUBLIC]}
             onChange={handleChange}
             onBlur={handleBlur}
           />
           <FieldCheckbox
-            titleTid="На английском"
-            labelTid="Этот товар на английском"
+            titleTid="MASTER_CLASS.CREATE.IN_ENGLISH_TITLE"
+            labelTid="MASTER_CLASS.CREATE.IN_ENGLISH_PLACEHOLDER"
             name={MASTER_CLASS_FIELD_NAME.IN_ENGLISH}
             checked={values[MASTER_CLASS_FIELD_NAME.IN_ENGLISH]}
             onChange={handleChange}
@@ -210,9 +211,7 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
           <ButtonPrimary
             type="submit"
             tid={
-              isEdit
-                ? 'MASTER_CLASSES.CREATE.FORM.BUTTON.SAVE'
-                : 'MASTER_CLASSES.CREATE.FORM.BUTTON.CREATE_PRODUCT'
+              isEdit ? 'MASTER_CLASS.CREATE.SAVE' : 'MASTER_CLASS.CREATE.CREATE'
             }
           />
           <BlockDeleteProduct
@@ -222,17 +221,13 @@ export function MasterClassCreateForm(props: MasterClassCreateFormProps) {
           />
         </FieldLayout>
 
-        {createSuccess && (
-          <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_CREATED" />
-        )}
-        {removeSuccess && <SuccessAlert tid="Успешно удалено" />}
-        {updateSuccess && (
-          <SuccessAlert tid="MASTER_CLASSES.CREATE.PRODUCT_SUCCESSFULLY_UPDATED" />
-        )}
+        {createSuccess && <SuccessAlert tid="MASTER_CLASS.CREATE.CREATED" />}
+        {removeSuccess && <SuccessAlert tid="MASTER_CLASS.CREATE.REMOVED" />}
+        {updateSuccess && <SuccessAlert tid="MASTER_CLASS.CREATE.UPDATED" />}
         {(createPending || updatePending) && (
-          <InfoAlert tid="Идёт сохранение, подождите" />
+          <InfoAlert tid="MASTER_CLASS.CREATE.SAVING" />
         )}
-        {removePending && <InfoAlert tid="Идёт удаление, подождите" />}
+        {removePending && <InfoAlert tid="MASTER_CLASS.CREATE.REMOVING" />}
         {(createError || getError || removeError || updateError) && (
           <ErrorAlert
             tid={createError || getError || removeError || updateError || ''}

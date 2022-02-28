@@ -141,35 +141,35 @@ export function UsersContainer() {
 export const filterOptions = [
   {
     id: 0,
-    tid: 'Все',
+    tid: 'OTHER.FILTER.ALL',
   },
   {
     id: 1,
-    tid: 'Сначал новые',
+    tid: 'OTHER.FILTER.NEW',
     sort: 'date',
     by: 'DESC',
   },
   {
     id: 2,
-    tid: 'Сначала старые',
+    tid: 'OTHER.FILTER.OLD',
     sort: 'date',
     by: 'ASC',
   },
   {
     id: 3,
-    tid: 'OTHER.CATEGORY_FILTER.FROM_A_TO_Z',
+    tid: 'OTHER.FILTER.FROM_A_TO_Z',
     sort: 'login',
     by: 'ASC',
   },
   {
     id: 4,
-    tid: 'OTHER.CATEGORY_FILTER.FROM_Z_TO_A',
+    tid: 'OTHER.FILTER.FROM_Z_TO_A',
     sort: 'login',
     by: 'DESC',
   },
 ];
 const roleCategories = Object.values({
-  0: 'OTHER.CATEGORY_FILTER.ALL',
+  0: 'OTHER.FILTER.ALL',
   1: 'Заблокирован',
   2: 'Пользователь',
   3: 'Администратор',

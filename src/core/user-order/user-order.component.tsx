@@ -12,9 +12,10 @@ import { ButtonPrimary } from 'src/lib/element/button';
 import { TextPrimary, TextSecondary } from 'src/lib/element/text';
 
 const headersTable = [
-  'ORDER_NUMBER.TABLE.HEADER.ORDER_ITEMS',
-  'ORDER_NUMBER.TABLE.HEADER.PARAMETERS',
-  'ORDER_NUMBER.TABLE.HEADER.TOTAL_PRICE',
+  'ORDER.TABLE_HEADER.ORDER_ITEMS',
+  'ORDER.TABLE_HEADER.PARAMETERS',
+  'ORDER.TABLE_HEADER.QUANTITY',
+  'ORDER.TABLE_HEADER.TOTAL_PRICE',
 ];
 
 export function UserOrderComponent(props: UserOrderComponentProps) {
@@ -43,7 +44,7 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
     <SectionLayout>
       <LineCase>
         <div>
-          <TitlePrimary tid="ORDER_NUMBER.TABLE.MY_PURCHASE" />
+          <TitlePrimary tid="ORDER.USER_ORDER_TITLE" />
           &nbsp;
           <BoldTitle tid={orderNumber || ''} />
         </div>
@@ -53,43 +54,43 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
       <Table items={products} headers={headersTable} />
 
       <SectionLayout type="SMALL">
-        <Title tid="ORDER_NUMBER.FORM.TITLE" />
+        <Title tid="ORDER.FORM.TITLE" />
         <SectionLayout type="TEXT">
           <FieldLayout type="double" adaptive>
             <BasicField
-              titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.FULL_NAME"
-              placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.FULL_NAME"
+              titleTid="ORDER.FORM.FULL_NAME_TITLE"
+              placeholderTid="ORDER.FORM.FULL_NAME_PLACEHOLDER"
               value={fullName}
               disabled={true}
             />
             <BasicField
-              titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.EMAIL"
-              placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.EMAIL"
+              titleTid="ORDER.FORM.EMAIL_TITLE"
+              placeholderTid="ORDER.FORM.EMAIL_PLACEHOLDER"
               value={email}
               disabled={true}
             />
             <BasicField
-              titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CURRENT_CITY"
-              placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.MOSKVA"
+              titleTid="ORDER.FORM.ADRESS_TITLE"
+              placeholderTid="ORDER.FORM.ADRESS_PLACEHOLDER"
               value={address}
               disabled={true}
             />
             <BasicField
-              titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.CONTACT_NUMBER"
-              placeholderTid="ORDER_NUMBER.FORM.FIELDS.PLACEHOLDER.CONTACT_NUMBER"
+              titleTid="ORDER.FORM.PHONE_NUMBER_TITLE"
+              placeholderTid="ORDER.FORM.PHONE_NUMBER_PLACEHOLDER"
               value={phone}
               disabled={true}
             />
             <BasicField
-              titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.PROMO_CODE"
-              placeholderTid="Промокод отсутствует"
+              titleTid="ORDER.FORM.PROMO_CODE_TITLE"
+              placeholderTid="ORDER.FORM.PROMO_CODE_PLACEHOLDER"
               value={promoCode}
               disabled={true}
             />
           </FieldLayout>
           <TextareaField
-            titleTid="ORDER_NUMBER.FORM.FIELDS.TITLE.ORDER_NOTE"
-            placeholderTid="Примечания отсутствуют"
+            titleTid="ORDER.FORM.COMMENT_TITLE"
+            placeholderTid="ORDER.FORM.COMMENT_PLACEHOLDER"
             value={comment}
             disabled={true}
           />
@@ -111,21 +112,21 @@ export function UserOrderComponent(props: UserOrderComponentProps) {
 
           {sdekPointAddress && (
             <SectionLayout type="TEXT_SMALL">
-              <Secondary tid="Адресс пункта ПВЗ" />
+              <Secondary tid="ORDER.FORM.PICKUP_POINT_ADDRESS" />
               <Primary tid={sdekPointAddress} />
             </SectionLayout>
           )}
 
           {sdekTariffName && (
             <SectionLayout type="TEXT_SMALL">
-              <Secondary tid="Выбранный тариф" />
+              <Secondary tid="ORDER.FORM.SELECTED_TARIFF" />
               <Primary tid={sdekTariffName} />
             </SectionLayout>
           )}
 
           {typeof orderStatus === 'number' && (
             <SectionLayout type="TEXT_SMALL">
-              <Secondary tid="Статус заказа" />
+              <Secondary tid="ORDER.FORM.ORDER_STATUS" />
               <Primary tid={PURCHASE_STATUS[orderStatus]} />
             </SectionLayout>
           )}

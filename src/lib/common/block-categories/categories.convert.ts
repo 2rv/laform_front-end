@@ -10,7 +10,7 @@ export function convertForCreate(value: string, type: 0 | 1 | 2 | 3 | 4) {
 
 export function convertCategories(
   categories: BasicCategoryType[],
-  defaultTid: string = 'OTHER.CATEGORY_FILTER.ALL',
+  defaultTid: string = 'OTHER.FILTER.ALL',
 ): CategoryOptionType[] {
   if (defaultTid) {
     categories.unshift({

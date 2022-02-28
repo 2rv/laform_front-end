@@ -61,7 +61,7 @@ export function MailingComponent(props: MailingComponentProps) {
                     type="submit"
                     disabled={createPending}
                   />
-                  <InfoAlert tid="Нет поддержки таблиц" />
+                  <InfoAlert tid="CREATE_NOTIFICATION.NO_SUPPORT_TABLE" />
                 </FieldLayout>
               </SectionLayout>
             </form>

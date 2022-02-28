@@ -15,9 +15,9 @@ export function MasterClassesComponent(props: MasterClassesComponentProps) {
 
   return (
     <SectionLayout>
-      <TitlePrimary tid="MASTER_CLASSES.MASTER_CLASSES.TITLE" />
+      <TitlePrimary tid="MASTER_CLASS.LIST.TITLE" />
       <SearchBlock
-        findPlaceholderTid="MASTER_CLASSES.MASTER_CLASSES.FIELD.FIND_MASTER_CLASSES"
+        findPlaceholderTid="MASTER_CLASS.LIST.FIND"
         filterOptions={filterOptions}
         categories={categories}
         handleFilter={onFilter}
