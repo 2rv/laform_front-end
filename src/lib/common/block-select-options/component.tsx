@@ -114,8 +114,8 @@ export function ProductSelectOptionsComponent(props: CartModalComponentProps) {
               isPending
                 ? 'Подождите'
                 : isCart
-                ? 'BASKET.GO_TO_BASKET'
-                : 'BASKET.ADD_TO_BASKET'
+                ? 'BASKET.OTHER.GO_TO_BASKET'
+                : 'BASKET.OTHER.ADD_TO_BASKET'
             }
           />
           {typeof like === 'boolean' && (

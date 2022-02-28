@@ -169,11 +169,11 @@ export function BlockPhone() {
     return (
       <Container>
         <SectionLayout type="SMALL">
-          <Text tid="Позвонить нам" />
+          <Text tid="FOOTER.PHONE.TITLE" />
 
           {isEdit ? (
             <Field
-              placeholderTid="Введите номер телефона"
+              placeholderTid="FOOTER.PHONE.PHONE_NUMBER_PLACEHOLDER"
               value={state.phone}
               onChange={onChange}
               disabled={state.savePending}
@@ -189,7 +189,7 @@ export function BlockPhone() {
         <Button onClick={toggleEdit} disabled={state.savePending}>
           <ChangeIcon />
         </Button>
-        {state.saveSuccess && <SuccessAlert tid="Успешно" />}
+        {state.saveSuccess && <SuccessAlert tid="FOOTER.PHONE.SUCCESS" />}
         {state.saveError && <ErrorAlert tid={state.saveError} />}
       </Container>
     );
@@ -197,7 +197,7 @@ export function BlockPhone() {
     if (!state.phone) return null;
     return (
       <SectionLayout type="SMALL">
-        <Text tid="Позвонить нам" />
+        <Text tid="FOOTER.PHONE.TITLE" />
         <Link
           tid={state.phone}
           path={`tel:${state.phone}`}

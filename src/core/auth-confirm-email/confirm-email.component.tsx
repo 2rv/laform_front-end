@@ -49,15 +49,15 @@ export function ConfirmEmailComponent(props: ConfirmEmailComponentProps) {
         />
 
         <BasicField
-          titleTid="Код подтверждения"
-          placeholderTid="Введите код подтверждения"
+          titleTid="AUTH.CONFIRM_EMAIL.FIELD_CONFIRM_CODE_LABEL"
+          placeholderTid="AUTH.CONFIRM_EMAIL.FIELD_CONFIRM_CODE_PLACEHOLDER"
           onChange={onChange}
           value={value}
           disabled={confirmSuccess}
         />
 
         <ButtonPrimary
-          tid="Подтвердить почту"
+          tid="AUTH.CONFIRM_EMAIL.BUTTON_CONFIRM_EMAIL"
           onClick={onConfirmEmail}
           disabled={pending || !value || confirmSuccess}
         />

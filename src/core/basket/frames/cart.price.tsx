@@ -19,8 +19,8 @@ export function CartPrice(props: CartPriceProps) {
         <TextLight
           tid={
             promoDiscount
-              ? 'BASKET.FORM.FOOTER.DISCOUNT_PRICE'
-              : 'BASKET.FORM.FOOTER.PRICE'
+              ? 'BASKET.FORM.CART_PRICE.DISCOUNT_PRICE'
+              : 'BASKET.FORM.CART_PRICE.PRICE'
           }
         />
         <div>
@@ -32,7 +32,7 @@ export function CartPrice(props: CartPriceProps) {
         </div>
       </Content>
       <Content>
-        <TextLight tid="BASKET.FORM.FOOTER.SHIPPING_PRICE" />
+        <TextLight tid="BASKET.FORM.CART_PRICE.SHIPPING_PRICE" />
         <div>
           <Price price={deliveryPrice} />
           &nbsp;
@@ -41,7 +41,7 @@ export function CartPrice(props: CartPriceProps) {
       </Content>
       <VerticalDivider />
       <Content>
-        <TextLight tid="BASKET.FORM.FOOTER.TOTAL_ORDER_PRICE" />
+        <TextLight tid="BASKET.FORM.CART_PRICE.TOTAL_ORDER_PRICE" />
         <div>
           <TitlePrice price={totalPrice} />
           &nbsp;

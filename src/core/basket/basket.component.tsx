@@ -24,9 +24,9 @@ export function BasketComponent(props: BasketComponentProps) {
   } = props;
   return (
     <SectionLayout>
-      <Title tid="BASKET.TITLE" />
+      <Title tid="BASKET.OTHER.TITLE" />
       {isEmpty ? (
-        <TextSecondary tid="BASKET.CART_IS_EMPTY" />
+        <TextSecondary tid="BASKET.OTHER.IS_EMPTY" />
       ) : (
         <SectionLayout>
           <CartTables

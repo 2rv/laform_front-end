@@ -1,108 +1,54 @@
 {
-	"TITLE": "Basket",
-	"CART_IS_EMPTY": "There is nothing in your shopping cart yet.",
-	"GO_TO_BASKET": "Go to Basket",
-	"ADD_TO_BASKET": "Add to Basket",
-	"ALERT": "To view the list of purchases, authorization is required, your password has been sent to the mail",
-	"HEADERS_GOODS": {
-		"SEWING_GOODS": "Sewing goods",
-		"PARAMETERS": "Parameters",
-		"QUANTITY": "Quantity",
-		"TOTAL_PRICE": "Total price"
-	},
-	"HEADERS_MASTER": {
-		"MASTER_CLASSES": "Master-classes",
-		"PARAMETERS": "Parameters",
-		"TOTAL_PRICE": "Total price"
-	},
-	"HEADERS_PATTERNS": {
-		"PATTERNS": "Patterns",
-		"PARAMETERS": "Parameters",
-		"TOTAL_PRICE": "Total price"
-	},
-	"TABLE": {
-		"HEADER": {
-			"SEEWING_GOODS": "Sewing goods",
-			"MASTER_CLASSES": "Master-classes",
-			"PATTERNS": "Patterns",
-			"PARAMETERS": "Parameters",
-			"COUNT": "Quantity",
-			"TOTAL_PRICE": "Total price"
-		},
-		"PARAMETERS": {
-			"CATEGORY": "Category",
-			"SIZE": "Size",
-			"OUTERWEAR": "Outerwear",
-			"PROGRAM": "Program",
-			"REMOTE": "Remote",
-			"APPLY_CHANGES": "Apply changes",
-			"COLOR": "Color",
-			"FORMAT": "Format",
-			"FORMATS": {
-				"TITLE": "Format",
-				"PRINTED": "Printed",
-				"ELECTRONIC": "Electronic"
-			},
-			"COLORS": {
-				"TITLE": "Color",
-				"WHITE": "White",
-				"GREEN": "Green",
-				"RED": "Red"
-			}
-		}
-	},
-	"FORM": {
-		"TITLE": "Order registration",
-		"ACTIVATE": "Activate",
-		"FIELDS": {
-			"TITLES": {
-				"EMAIL": "Email",
-				"CONFIRM_CODE": "Confirm code",
-				"CONTACT_DETAILS": "Contact details",
-				"DELIVERY_DATA": "Delivery data",
-				"ADDITIONAL": "Additional",
-				"FULL_NAME": "Your full name",
-				"CURRENT_CITY": "Enter delivery address",
-				"CONVENIET_DELIVERY_METHOD": "Specify a convenient delivery method",
-				"CONTACT_PHONE_NUMBER": "Enter your contact phone number",
-				"ORDER_NOTE": "Order note",
-				"CONVENIET_PAYMENT_METHOD": "Specify a convenient payment method",
-				"PROMO_CODE": "Promocode",
-				"SAVE_DATA": "Save data"
-			},
-			"PLACEHOLDER": {
-				"EMAIL": "Your Email",
-				"FULL_NAME": "Full name",
-				"CURRENT_CITY": "San francisko",
-				"CONTACT_PHONE_NUMBER": "+7 000 000 00 00",
-				"ORDER_NOTE": "Product wishes",
-				"PROMO_CODE": "Your promo",
-				"WRITE_CODE": "Write code"
-			},
-			"SELECT_OPTIONS": {
-				"CONVENIET_DELIVERY_METHOD": {
-					"MAIL": "Email"
-				},
-				"CONVENIET_PAYMENT_METHOD": {
-					"ONLINE": "Online"
-				}
-			}
-		},
-		"BUTTON": {
-			"SEND_VERIFICATION_CODE_TO_EMAIL": "Send verification code to email",
-			"VERIFICATION_EMAIL": "Verificate email"
-		},
-		"FOOTER": {
-			"PRICE": "Price",
-			"DISCOUNT_PRICE": "Discount price",
-			"SHIPPING_PRICE": "Shipping price",
-			"TOTAL_ORDER_PRICE": "Total order price",
-			"CONFIRM_ORDER": "Confirm order"
-		},
-		"PROMO_CODE_SUCCESS": "Promo code {{discount}}% successfully applied",
-		"FORM_SEND_SUCCESS": "Order has been successfully completed",
-		"EMAIL_CODE_SENT_SUCCESS": "The code was sent successfully. You can resend the code.",
-		"EMAIL_CONFIRMED_SUCCESS": "Email confirmed successfully",
-		"SELECT_DELIVERY_METHOD": "You must select a delivery method"
-	}
+  "OTHER": {
+    "TITLE": "Basket",
+    "IS_EMPTY": "There is nothing in your cart yet",
+    "GO_TO_BASKET": "Go to cart",
+    "ADD_TO_BASKET": "Add to Shopping Cart",
+    "REMOTE": "Remote"
+  },
+  "FORM": {
+    "TITLE": "Checkout",
+    "ADDITIONAL": "Additional",
+    "CREATE_ORDER": "Checkout",
+    "FIELD": {
+      "SHIPPING_METHOD_TITLE": "Shipping method",
+      "SHIPPING_METHOD_PLACEHOLDER": "Choose a shipping method",
+      "ORDER_NOTE_TITLE": "Order note",
+      "ORDER_NOTE_PLACEHOLDER": "Product wishes"
+    },
+    "CART_EMAIL": {
+      "EMAIL_TITLE": "Email",
+      "EMAIL_PLACEHOLDER": "Enter Email",
+      "CONFIRM_CODE_TITLE": "confirmation code",
+      "CONFIRM_CODE_PLACEHOLDER": "Enter confirmation code",
+      "SEND_CODE": "Submit Code",
+      "CONFIRM_CODE": "Confirm email"
+    },
+    "CART_PROMOCODE": {
+      "PROMO_CODE_TITLE": "promo code",
+      "PROMO_CODE_PLACEHOLDER": "Enter promo code",
+      "CONFIRM_CODE": "Redeem Code"
+    },
+    "CART_PRICE": {
+      "PRICE": "Price",
+      "DISCOUNT_PRICE": "discount price",
+      "SHIPPING_PRICE": "Delivery price",
+      "TOTAL_ORDER_PRICE": "Total order price"
+    },
+    "CART_ALERT": {
+      "SUCCESS": "Order successfully generated",
+      "NEED_FULLNAME": "Full name is required",
+      "NEED_PHONE": "Phone number required",
+      "NEED_CONFIRM_EMAIL": "To buy a product, you need to confirm your email",
+      "NEED_TYPE_DELIVERY": "Select delivery type"
+    },
+    "CART_TABLES": {
+      "SEWING_GOODS": "Goods for sewing",
+      "MASTER_CLASSES": "Master classes",
+      "PATTERNS": "patterns",
+      "PARAMETERS": "Parameters",
+      "QUANTITY": "Quantity",
+      "TOTAL_PRICE": "total price"
+    }
+  }
 }

@@ -12,7 +12,9 @@ export function FileField(props: FilefieldProps) {
     <Container>
       {titleTid && <Title tid={titleTid} />}
       <Content error={!!error}>
-        {placeholderTid && <Text tid={file?.file ? 'Файл' : placeholderTid} />}
+        {placeholderTid && (
+          <Text tid={file?.file ? 'OTHER.FILE' : placeholderTid} />
+        )}
         <Input type="file" {...restProps} />
       </Content>
       {error && <ErrorField errorTid={error} />}

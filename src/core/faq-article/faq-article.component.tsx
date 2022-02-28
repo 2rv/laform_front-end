@@ -36,7 +36,7 @@ export function FaqArticleComponent(props: FaqArticleComponentProps) {
         />
       )}
       {(getPending || savePending) && <CenteredSpinner />}
-      {saveSuccess && <SuccessAlert tid="Успешно обновлено" />}
+      {saveSuccess && <SuccessAlert tid="FAQ_LIST.SUCCESSFULLY_UPDATED" />}
     </SectionLayout>
   );
 }

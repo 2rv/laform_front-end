@@ -37,7 +37,6 @@ export const reducers = combineReducers({
   [LANG_STORE_NAME]: langStore,
   [NAVIGATION_STORE_NAME]: navigationStore,
   [BASKET_STORE_NAME]: basketStore,
-  // Сверху нужное снизу лучше бы отвязать от стора
 
   [MASTER_CLASS_PAGE_STORE_NAME]: masterClassPageStore,
   [PATTERNS_PAGE_STORE_NAME]: patternsPageStore,

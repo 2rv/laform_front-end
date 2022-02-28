@@ -13,7 +13,8 @@
     },
     "BUTTON": {
       "SUBMIT": "Sign in to your account"
-    }
+    },
+    "SUCCESS": "Successfully"
   },
   "FOOTER": {
     "HAVENT_ACCOUNT_YET": "Don't have an account yet?",

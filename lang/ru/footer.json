@@ -1,29 +1,36 @@
 {
-	"MENU": {
-		"SECTION1": {
-			"TITLE": "LaForme",
-			"MY_ACCOUNT": "Мой аккаунт",
-			"MY_PURCHASES": "Мои покупки",
-			"WISH_LIST": "Cписок избранного",
-			"LA_FORME_PATTERNS": "LaForme PATTERNS",
-			"LA_FORME_STUDIO": "LaForme STUDIO"
-		},
-		"SECTION2": {
-			"TITLE": "Полезные ссылки",
-			"HOW_TO_CHOOSE_SIZE": "Как выбрать размер",
-			"DELIVERY_AND_PAYMENT": "Доставка и оплата",
-			"QNA": "Вопросы и ответы"
-		},
-		"SECTION3": {
-			"TITLE": "Связаться",
-			"LEGAL_INFO": "Юридическая информация",
-			"PRIVACY_POLICY": "Политика конфиденциальности",
-			"TERMS_OF_USE": "Пользовательское соглашение",
-			"FEEDBACK": "Обратная связь"
-		}
-	},
-	"COPYRIGHT": {
-		"BRAND": "2021. LAFORME.RU.",
-		"ALL_RIGHTS_RESERVED": "Все права защищены."
-	}
+  "MENU": {
+    "SECTION1": {
+      "TITLE": "LaForme",
+      "MY_ACCOUNT": "Мой аккаунт",
+      "MY_PURCHASES": "Мои покупки",
+      "WISH_LIST": "Cписок избранного",
+      "LA_FORME_PATTERNS": "LaForme PATTERNS",
+      "LA_FORME_STUDIO": "LaForme STUDIO"
+    },
+    "SECTION2": {
+      "TITLE": "Полезные ссылки",
+      "HOW_TO_CHOOSE_SIZE": "Как выбрать размер",
+      "DELIVERY_AND_PAYMENT": "Доставка и оплата",
+      "QNA": "Вопросы и ответы",
+      "HOW_TO_PRINT_PATTERN": "Как распечатать",
+      "HOW_TO_GLUE_PATTERN": "Как склеить выкройку"
+    },
+    "SECTION3": {
+      "TITLE": "Связаться",
+      "LEGAL_INFO": "Юридическая информация",
+      "PRIVACY_POLICY": "Политика конфиденциальности",
+      "TERMS_OF_USE": "Пользовательское соглашение",
+      "FEEDBACK": "Обратная связь"
+    }
+  },
+  "COPYRIGHT": {
+    "BRAND": "2021. LAFORME.RU.",
+    "ALL_RIGHTS_RESERVED": "Все права защищены."
+  },
+  "PHONE": {
+    "TITLE": "Позвонить нам",
+    "PHONE_NUMBER_PLACEHOLDER": "Введите номер телефона",
+    "SUCCESS": "Успешно"
+  }
 }

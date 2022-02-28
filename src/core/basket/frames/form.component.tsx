@@ -49,7 +49,7 @@ export function FormComponent(props: BasketFormComponentProps) {
   return (
     <SectionLayout type="SMALL">
       {isPending && <LoaderPrimary />}
-      <TitlePrimary tid="Оформление заказа" />
+      <TitlePrimary tid="BASKET.FORM.TITLE" />
 
       <BlockUserInfo onChange={setFieldValue}>
         <CartEmail isAuth={isAuth} formik={formik} />
@@ -61,12 +61,12 @@ export function FormComponent(props: BasketFormComponentProps) {
         <>
           <FieldLayout type="double" adaptive>
             <FieldSelect
-              titleTid="Тип доставки"
+              titleTid="BASKET.FORM.FIELD.SHIPPING_METHOD_TITLE"
               name={ORDER_FIELD_NAME.DELIVERY_TYPE}
               value={values[ORDER_FIELD_NAME.DELIVERY_TYPE]}
               onChange={handleChange}
               onBlur={handleBlur}
-              defaultTid="Выберите метод доставки"
+              defaultTid="BASKET.FORM.FIELD.SHIPPING_METHOD_PLACEHOLDER"
               options={DILIVERY_OPTIONS}
             />
           </FieldLayout>
@@ -91,18 +91,20 @@ export function FormComponent(props: BasketFormComponentProps) {
           )}
           {+values[ORDER_FIELD_NAME.DELIVERY_TYPE] === 1 && (
             <>
-              <Title tid="Адрес самовывоза " />
-              <TextPrimary tid="199106, Санкт-Петербург, ул. Новгородская, д.23, лит.А" />
+              <Title tid="OTHER.PICKUP_ADDRESS" />
+              &nbsp;
+              <TextPrimary tid="OTHER.LAFORME_ADDRESS0" />
             </>
           )}
           <Divider />
         </>
       )}
 
-      <Title tid="BASKET.FORM.FIELDS.TITLES.ADDITIONAL" />
+      <Title tid="BASKET.FORM.ADDITIONAL" />
+
       <TextareaField
-        titleTid="BASKET.FORM.FIELDS.TITLES.ORDER_NOTE"
-        placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.ORDER_NOTE"
+        titleTid="BASKET.FORM.FIELD.ORDER_NOTE_TITLE"
+        placeholderTid="BASKET.FORM.FIELD.ORDER_NOTE_PLACEHOLDER"
         name={ORDER_FIELD_NAME.DESCRIPTION}
         value={values[ORDER_FIELD_NAME.DESCRIPTION]}
         onChange={handleChange}
@@ -126,7 +128,7 @@ export function FormComponent(props: BasketFormComponentProps) {
       <Divider />
       <FieldLayout type="double" adaptive>
         <Button
-          tid="BASKET.FORM.FOOTER.CONFIRM_ORDER"
+          tid="BASKET.FORM.CREATE_ORDER"
           disabled={isPending || !values[ORDER_FIELD_NAME.EMAIL_CONFIRMED]}
           type="submit"
         />
