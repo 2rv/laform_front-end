@@ -69,8 +69,8 @@ export function CartEmail(props: CartEmailProps) {
     <Fragment>
       <FieldLayout type="double" adaptive>
         <BasicField
-          titleTid="BASKET.FORM.FIELDS.TITLES.EMAIL"
-          placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.EMAIL"
+          titleTid="BASKET.FORM.CART_EMAIL.EMAIL_TITLE"
+          placeholderTid="BASKET.FORM.CART_EMAIL.EMAIL_PLACEHOLDER"
           name={ORDER_FIELD_NAME.EMAIL}
           value={values[ORDER_FIELD_NAME.EMAIL]}
           onChange={handleChange}
@@ -86,8 +86,8 @@ export function CartEmail(props: CartEmailProps) {
           ) : (
             <Fragment>
               <BasicField
-                titleTid="BASKET.FORM.FIELDS.TITLES.CONFIRM_CODE"
-                placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.WRITE_CODE"
+                titleTid="BASKET.FORM.CART_EMAIL.CONFIRM_CODE_TITLE"
+                placeholderTid="BASKET.FORM.CART_EMAIL.CONFIRM_CODE_PLACEHOLDER"
                 name={ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE}
                 value={values[ORDER_FIELD_NAME.EMAIL_CONFIRM_CODE]}
                 onChange={handleChange}
@@ -98,13 +98,13 @@ export function CartEmail(props: CartEmailProps) {
                 tid={
                   isSending
                     ? `${count}`
-                    : 'BASKET.FORM.BUTTON.SEND_VERIFICATION_CODE_TO_EMAIL'
+                    : 'BASKET.FORM.FORM.CART_EMAIL.SEND_CODE'
                 }
                 onClick={sendCode}
                 disabled={isSending || !!errors[ORDER_FIELD_NAME.EMAIL]}
               />
               <ButtonSecondary
-                tid="BASKET.FORM.BUTTON.VERIFICATION_EMAIL"
+                tid="BASKET.FORM.FORM.CART_EMAIL.CONFIRM_CODE"
                 onClick={confirmCode}
                 disabled={
                   !values[ORDER_FIELD_NAME.EMAIL] ||

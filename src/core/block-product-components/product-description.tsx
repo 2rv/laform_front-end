@@ -14,7 +14,7 @@ export function ProductDescription(props: ProductDescriptionProps) {
   const { description, descriptionOld, limit = 200 } = props;
 
   if (!description && !descriptionOld) {
-    return <TextPrimary tid="Описание отсутствует" />;
+    return <TextPrimary tid="OTHER.NO_DESCRIPTION" />;
   }
 
   const [more, setMore] = useState(true);

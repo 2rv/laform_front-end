@@ -54,8 +54,8 @@ export function CartButtonComponent(props: CartModalComponentProps) {
             : price === 0 && !isCart
             ? 'Бесплатно'
             : isCart
-            ? 'BASKET.GO_TO_BASKET'
-            : 'BASKET.ADD_TO_BASKET'
+            ? 'BASKET.OTHER.GO_TO_BASKET'
+            : 'BASKET.OTHER.ADD_TO_BASKET'
         }
       />
     );
@@ -128,7 +128,11 @@ export function CartButtonComponent(props: CartModalComponentProps) {
             <CardPrice price={price} discount={discount} />
             <Button
               disabled={isDisabled}
-              tid={isCart ? 'BASKET.GO_TO_BASKET' : 'BASKET.ADD_TO_BASKET'}
+              tid={
+                isCart
+                  ? 'BASKET.OTHER.GO_TO_BASKET'
+                  : 'BASKET.OTHER.ADD_TO_BASKET'
+              }
               active={isCart}
               onClick={handleCart(setVisible)}
             />

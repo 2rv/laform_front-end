@@ -12,7 +12,9 @@
       "TITLE": "Useful links",
       "HOW_TO_CHOOSE_SIZE": "How to choose the size",
       "DELIVERY_AND_PAYMENT": "Shipping and payment",
-      "QNA": "Questions and answers"
+      "QNA": "Questions and answers",
+      "HOW_TO_PRINT_PATTERN": "How to print",
+      "HOW_TO_GLUE_PATTERN": "How to glue a pattern"
     },
     "SECTION3": {
       "TITLE": "Contact",
@@ -25,5 +27,10 @@
   "COPYRIGHT": {
     "BRAND": "2021. LAFORME.RU.",
     "ALL_RIGHTS_RESERVED": "All rights reserved."
+  },
+  "PHONE": {
+    "TITLE": "Call us",
+    "PHONE_NUMBER_PLACEHOLDER": "Enter phone number",
+    "SUCCESS": "Successfully"
   }
 }

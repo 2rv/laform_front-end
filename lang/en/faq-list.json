@@ -36,6 +36,9 @@
     "HOW_TO_PRINT_PATTERN": {
       "TITLE": "How to print a pattern?",
       "CONTENT": "Answer"
-    }
+    },
+    "SUCCESSFULLY_UPDATED": "Successfully updated",
+    "SHIPPING_AND_PAYMENT": "Shipping and payment",
+    "HOW_TO_GLUE_PATTERN": "How to glue a pattern"
   }
 }

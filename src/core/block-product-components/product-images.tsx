@@ -23,7 +23,7 @@ export function ProductImages(props: { images: string[] }) {
 
   return !images.length ? (
     <BackgroudBlock>
-      <TextSecondary tid="Изображения отсутствует" />
+      <TextSecondary tid="OTHER.IMAGES_MISSING" />
     </BackgroudBlock>
   ) : (
     <Container>

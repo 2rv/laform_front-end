@@ -54,8 +54,8 @@ export function CartPromoCode(props: CartPromoCodeProps) {
   return (
     <FieldLayout type="double" adaptive>
       <BasicField
-        titleTid="BASKET.FORM.FIELDS.TITLES.PROMO_CODE"
-        placeholderTid="BASKET.FORM.FIELDS.PLACEHOLDER.PROMO_CODE"
+        titleTid="BASKET.FORM.CART_PROMOCODE.PROMO_CODE_TITLE"
+        placeholderTid="BASKET.FORM.CART_PROMOCODE.PROMO_CODE_PLACEHOLDER"
         name={ORDER_FIELD_NAME.PROMO_CODE}
         value={values[ORDER_FIELD_NAME.PROMO_CODE]}
         onChange={handleChange}
@@ -63,7 +63,7 @@ export function CartPromoCode(props: CartPromoCodeProps) {
         error={getFieldError(ORDER_FIELD_NAME.PROMO_CODE)}
       />
       <Button
-        tid="BASKET.FORM.ACTIVATE"
+        tid="BASKET.FORM.CART_PROMOCODE.CONFIRM_CODE"
         onClick={() => confirmCode(values[ORDER_FIELD_NAME.PROMO_CODE])}
         disabled={
           isSending ||

@@ -1,15 +1,25 @@
 {
   "401": {
-    "TITLE": "Error 401",
+    "TITLE": "Error  401",
     "TEXT": ""
   },
   "404": {
-    "TITLE": "Error 404",
-    "TEXT": "The page you went to does not exist. You can go",
-    "LINK_TEXT": "To home"
+    "TITLE": "Error  404",
+    "TEXT": "The page you went to does not exist. You can go to main",
+    "LINK_TEXT": "Home"
   },
   "500": {
-    "TITLE": "Error 500",
+    "TITLE": "Error  500",
     "TEXT": ""
+  },
+  "SUCCESS_PAID": {
+    "TITLE": "Order has been paid!",
+    "TEXT": "Unfortunately, there were some problems when paying for the order, which our support or the support of the payment system will help you solve.",
+    "LINK_TEXT": "Home"
+  },
+  "NOT_PAID": {
+    "TITLE": "Order not paid!",
+    "TEXT": "You have successfully paid for your order. You can watch its status in your personal account, in the list of your purchases.",
+    "LINK_TEXT": "Go to shopping list"
   }
 }

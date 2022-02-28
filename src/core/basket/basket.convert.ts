@@ -142,7 +142,7 @@ const masterItemConvert = (data: basketStateType): TableItemData => {
     vendorCode: data.masterClassId.vendorCode,
     totalPrice: totalPrice,
     params: {
-      program: 'BASKET.TABLE.PARAMETERS.REMOTE',
+      program: 'BASKET.OTHER.REMOTE',
     },
   };
 };

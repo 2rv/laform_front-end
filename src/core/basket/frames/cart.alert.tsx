@@ -22,15 +22,19 @@ export function CartAlert(props: CartAlertProps) {
 
   return (
     <FieldLayout type="double" adaptive>
-      {selectDiliveryType && <InfoAlert tid="Выберите тип доставки" />}
       {orderError && <ErrorAlert tid={orderErrorMessage} />}
       {postalCodeErrro && <ErrorAlert tid={postalCodeErrro} />}
-      {orderSuccess && <SuccessAlert tid="BASKET.FORM.FORM_SEND_SUCCESS" />}
       {emailConfirmedError && <WarningAlert tid={emailConfirmedError} />}
-      {fullNameError && <WarningAlert tid="Необходимо указать ФИО" />}
-      {phoneError && <WarningAlert tid="Необходимо указать номер телефона" />}
+      {orderSuccess && <SuccessAlert tid="BASKET.FORM.CART_ALERT.SUCCESS" />}
+      {fullNameError && (
+        <WarningAlert tid="BASKET.FORM.CART_ALERT.NEED_FULLNAME" />
+      )}
+      {phoneError && <WarningAlert tid="BASKET.FORM.CART_ALERT.NEED_PHONE" />}
       {emailNotConfirmed && (
-        <InfoAlert tid="Что бы купить товар необходимо подтвердить почту или авторизироваться" />
+        <InfoAlert tid="BASKET.FORM.CART_ALERT.NEED_CONFIRM_EMAIL" />
+      )}
+      {selectDiliveryType && (
+        <InfoAlert tid="BASKET.FORM.CART_ALERT.NEED_TYPE_DELIVERY" />
       )}
     </FieldLayout>
   );

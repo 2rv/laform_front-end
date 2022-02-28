@@ -27,14 +27,14 @@ function FaqArticlePage(props: FaqArticleContainerProps) {
 export const FaqPage = () => <FaqArticlePage name={FAQ_ROUTE_PATH} />;
 export const FaqSizePage = () => (
   <FaqArticlePage
-    titleTid="Как выбрать размер"
+    titleTid="FAQ_LIST.GENERAL.HOW_TO_CHOOSE_SIZE"
     name={FAQ_SIZE_ROUTE_PATH}
     key={FAQ_SIZE_ROUTE_PATH}
   />
 );
 export const FaqDeliveryPaymentPage = () => (
   <FaqArticlePage
-    titleTid="Доставка и оплата"
+    titleTid="FAQ_LIST.SHIPPING_AND_PAYMENT"
     name={FAQ_DELIVERY_PAYMENT_ROUTE_PATH}
     key={FAQ_DELIVERY_PAYMENT_ROUTE_PATH}
   />
@@ -69,14 +69,14 @@ export const FaqAboutUsPage = () => (
 );
 export const FaqHowPrintPage = () => (
   <FaqArticlePage
-    titleTid="Как распечатать выкройку"
+    titleTid="FAQ_LIST.SALES.HOW_TO_PRINT_PATTERN"
     name={FAQ_HOW_PRINT_ROUTE_PATH}
     key={FAQ_HOW_PRINT_ROUTE_PATH}
   />
 );
 export const FaqHowGluePage = () => (
   <FaqArticlePage
-    titleTid="Как склеить выкройку"
+    titleTid="FAQ_LIST.HOW_TO_GLUE_PATTERN"
     name={FAQ_HOW_GLUE_ROUTE_PATH}
     key={FAQ_HOW_GLUE_ROUTE_PATH}
   />

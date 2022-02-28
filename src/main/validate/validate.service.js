@@ -166,10 +166,10 @@ export const requiredEmail = (value) => {
 
 export const requiredPostalCode = (value) => {
   if (typeof value === 'string' || typeof value === 'undefined') {
-    return getError('Необходим почтовый индекс');
+    return getError('VALIDATION.REQUIRED_POSTAL_CODE');
   }
   if (typeof value === 'object' && !Boolean(value.postal_code)) {
-    return getError('Необходим почтовый индекс');
+    return getError('VALIDATION.REQUIRED_POSTAL_CODE');
   }
   return null;
 };

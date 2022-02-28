@@ -76,7 +76,7 @@ export function LoginComponent(props: LoginComponentProps) {
                       disabled={pending}
                     />
                     {error && <ErrorAlert tid={error} />}
-                    {success && <SuccessAlert tid="Успешно" />}
+                    {success && <SuccessAlert tid="LOGIN.LOGIN_FORM.SUCCESS" />}
                     {pending && <LoaderPrimary />}
                   </SectionLayout>
                 </form>

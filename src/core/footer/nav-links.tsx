@@ -49,11 +49,11 @@ const FOOTER_NAVIGATION_LINKS = [
         path: FAQ_SIZE_ROUTE_PATH,
       },
       {
-        tid: 'Как распечатать',
+        tid: 'FOOTER.MENU.SECTION2.HOW_TO_PRINT_PATTERN',
         path: FAQ_HOW_PRINT_ROUTE_PATH,
       },
       {
-        tid: 'Как склеить выкройку',
+        tid: 'FOOTER.MENU.SECTION2.HOW_TO_GLUE_PATTERN',
         path: FAQ_HOW_GLUE_ROUTE_PATH,
       },
       {

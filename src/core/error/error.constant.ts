@@ -26,25 +26,22 @@ export const ERROR_PAGE_CONFIG = {
   },
   404: {
     titleTid: 'ERROR_PAGE.404.TITLE',
-    textTid:
-      'Страницы на которую вы перешли – не существует. Можете перейти на главную',
+    textTid: 'ERROR_PAGE.404.TEXT',
     linkTid: 'ERROR_PAGE.404.LINK_TEXT',
     linkPath: HOME_ROUTE_PATH,
     image: NotFoundImage,
   },
   NOT_PAID: {
-    titleTid: 'Заказ не оплачен!',
-    textTid:
-      'К сожалению, при оплате заказа возникли некоторые проблемы, решить которые вам поможет наша поддержка либо поддержка платежной системы.',
-    linkTid: 'ERROR_PAGE.404.LINK_TEXT',
+    titleTid: 'ERROR_PAGE.NOT_PAID.TITLE',
+    textTid: 'ERROR_PAGE.NOT_PAID.TEXT',
+    linkTid: 'ERROR_PAGE.NOT_PAID.LINK_TEXT',
     linkPath: HOME_ROUTE_PATH,
     image: NotPaidImage,
   },
   SUCCESS_PAID: {
-    titleTid: 'Заказ оплачен!',
-    textTid:
-      'Вы успешно оплатили свой заказ.  Наблюдать за его осстоянием Вы можете в личном кабинете, в списке Ваших покупок.',
-    linkTid: 'Перейти в список покупок',
+    titleTid: 'ERROR_PAGE.SUCCESS_PAID.TITLE',
+    textTid: 'ERROR_PAGE.SUCCESS_PAID.TEXT',
+    linkTid: 'ERROR_PAGE.SUCCESS_PAID.LINK_TEXT',
     linkPath: USER_ORDERS_ROUTE_PATH,
     image: PaidImage,
   },

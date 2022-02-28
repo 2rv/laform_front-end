@@ -1,24 +1,25 @@
 {
-	"SECTION_TITLE": "Вход",
-	"LOGIN_FORM": {
-		"FIELD": {
-			"LOGIN": {
-				"TITLE": "Логин или Почта",
-				"PLACEHOLDER": "La Forme"
-			},
-			"PASSWORD": {
-				"TITLE": "Пароль",
-				"PLACEHOLDER": "Password"
-			}
-		},
-		"BUTTON": {
-			"SUBMIT": "Войти в аккаунт"
-		}
-	},
-	"FOOTER": {
-		"HAVENT_ACCOUNT_YET": "Ещё нет аккаунта?",
-		"REGISTER": "Регистрация",
-		"FORGOT_PASSWORD": "Забыли пароль?",
-		"FORGOT_PASSWORD_LINK": "Восстановить аккаунт"
-	}
+  "SECTION_TITLE": "Вход",
+  "LOGIN_FORM": {
+    "FIELD": {
+      "LOGIN": {
+        "TITLE": "Логин или Почта",
+        "PLACEHOLDER": "La Forme"
+      },
+      "PASSWORD": {
+        "TITLE": "Пароль",
+        "PLACEHOLDER": "Password"
+      }
+    },
+    "BUTTON": {
+      "SUBMIT": "Войти в аккаунт"
+    },
+    "SUCCESS": "Успешно"
+  },
+  "FOOTER": {
+    "HAVENT_ACCOUNT_YET": "Ещё нет аккаунта?",
+    "REGISTER": "Регистрация",
+    "FORGOT_PASSWORD": "Забыли пароль?",
+    "FORGOT_PASSWORD_LINK": "Восстановить аккаунт"
+  }
 }
